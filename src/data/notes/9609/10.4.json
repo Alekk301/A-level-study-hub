@@ -1,0 +1,147 @@
+{
+  "id": "10.4",
+  "subject": "9609",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Finance and accounting strategy",
+  "contentDepth": "full",
+  "overview": "Finance and accounting strategy uses published financial information to support long-term decisions. You must assess performance over time/against competitors and analyse how debt/equity, dividend decisions, business growth and other strategies affect ratios. The key evaluation point is that accounts are useful evidence but not perfect objective truth.",
+  "syllabusPoints": [
+    "Explain how financial statements/annual reports support strategy and stakeholder decisions.",
+    "Assess performance over time and against competitors using accounting data and ratios.",
+    "Analyse how debt and equity financing strategies affect ratios and risk.",
+    "Analyse dividend strategy and its stakeholder/ratio effects.",
+    "Analyse how growth/other strategies affect ratios.",
+    "Evaluate limitations of published accounts and ratio analysis."
+  ],
+  "definitions": [
+    {
+      "term": "Annual report",
+      "definition": "Financial statements plus narrative/governance/risk information reporting company performance and position."
+    },
+    {
+      "term": "Debt finance",
+      "definition": "Borrowed long-term finance with contractual interest/repayment."
+    },
+    {
+      "term": "Equity finance",
+      "definition": "Finance provided by owners/shareholders, affecting ownership and shareholder returns rather than creating contractual interest."
+    },
+    {
+      "term": "Dividend policy",
+      "definition": "The approach to distributing profit to shareholders versus retaining it for reinvestment."
+    },
+    {
+      "term": "Window dressing",
+      "definition": "Actions/accounting presentation intended to make reported position/performance look more favourable around reporting time."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-using-accounts-strategically",
+      "title": "Using accounts strategically",
+      "content": [
+        "Accounts reveal profitability, liquidity, efficiency, financing and resource position. Weak liquidity may constrain expansion; strong ROCE may support investment; falling margins may trigger cost/price/product changes. Financial evidence should be combined with market, HR and operations information."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-annual-reports-and-stakeholders",
+      "title": "Annual reports and stakeholders",
+      "content": [
+        "Annual reports can contain statements, strategic commentary, risk, governance, sustainability and audit information. Investors, lenders, employees, suppliers and managers use different information. Narrative sections provide context but management may emphasise favourable aspects."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-debt-versus-equity",
+      "title": "Debt versus equity",
+      "content": [
+        "Debt avoids ownership dilution and can be cost-effective, but raises gearing and fixed interest/repayment risk. Equity can reduce debt pressure and strengthen finance capacity but dilutes control/earnings per share and may create dividend expectations. Choice depends on cash-flow stability, interest rates, investor appetite and desired control."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-dividend-strategy",
+      "title": "Dividend strategy",
+      "content": [
+        "Higher dividends may attract income-seeking shareholders and signal confidence but reduce retained funds for investment/liquidity. Lower dividends support self-financed growth but may disappoint investors. Dividend decisions affect yield, cover and retained earnings."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-growth-and-ratio-effects",
+      "title": "Growth and ratio effects",
+      "content": [
+        "Expansion can initially weaken liquidity or raise gearing because working capital/capital expenditure must be financed. Later economies/productivity/revenue may improve margins and ROCE. A short-term ratio decline after strategic investment is not automatically failure."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-limitations-of-published-accounts",
+      "title": "Limitations of published accounts",
+      "content": [
+        "Accounts are mostly historical, use estimates/accounting policies, can be affected by inflation, one-offs and window dressing, and omit many intangible strengths. Cross-company comparisons can be distorted by different business models/policies. Ratios diagnose symptoms but do not prove causes."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "07-integrated-judgement",
+      "title": "Integrated judgement",
+      "content": [
+        "A finance strategy should support overall objectives. A business pursuing fast growth may accept temporarily higher gearing; a mature firm with stable cash might return more cash to shareholders. The recommendation must fit risk, cash generation and strategic opportunity."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [
+    {
+      "title": "Debt-financed growth",
+      "steps": [
+        "New finance funds expansion without diluting ownership",
+        "Revenue and profit may grow",
+        "Interest and repayment commitments increase",
+        "Gearing and financial risk rise"
+      ],
+      "evaluation": "Debt is more defensible with stable cash flows and low existing gearing; equity may be safer for uncertain, long-payback strategies."
+    }
+  ],
+  "examTips": [
+    "Paper 4 answers should link financial evidence to corporate objectives and non-financial evidence.",
+    "Do not recommend debt/equity from gearing alone—include cash flow, control, interest rates and investor appetite.",
+    "Ask whether a weak ratio is structural or a temporary effect of a deliberate strategy."
+  ],
+  "commonMistakes": [
+    "Treating published accounts as forecasts.",
+    "Assuming higher dividends always increase shareholder value.",
+    "Assuming low gearing automatically means the finance strategy is optimal.",
+    "Using ratios without benchmarks or plausible causes."
+  ],
+  "quickRecall": [
+    "accounts=evidence not strategy",
+    "debt=gearing+fixed interest",
+    "equity=dilution/no contractual interest",
+    "dividend=payout vs retained growth",
+    "growth may temporarily weaken ratios",
+    "ratios diagnose not prove"
+  ],
+  "relatedTopics": [
+    "6.2",
+    "8.2",
+    "9.3",
+    "10.1",
+    "10.2",
+    "10.3"
+  ]
+}

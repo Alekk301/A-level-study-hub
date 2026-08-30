@@ -1,0 +1,195 @@
+{
+  "id": "13.2",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "File organisation and access",
+  "contentDepth": "full",
+  "overview": "File organisation describes how records are arranged on backing storage; file access describes how they are reached. You must compare serial, sequential and random organisation, understand direct access and indexing, and use hashing—including what happens when collisions occur.",
+  "syllabusPoints": [
+    "Compare serial, sequential and random file organisation.",
+    "Select sequential or direct access for a stated use.",
+    "Explain indexes and how they can reduce search time.",
+    "Use a hashing algorithm to calculate record addresses and explain collision handling."
+  ],
+  "definitions": [
+    {
+      "term": "Serial file",
+      "definition": "Records are stored in the order they arrive, with no ordering by key."
+    },
+    {
+      "term": "Sequential file",
+      "definition": "Records are stored in order of a key field."
+    },
+    {
+      "term": "Random file",
+      "definition": "Records are stored at locations calculated or chosen to allow direct access."
+    },
+    {
+      "term": "Index",
+      "definition": "A smaller structure mapping search keys to record locations."
+    },
+    {
+      "term": "Hash function",
+      "definition": "An algorithm that transforms a record key into a storage address."
+    },
+    {
+      "term": "Collision",
+      "definition": "Two different keys generate the same hash address."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-serial-organisation",
+      "title": "Serial organisation",
+      "content": [
+        "Very simple for append-heavy data such as logs. New records can be added quickly, but finding one record usually means reading from the start until it is found."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "01-example-1",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "Example: a transaction log written in time order."
+        }
+      ]
+    },
+    {
+      "id": "02-sequential-organisation",
+      "title": "Sequential organisation",
+      "content": [
+        "Records are kept sorted by a key. This is effective for batch processing in key order and allows ordered traversal. Insertion/update can be more expensive because ordering must be preserved."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "02-example-1",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "Example: employee records stored in EmployeeID order for payroll processing."
+        }
+      ]
+    },
+    {
+      "id": "03-random-organisation-and-direct-access",
+      "title": "Random organisation and direct access",
+      "content": [
+        "The program can jump directly to a likely record location rather than reading every previous record. It suits systems that repeatedly retrieve individual records by a unique key."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-indexes",
+      "title": "Indexes",
+      "content": [
+        "An index stores keys plus pointers/addresses. Searching the smaller index identifies where the full record is stored. Extra storage and maintenance are required, especially when records are inserted or deleted."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-hashing",
+      "title": "Hashing",
+      "content": [
+        "A hash function transforms a key into an address. A good function is fast and spreads keys across the available range. The same function must be used on retrieval."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "05-example-1",
+          "kind": "worked",
+          "label": "Worked example",
+          "content": "address <- Key MOD 1000\nKey 47231 -> address 231"
+        }
+      ]
+    },
+    {
+      "id": "06-collision-resolution",
+      "title": "Collision resolution",
+      "content": [
+        "Because the address range is finite, collisions are unavoidable. The system needs a defined rule such as linear probing, an overflow area or chaining. Retrieval must follow the same collision rule used during insertion."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "06-example-1",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "If slot 231 is occupied, linear probing can test 232, 233, ... until a free slot is found."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Simple hash address",
+      "expression": "address = key MOD numberOfLocations",
+      "note": "A complete answer must also explain how collisions are handled."
+    }
+  ],
+  "comparisonTable": {
+    "title": "File organisation compared",
+    "columns": [
+      "Method",
+      "How records are stored",
+      "Best for",
+      "Main limitation"
+    ],
+    "rows": [
+      [
+        "Serial",
+        "Arrival order",
+        "Appending transaction records",
+        "Slow search"
+      ],
+      [
+        "Sequential",
+        "Sorted by key",
+        "Batch processing in key order",
+        "Insertions are costly"
+      ],
+      [
+        "Random/direct",
+        "Calculated or known address",
+        "Fast individual lookup",
+        "Needs address management"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Hashed record lookup",
+    "type": "flow",
+    "nodes": [
+      "Record key",
+      "Hash function",
+      "Storage address",
+      "Collision check"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Name both the organisation/access method and the scenario-specific reason.",
+    "Show the hash calculation and then explain collision handling.",
+    "Random access does not mean 'stored randomly'; addresses are determined systematically."
+  ],
+  "commonMistakes": [
+    "Confusing file organisation with file access.",
+    "Ignoring collisions after calculating the hash address.",
+    "Using a different hash/collision rule for retrieval than insertion."
+  ],
+  "quickRecall": [
+    "serial=arrival order",
+    "sequential=key order",
+    "random=direct location",
+    "index=key->location",
+    "collision needs a rule"
+  ],
+  "relatedTopics": [
+    "13.1",
+    "19.1",
+    "20.2"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "id": "7.4",
+  "subject": "9609",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Human resource management strategy",
+  "contentDepth": "full",
+  "overview": "HRM strategy connects workforce decisions to long-term performance. You must compare hard and soft HRM, evaluate flexible contracts, diagnose and improve employee performance, understand Management by Objectives (MBO), and analyse how IT/AI changes HRM.",
+  "syllabusPoints": [
+    "Compare hard and soft HRM.",
+    "Evaluate flexible working contracts and arrangements.",
+    "Measure causes/consequences of poor employee performance and recommend improvements.",
+    "Explain implementation and usefulness of MBO.",
+    "Analyse the changing role of IT and AI in HRM."
+  ],
+  "definitions": [
+    {
+      "term": "Hard HRM",
+      "definition": "An approach treating labour mainly as a resource/cost to be planned and controlled to meet business needs."
+    },
+    {
+      "term": "Soft HRM",
+      "definition": "An approach treating employees as assets whose commitment, development and participation create performance."
+    },
+    {
+      "term": "MBO",
+      "definition": "Management by Objectives: managers and employees agree measurable objectives, monitor progress and review results."
+    },
+    {
+      "term": "Flexible working",
+      "definition": "Employment arrangements allowing labour time/location/contract to adapt to employee or business needs."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-hard-versus-soft-hrm",
+      "title": "Hard versus soft HRM",
+      "content": [
+        "Hard HRM emphasises workforce numbers, productivity and cost; soft HRM emphasises motivation, development, trust and involvement. Real firms may combine both. Suitable balance depends on skill scarcity, service quality, cost pressure and culture."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-flexible-contracts-and-working",
+      "title": "Flexible contracts and working",
+      "content": [
+        "Temporary, zero-hours, part-time, full-time, annualised hours, flexitime, home working, shifts, job sharing, compressed hours and gig work allow labour to match demand or widen recruitment. Risks include insecurity, coordination difficulty, legal/reputation issues and weaker loyalty/training continuity."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-measuring-poor-performance",
+      "title": "Measuring poor performance",
+      "content": [
+        "Indicators include productivity, absence, labour turnover, error/defect rates, complaints and missed targets. Causes may be skill gaps, poor equipment, unclear goals, workload, weak motivation, leadership or reward systems. Diagnose the cause before choosing a solution."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-improving-performance",
+      "title": "Improving performance",
+      "content": [
+        "Training, coaching, better job design, participation, clearer targets, technology, reward changes, wellbeing support or better recruitment may help. Evaluate cost, implementation time and whether the problem is individual or systemic."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-management-by-objectives",
+      "title": "Management by Objectives",
+      "content": [
+        "Managers and employees agree objectives aligned with higher business goals, measures/timescales, then review progress. Benefits: clarity, participation, alignment and performance evidence. Risks: target gaming, narrow focus, measurement difficulty and time spent negotiating/reviewing."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-it-and-ai-in-hrm",
+      "title": "IT and AI in HRM",
+      "content": [
+        "Systems automate applicant screening, scheduling, payroll, training and performance analytics. Benefits include speed/consistency; risks include algorithmic bias, privacy, cybersecurity, inaccurate data and loss of human judgement/trust."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [
+    {
+      "title": "Soft HRM investment",
+      "steps": [
+        "Training and employee involvement increase",
+        "Skills and motivation may improve",
+        "Productivity and service quality rise",
+        "Labour turnover and recruitment costs may fall"
+      ],
+      "evaluation": "Benefits depend on retaining trained staff and measuring whether performance gains exceed the programme's cost."
+    }
+  ],
+  "examTips": [
+    "Flexible working is not automatically soft HRM—the motive and employee treatment matter.",
+    "If performance is poor, connect the solution to the actual cause.",
+    "AI evaluation should include bias/data/privacy risk as well as efficiency."
+  ],
+  "commonMistakes": [
+    "Treating part-time and temporary as the same.",
+    "Recommending training when poor equipment/targets are the real cause.",
+    "Assuming monitoring always improves productivity.",
+    "Describing MBO as only top-down target setting."
+  ],
+  "quickRecall": [
+    "hard=labour resource/cost",
+    "soft=people/assets",
+    "flexibility matches labour to need",
+    "MBO=agreed objectives",
+    "AI HRM=efficiency + bias/privacy risk"
+  ],
+  "relatedTopics": [
+    "7.1",
+    "7.2",
+    "7.3",
+    "10.4"
+  ]
+}

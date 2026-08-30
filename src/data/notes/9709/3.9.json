@@ -1,0 +1,68 @@
+{
+  "id": "3.9",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Complex numbers",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to complex numbers.",
+  "syllabusPoints": [
+    "Argand diagrams",
+    "modulus/argument",
+    "polar form"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-basics",
+      "title": "Basics",
+      "content": [
+        "i² = −1. z = a + bi has real part a, imaginary part b. Conjugate z* = a − bi; z·z* = a²+b² (always real)."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-modulus-argument-form",
+      "title": "Modulus-argument form",
+      "content": [
+        "Take care with the quadrant when finding θ."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "02-formula-1",
+          "kind": "formula",
+          "label": "Formula",
+          "content": "z = r(cosθ + i sinθ), r = |z| = √(a²+b²), θ = arg(z)"
+        }
+      ]
+    },
+    {
+      "id": "03-loci-on-the-argand-diagram",
+      "title": "Loci on the Argand diagram",
+      "content": [],
+      "bullets": [
+        "|z − a| = r → circle, centre a, radius r",
+        "|z − a| = |z − b| → perpendicular bisector of a and b",
+        "arg(z − a) = θ → half-line from a at angle θ"
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Sketch loci questions first — most marks come from a correctly labelled diagram."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "Argand diagrams",
+    "modulus/argument",
+    "polar form"
+  ],
+  "relatedTopics": []
+}

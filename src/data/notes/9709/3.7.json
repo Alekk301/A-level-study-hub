@@ -1,0 +1,66 @@
+{
+  "id": "3.7",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Vectors",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to vectors.",
+  "syllabusPoints": [
+    "3D lines",
+    "dot product",
+    "angles/intersections"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-basics",
+      "title": "Basics",
+      "content": [
+        "Magnitude of a = (a₁,a₂,a₃) is |a| = √(a₁²+a₂²+a₃²). A unit vector in the direction of a is a/|a|."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-scalar-dot-product",
+      "title": "Scalar (dot) product",
+      "content": [
+        "Set a·b = 0 to test perpendicularity; rearrange for cosθ to find the angle between two lines."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "02-formula-1",
+          "kind": "formula",
+          "label": "Formula",
+          "content": "a·b = a₁b₁ + a₂b₂ + a₃b₃ = |a||b| cosθ"
+        }
+      ]
+    },
+    {
+      "id": "03-vector-equation-of-a-line",
+      "title": "Vector equation of a line",
+      "content": [
+        "r = a + tb, where a is a position vector on the line and b is the direction. To find intersections, solve two component equations for the parameters, then check the third is also satisfied."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Always substitute back into the third equation to confirm the lines actually intersect — skew lines don't, and this check is often worth its own mark."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "3D lines",
+    "dot product",
+    "angles/intersections"
+  ],
+  "relatedTopics": []
+}

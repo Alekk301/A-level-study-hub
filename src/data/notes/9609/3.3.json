@@ -1,0 +1,43 @@
+{
+  "id": "3.3",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "The marketing mix",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to the marketing mix.",
+  "syllabusPoints": [
+    "product",
+    "price",
+    "promotion",
+    "place"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-the-marketing-mix",
+      "title": "The marketing mix",
+      "content": [
+        "The 4 Ps: Product (features, quality, branding), Price (penetration, skimming, competitive, cost-plus), Place (distribution channels), Promotion (advertising, sales promotion, PR)."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "For \"recommend a pricing strategy\", link back to the specific business's context in the case study — generic definitions alone won't reach top-band marks."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "product",
+    "price",
+    "promotion",
+    "place"
+  ],
+  "relatedTopics": []
+}

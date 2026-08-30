@@ -1,0 +1,66 @@
+{
+  "id": "1.7",
+  "subject": "9709",
+  "level": "AS",
+  "unitId": "P1",
+  "unitTitle": "Pure Mathematics 1",
+  "title": "Differentiation",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to differentiation.",
+  "syllabusPoints": [
+    "derivatives",
+    "tangents/normals",
+    "stationary points and optimisation"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-core-rules",
+      "title": "Core rules",
+      "content": [
+        "Standard derivatives:  Chain, product and quotient rules extend this to combinations of functions (developed further in P2/P3)."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "01-formula-1",
+          "kind": "formula",
+          "label": "Formula",
+          "content": "d/dx(xⁿ)=nxⁿ⁻¹"
+        }
+      ]
+    },
+    {
+      "id": "02-stationary-points",
+      "title": "Stationary points",
+      "content": [
+        "Set dy/dx = 0 and solve. Use the second derivative: d²y/dx² > 0 → minimum, < 0 → maximum."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-tangents-and-normals",
+      "title": "Tangents and normals",
+      "content": [
+        "Gradient of tangent = dy/dx at that point; gradient of normal = −1/(dy/dx)."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Double-check whether the question wants the tangent or the normal — mixing these up is one of the most common errors."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "derivatives",
+    "tangents/normals",
+    "stationary points and optimisation"
+  ],
+  "relatedTopics": []
+}
