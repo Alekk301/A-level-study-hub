@@ -44,7 +44,7 @@
   }
   .mobile-nav a { display: grid; justify-items: center; gap: 0.12rem; padding: 0.35rem; color: var(--text-muted); font-size: 0.58rem; font-weight: 650; }
   .mobile-nav a svg { width: 1.15rem; height: 1.15rem; }
-  .mobile-nav a[aria-current="page"] { color: var(--green); }
+  .mobile-nav a[aria-current="page"] { color: var(--blue); }
   .page-heading, .dashboard-heading { gap: 1.2rem; margin-bottom: 1.7rem; }
   .page-heading { align-items: stretch; flex-direction: column; }
   .page-heading h1, .dashboard-heading h1, .subject-hero h1 { font-size: 2.45rem; }
