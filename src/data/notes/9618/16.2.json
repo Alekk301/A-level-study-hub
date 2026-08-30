@@ -1,0 +1,138 @@
+{
+  "id": "16.2",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "Translation Software",
+  "contentDepth": "full",
+  "overview": "Translation software turns source code into executable behaviour. At A2 you need interpreters and compiler stages—lexical analysis, syntax analysis, code generation and optimisation—plus grammar description using BNF/syntax diagrams and expression evaluation using Reverse Polish Notation.",
+  "syllabusPoints": [
+    "Explain interpreter operation and contrast it with compiled translation.",
+    "Describe lexical analysis, syntax analysis, code generation and optimisation.",
+    "Interpret or construct simple grammar using BNF/syntax diagrams.",
+    "Convert/evaluate expressions using Reverse Polish Notation and a stack."
+  ],
+  "definitions": [
+    {
+      "term": "Token",
+      "definition": "A classified unit produced during lexical analysis, e.g. keyword, identifier, literal or operator."
+    },
+    {
+      "term": "Lexeme",
+      "definition": "The actual character sequence that matches a token category."
+    },
+    {
+      "term": "Parser",
+      "definition": "The syntax-analysis component that checks tokens against grammar."
+    },
+    {
+      "term": "BNF",
+      "definition": "A formal notation that defines valid language structures using production rules."
+    },
+    {
+      "term": "RPN",
+      "definition": "Postfix notation where operators follow operands, allowing stack-based evaluation without brackets."
+    },
+    {
+      "term": "Optimisation",
+      "definition": "Transformation of generated/intermediate code to improve speed/size without changing its result."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-interpreter",
+      "title": "Interpreter",
+      "content": [
+        "An interpreter translates/executes source during runtime and normally does not produce a permanently stored complete executable. It is convenient for testing and portable source execution, but repeated translation can reduce execution speed."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-lexical-analysis",
+      "title": "Lexical analysis",
+      "content": [
+        "The compiler scans source characters, groups them into tokens, discards irrelevant whitespace/comments where appropriate, recognises identifiers/literals and maintains symbol-table information. Invalid character sequences can be reported as lexical errors."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-syntax-analysis",
+      "title": "Syntax analysis",
+      "content": [
+        "The parser checks whether the token stream fits the language grammar, often building a parse tree/internal representation. Missing delimiters or malformed statements are syntax errors; logical correctness is a different issue."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-code-generation-and-optimisation",
+      "title": "Code generation and optimisation",
+      "content": [
+        "Once the source is valid, machine/intermediate instructions are generated. Optimisation can remove redundant work, improve instruction selection or reduce code size while preserving program behaviour."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-bnf-and-syntax-diagrams",
+      "title": "BNF and syntax diagrams",
+      "content": [
+        "Both define legal grammatical structures. BNF uses production rules with sequences, alternatives and recursive definitions. Exam questions may ask whether a string is valid or to complete a rule."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "05-example-1",
+          "kind": "worked",
+          "label": "Worked example",
+          "content": "<digit> ::= 0 | 1 | 2 | ... | 9\n<number> ::= <digit> | <digit><number>"
+        }
+      ]
+    },
+    {
+      "id": "06-reverse-polish-notation",
+      "title": "Reverse Polish Notation",
+      "content": [
+        "Push operands onto a stack. When an operator appears, pop its operands, apply it, then push the result. No brackets are needed because order is explicit."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "06-example-1",
+          "kind": "worked",
+          "label": "Worked example",
+          "content": "Infix: (3+4)*5\nRPN: 3 4 + 5 *\n=> 35"
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Remember the translation sequence: lexical -> syntax -> code generation -> optimisation.",
+    "For RPN subtraction/division, operand order matters: the first popped value is normally the right operand.",
+    "Syntax analysis checks grammar, not whether the algorithm gives the correct result."
+  ],
+  "commonMistakes": [
+    "Confusing lexical errors with logic errors.",
+    "Saying an interpreter always creates a standalone executable.",
+    "Reversing operands in RPN subtraction/division."
+  ],
+  "quickRecall": [
+    "lexical=chars->tokens",
+    "syntax=tokens->grammar",
+    "generation=target code",
+    "optimisation=same result better code",
+    "RPN uses stack"
+  ],
+  "relatedTopics": [
+    "5.2",
+    "19.2",
+    "20.1"
+  ]
+}

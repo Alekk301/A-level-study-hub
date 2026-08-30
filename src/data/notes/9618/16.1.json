@@ -1,0 +1,134 @@
+{
+  "id": "16.1",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "Purposes of an Operating System (OS)",
+  "contentDepth": "full",
+  "overview": "At A2 the operating system is primarily a resource manager. You need process states and scheduling, interrupts and the kernel, and memory management through virtual memory, paging, segmentation and page replacement—including why disk thrashing occurs.",
+  "syllabusPoints": [
+    "Explain multitasking and running/ready/blocked process states.",
+    "Compare FCFS, SJF, SRT and Round Robin scheduling.",
+    "Explain interrupts, the kernel and low-level scheduling.",
+    "Explain virtual memory, paging, segmentation, page replacement and disk thrashing."
+  ],
+  "definitions": [
+    {
+      "term": "Process",
+      "definition": "A program in execution together with its current state/resources."
+    },
+    {
+      "term": "Ready",
+      "definition": "Able to run but waiting for CPU time."
+    },
+    {
+      "term": "Blocked",
+      "definition": "Unable to continue until an event/resource becomes available."
+    },
+    {
+      "term": "Page",
+      "definition": "A fixed-size block used in paging/virtual memory."
+    },
+    {
+      "term": "Segment",
+      "definition": "A variable-size logical section of a program such as code, stack or data."
+    },
+    {
+      "term": "Disk thrashing",
+      "definition": "Excessive movement of pages between RAM and backing storage so little useful processing is done."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-process-states",
+      "title": "Process states",
+      "content": [
+        "A running process can be pre-empted and return to Ready, or become Blocked while waiting for I/O. When the required event finishes, it returns to Ready. The scheduler chooses among ready processes, creating the appearance of concurrent execution on one CPU."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-scheduling-algorithms",
+      "title": "Scheduling algorithms",
+      "content": [
+        "FCFS is simple arrival order but can make short jobs wait behind a long one. SJF chooses the shortest job and can reduce average wait but may starve long jobs. SRT is the pre-emptive version based on remaining time. Round Robin assigns time slices, improving responsiveness/fairness but causing more context switches when slices are very small."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-interrupts-and-kernel",
+      "title": "Interrupts and kernel",
+      "content": [
+        "An interrupt causes the CPU to preserve enough state and transfer control to an interrupt service routine. The kernel manages low-level resources/process states and can schedule another process before execution resumes."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-virtual-memory-and-paging",
+      "title": "Virtual memory and paging",
+      "content": [
+        "Virtual memory uses backing storage to extend the apparent address space. If a required page is not in RAM, a page fault causes it to be loaded; another page may need replacement. Disk access is far slower than RAM, so frequent faults are expensive."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-segmentation",
+      "title": "Segmentation",
+      "content": [
+        "Segmentation divides memory into logical variable-size areas that match program structure. Paging uses fixed-size blocks. Segmentation gives logical organisation/protection benefits but variable sizes can make allocation more complex."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-disk-thrashing",
+      "title": "Disk thrashing",
+      "content": [
+        "When too few useful pages remain in RAM, the system repeatedly loads pages that soon replace one another. Most time is spent swapping instead of executing. More RAM, fewer active processes or better working-set/page-replacement decisions can reduce it."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Process states",
+    "type": "cycle",
+    "nodes": [
+      "Ready",
+      "Running",
+      "Blocked"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Evaluate schedulers using response time, fairness, waiting time, starvation and context-switch overhead.",
+    "Ready means waiting for CPU; Blocked means waiting for an event/I-O.",
+    "Virtual memory is backing storage used as memory support, not extra physical RAM."
+  ],
+  "commonMistakes": [
+    "Calling a blocked process 'waiting for CPU'.",
+    "Saying Round Robin always finishes jobs fastest.",
+    "Confusing a page with a segment.",
+    "Describing thrashing as disk fragmentation."
+  ],
+  "quickRecall": [
+    "ready=CPU wait",
+    "blocked=event wait",
+    "RR=time slices",
+    "paging=fixed size",
+    "segmentation=logical variable size",
+    "thrashing=too many page swaps"
+  ],
+  "relatedTopics": [
+    "5.1",
+    "15.1",
+    "16.2"
+  ]
+}

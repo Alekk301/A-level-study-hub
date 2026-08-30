@@ -1,0 +1,138 @@
+{
+  "id": "13.1",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "User-defined data types",
+  "contentDepth": "full",
+  "overview": "User-defined data types let a programmer represent a problem using meaningful structures instead of forcing everything into primitive types. At A2 you must know enumerated types, pointers, records and sets, understand why each is useful, and choose a suitable type for a scenario.",
+  "syllabusPoints": [
+    "Define and use enumerated types.",
+    "Define and use pointer types and dereferencing.",
+    "Define records, including nested records and records containing arrays.",
+    "Use sets and set operations and choose appropriate user-defined types."
+  ],
+  "definitions": [
+    {
+      "term": "Enumerated type",
+      "definition": "A programmer-defined type whose values come from a fixed list of named constants."
+    },
+    {
+      "term": "Pointer",
+      "definition": "A variable that stores the address/reference of another data item."
+    },
+    {
+      "term": "Record",
+      "definition": "A composite type grouping named fields that may have different data types."
+    },
+    {
+      "term": "Set",
+      "definition": "An unordered collection of distinct values with operations such as union and intersection."
+    },
+    {
+      "term": "Dereference",
+      "definition": "Follow a pointer to access the data stored at the referenced address."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-enumerated-types",
+      "title": "Enumerated types",
+      "content": [
+        "Use an enumeration when only a fixed set of states is valid. It makes programs self-documenting and prevents meaningless values from being assigned."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "01-example-1",
+          "kind": "pseudocode",
+          "label": "Cambridge-style pseudocode",
+          "content": "TYPE TState = (Waiting, Running, Complete)\nDECLARE State : TState\nState <- Running"
+        }
+      ]
+    },
+    {
+      "id": "02-pointers",
+      "title": "Pointers",
+      "content": [
+        "Pointers make dynamic structures possible because a node can refer to another node without the items needing to be contiguous in memory. The pointer stores an address; dereferencing accesses the target value. A null pointer represents 'no target'."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "02-example-1",
+          "kind": "pseudocode",
+          "label": "Cambridge-style pseudocode",
+          "content": "TYPE TNodePointer = ^TNode\nDECLARE Current : TNodePointer"
+        }
+      ]
+    },
+    {
+      "id": "03-records",
+      "title": "Records",
+      "content": [
+        "A record models one entity using several fields. Fields may have different types; records can contain arrays or other records, and arrays can contain records. This is ideal for students, products, employees and similar entities."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "03-example-1",
+          "kind": "pseudocode",
+          "label": "Cambridge-style pseudocode",
+          "content": "TYPE TStudent\n  DECLARE Name : STRING\n  DECLARE Age : INTEGER\n  DECLARE Marks : ARRAY[1:3] OF INTEGER\nENDTYPE"
+        }
+      ]
+    },
+    {
+      "id": "04-sets",
+      "title": "Sets",
+      "content": [
+        "Sets are useful where membership matters but order and duplicates do not. Union combines members, intersection keeps common members, difference removes members of another set, and membership tests whether a value belongs to the set."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "04-example-1",
+          "kind": "worked",
+          "label": "Worked example",
+          "content": "A={1,2,3}, B={2,3,4}\nA union B={1,2,3,4}\nA intersection B={2,3}\nA-B={1}"
+        }
+      ]
+    },
+    {
+      "id": "05-choosing-a-type",
+      "title": "Choosing a type",
+      "content": [
+        "Base the choice on the data requirement: enum for fixed named choices; record for related fields; set for unique unordered membership; pointer for dynamic links. In an exam, justify the feature that fits the scenario rather than just defining the type."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Distinguish the pointer variable from the data it points to.",
+    "When justifying a type, tie the reason to the scenario.",
+    "A record is not an array: its fields can have different data types."
+  ],
+  "commonMistakes": [
+    "Treating an enumeration as an indexed array.",
+    "Saying a pointer stores the record itself rather than an address/reference.",
+    "Assuming sets preserve insertion order or allow duplicate elements."
+  ],
+  "quickRecall": [
+    "enum=fixed named choices",
+    "pointer=address/reference",
+    "record=related fields",
+    "set=unique unordered values"
+  ],
+  "relatedTopics": [
+    "13.2",
+    "19.1",
+    "20.1"
+  ]
+}

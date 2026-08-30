@@ -1,0 +1,146 @@
+{
+  "id": "20.1",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "Programming Paradigms",
+  "contentDepth": "full",
+  "overview": "A programming paradigm is a general style of solving/programming a problem. Cambridge requires low-level, imperative/procedural, object-oriented and declarative approaches. At A2 you should be able to reason about addressing modes, modular procedural code, class relationships and declarative facts/rules/goals.",
+  "syllabusPoints": [
+    "Explain the idea of a programming paradigm.",
+    "Use low-level concepts including immediate, direct, indirect, indexed and relative addressing.",
+    "Use imperative/procedural programming concepts and routines.",
+    "Use OOP concepts including classes, objects, encapsulation, inheritance, polymorphism and aggregation/containment.",
+    "Use declarative facts, rules and goals."
+  ],
+  "definitions": [
+    {
+      "term": "Programming paradigm",
+      "definition": "A broad approach/style for representing computation and organising programs."
+    },
+    {
+      "term": "Imperative programming",
+      "definition": "Programs expressed as commands that update state in a defined control flow."
+    },
+    {
+      "term": "Encapsulation",
+      "definition": "Controlling access to an object's internal state through a public interface."
+    },
+    {
+      "term": "Inheritance",
+      "definition": "A class deriving attributes/methods from another class; an is-a relationship."
+    },
+    {
+      "term": "Polymorphism",
+      "definition": "The same method/interface producing class-specific behaviour."
+    },
+    {
+      "term": "Aggregation",
+      "definition": "A has-a relationship where an object contains/references objects of another class."
+    },
+    {
+      "term": "Declarative programming",
+      "definition": "Specifying facts/rules or a desired relationship rather than an explicit step-by-step algorithm."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-low-level-programming-and-addressing",
+      "title": "Low-level programming and addressing",
+      "content": [
+        "Immediate addressing places a literal value in the instruction. Direct addressing gives the memory address of the operand. Indirect addressing points to a location that contains the operand address. Indexed addressing combines a base address with an index. Relative addressing forms an address relative to a reference such as the program counter."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-imperative-procedural-programming",
+      "title": "Imperative/procedural programming",
+      "content": [
+        "Variables hold state, and sequence, selection and iteration determine control flow. Procedures/functions decompose the solution, use parameters and local variables, and improve reuse/testing."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-classes-and-objects",
+      "title": "Classes and objects",
+      "content": [
+        "A class is a blueprint containing attributes and methods; an object/instance has its own state. Private attributes protect invariants, while getters/setters or other public methods provide controlled interaction."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "03-example-1",
+          "kind": "pseudocode",
+          "label": "Cambridge-style pseudocode",
+          "content": "CLASS BankAccount\n  PRIVATE Balance : REAL\n  PUBLIC PROCEDURE Deposit(Amount : REAL)\n    Balance <- Balance + Amount\n  ENDPROCEDURE\nENDCLASS"
+        }
+      ]
+    },
+    {
+      "id": "04-inheritance-polymorphism-aggregation",
+      "title": "Inheritance, polymorphism, aggregation",
+      "content": [
+        "Inheritance models is-a and can reuse/extend behaviour. Polymorphism allows a common method call to behave differently for subclasses. Aggregation/containment models has-a—for example a Team object contains Player objects. Use the relationship that matches the real model rather than forcing inheritance."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-declarative-programming",
+      "title": "Declarative programming",
+      "content": [
+        "Facts record known relationships, rules derive new relationships and goals/queries ask what can be proven. The language/runtime chooses the search/evaluation steps rather than the programmer explicitly controlling each step."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "05-example-1",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "parent(alex,bob).\nparent(bob,carol).\ngrandparent(X,Z) :- parent(X,Y), parent(Y,Z)."
+        }
+      ]
+    },
+    {
+      "id": "06-choosing-a-paradigm",
+      "title": "Choosing a paradigm",
+      "content": [
+        "Low-level code gives hardware control but low portability. Procedural code suits clear algorithms. OOP suits systems with interacting entities/state and reuse. Declarative approaches suit relation/rule-based problems. Real applications can combine paradigms."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Inheritance=is-a; aggregation=has-a.",
+    "Encapsulation is controlled access to internal state, not merely 'putting code in a class'.",
+    "For addressing modes, say where the actual operand/value is obtained."
+  ],
+  "commonMistakes": [
+    "Confusing class and object.",
+    "Calling aggregation inheritance.",
+    "Saying declarative programming has no logic.",
+    "Confusing immediate and direct addressing."
+  ],
+  "quickRecall": [
+    "imperative=commands/state",
+    "class->objects",
+    "inheritance=is-a",
+    "aggregation=has-a",
+    "polymorphism=same interface different behaviour",
+    "declarative=facts+rules+goals"
+  ],
+  "relatedTopics": [
+    "4.2",
+    "11.3",
+    "13.1",
+    "20.2"
+  ]
+}

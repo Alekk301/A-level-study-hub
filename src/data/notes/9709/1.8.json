@@ -1,0 +1,57 @@
+{
+  "id": "1.8",
+  "subject": "9709",
+  "level": "AS",
+  "unitId": "P1",
+  "unitTitle": "Pure Mathematics 1",
+  "title": "Integration",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to integration.",
+  "syllabusPoints": [
+    "indefinite/definite integration",
+    "areas",
+    "volumes of revolution"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-standard-integrals",
+      "title": "Standard integrals",
+      "content": [
+        "Never forget \"+c\" for indefinite integrals."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "01-formula-1",
+          "kind": "formula",
+          "label": "Formula",
+          "content": "∫xⁿ dx = xⁿ⁺¹/(n+1) + c"
+        }
+      ]
+    },
+    {
+      "id": "02-definite-integrals-area",
+      "title": "Definite integrals & area",
+      "content": [
+        "∫ₐᵇ f(x) dx gives the signed area under the curve between x=a and x=b. For area between a curve and a line, integrate (top function − bottom function)."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "If a region dips below the x-axis, the definite integral there is negative — take the modulus before adding areas, or you'll under-count."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "indefinite/definite integration",
+    "areas",
+    "volumes of revolution"
+  ],
+  "relatedTopics": []
+}

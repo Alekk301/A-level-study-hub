@@ -1,0 +1,121 @@
+{
+  "id": "8",
+  "subject": "9701",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Reaction kinetics",
+  "contentDepth": "full",
+  "overview": "Reaction kinetics explains why some reactions happen faster than others, using collision theory as the underlying model. At AS level the focus is qualitative — explaining rate changes in terms of collision frequency and the proportion of particles with enough energy to react — while the quantitative treatment (rate equations, orders of reaction) comes in the A2 topic.",
+  "syllabusPoints": [
+    "explain and use the term activation energy",
+    "explain qualitatively, in terms of collisions, the effect of concentration/pressure changes on the rate of a reaction",
+    "explain the effect of temperature change on the rate of a reaction",
+    "explain and use the term catalyst, and outline the different modes of action of catalysts",
+    "explain the meaning of the term Maxwell-Boltzmann distribution and use it to explain the effect of temperature on rate"
+  ],
+  "definitions": [
+    {
+      "term": "Activation energy (Ea)",
+      "definition": "The minimum energy that colliding particles must possess for a reaction to occur."
+    },
+    {
+      "term": "Collision theory",
+      "definition": "The model stating that a reaction only occurs when particles collide with energy ≥ Ea and in the correct orientation."
+    },
+    {
+      "term": "Catalyst",
+      "definition": "A substance that increases the rate of a reaction by providing an alternative pathway with a lower activation energy, without itself being used up."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-collision-theory-activation-energy",
+      "title": "Collision theory & activation energy",
+      "content": [
+        "Not every collision between particles leads to a reaction — only those with enough energy (≥ Ea) and the correct orientation actually react. This is why increasing the frequency or energy of collisions increases the rate."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "01-example-1",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Weak collision (low energy) → particles bounce apart, no reaction"
+        },
+        {
+          "id": "01-example-2",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Collision with E ≥ Ea and correct orientation → bonds break/form, reaction occurs"
+        }
+      ]
+    },
+    {
+      "id": "02-factors-affecting-rate",
+      "title": "Factors affecting rate",
+      "content": [
+        "Concentration/pressure increase the number of particles per unit volume, so collisions happen more often. Surface area (for solids) exposes more particles to collide with. Temperature increases both the speed of particles and, more importantly, the proportion with energy ≥ Ea. A catalyst offers a lower-energy pathway, so a larger fraction of collisions now exceed the (lower) activation energy."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "02-example-1",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "Doubling the concentration of a reactant roughly doubles collision frequency (for a first-order reactant)"
+        },
+        {
+          "id": "02-example-2",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "A platinum catalyst in the Contact process lowers Ea for SO₂ oxidation"
+        }
+      ]
+    },
+    {
+      "id": "03-the-maxwell-boltzmann-distribution",
+      "title": "The Maxwell-Boltzmann distribution",
+      "content": [
+        "This is a graph of the number of particles (y-axis) against their kinetic energy (x-axis) at a given temperature — an asymmetric curve starting at the origin, rising to a peak, then tailing off. Raising the temperature shifts the peak right and flattens/broadens the curve, while the total area under the curve stays the same (same number of particles). Crucially, the area under the curve beyond Ea — the fraction of particles that can react — increases sharply even for a modest temperature rise."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "03-example-1",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "At T1, only a small area of the curve lies beyond Ea"
+        },
+        {
+          "id": "03-example-2",
+          "kind": "example",
+          "label": "Worked example",
+          "content": "At T2 > T1, the curve flattens/shifts right, and a much larger area lies beyond Ea, even though Ea itself hasn't changed"
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "For 'explain the effect of temperature on rate' questions, the mark scheme specifically wants 'the proportion/fraction of molecules with energy ≥ Ea increases' — saying only 'particles move faster' or 'particles have more energy' without linking to Ea misses the key mark.",
+    "For catalyst questions, state clearly that the catalyst provides an alternative pathway with a LOWER activation energy — don't just say it 'speeds up the reaction' without explaining how."
+  ],
+  "commonMistakes": [
+    "Saying a catalyst 'lowers the energy needed for the reaction' without specifying it lowers the activation energy via an alternative pathway.",
+    "Confusing rate of reaction with position of equilibrium — a catalyst affects how fast equilibrium is reached, not where the equilibrium position sits.",
+    "Describing the Maxwell-Boltzmann curve as symmetric — it is not; it has a longer tail on the high-energy side."
+  ],
+  "quickRecall": [
+    "Rate increases only if collisions occur more often AND/OR more collisions exceed Ea",
+    "Catalyst = lower Ea via alternative pathway, not used up",
+    "Temperature ↑ → M-B curve flattens/shifts right → more particles exceed Ea"
+  ],
+  "relatedTopics": [
+    "7",
+    "26"
+  ]
+}

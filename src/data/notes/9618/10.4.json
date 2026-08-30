@@ -1,0 +1,59 @@
+{
+  "id": "10.4",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Introduction to Abstract Data Types (ADT)",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to introduction to abstract data types (adt).",
+  "syllabusPoints": [
+    "stacks",
+    "queues",
+    "linked-list concepts"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-stacks-lifo",
+      "title": "Stacks (LIFO)",
+      "content": [
+        "Add/remove only from the top — push() to add, pop() to remove. Used for undo functions and managing recursive calls."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-queues-fifo",
+      "title": "Queues (FIFO)",
+      "content": [
+        "Add at the rear (enqueue), remove from the front (dequeue). A circular queue reuses freed space at the front rather than shifting all elements."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-linked-lists",
+      "title": "Linked lists",
+      "content": [
+        "Each node stores data plus a pointer to the next node — insertion/deletion just changes pointers, no shifting like an array."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Pseudocode for push/pop or enqueue/dequeue should always include an overflow/underflow check — frequently a separate mark."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "stacks",
+    "queues",
+    "linked-list concepts"
+  ],
+  "relatedTopics": []
+}

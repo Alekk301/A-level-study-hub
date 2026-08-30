@@ -1,0 +1,120 @@
+{
+  "id": "20.2",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "File Processing and Exception Handling",
+  "contentDepth": "full",
+  "overview": "This topic is practical programming: robustly process files and handle runtime exceptions. You need correct read/write/append behaviour, serial/sequential/random-file processing, and exception handling that responds to expected failures without hiding ordinary programming errors.",
+  "syllabusPoints": [
+    "Open and close files in read, write and append modes.",
+    "Read records from and write records to files.",
+    "Process serial, sequential and random files correctly.",
+    "Explain exceptions and when exception handling is appropriate.",
+    "Write program code that handles specified exceptions and recovers or terminates cleanly."
+  ],
+  "definitions": [
+    {
+      "term": "Exception",
+      "definition": "A runtime event/error condition that interrupts normal execution and may be caught by a handler."
+    },
+    {
+      "term": "Read mode",
+      "definition": "Opens a file to inspect existing contents without intentionally replacing them."
+    },
+    {
+      "term": "Write mode",
+      "definition": "Opens a file for output, typically creating/replacing contents depending on language/API."
+    },
+    {
+      "term": "Append mode",
+      "definition": "Adds new data after existing contents."
+    },
+    {
+      "term": "Exception handler",
+      "definition": "Code executed when a specified exception occurs."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-file-lifecycle",
+      "title": "File lifecycle",
+      "content": [
+        "Open the file using the mode that matches the task, perform operations, and ensure resources are closed even if a failure occurs. Wrong mode choice can erase data or make required updates impossible."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-serial-and-sequential-processing",
+      "title": "Serial and sequential processing",
+      "content": [
+        "Read records one at a time until end-of-file. Serial files are processed in stored arrival order; sequential files exploit key order for tasks such as merges or ordered reports."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-random-file-processing",
+      "title": "Random file processing",
+      "content": [
+        "Use a record number/address, often derived from a key/hash, to seek directly to the target record. Updates and retrieval must use exactly the same organisation, record-size/addressing and collision conventions used when the file was created."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-exception-handling",
+      "title": "Exception handling",
+      "content": [
+        "Handle failures that can reasonably occur at runtime: missing file, permission failure, invalid conversion, unavailable resource, etc. A handler might report the issue, retry, use a safe fallback or terminate cleanly."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "04-example-1",
+          "kind": "worked",
+          "label": "Worked example",
+          "content": "Python-style idea:\ntry:\n    f=open('data.txt','r')\nexcept FileNotFoundError:\n    print('File is missing')"
+        }
+      ]
+    },
+    {
+      "id": "05-exceptions-versus-validation",
+      "title": "Exceptions versus validation",
+      "content": [
+        "Exception handling is not a replacement for normal conditions/validation. If a value can be checked normally before an operation, an IF may be clearer; exceptions are for exceptional runtime situations that interrupt the normal path."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Paper 4 allows Python, Java or Visual Basic console programming—know exact syntax for your chosen language.",
+    "Name the exception/condition and the recovery action.",
+    "Ensure files are closed/cleaned up after use."
+  ],
+  "commonMistakes": [
+    "Opening in write mode when the task says preserve and append.",
+    "Catching every exception and doing nothing.",
+    "Using exceptions instead of ordinary validation for every branch.",
+    "Ignoring random-file organisation/hash rules."
+  ],
+  "quickRecall": [
+    "read=inspect",
+    "write=output/replace",
+    "append=add at end",
+    "random=direct position",
+    "exception=runtime failure with handler"
+  ],
+  "relatedTopics": [
+    "13.2",
+    "17.1",
+    "20.1"
+  ]
+}
