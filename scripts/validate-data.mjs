@@ -13,6 +13,15 @@ const assert = (condition, message) => { if (!condition) errors.push(message); }
 const requiredCodes = ["9709", "9618", "9609", "9701"];
 assert(subjects.length === 4, `Expected four subjects, found ${subjects.length}.`);
 assert(requiredCodes.every((code) => subjects.some((subject) => subject.code === code)), "One or more required subject codes are missing.");
+const mathematics = subjects.find((subject) => subject.code === "9709");
+assert(
+  mathematics?.resources?.some((resource) => resource.source === "Past Paper Penguin" && resource.url === "https://pastpaperpenguin.com/home/"),
+  "Mathematics must link to Past Paper Penguin for topical questions.",
+);
+assert(
+  !mathematics?.resources?.some((resource) => resource.source === "RocketRevise"),
+  "Mathematics should not retain the outdated Rocket Revise topical resource.",
+);
 
 const topicKeys = new Set();
 const topicIdsBySubject = new Map();
