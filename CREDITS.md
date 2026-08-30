@@ -12,7 +12,7 @@ The note text, explanations, worked examples, exam tips, common mistakes, compar
 
 The app links to Cambridge International for official syllabus checking and may link to Save My Exams, ZNotes and Rocket Revise for optional further reading. Those sites remain external and open in a new tab.
 
-Past-paper PDFs are not bundled. The included `papers.json` contains demo metadata with no live PDF URLs. Future QP/MS files should be stored or linked only where the project owner has permission to do so.
+Past-paper PDFs are not bundled. The searchable `papers.json` catalogue is generated from the project owner's separate local library and links to XtraPapers for the corresponding question papers and mark schemes. XtraPapers remains external and opens in a new tab.
 
 ## No affiliation
 

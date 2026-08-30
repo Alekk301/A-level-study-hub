@@ -50,7 +50,7 @@ export function isUsablePdfUrl(value: string | null | undefined) {
     const permittedProtocol =
       url.protocol === "https:" ||
       (url.protocol === "http:" && url.hostname === "localhost");
-    return permittedProtocol && url.pathname.toLowerCase().endsWith(".pdf");
+    return permittedProtocol && /\.pdf(?:\/download)?$/i.test(url.pathname);
   } catch {
     return false;
   }

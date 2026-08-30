@@ -14,7 +14,8 @@
     "test": "npm run build && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
     "data:build": "node scripts/rebuild-content-index.mjs",
-    "data:validate": "node scripts/validate-data.mjs"
+    "data:validate": "node scripts/validate-data.mjs",
+    "papers:import": "node scripts/import-paper-library.mjs"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
