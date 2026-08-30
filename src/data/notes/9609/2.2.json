@@ -1,0 +1,43 @@
+{
+  "id": "2.2",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Motivation",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to motivation.",
+  "syllabusPoints": [
+    "motivation theories",
+    "financial methods",
+    "non-financial methods"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-motivation-theories",
+      "title": "Motivation theories",
+      "content": [],
+      "bullets": [
+        "Taylor — workers are motivated mainly by money (piece-rate pay)",
+        "Maslow — hierarchy of needs (physiological → safety → social → esteem → self-actualisation); a satisfied need stops motivating",
+        "Herzberg — hygiene factors (pay, conditions) prevent dissatisfaction but don't motivate; motivators (recognition, responsibility) actually drive performance"
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Apply a named theory directly to the scenario rather than describing it in the abstract — examiners reward application over pure recall."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "motivation theories",
+    "financial methods",
+    "non-financial methods"
+  ],
+  "relatedTopics": []
+}

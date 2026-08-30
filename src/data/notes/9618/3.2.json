@@ -1,0 +1,50 @@
+{
+  "id": "3.2",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Logic Gates and Logic Circuits",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to logic gates and logic circuits.",
+  "syllabusPoints": [
+    "truth tables",
+    "logic expressions",
+    "circuit design"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-basic-gates",
+      "title": "Basic gates",
+      "content": [
+        "Know the truth tables for AND, OR, NOT, NAND, NOR, XOR cold — these underpin every logic circuit question."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-circuits-expressions",
+      "title": "Circuits ↔ expressions",
+      "content": [
+        "Be able to convert fluently both ways: write the Boolean expression from a given circuit diagram, and describe/draw a circuit from an expression such as Q = (A·B) + (¬C)."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Build a truth table for your derived expression and compare it against the circuit's own truth table as a fast self-check."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "truth tables",
+    "logic expressions",
+    "circuit design"
+  ],
+  "relatedTopics": []
+}

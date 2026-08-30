@@ -1,0 +1,144 @@
+{
+  "id": "6.1",
+  "subject": "9609",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "External influences on business activity",
+  "contentDepth": "full",
+  "overview": "External influences are forces outside the business that change demand, costs, risk and strategic choices. The current A2 syllabus is broader than a simple PEST checklist: it includes political/legal changes, macroeconomic policy, demographic and social change, technology, competitors/suppliers, international trade and MNCs, plus environmental audits and sustainability.",
+  "syllabusPoints": [
+    "Analyse political and legal influences, including regulation, privatisation and nationalisation.",
+    "Analyse macroeconomic objectives and monetary, fiscal, supply-side and exchange-rate policies.",
+    "Analyse social/demographic change, CSR and pressure groups.",
+    "Analyse technological change and the influence of competitors and suppliers.",
+    "Analyse international trade, agreements and multinational businesses.",
+    "Analyse environmental issues, environmental audits and sustainability."
+  ],
+  "definitions": [
+    {
+      "term": "Privatisation",
+      "definition": "Transfer of a business/activity from public/state ownership to private ownership."
+    },
+    {
+      "term": "Nationalisation",
+      "definition": "Transfer of privately owned business/activity into state ownership/control."
+    },
+    {
+      "term": "Fiscal policy",
+      "definition": "Government decisions on taxation and public spending."
+    },
+    {
+      "term": "Monetary policy",
+      "definition": "Policy influencing interest rates, credit conditions and/or money supply."
+    },
+    {
+      "term": "Supply-side policy",
+      "definition": "Measures intended to improve productive capacity and efficiency."
+    },
+    {
+      "term": "CSR",
+      "definition": "A business approach that considers social, ethical and environmental responsibilities as well as financial outcomes."
+    },
+    {
+      "term": "Environmental audit",
+      "definition": "A systematic review of a business's environmental impacts and performance."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-political-and-legal-influences",
+      "title": "Political and legal influences",
+      "content": [
+        "Employment law, competition law, consumer protection, health/safety, marketing restrictions and ownership policy can change business costs and freedom of action. Regulation may raise compliance cost yet also build trust or prevent unfair competition. Political stability can influence investment risk."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-economic-influences",
+      "title": "Economic influences",
+      "content": [
+        "Economic growth can increase demand but may create inflation/capacity pressure. Inflation raises costs and affects real incomes. Higher interest rates increase borrowing cost and can reduce consumption/investment. Tax/spending, supply-side and exchange-rate policies affect firms differently depending on debt, imports, exports and customer income sensitivity."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-social-demographic-and-csr-influences",
+      "title": "Social, demographic and CSR influences",
+      "content": [
+        "Age structure, migration, education, family patterns and lifestyle changes alter workforce supply and customer demand. CSR can strengthen reputation, recruitment and stakeholder trust, but may raise short-term costs. Pressure groups can influence reputation and policy even without legal authority."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-technology-competitors-and-suppliers",
+      "title": "Technology, competitors and suppliers",
+      "content": [
+        "Automation, AI and digital systems can improve productivity, information and customer reach but require investment, skills and cybersecurity. Competitor actions influence price, innovation and promotion; supplier bargaining power, quality, reliability and lead time affect cost and continuity."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-international-influences-and-mncs",
+      "title": "International influences and MNCs",
+      "content": [
+        "Trade agreements can lower barriers and open markets; protectionism can protect domestic firms but raise import costs. Exchange rates affect export competitiveness and imported inputs. MNCs may bring jobs, investment and technology but can also pressure local firms/resources and repatriate profits."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-environmental-and-sustainability-pressures",
+      "title": "Environmental and sustainability pressures",
+      "content": [
+        "Climate change, resource scarcity, pollution controls and stakeholder expectations influence product, process and location decisions. Environmental audits identify impacts and targets. Sustainable investment may cost more initially but reduce waste/energy cost and improve long-run legitimacy."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [
+    {
+      "title": "Higher interest rates",
+      "steps": [
+        "Borrowing becomes more expensive",
+        "Finance costs rise",
+        "Profit margins may fall",
+        "Investment may be delayed"
+      ],
+      "evaluation": "The impact is larger for highly geared firms and smaller for cash-rich businesses with little variable-rate debt."
+    }
+  ],
+  "examTips": [
+    "Do not stop at 'costs rise'—continue to price, demand, cash flow, profit or competitiveness.",
+    "The same external change can benefit one firm and harm another; apply the business's import/export/debt/market position.",
+    "Distinguish the policy instrument from its business consequence."
+  ],
+  "commonMistakes": [
+    "Using PEST as an unanalysed list.",
+    "Assuming economic growth is always positive.",
+    "Confusing fiscal and monetary policy.",
+    "Ignoring stakeholder reactions in environmental/CSR analysis."
+  ],
+  "quickRecall": [
+    "monetary=interest/credit",
+    "fiscal=tax/spending",
+    "supply-side=capacity/productivity",
+    "social/demographic=demand+labour",
+    "international=trade/exchange/MNC",
+    "sustainability=long-run resource/stakeholder impact"
+  ],
+  "relatedTopics": [
+    "6.2",
+    "8.2",
+    "9.1",
+    "10.4"
+  ]
+}

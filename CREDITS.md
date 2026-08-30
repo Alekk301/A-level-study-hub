@@ -1,15 +1,26 @@
 # Credits and sourcing
 
-**Syllabus structure** — the unit/topic breakdown in `data/data.js` (topic numbering, titles, and the AS/A2 level tags) follows the current public Cambridge International syllabus documents for 9709, 9618, 9609 and 9701. Syllabus structure and topic lists are factual/organisational information, not creative content.
+## Syllabus structure
 
-**Note text** — every summary, blurb, focus point and "in depth" note in this repo is original writing, not copied or lightly reworded from any coursebook or revision website.
+Topic numbering, unit names and level tags follow the public Cambridge International syllabus structure for Mathematics 9709, Computer Science 9618, Business 9609 and Chemistry 9701. The project records the syllabus years shown in `src/data/subjects.json`.
 
-**Linked resources** — Cambridge International, Save My Exams, RocketRevise, ZNotes and PapaCambridge are linked to for further reading, past papers and mark schemes. This repo does not store, mirror, or bulk-download any of their PDFs or note text. If you keep this repo private, that changes who can see it — it doesn't change what's appropriate to copy into it. Past papers and mark schemes stay linked externally, not committed to the repo, regardless of visibility.
+## Note content
 
-**No affiliation** — this project isn't affiliated with or endorsed by Cambridge International, Save My Exams, RocketRevise, ZNotes or PapaCambridge.
+The note text, explanations, worked examples, exam tips, common mistakes, comparison tables and Business analysis chains are original project content. The rebuild preserved the useful original notes from the uploaded vanilla-JavaScript project and converted them into structured JSON. It did not copy or expand text from commercial revision sites.
 
-## If you extend this repo
+## External links
 
-- Keep new note content in your own words.
-- Don't commit downloaded past-paper PDFs or scraped note text into the repo, even privately — link out instead, the same way the existing resources do.
-- If you add a new source to `data/data.js`, add a one-line credit for it here too.
+The app links to Cambridge International for official syllabus checking and may link to Save My Exams, ZNotes and Rocket Revise for optional further reading. Those sites remain external and open in a new tab.
+
+Past-paper PDFs are not bundled. The searchable `papers.json` catalogue is generated from the project owner's separate local library and links to XtraPapers for the corresponding question papers and mark schemes. XtraPapers remains external and opens in a new tab.
+
+## No affiliation
+
+This project is an independent study tool. It is not affiliated with or endorsed by Cambridge International or any linked revision provider.
+
+## Extending the project
+
+- Write new notes in your own words.
+- Do not paste long textbook or commercial revision-site passages.
+- Add a credit when introducing a new external source.
+- Keep past-paper and mark-scheme handling consistent with the relevant copyright and access terms.

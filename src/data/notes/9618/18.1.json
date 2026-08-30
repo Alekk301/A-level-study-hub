@@ -1,0 +1,140 @@
+{
+  "id": "18.1",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "Artificial Intelligence",
+  "contentDepth": "full",
+  "overview": "The AI topic combines graph search with machine learning. You must use Dijkstra's and A* searches, understand artificial neural networks and deep learning, distinguish supervised/unsupervised/reinforcement learning, and explain the purpose of backpropagation and regression.",
+  "syllabusPoints": [
+    "Represent problems as graphs and use Dijkstra's and A* search algorithms.",
+    "Explain the purpose and basic structure of artificial neural networks.",
+    "Distinguish machine learning, deep learning and reinforcement learning.",
+    "Distinguish supervised and unsupervised learning.",
+    "Explain backpropagation of errors and regression methods at syllabus level."
+  ],
+  "definitions": [
+    {
+      "term": "Graph",
+      "definition": "A set of vertices/nodes connected by edges, often with edge weights representing cost or distance."
+    },
+    {
+      "term": "Dijkstra's algorithm",
+      "definition": "A shortest-path method that repeatedly finalises the unvisited node with lowest accumulated distance."
+    },
+    {
+      "term": "A*",
+      "definition": "A search using f(n)=g(n)+h(n), combining actual cost from start with a heuristic estimate to goal."
+    },
+    {
+      "term": "Supervised learning",
+      "definition": "Learning from labelled training examples."
+    },
+    {
+      "term": "Unsupervised learning",
+      "definition": "Discovering structure/patterns in unlabelled data."
+    },
+    {
+      "term": "Reinforcement learning",
+      "definition": "Learning a policy from rewards/penalties following actions."
+    },
+    {
+      "term": "Backpropagation",
+      "definition": "Propagating output error backward through a neural network to adjust weights."
+    },
+    {
+      "term": "Regression",
+      "definition": "A method for modelling/predicting a continuous numeric relationship."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-graphs-as-search-spaces",
+      "title": "Graphs as search spaces",
+      "content": [
+        "Nodes represent states/locations and edges possible transitions. Weighted edges let algorithms compare routes by cost, time or distance."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-dijkstra-s-algorithm",
+      "title": "Dijkstra's algorithm",
+      "content": [
+        "Start with cost 0 at the source and infinity elsewhere. Repeatedly select the unvisited node with smallest temporary distance, update neighbouring distances if a cheaper path is found, then finalise the selected node. With non-negative edge weights it finds shortest paths."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-a-search",
+      "title": "A* search",
+      "content": [
+        "A* evaluates f=g+h. g is exact cost from the start; h is a heuristic estimate of remaining cost. A useful admissible heuristic does not overestimate the true remaining cost, allowing A* to focus toward the goal while retaining shortest-path guarantees under appropriate conditions."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "03-example-1",
+          "kind": "worked",
+          "label": "Worked example",
+          "content": "f(n) = g(n) + h(n)"
+        }
+      ]
+    },
+    {
+      "id": "04-artificial-neural-networks",
+      "title": "Artificial neural networks",
+      "content": [
+        "Artificial neurons combine weighted inputs, apply activation functions and pass outputs forward. Training adjusts weights so network output better matches the desired behaviour. Hidden layers let a network learn intermediate features."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-learning-types",
+      "title": "Learning types",
+      "content": [
+        "Supervised learning uses labelled targets, e.g. spam/not-spam. Unsupervised learning finds clusters/structure without target labels. Reinforcement learning has an agent choose actions in an environment and learn from rewards/penalties rather than labelled answers for every step."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-deep-learning-backpropagation-and-regression",
+      "title": "Deep learning, backpropagation and regression",
+      "content": [
+        "Deep learning uses neural networks with multiple layers to learn complex representations. Backpropagation calculates how weights contributed to error and updates them to reduce loss. Regression predicts continuous values/relationships, unlike classification which assigns categories."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "In A*, keep g, h and f in separate columns; the next node is chosen by f, not h alone.",
+    "Dijkstra does NOT use a heuristic.",
+    "When comparing supervised/unsupervised, mention whether training data contains labels."
+  ],
+  "commonMistakes": [
+    "Assuming reinforcement learning needs a correct labelled answer for every action.",
+    "Calling every neural network 'deep'.",
+    "Using negative-weight edges with Dijkstra as if no issue exists.",
+    "Choosing A* solely by smallest h."
+  ],
+  "quickRecall": [
+    "Dijkstra=lowest accumulated cost",
+    "A*: f=g+h",
+    "supervised=labels",
+    "unsupervised=patterns",
+    "reinforcement=rewards",
+    "backprop adjusts weights"
+  ],
+  "relatedTopics": [
+    "19.1"
+  ]
+}

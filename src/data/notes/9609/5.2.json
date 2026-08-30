@@ -1,0 +1,131 @@
+{
+  "id": "5.2",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Sources of finance",
+  "contentDepth": "full",
+  "overview": "Businesses need finance both to fund day-to-day operations (working capital) and to invest in growth. This topic covers where that finance can come from, and introduces break-even analysis — the tool used to work out how much needs to be sold before a business starts making a profit.",
+  "syllabusPoints": [
+    "distinguish between and give examples of internal and external sources of finance",
+    "distinguish between short-term and long-term sources of finance and recommend a suitable source for a given business situation",
+    "calculate and interpret the break-even level of output and margin of safety, and construct/interpret break-even charts"
+  ],
+  "definitions": [
+    {
+      "term": "Internal finance",
+      "definition": "Finance generated from within the business itself, e.g. retained profit or sale of unused assets — doesn't need to be repaid or create new ownership stakes."
+    },
+    {
+      "term": "External finance",
+      "definition": "Finance sourced from outside the business, e.g. bank loans, share issues or trade credit."
+    },
+    {
+      "term": "Break-even output",
+      "definition": "The level of output at which total revenue exactly equals total costs, so the business makes neither a profit nor a loss."
+    },
+    {
+      "term": "Margin of safety",
+      "definition": "The amount by which actual (or budgeted) output exceeds the break-even output — a buffer against falling sales."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-internal-vs-external-finance",
+      "title": "Internal vs external finance",
+      "content": [
+        "Internal sources (retained profit, sale of assets) don't dilute ownership or add debt, but are limited by what the business already has. External sources (loans, share issues, trade credit, leasing) can raise larger amounts but usually come with interest, repayment obligations, or a loss of full ownership."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "01-example-1",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Retained profit → internal, no interest, but reduces cash reserves"
+        },
+        {
+          "id": "01-example-2",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Bank loan → external, interest paid, but doesn't dilute ownership like a share issue would"
+        }
+      ]
+    },
+    {
+      "id": "02-short-term-vs-long-term-finance",
+      "title": "Short-term vs long-term finance",
+      "content": [
+        "Short-term sources (overdraft, trade credit) are for day-to-day working capital and are usually cheaper but less reliable, since terms can be changed quickly. Long-term sources (bank loans, share capital) suit major investment like new machinery or premises, since they're committed over a longer period."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "02-example-1",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Overdraft → covers a temporary cash-flow gap"
+        },
+        {
+          "id": "02-example-2",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Long-term bank loan → funds a new factory"
+        }
+      ]
+    },
+    {
+      "id": "03-break-even-analysis",
+      "title": "Break-even analysis",
+      "content": [
+        "Break-even output tells you the minimum sales needed before a business starts to profit. Margin of safety shows how much of a buffer exists above that point. Break-even charts plot fixed costs, total costs and revenue against output, with break-even at the intersection of total cost and total revenue."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "03-example-1",
+          "kind": "pseudocode",
+          "label": "Cambridge-style pseudocode",
+          "content": "Break-even output = Fixed Costs / (Selling Price − Variable Cost per unit)"
+        },
+        {
+          "id": "03-example-2",
+          "kind": "analysis",
+          "label": "Analysis chain",
+          "content": "Fixed costs = $10,000, Price = $50, Variable cost = $30 → Break-even = 10,000/(50−30) = 500 units"
+        },
+        {
+          "id": "03-example-3",
+          "kind": "pseudocode",
+          "label": "Cambridge-style pseudocode",
+          "content": "Margin of safety = actual output − break-even output"
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Always state the formula before substituting numbers — method marks are awarded for the formula and substitution even if your final answer is wrong.",
+    "When recommending a source of finance, match it to BOTH the amount needed and the purpose (short-term cash flow vs long-term investment) — a mismatch is a common way to lose marks."
+  ],
+  "commonMistakes": [
+    "Confusing cash flow with profit when discussing why a business needs finance — a profitable business can still run out of cash.",
+    "Using total cost instead of variable cost per unit in the break-even formula.",
+    "Forgetting units (e.g. 'units' or '$') when giving a final break-even or margin of safety figure."
+  ],
+  "quickRecall": [
+    "Internal = from within (no interest/dilution); External = from outside (interest/dilution possible)",
+    "Short-term = working capital; Long-term = investment",
+    "Break-even = Fixed Costs ÷ Contribution per unit",
+    "Margin of safety = actual output − break-even output"
+  ],
+  "relatedTopics": [
+    "5.1",
+    "5.4",
+    "10.3"
+  ]
+}

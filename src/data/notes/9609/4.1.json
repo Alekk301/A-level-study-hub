@@ -1,0 +1,41 @@
+{
+  "id": "4.1",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "The nature of operations",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to the nature of operations.",
+  "syllabusPoints": [
+    "transformation process",
+    "productivity",
+    "job/batch/flow production"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-production-methods",
+      "title": "Production methods",
+      "content": [
+        "Job production — one-off, highly customised, high skill/cost. Batch production — groups of identical items, flexible but needs changeover time. Flow production — continuous, standardised, high volume, low unit cost but inflexible."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "Always weigh cost against benefit when recommending a production method — \"flow production is best\" without discussing capital cost and flexibility trade-offs won't get top marks."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "transformation process",
+    "productivity",
+    "job/batch/flow production"
+  ],
+  "relatedTopics": []
+}
