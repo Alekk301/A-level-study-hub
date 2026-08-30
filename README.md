@@ -22,7 +22,7 @@ Computer Science 9618 A2 and Business 9609 A2 are the fully developed priority a
 - Global full-text search with `/` and `Ctrl/Cmd + K`
 - Bookmarks, studied topics, recent topics, last location and theme stored in `localStorage`
 - Dark mode designed for long reading sessions
-- Past-paper filtering and automatic QP/MS pairing from JSON metadata
+- Past-paper filtering with 919 live QP/MS pairs generated from the local downloader library
 - Defensive error and empty states
 - Lazy topic loading and a search index that loads only when search is opened
 - Data validation and automated tests
@@ -230,7 +230,7 @@ The browser reads:
 src/data/papers/papers.json
 ```
 
-The included records are explicitly demo metadata; their PDF URLs are `null`. This tests filtering and QP/MS pairing without pretending that local papers have already been uploaded.
+The included catalogue contains 919 complete QP/MS pairs generated from the PDFs in the sibling downloader library. The PDFs are not copied into this repository; each button opens the matching XtraPapers URL in a new tab.
 
 Accepted record shape:
 
@@ -257,21 +257,17 @@ Valid session values are:
 
 PDF links must use HTTPS and end in `.pdf`. Invalid or missing links are shown as unavailable instead of being opened.
 
-## Connect downloader-generated `papers.json`
+## Refresh from the downloader library
 
-1. Make the downloader output an array of records using the shape above.
-2. Normalize the session names to one of the three accepted values.
-3. Upload PDFs to stable HTTPS object storage or another host that allows direct browser access.
-4. Write each final public URL into `qp`, `ms` and optionally `er`.
-5. Replace `src/data/papers/papers.json` with the generated file.
-6. Run:
+After downloading newer papers in the sibling `CAIE_Library_Downloader_v3_XtraPapers` project, run:
 
-   ```bash
-   npm run data:validate
-   npm run build
-   ```
+```bash
+npm run papers:import
+npm run data:validate
+npm run build
+```
 
-The UI groups records by year and session, then pairs QP/MS by subject + year + session + component. No JSX changes are needed. If the downloader currently produces separate QP and MS rows, merge them before writing JSON or add a small normalization step in the downloader.
+The importer scans the PDFs actually present, pairs QP/MS files by subject + year + session + component, and rewrites `src/data/papers/papers.json`. It includes only complete pairs and uses the downloader manifest's XtraPapers URL where available.
 
 ## Local progress and bookmarks
 
@@ -325,7 +321,7 @@ In Cloudflare's dashboard this deployment appears under Workers & Pages. The gen
 
 ## Known limitations and technical debt
 
-- PDF storage is not connected; the included paper records are metadata-only demos.
+- The PDF catalogue currently covers archive years through 2025; rerun the importer after downloading newer sessions.
 - Progress is device-local and is not synced between classmates.
 - Computer Science and Business A2 are complete; many Mathematics, Chemistry and AS topics remain quick guides rather than full notes.
 - Search is client-side. Its index is loaded lazily, but a much larger future content library may justify a server or worker search endpoint.

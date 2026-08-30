@@ -47,6 +47,7 @@ test("paper metadata accepts downloader component aliases and rejects malformed 
   assert.equal(normalized.paper, "42");
   assert.equal(normalized.source, "downloader");
   assert.equal(isUsablePdfUrl(normalized.qp), true);
+  assert.equal(isUsablePdfUrl("https://xtrapapers.co/archive/9618_s25_qp_42.pdf/download"), true);
   assert.equal(normalizePaperRecord({ subject: "9618", year: "bad" }), null);
   assert.equal(isUsablePdfUrl("javascript:alert(1)"), false);
 });

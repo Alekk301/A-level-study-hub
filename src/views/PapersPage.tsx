@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FileWarning } from "lucide-react";
+import { CircleCheckBig } from "lucide-react";
 import { EmptyState } from "@/src/components/common/EmptyState";
 import { PageContainer } from "@/src/components/layout/PageContainer";
 import { PaperFilters } from "@/src/components/papers/PaperFilters";
@@ -21,6 +21,7 @@ export function PapersPage({ subjectCode }: { subjectCode?: string }) {
   const subject = getSubject(effectiveCode);
   const subjectPapers = useMemo(() => papers.filter((record) => record.subject === effectiveCode), [effectiveCode]);
   const years = [...new Set(subjectPapers.map((record) => record.year))].sort((a, b) => b - a);
+  const yearRange = years.length ? `${years.at(-1)}–${years[0]}` : "No years available";
   const filtered = subjectPapers.filter((record) =>
     (year === "all" || record.year === year) &&
     (session === "all" || record.session === session) &&
@@ -63,9 +64,12 @@ export function PapersPage({ subjectCode }: { subjectCode?: string }) {
         ) : null}
       </header>
 
-      <div className="integration-notice" role="note">
-        <FileWarning aria-hidden="true" />
-        <div><strong>Metadata browser ready; PDF storage not connected yet.</strong><p>The included records are safe demo metadata. Replace <code>src/data/papers/papers.json</code> with your downloader output to activate QP/MS buttons.</p></div>
+      <div className="integration-notice integration-notice--ready" role="status">
+        <CircleCheckBig aria-hidden="true" />
+        <div>
+          <strong>{subjectPapers.length} complete question-paper and mark-scheme pairs are ready.</strong>
+          <p>{yearRange} · Generated from the local CAIE library. PDFs open from XtraPapers in a new tab.</p>
+        </div>
       </div>
 
       <PaperFilters

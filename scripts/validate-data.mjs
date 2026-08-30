@@ -98,7 +98,7 @@ for (const paper of papers) {
   for (const field of ["qp", "ms", "er"]) {
     const value = paper[field];
     if (value == null) continue;
-    assert(/^https:\/\//.test(value) && /\.pdf(?:$|[?#])/i.test(value), `${key}.${field} is not a safe HTTPS PDF URL.`);
+    assert(/^https:\/\//.test(value) && /\.pdf(?:\/download)?(?:$|[?#])/i.test(value), `${key}.${field} is not a safe HTTPS PDF URL.`);
   }
 }
 

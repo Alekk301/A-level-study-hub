@@ -22,7 +22,7 @@ export function PdfActions({ qp, ms, er }: { qp: string | null; ms: string | nul
     <div className="pdf-actions">
       <PdfLink url={qp} label="Question Paper" />
       <PdfLink url={ms} label="Mark Scheme" />
-      {er !== undefined ? <PdfLink url={er} label="Examiner Report" /> : null}
+      {isUsablePdfUrl(er) ? <PdfLink url={er} label="Examiner Report" /> : null}
     </div>
   );
 }
