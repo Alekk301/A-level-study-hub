@@ -52,3 +52,18 @@ test("renders sidebar skeletons deterministically", async () => {
   assert.equal(first, second);
   assert.match(first, /--skeleton-width:70%/);
 });
+
+test("renders preview-first paper actions with a separate download", async () => {
+  const { PdfActions, getPdfPreviewUrl } = await vite.ssrLoadModule(
+    "/src/components/papers/PdfActions.tsx",
+  );
+  const downloadUrl = "https://xtrapapers.co/example.pdf/download";
+  const html = renderToStaticMarkup(
+    React.createElement(PdfActions, { qp: downloadUrl, ms: downloadUrl }),
+  );
+
+  assert.equal(getPdfPreviewUrl(downloadUrl), "https://xtrapapers.co/example.pdf/raw");
+  assert.match(html, /View full PDF/);
+  assert.match(html, /Download Question Paper/);
+  assert.match(html, /example\.pdf\/download/);
+});

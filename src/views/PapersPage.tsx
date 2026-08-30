@@ -68,7 +68,7 @@ export function PapersPage({ subjectCode }: { subjectCode?: string }) {
         <CircleCheckBig aria-hidden="true" />
         <div>
           <strong>{subjectPapers.length} complete question-paper and mark-scheme pairs are ready.</strong>
-          <p>{yearRange} · Generated from the local CAIE library. PDFs open from XtraPapers in a new tab.</p>
+          <p>{yearRange} · Choose View to read the full PDF here, or Download to save a copy.</p>
         </div>
       </div>
 

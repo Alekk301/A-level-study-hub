@@ -79,7 +79,11 @@
   .filter-row > div { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; scrollbar-width: thin; }
   .filter-row button { flex: 0 0 auto; }
   .paper-card { grid-template-columns: 4.2rem minmax(0, 1fr); }
-  .pdf-actions { grid-template-columns: 1fr; }
+  .pdf-download span { display: none; }
+  .pdf-viewer-dialog { width: calc(100vw - 0.75rem); height: calc(100svh - 0.75rem); max-height: calc(100svh - 0.75rem); }
+  .pdf-viewer-header { align-items: stretch; flex-direction: column; gap: 0.65rem; padding: 0.75rem; }
+  .pdf-viewer-toolbar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pdf-viewer-toolbar a, .pdf-viewer-toolbar button { justify-content: center; padding-inline: 0.4rem; }
   .topic-page { padding: 2rem 1rem 7rem; }
   .topic-header h1 { font-size: 2.65rem; }
   .topic-header__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }

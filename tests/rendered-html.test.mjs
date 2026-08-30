@@ -32,6 +32,8 @@ test("renders production metadata and the dashboard", async () => {
   assert.match(html, /Computer Science/);
   assert.match(html, /Business/);
   assert.match(html, /Chemistry/);
+  assert.match(html, /Made by/);
+  assert.match(html, /Alex Le/);
   assert.equal((html.match(/<main\b/g) ?? []).length, 1);
   assert.doesNotMatch(html, /codex-preview/);
 });
