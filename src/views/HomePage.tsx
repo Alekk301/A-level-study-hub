@@ -142,6 +142,11 @@ export function HomePage() {
           )}
         </section>
       </div>
+
+      <footer className="maker-credit" aria-label="Site credit">
+        <span>Made by</span>
+        <strong>Alex Le</strong>
+      </footer>
     </PageContainer>
   );
 }

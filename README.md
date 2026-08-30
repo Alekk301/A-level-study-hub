@@ -330,4 +330,4 @@ In Cloudflare's dashboard this deployment appears under Workers & Pages. The gen
 
 ## Content and copyright
 
-See [CREDITS.md](./CREDITS.md). Notes are original summaries and examples. Commercial revision-site text is not reproduced. Cambridge, Save My Exams, ZNotes and Rocket Revise links are optional references, not the primary learning experience.
+See [CREDITS.md](./CREDITS.md). Notes are original summaries and examples. Commercial revision-site text is not reproduced. Cambridge, Save My Exams, ZNotes, Past Paper Penguin and Rocket Revise links are optional references, not the primary learning experience.

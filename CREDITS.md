@@ -10,7 +10,7 @@ The note text, explanations, worked examples, exam tips, common mistakes, compar
 
 ## External links
 
-The app links to Cambridge International for official syllabus checking and may link to Save My Exams, ZNotes and Rocket Revise for optional further reading. Those sites remain external and open in a new tab.
+The app links to Cambridge International for official syllabus checking and may link to Save My Exams, ZNotes, Past Paper Penguin and Rocket Revise for optional practice or further reading. Those sites remain external and open in a new tab. Mathematics topical questions and worked solutions link to Past Paper Penguin.
 
 Past-paper PDFs are not bundled. The searchable `papers.json` catalogue is generated from the project owner's separate local library and links to XtraPapers for the corresponding question papers and mark schemes. XtraPapers remains external and opens in a new tab.
 
