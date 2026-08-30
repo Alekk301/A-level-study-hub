@@ -15,8 +15,8 @@ assert(subjects.length === 4, `Expected four subjects, found ${subjects.length}.
 assert(requiredCodes.every((code) => subjects.some((subject) => subject.code === code)), "One or more required subject codes are missing.");
 const mathematics = subjects.find((subject) => subject.code === "9709");
 assert(
-  mathematics?.resources?.some((resource) => resource.source === "Past Paper Penguin" && resource.url === "https://pastpaperpenguin.com/home/"),
-  "Mathematics must link to Past Paper Penguin for topical questions.",
+  mathematics?.resources?.some((resource) => resource.source === "Past Paper Penguin" && resource.url === "https://pastpaperpenguin.com/home/" && resource.category !== "papers"),
+  "Mathematics must visibly link to Past Paper Penguin for topical questions.",
 );
 assert(
   !mathematics?.resources?.some((resource) => resource.source === "RocketRevise"),

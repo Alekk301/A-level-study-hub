@@ -11,12 +11,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { isUsablePdfUrl } from "@/src/data/papers";
+import { getPdfPreviewUrl } from "@/src/utils/pdf";
 
-export function getPdfPreviewUrl(value: string) {
-  const url = new URL(value);
-  url.pathname = url.pathname.replace(/\/download$/i, "/raw");
-  return url.toString();
-}
+export { getPdfPreviewUrl } from "@/src/utils/pdf";
 
 function PdfResource({ url, label }: { url: string | null | undefined; label: string }) {
   const usable = isUsablePdfUrl(url);

@@ -62,7 +62,10 @@ test("renders preview-first paper actions with a separate download", async () =>
     React.createElement(PdfActions, { qp: downloadUrl, ms: downloadUrl }),
   );
 
-  assert.equal(getPdfPreviewUrl(downloadUrl), "https://xtrapapers.co/example.pdf/raw");
+  assert.equal(
+    getPdfPreviewUrl(downloadUrl),
+    "/api/papers/pdf?source=https%3A%2F%2Fxtrapapers.co%2Fexample.pdf%2Fdownload",
+  );
   assert.match(html, /View full PDF/);
   assert.match(html, /Download Question Paper/);
   assert.match(html, /example\.pdf\/download/);
