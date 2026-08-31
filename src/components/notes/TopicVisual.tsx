@@ -171,6 +171,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9618", topic: "14.2", title: "Packet switching across a network", layout: "flow",
     description: "A message is divided into addressed packets that may take different routes before being checked, reordered and reassembled.",
+    image: {
+      src: "/diagrams/packet-switching-330.gif",
+      alt: "Animation showing a message divided into packets that travel independently through a network and are reassembled at the destination.",
+      author: "Oddbodz",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Packet_Switching.gif",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    },
     nodes: [
       { label: "Segment", detail: "Split data and add sequence information." },
       { label: "Route", detail: "Routers forward packets using destination addresses." },
@@ -257,6 +265,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9609", topic: "7.1", title: "Span of control and hierarchy", layout: "tree",
     description: "A tall structure has more hierarchical levels and often narrower spans; a flat structure delegates across fewer levels and wider spans.",
+    image: {
+      src: "/diagrams/matrix-organisation.svg",
+      alt: "Matrix organisation chart showing employees connected to both functional and project leadership lines.",
+      author: "Chery",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Matrix_organisation_scheme.svg",
+      license: "Public domain",
+      licenseUrl: "https://commons.wikimedia.org/wiki/File:Matrix_organisation_scheme.svg#Licensing",
+    },
     nodes: [
       { label: "Senior leadership", detail: "Sets direction and delegates authority." },
       { label: "Narrow span", detail: "Closer supervision but longer communication chain." },

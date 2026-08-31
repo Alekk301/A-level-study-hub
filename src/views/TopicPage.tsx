@@ -11,6 +11,7 @@ import { ComparisonTableBlock } from "@/src/components/notes/ComparisonTableBloc
 import { ConceptDiagramBlock } from "@/src/components/notes/ConceptDiagramBlock";
 import { Definitions } from "@/src/components/notes/Definitions";
 import { ExamTips } from "@/src/components/notes/ExamTips";
+import { ExamFocusBlock } from "@/src/components/notes/ExamFocusBlock";
 import { FormulaList } from "@/src/components/notes/FormulaList";
 import { NoteSection } from "@/src/components/notes/NoteSection";
 import { Overview } from "@/src/components/notes/Overview";
@@ -22,6 +23,7 @@ import { TopicHeader } from "@/src/components/notes/TopicHeader";
 import { TopicNavigation } from "@/src/components/notes/TopicNavigation";
 import { getTopicVisual, TopicVisual } from "@/src/components/notes/TopicVisual";
 import { loadTopicNote } from "@/src/data/notes";
+import { getExamFocus } from "@/src/data/exam-focus";
 import { getTopic, getTopicNeighbours } from "@/src/data/subjects";
 import { useStudy } from "@/src/hooks/use-study";
 import type { TopicNote } from "@/src/types/content";
@@ -51,6 +53,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
   const error = loadState.key === lookupKey && loadState.error;
   const recordOpened = study.recordOpened;
   const topicVisual = getTopicVisual(subjectCode, topicId);
+  const examFocus = getExamFocus(subjectCode, topicId);
 
   useEffect(() => {
     let active = true;
@@ -75,6 +78,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       ...(note.definitions.length ? [{ id: "definitions", label: "Key definitions" }] : []),
       ...(topicVisual ? [{ id: "visual-explainer", label: topicVisual.title }] : []),
       ...(note.diagram ? [{ id: "diagram", label: note.diagram.title }] : []),
+      { id: "complete-notes", label: "Complete exam notes" },
       ...note.sections.map((section) => ({ id: section.id, label: section.title })),
       ...(note.formulas.length ? [{ id: "formulas", label: "Formula sheet" }] : []),
       ...(note.comparisonTable ? [{ id: "comparison", label: "Comparison" }] : []),
@@ -84,7 +88,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       ...(note.quickRecall.length ? [{ id: "quick-recall", label: "Quick recall" }] : []),
       ...(note.relatedTopics.length ? [{ id: "related-topics", label: "Related topics" }] : []),
     ];
-  }, [note, topicVisual]);
+  }, [examFocus, note, topicVisual]);
 
   if (!lookup) {
     return (
@@ -143,9 +147,14 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
           <Definitions definitions={note.definitions} />
           <TopicVisual visual={topicVisual} />
           <ConceptDiagramBlock diagram={note.diagram} />
-          <div className="core-content">
-            <p className="section-kicker">Core content</p>
+          <div className="core-content complete-notes" id="complete-notes">
+            <div className="complete-notes__heading">
+              <span>COMPLETE EXAM NOTES</span>
+              <h2>Learn the content and the mark scheme together</h2>
+              <p>Each explanation is followed by the answer method, recurring question patterns and the exact details that distinguish a full-credit response.</p>
+            </div>
             {note.sections.map((section, index) => <NoteSection section={section} number={index + 1} key={section.id} />)}
+            <ExamFocusBlock focus={examFocus} />
           </div>
           <FormulaList formulas={note.formulas} />
           <ComparisonTableBlock table={note.comparisonTable} />
