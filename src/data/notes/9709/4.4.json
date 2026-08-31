@@ -1,0 +1,158 @@
+{
+  "id": "4.4",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "M1",
+  "unitTitle": "Mechanics",
+  "title": "Newton's laws of motion",
+  "contentDepth": "full",
+  "overview": "Apply F = ma to connected particles, pulleys and inclined planes. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Apply Newton's laws to particles of constant mass.",
+    "Use W=mg and include friction, tension or thrust correctly.",
+    "Solve motion on rough inclines and vertical lines.",
+    "Model connected particles with a light inextensible string and smooth pulley."
+  ],
+  "definitions": [
+    {
+      "term": "Resultant force",
+      "definition": "The vector sum of all external forces on a body."
+    },
+    {
+      "term": "Newton's second law",
+      "definition": "For constant mass, resultant force equals ma."
+    },
+    {
+      "term": "Tension",
+      "definition": "A pulling force transmitted by a taut string."
+    },
+    {
+      "term": "Light string",
+      "definition": "A string whose mass is neglected, allowing common tension in the ideal model."
+    },
+    {
+      "term": "Inextensible string",
+      "definition": "A string of fixed length, so connected particles share acceleration magnitude while taut."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-applying-f-ma",
+      "title": "Applying F=ma",
+      "content": [
+        "Draw a force diagram for one body at a time, choose a positive direction, then write ΣF=ma in that direction. Forces opposite the positive direction enter negatively; acceleration uses the same sign convention."
+      ],
+      "bullets": [
+        "F=ma uses resultant force, not any single force.",
+        "Equilibrium is the special case a=0."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Newton's second law: ΣF=ma"
+        }
+      ]
+    },
+    {
+      "id": "02-vertical-and-inclined-motion",
+      "title": "Vertical and inclined motion",
+      "content": [
+        "Resolve weight into mg sinθ along an incline and mg cosθ perpendicular. Friction opposes motion and can make upward and downward accelerations different. In vertical motion, weight remains downward throughout."
+      ],
+      "bullets": [
+        "Use R to determine friction where needed.",
+        "At a turning point velocity is zero but the force and acceleration need not be."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-connected-particles",
+      "title": "Connected particles",
+      "content": [
+        "For a light inextensible string over a smooth pulley, use one acceleration magnitude and common tension. Write a separate F=ma equation for each particle, then solve simultaneously. A whole-system equation can remove internal tension as a check."
+      ],
+      "bullets": [
+        "Do not put forces from two different bodies on one free-body diagram.",
+        "Check that a computed tension is non-negative and the string remains taut."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-towing-and-thrust",
+      "title": "Towing and thrust",
+      "content": [
+        "A car and trailer have common acceleration while connected. Treat the tow-bar force as tension if pulling and thrust/compression if pushing. Use the whole system for acceleration, then one body for the connector force."
+      ],
+      "bullets": [
+        "Resistance may act separately on each body.",
+        "Newton's third-law pair acts on different bodies."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Newton's second law",
+      "expression": "ΣF=ma"
+    },
+    {
+      "label": "Weight",
+      "expression": "W=mg"
+    },
+    {
+      "label": "Rough contact",
+      "expression": "F≤μR"
+    },
+    {
+      "label": "Connected system",
+      "expression": "common |a| and common T for a light taut string over a smooth pulley"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Newton's laws of motion: revision route",
+    "type": "flow",
+    "nodes": [
+      "Applying F=ma",
+      "Vertical and inclined motion",
+      "Connected particles",
+      "Towing and thrust"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Use one equation per body and label which body it describes.",
+    "Check model assumptions—light string, smooth pulley, taut connection—before equating tensions or accelerations.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using F=ma for a single force instead of the resultant.",
+    "Giving connected particles opposite signed accelerations after already choosing their separate positive directions inconsistently.",
+    "Including an action–reaction pair on the same body."
+  ],
+  "quickRecall": [
+    {
+      "question": "What belongs on the left of F=ma?",
+      "answer": "The signed resultant of all forces on that one body."
+    },
+    {
+      "question": "Why do ideal connected particles share acceleration magnitude?",
+      "answer": "The taut string is inextensible, so its length cannot change."
+    },
+    {
+      "question": "How can tension be eliminated?",
+      "answer": "Apply F=ma to the whole connected system; tension is internal."
+    },
+    {
+      "question": "Can acceleration differ going up and down a rough incline?",
+      "answer": "Yes, because friction reverses direction while gravity's component does not."
+    }
+  ],
+  "relatedTopics": [
+    "4.1",
+    "4.2",
+    "4.5"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "5.5",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "S1",
+  "unitTitle": "Probability & Statistics 1",
+  "title": "The normal distribution",
+  "contentDepth": "full",
+  "overview": "Standardise normal variables to find probabilities, and use the inverse normal to find an unknown value or parameter. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Model a continuous variable with N(μ,σ²).",
+    "Standardise and use normal tables/calculator probabilities.",
+    "Find unknown values or parameters from probabilities.",
+    "Use a continuity-corrected normal approximation to a binomial distribution."
+  ],
+  "definitions": [
+    {
+      "term": "Normal distribution",
+      "definition": "A symmetric bell-shaped continuous distribution determined by mean μ and variance σ²."
+    },
+    {
+      "term": "Standardisation",
+      "definition": "Converting X to Z=(X−μ)/σ with distribution N(0,1)."
+    },
+    {
+      "term": "Continuity correction",
+      "definition": "Shifting a discrete boundary by 0.5 when using a continuous approximation."
+    },
+    {
+      "term": "Quantile",
+      "definition": "A value below which a stated proportion of the distribution lies."
+    },
+    {
+      "term": "Variance",
+      "definition": "σ²; the standard deviation is σ, not σ²."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-normal-model-and-sketches",
+      "title": "Normal model and sketches",
+      "content": [
+        "Write X~N(μ,σ²). The curve is symmetric about μ and total area is 1. Sketch and shade the required tail or interval before standardising; this catches complement and direction errors."
+      ],
+      "bullets": [
+        "A point probability is zero for a continuous variable.",
+        "Use σ=√variance in z-scores."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Standardisation: Z=(X−μ)/σ"
+        }
+      ]
+    },
+    {
+      "id": "02-standardising",
+      "title": "Standardising",
+      "content": [
+        "For a boundary x, z=(x−μ)/σ. Use Φ(z)=P(Z≤z), symmetry Φ(−z)=1−Φ(z), and differences for intervals. Show the z-expression even when using a calculator directly."
+      ],
+      "bullets": [
+        "Retain full precision in z until the final probability.",
+        "Standardise both endpoints separately."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-inverse-normal-questions",
+      "title": "Inverse normal questions",
+      "content": [
+        "Translate the stated area into a standard-normal quantile z, then solve x=μ+zσ. If μ or σ is unknown, each probability gives an equation. Use the sign of z based on whether the boundary lies below or above μ."
+      ],
+      "bullets": [
+        "A small lower-tail probability has negative z.",
+        "Standard deviation must be positive."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-normal-approximation-to-binomial",
+      "title": "Normal approximation to binomial",
+      "content": [
+        "For X~B(n,p), use Y~N(np,npq) when np>5 and nq>5, and apply continuity correction: X≤r becomes Y<r+0.5; X≥r becomes Y>r−0.5."
+      ],
+      "bullets": [
+        "Use q=1−p.",
+        "Apply the correction before standardising."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Standardisation",
+      "expression": "Z=(X−μ)/σ"
+    },
+    {
+      "label": "Binomial approximation",
+      "expression": "B(n,p)≈N(np,npq)"
+    },
+    {
+      "label": "Continuity examples",
+      "expression": "P(X≤r)≈P(Y<r+0.5); P(X≥r)≈P(Y>r−0.5)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "The normal distribution: revision route",
+    "type": "flow",
+    "nodes": [
+      "Normal model and sketches",
+      "Standardising",
+      "Inverse normal questions",
+      "Normal approximation to binomial"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Sketch and shade before using normal functions.",
+    "Show the continuity-corrected boundary explicitly for approximation questions.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Dividing by variance instead of standard deviation.",
+    "Forgetting continuity correction for a discrete-to-continuous approximation.",
+    "Using the wrong tail after inverse normal."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the second parameter in N(μ,σ²)?",
+      "answer": "The variance σ²."
+    },
+    {
+      "question": "Which z corresponds to a boundary below μ?",
+      "answer": "A negative z-score."
+    },
+    {
+      "question": "How is X≥12 continuity-corrected?",
+      "answer": "Use the continuous boundary Y>11.5."
+    },
+    {
+      "question": "When is the binomial normal approximation acceptable here?",
+      "answer": "When both np>5 and n(1−p)>5."
+    }
+  ],
+  "relatedTopics": [
+    "5.4",
+    "6.1",
+    "6.4"
+  ]
+}

@@ -5,62 +5,153 @@
   "unitId": "P3",
   "unitTitle": "Pure Mathematics 3",
   "title": "Vectors",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to vectors.",
+  "contentDepth": "full",
+  "overview": "Revise 3D lines, dot product, angles/intersections. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
   "syllabusPoints": [
-    "3D lines",
-    "dot product",
-    "angles/intersections"
+    "Use 2D and 3D position, displacement and unit vectors.",
+    "Write and interpret r=a+λb for a straight line.",
+    "Determine whether two lines are parallel, intersecting or skew.",
+    "Use the scalar product to find angles and perpendicular projections."
   ],
-  "definitions": [],
-  "sections": [
+  "definitions": [
     {
-      "id": "01-basics",
-      "title": "Basics",
-      "content": [
-        "Magnitude of a = (a₁,a₂,a₃) is |a| = √(a₁²+a₂²+a₃²). A unit vector in the direction of a is a/|a|."
-      ],
-      "bullets": [],
-      "examples": []
+      "term": "Position vector",
+      "definition": "The vector from the origin to a point."
     },
     {
-      "id": "02-scalar-dot-product",
-      "title": "Scalar (dot) product",
+      "term": "Direction vector",
+      "definition": "Any non-zero vector parallel to a line."
+    },
+    {
+      "term": "Unit vector",
+      "definition": "A vector of magnitude 1."
+    },
+    {
+      "term": "Scalar product",
+      "definition": "a·b=|a||b|cosθ, producing a scalar."
+    },
+    {
+      "term": "Skew lines",
+      "definition": "Non-parallel lines in 3D that do not intersect."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-vector-operations",
+      "title": "Vector operations",
       "content": [
-        "Set a·b = 0 to test perpendicularity; rearrange for cosθ to find the angle between two lines."
+        "For a=(a₁,a₂,a₃), |a|=√(a₁²+a₂²+a₃²) and the unit vector in its direction is a/|a|. If A and B have position vectors a and b, then AB=b−a and the midpoint is (a+b)/2."
       ],
-      "bullets": [],
+      "bullets": [
+        "A displacement vector has direction; distance is its magnitude.",
+        "Use exact radicals unless a decimal is requested."
+      ],
       "examples": [
         {
-          "id": "02-formula-1",
+          "id": "01-key-relationship",
           "kind": "formula",
-          "label": "Formula",
-          "content": "a·b = a₁b₁ + a₂b₂ + a₃b₃ = |a||b| cosθ"
+          "label": "Key relationship",
+          "content": "Magnitude: |a|=√(a₁²+a₂²+a₃²)"
         }
       ]
     },
     {
-      "id": "03-vector-equation-of-a-line",
-      "title": "Vector equation of a line",
+      "id": "02-vector-equations-of-lines",
+      "title": "Vector equations of lines",
       "content": [
-        "r = a + tb, where a is a position vector on the line and b is the direction. To find intersections, solve two component equations for the parameters, then check the third is also satisfied."
+        "The line through point A with position vector a and direction b is r=a+λb. Through A and B, use direction b−a. Direction vectors can be scalar multiples and still describe parallel lines."
       ],
-      "bullets": [],
+      "bullets": [
+        "The parameter is a scalar, not a vector component.",
+        "Read a point from the fixed vector and direction from the coefficient of λ."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-intersections-and-skew-lines",
+      "title": "Intersections and skew lines",
+      "content": [
+        "Equate the x, y and z components of two line equations. Solve two equations for the two parameters, then test the third. If it fails, non-parallel lines are skew; if directions are multiples, test whether a point lies on both lines."
+      ],
+      "bullets": [
+        "Always perform the third-component check.",
+        "Report the point of intersection, not only parameter values."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-scalar-products-and-perpendicularity",
+      "title": "Scalar products and perpendicularity",
+      "content": [
+        "Compute a·b=a₁b₁+a₂b₂+a₃b₃. Perpendicular vectors have dot product 0. For an angle use cosθ=(a·b)/(|a||b|); for the acute angle between lines, reverse a direction if necessary or use |a·b|."
+      ],
+      "bullets": [
+        "A foot of a perpendicular lies on the line and its displacement to the external point has zero dot product with the line direction.",
+        "Shortest distance between skew lines is outside this syllabus."
+      ],
       "examples": []
     }
   ],
-  "formulas": [],
+  "formulas": [
+    {
+      "label": "Magnitude",
+      "expression": "|a|=√(a₁²+a₂²+a₃²)"
+    },
+    {
+      "label": "Line",
+      "expression": "r=a+λb"
+    },
+    {
+      "label": "Scalar product",
+      "expression": "a·b=a₁b₁+a₂b₂+a₃b₃=|a||b|cosθ"
+    },
+    {
+      "label": "Perpendicularity",
+      "expression": "a·b=0"
+    }
+  ],
   "comparisonTable": null,
-  "diagram": null,
+  "diagram": {
+    "title": "Vectors: revision route",
+    "type": "flow",
+    "nodes": [
+      "Vector operations",
+      "Vector equations of lines",
+      "Intersections and skew lines",
+      "Scalar products and perpendicularity"
+    ]
+  },
   "analysisChains": [],
   "examTips": [
-    "Always substitute back into the third equation to confirm the lines actually intersect — skew lines don't, and this check is often worth its own mark."
+    "Use different parameter letters for different lines.",
+    "For line angles, state whether the question wants the acute angle or a directed angle.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Assuming two non-parallel 3D lines must intersect.",
+    "Solving only two components and skipping the third.",
+    "Using position vectors instead of direction vectors in the angle formula."
+  ],
   "quickRecall": [
-    "3D lines",
-    "dot product",
-    "angles/intersections"
+    {
+      "question": "How do you form AB from position vectors?",
+      "answer": "AB=OB−OA."
+    },
+    {
+      "question": "How do you distinguish intersecting and skew lines?",
+      "answer": "Solve two component equations for the parameters and check the third; failure for non-parallel lines means skew."
+    },
+    {
+      "question": "What does a·b=0 show?",
+      "answer": "The non-zero vectors are perpendicular."
+    },
+    {
+      "question": "How is the foot from P to r=a+λb found?",
+      "answer": "Let Q=a+λb and solve (P−Q)·b=0 for λ."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "3.4",
+    "4.1"
+  ]
 }

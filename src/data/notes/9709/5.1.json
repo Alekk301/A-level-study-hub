@@ -1,0 +1,161 @@
+{
+  "id": "5.1",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "S1",
+  "unitTitle": "Probability & Statistics 1",
+  "title": "Representation of data",
+  "contentDepth": "full",
+  "overview": "Summarise and display data using histograms and cumulative frequency diagrams, and calculate mean, variance and standard deviation. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Choose, draw and interpret statistical displays.",
+    "Use cumulative frequency to estimate medians, quartiles and percentiles.",
+    "Calculate mean, variance and standard deviation, including grouped/coded data.",
+    "Compare distributions using measures of location and spread."
+  ],
+  "definitions": [
+    {
+      "term": "Frequency density",
+      "definition": "Frequency divided by class width; histogram area represents frequency."
+    },
+    {
+      "term": "Interquartile range",
+      "definition": "Q₃−Q₁, the spread of the middle 50%."
+    },
+    {
+      "term": "Standard deviation",
+      "definition": "The square root of variance, measuring typical spread about the mean."
+    },
+    {
+      "term": "Cumulative frequency",
+      "definition": "A running total of observations up to a boundary."
+    },
+    {
+      "term": "Outlier",
+      "definition": "An observation unusually far from the rest; a common rule is below Q₁−1.5IQR or above Q₃+1.5IQR."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-choosing-a-display",
+      "title": "Choosing a display",
+      "content": [
+        "Stem-and-leaf retains raw values, box plots compare location/spread, cumulative frequency supports percentiles, and histograms show continuous grouped distributions. Discuss what information each preserves or hides."
+      ],
+      "bullets": [
+        "Use class boundaries for continuous data.",
+        "A box width in a histogram is not a frequency by itself."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Frequency density: frequency density=frequency/class width"
+        }
+      ]
+    },
+    {
+      "id": "02-histograms",
+      "title": "Histograms",
+      "content": [
+        "For unequal class widths, vertical height is frequency density so bar area equals frequency. To recover frequency multiply density by class width. Label continuous boundaries and axes with units."
+      ],
+      "bullets": [
+        "Do not leave gaps between continuous classes.",
+        "A changed vertical scale must still preserve area ratios."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-cumulative-frequency",
+      "title": "Cumulative frequency",
+      "content": [
+        "Plot upper class boundaries against cumulative totals. Estimate Q₁, median and Q₃ at n/4, n/2 and 3n/4, reading horizontally to the curve then vertically to the value axis."
+      ],
+      "bullets": [
+        "Graph estimates should match the graph's precision.",
+        "Percentile p uses pn/100."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-mean-and-variation",
+      "title": "Mean and variation",
+      "content": [
+        "Use x̄=Σx/n and variance=Σx²/n−x̄² for a population-style data set in this syllabus. For grouped data use class midpoints, so answers are estimates. Coding transforms totals and can simplify arithmetic."
+      ],
+      "bullets": [
+        "Compare both centre and spread in context.",
+        "A smaller spread means greater consistency, not necessarily better performance."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Frequency density",
+      "expression": "frequency density=frequency/class width"
+    },
+    {
+      "label": "Mean",
+      "expression": "x̄=Σx/n"
+    },
+    {
+      "label": "Variance",
+      "expression": "Var=Σx²/n−x̄²"
+    },
+    {
+      "label": "Standard deviation",
+      "expression": "σ=√Var"
+    },
+    {
+      "label": "Interquartile range",
+      "expression": "IQR=Q₃−Q₁"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Representation of data: revision route",
+    "type": "flow",
+    "nodes": [
+      "Choosing a display",
+      "Histograms",
+      "Cumulative frequency",
+      "Mean and variation"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write units on graph axes and quote comparisons in the language of the data.",
+    "Use unrounded variance before taking the square root.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using frequency as histogram height for unequal widths.",
+    "Comparing means without comparing spread.",
+    "Using class limits instead of continuous class boundaries."
+  ],
+  "quickRecall": [
+    {
+      "question": "What does histogram area represent?",
+      "answer": "Frequency, so height must be frequency density when class widths differ."
+    },
+    {
+      "question": "Where is the median read on a cumulative-frequency graph?",
+      "answer": "At cumulative frequency n/2."
+    },
+    {
+      "question": "Why are grouped-data statistics estimates?",
+      "answer": "Every value in a class is represented by its class midpoint."
+    },
+    {
+      "question": "What two features should a comparison mention?",
+      "answer": "A measure of location and a measure of spread, interpreted in context."
+    }
+  ],
+  "relatedTopics": [
+    "6.4",
+    "6.5"
+  ]
+}

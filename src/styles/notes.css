@@ -29,8 +29,11 @@
 .note-block { margin: 3.3rem 0; scroll-margin-top: 5rem; }
 .note-block__heading { margin-bottom: 1.15rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line); }
 .syllabus-checklist ul { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
-.syllabus-checklist li { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr); gap: 0.65rem; padding: 0.75rem 0.8rem; border: 1px solid var(--line); background: var(--surface-raised); font-size: 0.82rem; }
-.syllabus-checklist li svg { width: 1rem; color: var(--subject-accent); }
+.syllabus-checklist li { border: 1px solid var(--line); background: var(--surface-raised); font-size: 0.82rem; transition: border-color 160ms ease, background 160ms ease; }
+.syllabus-checklist li label { display: grid; grid-template-columns: 1.15rem minmax(0, 1fr); gap: 0.7rem; align-items: start; padding: 0.8rem; cursor: pointer; }
+.syllabus-checklist input { width: 1rem; height: 1rem; margin: 0.1rem 0 0; accent-color: var(--subject-accent); cursor: pointer; }
+.syllabus-checklist li.is-checked { border-color: color-mix(in srgb, var(--subject-accent) 40%, var(--line)); background: var(--subject-soft); }
+.syllabus-checklist li.is-checked span { color: var(--text-muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--subject-accent) 55%, transparent); }
 .definitions dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .definitions dl > div { padding: 0.9rem 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
 .definitions dt { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; }
@@ -95,8 +98,15 @@
 .callout-block--mistakes { border-color: var(--rose); background: var(--rose-soft); }
 .callout-block--mistakes header { color: var(--rose); }
 .quick-recall ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
-.quick-recall li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: baseline; padding: 0.7rem 0.8rem; border: 1px solid color-mix(in srgb, var(--lavender) 24%, var(--line)); background: var(--lavender-soft); font-family: var(--font-mono); font-size: 0.68rem; }
-.quick-recall li span { color: var(--lavender); font-size: 0.56rem; }
+.quick-recall li { border: 1px solid color-mix(in srgb, var(--lavender) 24%, var(--line)); background: var(--lavender-soft); }
+.quick-recall details { height: 100%; }
+.quick-recall summary { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.65rem; align-items: center; min-height: 3.2rem; padding: 0.75rem 0.8rem; cursor: pointer; list-style: none; }
+.quick-recall summary::-webkit-details-marker { display: none; }
+.quick-recall summary span { color: var(--lavender); font-family: var(--font-mono); font-size: 0.56rem; }
+.quick-recall summary strong { font-size: 0.72rem; line-height: 1.45; }
+.quick-recall summary svg { width: 0.9rem; color: var(--lavender); transition: transform 160ms ease; }
+.quick-recall details[open] summary svg { transform: rotate(180deg); }
+.quick-recall details > p { margin: 0; padding: 0 0.8rem 0.85rem 2.15rem; border-top: 1px solid color-mix(in srgb, var(--lavender) 18%, var(--line)); color: var(--text-muted); font-size: 0.74rem; line-height: 1.6; }
 .related-topics > div:last-child { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; }
 .related-topics a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.55rem; padding: 0.75rem 0.8rem; border: 1px solid var(--line); background: var(--surface); }
 .related-topics a > span { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.63rem; font-weight: 800; }

@@ -256,7 +256,7 @@
               "partial fractions",
               "modulus/general binomial"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.2",
@@ -271,7 +271,7 @@
               "equations",
               "modelling"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.3",
@@ -286,7 +286,7 @@
               "R-form",
               "equations"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.4",
@@ -300,7 +300,7 @@
               "product/quotient/chain",
               "implicit/parametric"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.5",
@@ -316,7 +316,7 @@
               "partial fractions",
               "trig integrals"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.6",
@@ -331,7 +331,7 @@
               "convergence",
               "accuracy"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.7",
@@ -346,7 +346,7 @@
               "dot product",
               "angles/intersections"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "3.8",
@@ -361,7 +361,7 @@
               "initial conditions",
               "modelling"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.9",
@@ -376,7 +376,7 @@
               "modulus/argument",
               "polar form"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           }
         ]
       },
@@ -398,7 +398,7 @@
               "resolving forces",
               "friction/equilibrium"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "4.2",
@@ -414,7 +414,7 @@
               "motion graphs",
               "calculus and gravity"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "4.3",
@@ -430,7 +430,7 @@
               "conservation of momentum",
               "collisions"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "4.4",
@@ -446,7 +446,7 @@
               "connected particles",
               "pulleys/inclines"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "4.5",
@@ -462,7 +462,7 @@
               "KE/GPE",
               "power"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           }
         ]
       },
@@ -484,7 +484,7 @@
               "cumulative frequency",
               "mean/variance/SD"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.2",
@@ -500,7 +500,7 @@
               "arrangements",
               "selections"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.3",
@@ -516,7 +516,7 @@
               "independence",
               "tree/Venn methods"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.4",
@@ -532,7 +532,7 @@
               "expectation/variance",
               "binomial distribution"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.5",
@@ -548,7 +548,7 @@
               "probabilities",
               "inverse normal"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           }
         ]
       },
@@ -569,7 +569,7 @@
               "parameter λ",
               "modelling"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "6.2",
@@ -584,7 +584,7 @@
               "variance",
               "independent sums"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "6.3",
@@ -599,7 +599,7 @@
               "integration",
               "expectation/variance"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "6.4",
@@ -614,7 +614,7 @@
               "confidence intervals",
               "estimation"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "6.5",
@@ -629,7 +629,7 @@
               "critical regions/p-values",
               "significance and conclusions"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           }
         ]
       }
@@ -2363,7 +2363,7 @@
               "entropy",
               "Gibbs free energy"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "24",
@@ -2378,7 +2378,7 @@
               "cell potentials",
               "redox feasibility"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "25",
@@ -2393,7 +2393,7 @@
               "buffers",
               "Ksp/partition"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "26",
@@ -2408,7 +2408,7 @@
               "mechanisms",
               "catalysis"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "27",
@@ -2422,7 +2422,7 @@
               "advanced trends",
               "thermal stability/solubility"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "28",
@@ -2437,7 +2437,7 @@
               "colour/redox",
               "catalysis/stability constants"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "29",
@@ -2452,7 +2452,7 @@
               "aromatic bonding",
               "optical isomerism"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "30",
@@ -2467,7 +2467,7 @@
               "electrophilic substitution",
               "benzene chemistry"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "31",
@@ -2481,7 +2481,7 @@
               "advanced halogen chemistry",
               "mechanisms/reactivity"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "32",
@@ -2496,7 +2496,7 @@
               "phenol",
               "synthesis"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "33",
@@ -2511,7 +2511,7 @@
               "acyl chlorides",
               "acyl substitution"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "34",
@@ -2526,7 +2526,7 @@
               "phenylamine/azo",
               "amides/amino acids"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "35",
@@ -2541,7 +2541,7 @@
               "monomer prediction",
               "degradability"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "36",
@@ -2556,7 +2556,7 @@
               "multi-step routes",
               "structure deduction"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "37",
@@ -2572,7 +2572,7 @@
               "13C NMR",
               "combined spectra"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           }
         ]
       }

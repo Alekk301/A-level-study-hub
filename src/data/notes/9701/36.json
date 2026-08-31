@@ -1,0 +1,177 @@
+{
+  "id": "36",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Organic synthesis",
+  "contentDepth": "full",
+  "overview": "Build a complete organic reaction map, plan multi-step synthetic routes, and deduce structures from given information. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Recall the complete AS+A Level organic reaction network with reagents and conditions.",
+    "Plan efficient multi-step routes and identify required functional-group interconversions.",
+    "Use observations, products and mechanisms to deduce unknown structures.",
+    "Evaluate route selectivity, yield, purification and practical feasibility."
+  ],
+  "definitions": [
+    {
+      "term": "Synthetic route",
+      "definition": "An ordered sequence converting a starting material into a target compound."
+    },
+    {
+      "term": "Functional-group interconversion",
+      "definition": "Changing one functional group into another while managing the carbon skeleton."
+    },
+    {
+      "term": "Selectivity",
+      "definition": "Preference for one reaction site or product over alternatives."
+    },
+    {
+      "term": "Protecting strategy",
+      "definition": "Temporarily masking a reactive group when necessary; only used when supported by the chemistry given."
+    },
+    {
+      "term": "Overall yield",
+      "definition": "The product of fractional yields for every step."
+    },
+    {
+      "term": "Retrosynthesis",
+      "definition": "Planning backwards from the target to plausible precursors."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-build-a-reaction-map",
+      "title": "Build a reaction map",
+      "content": [
+        "Organise reactions by functional group: alkene, halogenoalkane, alcohol, carbonyl, nitrile, amine, carboxylic acid, acyl chloride, ester, amide and arene. For each arrow learn reagent, conditions, product and mechanism/observation where required."
+      ],
+      "bullets": [
+        "Revise reversible arrows and oxidation stages explicitly.",
+        "Track carbon-count changes in nitrile and Friedel–Crafts steps."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Overall yield: overall %=100×(yield₁/100)(yield₂/100)⋯"
+        }
+      ]
+    },
+    {
+      "id": "02-plan-backwards",
+      "title": "Plan backwards",
+      "content": [
+        "Identify the target's key bond and functional group, then ask which immediate precursor produces it reliably. Continue backwards until reaching the given starting material, then check the route forward for compatible reagents and conditions."
+      ],
+      "bullets": [
+        "A route is invalid if an earlier reagent also destroys another required group.",
+        "Prefer syllabus reactions with unambiguous products."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-deducing-structures",
+      "title": "Deducing structures",
+      "content": [
+        "Combine molecular formula/unsaturation, chemical tests, oxidation/reduction products and spectroscopic evidence. Each observation constrains the structure: use all evidence and verify atom count, functional groups and possible isomers."
+      ],
+      "bullets": [
+        "A negative test is evidence too.",
+        "State why each datum supports or excludes a feature."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-yield-and-practical-choices",
+      "title": "Yield and practical choices",
+      "content": [
+        "Overall percentage yield equals the product of step yields as decimals×100. More steps usually lower overall yield and increase time/waste. Consider selectivity, hazardous reagents, separation of isomers, purification and whether a gaseous/by-product drives equilibrium."
+      ],
+      "bullets": [
+        "Do not add percentage yields.",
+        "A shorter route is not automatically better if it lacks selectivity."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-mechanism-led-predictions",
+      "title": "Mechanism-led predictions",
+      "content": [
+        "Use electrophile/nucleophile and bond polarity to predict unfamiliar reactions. Curly arrows show electron-pair movement, charges are conserved, and intermediates must connect reactant to product. Mechanistic consistency is a powerful structure check."
+      ],
+      "bullets": [
+        "Start arrows at electrons.",
+        "Account for every atom and overall charge."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Overall yield",
+      "expression": "overall %=100×(yield₁/100)(yield₂/100)⋯"
+    },
+    {
+      "label": "Carbon-chain extension",
+      "expression": "R–X→R–CN→R–CH₂NH₂ or R–COOH",
+      "note": "Use the stated reduction/hydrolysis conditions."
+    },
+    {
+      "label": "Acyl hub",
+      "expression": "RCOOH⇄RCOCl→ester/amide"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Organic synthesis: revision route",
+    "type": "flow",
+    "nodes": [
+      "Build a reaction map",
+      "Plan backwards",
+      "Deducing structures",
+      "Yield and practical choices",
+      "Mechanism-led predictions"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Annotate every route arrow with reagent and condition, not just the product.",
+    "At the end, count carbons and check no step changes the skeleton unintentionally.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Adding percentage yields across steps.",
+    "Suggesting a correct conversion with missing or incompatible conditions.",
+    "Using one positive test while ignoring contradictory evidence."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why plan a synthesis backwards?",
+      "answer": "The target functional group suggests reliable immediate precursors, narrowing possible routes."
+    },
+    {
+      "question": "How are step yields combined?",
+      "answer": "Multiply their decimal yields, then convert back to a percentage."
+    },
+    {
+      "question": "What must every curly arrow show?",
+      "answer": "Movement of an electron pair from a bond/lone pair to its destination."
+    },
+    {
+      "question": "How should several analytical clues be used?",
+      "answer": "Intersect all constraints and then verify formula, functional groups and reactions against the proposed structure."
+    }
+  ],
+  "relatedTopics": [
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "37"
+  ]
+}

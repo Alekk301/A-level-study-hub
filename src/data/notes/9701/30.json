@@ -1,0 +1,160 @@
+{
+  "id": "30",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Hydrocarbons",
+  "contentDepth": "full",
+  "overview": "Understand the structure of benzene and its characteristic electrophilic substitution reactions. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Describe benzene and methylbenzene reactions with reagents and conditions.",
+    "Explain electrophilic substitution mechanisms for nitration and halogenation.",
+    "Compare ring substitution with side-chain reactions.",
+    "Predict directing effects of –NH₂, –OH, –R, –NO₂, –COOH and –COR."
+  ],
+  "definitions": [
+    {
+      "term": "Electrophile",
+      "definition": "An electron-pair acceptor attracted to electron-rich regions."
+    },
+    {
+      "term": "Electrophilic substitution",
+      "definition": "A reaction replacing a ring hydrogen by an electrophile while restoring aromaticity."
+    },
+    {
+      "term": "Aromatic stabilisation",
+      "definition": "Extra stability from π-electron delocalisation around the ring."
+    },
+    {
+      "term": "Friedel–Crafts alkylation",
+      "definition": "Ring substitution introducing an alkyl group using a halogenoalkane and AlCl₃."
+    },
+    {
+      "term": "Friedel–Crafts acylation",
+      "definition": "Ring substitution introducing an acyl group using an acyl chloride and AlCl₃."
+    },
+    {
+      "term": "Directing group",
+      "definition": "A substituent influencing the positions favoured by further ring substitution."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-core-arene-reactions",
+      "title": "Core arene reactions",
+      "content": [
+        "Benzene reacts with Br₂/AlBr₃ or Cl₂/AlCl₃, concentrated HNO₃/H₂SO₄ at about 25–60 °C, CH₃Cl/AlCl₃ with heat, or CH₃COCl/AlCl₃ with heat. Hydrogenation uses H₂ with Ni/Pt and heat. Learn product, reagent, catalyst and condition as one package."
+      ],
+      "bullets": [
+        "Bromine water alone does not rapidly decolourise benzene.",
+        "Friedel–Crafts products retain the aromatic ring."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Nitrating electrophile: HNO₃+H₂SO₄→NO₂⁺+HSO₄⁻+H₂O"
+        }
+      ]
+    },
+    {
+      "id": "02-electrophilic-substitution-mechanism",
+      "title": "Electrophilic substitution mechanism",
+      "content": [
+        "Generate the electrophile (for nitration, NO₂⁺). A curly arrow moves from the benzene π system to the electrophile, producing a positively charged intermediate; a base removes H⁺ and the C–H bond electrons restore delocalisation."
+      ],
+      "bullets": [
+        "Curly arrows begin at an electron pair or bond.",
+        "Show the positive intermediate and restored ring."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-methylbenzene-and-side-chains",
+      "title": "Methylbenzene and side chains",
+      "content": [
+        "Methylbenzene can undergo ring substitution more readily than benzene, side-chain radical halogenation under UV light, and complete side-chain oxidation with hot alkaline KMnO₄ followed by acid to benzoic acid, provided a benzylic hydrogen is present."
+      ],
+      "bullets": [
+        "Conditions decide ring versus side-chain halogenation.",
+        "Oxidation shortens an oxidisable alkyl side chain to –COOH."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-directing-effects",
+      "title": "Directing effects",
+      "content": [
+        "–NH₂, –OH and alkyl groups direct mainly to 2/4 positions; –NO₂, –COOH and –COR direct mainly to position 3. Use the substituent already on the ring to predict major isomers without claiming a single exclusive product."
+      ],
+      "bullets": [
+        "Number positions relative to the existing substituent.",
+        "Directing effect and activation are related but not identical statements."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Nitrating electrophile",
+      "expression": "HNO₃+H₂SO₄→NO₂⁺+HSO₄⁻+H₂O"
+    },
+    {
+      "label": "Side-chain oxidation",
+      "expression": "alkylbenzene → C₆H₅COOH",
+      "note": "Hot alkaline KMnO₄, then dilute acid; requires a benzylic H."
+    },
+    {
+      "label": "Ring halogenation",
+      "expression": "benzene+X₂ —AlX₃→ halogenoarene+HX"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Hydrocarbons: revision route",
+    "type": "flow",
+    "nodes": [
+      "Core arene reactions",
+      "Electrophilic substitution mechanism",
+      "Methylbenzene and side chains",
+      "Directing effects"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "For every organic reaction, revise reagent, condition, product and mechanism type together.",
+    "Place curly-arrow tails exactly at the bond or lone pair supplying electrons.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Drawing electrophilic addition instead of substitution.",
+    "Using bromine water without a halogen carrier for benzene ring bromination.",
+    "Ignoring reaction conditions when choosing ring versus side-chain substitution."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why does benzene favour substitution over addition?",
+      "answer": "Substitution restores aromatic delocalisation; addition would permanently lose that stabilisation."
+    },
+    {
+      "question": "What is the electrophile in nitration?",
+      "answer": "NO₂⁺, the nitronium ion."
+    },
+    {
+      "question": "How do –OH and –NO₂ direct further substitution?",
+      "answer": "–OH mainly directs 2/4; –NO₂ mainly directs 3."
+    },
+    {
+      "question": "What conditions favour side-chain chlorination of methylbenzene?",
+      "answer": "Chlorine with UV light/free-radical conditions rather than AlCl₃ ring-substitution conditions."
+    }
+  ],
+  "relatedTopics": [
+    "14",
+    "29",
+    "31",
+    "32"
+  ]
+}

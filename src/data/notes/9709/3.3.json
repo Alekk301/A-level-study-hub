@@ -1,0 +1,157 @@
+{
+  "id": "3.3",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Trigonometry",
+  "contentDepth": "full",
+  "overview": "Use compound and double-angle identities and the R sin(x+α) form to solve harder trig equations and find max/min values. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use sec, cosec and cot and their identities and graphs.",
+    "Use compound-angle and double-angle identities to simplify expressions and solve equations.",
+    "Express a sin θ + b cos θ as R sin(θ+α) or R cos(θ−α).",
+    "Find exact values, solutions in a stated interval, and maximum/minimum values."
+  ],
+  "definitions": [
+    {
+      "term": "Secant",
+      "definition": "sec θ = 1/cos θ."
+    },
+    {
+      "term": "Cosecant",
+      "definition": "cosec θ = 1/sin θ."
+    },
+    {
+      "term": "Cotangent",
+      "definition": "cot θ = cos θ/sin θ = 1/tan θ."
+    },
+    {
+      "term": "Compound angle",
+      "definition": "An angle written as A±B so its sine, cosine or tangent can be expanded."
+    },
+    {
+      "term": "R-form",
+      "definition": "A single shifted sine or cosine equal to a linear combination of sin θ and cos θ."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-reciprocal-functions-and-identities",
+      "title": "Reciprocal functions and identities",
+      "content": [
+        "Know sec²θ=1+tan²θ and cosec²θ=1+cot²θ. Domain exclusions occur wherever the denominator is zero. Sketching the reciprocal graphs helps determine asymptotes, periods and all solutions."
+      ],
+      "bullets": [
+        "sec and cosec have range y≤−1 or y≥1.",
+        "cot θ has period π radians."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Pythagorean identities: sec²θ=1+tan²θ; cosec²θ=1+cot²θ"
+        }
+      ]
+    },
+    {
+      "id": "02-compound-and-double-angles",
+      "title": "Compound and double angles",
+      "content": [
+        "Use sin(A±B)=sin A cos B±cos A sin B and cos(A±B)=cos A cos B∓sin A sin B. From these derive sin2A=2sinAcosA and the three useful forms of cos2A."
+      ],
+      "bullets": [
+        "Choose cos2A=1−2sin²A or 2cos²A−1 to eliminate the unwanted function.",
+        "Preserve signs carefully in cos(A±B)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-the-r-form",
+      "title": "The R-form",
+      "content": [
+        "For a sinθ+b cosθ=R sin(θ+α), compare coefficients: Rcosα=a and Rsinα=b, so R=√(a²+b²). The interval/quadrant for α must match both signs. The form makes extrema and equations easier."
+      ],
+      "bullets": [
+        "Maximum is R and minimum is −R before any vertical shift.",
+        "Use a sketch to decide which inverse-trig solution is appropriate."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-solving-trigonometric-equations",
+      "title": "Solving trigonometric equations",
+      "content": [
+        "Reduce to one trig function or R-form, solve the basic equation, then generate every solution in the requested interval. Work in radians unless degrees are stated. Check any values lost by dividing by sinθ or cosθ."
+      ],
+      "bullets": [
+        "Write the general symmetry pattern before filtering the interval.",
+        "Do not cancel a trig factor unless its zero case has been considered."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Pythagorean identities",
+      "expression": "sec²θ=1+tan²θ; cosec²θ=1+cot²θ"
+    },
+    {
+      "label": "Compound angles",
+      "expression": "sin(A±B)=sinAcosB±cosAsinB; cos(A±B)=cosAcosB∓sinAsinB"
+    },
+    {
+      "label": "Double angles",
+      "expression": "sin2A=2sinAcosA; cos2A=cos²A−sin²A"
+    },
+    {
+      "label": "R magnitude",
+      "expression": "R=√(a²+b²)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Trigonometry: revision route",
+    "type": "flow",
+    "nodes": [
+      "Reciprocal functions and identities",
+      "Compound and double angles",
+      "The R-form",
+      "Solving trigonometric equations"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Keep the calculator in the angle mode used by the question.",
+    "List solutions in increasing order and include endpoints only when they satisfy the equation.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using the wrong sign in the cosine compound-angle formula.",
+    "Finding one inverse-trig value but not the other solutions in the interval.",
+    "Choosing α without checking the signs of sin α and cos α."
+  ],
+  "quickRecall": [
+    {
+      "question": "How do you find R in a sinθ+b cosθ?",
+      "answer": "R=√(a²+b²)."
+    },
+    {
+      "question": "Which identity converts 1+tan²θ?",
+      "answer": "1+tan²θ=sec²θ."
+    },
+    {
+      "question": "Why must divided trig factors be checked separately?",
+      "answer": "A factor may be zero, and dividing by it would discard valid solutions."
+    },
+    {
+      "question": "What is the range of R sin(θ+α)+c?",
+      "answer": "From c−R to c+R inclusive."
+    }
+  ],
+  "relatedTopics": [
+    "3.4",
+    "3.5"
+  ]
+}

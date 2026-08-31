@@ -5,64 +5,154 @@
   "unitId": "P3",
   "unitTitle": "Pure Mathematics 3",
   "title": "Complex numbers",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to complex numbers.",
+  "contentDepth": "full",
+  "overview": "Revise Argand diagrams, modulus/argument, polar form. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
   "syllabusPoints": [
-    "Argand diagrams",
-    "modulus/argument",
-    "polar form"
+    "Use Cartesian and polar forms, modulus, argument and conjugates.",
+    "Perform arithmetic and use conjugate-pair roots for real polynomials.",
+    "Multiply/divide in polar form and find exact square roots.",
+    "Represent equations and inequalities as loci on an Argand diagram."
   ],
-  "definitions": [],
-  "sections": [
+  "definitions": [
     {
-      "id": "01-basics",
-      "title": "Basics",
-      "content": [
-        "i² = −1. z = a + bi has real part a, imaginary part b. Conjugate z* = a − bi; z·z* = a²+b² (always real)."
-      ],
-      "bullets": [],
-      "examples": []
+      "term": "Complex number",
+      "definition": "z=x+iy, where i²=−1 and x,y are real."
     },
     {
-      "id": "02-modulus-argument-form",
-      "title": "Modulus-argument form",
+      "term": "Conjugate",
+      "definition": "For z=x+iy, z*=x−iy."
+    },
+    {
+      "term": "Modulus",
+      "definition": "|z|=√(x²+y²), the distance from the origin."
+    },
+    {
+      "term": "Argument",
+      "definition": "arg z is the directed angle from the positive real axis to z."
+    },
+    {
+      "term": "Argand diagram",
+      "definition": "A plane with real part horizontally and imaginary part vertically."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-cartesian-arithmetic",
+      "title": "Cartesian arithmetic",
       "content": [
-        "Take care with the quadrant when finding θ."
+        "Add real and imaginary parts separately and use i²=−1 when multiplying. To divide by c+id, multiply numerator and denominator by c−id so the denominator becomes c²+d². Equality requires both real parts and imaginary parts to match."
       ],
-      "bullets": [],
+      "bullets": [
+        "z z*=|z|².",
+        "Real-coefficient polynomial roots occur in conjugate pairs."
+      ],
       "examples": [
         {
-          "id": "02-formula-1",
+          "id": "01-key-relationship",
           "kind": "formula",
-          "label": "Formula",
-          "content": "z = r(cosθ + i sinθ), r = |z| = √(a²+b²), θ = arg(z)"
+          "label": "Key relationship",
+          "content": "Modulus: |x+iy|=√(x²+y²)"
         }
       ]
     },
     {
-      "id": "03-loci-on-the-argand-diagram",
-      "title": "Loci on the Argand diagram",
-      "content": [],
+      "id": "02-polar-form",
+      "title": "Polar form",
+      "content": [
+        "Write z=r(cosθ+i sinθ), where r=|z| and θ=arg z. On multiplication, multiply moduli and add arguments; on division, divide moduli and subtract arguments. Give the argument in the interval requested."
+      ],
       "bullets": [
-        "|z − a| = r → circle, centre a, radius r",
-        "|z − a| = |z − b| → perpendicular bisector of a and b",
-        "arg(z − a) = θ → half-line from a at angle θ"
+        "Use atan2 thinking or a sketch to choose the correct quadrant.",
+        "The principal argument is commonly −π<θ≤π."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-square-roots-and-equations",
+      "title": "Square roots and equations",
+      "content": [
+        "For w²=z, let w=a+ib and compare real and imaginary parts, using a²+b²=|z| as a second relation. The two roots are opposites. For polynomial questions, include the conjugate of any given non-real root, form the quadratic factor and divide."
+      ],
+      "bullets": [
+        "Show exact Cartesian working for square roots.",
+        "Check by squaring the final roots."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-loci",
+      "title": "Loci",
+      "content": [
+        "|z−a|=r is a circle centred at a; |z−a|<r is its interior. |z−a|=|z−b| is the perpendicular bisector of AB. arg(z−a)=α is a ray from a, with the initial point excluded."
+      ],
+      "bullets": [
+        "Use solid or dashed boundaries to distinguish inclusive and strict inequalities.",
+        "Shade only after testing a simple point."
       ],
       "examples": []
     }
   ],
-  "formulas": [],
+  "formulas": [
+    {
+      "label": "Modulus",
+      "expression": "|x+iy|=√(x²+y²)"
+    },
+    {
+      "label": "Conjugate product",
+      "expression": "zz*=|z|²"
+    },
+    {
+      "label": "Polar product",
+      "expression": "r₁cisθ₁·r₂cisθ₂=r₁r₂cis(θ₁+θ₂)"
+    },
+    {
+      "label": "Polar quotient",
+      "expression": "r₁cisθ₁/(r₂cisθ₂)=(r₁/r₂)cis(θ₁−θ₂)"
+    }
+  ],
   "comparisonTable": null,
-  "diagram": null,
+  "diagram": {
+    "title": "Complex numbers: revision route",
+    "type": "flow",
+    "nodes": [
+      "Cartesian arithmetic",
+      "Polar form",
+      "Square roots and equations",
+      "Loci"
+    ]
+  },
   "analysisChains": [],
   "examTips": [
-    "Sketch loci questions first — most marks come from a correctly labelled diagram."
+    "Draw a small Argand sketch before fixing an argument quadrant.",
+    "For loci, label centre, radius, boundary inclusion and excluded points.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Using arctan(y/x) without correcting the quadrant.",
+    "Forgetting that square roots occur as ±w.",
+    "Drawing arg(z−a)=α as a full line instead of a ray."
+  ],
   "quickRecall": [
-    "Argand diagrams",
-    "modulus/argument",
-    "polar form"
+    {
+      "question": "Why multiply by a conjugate when dividing?",
+      "answer": "It makes the denominator real because (c+id)(c−id)=c²+d²."
+    },
+    {
+      "question": "What locus is |z−a|=r?",
+      "answer": "A circle centred at a with radius r."
+    },
+    {
+      "question": "What happens to arguments when complex numbers are divided?",
+      "answer": "Subtract the divisor's argument from the numerator's argument."
+    },
+    {
+      "question": "If a real polynomial has root 2+3i, what else is a root?",
+      "answer": "2−3i, its conjugate."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "3.1",
+    "3.3",
+    "3.7"
+  ]
 }

@@ -1,0 +1,158 @@
+{
+  "id": "3.5",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Integration",
+  "contentDepth": "full",
+  "overview": "Use integration by parts, substitution and partial fractions to integrate a wider range of functions, including trig integrals. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Integrate exponential, logarithmic and trigonometric forms using reverse differentiation.",
+    "Use substitution, integration by parts and partial fractions.",
+    "Evaluate definite integrals and recognise when bounds must change.",
+    "Select and combine techniques for unfamiliar integrands."
+  ],
+  "definitions": [
+    {
+      "term": "Substitution",
+      "definition": "Replacing an expression by a new variable to simplify an integral."
+    },
+    {
+      "term": "Integration by parts",
+      "definition": "A product-rule rearrangement used to integrate products."
+    },
+    {
+      "term": "Definite integral",
+      "definition": "A signed accumulated quantity evaluated between fixed limits."
+    },
+    {
+      "term": "Partial fractions",
+      "definition": "A decomposition that turns a rational expression into simpler integrable terms."
+    },
+    {
+      "term": "Constant of integration",
+      "definition": "The arbitrary constant required for an indefinite integral."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-standard-reverse-derivatives",
+      "title": "Standard reverse derivatives",
+      "content": [
+        "Recognise ∫f′(x)/f(x) dx=ln|f(x)|+C and ∫eᵃˣ⁺ᵇ dx=eᵃˣ⁺ᵇ/a+C. Similarly account for the inner derivative in sin(ax+b), cos(ax+b) and sec²(ax+b)."
+      ],
+      "bullets": [
+        "Use ln|f(x)| unless the domain guarantees f(x)>0.",
+        "Differentiate the result mentally to check the scale factor."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Integration by parts: ∫u(dv/dx)dx=uv−∫v(du/dx)dx"
+        }
+      ]
+    },
+    {
+      "id": "02-substitution",
+      "title": "Substitution",
+      "content": [
+        "Choose u for the repeated inner expression, calculate du, and rewrite every x and dx term. For definite integrals either change both limits to u-values or return fully to x before applying the original limits."
+      ],
+      "bullets": [
+        "A substitution is incomplete if x remains in the new integrand.",
+        "Write new bounds beside u=… to avoid mixing variables."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-integration-by-parts",
+      "title": "Integration by parts",
+      "content": [
+        "Use ∫u(dv/dx)dx=uv−∫v(du/dx)dx. Choose u so it becomes simpler when differentiated—commonly logarithmic or algebraic before trig/exponential. Repeated use may be needed."
+      ],
+      "bullets": [
+        "For ∫ln x dx, take dv/dx=1.",
+        "Keep brackets around the second integral to protect the minus sign."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-partial-fractions-and-trig-identities",
+      "title": "Partial fractions and trig identities",
+      "content": [
+        "Decompose rational functions before integrating; repeated linear terms lead to powers such as (ax+b)⁻². For sin²x or cos²x use double-angle identities. Some integrals need a sequence: algebraic division, partial fractions, then standard forms."
+      ],
+      "bullets": [
+        "A 1/(x²+a²) term integrates to an arctangent form.",
+        "Simplify the integrand before choosing a method."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Integration by parts",
+      "expression": "∫u(dv/dx)dx=uv−∫v(du/dx)dx"
+    },
+    {
+      "label": "Log derivative",
+      "expression": "∫f′(x)/f(x) dx=ln|f(x)|+C"
+    },
+    {
+      "label": "Inverse tangent form",
+      "expression": "∫1/(x²+a²) dx=(1/a)tan⁻¹(x/a)+C"
+    },
+    {
+      "label": "Trig squares",
+      "expression": "sin²x=(1−cos2x)/2; cos²x=(1+cos2x)/2"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Integration: revision route",
+    "type": "flow",
+    "nodes": [
+      "Standard reverse derivatives",
+      "Substitution",
+      "Integration by parts",
+      "Partial fractions and trig identities"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Include +C for every indefinite integral, but not for a definite value.",
+    "After a difficult integral, differentiate your antiderivative to verify it.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using old x-limits after changing the variable to u.",
+    "Missing the inner derivative scale factor.",
+    "Applying integration by parts when a simple substitution is available."
+  ],
+  "quickRecall": [
+    {
+      "question": "When should limits be changed in substitution?",
+      "answer": "When the integral is rewritten in the new variable; otherwise return completely to x before using x-limits."
+    },
+    {
+      "question": "What is a strong choice for u in ∫x eˣ dx?",
+      "answer": "Choose u=x because differentiation simplifies it, and integrate eˣ as dv/dx."
+    },
+    {
+      "question": "Which pattern gives a logarithm?",
+      "answer": "An integrand of the form f′(x)/f(x)."
+    },
+    {
+      "question": "How can ∫cos²x dx be made integrable?",
+      "answer": "Use cos²x=(1+cos2x)/2."
+    }
+  ],
+  "relatedTopics": [
+    "3.1",
+    "3.4",
+    "3.8"
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "23",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Chemical energetics",
+  "contentDepth": "full",
+  "overview": "Use Born-Haber cycles and lattice energy, and consider entropy and Gibbs free energy to judge whether a reaction is feasible. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Define and use lattice energy, atomisation enthalpy, electron affinity and hydration enthalpy.",
+    "Construct Born–Haber and enthalpy-of-solution cycles.",
+    "Explain lattice-energy and hydration trends using ionic charge and radius.",
+    "Use entropy and ΔG°=ΔH°−TΔS° to assess thermodynamic feasibility."
+  ],
+  "definitions": [
+    {
+      "term": "Lattice energy",
+      "definition": "The enthalpy change when 1 mol of an ionic solid forms from its gaseous ions under standard conditions."
+    },
+    {
+      "term": "Atomisation enthalpy",
+      "definition": "The enthalpy change when 1 mol of gaseous atoms forms from the element in its standard state."
+    },
+    {
+      "term": "Electron affinity",
+      "definition": "The enthalpy change when 1 mol of gaseous atoms gains electrons to form gaseous anions."
+    },
+    {
+      "term": "Hydration enthalpy",
+      "definition": "The enthalpy change when 1 mol of gaseous ions becomes aqueous ions under standard conditions."
+    },
+    {
+      "term": "Entropy",
+      "definition": "A measure related to the dispersal of energy and the number of accessible arrangements."
+    },
+    {
+      "term": "Gibbs free-energy change",
+      "definition": "ΔG, the thermodynamic quantity used to judge feasibility at a stated temperature."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-born-haber-cycles",
+      "title": "Born–Haber cycles",
+      "content": [
+        "Build the ionic solid from elements through atomisation, ionisation, electron gain and lattice formation. Hess's law makes the signed sum equal to ΔHf°. If a second electron affinity or ionisation energy is needed, include it as a separate endothermic step."
+      ],
+      "bullets": [
+        "Write a chemical equation beside every enthalpy term.",
+        "Use the syllabus convention: lattice formation is usually exothermic and negative."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Born–Haber balance: ΔHf°=sum of atomisation + ionisation + electron-affinity + lattice steps"
+        }
+      ]
+    },
+    {
+      "id": "02-lattice-and-hydration-trends",
+      "title": "Lattice and hydration trends",
+      "content": [
+        "Higher ionic charge and smaller ionic radius increase electrostatic attraction, making lattice energy and hydration enthalpy more negative. Comparing experimental and theoretical lattice energies can indicate extra covalent character caused by polarisation."
+      ],
+      "bullets": [
+        "Compare charge density, not only ionic size.",
+        "A small highly charged cation strongly polarises a large anion."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-dissolving-ionic-solids",
+      "title": "Dissolving ionic solids",
+      "content": [
+        "An enthalpy-of-solution cycle combines lattice dissociation with hydration of each gaseous ion. ΔHsol° alone does not determine solubility because entropy also matters, but it explains the energetic balance."
+      ],
+      "bullets": [
+        "Reverse lattice formation when breaking the solid into gaseous ions.",
+        "Include hydration once per mole of each ion in the formula."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-entropy-and-gibbs-energy",
+      "title": "Entropy and Gibbs energy",
+      "content": [
+        "Calculate ΔS°=ΣS°products−ΣS°reactants, convert J K⁻¹ mol⁻¹ to kJ K⁻¹ mol⁻¹ when combining with ΔH, then use ΔG°=ΔH°−TΔS°. ΔG°<0 indicates thermodynamic feasibility under the stated conditions, not a fast rate."
+      ],
+      "bullets": [
+        "Temperature must be in kelvin.",
+        "A positive ΔG° does not prove a reaction is impossible under all non-standard conditions."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Born–Haber balance",
+      "expression": "ΔHf°=sum of atomisation + ionisation + electron-affinity + lattice steps"
+    },
+    {
+      "label": "Solution cycle",
+      "expression": "ΔHsol°=−ΔHlatt°+ΣΔHhyd°",
+      "note": "When ΔHlatt° is defined for lattice formation."
+    },
+    {
+      "label": "Entropy change",
+      "expression": "ΔS°=ΣS°(products)−ΣS°(reactants)"
+    },
+    {
+      "label": "Gibbs equation",
+      "expression": "ΔG°=ΔH°−TΔS°"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Chemical energetics: revision route",
+    "type": "flow",
+    "nodes": [
+      "Born–Haber cycles",
+      "Lattice and hydration trends",
+      "Dissolving ionic solids",
+      "Entropy and Gibbs energy"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Draw arrows in an enthalpy cycle and let their directions determine signs.",
+    "Separate feasibility from rate in every explanation.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Using lattice dissociation and lattice formation signs interchangeably.",
+    "Combining ΔH in kJ with ΔS in J.",
+    "Claiming an exothermic reaction is automatically feasible at every temperature."
+  ],
+  "quickRecall": [
+    {
+      "question": "What makes lattice energy more negative?",
+      "answer": "Larger ionic charges and smaller ionic radii."
+    },
+    {
+      "question": "Why is the second electron affinity endothermic?",
+      "answer": "An electron is forced onto an already negative ion, so electrostatic repulsion must be overcome."
+    },
+    {
+      "question": "What does ΔG°<0 mean?",
+      "answer": "The process is thermodynamically feasible under the stated standard conditions; it says nothing about speed."
+    },
+    {
+      "question": "Which unit conversion is commonly missed in ΔG calculations?",
+      "answer": "Convert ΔS from J K⁻¹ mol⁻¹ to kJ K⁻¹ mol⁻¹ if ΔH is in kJ mol⁻¹."
+    }
+  ],
+  "relatedTopics": [
+    "5",
+    "25",
+    "27"
+  ]
+}

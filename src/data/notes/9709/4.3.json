@@ -1,0 +1,153 @@
+{
+  "id": "4.3",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "M1",
+  "unitTitle": "Mechanics",
+  "title": "Momentum",
+  "contentDepth": "full",
+  "overview": "Apply conservation of momentum and impulse to collisions between particles. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use linear momentum p=mv as a vector in one dimension.",
+    "Apply conservation of momentum to direct impacts.",
+    "Handle particles that coalesce after collision.",
+    "Interpret signs and check whether the proposed post-collision motion is possible."
+  ],
+  "definitions": [
+    {
+      "term": "Linear momentum",
+      "definition": "Mass multiplied by velocity; its direction follows the velocity."
+    },
+    {
+      "term": "Direct impact",
+      "definition": "A collision in which motion is along one straight line."
+    },
+    {
+      "term": "Conservation of momentum",
+      "definition": "Total momentum is unchanged when external impulse during the interaction is negligible."
+    },
+    {
+      "term": "Coalescence",
+      "definition": "Bodies join and move with a common velocity after impact."
+    },
+    {
+      "term": "System",
+      "definition": "The collection of bodies chosen for a conservation equation."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-momentum-as-a-vector",
+      "title": "Momentum as a vector",
+      "content": [
+        "Choose a positive direction and write each momentum as mv with a signed velocity. Momentum has units kg m s⁻¹. A negative result means motion opposite to the chosen direction, not negative speed."
+      ],
+      "bullets": [
+        "Mass is always positive.",
+        "Use velocities immediately before and immediately after impact."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Momentum: p=mv"
+        }
+      ]
+    },
+    {
+      "id": "02-conservation-equation",
+      "title": "Conservation equation",
+      "content": [
+        "For an isolated impact, total momentum before equals total momentum after. Include every body in the chosen system and keep the same positive direction on both sides."
+      ],
+      "bullets": [
+        "Internal impact forces cancel in the system total.",
+        "External forces are neglected only over the short collision time."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-coalescing-particles",
+      "title": "Coalescing particles",
+      "content": [
+        "If masses m₁ and m₂ stick together, their final mass is m₁+m₂ and they share velocity v: m₁u₁+m₂u₂=(m₁+m₂)v. The kinetic energy usually decreases, even though momentum is conserved."
+      ],
+      "bullets": [
+        "Do not conserve kinetic energy unless justified.",
+        "Check whether v lies between the incoming signed velocities when appropriate."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-scope-and-interpretation",
+      "title": "Scope and interpretation",
+      "content": [
+        "This component examines one-dimensional direct impact and conservation. Impulse and coefficient of restitution are not required by the 2026–2027 Paper 4 syllabus. Focus on a clean before/after diagram and a signed momentum equation."
+      ],
+      "bullets": [
+        "Report direction with the final velocity.",
+        "A body may reverse direction after impact."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Momentum",
+      "expression": "p=mv"
+    },
+    {
+      "label": "Conservation",
+      "expression": "Σ(momentum before)=Σ(momentum after)"
+    },
+    {
+      "label": "Coalescence",
+      "expression": "m₁u₁+m₂u₂=(m₁+m₂)v"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Momentum: revision route",
+    "type": "flow",
+    "nodes": [
+      "Momentum as a vector",
+      "Conservation equation",
+      "Coalescing particles",
+      "Scope and interpretation"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Draw a before/after line diagram with arrows before writing momentum equations.",
+    "State the final direction when a calculated velocity is negative.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using speeds without signs.",
+    "Forgetting to combine masses when particles stick.",
+    "Assuming momentum conservation means kinetic-energy conservation."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why are velocities signed in momentum work?",
+      "answer": "Momentum is a vector, so direction must be represented."
+    },
+    {
+      "question": "What common velocity applies after coalescence?",
+      "answer": "Both bodies move with one velocity v and combined mass m₁+m₂."
+    },
+    {
+      "question": "Is kinetic energy always conserved in Paper 4 impacts?",
+      "answer": "No. Momentum is conserved for the isolated system; kinetic energy may be lost."
+    },
+    {
+      "question": "Are impulse and restitution required here?",
+      "answer": "No; they are outside the stated 2026–2027 Mechanics content."
+    }
+  ],
+  "relatedTopics": [
+    "4.2",
+    "4.4"
+  ]
+}

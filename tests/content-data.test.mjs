@@ -10,5 +10,5 @@ test("all subject, note, search and paper data passes validation", () => {
     cwd: root,
     encoding: "utf8",
   });
-  assert.match(output, /Data valid: 4 subjects, 153 topics, 52 detailed notes, 919 paper records/);
+  assert.match(output, /Data valid: 4 subjects, 153 topics, 89 detailed notes, 919 paper records/);
 });

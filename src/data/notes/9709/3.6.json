@@ -1,0 +1,153 @@
+{
+  "id": "3.6",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Numerical solution of equations",
+  "contentDepth": "full",
+  "overview": "Apply iterative methods to harder equations, justifying convergence and the accuracy of your final answer. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Locate roots using graphs or a sign change.",
+    "Relate xₙ₊₁=F(xₙ) to the equation being solved.",
+    "Carry out iterations accurately and recognise possible failure to converge.",
+    "Justify a root to a prescribed degree of accuracy."
+  ],
+  "definitions": [
+    {
+      "term": "Root",
+      "definition": "A value α for which f(α)=0."
+    },
+    {
+      "term": "Iteration",
+      "definition": "Repeatedly applying xₙ₊₁=F(xₙ) to generate approximations."
+    },
+    {
+      "term": "Convergence",
+      "definition": "The approximations approach a fixed limiting value."
+    },
+    {
+      "term": "Sign change",
+      "definition": "f(a) and f(b) have opposite signs, guaranteeing at least one root in (a,b) when f is continuous."
+    },
+    {
+      "term": "Fixed point",
+      "definition": "A value α satisfying α=F(α)."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-locating-a-root",
+      "title": "Locating a root",
+      "content": [
+        "For continuous f, calculate f(a) and f(b). If f(a)f(b)<0, at least one root lies between a and b. A graph helps choose a sensible interval, but a sign change alone does not prove uniqueness."
+      ],
+      "bullets": [
+        "State continuity when giving a formal sign-change justification.",
+        "An even-multiplicity root may touch the axis without changing sign."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Sign-change test: f(a)f(b)<0 ⇒ at least one root in (a,b), if f is continuous"
+        }
+      ]
+    },
+    {
+      "id": "02-building-an-iteration",
+      "title": "Building an iteration",
+      "content": [
+        "Rearrange f(x)=0 into x=F(x), then use xₙ₊₁=F(xₙ). Different rearrangements can converge, oscillate or diverge. Use the starting value given and retain calculator precision through the table."
+      ],
+      "bullets": [
+        "Show enough consecutive values for the examiner to follow the process.",
+        "Do not replace F(xₙ) with f(xₙ)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-understanding-convergence",
+      "title": "Understanding convergence",
+      "content": [
+        "A convergent sequence settles near a fixed point α where α=F(α). Cobweb thinking explains why some iterations move toward the intersection y=F(x), y=x and others move away; the syllabus expects recognition of failure even if the derivative test is not required."
+      ],
+      "bullets": [
+        "Oscillation may still converge if its size shrinks.",
+        "A calculator error message can indicate the rearrangement leaves its valid domain."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-proving-the-stated-accuracy",
+      "title": "Proving the stated accuracy",
+      "content": [
+        "A rounded decimal needs a bracket around the true root. For a value r correct to k decimal places, test the half-unit boundaries r±0.5×10⁻ᵏ and show f changes sign there, assuming continuity and a single relevant root."
+      ],
+      "bullets": [
+        "Repeated equal displayed iterates suggest accuracy but do not by themselves prove it.",
+        "Use unrounded boundaries and function values."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Sign-change test",
+      "expression": "f(a)f(b)<0 ⇒ at least one root in (a,b), if f is continuous"
+    },
+    {
+      "label": "Iteration",
+      "expression": "xₙ₊₁=F(xₙ)"
+    },
+    {
+      "label": "Rounding bracket",
+      "expression": "r−0.5×10⁻ᵏ < α < r+0.5×10⁻ᵏ"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Numerical solution of equations: revision route",
+    "type": "flow",
+    "nodes": [
+      "Locating a root",
+      "Building an iteration",
+      "Understanding convergence",
+      "Proving the stated accuracy"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Keep full calculator precision during iteration and round only the requested final value.",
+    "Write f(a) and f(b) with their signs, not only the product.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Claiming a sign change proves there is exactly one root.",
+    "Using rounded iterates inside later iterations.",
+    "Proving accuracy with endpoints that do not match the requested rounding interval."
+  ],
+  "quickRecall": [
+    {
+      "question": "What must accompany a sign change to guarantee a root?",
+      "answer": "Continuity of f on the interval."
+    },
+    {
+      "question": "What equation does the limit of xₙ₊₁=F(xₙ) satisfy?",
+      "answer": "The fixed-point equation α=F(α)."
+    },
+    {
+      "question": "How do you justify a root to 3 decimal places?",
+      "answer": "Show a sign change at the two rounding boundaries r±0.0005, with the relevant continuity/uniqueness context."
+    },
+    {
+      "question": "Can a root exist without a sign change?",
+      "answer": "Yes; an even-multiplicity root can touch the axis and turn back."
+    }
+  ],
+  "relatedTopics": [
+    "3.1",
+    "3.2"
+  ]
+}

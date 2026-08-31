@@ -1,0 +1,166 @@
+{
+  "id": "6.5",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "S2",
+  "unitTitle": "Probability & Statistics 2",
+  "title": "Hypothesis tests",
+  "contentDepth": "full",
+  "overview": "Set up null and alternative hypotheses, use a critical region or p-value, and draw a conclusion in the context of the question. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "State H₀ and H₁ and choose one- or two-tailed tests.",
+    "Use exact binomial/Poisson probabilities or suitable normal approximations.",
+    "Test a population mean with known variance or a large sample.",
+    "Calculate and interpret Type I and Type II error probabilities."
+  ],
+  "definitions": [
+    {
+      "term": "Null hypothesis",
+      "definition": "H₀, the model or parameter value tested as the default claim."
+    },
+    {
+      "term": "Alternative hypothesis",
+      "definition": "H₁, the direction or difference supported if H₀ is rejected."
+    },
+    {
+      "term": "Significance level",
+      "definition": "The maximum chosen probability of rejecting H₀ when it is true."
+    },
+    {
+      "term": "Critical region",
+      "definition": "Test-statistic values that lead to rejection of H₀."
+    },
+    {
+      "term": "p-value",
+      "definition": "The probability under H₀ of an outcome at least as extreme as observed in the direction(s) of H₁."
+    },
+    {
+      "term": "Type I error",
+      "definition": "Rejecting a true H₀."
+    },
+    {
+      "term": "Type II error",
+      "definition": "Failing to reject a false H₀ under a specified alternative."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-setting-up-the-test",
+      "title": "Setting up the test",
+      "content": [
+        "Define the parameter, write H₀ with equality, and make H₁ match the claim. 'Increased' gives an upper tail, 'decreased' a lower tail, and 'changed' two tails. The test calculation always uses the H₀ parameter."
+      ],
+      "bullets": [
+        "Use population parameters, not sample statistics, in hypotheses.",
+        "Choose the tail before seeing the result."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Mean test statistic: Z=(X̄−μ₀)/(σ/√n)"
+        }
+      ]
+    },
+    {
+      "id": "02-discrete-tests",
+      "title": "Discrete tests",
+      "content": [
+        "For X binomial or Poisson, find the probability of the observed result or something more extreme under H₀. Reject if that p-value is ≤α. A critical region is chosen so its H₀ probability is at most α; discreteness means the actual size may be smaller."
+      ],
+      "bullets": [
+        "For two tails, identify both extremes rather than blindly doubling if the distribution is asymmetric.",
+        "State the actual critical-region probability when requested."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-normal-and-mean-tests",
+      "title": "Normal and mean tests",
+      "content": [
+        "Use a continuity-corrected normal approximation for binomial/Poisson when conditions hold. For a mean, standardise Z=(X̄−μ₀)/(σ/√n), using s for σ in a large-sample setting as allowed, then compare with the relevant critical value or p-value."
+      ],
+      "bullets": [
+        "Put μ₀ from H₀ in the numerator.",
+        "A two-tailed α test places α/2 in each tail."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-errors-and-conclusions",
+      "title": "Errors and conclusions",
+      "content": [
+        "Type I probability is the rejection-region probability under H₀. Type II probability is the acceptance-region probability under a specified alternative. Finish with 'reject H₀' or 'do not reject H₀', followed by a contextual evidence statement—never say H₀ is proved."
+      ],
+      "bullets": [
+        "Power=1−P(Type II error).",
+        "The conclusion must use the direction in H₁."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Mean test statistic",
+      "expression": "Z=(X̄−μ₀)/(σ/√n)"
+    },
+    {
+      "label": "Decision by p-value",
+      "expression": "reject H₀ when p≤α"
+    },
+    {
+      "label": "Type I error",
+      "expression": "P(rejection region | H₀ true)"
+    },
+    {
+      "label": "Type II error",
+      "expression": "P(acceptance region | specified H₁ true)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Hypothesis tests: revision route",
+    "type": "flow",
+    "nodes": [
+      "Setting up the test",
+      "Discrete tests",
+      "Normal and mean tests",
+      "Errors and conclusions"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write hypotheses and significance level before calculating probabilities.",
+    "End with a decision and a separate sentence in the language of the question.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Saying 'accept H₀' or 'prove H₀'.",
+    "Using the observed sample proportion instead of the H₀ probability in a binomial test.",
+    "Forgetting α/2 in each tail of a two-tailed normal test."
+  ],
+  "quickRecall": [
+    {
+      "question": "Where does equality belong in hypotheses?",
+      "answer": "In H₀."
+    },
+    {
+      "question": "What tail matches 'the mean has decreased'?",
+      "answer": "A lower-tailed test."
+    },
+    {
+      "question": "What is a Type I error?",
+      "answer": "Rejecting H₀ when H₀ is true."
+    },
+    {
+      "question": "How should a non-significant result be stated?",
+      "answer": "Do not reject H₀; there is insufficient evidence for the contextual alternative claim."
+    }
+  ],
+  "relatedTopics": [
+    "5.5",
+    "6.1",
+    "6.4"
+  ]
+}

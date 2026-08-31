@@ -59,7 +59,14 @@ for (const subject of subjects) {
           ...section.bullets.map((text) => ({ kind: "Content", label: section.title, text })),
           ...section.examples.map((example) => ({ kind: "Example", label: section.title, text: example.content })),
         ]),
-        ...(note?.quickRecall ?? topic.focusPoints).map((text) => ({ kind: "Quick recall", text })),
+        ...(note?.quickRecall ?? topic.focusPoints).flatMap((item) =>
+          typeof item === "string"
+            ? [{ kind: "Quick recall", text: item }]
+            : [
+                { kind: "Quick recall question", text: item.question },
+                { kind: "Quick recall answer", label: item.question, text: item.answer },
+              ],
+        ),
       ];
       searchIndex.push({
         key,

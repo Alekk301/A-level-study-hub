@@ -1,0 +1,162 @@
+{
+  "id": "24",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Electrochemistry",
+  "contentDepth": "full",
+  "overview": "Use standard electrode potentials to calculate cell potentials and predict whether a redox reaction is feasible. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Define standard electrode potential and use the standard hydrogen electrode.",
+    "Write cell notation and calculate E°cell.",
+    "Predict the feasible redox direction and discuss limitations of E° predictions.",
+    "Use Q=It and F to calculate quantities in electrolysis."
+  ],
+  "definitions": [
+    {
+      "term": "Standard electrode potential",
+      "definition": "The emf of a half-cell relative to the standard hydrogen electrode under standard conditions, written as a reduction."
+    },
+    {
+      "term": "Standard hydrogen electrode",
+      "definition": "The reference half-cell with E°=0.00 V."
+    },
+    {
+      "term": "Salt bridge",
+      "definition": "An ionic connection that completes the circuit and maintains electrical neutrality without bulk mixing."
+    },
+    {
+      "term": "Cell potential",
+      "definition": "The potential difference between two half-cells."
+    },
+    {
+      "term": "Faraday constant",
+      "definition": "The charge carried by 1 mol of electrons, approximately 9.65×10⁴ C mol⁻¹."
+    },
+    {
+      "term": "Electrolysis",
+      "definition": "Using electrical energy to drive a non-spontaneous redox process."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-half-cells-and-standard-conditions",
+      "title": "Half-cells and standard conditions",
+      "content": [
+        "Standard E° values refer to 298 K, solutions at 1 mol dm⁻³ and gases at 100 kPa, measured against the hydrogen electrode. Tables show reduction half-equations; a more positive E° means a greater tendency to be reduced."
+      ],
+      "bullets": [
+        "An inert Pt electrode is needed when no conducting solid redox species is present.",
+        "Electrons travel through the wire; ions move through the salt bridge."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Cell potential: E°cell=E°cathode−E°anode"
+        }
+      ]
+    },
+    {
+      "id": "02-cell-notation-and-e-cell",
+      "title": "Cell notation and E°cell",
+      "content": [
+        "Write the oxidation half-cell on the left and reduction half-cell on the right, with phase boundaries | and a salt bridge ||. Calculate E°cell=E°right−E°left using reduction potentials. Balance electrons only for the overall equation; never multiply E° values by stoichiometric coefficients."
+      ],
+      "bullets": [
+        "The cathode is reduction and the anode is oxidation.",
+        "Include states in half-equations."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-feasibility-and-limitations",
+      "title": "Feasibility and limitations",
+      "content": [
+        "A positive E°cell predicts a thermodynamically feasible forward reaction under standard conditions. Actual behaviour can differ because concentrations, gas pressures and temperature are non-standard, reactions are kinetically slow, or activation energy is high."
+      ],
+      "bullets": [
+        "Choose the oxidising agent from the more positive reduction potential.",
+        "Do not use E° alone to predict rate."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-quantitative-electrolysis",
+      "title": "Quantitative electrolysis",
+      "content": [
+        "Charge Q=It. Moles of electrons equal Q/F; use the balanced electrode half-equation to convert electron moles to product moles, then to mass or gas volume. Current in amperes is coulombs per second."
+      ],
+      "bullets": [
+        "Convert minutes to seconds.",
+        "Use the electron coefficient from the half-equation, not the overall equation blindly."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Cell potential",
+      "expression": "E°cell=E°cathode−E°anode"
+    },
+    {
+      "label": "Charge",
+      "expression": "Q=It"
+    },
+    {
+      "label": "Electron amount",
+      "expression": "n(e⁻)=Q/F"
+    },
+    {
+      "label": "Faraday constant",
+      "expression": "F≈9.65×10⁴ C mol⁻¹"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Electrochemistry: revision route",
+    "type": "flow",
+    "nodes": [
+      "Half-cells and standard conditions",
+      "Cell notation and E°cell",
+      "Feasibility and limitations",
+      "Quantitative electrolysis"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write both half-equations before selecting the direction and calculating E°cell.",
+    "State standard-condition and kinetic limitations when evaluating a prediction.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Adding two reduction potentials without reversing the oxidation direction conceptually.",
+    "Multiplying E° by the electron coefficient.",
+    "Using time in minutes in Q=It."
+  ],
+  "quickRecall": [
+    {
+      "question": "Which half-cell is on the right in standard cell notation?",
+      "answer": "The reduction half-cell (cathode)."
+    },
+    {
+      "question": "Why are E° values not multiplied when a half-equation is scaled?",
+      "answer": "Potential is an intensive quantity; scaling amount does not scale voltage."
+    },
+    {
+      "question": "What does positive E°cell predict?",
+      "answer": "Thermodynamic feasibility of the written cell reaction under standard conditions."
+    },
+    {
+      "question": "How are moles of electrons found from current and time?",
+      "answer": "Calculate Q=It, then divide by F."
+    }
+  ],
+  "relatedTopics": [
+    "6",
+    "23",
+    "28"
+  ]
+}

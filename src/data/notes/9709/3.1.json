@@ -1,0 +1,155 @@
+{
+  "id": "3.1",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Algebra",
+  "contentDepth": "full",
+  "overview": "Extend algebraic technique to harder polynomials, partial fractions with repeated or quadratic factors, and the general binomial expansion for any rational n. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Solve equations and inequalities involving |ax + b| and interpret modulus graphs.",
+    "Divide polynomials of degree at most 4 and use the factor and remainder theorems.",
+    "Decompose proper rational functions into partial fractions, including repeated linear and irreducible quadratic factors.",
+    "Expand (1 + x)ⁿ for rational n and state the interval of validity after any substitution."
+  ],
+  "definitions": [
+    {
+      "term": "Modulus",
+      "definition": "|x| is the non-negative distance of x from 0."
+    },
+    {
+      "term": "Remainder theorem",
+      "definition": "The remainder when f(x) is divided by x − a is f(a)."
+    },
+    {
+      "term": "Factor theorem",
+      "definition": "x − a is a factor of f(x) exactly when f(a) = 0."
+    },
+    {
+      "term": "Proper fraction",
+      "definition": "A rational expression whose numerator has lower degree than its denominator."
+    },
+    {
+      "term": "Binomial series",
+      "definition": "An expansion of (1 + x)ⁿ that is infinite when n is not a non-negative integer."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-modulus-equations-and-inequalities",
+      "title": "Modulus equations and inequalities",
+      "content": [
+        "Treat |u| as a distance. For b > 0, |u| = b gives u = ±b, |u| < b gives −b < u < b, and |u| > b gives u < −b or u > b. For expressions on both sides, critical points or squaring can help, but every solution must satisfy the original relation."
+      ],
+      "bullets": [
+        "Sketch y = |ax + b| by reflecting negative y-values above the x-axis.",
+        "Use interval notation or a number line to communicate inequality answers clearly."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Modulus interval: |x − a| < b ⇔ a − b < x < a + b"
+        }
+      ]
+    },
+    {
+      "id": "02-polynomial-division-and-theorems",
+      "title": "Polynomial division and theorems",
+      "content": [
+        "Write missing powers with zero coefficients before long division. If f(x) = (x − a)q(x) + r, then r = f(a). Use known factors to reduce a cubic or quartic, then solve the remaining factor completely."
+      ],
+      "bullets": [
+        "For a divisor ax + b, test x = −b/a.",
+        "Match coefficients only after expanding both sides in descending powers."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-partial-fractions",
+      "title": "Partial fractions",
+      "content": [
+        "First check that the fraction is proper. Use A/(ax+b) + B/(cx+d) for distinct linear factors, A/(ax+b) + B/(ax+b)² for a repeated factor, and (Bx+C)/(x²+d) over an irreducible quadratic. Cover-up works for simple linear factors; substitution and coefficient comparison finish the rest."
+      ],
+      "bullets": [
+        "Polynomial division comes before decomposition when degrees are equal or numerator degree is larger.",
+        "A quadratic denominator needs a linear numerator."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-general-binomial-expansion",
+      "title": "General binomial expansion",
+      "content": [
+        "Use (1 + x)ⁿ = 1 + nx + n(n−1)x²/2! + n(n−1)(n−2)x³/3! + ⋯. Rewrite expressions into this form first. The series is valid for |x| < 1, so after substituting x = g(t), solve |g(t)| < 1."
+      ],
+      "bullets": [
+        "Keep exact fractional coefficients until the final line.",
+        "Only include the requested highest power; cross-terms can contribute to it."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Modulus interval",
+      "expression": "|x − a| < b ⇔ a − b < x < a + b",
+      "note": "For b > 0."
+    },
+    {
+      "label": "Remainder theorem",
+      "expression": "f(x) = (x − a)q(x) + f(a)"
+    },
+    {
+      "label": "General binomial",
+      "expression": "(1 + x)ⁿ = 1 + nx + n(n−1)x²/2! + ⋯",
+      "note": "Valid for |x| < 1 when the expansion is infinite."
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Algebra: revision route",
+    "type": "flow",
+    "nodes": [
+      "Modulus equations and inequalities",
+      "Polynomial division and theorems",
+      "Partial fractions",
+      "General binomial expansion"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "State the range of x for every infinite binomial expansion.",
+    "When a factor is ax + b, use its root −b/a rather than b.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Decomposing an improper rational expression before polynomial division.",
+    "Putting a constant numerator above an irreducible quadratic factor.",
+    "Forgetting that a strict modulus inequality gives strict endpoints."
+  ],
+  "quickRecall": [
+    {
+      "question": "What partial-fraction numerator belongs above an irreducible quadratic?",
+      "answer": "Use a linear numerator, for example (Bx + C)/(x² + d)."
+    },
+    {
+      "question": "How do you test whether x − a is a factor?",
+      "answer": "Calculate f(a); it is a factor exactly when f(a) = 0."
+    },
+    {
+      "question": "What is the validity condition for a general binomial expansion?",
+      "answer": "The substituted quantity playing the role of x must have modulus less than 1."
+    },
+    {
+      "question": "Why check modulus solutions?",
+      "answer": "Squaring or splitting cases can introduce values that do not satisfy the original equation or inequality."
+    }
+  ],
+  "relatedTopics": [
+    "3.5",
+    "3.9"
+  ]
+}
