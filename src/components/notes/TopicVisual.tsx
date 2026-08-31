@@ -1,8 +1,19 @@
+/* eslint-disable @next/next/no-img-element -- Local educational SVGs retain their original aspect ratios and do not need image optimisation. */
+
 export type TopicVisualLayout = "curve" | "flow" | "tree" | "stack" | "matrix" | "cell";
 
 export interface TopicVisualNode {
   label: string;
   detail: string;
+}
+
+export interface TopicVisualImage {
+  src: string;
+  alt: string;
+  author: string;
+  sourceUrl: string;
+  license: string;
+  licenseUrl: string;
 }
 
 export interface TopicVisualSpec {
@@ -13,6 +24,7 @@ export interface TopicVisualSpec {
   layout: TopicVisualLayout;
   variant?: "trig" | "derivative" | "integral" | "normal" | "hypothesis" | "energy" | "kinetics" | "spectrum";
   nodes: TopicVisualNode[];
+  image?: TopicVisualImage;
   examLink: string;
 }
 
@@ -20,6 +32,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9709", topic: "3.3", title: "Reading a trigonometric graph", layout: "curve", variant: "trig",
     description: "Amplitude controls vertical scale, while period controls horizontal repetition. Phase changes move the graph without changing its shape.",
+    image: {
+      src: "/diagrams/unit-circle.svg",
+      alt: "Unit circle showing a radius at angle t and the point with coordinates cosine t and sine t.",
+      author: "Gustavb",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Unit_circle.svg",
+      license: "Public domain",
+      licenseUrl: "https://commons.wikimedia.org/wiki/File:Unit_circle.svg#Licensing",
+    },
     nodes: [], examLink: "Mark one complete cycle first; transformed intercepts and turning points then follow from the period and phase shift.",
   },
   {
@@ -63,6 +83,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9709", topic: "5.5", title: "Standardising a normal variable", layout: "curve", variant: "normal",
     description: "The standard score measures displacement from the mean in standard deviations: z = (x − μ)/σ.",
+    image: {
+      src: "/diagrams/normal-distribution.svg",
+      alt: "Accurate plot of the standard normal probability density function from minus four to four.",
+      author: "Geek3",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Normal_distribution.svg",
+      license: "CC BY 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+    },
     nodes: [], examLink: "Sketch and shade the required tail before using tables or a calculator; this prevents complement errors.",
   },
   {
@@ -78,6 +106,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9701", topic: "24", title: "Electrochemical cell map", layout: "cell",
     description: "Oxidation releases electrons at the negative electrode; reduction consumes them at the positive electrode. The salt bridge preserves charge balance.",
+    image: {
+      src: "/diagrams/galvanic-cell.svg",
+      alt: "Labelled Daniell galvanic cell with zinc and copper half-cells, salt bridge, ion movement and electron flow.",
+      author: "Rehua",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Galvanic_cell_labeled.svg",
+      license: "CC BY 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+    },
     nodes: [
       { label: "Negative electrode", detail: "Oxidation: Red → Ox + e⁻" },
       { label: "Positive electrode", detail: "Reduction: Ox + e⁻ → Red" },
@@ -165,6 +201,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9618", topic: "16.1", title: "Operating-system layers", layout: "stack",
     description: "Applications request services through the operating system; the kernel manages protected access to processor time, memory, files and devices.",
+    image: {
+      src: "/diagrams/operating-system-architecture.svg",
+      alt: "Operating-system architecture showing applications, utilities, the operating system and hardware layers.",
+      author: "Skjackey tse",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Operating_system_architecture.svg",
+      license: "Public domain",
+      licenseUrl: "https://commons.wikimedia.org/wiki/File:Operating_system_architecture.svg#Licensing",
+    },
     nodes: [
       { label: "Applications", detail: "Use APIs and system calls rather than controlling hardware directly." },
       { label: "User interface and utilities", detail: "Provide interaction and maintenance tools." },
@@ -195,6 +239,14 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
   {
     subject: "9609", topic: "6.2", title: "Strategy as a controlled cycle", layout: "flow",
     description: "Strategy links analysis to objectives, choice, implementation and review. Feedback matters because assumptions and the external environment change.",
+    image: {
+      src: "/diagrams/swot-analysis.svg",
+      alt: "SWOT analysis matrix separating internal strengths and weaknesses from external opportunities and threats.",
+      author: "Xhienne",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:SWOT_en.svg",
+      license: "CC BY-SA 2.5",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.5/",
+    },
     nodes: [
       { label: "Analyse", detail: "Assess internal capability and external opportunities or threats." },
       { label: "Choose", detail: "Compare strategic options against objectives and risk." },
@@ -330,6 +382,20 @@ function StructuredVisual({ visual }: { visual: TopicVisualSpec }) {
   );
 }
 
+function ReferenceImage({ image }: { image: TopicVisualImage }) {
+  return (
+    <div className="topic-visual__reference-image">
+      <img src={image.src} alt={image.alt} width="960" height="640" loading="lazy" decoding="async" />
+      <p>
+        <span>Reference image</span>
+        <a href={image.sourceUrl} target="_blank" rel="noreferrer">{image.author} via Wikimedia Commons</a>
+        <span aria-hidden="true">·</span>
+        <a href={image.licenseUrl} target="_blank" rel="noreferrer">{image.license}</a>
+      </p>
+    </div>
+  );
+}
+
 export function TopicVisual({ visual }: { visual: TopicVisualSpec | null }) {
   if (!visual) return null;
   const titleId = `topic-visual-${visual.subject}-${visual.topic.replaceAll(".", "-")}`;
@@ -340,7 +406,11 @@ export function TopicVisual({ visual }: { visual: TopicVisualSpec | null }) {
         <h2 id={`${titleId}-heading`}>{visual.title}</h2>
         <p>{visual.description}</p>
       </figcaption>
-      {visual.layout === "curve" ? <CurveVisual visual={visual} titleId={titleId} /> : <StructuredVisual visual={visual} />}
+      {visual.image
+        ? <ReferenceImage image={visual.image} />
+        : visual.layout === "curve"
+          ? <CurveVisual visual={visual} titleId={titleId} />
+          : <StructuredVisual visual={visual} />}
       <p className="topic-visual__exam-link"><strong>Exam link</strong>{visual.examLink}</p>
     </figure>
   );

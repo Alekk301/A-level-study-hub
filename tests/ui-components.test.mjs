@@ -117,4 +117,11 @@ test("renders curated, accessible visual explainers across every A2 subject", as
   assert.match(html, /<svg/);
   assert.match(html, /role="img"/);
   assert.match(html, /Exam link/);
+
+  const normal = renderToStaticMarkup(
+    React.createElement(TopicVisual, { visual: getTopicVisual("9709", "5.5") }),
+  );
+  assert.match(normal, /normal-distribution\.svg/);
+  assert.match(normal, /Geek3 via Wikimedia Commons/);
+  assert.match(normal, /CC BY 3\.0/);
 });
