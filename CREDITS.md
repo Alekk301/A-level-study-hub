@@ -23,6 +23,8 @@ Selected notes include locally hosted reference diagrams from Wikimedia Commons.
 - `galvanic-cell.svg` — Rehua, Creative Commons Attribution 3.0.
 - `operating-system-architecture.svg` — Skjackey tse, public domain.
 - `swot-analysis.svg` — Xhienne, Creative Commons Attribution-ShareAlike 2.5.
+- `matrix-organisation.svg` — Chery, public domain.
+- `packet-switching-330.gif` — Oddbodz, Creative Commons Attribution-ShareAlike 3.0. Locally hosted 330 px Wikimedia thumbnail of the original animation.
 
 The project does not redistribute illustrations from Cambridge coursebooks, Save My Exams, ZNotes or other commercial revision providers.
 

@@ -124,4 +124,44 @@ test("renders curated, accessible visual explainers across every A2 subject", as
   assert.match(normal, /normal-distribution\.svg/);
   assert.match(normal, /Geek3 via Wikimedia Commons/);
   assert.match(normal, /CC BY 3\.0/);
+
+  const packetSwitching = renderToStaticMarkup(
+    React.createElement(TopicVisual, { visual: getTopicVisual("9618", "14.2") }),
+  );
+  assert.match(packetSwitching, /packet-switching-330\.gif/);
+  assert.match(packetSwitching, /Oddbodz via Wikimedia Commons/);
+});
+
+test("combines mark-scheme guidance with every A2 topic's complete notes", async () => {
+  const subjects = JSON.parse(await readFile(path.join(root, "src/data/subjects.json"), "utf8"));
+  const { getExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/index.ts");
+  const { ExamFocusBlock } = await vite.ssrLoadModule(
+    "/src/components/notes/ExamFocusBlock.tsx",
+  );
+  const a2Topics = subjects.flatMap((subject) =>
+    subject.units.flatMap((unit) =>
+      unit.topics
+        .filter((topic) => topic.levels.includes("A2"))
+        .map((topic) => ({ subject: subject.code, id: topic.id })),
+    ),
+  );
+
+  assert.equal(a2Topics.length, 69);
+  for (const topic of a2Topics) {
+    const focus = getExamFocus(topic.subject, topic.id);
+    assert.ok(focus, `missing mark-scheme focus for ${topic.subject}:${topic.id}`);
+    assert.ok(focus.answerMethod.length >= 4, `short answer method for ${topic.subject}:${topic.id}`);
+    assert.ok(focus.tasks.length >= 2, `too few recurring tasks for ${topic.subject}:${topic.id}`);
+    assert.ok(
+      focus.tasks.every((task) => task.markPoints.length >= 4),
+      `underdeveloped mark points for ${topic.subject}:${topic.id}`,
+    );
+  }
+
+  const html = renderToStaticMarkup(
+    React.createElement(ExamFocusBlock, { focus: getExamFocus("9701", "24") }),
+  );
+  assert.match(html, /How this knowledge earns marks/);
+  assert.match(html, /Recurring question/i);
+  assert.match(html, /Examiner trap/);
 });

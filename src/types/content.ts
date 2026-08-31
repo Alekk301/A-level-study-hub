@@ -96,6 +96,21 @@ export interface QuickRecallItem {
   answer: string;
 }
 
+export interface ExamTask {
+  title: string;
+  marks: string;
+  prompt: string;
+  markPoints: string[];
+  examinerTrap: string;
+}
+
+export interface ExamFocus {
+  component: string;
+  evidence: string;
+  answerMethod: string[];
+  tasks: ExamTask[];
+}
+
 export interface TopicNote {
   id: string;
   subject: string;

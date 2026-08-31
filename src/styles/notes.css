@@ -38,6 +38,38 @@
 .definitions dl > div { padding: 0.9rem 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
 .definitions dt { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; }
 .definitions dd { margin: 0.3rem 0 0; color: var(--text-muted); font-size: 0.78rem; line-height: 1.55; }
+.complete-notes { margin-block: 3rem; padding: 1.2rem; border: 1px solid color-mix(in srgb, var(--subject-accent) 24%, var(--line)); background: color-mix(in srgb, var(--surface-raised) 58%, transparent); scroll-margin-top: 5rem; }
+.complete-notes__heading { padding: 0.25rem 0 0.8rem; border-bottom: 1px solid var(--line); }
+.complete-notes__heading > span { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.61rem; font-weight: 800; letter-spacing: 0.06em; }
+.complete-notes__heading h2 { margin: 0.35rem 0 0; font-family: var(--font-editorial); font-size: clamp(1.7rem, 4vw, 2.35rem); font-weight: 600; letter-spacing: -0.025em; }
+.complete-notes__heading p { max-width: 46rem; margin: 0.55rem 0 0; color: var(--text-muted); font-size: 0.8rem; line-height: 1.65; }
+.complete-notes .note-section { padding-inline: 0.2rem; }
+.exam-focus { margin-top: 2rem; padding-top: 2.4rem; border-top: 2px solid color-mix(in srgb, var(--subject-accent) 35%, var(--line)); }
+.exam-focus .note-block__heading > p { margin: 0.35rem 0 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.61rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+.exam-focus__evidence { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.8rem; margin: 1rem 0; padding: 1rem; border: 1px solid color-mix(in srgb, var(--subject-accent) 35%, var(--line)); background: var(--subject-soft); }
+.exam-focus__evidence > svg { width: 1.1rem; color: var(--subject-accent); }
+.exam-focus__evidence strong { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.exam-focus__evidence p { margin: 0.35rem 0 0; color: var(--text-muted); font-size: 0.78rem; line-height: 1.65; }
+.exam-focus__method { padding: 1rem; border: 1px solid var(--line); background: var(--surface-raised); }
+.exam-focus__method h3 { margin: 0 0 0.8rem; font-family: var(--font-editorial); font-size: 1.25rem; }
+.exam-focus__method ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+.exam-focus__method li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.55rem; align-items: start; padding: 0.7rem; border: 1px solid var(--line); background: var(--surface); }
+.exam-focus__method li > span { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.58rem; font-weight: 800; }
+.exam-focus__method li p { margin: 0; font-size: 0.72rem; line-height: 1.55; }
+.exam-focus__tasks { display: grid; gap: 0.8rem; margin-top: 0.8rem; }
+.exam-focus__tasks > article { border: 1px solid var(--line); background: var(--surface); }
+.exam-focus__tasks header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; padding: 0.9rem 1rem; border-bottom: 1px solid var(--line); }
+.exam-focus__tasks header span { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.55rem; font-weight: 800; letter-spacing: 0.05em; }
+.exam-focus__tasks h3 { margin: 0.2rem 0 0; font-family: var(--font-editorial); font-size: 1.2rem; }
+.exam-focus__tasks header small { flex: 0 0 auto; padding: 0.3rem 0.45rem; background: var(--subject-soft); color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.56rem; font-weight: 800; }
+.exam-focus__prompt { margin: 0; padding: 0.85rem 1rem 0; color: var(--text-muted); font-size: 0.77rem; line-height: 1.55; }
+.exam-focus__tasks ul { display: grid; gap: 0.42rem; margin: 0; padding: 0.8rem 1rem; list-style: none; }
+.exam-focus__tasks li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.55rem; align-items: start; font-size: 0.75rem; line-height: 1.5; }
+.exam-focus__tasks li svg { width: 0.88rem; color: var(--green); }
+.exam-focus__trap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.5rem; margin: 0; padding: 0.7rem 1rem; border-top: 1px solid color-mix(in srgb, var(--rose) 25%, var(--line)); background: var(--rose-soft); color: var(--text-muted); font-size: 0.7rem; line-height: 1.5; }
+.exam-focus__trap svg { width: 0.86rem; color: var(--rose); }
+.exam-focus__trap strong { color: var(--foreground); }
+@media (max-width: 700px) { .complete-notes { padding: 0.8rem; } .exam-focus__method ol { grid-template-columns: 1fr; } .exam-focus__tasks header { align-items: flex-start; flex-direction: column; } }
 .core-content { margin-top: 3.6rem; }
 .core-content > .section-kicker { padding-bottom: 0.8rem; border-bottom: 2px solid var(--foreground); }
 .note-section { padding: 2.7rem 0 1.1rem; scroll-margin-top: 5rem; }
