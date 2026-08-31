@@ -101,3 +101,20 @@ test("renders syllabus outcomes as checkboxes and recall answers as disclosures"
   assert.match(recall, /What is i²\?/);
   assert.match(recall, /i² = −1/);
 });
+
+test("renders curated, accessible visual explainers across every A2 subject", async () => {
+  const { getTopicVisual, TopicVisual, topicVisualCatalog } = await vite.ssrLoadModule(
+    "/src/components/notes/TopicVisual.tsx",
+  );
+  const subjects = new Set(topicVisualCatalog.map((visual) => visual.subject));
+  assert.deepEqual([...subjects].sort(), ["9609", "9618", "9701", "9709"]);
+  assert.ok(topicVisualCatalog.length >= 24);
+
+  const visual = getTopicVisual("9701", "23");
+  const html = renderToStaticMarkup(React.createElement(TopicVisual, { visual }));
+  assert.match(html, /Visual explainer/);
+  assert.match(html, /Activation energy on an enthalpy profile/);
+  assert.match(html, /<svg/);
+  assert.match(html, /role="img"/);
+  assert.match(html, /Exam link/);
+});

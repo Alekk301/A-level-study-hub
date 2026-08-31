@@ -20,6 +20,7 @@ import { SyllabusChecklist } from "@/src/components/notes/SyllabusChecklist";
 import { TableOfContents, type TocItem } from "@/src/components/notes/TableOfContents";
 import { TopicHeader } from "@/src/components/notes/TopicHeader";
 import { TopicNavigation } from "@/src/components/notes/TopicNavigation";
+import { getTopicVisual, TopicVisual } from "@/src/components/notes/TopicVisual";
 import { loadTopicNote } from "@/src/data/notes";
 import { getTopic, getTopicNeighbours } from "@/src/data/subjects";
 import { useStudy } from "@/src/hooks/use-study";
@@ -49,6 +50,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
   const note = loadState.key === lookupKey ? loadState.note : null;
   const error = loadState.key === lookupKey && loadState.error;
   const recordOpened = study.recordOpened;
+  const topicVisual = getTopicVisual(subjectCode, topicId);
 
   useEffect(() => {
     let active = true;
@@ -71,6 +73,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       { id: "overview", label: "Overview" },
       ...(note.syllabusPoints.length ? [{ id: "syllabus", label: "Syllabus checklist" }] : []),
       ...(note.definitions.length ? [{ id: "definitions", label: "Key definitions" }] : []),
+      ...(topicVisual ? [{ id: "visual-explainer", label: topicVisual.title }] : []),
       ...(note.diagram ? [{ id: "diagram", label: note.diagram.title }] : []),
       ...note.sections.map((section) => ({ id: section.id, label: section.title })),
       ...(note.formulas.length ? [{ id: "formulas", label: "Formula sheet" }] : []),
@@ -81,7 +84,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       ...(note.quickRecall.length ? [{ id: "quick-recall", label: "Quick recall" }] : []),
       ...(note.relatedTopics.length ? [{ id: "related-topics", label: "Related topics" }] : []),
     ];
-  }, [note]);
+  }, [note, topicVisual]);
 
   if (!lookup) {
     return (
@@ -138,6 +141,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
           <Overview text={note.overview} />
           <SyllabusChecklist points={note.syllabusPoints} topicKey={lookup.key} />
           <Definitions definitions={note.definitions} />
+          <TopicVisual visual={topicVisual} />
           <ConceptDiagramBlock diagram={note.diagram} />
           <div className="core-content">
             <p className="section-kicker">Core content</p>
