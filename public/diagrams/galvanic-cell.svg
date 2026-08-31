@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+width="545px" height="491px" viewBox="0 0 545 491">
+<linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="110.6" y1="315" x2="132.6" y2="315">
+<stop offset="0" stop-color="#8F8D92"/>
+<stop offset="0.02" stop-color="#A4A3A6"/>
+<stop offset="0.04" stop-color="#B4B4B5"/>
+<stop offset="0.09" stop-color="#C6C6C6"/>
+<stop offset="0.29" stop-color="#B2B1B3"/>
+<stop offset="0.43" stop-color="#9D9B9F"/>
+<stop offset="0.58" stop-color="#8E8B90"/>
+<stop offset="0.75" stop-color="#858288"/>
+<stop offset="1" stop-color="#827F85"/>
+</linearGradient>
+<linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="91.3" y1="318" x2="236.6" y2="318">
+<stop offset="0" stop-color="#8989FE"/>
+<stop offset="0.01" stop-color="#A8A8FE"/>
+<stop offset="0.02" stop-color="#C4C4FF"/>
+<stop offset="0.04" stop-color="#DADAFF"/>
+<stop offset="0.05" stop-color="#EBEBFF"/>
+<stop offset="0.10" stop-color="#FDFDFF"/>
+<stop offset="0.18" stop-color="#FFF"/>
+<stop offset="0.22" stop-color="#F2F2FF"/>
+<stop offset="0.32" stop-color="#CFCFFF"/>
+<stop offset="0.42" stop-color="#B2B2FE"/>
+<stop offset="0.54" stop-color="#9C9CFE"/>
+<stop offset="0.66" stop-color="#8C8CFE"/>
+<stop offset="0.80" stop-color="#8383FE"/>
+<stop offset="1" stop-color="#8080FE"/>
+</linearGradient>
+<linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="408.4" y1="317.5" x2="430.4" y2="317.5">
+<stop offset="0" stop-color="#FF6B0A"/>
+<stop offset="0.01" stop-color="#FFA259"/>
+<stop offset="0.03" stop-color="#FFB979"/>
+<stop offset="0.05" stop-color="#FFDCAB"/>
+<stop offset="0.08" stop-color="#FFF0C7"/>
+<stop offset="0.11" stop-color="#FFF5CE"/>
+<stop offset="0.19" stop-color="#FFF3CC"/>
+<stop offset="0.35" stop-color="#FFB472"/>
+<stop offset="0.52" stop-color="#FF8732"/>
+<stop offset="0.72" stop-color="#FF6D0C"/>
+<stop offset="1" stop-color="#FF6400"/>
+</linearGradient>
+<linearGradient id="g5" gradientUnits="userSpaceOnUse" x1="305.8" y1="318" x2="451.1" y2="318">
+<stop offset="0" stop-color="#37FF9B"/>
+<stop offset="0.02" stop-color="#88FFC4"/>
+<stop offset="0.04" stop-color="#C4FFE1"/>
+<stop offset="0.07" stop-color="#EBFFF5"/>
+<stop offset="0.18" stop-color="#FFF"/>
+<stop offset="0.32" stop-color="#9CFFCE"/>
+<stop offset="0.47" stop-color="#4FFFA7"/>
+<stop offset="0.64" stop-color="#1CFF8E"/>
+<stop offset="0.84" stop-color="#03FF81"/>
+<stop offset="1" stop-color="#00FF80"/>
+</linearGradient>
+<path style="fill:none;stroke:#000;" d="M91.3,211.5c0-5.89,32.5-10.6,72.6-10.6 s72.6,4.77,72.6,10.6
+M305.8,211.5c0-5.89,32.5-10.6,72.6-10.6 s72.6,4.77,72.6,10.6
+M305.8,185.6c0-5.89,32.5-10.6,72.6-10.6 s72.6,4.77,72.6,10.6
+M91.3,185.6c0-5.89,32.5-10.6,72.6-10.6 s72.6,4.77,72.6,10.6
+M236.6 185.6 V211.5M91.3 185.6 V211.5M91.3,413.7c0-5.89,32.5-10.6,72.6-10.6 s72.6,4.77,72.6,10.6"/>
+<path style="fill:#FFF;stroke:#000;" d="M377.1,268.7c0,2.76-7.23,5-16.1,5
+s-16.1-2.24-16.1-5v-84.6l0,0c0-5.43-4.66-9.83-10.4-9.83h-63h-63c-5.75,0-10.4,4.40-10.4,9.83l0,0
+v84.6c0,2.76-7.24,5-16.1,5s-16.1-2.24-16.1-5V167v0.52l0,0c0-5.43,6.47-9.83,14.4-9.83h91.3
+h91.3c7.98,0,14.4,4.40,14.4,9.83l0,0v-0.52V268.7z"/>
+<ellipse style="opacity:0.6;fill:#8080FE;" cx="164" cy="211.5" rx="72.6" ry="10.6"/>
+<ellipse style="fill:#827F85;" cx="121.6" cy="229.7" rx="11" ry="5"/>
+<path style="fill:url(#g2);" d="M110.6,395.2c0,2.76,4.92,5,11,5c6.07,0,11-2.23,11-5v-165.5
+c0,2.76-4.92,5-11,5c-6.07,0-11-2.23-11-5V395.2z"/>
+<path style="opacity:0.4;fill:url(#g3);" d="M236.6,413.7c0,5.89-32.5,10.6-72.6,10.6
+s-72.6-4.77-72.6-10.6V211.5c0,5.89,32.5,10.6,72.6,10.6s72.6-4.77,72.6-10.6V413.7z"/>
+<path style="fill:#FFF;" d="M165.4,186.2v28.3c0,2.76,7.23,5,16.1,5c8.93,0,16.1-2.24,16.1-5
+v-28.3H165.4z"/>
+<path style="fill:none;stroke:#000;" d="M197.8 186.2L197.8 214.5
+M165.4 186.2L165.4 214.5
+M91.3,185.6c0,5.89,32.5,10.6,72.6,10.6 s72.6-4.77,72.6-10.6
+M236.6,413.7c0,5.89-32.5,10.6-72.6,10.6 s-72.6-4.77-72.6-10.6V211.5c0,5.89,32.5,10.6,72.6,10.6s72.6-4.77,72.6-10.6V413.7z"/>
+<ellipse style="opacity:0.6;fill:#00FF80;" cx="378.4" cy="211.5" rx="72.6" ry="10.6"/>
+<path style="fill:none;stroke:#000;" d="M451.1 185.6L451.1 211.5
+M305.8 185.6L305.8 211.5
+M305.8,413.7c0-5.89,32.5-10.6,72.6-10.6 s72.6,4.77,72.6,10.6"/>
+<path style="fill:url(#g4);" d="M408.4,397.7c0,2.76,4.92,5,11,5c6.07,0,11-2.23,11-5v-165.5
+c0,2.76-4.92,5-11,5c-6.07,0-11-2.23-11-5V397.7z"/>
+<ellipse style="fill:#FF6400;" cx="419.4" cy="232.2" rx="11" ry="5"/>
+<path style="opacity:0.4;fill:url(#g5);" d="M451.1,413.7c0,5.89-32.5,10.6-72.6,10.6
+s-72.6-4.77-72.6-10.6V211.5c0,5.89,32.5,10.6,72.6,10.6s72.6-4.77,72.6-10.6V413.7z"/>
+<path style="fill:#FFF;" d="M344.8,186.2v28.3c0,2.76,7.23,5,16.1,5s16.1-2.24,16.1-5v-28.3
+H344.8z"/>
+<polyline style="fill:none;stroke:#000;stroke-width:2;" points="121.6,229.7 121.6,45.4 418.7,45.4 418.7,232.2"/>
+<path style="fill:none;stroke:#000;" d="M377.1 186.2L377.1 214.5M344.8 186.2L344.8 214.5M305.8,185.6c0,5.89,32.5,10.6,72.6,10.6 s72.6-4.77,72.6-10.6M451.1,413.7c0,5.89-32.5,10.6-72.6,10.6 s-72.6-4.77-72.6-10.6V211.5c0,5.89,32.5,10.6,72.6,10.6s72.6-4.77,72.6-10.6L451.1,413.7zM163.6 14.9L213 14.9M323.4 14.9L372.8 14.9M270.2 123.1L270.2 147.2M55 237.2L110.4 285.2M486.1 237.2L430.6 285.2M77.5 427.2L160 389.2M466 430.2L377.2 389.2M155.8,167.7c0-11,8.95-20,20-20h45M386.6,167.7c0-11-8.95-20-20-20h-45"/>
+<path d="M157.5,433c-1.16,1.58-2,3.64-2,6.56c0,2.85,0.88,4.88,2,6.48h-1.08
+c-1-1.32-2.09-3.37-2.09-6.49c0.01-3.13,1.08-5.20,2.09-6.54H157.5z"/>
+<path d="M165.4,439.6v0.96h-7.04v-0.96H165.4z"/>
+<path d="M166.2,446.1c1.12-1.58,2-3.64,2-6.53s-0.86-4.91-2-6.51h1.08c1,1.31,2.09,3.37,2.09,6.51
+c-0.01,3.13-1.08,5.18-2.09,6.53H166.2z"/>
+<path d="M377.1,433c-1.16,1.58-2,3.64-2,6.56c0,2.85,0.88,4.88,2,6.48h-1.08
+c-1-1.32-2.09-3.37-2.09-6.49c0.01-3.13,1.08-5.20,2.09-6.54H377.1z"/>
+<path d="M382.7,435.6v3.76h3.61v0.96h-3.61v3.79h-1.02v-3.79h-3.61v-0.96h3.61v-3.76H382.7z"/>
+<path d="M387.3,446.1c1.12-1.58,2-3.65,2-6.53s-0.86-4.91-2-6.51h1.08c1,1.31,2.09,3.37,2.09,6.51
+c-0.01,3.13-1.08,5.18-2.09,6.53H387.3z"/>
+<polygon points="370,18.6 371.6,14.9 370,11.2 378.8,14.9"/>
+<polygon points="210.2,18.6 211.7,14.9 210.2,11.2 219,14.9"/>
+<polygon points="266.5,144.4 270.2,145.9 273.9,144.4 270.2,153.1"/>
+<polygon points="105.9,286.2 109.5,284.4 110.7,280.6 115,289.1"/>
+<polygon points="430.3,280.6 431.6,284.4 435.2,286.2 426.1,289.1"/>
+<circle style="fill:#FFF;stroke:#000;" cx="270.2" cy="45.4" r="18.6"/>
+<polyline style="fill:none;stroke:#000;" points="288.8,45.4 284.8,51.2 274.8,39.2 265.3,51.2 255.8,39.2 251.5,45.4"/>
+<polygon points="159,393.7 158.9,389.7 155.9,387 165.4,386.7"/>
+<polygon points="381.3,387 378.3,389.7 378.2,393.7 371.8,386.7"/>
+<polygon points="218,151.4 219.6,147.7 218,144 226.8,147.7"/>
+<polygon points="324.4,144 322.8,147.7 324.4,151.4 315.6,147.7"/>
+<switch><text systemLanguage="de" font-family="DejaVu Sans" text-anchor="middle" font-size="15px"><tspan x="272" y="20">Elektronen</tspan><tspan x="272" y="115">Salzbrücke</tspan><tspan x="180" y="140">Zink-Kationen</tspan><tspan x="364" y="140">Sulfat-Anionen</tspan><tspan x="49" y="210">Zink-</tspan><tspan x="49" dy="18">elektrode</tspan><tspan x="495" y="210">Kupfer-</tspan><tspan x="495" dy="18">elektrode</tspan><tspan x="49" y="440">ZnSO</tspan><tspan dy="5" font-size="12px">4</tspan><tspan dy="-5">-</tspan><tspan x="49" dy="18">Lösung</tspan><tspan x="495" y="440">CuSO</tspan><tspan dy="5" font-size="12px">4</tspan><tspan dy="-5">-</tspan><tspan x="495" dy="18">Lösung</tspan><tspan x="165" y="465">Anode</tspan><tspan x="165" dy="18">Oxidation</tspan><tspan x="382" y="465">Kathode</tspan><tspan x="382" dy="18">Reduktion</tspan></text><text systemLanguage="en" font-family="DejaVu Sans" text-anchor="middle" font-size="15px"><tspan x="272" y="20">electrons</tspan><tspan x="272" y="115">salt bridge</tspan><tspan x="180" y="140">zinc ions</tspan><tspan x="364" y="140">sulfate ions</tspan><tspan x="49" y="210">zinc</tspan><tspan x="49" dy="18">electrode</tspan><tspan x="495" y="210">copper</tspan><tspan x="495" dy="18">electrode</tspan><tspan x="49" y="430">zinc</tspan><tspan x="49" dy="18">sulfate</tspan><tspan x="495" y="450">copper (II)</tspan><tspan x="495" dy="18">sulfate</tspan><tspan x="165" y="465">anode</tspan><tspan x="165" dy="18">oxidation</tspan><tspan x="382" y="465">cathode</tspan><tspan x="382" dy="18">reduction</tspan></text><text systemLanguage="es" font-family="DejaVu Sans" text-anchor="middle" font-size="15px"><tspan x="272" y="20">electrones</tspan><tspan x="272" y="115">puente salino</tspan><tspan x="180" y="140">iones de zinc</tspan><tspan x="355" y="140">iones de sulfate</tspan><tspan x="49" y="210">electrodo</tspan><tspan x="49" dy="18">de zinc</tspan><tspan x="495" y="210">electrodo</tspan><tspan x="495" dy="18">de cobre</tspan><tspan x="49" y="430">sulfato</tspan><tspan x="49" dy="18">de zinc</tspan><tspan x="500" y="440">sulfato</tspan><tspan x="495" dy="18">de cobre (II)</tspan><tspan x="165" y="465">ánodo</tspan><tspan x="165" dy="18">oxidación</tspan><tspan x="382" y="465">cátodo</tspan><tspan x="382" dy="18">reducción</tspan></text></switch>
+<g fill="#9d99b7">
+<g id="e" font-family="DejaVu Sans" font-size="12px">
+<circle cx="119" cy="270" r="8" stroke="#fff"/>
+<text x="113" y="274" fill="#fff">e<tspan dx="-0.5" dy="-4">-</tspan></text>
+</g>
+<circle cx="173" cy="340" r="15" stroke="#fff"/>
+<use xlink:href="#e" x="3" y="60" /></g><g fill="#9ba633">
+<use xlink:href="#e" x="302" y="20"/>
+<use xlink:href="#e" x="298" y="80"/></g>
+<circle cx="372" cy="319" r="15" stroke="#fff" fill="#55c18c"/>
+<text font-family="DejaVu Sans" font-size="14px" x="162" y="345" fill="#fff">Zn<tspan x="360" dy="-20">Cu</tspan></text>
+<path d="M172 332.5 h5 m-2.5 -2.5v5m6 0v-5m2.5 2.5h-5m193 -20h5 m-2.5 -2.5v5m6 0v-5m2.5 2.5h-5" stroke="#fff" fill="none" />
+</svg>

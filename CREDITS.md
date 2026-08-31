@@ -14,6 +14,18 @@ The app links to Cambridge International for official syllabus checking and may 
 
 Past-paper PDFs are not bundled. The searchable `papers.json` catalogue is generated from the project owner's separate local library and links to XtraPapers for the corresponding question papers and mark schemes. XtraPapers remains external and opens in a new tab.
 
+## Educational diagrams
+
+Selected notes include locally hosted reference diagrams from Wikimedia Commons. Every image is credited beside the image in the app with a link to its original file page and licence.
+
+- `unit-circle.svg` — Gustavb, public domain.
+- `normal-distribution.svg` — Geek3, Creative Commons Attribution 3.0.
+- `galvanic-cell.svg` — Rehua, Creative Commons Attribution 3.0.
+- `operating-system-architecture.svg` — Skjackey tse, public domain.
+- `swot-analysis.svg` — Xhienne, Creative Commons Attribution-ShareAlike 2.5.
+
+The project does not redistribute illustrations from Cambridge coursebooks, Save My Exams, ZNotes or other commercial revision providers.
+
 ## No affiliation
 
 This project is an independent study tool. It is not affiliated with or endorsed by Cambridge International or any linked revision provider.

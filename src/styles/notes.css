@@ -91,6 +91,11 @@
 .topic-visual__plot .plot-reject { fill: color-mix(in srgb, var(--rose) 30%, transparent); stroke: none; }
 .topic-visual__plot circle { fill: var(--subject-accent); }
 .topic-visual__plot text { fill: currentColor; font-family: var(--font-mono); font-size: 10px; font-weight: 700; }
+.topic-visual__reference-image { display: grid; place-items: center; padding: 1rem; border: 1px solid var(--line); background: #fff; }
+.topic-visual__reference-image img { display: block; width: auto; max-width: 100%; max-height: 31rem; object-fit: contain; }
+.topic-visual__reference-image > p { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem; margin: 0.8rem 0 0; color: #646b68; font-family: var(--font-mono); font-size: 0.56rem; line-height: 1.5; text-align: center; }
+.topic-visual__reference-image > p > span:first-child { font-weight: 800; text-transform: uppercase; }
+.topic-visual__reference-image a { color: var(--subject-accent); text-decoration: underline; text-underline-offset: 0.18em; }
 .topic-visual__flow, .topic-visual__tree, .topic-visual__stack, .topic-visual__matrix { display: grid; gap: 0.65rem; }
 .topic-visual__flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .topic-visual__flow article, .topic-visual__tree article, .topic-visual__stack article, .topic-visual__matrix article, .topic-visual__cell article { position: relative; padding: 0.85rem; border: 1px solid var(--line); background: var(--background); }
@@ -121,6 +126,7 @@
   .topic-visual__cell { grid-template-columns: 1fr; }
   .topic-visual__cell-link { min-height: 5rem; }
   .topic-visual__matrix { grid-template-columns: 1fr; }
+  .topic-visual__reference-image { padding: 0.6rem; }
 }
 .analysis-chains article { padding: 1rem; border: 1px solid var(--line); background: var(--surface); }
 .analysis-chains article h3 { margin: 0 0 0.8rem; font-family: var(--font-editorial); font-size: 1.25rem; }
