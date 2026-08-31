@@ -70,3 +70,34 @@ test("renders preview-first paper actions with a separate download", async () =>
   assert.match(html, /Download Question Paper/);
   assert.match(html, /example\.pdf\/download/);
 });
+
+test("renders syllabus outcomes as checkboxes and recall answers as disclosures", async () => {
+  const { StudyProvider } = await vite.ssrLoadModule("/src/hooks/use-study.tsx");
+  const { SyllabusChecklist } = await vite.ssrLoadModule(
+    "/src/components/notes/SyllabusChecklist.tsx",
+  );
+  const { QuickRecall } = await vite.ssrLoadModule(
+    "/src/components/notes/QuickRecall.tsx",
+  );
+  const checklist = renderToStaticMarkup(
+    React.createElement(
+      StudyProvider,
+      null,
+      React.createElement(SyllabusChecklist, {
+        topicKey: "9709:3.1",
+        points: ["Use the factor theorem."],
+      }),
+    ),
+  );
+  const recall = renderToStaticMarkup(
+    React.createElement(QuickRecall, {
+      items: [{ question: "What is i²?", answer: "i² = −1." }],
+    }),
+  );
+
+  assert.match(checklist, /type="checkbox"/);
+  assert.match(checklist, /Use the factor theorem/);
+  assert.match(recall, /<details>/);
+  assert.match(recall, /What is i²\?/);
+  assert.match(recall, /i² = −1/);
+});

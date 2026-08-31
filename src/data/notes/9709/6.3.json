@@ -1,0 +1,158 @@
+{
+  "id": "6.3",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "S2",
+  "unitTitle": "Probability & Statistics 2",
+  "title": "Continuous random variables",
+  "contentDepth": "full",
+  "overview": "Use probability density functions and integration to find probabilities, expectation and variance for continuous variables. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use the defining properties of a probability density function.",
+    "Find unknown constants by integrating total area to 1.",
+    "Calculate probabilities and percentiles by integration.",
+    "Find E(X), E(X²) and Var(X)."
+  ],
+  "definitions": [
+    {
+      "term": "Continuous random variable",
+      "definition": "A variable able to take any real value in an interval."
+    },
+    {
+      "term": "Probability density function",
+      "definition": "A non-negative function whose area over an interval gives probability and whose total area is 1."
+    },
+    {
+      "term": "Density",
+      "definition": "Height per unit x; it can exceed 1 provided areas are valid probabilities."
+    },
+    {
+      "term": "Median",
+      "definition": "A value m with equal probability on either side for a continuous distribution."
+    },
+    {
+      "term": "Support",
+      "definition": "The interval on which the density is non-zero."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-valid-density-functions",
+      "title": "Valid density functions",
+      "content": [
+        "A pdf f(x) must satisfy f(x)≥0 on its support and ∫f(x)dx=1 over the whole support. Use normalisation to find unknown constants, checking they keep the density non-negative."
+      ],
+      "bullets": [
+        "A density value is not itself a point probability.",
+        "Outside the stated support, f(x)=0."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Normalisation: ∫ f(x) dx=1 over the support"
+        }
+      ]
+    },
+    {
+      "id": "02-probabilities-as-areas",
+      "title": "Probabilities as areas",
+      "content": [
+        "P(a < X < b)=∫ₐᵇf(x)dx after intersecting the requested interval with the support. For continuous X, endpoints make no difference: P(X=a)=0."
+      ],
+      "bullets": [
+        "Draw the support and shade the required interval.",
+        "Use complements for awkward tails."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-percentiles",
+      "title": "Percentiles",
+      "content": [
+        "A pth percentile q satisfies ∫ from the lower support limit to q of f(x)dx=p/100. The median uses 0.5. Solve and select the root that lies within the support."
+      ],
+      "bullets": [
+        "Do not assume median equals mean unless symmetry justifies it.",
+        "Reject algebraic roots outside the support."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-moments",
+      "title": "Moments",
+      "content": [
+        "Calculate E(X)=∫xf(x)dx and E(X²)=∫x²f(x)dx over the support, then Var(X)=E(X²)−[E(X)]². Interpret the mean in the same units as X and variance in squared units."
+      ],
+      "bullets": [
+        "Normalise before calculating moments.",
+        "Keep exact values until the variance subtraction is complete."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Normalisation",
+      "expression": "∫ f(x) dx=1 over the support"
+    },
+    {
+      "label": "Probability",
+      "expression": "P(a < X < b)=∫ₐᵇ f(x) dx"
+    },
+    {
+      "label": "Expectation",
+      "expression": "E(X)=∫x f(x) dx"
+    },
+    {
+      "label": "Variance",
+      "expression": "Var(X)=∫x²f(x) dx−[E(X)]²"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Continuous random variables: revision route",
+    "type": "flow",
+    "nodes": [
+      "Valid density functions",
+      "Probabilities as areas",
+      "Percentiles",
+      "Moments"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write the support beside every integral.",
+    "Check a final variance is non-negative and dimensionally sensible.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Treating f(a) as P(X=a).",
+    "Integrating beyond the support without setting density to zero.",
+    "Accepting an algebraic root outside the allowed interval."
+  ],
+  "quickRecall": [
+    {
+      "question": "Can a pdf exceed 1?",
+      "answer": "Yes; only areas must be between 0 and 1, and total area must equal 1."
+    },
+    {
+      "question": "What is P(X=a) for continuous X?",
+      "answer": "Zero."
+    },
+    {
+      "question": "How is the median found?",
+      "answer": "Set the area from the lower support boundary to m equal to 0.5."
+    },
+    {
+      "question": "Which root of a percentile equation is valid?",
+      "answer": "Only a root lying in the stated support."
+    }
+  ],
+  "relatedTopics": [
+    "3.5",
+    "5.4",
+    "6.4"
+  ]
+}

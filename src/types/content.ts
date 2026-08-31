@@ -91,6 +91,11 @@ export interface AnalysisChain {
   evaluation: string;
 }
 
+export interface QuickRecallItem {
+  question: string;
+  answer: string;
+}
+
 export interface TopicNote {
   id: string;
   subject: string;
@@ -109,7 +114,7 @@ export interface TopicNote {
   analysisChains: AnalysisChain[];
   examTips: string[];
   commonMistakes: string[];
-  quickRecall: string[];
+  quickRecall: Array<string | QuickRecallItem>;
   relatedTopics: string[];
 }
 

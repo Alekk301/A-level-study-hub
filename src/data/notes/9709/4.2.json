@@ -1,0 +1,161 @@
+{
+  "id": "4.2",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "M1",
+  "unitTitle": "Mechanics",
+  "title": "Kinematics of motion in a straight line",
+  "contentDepth": "full",
+  "overview": "Use SUVAT equations, motion graphs and calculus to describe motion in a straight line, including under gravity. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use displacement, velocity and acceleration with consistent signs.",
+    "Interpret displacement–time and velocity–time graphs.",
+    "Use differentiation and integration between s, v and a.",
+    "Apply constant-acceleration formulae, including vertical motion under gravity."
+  ],
+  "definitions": [
+    {
+      "term": "Displacement",
+      "definition": "Signed change of position from a reference point."
+    },
+    {
+      "term": "Velocity",
+      "definition": "Rate of change of displacement."
+    },
+    {
+      "term": "Acceleration",
+      "definition": "Rate of change of velocity."
+    },
+    {
+      "term": "Speed",
+      "definition": "Magnitude of velocity."
+    },
+    {
+      "term": "Constant acceleration",
+      "definition": "Motion for which acceleration has a fixed value over the interval."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-signs-and-variables",
+      "title": "Signs and variables",
+      "content": [
+        "Choose one positive direction and keep it throughout. Displacement and velocity can be negative; speed and distance cannot. Turning points occur when v=0 and the sign of v changes."
+      ],
+      "bullets": [
+        "State the positive direction in vertical-motion work.",
+        "A negative acceleration does not always mean slowing down."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Calculus: v=ds/dt; a=dv/dt=v·dv/ds"
+        }
+      ]
+    },
+    {
+      "id": "02-motion-graphs",
+      "title": "Motion graphs",
+      "content": [
+        "Gradient of an s–t graph is velocity; gradient of a v–t graph is acceleration; signed area under v–t is displacement. Total distance requires adding the magnitudes of areas or splitting where v changes sign."
+      ],
+      "bullets": [
+        "Horizontal v–t segments mean constant velocity.",
+        "An area below the time axis contributes negative displacement."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-calculus-links",
+      "title": "Calculus links",
+      "content": [
+        "Use v=ds/dt and a=dv/dt=v(dv/ds). Integrate acceleration to find velocity and integrate velocity to find displacement, applying initial conditions after each integration."
+      ],
+      "bullets": [
+        "The v dv/ds form is useful when time is absent.",
+        "Include constants of integration."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-suvat-and-gravity",
+      "title": "SUVAT and gravity",
+      "content": [
+        "Use v=u+at, s=ut+½at², v²=u²+2as, and s=(u+v)t/2 only on an interval of constant acceleration. For free vertical motion take acceleration as ±g according to the chosen positive direction."
+      ],
+      "bullets": [
+        "At maximum height v=0, not a=0.",
+        "Use g=10 m s⁻² in this component unless told otherwise."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Calculus",
+      "expression": "v=ds/dt; a=dv/dt=v·dv/ds"
+    },
+    {
+      "label": "SUVAT 1",
+      "expression": "v=u+at"
+    },
+    {
+      "label": "SUVAT 2",
+      "expression": "s=ut+½at²"
+    },
+    {
+      "label": "SUVAT 3",
+      "expression": "v²=u²+2as"
+    },
+    {
+      "label": "Average velocity",
+      "expression": "s=(u+v)t/2"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Kinematics of motion in a straight line: revision route",
+    "type": "flow",
+    "nodes": [
+      "Signs and variables",
+      "Motion graphs",
+      "Calculus links",
+      "SUVAT and gravity"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write the selected SUVAT equation before substituting values.",
+    "Split multi-stage motion into intervals and carry final conditions forward.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Treating displacement and distance as identical.",
+    "Using a SUVAT formula when acceleration varies.",
+    "Changing the positive direction halfway through a solution."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the area under a velocity–time graph?",
+      "answer": "Signed displacement."
+    },
+    {
+      "question": "How is total distance found when velocity changes sign?",
+      "answer": "Split at v=0 and add the magnitudes of the displacements."
+    },
+    {
+      "question": "What is acceleration at maximum height?",
+      "answer": "It is still g downward; only velocity is zero."
+    },
+    {
+      "question": "When are SUVAT formulae valid?",
+      "answer": "Only while acceleration is constant over the interval considered."
+    }
+  ],
+  "relatedTopics": [
+    "4.4",
+    "4.5"
+  ]
+}

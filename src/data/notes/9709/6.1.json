@@ -1,0 +1,158 @@
+{
+  "id": "6.1",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "S2",
+  "unitTitle": "Probability & Statistics 2",
+  "title": "The Poisson distribution",
+  "contentDepth": "full",
+  "overview": "Model random events over a fixed time/space interval with the Poisson distribution, and know when it approximates the binomial. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Calculate probabilities for X~Po(λ) and use E(X)=Var(X)=λ.",
+    "Scale λ with time, area or volume.",
+    "Recognise conditions for a Poisson process.",
+    "Use Poisson approximations to binomial and normal approximations to Poisson."
+  ],
+  "definitions": [
+    {
+      "term": "Poisson distribution",
+      "definition": "A count model for random events occurring independently at a constant average rate."
+    },
+    {
+      "term": "Parameter λ",
+      "definition": "The expected number of events in the stated interval; it is also the variance."
+    },
+    {
+      "term": "Rate",
+      "definition": "Expected events per unit time, length, area or volume."
+    },
+    {
+      "term": "Continuity correction",
+      "definition": "A ±0.5 boundary adjustment for a continuous normal approximation."
+    },
+    {
+      "term": "Rare event",
+      "definition": "An event with small probability per trial, supporting a Poisson approximation to binomial."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-poisson-probabilities",
+      "title": "Poisson probabilities",
+      "content": [
+        "If X~Po(λ), then P(X=r)=e⁻ˡᵃᵐᵇᵈᵃ λʳ/r!, r=0,1,2,… . Mean and variance are λ. Use cumulative or complementary probabilities for ranges."
+      ],
+      "bullets": [
+        "The standard deviation is √λ.",
+        "State the interval to which λ applies."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Poisson mass: P(X=r)=e⁻λ λʳ/r!"
+        }
+      ]
+    },
+    {
+      "id": "02-scaling-the-parameter",
+      "title": "Scaling the parameter",
+      "content": [
+        "A rate of c per unit gives λ=ct over t units, provided the rate is constant. Independent Poisson counts on disjoint intervals add, so parameters add too."
+      ],
+      "bullets": [
+        "Scale λ, not an observed count.",
+        "Check that units match before multiplying."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-poisson-approximation-to-binomial",
+      "title": "Poisson approximation to binomial",
+      "content": [
+        "For X~B(n,p), use Po(np) when n is large and p small; Cambridge gives approximately n>50 and np<5. The approximation removes the fixed upper bound, so use only when the tail beyond n is negligible."
+      ],
+      "bullets": [
+        "Use λ=np.",
+        "No continuity correction is needed for Poisson-to-binomial because both are discrete."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-normal-approximation-to-poisson",
+      "title": "Normal approximation to Poisson",
+      "content": [
+        "When λ is large—approximately λ>15—use N(λ,λ) and apply a continuity correction. Standardise with standard deviation √λ."
+      ],
+      "bullets": [
+        "Correct the integer boundary before finding z.",
+        "Sketch the tail to avoid complement errors."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Poisson mass",
+      "expression": "P(X=r)=e⁻λ λʳ/r!"
+    },
+    {
+      "label": "Poisson moments",
+      "expression": "E(X)=Var(X)=λ"
+    },
+    {
+      "label": "Binomial approximation",
+      "expression": "B(n,p)≈Po(np)"
+    },
+    {
+      "label": "Normal approximation",
+      "expression": "Po(λ)≈N(λ,λ)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "The Poisson distribution: revision route",
+    "type": "flow",
+    "nodes": [
+      "Poisson probabilities",
+      "Scaling the parameter",
+      "Poisson approximation to binomial",
+      "Normal approximation to Poisson"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write the newly scaled λ before computing any probability.",
+    "Distinguish an exact Poisson model from a Poisson approximation in your notation.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using λ as a standard deviation.",
+    "Forgetting to scale λ when the interval changes.",
+    "Applying a normal approximation without continuity correction."
+  ],
+  "quickRecall": [
+    {
+      "question": "What are the mean and variance of Po(λ)?",
+      "answer": "Both equal λ."
+    },
+    {
+      "question": "How does λ change when an interval triples?",
+      "answer": "It triples if the average rate stays constant."
+    },
+    {
+      "question": "When is Poisson a useful binomial approximation?",
+      "answer": "For large n and small p, approximately n>50 and np<5 in this syllabus."
+    },
+    {
+      "question": "What normal model approximates Po(λ)?",
+      "answer": "N(λ,λ), with a continuity correction, when λ is sufficiently large."
+    }
+  ],
+  "relatedTopics": [
+    "5.4",
+    "5.5",
+    "6.2"
+  ]
+}

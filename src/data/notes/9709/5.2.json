@@ -1,0 +1,153 @@
+{
+  "id": "5.2",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "S1",
+  "unitTitle": "Probability & Statistics 1",
+  "title": "Permutations and combinations",
+  "contentDepth": "full",
+  "overview": "Count arrangements (order matters) and selections (order doesn't) using factorials, permutations and combinations. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Distinguish permutations from combinations.",
+    "Count arrangements with repeated objects.",
+    "Handle adjacency, separation and positional restrictions.",
+    "Use complementary counting and gap methods."
+  ],
+  "definitions": [
+    {
+      "term": "Permutation",
+      "definition": "An ordered arrangement."
+    },
+    {
+      "term": "Combination",
+      "definition": "An unordered selection."
+    },
+    {
+      "term": "Factorial",
+      "definition": "n!=n(n−1)…1, with 0!=1."
+    },
+    {
+      "term": "Identical objects",
+      "definition": "Objects whose interchange creates no new arrangement."
+    },
+    {
+      "term": "Complementary counting",
+      "definition": "Counting all outcomes then subtracting forbidden outcomes."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-order-versus-selection",
+      "title": "Order versus selection",
+      "content": [
+        "Use ⁿPᵣ=n!/(n−r)! when order matters and ⁿCᵣ=n!/[r!(n−r)!] when it does not. Many problems combine a selection stage with a later arrangement stage; multiply the stage counts."
+      ],
+      "bullets": [
+        "Ask whether swapping two chosen objects changes the outcome.",
+        "Explain each factor instead of presenting an unexplained product."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Permutation: ⁿPᵣ=n!/(n−r)!"
+        }
+      ]
+    },
+    {
+      "id": "02-repeated-objects",
+      "title": "Repeated objects",
+      "content": [
+        "For n objects with repeated groups of sizes a,b,…, the number of distinct linear arrangements is n!/(a!b!…). Dividing removes permutations that look identical."
+      ],
+      "bullets": [
+        "Count the total number of letters carefully.",
+        "Only divide for genuinely identical objects."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-objects-together-or-apart",
+      "title": "Objects together or apart",
+      "content": [
+        "For objects that must stay together, treat the block as one object and multiply by internal orders. For 'not together', subtract together-cases from all arrangements. For separated identical objects, arrange the other objects and place them in gaps."
+      ],
+      "bullets": [
+        "A block can appear in more than one internal order.",
+        "Gap methods need enough available gaps."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-position-and-grouping-restrictions",
+      "title": "Position and grouping restrictions",
+      "content": [
+        "Handle fixed positions first, then arrange remaining objects. For rows or teams, select who occupies a group and then arrange within it if positions are distinct. Watch for double-counting when groups themselves are unlabelled."
+      ],
+      "bullets": [
+        "Circular arrangements are outside this syllabus.",
+        "Cases should be mutually exclusive before adding."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Permutation",
+      "expression": "ⁿPᵣ=n!/(n−r)!"
+    },
+    {
+      "label": "Combination",
+      "expression": "ⁿCᵣ=n!/[r!(n−r)!]"
+    },
+    {
+      "label": "Repeated objects",
+      "expression": "n!/(a!b!⋯)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Permutations and combinations: revision route",
+    "type": "flow",
+    "nodes": [
+      "Order versus selection",
+      "Repeated objects",
+      "Objects together or apart",
+      "Position and grouping restrictions"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Annotate products with short labels such as choose, arrange and internal order.",
+    "Check whether groups or positions are labelled before deciding about division.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using permutations for a selection with no order.",
+    "Forgetting internal arrangements of a block.",
+    "Adding cases that overlap and double-count outcomes."
+  ],
+  "quickRecall": [
+    {
+      "question": "When is ⁿCᵣ appropriate?",
+      "answer": "When selecting r objects and the order of selection does not matter."
+    },
+    {
+      "question": "How do you count arrangements where A and B stay together?",
+      "answer": "Treat AB as one block, arrange the blocks, then multiply by 2 for AB or BA."
+    },
+    {
+      "question": "How is 'A and B not together' often counted?",
+      "answer": "All arrangements minus arrangements in which they form a block."
+    },
+    {
+      "question": "Why divide by a! for a identical objects?",
+      "answer": "Their a! internal permutations produce no visibly different arrangement."
+    }
+  ],
+  "relatedTopics": [
+    "5.3",
+    "5.4"
+  ]
+}

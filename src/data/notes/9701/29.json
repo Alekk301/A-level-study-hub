@@ -1,0 +1,154 @@
+{
+  "id": "29",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "An introduction to A Level organic chemistry",
+  "contentDepth": "full",
+  "overview": "Extend organic nomenclature to more complex molecules, understand aromatic (benzene) bonding, and optical isomerism. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use advanced organic nomenclature and recognise functional groups.",
+    "Explain benzene bonding and aromatic delocalisation.",
+    "Identify chiral centres, enantiomers and optical activity.",
+    "Represent 3D stereochemistry and reason about racemic mixtures."
+  ],
+  "definitions": [
+    {
+      "term": "Arene",
+      "definition": "An aromatic hydrocarbon containing a benzene ring."
+    },
+    {
+      "term": "Delocalisation",
+      "definition": "Electron density spread over several adjacent atoms rather than confined to one bond."
+    },
+    {
+      "term": "Chiral centre",
+      "definition": "Usually a tetrahedral carbon bonded to four different groups."
+    },
+    {
+      "term": "Enantiomers",
+      "definition": "Non-superimposable mirror-image stereoisomers."
+    },
+    {
+      "term": "Optical activity",
+      "definition": "Rotation of plane-polarised light by a chiral sample."
+    },
+    {
+      "term": "Racemic mixture",
+      "definition": "An equal mixture of two enantiomers with no net optical rotation."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-naming-complex-molecules",
+      "title": "Naming complex molecules",
+      "content": [
+        "Choose the parent chain/ring containing the highest-priority functional group, number for the lowest relevant locants, and name substituents alphabetically. Recognise phenyl (C₆H₅–) as a substituent and distinguish benzyl/side-chain positions when structures are supplied."
+      ],
+      "bullets": [
+        "The suffix functional group controls the parent and numbering.",
+        "Use commas between numbers and hyphens between numbers and words."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Benzene: C₆H₆: planar σ framework + six delocalised π electrons"
+        }
+      ]
+    },
+    {
+      "id": "02-benzene-structure",
+      "title": "Benzene structure",
+      "content": [
+        "Each carbon is trigonal planar and contributes one p orbital. Six π electrons are delocalised above and below the planar σ framework, making all C–C bonds equal and the ring more stable than a localised cyclohexa-1,3,5-triene model."
+      ],
+      "bullets": [
+        "Use a circle or equal bonds to represent delocalisation.",
+        "Aromatic stability helps explain substitution rather than addition."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-chirality-and-enantiomers",
+      "title": "Chirality and enantiomers",
+      "content": [
+        "A carbon with four different substituents is chiral unless symmetry makes the whole molecule achiral. Draw mirror images with wedge/dash bonds and test superimposability. Enantiomers share most physical properties but rotate plane-polarised light equally in opposite directions and may interact differently with chiral reagents."
+      ],
+      "bullets": [
+        "A carbon with two identical groups is not chiral.",
+        "Do not confuse E/Z isomerism with optical isomerism."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-formation-and-mixtures",
+      "title": "Formation and mixtures",
+      "content": [
+        "Attack on a planar intermediate from either face can produce equal enantiomers and a racemic mixture. A single enantiomer may form when a chiral environment, catalyst or starting material differentiates the faces. Connect stereochemical reasoning to the mechanism supplied."
+      ],
+      "bullets": [
+        "A racemate contains molecules that are individually chiral.",
+        "Zero net rotation results from cancellation, not absence of enantiomers."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Benzene",
+      "expression": "C₆H₆: planar σ framework + six delocalised π electrons"
+    },
+    {
+      "label": "Optical cancellation",
+      "expression": "equal (+) and (−) rotations ⇒ zero net rotation"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "An introduction to A Level organic chemistry: revision route",
+    "type": "flow",
+    "nodes": [
+      "Naming complex molecules",
+      "Benzene structure",
+      "Chirality and enantiomers",
+      "Formation and mixtures"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Circle every potential stereocentre and list its four substituents before deciding.",
+    "Use the delocalised model—not alternating isolated double bonds—in explanation questions.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Calling any carbon with four bonds chiral.",
+    "Saying electrons are stationary halfway between benzene bonds.",
+    "Saying a racemate contains no optically active molecules."
+  ],
+  "quickRecall": [
+    {
+      "question": "What structural feature usually creates chirality?",
+      "answer": "A tetrahedral carbon attached to four different groups."
+    },
+    {
+      "question": "Why are benzene C–C bonds equal?",
+      "answer": "The six π electrons are delocalised around the ring."
+    },
+    {
+      "question": "Why is a racemic mixture optically inactive?",
+      "answer": "Equal and opposite rotations from the two enantiomers cancel."
+    },
+    {
+      "question": "Are enantiomers structural isomers?",
+      "answer": "No; they have the same connectivity and are stereoisomers."
+    }
+  ],
+  "relatedTopics": [
+    "13",
+    "30",
+    "36"
+  ]
+}

@@ -67,6 +67,13 @@ for (const subject of subjects) {
     assert(Array.isArray(note.examTips), `${key} examTips must be an array.`);
     assert(Array.isArray(note.commonMistakes), `${key} commonMistakes must be an array.`);
     assert(Array.isArray(note.quickRecall), `${key} quickRecall must be an array.`);
+    for (const [index, item] of (note.quickRecall ?? []).entries()) {
+      assert(
+        typeof item === "string" ||
+          (item && typeof item.question === "string" && typeof item.answer === "string"),
+        `${key} quickRecall item ${index + 1} must be a string or a question/answer pair.`,
+      );
+    }
     assert(!/<\/?(?:div|span|p|h[1-6]|ul|li|b|em)\b/i.test(JSON.stringify(note)), `${key} contains legacy HTML markup.`);
     for (const related of note.relatedTopics ?? []) {
       assert(topicIdsBySubject.get(note.subject)?.has(related), `${key} points to missing related topic ${related}.`);
@@ -74,10 +81,11 @@ for (const subject of subjects) {
   }
 }
 
-for (const code of ["9618", "9609"]) {
+const expectedA2Counts = new Map([["9709", 24], ["9618", 15], ["9609", 15], ["9701", 15]]);
+for (const code of requiredCodes) {
   const subject = subjects.find((item) => item.code === code);
-  const a2Topics = subject.units.flatMap((unit) => unit.topics).filter((topic) => topic.levels.includes("A2") && topic.level === "A2");
-  assert(a2Topics.length === 15, `${code} should contain 15 dedicated A2 topics, found ${a2Topics.length}.`);
+  const a2Topics = subject.units.flatMap((unit) => unit.topics).filter((topic) => topic.levels.includes("A2"));
+  assert(a2Topics.length === expectedA2Counts.get(code), `${code} should contain ${expectedA2Counts.get(code)} A2-route topics, found ${a2Topics.length}.`);
   for (const topic of a2Topics) {
     const key = `${code}:${topic.id}`;
     const note = noteMap.get(key);
@@ -88,6 +96,7 @@ for (const code of ["9618", "9609"]) {
     assert(note.definitions.length >= 4, `${key} needs at least four definitions.`);
     assert(note.examTips.length >= 2, `${key} needs at least two exam tips.`);
     assert(note.commonMistakes.length >= 3, `${key} needs at least three common mistakes.`);
+    assert(note.quickRecall.length >= 4, `${key} needs at least four recall checks.`);
     assert(JSON.stringify(note).length >= 2_500, `${key} is unexpectedly shallow.`);
   }
 }

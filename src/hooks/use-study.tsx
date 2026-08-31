@@ -22,6 +22,7 @@ interface StudyState {
   version: 1;
   bookmarks: string[];
   completed: string[];
+  syllabusChecks: Record<string, string[]>;
   recent: RecentTopic[];
   lastOpened: string | null;
   theme: ThemePreference;
@@ -31,10 +32,12 @@ interface StudyContextValue extends StudyState {
   hydrated: boolean;
   toggleBookmark: (key: string) => void;
   toggleCompleted: (key: string) => void;
+  toggleSyllabusPoint: (topicKey: string, pointKey: string) => void;
   recordOpened: (key: string) => void;
   setTheme: (theme: ThemePreference) => void;
   isBookmarked: (key: string) => boolean;
   isCompleted: (key: string) => boolean;
+  isSyllabusPointChecked: (topicKey: string, pointKey: string) => boolean;
 }
 
 const STORAGE_KEY = "caie-study-hub:study-state:v1";
@@ -43,6 +46,7 @@ const initialState: StudyState = {
   version: 1,
   bookmarks: [],
   completed: [],
+  syllabusChecks: {},
   recent: [],
   lastOpened: null,
   theme: "system",
@@ -50,7 +54,7 @@ const initialState: StudyState = {
 
 const StudyContext = createContext<StudyContextValue | null>(null);
 
-function parseStoredState(value: string | null): StudyState {
+export function parseStoredState(value: string | null): StudyState {
   if (!value) return initialState;
   try {
     const parsed = JSON.parse(value) as Partial<StudyState>;
@@ -68,6 +72,17 @@ function parseStoredState(value: string | null): StudyState {
       completed: Array.isArray(parsed.completed)
         ? parsed.completed.filter((item): item is string => typeof item === "string")
         : [],
+      syllabusChecks:
+        parsed.syllabusChecks && typeof parsed.syllabusChecks === "object"
+          ? Object.fromEntries(
+              Object.entries(parsed.syllabusChecks)
+                .filter(([, points]) => Array.isArray(points))
+                .map(([topicKey, points]) => [
+                  topicKey,
+                  points.filter((point): point is string => typeof point === "string"),
+                ]),
+            )
+          : {},
       recent: Array.isArray(parsed.recent)
         ? parsed.recent
             .filter(
@@ -143,6 +158,19 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     }));
   }, []);
 
+  const toggleSyllabusPoint = useCallback((topicKey: string, pointKey: string) => {
+    setState((current) => {
+      const checked = current.syllabusChecks[topicKey] ?? [];
+      const next = checked.includes(pointKey)
+        ? checked.filter((item) => item !== pointKey)
+        : [...checked, pointKey];
+      const syllabusChecks = { ...current.syllabusChecks };
+      if (next.length) syllabusChecks[topicKey] = next;
+      else delete syllabusChecks[topicKey];
+      return { ...current, syllabusChecks };
+    });
+  }, []);
+
   const recordOpened = useCallback((key: string) => {
     setState((current) => ({
       ...current,
@@ -167,16 +195,20 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       hydrated,
       toggleBookmark,
       toggleCompleted,
+      toggleSyllabusPoint,
       recordOpened,
       setTheme,
       isBookmarked: (key) => bookmarks.has(key),
       isCompleted: (key) => completed.has(key),
+      isSyllabusPointChecked: (topicKey, pointKey) =>
+        (state.syllabusChecks[topicKey] ?? []).includes(pointKey),
     }),
     [
       state,
       hydrated,
       toggleBookmark,
       toggleCompleted,
+      toggleSyllabusPoint,
       recordOpened,
       setTheme,
       bookmarks,

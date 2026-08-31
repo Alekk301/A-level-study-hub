@@ -1,0 +1,166 @@
+{
+  "id": "26",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Reaction kinetics",
+  "contentDepth": "full",
+  "overview": "Determine rate equations and orders of reaction from experimental data, and link mechanisms and catalysis to kinetics in more depth. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Determine rate equations, orders and k from data.",
+    "Use concentration–time and initial-rate evidence, including half-life.",
+    "Relate a rate equation to a proposed mechanism and rate-determining step.",
+    "Use Arrhenius relationships and explain homogeneous and heterogeneous catalysis."
+  ],
+  "definitions": [
+    {
+      "term": "Order of reaction",
+      "definition": "The exponent of a reactant concentration in an experimentally determined rate equation."
+    },
+    {
+      "term": "Rate constant",
+      "definition": "k, the proportionality constant in the rate equation at a fixed temperature."
+    },
+    {
+      "term": "Half-life",
+      "definition": "Time for a reactant concentration to fall to half its value."
+    },
+    {
+      "term": "Rate-determining step",
+      "definition": "The slow elementary step controlling the observed rate."
+    },
+    {
+      "term": "Activation energy",
+      "definition": "The minimum energy barrier along a reaction pathway."
+    },
+    {
+      "term": "Catalyst",
+      "definition": "A substance that increases rate by providing a lower-activation-energy route and is regenerated overall."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-rate-equations-from-data",
+      "title": "Rate equations from data",
+      "content": [
+        "For rate=k[A]ᵐ[B]ⁿ, compare experiments where one concentration changes and others stay constant. A doubled concentration causing unchanged, doubled or quadrupled rate indicates order 0, 1 or 2 respectively. Calculate k after finding all orders and derive its units from the overall order."
+      ],
+      "bullets": [
+        "Order is experimental and need not match equation coefficients.",
+        "Use initial rates to avoid changing concentrations during the run."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Rate equation: rate=k[A]ᵐ[B]ⁿ"
+        }
+      ]
+    },
+    {
+      "id": "02-concentration-time-evidence",
+      "title": "Concentration–time evidence",
+      "content": [
+        "A zero-order graph [A] against t is linear; first-order gives constant half-life and ln[A] against t linear; second-order gives increasing half-life and 1/[A] against t linear. Gradient information can determine k where required."
+      ],
+      "bullets": [
+        "Constant half-life is strong first-order evidence.",
+        "Initial tangent gradients give initial rates."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-mechanisms",
+      "title": "Mechanisms",
+      "content": [
+        "A proposed elementary mechanism must sum to the overall equation and reproduce the observed rate equation. Species in the slow step may determine rate; if an intermediate appears, use a preceding fast equilibrium or step relationship as directed to eliminate it."
+      ],
+      "bullets": [
+        "A catalyst may appear in the mechanism but cancels from the overall equation.",
+        "Reject a mechanism that conflicts with experimental orders."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-temperature-and-catalysis",
+      "title": "Temperature and catalysis",
+      "content": [
+        "Arrhenius gives ln k=ln A−Ea/(RT), so a plot of ln k against 1/T has gradient −Ea/R. A homogeneous catalyst shares a phase and may form intermediates; a heterogeneous catalyst adsorbs reactants, weakens bonds, allows reaction, then desorbs products."
+      ],
+      "bullets": [
+        "Use kelvin and Ea in J mol⁻¹ with R=8.31 J K⁻¹ mol⁻¹.",
+        "Catalysts change rate, not ΔH or equilibrium position."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Rate equation",
+      "expression": "rate=k[A]ᵐ[B]ⁿ"
+    },
+    {
+      "label": "Overall order",
+      "expression": "m+n+⋯"
+    },
+    {
+      "label": "Arrhenius",
+      "expression": "k=Ae⁻ᴱᵃ⁄ᴿᵀ"
+    },
+    {
+      "label": "Linear Arrhenius",
+      "expression": "ln k=ln A−Ea/(RT)"
+    },
+    {
+      "label": "Arrhenius gradient",
+      "expression": "gradient of ln k vs 1/T=−Ea/R"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Reaction kinetics: revision route",
+    "type": "flow",
+    "nodes": [
+      "Rate equations from data",
+      "Concentration–time evidence",
+      "Mechanisms",
+      "Temperature and catalysis"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Show the concentration ratio and rate ratio when deducing each order.",
+    "Derive k units from the displayed rate equation rather than memorising.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Copying equation coefficients into a rate equation.",
+    "Using Celsius in Arrhenius calculations.",
+    "Saying a catalyst makes an equilibrium yield larger."
+  ],
+  "quickRecall": [
+    {
+      "question": "Does stoichiometry determine reaction order?",
+      "answer": "No; order is found experimentally unless an elementary step is explicitly considered."
+    },
+    {
+      "question": "What kinetic feature indicates first order?",
+      "answer": "A constant half-life as concentration decreases."
+    },
+    {
+      "question": "What must a valid mechanism reproduce?",
+      "answer": "Both the overall equation and the experimental rate equation."
+    },
+    {
+      "question": "What does a catalyst change thermodynamically?",
+      "answer": "It changes neither ΔH nor equilibrium position; it lowers the activation barrier for both directions."
+    }
+  ],
+  "relatedTopics": [
+    "8",
+    "23",
+    "28"
+  ]
+}

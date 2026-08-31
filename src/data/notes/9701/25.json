@@ -1,0 +1,167 @@
+{
+  "id": "25",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Equilibria",
+  "contentDepth": "full",
+  "overview": "Work with Ka, Kw and pH for acids and bases, understand how buffers resist pH change, and use Ksp and partition coefficients. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use Ka, pKa, Kw and pH for strong and weak acids/bases.",
+    "Explain and calculate buffer action and buffer pH.",
+    "Use Ksp to calculate solubility and predict precipitation.",
+    "Use partition coefficients for solute distribution between immiscible solvents."
+  ],
+  "definitions": [
+    {
+      "term": "Brønsted–Lowry acid",
+      "definition": "A proton donor."
+    },
+    {
+      "term": "Brønsted–Lowry base",
+      "definition": "A proton acceptor."
+    },
+    {
+      "term": "Ka",
+      "definition": "The acid-dissociation constant for HA⇌H⁺+A⁻."
+    },
+    {
+      "term": "Buffer solution",
+      "definition": "A solution that resists pH change when small amounts of acid or alkali are added."
+    },
+    {
+      "term": "Solubility product",
+      "definition": "Ksp, the equilibrium constant for dissolution of a sparingly soluble ionic solid."
+    },
+    {
+      "term": "Partition coefficient",
+      "definition": "The equilibrium concentration ratio of a solute between two immiscible solvents at a fixed temperature."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-acid-base-equilibria",
+      "title": "Acid–base equilibria",
+      "content": [
+        "For weak HA, Ka=[H⁺][A⁻]/[HA] and pKa=−log₁₀Ka. Set up an equilibrium table and use approximations only when justified. Kw=[H⁺][OH⁻]=1.00×10⁻¹⁴ mol² dm⁻⁶ at 298 K, so pH+pOH=14 at that temperature."
+      ],
+      "bullets": [
+        "Strong describes extent of ionisation, not concentration.",
+        "Check any small-x approximation against the initial concentration."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "pH: pH=−log₁₀[H⁺]"
+        }
+      ]
+    },
+    {
+      "id": "02-buffers",
+      "title": "Buffers",
+      "content": [
+        "An acidic buffer contains HA and A⁻. Added H⁺ is removed by A⁻; added OH⁻ is removed by HA. Use [H⁺]=Ka[HA]/[A⁻] or pH=pKa+log([A⁻]/[HA]), after accounting stoichiometrically for any added strong acid/base."
+      ],
+      "bullets": [
+        "Use mole ratios when both components share the same final volume.",
+        "Buffer capacity is finite and greatest when both components are substantial."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-ksp-and-precipitation",
+      "title": "Ksp and precipitation",
+      "content": [
+        "Write the dissolution equation before the Ksp expression. For MX₂⇌M²⁺+2X⁻, Ksp=[M²⁺][X⁻]²; molar solubility s gives s(2s)². After mixing solutions, calculate diluted ion concentrations and compare ionic product Qsp with Ksp."
+      ],
+      "bullets": [
+        "Qsp>Ksp predicts precipitation.",
+        "Stoichiometric coefficients become powers and concentration multipliers."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-partition-and-extraction",
+      "title": "Partition and extraction",
+      "content": [
+        "For solute X, Kpc=[X]organic/[X]aqueous using the stated order. Calculate amount remaining from equilibrium concentration ratios and phase volumes. Several small extractions remove more solute than one extraction with the same total solvent volume."
+      ],
+      "bullets": [
+        "Use concentrations, not raw moles, in Kpc.",
+        "The solute must have the same molecular form in both solvents unless the question accounts for reaction."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "pH",
+      "expression": "pH=−log₁₀[H⁺]"
+    },
+    {
+      "label": "Weak acid",
+      "expression": "Ka=[H⁺][A⁻]/[HA]"
+    },
+    {
+      "label": "Buffer",
+      "expression": "pH=pKa+log₁₀([A⁻]/[HA])"
+    },
+    {
+      "label": "Water",
+      "expression": "Kw=[H⁺][OH⁻]"
+    },
+    {
+      "label": "Partition",
+      "expression": "Kpc=[X]solvent 1/[X]solvent 2",
+      "note": "Use the order defined in the question."
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Equilibria: revision route",
+    "type": "flow",
+    "nodes": [
+      "Acid–base equilibria",
+      "Buffers",
+      "Ksp and precipitation",
+      "Partition and extraction"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write an equilibrium equation before every constant expression.",
+    "For buffer additions, do stoichiometric neutralisation before the equilibrium calculation.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Putting solids or liquid water into equilibrium expressions.",
+    "Ignoring dilution after mixing solutions for Ksp.",
+    "Using initial buffer amounts after strong acid/base has reacted."
+  ],
+  "quickRecall": [
+    {
+      "question": "How does an acidic buffer remove added H⁺?",
+      "answer": "Its conjugate base A⁻ reacts with H⁺ to form HA."
+    },
+    {
+      "question": "When does precipitation begin?",
+      "answer": "When the ionic product reaches Ksp; Qsp>Ksp favours solid formation."
+    },
+    {
+      "question": "Why are several extractions more effective?",
+      "answer": "Each fresh portion establishes a new partition equilibrium and removes a fraction of what remains."
+    },
+    {
+      "question": "What is the difference between strong and concentrated?",
+      "answer": "Strong means nearly complete ionisation; concentrated means many moles per unit volume."
+    }
+  ],
+  "relatedTopics": [
+    "7",
+    "23",
+    "24"
+  ]
+}

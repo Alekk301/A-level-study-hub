@@ -1,0 +1,157 @@
+{
+  "id": "5.3",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "S1",
+  "unitTitle": "Probability & Statistics 1",
+  "title": "Probability",
+  "contentDepth": "full",
+  "overview": "Use tree diagrams and Venn diagrams to handle conditional probability and test for independence. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use addition and multiplication rules in probability.",
+    "Distinguish mutually exclusive and independent events.",
+    "Calculate conditional probabilities.",
+    "Model multi-stage situations with trees, Venn diagrams and combinations."
+  ],
+  "definitions": [
+    {
+      "term": "Mutually exclusive",
+      "definition": "Events that cannot occur together, so P(A∩B)=0."
+    },
+    {
+      "term": "Independent",
+      "definition": "Events where occurrence of one does not change the probability of the other."
+    },
+    {
+      "term": "Conditional probability",
+      "definition": "P(A|B), the probability of A given B has occurred."
+    },
+    {
+      "term": "Complement",
+      "definition": "A′, the event that A does not occur."
+    },
+    {
+      "term": "Sample space",
+      "definition": "The set of possible elementary outcomes."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-addition-and-multiplication",
+      "title": "Addition and multiplication",
+      "content": [
+        "For overlapping events, P(A∪B)=P(A)+P(B)−P(A∩B). Along successive branches multiply; across mutually exclusive complete routes add. Use complements for 'at least one'."
+      ],
+      "bullets": [
+        "P(A′)=1−P(A).",
+        "Without replacement, branch probabilities change."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Addition rule: P(A∪B)=P(A)+P(B)−P(A∩B)"
+        }
+      ]
+    },
+    {
+      "id": "02-exclusive-versus-independent",
+      "title": "Exclusive versus independent",
+      "content": [
+        "Mutually exclusive non-zero events are not independent: if A occurs, B cannot. Test independence using P(A∩B)=P(A)P(B), or equivalently P(A|B)=P(A) when P(B)>0."
+      ],
+      "bullets": [
+        "Do not infer independence from a diagram unless stated or shown.",
+        "Zero-probability edge cases need care."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-conditional-probability",
+      "title": "Conditional probability",
+      "content": [
+        "Use P(A|B)=P(A∩B)/P(B). The denominator is the condition—the reduced sample space. Tree diagrams encode this because second-stage probabilities sit on branches after the condition is known."
+      ],
+      "bullets": [
+        "Read 'given that' before deciding the denominator.",
+        "Reverse conditionals P(A|B) and P(B|A) are generally different."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-counting-probability",
+      "title": "Counting probability",
+      "content": [
+        "When elementary outcomes are equally likely, probability=favourable/total. Use combinations for unordered selections and carefully account for colours, categories or restrictions in both numerator and denominator."
+      ],
+      "bullets": [
+        "A Venn diagram can expose intersections and complements.",
+        "Check that final probabilities lie between 0 and 1."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Addition rule",
+      "expression": "P(A∪B)=P(A)+P(B)−P(A∩B)"
+    },
+    {
+      "label": "Conditional probability",
+      "expression": "P(A|B)=P(A∩B)/P(B)"
+    },
+    {
+      "label": "Independence",
+      "expression": "P(A∩B)=P(A)P(B)"
+    },
+    {
+      "label": "Complement",
+      "expression": "P(A′)=1−P(A)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Probability: revision route",
+    "type": "flow",
+    "nodes": [
+      "Addition and multiplication",
+      "Exclusive versus independent",
+      "Conditional probability",
+      "Counting probability"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Define events in words before using symbols.",
+    "Keep exact fractions through tree calculations where possible.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Confusing mutually exclusive with independent.",
+    "Using P(A) rather than P(B) as the denominator of P(A|B).",
+    "Keeping replacement probabilities unchanged in a without-replacement model."
+  ],
+  "quickRecall": [
+    {
+      "question": "Can two non-zero mutually exclusive events be independent?",
+      "answer": "No; occurrence of one makes the other impossible."
+    },
+    {
+      "question": "What is the denominator of P(A|B)?",
+      "answer": "P(B), because B is the restricted sample space."
+    },
+    {
+      "question": "How is 'at least one' often simplified?",
+      "answer": "Use 1−P(none)."
+    },
+    {
+      "question": "What changes in a without-replacement tree?",
+      "answer": "The second-stage totals and favourable counts depend on the first outcome."
+    }
+  ],
+  "relatedTopics": [
+    "5.2",
+    "5.4"
+  ]
+}

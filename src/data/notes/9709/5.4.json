@@ -1,0 +1,162 @@
+{
+  "id": "5.4",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "S1",
+  "unitTitle": "Probability & Statistics 1",
+  "title": "Discrete random variables",
+  "contentDepth": "full",
+  "overview": "Build probability distributions, calculate expectation and variance, and apply the binomial distribution. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Construct discrete probability distributions and find unknown constants.",
+    "Calculate expectation and variance.",
+    "Use and recognise binomial and geometric models.",
+    "Find exact, cumulative and complementary probabilities."
+  ],
+  "definitions": [
+    {
+      "term": "Discrete random variable",
+      "definition": "A variable taking separate countable numerical values."
+    },
+    {
+      "term": "Probability distribution",
+      "definition": "A table or rule assigning a probability to each possible value."
+    },
+    {
+      "term": "Expectation",
+      "definition": "The long-run mean E(X)."
+    },
+    {
+      "term": "Binomial distribution",
+      "definition": "The number of successes in n independent fixed-probability trials."
+    },
+    {
+      "term": "Geometric distribution",
+      "definition": "The trial number of the first success in independent trials with probability p."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-distribution-tables",
+      "title": "Distribution tables",
+      "content": [
+        "List every possible x and P(X=x), require each probability ≥0 and use ΣP(X=x)=1 to find constants. Then E(X)=ΣxP(X=x), E(X²)=Σx²P(X=x), and Var(X)=E(X²)−[E(X)]²."
+      ],
+      "bullets": [
+        "Probabilities, not x-values, must sum to 1.",
+        "Variance cannot be negative."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Expectation: E(X)=ΣxP(X=x)"
+        }
+      ]
+    },
+    {
+      "id": "02-binomial-model",
+      "title": "Binomial model",
+      "content": [
+        "X~B(n,p) requires a fixed number n, two outcomes per trial, constant success probability p and independent trials. Use P(X=r)=ⁿCᵣpʳ(1−p)ⁿ⁻ʳ, with mean np and variance np(1−p)."
+      ],
+      "bullets": [
+        "Translate 'at most', 'fewer than' and 'at least' carefully.",
+        "Use complements for long upper tails."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-geometric-model",
+      "title": "Geometric model",
+      "content": [
+        "For X~Geo(p), where X is the trial of first success, P(X=r)=p(1−p)ʳ⁻¹ and E(X)=1/p. The memoryless idea means after failures the chance of success on the next trial remains p."
+      ],
+      "bullets": [
+        "The support begins at r=1, not 0.",
+        "Do not use a fixed n in a geometric model."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-using-a-calculator",
+      "title": "Using a calculator",
+      "content": [
+        "A calculator may evaluate cumulative probabilities, but the model, parameters and inequality conversion must be shown. For P(X>r), use 1−P(X≤r); for P(a≤X≤b), subtract cumulative values."
+      ],
+      "bullets": [
+        "Check whether calculator cumulative commands include the endpoint.",
+        "State the distribution before the probability statement."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Expectation",
+      "expression": "E(X)=ΣxP(X=x)"
+    },
+    {
+      "label": "Variance",
+      "expression": "Var(X)=E(X²)−[E(X)]²"
+    },
+    {
+      "label": "Binomial mass",
+      "expression": "P(X=r)=ⁿCᵣpʳ(1−p)ⁿ⁻ʳ"
+    },
+    {
+      "label": "Binomial moments",
+      "expression": "E(X)=np; Var(X)=np(1−p)"
+    },
+    {
+      "label": "Geometric mass",
+      "expression": "P(X=r)=p(1−p)ʳ⁻¹"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Discrete random variables: revision route",
+    "type": "flow",
+    "nodes": [
+      "Distribution tables",
+      "Binomial model",
+      "Geometric model",
+      "Using a calculator"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write X~B(n,p) or X~Geo(p) before calculating.",
+    "Translate the words into an exact integer inequality before pressing the calculator.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Starting the geometric support at 0.",
+    "Using binomial when the success probability changes.",
+    "Writing P(X≥r)=1−P(X≤r)."
+  ],
+  "quickRecall": [
+    {
+      "question": "What four conditions support a binomial model?",
+      "answer": "Fixed n, two outcomes, independent trials and constant success probability p."
+    },
+    {
+      "question": "What does a geometric variable count?",
+      "answer": "The trial number on which the first success occurs."
+    },
+    {
+      "question": "How is Var(X) obtained from moments?",
+      "answer": "E(X²)−[E(X)]²."
+    },
+    {
+      "question": "How can P(X≥r) be written cumulatively?",
+      "answer": "1−P(X≤r−1)."
+    }
+  ],
+  "relatedTopics": [
+    "5.3",
+    "5.5",
+    "6.1"
+  ]
+}

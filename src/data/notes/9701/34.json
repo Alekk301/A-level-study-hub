@@ -1,0 +1,165 @@
+{
+  "id": "34",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Nitrogen compounds",
+  "contentDepth": "full",
+  "overview": "Understand phenylamine, azo dye formation, and the structure of amides and amino acids. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Prepare primary/secondary amines and compare their basicity.",
+    "Describe phenylamine reactions, diazotisation and azo coupling.",
+    "Prepare and hydrolyse amides.",
+    "Explain amino-acid zwitterions, acid–base behaviour and peptide links."
+  ],
+  "definitions": [
+    {
+      "term": "Amine",
+      "definition": "An ammonia derivative with one or more H atoms replaced by carbon groups."
+    },
+    {
+      "term": "Phenylamine",
+      "definition": "C₆H₅NH₂, a primary aromatic amine."
+    },
+    {
+      "term": "Diazotisation",
+      "definition": "Conversion of a primary aromatic amine to a diazonium salt using nitrous acid below 10 °C."
+    },
+    {
+      "term": "Zwitterion",
+      "definition": "A species carrying both positive and negative charges but no overall charge."
+    },
+    {
+      "term": "Peptide bond",
+      "definition": "The amide link –CONH– formed between amino acids."
+    },
+    {
+      "term": "Basicity",
+      "definition": "Tendency to accept a proton, governed by lone-pair availability."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-preparing-amines",
+      "title": "Preparing amines",
+      "content": [
+        "Heat a halogenoalkane with excess ethanolic NH₃ under pressure for a primary amine; reaction with a primary amine can form a secondary amine. Reduce nitriles with LiAlH₄ or H₂/Ni, and reduce amides with LiAlH₄. Choose routes by the required carbon skeleton."
+      ],
+      "bullets": [
+        "Nitrile reduction adds/retains the nitrile carbon in the chain.",
+        "Excess ammonia reduces further substitution."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Primary amine salt: RNH₂+H⁺⇌RNH₃⁺"
+        }
+      ]
+    },
+    {
+      "id": "02-basicity",
+      "title": "Basicity",
+      "content": [
+        "Amines accept H⁺ through the N lone pair. Alkyl groups donate electron density and usually make aliphatic amines stronger bases than NH₃. Phenylamine is weaker because its lone pair is delocalised into the benzene ring and is less available for protonation."
+      ],
+      "bullets": [
+        "Compare lone-pair availability in the conjugate pair.",
+        "Amides are much weaker bases because the N lone pair is delocalised into C=O."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-phenylamine-and-azo-chemistry",
+      "title": "Phenylamine and azo chemistry",
+      "content": [
+        "Phenylamine reacts with bromine water to form 2,4,6-tribromophenylamine. With NaNO₂/dilute acid below 10 °C it forms a diazonium salt, which can warm with water to phenol or couple with activated rings such as phenol in alkaline conditions to form coloured azo compounds."
+      ],
+      "bullets": [
+        "Temperature control prevents diazonium decomposition.",
+        "Show the azo –N=N– linkage between aromatic groups."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-amides-and-amino-acids",
+      "title": "Amides and amino acids",
+      "content": [
+        "Acyl chlorides react with NH₃/amines to form amides. Amides hydrolyse under acidic or alkaline conditions to carboxylic-acid/carboxylate products and ammonium/amine products. Amino acids exist as zwitterions near neutral pH, form cations in acid and anions in alkali, and condense through –COOH and –NH₂ to form peptide links."
+      ],
+      "bullets": [
+        "Draw ionic forms with correct charges.",
+        "Peptide hydrolysis restores amino-acid functional groups."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Primary amine salt",
+      "expression": "RNH₂+H⁺⇌RNH₃⁺"
+    },
+    {
+      "label": "Diazotisation",
+      "expression": "C₆H₅NH₂+HNO₂+H⁺→C₆H₅N₂⁺+2H₂O",
+      "note": "Below 10 °C."
+    },
+    {
+      "label": "Peptide link",
+      "expression": "–COOH + H₂N– → –CONH– + H₂O"
+    },
+    {
+      "label": "Amide formation",
+      "expression": "RCOCl+2NH₃→RCONH₂+NH₄Cl"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Nitrogen compounds: revision route",
+    "type": "flow",
+    "nodes": [
+      "Preparing amines",
+      "Basicity",
+      "Phenylamine and azo chemistry",
+      "Amides and amino acids"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Use structures, not only names, for amino-acid ionic forms and azo products.",
+    "When selecting an amine synthesis, track every carbon atom through the route.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Saying the phenylamine lone pair is unavailable because nitrogen has no lone pair.",
+    "Forgetting cold conditions for diazonium formation.",
+    "Drawing an amino acid with incompatible protonation states for the stated pH."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why is phenylamine weaker than an alkylamine?",
+      "answer": "Its nitrogen lone pair is delocalised into the aromatic ring and is less available to accept H⁺."
+    },
+    {
+      "question": "Why is diazotisation kept below 10 °C?",
+      "answer": "Aromatic diazonium salts decompose more readily when warmed."
+    },
+    {
+      "question": "What forms when an amino acid is placed in acid?",
+      "answer": "The amine is protonated, giving an overall cationic form."
+    },
+    {
+      "question": "What functional group is a peptide bond?",
+      "answer": "An amide link, –CONH–."
+    }
+  ],
+  "relatedTopics": [
+    "19",
+    "32",
+    "33",
+    "35",
+    "36"
+  ]
+}

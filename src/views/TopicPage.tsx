@@ -136,7 +136,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
             </div>
           ) : null}
           <Overview text={note.overview} />
-          <SyllabusChecklist points={note.syllabusPoints} />
+          <SyllabusChecklist points={note.syllabusPoints} topicKey={lookup.key} />
           <Definitions definitions={note.definitions} />
           <ConceptDiagramBlock diagram={note.diagram} />
           <div className="core-content">

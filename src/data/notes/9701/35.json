@@ -1,0 +1,159 @@
+{
+  "id": "35",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Polymerisation",
+  "contentDepth": "full",
+  "overview": "Understand condensation polymers in depth, predict monomers from a repeat unit, and consider polymer degradability. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Explain addition and condensation polymerisation and identify repeat units.",
+    "Deduce monomers from polyester and polyamide repeat units.",
+    "Describe polymer hydrolysis and relate structure to degradability.",
+    "Evaluate disposal, recycling and environmental impacts using chemical reasoning."
+  ],
+  "definitions": [
+    {
+      "term": "Addition polymerisation",
+      "definition": "Joining unsaturated monomers without eliminating a small molecule."
+    },
+    {
+      "term": "Condensation polymerisation",
+      "definition": "Joining bifunctional monomers while eliminating a small molecule such as H₂O or HCl."
+    },
+    {
+      "term": "Polyester",
+      "definition": "A condensation polymer containing –COO– links."
+    },
+    {
+      "term": "Polyamide",
+      "definition": "A condensation polymer containing –CONH– links."
+    },
+    {
+      "term": "Repeat unit",
+      "definition": "The smallest structural section that repeats along a polymer chain."
+    },
+    {
+      "term": "Biodegradable",
+      "definition": "Capable of breakdown by biological action under suitable conditions."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-addition-versus-condensation",
+      "title": "Addition versus condensation",
+      "content": [
+        "Addition polymers come from C=C monomers and their repeat units contain only atoms from the monomer. Condensation polymers need two functional groups per monomer; each link forms with loss of a small molecule. Name the link and show open bonds through repeat-unit brackets."
+      ],
+      "bullets": [
+        "The repeat unit must preserve chain connectivity.",
+        "Do not include n copies of a small-molecule by-product inside the repeat unit."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Polyester link: –O–C(=O)–"
+        }
+      ]
+    },
+    {
+      "id": "02-polyesters",
+      "title": "Polyesters",
+      "content": [
+        "A diol plus a dicarboxylic acid forms –O–C(=O)– ester links with water loss; a diol plus a diacyl chloride can form the same links with HCl loss. Hydrolysis cleaves the ester link under acidic or alkaline conditions."
+      ],
+      "bullets": [
+        "Cut the repeat unit through ester links to recover both bifunctional monomers.",
+        "Under alkaline hydrolysis, carboxylate salts form before acidification."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-polyamides-and-peptides",
+      "title": "Polyamides and peptides",
+      "content": [
+        "A diamine plus a dicarboxylic acid/diacyl chloride forms –NH–C(=O)– links. Amino acids can self-condense into polypeptides. Hydrolysis breaks amide links but generally needs stronger conditions than ester hydrolysis."
+      ],
+      "bullets": [
+        "Restore –NH₂ and –COOH at the cut bonds when deducing monomers.",
+        "Account for protonation state under acidic/alkaline hydrolysis."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-properties-and-sustainability",
+      "title": "Properties and sustainability",
+      "content": [
+        "Condensation polymers containing hydrolysable links can be more degradable than C–C addition polymers, but real biodegradation depends on crystallinity, access, temperature and enzymes. Evaluate reuse, mechanical/chemical recycling, feedstock and energy use instead of assuming one disposal route is always best."
+      ],
+      "bullets": [
+        "Biodegradable does not mean instant breakdown everywhere.",
+        "Link a property claim to a named structural feature."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Polyester link",
+      "expression": "–O–C(=O)–"
+    },
+    {
+      "label": "Polyamide link",
+      "expression": "–NH–C(=O)–"
+    },
+    {
+      "label": "Condensation pattern",
+      "expression": "bifunctional monomers → polymer + small molecule"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Polymerisation: revision route",
+    "type": "flow",
+    "nodes": [
+      "Addition versus condensation",
+      "Polyesters",
+      "Polyamides and peptides",
+      "Properties and sustainability"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Mark the exact link before drawing monomers or hydrolysis products.",
+    "Show two continuation bonds through every repeat-unit bracket.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Leaving a C=C bond in an addition-polymer repeat unit.",
+    "Cutting the wrong bond when deducing condensation monomers.",
+    "Calling every condensation polymer readily biodegradable."
+  ],
+  "quickRecall": [
+    {
+      "question": "What feature identifies a polyester?",
+      "answer": "Repeated ester links, –COO–, in the main chain."
+    },
+    {
+      "question": "How are monomers recovered from a polyamide repeat unit?",
+      "answer": "Cut the C(=O)–N links and restore –COOH/acid-derivative and –NH₂ ends."
+    },
+    {
+      "question": "Why can condensation polymers be hydrolysed?",
+      "answer": "Their ester or amide links can react with water under suitable acid/base conditions."
+    },
+    {
+      "question": "Does biodegradable mean harmless or instantly decomposed?",
+      "answer": "No; breakdown depends on environment and products, so conditions and life-cycle effects matter."
+    }
+  ],
+  "relatedTopics": [
+    "20",
+    "33",
+    "34",
+    "36"
+  ]
+}

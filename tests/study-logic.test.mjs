@@ -62,3 +62,16 @@ test("topic navigation remains within the selected study level", async () => {
   assert.equal(neighbours.previous.topic.id, "13.1");
   assert.equal(neighbours.next.topic.id, "13.3");
 });
+
+test("stored syllabus checks survive hydration without losing older study data", async () => {
+  const { parseStoredState } = await vite.ssrLoadModule("/src/hooks/use-study.tsx");
+  const state = parseStoredState(JSON.stringify({
+    bookmarks: ["9709:3.1"],
+    completed: [],
+    syllabusChecks: { "9709:3.1": ["0", "2", 4] },
+    theme: "system",
+  }));
+
+  assert.deepEqual(state.bookmarks, ["9709:3.1"]);
+  assert.deepEqual(state.syllabusChecks, { "9709:3.1": ["0", "2"] });
+});
