@@ -66,7 +66,41 @@
 .subject-heading h1 span { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.34em; letter-spacing: 0; vertical-align: top; }
 .notes-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 2.2rem; }
 .notes-toolbar .progress-line { max-width: 22rem; --subject-accent: var(--green); }
-.notes-catalog { display: grid; gap: 2.4rem; }
+.catalog-introduction { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 1rem; padding-bottom: 0.9rem; border-bottom: 2px solid var(--line); }
+.catalog-introduction h2 { margin: 0.12rem 0 0; font-family: var(--font-editorial); font-size: 1.45rem; }
+.catalog-introduction > p { max-width: 28rem; margin: 0; color: var(--text-muted); font-size: 0.75rem; text-align: right; }
+.notes-catalog { display: grid; gap: 0.7rem; }
+.note-chapter { overflow: hidden; border: 1px solid var(--line); border-radius: 0.55rem; background: var(--surface); box-shadow: var(--shadow-soft); }
+.note-chapter > summary { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto auto; align-items: center; gap: 1rem; padding: 1rem 1.1rem; cursor: pointer; list-style: none; transition: background 180ms ease; }
+.note-chapter > summary::-webkit-details-marker { display: none; }
+.note-chapter > summary:hover { background: var(--surface-subtle); }
+.note-chapter > summary:focus-visible { outline: 2px solid var(--subject-accent, var(--blue)); outline-offset: -2px; }
+.note-chapter__number { color: var(--subject-accent, var(--blue)); font-family: var(--font-mono); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.note-chapter__heading { display: grid; min-width: 0; gap: 0.15rem; }
+.note-chapter__heading strong { font-family: var(--font-editorial); font-size: 1.18rem; line-height: 1.15; }
+.note-chapter__heading small, .note-chapter__progress { color: var(--text-muted); font-size: 0.68rem; }
+.note-chapter__heading small span { color: var(--subject-accent, var(--blue)); }
+.note-chapter__progress { white-space: nowrap; }
+.note-chapter > summary > svg { width: 1rem; color: var(--text-faint); transition: transform 180ms ease; }
+.note-chapter[open] > summary { border-bottom: 1px solid var(--line); background: var(--surface-subtle); }
+.note-chapter[open] > summary > svg { transform: rotate(180deg); }
+.note-chapter__body { padding-inline: 1.1rem; }
+.note-chapter__focus { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; padding: 1rem 0 0.25rem; }
+.note-chapter__focus p { margin: 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.note-chapter__focus ul { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+.note-chapter__focus li { border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.55rem; color: var(--text-muted); font-size: 0.67rem; }
+.note-chapter__topics { margin: 0; padding: 0; list-style: none; }
+.note-chapter__topics li { border-bottom: 1px solid var(--line); }
+.note-chapter__topics li:last-child { border-bottom: 0; }
+.note-chapter__topics li > a {
+  display: grid;
+  grid-template-columns: auto 3rem minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 0.35rem;
+  transition: background 180ms ease, padding 180ms ease;
+}
+.note-chapter__topics li > a:hover { padding-inline: 0.75rem; background: var(--surface-subtle); }
 .topic-unit { min-width: 0; }
 .topic-unit > header { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 0.75rem; padding-bottom: 0.7rem; border-bottom: 2px solid var(--line); }
 .topic-unit > header span { color: var(--blue); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 800; }
