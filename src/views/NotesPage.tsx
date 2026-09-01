@@ -35,6 +35,22 @@ export function NotesPage({ subjectCode }: { subjectCode?: string }) {
     () => (subject ? getNoteChapters(subject, level) : []),
     [subject, level],
   );
+  const chapterGroups = useMemo(() => {
+    if (!subject) return [];
+
+    const groups = new Map<string, { title: string; chapters: typeof chapters }>();
+    for (const chapter of chapters) {
+      const key = chapter.partTitle ?? "coursebook";
+      const group = groups.get(key) ?? {
+        title: chapter.partTitle ?? `${subject.name} coursebook`,
+        chapters: [],
+      };
+      group.chapters.push(chapter);
+      groups.set(key, group);
+    }
+
+    return Array.from(groups.values());
+  }, [chapters, subject]);
   const completedCount = topics.filter((entry) => study.isCompleted(entry.key)).length;
 
   if (!subject) {
@@ -85,70 +101,88 @@ export function NotesPage({ subjectCode }: { subjectCode?: string }) {
       <div className="catalog-introduction">
         <div>
           <p className="eyebrow">Course structure</p>
-          <h2>{chapters.length} main chapter{chapters.length === 1 ? "" : "s"}</h2>
+          <h2>{chapters.length} coursebook chapter{chapters.length === 1 ? "" : "s"}</h2>
         </div>
-        <p>Open a chapter to see its smaller syllabus topics and revision notes.</p>
+        <p>
+          {chapterGroups.length > 1
+            ? `Separated into ${chapterGroups.length} papers or coursebook parts. `
+            : ""}
+          Open a chapter to see its smaller syllabus topics and revision notes.
+        </p>
       </div>
 
       <div className="notes-catalog">
-        {chapters.map((chapter) => {
-          const completedInChapter = chapter.topics.filter((entry) => study.isCompleted(entry.key)).length;
-          const singleChapterNote = chapter.topics.length === 1 && !chapter.topics[0].topic.id.includes(".");
-          const chapterPanelId = `chapter-${subject.code}-${level}-${chapter.number}`;
-
-          return (
-            <details className="note-chapter" key={chapter.key}>
-              <summary aria-controls={chapterPanelId}>
-                <span className="note-chapter__number">Chapter {chapter.number}</span>
-                <span className="note-chapter__heading">
-                  <strong>{chapter.title}</strong>
-                  <small>
-                    {chapter.partTitle ? <span>{chapter.partTitle} · </span> : null}
-                    {singleChapterNote
-                      ? `${chapter.topics[0].topic.focusPoints.length} key syllabus areas`
-                      : `${chapter.topics.length} subtopic${chapter.topics.length === 1 ? "" : "s"}`}
-                  </small>
-                </span>
-                <span className="note-chapter__progress">
-                  {completedInChapter} / {chapter.topics.length} studied
-                </span>
-                <ChevronDown aria-hidden="true" />
-              </summary>
-
-              <div className="note-chapter__body" id={chapterPanelId}>
-                {singleChapterNote ? (
-                  <div className="note-chapter__focus">
-                    <p>Inside this chapter</p>
-                    <ul>
-                      {chapter.topics[0].topic.focusPoints.map((focusPoint) => (
-                        <li key={focusPoint}>{focusPoint}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-
-                <ol className="note-chapter__topics">
-                  {chapter.topics.map((entry) => (
-                    <li key={entry.key}>
-                      <Link href={`${paths.topic(subject.code, entry.topic.id)}${chapter.linkAnchor ? `#${chapter.linkAnchor}` : ""}`}>
-                        <TopicStatus completed={study.isCompleted(entry.key)} bookmarked={study.isBookmarked(entry.key)} />
-                        <span className="topic-number">{entry.topic.id}</span>
-                        <span className="topic-row__body">
-                          <strong>{chapter.linkTitle ?? (singleChapterNote ? "Open complete chapter notes" : entry.topic.title)}</strong>
-                          <small>{entry.topic.summary}</small>
-                        </span>
-                        <span className={`depth-label depth-label--${entry.topic.contentDepth}`}>
-                          {entry.topic.contentDepth === "full" ? "Full notes" : entry.topic.contentDepth === "in-depth" ? "In depth" : "Quick guide"}
-                        </span>
-                        <ArrowRight aria-hidden="true" />
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
+        {chapterGroups.map((group) => (
+          <section className="note-book-group" key={group.title}>
+            <header className="note-book-group__header">
+              <div>
+                <p className="eyebrow">{subject.code === "9709" ? "Exam paper & coursebook" : "Coursebook section"}</p>
+                <h2>{group.title}</h2>
               </div>
-            </details>
-          );
-        })}
+              <span>{group.chapters.length} chapter{group.chapters.length === 1 ? "" : "s"}</span>
+            </header>
+
+            <div className="note-book-group__chapters">
+              {group.chapters.map((chapter) => {
+                const completedInChapter = chapter.topics.filter((entry) => study.isCompleted(entry.key)).length;
+                const singleChapterNote = chapter.topics.length === 1 && !chapter.topics[0].topic.id.includes(".");
+                const chapterPanelId = `chapter-${subject.code}-${level}-${chapter.partOrder ?? "coursebook"}-${chapter.number}`;
+
+                return (
+                  <details className="note-chapter" key={chapter.key}>
+                    <summary aria-controls={chapterPanelId}>
+                      <span className="note-chapter__number">Chapter {chapter.number}</span>
+                      <span className="note-chapter__heading">
+                        <strong>{chapter.title}</strong>
+                        <small>
+                          {singleChapterNote
+                            ? `${chapter.topics[0].topic.focusPoints.length} key syllabus areas`
+                            : `${chapter.topics.length} subtopic${chapter.topics.length === 1 ? "" : "s"}`}
+                        </small>
+                      </span>
+                      <span className="note-chapter__progress">
+                        {completedInChapter} / {chapter.topics.length} studied
+                      </span>
+                      <ChevronDown aria-hidden="true" />
+                    </summary>
+
+                    <div className="note-chapter__body" id={chapterPanelId}>
+                      {singleChapterNote ? (
+                        <div className="note-chapter__focus">
+                          <p>Inside this chapter</p>
+                          <ul>
+                            {chapter.topics[0].topic.focusPoints.map((focusPoint) => (
+                              <li key={focusPoint}>{focusPoint}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+
+                      <ol className="note-chapter__topics">
+                        {chapter.topics.map((entry) => (
+                          <li key={entry.key}>
+                            <Link href={`${paths.topic(subject.code, entry.topic.id)}${chapter.linkAnchor ? `#${chapter.linkAnchor}` : ""}`}>
+                              <TopicStatus completed={study.isCompleted(entry.key)} bookmarked={study.isBookmarked(entry.key)} />
+                              <span className="topic-number">{entry.topic.id}</span>
+                              <span className="topic-row__body">
+                                <strong>{chapter.linkTitle ?? (singleChapterNote ? "Open complete chapter notes" : entry.topic.title)}</strong>
+                                <small>{entry.topic.summary}</small>
+                              </span>
+                              <span className={`depth-label depth-label--${entry.topic.contentDepth}`}>
+                                {entry.topic.contentDepth === "full" ? "Full notes" : entry.topic.contentDepth === "in-depth" ? "In depth" : "Quick guide"}
+                              </span>
+                              <ArrowRight aria-hidden="true" />
+                            </Link>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </details>
+                );
+              })}
+            </div>
+          </section>
+        ))}
       </div>
 
       {!topics.length ? (

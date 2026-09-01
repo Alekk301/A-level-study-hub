@@ -71,9 +71,60 @@ interface CoursebookChapterDefinition {
   number: string;
   title: string;
   partTitle?: string;
+  partOrder?: number;
   linkAnchor?: string;
   linkTitle?: string;
 }
+
+const mathematicsCoursebookChapters: Record<string, CoursebookChapterDefinition | CoursebookChapterDefinition[]> = {
+  "1.1": { number: "1", title: "Quadratics", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.2": { number: "2", title: "Functions", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.3": { number: "3", title: "Coordinate geometry", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.4": { number: "4", title: "Circular measure", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.5": { number: "5", title: "Trigonometry", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.6": { number: "6", title: "Series", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.7": { number: "7", title: "Differentiation", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "1.8": { number: "8", title: "Integration", partTitle: "Paper 1 · Pure Mathematics 1", partOrder: 1 },
+  "2.1": { number: "1", title: "Algebra", partTitle: "Paper 2 · Pure Mathematics 2", partOrder: 2 },
+  "2.2": { number: "2", title: "Logarithmic and exponential functions", partTitle: "Paper 2 · Pure Mathematics 2", partOrder: 2 },
+  "2.3": { number: "3", title: "Trigonometry", partTitle: "Paper 2 · Pure Mathematics 2", partOrder: 2 },
+  "2.4": { number: "4", title: "Differentiation", partTitle: "Paper 2 · Pure Mathematics 2", partOrder: 2 },
+  "2.5": { number: "5", title: "Integration", partTitle: "Paper 2 · Pure Mathematics 2", partOrder: 2 },
+  "2.6": { number: "6", title: "Numerical solutions of equations", partTitle: "Paper 2 · Pure Mathematics 2", partOrder: 2 },
+  "3.1": [
+    { number: "1", title: "Algebra", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+    { number: "7", title: "Further algebra", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  ],
+  "3.2": { number: "2", title: "Logarithmic and exponential functions", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  "3.3": { number: "3", title: "Trigonometry", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  "3.4": [
+    { number: "4", title: "Differentiation", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+    { number: "8", title: "Further calculus", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  ],
+  "3.5": [
+    { number: "5", title: "Integration", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+    { number: "8", title: "Further calculus", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  ],
+  "3.6": { number: "6", title: "Numerical solutions of equations", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  "3.7": { number: "9", title: "Vectors", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  "3.8": { number: "10", title: "Differential equations", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  "3.9": { number: "11", title: "Complex numbers", partTitle: "Paper 3 · Pure Mathematics 3", partOrder: 3 },
+  "4.1": { number: "1", title: "Forces and equilibrium", partTitle: "Paper 4 · Mechanics", partOrder: 4 },
+  "4.2": { number: "2", title: "Kinematics of motion in a straight line", partTitle: "Paper 4 · Mechanics", partOrder: 4 },
+  "4.3": { number: "3", title: "Momentum", partTitle: "Paper 4 · Mechanics", partOrder: 4 },
+  "4.4": { number: "4", title: "Newton's laws of motion", partTitle: "Paper 4 · Mechanics", partOrder: 4 },
+  "4.5": { number: "5", title: "Energy, work and power", partTitle: "Paper 4 · Mechanics", partOrder: 4 },
+  "5.1": { number: "1", title: "Representation of data", partTitle: "Paper 5 · Probability & Statistics 1", partOrder: 5 },
+  "5.2": { number: "2", title: "Permutations and combinations", partTitle: "Paper 5 · Probability & Statistics 1", partOrder: 5 },
+  "5.3": { number: "3", title: "Probability", partTitle: "Paper 5 · Probability & Statistics 1", partOrder: 5 },
+  "5.4": { number: "4", title: "Discrete random variables", partTitle: "Paper 5 · Probability & Statistics 1", partOrder: 5 },
+  "5.5": { number: "5", title: "The normal distribution", partTitle: "Paper 5 · Probability & Statistics 1", partOrder: 5 },
+  "6.1": { number: "1", title: "The Poisson distribution", partTitle: "Paper 6 · Probability & Statistics 2", partOrder: 6 },
+  "6.2": { number: "2", title: "Linear combinations of random variables", partTitle: "Paper 6 · Probability & Statistics 2", partOrder: 6 },
+  "6.3": { number: "3", title: "Continuous random variables", partTitle: "Paper 6 · Probability & Statistics 2", partOrder: 6 },
+  "6.4": { number: "4", title: "Sampling and estimation", partTitle: "Paper 6 · Probability & Statistics 2", partOrder: 6 },
+  "6.5": { number: "5", title: "Hypothesis tests", partTitle: "Paper 6 · Probability & Statistics 2", partOrder: 6 },
+};
 
 const computerScienceCoursebookChapters: Record<string, CoursebookChapterDefinition | CoursebookChapterDefinition[]> = {
   "1.1": { number: "1", title: "Information representation", partTitle: "Part 1 · Theory fundamentals" },
@@ -157,6 +208,7 @@ export interface NoteChapter {
   title: string;
   unitTitle: string;
   partTitle?: string;
+  partOrder?: number;
   linkAnchor?: string;
   linkTitle?: string;
   topics: TopicLookup[];
@@ -168,9 +220,11 @@ export function getNoteChapters(subject: Subject, level: StudyLevel): NoteChapte
 
   for (const entry of getTopicsForLevel(subject, level)) {
     const syllabusChapterNumber = entry.topic.id.split(".")[0];
-    const coursebookPlacement = subject.code === "9618"
-      ? computerScienceCoursebookChapters[entry.topic.id]
-      : null;
+    const coursebookPlacement = subject.code === "9709"
+      ? mathematicsCoursebookChapters[entry.topic.id]
+      : subject.code === "9618"
+        ? computerScienceCoursebookChapters[entry.topic.id]
+        : null;
     const fallbackDefinition = {
       number: syllabusChapterNumber,
       title: coursebookChapterTitles[subject.code]?.[syllabusChapterNumber]
@@ -181,27 +235,32 @@ export function getNoteChapters(subject: Subject, level: StudyLevel): NoteChapte
       : [fallbackDefinition];
 
     for (const definition of definitions) {
-      const chapter = groupedTopics.get(definition.number) ?? { definition, topics: [] };
+      const groupKey = `${definition.partTitle ?? entry.unit.title}:${definition.number}`;
+      const chapter = groupedTopics.get(groupKey) ?? { definition, topics: [] };
       chapter.topics.push(entry);
-      groupedTopics.set(definition.number, chapter);
+      groupedTopics.set(groupKey, chapter);
     }
   }
 
-  return Array.from(groupedTopics, ([number, chapter]) => {
+  return Array.from(groupedTopics, ([groupKey, chapter]) => {
     const { definition, topics } = chapter;
     const firstTopic = topics[0];
 
     return {
-      key: `${subject.code}:${level}:${number}`,
-      number,
+      key: `${subject.code}:${level}:${groupKey}`,
+      number: definition.number,
       title: definition.title,
       unitTitle: firstTopic.unit.title,
       partTitle: definition.partTitle,
+      partOrder: definition.partOrder,
       linkAnchor: definition.linkAnchor,
       linkTitle: definition.linkTitle,
       topics,
     };
-  }).sort((first, second) => Number(first.number) - Number(second.number));
+  }).sort((first, second) => (
+    (first.partOrder ?? 0) - (second.partOrder ?? 0)
+    || Number(first.number) - Number(second.number)
+  ));
 }
 
 export function getTopicNeighbours(subject: Subject, topic: TopicMeta) {
