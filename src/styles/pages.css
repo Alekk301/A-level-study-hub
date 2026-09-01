@@ -69,7 +69,12 @@
 .catalog-introduction { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 1rem; padding-bottom: 0.9rem; border-bottom: 2px solid var(--line); }
 .catalog-introduction h2 { margin: 0.12rem 0 0; font-family: var(--font-editorial); font-size: 1.45rem; }
 .catalog-introduction > p { max-width: 28rem; margin: 0; color: var(--text-muted); font-size: 0.75rem; text-align: right; }
-.notes-catalog { display: grid; gap: 0.7rem; }
+.notes-catalog { display: grid; gap: 2.4rem; }
+.note-book-group { display: grid; gap: 0.75rem; }
+.note-book-group__header { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding: 0 0.15rem 0.7rem; border-bottom: 1px solid var(--line); }
+.note-book-group__header h2 { margin: 0.15rem 0 0; font-family: var(--font-editorial); font-size: 1.55rem; line-height: 1.15; }
+.note-book-group__header > span { flex: 0 0 auto; color: var(--text-faint); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.note-book-group__chapters { display: grid; gap: 0.7rem; }
 .note-chapter { overflow: hidden; border: 1px solid var(--line); border-radius: 0.55rem; background: var(--surface); box-shadow: var(--shadow-soft); }
 .note-chapter > summary { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto auto; align-items: center; gap: 1rem; padding: 1rem 1.1rem; cursor: pointer; list-style: none; transition: background 180ms ease; }
 .note-chapter > summary::-webkit-details-marker { display: none; }

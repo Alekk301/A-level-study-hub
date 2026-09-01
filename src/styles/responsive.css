@@ -64,6 +64,8 @@
   .notes-toolbar .progress-line { max-width: none; }
   .catalog-introduction { align-items: flex-start; flex-direction: column; gap: 0.45rem; }
   .catalog-introduction > p { max-width: none; text-align: left; }
+  .notes-catalog { gap: 2rem; }
+  .note-book-group__header { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
   .note-chapter > summary { grid-template-columns: minmax(0, 1fr) auto; gap: 0.35rem 0.8rem; }
   .note-chapter__number { grid-column: 1; grid-row: 1; }
   .note-chapter__heading { grid-column: 1; grid-row: 2; }

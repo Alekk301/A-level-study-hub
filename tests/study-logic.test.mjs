@@ -81,8 +81,26 @@ test("notes are grouped into coursebook chapters before their subtopics", async 
   assert.equal(computerScienceAs.find((chapter) => chapter.number === "7").title, "Monitoring and control systems");
 
   const mathematics = getNoteChapters(getSubject("9709"), "A2");
-  assert.equal(mathematics[0].title, "Pure Mathematics 3");
-  assert.equal(mathematics[0].topics.length, 9);
+  const pureThree = mathematics.filter((chapter) => chapter.partTitle === "Paper 3 · Pure Mathematics 3");
+  assert.equal(pureThree.length, 11);
+  assert.equal(pureThree[0].title, "Algebra");
+  assert.equal(pureThree[6].title, "Further algebra");
+  assert.deepEqual(pureThree[7].topics.map((entry) => entry.topic.id), ["3.4", "3.5"]);
+
+  const statisticsOne = mathematics.find((chapter) => (
+    chapter.partTitle === "Paper 5 · Probability & Statistics 1" && chapter.number === "1"
+  ));
+  const statisticsTwo = mathematics.find((chapter) => (
+    chapter.partTitle === "Paper 6 · Probability & Statistics 2" && chapter.number === "1"
+  ));
+  assert.equal(statisticsOne.title, "Representation of data");
+  assert.equal(statisticsOne.topics[0].topic.id, "5.1");
+  assert.equal(statisticsTwo.title, "The Poisson distribution");
+  assert.equal(statisticsTwo.topics[0].topic.id, "6.1");
+
+  const mathematicsAs = getNoteChapters(getSubject("9709"), "AS");
+  assert.equal(mathematicsAs.filter((chapter) => chapter.partTitle === "Paper 2 · Pure Mathematics 2").length, 6);
+  assert.equal(mathematicsAs.find((chapter) => chapter.partTitle === "Paper 2 · Pure Mathematics 2").title, "Algebra");
 
   const chemistry = getNoteChapters(getSubject("9701"), "A2");
   assert.equal(chemistry[0].number, "23");
