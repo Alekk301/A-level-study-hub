@@ -69,9 +69,16 @@ test("notes are grouped into coursebook chapters before their subtopics", async 
   );
 
   const computerScience = getNoteChapters(getSubject("9618"), "A2");
-  assert.equal(computerScience[0].number, "13");
+  assert.equal(computerScience[0].number, "16");
   assert.equal(computerScience[0].title, "Data representation");
+  assert.equal(computerScience[0].partTitle, "Part 3 · Advanced theory");
   assert.deepEqual(computerScience[0].topics.map((entry) => entry.topic.id), ["13.1", "13.2", "13.3"]);
+  assert.equal(computerScience.at(-1).number, "29");
+  assert.equal(computerScience.at(-1).linkAnchor, "05-declarative-programming");
+
+  const computerScienceAs = getNoteChapters(getSubject("9618"), "AS");
+  assert.equal(computerScienceAs.find((chapter) => chapter.number === "4").topics[0].topic.id, "3.2");
+  assert.equal(computerScienceAs.find((chapter) => chapter.number === "7").title, "Monitoring and control systems");
 
   const mathematics = getNoteChapters(getSubject("9709"), "A2");
   assert.equal(mathematics[0].title, "Pure Mathematics 3");

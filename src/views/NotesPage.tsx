@@ -102,9 +102,12 @@ export function NotesPage({ subjectCode }: { subjectCode?: string }) {
                 <span className="note-chapter__number">Chapter {chapter.number}</span>
                 <span className="note-chapter__heading">
                   <strong>{chapter.title}</strong>
-                  <small>{singleChapterNote
-                    ? `${chapter.topics[0].topic.focusPoints.length} key syllabus areas`
-                    : `${chapter.topics.length} subtopic${chapter.topics.length === 1 ? "" : "s"}`}</small>
+                  <small>
+                    {chapter.partTitle ? <span>{chapter.partTitle} · </span> : null}
+                    {singleChapterNote
+                      ? `${chapter.topics[0].topic.focusPoints.length} key syllabus areas`
+                      : `${chapter.topics.length} subtopic${chapter.topics.length === 1 ? "" : "s"}`}
+                  </small>
                 </span>
                 <span className="note-chapter__progress">
                   {completedInChapter} / {chapter.topics.length} studied
@@ -127,11 +130,11 @@ export function NotesPage({ subjectCode }: { subjectCode?: string }) {
                 <ol className="note-chapter__topics">
                   {chapter.topics.map((entry) => (
                     <li key={entry.key}>
-                      <Link href={paths.topic(subject.code, entry.topic.id)}>
+                      <Link href={`${paths.topic(subject.code, entry.topic.id)}${chapter.linkAnchor ? `#${chapter.linkAnchor}` : ""}`}>
                         <TopicStatus completed={study.isCompleted(entry.key)} bookmarked={study.isBookmarked(entry.key)} />
                         <span className="topic-number">{entry.topic.id}</span>
                         <span className="topic-row__body">
-                          <strong>{singleChapterNote ? "Open complete chapter notes" : entry.topic.title}</strong>
+                          <strong>{chapter.linkTitle ?? (singleChapterNote ? "Open complete chapter notes" : entry.topic.title)}</strong>
                           <small>{entry.topic.summary}</small>
                         </span>
                         <span className={`depth-label depth-label--${entry.topic.contentDepth}`}>

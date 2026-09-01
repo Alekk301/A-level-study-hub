@@ -79,6 +79,7 @@
 .note-chapter__heading { display: grid; min-width: 0; gap: 0.15rem; }
 .note-chapter__heading strong { font-family: var(--font-editorial); font-size: 1.18rem; line-height: 1.15; }
 .note-chapter__heading small, .note-chapter__progress { color: var(--text-muted); font-size: 0.68rem; }
+.note-chapter__heading small span { color: var(--subject-accent, var(--blue)); }
 .note-chapter__progress { white-space: nowrap; }
 .note-chapter > summary > svg { width: 1rem; color: var(--text-faint); transition: transform 180ms ease; }
 .note-chapter[open] > summary { border-bottom: 1px solid var(--line); background: var(--surface-subtle); }
