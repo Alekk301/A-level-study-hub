@@ -52,6 +52,78 @@ export function getTopicsForLevel(subject: Subject, level: StudyLevel) {
   );
 }
 
+const coursebookChapterTitles: Record<string, Record<string, string>> = {
+  "9618": {
+    "1": "Information representation",
+    "2": "Communication",
+    "3": "Hardware",
+    "4": "Processor fundamentals",
+    "5": "System software",
+    "6": "Security, privacy and data integrity",
+    "7": "Ethics and ownership",
+    "8": "Databases",
+    "9": "Algorithm design and problem-solving",
+    "10": "Data types and structures",
+    "11": "Programming",
+    "12": "Software development",
+    "13": "Data representation",
+    "14": "Communication and internet technologies",
+    "15": "Hardware and virtual machines",
+    "16": "System software",
+    "17": "Security",
+    "18": "Artificial intelligence",
+    "19": "Computational thinking and problem-solving",
+    "20": "Further programming",
+  },
+  "9609": {
+    "1": "Business and its environment",
+    "2": "People in organisations",
+    "3": "Marketing",
+    "4": "Operations management",
+    "5": "Finance and accounting",
+    "6": "Business and its environment",
+    "7": "Human resource management",
+    "8": "Marketing",
+    "9": "Operations management",
+    "10": "Finance and accounting",
+  },
+};
+
+export interface NoteChapter {
+  key: string;
+  number: string;
+  title: string;
+  unitTitle: string;
+  topics: TopicLookup[];
+}
+
+/** Groups routed notes beneath the numbered chapters used by the course structure. */
+export function getNoteChapters(subject: Subject, level: StudyLevel): NoteChapter[] {
+  const groupedTopics = new Map<string, TopicLookup[]>();
+
+  for (const entry of getTopicsForLevel(subject, level)) {
+    const chapterNumber = entry.topic.id.split(".")[0];
+    const chapterTopics = groupedTopics.get(chapterNumber) ?? [];
+    chapterTopics.push(entry);
+    groupedTopics.set(chapterNumber, chapterTopics);
+  }
+
+  return Array.from(groupedTopics, ([number, topics]) => {
+    const firstTopic = topics[0];
+    const configuredTitle = coursebookChapterTitles[subject.code]?.[number];
+    const title = configuredTitle
+      ?? (topics.length === 1 ? firstTopic.topic.title : firstTopic.unit.title);
+
+    return {
+      key: `${subject.code}:${level}:${number}`,
+      number,
+      title,
+      unitTitle: firstTopic.unit.title,
+      topics,
+    };
+  });
+}
+
 export function getTopicNeighbours(subject: Subject, topic: TopicMeta) {
   const level = topic.levels.includes("A2") ? "A2" : "AS";
   const topics = getTopicsForLevel(subject, level);
