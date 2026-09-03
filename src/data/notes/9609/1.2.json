@@ -1,0 +1,305 @@
+{
+  "id": "1.2",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Business structure",
+  "contentDepth": "full",
+  "overview": "Business structure covers both where activity sits in the economy and the legal form chosen by its owners. The strongest answers compare control, liability, continuity, finance, profit sharing and legal requirements in the exact context—not simply whether a form is 'large' or 'small'.",
+  "syllabusPoints": [
+    "Distinguish primary, secondary and tertiary activity and explain why sector importance changes over time.",
+    "Distinguish private-sector and public-sector organisations in mixed, free-market and command economies.",
+    "Compare sole traders, partnerships, private limited companies and public limited companies.",
+    "Explain limited liability, separate legal identity, continuity and the divorce between ownership and control.",
+    "Analyse franchises, co-operatives, joint ventures and social enterprises.",
+    "Recommend an appropriate business form using contextual factors."
+  ],
+  "definitions": [
+    {
+      "term": "Primary sector",
+      "definition": "Businesses that extract or harvest natural resources, such as farming, fishing and mining."
+    },
+    {
+      "term": "Secondary sector",
+      "definition": "Businesses that manufacture or construct goods by transforming raw materials and components."
+    },
+    {
+      "term": "Tertiary sector",
+      "definition": "Businesses that provide services to consumers or other organisations."
+    },
+    {
+      "term": "Private sector",
+      "definition": "The part of the economy owned and controlled by individuals or private organisations."
+    },
+    {
+      "term": "Public sector",
+      "definition": "Organisations owned or controlled by the state, often providing services or pursuing social objectives."
+    },
+    {
+      "term": "Limited liability",
+      "definition": "Owners can normally lose only the amount invested in the company; their personal assets are protected from company debts."
+    },
+    {
+      "term": "Separate legal identity",
+      "definition": "The company has legal existence apart from its owners and can own assets, make contracts and be sued in its own name."
+    },
+    {
+      "term": "Sole trader",
+      "definition": "A business owned and controlled by one person, who normally has unlimited liability."
+    },
+    {
+      "term": "Partnership",
+      "definition": "A business owned by two or more people who share finance, responsibilities and returns under an agreement."
+    },
+    {
+      "term": "Private limited company",
+      "definition": "An incorporated company whose shares cannot be offered to the general public and whose shareholders have limited liability."
+    },
+    {
+      "term": "Public limited company",
+      "definition": "An incorporated company permitted to offer shares to the public, often through a stock exchange."
+    },
+    {
+      "term": "Franchise",
+      "definition": "An agreement allowing a franchisee to use the franchisor's brand and business system in return for fees and compliance with rules."
+    },
+    {
+      "term": "Co-operative",
+      "definition": "An organisation owned and controlled by members for their mutual benefit, usually with democratic voting."
+    },
+    {
+      "term": "Joint venture",
+      "definition": "A separate project or business owned by two or more organisations that share resources, control, risks and returns."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-economic-sectors-and-structural-change",
+      "title": "Economic sectors and structural change",
+      "content": [
+        "Primary businesses supply resources, secondary businesses transform them and tertiary businesses provide services. A product may pass through all three—for example, cotton farming, clothing manufacture and retailing. Sector classification depends on the main activity, not the product name."
+      ],
+      "bullets": [
+        "Industrialisation is an increase in the importance of manufacturing as investment, infrastructure and skills develop.",
+        "Deindustrialisation is a relative decline in manufacturing, often as productivity rises, production moves abroad or demand shifts toward services.",
+        "Rising incomes, urbanisation, technology and outsourcing usually increase tertiary activity; this does not mean primary and secondary output disappear."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-private-public-and-mixed-economies",
+      "title": "Private, public and mixed economies",
+      "content": [
+        "Private-sector owners usually pursue profit, growth or personal objectives and bear commercial risk. Public-sector organisations are accountable to government and may prioritise access, quality, employment or strategic control. Most economies are mixed: markets allocate many resources while the state owns, regulates or funds selected activities."
+      ],
+      "bullets": [
+        "A free-market economy relies mainly on private ownership and price signals.",
+        "A command economy relies mainly on state ownership and planning.",
+        "Public ownership does not remove the need for efficiency or finance; private ownership does not mean the business ignores law or stakeholders."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-unincorporated-ownership-sole-traders-and-partnerships",
+      "title": "Unincorporated ownership: sole traders and partnerships",
+      "content": [
+        "A sole trader has speed, privacy, direct customer contact and full control, but limited finance, workload pressure, lack of continuity and unlimited liability can constrain growth. A partnership pools finance, skills and workload, yet profit and decisions must be shared and partners may be bound by one another's actions."
+      ],
+      "bullets": [
+        "A partnership agreement should state capital contributions, profit sharing, duties, decision rules, dispute procedures and what happens if a partner leaves.",
+        "Unlimited liability matters most where debts, legal claims or long-term contracts are large.",
+        "Small scale can support flexibility and personal service, but it is not automatically more efficient or less risky."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-incorporated-ownership-private-and-public-companies",
+      "title": "Incorporated ownership: private and public companies",
+      "content": [
+        "Incorporation creates separate legal identity, continuity and limited liability. A private limited company can sell shares privately and protect owner control through transfer restrictions. A public limited company can raise very large sums from public share issues, but faces disclosure, regulation, flotation cost and possible loss of control."
+      ],
+      "bullets": [
+        "Shareholders own a company and elect directors; directors manage it. Their objectives may differ, creating a divorce between ownership and control.",
+        "Share finance is permanent capital, but new shares dilute ownership and future profit may be paid as dividends.",
+        "Limited liability reduces owner risk but does not protect directors from every personal guarantee or unlawful act."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-franchising",
+      "title": "Franchising",
+      "content": [
+        "The franchisee buys the right to operate a proven format. The franchisor provides a brand, training, systems and often national promotion; the franchisee supplies local capital and management. This can speed expansion for the franchisor and reduce start-up uncertainty for the franchisee."
+      ],
+      "bullets": [
+        "Franchisee benefits: recognised name, established product, training, purchasing support and a tested model.",
+        "Franchisee drawbacks: initial fee, continuing royalties, restricted decisions and reputation risk from other outlets.",
+        "Franchisor benefits: rapid growth using franchisees' capital and local knowledge.",
+        "Franchisor drawbacks: monitoring cost, less direct control and brand damage if a franchisee performs badly."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-co-operatives-joint-ventures-and-other-collaborative-forms",
+      "title": "Co-operatives, joint ventures and other collaborative forms",
+      "content": [
+        "A producer, worker or consumer co-operative exists for member benefit and often uses one-member-one-vote, which may strengthen commitment but slow decisions and limit external investment. A joint venture combines complementary skills, technology, finance or market access for a defined purpose."
+      ],
+      "bullets": [
+        "Joint-venture benefits: shared cost and risk, local knowledge, faster entry and combined expertise.",
+        "Joint-venture risks: conflict over objectives, culture, contribution, control, profit sharing and intellectual property.",
+        "A social enterprise is distinguished by its main objective, not by one fixed legal form."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-choosing-an-appropriate-structure",
+      "title": "Choosing an appropriate structure",
+      "content": [
+        "A justified recommendation weighs the owners' desired control and return against finance required, risk, continuity, skill needs, speed of decisions, legal formalities, disclosure and growth plans. The importance of each factor changes with context."
+      ],
+      "bullets": [
+        "A high-risk manufacturer needing expensive equipment may value incorporation and access to share capital.",
+        "A professional service may value a partnership because complementary expertise and client relationships matter.",
+        "A first-time owner may prefer a franchise when brand recognition and operating support are worth the fees and reduced freedom."
+      ],
+      "examples": [
+        {
+          "id": "1.2-7-1",
+          "kind": "analysis",
+          "label": "Recommendation frame",
+          "content": "Recommend → use case evidence → explain the benefit → recognise the main drawback → judge why the benefit matters more for this business."
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Core ownership choices",
+    "columns": [
+      "Form",
+      "Control",
+      "Liability/identity",
+      "Finance",
+      "Main tension"
+    ],
+    "rows": [
+      [
+        "Sole trader",
+        "One owner",
+        "Usually unlimited; no separate identity",
+        "Savings, retained profit, borrowing",
+        "Full control but limited resources and high personal risk"
+      ],
+      [
+        "Partnership",
+        "Shared by partners",
+        "Usually unlimited unless law provides otherwise",
+        "Partners' capital and borrowing",
+        "More skills/finance but shared decisions and profit"
+      ],
+      [
+        "Private limited company",
+        "Shareholders/directors; private share transfers",
+        "Limited; separate identity",
+        "Private shares, retained profit, debt",
+        "Continuity and protection but formalities and restricted share market"
+      ],
+      [
+        "Public limited company",
+        "Shareholders elect directors",
+        "Limited; separate identity",
+        "Public shares and debt",
+        "Large finance potential but disclosure, cost and control risk"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "From activity to legal form",
+    "type": "layers",
+    "nodes": [
+      "Economic activity: primary / secondary / tertiary",
+      "Ownership sector: private / public",
+      "Legal identity: unincorporated / incorporated",
+      "Chosen form: owner control, risk and finance"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Converting to a private limited company",
+      "steps": [
+        "The business gains separate legal identity and limited liability",
+        "Owner exposure to company debt falls",
+        "Shares can bring in additional permanent capital",
+        "Investment and expansion become more feasible"
+      ],
+      "evaluation": "Legal and reporting costs rise, and the benefit is smaller if lenders still demand personal guarantees."
+    },
+    {
+      "title": "Buying a franchise",
+      "steps": [
+        "The start-up uses an established brand and operating system",
+        "Customer awareness and learning time may improve",
+        "Sales may become more predictable",
+        "Failure risk may fall"
+      ],
+      "evaluation": "The franchise is not risk-free: local demand, royalty costs and limited freedom may still reduce profit."
+    },
+    {
+      "title": "Entering a joint venture abroad",
+      "steps": [
+        "A local partner supplies market knowledge and contacts",
+        "Entry mistakes and investment are shared",
+        "The product reaches customers sooner",
+        "Revenue and growth may increase"
+      ],
+      "evaluation": "Different objectives or loss of technology/control may outweigh speed, especially without a clear agreement."
+    }
+  ],
+  "examTips": [
+    "Public limited company means publicly traded ownership, not a state-owned public-sector organisation.",
+    "When comparing structures, use the same decision criterion on both sides—for example control, finance or liability.",
+    "Do not say limited liability prevents business failure; it limits shareholders' personal loss.",
+    "A recommendation needs a final judgement linked to the case's most important constraint."
+  ],
+  "commonMistakes": [
+    "Assuming every partnership has exactly two owners or identical legal rules in every country.",
+    "Claiming private limited companies cannot sell shares at all; they cannot offer them to the general public.",
+    "Discussing only the franchisee when a question asks about franchising for the franchisor.",
+    "Treating sector and legal structure as the same classification."
+  ],
+  "quickRecall": [
+    {
+      "question": "What distinguishes primary, secondary and tertiary activity?",
+      "answer": "Extraction/harvesting, transformation/construction, and service provision respectively."
+    },
+    {
+      "question": "What two protections usually follow incorporation?",
+      "answer": "Separate legal identity and limited liability."
+    },
+    {
+      "question": "Why can a partnership raise more finance than a sole trader?",
+      "answer": "More owners can contribute capital and may provide more security or expertise to lenders."
+    },
+    {
+      "question": "What is the divorce between ownership and control?",
+      "answer": "Shareholders own the company, while directors make many management decisions and may pursue different objectives."
+    },
+    {
+      "question": "Why may a franchise reduce risk but also reduce profit?",
+      "answer": "It provides a tested brand/system, but fees and royalties take revenue and rules limit local decisions."
+    },
+    {
+      "question": "Give two benefits and two risks of a joint venture.",
+      "answer": "Shared resources/risk and local expertise; possible conflict and loss of control or knowledge."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "1.3",
+    "1.4",
+    "1.5",
+    "5.2"
+  ]
+}

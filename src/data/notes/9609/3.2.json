@@ -1,0 +1,294 @@
+{
+  "id": "3.2",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Market research",
+  "contentDepth": "full",
+  "overview": "Market research reduces uncertainty by collecting and interpreting evidence about customers, competitors and markets. It does not remove risk: the quality of the decision depends on the question, sample, method, timing and how honestly the evidence is interpreted.",
+  "syllabusPoints": [
+    "Explain the purpose and stages of market research.",
+    "Distinguish primary and secondary, quantitative and qualitative research.",
+    "Compare questionnaires, interviews, focus groups, observation and test marketing.",
+    "Assess internal and external secondary sources.",
+    "Compare random, stratified, quota and convenience sampling.",
+    "Analyse reliability, validity, bias, sample size and the role of information technology."
+  ],
+  "definitions": [
+    {
+      "term": "Market research",
+      "definition": "Collecting, analysing and interpreting information about a market, customer or marketing decision."
+    },
+    {
+      "term": "Primary research",
+      "definition": "New first-hand data collected for the business's specific research objective."
+    },
+    {
+      "term": "Secondary research",
+      "definition": "Existing data originally collected for another purpose and reused for the current decision."
+    },
+    {
+      "term": "Quantitative data",
+      "definition": "Numerical data that can be measured and statistically analysed."
+    },
+    {
+      "term": "Qualitative data",
+      "definition": "Non-numerical evidence about opinions, motives, perceptions and explanations."
+    },
+    {
+      "term": "Sample",
+      "definition": "A subset of a target population selected for research."
+    },
+    {
+      "term": "Sampling frame",
+      "definition": "A list or source from which a sample is selected."
+    },
+    {
+      "term": "Bias",
+      "definition": "A systematic influence that makes evidence unrepresentative or pushes results in a particular direction."
+    },
+    {
+      "term": "Reliability",
+      "definition": "The extent to which a method would produce consistent results if repeated."
+    },
+    {
+      "term": "Validity",
+      "definition": "The extent to which the research measures what the decision actually requires."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-purpose-and-research-process",
+      "title": "Purpose and research process",
+      "content": [
+        "Research can estimate demand, identify segments, test price or packaging, understand dissatisfaction, track competitors and forecast change. A disciplined process defines the decision/problem, specifies information needed, sets budget and method, collects data, analyses patterns, reports limitations, acts and reviews."
+      ],
+      "bullets": [
+        "A vague objective collects interesting data that may not support a decision.",
+        "Start with secondary data where useful, then use primary research to fill specific gaps.",
+        "Research cost should be proportionate to the value and reversibility of the decision."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-primary-and-secondary-research",
+      "title": "Primary and secondary research",
+      "content": [
+        "Primary evidence is specific, current and confidential but costs time and money. Secondary evidence is faster, cheaper and useful for market scale or trends, but may be outdated, use different definitions or come from a biased source."
+      ],
+      "bullets": [
+        "Internal secondary sources: sales records, website analytics, complaints, loyalty data, financial and inventory records.",
+        "External sources: government statistics, industry reports, trade associations, competitors, academic studies and commercial databases.",
+        "Triangulation—using different sources and methods—can reveal inconsistencies and improve confidence."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-questionnaires-and-interviews",
+      "title": "Questionnaires and interviews",
+      "content": [
+        "Questionnaires can reach many respondents and standardised questions are easy to compare. Poor wording, low response, dishonest answers and self-selection can bias results. Interviews allow clarification, probing and observation of tone, but interviewer influence, cost and small samples can reduce generalisability."
+      ],
+      "bullets": [
+        "Avoid leading, loaded, double-barrelled, ambiguous and overly technical questions.",
+        "Provide exhaustive, non-overlapping response options and a sensible scale.",
+        "Pilot the instrument with a small group before full collection."
+      ],
+      "examples": [
+        {
+          "id": "3.2-3-1",
+          "kind": "example",
+          "label": "Question design",
+          "content": "Weak: 'Don't you agree our excellent new package is worth more?' Better: 'How likely are you to buy this package at $4.00?' followed by a balanced five-point scale."
+        }
+      ]
+    },
+    {
+      "id": "04-focus-groups-observation-and-test-marketing",
+      "title": "Focus groups, observation and test marketing",
+      "content": [
+        "Focus groups generate detailed reactions and interaction but dominant participants and moderator bias can distort findings. Observation records actual behaviour rather than claimed behaviour, yet cannot explain motives. Test marketing measures real response in a limited area, reducing national-launch risk but costing time and alerting competitors."
+      ],
+      "bullets": [
+        "Match the method to the question: observation for store movement, interviews for motives, test markets for actual purchase response.",
+        "Ethical research protects consent, privacy and data security."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-quantitative-and-qualitative-evidence",
+      "title": "Quantitative and qualitative evidence",
+      "content": [
+        "Quantitative evidence estimates how many, how often or how much and supports tables, averages and comparisons. Qualitative evidence explains why and helps discover ideas, language and motives. The methods are complementary: qualitative findings can design a questionnaire, while quantitative results test how widespread those findings are."
+      ],
+      "bullets": [
+        "Large numerical datasets are not automatically valid; the wrong sample or measure can produce precise but misleading results.",
+        "Qualitative depth does not prove prevalence across the market."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-sampling-methods",
+      "title": "Sampling methods",
+      "content": [
+        "Random sampling gives each member a known/equal chance when a complete frame exists. Stratified sampling selects in proportion to relevant groups, improving representation but requiring population data. Quota sampling instructs researchers to fill group targets quickly, but interviewer choice introduces bias. Convenience sampling is fast and cheap but often least representative."
+      ],
+      "bullets": [
+        "Sample size affects sampling error, but representativeness matters as much as size.",
+        "The target population and sampling frame should match the market decision.",
+        "Non-response can bias even a well-designed random sample if respondents differ from non-respondents."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-reliability-validity-and-bias",
+      "title": "Reliability, validity and bias",
+      "content": [
+        "Reliability improves with clear standardised questions, trained researchers and consistent coding. Validity improves when questions measure the actual decision and respondents understand and answer truthfully. Bias may come from wording, interviewer behaviour, location, timing, sample selection, non-response and sponsor interest."
+      ],
+      "bullets": [
+        "A result can be reliable but invalid—for example, a consistent survey of existing customers used to estimate non-customer demand.",
+        "Report confidence and limitations rather than hiding uncertainty."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-information-technology-and-data",
+      "title": "Information technology and data",
+      "content": [
+        "Online surveys, analytics, social listening, customer databases and automated dashboards collect data rapidly and cheaply and permit personalisation. They also create self-selection, duplicate responses, privacy, security and interpretation risks. Digital behaviour shows what occurred, not always why."
+      ],
+      "bullets": [
+        "Clean data, consistent definitions and access controls are essential.",
+        "Combine behavioural analytics with targeted qualitative research before a major decision."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Sampling methods",
+    "columns": [
+      "Method",
+      "How selected",
+      "Strength",
+      "Main limitation"
+    ],
+    "rows": [
+      [
+        "Random",
+        "Chance from a sampling frame",
+        "Reduces conscious selection bias",
+        "Needs a complete frame; small samples may be unbalanced"
+      ],
+      [
+        "Stratified",
+        "Randomly within groups in population proportions",
+        "Represents important subgroups",
+        "Needs accurate population information"
+      ],
+      [
+        "Quota",
+        "Researcher fills target categories",
+        "Fast and ensures category totals",
+        "Choice within quota can be biased"
+      ],
+      [
+        "Convenience",
+        "Easiest people to reach",
+        "Very quick and cheap",
+        "Often highly unrepresentative"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Research-to-decision process",
+    "type": "flow",
+    "nodes": [
+      "Define the decision",
+      "Specify information needed",
+      "Choose source, method and sample",
+      "Pilot and collect",
+      "Analyse with limitations",
+      "Act and review"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Stratified sampling",
+      "steps": [
+        "The sample reflects important customer groups",
+        "Under-representation is reduced",
+        "Demand estimates better match the target population",
+        "Product and promotion decisions are better informed",
+        "Launch failure risk may fall"
+      ],
+      "evaluation": "This requires accurate population data; wrong strata or non-response can still make results biased."
+    },
+    {
+      "title": "Test marketing a new drink",
+      "steps": [
+        "Real customers face the actual product, price and promotion",
+        "Observed sales provide more valid behavioural evidence",
+        "The mix can be corrected before national launch",
+        "Large-scale failure cost may fall"
+      ],
+      "evaluation": "Competitors gain warning, the test area may not represent the national market and a seasonal effect can mislead."
+    },
+    {
+      "title": "Using only website analytics",
+      "steps": [
+        "The business sees detailed visitor behaviour",
+        "Drop-off points and high-response products are identified",
+        "Digital pages and targeting can be improved",
+        "Conversion may rise"
+      ],
+      "evaluation": "Analytics omit people who never visited and rarely explain motives, so broader research is needed for a new market."
+    }
+  ],
+  "examTips": [
+    "Start any recommendation with the research objective, not your favourite method.",
+    "Distinguish sample size from sample representativeness.",
+    "For evaluation, identify a specific bias or limitation and explain how it could change the decision.",
+    "Use primary/secondary and qualitative/quantitative as separate classifications."
+  ],
+  "commonMistakes": [
+    "Calling internet research automatically primary; an online government report is secondary.",
+    "Saying a large sample must be accurate despite a biased sampling frame.",
+    "Confusing reliability (consistency) with validity (measuring the right thing).",
+    "Claiming market research guarantees product success."
+  ],
+  "quickRecall": [
+    {
+      "question": "What makes data primary?",
+      "answer": "It is newly collected first-hand for the business's current research purpose."
+    },
+    {
+      "question": "Can secondary data be internal?",
+      "answer": "Yes—sales, complaints, loyalty, website and inventory records are examples."
+    },
+    {
+      "question": "Why pilot a questionnaire?",
+      "answer": "To identify unclear wording, missing options, timing and coding problems before full collection."
+    },
+    {
+      "question": "How does stratified sampling improve representation?",
+      "answer": "It selects respondents from relevant subgroups in proportions matching the population."
+    },
+    {
+      "question": "Can research be reliable but invalid?",
+      "answer": "Yes; it may consistently measure the wrong population or concept."
+    },
+    {
+      "question": "What is the main limit of observation?",
+      "answer": "It records behaviour but usually cannot explain motives."
+    }
+  ],
+  "relatedTopics": [
+    "3.1",
+    "3.3",
+    "1.4",
+    "4.1"
+  ]
+}
