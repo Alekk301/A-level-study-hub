@@ -1,0 +1,351 @@
+{
+  "id": "5.4",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Costs",
+  "contentDepth": "full",
+  "overview": "Cost information supports pricing, output and investment decisions. AS questions commonly require accurate contribution, break-even and margin-of-safety calculations followed by interpretation of what changes the risk and whether the simplifying assumptions are realistic.",
+  "syllabusPoints": [
+    "Distinguish fixed, variable, total, average, direct and indirect costs.",
+    "Calculate total cost, average cost, total revenue, profit and contribution.",
+    "Calculate break-even output and margin of safety.",
+    "Construct and interpret break-even charts.",
+    "Analyse how changes in price, fixed cost, variable cost and output affect break-even and profit.",
+    "Assess the uses and limitations of cost and break-even information."
+  ],
+  "definitions": [
+    {
+      "term": "Fixed cost",
+      "definition": "A cost that does not change with output in the short run, including when output is zero."
+    },
+    {
+      "term": "Variable cost",
+      "definition": "A cost that changes directly with the level of output or sales."
+    },
+    {
+      "term": "Total cost",
+      "definition": "Total fixed cost plus total variable cost."
+    },
+    {
+      "term": "Average cost",
+      "definition": "Total cost per unit of output."
+    },
+    {
+      "term": "Direct cost",
+      "definition": "A cost that can be traced directly to a product, service, job or cost unit."
+    },
+    {
+      "term": "Indirect cost",
+      "definition": "A shared overhead that cannot be economically traced to one product or cost unit."
+    },
+    {
+      "term": "Contribution per unit",
+      "definition": "Selling price per unit minus variable cost per unit; the amount each unit contributes to fixed cost and then profit."
+    },
+    {
+      "term": "Total contribution",
+      "definition": "Contribution per unit multiplied by units sold, or total revenue minus total variable cost."
+    },
+    {
+      "term": "Break-even output",
+      "definition": "The output at which total revenue equals total cost and profit is zero."
+    },
+    {
+      "term": "Margin of safety",
+      "definition": "Actual or forecast sales volume minus break-even output."
+    },
+    {
+      "term": "Semi-variable cost",
+      "definition": "A cost containing both a fixed element and a variable element."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-classifying-costs",
+      "title": "Classifying costs",
+      "content": [
+        "Fixed cost is unchanged across a relevant short-run output range, such as rent or salaried management. Variable cost rises with output, such as direct material or piece-rate labour. Direct/indirect is a different classification based on traceability, so a cost can be fixed and direct or variable and indirect depending on context."
+      ],
+      "bullets": [
+        "Some costs are stepped or semi-variable: an extra supervisor or machine may be needed after a capacity threshold.",
+        "Classify using the case and time period rather than memorising one label for every wage or utility cost.",
+        "Accurate classification matters because contribution and break-even use variable cost, not all cost per unit."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-using-total-average-and-marginal-information",
+      "title": "Using total, average and marginal information",
+      "content": [
+        "Total cost supports profit and cash planning; average cost informs long-run pricing and efficiency comparison; marginal cost is the extra cost of one more unit. Decisions may fail if managers use historic averages for a short-run order whose relevant extra cost is different."
+      ],
+      "bullets": [
+        "Price normally needs to cover total cost in the long run.",
+        "A special order above variable cost can add contribution when spare capacity exists, but it may affect regular customers or trigger extra fixed cost.",
+        "Cost data should be current, relevant and interpreted with qualitative evidence."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-contribution",
+      "title": "Contribution",
+      "content": [
+        "Each unit's contribution first covers fixed cost. Once total contribution equals fixed cost, the business breaks even; further contribution becomes profit. A product with positive contribution can support the business even if allocated average cost appears high."
+      ],
+      "bullets": [
+        "Contribution is not profit until fixed cost has been covered.",
+        "Higher price or lower variable cost increases contribution, reducing break-even output if fixed cost is unchanged.",
+        "Capacity, demand and competitor response determine whether the planned number of units can actually be sold."
+      ],
+      "examples": [
+        {
+          "id": "5.4-3-1",
+          "kind": "worked",
+          "label": "Contribution and profit",
+          "content": "Price $30; variable cost $18; fixed cost $24,000; sales 2,500 units. Contribution per unit = $12. Total contribution = $30,000. Profit = $30,000 − $24,000 = $6,000."
+        }
+      ]
+    },
+    {
+      "id": "04-break-even-calculations",
+      "title": "Break-even calculations",
+      "content": [
+        "Break-even output divides fixed cost by contribution per unit. Margin of safety shows how far expected/actual sales can fall before loss begins. A higher margin usually means lower operating risk, but it says nothing by itself about cash timing, quality or future demand."
+      ],
+      "bullets": [
+        "Round break-even output up to the next whole unit when a fraction is produced.",
+        "State units, not dollars, unless the question requests break-even revenue.",
+        "Profit at a chosen output can be calculated as total contribution minus fixed cost."
+      ],
+      "examples": [
+        {
+          "id": "5.4-4-1",
+          "kind": "worked",
+          "label": "Break-even and safety",
+          "content": "Fixed cost $45,000; price $25; variable cost $10. Contribution = $15. Break-even = 45,000 ÷ 15 = 3,000 units. At sales of 4,200, margin of safety = 1,200 units."
+        }
+      ]
+    },
+    {
+      "id": "05-constructing-and-reading-a-break-even-chart",
+      "title": "Constructing and reading a break-even chart",
+      "content": [
+        "Put output on the horizontal axis and cost/revenue on the vertical. Fixed cost is horizontal within the range. Total cost starts at fixed cost and rises by variable cost per unit. Total revenue starts at zero and rises by selling price. The intersection is break-even; loss lies where total cost exceeds revenue and profit where revenue exceeds cost."
+      ],
+      "bullets": [
+        "The vertical gap between total revenue and total cost at an output is profit or loss.",
+        "Margin of safety is the horizontal gap between actual/forecast output and break-even output.",
+        "Label axes, lines, break-even and the relevant output clearly."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-how-changes-move-break-even",
+      "title": "How changes move break-even",
+      "content": [
+        "Higher fixed cost raises the total-cost intercept and break-even output. Higher variable cost steepens total cost, reduces contribution and raises break-even. Higher price steepens revenue, increases contribution and lowers break-even—if sales volume does not fall. A lower price has the reverse arithmetic effect but may increase demand."
+      ],
+      "bullets": [
+        "Mechanisation often raises fixed cost while lowering variable cost: it may raise break-even but improve profit at high output.",
+        "Use revised calculations for a 'what if' decision and then discuss whether the assumed sales are realistic."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-uses-of-cost-and-break-even-data",
+      "title": "Uses of cost and break-even data",
+      "content": [
+        "Managers can set target sales, compare locations or production methods, assess a price/cost change, judge a new product and present evidence to lenders. The model makes relationships visible and supports sensitivity analysis."
+      ],
+      "bullets": [
+        "It helps answer 'what must be sold?', not 'what will be sold?'.",
+        "Combine with market research, capacity, cash-flow, quality and stakeholder evidence."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-limitations-of-break-even-analysis",
+      "title": "Limitations of break-even analysis",
+      "content": [
+        "The model usually assumes constant price and variable cost, fixed cost unchanged within the range, all output sold, one product or constant sales mix, and accurate linear estimates. In reality discounts, overtime, stock, capacity steps and uncertainty change the lines."
+      ],
+      "bullets": [
+        "Multi-product businesses require an assumed sales mix; if that mix changes, the calculated break-even changes.",
+        "Inflation and external shocks can make the data quickly outdated.",
+        "The simplicity is valuable for comparison, but should not be mistaken for a forecast of actual demand."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Total cost",
+      "expression": "Total fixed cost + total variable cost"
+    },
+    {
+      "label": "Average cost",
+      "expression": "Total cost ÷ output"
+    },
+    {
+      "label": "Total revenue",
+      "expression": "Selling price × quantity sold"
+    },
+    {
+      "label": "Profit",
+      "expression": "Total revenue − total cost"
+    },
+    {
+      "label": "Contribution per unit",
+      "expression": "Selling price per unit − variable cost per unit"
+    },
+    {
+      "label": "Total contribution",
+      "expression": "Contribution per unit × units sold"
+    },
+    {
+      "label": "Break-even output",
+      "expression": "Fixed costs ÷ contribution per unit"
+    },
+    {
+      "label": "Margin of safety",
+      "expression": "Actual or forecast output − break-even output"
+    },
+    {
+      "label": "Profit using contribution",
+      "expression": "Total contribution − fixed cost"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Effect on break-even output",
+    "columns": [
+      "Change",
+      "Immediate calculation effect",
+      "Business qualification"
+    ],
+    "rows": [
+      [
+        "Fixed cost rises",
+        "Break-even rises",
+        "May bring capacity/quality benefits"
+      ],
+      [
+        "Variable cost per unit rises",
+        "Contribution falls; break-even rises",
+        "Price or supplier response may follow"
+      ],
+      [
+        "Selling price rises",
+        "Contribution rises; break-even falls",
+        "Quantity demanded may fall"
+      ],
+      [
+        "Selling price falls",
+        "Contribution falls; break-even rises",
+        "Demand/market share may increase"
+      ],
+      [
+        "Productivity reduces variable cost",
+        "Contribution rises; break-even falls",
+        "Training/investment cost and quality matter"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Contribution-to-profit logic",
+    "type": "flow",
+    "nodes": [
+      "Selling price",
+      "Subtract variable cost",
+      "Contribution per unit",
+      "Multiply by units sold",
+      "Cover fixed cost",
+      "Remainder is profit or shortfall is loss"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Reducing variable cost",
+      "steps": [
+        "Contribution per unit rises",
+        "Fewer units are needed to cover fixed cost",
+        "Break-even output falls and margin of safety may rise",
+        "Profit at the same sales volume increases"
+      ],
+      "evaluation": "Cheaper inputs may reduce quality and demand; negotiate or reduce waste before assuming the saving is sustainable."
+    },
+    {
+      "title": "Automation and break-even",
+      "steps": [
+        "Machine investment raises fixed cost",
+        "Labour/defect variable cost per unit may fall",
+        "Contribution increases but the fixed-cost base is larger",
+        "Profit improves only above the crossover output"
+      ],
+      "evaluation": "The better method depends on expected demand, capacity utilisation, finance and technology risk—not break-even alone."
+    },
+    {
+      "title": "Increasing price",
+      "steps": [
+        "Contribution per unit rises",
+        "Calculated break-even output falls",
+        "Each sale produces more contribution",
+        "But price-sensitive demand may fall",
+        "Actual profit could decline if lost volume is large"
+      ],
+      "evaluation": "Use PED, competitor response and brand strength before recommending the higher price."
+    }
+  ],
+  "examTips": [
+    "Write the formula, substitute numbers, show working and include units.",
+    "Use contribution per unit—not average cost—in the break-even formula.",
+    "After every calculation, interpret what the result means for the business decision and risk.",
+    "For a chart, label fixed cost, total cost, total revenue, break-even and both axes."
+  ],
+  "commonMistakes": [
+    "Calling contribution per unit profit per unit before fixed cost is covered.",
+    "Subtracting break-even output from actual output in the wrong direction for margin of safety.",
+    "Assuming all fixed costs remain fixed at any scale.",
+    "Using the calculated break-even as a sales forecast.",
+    "Ignoring demand when suggesting a price rise to lower break-even."
+  ],
+  "quickRecall": [
+    {
+      "question": "How is contribution per unit calculated?",
+      "answer": "Selling price per unit minus variable cost per unit."
+    },
+    {
+      "question": "What happens to contribution before break-even?",
+      "answer": "It accumulates to cover fixed cost."
+    },
+    {
+      "question": "How is break-even output calculated?",
+      "answer": "Fixed costs divided by contribution per unit."
+    },
+    {
+      "question": "How is margin of safety calculated?",
+      "answer": "Actual or forecast output minus break-even output."
+    },
+    {
+      "question": "Where does total cost start on a break-even chart?",
+      "answer": "At the fixed-cost value on the vertical axis when output is zero."
+    },
+    {
+      "question": "Why might a price rise lower calculated break-even but reduce actual profit?",
+      "answer": "The higher price raises contribution, but demand may fall enough to reduce total contribution."
+    },
+    {
+      "question": "Name two major break-even assumptions.",
+      "answer": "Examples: constant price/variable cost, fixed cost unchanged, all output sold, constant sales mix and linear relationships."
+    }
+  ],
+  "relatedTopics": [
+    "3.3",
+    "4.1",
+    "4.3",
+    "5.1",
+    "5.3",
+    "5.5"
+  ]
+}

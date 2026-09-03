@@ -1,0 +1,320 @@
+{
+  "id": "5.3",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Forecasting and managing cash flows",
+  "contentDepth": "full",
+  "overview": "Cash-flow forecasts organise expected cash receipts and payments by time period so managers can predict shortages and act early. Marks come from correct calculations plus interpretation: identify when, why and by how much cash is short, then judge a realistic response.",
+  "syllabusPoints": [
+    "Distinguish cash inflows, cash outflows, net cash flow, opening balance and closing balance.",
+    "Construct and amend cash-flow forecasts.",
+    "Explain the difference between cash and profit.",
+    "Analyse the uses and limitations of cash-flow forecasts.",
+    "Analyse causes of cash-flow problems.",
+    "Assess methods of improving cash flow."
+  ],
+  "definitions": [
+    {
+      "term": "Cash inflow",
+      "definition": "Cash received by the business during a period."
+    },
+    {
+      "term": "Cash outflow",
+      "definition": "Cash paid by the business during a period."
+    },
+    {
+      "term": "Net cash flow",
+      "definition": "Total cash inflows minus total cash outflows for a period."
+    },
+    {
+      "term": "Opening cash balance",
+      "definition": "Cash available at the start of a period, equal to the previous period's closing balance."
+    },
+    {
+      "term": "Closing cash balance",
+      "definition": "Opening balance plus net cash flow at the end of a period."
+    },
+    {
+      "term": "Cash-flow forecast",
+      "definition": "An estimate of future cash inflows, outflows and balances arranged by period."
+    },
+    {
+      "term": "Trade receivable",
+      "definition": "A customer that owes the business money after buying on credit, or the amount owed."
+    },
+    {
+      "term": "Trade payable",
+      "definition": "A supplier that the business owes after buying on credit, or the amount owed."
+    },
+    {
+      "term": "Bad debt",
+      "definition": "A receivable unlikely to be collected."
+    },
+    {
+      "term": "Overtrading",
+      "definition": "Expanding sales and operations faster than available working capital can support."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-cash-flow-forecast-structure",
+      "title": "Cash-flow forecast structure",
+      "content": [
+        "List cash inflows, total them, list cash outflows and total them. Net cash flow is total inflows minus total outflows. Add net cash flow to opening balance to obtain closing balance. The closing balance automatically becomes the next period's opening balance."
+      ],
+      "bullets": [
+        "A negative net cash flow does not always create a negative closing balance if enough cash was available at the start.",
+        "A positive net flow can still leave a negative closing balance after a severe earlier shortage.",
+        "Use brackets or a minus sign consistently and carry balances forward exactly."
+      ],
+      "examples": [
+        {
+          "id": "5.3-1-1",
+          "kind": "worked",
+          "label": "Three-line calculation",
+          "content": "Opening balance $4,000; inflows $18,500; outflows $23,000. Net cash flow = −$4,500. Closing balance = $4,000 − $4,500 = −$500, so at least $500 plus a safety buffer is needed before period end."
+        }
+      ]
+    },
+    {
+      "id": "02-typical-inflows-and-outflows",
+      "title": "Typical inflows and outflows",
+      "content": [
+        "Inflows include cash sales, receipts from credit customers, owner capital, loans, share issues, grants and asset sales. Outflows include cash purchases, supplier payments, wages, rent, utilities, promotion, tax, asset purchases, interest, loan repayment and owner withdrawals/dividends."
+      ],
+      "bullets": [
+        "Classify by when cash moves, not when the sale or cost is recorded for profit.",
+        "A loan is a cash inflow but not trading revenue; an asset purchase is a cash outflow but not normally a full immediate operating cost."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-uses-of-cash-flow-forecasts",
+      "title": "Uses of cash-flow forecasts",
+      "content": [
+        "Start-ups estimate finance needed and timing; managers plan payments, negotiate overdrafts, schedule investment and test decisions; banks judge borrowing size, duration and repayment; managers identify excess cash for debt repayment or investment."
+      ],
+      "bullets": [
+        "Scenario analysis can test lower sales, late customer payment, higher material cost or delayed launch.",
+        "Forecasting early gives more and cheaper response options than waiting until a payment is missed.",
+        "Compare actual with forecast regularly to improve assumptions and control."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-limitations-of-forecasts",
+      "title": "Limitations of forecasts",
+      "content": [
+        "Forecasts rely on sales, payment timing and cost assumptions. New firms lack history, external shocks occur and managers may be over-optimistic to obtain finance. A monthly total can hide a shortage in the middle of the month."
+      ],
+      "bullets": [
+        "Use conservative scenarios, sensitivity tests and frequent updates.",
+        "A forecast is a decision tool, not cash itself and not proof of future solvency.",
+        "Quality depends on accurate records and coordination between marketing, operations and finance."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-causes-of-cash-flow-problems",
+      "title": "Causes of cash-flow problems",
+      "content": [
+        "Low or seasonal sales, low contribution, excessive spending, poor records, late-paying customers, bad debts, high inventory, rapid growth, large asset purchases, loan repayments and unexpected shocks can all cause shortages. Diagnose timing versus structural profitability."
+      ],
+      "bullets": [
+        "A timing gap may be solved with short-term finance.",
+        "A recurring deficit from low margins needs price, cost, product or capacity change; more borrowing only postpones it.",
+        "Overtrading is common when apparently successful credit sales consume inventory and labour cash before collection."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-increasing-or-accelerating-inflows",
+      "title": "Increasing or accelerating inflows",
+      "content": [
+        "Strengthen credit checks, set shorter terms, invoice promptly, chase overdue accounts, offer an economically justified early-payment discount, require deposits, increase cash sales, factor debts, sell unused assets or seek suitable finance."
+      ],
+      "bullets": [
+        "Tighter credit may lose customers to rivals.",
+        "Factoring and discounts sacrifice part of revenue for faster, more certain cash.",
+        "An asset sale improves cash once but may reduce future capacity or create lease cost."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-reducing-or-delaying-outflows",
+      "title": "Reducing or delaying outflows",
+      "content": [
+        "Negotiate longer supplier terms, delay non-essential capital spending, lease rather than buy, reduce inventory, schedule orders, cut waste or overhead, and agree loan timing. Protect activities essential to quality and future revenue."
+      ],
+      "bullets": [
+        "Breaking supplier terms may remove discounts, damage trust or stop deliveries.",
+        "Cheaper materials may create defects and customer loss.",
+        "Delaying a productive asset may preserve cash but prolong high operating cost."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-choosing-a-cash-flow-response",
+      "title": "Choosing a cash-flow response",
+      "content": [
+        "Quantify the maximum deficit, start date and duration. Choose a source large enough and available in time, then compare its cost and side effects. Combine immediate relief with a correction to the underlying cause."
+      ],
+      "bullets": [
+        "Temporary seasonal deficit: overdraft plus tighter collection may fit.",
+        "Rapid growth: longer-term working-capital finance and revised credit/inventory systems may be needed.",
+        "Persistent loss: revise price, volume, product and cost; do not rely only on finance."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Net cash flow",
+      "expression": "Total cash inflows − total cash outflows"
+    },
+    {
+      "label": "Closing cash balance",
+      "expression": "Opening cash balance + net cash flow"
+    },
+    {
+      "label": "Next period opening balance",
+      "expression": "Previous period closing cash balance"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Cash-flow remedies and consequences",
+    "columns": [
+      "Action",
+      "Immediate cash effect",
+      "Main trade-off"
+    ],
+    "rows": [
+      [
+        "Shorter customer credit",
+        "Receipts arrive sooner",
+        "Customers may switch"
+      ],
+      [
+        "Delay supplier payment",
+        "Outflows occur later",
+        "Trust, discounts and supply may suffer"
+      ],
+      [
+        "Debt factoring",
+        "Receivables become cash quickly",
+        "Fee/discount and customer-contact risk"
+      ],
+      [
+        "Overdraft",
+        "Temporary bank cash becomes available",
+        "Interest and recall/limit risk"
+      ],
+      [
+        "Reduce inventory",
+        "Cash tied up falls",
+        "Stockouts and lost sales may rise"
+      ],
+      [
+        "Delay asset purchase",
+        "Large outflow is postponed",
+        "Efficiency/capacity improvement is delayed"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Cash-control loop",
+    "type": "cycle",
+    "nodes": [
+      "Forecast receipts and payments",
+      "Calculate period balances",
+      "Locate maximum deficit",
+      "Diagnose timing or structural cause",
+      "Choose immediate and underlying action",
+      "Compare actuals and update"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Offering an early-payment discount",
+      "steps": [
+        "Credit customers pay sooner",
+        "Receivables convert to cash faster",
+        "The closing balance and supplier-payment ability improve",
+        "Bad-debt and borrowing risk may fall"
+      ],
+      "evaluation": "The discount reduces revenue and should cost less than the finance/bad-debt cost saved; many customers may have paid early anyway."
+    },
+    {
+      "title": "Delaying supplier payment",
+      "steps": [
+        "Cash outflow moves to a later period",
+        "The immediate closing balance improves",
+        "But supplier trust and credit terms may weaken",
+        "Future input cost or disruption may rise"
+      ],
+      "evaluation": "A negotiated extension during a temporary gap is safer than unilateral late payment, especially with a critical supplier."
+    },
+    {
+      "title": "Borrowing to cover a permanent deficit",
+      "steps": [
+        "A loan creates an immediate inflow",
+        "Short-run payments can be met",
+        "Interest and future repayments add outflows",
+        "If trading remains loss-making, the next shortage becomes larger"
+      ],
+      "evaluation": "Borrowing works only with a credible route to positive operating cash flow; otherwise restructuring is required."
+    }
+  ],
+  "examTips": [
+    "Show the sign on net cash flow and carry each closing balance into the next opening balance.",
+    "State the exact month, size and duration of the shortage before recommending finance.",
+    "Explain cash versus profit with credit timing, borrowing or asset purchases.",
+    "Pair a short-term remedy with action on the underlying cause for stronger evaluation."
+  ],
+  "commonMistakes": [
+    "Treating negative net cash flow as automatically the same as a negative closing balance.",
+    "Adding outflows instead of subtracting them.",
+    "Calling loan receipts sales revenue or profit.",
+    "Recommending that the firm simply 'increase sales' without considering contribution, credit timing or capacity."
+  ],
+  "quickRecall": [
+    {
+      "question": "How is net cash flow calculated?",
+      "answer": "Total cash inflows minus total cash outflows for the period."
+    },
+    {
+      "question": "How is closing balance calculated?",
+      "answer": "Opening balance plus net cash flow."
+    },
+    {
+      "question": "Can net cash flow be negative while closing balance stays positive?",
+      "answer": "Yes, if the opening cash balance is larger than the period's net outflow."
+    },
+    {
+      "question": "Why is a credit sale not an immediate cash inflow?",
+      "answer": "The customer pays later even though revenue may be recorded when the sale occurs."
+    },
+    {
+      "question": "What is overtrading?",
+      "answer": "Growth in sales and operations that outpaces the working capital available to fund it."
+    },
+    {
+      "question": "What is the danger of delaying suppliers?",
+      "answer": "Lost discounts, damaged trust, tighter future credit or interrupted supply."
+    },
+    {
+      "question": "Why does a forecast need regular revision?",
+      "answer": "Actual demand, timing and costs differ from assumptions, and new information improves the next decision."
+    }
+  ],
+  "relatedTopics": [
+    "1.3",
+    "4.2",
+    "5.1",
+    "5.2",
+    "5.4",
+    "5.5"
+  ]
+}

@@ -101,6 +101,30 @@ for (const code of requiredCodes) {
   }
 }
 
+const business = subjects.find((subject) => subject.code === "9609");
+const asBusinessTopics = business.units
+  .flatMap((unit) => unit.topics)
+  .filter((topic) => topic.levels.includes("AS"));
+assert(asBusinessTopics.length === 19, `9609 should contain 19 AS topics, found ${asBusinessTopics.length}.`);
+for (const topic of asBusinessTopics) {
+  const key = `9609:${topic.id}`;
+  const note = noteMap.get(key);
+  assert(Boolean(note), `${key} is missing its detailed AS Business note file.`);
+  if (!note) continue;
+  assert(note.contentDepth === "full", `${key} is not marked as full notes.`);
+  assert(note.sections.length >= 6, `${key} needs at least six substantive sections.`);
+  assert(note.definitions.length >= 6, `${key} needs at least six definitions.`);
+  assert(note.analysisChains.length >= 3, `${key} needs at least three applied analysis chains.`);
+  assert(note.examTips.length >= 4, `${key} needs at least four exam tips.`);
+  assert(note.commonMistakes.length >= 4, `${key} needs at least four common mistakes.`);
+  assert(note.quickRecall.length >= 6, `${key} needs at least six recall checks.`);
+  assert(
+    note.quickRecall.every((item) => item && typeof item.question === "string" && typeof item.answer === "string"),
+    `${key} quick recall must use question-and-answer disclosures.`,
+  );
+  assert(JSON.stringify(note).length >= 8_000, `${key} is unexpectedly shallow for the detailed AS Business set.`);
+}
+
 assert(searchIndex.length === topicCount, `Search index has ${searchIndex.length} entries for ${topicCount} topics.`);
 assert(new Set(searchIndex.map((entry) => entry.key)).size === searchIndex.length, "Search index contains duplicate keys.");
 

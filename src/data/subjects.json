@@ -1453,7 +1453,7 @@
               "entrepreneurs/intrapreneurs",
               "risk and business plans"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "1.2",
@@ -1468,7 +1468,7 @@
               "ownership forms",
               "private/public/social enterprise"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "1.3",
@@ -1483,7 +1483,7 @@
               "growth",
               "small vs large firms"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "1.4",
@@ -1498,7 +1498,7 @@
               "CSR/triple bottom line",
               "SMART targets"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "1.5",
@@ -1513,7 +1513,7 @@
               "conflict/influence",
               "accountability"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "2.1",
@@ -1528,7 +1528,7 @@
               "recruitment/selection",
               "training/redundancy"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "2.2",
@@ -1543,7 +1543,7 @@
               "financial methods",
               "non-financial methods"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "2.3",
@@ -1558,7 +1558,7 @@
               "decision-making",
               "manager effectiveness"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.1",
@@ -1574,7 +1574,7 @@
               "demand/supply",
               "segmentation"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.2",
@@ -1589,7 +1589,7 @@
               "sampling",
               "reliability/bias"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.3",
@@ -1605,7 +1605,7 @@
               "promotion",
               "place"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "4.1",
@@ -1620,7 +1620,7 @@
               "productivity",
               "job/batch/flow production"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "4.2",
@@ -1635,7 +1635,7 @@
               "reorder/lead time",
               "JIT"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "4.3",
@@ -1650,7 +1650,7 @@
               "over/under-capacity",
               "outsourcing"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.1",
@@ -1665,7 +1665,7 @@
               "cash vs profit",
               "working capital"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.2",
@@ -1695,7 +1695,7 @@
               "net cash flow",
               "cash shortages"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.4",
@@ -1710,7 +1710,7 @@
               "contribution",
               "break-even/margin of safety"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.5",
@@ -1724,7 +1724,7 @@
               "budget purposes/types",
               "variance analysis"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           }
         ]
       },

@@ -1,0 +1,290 @@
+{
+  "id": "4.3",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Capacity utilisation and outsourcing",
+  "contentDepth": "full",
+  "overview": "Capacity utilisation compares actual output with potential output. Both unused and overloaded capacity create costs, so managers need to judge whether demand is temporary or permanent before changing resources or outsourcing work.",
+  "syllabusPoints": [
+    "Calculate and interpret capacity utilisation.",
+    "Analyse the benefits and risks of high, full and low capacity utilisation.",
+    "Explain causes of excess capacity and capacity shortages.",
+    "Assess short- and long-term responses to capacity problems.",
+    "Analyse outsourcing and business-process outsourcing."
+  ],
+  "definitions": [
+    {
+      "term": "Capacity",
+      "definition": "The maximum output a business can produce in a period with its current resources under normal conditions."
+    },
+    {
+      "term": "Capacity utilisation",
+      "definition": "Actual output as a percentage of maximum potential output."
+    },
+    {
+      "term": "Full capacity",
+      "definition": "Operating at or very close to the maximum sustainable output of current resources."
+    },
+    {
+      "term": "Excess capacity",
+      "definition": "A situation in which actual output is below the level the organisation is equipped to produce."
+    },
+    {
+      "term": "Capacity shortage",
+      "definition": "Insufficient current resources to meet demand at the required time or standard."
+    },
+    {
+      "term": "Rationalisation",
+      "definition": "Reorganising operations—often closing or combining sites and reducing resources—to remove excess capacity and lower cost."
+    },
+    {
+      "term": "Outsourcing",
+      "definition": "Contracting an external organisation to perform an activity previously or potentially undertaken inside the business."
+    },
+    {
+      "term": "Business-process outsourcing",
+      "definition": "Contracting a business function such as payroll, customer support, IT or logistics to an external specialist."
+    },
+    {
+      "term": "Core activity",
+      "definition": "An activity central to the organisation's customer value and competitive advantage."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-calculating-and-interpreting-capacity-utilisation",
+      "title": "Calculating and interpreting capacity utilisation",
+      "content": [
+        "Capacity utilisation shows how intensely current facilities, equipment and labour are being used. A higher percentage may spread fixed cost across more units; a low percentage signals idle resources. The theoretical maximum may differ from sustainable practical capacity because maintenance, breaks, product mix and quality requirements consume time."
+      ],
+      "bullets": [
+        "Always state the percentage and what it means in units or spare capacity where possible.",
+        "Compare over time and with demand forecasts; one high month may be seasonal rather than permanent."
+      ],
+      "examples": [
+        {
+          "id": "4.3-1-1",
+          "kind": "worked",
+          "label": "Capacity calculation",
+          "content": "A plant capable of 24,000 units per month produces 18,000. Capacity utilisation = 18,000 ÷ 24,000 × 100 = 75%, leaving 6,000 units (25%) unused."
+        }
+      ]
+    },
+    {
+      "id": "02-high-or-full-capacity",
+      "title": "High or full capacity",
+      "content": [
+        "High utilisation can lower average fixed cost, signal strong demand and support employee security. It also leaves little room for rush orders, maintenance, training or error. Continuous pressure may create overtime cost, breakdowns, queues, quality failure and missed delivery."
+      ],
+      "bullets": [
+        "A hotel may value a high occupancy rate, yet 100% occupancy prevents accepting profitable late bookings and intensifies service pressure.",
+        "Optimal utilisation is often below 100% when flexibility and reliability have value."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-excess-capacity",
+      "title": "Excess capacity",
+      "content": [
+        "Low utilisation raises fixed cost per unit and may demotivate employees or signal weak demand. Short-term causes include seasonality, a temporary downturn or maintenance; long-term causes include structural demand decline, lost competitiveness, excess expansion or new technology."
+      ],
+      "bullets": [
+        "Short-term responses: flexible hours, maintenance/training, temporary promotions, pre-building non-perishable inventory or temporary closure.",
+        "Long-term responses: new products/markets, sell or lease assets, close capacity, retrain/redeploy staff or relocate.",
+        "Producing unwanted inventory does not solve excess capacity; it converts spare capacity into tied-up cash and holding cost."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-capacity-shortages",
+      "title": "Capacity shortages",
+      "content": [
+        "A shortage can be handled through overtime, additional shifts, temporary staff, improved productivity, rescheduling, queues/waiting lists, price changes, outsourcing or investment in new capacity. Short-term flexibility is faster; permanent expansion can reduce long-run unit cost but is risky if demand falls."
+      ],
+      "bullets": [
+        "Use forecasts and contribution from lost orders to value the shortage.",
+        "Price increases may ration demand and raise contribution, but can damage market share and relationships.",
+        "New capacity needs finance, employees, permissions and lead time."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-why-outsource",
+      "title": "Why outsource",
+      "content": [
+        "Outsourcing may give rapid flexible capacity, specialist expertise, lower cost and access to technology while management focuses on core activities. It converts some fixed cost into variable contractual cost and can avoid risky investment for temporary demand."
+      ],
+      "bullets": [
+        "Examples include overflow production, delivery, payroll, IT support, call centres and specialist design.",
+        "The decision should compare total cost, including contracting, monitoring, transport, coordination and failure—not wage rates alone."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-outsourcing-risks-and-control",
+      "title": "Outsourcing risks and control",
+      "content": [
+        "The business loses some direct control over quality, delivery, data and employment practices. Dependence on a supplier can create disruption or bargaining risk; hidden knowledge may leak; customers may dislike remote service; internal employees may lose jobs or morale."
+      ],
+      "bullets": [
+        "Set service-level measures, quality standards, data/security requirements, escalation processes and exit provisions.",
+        "Retain strategic knowledge and alternative supply where failure would threaten the whole business.",
+        "A cheap supplier is not low cost if defects, delays and reputational harm are substantial."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-make-or-buy-judgement",
+      "title": "Make-or-buy judgement",
+      "content": [
+        "Keep an activity inside when it is a core source of differentiation, contains sensitive knowledge, needs close coordination or suppliers are unreliable. Outsource when specialist scale/skill, flexible volume and lower total cost outweigh control and dependence risks."
+      ],
+      "bullets": [
+        "Assess the time horizon: outsourcing may bridge a peak while investment may suit permanent growth.",
+        "Consider stakeholder impact, reversibility, contract enforcement, supplier financial health and fit with brand promises."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Capacity utilisation",
+      "expression": "(Actual output ÷ maximum possible output) × 100",
+      "note": "Use the same time period and units for actual and maximum output."
+    }
+  ],
+  "comparisonTable": {
+    "title": "Responses to a capacity shortage",
+    "columns": [
+      "Response",
+      "Speed/commitment",
+      "Benefit",
+      "Risk"
+    ],
+    "rows": [
+      [
+        "Overtime/extra shift",
+        "Fast, temporary",
+        "Uses existing site and skills",
+        "Premium pay, fatigue and quality"
+      ],
+      [
+        "Temporary labour",
+        "Fairly fast, flexible",
+        "Matches short peak",
+        "Training and inconsistent quality"
+      ],
+      [
+        "Outsource",
+        "Fast and scalable",
+        "Specialist capacity without owned assets",
+        "Less control and supplier dependence"
+      ],
+      [
+        "New capacity",
+        "Slow, long-term",
+        "Control and possible scale benefits",
+        "Finance, fixed cost and demand risk"
+      ],
+      [
+        "Raise price/waiting list",
+        "Fast demand management",
+        "Protects margin or prioritises orders",
+        "Lost customers and reputation"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Capacity decision path",
+    "type": "flow",
+    "nodes": [
+      "Measure utilisation",
+      "Forecast duration of gap",
+      "Value lost sales or idle cost",
+      "Compare flexible responses",
+      "Assess control and finance",
+      "Implement and monitor"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Operating near full capacity",
+      "steps": [
+        "Fixed cost is spread across more output",
+        "Average cost may fall",
+        "Margin or price competitiveness improves",
+        "But maintenance and flexibility time shrink",
+        "Breakdown or late orders may damage customers"
+      ],
+      "evaluation": "The best utilisation depends on process reliability and the value of spare capacity, not a universal 100% target."
+    },
+    {
+      "title": "Outsourcing a temporary demand peak",
+      "steps": [
+        "External capacity becomes available without buying assets",
+        "Orders are fulfilled and revenue is retained",
+        "Cost varies with volume",
+        "Cash and demand risk are lower than expansion"
+      ],
+      "evaluation": "Quality, delivery and confidentiality need enforceable control; repeated outsourcing may become more expensive than owned capacity."
+    },
+    {
+      "title": "Rationalising excess capacity",
+      "steps": [
+        "A site and roles are closed",
+        "Fixed and labour costs fall",
+        "Capacity utilisation and average cost may improve",
+        "Cash flow and survival strengthen"
+      ],
+      "evaluation": "Closure costs, lost skill, community opposition and inability to meet a recovery may outweigh savings if demand weakness is temporary."
+    }
+  ],
+  "examTips": [
+    "Show all working and include the percentage sign for capacity utilisation.",
+    "Do not assume 100% is always ideal; explain flexibility, quality and maintenance.",
+    "Distinguish a temporary demand peak from permanent growth before recommending capacity investment.",
+    "Outsourcing evaluation should include quality, control, dependence and hidden costs as well as the quoted price."
+  ],
+  "commonMistakes": [
+    "Dividing maximum output by actual output in the capacity formula.",
+    "Calling unused capacity inventory; capacity is potential output, inventory is stored input or output.",
+    "Assuming marketing alone fixes structural excess capacity.",
+    "Equating outsourcing with moving work abroad; an external supplier may be local."
+  ],
+  "quickRecall": [
+    {
+      "question": "How is capacity utilisation calculated?",
+      "answer": "Actual output divided by maximum possible output, multiplied by 100."
+    },
+    {
+      "question": "Why can full capacity raise unit cost rather than lower it?",
+      "answer": "Overtime, congestion, errors, breakdowns and missed maintenance may outweigh fixed-cost spreading."
+    },
+    {
+      "question": "What is excess capacity?",
+      "answer": "Actual output below what existing resources are capable of producing."
+    },
+    {
+      "question": "Name two flexible responses to a temporary capacity shortage.",
+      "answer": "Examples include overtime, extra shifts, temporary staff, outsourcing, rescheduling or a waiting list."
+    },
+    {
+      "question": "Why might outsourcing convert fixed cost to variable cost?",
+      "answer": "The business pays the supplier for work used rather than owning and staffing permanent capacity."
+    },
+    {
+      "question": "When should an activity usually stay in-house?",
+      "answer": "When it is core to differentiation, sensitive, tightly integrated or too risky to depend on an external supplier."
+    }
+  ],
+  "relatedTopics": [
+    "1.3",
+    "3.3",
+    "4.1",
+    "4.2",
+    "5.2",
+    "5.4"
+  ]
+}

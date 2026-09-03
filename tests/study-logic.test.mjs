@@ -63,6 +63,50 @@ test("topic navigation remains within the selected study level", async () => {
   assert.equal(neighbours.next.topic.id, "13.3");
 });
 
+test("notes are grouped into coursebook chapters before their subtopics", async () => {
+  const { getNoteChapters, getSubject } = await vite.ssrLoadModule(
+    "/src/data/subjects.ts",
+  );
+
+  const computerScience = getNoteChapters(getSubject("9618"), "A2");
+  assert.equal(computerScience[0].number, "16");
+  assert.equal(computerScience[0].title, "Data representation");
+  assert.equal(computerScience[0].partTitle, "Part 3 · Advanced theory");
+  assert.deepEqual(computerScience[0].topics.map((entry) => entry.topic.id), ["13.1", "13.2", "13.3"]);
+  assert.equal(computerScience.at(-1).number, "29");
+  assert.equal(computerScience.at(-1).linkAnchor, "05-declarative-programming");
+
+  const computerScienceAs = getNoteChapters(getSubject("9618"), "AS");
+  assert.equal(computerScienceAs.find((chapter) => chapter.number === "4").topics[0].topic.id, "3.2");
+  assert.equal(computerScienceAs.find((chapter) => chapter.number === "7").title, "Monitoring and control systems");
+
+  const mathematics = getNoteChapters(getSubject("9709"), "A2");
+  const pureThree = mathematics.filter((chapter) => chapter.partTitle === "Paper 3 · Pure Mathematics 3");
+  assert.equal(pureThree.length, 11);
+  assert.equal(pureThree[0].title, "Algebra");
+  assert.equal(pureThree[6].title, "Further algebra");
+  assert.deepEqual(pureThree[7].topics.map((entry) => entry.topic.id), ["3.4", "3.5"]);
+
+  const statisticsOne = mathematics.find((chapter) => (
+    chapter.partTitle === "Paper 5 · Probability & Statistics 1" && chapter.number === "1"
+  ));
+  const statisticsTwo = mathematics.find((chapter) => (
+    chapter.partTitle === "Paper 6 · Probability & Statistics 2" && chapter.number === "1"
+  ));
+  assert.equal(statisticsOne.title, "Representation of data");
+  assert.equal(statisticsOne.topics[0].topic.id, "5.1");
+  assert.equal(statisticsTwo.title, "The Poisson distribution");
+  assert.equal(statisticsTwo.topics[0].topic.id, "6.1");
+
+  const mathematicsAs = getNoteChapters(getSubject("9709"), "AS");
+  assert.equal(mathematicsAs.filter((chapter) => chapter.partTitle === "Paper 2 · Pure Mathematics 2").length, 6);
+  assert.equal(mathematicsAs.find((chapter) => chapter.partTitle === "Paper 2 · Pure Mathematics 2").title, "Algebra");
+
+  const chemistry = getNoteChapters(getSubject("9701"), "A2");
+  assert.equal(chemistry[0].number, "23");
+  assert.equal(chemistry[0].topics.length, 1);
+});
+
 test("stored syllabus checks survive hydration without losing older study data", async () => {
   const { parseStoredState } = await vite.ssrLoadModule("/src/hooks/use-study.tsx");
   const state = parseStoredState(JSON.stringify({

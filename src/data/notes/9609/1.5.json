@@ -1,0 +1,267 @@
+{
+  "id": "1.5",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Stakeholders in a business",
+  "contentDepth": "full",
+  "overview": "Stakeholder questions are about power, conflict and consequences. Identify exactly what each group wants, trace how a decision affects them, and judge whose interests should carry most weight in the particular situation.",
+  "syllabusPoints": [
+    "Distinguish internal and external stakeholders and explain their objectives.",
+    "Analyse how business decisions affect owners, employees, managers, customers, suppliers, lenders, government and communities.",
+    "Explain why stakeholder objectives conflict and how compromise may be reached.",
+    "Analyse stakeholder influence and business accountability.",
+    "Assess how changing business objectives affect stakeholder groups."
+  ],
+  "definitions": [
+    {
+      "term": "Stakeholder",
+      "definition": "Any person or group with an interest in, or affected by, a business's decisions and performance."
+    },
+    {
+      "term": "Internal stakeholder",
+      "definition": "A stakeholder inside the organisation, such as owners, managers or employees."
+    },
+    {
+      "term": "External stakeholder",
+      "definition": "A stakeholder outside the organisation, such as customers, suppliers, lenders, government or the local community."
+    },
+    {
+      "term": "Shareholder",
+      "definition": "A person or institution owning shares in a company."
+    },
+    {
+      "term": "Accountability",
+      "definition": "The duty to explain decisions, accept responsibility for outcomes and provide relevant information to those affected."
+    },
+    {
+      "term": "Stakeholder conflict",
+      "definition": "A situation in which satisfying one group's objective makes another group's objective harder to achieve."
+    },
+    {
+      "term": "Pressure group",
+      "definition": "An organised group seeking to influence business or government decisions without directly controlling the organisation."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-stakeholder-objectives",
+      "title": "Stakeholder objectives",
+      "content": [
+        "Owners seek return, growth and controlled risk; managers may seek pay, status and successful performance; employees value fair pay, security, conditions, development and satisfaction. Customers seek safe, reliable value; suppliers want repeat orders and prompt payment; lenders want interest and repayment; government wants legal compliance, jobs, output and tax; communities want employment with limited disruption and pollution."
+      ],
+      "bullets": [
+        "Objectives within one group can differ: short-term investors may prefer dividends while founding owners favour reinvestment.",
+        "A stakeholder's stated objective does not show its power to achieve it."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-how-decisions-create-different-effects",
+      "title": "How decisions create different effects",
+      "content": [
+        "One expansion decision can benefit employees through promotion, suppliers through larger orders and government through tax, yet reduce dividends, increase lender risk and create community traffic or pollution. Cover both direct and knock-on effects."
+      ],
+      "bullets": [
+        "Short-term and long-term effects may differ: training costs reduce current profit but can improve productivity and job security later.",
+        "Different members of a group may experience opposite effects: automation can improve safety for retained staff while making other roles redundant."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-sources-of-stakeholder-conflict",
+      "title": "Sources of stakeholder conflict",
+      "content": [
+        "Resources are limited, so higher wages may reduce short-run profit; lower prices may conflict with supplier or employee payments; a new factory may create jobs but harm residents; prompt debt repayment may restrict investment. Conflict can also come from different time horizons and risk preferences."
+      ],
+      "bullets": [
+        "Compromise options include staged change, consultation, retraining, compensation, environmental controls and sharing productivity gains.",
+        "Compromise has a cost and may satisfy no group fully; delay can be worse when urgent action is required."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-stakeholder-power-and-influence",
+      "title": "Stakeholder power and influence",
+      "content": [
+        "Influence depends on legal rights, financial dependence, scarcity of the stakeholder's resource, ability to organise, access to information, public support and urgency. A lender has power when finance is scarce; skilled employees have power when replacement is difficult; customers have power where substitutes are plentiful."
+      ],
+      "bullets": [
+        "Employees can negotiate, resign or take industrial action.",
+        "Customers can switch, complain, review or boycott.",
+        "Suppliers can change price, quality, credit or delivery terms.",
+        "Government can tax, regulate, fine, subsidise or grant permission.",
+        "Owners can vote, replace directors or withhold capital."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-accountability-in-practice",
+      "title": "Accountability in practice",
+      "content": [
+        "Accountability is more than publicity. It includes accurate reports, consultation, complaint processes, contracts, audits, legal compliance and measurable social/environmental commitments. Meeting responsibilities can strengthen trust and reduce disruption."
+      ],
+      "bullets": [
+        "Customers: honest information, safe products, reliable service and remedies.",
+        "Employees: contracts, fair treatment, safe conditions, pay and development.",
+        "Suppliers/lenders: truthful financial information and agreed payment.",
+        "Community/government: compliance, tax, environmental control and transparent impact reporting."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-prioritising-stakeholders",
+      "title": "Prioritising stakeholders",
+      "content": [
+        "Managers should compare stakeholder power, legitimacy and urgency, then connect the choice to long-term objectives. Prioritising lenders during a liquidity crisis may preserve the entire firm; prioritising customers after a safety failure may rebuild trust; consulting residents may be essential before seeking planning permission."
+      ],
+      "bullets": [
+        "Shareholder primacy focuses on owner return and clear accountability.",
+        "Stakeholder approaches argue that long-run success depends on relationships with all essential groups.",
+        "The best judgement is contextual: identify which relationship is most critical and what happens if it breaks down."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-changing-objectives-and-stakeholder-outcomes",
+      "title": "Changing objectives and stakeholder outcomes",
+      "content": [
+        "Moving from growth to survival can mean cancelled supplier orders, redundancies and lower owner returns. Moving toward CSR may benefit employees and communities but raise costs or prices. Changing objectives should therefore be communicated with reasons, timelines and mitigation."
+      ],
+      "bullets": [
+        "Unexplained change increases uncertainty and resistance.",
+        "Credible consultation can improve information and implementation, but does not remove the need for difficult decisions."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Stakeholder interests and leverage",
+    "columns": [
+      "Stakeholder",
+      "Main interests",
+      "Typical influence"
+    ],
+    "rows": [
+      [
+        "Owners/shareholders",
+        "Return, growth, risk and control",
+        "Capital, voting and director appointment"
+      ],
+      [
+        "Employees/managers",
+        "Pay, security, conditions, status and development",
+        "Skills, effort, information, exit and industrial action"
+      ],
+      [
+        "Customers",
+        "Value, quality, safety and service",
+        "Purchasing, switching, reviews and complaints"
+      ],
+      [
+        "Suppliers/lenders",
+        "Orders/payment; interest/repayment",
+        "Credit terms, supply continuity and finance"
+      ],
+      [
+        "Government/community",
+        "Law, tax, jobs; environment and local welfare",
+        "Regulation, permission, subsidy, protest and reputation"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Stakeholder decision test",
+    "type": "cycle",
+    "nodes": [
+      "Identify affected groups",
+      "State each objective",
+      "Trace short- and long-run effects",
+      "Assess power and urgency",
+      "Design compromise or mitigation",
+      "Decide, communicate and review"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Paying higher wages",
+      "steps": [
+        "Labour cost rises",
+        "Employee motivation and retention may improve",
+        "Productivity, quality or service may rise",
+        "Recruitment cost and customer complaints may fall",
+        "Long-run profit could recover"
+      ],
+      "evaluation": "The outcome depends on whether low pay caused poor performance and whether productivity gains exceed the wage increase."
+    },
+    {
+      "title": "Closing a factory",
+      "steps": [
+        "Fixed capacity and labour cost fall",
+        "Cash flow and survival may improve",
+        "Employees lose jobs and local spending falls",
+        "Community and union opposition damages reputation",
+        "Future recruitment or permission may become harder"
+      ],
+      "evaluation": "Closure may still be necessary if demand loss is permanent; retraining, notice and compensation can reduce but not remove harm."
+    },
+    {
+      "title": "Delaying supplier payments",
+      "steps": [
+        "Immediate cash outflow falls",
+        "Short-run liquidity improves",
+        "Supplier cash flow and trust weaken",
+        "Credit terms may tighten or deliveries stop",
+        "The buyer's operations and reputation may suffer"
+      ],
+      "evaluation": "A negotiated extension is less damaging than breaking terms, especially when alternative suppliers are scarce."
+    }
+  ],
+  "examTips": [
+    "Name the stakeholder and its precise objective before explaining an effect.",
+    "For conflict, show why both objectives cannot be fully met from the same limited resource or decision.",
+    "Use stakeholder power in evaluation: impact alone does not prove the business will change course.",
+    "Judge over a stated time period; a group may lose now but benefit if the business survives."
+  ],
+  "commonMistakes": [
+    "Listing stakeholders without explaining their interests or the decision's effect.",
+    "Calling shareholders and stakeholders the same group.",
+    "Assuming all stakeholders have equal power in every context.",
+    "Offering 'communicate more' as a complete solution without explaining what should be communicated and why it changes behaviour."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between a shareholder and stakeholder?",
+      "answer": "A shareholder owns part of a company; a stakeholder is any group interested in or affected by the business."
+    },
+    {
+      "question": "Why can employees and owners conflict over wages?",
+      "answer": "Higher wages benefit employees but raise costs and can reduce short-run profit or dividends."
+    },
+    {
+      "question": "What determines stakeholder influence?",
+      "answer": "Legal rights, dependence, resource scarcity, organisation, information, public support and urgency."
+    },
+    {
+      "question": "Give two ways customers can influence a business.",
+      "answer": "They can switch purchases, complain, post reviews or organise a boycott."
+    },
+    {
+      "question": "What does business accountability require?",
+      "answer": "Explaining decisions, providing reliable information, accepting responsibility and responding to outcomes."
+    },
+    {
+      "question": "How can a business reduce conflict over a factory closure?",
+      "answer": "Consult early, give notice and compensation, offer redeployment or retraining, and explain the financial need."
+    }
+  ],
+  "relatedTopics": [
+    "1.4",
+    "2.1",
+    "2.3",
+    "5.3",
+    "5.5"
+  ]
+}

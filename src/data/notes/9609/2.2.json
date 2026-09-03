@@ -5,39 +5,306 @@
   "unitId": "AS",
   "unitTitle": "AS Level",
   "title": "Motivation",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to motivation.",
+  "contentDepth": "full",
+  "overview": "Motivation affects the effort, persistence and care employees bring to work. Theories are not labels to memorise: use each one to explain a practical reward or job-design decision, then judge whether it fits the workforce, task and culture.",
   "syllabusPoints": [
-    "motivation theories",
-    "financial methods",
-    "non-financial methods"
+    "Explain why employee motivation matters to business performance.",
+    "Analyse Taylor, Mayo, Maslow, Herzberg, McClelland and Vroom as explanations of motivation.",
+    "Compare financial motivators including wages, salary, piece rate, commission, bonus, profit sharing and fringe benefits.",
+    "Compare non-financial motivators including job rotation, enlargement, enrichment, teamworking, participation, delegation and recognition.",
+    "Assess which methods are appropriate in different business contexts."
   ],
-  "definitions": [],
+  "definitions": [
+    {
+      "term": "Motivation",
+      "definition": "The internal and external forces that cause people to act toward a goal with effort and persistence."
+    },
+    {
+      "term": "Piece rate",
+      "definition": "Payment based on the number of acceptable units produced."
+    },
+    {
+      "term": "Commission",
+      "definition": "Payment linked to the value or number of sales made."
+    },
+    {
+      "term": "Profit sharing",
+      "definition": "A reward giving employees a share of business profit, usually in addition to normal pay."
+    },
+    {
+      "term": "Job rotation",
+      "definition": "Moving employees between tasks to increase variety and flexibility."
+    },
+    {
+      "term": "Job enlargement",
+      "definition": "Adding more tasks of a similar level to widen a job."
+    },
+    {
+      "term": "Job enrichment",
+      "definition": "Increasing responsibility, autonomy, challenge and opportunities for achievement within a job."
+    },
+    {
+      "term": "Hygiene factors",
+      "definition": "Herzberg's conditions that can cause dissatisfaction when inadequate but do not by themselves create lasting motivation."
+    },
+    {
+      "term": "Motivators",
+      "definition": "Herzberg's job-content factors—such as achievement, recognition and responsibility—that can create satisfaction."
+    },
+    {
+      "term": "Expectancy",
+      "definition": "Vroom's belief that additional effort will improve performance."
+    }
+  ],
   "sections": [
     {
-      "id": "01-motivation-theories",
-      "title": "Motivation theories",
-      "content": [],
+      "id": "01-why-motivation-matters",
+      "title": "Why motivation matters",
+      "content": [
+        "A motivated workforce is more likely to attend, stay, accept responsibility, suggest improvements and maintain quality. That can raise labour productivity, reduce recruitment and wastage costs, improve customer experience and protect reputation. Motivation does not guarantee performance: employees also need ability, resources and clear direction."
+      ],
       "bullets": [
-        "Taylor — workers are motivated mainly by money (piece-rate pay)",
-        "Maslow — hierarchy of needs (physiological → safety → social → esteem → self-actualisation); a satisfied need stops motivating",
-        "Herzberg — hygiene factors (pay, conditions) prevent dissatisfaction but don't motivate; motivators (recognition, responsibility) actually drive performance"
+        "Low motivation can produce absenteeism, labour turnover, lateness, errors, accidents, weak service and resistance.",
+        "Different employees value money, security, social belonging, achievement, autonomy and purpose differently."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-taylor-scientific-management-and-economic-reward",
+      "title": "Taylor: scientific management and economic reward",
+      "content": [
+        "Taylor treated pay as the central motivator and sought the most efficient method by selecting a task, timing its elements, identifying the quickest method, training employees in it, supervising performance and paying by results. Piece rate can lift measurable output where quality is easy to check."
+      ],
+      "bullets": [
+        "Strengths: clear standard, direct reward-effort link and possible productivity gains in repetitive work.",
+        "Limits: quantity may displace quality/safety, teamwork and service are hard to measure, repetitive work can demotivate, and money is not the only need."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-mayo-social-needs-and-participation",
+      "title": "Mayo: social needs and participation",
+      "content": [
+        "The Hawthorne studies led Mayo to emphasise attention, consultation, teamwork, informal groups and social relationships. Employees may respond because they feel observed and valued, and group norms can strongly influence output."
+      ],
+      "bullets": [
+        "Use team briefings, consultation, supportive supervision and opportunities for employee voice.",
+        "Groups can also set low output norms, and participation may be slow or incompatible with urgent, tightly controlled work."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-maslow-hierarchy-of-needs",
+      "title": "Maslow: hierarchy of needs",
+      "content": [
+        "Maslow arranged needs from physiological and safety through social, esteem and self-actualisation. A manager should identify the currently unsatisfied need and offer a matching condition: adequate pay, security, belonging, recognition or development. Once a lower need is reasonably satisfied, a higher need may become more influential."
+      ],
+      "bullets": [
+        "The model reminds managers that pay alone is incomplete.",
+        "People do not always move in the same order, may pursue several needs together and differ by culture and life stage."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-herzberg-hygiene-and-motivators",
+      "title": "Herzberg: hygiene and motivators",
+      "content": [
+        "Hygiene factors include pay, policy, supervision, relationships, security and conditions. Poor hygiene causes dissatisfaction, but improving it only removes dissatisfaction. Lasting motivation comes from achievement, recognition, meaningful work, responsibility, advancement and growth—often delivered through job enrichment."
+      ],
+      "bullets": [
+        "Pay still matters if it is perceived as unfair; it is simply not enough by itself in Herzberg's model.",
+        "Enrichment requires skill, trust and support; unwanted responsibility can create stress rather than motivation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-mcclelland-and-vroom",
+      "title": "McClelland and Vroom",
+      "content": [
+        "McClelland proposed learned needs for achievement, affiliation and power. High-achievement employees value challenging but attainable tasks and feedback; affiliation-oriented employees value relationships; power-oriented employees value influence and leadership. Vroom argues that motivation depends on expectancy (effort leads to performance), instrumentality (performance leads to reward) and valence (the employee values the reward)."
+      ],
+      "bullets": [
+        "A valuable bonus will not motivate if employees think the target is impossible.",
+        "A reachable target will not motivate if managers do not reliably deliver the promised reward.",
+        "Individual diagnosis makes these theories useful but also harder to administer consistently."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-financial-methods",
+      "title": "Financial methods",
+      "content": [
+        "Time rate or salary provides predictable income and suits work where output is hard to measure, but weak performers may receive the same pay. Piece rate and commission create a direct output or sales incentive, but can harm quality, advice and teamwork. Bonuses can reward targets; profit sharing connects staff to overall success but individual effort has a weak link to total profit. Fringe benefits can aid recruitment and retention."
+      ],
+      "bullets": [
+        "Design measures that cannot be achieved by sacrificing safety, quality or long-term customer value.",
+        "Rewards must be large, fair, timely and understood enough to change behaviour.",
+        "Pay systems need affordable base security as well as incentives where appropriate."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-non-financial-methods-and-job-design",
+      "title": "Non-financial methods and job design",
+      "content": [
+        "Rotation increases variety and multi-skilling but may only move boredom. Enlargement adds similar tasks; enrichment adds autonomy and responsibility. Teamworking satisfies social needs and combines ideas, while participation and delegation can build trust and esteem. Recognition, training, promotion and flexible work can also motivate."
+      ],
+      "bullets": [
+        "Non-financial does not mean cost-free: training, redesign, consultation and extra responsibility require time and support.",
+        "Methods must fit task interdependence, employee competence and the manager's willingness to release control."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-choosing-a-motivation-package",
+      "title": "Choosing a motivation package",
+      "content": [
+        "Begin with evidence: pay complaints, turnover interviews, errors, missed targets or employee surveys. Identify the cause, then combine fair hygiene factors with meaningful rewards and job design. Review productivity, quality, absence and turnover after implementation."
+      ],
+      "bullets": [
+        "Production line: measured incentives plus quality safeguards, team targets and rotation may fit.",
+        "Creative professionals: autonomy, recognition, mastery and purpose may matter more than piece rate.",
+        "Sales staff: commission can focus effort, but include customer satisfaction or profit margin to discourage unsuitable selling."
       ],
       "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "comparisonTable": {
+    "title": "Motivation theories in action",
+    "columns": [
+      "Theory",
+      "Main idea",
+      "Management action",
+      "Limitation"
+    ],
+    "rows": [
+      [
+        "Taylor",
+        "Money and efficient methods",
+        "Standards and pay by results",
+        "Can neglect quality, social and intrinsic needs"
+      ],
+      [
+        "Mayo",
+        "Attention, groups and participation",
+        "Consultation and teamworking",
+        "Group norms may reduce output; evidence/context limits"
+      ],
+      [
+        "Maslow",
+        "Different levels of unsatisfied need",
+        "Match reward to need",
+        "Order and needs differ between people/cultures"
+      ],
+      [
+        "Herzberg",
+        "Hygiene prevents dissatisfaction; motivators create satisfaction",
+        "Improve conditions and enrich work",
+        "Job enrichment may not suit every task/person"
+      ],
+      [
+        "McClelland",
+        "Achievement, affiliation and power",
+        "Tailor task and reward",
+        "Needs are difficult to diagnose precisely"
+      ],
+      [
+        "Vroom",
+        "Expectancy × instrumentality × valence",
+        "Make target achievable, reward reliable and valued",
+        "Perceptions vary and are difficult to measure"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Motivation-to-performance chain",
+    "type": "flow",
+    "nodes": [
+      "Diagnose employee need",
+      "Choose fair reward and job design",
+      "Employee expects effort to matter",
+      "Effort and persistence rise",
+      "Productivity/quality/retention improve",
+      "Measure and adjust"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Introducing piece rate",
+      "steps": [
+        "Each acceptable unit earns extra pay",
+        "Employees have a direct incentive to increase output",
+        "Labour productivity may rise",
+        "Unit labour cost may fall and capacity increases"
+      ],
+      "evaluation": "Quality, waste and safety must be monitored; the method is unsuitable where output is team-based or difficult to measure."
+    },
+    {
+      "title": "Job enrichment",
+      "steps": [
+        "Employees receive autonomy and meaningful responsibility",
+        "Achievement and recognition increase",
+        "Intrinsic motivation and problem solving improve",
+        "Quality and retention may rise",
+        "Recruitment and error costs may fall"
+      ],
+      "evaluation": "Employees need competence and support; imposed responsibility without authority or pay can increase stress."
+    },
+    {
+      "title": "Commission-only sales pay",
+      "steps": [
+        "Salespeople gain a strong incentive to close deals",
+        "Sales volume may rise",
+        "Revenue increases",
+        "But unsuitable selling can raise returns and complaints",
+        "Long-term customer value may fall"
+      ],
+      "evaluation": "A balanced scheme using margin, retention and satisfaction can reduce gaming, but is harder to measure."
+    }
+  ],
   "examTips": [
-    "Apply a named theory directly to the scenario rather than describing it in the abstract — examiners reward application over pure recall."
+    "Explain theory → management method → employee behaviour → measurable business consequence.",
+    "Compare methods against the same workforce and task, not in isolation.",
+    "Do not present motivation as the only determinant of productivity; skill, equipment and demand also matter.",
+    "Evaluation can turn on individual differences, culture, affordability, measurement quality and time."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Saying Herzberg believed pay is irrelevant; inadequate or unfair pay can cause dissatisfaction.",
+    "Treating job enlargement and enrichment as synonyms.",
+    "Claiming Mayo proved working conditions never matter.",
+    "Assuming a financial reward motivates when the target is impossible or the reward is not valued."
+  ],
   "quickRecall": [
-    "motivation theories",
-    "financial methods",
-    "non-financial methods"
+    {
+      "question": "What is the key risk of piece-rate pay?",
+      "answer": "Employees may maximise quantity at the expense of quality, safety, waste or teamwork."
+    },
+    {
+      "question": "What did Mayo emphasise?",
+      "answer": "Attention, consultation, teamwork, social relationships and group norms."
+    },
+    {
+      "question": "What is the difference between Herzberg's hygiene factors and motivators?",
+      "answer": "Poor hygiene causes dissatisfaction; motivators such as achievement and responsibility create positive satisfaction."
+    },
+    {
+      "question": "How does job enrichment differ from job enlargement?",
+      "answer": "Enrichment adds autonomy, challenge and responsibility; enlargement adds more tasks at a similar level."
+    },
+    {
+      "question": "What three perceptions make up Vroom's model?",
+      "answer": "Expectancy, instrumentality and valence."
+    },
+    {
+      "question": "Why may profit sharing have a weak motivational effect?",
+      "answer": "An individual's effort may have little visible effect on total company profit, and the payment can be delayed."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "2.1",
+    "2.3",
+    "4.1",
+    "5.5"
+  ]
 }

@@ -1,0 +1,293 @@
+{
+  "id": "1.4",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Business objectives",
+  "contentDepth": "full",
+  "overview": "Objectives translate purpose into priorities and measures. High-scoring answers explain why an objective fits the business's stage and stakeholders, how a decision helps achieve it, and what the business may sacrifice in the process.",
+  "syllabusPoints": [
+    "Explain why businesses set aims, objectives, strategies and tactics.",
+    "Analyse common objectives including survival, profit, growth, market share and shareholder return.",
+    "Apply SMART criteria and management by objectives.",
+    "Explain the role and limitations of mission statements.",
+    "Analyse why objectives change and how ethics and corporate social responsibility influence decisions.",
+    "Analyse conflicts between objectives and the importance of communicating them."
+  ],
+  "definitions": [
+    {
+      "term": "Aim",
+      "definition": "A broad, long-term statement of what a business wants to achieve."
+    },
+    {
+      "term": "Objective",
+      "definition": "A specific target used to direct and measure progress toward an aim."
+    },
+    {
+      "term": "Strategy",
+      "definition": "A medium- to long-term plan for achieving an objective."
+    },
+    {
+      "term": "Tactic",
+      "definition": "A short-term action used to implement a strategy."
+    },
+    {
+      "term": "SMART objective",
+      "definition": "A target that is specific, measurable, achievable, relevant/realistic and time-limited."
+    },
+    {
+      "term": "Profit maximisation",
+      "definition": "Seeking the greatest possible difference between total revenue and total cost."
+    },
+    {
+      "term": "Profit satisficing",
+      "definition": "Seeking a level of profit sufficient to satisfy owners while also meeting other objectives."
+    },
+    {
+      "term": "Management by objectives",
+      "definition": "Coordinating and motivating staff by translating corporate objectives into agreed divisional, departmental and individual targets."
+    },
+    {
+      "term": "Mission statement",
+      "definition": "A public statement of an organisation's central purpose, values and direction."
+    },
+    {
+      "term": "Corporate social responsibility",
+      "definition": "Considering social and environmental effects and stakeholder responsibilities in business decisions."
+    },
+    {
+      "term": "Ethics",
+      "definition": "Moral principles that influence what a business considers right or acceptable."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-objectives-matter",
+      "title": "Why objectives matter",
+      "content": [
+        "Objectives provide direction, coordinate departments, motivate and assess performance, support resource allocation and give stakeholders a basis for judging the business. They are valuable only when understood, accepted and supported by resources."
+      ],
+      "bullets": [
+        "Corporate objectives should be translated into compatible functional and individual targets.",
+        "Regular review compares actual performance with the target and triggers corrective action.",
+        "Poorly designed targets can cause dysfunctional behaviour—for example, a sales target that encourages excessive discounting and weak profit."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-common-objectives-and-their-trade-offs",
+      "title": "Common objectives and their trade-offs",
+      "content": [
+        "Survival is common for new or threatened firms. Profit provides finance and owner return; growth may increase scale and market power; market-share targets strengthen position; shareholder-return targets focus on dividends and share value. Some owners choose satisficing to preserve leisure, control or service quality."
+      ],
+      "bullets": [
+        "Lowering price may support sales and market share but reduce contribution per unit.",
+        "Rapid growth may increase long-term profit but reduce short-term cash and dividends.",
+        "Cost reduction may support survival but damage quality, motivation or stakeholder trust."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-smart-objectives",
+      "title": "SMART objectives",
+      "content": [
+        "Specific states exactly what will change; measurable gives evidence; achievable tests resources and conditions; relevant links to the wider aim; time-limited sets a deadline. 'Improve sales' is weak; 'increase online revenue in Vietnam by 8% by 31 December while maintaining gross margin' is much more useful."
+      ],
+      "bullets": [
+        "Too easy: little motivation or improvement.",
+        "Too difficult: demotivation, manipulation of data or unsafe shortcuts.",
+        "A target can be SMART but still strategically wrong if it measures the wrong outcome."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-management-by-objectives",
+      "title": "Management by objectives",
+      "content": [
+        "Senior objectives are divided into targets for divisions, departments, managers and employees. Ideally managers and staff agree targets, resources and review dates, which clarifies how each role contributes and can increase ownership."
+      ],
+      "bullets": [
+        "Benefits: coordination, clearer responsibility, motivation and measurable appraisal.",
+        "Limits: time-consuming negotiation, conflicting targets, narrow focus and rapid obsolescence in a dynamic environment.",
+        "Success needs communication, reliable measures, employee participation and corrective support—not targets alone."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-mission-statements",
+      "title": "Mission statements",
+      "content": [
+        "A mission communicates what the organisation stands for and can align employees and reassure stakeholders. It is broader and less measurable than an objective."
+      ],
+      "bullets": [
+        "Useful when it is distinctive, credible and reflected in resource decisions.",
+        "Weak when it is vague public relations language, conflicts with actual conduct or becomes outdated as the business changes."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-why-objectives-change",
+      "title": "Why objectives change",
+      "content": [
+        "Objectives reflect internal conditions and the external environment. A start-up may move from survival to growth; recession may reverse that shift. Ownership, business size, cash position, competition, technology, regulation, stakeholder pressure and leadership can all reset priorities."
+      ],
+      "bullets": [
+        "Communicating change reduces uncertainty and allows department targets and budgets to be updated.",
+        "Changing too frequently can confuse employees; refusing to change can make objectives irrelevant."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-ethics-and-corporate-social-responsibility",
+      "title": "Ethics and corporate social responsibility",
+      "content": [
+        "An ethical decision may go beyond minimum law—for example safer sourcing, fairer pay or rejecting misleading promotion. This can raise short-run cost but strengthen reputation, recruitment, loyalty, access to contracts and long-run risk control."
+      ],
+      "bullets": [
+        "Potential costs: higher inputs, monitoring, training and loss of business where rivals use lower standards.",
+        "Potential benefits: differentiation, stakeholder trust, lower legal/reputation risk and long-term sustainability.",
+        "The impact depends on customer willingness to pay, credibility, competitor conduct and whether claimed standards are independently verified."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-decision-making-cycle",
+      "title": "Decision-making cycle",
+      "content": [
+        "A disciplined decision begins with objectives, defines the issue, gathers relevant data, develops options, compares quantitative and qualitative effects, selects and implements an option, then reviews the outcome against the original target."
+      ],
+      "bullets": [
+        "Quantitative evidence can compare cost, revenue and cash; qualitative evidence covers ethics, morale, risk and reputation.",
+        "Review matters because assumptions may be wrong and implementation may differ from the plan."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Objective tensions",
+    "columns": [
+      "Objective",
+      "Decision that may support it",
+      "Possible conflict"
+    ],
+    "rows": [
+      [
+        "Survival",
+        "Cut price/cost and preserve cash",
+        "May reduce quality, wages or long-term investment"
+      ],
+      [
+        "Profit",
+        "Raise price or reduce cost",
+        "May reduce customer value or employee motivation"
+      ],
+      [
+        "Growth",
+        "Invest in capacity and markets",
+        "Consumes cash and can reduce short-term dividends"
+      ],
+      [
+        "Market share",
+        "Promotion or penetration pricing",
+        "Higher sales may still produce low margins"
+      ],
+      [
+        "CSR",
+        "Fair sourcing and cleaner technology",
+        "Higher short-run cost may pressure profit"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Objectives into action",
+    "type": "cycle",
+    "nodes": [
+      "Set corporate aim",
+      "Define SMART objectives",
+      "Translate into department targets",
+      "Allocate resources and implement",
+      "Measure actual performance",
+      "Review and revise"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Switching from profit to survival",
+      "steps": [
+        "Demand falls during recession",
+        "Unsold inventory and negative cash flow increase",
+        "The business cuts discretionary cost and delays expansion",
+        "Cash outflow falls",
+        "Short-run survival becomes more likely"
+      ],
+      "evaluation": "Deep cuts may weaken product quality and future competitiveness, so managers should protect capabilities essential to recovery."
+    },
+    {
+      "title": "Adopting higher ethical sourcing standards",
+      "steps": [
+        "Input and monitoring costs rise",
+        "The firm can credibly differentiate its product",
+        "Trust and willingness to pay may increase",
+        "Revenue and loyalty may offset the cost"
+      ],
+      "evaluation": "The result depends on whether target customers value the standard and believe the claim; otherwise margin may fall."
+    },
+    {
+      "title": "A narrow sales-volume target",
+      "steps": [
+        "Sales staff discount heavily to hit volume",
+        "Quantity sold rises",
+        "Contribution per unit falls and unsuitable customers may be accepted",
+        "Profit and service quality may decline"
+      ],
+      "evaluation": "Balanced targets covering margin, retention and customer satisfaction reduce this risk but make appraisal more complex."
+    }
+  ],
+  "examTips": [
+    "Separate an objective (the measurable result) from a strategy (the route) and a tactic (the immediate action).",
+    "When asked whether one objective is most important, identify the business's life-cycle stage and binding constraint.",
+    "Ethical analysis must show both the extra cost and a possible revenue, risk or stakeholder consequence.",
+    "Use the case's figures and deadline when improving a vague objective into SMART form."
+  ],
+  "commonMistakes": [
+    "Saying SMART means only measurable and forgetting relevance and time.",
+    "Treating a mission statement as a numerical target.",
+    "Assuming profit maximisation always means raising price.",
+    "Equating legal behaviour with ethical behaviour; ethics can require more than the law."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between an aim and an objective?",
+      "answer": "An aim is broad and long-term; an objective is a specific target used to measure progress."
+    },
+    {
+      "question": "What does SMART stand for?",
+      "answer": "Specific, measurable, achievable, relevant/realistic and time-limited."
+    },
+    {
+      "question": "Why might owners choose profit satisficing?",
+      "answer": "They may value sufficient income alongside independence, leisure, control, quality or other stakeholder aims."
+    },
+    {
+      "question": "How does management by objectives work?",
+      "answer": "Corporate aims are translated into agreed targets for divisions, departments and individuals, then performance is reviewed."
+    },
+    {
+      "question": "Why can CSR improve long-run profit?",
+      "answer": "It may strengthen trust, loyalty, recruitment and risk control, though it can raise short-run cost."
+    },
+    {
+      "question": "Give two reasons objectives change.",
+      "answer": "Examples include business age, recession, competition, ownership, finance, leadership, law or stakeholder pressure."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "1.3",
+    "1.5",
+    "2.3",
+    "5.5"
+  ]
+}
