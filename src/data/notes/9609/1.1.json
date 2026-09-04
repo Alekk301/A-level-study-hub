@@ -1,0 +1,310 @@
+{
+  "id": "1.1",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Enterprise",
+  "contentDepth": "full",
+  "overview": "Enterprise begins with a problem or opportunity and combines scarce resources to create value. For exams, connect the entrepreneur's decisions to risk, finance, customers and the wider economy; a definition alone rarely explains whether a new venture is likely to succeed.",
+  "syllabusPoints": [
+    "Explain business activity, needs and wants, scarcity, choice and opportunity cost.",
+    "Explain the four factors of production and the difference between consumer goods, consumer services and capital goods.",
+    "Calculate and analyse added value and ways a business can increase it.",
+    "Analyse entrepreneurs and intrapreneurs, their characteristics, risks and rewards.",
+    "Explain the purpose, contents and limitations of a business plan.",
+    "Analyse why enterprise matters to an economy and how social enterprises use the triple bottom line."
+  ],
+  "definitions": [
+    {
+      "term": "Business activity",
+      "definition": "Using resources to produce goods or services that satisfy needs and wants, usually while meeting an objective such as profit or social impact."
+    },
+    {
+      "term": "Factors of production",
+      "definition": "Land, labour, capital and enterprise: the inputs combined to produce goods and services."
+    },
+    {
+      "term": "Scarcity",
+      "definition": "The condition in which unlimited wants cannot all be satisfied from limited resources."
+    },
+    {
+      "term": "Opportunity cost",
+      "definition": "The benefit of the next-best alternative forgone when a choice is made."
+    },
+    {
+      "term": "Added value",
+      "definition": "The difference between a product's selling price and the cost of bought-in materials and components."
+    },
+    {
+      "term": "Entrepreneur",
+      "definition": "A person who identifies an opportunity, organises resources and accepts the financial risk of starting and managing a venture."
+    },
+    {
+      "term": "Intrapreneur",
+      "definition": "An employee who uses entrepreneurial initiative inside an existing organisation, while the employer normally carries the financial risk."
+    },
+    {
+      "term": "Business plan",
+      "definition": "A document setting out a venture's idea, objectives, market, operations, people and financial forecasts."
+    },
+    {
+      "term": "Social enterprise",
+      "definition": "A revenue-earning business whose main objectives are social or environmental and which reinvests much of its surplus in those objectives."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-purpose-of-business-activity",
+      "title": "Purpose of business activity",
+      "content": [
+        "A business transforms inputs into outputs. Land includes sites and natural resources; labour is human effort; capital includes finance and productive assets; enterprise coordinates the other inputs and accepts risk. Consumer goods are tangible products bought by final users, consumer services are intangible, and capital goods help other businesses produce."
+      ],
+      "bullets": [
+        "A successful transformation must be effective (meet customer needs) and efficient (limit wasted time, money and materials).",
+        "The business environment is dynamic: technology, competitors, incomes, tastes and laws change, so the original idea may need adapting.",
+        "Customers provide revenue, suppliers provide reliable inputs, and government provides rules, infrastructure and sometimes support."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-scarcity-choice-and-opportunity-cost",
+      "title": "Scarcity, choice and opportunity cost",
+      "content": [
+        "Every business decision uses resources that could have been used elsewhere. State the actual alternative forgone: saying only that there is an 'opportunity cost' is not analysis."
+      ],
+      "bullets": [
+        "A start-up spending $20,000 on equipment cannot use the same money for promotion or additional working capital.",
+        "A manager using factory space for Product A gives up the contribution that Product B might have earned.",
+        "The best choice depends on objectives, expected return, risk and time, not only the lowest immediate cost."
+      ],
+      "examples": [
+        {
+          "id": "1.1-2-1",
+          "kind": "analysis",
+          "label": "Applied opportunity cost",
+          "content": "Buying an automated cutter may raise output, but the opportunity cost is the marketing campaign forgone. If weak awareness is the true sales constraint, the machine may add capacity without adding revenue."
+        }
+      ]
+    },
+    {
+      "id": "03-creating-and-increasing-added-value",
+      "title": "Creating and increasing added value",
+      "content": [
+        "Higher added value gives room to pay wages and other costs and still earn profit, but it is not identical to profit because it ignores expenses such as rent, salaries and promotion."
+      ],
+      "bullets": [
+        "Raise the selling price through branding, design, quality, convenience, personal service or after-sales support.",
+        "Reduce bought-in costs through negotiation, bulk purchasing, less waste or a different supplier.",
+        "Improve the product so customers perceive a meaningful difference rather than a cosmetic change.",
+        "Evaluate trade-offs: cheaper inputs may damage reliability; higher prices may reduce demand; added services also cost money."
+      ],
+      "examples": [
+        {
+          "id": "1.1-3-1",
+          "kind": "worked",
+          "label": "Worked calculation",
+          "content": "A café buys ingredients for $2.40 and sells the meal for $8.50. Added value = $8.50 − $2.40 = $6.10 per meal. New packaging that costs $0.30 only improves added value if it supports a price rise or sufficient extra sales."
+        }
+      ]
+    },
+    {
+      "id": "04-entrepreneurs-and-intrapreneurs",
+      "title": "Entrepreneurs and intrapreneurs",
+      "content": [
+        "Entrepreneurs need initiative, self-confidence, resilience, creativity, calculated risk-taking, leadership and enough financial literacy to control cash. Intrapreneurs can innovate with an established firm's finance, brand and systems, but may have less freedom and may not receive the full reward."
+      ],
+      "bullets": [
+        "Rewards include profit, independence, achievement and possible capital growth.",
+        "Risks include loss of savings, uncertain income, long hours, stress and unlimited liability in some legal forms.",
+        "A characteristic matters only when linked to action: resilience helps an owner learn from rejected prototypes and revise the product rather than abandon the venture."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-from-opportunity-to-surviving-start-up",
+      "title": "From opportunity to surviving start-up",
+      "content": [
+        "An opportunity may come from a hobby, new technology, a gap in an existing market or a better location/service. It still needs customers willing and able to pay. Many new businesses fail because the idea is not researched, records and cash are poorly controlled, finance is insufficient, management lacks key skills or competition and external change are underestimated."
+      ],
+      "bullets": [
+        "Test demand with focused market research and a small-scale launch.",
+        "Secure start-up capital and enough working capital for the period before cash receipts become reliable.",
+        "Build a dependable supplier base and a clear source of differentiation.",
+        "Monitor costs, cash, customer feedback and competitor actions rather than relying on enthusiasm alone."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-business-plans-value-and-limits",
+      "title": "Business plans: value and limits",
+      "content": [
+        "A business plan makes assumptions explicit and can persuade banks or investors that managers understand the market and cash needs. Typical sections cover the business idea and objectives, owners and skills, market research and marketing plan, operations and location, staffing, finance required, cash-flow and profit forecasts, and risks."
+      ],
+      "bullets": [
+        "Planning can reveal a cash shortage before launch and coordinate decisions.",
+        "External finance providers can judge repayment ability, security and management credibility.",
+        "Forecasts are estimates: optimistic sales, missing costs or sudden market change can make a polished plan misleading.",
+        "The plan should be reviewed and updated; writing one does not guarantee success."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-enterprise-and-economic-development",
+      "title": "Enterprise and economic development",
+      "content": [
+        "New ventures may create employment, increase output and tax revenue, introduce innovation and competition, and grow into significant exporters. Failure is also part of enterprise: resources can be lost, but skills and competitive pressure may still improve the economy."
+      ],
+      "bullets": [
+        "Governments may support enterprise through education, infrastructure, grants, advice, incubators and simpler regulation.",
+        "Support has an opportunity cost and may keep weak firms alive, so effectiveness depends on targeting and follow-up."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-social-enterprise-and-the-triple-bottom-line",
+      "title": "Social enterprise and the triple bottom line",
+      "content": [
+        "A social enterprise trades rather than depending only on donations. It balances economic sustainability with social and environmental outcomes: profit is needed to continue, but profit maximisation is not the dominant purpose."
+      ],
+      "bullets": [
+        "Economic: earn a surplus and remain financially viable.",
+        "Social: create jobs, widen access or support disadvantaged groups.",
+        "Environmental: reduce waste, pollution or resource use.",
+        "Tension remains possible—for example, paying fair wages may raise costs, while a higher price may reduce access for low-income customers."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Added value",
+      "expression": "Selling price − cost of bought-in materials and components",
+      "note": "Calculate per unit unless the data relate to total output."
+    }
+  ],
+  "comparisonTable": {
+    "title": "Entrepreneur, intrapreneur and social entrepreneur",
+    "columns": [
+      "Role",
+      "Where they work",
+      "Who bears financial risk",
+      "Typical reward/objective"
+    ],
+    "rows": [
+      [
+        "Entrepreneur",
+        "Own new venture",
+        "Mainly the entrepreneur",
+        "Profit, independence and growth"
+      ],
+      [
+        "Intrapreneur",
+        "Existing organisation",
+        "Mainly the employer",
+        "Salary, recognition and career development"
+      ],
+      [
+        "Social entrepreneur",
+        "Mission-led venture",
+        "Owner/organisation",
+        "Sustainable social or environmental impact"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Enterprise value-creation chain",
+    "type": "flow",
+    "nodes": [
+      "Identify need or opportunity",
+      "Combine land, labour and capital",
+      "Transform inputs",
+      "Offer a valued output",
+      "Receive revenue and feedback",
+      "Adapt and reinvest"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Training as a way to add value",
+      "steps": [
+        "Employees gain skill",
+        "Errors and waste fall while service improves",
+        "Customers perceive higher quality",
+        "The business may charge more or gain repeat purchases",
+        "Added value and possible profit rise"
+      ],
+      "evaluation": "Training costs money and takes staff away from work; the impact depends on whether skill is the real cause of weak quality."
+    },
+    {
+      "title": "Insufficient working capital",
+      "steps": [
+        "The start-up cannot pay suppliers on time",
+        "Inputs are delayed",
+        "Customer orders are missed",
+        "Reputation and cash inflow weaken",
+        "Failure becomes more likely"
+      ],
+      "evaluation": "The effect may be temporary if an overdraft is available, but borrowing adds interest and does not fix a loss-making model."
+    },
+    {
+      "title": "A government enterprise grant",
+      "steps": [
+        "Start-up finance becomes available",
+        "The entrepreneur can acquire equipment or staff",
+        "The venture begins trading sooner",
+        "Jobs and output may increase"
+      ],
+      "evaluation": "Benefits depend on demand and management quality; grant conditions or poor targeting can reduce the net gain."
+    }
+  ],
+  "examTips": [
+    "For 'analyse', build a business-specific chain from the decision to cost, revenue, cash flow, profit or survival.",
+    "Do not equate added value with profit; identify the other costs that still have to be paid.",
+    "When assessing an entrepreneur, apply each quality to the problem in the case rather than listing characteristics.",
+    "Evaluate business plans by questioning the assumptions and the experience of the people who prepared them."
+  ],
+  "commonMistakes": [
+    "Defining capital only as money; productive equipment and buildings are also capital resources.",
+    "Giving any forgone choice as opportunity cost instead of the next-best alternative.",
+    "Calling a charity a social enterprise without evidence that it trades.",
+    "Assuming a higher selling price always raises added value overall when demand may fall."
+  ],
+  "quickRecall": [
+    {
+      "question": "What are the four factors of production?",
+      "answer": "Land, labour, capital and enterprise."
+    },
+    {
+      "question": "How is added value calculated?",
+      "answer": "Selling price minus the cost of bought-in materials and components."
+    },
+    {
+      "question": "Why is added value not the same as profit?",
+      "answer": "Profit also deducts other business costs, including wages, rent, interest and promotion."
+    },
+    {
+      "question": "What is opportunity cost?",
+      "answer": "The benefit of the next-best alternative forgone."
+    },
+    {
+      "question": "How does an intrapreneur differ from an entrepreneur?",
+      "answer": "An intrapreneur innovates inside an existing organisation, which usually provides resources and bears the financial risk."
+    },
+    {
+      "question": "Name the three parts of the triple bottom line.",
+      "answer": "Economic, social and environmental outcomes."
+    },
+    {
+      "question": "Give two reasons a business plan may not predict success.",
+      "answer": "It is based on estimates and may use optimistic or incomplete assumptions; external conditions can also change."
+    }
+  ],
+  "relatedTopics": [
+    "1.2",
+    "1.4",
+    "3.1",
+    "5.1",
+    "5.2"
+  ]
+}

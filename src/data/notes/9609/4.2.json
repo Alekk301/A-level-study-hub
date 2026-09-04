@@ -1,0 +1,282 @@
+{
+  "id": "4.2",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Inventory management",
+  "contentDepth": "full",
+  "overview": "Inventory protects production and sales against uncertainty but ties up cash and creates storage, damage and obsolescence costs. The correct level depends on demand variability, lead time, supplier reliability, perishability and the cost of a stockout.",
+  "syllabusPoints": [
+    "Distinguish raw materials, work in progress and finished-goods inventory.",
+    "Analyse the benefits and costs of holding inventory.",
+    "Interpret inventory-control charts, including maximum level, reorder level, buffer inventory and lead time.",
+    "Explain the purpose of reorder quantity and the effects of changing demand or lead time.",
+    "Analyse just-in-time inventory management and the conditions required for it to work."
+  ],
+  "definitions": [
+    {
+      "term": "Inventory",
+      "definition": "Raw materials, work in progress and finished goods held by a business."
+    },
+    {
+      "term": "Raw-material inventory",
+      "definition": "Inputs held before they enter production."
+    },
+    {
+      "term": "Work in progress",
+      "definition": "Partly completed output still within the production process."
+    },
+    {
+      "term": "Finished-goods inventory",
+      "definition": "Completed products awaiting sale or distribution."
+    },
+    {
+      "term": "Buffer inventory",
+      "definition": "The minimum safety stock intended to absorb unexpected demand or delivery delay."
+    },
+    {
+      "term": "Reorder level",
+      "definition": "The inventory level at which a replenishment order is placed."
+    },
+    {
+      "term": "Lead time",
+      "definition": "The time between placing an order and receiving it ready for use."
+    },
+    {
+      "term": "Reorder quantity",
+      "definition": "The amount ordered each time inventory reaches the reorder level."
+    },
+    {
+      "term": "Just in time",
+      "definition": "An inventory system in which materials arrive and output is completed only when needed, minimising inventory held."
+    },
+    {
+      "term": "Stockout",
+      "definition": "A shortage in which the business cannot meet production or customer demand from available inventory."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-businesses-hold-inventory",
+      "title": "Why businesses hold inventory",
+      "content": [
+        "Raw materials prevent production stopping when deliveries vary; work in progress connects stages with different speeds; finished goods allow immediate customer delivery and absorb demand peaks. Bulk orders may also earn discounts and protect against expected price rises."
+      ],
+      "bullets": [
+        "The value of insurance stock is greater where stockouts stop an entire process or permanently lose customers.",
+        "Perishable, fashionable or technology products face high obsolescence risk, so excess inventory is especially costly."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-costs-and-risks-of-inventory",
+      "title": "Costs and risks of inventory",
+      "content": [
+        "Inventory ties up working capital that could pay debts or earn a return elsewhere. It requires space, handling, insurance, security and sometimes refrigeration; it may deteriorate, become obsolete or be stolen. More inventory can therefore weaken liquidity even when it appears as an asset."
+      ],
+      "bullets": [
+        "Ordering too little increases delivery cost and stockout risk.",
+        "Ordering too much lowers order frequency but raises average inventory and cash tied up.",
+        "The objective is an economic service level, not automatically zero inventory."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-reading-an-inventory-control-chart",
+      "title": "Reading an inventory-control chart",
+      "content": [
+        "Inventory falls as materials are used or products sold. At the reorder level a new order is placed. During lead time, inventory continues falling toward buffer stock. When the reorder quantity arrives, the vertical rise takes inventory toward its maximum level."
+      ],
+      "bullets": [
+        "Reorder level must cover expected usage during lead time plus an allowance for uncertainty.",
+        "A steeper downward line means faster usage; a wider horizontal lead-time gap means slower delivery.",
+        "If demand or lead time increases, an unchanged reorder level raises stockout risk.",
+        "A delayed delivery is shown by inventory continuing below the expected arrival point, using buffer stock."
+      ],
+      "examples": [
+        {
+          "id": "4.2-3-1",
+          "kind": "worked",
+          "label": "Chart logic",
+          "content": "Usage is 80 units per day, lead time is 5 days and desired buffer inventory is 120 units. Reorder level = (80 × 5) + 120 = 520 units."
+        }
+      ]
+    },
+    {
+      "id": "04-setting-control-levels",
+      "title": "Setting control levels",
+      "content": [
+        "Maximum level is constrained by storage, cash, perishability and order size. Buffer inventory depends on uncertainty and the cost of disruption. Reorder level depends on usage during lead time plus buffer stock. Reorder quantity balances order/delivery cost against holding cost and supplier discounts."
+      ],
+      "bullets": [
+        "Reliable real-time data reduces uncertainty but cannot prevent physical supply disruption.",
+        "Seasonality should change expected usage and may require planned pre-building of inventory."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-just-in-time-inventory-management",
+      "title": "Just-in-time inventory management",
+      "content": [
+        "JIT seeks continuous flow with raw materials arriving only when needed, little work in progress and finished goods moving quickly to customers. It reduces working capital, storage, waste and hidden defects and frees space, but makes interruption immediately visible and potentially severe."
+      ],
+      "bullets": [
+        "Requirements: reliable nearby suppliers and transport, consistent quality, accurate demand information, disciplined scheduling, flexible multi-skilled employees and dependable equipment/IT.",
+        "Frequent small deliveries may increase transport cost and environmental impact.",
+        "A supplier failure, traffic disruption or sudden demand spike can stop production and damage customer trust."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-improving-inventory-performance",
+      "title": "Improving inventory performance",
+      "content": [
+        "Use accurate forecasts, point-of-sale data, inventory records, barcode/RFID systems, supplier performance measures, ABC prioritisation, quality at source and regular review of slow-moving lines. Work with suppliers on shared forecasts and delivery reliability rather than simply transferring risk."
+      ],
+      "bullets": [
+        "Reduce buffer inventory only after lead-time variability and defect rates have fallen.",
+        "Dispose of obsolete stock, but judge discounts against brand effects and recovered cash.",
+        "Track stockout frequency, inventory days/turnover, waste and service level together."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Illustrative reorder level",
+      "expression": "Expected usage during lead time + buffer inventory",
+      "note": "Apply only when the question provides the required usage and buffer data."
+    },
+    {
+      "label": "Expected usage during lead time",
+      "expression": "Usage per period × lead time in matching periods"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Inventory-heavy and JIT approaches",
+    "columns": [
+      "Issue",
+      "Holding buffer inventory",
+      "Just in time"
+    ],
+    "rows": [
+      [
+        "Supply/demand disruption",
+        "Greater protection",
+        "Greater immediate exposure"
+      ],
+      [
+        "Cash and storage",
+        "More cash tied up and higher holding cost",
+        "Lower working-capital and space requirement"
+      ],
+      [
+        "Waste/obsolescence",
+        "Higher risk",
+        "Lower risk"
+      ],
+      [
+        "Supplier relationship",
+        "Can tolerate some delay",
+        "Requires frequent, reliable, high-quality delivery"
+      ],
+      [
+        "Best fit",
+        "Uncertain demand/lead time or costly stockouts",
+        "Stable processes, reliable supply and accurate information"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Inventory-control cycle",
+    "type": "flow",
+    "nodes": [
+      "Start near maximum inventory",
+      "Use/sell inventory",
+      "Reach reorder level and order",
+      "Consume stock during lead time",
+      "Use buffer if variation occurs",
+      "Delivery restores inventory"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Reducing buffer inventory",
+      "steps": [
+        "Average inventory falls",
+        "Less cash is tied up and storage cost falls",
+        "Working capital and unit cost may improve",
+        "But a delayed delivery creates a stockout sooner",
+        "Production and customer orders may be lost"
+      ],
+      "evaluation": "The decision depends on supplier/transport reliability and the financial/reputation cost of one stockout."
+    },
+    {
+      "title": "Implementing JIT",
+      "steps": [
+        "Materials arrive close to use",
+        "Inventory and warehouse needs fall",
+        "Working capital is released and waste becomes visible",
+        "Cost per unit and cash flow may improve"
+      ],
+      "evaluation": "Training, IT and frequent deliveries cost money; disruption risk is high unless quality and suppliers are dependable."
+    },
+    {
+      "title": "Demand rises unexpectedly",
+      "steps": [
+        "Inventory is consumed faster",
+        "The reorder point is reached sooner",
+        "If order timing/quantity is unchanged, buffer stock is exhausted",
+        "Orders are delayed or lost",
+        "Revenue and loyalty may fall"
+      ],
+      "evaluation": "Flexible suppliers, spare capacity or dynamic reorder levels can reduce the effect, but add cost."
+    }
+  ],
+  "examTips": [
+    "When interpreting a chart, describe the line movement and explain the operational consequence.",
+    "Keep reorder level (when to order) separate from reorder quantity (how much to order).",
+    "Evaluate JIT using supplier reliability, demand stability and stockout cost in the case.",
+    "Link inventory to cash flow: stock is not cash available to pay immediate debts."
+  ],
+  "commonMistakes": [
+    "Calling all inventory finished goods.",
+    "Assuming buffer inventory is the amount ordered.",
+    "Saying JIT means deliveries are simply faster; timing and minimal inventory across the process are central.",
+    "Recommending zero inventory where demand or lead time is volatile without discussing disruption risk."
+  ],
+  "quickRecall": [
+    {
+      "question": "What are the three broad forms of inventory?",
+      "answer": "Raw materials, work in progress and finished goods."
+    },
+    {
+      "question": "What triggers a replenishment order?",
+      "answer": "Inventory reaching the reorder level."
+    },
+    {
+      "question": "What happens during lead time?",
+      "answer": "Inventory continues to be used between placing and receiving an order."
+    },
+    {
+      "question": "Why hold buffer inventory?",
+      "answer": "To absorb unexpected demand or delivery delay and reduce stockout risk."
+    },
+    {
+      "question": "What does JIT require from suppliers?",
+      "answer": "Frequent, reliable, correctly timed deliveries of consistent quality."
+    },
+    {
+      "question": "Why can inventory weaken liquidity?",
+      "answer": "Cash is tied up in goods and may not be available when short-term payments fall due."
+    }
+  ],
+  "relatedTopics": [
+    "4.1",
+    "4.3",
+    "5.1",
+    "5.3",
+    "5.4"
+  ]
+}

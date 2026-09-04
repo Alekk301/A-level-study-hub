@@ -1,0 +1,297 @@
+{
+  "id": "2.3",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Management",
+  "contentDepth": "full",
+  "overview": "Management coordinates people and resources so objectives become results. Detailed answers distinguish functions, roles and leadership approaches, then choose what fits the urgency, workforce skill, risk and culture of the case.",
+  "syllabusPoints": [
+    "Explain the main functions of management: planning, organising, directing, coordinating and controlling.",
+    "Apply Mintzberg's interpersonal, informational and decisional management roles.",
+    "Analyse delegation, authority, responsibility and accountability.",
+    "Compare autocratic, democratic and laissez-faire leadership.",
+    "Explain McGregor's Theory X and Theory Y assumptions.",
+    "Analyse the importance of emotional intelligence and situational management."
+  ],
+  "definitions": [
+    {
+      "term": "Management",
+      "definition": "Coordinating people and resources through planning, organising, directing and controlling to achieve objectives."
+    },
+    {
+      "term": "Leadership",
+      "definition": "Influencing and motivating people to work toward a shared direction or objective."
+    },
+    {
+      "term": "Delegation",
+      "definition": "Passing authority to a subordinate to perform a task while the manager retains ultimate accountability."
+    },
+    {
+      "term": "Authority",
+      "definition": "The formal right to make decisions, give instructions and use resources."
+    },
+    {
+      "term": "Responsibility",
+      "definition": "The obligation to carry out an assigned task."
+    },
+    {
+      "term": "Accountability",
+      "definition": "Being answerable for a decision or result."
+    },
+    {
+      "term": "Autocratic leadership",
+      "definition": "A leader makes decisions centrally and expects instructions to be followed."
+    },
+    {
+      "term": "Democratic leadership",
+      "definition": "A leader involves employees in discussion and decision-making while normally retaining final responsibility."
+    },
+    {
+      "term": "Laissez-faire leadership",
+      "definition": "A leader gives capable employees substantial freedom to decide how work is completed."
+    },
+    {
+      "term": "Emotional intelligence",
+      "definition": "The ability to recognise and manage one's own emotions and understand and respond effectively to others."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-functions-of-management",
+      "title": "Functions of management",
+      "content": [
+        "Managers set objectives and plan how to achieve them; organise people, finance and physical resources; direct and motivate employees; coordinate interdependent work; and control by comparing actual performance with targets and correcting deviations."
+      ],
+      "bullets": [
+        "Planning without control gives no evidence that the plan worked.",
+        "Control is not only punishment: it includes measurement, feedback, support and corrective action.",
+        "Coordination prevents departments optimising their own targets while damaging the whole business."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-mintzberg-s-interpersonal-roles",
+      "title": "Mintzberg's interpersonal roles",
+      "content": [
+        "As figurehead, the manager performs symbolic and formal duties. As leader, the manager recruits, motivates and develops people. As liaison, the manager builds internal and external relationships that move information and resources."
+      ],
+      "bullets": [
+        "One meeting may involve several roles; the classification helps explain what the manager is doing and why.",
+        "The importance of each role varies by level, organisation and situation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-mintzberg-s-informational-roles",
+      "title": "Mintzberg's informational roles",
+      "content": [
+        "As monitor, the manager gathers relevant internal and external information. As disseminator, the manager passes useful information to colleagues. As spokesperson, the manager represents the organisation to outsiders."
+      ],
+      "bullets": [
+        "Information must be timely, accurate, relevant and directed to people able to act.",
+        "Too much uncontrolled information can slow decisions as much as too little."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-mintzberg-s-decisional-roles",
+      "title": "Mintzberg's decisional roles",
+      "content": [
+        "As entrepreneur, the manager develops improvements and opportunities; as disturbance handler, responds to crises and conflict; as resource allocator, decides priorities; and as negotiator, represents the organisation in agreements."
+      ],
+      "bullets": [
+        "A resource-allocation decision should link to stated objectives and opportunity cost.",
+        "Disturbance handling is reactive, while the entrepreneur role is proactive."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-delegation",
+      "title": "Delegation",
+      "content": [
+        "Effective delegation defines the result, grants enough authority and resources, sets limits and review points, and holds the subordinate responsible while the manager remains accountable. It reduces manager workload, speeds local decisions, develops staff and enriches jobs."
+      ],
+      "bullets": [
+        "Risks include inconsistent decisions, employee error, unclear authority and a manager's fear of losing control.",
+        "Delegation works best with competence, trust, information, training and a clear reporting system.",
+        "Passing a task without authority or resources is not effective delegation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-leadership-styles",
+      "title": "Leadership styles",
+      "content": [
+        "Autocratic leadership is fast, clear and useful in crisis, confidential decisions or with inexperienced staff, but may reduce ideas and motivation. Democratic leadership uses employee knowledge and builds commitment but takes time. Laissez-faire can release expert creativity and speed specialist decisions but risks drift and weak coordination."
+      ],
+      "bullets": [
+        "No style is universally best. Consider urgency, risk, workforce competence, task complexity, culture, location and need for innovation.",
+        "Managers may use different styles in different decisions rather than displaying one fixed style."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-mcgregor-s-theory-x-and-theory-y",
+      "title": "McGregor's Theory X and Theory Y",
+      "content": [
+        "Theory X assumes employees dislike work, avoid responsibility and need direction and control. Theory Y assumes work can be satisfying and employees can exercise self-direction, creativity and responsibility when conditions support it. These are managerial assumptions, not permanent labels for two types of person."
+      ],
+      "bullets": [
+        "Theory X assumptions often lead to close supervision and financial control.",
+        "Theory Y assumptions support participation, delegation and enrichment.",
+        "Management behaviour can become self-fulfilling: distrust may reduce initiative, appearing to confirm Theory X."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-emotional-intelligence-and-manager-effectiveness",
+      "title": "Emotional intelligence and manager effectiveness",
+      "content": [
+        "Self-awareness helps a manager judge strengths and emotional triggers; self-management supports calm and integrity; social awareness helps interpret others; relationship skills support persuasion, conflict resolution and teamwork."
+      ],
+      "bullets": [
+        "Emotional intelligence can improve acceptance and implementation of difficult decisions.",
+        "It does not replace technical knowledge, evidence or willingness to make unpopular choices."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-making-and-reviewing-decisions",
+      "title": "Making and reviewing decisions",
+      "content": [
+        "Good management defines the objective and problem, gathers evidence, generates alternatives, compares quantitative and qualitative consequences, decides, communicates responsibilities, implements and reviews. Participation may improve information; a clear deadline prevents analysis from becoming delay."
+      ],
+      "bullets": [
+        "Effective managers adjust when evidence changes rather than defending the original plan.",
+        "A high-quality decision can still fail through weak implementation, so review should separate decision quality from execution."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Leadership style by context",
+    "columns": [
+      "Style",
+      "Decision process",
+      "Likely strength",
+      "Likely risk",
+      "Suitable context"
+    ],
+    "rows": [
+      [
+        "Autocratic",
+        "Leader decides",
+        "Speed, clarity, secrecy",
+        "Weak ownership and fewer ideas",
+        "Crisis, routine/high-risk work, inexperienced team"
+      ],
+      [
+        "Democratic",
+        "Employees contribute; leader decides",
+        "Better information and commitment",
+        "Slow discussion or conflict",
+        "Skilled workforce, change and creative problems"
+      ],
+      [
+        "Laissez-faire",
+        "Employees decide with limited intervention",
+        "Expert autonomy and innovation",
+        "Poor coordination or unclear priorities",
+        "Trusted specialists with clear goals"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Management control loop",
+    "type": "cycle",
+    "nodes": [
+      "Set objectives",
+      "Plan and organise resources",
+      "Direct and coordinate people",
+      "Measure actual performance",
+      "Compare with target",
+      "Correct and learn"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Delegating customer complaint decisions",
+      "steps": [
+        "Front-line staff gain authority to solve problems immediately",
+        "Response time falls",
+        "Customer satisfaction and retention improve",
+        "Repeat revenue may rise",
+        "Managers gain time for strategic work"
+      ],
+      "evaluation": "Clear limits and training are essential; inconsistent compensation or poor judgement can increase cost."
+    },
+    {
+      "title": "Democratic leadership during process redesign",
+      "steps": [
+        "Employees contribute operational knowledge",
+        "The proposed process identifies practical constraints",
+        "Participation reduces resistance",
+        "Implementation and productivity improve"
+      ],
+      "evaluation": "Consultation may delay urgent change and managers must still decide where views conflict."
+    },
+    {
+      "title": "Autocratic action in a safety emergency",
+      "steps": [
+        "One leader issues immediate instructions",
+        "Employees respond without lengthy consultation",
+        "Hazard exposure and downtime may be reduced",
+        "Operations recover sooner"
+      ],
+      "evaluation": "After the emergency, review and employee input are needed; permanent autocracy may suppress reporting and learning."
+    }
+  ],
+  "examTips": [
+    "Use a Mintzberg role only after identifying the manager's actual action in the case.",
+    "Keep authority, responsibility and accountability distinct when explaining delegation.",
+    "Leadership evaluation should name the decision and workforce, not claim one style is generally best.",
+    "Link management decisions to implementation; a plan creates no benefit until people and resources act on it."
+  ],
+  "commonMistakes": [
+    "Treating management and leadership as complete synonyms.",
+    "Saying delegation removes a manager's accountability.",
+    "Calling Theory X and Theory Y fixed categories of employee.",
+    "Assuming laissez-faire means no objectives, monitoring or accountability."
+  ],
+  "quickRecall": [
+    {
+      "question": "What are the five broad management functions?",
+      "answer": "Planning, organising, directing, coordinating and controlling."
+    },
+    {
+      "question": "Which Mintzberg category includes figurehead, leader and liaison?",
+      "answer": "Interpersonal roles."
+    },
+    {
+      "question": "What must accompany responsibility in effective delegation?",
+      "answer": "Enough authority, resources, information and clear review points."
+    },
+    {
+      "question": "When is autocratic leadership most defensible?",
+      "answer": "Where speed, safety, secrecy or inexperienced employees make central direction important."
+    },
+    {
+      "question": "What is the central difference between Theory X and Theory Y?",
+      "answer": "They are contrasting management assumptions about employees' attitude to work, responsibility and self-direction."
+    },
+    {
+      "question": "Name the four broad elements of emotional intelligence.",
+      "answer": "Self-awareness, self-management, social awareness and relationship/social skills."
+    }
+  ],
+  "relatedTopics": [
+    "1.4",
+    "1.5",
+    "2.1",
+    "2.2",
+    "5.5"
+  ]
+}

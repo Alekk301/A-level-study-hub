@@ -6,126 +6,340 @@
   "unitTitle": "AS Level",
   "title": "Sources of finance",
   "contentDepth": "full",
-  "overview": "Businesses need finance both to fund day-to-day operations (working capital) and to invest in growth. This topic covers where that finance can come from, and introduces break-even analysis — the tool used to work out how much needs to be sold before a business starts making a profit.",
+  "overview": "No source of finance is universally best. A recommendation must match the purpose, amount and time period, then weigh cost, repayment, cash-flow risk, security, ownership and availability for the specific legal form and business.",
   "syllabusPoints": [
-    "distinguish between and give examples of internal and external sources of finance",
-    "distinguish between short-term and long-term sources of finance and recommend a suitable source for a given business situation",
-    "calculate and interpret the break-even level of output and margin of safety, and construct/interpret break-even charts"
+    "Distinguish internal and external sources of finance.",
+    "Analyse retained profit, sale of assets and owner investment.",
+    "Analyse share capital, loans, overdrafts, trade credit, debt factoring, grants, crowdfunding and microfinance.",
+    "Analyse leasing, hire purchase, venture capital and debentures/long-term debt.",
+    "Distinguish short-, medium- and long-term finance.",
+    "Recommend finance using purpose, duration, amount, cost, control, risk, gearing, legal form and availability.",
+    "Explain information lenders and investors use when making decisions."
   ],
   "definitions": [
     {
       "term": "Internal finance",
-      "definition": "Finance generated from within the business itself, e.g. retained profit or sale of unused assets — doesn't need to be repaid or create new ownership stakes."
+      "definition": "Funds generated from within the business or its owners rather than an outside provider."
     },
     {
       "term": "External finance",
-      "definition": "Finance sourced from outside the business, e.g. bank loans, share issues or trade credit."
+      "definition": "Funds provided by an outside individual or organisation."
     },
     {
-      "term": "Break-even output",
-      "definition": "The level of output at which total revenue exactly equals total costs, so the business makes neither a profit nor a loss."
+      "term": "Retained profit",
+      "definition": "Profit kept in the business after tax and owner distributions for reinvestment."
     },
     {
-      "term": "Margin of safety",
-      "definition": "The amount by which actual (or budgeted) output exceeds the break-even output — a buffer against falling sales."
+      "term": "Equity finance",
+      "definition": "Permanent capital raised in exchange for ownership shares."
+    },
+    {
+      "term": "Debt finance",
+      "definition": "Borrowed finance that normally requires interest and repayment."
+    },
+    {
+      "term": "Overdraft",
+      "definition": "Permission to withdraw more from a bank account than its balance, up to an agreed limit."
+    },
+    {
+      "term": "Trade credit",
+      "definition": "A supplier's agreement allowing the buyer to pay after delivery."
+    },
+    {
+      "term": "Debt factoring",
+      "definition": "Selling trade receivables to a specialist for immediate cash at a discount, often with collection services."
+    },
+    {
+      "term": "Leasing",
+      "definition": "Paying to use an asset owned by another organisation for an agreed period."
+    },
+    {
+      "term": "Hire purchase",
+      "definition": "Obtaining an asset through a deposit and instalments, with ownership usually passing after the final payment."
+    },
+    {
+      "term": "Venture capital",
+      "definition": "Equity investment and often expertise supplied to a high-risk business with strong growth potential."
+    },
+    {
+      "term": "Crowdfunding",
+      "definition": "Raising relatively small amounts from many people through a platform, using donation, reward, lending or equity models."
+    },
+    {
+      "term": "Microfinance",
+      "definition": "Small-scale financial services for entrepreneurs who lack access to conventional banking."
+    },
+    {
+      "term": "Collateral",
+      "definition": "An asset pledged to a lender that may be claimed if the borrower fails to repay."
     }
   ],
   "sections": [
     {
-      "id": "01-internal-vs-external-finance",
-      "title": "Internal vs external finance",
+      "id": "01-internal-sources",
+      "title": "Internal sources",
       "content": [
-        "Internal sources (retained profit, sale of assets) don't dilute ownership or add debt, but are limited by what the business already has. External sources (loans, share issues, trade credit, leasing) can raise larger amounts but usually come with interest, repayment obligations, or a loss of full ownership."
+        "Retained profit has no mandatory interest or repayment and preserves control, but is unavailable to start-ups, may be insufficient and has the opportunity cost of lower owner distributions or reserves. Selling unused assets releases tied-up capital and may reduce maintenance, but takes time and removes future capacity. Reducing inventory releases cash but can create stockouts. Owner funds are quick and signal commitment but increase personal exposure."
       ],
-      "bullets": [],
+      "bullets": [
+        "Internal does not mean costless: every use has an alternative and may reduce liquidity.",
+        "Sale and leaseback raises cash from an asset while retaining use, but creates recurring lease payments and gives up ownership."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-share-and-venture-capital",
+      "title": "Share and venture capital",
+      "content": [
+        "A company can issue shares for permanent finance with no compulsory repayment, supporting risky long-term investment. Existing control and profit are diluted, investors expect dividends/capital growth and public issues involve disclosure and cost. Venture capital can add expertise, contacts and risk-bearing funds to a high-growth venture but demands significant ownership, influence and an eventual exit."
+      ],
+      "bullets": [
+        "Only companies issue shares; a private company cannot offer shares to the general public.",
+        "A rights issue offers existing shareholders the opportunity to buy new shares, helping reduce unwanted control dilution.",
+        "Equity is useful where early cash flow cannot safely support fixed interest and repayment."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-loans-long-term-debt-and-overdrafts",
+      "title": "Loans, long-term debt and overdrafts",
+      "content": [
+        "A term loan gives a known sum and repayment period and preserves ownership, but interest, repayment, covenants and collateral increase risk. Debentures or long-term loan securities can raise large, long-duration finance for companies. An overdraft is flexible for fluctuating short-term needs because interest is charged on the amount used, but rates may vary and the facility can be reduced or recalled."
+      ],
+      "bullets": [
+        "Debt is more dangerous where existing borrowing is high or cash flow is volatile because interest must be paid even without profit.",
+        "A fixed long-term asset should not normally depend on an overdraft that can be withdrawn at short notice."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-trade-credit-and-debt-factoring",
+      "title": "Trade credit and debt factoring",
+      "content": [
+        "Trade credit delays supplier payment, matching cash outflow more closely to sale receipts. It may be easy and interest-free within terms, but late payment loses discounts, damages trust and can stop supply. Factoring converts receivables to immediate cash and may outsource collection, but the business receives less than face value and customer relationships may be affected."
+      ],
+      "bullets": [
+        "Both sources address working-capital timing rather than creating profitable demand.",
+        "Good credit control may be cheaper than permanent use of factoring."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-asset-finance-leasing-and-hire-purchase",
+      "title": "Asset finance: leasing and hire purchase",
+      "content": [
+        "Leasing avoids a large purchase outflow, may include maintenance and eases upgrades, but the user may pay more over time and does not own the asset. Hire purchase spreads payments and normally ends in ownership, but requires a deposit and interest and the asset may be repossessed after missed instalments."
+      ],
+      "bullets": [
+        "Lease technology prone to obsolescence or needed for a limited period.",
+        "Buy/hire-purchase an asset with long useful life and high utilisation when ownership benefits outweigh financing cost."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-grants-crowdfunding-and-microfinance",
+      "title": "Grants, crowdfunding and microfinance",
+      "content": [
+        "Grants/subsidies need no repayment but are limited, competitive and conditional. Crowdfunding can test demand and build publicity, but platform fees, public disclosure, campaign work and failure risk remain; the legal obligation depends on donation, reward, debt or equity form. Microfinance provides small loans and services where conventional collateral is unavailable, but amounts are limited and rates/repayment still matter."
+      ],
+      "bullets": [
+        "Do not call every crowdfunding contribution a donation.",
+        "Conditions must fit the business: a location grant is poor finance if moving harms customers or supply."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-matching-duration-and-purpose",
+      "title": "Matching duration and purpose",
+      "content": [
+        "Short-term finance—overdraft, trade credit and factoring—suits temporary working-capital gaps. Medium-term loans, hire purchase or leasing may suit vehicles and equipment. Long-term loans, shares, retained profit, debentures or venture capital suit expansion and long-lived assets."
+      ],
+      "bullets": [
+        "Maturity matching reduces refinancing risk and avoids paying long-term finance cost for a very short need.",
+        "A permanent trading loss should be corrected operationally rather than repeatedly covered by short-term borrowing."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-choosing-and-justifying-a-source",
+      "title": "Choosing and justifying a source",
+      "content": [
+        "Use purpose, duration, amount, existing debt/gearing, cash-flow reliability, interest and fees, security, legal form, control, speed, flexibility and availability. Then compare the two strongest realistic options and give a conditional judgement."
+      ],
+      "bullets": [
+        "A new sole trader cannot issue shares and may lack retained profit or collateral.",
+        "A profitable established company may fund moderate investment internally to preserve control.",
+        "A risky innovation with delayed cash generation may suit equity more than fixed loan repayments.",
+        "The cheapest quoted source may not be best after control, flexibility and failure risk."
+      ],
       "examples": [
         {
-          "id": "01-example-1",
+          "id": "5.2-8-1",
           "kind": "analysis",
-          "label": "Analysis chain",
-          "content": "Retained profit → internal, no interest, but reduces cash reserves"
-        },
-        {
-          "id": "01-example-2",
-          "kind": "analysis",
-          "label": "Analysis chain",
-          "content": "Bank loan → external, interest paid, but doesn't dilute ownership like a share issue would"
+          "label": "Recommendation structure",
+          "content": "Need: $500,000 machine for eight years. Option A: long-term loan preserves ownership but creates fixed repayments. Option B: lease reduces initial cash and obsolescence risk but may cost more overall. Choose after applying cash reliability, technology life and control priorities."
         }
       ]
     },
     {
-      "id": "02-short-term-vs-long-term-finance",
-      "title": "Short-term vs long-term finance",
+      "id": "09-what-finance-providers-examine",
+      "title": "What finance providers examine",
       "content": [
-        "Short-term sources (overdraft, trade credit) are for day-to-day working capital and are usually cheaper but less reliable, since terms can be changed quickly. Long-term sources (bank loans, share capital) suit major investment like new machinery or premises, since they're committed over a longer period."
+        "Banks assess the amount and purpose, business plan, cash-flow forecast, past/forecast profit, existing borrowing, owner contribution, collateral, credit history and management experience. Equity investors examine market growth, competitive advantage, management team, scalability, forecasts, valuation, risks, governance and route to return."
       ],
-      "bullets": [],
-      "examples": [
-        {
-          "id": "02-example-1",
-          "kind": "analysis",
-          "label": "Analysis chain",
-          "content": "Overdraft → covers a temporary cash-flow gap"
-        },
-        {
-          "id": "02-example-2",
-          "kind": "analysis",
-          "label": "Analysis chain",
-          "content": "Long-term bank loan → funds a new factory"
-        }
-      ]
-    },
-    {
-      "id": "03-break-even-analysis",
-      "title": "Break-even analysis",
-      "content": [
-        "Break-even output tells you the minimum sales needed before a business starts to profit. Margin of safety shows how much of a buffer exists above that point. Break-even charts plot fixed costs, total costs and revenue against output, with break-even at the intersection of total cost and total revenue."
+      "bullets": [
+        "Evidence reduces information risk but forecasts remain uncertain.",
+        "A strong application explains downside scenarios and how repayments or investor returns remain credible."
       ],
-      "bullets": [],
-      "examples": [
-        {
-          "id": "03-example-1",
-          "kind": "pseudocode",
-          "label": "Cambridge-style pseudocode",
-          "content": "Break-even output = Fixed Costs / (Selling Price − Variable Cost per unit)"
-        },
-        {
-          "id": "03-example-2",
-          "kind": "analysis",
-          "label": "Analysis chain",
-          "content": "Fixed costs = $10,000, Price = $50, Variable cost = $30 → Break-even = 10,000/(50−30) = 500 units"
-        },
-        {
-          "id": "03-example-3",
-          "kind": "pseudocode",
-          "label": "Cambridge-style pseudocode",
-          "content": "Margin of safety = actual output − break-even output"
-        }
-      ]
+      "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "comparisonTable": {
+    "title": "Finance-source decision grid",
+    "columns": [
+      "Source",
+      "Best matched need",
+      "Main advantage",
+      "Main drawback"
+    ],
+    "rows": [
+      [
+        "Retained profit",
+        "Flexible internal reinvestment",
+        "No interest/repayment or dilution",
+        "Limited and reduces distributions/reserves"
+      ],
+      [
+        "Share/venture capital",
+        "Risky long-term growth",
+        "Permanent capital; no fixed repayment",
+        "Dilution, expected return and influence"
+      ],
+      [
+        "Term loan/debenture",
+        "Defined medium/long investment",
+        "Known committed funds; control retained",
+        "Interest, repayment, collateral/covenants"
+      ],
+      [
+        "Overdraft",
+        "Short fluctuating cash gap",
+        "Flexible; interest on amount used",
+        "Variable cost and recall/refinancing risk"
+      ],
+      [
+        "Trade credit/factoring",
+        "Working-capital timing",
+        "Delay outflow or accelerate inflow",
+        "Supplier/customer relationship and discount/fees"
+      ],
+      [
+        "Lease/hire purchase",
+        "Use/acquire equipment",
+        "Avoids full immediate outflow",
+        "Recurring payments and total cost/ownership trade-off"
+      ],
+      [
+        "Grant/crowdfunding",
+        "Eligible project or testable launch",
+        "May avoid repayment and build awareness",
+        "Uncertain, conditional and campaign/application cost"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Finance recommendation filter",
+    "type": "flow",
+    "nodes": [
+      "Define purpose and amount",
+      "Match the time period",
+      "Remove unavailable legal-form options",
+      "Test cash, cost and risk",
+      "Assess control and security",
+      "Compare options and make a conditional judgement"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Using an overdraft for a seasonal gap",
+      "steps": [
+        "The business draws funds only when cash is short",
+        "Wages and suppliers are paid on time",
+        "Operations continue until seasonal receipts arrive",
+        "Interest is charged only on the amount used"
+      ],
+      "evaluation": "The gap must be temporary and within the limit; a recalled facility or continuing losses can create immediate failure risk."
+    },
+    {
+      "title": "Issuing shares for expansion",
+      "steps": [
+        "Permanent finance enters without compulsory repayment",
+        "The company invests before the project generates cash",
+        "Capacity and future revenue may grow",
+        "Cash-flow pressure is lower than with debt"
+      ],
+      "evaluation": "Ownership and future returns are diluted; the issue may be slow, costly or unavailable to a private/weak company."
+    },
+    {
+      "title": "Debt factoring",
+      "steps": [
+        "Receivables are sold for immediate cash",
+        "The collection delay and administrative burden fall",
+        "Liquidity and supplier payment improve",
+        "Production can continue"
+      ],
+      "evaluation": "The fee reduces margin and aggressive collection may harm customers; better internal credit control could be cheaper."
+    }
+  ],
   "examTips": [
-    "Always state the formula before substituting numbers — method marks are awarded for the formula and substitution even if your final answer is wrong.",
-    "When recommending a source of finance, match it to BOTH the amount needed and the purpose (short-term cash flow vs long-term investment) — a mismatch is a common way to lose marks."
+    "Start with the finance need, then remove sources that are legally or practically unavailable.",
+    "Always compare cost with cash-flow risk and control; 'no interest' does not mean no cost.",
+    "Use duration matching explicitly in recommendations.",
+    "A conclusion should state the condition that would change your recommendation, such as unreliable cash flow or owner refusal to dilute control."
   ],
   "commonMistakes": [
-    "Confusing cash flow with profit when discussing why a business needs finance — a profitable business can still run out of cash.",
-    "Using total cost instead of variable cost per unit in the break-even formula.",
-    "Forgetting units (e.g. 'units' or '$') when giving a final break-even or margin of safety figure."
+    "Putting break-even analysis in sources of finance.",
+    "Saying all crowdfunding is free donation finance.",
+    "Calling retained profit available to a new business before it has traded.",
+    "Recommending a public share issue to a sole trader or private limited company.",
+    "Treating an overdraft as secure long-term finance for a permanent asset."
   ],
   "quickRecall": [
-    "Internal = from within (no interest/dilution); External = from outside (interest/dilution possible)",
-    "Short-term = working capital; Long-term = investment",
-    "Break-even = Fixed Costs ÷ Contribution per unit",
-    "Margin of safety = actual output − break-even output"
+    {
+      "question": "Why is retained profit not costless?",
+      "answer": "It has an opportunity cost and may reduce dividends, reserves or funds for another project."
+    },
+    {
+      "question": "What is the main difference between equity and debt?",
+      "answer": "Equity exchanges ownership for permanent capital; debt requires interest/repayment but normally preserves ownership."
+    },
+    {
+      "question": "When is an overdraft suitable?",
+      "answer": "For a short, fluctuating working-capital shortage with a credible near-term inflow."
+    },
+    {
+      "question": "How does factoring improve cash flow?",
+      "answer": "It converts receivables into immediate cash at a discount and may transfer collection work."
+    },
+    {
+      "question": "How does hire purchase differ from leasing?",
+      "answer": "Hire purchase normally ends in ownership after instalments; leasing pays for use while another party owns the asset."
+    },
+    {
+      "question": "What evidence does a lender prioritise?",
+      "answer": "Repayment cash flow, purpose, forecasts, existing debt, owner commitment, collateral, credit history and management ability."
+    },
+    {
+      "question": "Name five finance-choice factors.",
+      "answer": "Purpose, duration, amount, cost, cash risk, control, security, legal form and availability are valid factors."
+    }
   ],
   "relatedTopics": [
+    "1.2",
+    "1.3",
     "5.1",
-    "5.4",
-    "10.3"
+    "5.3",
+    "5.4"
   ]
 }
