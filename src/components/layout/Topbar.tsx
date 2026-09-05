@@ -12,7 +12,7 @@ function getBreadcrumbs(pathname: string) {
   if (!parts.length) return [{ label: "Dashboard", href: "/" }];
   if (parts[0] === "notes") return [{ label: "Revision Notes", href: paths.notes }];
   if (parts[0] === "papers") return [{ label: "Past Papers", href: paths.papers }];
-  if (parts[0] === "bookmarks") return [{ label: "Bookmarks", href: paths.bookmarks }];
+  if (parts[0] === "bookmarks") return [{ label: "Saved", href: paths.bookmarks }];
 
   if (parts[0] === "subject") {
     const subject = getSubject(parts[1]);

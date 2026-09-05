@@ -33,7 +33,7 @@ const primaryNav = [
   { href: paths.home, label: "Home", icon: Home },
   { href: paths.notes, label: "Revision Notes", icon: BookOpenText },
   { href: paths.papers, label: "Past Papers", icon: FileText },
-  { href: paths.bookmarks, label: "Bookmarks", icon: Bookmark },
+  { href: paths.bookmarks, label: "Saved", icon: Bookmark },
 ];
 
 export function SidebarNav() {

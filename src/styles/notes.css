@@ -1,6 +1,32 @@
 .topic-page { width: 100%; padding: 3.4rem 2.5rem 7rem; }
 .topic-page__grid { display: grid; grid-template-columns: minmax(0, 780px) 220px; justify-content: center; align-items: start; gap: 4.2rem; }
 .note-article { min-width: 0; }
+.highlight-panel { margin: 0 0 2.4rem; padding: 1rem; border: 1px solid color-mix(in srgb, var(--amber) 38%, var(--line)); background: linear-gradient(145deg, var(--amber-soft), var(--surface)); }
+.highlight-panel__heading { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.75rem; }
+.highlight-panel__icon { display: grid; width: 2.4rem; height: 2.4rem; place-items: center; border: 1px solid color-mix(in srgb, var(--amber) 42%, var(--line)); border-radius: 50%; background: var(--surface); color: var(--amber); }
+.highlight-panel__icon svg { width: 1.05rem; }
+.highlight-panel__heading p { margin: 0 0 0.12rem; color: var(--amber); font-family: var(--font-mono); font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.highlight-panel__heading h2 { margin: 0; font-family: var(--font-editorial); font-size: 1.12rem; font-weight: 600; }
+.highlight-panel__count { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700; }
+.highlight-panel__help { margin: 0.75rem 0 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.55; }
+.highlight-panel__help strong { color: var(--foreground); }
+.highlight-panel__saved { margin-top: 0.85rem; border-top: 1px solid color-mix(in srgb, var(--amber) 30%, var(--line)); }
+.highlight-panel__saved summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 0 0.1rem; color: var(--foreground); font-size: 0.71rem; font-weight: 750; cursor: pointer; list-style: none; }
+.highlight-panel__saved summary::-webkit-details-marker { display: none; }
+.highlight-panel__saved summary svg { width: 0.9rem; color: var(--text-faint); transition: transform 160ms ease; }
+.highlight-panel__saved[open] summary svg { transform: rotate(180deg); }
+.highlight-panel__saved ul { display: grid; gap: 0.4rem; margin: 0.7rem 0 0; padding: 0; list-style: none; }
+.highlight-panel__saved li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.35rem; border: 1px solid var(--line); background: var(--surface); }
+.highlight-panel__saved li > button:first-child { display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); align-items: start; gap: 0.4rem; min-width: 0; padding: 0.65rem; border: 0; background: transparent; color: var(--foreground); text-align: left; cursor: pointer; }
+.highlight-panel__saved li > button:first-child:hover q { color: var(--subject-accent); }
+.highlight-panel__saved li > button > span { color: var(--amber); font-family: var(--font-mono); font-size: 0.55rem; font-weight: 800; }
+.highlight-panel__saved q { display: -webkit-box; overflow: hidden; font-family: var(--font-editorial); font-size: 0.78rem; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.highlight-panel__saved li > [data-slot="button"] { margin-right: 0.35rem; color: var(--text-muted); }
+.highlight-panel__saved li > [data-slot="button"]:hover { background: var(--danger-soft); color: var(--danger); }
+.highlightable-notes { min-width: 0; }
+.selection-toolbar { position: fixed; z-index: 80; display: flex; align-items: center; gap: 0.2rem; padding: 0.28rem; border: 1px solid color-mix(in srgb, var(--amber) 45%, var(--line)); border-radius: 0.55rem; background: var(--surface); box-shadow: 0 0.8rem 2.2rem rgba(19, 27, 25, 0.2); transform: translateX(-50%); }
+.selection-toolbar > [data-slot="button"]:first-child { background: var(--amber); color: #1d1a12; }
+.selection-toolbar > [data-slot="button"]:first-child:hover { background: color-mix(in srgb, var(--amber) 88%, #000); }
 .topic-header { margin-bottom: 2.1rem; padding-bottom: 1.8rem; border-bottom: 1px solid var(--line); }
 .topic-header__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin-bottom: 1.5rem; }
 .topic-header__meta > span:not(.depth-label) { color: var(--subject-accent); font-family: var(--font-mono); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }

@@ -98,6 +98,9 @@
   .topic-header h1 { font-size: 2.65rem; }
   .topic-header__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topic-header__actions button { min-width: 0; font-size: 0.72rem; }
+  .highlight-panel__heading { grid-template-columns: auto minmax(0, 1fr); }
+  .highlight-panel__count { grid-column: 2; }
+  .selection-toolbar { max-width: calc(100vw - 1rem); }
   .note-overview > p:last-child { font-size: 1.1rem; }
   .definitions dl { grid-template-columns: 1fr; }
   .note-section { padding-top: 2.2rem; }

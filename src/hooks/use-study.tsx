@@ -13,6 +13,16 @@ import {
 
 export type ThemePreference = "light" | "dark" | "system";
 
+export interface SavedHighlight {
+  id: string;
+  start: number;
+  end: number;
+  text: string;
+  prefix: string;
+  suffix: string;
+  createdAt: number;
+}
+
 interface RecentTopic {
   key: string;
   openedAt: number;
@@ -23,6 +33,7 @@ interface StudyState {
   bookmarks: string[];
   completed: string[];
   syllabusChecks: Record<string, string[]>;
+  highlights: Record<string, SavedHighlight[]>;
   recent: RecentTopic[];
   lastOpened: string | null;
   theme: ThemePreference;
@@ -33,6 +44,8 @@ interface StudyContextValue extends StudyState {
   toggleBookmark: (key: string) => void;
   toggleCompleted: (key: string) => void;
   toggleSyllabusPoint: (topicKey: string, pointKey: string) => void;
+  addHighlight: (topicKey: string, highlight: SavedHighlight) => void;
+  removeHighlight: (topicKey: string, highlightId: string) => void;
   recordOpened: (key: string) => void;
   setTheme: (theme: ThemePreference) => void;
   isBookmarked: (key: string) => boolean;
@@ -47,12 +60,48 @@ const initialState: StudyState = {
   bookmarks: [],
   completed: [],
   syllabusChecks: {},
+  highlights: {},
   recent: [],
   lastOpened: null,
   theme: "system",
 };
 
 const StudyContext = createContext<StudyContextValue | null>(null);
+
+function parseHighlights(value: unknown): Record<string, SavedHighlight[]> {
+  if (!value || typeof value !== "object") return {};
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([, highlights]) => Array.isArray(highlights))
+      .map(([topicKey, highlights]) => [
+        topicKey,
+        (highlights as unknown[])
+          .filter((highlight: unknown): highlight is SavedHighlight => {
+            if (!highlight || typeof highlight !== "object") return false;
+            const item = highlight as Partial<SavedHighlight>;
+            return (
+              typeof item.id === "string" &&
+              item.id.length > 0 &&
+              Number.isInteger(item.start) &&
+              Number.isInteger(item.end) &&
+              Number(item.start) >= 0 &&
+              Number(item.end) > Number(item.start) &&
+              typeof item.text === "string" &&
+              item.text.trim().length > 0 &&
+              Number.isFinite(item.createdAt)
+            );
+          })
+          .map((highlight: SavedHighlight) => ({
+            ...highlight,
+            prefix: typeof highlight.prefix === "string" ? highlight.prefix : "",
+            suffix: typeof highlight.suffix === "string" ? highlight.suffix : "",
+          }))
+          .slice(-100),
+      ])
+      .filter(([, highlights]) => (highlights as SavedHighlight[]).length > 0),
+  );
+}
 
 export function parseStoredState(value: string | null): StudyState {
   if (!value) return initialState;
@@ -83,6 +132,7 @@ export function parseStoredState(value: string | null): StudyState {
                 ]),
             )
           : {},
+      highlights: parseHighlights(parsed.highlights),
       recent: Array.isArray(parsed.recent)
         ? parsed.recent
             .filter(
@@ -171,6 +221,34 @@ export function StudyProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const addHighlight = useCallback((topicKey: string, highlight: SavedHighlight) => {
+    setState((current) => {
+      const saved = current.highlights[topicKey] ?? [];
+      if (saved.some((item) => item.start === highlight.start && item.end === highlight.end)) {
+        return current;
+      }
+      return {
+        ...current,
+        highlights: {
+          ...current.highlights,
+          [topicKey]: [...saved, highlight].slice(-100),
+        },
+      };
+    });
+  }, []);
+
+  const removeHighlight = useCallback((topicKey: string, highlightId: string) => {
+    setState((current) => {
+      const next = (current.highlights[topicKey] ?? []).filter(
+        (highlight) => highlight.id !== highlightId,
+      );
+      const highlights = { ...current.highlights };
+      if (next.length) highlights[topicKey] = next;
+      else delete highlights[topicKey];
+      return { ...current, highlights };
+    });
+  }, []);
+
   const recordOpened = useCallback((key: string) => {
     setState((current) => ({
       ...current,
@@ -196,6 +274,8 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       toggleBookmark,
       toggleCompleted,
       toggleSyllabusPoint,
+      addHighlight,
+      removeHighlight,
       recordOpened,
       setTheme,
       isBookmarked: (key) => bookmarks.has(key),
@@ -209,6 +289,8 @@ export function StudyProvider({ children }: { children: ReactNode }) {
       toggleBookmark,
       toggleCompleted,
       toggleSyllabusPoint,
+      addHighlight,
+      removeHighlight,
       recordOpened,
       setTheme,
       bookmarks,

@@ -113,9 +113,25 @@ test("stored syllabus checks survive hydration without losing older study data",
     bookmarks: ["9709:3.1"],
     completed: [],
     syllabusChecks: { "9709:3.1": ["0", "2", 4] },
+    highlights: {
+      "9709:3.1": [
+        {
+          id: "highlight-1",
+          start: 4,
+          end: 18,
+          text: "factor theorem",
+          prefix: "Use ",
+          suffix: " to solve",
+          createdAt: 123,
+        },
+        { id: "invalid", start: 10, end: 2, text: "bad", createdAt: 124 },
+      ],
+    },
     theme: "system",
   }));
 
   assert.deepEqual(state.bookmarks, ["9709:3.1"]);
   assert.deepEqual(state.syllabusChecks, { "9709:3.1": ["0", "2"] });
+  assert.equal(state.highlights["9709:3.1"].length, 1);
+  assert.equal(state.highlights["9709:3.1"][0].text, "factor theorem");
 });

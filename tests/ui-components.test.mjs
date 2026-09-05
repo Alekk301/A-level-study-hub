@@ -102,6 +102,29 @@ test("renders syllabus outcomes as checkboxes and recall answers as disclosures"
   assert.match(recall, /i² = −1/);
 });
 
+test("offers persistent highlighting around the complete note content", async () => {
+  const { StudyProvider } = await vite.ssrLoadModule("/src/hooks/use-study.tsx");
+  const { PersistentHighlighter } = await vite.ssrLoadModule(
+    "/src/components/notes/PersistentHighlighter.tsx",
+  );
+  const html = renderToStaticMarkup(
+    React.createElement(
+      StudyProvider,
+      null,
+      React.createElement(
+        PersistentHighlighter,
+        { topicKey: "9709:3.1" },
+        React.createElement("p", null, "Use the factor theorem."),
+      ),
+    ),
+  );
+
+  assert.match(html, /Personal highlights/);
+  assert.match(html, /Select a useful line to save it/);
+  assert.match(html, /data-highlight-root="true"/);
+  assert.match(html, /still be marked when you return on this device/);
+});
+
 test("renders curated, accessible visual explainers across every A2 subject", async () => {
   const { getTopicVisual, TopicVisual, topicVisualCatalog } = await vite.ssrLoadModule(
     "/src/components/notes/TopicVisual.tsx",

@@ -15,6 +15,7 @@ import { ExamFocusBlock } from "@/src/components/notes/ExamFocusBlock";
 import { FormulaList } from "@/src/components/notes/FormulaList";
 import { NoteSection } from "@/src/components/notes/NoteSection";
 import { Overview } from "@/src/components/notes/Overview";
+import { PersistentHighlighter } from "@/src/components/notes/PersistentHighlighter";
 import { QuickRecall } from "@/src/components/notes/QuickRecall";
 import { RelatedTopics } from "@/src/components/notes/RelatedTopics";
 import { SyllabusChecklist } from "@/src/components/notes/SyllabusChecklist";
@@ -88,7 +89,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       ...(note.quickRecall.length ? [{ id: "quick-recall", label: "Quick recall" }] : []),
       ...(note.relatedTopics.length ? [{ id: "related-topics", label: "Related topics" }] : []),
     ];
-  }, [examFocus, note, topicVisual]);
+  }, [note, topicVisual]);
 
   if (!lookup) {
     return (
@@ -136,34 +137,36 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
             onCompleted={() => study.toggleCompleted(lookup.key)}
           />
           <TableOfContents items={tocItems} variant="mobile" />
-          {note.contentDepth === "quick" ? (
-            <div className="quick-note-notice" role="note">
-              <strong>Quick guide</strong>
-              <p>This topic preserves the legacy syllabus orientation but does not yet have full textbook-style coverage. Use it as a checklist, not as your only source.</p>
+          <PersistentHighlighter topicKey={lookup.key}>
+            {note.contentDepth === "quick" ? (
+              <div className="quick-note-notice" role="note">
+                <strong>Quick guide</strong>
+                <p>This topic preserves the legacy syllabus orientation but does not yet have full textbook-style coverage. Use it as a checklist, not as your only source.</p>
+              </div>
+            ) : null}
+            <Overview text={note.overview} />
+            <SyllabusChecklist points={note.syllabusPoints} topicKey={lookup.key} />
+            <Definitions definitions={note.definitions} />
+            <TopicVisual visual={topicVisual} />
+            <ConceptDiagramBlock diagram={note.diagram} />
+            <div className="core-content complete-notes" id="complete-notes">
+              <div className="complete-notes__heading">
+                <span>COMPLETE EXAM NOTES</span>
+                <h2>Learn the content and the mark scheme together</h2>
+                <p>Each explanation is followed by the answer method, recurring question patterns and the exact details that distinguish a full-credit response.</p>
+              </div>
+              {note.sections.map((section, index) => <NoteSection section={section} number={index + 1} key={section.id} />)}
+              <ExamFocusBlock focus={examFocus} />
             </div>
-          ) : null}
-          <Overview text={note.overview} />
-          <SyllabusChecklist points={note.syllabusPoints} topicKey={lookup.key} />
-          <Definitions definitions={note.definitions} />
-          <TopicVisual visual={topicVisual} />
-          <ConceptDiagramBlock diagram={note.diagram} />
-          <div className="core-content complete-notes" id="complete-notes">
-            <div className="complete-notes__heading">
-              <span>COMPLETE EXAM NOTES</span>
-              <h2>Learn the content and the mark scheme together</h2>
-              <p>Each explanation is followed by the answer method, recurring question patterns and the exact details that distinguish a full-credit response.</p>
-            </div>
-            {note.sections.map((section, index) => <NoteSection section={section} number={index + 1} key={section.id} />)}
-            <ExamFocusBlock focus={examFocus} />
-          </div>
-          <FormulaList formulas={note.formulas} />
-          <ComparisonTableBlock table={note.comparisonTable} />
-          <AnalysisChains chains={note.analysisChains} />
-          <ExamTips tips={note.examTips} />
-          <CommonMistakes mistakes={note.commonMistakes} />
-          <QuickRecall items={note.quickRecall} />
-          <RelatedTopics subjectCode={subjectCode} topicIds={note.relatedTopics} />
-          <AdditionalResources subject={lookup.subject} />
+            <FormulaList formulas={note.formulas} />
+            <ComparisonTableBlock table={note.comparisonTable} />
+            <AnalysisChains chains={note.analysisChains} />
+            <ExamTips tips={note.examTips} />
+            <CommonMistakes mistakes={note.commonMistakes} />
+            <QuickRecall items={note.quickRecall} />
+            <RelatedTopics subjectCode={subjectCode} topicIds={note.relatedTopics} />
+            <AdditionalResources subject={lookup.subject} />
+          </PersistentHighlighter>
           <TopicNavigation previous={neighbours.previous} next={neighbours.next} />
         </article>
         <TableOfContents items={tocItems} variant="desktop" />
