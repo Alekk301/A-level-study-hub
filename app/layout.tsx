@@ -3,6 +3,8 @@ import "./globals.css";
 import { AppShell } from "@/src/components/layout/AppShell";
 import { Providers } from "@/app/providers";
 
+const googleAnalyticsId = "G-006M2N3KNY";
+
 export const metadata: Metadata = {
   title: {
     default: "CAIE Study Hub",
@@ -23,6 +25,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${googleAnalyticsId}');
+            `,
+          }}
+        />
+      </head>
       <body>
         <Providers>
           <AppShell>{children}</AppShell>
