@@ -161,4 +161,3 @@ trademarks and credited diagrams are excluded and remain under their respective 
 
 ![A silent walkthrough of the CAIE A-Level Study Hub dashboard, note search, persistent highlights and past-paper browser](assets/study-hub-demo.gif)
 
-*A 23-second silent walkthrough. Captions are included in the recording.*
