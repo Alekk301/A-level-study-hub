@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem with the website.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include passwords, private student data or sensitive security details.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Explain what you expected and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. See ...
+    validations:
+      required: true
+  - type: input
+    id: route
+    attributes:
+      label: Page or route
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device

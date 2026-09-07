@@ -1,0 +1,162 @@
+{
+  "id": "17.1",
+  "subject": "9618",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A2 Level",
+  "title": "Encryption, Encryption Protocols and Digital Certificates",
+  "contentDepth": "full",
+  "overview": "A2 security focuses on protecting communication and proving identity. You must compare symmetric/asymmetric encryption, understand public/private key use for confidentiality and digital signatures, explain certificates and TLS/SSL, and know the idea, strengths and limitations of quantum cryptography.",
+  "syllabusPoints": [
+    "Explain plaintext, ciphertext, encryption/decryption and symmetric/asymmetric encryption.",
+    "Explain use of public/private keys for confidential messages and authentication/signatures.",
+    "Explain SSL/TLS and how certificates establish trust.",
+    "Explain digital signatures and digital certificates.",
+    "Explain the purpose, benefits and limitations of quantum cryptography."
+  ],
+  "definitions": [
+    {
+      "term": "Plaintext",
+      "definition": "Readable original data before encryption."
+    },
+    {
+      "term": "Ciphertext",
+      "definition": "Encrypted data intended to be unreadable without the correct key."
+    },
+    {
+      "term": "Symmetric encryption",
+      "definition": "The same secret key is used for encryption and decryption."
+    },
+    {
+      "term": "Asymmetric encryption",
+      "definition": "A related public/private key pair is used for complementary operations."
+    },
+    {
+      "term": "Digital signature",
+      "definition": "Cryptographic evidence that helps verify sender authenticity and detect alteration."
+    },
+    {
+      "term": "Digital certificate",
+      "definition": "A digitally signed credential binding an identity to a public key."
+    },
+    {
+      "term": "Certificate Authority",
+      "definition": "A trusted organisation that verifies identity and signs digital certificates."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-symmetric-encryption",
+      "title": "Symmetric encryption",
+      "content": [
+        "Fast and suitable for large amounts of data. The weakness is secure key distribution: both parties need the same secret key, and disclosure of it compromises confidentiality."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-asymmetric-encryption-for-confidentiality",
+      "title": "Asymmetric encryption for confidentiality",
+      "content": [
+        "To send a secret message to Bob, encrypt using Bob's PUBLIC key. Only the matching Bob PRIVATE key should be able to decrypt it. Public keys may be distributed openly; private keys must remain secret."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-digital-signatures",
+      "title": "Digital signatures",
+      "content": [
+        "For authentication/integrity, the sender uses their private key in the signing process. A recipient verifies using the sender's public key. In real systems a hash of the message is normally signed, so modification can be detected efficiently."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-certificates-and-trust",
+      "title": "Certificates and trust",
+      "content": [
+        "A certificate links a public key to an identified subject and is signed by a trusted CA. A client verifies the CA signature, validity dates and identity/hostname before trusting the key. This prevents an attacker from simply presenting an arbitrary public key as if it belonged to the genuine server."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-tls-ssl",
+      "title": "TLS/SSL",
+      "content": [
+        "TLS (historically SSL) protects client-server sessions such as HTTPS. Certificates authenticate the server; asymmetric cryptography helps establish secure session secrets; efficient symmetric encryption then protects bulk traffic. The protocol also helps detect tampering."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-quantum-cryptography",
+      "title": "Quantum cryptography",
+      "content": [
+        "Quantum key-distribution techniques can reveal eavesdropping because observation disturbs quantum states. Potential strength is secure key exchange based on physical principles. Limitations include specialised hardware, cost, distance/infrastructure constraints and the fact that compromised endpoints/software remain vulnerable."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Encryption roles",
+    "columns": [
+      "Method",
+      "Keys",
+      "Strength",
+      "Typical use"
+    ],
+    "rows": [
+      [
+        "Symmetric",
+        "One shared secret",
+        "Fast for large data",
+        "Encrypting a session"
+      ],
+      [
+        "Asymmetric",
+        "Public/private pair",
+        "Solves key sharing; slower",
+        "Key exchange and signatures"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Secure session",
+    "type": "flow",
+    "nodes": [
+      "Verify certificate",
+      "Exchange session key",
+      "Encrypt data",
+      "Check integrity"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Confidentiality: recipient public key. Signature/authentication: sender private key.",
+    "A certificate establishes trust in a public key; a signature verifies a message/sender—do not merge the two concepts.",
+    "Say what security property is achieved: confidentiality, integrity or authentication."
+  ],
+  "commonMistakes": [
+    "Saying a public key must be secret.",
+    "Saying symmetric encryption uses a different key for decryption.",
+    "Treating hashing as reversible encryption.",
+    "Saying TLS guarantees the endpoint itself contains no malware."
+  ],
+  "quickRecall": [
+    "symmetric=one shared secret",
+    "asymmetric=public/private pair",
+    "recipient public->privacy",
+    "sender private->signature",
+    "certificate=identity+public key",
+    "TLS uses asymmetric trust + symmetric session encryption"
+  ],
+  "relatedTopics": [
+    "6.1",
+    "14.1",
+    "14.2"
+  ]
+}

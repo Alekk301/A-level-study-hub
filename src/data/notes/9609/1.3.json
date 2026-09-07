@@ -1,0 +1,293 @@
+{
+  "id": "1.3",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Size of business",
+  "contentDepth": "full",
+  "overview": "Business size has no single perfect measure. Exams reward selecting a measure that fits the industry, explaining why growth occurs and distinguishing the advantages of scale from the management and financial problems growth can create.",
+  "syllabusPoints": [
+    "Compare revenue, employees, capital employed, output and market share as measures of business size.",
+    "Explain limitations of comparing size between businesses and industries.",
+    "Analyse reasons for growth and methods of internal and external growth.",
+    "Analyse advantages and disadvantages of small and large businesses.",
+    "Analyse causes and consequences of rapid or unsuccessful growth."
+  ],
+  "definitions": [
+    {
+      "term": "Revenue",
+      "definition": "Income earned from sales over a period: selling price multiplied by quantity sold."
+    },
+    {
+      "term": "Capital employed",
+      "definition": "The long-term finance invested in the business and used to generate its operations."
+    },
+    {
+      "term": "Market share",
+      "definition": "One business's sales as a percentage of total sales in its defined market."
+    },
+    {
+      "term": "Internal growth",
+      "definition": "Expansion using the business's own activities, such as increasing output, opening outlets or launching products."
+    },
+    {
+      "term": "External growth",
+      "definition": "Expansion by combining or working with another organisation, such as a merger, takeover or joint venture."
+    },
+    {
+      "term": "Merger",
+      "definition": "Two businesses agree to combine into one organisation."
+    },
+    {
+      "term": "Takeover",
+      "definition": "One business acquires control of another business."
+    },
+    {
+      "term": "Economies of scale",
+      "definition": "Reductions in average cost that may occur as the scale of operations increases."
+    },
+    {
+      "term": "Diseconomies of scale",
+      "definition": "Increases in average cost caused by an organisation becoming too large or difficult to manage."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-measuring-business-size",
+      "title": "Measuring business size",
+      "content": [
+        "Revenue, employees, capital employed, output and market share show different dimensions. The best measure depends on the purpose and industry: employee count understates an automated factory, while revenue may exaggerate a retailer selling high-value goods at a thin margin."
+      ],
+      "bullets": [
+        "Revenue is easy to compare but affected by prices, inflation and exchange rates.",
+        "Employee numbers suit labour-intensive activities but ignore hours, skills and outsourcing.",
+        "Capital employed suits capital-intensive firms but asset values and leasing policies differ.",
+        "Output can compare similar producers but not a bank with a manufacturer.",
+        "Market share shows competitive position but depends on how the market and geography are defined."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-why-businesses-seek-growth",
+      "title": "Why businesses seek growth",
+      "content": [
+        "Growth may increase profit, market power, status, survival prospects and access to finance. It can spread risk across products or markets and support economies of scale. Managers may also seek growth for salary, authority or prestige even when owner returns do not improve."
+      ],
+      "bullets": [
+        "Greater market share can strengthen bargaining power with suppliers and retailers.",
+        "A larger customer base can reduce dependence on one buyer or region.",
+        "Growth is a means, not a guaranteed objective: revenue can rise while cash flow, quality or profit falls."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-internal-growth",
+      "title": "Internal growth",
+      "content": [
+        "Internal growth is usually gradual and easier to control: the firm can retain its culture and finance expansion from retained profit. It may come from new products, additional capacity, more outlets, e-commerce, promotion or entry into new geographic markets."
+      ],
+      "bullets": [
+        "Benefits: lower integration risk, management retains control, and expansion can match available finance and demand.",
+        "Drawbacks: slower market entry, all development risk is carried by one firm, and competitors may move first."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-external-growth",
+      "title": "External growth",
+      "content": [
+        "Mergers and takeovers can provide immediate capacity, customers, employees, brands, technology or distribution. Horizontal integration joins firms at the same stage, vertical integration joins different stages in the supply chain, and conglomerate integration joins unrelated activities."
+      ],
+      "bullets": [
+        "Horizontal: may raise market share and remove competition, but regulators may object.",
+        "Backward vertical: may secure inputs and quality, but ties the firm to its own supplier operation.",
+        "Forward vertical: may improve access to customers and retain retail margin, but requires new capabilities.",
+        "Conglomerate: spreads risk, but managers may lack expertise and synergies may be weak."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-advantages-of-small-businesses",
+      "title": "Advantages of small businesses",
+      "content": [
+        "Small firms can offer personal service, rapid communication, flexible decisions and specialised niche products. Owners stay close to customers and employees, helping quick adaptation. These strengths matter most where customisation, trust or local knowledge is valued."
+      ],
+      "bullets": [
+        "Limitations include weak bargaining power, fewer specialist managers, limited finance, dependence on key people and less ability to spread risk.",
+        "Small does not automatically mean low cost: lack of purchasing economies can make unit cost higher."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-advantages-of-large-businesses",
+      "title": "Advantages of large businesses",
+      "content": [
+        "Large firms may gain purchasing, technical, financial, marketing and managerial economies of scale. A wide product or geographic portfolio can spread risk, and brand recognition or distribution power can create barriers to entry."
+      ],
+      "bullets": [
+        "Potential drawbacks include slow decisions, weak communication, loss of personal service, employee alienation and coordination cost.",
+        "Market power may attract regulation and public criticism."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-problems-of-rapid-growth",
+      "title": "Problems of rapid growth",
+      "content": [
+        "Overtrading occurs when sales and operations expand faster than working capital. The firm may have profitable orders but lack cash to pay suppliers and wages. Rapid recruitment can dilute culture and training; new layers slow communication; quality may fall; debt and fixed costs increase; and an acquired business may resist integration."
+      ],
+      "bullets": [
+        "Plan cash and capacity before accepting major orders.",
+        "Delegate with clear accountability and strengthen systems as complexity rises.",
+        "Use staged growth, appropriate long-term finance and post-merger integration targets."
+      ],
+      "examples": [
+        {
+          "id": "1.3-7-1",
+          "kind": "analysis",
+          "label": "Growth warning",
+          "content": "Sales rising quickly is not enough. Check whether receivables and inventory are absorbing cash faster than suppliers and lenders are willing to finance them."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Market share",
+      "expression": "(Business sales ÷ total market sales) × 100",
+      "note": "Use either value or volume consistently."
+    },
+    {
+      "label": "Revenue",
+      "expression": "Selling price × quantity sold"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Internal and external growth",
+    "columns": [
+      "Issue",
+      "Internal growth",
+      "External growth"
+    ],
+    "rows": [
+      [
+        "Speed",
+        "Usually gradual",
+        "Can be immediate"
+      ],
+      [
+        "Control/culture",
+        "Easier to preserve",
+        "Integration and culture conflict possible"
+      ],
+      [
+        "Finance",
+        "Can be staged; often retained profit/debt",
+        "Purchase price and transaction costs may be large"
+      ],
+      [
+        "Market access",
+        "Must be built",
+        "Customers, brands or distribution may be acquired"
+      ],
+      [
+        "Risk",
+        "Development risk remains",
+        "Valuation, integration and redundancy risk"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Growth and its constraints",
+    "type": "flow",
+    "nodes": [
+      "Growth objective",
+      "Choose internal or external route",
+      "Finance people and capacity",
+      "Integrate systems and culture",
+      "Monitor cash quality and profit",
+      "Consolidate or correct"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Purchasing economies of scale",
+      "steps": [
+        "The firm orders larger quantities",
+        "Suppliers offer lower unit prices",
+        "Variable cost per unit falls",
+        "Contribution and profit margin may rise",
+        "The firm can cut price or retain more profit"
+      ],
+      "evaluation": "Savings depend on storage, waste and bargaining power; buying too much inventory can damage cash flow."
+    },
+    {
+      "title": "Overtrading",
+      "steps": [
+        "Sales grow faster than working capital",
+        "More cash is tied up in inventory and credit customers",
+        "Supplier and wage payments fall due first",
+        "The business becomes illiquid despite apparent profit",
+        "Operations may stop"
+      ],
+      "evaluation": "Better credit control or finance can relieve the shortage, but only if orders earn sufficient contribution."
+    },
+    {
+      "title": "Horizontal takeover",
+      "steps": [
+        "A competitor is acquired",
+        "Combined market share rises",
+        "Duplicate costs may be removed",
+        "Unit cost may fall and bargaining power may improve"
+      ],
+      "evaluation": "The price paid, regulation and loss of key staff can destroy the expected benefit."
+    }
+  ],
+  "examTips": [
+    "State the measure of size and why it suits this business; never write that one firm is simply 'bigger'.",
+    "For growth questions, separate the reason for growth from the method used to achieve it.",
+    "Develop economies of scale to lower average cost and then explain the competitive or profit consequence.",
+    "Evaluate growth using finance, integration, demand and management capacity—not only percentage sales growth."
+  ],
+  "commonMistakes": [
+    "Comparing revenues from different years without considering inflation or exchange rates.",
+    "Calling every acquisition a merger; a takeover gives one firm control of another.",
+    "Assuming all large firms gain economies of scale indefinitely.",
+    "Treating higher market share as proof of higher profit."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why is employee count a weak size measure for an automated firm?",
+      "answer": "Automation allows high output and revenue with relatively few employees."
+    },
+    {
+      "question": "How is market share calculated?",
+      "answer": "Business sales divided by total market sales, multiplied by 100."
+    },
+    {
+      "question": "What is the difference between a merger and takeover?",
+      "answer": "A merger is an agreed combination; a takeover is one firm acquiring control of another."
+    },
+    {
+      "question": "What is backward vertical integration?",
+      "answer": "Combining with or acquiring a supplier at an earlier stage of the supply chain."
+    },
+    {
+      "question": "How can growth create a cash crisis?",
+      "answer": "Inventory, wages and capacity may need paying before cash is collected from increased sales."
+    },
+    {
+      "question": "Give two advantages small firms can retain.",
+      "answer": "Personal customer service and fast, flexible decisions, among others."
+    }
+  ],
+  "relatedTopics": [
+    "1.2",
+    "1.4",
+    "2.1",
+    "4.3",
+    "5.1",
+    "5.3"
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "id": "6.2",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "S2",
+  "unitTitle": "Probability & Statistics 2",
+  "title": "Linear combinations of random variables",
+  "contentDepth": "full",
+  "overview": "Find the expectation and variance of sums and differences of independent random variables. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Find expectations of affine and linear combinations.",
+    "Find variances of scaled variables and independent sums/differences.",
+    "Combine independent normal variables.",
+    "Combine independent Poisson variables where the result remains Poisson."
+  ],
+  "definitions": [
+    {
+      "term": "Linear combination",
+      "definition": "An expression such as aX+bY+c."
+    },
+    {
+      "term": "Independence",
+      "definition": "Knowledge of one variable gives no information about the other; required for adding variances here."
+    },
+    {
+      "term": "Covariance",
+      "definition": "A dependence measure; it is zero for independent variables, explaining the syllabus variance rule."
+    },
+    {
+      "term": "Affine transformation",
+      "definition": "A scaled-and-shifted variable aX+b."
+    },
+    {
+      "term": "Closure",
+      "definition": "A distribution family stays in the same family after a stated operation."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-expectation-rules",
+      "title": "Expectation rules",
+      "content": [
+        "Expectation is linear whether or not variables are independent: E(aX+b)=aE(X)+b and E(aX+bY)=aE(X)+bE(Y). A constant shifts the mean directly."
+      ],
+      "bullets": [
+        "A negative coefficient subtracts the corresponding mean.",
+        "Independence is not needed for expectation."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Affine expectation: E(aX+b)=aE(X)+b"
+        }
+      ]
+    },
+    {
+      "id": "02-variance-rules",
+      "title": "Variance rules",
+      "content": [
+        "Var(aX+b)=a²Var(X); adding a constant changes no spread. For independent X,Y, Var(aX+bY)=a²Var(X)+b²Var(Y). The variances add even for X−Y because (−1)²=1."
+      ],
+      "bullets": [
+        "Do not subtract variances for a difference.",
+        "Independence is essential for the syllabus formula."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-normal-combinations",
+      "title": "Normal combinations",
+      "content": [
+        "If X and Y are independent normal variables, aX+bY is normal with mean aμₓ+bμᵧ and variance a²σₓ²+b²σᵧ². State the complete distribution before calculating a probability."
+      ],
+      "bullets": [
+        "Standard deviations do not add directly.",
+        "A shift changes mean but not variance."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-poisson-combinations",
+      "title": "Poisson combinations",
+      "content": [
+        "If independent X~Po(λ) and Y~Po(μ), then X+Y~Po(λ+μ). A difference is not Poisson. Splitting and combining counts requires independence and compatible intervals."
+      ],
+      "bullets": [
+        "Only sums preserve the Poisson form here.",
+        "The parameters carry the same interval units."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Affine expectation",
+      "expression": "E(aX+b)=aE(X)+b"
+    },
+    {
+      "label": "Affine variance",
+      "expression": "Var(aX+b)=a²Var(X)"
+    },
+    {
+      "label": "Independent combination",
+      "expression": "Var(aX+bY)=a²Var(X)+b²Var(Y)"
+    },
+    {
+      "label": "Poisson sum",
+      "expression": "Po(λ)+Po(μ)=Po(λ+μ), for independent variables"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Linear combinations of random variables: revision route",
+    "type": "flow",
+    "nodes": [
+      "Expectation rules",
+      "Variance rules",
+      "Normal combinations",
+      "Poisson combinations"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Build the mean and variance on separate lines before standardising.",
+    "Square every scale factor in a variance calculation.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Subtracting variances for X−Y.",
+    "Adding standard deviations instead of variances.",
+    "Using the independent-variance rule without independence."
+  ],
+  "quickRecall": [
+    {
+      "question": "Does independence matter for E(X+Y)?",
+      "answer": "No; expectation is linear regardless."
+    },
+    {
+      "question": "What is Var(X−Y) for independent X,Y?",
+      "answer": "Var(X)+Var(Y)."
+    },
+    {
+      "question": "What does adding a constant do to variance?",
+      "answer": "Nothing; it shifts every value equally."
+    },
+    {
+      "question": "Is X−Y Poisson when X and Y are Poisson?",
+      "answer": "No. Only the independent sum has the stated Poisson closure property."
+    }
+  ],
+  "relatedTopics": [
+    "5.5",
+    "6.1",
+    "6.4"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "id": "3.2",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Logarithmic and exponential functions",
+  "contentDepth": "full",
+  "overview": "Use natural logarithms and e to solve equations and model real-world growth/decay contexts. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Use laws of logarithms and the inverse relationship between eˣ and ln x.",
+    "Solve equations and inequalities with an unknown in an exponent.",
+    "Transform y = Axⁿ and y = Abˣ to linear form and identify constants from gradient/intercept.",
+    "Interpret exponential growth and decay models in context."
+  ],
+  "definitions": [
+    {
+      "term": "Natural logarithm",
+      "definition": "ln x is logarithm to base e and is defined only for x > 0."
+    },
+    {
+      "term": "Inverse functions",
+      "definition": "eˣ and ln x undo one another: ln(eˣ)=x and eˡⁿˣ=x for x>0."
+    },
+    {
+      "term": "Exponential model",
+      "definition": "A quantity whose rate or repeated proportional change is tied to its current value."
+    },
+    {
+      "term": "Linearisation",
+      "definition": "Transforming a non-linear relationship into Y = mX + c so a straight-line graph can be used."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-logarithms-and-exponentials",
+      "title": "Logarithms and exponentials",
+      "content": [
+        "Use ln(ab)=ln a+ln b, ln(a/b)=ln a−ln b and ln(aᵏ)=k ln a. A logarithm argument must be positive. The graphs y=eˣ and y=ln x are reflections in y=x; eˣ>0 for all real x, while ln x has vertical asymptote x=0."
+      ],
+      "bullets": [
+        "Do not split ln(a+b).",
+        "When taking logs of both sides, first ensure both sides are positive."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Log laws: ln(ab)=ln a+ln b; ln(a/b)=ln a−ln b; ln(aᵏ)=k ln a"
+        }
+      ]
+    },
+    {
+      "id": "02-solving-equations-and-inequalities",
+      "title": "Solving equations and inequalities",
+      "content": [
+        "Try writing both sides with a common base. Otherwise isolate the exponential expression and take logarithms. For inequalities, remember that eˣ and ln x are increasing, but a base a with 0<a<1 reverses the inequality when comparing exponents."
+      ],
+      "bullets": [
+        "Keep logarithms exact until the final numerical evaluation.",
+        "Reject roots that make any log argument non-positive."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-linearising-power-laws",
+      "title": "Linearising power laws",
+      "content": [
+        "For y=Axⁿ, take logs to obtain ln y = n ln x + ln A. A plot of ln y against ln x has gradient n and intercept ln A, so A=eⁱⁿᵗᵉʳᶜᵉᵖᵗ. Units and the choice of transformed axes matter."
+      ],
+      "bullets": [
+        "Gradient is the exponent, not the coefficient A.",
+        "Back-transform the intercept before reporting A."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-linearising-exponential-laws",
+      "title": "Linearising exponential laws",
+      "content": [
+        "For y=Abˣ, ln y = x ln b + ln A. A plot of ln y against x has gradient ln b. In continuous growth y=Aeᵏˣ, the gradient is k. A negative k models decay; half-life solves eᵏᵗ=1/2."
+      ],
+      "bullets": [
+        "State the transformed variables used on each axis.",
+        "Interpret constants using the original model, not only the straight line."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Log laws",
+      "expression": "ln(ab)=ln a+ln b; ln(a/b)=ln a−ln b; ln(aᵏ)=k ln a"
+    },
+    {
+      "label": "Power-law linearisation",
+      "expression": "y=Axⁿ ⇒ ln y = n ln x + ln A"
+    },
+    {
+      "label": "Exponential linearisation",
+      "expression": "y=Abˣ ⇒ ln y = x ln b + ln A"
+    },
+    {
+      "label": "Continuous model",
+      "expression": "y=Aeᵏˣ"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Logarithmic and exponential functions: revision route",
+    "type": "flow",
+    "nodes": [
+      "Logarithms and exponentials",
+      "Solving equations and inequalities",
+      "Linearising power laws",
+      "Linearising exponential laws"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write the log-domain restriction before solving an equation containing ln.",
+    "Label transformed graph axes explicitly, including whether common logs or natural logs were used.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using ln(a+b)=ln a+ln b, which is false.",
+    "Reporting ln A instead of A from a graph intercept.",
+    "Rounding a logarithmic intermediate value too early."
+  ],
+  "quickRecall": [
+    {
+      "question": "How is y=Axⁿ linearised?",
+      "answer": "Plot ln y against ln x; the gradient is n and the intercept is ln A."
+    },
+    {
+      "question": "What restriction applies to ln f(x)?",
+      "answer": "f(x) must be strictly positive."
+    },
+    {
+      "question": "How do you recover A from an intercept c=ln A?",
+      "answer": "Use A=eᶜ."
+    },
+    {
+      "question": "What does k<0 mean in y=Aeᵏᵗ?",
+      "answer": "The quantity decays exponentially as t increases."
+    }
+  ],
+  "relatedTopics": [
+    "3.4",
+    "3.8"
+  ]
+}

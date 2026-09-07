@@ -1,0 +1,132 @@
+{
+  "id": "7.2",
+  "subject": "9609",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Business communication",
+  "contentDepth": "full",
+  "overview": "Communication is effective only when the intended meaning is understood and produces the required response. You need to select among spoken, written, electronic and visual methods, identify barriers, explain how communication affects efficiency and recommend improvements.",
+  "syllabusPoints": [
+    "Explain situations where effective communication is essential.",
+    "Compare spoken, written, electronic and visual communication methods.",
+    "Analyse barriers to communication.",
+    "Explain how communication affects business efficiency and how it can be improved."
+  ],
+  "definitions": [
+    {
+      "term": "Communication",
+      "definition": "Transfer of information and meaning from sender to receiver."
+    },
+    {
+      "term": "Feedback",
+      "definition": "A response indicating whether the message was received/understood."
+    },
+    {
+      "term": "Communication barrier",
+      "definition": "A factor that delays, distorts or prevents understanding of a message."
+    },
+    {
+      "term": "Formal communication",
+      "definition": "Communication through recognised official channels."
+    },
+    {
+      "term": "Informal communication",
+      "definition": "Unofficial communication outside formal organisational channels."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-spoken-communication",
+      "title": "Spoken communication",
+      "content": [
+        "Fast, rich and allows immediate questions/feedback. It is useful for sensitive or complex discussion but may leave no permanent record and can be impractical for a large dispersed audience."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "02-written-communication",
+      "title": "Written communication",
+      "content": [
+        "Provides a permanent record and allows precise/detail-heavy messages. It can be slower to create/read and lacks immediate feedback unless another channel is used."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "03-electronic-and-visual-communication",
+      "title": "Electronic and visual communication",
+      "content": [
+        "Email, messaging, intranets and collaboration systems provide speed/scale but can create overload, distraction and security issues. Visual charts/diagrams can make patterns clearer but may oversimplify detail."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "04-barriers",
+      "title": "Barriers",
+      "content": [
+        "Jargon, language/cultural differences, status, too many hierarchy levels, noise, overload, poor technology, wrong channel and lack of feedback can distort meaning. The exam expects the consequence: errors, delay, conflict, weak decisions or lower productivity."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "05-improving-communication",
+      "title": "Improving communication",
+      "content": [
+        "Choose the channel according to urgency, complexity, confidentiality, audience size and need for a record; simplify language; encourage feedback; train staff; improve systems; shorten unnecessary chains; and clarify responsibility for messages."
+      ],
+      "bullets": [],
+      "examples": []
+    },
+    {
+      "id": "06-communication-and-efficiency",
+      "title": "Communication and efficiency",
+      "content": [
+        "Good communication reduces duplicated work, errors and coordination delay and helps staff understand objectives/change. However, too many meetings/messages can waste time, so 'more communication' is not always better."
+      ],
+      "bullets": [],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [
+    {
+      "title": "Poor internal communication",
+      "steps": [
+        "Instructions are misunderstood",
+        "Errors and duplicated work increase",
+        "Costs rise and customer service weakens",
+        "Profit and reputation may fall"
+      ],
+      "evaluation": "The best channel depends on urgency, complexity, required evidence and whether immediate feedback is needed."
+    }
+  ],
+  "examTips": [
+    "Recommendations need a reason tied to the message and audience.",
+    "Use feedback as evidence of two-way communication/understanding.",
+    "A method's suitability changes with urgency, confidentiality, audience size and need for record."
+  ],
+  "commonMistakes": [
+    "Assuming electronic communication is always best.",
+    "Listing barriers without business consequences.",
+    "Confusing internal/external with formal/informal.",
+    "Ignoring data security/confidentiality."
+  ],
+  "quickRecall": [
+    "spoken=rich/fast",
+    "written=record/detail",
+    "electronic=speed/scale",
+    "visual=pattern clarity",
+    "feedback checks understanding"
+  ],
+  "relatedTopics": [
+    "7.1",
+    "7.3",
+    "7.4"
+  ]
+}

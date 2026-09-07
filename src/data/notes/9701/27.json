@@ -1,0 +1,158 @@
+{
+  "id": "27",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Group 2",
+  "contentDepth": "full",
+  "overview": "Extend Group 2 trends to explain thermal stability and solubility patterns in more quantitative detail. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Explain Group 2 ion and compound trends using charge density and lattice/hydration enthalpy.",
+    "Describe solubility trends of hydroxides and sulfates.",
+    "Explain thermal-stability trends of carbonates and nitrates.",
+    "Apply Group 2 chemistry to qualitative and environmental contexts."
+  ],
+  "definitions": [
+    {
+      "term": "Charge density",
+      "definition": "Charge per effective ionic volume; it falls down Group 2 as M²⁺ radius increases."
+    },
+    {
+      "term": "Thermal stability",
+      "definition": "Resistance of a compound to decomposition on heating."
+    },
+    {
+      "term": "Polarisation",
+      "definition": "Distortion of an anion's electron cloud by a cation."
+    },
+    {
+      "term": "Solubility",
+      "definition": "The maximum equilibrium amount dissolved in a specified solvent at a stated temperature."
+    },
+    {
+      "term": "Lattice enthalpy",
+      "definition": "The enthalpy change associated with forming an ionic lattice from gaseous ions."
+    },
+    {
+      "term": "Hydration enthalpy",
+      "definition": "The enthalpy change when gaseous ions become hydrated aqueous ions."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-ionic-trends",
+      "title": "Ionic trends",
+      "content": [
+        "M²⁺ radius increases down the group while charge stays +2, so charge density and polarising power decrease. Lattice and hydration enthalpies become less negative in magnitude, but not always at the same rate."
+      ],
+      "bullets": [
+        "Explain trends through competing enthalpy changes, not a single memorised slogan.",
+        "The anion is constant within a solubility series."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Carbonate decomposition: MCO₃(s)→MO(s)+CO₂(g)"
+        }
+      ]
+    },
+    {
+      "id": "02-hydroxide-and-sulfate-solubility",
+      "title": "Hydroxide and sulfate solubility",
+      "content": [
+        "Group 2 hydroxides become more soluble down the group because lattice enthalpy weakens faster than hydration enthalpy. Sulfates become less soluble because the hydration advantage falls more significantly relative to lattice change for the large sulfate ion."
+      ],
+      "bullets": [
+        "More soluble hydroxides give more alkaline saturated solutions.",
+        "BaSO₄ is very insoluble and used as a sulfate test/contrast medium when appropriate."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-thermal-stability",
+      "title": "Thermal stability",
+      "content": [
+        "Carbonates decompose to MO+CO₂; nitrates form MO+NO₂+O₂. Stability increases down the group because larger M²⁺ ions polarise the large anions less, so their internal covalent bonds are less weakened."
+      ],
+      "bullets": [
+        "Mg compounds decompose more readily than Ba compounds.",
+        "Write balanced decomposition equations."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-applications-and-observations",
+      "title": "Applications and observations",
+      "content": [
+        "Use solubility rules to predict precipitates and observations. Magnesium hydroxide can neutralise acid; calcium compounds have agricultural/building uses; barium compounds require toxicity awareness, while insoluble BaSO₄ behaves differently from soluble Ba²⁺ salts."
+      ],
+      "bullets": [
+        "Link any use to a chemical property.",
+        "Do not generalise toxicity without specifying the compound and solubility."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Carbonate decomposition",
+      "expression": "MCO₃(s)→MO(s)+CO₂(g)"
+    },
+    {
+      "label": "Nitrate decomposition",
+      "expression": "2M(NO₃)₂(s)→2MO(s)+4NO₂(g)+O₂(g)"
+    },
+    {
+      "label": "Hydroxide alkalinity",
+      "expression": "M(OH)₂(s)⇌M²⁺(aq)+2OH⁻(aq)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Group 2: revision route",
+    "type": "flow",
+    "nodes": [
+      "Ionic trends",
+      "Hydroxide and sulfate solubility",
+      "Thermal stability",
+      "Applications and observations"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Name the specific ion and property when explaining a trend.",
+    "Use observations such as precipitate formation only after checking the relevant solubility.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Giving the hydroxide trend for sulfates.",
+    "Explaining thermal stability using bond strength in M–O only.",
+    "Ignoring hydration enthalpy in a solubility explanation."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why does thermal stability increase down Group 2?",
+      "answer": "Larger M²⁺ ions have lower charge density and polarise carbonate/nitrate ions less."
+    },
+    {
+      "question": "What is the hydroxide solubility trend?",
+      "answer": "It generally increases down Group 2."
+    },
+    {
+      "question": "What is the sulfate solubility trend?",
+      "answer": "It generally decreases down Group 2."
+    },
+    {
+      "question": "Why is 'lattice energy decreases' alone insufficient for solubility?",
+      "answer": "Dissolving balances lattice breaking against hydration, so both trends must be compared."
+    }
+  ],
+  "relatedTopics": [
+    "10",
+    "23",
+    "25"
+  ]
+}

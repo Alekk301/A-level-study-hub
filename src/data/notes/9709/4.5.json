@@ -1,0 +1,163 @@
+{
+  "id": "4.5",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "M1",
+  "unitTitle": "Mechanics",
+  "title": "Energy, work and power",
+  "contentDepth": "full",
+  "overview": "Calculate work done, kinetic/gravitational potential energy, and power in mechanical systems. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Calculate work by a constant force at an angle to displacement.",
+    "Use kinetic and gravitational potential energy.",
+    "Apply work–energy and conservation of energy.",
+    "Use average and instantaneous power, including P=Fv."
+  ],
+  "definitions": [
+    {
+      "term": "Work",
+      "definition": "Energy transferred when a force acts through a displacement."
+    },
+    {
+      "term": "Kinetic energy",
+      "definition": "Energy associated with motion, ½mv²."
+    },
+    {
+      "term": "Gravitational potential energy",
+      "definition": "Energy associated with height, mgh relative to a chosen datum."
+    },
+    {
+      "term": "Power",
+      "definition": "Rate of doing work or transferring energy."
+    },
+    {
+      "term": "Resistance",
+      "definition": "A force opposing motion and dissipating mechanical energy."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-work-by-a-force",
+      "title": "Work by a force",
+      "content": [
+        "For constant force F and displacement d with angle θ between them, work is Fd cosθ. Work is positive when the force helps motion, negative when it opposes, and zero when perpendicular."
+      ],
+      "bullets": [
+        "Use the angle between force and displacement, not automatically the slope angle.",
+        "Work has units joules."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Work: W=Fd cosθ"
+        }
+      ]
+    },
+    {
+      "id": "02-energy-stores",
+      "title": "Energy stores",
+      "content": [
+        "Kinetic energy is ½mv² and gravitational potential change is mgΔh. Only height change matters for GPE, even on a curved path. Choose a convenient zero level and use energy differences consistently."
+      ],
+      "bullets": [
+        "Speed enters KE squared.",
+        "Mass cancels in some smooth gravity problems but not all."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-work-energy-principle",
+      "title": "Work–energy principle",
+      "content": [
+        "Change in KE equals total work done by external forces. Equivalently, initial KE+GPE+work supplied equals final KE+GPE+energy dissipated. Include resistance as negative work or a positive loss, but not both."
+      ],
+      "bullets": [
+        "Energy methods avoid time and often avoid resolving acceleration along a changing path.",
+        "Mechanical energy is conserved only when no non-conservative work is done."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-power",
+      "title": "Power",
+      "content": [
+        "Average power=work/time. Instantaneous power for a force parallel to motion is P=Fv. For a vehicle climbing at constant speed, driving power balances the rate of gain of GPE plus work against resistance."
+      ],
+      "bullets": [
+        "If acceleration is present, include ma in the force balance before using P=Fv.",
+        "Convert kW to W."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Work",
+      "expression": "W=Fd cosθ"
+    },
+    {
+      "label": "Kinetic energy",
+      "expression": "KE=½mv²"
+    },
+    {
+      "label": "GPE change",
+      "expression": "ΔGPE=mgΔh"
+    },
+    {
+      "label": "Average power",
+      "expression": "P=W/t"
+    },
+    {
+      "label": "Instantaneous power",
+      "expression": "P=Fv",
+      "note": "For the force component along the velocity."
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Energy, work and power: revision route",
+    "type": "flow",
+    "nodes": [
+      "Work by a force",
+      "Energy stores",
+      "Work–energy principle",
+      "Power"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Write an energy ledger with initial, final, supplied and dissipated terms.",
+    "Keep signs consistent—do not count resistance twice.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Using path length instead of vertical height in mgh.",
+    "Using P=Fv with the total force when only one force's power is required.",
+    "Conserving mechanical energy despite friction without including its work."
+  ],
+  "quickRecall": [
+    {
+      "question": "When is work by a force zero?",
+      "answer": "When the force is perpendicular to the displacement."
+    },
+    {
+      "question": "What does change in kinetic energy equal?",
+      "answer": "The total work done by external forces."
+    },
+    {
+      "question": "Why does a curved smooth track still use mgh?",
+      "answer": "Gravitational potential energy depends only on vertical height change."
+    },
+    {
+      "question": "When may P=Fv be used directly?",
+      "answer": "For the force component acting in the direction of instantaneous motion."
+    }
+  ],
+  "relatedTopics": [
+    "4.1",
+    "4.2",
+    "4.4"
+  ]
+}

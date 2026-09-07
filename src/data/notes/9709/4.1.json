@@ -1,0 +1,157 @@
+{
+  "id": "4.1",
+  "subject": "9709",
+  "level": "AS/A Level",
+  "unitId": "M1",
+  "unitTitle": "Mechanics",
+  "title": "Forces and equilibrium",
+  "contentDepth": "full",
+  "overview": "Draw force diagrams, resolve forces into components, and apply equilibrium conditions including friction. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Identify weight, normal reaction, tension and friction on a force diagram.",
+    "Resolve forces parallel and perpendicular to a chosen direction.",
+    "Apply equilibrium conditions to a particle.",
+    "Use F≤μR and F=μR at limiting equilibrium."
+  ],
+  "definitions": [
+    {
+      "term": "Equilibrium",
+      "definition": "A state with zero resultant force, so acceleration is zero."
+    },
+    {
+      "term": "Normal reaction",
+      "definition": "The contact force perpendicular to a surface."
+    },
+    {
+      "term": "Friction",
+      "definition": "A contact force opposing actual or impending relative motion."
+    },
+    {
+      "term": "Limiting equilibrium",
+      "definition": "The state just before slipping, when friction reaches μR."
+    },
+    {
+      "term": "Particle model",
+      "definition": "An object treated as having mass but negligible size and rotation."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-building-the-force-diagram",
+      "title": "Building the force diagram",
+      "content": [
+        "Isolate one particle and draw every external force: weight mg vertically down, normal reaction perpendicular to contact, tension along a string and friction along a rough surface. Never draw motion or acceleration as a force."
+      ],
+      "bullets": [
+        "Choose axes parallel and perpendicular to an incline.",
+        "Label each force once with a clear direction."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Weight: W=mg"
+        }
+      ]
+    },
+    {
+      "id": "02-resolving-and-equilibrium",
+      "title": "Resolving and equilibrium",
+      "content": [
+        "For equilibrium, the vector sum of forces is zero. Resolve independently in two perpendicular directions. On an incline of angle θ, weight components are mg sinθ down the plane and mg cosθ into the plane."
+      ],
+      "bullets": [
+        "Equilibrium does not mean no forces; it means they balance.",
+        "Use exact trig values until the end."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-friction",
+      "title": "Friction",
+      "content": [
+        "Friction adjusts up to a maximum μR. Use F=μR only when the particle is on the point of slipping or in limiting equilibrium. Decide its direction by imagining how the particle would move without friction."
+      ],
+      "bullets": [
+        "In non-limiting equilibrium, F may be less than μR.",
+        "The normal reaction is not always mg."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-connected-or-angled-forces",
+      "title": "Connected or angled forces",
+      "content": [
+        "When a string or applied force is angled, resolve it before writing equations. A vertical component can change R and therefore the maximum friction. Check that any calculated friction satisfies F≤μR."
+      ],
+      "bullets": [
+        "A pull with an upward component reduces R.",
+        "State whether the model is smooth or rough."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Weight",
+      "expression": "W=mg"
+    },
+    {
+      "label": "Equilibrium",
+      "expression": "ΣFₓ=0 and ΣFᵧ=0"
+    },
+    {
+      "label": "Friction law",
+      "expression": "F≤μR; at limiting equilibrium F=μR"
+    },
+    {
+      "label": "Incline components",
+      "expression": "mg sinθ parallel; mg cosθ perpendicular"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Forces and equilibrium: revision route",
+    "type": "flow",
+    "nodes": [
+      "Building the force diagram",
+      "Resolving and equilibrium",
+      "Friction",
+      "Connected or angled forces"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Begin every mechanics solution with a separate free-body diagram.",
+    "After solving, check signs and whether the friction inequality is physically valid.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Setting friction equal to μR automatically.",
+    "Drawing acceleration as a force.",
+    "Assuming R=mg on an incline or with an angled pull."
+  ],
+  "quickRecall": [
+    {
+      "question": "When may F=μR be used?",
+      "answer": "Only at limiting equilibrium or when the question states the friction is limiting."
+    },
+    {
+      "question": "Which way does friction act?",
+      "answer": "Opposite actual or impending relative motion between the surfaces."
+    },
+    {
+      "question": "What does equilibrium imply about resultant force?",
+      "answer": "The resultant is zero in every direction."
+    },
+    {
+      "question": "Why can R differ from mg?",
+      "answer": "Other forces may have perpendicular or vertical components, and an incline changes the resolution."
+    }
+  ],
+  "relatedTopics": [
+    "4.4",
+    "4.5"
+  ]
+}

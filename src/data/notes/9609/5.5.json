@@ -1,0 +1,310 @@
+{
+  "id": "5.5",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Budgets",
+  "contentDepth": "full",
+  "overview": "A budget is an agreed target for future revenue, cost, cash or activity. Budgeting supports planning and control only when assumptions are realistic, managers understand responsibility and variances are investigated rather than mechanically rewarded or punished.",
+  "syllabusPoints": [
+    "Explain the purposes of budgets and the role of budget holders.",
+    "Distinguish budgets from forecasts.",
+    "Explain revenue, cost, profit and cash budgets.",
+    "Compare incremental, zero-based and flexible budgeting.",
+    "Calculate and interpret favourable and adverse variances.",
+    "Analyse the benefits, behavioural effects and limitations of budgeting."
+  ],
+  "definitions": [
+    {
+      "term": "Budget",
+      "definition": "A quantified plan or target for a future period that managers aim to achieve."
+    },
+    {
+      "term": "Forecast",
+      "definition": "An estimate of what is likely to happen based on assumptions and evidence."
+    },
+    {
+      "term": "Budget holder",
+      "definition": "The manager responsible for agreeing, controlling and explaining performance against a budget."
+    },
+    {
+      "term": "Variance",
+      "definition": "The difference between an actual result and its budgeted result."
+    },
+    {
+      "term": "Favourable variance",
+      "definition": "A difference that, considered alone, tends to improve profit compared with budget."
+    },
+    {
+      "term": "Adverse variance",
+      "definition": "A difference that, considered alone, tends to reduce profit compared with budget."
+    },
+    {
+      "term": "Incremental budgeting",
+      "definition": "Setting a new budget by adjusting the previous period's figure."
+    },
+    {
+      "term": "Zero-based budgeting",
+      "definition": "Starting each budget from zero and requiring activities and spending to be justified."
+    },
+    {
+      "term": "Flexible budget",
+      "definition": "A budget adjusted to the actual or revised level of activity so performance can be compared fairly."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-businesses-use-budgets",
+      "title": "Why businesses use budgets",
+      "content": [
+        "Budgets convert objectives into resource limits and performance targets. They support planning, coordination, allocation, communication, motivation and control. Comparing actuals with budget highlights where investigation and corrective action may be needed."
+      ],
+      "bullets": [
+        "A sales budget influences production, staffing, purchasing and cash budgets, so assumptions must be coordinated.",
+        "A budget does not itself reduce cost; managers must act on the information.",
+        "Participation can improve information and acceptance, but negotiation may create budget slack."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-budget-versus-forecast",
+      "title": "Budget versus forecast",
+      "content": [
+        "A forecast states the latest expected outcome; a budget states an approved plan or target. If demand is now expected to fall, the forecast may change even while the original budget remains the benchmark. Confusing them removes the ability to compare what was planned with what is now expected and what actually occurred."
+      ],
+      "bullets": [
+        "Forecasts should be updated as evidence changes.",
+        "Budgets can also be revised when assumptions fundamentally change, but managers should record why."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-types-of-functional-budget",
+      "title": "Types of functional budget",
+      "content": [
+        "A revenue/sales budget sets expected quantity, price and revenue. Production/purchasing budgets plan output and inputs. Cost budgets set permitted spending; a profit budget combines revenue and cost; a cash budget schedules receipts, payments and balances. A master budget coordinates the overall plan."
+      ],
+      "bullets": [
+        "An apparently favourable cost budget can be misleading if output was below plan.",
+        "Cash and profit budgets differ because credit timing, loans and asset purchases affect cash differently.",
+        "Every budget needs assumptions, a period, responsible holder and measurable lines."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-incremental-budgeting",
+      "title": "Incremental budgeting",
+      "content": [
+        "Incremental budgeting takes last period's figure and adjusts for inflation, growth or known change. It is quick, stable and easy for recurring activities, but carries forward inefficiency, encourages spending to protect next year's allocation and may not reflect new priorities."
+      ],
+      "bullets": [
+        "Best where operations are stable and prior figures were efficient.",
+        "Challenge large inherited items and assumptions rather than applying one percentage mechanically."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-zero-based-and-flexible-budgeting",
+      "title": "Zero-based and flexible budgeting",
+      "content": [
+        "Zero-based budgeting asks managers to justify activities and spending from zero, which can redirect resources and expose waste but demands time and judgement and may undervalue long-term support functions. Flexible budgeting recalculates allowed variable cost/revenue for actual activity, making performance comparison fairer, but requires reliable cost behaviour data."
+      ],
+      "bullets": [
+        "A flexible budget is not permission to ignore all overspending; it separates volume effects from efficiency or price effects.",
+        "Zero-based review may be applied periodically to selected discretionary areas rather than every line every year."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-calculating-and-classifying-variances",
+      "title": "Calculating and classifying variances",
+      "content": [
+        "Variance is actual minus budget in numerical size, then classified by its effect on profit. Actual revenue above budget is normally favourable; below is adverse. Actual cost below budget is normally favourable; above is adverse. State both amount and F/A label."
+      ],
+      "bullets": [
+        "Revenue budget $120,000 and actual $132,000 gives a $12,000 favourable revenue variance.",
+        "Material-cost budget $50,000 and actual $56,500 gives a $6,500 adverse cost variance.",
+        "A favourable label is not automatically good overall: lower material cost may result from lower output or poorer quality."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-investigating-variances",
+      "title": "Investigating variances",
+      "content": [
+        "Revenue variance may arise from price, volume, product mix, promotion, competition or economic change. Cost variance may arise from input price, usage/waste, output, productivity, quality, supplier terms or inflation. Controllability and interdependence matter before judging a manager."
+      ],
+      "bullets": [
+        "Investigate material, recurring and controllable differences first.",
+        "A sales promotion may create favourable revenue but adverse promotion and distribution costs.",
+        "Use non-financial evidence such as defects, delivery and satisfaction to interpret the number."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-behavioural-benefits-and-problems",
+      "title": "Behavioural benefits and problems",
+      "content": [
+        "Agreed challenging targets can focus effort and provide achievement feedback. Imposed or unrealistic budgets can demotivate, encourage short-term cuts, data manipulation, departmental conflict and spending of unused allowances. Managers may build slack by understating revenue or overstating cost."
+      ],
+      "bullets": [
+        "Combine participation with evidence, review and strategic priorities.",
+        "Avoid rewarding one budget line when actions damage another department or long-term objective.",
+        "Treat significant adverse variances as questions to diagnose, not automatic proof of poor management."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-limitations-and-effective-use",
+      "title": "Limitations and effective use",
+      "content": [
+        "Budgets can become outdated as demand, price, supply or technology changes. Preparation and monitoring cost time; qualitative factors are omitted; short-term financial targets can discourage training, maintenance and innovation. Effective systems update forecasts, use flexible comparison, coordinate departments and link financial with non-financial measures."
+      ],
+      "bullets": [
+        "The value of tighter control depends on uncertainty: a start-up may need frequent revisions, while a stable process can use firmer standards.",
+        "Review the action taken after variance investigation, not only whether the original number was met."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Variance amount",
+      "expression": "Actual figure − budgeted figure",
+      "note": "Then classify by profit effect: more revenue/less cost is usually favourable; less revenue/more cost is usually adverse."
+    },
+    {
+      "label": "Budgeted profit",
+      "expression": "Budgeted revenue − budgeted costs"
+    },
+    {
+      "label": "Actual profit",
+      "expression": "Actual revenue − actual costs"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Budget-setting approaches",
+    "columns": [
+      "Approach",
+      "Strength",
+      "Limitation",
+      "Best use"
+    ],
+    "rows": [
+      [
+        "Incremental",
+        "Fast, simple and stable",
+        "Carries forward waste and outdated priorities",
+        "Stable recurring operations"
+      ],
+      [
+        "Zero-based",
+        "Challenges all spending and reallocates to priorities",
+        "Time-consuming and judgement-heavy",
+        "Periodic review or major change"
+      ],
+      [
+        "Flexible",
+        "Compares performance at actual activity",
+        "Needs accurate cost-behaviour data",
+        "Variable output and fair control"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Budgetary control cycle",
+    "type": "cycle",
+    "nodes": [
+      "Set objective and assumptions",
+      "Coordinate functional budgets",
+      "Assign budget holders",
+      "Record actual performance",
+      "Calculate and investigate variances",
+      "Correct, learn and reforecast"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Participative budget setting",
+      "steps": [
+        "Budget holders contribute local information",
+        "Targets become more realistic and understood",
+        "Managers feel greater ownership",
+        "Effort and control may improve",
+        "Adverse surprises and conflict may fall"
+      ],
+      "evaluation": "Managers may create slack, so assumptions need evidence and cross-department challenge."
+    },
+    {
+      "title": "Cutting training to meet a cost budget",
+      "steps": [
+        "Current spending falls and the cost variance improves",
+        "Employees receive less skill development",
+        "Future errors and productivity problems may rise",
+        "Quality, retention and long-run profit may fall"
+      ],
+      "evaluation": "A short-term favourable variance is not good if it damages strategic capability; use balanced measures."
+    },
+    {
+      "title": "Using a flexible budget",
+      "steps": [
+        "Allowed variable cost is adjusted for actual output",
+        "Volume effects are separated from efficiency and price effects",
+        "Managers receive a fairer performance comparison",
+        "Corrective action targets the real cause"
+      ],
+      "evaluation": "Classification requires reliable fixed/variable cost data; it may still omit quality and external shocks."
+    }
+  ],
+  "examTips": [
+    "For every variance, give the amount, favourable/adverse label, likely cause and business consequence.",
+    "Remember the direction flips for costs: actual cost below budget is usually favourable.",
+    "Do not judge a manager until considering activity level, controllability and linked variances.",
+    "Distinguish an updated forecast from changing a target simply to make performance look successful."
+  ],
+  "commonMistakes": [
+    "Calling every positive numerical variance favourable.",
+    "Treating a favourable cost variance as proof of efficiency when output or quality may have fallen.",
+    "Assuming zero-based budgeting means the business spends nothing.",
+    "Ignoring coordination between sales, production, purchasing and cash budgets.",
+    "Using budget and forecast as synonyms."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between a budget and forecast?",
+      "answer": "A budget is an approved plan/target; a forecast is the latest estimate of what is likely to happen."
+    },
+    {
+      "question": "When is a revenue variance favourable?",
+      "answer": "When actual revenue exceeds budget, considered alone."
+    },
+    {
+      "question": "When is a cost variance favourable?",
+      "answer": "When actual cost is below budget for a comparable level of activity, considered alone."
+    },
+    {
+      "question": "Why can incremental budgeting preserve inefficiency?",
+      "answer": "It starts from prior spending, so unnecessary activities can be carried forward."
+    },
+    {
+      "question": "What does zero-based budgeting require?",
+      "answer": "Activities and spending must be justified from a zero starting point."
+    },
+    {
+      "question": "Why use a flexible budget?",
+      "answer": "To adjust the budget to actual activity and separate volume differences from efficiency or price performance."
+    },
+    {
+      "question": "What is budget slack?",
+      "answer": "Deliberately making a target easier, such as understating expected revenue or overstating expected cost."
+    }
+  ],
+  "relatedTopics": [
+    "1.4",
+    "2.3",
+    "5.1",
+    "5.3",
+    "5.4"
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "37",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Analytical techniques",
+  "contentDepth": "full",
+  "overview": "Interpret chromatography, ¹H NMR and ¹³C NMR spectra, combining evidence from several techniques to identify structures. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Interpret chromatography and calculate Rf values.",
+    "Use ¹³C NMR to count carbon environments and identify chemical environments.",
+    "Use ¹H NMR chemical shift, integration, splitting and D₂O exchange.",
+    "Combine chromatographic, mass, infrared and NMR evidence to determine structures."
+  ],
+  "definitions": [
+    {
+      "term": "Chromatography",
+      "definition": "Separation by different affinities for stationary and mobile phases."
+    },
+    {
+      "term": "Rf value",
+      "definition": "Distance moved by a solute divided by distance moved by the solvent front."
+    },
+    {
+      "term": "Chemical shift",
+      "definition": "NMR signal position δ in ppm relative to a reference."
+    },
+    {
+      "term": "Integration",
+      "definition": "Relative area of a ¹H NMR signal, proportional to the number of equivalent protons."
+    },
+    {
+      "term": "Splitting",
+      "definition": "Signal multiplicity caused by coupling to neighbouring non-equivalent protons."
+    },
+    {
+      "term": "Chemical environment",
+      "definition": "The electronic surroundings that make nuclei equivalent or non-equivalent."
+    },
+    {
+      "term": "Molecular ion",
+      "definition": "The ion corresponding approximately to the intact molecule in a mass spectrum."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-chromatography",
+      "title": "Chromatography",
+      "content": [
+        "A component travels further when it has greater affinity for the mobile phase and weaker attraction to the stationary phase. In TLC/paper chromatography, Rf is dimensionless and only comparable under identical conditions. One spot can suggest purity but co-elution is possible."
+      ],
+      "bullets": [
+        "Mark the solvent front immediately.",
+        "Measure from the baseline to the centre of each spot."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Rf: Rf=distance moved by solute/distance moved by solvent front"
+        }
+      ]
+    },
+    {
+      "id": "02-c-nmr",
+      "title": "¹³C NMR",
+      "content": [
+        "The number of signals gives the number of distinct carbon environments, reduced by symmetry. Chemical-shift ranges indicate environments such as alkyl, C–O/C–X, C=C/aromatic and C=O. Routine proton-decoupled ¹³C spectra do not use peak integration to count carbons."
+      ],
+      "bullets": [
+        "Equivalent carbons produce one signal.",
+        "Use the syllabus data table rather than memorised exact shifts."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-h-nmr",
+      "title": "¹H NMR",
+      "content": [
+        "Count proton environments, use δ for functional surroundings, integration for relative proton numbers and the n+1 rule for n equivalent neighbouring protons on adjacent atoms. OH/NH signals may be broad/variable and disappear on D₂O exchange; they may not split predictably."
+      ],
+      "bullets": [
+        "Simplify integration ratios to whole-number proton counts.",
+        "Apply splitting only between appropriate non-equivalent neighbouring protons."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-combining-evidence",
+      "title": "Combining evidence",
+      "content": [
+        "Start with molecular formula or M⁺ and degree-of-unsaturation ideas, identify functional groups from IR/tests, then construct fragments from NMR integration/splitting and join them while matching every carbon/proton environment. Chromatography can distinguish mixture components and monitor purity."
+      ],
+      "bullets": [
+        "A final structure must explain every signal and observation.",
+        "Predict the spectrum back from the proposed structure as a check."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Rf",
+      "expression": "Rf=distance moved by solute/distance moved by solvent front"
+    },
+    {
+      "label": "¹H splitting",
+      "expression": "n equivalent neighbouring H ⇒ n+1 lines",
+      "note": "Use only where coupling assumptions are valid."
+    },
+    {
+      "label": "Integration",
+      "expression": "signal-area ratio ∝ equivalent-proton ratio"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Analytical techniques: revision route",
+    "type": "flow",
+    "nodes": [
+      "Chromatography",
+      "¹³C NMR",
+      "¹H NMR",
+      "Combining evidence"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Create an evidence table: datum → structural implication → remaining possibilities.",
+    "Do not identify a whole molecule from one peak; combine every technique.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Counting ¹³C peak height as the number of carbons.",
+    "Applying n+1 splitting across oxygen or to exchangeable OH/NH without justification.",
+    "Accepting a structure that leaves an unexplained signal."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why can Rf values only be compared under the same conditions?",
+      "answer": "Solvent, stationary phase and temperature affect the partitioning and travel distance."
+    },
+    {
+      "question": "What does the number of ¹³C signals show?",
+      "answer": "The number of distinct carbon environments, accounting for symmetry."
+    },
+    {
+      "question": "What information does ¹H integration give?",
+      "answer": "The relative number of equivalent protons producing each signal."
+    },
+    {
+      "question": "What does a D₂O exchange peak reveal?",
+      "answer": "An exchangeable O–H or N–H proton signal disappears."
+    },
+    {
+      "question": "How should a proposed structure be checked?",
+      "answer": "Predict all expected NMR environments, integrations/splitting and ensure all other evidence is explained."
+    }
+  ],
+  "relatedTopics": [
+    "22",
+    "29",
+    "36"
+  ]
+}

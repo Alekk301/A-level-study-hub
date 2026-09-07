@@ -1,15 +1,44 @@
 # Credits and sourcing
 
-**Syllabus structure** — the unit/topic breakdown in `data/data.js` (topic numbering, titles, and the AS/A2 level tags) follows the current public Cambridge International syllabus documents for 9709, 9618, 9609 and 9701. Syllabus structure and topic lists are factual/organisational information, not creative content.
+## Syllabus structure
 
-**Note text** — every summary, blurb, focus point and "in depth" note in this repo is original writing, not copied or lightly reworded from any coursebook or revision website.
+Topic numbering, unit names and level tags follow the public Cambridge International syllabus structure for Mathematics 9709, Computer Science 9618, Business 9609 and Chemistry 9701. The project records the syllabus years shown in `src/data/subjects.json`.
 
-**Linked resources** — Cambridge International, Save My Exams, RocketRevise, ZNotes and PapaCambridge are linked to for further reading, past papers and mark schemes. This repo does not store, mirror, or bulk-download any of their PDFs or note text. If you keep this repo private, that changes who can see it — it doesn't change what's appropriate to copy into it. Past papers and mark schemes stay linked externally, not committed to the repo, regardless of visibility.
+## Note content
 
-**No affiliation** — this project isn't affiliated with or endorsed by Cambridge International, Save My Exams, RocketRevise, ZNotes or PapaCambridge.
+The note text, explanations, worked examples, exam tips, common mistakes, comparison tables and
+Business analysis chains are project-authored, AI-assisted revision content. The rebuild preserved
+useful notes from the original vanilla-JavaScript project and converted them into structured JSON.
+It did not intentionally copy or expand text from commercial revision sites. AI assistance and the
+owner's review responsibilities are described in [docs/AI-USAGE.md](docs/AI-USAGE.md).
 
-## If you extend this repo
+## External links
 
-- Keep new note content in your own words.
-- Don't commit downloaded past-paper PDFs or scraped note text into the repo, even privately — link out instead, the same way the existing resources do.
-- If you add a new source to `data/data.js`, add a one-line credit for it here too.
+The app links to Cambridge International for official syllabus checking and may link to Save My Exams, ZNotes, Past Paper Penguin and Rocket Revise for optional practice or further reading. Those sites remain external and open in a new tab. Mathematics topical questions and worked solutions link to Past Paper Penguin.
+
+Past-paper PDFs are not bundled. The searchable `papers.json` catalogue is generated from the project owner's separate local library and links to XtraPapers for the corresponding question papers and mark schemes. XtraPapers remains external and opens in a new tab.
+
+## Educational diagrams
+
+Selected notes include locally hosted reference diagrams from Wikimedia Commons. Every image is credited beside the image in the app with a link to its original file page and licence.
+
+- `unit-circle.svg` — Gustavb, public domain.
+- `normal-distribution.svg` — Geek3, Creative Commons Attribution 3.0.
+- `galvanic-cell.svg` — Rehua, Creative Commons Attribution 3.0.
+- `operating-system-architecture.svg` — Skjackey tse, public domain.
+- `swot-analysis.svg` — Xhienne, Creative Commons Attribution-ShareAlike 2.5.
+- `matrix-organisation.svg` — Chery, public domain.
+- `packet-switching-330.gif` — Oddbodz, Creative Commons Attribution-ShareAlike 3.0. Locally hosted 330 px Wikimedia thumbnail of the original animation.
+
+The project does not redistribute illustrations from Cambridge coursebooks, Save My Exams, ZNotes or other commercial revision providers.
+
+## No affiliation
+
+This project is an independent study tool. It is not affiliated with or endorsed by Cambridge International or any linked revision provider.
+
+## Extending the project
+
+- Write new notes in your own words.
+- Do not paste long textbook or commercial revision-site passages.
+- Add a credit when introducing a new external source.
+- Keep past-paper and mark-scheme handling consistent with the relevant copyright and access terms.

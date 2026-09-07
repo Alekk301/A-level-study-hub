@@ -1,0 +1,161 @@
+{
+  "id": "3.4",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Differentiation",
+  "contentDepth": "full",
+  "overview": "Differentiate implicitly and parametrically, on top of product/quotient/chain rules, for curves not given simply as y = f(x). This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Differentiate eˣ, ln x, trigonometric functions and tan⁻¹x, including composite functions.",
+    "Use product, quotient and chain rules accurately.",
+    "Differentiate implicit and parametric relations.",
+    "Find tangents, normals, stationary points and rates of change."
+  ],
+  "definitions": [
+    {
+      "term": "Implicit relation",
+      "definition": "An equation connecting x and y without y isolated as a function of x."
+    },
+    {
+      "term": "Parametric equations",
+      "definition": "Equations x=f(t), y=g(t) describing a curve through a parameter t."
+    },
+    {
+      "term": "Stationary point",
+      "definition": "A point where dy/dx=0."
+    },
+    {
+      "term": "Normal",
+      "definition": "A line perpendicular to the tangent at the point of contact."
+    },
+    {
+      "term": "Chain rule",
+      "definition": "A rule for differentiating a composite function by multiplying derivatives through its layers."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-core-derivatives-and-chain-rule",
+      "title": "Core derivatives and chain rule",
+      "content": [
+        "Memorise d(eˣ)/dx=eˣ, d(ln x)/dx=1/x, d(sin x)/dx=cos x, d(cos x)/dx=−sin x, d(tan x)/dx=sec²x and d(tan⁻¹x)/dx=1/(1+x²). For f(g(x)), multiply f′(g(x)) by g′(x)."
+      ],
+      "bullets": [
+        "Trig derivative formulae assume radians.",
+        "ln|u| differentiates to u′/u wherever u≠0."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Product rule: d(uv)/dx=u(dv/dx)+v(du/dx)"
+        }
+      ]
+    },
+    {
+      "id": "02-products-and-quotients",
+      "title": "Products and quotients",
+      "content": [
+        "For y=uv, y′=u′v+uv′. For y=u/v, y′=(vu′−uv′)/v². Label u and v first and simplify after differentiating, especially when a second derivative is required."
+      ],
+      "bullets": [
+        "The quotient-rule numerator order is denominator×derivative of numerator minus numerator×derivative of denominator.",
+        "A product can sometimes be rewritten to use the chain rule more cleanly."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-implicit-differentiation",
+      "title": "Implicit differentiation",
+      "content": [
+        "Differentiate every term with respect to x and attach dy/dx whenever a y-term is differentiated. Collect all dy/dx terms on one side and factor. Substitute the point only after obtaining a usable derivative expression."
+      ],
+      "bullets": [
+        "d(y²)/dx=2y(dy/dx).",
+        "For xy use the product rule: d(xy)/dx=y+x(dy/dx)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-parametric-differentiation",
+      "title": "Parametric differentiation",
+      "content": [
+        "If x=f(t) and y=g(t), then dy/dx=(dy/dt)/(dx/dt), provided dx/dt≠0. For d²y/dx², differentiate dy/dx with respect to t and divide by dx/dt again."
+      ],
+      "bullets": [
+        "Find the parameter value corresponding to the stated point.",
+        "Normal gradient is −1/(dy/dx) when the tangent gradient is non-zero."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Product rule",
+      "expression": "d(uv)/dx=u(dv/dx)+v(du/dx)"
+    },
+    {
+      "label": "Quotient rule",
+      "expression": "d(u/v)/dx=(v·du/dx−u·dv/dx)/v²"
+    },
+    {
+      "label": "Parametric derivative",
+      "expression": "dy/dx=(dy/dt)/(dx/dt)"
+    },
+    {
+      "label": "Second parametric derivative",
+      "expression": "d²y/dx²=[d(dy/dx)/dt]/(dx/dt)"
+    },
+    {
+      "label": "Inverse tangent",
+      "expression": "d(tan⁻¹x)/dx=1/(1+x²)"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Differentiation: revision route",
+    "type": "flow",
+    "nodes": [
+      "Core derivatives and chain rule",
+      "Products and quotients",
+      "Implicit differentiation",
+      "Parametric differentiation"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Show the derivative formula before substituting numerical coordinates.",
+    "For stationary points, use the derivative sign or d²y/dx² to classify when asked.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Forgetting dy/dx when differentiating a y-term implicitly.",
+    "Using (du/dx)/(dv/dx) as the quotient rule.",
+    "Stopping at d(dy/dx)/dt instead of dividing by dx/dt for d²y/dx²."
+  ],
+  "quickRecall": [
+    {
+      "question": "How is dy/dx found from x=f(t), y=g(t)?",
+      "answer": "Divide dy/dt by dx/dt."
+    },
+    {
+      "question": "What happens when y² is differentiated implicitly?",
+      "answer": "It becomes 2y(dy/dx)."
+    },
+    {
+      "question": "What is the normal gradient?",
+      "answer": "It is the negative reciprocal of the tangent gradient, when defined."
+    },
+    {
+      "question": "Why are radians essential for trig differentiation?",
+      "answer": "The standard derivative formulae for sin x, cos x and tan x are valid without extra factors only in radians."
+    }
+  ],
+  "relatedTopics": [
+    "3.5",
+    "3.8"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "id": "3.8",
+  "subject": "9709",
+  "level": "A2",
+  "unitId": "P3",
+  "unitTitle": "Pure Mathematics 3",
+  "title": "Differential equations",
+  "contentDepth": "full",
+  "overview": "Form and solve first-order differential equations by separating variables, using given initial conditions to find a particular solution. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Translate rate-of-change statements into first-order differential equations.",
+    "Solve separable differential equations by integration.",
+    "Use an initial condition to find a particular solution.",
+    "Interpret constants and solutions in the modelling context."
+  ],
+  "definitions": [
+    {
+      "term": "Differential equation",
+      "definition": "An equation involving a function and one or more of its derivatives."
+    },
+    {
+      "term": "Separable",
+      "definition": "A first-order equation that can be rearranged with all y terms with dy and all x terms with dx."
+    },
+    {
+      "term": "General solution",
+      "definition": "A family of solutions containing an arbitrary constant."
+    },
+    {
+      "term": "Initial condition",
+      "definition": "A known value such as y=y₀ when x=x₀ that selects one solution."
+    },
+    {
+      "term": "Constant of proportionality",
+      "definition": "A constant k introduced when a rate is said to be proportional to a quantity."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-forming-the-model",
+      "title": "Forming the model",
+      "content": [
+        "Translate phrases literally: 'rate of increase of y is proportional to y' gives dy/dt=ky; 'rate is proportional to the remaining amount' gives dM/dt=k(M₀−M). Choose the sign from whether the quantity increases or decreases."
+      ],
+      "bullets": [
+        "Define variables and units before forming the equation.",
+        "A constant of proportionality is not automatically positive if its sign is already built into the model."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Separation pattern: dy/dx=g(x)h(y) ⇒ ∫[1/h(y)]dy=∫g(x)dx"
+        }
+      ]
+    },
+    {
+      "id": "02-separating-variables",
+      "title": "Separating variables",
+      "content": [
+        "From dy/dx=g(x)h(y), rearrange dy/h(y)=g(x)dx and integrate both sides. Separation must happen before integration. Use logarithmic absolute values where needed."
+      ],
+      "bullets": [
+        "Never move dy/dx as though dy and dx were ordinary numbers without showing a valid separated form.",
+        "Check that dividing by h(y) has not discarded an equilibrium solution h(y)=0."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-applying-initial-conditions",
+      "title": "Applying initial conditions",
+      "content": [
+        "After integrating, include a constant and substitute the condition. Sometimes exponentiating produces a multiplicative constant more naturally. Leave an implicit solution if the question allows it; otherwise isolate y."
+      ],
+      "bullets": [
+        "Apply the condition to the integrated equation, not the original derivative.",
+        "Use exact constants until the final numerical answer."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-interpreting-and-checking",
+      "title": "Interpreting and checking",
+      "content": [
+        "Differentiate the proposed solution to check it satisfies the differential equation and initial condition. In context, reject impossible branches and describe long-term behaviour, limiting values, monotonicity or the meaning of k."
+      ],
+      "bullets": [
+        "A mathematical solution may violate physical restrictions such as mass≥0.",
+        "State units for time constants and rates."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Separation pattern",
+      "expression": "dy/dx=g(x)h(y) ⇒ ∫[1/h(y)]dy=∫g(x)dx"
+    },
+    {
+      "label": "Exponential growth/decay",
+      "expression": "dy/dt=ky ⇒ y=Aeᵏᵗ"
+    },
+    {
+      "label": "Newton-style approach",
+      "expression": "dy/dt=k(L−y) ⇒ y=L+Ae⁻ᵏᵗ when k>0"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Differential equations: revision route",
+    "type": "flow",
+    "nodes": [
+      "Forming the model",
+      "Separating variables",
+      "Applying initial conditions",
+      "Interpreting and checking"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "State the proportionality equation before solving it.",
+    "Interpret the sign and units of the constant in the original context.",
+    "Show the mathematical setup and exact working before the final rounded answer; unsupported calculator output may not earn method marks."
+  ],
+  "commonMistakes": [
+    "Omitting the integration constant.",
+    "Using ln f(y) without an absolute value when the sign is not known.",
+    "Accepting a negative time, population or mass that is impossible in context."
+  ],
+  "quickRecall": [
+    {
+      "question": "What comes before integrating a separable equation?",
+      "answer": "Rearrange so all y terms accompany dy and all x terms accompany dx."
+    },
+    {
+      "question": "What does an initial condition do?",
+      "answer": "It determines the arbitrary constant and selects a particular solution."
+    },
+    {
+      "question": "What solution can be lost by dividing by h(y)?",
+      "answer": "Any constant equilibrium solution satisfying h(y)=0."
+    },
+    {
+      "question": "How do you check a differential-equation solution?",
+      "answer": "Differentiate it and substitute into both the equation and the initial condition."
+    }
+  ],
+  "relatedTopics": [
+    "3.2",
+    "3.5"
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "id": "3.1",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "The nature of marketing",
+  "contentDepth": "full",
+  "overview": "Marketing identifies, anticipates and satisfies customer requirements profitably. The exam focus is how market information changes decisions about customers, products and objectives—not advertising alone.",
+  "syllabusPoints": [
+    "Explain the role of marketing and the relationship between marketing and corporate objectives.",
+    "Compare market orientation, product orientation, asset-led and societal marketing.",
+    "Analyse demand, supply and changes in equilibrium.",
+    "Calculate and interpret market size, market growth and market share.",
+    "Compare mass and niche marketing.",
+    "Analyse market segmentation in consumer and industrial markets."
+  ],
+  "definitions": [
+    {
+      "term": "Marketing",
+      "definition": "The management process of identifying, anticipating and satisfying customer requirements profitably."
+    },
+    {
+      "term": "Marketing objective",
+      "definition": "A specific target for marketing activity that contributes to the business's overall objectives."
+    },
+    {
+      "term": "Market orientation",
+      "definition": "Basing product and marketing decisions on researched customer needs and market conditions."
+    },
+    {
+      "term": "Product orientation",
+      "definition": "Prioritising product quality, innovation or technical strength and then finding customers for the output."
+    },
+    {
+      "term": "Demand",
+      "definition": "The quantity consumers are willing and able to buy at a given price over a period."
+    },
+    {
+      "term": "Supply",
+      "definition": "The quantity producers are willing and able to offer at a given price over a period."
+    },
+    {
+      "term": "Market size",
+      "definition": "Total sales in a defined market over a period, measured by value or volume."
+    },
+    {
+      "term": "Market growth",
+      "definition": "The percentage change in the size of a market over a period."
+    },
+    {
+      "term": "Market share",
+      "definition": "One business's sales as a percentage of total sales in the defined market."
+    },
+    {
+      "term": "Niche market",
+      "definition": "A small, specialised segment with needs not fully served by mass-market offers."
+    },
+    {
+      "term": "Market segmentation",
+      "definition": "Dividing a market into groups with similar characteristics or needs so each can be targeted more effectively."
+    },
+    {
+      "term": "Unique selling point",
+      "definition": "A meaningful feature or benefit that differentiates an offer from competitors."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-role-and-objectives-of-marketing",
+      "title": "Role and objectives of marketing",
+      "content": [
+        "Marketing research identifies needs and competitor conditions; product design, price, promotion, distribution and service then create and deliver value. It also maintains relationships and anticipates change. Objectives may include sales, market share, awareness, retention, new markets, new products, brand image and profit."
+      ],
+      "bullets": [
+        "Objectives should be measurable, time-limited and consistent with finance, operations and overall strategy.",
+        "A market-share campaign that overwhelms capacity or destroys contribution conflicts with wider business performance.",
+        "Customer loyalty can reduce repeat-promotion cost and provide feedback, but loyalty schemes must create incremental profit rather than reward purchases that would happen anyway."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-market-and-product-orientation",
+      "title": "Market and product orientation",
+      "content": [
+        "A market-oriented business researches needs before committing resources, reducing mismatch risk and supporting adaptation. Research is costly and uncertain, and customers may not imagine breakthrough products. A product-oriented business builds on technical expertise and quality; it may create innovation customers did not request, but can waste development spending if the product solves no valued problem."
+      ],
+      "bullets": [
+        "Asset-led marketing starts from existing brand, technology, distribution or skills and finds offers that use those strengths.",
+        "Societal marketing considers long-run consumer and social welfare as well as immediate demand and profit.",
+        "Many successful firms combine orientations: product expertise generates possibilities and market evidence selects/refines them."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-changing-markets-and-competition",
+      "title": "Changing markets and competition",
+      "content": [
+        "Customer needs shift with income, demographics, lifestyles, technology, fashion and social values. Globalisation, e-commerce and improved transport expose firms to more competitors and price comparison. Businesses respond through research, innovation, relationship marketing, lower cost, improved service and clearer differentiation."
+      ],
+      "bullets": [
+        "Reacting fastest is useful only if the response is accurate and affordable.",
+        "Existing customer data may miss new segments or reinforce past assumptions."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-demand-supply-and-equilibrium",
+      "title": "Demand, supply and equilibrium",
+      "content": [
+        "Demand normally falls as price rises; supply normally rises as price rises. A change in the product's own price is a movement along a curve. Income, tastes, population, advertising and substitute prices can shift demand; production cost, tax, subsidy, technology, weather and supplier disruption can shift supply."
+      ],
+      "bullets": [
+        "Above equilibrium, quantity supplied exceeds quantity demanded and unsold stock puts downward pressure on price.",
+        "Below equilibrium, excess demand and shortages put upward pressure on price.",
+        "A shift in demand or supply creates a new equilibrium price and quantity; explain the cause before the result."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-market-size-growth-and-share",
+      "title": "Market size, growth and share",
+      "content": [
+        "Market size helps judge opportunity and calculate share. Growth indicates whether total demand is expanding; share indicates relative competitive position. Use value or volume consistently and define product, customer and geography carefully."
+      ],
+      "bullets": [
+        "High share may strengthen supplier bargaining, retailer support and brand credibility.",
+        "A growing market can support sales without share gains; a firm can gain share while its sales fall if the total market contracts faster.",
+        "Published estimates may be incomplete, outdated or use a different market definition."
+      ],
+      "examples": [
+        {
+          "id": "3.1-5-1",
+          "kind": "worked",
+          "label": "Market calculation",
+          "content": "A firm sells $18m in a $120m market. Market share = 18 ÷ 120 × 100 = 15%. If the market was $100m last year, market growth = (120 − 100) ÷ 100 × 100 = 20%."
+        }
+      ]
+    },
+    {
+      "id": "06-mass-and-niche-marketing",
+      "title": "Mass and niche marketing",
+      "content": [
+        "Mass marketing targets a broad market with a standard offer, supporting high volume, wide distribution and economies of scale, but competition is intense and promotion expensive. Niche marketing focuses on a narrow segment, enabling specialisation, close customer knowledge and possibly premium prices, but the market is small and the business may depend on one changing segment."
+      ],
+      "bullets": [
+        "A successful niche can attract larger competitors.",
+        "Digital channels can make small global niches economically reachable.",
+        "The choice depends on resources, differentiation, market size, competition and production flexibility."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-market-segmentation",
+      "title": "Market segmentation",
+      "content": [
+        "Consumer markets may be segmented by age, gender, income/social group, location, lifestyle, values, behaviour and usage. Industrial markets may use industry, organisation size, location, purchase volume, required specification or buying process. Effective segments are identifiable, measurable, reachable, substantial and meaningfully different."
+      ],
+      "bullets": [
+        "Benefits: more relevant products/messages, less wasted promotion, stronger conversion and identification of gaps.",
+        "Costs: research, smaller production runs, multiple campaigns and possible confusion between variants.",
+        "Avoid stereotypes: segment variables are evidence for different needs, not proof of how every individual behaves."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-marketing-and-added-value",
+      "title": "Marketing and added value",
+      "content": [
+        "Brand, design, packaging, convenience, service, guarantees and a credible USP can increase willingness to pay or repeat purchase. Added value rises only if the increase in selling price or value created exceeds extra bought-in input cost; profit rises only after all added marketing costs are considered."
+      ],
+      "bullets": [
+        "A distinctive claim must be relevant and believable.",
+        "Premium packaging can strengthen perception but may conflict with environmental expectations."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Market share",
+      "expression": "(Business sales ÷ total market sales) × 100",
+      "note": "Use value with value or volume with volume."
+    },
+    {
+      "label": "Market growth",
+      "expression": "((Current market size − previous market size) ÷ previous market size) × 100"
+    },
+    {
+      "label": "Revenue",
+      "expression": "Selling price × quantity sold"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Mass and niche marketing",
+    "columns": [
+      "Issue",
+      "Mass market",
+      "Niche market"
+    ],
+    "rows": [
+      [
+        "Customers",
+        "Broad needs and large numbers",
+        "Specific needs and smaller numbers"
+      ],
+      [
+        "Offer",
+        "More standardised",
+        "More specialised/customised"
+      ],
+      [
+        "Competition",
+        "Often intense",
+        "May initially be limited"
+      ],
+      [
+        "Scale",
+        "Economies and wide distribution possible",
+        "Lower volume and higher unit cost likely"
+      ],
+      [
+        "Risk",
+        "Spread across many customers",
+        "Dependence on one segment"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Market-led decision loop",
+    "type": "cycle",
+    "nodes": [
+      "Research changing needs",
+      "Choose target segment",
+      "Set marketing objective",
+      "Design coordinated mix",
+      "Measure sales/share/retention",
+      "Learn and adapt"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Segmenting a broad market",
+      "steps": [
+        "The firm identifies a group with distinct needs",
+        "Product and promotion become more relevant",
+        "Response and customer satisfaction may improve",
+        "Sales conversion and loyalty rise",
+        "Marketing spending produces a stronger return"
+      ],
+      "evaluation": "Extra research, variants and smaller production runs may cost more; the segment must be large and reachable enough."
+    },
+    {
+      "title": "Gaining market share through lower price",
+      "steps": [
+        "Price falls relative to competitors",
+        "Quantity demanded may rise",
+        "The firm's sales volume and share increase",
+        "Higher output may lower average cost"
+      ],
+      "evaluation": "Contribution per unit falls, rivals may respond and capacity may constrain supply; higher share is not necessarily higher profit."
+    },
+    {
+      "title": "A rise in input costs",
+      "steps": [
+        "Supply becomes less profitable at each price",
+        "Market supply shifts left",
+        "Equilibrium price tends to rise and quantity fall",
+        "A firm's revenue and margin effects depend on pricing and demand"
+      ],
+      "evaluation": "Firms with long-term supplier contracts or superior efficiency may be less affected and gain share."
+    }
+  ],
+  "examTips": [
+    "Define the market before calculating or interpreting market share.",
+    "For demand/supply, distinguish a movement caused by own price from a curve shift caused by another factor.",
+    "Link marketing objectives to the wider objective and operational/financial capacity.",
+    "Do not claim market orientation eliminates risk; research can be biased, outdated or misinterpreted."
+  ],
+  "commonMistakes": [
+    "Defining marketing as advertising or selling only.",
+    "Assuming a rapidly growing market is automatically attractive despite competition and investment needs.",
+    "Using current market size rather than previous market size as the denominator in growth calculations.",
+    "Treating segmentation variables as stereotypes instead of researchable differences in needs."
+  ],
+  "quickRecall": [
+    {
+      "question": "What three activities are captured in the core definition of marketing?",
+      "answer": "Identifying, anticipating and satisfying customer requirements profitably."
+    },
+    {
+      "question": "How does product orientation differ from market orientation?",
+      "answer": "Product orientation starts with technical/product strengths; market orientation starts with researched customer needs."
+    },
+    {
+      "question": "How is market growth calculated?",
+      "answer": "Change in market size divided by the previous market size, multiplied by 100."
+    },
+    {
+      "question": "Can share rise while sales fall?",
+      "answer": "Yes, if the overall market contracts by a greater percentage than the firm's sales."
+    },
+    {
+      "question": "What makes a useful market segment?",
+      "answer": "It should be identifiable, measurable, reachable, substantial and different enough to require a distinct response."
+    },
+    {
+      "question": "Why may niche customers accept a higher price?",
+      "answer": "A specialised offer may meet their needs more closely and face fewer direct substitutes."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "1.4",
+    "3.2",
+    "3.3",
+    "4.1"
+  ]
+}

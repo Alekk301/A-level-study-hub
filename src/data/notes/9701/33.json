@@ -1,0 +1,164 @@
+{
+  "id": "33",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Carboxylic acids and derivatives",
+  "contentDepth": "full",
+  "overview": "Understand the reactions of acyl chlorides and acyl substitution reactions in more depth. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Prepare benzoic acid and acyl chlorides and explain carboxylic-acid acidity.",
+    "Form esters using acyl chlorides.",
+    "Describe acyl-chloride reactions with water, alcohols, phenol, ammonia and amines.",
+    "Draw the addition–elimination mechanism and compare hydrolysis reactivity."
+  ],
+  "definitions": [
+    {
+      "term": "Acyl chloride",
+      "definition": "A reactive carboxylic-acid derivative with functional group –COCl."
+    },
+    {
+      "term": "Nucleophilic acyl substitution",
+      "definition": "Addition to a carbonyl followed by elimination of a leaving group."
+    },
+    {
+      "term": "Amide",
+      "definition": "A carboxylic-acid derivative containing –CONH₂, –CONHR or –CONR₂."
+    },
+    {
+      "term": "Electron-withdrawing group",
+      "definition": "A group that pulls electron density and can stabilise nearby negative charge."
+    },
+    {
+      "term": "Benzoic acid",
+      "definition": "C₆H₅COOH, an aromatic carboxylic acid."
+    },
+    {
+      "term": "Ester",
+      "definition": "A derivative containing –COOR."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-carboxylic-acids",
+      "title": "Carboxylic acids",
+      "content": [
+        "Oxidise an alkylbenzene with a benzylic hydrogen using hot alkaline KMnO₄ then acidify to obtain benzoic acid. Convert RCOOH to RCOCl using PCl₅, PCl₃ with heat or SOCl₂. Methanoic and ethanedioic acids can be further oxidised under the syllabus reagents."
+      ],
+      "bullets": [
+        "Write observations/products for oxidising-agent tests where asked.",
+        "SOCl₂ gives gaseous by-products that help drive formation."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Acyl chloride hydrolysis: RCOCl+H₂O→RCOOH+HCl"
+        }
+      ]
+    },
+    {
+      "id": "02-acidity-trends",
+      "title": "Acidity trends",
+      "content": [
+        "Carboxylic acids are stronger than phenols and alcohols because carboxylate charge is delocalised equally over two oxygen atoms. Electron-withdrawing chlorine substituents stabilise the carboxylate by an inductive effect; more/closer Cl atoms generally increase acidity."
+      ],
+      "bullets": [
+        "Compare conjugate bases, not the O–H bond alone.",
+        "Inductive effect weakens with distance."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-acyl-chloride-reactions",
+      "title": "Acyl-chloride reactions",
+      "content": [
+        "At room temperature RCOCl reacts with water→RCOOH, alcohol→ester, phenol→ester, NH₃→primary amide, and primary/secondary amines→substituted amides, releasing HCl. Extra ammonia/amine may neutralise HCl to an ammonium salt."
+      ],
+      "bullets": [
+        "Identify the nucleophile and the group replacing Cl.",
+        "Phenol acylation does not require the same harsh conditions as direct carboxylic-acid esterification."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-addition-elimination-mechanism",
+      "title": "Addition–elimination mechanism",
+      "content": [
+        "A nucleophile attacks the δ⁺ carbonyl carbon and the C=O π electrons move to oxygen. The tetrahedral intermediate collapses, re-forming C=O and expelling Cl⁻; proton transfer yields the neutral product. Acyl chlorides hydrolyse far more readily than halogenoalkanes or halogenoarenes because the carbonyl activates the acyl carbon and Cl⁻ is a good leaving group."
+      ],
+      "bullets": [
+        "Curly arrows must start at electron pairs/bonds.",
+        "Show intermediate charge and proton transfer clearly."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Acyl chloride hydrolysis",
+      "expression": "RCOCl+H₂O→RCOOH+HCl"
+    },
+    {
+      "label": "Ester formation",
+      "expression": "RCOCl+R′OH→RCOOR′+HCl"
+    },
+    {
+      "label": "Primary amide",
+      "expression": "RCOCl+2NH₃→RCONH₂+NH₄Cl"
+    },
+    {
+      "label": "Acid conversion",
+      "expression": "RCOOH —SOCl₂/PCl₅/PCl₃→ RCOCl"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Carboxylic acids and derivatives: revision route",
+    "type": "flow",
+    "nodes": [
+      "Carboxylic acids",
+      "Acidity trends",
+      "Acyl-chloride reactions",
+      "Addition–elimination mechanism"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Build reaction maps around RCOCl because one reagent connects acids, esters and amides.",
+    "Draw every organic mechanism with charges, lone-pair origin and the leaving group.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Drawing nucleophilic substitution directly at the carbonyl without the tetrahedral intermediate.",
+    "Forgetting the HCl/by-product or second ammonia equivalent.",
+    "Explaining acid strength without comparing conjugate-base stability."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why are carboxylic acids stronger than phenols?",
+      "answer": "The carboxylate negative charge is delocalised equally over two oxygen atoms and is more stabilised."
+    },
+    {
+      "question": "What are the two stages of acyl substitution?",
+      "answer": "Nucleophilic addition to the carbonyl, then elimination of Cl⁻ as C=O reforms."
+    },
+    {
+      "question": "What does an acyl chloride form with a primary amine?",
+      "answer": "An N-substituted amide, with HCl captured by excess amine where applicable."
+    },
+    {
+      "question": "Why are acyl chlorides highly reactive to water?",
+      "answer": "The carbonyl carbon is strongly electrophilic and chloride is a good leaving group."
+    }
+  ],
+  "relatedTopics": [
+    "18",
+    "32",
+    "34",
+    "35",
+    "36"
+  ]
+}

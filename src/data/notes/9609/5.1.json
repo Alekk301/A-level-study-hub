@@ -1,0 +1,300 @@
+{
+  "id": "5.1",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Business finance",
+  "contentDepth": "full",
+  "overview": "Finance is needed before trading begins, during daily operations and when the business changes or grows. The central exam distinction is between profit and cash: a profitable business can still become illiquid if the timing of receipts and payments is poorly managed.",
+  "syllabusPoints": [
+    "Explain why start-ups and existing businesses need finance.",
+    "Distinguish start-up capital and working capital.",
+    "Distinguish capital expenditure and revenue expenditure.",
+    "Explain working capital and liquidity.",
+    "Distinguish cash from profit and analyse why profitable businesses may fail.",
+    "Assess finance needs by purpose, amount and time period."
+  ],
+  "definitions": [
+    {
+      "term": "Finance",
+      "definition": "Funds required to start, operate, invest in and grow a business."
+    },
+    {
+      "term": "Start-up capital",
+      "definition": "Finance required before and during launch to acquire initial assets and fund operations until receipts are sufficient."
+    },
+    {
+      "term": "Working capital",
+      "definition": "Finance available for day-to-day operations; in accounting terms, current assets minus current liabilities."
+    },
+    {
+      "term": "Capital expenditure",
+      "definition": "Spending on non-current assets expected to benefit the business for more than one year."
+    },
+    {
+      "term": "Revenue expenditure",
+      "definition": "Spending on day-to-day expenses and items consumed within normal operations."
+    },
+    {
+      "term": "Liquidity",
+      "definition": "The ability to meet short-term debts and payments when they fall due."
+    },
+    {
+      "term": "Illiquidity",
+      "definition": "Insufficient available cash or near-cash resources to meet immediate obligations."
+    },
+    {
+      "term": "Liquidation",
+      "definition": "The legal process of closing a business and selling its assets to pay creditors."
+    },
+    {
+      "term": "Profit",
+      "definition": "The surplus of total revenue over total cost during a period."
+    },
+    {
+      "term": "Cash flow",
+      "definition": "Cash received and paid by a business over a period."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-new-businesses-need-finance",
+      "title": "Why new businesses need finance",
+      "content": [
+        "Before receiving reliable sales cash, a start-up may need premises deposits, equipment, technology, licences, research, initial inventory, recruitment, training, launch promotion and professional fees. It also needs a working-capital buffer for wages, rent, utilities and suppliers during low early sales or customer credit periods."
+      ],
+      "bullets": [
+        "Underestimating start-up cost can force emergency borrowing on poor terms.",
+        "Timing matters: equipment may be a one-off capital need while several months of wages are recurring revenue expenditure.",
+        "Contingency finance recognises that forecasts are uncertain, but unused borrowing can still cost interest or fees."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-why-established-businesses-need-finance",
+      "title": "Why established businesses need finance",
+      "content": [
+        "Existing firms need finance to replace assets, expand capacity, enter markets, develop products, acquire another business, fund seasonal inventory, survive a temporary cash shortage or restructure. The purpose determines suitable duration and risk."
+      ],
+      "bullets": [
+        "Match long-lived assets with long-term finance so repayment is spread across the benefit period.",
+        "Use short-term finance for temporary working-capital timing gaps, not permanent losses.",
+        "Growth often increases finance needs before generating cash: more inventory, employees and credit sales must be funded."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-start-up-and-working-capital",
+      "title": "Start-up and working capital",
+      "content": [
+        "Start-up capital includes the initial non-current assets and cash needed to reach normal trading. Working capital cycles through cash, inventory, sales and customer receipts while short-term payments to suppliers and employees fall due. Too little working capital interrupts operations; too much may indicate idle cash, slow inventory or weak credit control."
+      ],
+      "bullets": [
+        "Inventory is a current asset but may be slow to sell or lose value.",
+        "Trade receivables are recorded assets but do not pay bills until customers pay.",
+        "Trade credit from suppliers delays cash outflow but creates a current liability."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-capital-and-revenue-expenditure",
+      "title": "Capital and revenue expenditure",
+      "content": [
+        "Capital expenditure buys or improves long-term productive assets such as premises, machinery, vehicles or major systems. Revenue expenditure keeps the business operating, including wages, rent, utilities, routine repairs, materials and promotion. The same category is not determined only by price: purpose and duration of benefit matter."
+      ],
+      "bullets": [
+        "A new delivery vehicle is capital expenditure; its fuel and routine servicing are revenue expenditure.",
+        "Capital decisions often require larger, longer-term finance and appraisal; revenue needs recur and are managed through working capital."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-cash-and-profit-are-different",
+      "title": "Cash and profit are different",
+      "content": [
+        "Credit sales increase revenue and may increase profit before cash arrives. Buying an asset creates a cash outflow but is not normally treated as a full immediate operating cost in profit. Borrowing creates a cash inflow but is not sales revenue; repaying loan principal is a cash outflow but not a cost of earning current sales. Owner drawings/dividends also use cash."
+      ],
+      "bullets": [
+        "A profitable fast-growing firm can fail if customers pay slowly while suppliers and employees require earlier payment.",
+        "A loss-making firm may temporarily show positive cash flow after a loan or asset sale, but the underlying model remains weak.",
+        "Always identify whether the item changes cash, profit, both or neither in the period."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-liquidity-and-business-survival",
+      "title": "Liquidity and business survival",
+      "content": [
+        "Liquidity is about timing and access, not only total asset value. A firm unable to pay a supplier, employee, tax authority or lender may lose essential inputs, face legal action or be forced into liquidation even if its property and equipment exceed its debts."
+      ],
+      "bullets": [
+        "Forecast cash by period and identify the size and duration of the maximum shortage.",
+        "Improve credit control and inventory conversion before relying only on new debt.",
+        "Maintain stakeholder trust: early negotiation is usually better than breaking payment promises."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-estimating-the-finance-requirement",
+      "title": "Estimating the finance requirement",
+      "content": [
+        "Calculate what will be paid, when it will be paid, when customer cash is expected and what contingency is needed. Separate fixed-asset cost from working capital and distinguish a one-off shortage from a recurring operating deficit."
+      ],
+      "bullets": [
+        "Purpose: asset, start-up, seasonal inventory, temporary gap or loss recovery.",
+        "Amount: include installation, training, tax, initial losses and contingency, not purchase price alone.",
+        "Duration: match the finance term to the period of benefit and cash generation.",
+        "Risk: test lower sales, later receipts and higher costs before deciding the safe commitment."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Working capital",
+      "expression": "Current assets − current liabilities",
+      "note": "Positive working capital does not guarantee cash is immediately available; inventory and receivables may convert slowly."
+    },
+    {
+      "label": "Profit",
+      "expression": "Total revenue − total costs"
+    },
+    {
+      "label": "Net cash flow",
+      "expression": "Cash inflows − cash outflows"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Finance concepts that must not be confused",
+    "columns": [
+      "Concept",
+      "Main question",
+      "Example"
+    ],
+    "rows": [
+      [
+        "Start-up capital",
+        "What is required to reach normal trading?",
+        "Equipment, initial inventory and early operating cash"
+      ],
+      [
+        "Working capital",
+        "Can day-to-day payments be met?",
+        "Cash/receivables/inventory less short-term liabilities"
+      ],
+      [
+        "Capital expenditure",
+        "What long-lived asset is acquired or improved?",
+        "New machine or building"
+      ],
+      [
+        "Revenue expenditure",
+        "What keeps current operations running?",
+        "Wages, rent, materials and utilities"
+      ],
+      [
+        "Profit",
+        "Did revenue exceed cost over the period?",
+        "Includes credit transactions and non-cash accounting costs"
+      ],
+      [
+        "Cash flow",
+        "Did actual cash received exceed cash paid?",
+        "Includes loans, asset purchases and timing of credit"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Working-capital cycle",
+    "type": "cycle",
+    "nodes": [
+      "Cash available",
+      "Buy inputs and pay expenses",
+      "Hold inventory/work in progress",
+      "Make sales, sometimes on credit",
+      "Collect customer cash",
+      "Pay short-term liabilities and repeat"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Rapid growth and working capital",
+      "steps": [
+        "The business accepts more orders",
+        "Inventory and wages must be paid before many customers pay",
+        "Cash tied up in receivables and stock rises",
+        "The bank balance falls despite recorded profit",
+        "Suppliers may stop delivery and growth stalls"
+      ],
+      "evaluation": "Faster collection, supplier credit or planned finance can support growth, but orders must still generate enough contribution."
+    },
+    {
+      "title": "Purchasing a new machine",
+      "steps": [
+        "A large capital-expenditure cash outflow occurs",
+        "Capacity/productivity and quality may rise over future years",
+        "Unit cost could fall and contribution improve",
+        "Future cash inflows may repay the investment"
+      ],
+      "evaluation": "Demand, utilisation, maintenance, training and finance cost determine whether the cash commitment is justified."
+    },
+    {
+      "title": "A long customer credit period",
+      "steps": [
+        "Customers buy now but pay later",
+        "Revenue and profit may be recorded before cash receipt",
+        "Receivables and working-capital need increase",
+        "The business may borrow to pay immediate bills",
+        "Interest cost and liquidity risk rise"
+      ],
+      "evaluation": "Credit may be essential to win business customers; risk can be reduced through checks, limits and active collection."
+    }
+  ],
+  "examTips": [
+    "State why finance is needed before recommending where it should come from.",
+    "Use timing examples to explain cash versus profit; the phrase alone earns little analysis.",
+    "Match the duration of finance to the useful life or temporary nature of the need.",
+    "When discussing working capital, explain how inventory and receivables convert into cash and when liabilities fall due."
+  ],
+  "commonMistakes": [
+    "Calling working capital the same as profit or the owner's investment.",
+    "Treating a bank loan as sales revenue or profit.",
+    "Assuming every expensive purchase is capital expenditure regardless of its useful life and purpose.",
+    "Claiming a profitable firm cannot fail."
+  ],
+  "quickRecall": [
+    {
+      "question": "How is working capital calculated?",
+      "answer": "Current assets minus current liabilities."
+    },
+    {
+      "question": "Why can credit sales create profit before cash?",
+      "answer": "Revenue is recognised when the sale occurs, while customer payment may arrive later."
+    },
+    {
+      "question": "Give one capital and one revenue expenditure example for a vehicle.",
+      "answer": "Buying the vehicle is capital expenditure; fuel or routine servicing is revenue expenditure."
+    },
+    {
+      "question": "Why is inventory not equivalent to cash?",
+      "answer": "It must first be sold and collected, may take time and may not realise its recorded value."
+    },
+    {
+      "question": "Can a loan improve cash without improving profit?",
+      "answer": "Yes. It is a financing inflow, not revenue earned from trading."
+    },
+    {
+      "question": "What three dimensions should define a finance need?",
+      "answer": "Purpose, amount and duration, with risk/timing also tested."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "1.3",
+    "4.2",
+    "5.2",
+    "5.3",
+    "5.4"
+  ]
+}

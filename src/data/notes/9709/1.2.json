@@ -1,0 +1,44 @@
+{
+  "id": "1.2",
+  "subject": "9709",
+  "level": "AS",
+  "unitId": "P1",
+  "unitTitle": "Pure Mathematics 1",
+  "title": "Functions",
+  "contentDepth": "in-depth",
+  "overview": "A focused revision guide to functions.",
+  "syllabusPoints": [
+    "domain/range",
+    "composite and inverse functions",
+    "graph transformations"
+  ],
+  "definitions": [],
+  "sections": [
+    {
+      "id": "01-functions",
+      "title": "Functions",
+      "content": [],
+      "bullets": [
+        "Domain = valid inputs, range = resulting outputs — state both when asked to \"describe\" a function.",
+        "Composite function fg(x) means \"do g first, then f\" — work inside-out.",
+        "Inverse f⁻¹(x): swap x and y, rearrange. Only exists properly if f is one-to-one over the given domain — you may need to restrict the domain first.",
+        "Graph transformations: f(x)+a shifts up, f(x+a) shifts left, af(x) stretches vertically, f(ax) squashes horizontally."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": null,
+  "diagram": null,
+  "analysisChains": [],
+  "examTips": [
+    "When a domain is restricted before asking for an inverse, give the range of f as the domain of f⁻¹ — a commonly lost mark."
+  ],
+  "commonMistakes": [],
+  "quickRecall": [
+    "domain/range",
+    "composite and inverse functions",
+    "graph transformations"
+  ],
+  "relatedTopics": []
+}

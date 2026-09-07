@@ -1,0 +1,341 @@
+{
+  "id": "3.3",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "The marketing mix",
+  "contentDepth": "full",
+  "overview": "The marketing mix coordinates product, price, promotion and place for a defined target market. Each decision changes the effectiveness of the others, so exam evaluation should test whether the whole mix is consistent with the objective, customer, competition, product stage, capacity and budget.",
+  "syllabusPoints": [
+    "Analyse product decisions including differentiation, branding, packaging, product portfolios and the product life cycle.",
+    "Compare pricing methods and calculate/interpret price elasticity of demand.",
+    "Analyse promotional objectives, methods, media and budgets.",
+    "Compare direct and intermediary channels of distribution.",
+    "Explain customer relationship marketing, the 4Cs, e-commerce and digital promotion.",
+    "Assess an integrated marketing mix in context."
+  ],
+  "definitions": [
+    {
+      "term": "Marketing mix",
+      "definition": "The coordinated product, price, promotion and place decisions used to meet the needs of a target market."
+    },
+    {
+      "term": "Brand",
+      "definition": "A name, symbol, design or set of associations that identifies and differentiates an offer."
+    },
+    {
+      "term": "Product life cycle",
+      "definition": "The pattern of introduction, growth, maturity/saturation and decline that a product's sales may follow."
+    },
+    {
+      "term": "Extension strategy",
+      "definition": "A change intended to prolong a product's sales, such as repositioning, promotion, redesign or a new market."
+    },
+    {
+      "term": "Price skimming",
+      "definition": "Launching at a high price to earn high margins from less price-sensitive early buyers."
+    },
+    {
+      "term": "Penetration pricing",
+      "definition": "Launching at a low price to gain customers and market share quickly."
+    },
+    {
+      "term": "Price discrimination",
+      "definition": "Charging different customer groups different prices for the same or very similar product when resale can be limited."
+    },
+    {
+      "term": "Price elasticity of demand",
+      "definition": "The responsiveness of quantity demanded to a change in price."
+    },
+    {
+      "term": "Above-the-line promotion",
+      "definition": "Paid mass-media communication that the business does not fully control at the point of customer response."
+    },
+    {
+      "term": "Below-the-line promotion",
+      "definition": "Targeted promotional activity such as sales promotions, direct marketing, sponsorship or personal selling."
+    },
+    {
+      "term": "Channel of distribution",
+      "definition": "The route and intermediaries through which a product passes from producer to final customer."
+    },
+    {
+      "term": "Customer relationship marketing",
+      "definition": "Activities designed to build long-term customer satisfaction, loyalty and repeat purchases."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-product-benefits-differentiation-and-portfolio",
+      "title": "Product: benefits, differentiation and portfolio",
+      "content": [
+        "Customers buy benefits rather than technical features alone. Product decisions include function, quality, design, brand, packaging, service, warranty and range. Consumer products may be convenience, shopping or speciality goods; industrial products are bought for organisational use. A strong USP should solve a valued problem and be difficult to copy."
+      ],
+      "bullets": [
+        "Branding supports recognition, trust, repeat purchase and premium pricing but needs consistent quality and promotion.",
+        "Packaging protects and informs as well as promotes; excessive packaging can increase cost and environmental criticism.",
+        "A product portfolio spreads risk and shares brand/distribution resources, but too many variants increase complexity and cannibalisation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-product-life-cycle",
+      "title": "Product life cycle",
+      "content": [
+        "Introduction usually has low sales, high launch promotion and possible losses. Growth brings rising sales and competitors. Maturity/saturation has high but slowing sales, intense competition and pressure to differentiate. Decline brings falling sales as needs or technology change. Cash flow and suitable mix decisions differ at each stage."
+      ],
+      "bullets": [
+        "Extension strategies include new users/markets, redesign, new uses, promotions, price changes and updated packaging.",
+        "The life cycle is descriptive, not a fixed timetable; fashion, management action and external shocks alter the pattern.",
+        "Businesses may withdraw a declining product, harvest it or retain it because it supports a range or niche."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-pricing-methods",
+      "title": "Pricing methods",
+      "content": [
+        "Cost-plus adds a markup to unit cost and is simple but ignores willingness to pay and rivals. Competitive pricing follows market prices but can create price wars. Skimming suits distinctive innovation and recovers development cost, yet attracts rivals. Penetration builds trial/share but may signal low quality and make later increases difficult. Promotional/loss-leader pricing creates traffic but lowers immediate margin. Psychological pricing uses customer perception; price discrimination extracts different willingness to pay but requires separation and can be seen as unfair."
+      ],
+      "bullets": [
+        "Contribution pricing accepts an order above variable cost so it contributes to fixed cost, but repeated low prices may fail to cover total cost.",
+        "Choose using objective, costs, competition, brand, product stage, capacity and PED."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-price-elasticity-of-demand",
+      "title": "Price elasticity of demand",
+      "content": [
+        "PED is normally negative because price and quantity demanded move in opposite directions; exams often discuss its magnitude. If |PED| > 1, demand is elastic and a price fall tends to increase total revenue. If |PED| < 1, demand is inelastic and a price rise tends to increase total revenue, assuming other factors remain unchanged."
+      ],
+      "bullets": [
+        "Demand is more elastic when close substitutes exist, the purchase is a large share of income, buyers have time to switch and loyalty is weak.",
+        "It is more inelastic for necessities, addictive products, small expenditures, urgent needs and strongly differentiated brands.",
+        "PED is an estimate and can change by price range, segment and time; revenue is not profit because cost also changes."
+      ],
+      "examples": [
+        {
+          "id": "3.3-4-1",
+          "kind": "worked",
+          "label": "PED and revenue",
+          "content": "Price rises from $20 to $22 (+10%) and demand falls from 5,000 to 4,000 (−20%). PED = −20% ÷ 10% = −2, so demand is elastic. Revenue falls from $100,000 to $88,000."
+        }
+      ]
+    },
+    {
+      "id": "05-promotion-objectives-and-methods",
+      "title": "Promotion objectives and methods",
+      "content": [
+        "Promotion informs, persuades, reminds and builds brand. Advertising can reach a large audience but is costly and hard to personalise. Sales promotions create short-run trial or clear inventory but may train customers to wait for deals. Personal selling explains complex products and builds relationships but has high cost per contact. Direct marketing is targeted but may be ignored; sponsorship transfers event associations but gives limited message control; public relations can be credible but coverage is uncertain."
+      ],
+      "bullets": [
+        "Select media using the target audience, message complexity, reach, frequency, cost, measurability and product stage.",
+        "Evaluate using incremental sales/contribution, awareness, enquiries, conversion and retention—not reach alone.",
+        "A promotional budget may be affordable, percentage-of-sales, competitor-based or objective-and-task; only the last starts from what must be achieved."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-place-and-distribution-channels",
+      "title": "Place and distribution channels",
+      "content": [
+        "Direct distribution (producer → customer) gives control, customer data and no intermediary margin, but the producer funds selling, delivery, storage and reach. Retailers provide convenience, display and local access but take margin and control. Wholesalers break bulk and serve many small retailers, reducing the producer's logistics burden but adding distance from customers."
+      ],
+      "bullets": [
+        "Agents bring specialist or foreign-market knowledge without taking ownership of goods, in return for commission.",
+        "Choose using perishability, purchase frequency, customer location, technical explanation, order size, desired control, competitor channels and cost.",
+        "Omnichannel distribution should coordinate inventory, pricing and service across stores, websites and marketplaces."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-digital-marketing-and-e-commerce",
+      "title": "Digital marketing and e-commerce",
+      "content": [
+        "Websites, search, email, social media, marketplaces and creators can target segments, measure response, update messages quickly and reach global customers. Direct online selling may reduce premises and intermediary cost. However, competition and price transparency rise, cyber/privacy risks matter, platform fees or algorithms create dependence, and customers cannot always inspect products."
+      ],
+      "bullets": [
+        "Viral reach can be cheap and rapid but the business cannot fully control the message or reaction.",
+        "Use data responsibly and judge conversion, customer acquisition cost and repeat value rather than likes alone."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-relationship-marketing-and-the-4cs",
+      "title": "Relationship marketing and the 4Cs",
+      "content": [
+        "Relationship marketing aims to retain profitable customers through reliable quality, service, complaints recovery, useful communication, loyalty rewards and personalisation. Retention can cost less than constant acquisition and can generate referrals and data, but not every unprofitable customer should be retained at any cost."
+      ],
+      "bullets": [
+        "Customer solution corresponds to product; cost to customer includes time, delivery and use as well as price.",
+        "Communication is two-way rather than promotion only; convenience looks at the whole buying and service journey.",
+        "The 4Cs force the business to view the 4Ps from the customer's perspective."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-building-an-integrated-mix",
+      "title": "Building an integrated mix",
+      "content": [
+        "A premium technical product needs quality, credible specialist promotion, selective or direct distribution and a price that supports its position. A mass convenience product needs accessible distribution, repeat availability, simple communication and a competitive price. Contradictions waste resources and confuse positioning."
+      ],
+      "bullets": [
+        "Check internal fit with finance, capacity, people and brand; check external fit with target needs, rivals and the environment.",
+        "Change one element only after tracing its effect on the rest—for example, a promotion that doubles demand may cause stockouts and reputational damage."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Price elasticity of demand",
+      "expression": "% change in quantity demanded ÷ % change in price",
+      "note": "Usually negative; use the absolute value when classifying elastic or inelastic demand."
+    },
+    {
+      "label": "Percentage change",
+      "expression": "((New value − original value) ÷ original value) × 100"
+    },
+    {
+      "label": "Revenue",
+      "expression": "Price × quantity sold"
+    },
+    {
+      "label": "Contribution per unit",
+      "expression": "Selling price − variable cost per unit",
+      "note": "Useful when judging discounted or special-order prices."
+    }
+  ],
+  "comparisonTable": {
+    "title": "Distribution-channel trade-offs",
+    "columns": [
+      "Channel",
+      "Main benefit",
+      "Main cost/risk",
+      "Suitable when"
+    ],
+    "rows": [
+      [
+        "Producer → customer",
+        "Control, data and no intermediary margin",
+        "Producer bears selling/logistics and may have limited reach",
+        "Technical, perishable, digital or customised offers"
+      ],
+      [
+        "Producer → retailer → customer",
+        "Convenience, display and retailer reach",
+        "Retailer margin and reduced producer control",
+        "Consumer goods needing accessible outlets"
+      ],
+      [
+        "Producer → wholesaler → retailer → customer",
+        "Bulk breaking and access to many small retailers",
+        "Two margins, slower feedback and less control",
+        "Wide markets with many small orders"
+      ],
+      [
+        "Producer → agent → channel/customer",
+        "Specialist contacts and market knowledge",
+        "Commission and dependence",
+        "Export or unfamiliar specialist markets"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Integrated marketing-mix check",
+    "type": "cycle",
+    "nodes": [
+      "Define target and objective",
+      "Design customer solution",
+      "Set value-based price",
+      "Choose persuasive communication",
+      "Make purchase convenient",
+      "Measure response and rebalance"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Price skimming for an innovative device",
+      "steps": [
+        "Early adopters pay a high launch price",
+        "Contribution per unit is high",
+        "Development cost may be recovered faster",
+        "Premium positioning is reinforced"
+      ],
+      "evaluation": "The firm needs protection or differentiation; close substitutes and rapid competitor entry can collapse demand."
+    },
+    {
+      "title": "Direct online distribution",
+      "steps": [
+        "The producer removes retailer margin and gains customer data",
+        "Prices can fall or contribution can rise",
+        "Personalised communication and feedback improve",
+        "Repeat sales may increase"
+      ],
+      "evaluation": "Fulfilment, returns, cybersecurity and customer acquisition become the producer's responsibility; marketplaces may still be needed for reach."
+    },
+    {
+      "title": "A sales promotion at full capacity",
+      "steps": [
+        "Discounting increases orders",
+        "Demand exceeds available output",
+        "Delivery delays and stockouts increase",
+        "Customers become dissatisfied",
+        "Brand and future revenue may fall"
+      ],
+      "evaluation": "Coordinate marketing with operations; a waiting list or targeted promotion may protect margin and service."
+    }
+  ],
+  "examTips": [
+    "Treat the mix as an integrated decision: show how at least two elements support or conflict with one another.",
+    "For PED, calculate percentage changes from the original values and separate revenue from profit.",
+    "Evaluate promotion with a business outcome and cost, not merely audience size.",
+    "Channel recommendations should consider control, reach, customer convenience, product characteristics and margin."
+  ],
+  "commonMistakes": [
+    "Describing place as the firm's factory or office location rather than distribution to customers.",
+    "Assuming every product passes through predictable life-cycle stages for a fixed duration.",
+    "Saying an inelastic product has no response to price; it has a proportionately smaller response.",
+    "Calling all online attention successful promotion without measuring conversion or contribution."
+  ],
+  "quickRecall": [
+    {
+      "question": "What are the four Ps?",
+      "answer": "Product, price, promotion and place."
+    },
+    {
+      "question": "When is demand price elastic?",
+      "answer": "When the absolute PED value is greater than 1, so quantity changes proportionately more than price."
+    },
+    {
+      "question": "Why can price skimming attract competitors?",
+      "answer": "High margins signal an attractive opportunity."
+    },
+    {
+      "question": "What is an extension strategy?",
+      "answer": "A change intended to prolong product sales, such as redesign, repositioning, promotion or a new market."
+    },
+    {
+      "question": "What is the main producer trade-off in direct distribution?",
+      "answer": "More control, data and retained margin versus responsibility for reach, selling, delivery, storage and returns."
+    },
+    {
+      "question": "How do the 4Cs change perspective?",
+      "answer": "They view product, price, promotion and place as customer solution, customer cost, communication and convenience."
+    },
+    {
+      "question": "Why does a revenue-maximising price not necessarily maximise profit?",
+      "answer": "Changing price and volume also changes variable cost, capacity use and possibly fixed cost."
+    }
+  ],
+  "relatedTopics": [
+    "3.1",
+    "3.2",
+    "4.1",
+    "4.2",
+    "4.3",
+    "5.4"
+  ]
+}

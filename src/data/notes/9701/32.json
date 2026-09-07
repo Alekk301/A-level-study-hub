@@ -1,0 +1,159 @@
+{
+  "id": "32",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Hydroxy compounds",
+  "contentDepth": "full",
+  "overview": "Understand the chemistry of phenol alongside alcohols, and further synthetic routes between them. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Form esters from alcohols/phenols and acyl chlorides.",
+    "Describe preparation and reactions of phenol.",
+    "Explain acidity differences among water, phenol, alcohols and carboxylic acids.",
+    "Explain activated ring substitution and 2,4,6 direction by –OH."
+  ],
+  "definitions": [
+    {
+      "term": "Phenol",
+      "definition": "A compound with –OH directly attached to an aromatic ring."
+    },
+    {
+      "term": "Phenoxide ion",
+      "definition": "C₆H₅O⁻, the conjugate base of phenol."
+    },
+    {
+      "term": "Acidity",
+      "definition": "Tendency to donate H⁺; stronger acids form more stable conjugate bases."
+    },
+    {
+      "term": "Diazonium salt",
+      "definition": "An aromatic compound containing the –N₂⁺ group, formed cold from a primary aromatic amine."
+    },
+    {
+      "term": "Azo compound",
+      "definition": "A coloured compound containing an –N=N– link between carbon groups."
+    },
+    {
+      "term": "Acylation",
+      "definition": "Introduction of an acyl group, often by reaction with an acyl chloride."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-alcohol-acylation",
+      "title": "Alcohol acylation",
+      "content": [
+        "Alcohols react with acyl chlorides at room temperature to form esters and HCl. This is faster and more complete than acid-catalysed esterification. Name the ester by the alcohol-derived alkyl group followed by the acid-derived carboxylate."
+      ],
+      "bullets": [
+        "Acyl chlorides fume in moist air because hydrolysis releases HCl.",
+        "Keep the carbonyl oxygen in the acyl fragment."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Acylation: RCOCl+R′OH→RCOOR′+HCl"
+        }
+      ]
+    },
+    {
+      "id": "02-making-and-reacting-phenol",
+      "title": "Making and reacting phenol",
+      "content": [
+        "Phenylamine reacts with HNO₂ generated from NaNO₂/dilute acid below 10 °C to form a diazonium salt; warming with water gives phenol. Phenol reacts with Na or NaOH to form phenoxide, with dilute HNO₃ at room temperature to give 2-/4-nitrophenol, and with Br₂(aq) to give 2,4,6-tribromophenol."
+      ],
+      "bullets": [
+        "Cold conditions stabilise the diazonium ion.",
+        "Bromination gives a white precipitate and decolourises bromine water."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-acidity",
+      "title": "Acidity",
+      "content": [
+        "Phenol is more acidic than ethanol because negative charge in phenoxide is delocalised into the ring; ethoxide has no comparable stabilisation. Phenol is less acidic than carboxylic acids, whose carboxylate charge is delocalised equally over two electronegative oxygen atoms."
+      ],
+      "bullets": [
+        "Phenol reacts with NaOH but not normally Na₂CO₃.",
+        "Use conjugate-base stability in explanations."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-activated-ring-and-azo-coupling",
+      "title": "Activated ring and azo coupling",
+      "content": [
+        "The –OH group donates electron density into the ring, activating it and directing substitution to 2,4,6 positions, so phenol nitrates/brominates under milder conditions than benzene. In alkaline solution, phenoxide couples with a diazonium ion to form an azo dye."
+      ],
+      "bullets": [
+        "Compare conditions explicitly with benzene.",
+        "Show the –N=N– linkage in an azo product."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Acylation",
+      "expression": "RCOCl+R′OH→RCOOR′+HCl"
+    },
+    {
+      "label": "Phenol acidity",
+      "expression": "C₆H₅OH+OH⁻→C₆H₅O⁻+H₂O"
+    },
+    {
+      "label": "Phenol bromination",
+      "expression": "C₆H₅OH+3Br₂→2,4,6-C₆H₂Br₃OH+3HBr"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Hydroxy compounds: revision route",
+    "type": "flow",
+    "nodes": [
+      "Alcohol acylation",
+      "Making and reacting phenol",
+      "Acidity",
+      "Activated ring and azo coupling"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Use conjugate-base structures when comparing acid strength.",
+    "Attach conditions to phenol reactions because they distinguish them from benzene reactions.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Saying phenol is a typical alcohol.",
+    "Using concentrated nitrating mixture as the only phenol nitration condition.",
+    "Claiming phenoxide charge stays only on oxygen."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why is phenol more acidic than ethanol?",
+      "answer": "Phenoxide is resonance-stabilised by delocalisation into the aromatic ring; ethoxide is not."
+    },
+    {
+      "question": "How is phenol made from phenylamine?",
+      "answer": "Diazotise below 10 °C with HNO₂, then warm the diazonium salt with water."
+    },
+    {
+      "question": "Why does phenol brominate without AlBr₃?",
+      "answer": "–OH donates electron density and activates the ring."
+    },
+    {
+      "question": "What links the rings in an azo dye?",
+      "answer": "An –N=N– group."
+    }
+  ],
+  "relatedTopics": [
+    "16",
+    "30",
+    "33",
+    "34"
+  ]
+}

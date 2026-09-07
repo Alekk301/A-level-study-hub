@@ -1,0 +1,327 @@
+{
+  "id": "2.1",
+  "subject": "9609",
+  "level": "AS",
+  "unitId": "AS",
+  "unitTitle": "AS Level",
+  "title": "Human resource management",
+  "contentDepth": "full",
+  "overview": "Human resource management makes sure the business has the right number of people with the right skills at the right time. Exam answers should connect workforce decisions to cost, flexibility, motivation, productivity, quality and the organisation's future needs.",
+  "syllabusPoints": [
+    "Explain the purpose and stages of workforce planning.",
+    "Analyse recruitment and selection, including job descriptions, person specifications and internal/external recruitment.",
+    "Explain employment contracts and flexible working arrangements.",
+    "Compare induction, on-the-job and off-the-job training.",
+    "Distinguish dismissal and redundancy and analyse equality and diversity.",
+    "Calculate and interpret labour turnover, absenteeism and labour productivity.",
+    "Explain the role of trade unions and collective bargaining."
+  ],
+  "definitions": [
+    {
+      "term": "Human resource management",
+      "definition": "Planning, recruiting, developing, rewarding and managing people so the organisation can meet its objectives."
+    },
+    {
+      "term": "Workforce planning",
+      "definition": "Forecasting the number and skills of employees required and preparing how to meet that need."
+    },
+    {
+      "term": "Job description",
+      "definition": "A document stating the job title, duties, responsibilities, working conditions and reporting relationships."
+    },
+    {
+      "term": "Person specification",
+      "definition": "A profile of the qualifications, skills, experience and personal qualities required from the successful applicant."
+    },
+    {
+      "term": "Induction training",
+      "definition": "An introduction for a new employee to the organisation, role, colleagues, procedures and safety requirements."
+    },
+    {
+      "term": "Labour turnover",
+      "definition": "The rate at which employees leave an organisation during a period."
+    },
+    {
+      "term": "Absenteeism",
+      "definition": "The proportion of scheduled working time lost because employees are absent."
+    },
+    {
+      "term": "Dismissal",
+      "definition": "Ending an employee's contract because of conduct, capability or another attributable reason, subject to law and procedure."
+    },
+    {
+      "term": "Redundancy",
+      "definition": "Ending employment because the job is no longer required, rather than because the employee is at fault."
+    },
+    {
+      "term": "Trade union",
+      "definition": "An organisation representing employees' interests in areas such as pay, conditions, rights and training."
+    },
+    {
+      "term": "Collective bargaining",
+      "definition": "Negotiation between an employer and employee representatives over terms and conditions of employment."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-workforce-planning",
+      "title": "Workforce planning",
+      "content": [
+        "Workforce planning compares forecast labour demand with current labour supply by number, location and skill. Demand depends on sales forecasts, production methods, technology, growth, labour productivity and budgets; supply depends on turnover, retirement, promotion, training and the external labour market."
+      ],
+      "bullets": [
+        "A shortage may be met through recruitment, overtime, training, redeployment, flexible contracts, automation or outsourcing.",
+        "A surplus may be managed through natural wastage, reduced overtime, redeployment, retraining, reduced hours, voluntary redundancy or compulsory redundancy.",
+        "Forecasts are uncertain, so plans should include alternative demand scenarios and critical-skill priorities."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-recruitment-documents-and-the-recruitment-process",
+      "title": "Recruitment documents and the recruitment process",
+      "content": [
+        "A clear job analysis leads to a job description and person specification. The vacancy can then be advertised, applications screened, candidates selected, references checked, an offer made and performance reviewed after appointment."
+      ],
+      "bullets": [
+        "The job description helps applicants understand the role and gives managers criteria for appraisal.",
+        "The person specification reduces subjective selection but should contain only criteria genuinely relevant to performance.",
+        "An application form gives comparable data; a CV may reveal more individuality but uses inconsistent formats.",
+        "Poor specification increases the chance of costly labour turnover and weak performance."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-internal-and-external-recruitment",
+      "title": "Internal and external recruitment",
+      "content": [
+        "Internal recruitment fills a vacancy from the existing workforce. It is quicker and cheaper, the candidate is known and promotion can motivate, but it limits new ideas, creates another vacancy and may cause rivalry. External recruitment widens the skill pool and brings fresh experience, but advertising, selection and induction cost more and performance is less certain."
+      ],
+      "bullets": [
+        "Use internal recruitment where company knowledge and continuity matter.",
+        "Use external recruitment where new expertise, greater diversity or organisational change is needed.",
+        "The appropriate method depends on urgency, seniority, skill scarcity, cost and the quality of current employees."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-selection-and-employment-contracts",
+      "title": "Selection and employment contracts",
+      "content": [
+        "Selection may combine interviews with skills, aptitude, personality, work-sample or group tests. Interviews allow follow-up and cultural assessment but can be biased and may predict performance poorly. Work samples often test job ability more directly, while references verify history rather than future potential."
+      ],
+      "bullets": [
+        "A contract normally states job title, start date, hours, pay, benefits, duties, holiday and notice.",
+        "Selection should use consistent criteria and more than one source of evidence.",
+        "Employers must follow relevant equality, data and employment laws; the precise legal rules vary by country."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-flexible-employment",
+      "title": "Flexible employment",
+      "content": [
+        "Full-time permanent staff can build commitment, continuity and firm-specific skill but create a stable labour cost. Part-time, temporary, flexitime, remote and zero-hours arrangements can match labour to demand and widen recruitment, yet may weaken security, communication and training."
+      ],
+      "bullets": [
+        "Part-time: useful for peak periods and employees needing shorter hours; more people may be needed for the same coverage.",
+        "Temporary/fixed-term: useful for projects or seasonal demand; commitment and continuity can be lower.",
+        "Flexitime/remote work: can improve retention and access to talent; coordination, supervision and cybersecurity need managing.",
+        "Zero-hours: highly flexible where demand is uncertain; income insecurity may reduce loyalty and availability."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-training-and-development",
+      "title": "Training and development",
+      "content": [
+        "Induction reduces early mistakes and helps a recruit settle. On-the-job training uses real equipment and is tailored and relatively cheap, but output and quality may suffer while training and poor habits can be passed on. Off-the-job training uses specialists away from normal work and may bring recognised skills, but fees, travel and lost working time raise cost."
+      ],
+      "bullets": [
+        "Training can raise skill → productivity and quality → lower unit cost/complaints → stronger competitiveness.",
+        "It can motivate by showing investment in employees and supporting promotion.",
+        "A trained employee may leave, so retention and opportunities matter alongside the course itself."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-dismissal-redundancy-equality-and-diversity",
+      "title": "Dismissal, redundancy, equality and diversity",
+      "content": [
+        "Dismissal concerns the individual; redundancy concerns the role. Both require fair, lawful procedures. Redundancy can reduce a structural labour surplus but brings payments, lost skills, survivor anxiety and reputation risk. Equality prevents irrelevant discrimination; diversity uses differences in background and perspective as an organisational resource."
+      ],
+      "bullets": [
+        "Redeployment, retraining, natural wastage and voluntary redundancy may reduce harm before compulsory redundancy.",
+        "Diverse teams may understand wider customers and challenge groupthink, but inclusion and fair processes are needed to convert diversity into performance.",
+        "Unfair treatment can cause legal cost, absenteeism, turnover and recruitment difficulty."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-measuring-and-improving-workforce-performance",
+      "title": "Measuring and improving workforce performance",
+      "content": [
+        "Labour productivity measures output relative to employees, labour turnover measures exits, and absenteeism measures lost working time. Trends and benchmarks are more informative than one number, and the data show symptoms rather than causes."
+      ],
+      "bullets": [
+        "Possible causes of poor performance include weak selection, inadequate training, low motivation, poor equipment, unsafe conditions, unclear objectives and ineffective management.",
+        "Responses include appraisal, coaching, training, job redesign, teamworking, better resources, fair rewards and management by objectives.",
+        "High turnover can bring new ideas and remove weak performers, but usually raises recruitment and training cost and loses experience."
+      ],
+      "examples": [
+        {
+          "id": "2.1-8-1",
+          "kind": "worked",
+          "label": "Interpreting labour data",
+          "content": "If 18 employees leave an average workforce of 120, labour turnover = 18 ÷ 120 × 100 = 15%. Do not conclude motivation is poor until comparing past years, competitors and the reasons people left."
+        }
+      ]
+    },
+    {
+      "id": "09-trade-unions-and-collective-bargaining",
+      "title": "Trade unions and collective bargaining",
+      "content": [
+        "Trade unions provide collective voice, negotiate pay and conditions, support members, offer training and may organise industrial action. Employers may gain an efficient communication channel and more orderly consultation, but fear higher labour costs or reduced management freedom."
+      ],
+      "bullets": [
+        "Union power rises when skills are scarce, membership is high, production is busy and disruption would be costly.",
+        "It falls when unemployment and replacement supply are high or the business can relocate or automate.",
+        "Constructive recognition and no-strike or dispute procedures may reduce disruption, but outcomes depend on trust and enforcement."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Labour productivity",
+      "expression": "Output in a period ÷ number of employees",
+      "note": "The denominator may instead be labour hours if specified."
+    },
+    {
+      "label": "Labour turnover",
+      "expression": "(Number of employees leaving in a period ÷ average number employed) × 100"
+    },
+    {
+      "label": "Absenteeism rate",
+      "expression": "(Working time lost through absence ÷ total possible working time) × 100"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Training methods",
+    "columns": [
+      "Method",
+      "Strength",
+      "Risk/limitation",
+      "Best fit"
+    ],
+    "rows": [
+      [
+        "Induction",
+        "Faster settling, safety and fewer early errors",
+        "Uses paid time before full output",
+        "All new recruits; especially safety-sensitive work"
+      ],
+      [
+        "On the job",
+        "Specific, practical and often lower cost",
+        "Trainer loses time; poor habits/errors possible",
+        "Role-specific skills and learning by doing"
+      ],
+      [
+        "Off the job",
+        "Specialist/recognised knowledge away from pressure",
+        "Fees and lost production; employee may leave",
+        "New theory, certification or skills unavailable internally"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Workforce planning cycle",
+    "type": "cycle",
+    "nodes": [
+      "Forecast business activity",
+      "Audit current people and skills",
+      "Identify shortage or surplus",
+      "Recruit, train, redeploy or reduce",
+      "Measure performance",
+      "Revise the forecast"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "External recruitment for a digital role",
+      "steps": [
+        "The candidate pool includes people with skills absent internally",
+        "The business can implement the new system more effectively",
+        "Productivity or customer experience improves",
+        "Revenue or unit cost performance may improve"
+      ],
+      "evaluation": "External selection is costly and uncertain; training a trusted internal employee may be better if time and learning ability are available."
+    },
+    {
+      "title": "Off-the-job training",
+      "steps": [
+        "Employees gain specialist skill",
+        "Errors and processing time fall",
+        "Output per employee and quality rise",
+        "Unit cost or complaints fall",
+        "Competitiveness may improve"
+      ],
+      "evaluation": "The return depends on course relevance and retention; there is little benefit if equipment or management is the true bottleneck."
+    },
+    {
+      "title": "Recognising a trade union",
+      "steps": [
+        "Managers negotiate with one representative body",
+        "Employee concerns are communicated consistently",
+        "Disputes may be resolved earlier",
+        "Disruption and turnover may fall"
+      ],
+      "evaluation": "Collective bargaining can also increase wage cost and slow change, especially where relations are confrontational."
+    }
+  ],
+  "examTips": [
+    "Explain the complete recruitment sequence; do not confuse the job description with the person specification.",
+    "For labour ratios, calculate accurately and then interpret the trend in context.",
+    "Training evaluation should compare total cost with the expected productivity, quality or retention benefit.",
+    "Employment-law answers should apply the principle given in the case rather than invent country-specific rules."
+  ],
+  "commonMistakes": [
+    "Calling redundancy a punishment for poor performance.",
+    "Assuming a high labour-turnover figure always proves bad management.",
+    "Claiming flexible contracts automatically motivate employees; insecurity can have the opposite effect.",
+    "Recommending external recruitment only because it provides 'more choice' without identifying the missing skill."
+  ],
+  "quickRecall": [
+    {
+      "question": "What comes first: job description or person specification?",
+      "answer": "Job analysis informs both; the job description states the role, while the person specification states the candidate requirements."
+    },
+    {
+      "question": "How is labour turnover calculated?",
+      "answer": "Employees leaving during the period divided by average employees, multiplied by 100."
+    },
+    {
+      "question": "What distinguishes redundancy from dismissal?",
+      "answer": "Redundancy occurs because the job is no longer required; dismissal is linked to the employee's conduct, capability or another attributable reason."
+    },
+    {
+      "question": "Why might internal recruitment motivate staff?",
+      "answer": "It provides visible promotion and career opportunities."
+    },
+    {
+      "question": "What is the main trade-off of off-the-job training?",
+      "answer": "Specialist or recognised learning versus course cost and lost working time."
+    },
+    {
+      "question": "What is collective bargaining?",
+      "answer": "Negotiation between an employer and worker representatives over employment terms and conditions."
+    }
+  ],
+  "relatedTopics": [
+    "1.3",
+    "1.5",
+    "2.2",
+    "2.3",
+    "4.1"
+  ]
+}

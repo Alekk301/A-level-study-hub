@@ -1,0 +1,154 @@
+{
+  "id": "31",
+  "subject": "9701",
+  "level": "A2",
+  "unitId": "A2",
+  "unitTitle": "A Level",
+  "title": "Halogen compounds",
+  "contentDepth": "full",
+  "overview": "Extend halogen compound chemistry to more complex mechanisms and reactivity patterns. This guide turns the current syllabus outcomes into a connected revision sequence: learn the ideas, practise the method, then use the recall cards and checklist to diagnose what still needs work.",
+  "syllabusPoints": [
+    "Prepare halogenoarenes by electrophilic substitution.",
+    "Explain the reactivity difference between halogenoalkanes and halogenoarenes.",
+    "Distinguish ring and side-chain halogenation conditions in arenes.",
+    "Apply structure and bonding to nucleophilic-substitution predictions."
+  ],
+  "definitions": [
+    {
+      "term": "Halogenoarene",
+      "definition": "A compound with halogen directly bonded to an aromatic-ring carbon."
+    },
+    {
+      "term": "Halogenoalkane",
+      "definition": "A compound with halogen bonded to an sp³ carbon of an alkyl group."
+    },
+    {
+      "term": "Halogen carrier",
+      "definition": "A Lewis-acid catalyst such as AlCl₃ or AlBr₃ that helps generate an electrophile."
+    },
+    {
+      "term": "Partial double-bond character",
+      "definition": "Bond strengthening caused by overlap/delocalisation that makes a bond shorter and harder to break."
+    },
+    {
+      "term": "Nucleophile",
+      "definition": "An electron-pair donor."
+    },
+    {
+      "term": "Hydrolysis",
+      "definition": "Bond cleavage involving water or aqueous hydroxide."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-making-halogenoarenes",
+      "title": "Making halogenoarenes",
+      "content": [
+        "React benzene or methylbenzene with Cl₂/AlCl₃ or Br₂/AlBr₃ to substitute a ring hydrogen. With methylbenzene, the alkyl group directs mainly to 2 and 4 positions. Write HCl or HBr as the other product."
+      ],
+      "bullets": [
+        "The catalyst is a halogen carrier, not UV light.",
+        "State positional isomers where the directing effect matters."
+      ],
+      "examples": [
+        {
+          "id": "01-key-relationship",
+          "kind": "formula",
+          "label": "Key relationship",
+          "content": "Ring chlorination: C₆H₆+Cl₂ —AlCl₃→ C₆H₅Cl+HCl"
+        }
+      ]
+    },
+    {
+      "id": "02-halogenoarene-bonding",
+      "title": "Halogenoarene bonding",
+      "content": [
+        "In chlorobenzene, a chlorine lone pair overlaps with the ring π system, giving the C–Cl bond partial double-bond character. The ring carbon is sp² and the bond is shorter/stronger than in chloroethane, so nucleophilic substitution/hydrolysis is much harder."
+      ],
+      "bullets": [
+        "Do not explain the lower reactivity only by bond polarity.",
+        "Delocalisation involves a chlorine lone pair and the aromatic system."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-ring-versus-side-chain",
+      "title": "Ring versus side chain",
+      "content": [
+        "Cl₂/AlCl₃ gives ring substitution; Cl₂ under UV radical conditions attacks an alkyl side chain. The substrate and conditions must both be read before predicting the product."
+      ],
+      "bullets": [
+        "A halogen on the side-chain carbon is a halogenoalkane functional group.",
+        "A halogen directly on the ring is a halogenoarene."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-comparative-reaction-reasoning",
+      "title": "Comparative reaction reasoning",
+      "content": [
+        "Halogenoalkanes can undergo nucleophilic substitution because their polar Cδ⁺–Xδ⁻ bond is accessible and breakable under suitable conditions. Halogenoarenes resist the same conditions because the aromatic carbon–halogen bond is strengthened and the planar electron-rich ring disfavors the usual pathway."
+      ],
+      "bullets": [
+        "Compare bond strength, hybridisation/environment and mechanism.",
+        "Use named example pairs such as chloroethane/chlorobenzene."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Ring chlorination",
+      "expression": "C₆H₆+Cl₂ —AlCl₃→ C₆H₅Cl+HCl"
+    },
+    {
+      "label": "Ring bromination",
+      "expression": "C₆H₆+Br₂ —AlBr₃→ C₆H₅Br+HBr"
+    }
+  ],
+  "comparisonTable": null,
+  "diagram": {
+    "title": "Halogen compounds: revision route",
+    "type": "flow",
+    "nodes": [
+      "Making halogenoarenes",
+      "Halogenoarene bonding",
+      "Ring versus side chain",
+      "Comparative reaction reasoning"
+    ]
+  },
+  "analysisChains": [],
+  "examTips": [
+    "Draw the bond to the ring explicitly before classifying the compound.",
+    "Use a comparison structure: feature in halogenoarene → consequence → lower reactivity.",
+    "Use precise chemical vocabulary, balanced equations and stated conditions; link every observation or trend to particles, bonding or equilibrium."
+  ],
+  "commonMistakes": [
+    "Calling benzyl chloride a halogenoarene.",
+    "Using UV light for electrophilic ring substitution.",
+    "Explaining chlorobenzene only through a less polar C–Cl bond."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why is chlorobenzene less reactive than chloroethane to nucleophiles?",
+      "answer": "Its C–Cl bond has partial double-bond character from delocalisation and is shorter/stronger on an sp² carbon."
+    },
+    {
+      "question": "What conditions chlorinate the aromatic ring?",
+      "answer": "Cl₂ with AlCl₃ as halogen carrier."
+    },
+    {
+      "question": "What conditions favour side-chain chlorination?",
+      "answer": "Cl₂ with UV light/free-radical conditions."
+    },
+    {
+      "question": "How is a halogenoarene identified?",
+      "answer": "The halogen is directly bonded to an aromatic-ring carbon."
+    }
+  ],
+  "relatedTopics": [
+    "15",
+    "30",
+    "36"
+  ]
+}
