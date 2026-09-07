@@ -7,12 +7,6 @@ progress, persistent highlights and a searchable past-paper catalogue into one r
 
 Created by **Đức Anh Lê (Alex Le)** · GitHub: [@Alekk301](https://github.com/Alekk301)
 
-## Product demo
-
-![A silent walkthrough of the CAIE A-Level Study Hub dashboard, note search, persistent highlights and past-paper browser](assets/study-hub-demo.gif)
-
-*A 23-second silent walkthrough. Captions are included in the recording.*
-
 ## Why I built it
 
 Our revision material was spread across different sites, folders and document names. I wanted one
@@ -162,3 +156,9 @@ International.
 Source code is licensed under the [MIT License](LICENSE). Original educational content is licensed
 under [CC BY-NC-SA 4.0](CONTENT-LICENSE.md). Cambridge materials, external PDFs, third-party
 trademarks and credited diagrams are excluded and remain under their respective owners' terms.
+
+## Product demo
+
+![A silent walkthrough of the CAIE A-Level Study Hub dashboard, note search, persistent highlights and past-paper browser](assets/study-hub-demo.gif)
+
+*A 23-second silent walkthrough. Captions are included in the recording.*
