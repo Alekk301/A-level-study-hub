@@ -120,7 +120,7 @@ Generated registry and search files should not be edited by hand.
 - [AI assistance and authorship](docs/AI-USAGE.md)
 - [Impact and user feedback](docs/IMPACT.md)
 - [Decision log](docs/DECISIONS.md)
-- [90-second demonstration script](docs/DEMO-SCRIPT.md)
+- [20-second website walkthrough](docs/DEMO-SCRIPT.md)
 - [Contributing guide](CONTRIBUTING.md)
 - [Privacy](PRIVACY.md)
 - [Security policy](SECURITY.md)

@@ -1,158 +1,84 @@
-# 90-second demonstration: clip-by-clip script
+# 20-second website walkthrough
 
-Record these nine clips separately and combine them in order. Each clip has one purpose, one screen
-action and one short voice-over. The target times total **90 seconds**.
+This video has one job: quickly prove that the website is real, polished and usable. The README
+already explains the problem, impact, architecture and AI assistance, so do not repeat them here.
 
-Before every take, start recording one second before speaking and wait one second after finishing.
-Those spare seconds make editing much easier.
+Record four short screen clips and combine them in this order. No talking-head introduction is
+needed. The target times total **20 seconds**.
 
-## Clip 1 — Introduction
+## Clip 1 — Home and subjects
 
-**Target:** 0:00–0:07 · 7 seconds
+**Target:** 0:00–0:05 · 5 seconds
 
-**File name:** `01-introduction.mp4`
-**Picture:** On camera, framed from your chest upward. Use a tidy background and look at the camera.
+**File name:** `01-home.mp4`
 
-**Voice-over**
-
-> Hi, I’m Đức Anh Lê, or Alex Le, and this is my CAIE A-Level Study Hub.
-
-**Editing:** Show the project name as a small title. Do not add a long animated introduction.
-
-## Clip 2 — The problem
-
-**Target:** 0:07–0:18 · 11 seconds
-
-**File name:** `02-problem.mp4`
-**Picture:** Open the home page. Slowly move across the four subject cards.
+**Screen action:** Begin on the home page. Move the cursor slowly across the four subject cards,
+then show the progress and recent-study area.
 
 **Voice-over**
 
-> I built it because our revision materials were spread across different sites and folders. I wanted one free place connecting syllabus topics, notes, and past-paper practice.
+> This is the CAIE A-Level Study Hub, covering four subjects in one revision dashboard.
 
-**Editing:** Cut directly from your face to the website when you say “revision materials.”
+**Editing:** Add a small title containing `CAIE A-Level Study Hub` and `github.com/Alekk301`.
 
-## Clip 3 — Product overview
+## Clip 2 — Search and open a note
 
-**Target:** 0:18–0:28 · 10 seconds
+**Target:** 0:05–0:10 · 5 seconds
 
-**File name:** `03-overview.mp4`
-**Picture:** Show the dashboard, progress indicators, recent topics and saved area. Scroll only if
-needed.
+**File name:** `02-search-notes.mp4`
 
-**Voice-over**
-
-> The hub covers four subjects and 153 syllabus topics. Students can search notes, track progress, save topics, and continue where they stopped.
-
-**Editing:** Keep the cursor still while each relevant area is visible.
-
-## Clip 4 — Search workflow
-
-**Target:** 0:28–0:36 · 8 seconds
-
-**File name:** `04-search.mp4`
-**Picture:** Press `Ctrl + K`, type a specific concept such as `hashing`, and open the matching
-Computer Science topic.
+**Screen action:** Press `Ctrl + K`, type `hashing`, and select the Computer Science result. End
+with the structured note visible.
 
 **Voice-over**
 
-> Search loads the generated note index only when opened, then sends the student directly to the matching topic.
+> Students can search the notes and move directly to the exact topic they need.
 
-**Editing:** Remove waiting time between typing and selecting the result.
+**Editing:** Remove any loading pause. Make sure the search term and result can be read.
 
-## Clip 5 — Save a highlight
+## Clip 3 — Persistent highlight
 
-**Target:** 0:36–0:47 · 11 seconds
+**Target:** 0:10–0:15 · 5 seconds
 
-**File name:** `05-save-highlight.mp4`
-**Picture:** On the topic page, select one useful sentence and click **Highlight**. Briefly show it
-marked in the note.
+**File name:** `03-highlight.mp4`
 
-**Voice-over**
-
-> This highlighting feature came from a classmate who wanted selected text to remain on the next visit. The app saves each highlight in versioned browser state.
-
-**Editing:** Zoom in enough that the selected sentence and Highlight button are readable.
-
-## Clip 6 — Prove persistence
-
-**Target:** 0:47–0:54 · 7 seconds
-
-**File name:** `06-highlight-return.mp4`
-**Picture:** Refresh the topic page. Show that the same text is still highlighted, then briefly open
-the saved-highlight list.
+**Screen action:** Start with a useful line already selected, click **Highlight**, refresh the page,
+and show that the highlighted line remains.
 
 **Voice-over**
 
-> After a refresh, it reconstructs the saved text range and lets the student review or remove it.
+> They can save highlights and return later without creating an account.
 
-**Editing:** The refresh is important evidence; do not replace it with a transition.
+**Editing:** Keep the real refresh visible because it proves that the highlight is stored.
 
-## Clip 7 — Past-paper browser
+## Clip 4 — Past-paper workflow
 
-**Target:** 0:54–1:06 · 12 seconds
+**Target:** 0:15–0:20 · 5 seconds
 
-**File name:** `07-papers.mp4`
-**Picture:** Open Past Papers, choose a subject and session, then show the paired Question Paper and
-Mark Scheme actions. Open one preview if it loads quickly.
+**File name:** `04-past-papers.mp4`
 
-**Voice-over**
-
-> The paper browser organises 919 question-paper and mark-scheme pairs. The files are not copied into my repository; an allowlisted worker validates approved external PDF requests before previewing them.
-
-**Editing:** If the preview takes time, record the loaded preview separately and cut directly to it.
-
-## Clip 8 — Engineering evidence
-
-**Target:** 1:06–1:17 · 11 seconds
-
-**File name:** `08-engineering.mp4`
-**Picture:** Show the public GitHub README, open `ARCHITECTURE.md`, then show the green GitHub Actions
-check. Prepare these tabs before recording.
+**Screen action:** Open Past Papers, apply one subject filter, and show a Question Paper beside its
+matching Mark Scheme. Finish on the paired actions rather than waiting for a PDF to load.
 
 **Voice-over**
 
-> Behind the interface, routes call React views, views load structured JSON notes, and generated indexes power search. Automated checks validate content, saved state, routes, and the paper proxy.
+> The paper browser pairs questions with mark schemes for quick practice.
 
-**Editing:** Use two quick cuts rather than moving rapidly around GitHub.
+**Editing:** End with the project name or GitHub username visible for one second.
 
-## Clip 9 — Honest AI disclosure and close
+## Complete voice-over
 
-**Target:** 1:17–1:30 · 13 seconds
+> This is the CAIE A-Level Study Hub, covering four subjects in one revision dashboard. Students can search the notes and move directly to the exact topic they need. They can save highlights and return later without creating an account. The paper browser pairs questions with mark schemes for quick practice.
 
-**File name:** `09-ai-disclosure.mp4`
-**Picture:** Return on camera. Alternatively, show `docs/AI-USAGE.md` and finish on the home page.
-
-**Voice-over**
-
-> I used ChatGPT, Codex and Claude extensively—about 60 to 70 percent was AI-assisted. My responsibility is the problem, product decisions, testing, feedback, verification, and learning to maintain what I publish.
-
-**Editing:** End on the project name and public GitHub username, `Alekk301`, for two seconds.
-
-## Recording setup
+## Recording checklist
 
 - Record at 1920×1080 and 30 frames per second.
-- Use OBS Studio for screen recording and Clipchamp for simple editing.
-- Close unrelated tabs, notifications, downloads and personal messages.
-- Increase browser zoom to 110–125% so labels remain readable on a phone.
-- Use headphones or a quiet room; a phone microphone close to you is better than a distant laptop
-  microphone.
-- Record every clip two or three times and keep the most natural take.
-- Do not speed up the voice. Shorten pauses or screen-loading moments instead.
-- Use simple cuts. Avoid distracting effects, background music or decorative transitions.
+- Set browser zoom to 110–125% so the interface remains readable.
+- Close notifications, personal tabs, downloads and browser bookmarks.
+- Prepare every destination before recording so no clip contains waiting time.
+- Record each clip for seven or eight seconds, then trim it to five seconds.
+- Use simple cuts without transitions or background music.
+- Add captions because admissions staff may watch without sound.
+- If 20 seconds feels rushed, use 22–25 seconds instead of speeding up the narration.
 
-## Final review
-
-Before exporting, confirm:
-
-- the complete video is between 85 and 100 seconds;
-- your name, project name and GitHub username are readable;
-- the saved highlight is visibly present after a real refresh;
-- no private browser information appears;
-- the AI disclosure is included without rushing;
-- captions match what you actually say; and
-- every technical statement is something you can explain in follow-up questions.
-
-Do not memorise every word. Practise until the ideas are yours, then speak naturally. If a sentence
-describes code you cannot yet explain, complete the relevant stage in
-[LEARNING-GUIDE.md](LEARNING-GUIDE.md) before recording it.
+Use OBS Studio to capture the screen and Clipchamp to arrange, trim and caption the four clips.
