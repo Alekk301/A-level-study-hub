@@ -249,3 +249,30 @@
 .pdf-viewer-frame iframe { position: relative; z-index: 1; display: block; width: 100%; height: 100%; border: 0; background: white; }
 .pdf-viewer-frame > p { position: absolute; inset: 50% auto auto 50%; width: min(28rem, calc(100% - 2rem)); margin: 0; transform: translate(-50%, -50%); color: var(--text-muted); text-align: center; font-size: 0.75rem; }
 .pdf-viewer-frame > p a { color: var(--blue); font-weight: 700; }
+
+.privacy-page {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-block: 1rem 3rem;
+}
+.privacy-page h1 {
+  max-width: 12ch;
+  margin: 0 0 1.5rem;
+  font-family: var(--font-editorial);
+  font-size: clamp(2.35rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+.privacy-page h2 {
+  margin: 2rem 0 0.55rem;
+  font-family: var(--font-editorial);
+  font-size: 1.45rem;
+}
+.privacy-page p:not(.eyebrow) {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.privacy-page a { color: var(--blue); text-decoration: underline; text-underline-offset: 0.18rem; }

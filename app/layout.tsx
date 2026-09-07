@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AppShell } from "@/src/components/layout/AppShell";
 import { Providers } from "@/app/providers";
-
-const googleAnalyticsId = "G-006M2N3KNY";
+import { GoogleAnalytics } from "@/src/components/analytics/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -25,25 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${googleAnalyticsId}');
-            `,
-          }}
-        />
-      </head>
       <body>
         <Providers>
           <AppShell>{children}</AppShell>
+          <GoogleAnalytics measurementId="G-006M2N3KNY" />
         </Providers>
       </body>
     </html>

@@ -1,18 +1,19 @@
 {
   "name": "caie-study-hub",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
   },
   "scripts": {
-    "install:ci": "bash scripts/install-ci.sh",
-    "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
-    "build": "bash scripts/build-verified.sh",
-    "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
+    "install:ci": "npm ci",
+    "dev": "vite",
+    "build": "vinext build",
+    "start": "vinext start",
     "preview": "npm run start",
     "test": "npm run build && node --test --test-concurrency=1 tests/*.test.mjs",
-    "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "check": "npm run data:validate && npm run lint && npm test",
     "data:build": "node scripts/rebuild-content-index.mjs",
     "data:validate": "node scripts/validate-data.mjs",
     "papers:import": "node scripts/import-paper-library.mjs"

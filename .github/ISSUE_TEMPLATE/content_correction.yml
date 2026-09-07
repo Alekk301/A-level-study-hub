@@ -1,0 +1,31 @@
+name: Content correction
+description: Suggest a sourced correction to a note or topic.
+title: "[Content]: "
+labels: ["content"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Subject and topic
+      placeholder: "9618 — 13.2 File organisation and access"
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current wording or problem
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Reliable source
+      description: Link or identify the syllabus, mark scheme, textbook section or other reliable source.
+    validations:
+      required: true

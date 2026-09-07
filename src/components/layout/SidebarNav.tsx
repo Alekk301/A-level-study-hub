@@ -8,6 +8,7 @@ import {
   FileText,
   Home,
   Moon,
+  ShieldCheck,
   Sun,
 } from "lucide-react";
 import {
@@ -123,6 +124,10 @@ export function SidebarNav() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
+        <Link className="privacy-link" href="/privacy" onClick={closeMobile}>
+          <ShieldCheck aria-hidden="true" />
+          <span>Privacy</span>
+        </Link>
         <p className="local-note">Progress stays on this device.</p>
       </SidebarFooter>
       <SidebarRail />

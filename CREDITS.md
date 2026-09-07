@@ -6,7 +6,11 @@ Topic numbering, unit names and level tags follow the public Cambridge Internati
 
 ## Note content
 
-The note text, explanations, worked examples, exam tips, common mistakes, comparison tables and Business analysis chains are original project content. The rebuild preserved the useful original notes from the uploaded vanilla-JavaScript project and converted them into structured JSON. It did not copy or expand text from commercial revision sites.
+The note text, explanations, worked examples, exam tips, common mistakes, comparison tables and
+Business analysis chains are project-authored, AI-assisted revision content. The rebuild preserved
+useful notes from the original vanilla-JavaScript project and converted them into structured JSON.
+It did not intentionally copy or expand text from commercial revision sites. AI assistance and the
+owner's review responsibilities are described in [docs/AI-USAGE.md](docs/AI-USAGE.md).
 
 ## External links
 
