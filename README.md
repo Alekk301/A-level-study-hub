@@ -7,6 +7,12 @@ progress, persistent highlights and a searchable past-paper catalogue into one r
 
 Created by **Đức Anh Lê (Alex Le)** · GitHub: [@Alekk301](https://github.com/Alekk301)
 
+## Product demo
+
+![A silent walkthrough of the CAIE A-Level Study Hub dashboard, note search, persistent highlights and past-paper browser](assets/study-hub-demo.gif)
+
+*A 23-second silent walkthrough. Captions are included in the recording.*
+
 ## Why I built it
 
 Our revision material was spread across different sites, folders and document names. I wanted one
@@ -120,7 +126,7 @@ Generated registry and search files should not be edited by hand.
 - [AI assistance and authorship](docs/AI-USAGE.md)
 - [Impact and user feedback](docs/IMPACT.md)
 - [Decision log](docs/DECISIONS.md)
-- [20-second website walkthrough](docs/DEMO-SCRIPT.md)
+- [Demo recording guide](docs/DEMO-SCRIPT.md)
 - [Contributing guide](CONTRIBUTING.md)
 - [Privacy](PRIVACY.md)
 - [Security policy](SECURITY.md)
