@@ -22,7 +22,7 @@ import { SyllabusChecklist } from "@/src/components/notes/SyllabusChecklist";
 import { TableOfContents, type TocItem } from "@/src/components/notes/TableOfContents";
 import { TopicHeader } from "@/src/components/notes/TopicHeader";
 import { TopicNavigation } from "@/src/components/notes/TopicNavigation";
-import { getTopicVisual, TopicVisual } from "@/src/components/notes/TopicVisual";
+import { getTopicVisuals, TopicVisuals } from "@/src/components/notes/TopicVisual";
 import { loadTopicNote } from "@/src/data/notes";
 import { getExamFocus } from "@/src/data/exam-focus";
 import { getTopic, getTopicNeighbours } from "@/src/data/subjects";
@@ -53,7 +53,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
   const note = loadState.key === lookupKey ? loadState.note : null;
   const error = loadState.key === lookupKey && loadState.error;
   const recordOpened = study.recordOpened;
-  const topicVisual = getTopicVisual(subjectCode, topicId);
+  const topicVisuals = getTopicVisuals(subjectCode, topicId);
   const examFocus = getExamFocus(subjectCode, topicId);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       { id: "overview", label: "Overview" },
       ...(note.syllabusPoints.length ? [{ id: "syllabus", label: "Syllabus checklist" }] : []),
       ...(note.definitions.length ? [{ id: "definitions", label: "Key definitions" }] : []),
-      ...(topicVisual ? [{ id: "visual-explainer", label: topicVisual.title }] : []),
+      ...(topicVisuals.length ? [{ id: "visual-explainers", label: topicVisuals.length > 1 ? "Visual models" : topicVisuals[0].title }] : []),
       ...(note.diagram ? [{ id: "diagram", label: note.diagram.title }] : []),
       { id: "complete-notes", label: "Complete exam notes" },
       ...note.sections.map((section) => ({ id: section.id, label: section.title })),
@@ -89,7 +89,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
       ...(note.quickRecall.length ? [{ id: "quick-recall", label: "Quick recall" }] : []),
       ...(note.relatedTopics.length ? [{ id: "related-topics", label: "Related topics" }] : []),
     ];
-  }, [note, topicVisual]);
+  }, [note, topicVisuals]);
 
   if (!lookup) {
     return (
@@ -147,7 +147,7 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
             <Overview text={note.overview} />
             <SyllabusChecklist points={note.syllabusPoints} topicKey={lookup.key} />
             <Definitions definitions={note.definitions} />
-            <TopicVisual visual={topicVisual} />
+            <TopicVisuals visuals={topicVisuals} />
             <ConceptDiagramBlock diagram={note.diagram} />
             <div className="core-content complete-notes" id="complete-notes">
               <div className="complete-notes__heading">

@@ -125,8 +125,8 @@ test("offers persistent highlighting around the complete note content", async ()
   assert.match(html, /still be marked when you return on this device/);
 });
 
-test("renders curated, accessible visual explainers across every A2 subject", async () => {
-  const { getTopicVisual, TopicVisual, topicVisualCatalog } = await vite.ssrLoadModule(
+test("renders curated, accessible visual explainers across every subject and Business topic", async () => {
+  const { getTopicVisual, getTopicVisuals, TopicVisual, TopicVisuals, topicVisualCatalog } = await vite.ssrLoadModule(
     "/src/components/notes/TopicVisual.tsx",
   );
   const subjects = new Set(topicVisualCatalog.map((visual) => visual.subject));
@@ -153,6 +153,35 @@ test("renders curated, accessible visual explainers across every A2 subject", as
   );
   assert.match(packetSwitching, /packet-switching-330\.gif/);
   assert.match(packetSwitching, /Oddbodz via Wikimedia Commons/);
+
+  const subjectsData = JSON.parse(await readFile(path.join(root, "src/data/subjects.json"), "utf8"));
+  const business = subjectsData.find((subject) => subject.code === "9609");
+  const businessTopicIds = business.units.flatMap((unit) => unit.topics.map((topic) => topic.id));
+  const visualBusinessTopics = new Set(
+    topicVisualCatalog.filter((visual) => visual.subject === "9609").map((visual) => visual.topic),
+  );
+  assert.deepEqual([...visualBusinessTopics].sort(), [...businessTopicIds].sort());
+
+  const motivationVisuals = getTopicVisuals("9609", "2.2");
+  assert.equal(motivationVisuals.length, 2);
+  const motivation = renderToStaticMarkup(
+    React.createElement(TopicVisuals, { visuals: motivationVisuals }),
+  );
+  assert.match(motivation, /Maslow&#x27;s hierarchy of needs/);
+  assert.match(motivation, /Herzberg&#x27;s two-factor theory/);
+  assert.match(motivation, /topic-visual__pyramid/);
+
+  const stakeholder = renderToStaticMarkup(
+    React.createElement(TopicVisual, { visual: getTopicVisual("9609", "1.5") }),
+  );
+  assert.match(stakeholder, /Power–interest stakeholder matrix/);
+  assert.match(stakeholder, /Stakeholder power/);
+
+  const breakEven = renderToStaticMarkup(
+    React.createElement(TopicVisual, { visual: getTopicVisual("9609", "5.4") }),
+  );
+  assert.match(breakEven, /Break-even chart/);
+  assert.match(breakEven, /total revenue/);
 });
 
 test("combines mark-scheme guidance with every A2 topic's complete notes", async () => {
