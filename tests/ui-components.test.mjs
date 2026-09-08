@@ -161,6 +161,17 @@ test("renders curated, accessible visual explainers across every subject and Bus
     topicVisualCatalog.filter((visual) => visual.subject === "9609").map((visual) => visual.topic),
   );
   assert.deepEqual([...visualBusinessTopics].sort(), [...businessTopicIds].sort());
+  const a2BusinessTopicIds = business.units.flatMap((unit) =>
+    unit.topics.filter((topic) => topic.levels.includes("A2")).map((topic) => topic.id),
+  );
+  assert.equal(a2BusinessTopicIds.length, 15);
+  for (const topicId of a2BusinessTopicIds) {
+    assert.ok(
+      getTopicVisuals("9609", topicId).length >= 2,
+      `A2 Business topic ${topicId} should have at least two visual models`,
+    );
+  }
+  assert.ok(getTopicVisuals("9609", "6.2").length >= 5);
 
   const motivationVisuals = getTopicVisuals("9609", "2.2");
   assert.equal(motivationVisuals.length, 2);

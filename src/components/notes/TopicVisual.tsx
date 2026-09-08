@@ -637,6 +637,184 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
       { label: "Strategic outcome", detail: "Test flexibility under optimistic and adverse scenarios." },
     ], examLink: "The cheapest source is not automatically best if repayment timing or loss of control conflicts with objectives.",
   },
+  {
+    subject: "9609", topic: "6.1", title: "How an external change reaches performance", layout: "flow",
+    description: "A high-mark answer follows an external change through the part of the business it affects before reaching a measurable objective.",
+    nodes: [
+      { label: "External change", detail: "Identify the economic, political, social, technological, legal or environmental event." },
+      { label: "Immediate transmission", detail: "Show the effect on demand, input prices, labour, finance, regulation or operations." },
+      { label: "Management response", detail: "Explain the decision, resource requirement and likely stakeholder reaction." },
+      { label: "Business outcome", detail: "Develop to cash flow, profit, competitiveness, risk, reputation or an objective." },
+    ], examLink: "Do not jump directly from an interest-rate or exchange-rate change to profit; show the intermediate cost, demand or cash-flow mechanism.",
+  },
+  {
+    subject: "9609", topic: "6.2", title: "Porter's five forces", layout: "tree",
+    description: "The five forces explain pressure on industry profitability and the ability of firms to defend prices, margins and market position.",
+    nodes: [
+      { label: "Industry profit potential", detail: "The combined strength of the five forces shapes competitive pressure and possible returns." },
+      { label: "Competitive rivalry", detail: "Number and strength of rivals, differentiation, growth and exit barriers." },
+      { label: "Threat of new entrants", detail: "Entry barriers such as capital, scale, brand, access, regulation and retaliation." },
+      { label: "Supplier power", detail: "Concentration, switching cost, uniqueness and ability to integrate forward." },
+      { label: "Buyer power", detail: "Customer concentration, information, switching cost and importance of the purchase." },
+      { label: "Threat of substitutes", detail: "Alternative solutions that cap price or shift demand when value changes." },
+    ], examLink: "Apply the force to this industry and explain its consequence for price, cost, investment or margin; naming five forces is not analysis.",
+  },
+  {
+    subject: "9609", topic: "6.2", title: "Force-field analysis", layout: "matrix",
+    description: "Force-field analysis compares pressures supporting a proposed change with pressures resisting it, then directs action toward the forces management can influence.",
+    nodes: [
+      { label: "Driving forces", detail: "Urgency, customer demand, cost pressure, technology, leadership or competitive threat." },
+      { label: "Strengthen drivers", detail: "Clarify the case, provide resources, build coalitions and show early evidence." },
+      { label: "Restraining forces", detail: "Fear, skill gaps, culture, cost, workload, weak trust or conflicting incentives." },
+      { label: "Reduce restraints", detail: "Consult, train, support, phase the change and redesign systems or rewards." },
+    ], examLink: "Weights are subjective: apply evidence, identify the strongest controllable force and explain why changing it improves implementation.",
+  },
+  {
+    subject: "9609", topic: "6.2", title: "Decision-tree calculation path", layout: "tree",
+    description: "Decision trees organise choices and uncertain outcomes so expected monetary value can be calculated before qualitative risk is considered.",
+    nodes: [
+      { label: "Decision node", detail: "Separate the strategic alternatives and record any option cost once." },
+      { label: "Chance outcomes", detail: "List mutually exclusive outcomes and probabilities that sum to one." },
+      { label: "Expected value", detail: "Multiply every payoff by its probability, then add along each option." },
+      { label: "Judgement", detail: "Compare EMV with risk, timing, finance, objectives and non-financial effects." },
+    ], examLink: "Expected value is a probability-weighted long-run average, not the outcome the business will definitely receive.",
+  },
+  {
+    subject: "9609", topic: "7.1", title: "Centralisation–decentralisation continuum", layout: "continuum",
+    description: "Decision authority can be retained near senior management or delegated closer to customers and operations; many firms use a deliberate mix.",
+    continuum: { start: "Head-office authority", label: "Location of decision power", end: "Local authority" },
+    nodes: [
+      { label: "Centralised", detail: "Consistent policy and senior control; slower response and less local ownership may result." },
+      { label: "Controlled delegation", detail: "Managers delegate tasks within clear limits, targets and reporting systems." },
+      { label: "Decentralised", detail: "Local managers adapt quickly and may be more motivated, but decisions can diverge." },
+      { label: "Contingent balance", detail: "Centralise strategic risk while decentralising customer or operational decisions where useful." },
+    ], examLink: "Judge the location of authority using business size, geographic spread, manager capability, need for consistency and speed.",
+  },
+  {
+    subject: "9609", topic: "7.2", title: "Communication-method fit matrix", layout: "matrix",
+    description: "The best channel depends on interaction and the need for a durable, detailed record rather than on speed alone.",
+    axes: {
+      horizontal: "Record and detail", horizontalLow: "Low record need", horizontalHigh: "High record need",
+      vertical: "Interaction", verticalLow: "Low interaction", verticalHigh: "High interaction",
+    },
+    nodes: [
+      { label: "Meeting or video call", detail: "Rich, immediate feedback for complex or sensitive discussion; costly and harder to document." },
+      { label: "Collaborative document", detail: "Detailed shared record with comments and revision, but access and overload must be managed." },
+      { label: "Brief announcement", detail: "Fast for a simple message to many people; limited feedback can hide misunderstanding." },
+      { label: "Report or formal email", detail: "Detailed permanent evidence; slower feedback and possible information overload." },
+    ], examLink: "Apply urgency, complexity, confidentiality, audience size, location, access and feedback rather than claiming one method is always best.",
+  },
+  {
+    subject: "9609", topic: "7.3", title: "Goleman's emotional-intelligence competencies", layout: "matrix",
+    description: "Emotional intelligence combines awareness and management of the leader's own emotions with awareness and management of relationships.",
+    nodes: [
+      { label: "Self-awareness", detail: "Recognise emotions, triggers, strengths and the effect of behaviour on others." },
+      { label: "Self-management", detail: "Regulate reactions, remain adaptable and act consistently under pressure." },
+      { label: "Social awareness", detail: "Use empathy and organisational awareness to understand needs and perspectives." },
+      { label: "Relationship management", detail: "Influence, communicate, coach, resolve conflict and build cooperation." },
+    ], examLink: "Link a named competency to behaviour and then to conflict, trust, retention, change or productivity; EI is not simply being friendly.",
+  },
+  {
+    subject: "9609", topic: "7.4", title: "Workforce-performance diagnosis", layout: "flow",
+    description: "HR strategy should address the evidenced cause of weak performance rather than applying a fashionable reward or training programme automatically.",
+    nodes: [
+      { label: "Read indicators", detail: "Use productivity, absence, turnover, defects, accidents, complaints and missed targets." },
+      { label: "Diagnose causes", detail: "Separate ability, motivation, equipment, workload, leadership and process problems." },
+      { label: "Choose a policy bundle", detail: "Combine recruitment, training, job design, rewards, participation or contract changes." },
+      { label: "Measure net effect", detail: "Track cost, capability, motivation, quality, retention and customer outcomes over time." },
+    ], examLink: "A pay rise cannot solve an equipment or skill problem; show why the selected HR action fits the diagnosis and its implementation limits.",
+  },
+  {
+    subject: "9609", topic: "8.1", title: "From market evidence to a sales forecast", layout: "flow",
+    description: "Forecasting combines historical patterns with current market evidence, then tests how uncertainty affects connected business decisions.",
+    nodes: [
+      { label: "Clean the data", detail: "Check the period, units, anomalies, comparability and representativeness." },
+      { label: "Identify patterns", detail: "Separate trend, seasonal variation, cycles and one-off movements." },
+      { label: "Adjust assumptions", detail: "Consider competitors, elasticity, promotion, income, technology and structural change." },
+      { label: "Plan and test", detail: "Link forecasts to capacity, inventory, staffing, finance and optimistic/adverse scenarios." },
+    ], examLink: "A mathematically precise forecast may still be inaccurate if the market changes; evaluate both method and decision consequence.",
+  },
+  {
+    subject: "9609", topic: "8.2", title: "Pricing-strategy spectrum", layout: "continuum",
+    description: "Pricing methods differ in the information they use and the position they create; the appropriate method changes with objective and market conditions.",
+    continuum: { start: "Volume and access", label: "Price-position emphasis", end: "Margin and exclusivity" },
+    nodes: [
+      { label: "Penetration", detail: "Low launch price builds trial or share but may sacrifice margin or create a low-price image." },
+      { label: "Competitive", detail: "Benchmarks rivals where products are comparable; can underplay cost and differentiation." },
+      { label: "Cost-plus", detail: "Protects a planned margin over cost but ignores willingness to pay and competitor response." },
+      { label: "Skimming", detail: "High launch price targets early adopters and recovers development cost if differentiation is credible." },
+    ], examLink: "Apply elasticity, capacity, unit contribution, brand, cost, objective and competitor reaction before recommending a price.",
+  },
+  {
+    subject: "9609", topic: "9.1", title: "Weighted location decision", layout: "matrix",
+    description: "Location choice balances measurable cost with qualitative reliability, capability and risk over the strategy's time horizon.",
+    nodes: [
+      { label: "Market and logistics", detail: "Customer access, delivery time, transport cost, infrastructure and supply-chain resilience." },
+      { label: "Labour and suppliers", detail: "Wage must be considered with productivity, skills, turnover, quality and supplier depth." },
+      { label: "Finance and scale", detail: "Land, tax, grants, exchange rates, capacity and economies or diseconomies." },
+      { label: "Risk and reputation", detail: "Political, legal, environmental, ethical, cultural and control implications." },
+    ], examLink: "Explain and justify the weights before multiplying scores; a precise total cannot remove poor data or strategic uncertainty.",
+  },
+  {
+    subject: "9609", topic: "9.2", title: "Quality investment chain", layout: "flow",
+    description: "Quality spending can create value through both a cost route and a revenue route, but only if implementation changes the process customers experience.",
+    nodes: [
+      { label: "Prevention and appraisal", detail: "Invest in design, training, supplier standards, process checks and measurement." },
+      { label: "Operational effect", detail: "Reduce defects, scrap, rework, delays, returns and warranty claims." },
+      { label: "Customer effect", detail: "Improve reliability, trust, repeat purchase, reputation and possible premium pricing." },
+      { label: "Net performance", detail: "Compare long-run cost and revenue gains with setup, disruption and cultural resistance." },
+    ], examLink: "Higher specification is not automatically better quality; evaluate whether the target customer values the improvement enough to justify its cost.",
+  },
+  {
+    subject: "9609", topic: "9.3", title: "Critical Path Analysis method", layout: "flow",
+    description: "CPA converts activity dependencies and duration estimates into a minimum project time and identifies where delay threatens completion.",
+    nodes: [
+      { label: "Build the network", detail: "Order activities by dependency and label durations clearly." },
+      { label: "Forward pass", detail: "Calculate earliest start and finish times from left to right." },
+      { label: "Backward pass", detail: "Calculate latest times from the required completion time." },
+      { label: "Find float and critical path", detail: "Zero total float identifies activities controlling minimum duration." },
+    ], examLink: "Show working and state the critical path; evaluate uncertain duration estimates, resource constraints and the need to update the network.",
+  },
+  {
+    subject: "9609", topic: "10.1", title: "Why profit and cash differ", layout: "flow",
+    description: "Profit uses accrual accounting, while liquidity depends on when cash is actually received and paid.",
+    nodes: [
+      { label: "Accounting profit", detail: "Revenue minus expenses includes credit transactions and non-cash charges." },
+      { label: "Working-capital timing", detail: "Inventory, receivables and payables delay or advance cash relative to profit." },
+      { label: "Investment and finance", detail: "Asset purchases, loan proceeds, repayments and dividends move cash differently." },
+      { label: "Cash position", detail: "A profitable growing firm can still lack liquidity if cash is committed too early." },
+    ], examLink: "Use the transaction timing in the case; depreciation reduces profit but is not itself a cash payment in that period.",
+  },
+  {
+    subject: "9609", topic: "10.2", title: "Ratio interpretation chain", layout: "flow",
+    description: "Calculation earns only part of the marks; interpretation connects a direction of change to a plausible cause, consequence and qualified judgement.",
+    nodes: [
+      { label: "Calculate", detail: "Use the correct formula, consistent figures and units." },
+      { label: "Compare", detail: "Use time trends, targets, competitors or industry norms on the same basis." },
+      { label: "Explain", detail: "Propose a contextual operational or financial cause and trace its consequence." },
+      { label: "Evaluate", detail: "Consider accounting policy, inflation, one-offs, window dressing and qualitative evidence." },
+    ], examLink: "Ratios diagnose symptoms but do not prove causes; avoid calling a figure good or bad without a valid benchmark and context.",
+  },
+  {
+    subject: "9609", topic: "10.3", title: "Investment-appraisal comparison", layout: "matrix",
+    description: "Each appraisal method answers a different question, so a recommendation should combine the calculations with risk, timing and strategic evidence.",
+    nodes: [
+      { label: "Payback", detail: "How quickly the initial cash outflow is recovered; simple liquidity and risk focus." },
+      { label: "ARR", detail: "Average annual accounting profit as a percentage of investment; familiar but ignores timing." },
+      { label: "NPV", detail: "Present value of future net cash flows less initial outlay; recognises time value of money." },
+      { label: "Qualitative judgement", detail: "Strategy, environmental effect, employee/customer impact, risk and forecast reliability." },
+    ], examLink: "Apply each decision rule correctly, then explain why one method or assumption matters most for this investment and objective.",
+  },
+  {
+    subject: "9609", topic: "10.4", title: "Finance-strategy trade-offs", layout: "matrix",
+    description: "Improving one financial objective can weaken another, so strategy must balance liquidity, profitability, risk, control and long-term capability.",
+    nodes: [
+      { label: "Protect liquidity", detail: "Hold cash, reduce inventory or tighten credit; resilience may rise while sales or returns fall." },
+      { label: "Raise profitability", detail: "Increase margin, productivity or asset use; cost cuts can damage capability and demand." },
+      { label: "Fund growth", detail: "Debt preserves control but raises fixed obligations; equity shares risk but dilutes ownership." },
+      { label: "Reward investors", detail: "Dividends may support confidence but reduce retained finance for future investment." },
+    ], examLink: "Judge the net long-term effect using cash timing, gearing, stakeholder conflict, implementation period and external uncertainty.",
+  },
 ];
 
 const visualLookup = new Map<string, TopicVisualSpec[]>();
