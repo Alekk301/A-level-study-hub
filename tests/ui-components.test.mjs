@@ -125,6 +125,49 @@ test("offers persistent highlighting around the complete note content", async ()
   assert.match(html, /still be marked when you return on this device/);
 });
 
+test("renders labelled, syntax-highlighted programming examples", async () => {
+  const { ExampleBlock } = await vite.ssrLoadModule(
+    "/src/components/notes/ExampleBlock.tsx",
+  );
+  const html = renderToStaticMarkup(
+    React.createElement(ExampleBlock, {
+      example: {
+        id: "binary-search-python",
+        kind: "code",
+        label: "Binary search implementation",
+        language: "python",
+        content: "def binary_search(values, target):\n    return -1",
+      },
+    }),
+  );
+
+  assert.match(html, /data-language="python"/);
+  assert.match(html, />Python</);
+  assert.match(html, /class="code-token code-token--keyword">def</);
+  assert.match(html, /<pre[^>]*><code/);
+});
+
+test("does not highlight Python operators as comments", async () => {
+  const { ExampleBlock } = await vite.ssrLoadModule(
+    "/src/components/notes/ExampleBlock.tsx",
+  );
+  const html = renderToStaticMarkup(
+    React.createElement(ExampleBlock, {
+      example: {
+        id: "python-operators",
+        kind: "code",
+        label: "Python operators",
+        language: "python",
+        content: "mid = total // 2\nrear = size % capacity\n# actual comment",
+      },
+    }),
+  );
+
+  assert.doesNotMatch(html, /code-token--comment">\/\/ 2/);
+  assert.doesNotMatch(html, /code-token--comment">% capacity/);
+  assert.match(html, /code-token--comment"># actual comment/);
+});
+
 test("renders curated, accessible visual explainers across every subject and Business topic", async () => {
   const { getTopicVisual, getTopicVisuals, TopicVisual, TopicVisuals, topicVisualCatalog } = await vite.ssrLoadModule(
     "/src/components/notes/TopicVisual.tsx",

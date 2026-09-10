@@ -48,15 +48,23 @@ export interface Definition {
 export type ExampleKind =
   | "example"
   | "worked"
+  | "code"
   | "pseudocode"
   | "formula"
   | "analysis";
+
+export type CodeLanguage =
+  | "python"
+  | "cambridge-pseudocode"
+  | "assembly"
+  | "prolog";
 
 export interface NoteExample {
   id: string;
   kind: ExampleKind;
   label: string;
   content: string;
+  language?: CodeLanguage;
 }
 
 export interface NoteSection {

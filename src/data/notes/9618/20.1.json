@@ -6,136 +6,289 @@
   "unitTitle": "A2 Level",
   "title": "Programming Paradigms",
   "contentDepth": "full",
-  "overview": "A programming paradigm is a general style of solving/programming a problem. Cambridge requires low-level, imperative/procedural, object-oriented and declarative approaches. At A2 you should be able to reason about addressing modes, modular procedural code, class relationships and declarative facts/rules/goals.",
+  "overview": "A programming paradigm is a general way of expressing solutions. Cambridge expects low-level, imperative/procedural, object-oriented and declarative approaches. You should recognise each style, write appropriate code, select a paradigm for a problem and explain the decision. This chapter uses Python for procedural and OOP examples, assembly-like instructions for addressing modes and Prolog-style facts, rules and goals for declarative programming.",
   "syllabusPoints": [
-    "Explain the idea of a programming paradigm.",
-    "Use low-level concepts including immediate, direct, indirect, indexed and relative addressing.",
-    "Use imperative/procedural programming concepts and routines.",
-    "Use OOP concepts including classes, objects, encapsulation, inheritance, polymorphism and aggregation/containment.",
-    "Use declarative facts, rules and goals."
+    "Explain what a programming paradigm is and distinguish low-level, imperative, object-oriented and declarative styles.",
+    "Write low-level instructions using immediate, direct, indirect, indexed and relative addressing modes.",
+    "Write structured procedural code using variables, constructs, procedures/functions and parameters.",
+    "Design classes and write OOP code using instances, attributes, methods, constructors, encapsulation, inheritance, polymorphism and containment.",
+    "Write declarative facts and rules and use them to satisfy a goal."
   ],
   "definitions": [
     {
       "term": "Programming paradigm",
-      "definition": "A broad approach/style for representing computation and organising programs."
+      "definition": "A broad model for representing computation and organising a program's data, control and relationships."
     },
     {
       "term": "Imperative programming",
-      "definition": "Programs expressed as commands that update state in a defined control flow."
+      "definition": "A style in which statements change program state through an explicit sequence of instructions."
+    },
+    {
+      "term": "Class",
+      "definition": "A definition that groups the attributes and methods shared by a type of object."
+    },
+    {
+      "term": "Object / instance",
+      "definition": "A particular value created from a class, with its own attribute state."
     },
     {
       "term": "Encapsulation",
-      "definition": "Controlling access to an object's internal state through a public interface."
+      "definition": "Keeping an object's representation behind a controlled public interface so methods can protect its invariants."
     },
     {
       "term": "Inheritance",
-      "definition": "A class deriving attributes/methods from another class; an is-a relationship."
+      "definition": "Defining a subclass from an existing superclass so it inherits and may extend or override behaviour; it models an is-a relationship."
     },
     {
       "term": "Polymorphism",
-      "definition": "The same method/interface producing class-specific behaviour."
+      "definition": "Using the same operation through a common interface while different object types provide their own implementations."
     },
     {
-      "term": "Aggregation",
-      "definition": "A has-a relationship where an object contains/references objects of another class."
+      "term": "Containment / aggregation",
+      "definition": "A has-a relationship in which one object stores or uses another object as part of its state."
     },
     {
       "term": "Declarative programming",
-      "definition": "Specifying facts/rules or a desired relationship rather than an explicit step-by-step algorithm."
+      "definition": "A style that states facts, rules and a desired goal while the language system determines how to search for a solution."
     }
   ],
   "sections": [
     {
-      "id": "01-low-level-programming-and-addressing",
-      "title": "Low-level programming and addressing",
+      "id": "01-low-level-and-addressing",
+      "title": "Low-level programming: locate the operand correctly",
       "content": [
-        "Immediate addressing places a literal value in the instruction. Direct addressing gives the memory address of the operand. Indirect addressing points to a location that contains the operand address. Indexed addressing combines a base address with an index. Relative addressing forms an address relative to a reference such as the program counter."
+        "An addressing mode tells the processor how to obtain an operand. In immediate addressing, the instruction contains the literal value. Direct addressing contains the memory address of the value. Indirect addressing points to a memory cell that contains the value's address.",
+        "Indexed addressing adds an index to a base address, making it suitable for array elements. Relative addressing adds an offset to a reference address such as the program counter, making branches relocatable. The exact assembly syntax varies by processor, so exam answers must follow the instruction set supplied in the question."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Immediate: operand is in the instruction; no memory read is needed to fetch that operand.",
+        "Direct: instruction field is the address of the operand.",
+        "Indirect: instruction field leads to a location holding another address.",
+        "Indexed: effective address = base address + index value.",
+        "Relative: effective address = reference address + signed displacement."
+      ],
+      "examples": [
+        {
+          "id": "01-addressing-modes",
+          "kind": "code",
+          "label": "Addressing patterns (generic relative-address notation)",
+          "language": "assembly",
+          "content": "LDM #25              // immediate: load the literal value 25\nLDD 120              // direct: load the value stored at address 120\nLDI 120              // indirect: address 120 stores the operand's address\nLDX 200              // indexed: load from address 200 + index register\nLOAD R1, [PC + 6]    // relative: load from program counter + signed offset\n// The final line uses generic register notation; in an exam, use the supplied instruction set."
+        }
+      ]
     },
     {
       "id": "02-imperative-procedural-programming",
-      "title": "Imperative/procedural programming",
+      "title": "Imperative programming: make state changes visible",
       "content": [
-        "Variables hold state, and sequence, selection and iteration determine control flow. Procedures/functions decompose the solution, use parameters and local variables, and improve reuse/testing."
+        "Imperative code gives an ordered procedure: assign state, select branches and repeat operations. Procedures and functions split a problem into cohesive units; parameters expose their inputs and return values expose their outputs, reducing dependence on global variables.",
+        "Python passes references to objects. Reassigning a parameter does not rebind the caller's variable, while mutating a list through the received reference changes that shared list. This is more precise than saying all mutable values are simply passed by reference. For Cambridge theory questions, still explain pass-by-value and pass-by-reference using the definitions requested by the question."
       ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "03-classes-and-objects",
-      "title": "Classes and objects",
-      "content": [
-        "A class is a blueprint containing attributes and methods; an object/instance has its own state. Private attributes protect invariants, while getters/setters or other public methods provide controlled interaction."
+      "bullets": [
+        "Use local variables unless state genuinely belongs to the whole program.",
+        "A function returns a value; a procedure performs a task without using a return value in the calling expression.",
+        "Document preconditions and choose meaningful parameters rather than reading hidden globals."
       ],
-      "bullets": [],
       "examples": [
         {
-          "id": "03-example-1",
-          "kind": "pseudocode",
-          "label": "Cambridge-style pseudocode",
-          "content": "CLASS BankAccount\n  PRIVATE Balance : REAL\n  PUBLIC PROCEDURE Deposit(Amount : REAL)\n    Balance <- Balance + Amount\n  ENDPROCEDURE\nENDCLASS"
+          "id": "02-python-procedural",
+          "kind": "code",
+          "label": "A focused function with explicit inputs and output",
+          "language": "python",
+          "content": "def mean_valid_mark(marks):\n    valid_marks = []\n    for mark in marks:\n        if 0 <= mark <= 100:\n            valid_marks.append(mark)\n\n    if len(valid_marks) == 0:\n        return None\n    return sum(valid_marks) / len(valid_marks)"
+        },
+        {
+          "id": "02-python-object-sharing",
+          "kind": "code",
+          "label": "Rebinding versus mutating an object",
+          "language": "python",
+          "content": "def rebind(number):\n    number = 100  # caller's name is unchanged\n\ndef mutate(values):\n    values.append(100)  # shared list object changes\n\nscore = 10\nmarks = [60, 70]\nrebind(score)\nmutate(marks)\nprint(score)  # 10\nprint(marks)  # [60, 70, 100]"
         }
       ]
     },
     {
-      "id": "04-inheritance-polymorphism-aggregation",
-      "title": "Inheritance, polymorphism, aggregation",
+      "id": "03-classes-objects-and-encapsulation",
+      "title": "Classes and encapsulation: protect valid object state",
       "content": [
-        "Inheritance models is-a and can reuse/extend behaviour. Polymorphism allows a common method call to behave differently for subclasses. Aggregation/containment models has-a—for example a Team object contains Player objects. Use the relationship that matches the real model rather than forcing inheritance."
+        "A class defines attributes and methods; each instance has its own attribute values. The constructor establishes a valid initial state. Encapsulation is not merely putting variables inside a class—it limits uncontrolled access and routes changes through methods that can validate them.",
+        "A leading underscore in Python is a privacy convention rather than enforced access control. Double leading underscores trigger name mangling but are still not a security boundary. In exam explanations, focus on controlled access, validation and reduced coupling rather than claiming Python makes attributes completely inaccessible."
       ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "05-declarative-programming",
-      "title": "Declarative programming",
-      "content": [
-        "Facts record known relationships, rules derive new relationships and goals/queries ask what can be proven. The language/runtime chooses the search/evaluation steps rather than the programmer explicitly controlling each step."
+      "bullets": [
+        "Instance methods receive self, the object on which the method was called.",
+        "Getters return controlled views of state; setters can validate before changing it.",
+        "Keep related behaviour with the data whose validity it protects."
       ],
-      "bullets": [],
       "examples": [
         {
-          "id": "05-example-1",
-          "kind": "example",
-          "label": "Worked example",
-          "content": "parent(alex,bob).\nparent(bob,carol).\ngrandparent(X,Z) :- parent(X,Y), parent(Y,Z)."
+          "id": "03-python-encapsulation",
+          "kind": "code",
+          "label": "Class with a protected invariant",
+          "language": "python",
+          "content": "class BankAccount:\n    def __init__(self, owner, opening_balance=0.0):\n        if opening_balance < 0:\n            raise ValueError(\"opening balance cannot be negative\")\n        self._owner = owner\n        self._balance = opening_balance\n\n    def get_balance(self):\n        return self._balance\n\n    def deposit(self, amount):\n        if amount <= 0:\n            raise ValueError(\"deposit must be positive\")\n        self._balance += amount\n\naccount = BankAccount(\"Alex\", 50.0)\naccount.deposit(25.0)\nprint(account.get_balance())  # 75.0"
         }
       ]
     },
     {
-      "id": "06-choosing-a-paradigm",
-      "title": "Choosing a paradigm",
+      "id": "04-inheritance-and-polymorphism",
+      "title": "Inheritance and polymorphism: one interface, specialised behaviour",
       "content": [
-        "Low-level code gives hardware control but low portability. Procedural code suits clear algorithms. OOP suits systems with interacting entities/state and reuse. Declarative approaches suit relation/rule-based problems. Real applications can combine paradigms."
+        "Inheritance is appropriate when every subclass object is genuinely a kind of superclass object. The subclass inherits available behaviour, can add new features and can override a method. super() calls superclass behaviour without duplicating it.",
+        "Polymorphism is demonstrated when code calls the same method on different object types and each object supplies suitable behaviour. Merely having two unrelated methods with the same name is weak evidence; a shared superclass or agreed interface makes the substitutable relationship clear."
+      ],
+      "bullets": [
+        "Use inheritance for is-a relationships, not simply to reuse a convenient method.",
+        "An override keeps the method role compatible while changing its implementation.",
+        "The caller should not need a long type-checking IF chain to select subclass behaviour."
+      ],
+      "examples": [
+        {
+          "id": "04-python-polymorphism",
+          "kind": "code",
+          "label": "Inheritance with an overridden method",
+          "language": "python",
+          "content": "class Notification:\n    def send(self, message):\n        raise NotImplementedError\n\nclass EmailNotification(Notification):\n    def send(self, message):\n        return f\"Email: {message}\"\n\nclass TextNotification(Notification):\n    def send(self, message):\n        return f\"SMS: {message}\"\n\ndef send_alert(channel, message):\n    print(channel.send(message))\n\nsend_alert(EmailNotification(), \"Exam at 09:00\")\nsend_alert(TextNotification(), \"Exam at 09:00\")"
+        }
+      ]
+    },
+    {
+      "id": "05-containment-aggregation",
+      "title": "Containment: model has-a relationships",
+      "content": [
+        "Containment or aggregation means one object refers to other objects. A Course has Students, but a Course is not a Student, so inheritance would misrepresent the model. The contained objects can be supplied from outside or created by the containing object depending on who should control their lifetime.",
+        "Containment favours composition: behaviour can be changed by supplying a different collaborator instead of creating a deep inheritance hierarchy. In an exam, name the relationship and show the contained object as an attribute."
+      ],
+      "bullets": [],
+      "examples": [
+        {
+          "id": "05-python-containment",
+          "kind": "code",
+          "label": "A course contains student objects",
+          "language": "python",
+          "content": "class Student:\n    def __init__(self, name):\n        self.name = name\n\nclass Course:\n    def __init__(self, title):\n        self.title = title\n        self.students = []\n\n    def enrol(self, student):\n        self.students.append(student)\n\ncourse = Course(\"Computer Science\")\ncourse.enrol(Student(\"Mina\"))"
+        }
+      ]
+    },
+    {
+      "id": "06-designing-classes-from-a-problem",
+      "title": "Turn a problem statement into classes",
+      "content": [
+        "Extract candidate entities from nouns, responsibilities from verbs and relationships from phrases such as is a or contains. Remove classes that are only single values, then assign each responsibility to the class that owns the required data.",
+        "For each class, specify attributes, constructor parameters and public methods before coding. Decide which state must remain encapsulated, where validation belongs and whether a relationship is inheritance or containment. This design step prevents a collection of classes with duplicated or misplaced behaviour."
+      ],
+      "bullets": [
+        "Book has title and loan status; it can be borrowed and returned.",
+        "Member has an identifier and contains a collection of current loans.",
+        "Library contains books and members and coordinates searching and lending.",
+        "Use test cases for valid construction, invalid state and interactions between objects."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-declarative-programming",
+      "title": "Declarative programming: facts, rules and goals",
+      "content": [
+        "A fact states a relationship that is known to be true. A rule states how a new relationship can be inferred from existing ones. A goal or query asks whether a relationship can be satisfied and may produce values for variables.",
+        "In common logic-programming notation, lowercase identifiers are constants and uppercase identifiers are variables. :- means is true if, a comma means AND, and every fact or rule ends with a full stop. The engine searches and backtracks; the programmer does not write an explicit loop for every possible match."
+      ],
+      "bullets": [
+        "Write the most specific base facts first.",
+        "Every variable needed in the rule result must be connected to evidence in its conditions.",
+        "Test both a goal that succeeds and a goal that must fail."
+      ],
+      "examples": [
+        {
+          "id": "07-prolog-family-rule",
+          "kind": "code",
+          "label": "Facts, a rule and two goals",
+          "language": "prolog",
+          "content": "parent(alex, bao).\nparent(bao, chi).\nparent(bao, dan).\n\ngrandparent(X, Z) :- parent(X, Y), parent(Y, Z).\n\n% Goal: grandparent(alex, chi). succeeds\n% Goal: grandparent(chi, alex). fails"
+        }
+      ]
+    },
+    {
+      "id": "08-choosing-a-paradigm",
+      "title": "Choose by the problem, not by fashion",
+      "content": [
+        "Low-level programming offers precise hardware control and small overhead but is difficult to write, debug and move between processor architectures. Procedural programming suits algorithmic transformations with a clear sequence. OOP suits systems built from stateful interacting entities. Declarative programming suits relationship, constraint and rule-based problems.",
+        "Real systems can combine paradigms. A Python application may use procedural algorithms inside object methods and query a declarative rule system. A strong justification links a feature of the problem to a feature of the paradigm and then states a relevant drawback."
       ],
       "bullets": [],
       "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
+  "comparisonTable": {
+    "title": "Paradigm selection",
+    "columns": [
+      "Paradigm",
+      "Best fit",
+      "Main trade-off"
+    ],
+    "rows": [
+      [
+        "Low-level",
+        "Processor control and hardware-specific operations",
+        "Low portability and difficult maintenance"
+      ],
+      [
+        "Imperative / procedural",
+        "Clear algorithms and state transformations",
+        "Shared mutable state can create coupling"
+      ],
+      [
+        "Object-oriented",
+        "Interacting entities with state and behaviour",
+        "Poor class design can add unnecessary complexity"
+      ],
+      [
+        "Declarative",
+        "Facts, relationships, rules and constraints",
+        "Less direct control over evaluation strategy"
+      ]
+    ]
+  },
   "diagram": null,
   "analysisChains": [],
   "examTips": [
-    "Inheritance=is-a; aggregation=has-a.",
-    "Encapsulation is controlled access to internal state, not merely 'putting code in a class'.",
-    "For addressing modes, say where the actual operand/value is obtained."
+    "For an addressing mode, state exactly where the operand or its address comes from.",
+    "Use inheritance for is-a and containment for has-a; show the relationship in code, not only in a definition.",
+    "To demonstrate polymorphism, call one method through a common interface on two different subclasses.",
+    "When designing classes, justify attributes and methods from the problem's responsibilities.",
+    "For declarative code, distinguish constants from variables and end every fact or rule correctly."
   ],
   "commonMistakes": [
-    "Confusing class and object.",
-    "Calling aggregation inheritance.",
-    "Saying declarative programming has no logic.",
-    "Confusing immediate and direct addressing."
+    "Confusing immediate data with a direct memory address.",
+    "Calling Python's leading underscore enforced privacy rather than a convention.",
+    "Describing encapsulation as merely grouping code into a class.",
+    "Using inheritance for a has-a relationship.",
+    "Claiming overridden methods are polymorphic without showing a common calling interface.",
+    "Writing a declarative rule with an unconnected result variable or missing full stop."
   ],
   "quickRecall": [
-    "imperative=commands/state",
-    "class->objects",
-    "inheritance=is-a",
-    "aggregation=has-a",
-    "polymorphism=same interface different behaviour",
-    "declarative=facts+rules+goals"
+    {
+      "question": "What is immediate addressing?",
+      "answer": "The instruction contains the literal operand value itself."
+    },
+    {
+      "question": "How do direct and indirect addressing differ?",
+      "answer": "Direct contains the operand's address; indirect points to a location that stores the operand's address."
+    },
+    {
+      "question": "What does encapsulation protect?",
+      "answer": "It protects an object's representation and invariants by controlling access through a public interface."
+    },
+    {
+      "question": "How do inheritance and containment differ?",
+      "answer": "Inheritance models is-a; containment or aggregation models has-a."
+    },
+    {
+      "question": "What proves polymorphism in code?",
+      "answer": "The same operation is called through a common interface and different object types provide different implementations."
+    },
+    {
+      "question": "What are the three building blocks of declarative logic code?",
+      "answer": "Facts, rules and goals or queries."
+    }
   ],
   "relatedTopics": [
     "4.2",

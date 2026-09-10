@@ -6,169 +6,335 @@
   "unitTitle": "A2 Level",
   "title": "Algorithms",
   "contentDepth": "full",
-  "overview": "A2 algorithms brings together searching, sorting, ADTs and efficiency. You need to write/trace linear search, binary search, insertion sort and bubble sort; manipulate stacks, queues, linked lists and binary trees; explain graphs and dictionaries; and compare time/space complexity using Big O.",
+  "overview": "This chapter is the practical core of Paper 4. You must be able to write and trace linear search, binary search, bubble sort and insertion sort; implement stack, queue, linked-list and binary-search-tree operations; explain where graphs and dictionaries are suitable; and compare solutions using both time and space complexity. The examples below use executable Python and preserve the conditions and boundary checks that commonly earn marks.",
   "syllabusPoints": [
-    "Write/trace linear and binary search and state the precondition for binary search.",
-    "Write/trace insertion and bubble sort and analyse how input order/size affect performance.",
-    "Find, insert and delete items in specified ADTs such as stacks, queues, linked lists and binary trees.",
-    "Explain graphs/dictionaries and how ADTs may be implemented from built-in types or other ADTs.",
-    "Compare algorithms using time and space efficiency and Big O notation."
+    "Write and trace linear and binary searches, including the sorted-data requirement and changing search boundaries.",
+    "Write and trace bubble and insertion sorts, and explain how data size and initial order affect performance.",
+    "Find and insert items in linked lists and binary trees; insert and delete items in stacks, queues and linked lists.",
+    "Describe stacks, queues, linked lists, dictionaries, binary trees and graphs, including suitable implementations and uses.",
+    "Compare algorithms by time and memory use, expressing growth with Big O notation."
   ],
   "definitions": [
     {
-      "term": "Big O",
-      "definition": "A notation describing how time or memory requirements grow as input size n grows."
+      "term": "Abstract data type (ADT)",
+      "definition": "A logical description of stored data and permitted operations, independent of the structure used to implement it."
     },
     {
-      "term": "Binary search tree",
-      "definition": "A tree ordered by key so smaller values are placed in one subtree and larger values in the other."
+      "term": "Big O notation",
+      "definition": "A way to describe how an algorithm's time or memory requirement grows as input size n increases, ignoring constants and less significant terms."
     },
     {
-      "term": "Dictionary",
-      "definition": "An ADT storing key-value pairs accessed by unique keys."
+      "term": "Binary search tree (BST)",
+      "definition": "A binary tree ordered so that keys smaller than a node occur in its left subtree and larger keys occur in its right subtree, according to a defined duplicate policy."
     },
     {
       "term": "Stack",
-      "definition": "LIFO structure: last item added is first removed."
+      "definition": "A last-in, first-out ADT whose main operations are push, pop and peek."
     },
     {
       "term": "Queue",
-      "definition": "FIFO structure: first item added is first removed."
+      "definition": "A first-in, first-out ADT whose main operations are enqueue at the rear and dequeue from the front."
+    },
+    {
+      "term": "Underflow",
+      "definition": "Attempting to remove or read an item from an empty data structure."
+    },
+    {
+      "term": "Overflow",
+      "definition": "Attempting to insert into a fixed-size data structure that has no free position."
     }
   ],
   "sections": [
     {
-      "id": "01-linear-and-binary-search",
-      "title": "Linear and binary search",
+      "id": "01-linear-search",
+      "title": "Linear search: reliable on any order",
       "content": [
-        "Linear search checks items one by one and works on unsorted data; worst-case time grows O(n). Binary search repeatedly halves a SORTED range; worst case O(log n). The cost of initially sorting data may matter if only one search will ever be done."
+        "Linear search inspects each item until the target is found or every item has been checked. It works with unsorted data and is often the correct choice for a short list or a single search where sorting first would cost more than it saves.",
+        "The loop invariant is that every position before the current index has already been checked and does not contain the target. Returning -1 is a deliberate sentinel meaning not found; never use a normal index such as 0 for this because 0 can be a valid result."
       ],
-      "bullets": [],
+      "bullets": [
+        "Best case O(1): the first item matches.",
+        "Worst and average growth O(n): the target is late or absent.",
+        "Extra space O(1): only the index and target are needed."
+      ],
       "examples": [
         {
-          "id": "01-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Binary search: compare target with middle; discard one half; repeat until found or interval empty."
+          "id": "01-python-linear-search",
+          "kind": "code",
+          "label": "Linear search with a not-found result",
+          "language": "python",
+          "content": "def linear_search(values, target):\n    for index in range(len(values)):\n        if values[index] == target:\n            return index\n    return -1\n\nposition = linear_search([14, 8, 21, 5], 21)\nprint(position)  # 2"
         }
       ]
     },
     {
-      "id": "02-bubble-sort",
-      "title": "Bubble sort",
+      "id": "02-binary-search",
+      "title": "Binary search: halve a sorted search interval",
       "content": [
-        "Compare adjacent items and swap out-of-order pairs. After each pass an extreme element moves to its final end position. A swap flag can stop early if a pass makes no swaps. Worst-case behaviour is quadratic."
+        "Binary search requires data sorted using the same comparison rule as the search. It keeps inclusive lower and upper boundaries, compares the middle item, then discards the half that cannot contain the target. If low becomes greater than high, the interval is empty.",
+        "Using mid = (low + high) // 2 produces an integer index. The updates must be mid + 1 and mid - 1; assigning low = mid or high = mid can leave the interval unchanged and cause an infinite loop."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Each comparison removes about half the remaining candidates, giving O(log n) worst-case time.",
+        "Doubling the list size adds roughly one extra comparison, not twice as many.",
+        "Sorting has a cost, so binary search is strongest when the data is already sorted or will be searched repeatedly."
+      ],
+      "examples": [
+        {
+          "id": "02-python-binary-search",
+          "kind": "code",
+          "label": "Iterative binary search",
+          "language": "python",
+          "content": "def binary_search(values, target):\n    low = 0\n    high = len(values) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if values[mid] == target:\n            return mid\n        if values[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1\n\nprint(binary_search([4, 9, 13, 18, 27, 31], 18))  # 3"
+        },
+        {
+          "id": "02-binary-trace",
+          "kind": "worked",
+          "label": "Boundary trace for target 18",
+          "content": "low=0, high=5, mid=2 → 13 is too small, so low=3. Then low=3, high=5, mid=4 → 27 is too large, so high=3. Finally mid=3 → 18 is found."
+        }
+      ]
     },
     {
-      "id": "03-insertion-sort",
-      "title": "Insertion sort",
+      "id": "03-bubble-sort",
+      "title": "Bubble sort: adjacent swaps and early stopping",
       "content": [
-        "Maintain a sorted prefix. Take the next value, shift larger values right, and insert it into the correct location. It can be efficient on small/nearly sorted input but worst case is also O(n^2)."
+        "Bubble sort compares adjacent pairs and swaps a pair when it is in the wrong order. After one complete ascending pass, the largest unsorted value has moved to the end, so the inner loop can be shortened on the next pass.",
+        "A swapped flag records whether the pass changed anything. If no swap occurs, the whole list is already sorted and the algorithm can finish early. This improves nearly sorted input but does not change the O(n²) worst case."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use a temporary variable or Python tuple assignment to perform the swap correctly.",
+        "Reset swapped to False at the start of every outer pass.",
+        "The final i positions are already fixed, so do not compare them again."
+      ],
+      "examples": [
+        {
+          "id": "03-python-bubble-sort",
+          "kind": "code",
+          "label": "Optimised bubble sort",
+          "language": "python",
+          "content": "def bubble_sort(values):\n    for pass_number in range(len(values) - 1):\n        swapped = False\n        last_pair = len(values) - 1 - pass_number\n\n        for index in range(last_pair):\n            if values[index] > values[index + 1]:\n                values[index], values[index + 1] = values[index + 1], values[index]\n                swapped = True\n\n        if not swapped:\n            break\n\n    return values"
+        }
+      ]
     },
     {
-      "id": "04-stacks-and-queues",
-      "title": "Stacks and queues",
+      "id": "04-insertion-sort",
+      "title": "Insertion sort: grow a sorted prefix",
       "content": [
-        "Array implementations need indices/pointers plus overflow/underflow tests. Stacks push/pop at the top. Queues enqueue at the rear and dequeue at the front; circular queues reuse freed array positions without shifting every item."
+        "Insertion sort treats the first item as a sorted prefix. It stores the next item as key, shifts every larger prefix value one position right, and places key into the gap. Storing key before shifting prevents it from being overwritten.",
+        "Nearly sorted data needs few shifts and may approach O(n), while reverse-sorted data requires about n²/2 comparisons and shifts. It is in-place and stable when equal items are not moved past each other."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Start at index 1 because the one-item prefix at index 0 is already sorted.",
+        "The while condition needs both j >= 0 and values[j] > key.",
+        "Insert key at j + 1 after shifting finishes."
+      ],
+      "examples": [
+        {
+          "id": "04-python-insertion-sort",
+          "kind": "code",
+          "label": "Insertion sort with shifting",
+          "language": "python",
+          "content": "def insertion_sort(values):\n    for index in range(1, len(values)):\n        key = values[index]\n        position = index - 1\n\n        while position >= 0 and values[position] > key:\n            values[position + 1] = values[position]\n            position -= 1\n\n        values[position + 1] = key\n\n    return values"
+        }
+      ]
     },
     {
-      "id": "05-linked-lists",
-      "title": "Linked lists",
+      "id": "05-stacks-and-queues",
+      "title": "Stacks and queues: protect the boundaries",
       "content": [
-        "Each node contains data plus link(s). Search follows links. Insert/delete often change only a few links once the position is known, avoiding array shifts, but traversal is usually sequential because nodes are not indexed by position."
+        "The ADT specifies behaviour; the underlying list is only one implementation. A stack pushes and pops at the same end. A queue enqueues at the rear and dequeues at the front. Fixed arrays also require top/front/rear pointers and explicit overflow tests.",
+        "Removing index 0 from a Python list shifts later items and costs O(n). It is acceptable for demonstrating FIFO behaviour, but a circular array queue is more efficient because front and rear wrap around and no records are shifted.",
+        "An ADT can also be built from another ADT. A queue made from two stacks keeps new items in an input stack and moves them to an output stack only when needed. The reversal restores first-in, first-out order. One dequeue may cost O(n), but each item is moved at most once, so the average (amortised) cost per operation is O(1)."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Check empty before pop, peek or dequeue to prevent underflow.",
+        "For a fixed-size implementation, check full before push or enqueue to prevent overflow.",
+        "Return the removed item when the caller may need it."
+      ],
+      "examples": [
+        {
+          "id": "05-python-stack",
+          "kind": "code",
+          "label": "Stack ADT",
+          "language": "python",
+          "content": "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"cannot pop an empty stack\")\n        return self._items.pop()\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError(\"cannot peek at an empty stack\")\n        return self._items[-1]"
+        },
+        {
+          "id": "05-python-circular-queue",
+          "kind": "code",
+          "label": "Fixed-size circular queue",
+          "language": "python",
+          "content": "class CircularQueue:\n    def __init__(self, capacity):\n        self._items = [None] * capacity\n        self._front = 0\n        self._size = 0\n\n    def enqueue(self, item):\n        if self._size == len(self._items):\n            raise OverflowError(\"queue is full\")\n        rear = (self._front + self._size) % len(self._items)\n        self._items[rear] = item\n        self._size += 1\n\n    def dequeue(self):\n        if self._size == 0:\n            raise IndexError(\"queue is empty\")\n        item = self._items[self._front]\n        self._items[self._front] = None\n        self._front = (self._front + 1) % len(self._items)\n        self._size -= 1\n        return item"
+        },
+        {
+          "id": "05-python-queue-from-stacks",
+          "kind": "code",
+          "label": "Queue built from two stack ADTs",
+          "language": "python",
+          "content": "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"stack is empty\")\n        return self._items.pop()\n\n\nclass QueueUsingTwoStacks:\n    def __init__(self):\n        self._in_stack = Stack()\n        self._out_stack = Stack()\n\n    def enqueue(self, item):\n        self._in_stack.push(item)\n\n    def dequeue(self):\n        if self._out_stack.is_empty():\n            while not self._in_stack.is_empty():\n                self._out_stack.push(self._in_stack.pop())\n        if self._out_stack.is_empty():\n            raise IndexError(\"queue is empty\")\n        return self._out_stack.pop()"
+        }
+      ]
     },
     {
-      "id": "06-binary-trees",
-      "title": "Binary trees",
+      "id": "06-linked-lists",
+      "title": "Linked lists: change links without losing nodes",
       "content": [
-        "Search compares a key and descends left/right. Insertion descends until a free child location. Performance depends on shape: a balanced tree can be efficient, while a severely skewed tree behaves much more like a list."
+        "Each node stores data and a link to the next node. Search is sequential because a node can only be reached by following links from head. Inserting at the front is O(1); finding a location remains O(n).",
+        "For deletion, keep both current and previous. Deleting the head is a special case because head itself must change. For any other node, bypass it with previous.next = current.next. Changing links in the wrong order can make the rest of the list unreachable."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use None as the null pointer/end marker in Python.",
+        "Insertion/deletion avoids shifting array elements, but each node uses extra memory for its link.",
+        "Searching an ordinary linked list remains O(n), even if insertion at the head is O(1)."
+      ],
+      "examples": [
+        {
+          "id": "06-python-linked-list",
+          "kind": "code",
+          "label": "Find, insert and delete in a linked list",
+          "language": "python",
+          "content": "class Node:\n    def __init__(self, data, next_node=None):\n        self.data = data\n        self.next = next_node\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def insert_front(self, data):\n        self.head = Node(data, self.head)\n\n    def find(self, target):\n        current = self.head\n        while current is not None:\n            if current.data == target:\n                return current\n            current = current.next\n        return None\n\n    def delete(self, target):\n        previous = None\n        current = self.head\n        while current is not None and current.data != target:\n            previous = current\n            current = current.next\n        if current is None:\n            return False\n        if previous is None:\n            self.head = current.next\n        else:\n            previous.next = current.next\n        return True"
+        }
+      ]
     },
     {
-      "id": "07-graphs-and-dictionaries",
-      "title": "Graphs and dictionaries",
+      "id": "07-binary-search-trees",
+      "title": "Binary search trees: shape controls performance",
       "content": [
-        "Graphs model arbitrary many-to-many relationships such as transport/social networks. Dictionaries map keys to values and can be implemented using hashing or tree structures. Choose implementation according to lookup, insertion, ordering and memory requirements."
+        "Searching and insertion compare the target key with the current node and choose one subtree. A balanced tree has height proportional to log n, but a badly skewed tree has height n and therefore O(n) search. Never claim every BST is automatically O(log n).",
+        "The code below sends equal keys to the right. Another duplicate policy is possible, but search and insertion must apply the same rule. Returning the root from insertion is important because the first insertion creates a new root and recursive calls must reconnect changed child links."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "In-order traversal of a BST visits keys in sorted order.",
+        "A binary tree has at most two children per node; only a BST also enforces an ordering rule.",
+        "The syllabus requires search and insertion code for binary trees, not deletion code."
+      ],
+      "examples": [
+        {
+          "id": "07-python-bst",
+          "kind": "code",
+          "label": "Search and insert in a binary search tree",
+          "language": "python",
+          "content": "class TreeNode:\n    def __init__(self, key):\n        self.key = key\n        self.left = None\n        self.right = None\n\ndef insert(root, key):\n    if root is None:\n        return TreeNode(key)\n    if key < root.key:\n        root.left = insert(root.left, key)\n    else:\n        root.right = insert(root.right, key)\n    return root\n\ndef find(root, target):\n    current = root\n    while current is not None:\n        if current.key == target:\n            return current\n        if target < current.key:\n            current = current.left\n        else:\n            current = current.right\n    return None"
+        }
+      ]
     },
     {
-      "id": "08-big-o-and-trade-offs",
-      "title": "Big O and trade-offs",
+      "id": "08-dictionaries-and-graphs",
+      "title": "Dictionaries and graphs: choose the right relationship",
       "content": [
-        "O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n), O(n^2) quadratic. Big O describes growth, not exact seconds. Space complexity matters too: a faster algorithm can require more memory."
+        "A dictionary stores unique keys mapped to values. Python dict gives average O(1) lookup, insertion and deletion, although this is not a worst-case guarantee. It is suitable when a meaningful key, such as candidate number, should retrieve a record directly.",
+        "A graph contains vertices and edges; edges may be directed or undirected and weighted or unweighted. Graphs model many-to-many connections such as roads, network links or dependencies. The syllabus requires describing and justifying graph use, but not writing a graph implementation."
       ],
-      "bullets": [],
+      "bullets": [
+        "An adjacency matrix gives O(1) edge checks but uses O(V²) memory.",
+        "An adjacency list is usually more memory-efficient for sparse graphs.",
+        "A dictionary models key-to-value lookup; a graph models connections between many vertices."
+      ],
+      "examples": [
+        {
+          "id": "08-python-dictionary",
+          "kind": "code",
+          "label": "Dictionary operations",
+          "language": "python",
+          "content": "students = {\n    \"A104\": {\"name\": \"Ari\", \"mark\": 72},\n    \"A219\": {\"name\": \"Bao\", \"mark\": 81},\n}\n\nstudents[\"A315\"] = {\"name\": \"Chau\", \"mark\": 68}\nif \"A219\" in students:\n    print(students[\"A219\"][\"mark\"])\ndel students[\"A104\"]"
+        }
+      ]
+    },
+    {
+      "id": "09-complexity-and-comparison",
+      "title": "Big O: compare growth, not stopwatch seconds",
+      "content": [
+        "Time complexity counts how the number of significant operations grows with input size. Space complexity describes additional memory growth. O(1), O(log n), O(n), O(n log n) and O(n²) are growth classes, not exact running times.",
+        "A high-quality comparison states the relevant case and assumptions. For example, binary search is O(log n) only after the data is sorted, while linear search may be preferable for a tiny, unsorted list searched once. An in-place algorithm may save memory even if another algorithm is faster."
+      ],
+      "bullets": [
+        "Drop constant factors and lower-order terms: 3n² + 8n + 4 is O(n²).",
+        "State whether you are discussing best, average or worst case when it changes the conclusion.",
+        "Compare algorithms solving the same task under the same input assumptions."
+      ],
       "examples": []
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Typical time complexity",
+    "title": "Complexity and conditions worth stating",
     "columns": [
-      "Algorithm",
-      "Typical / worst case",
-      "Condition"
+      "Technique",
+      "Time growth",
+      "Condition or trade-off"
     ],
     "rows": [
       [
         "Linear search",
-        "O(n)",
-        "Works on unsorted data"
+        "O(n) worst case",
+        "Works without sorting"
       ],
       [
         "Binary search",
-        "O(log n)",
-        "Requires sorted data"
+        "O(log n) worst case",
+        "Requires sorted, indexable data"
       ],
       [
         "Bubble sort",
-        "O(n²)",
-        "Simple; inefficient at scale"
+        "O(n²) worst case",
+        "Swap flag can stop an already sorted pass early"
       ],
       [
         "Insertion sort",
-        "O(n²)",
-        "Efficient for small/nearly sorted data"
+        "O(n²) worst; O(n) best",
+        "Useful for small or nearly sorted data"
+      ],
+      [
+        "BST search",
+        "O(log n) balanced; O(n) skewed",
+        "Depends on tree height"
       ]
     ]
   },
   "diagram": null,
   "analysisChains": [],
   "examTips": [
-    "Binary search requires sorted data—state this every time you justify it.",
-    "For ADT pseudocode include empty/full/null checks where relevant.",
-    "Use Big O for scaling and then add practical context such as preprocessing or memory."
+    "Write the precondition before binary-search code: the data must be sorted using the same comparison order.",
+    "Show boundary and empty/full checks in ADT code; these are visible correctness marks, not optional polish.",
+    "When tracing a sort, show the complete list after each pass rather than only listing swaps.",
+    "For a complexity comparison, name input size n, the case being discussed and any preprocessing or memory trade-off.",
+    "Test empty data, one item, target at each boundary, target absent and duplicate values."
   ],
   "commonMistakes": [
-    "Calling binary search O(n).",
-    "Assuming every binary search tree is balanced.",
-    "Forgetting to update head/root pointers during insertion/deletion.",
-    "Comparing algorithms only by execution time when the question asks for efficiency criteria."
+    "Updating binary-search bounds to mid instead of mid ± 1, so the interval may never shrink.",
+    "Overwriting insertion sort's key before shifting the larger values.",
+    "Popping or dequeuing without an underflow check.",
+    "Deleting the linked-list head without updating head.",
+    "Claiming every BST operation is O(log n), even when the tree is skewed.",
+    "Writing graph code when the question only asks for a justified representation or use."
   ],
   "quickRecall": [
-    "linear O(n)",
-    "binary O(log n)+sorted",
-    "bubble=adjacent swaps",
-    "insertion=sorted prefix",
-    "stack=LIFO",
-    "queue=FIFO",
-    "Big O=growth rate"
+    {
+      "question": "What condition must hold before binary search?",
+      "answer": "The data must be sorted using the same ordering rule used by the comparisons."
+    },
+    {
+      "question": "Why does binary search have O(log n) time?",
+      "answer": "Each comparison discards about half of the remaining search interval."
+    },
+    {
+      "question": "What does the swapped flag do in bubble sort?",
+      "answer": "It allows the algorithm to stop when a complete pass makes no swaps, proving the list is sorted."
+    },
+    {
+      "question": "Why is key stored before insertion-sort shifting begins?",
+      "answer": "The value at that position will be overwritten while larger prefix items move right."
+    },
+    {
+      "question": "What is the difference between stack and queue removal order?",
+      "answer": "A stack is LIFO; a queue is FIFO."
+    },
+    {
+      "question": "When can BST search become O(n)?",
+      "answer": "When the tree is badly skewed so its height grows to n."
+    }
   ],
   "relatedTopics": [
     "10.4",
