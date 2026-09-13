@@ -58,3 +58,25 @@ test("rejects unapproved PDF proxy hosts", async () => {
   );
   assert.equal(response.status, 400);
 });
+
+test("explains when an approved source does not return a PDF", async () => {
+  const worker = await loadWorker();
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => new Response("not a PDF", {
+    headers: { "Content-Type": "text/plain" },
+  });
+
+  try {
+    const source = encodeURIComponent("https://xtrapapers.co/example.pdf");
+    const response = await worker.fetch(
+      new Request(`https://study.test/api/papers/pdf?source=${source}`),
+      env,
+      ctx,
+    );
+
+    assert.equal(response.status, 502);
+    assert.equal(await response.text(), "The source did not return a PDF. Use Open separately or Download instead.");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});

@@ -225,7 +225,7 @@ export function getNoteChapters(subject: Subject, level: StudyLevel): NoteChapte
       : subject.code === "9618"
         ? computerScienceCoursebookChapters[entry.topic.id]
         : null;
-    const fallbackDefinition = {
+    const fallbackDefinition: CoursebookChapterDefinition = {
       number: syllabusChapterNumber,
       title: coursebookChapterTitles[subject.code]?.[syllabusChapterNumber]
         ?? (entry.topic.id.includes(".") ? entry.unit.title : entry.topic.title),
