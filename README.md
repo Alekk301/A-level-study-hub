@@ -2,6 +2,8 @@
 
 A calm, responsive CAIE A-Level revision platform for a small group of classmates. It combines a practical study dashboard with long-form, textbook-style notes, local progress tracking, global search and a downloader-ready past-paper browser.
 
+Live site: [a-level-study-hub.vercel.app](https://a-level-study-hub.vercel.app/)
+
 Supported subjects:
 
 - Mathematics 9709
@@ -22,7 +24,7 @@ Computer Science 9618 A2 and Business 9609 A2 are the fully developed priority a
 - Global full-text search with `/` and `Ctrl/Cmd + K`
 - Bookmarks, studied topics, recent topics, last location and theme stored in `localStorage`
 - Dark mode designed for long reading sessions
-- Past-paper filtering with 919 live QP/MS pairs generated from the local downloader library
+- Past-paper filtering with 919 live QP/MS pairs, inline full-PDF previews and separate downloads
 - Defensive error and empty states
 - Lazy topic loading and a search index that loads only when search is opened
 - Data validation and automated tests
@@ -41,13 +43,27 @@ npm run dev
 
 Open the local URL printed by Vite.
 
-## Production build
+## Deployment
+
+The production site is deployed on Vercel under the `Alevel` team:
+
+- Project: `a-level-study-hub`
+- Production branch: `rebuild/react-vite`
+- Production URL: [a-level-study-hub.vercel.app](https://a-level-study-hub.vercel.app/)
+
+Every push to `rebuild/react-vite` creates a new production deployment. Vercel uses the native Next.js build:
+
+```bash
+npm run build:vercel
+```
+
+The repository also retains its Sites/Cloudflare-compatible Vinext build:
 
 ```bash
 npm run build
 ```
 
-The primary build uses Vite through Vinext and produces a Cloudflare-compatible app in `dist/`.
+This build produces the app in `dist/`.
 
 ## Preview the production build
 
@@ -73,11 +89,12 @@ npm test
 
 ## Architecture
 
-This is a React 19 + Vite application using Vinext's Next-compatible file routing. The app keeps v1 deliberately backend-free: content is structured JSON, topic files are loaded on demand, and personal study state stays in the browser.
+This is a React 19 application using Next-compatible file routing. Content is structured JSON, topic files are loaded on demand, and personal study state stays in the browser. The only server-side route is the restricted PDF proxy used by the inline paper viewer.
 
 | Layer | Responsibility |
 | --- | --- |
 | `app/` | Production routes and document metadata |
+| `app/api/papers/pdf/` | Vercel PDF-preview route |
 | `src/views/` | Route-level screens such as Home, Notes, Papers and Topic |
 | `src/components/` | Reusable layout, note, paper, search and common UI |
 | `src/data/subjects.json` | Subject, unit and topic catalogue |
@@ -230,7 +247,7 @@ The browser reads:
 src/data/papers/papers.json
 ```
 
-The included catalogue contains 919 complete QP/MS pairs generated from the PDFs in the sibling downloader library. The PDFs are not copied into this repository; each button opens the matching XtraPapers URL in a new tab.
+The included catalogue contains 919 complete QP/MS pairs generated from the PDFs in the sibling downloader library. The PDFs are not copied into this repository. **View** opens the full paper in the site's inline reader through a restricted XtraPapers proxy, while **Download** saves the original file separately.
 
 Accepted record shape:
 
