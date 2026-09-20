@@ -202,6 +202,52 @@ const computerScienceCoursebookChapters: Record<string, CoursebookChapterDefinit
   "20.2": { number: "26", title: "File processing and exception handling", partTitle: "Part 4 · Further problem-solving and programming skills" },
 };
 
+const businessCoursebookChapters: Record<string, CoursebookChapterDefinition | CoursebookChapterDefinition[]> = {
+  "1.1": { number: "1", title: "Enterprise", partTitle: "Unit 1 · Business and its environment", partOrder: 1 },
+  "1.2": { number: "2", title: "Business structure", partTitle: "Unit 1 · Business and its environment", partOrder: 1 },
+  "1.3": { number: "3", title: "Size of business", partTitle: "Unit 1 · Business and its environment", partOrder: 1 },
+  "1.4": { number: "4", title: "Business objectives", partTitle: "Unit 1 · Business and its environment", partOrder: 1 },
+  "1.5": { number: "5", title: "Stakeholders in a business", partTitle: "Unit 1 · Business and its environment", partOrder: 1 },
+  "6.1": [
+    { number: "6", title: "External influences on business activity", partTitle: "Unit 1 · Business and its environment", partOrder: 1, linkAnchor: "01-political-and-legal-influences" },
+    { number: "7", title: "External economic influences on business activity", partTitle: "Unit 1 · Business and its environment", partOrder: 1, linkAnchor: "02-economic-influences" },
+  ],
+  "6.2": [
+    { number: "8", title: "Business strategy", partTitle: "Unit 1 · Business and its environment", partOrder: 1, linkAnchor: "01-strategic-management-process" },
+    { number: "9", title: "Corporate planning and implementation", partTitle: "Unit 1 · Business and its environment", partOrder: 1, linkAnchor: "07-corporate-planning-and-culture" },
+  ],
+  "2.1": { number: "10", title: "Human resource management", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "2.2": { number: "11", title: "Motivation", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "2.3": { number: "12", title: "Management", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "7.1": { number: "13", title: "Organisational structure", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "7.2": { number: "14", title: "Business communication", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "7.3": { number: "15", title: "Leadership", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "7.4": { number: "16", title: "Human resource management strategy", partTitle: "Unit 2 · People in organisations", partOrder: 2 },
+  "3.1": { number: "17", title: "The nature of marketing", partTitle: "Unit 3 · Marketing", partOrder: 3 },
+  "3.2": { number: "18", title: "Market research", partTitle: "Unit 3 · Marketing", partOrder: 3 },
+  "3.3": [
+    { number: "19", title: "The marketing mix — product and price", partTitle: "Unit 3 · Marketing", partOrder: 3, linkAnchor: "01-product-benefits-differentiation-and-portfolio" },
+    { number: "20", title: "The marketing mix — promotion and place", partTitle: "Unit 3 · Marketing", partOrder: 3, linkAnchor: "05-promotion-objectives-and-methods" },
+  ],
+  "8.1": { number: "21", title: "Marketing analysis", partTitle: "Unit 3 · Marketing", partOrder: 3 },
+  "8.2": { number: "22", title: "Marketing strategy", partTitle: "Unit 3 · Marketing", partOrder: 3 },
+  "4.1": { number: "23", title: "The nature of operations", partTitle: "Unit 4 · Operations management", partOrder: 4 },
+  "4.2": { number: "24", title: "Inventory management", partTitle: "Unit 4 · Operations management", partOrder: 4 },
+  "4.3": { number: "25", title: "Capacity utilisation and outsourcing", partTitle: "Unit 4 · Operations management", partOrder: 4 },
+  "9.1": { number: "26", title: "Location and scale", partTitle: "Unit 4 · Operations management", partOrder: 4 },
+  "9.2": { number: "27", title: "Quality management", partTitle: "Unit 4 · Operations management", partOrder: 4 },
+  "9.3": { number: "28", title: "Operations strategy", partTitle: "Unit 4 · Operations management", partOrder: 4 },
+  "5.1": { number: "29", title: "Business finance", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "5.2": { number: "29", title: "Business finance", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "5.3": { number: "30", title: "Forecasting and managing cash flows", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "5.4": { number: "31", title: "Costs", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "5.5": { number: "32", title: "Budgets", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "10.1": { number: "33", title: "Financial statements", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "10.2": { number: "34", title: "Analysis of published accounts", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "10.3": { number: "35", title: "Investment appraisal", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+  "10.4": { number: "36", title: "Finance and accounting strategy", partTitle: "Unit 5 · Finance and accounting", partOrder: 5 },
+};
+
 export interface NoteChapter {
   key: string;
   number: string;
@@ -224,7 +270,9 @@ export function getNoteChapters(subject: Subject, level: StudyLevel): NoteChapte
       ? mathematicsCoursebookChapters[entry.topic.id]
       : subject.code === "9618"
         ? computerScienceCoursebookChapters[entry.topic.id]
-        : null;
+        : subject.code === "9609"
+          ? businessCoursebookChapters[entry.topic.id]
+          : null;
     const fallbackDefinition: CoursebookChapterDefinition = {
       number: syllabusChapterNumber,
       title: coursebookChapterTitles[subject.code]?.[syllabusChapterNumber]

@@ -105,6 +105,27 @@ test("notes are grouped into coursebook chapters before their subtopics", async 
   const chemistry = getNoteChapters(getSubject("9701"), "A2");
   assert.equal(chemistry[0].number, "23");
   assert.equal(chemistry[0].topics.length, 1);
+
+  const businessAs = getNoteChapters(getSubject("9609"), "AS");
+  assert.equal(businessAs.length, 19);
+  assert.deepEqual(businessAs.map(({ number }) => number), [
+    "1", "2", "3", "4", "5", "10", "11", "12", "17", "18",
+    "19", "20", "23", "24", "25", "29", "30", "31", "32",
+  ]);
+  assert.deepEqual(
+    businessAs.find(({ number }) => number === "29").topics.map(({ topic }) => topic.id),
+    ["5.1", "5.2"],
+  );
+  assert.equal(businessAs.find(({ number }) => number === "20").linkAnchor, "05-promotion-objectives-and-methods");
+
+  const businessA2 = getNoteChapters(getSubject("9609"), "A2");
+  assert.equal(businessA2.length, 17);
+  assert.deepEqual(businessA2.map(({ number }) => number), [
+    "6", "7", "8", "9", "13", "14", "15", "16", "21",
+    "22", "26", "27", "28", "33", "34", "35", "36",
+  ]);
+  assert.equal(businessA2.find(({ number }) => number === "7").linkAnchor, "02-economic-influences");
+  assert.equal(businessA2.find(({ number }) => number === "9").linkAnchor, "07-corporate-planning-and-culture");
 });
 
 test("stored syllabus checks survive hydration without losing older study data", async () => {
