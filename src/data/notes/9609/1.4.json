@@ -9,7 +9,7 @@
   "overview": "Objectives translate purpose into priorities and measures. High-scoring answers explain why an objective fits the business's stage and stakeholders, how a decision helps achieve it, and what the business may sacrifice in the process.",
   "syllabusPoints": [
     "Explain why businesses set aims, objectives, strategies and tactics.",
-    "Analyse common objectives including survival, profit, growth, market share and shareholder return.",
+    "Analyse common private-, public- and social-sector objectives, including survival, profit, growth, market share and shareholder return.",
     "Apply SMART criteria and management by objectives.",
     "Explain the role and limitations of mission statements.",
     "Analyse why objectives change and how ethics and corporate social responsibility influence decisions.",
@@ -23,6 +23,14 @@
     {
       "term": "Objective",
       "definition": "A specific target used to direct and measure progress toward an aim."
+    },
+    {
+      "term": "Target",
+      "definition": "A measurable result assigned to an organisation, department, team or individual for a stated period."
+    },
+    {
+      "term": "Budget",
+      "definition": "A quantified financial plan for a future period, used to allocate resources and monitor performance."
     },
     {
       "term": "Strategy",
@@ -84,7 +92,8 @@
       "bullets": [
         "Lowering price may support sales and market share but reduce contribution per unit.",
         "Rapid growth may increase long-term profit but reduce short-term cash and dividends.",
-        "Cost reduction may support survival but damage quality, motivation or stakeholder trust."
+        "Cost reduction may support survival but damage quality, motivation or stakeholder trust.",
+        "Public-sector objectives may emphasise access, service quality and value for money; social enterprises balance financial survival with social and environmental impact."
       ],
       "examples": []
     },
@@ -160,6 +169,19 @@
       "bullets": [
         "Quantitative evidence can compare cost, revenue and cash; qualitative evidence covers ethics, morale, risk and reputation.",
         "Review matters because assumptions may be wrong and implementation may differ from the plan."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-targets-and-budgets",
+      "title": "Targets and budgets",
+      "content": [
+        "Targets convert objectives into measurable expectations, while budgets allocate the money needed to act. Comparing actual results with both reveals whether underperformance comes from weak execution, unrealistic assumptions or inadequate resources."
+      ],
+      "bullets": [
+        "A sales target without a promotion or staffing budget may be achievable in theory but unsupported in practice.",
+        "Budget pressure can improve cost discipline, but arbitrary cuts may prevent the objective from being achieved.",
+        "Managers should review linked targets and budgets when demand, costs or strategy changes."
       ],
       "examples": []
     }
@@ -249,13 +271,15 @@
     "Separate an objective (the measurable result) from a strategy (the route) and a tactic (the immediate action).",
     "When asked whether one objective is most important, identify the business's life-cycle stage and binding constraint.",
     "Ethical analysis must show both the extra cost and a possible revenue, risk or stakeholder consequence.",
-    "Use the case's figures and deadline when improving a vague objective into SMART form."
+    "Use the case's figures and deadline when improving a vague objective into SMART form.",
+    "Match the objective to the organisation: profit may be central for owners, while access or social impact may dominate elsewhere."
   ],
   "commonMistakes": [
     "Saying SMART means only measurable and forgetting relevance and time.",
     "Treating a mission statement as a numerical target.",
     "Assuming profit maximisation always means raising price.",
-    "Equating legal behaviour with ethical behaviour; ethics can require more than the law."
+    "Equating legal behaviour with ethical behaviour; ethics can require more than the law.",
+    "Discussing a target without checking whether the budget and other resources can support it."
   ],
   "quickRecall": [
     {
@@ -281,6 +305,10 @@
     {
       "question": "Give two reasons objectives change.",
       "answer": "Examples include business age, recession, competition, ownership, finance, leadership, law or stakeholder pressure."
+    },
+    {
+      "question": "How do targets and budgets work together?",
+      "answer": "Targets state measurable results; budgets allocate and control the finance needed to pursue them."
     }
   ],
   "relatedTopics": [

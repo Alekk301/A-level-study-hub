@@ -13,6 +13,7 @@
     "Calculate and analyse added value and ways a business can increase it.",
     "Analyse entrepreneurs and intrapreneurs, their characteristics, risks and rewards.",
     "Explain the purpose, contents and limitations of a business plan.",
+    "Distinguish local, national, international and multinational businesses, and explain business risk and uncertainty.",
     "Analyse why enterprise matters to an economy and how social enterprises use the triple bottom line."
   ],
   "definitions": [
@@ -47,6 +48,22 @@
     {
       "term": "Business plan",
       "definition": "A document setting out a venture's idea, objectives, market, operations, people and financial forecasts."
+    },
+    {
+      "term": "International business",
+      "definition": "A business that sells, sources or otherwise trades across national borders but does not necessarily own operations abroad."
+    },
+    {
+      "term": "Multinational business",
+      "definition": "A business that owns or controls operations in more than one country."
+    },
+    {
+      "term": "Business risk",
+      "definition": "A threat with outcomes whose likelihood can be estimated, allowing managers to plan a measured response."
+    },
+    {
+      "term": "Business uncertainty",
+      "definition": "A future event whose outcome or likelihood cannot be estimated reliably."
     },
     {
       "term": "Social enterprise",
@@ -174,6 +191,26 @@
         "Tension remains possible—for example, paying fair wages may raise costs, while a higher price may reduce access for low-income customers."
       ],
       "examples": []
+    },
+    {
+      "id": "09-business-reach-risk-and-uncertainty",
+      "title": "Business reach, risk and uncertainty",
+      "content": [
+        "A local business mainly serves one area; a national business serves a country; an international business trades across borders; and a multinational owns or controls operations in several countries. International sales alone do not make a business multinational."
+      ],
+      "bullets": [
+        "Greater geographic reach can expand the market and spread demand, but it increases coordination, currency, legal and cultural challenges.",
+        "Risk can be estimated from evidence, such as the probability of equipment failure, so insurance or contingency action can be costed.",
+        "Uncertainty cannot be assigned a dependable probability, so flexible plans and cash reserves may be more useful than a precise forecast."
+      ],
+      "examples": [
+        {
+          "id": "1.1-9-1",
+          "kind": "analysis",
+          "label": "Risk compared with uncertainty",
+          "content": "A café can estimate the risk of a freezer breakdown from maintenance records and insure against it. A sudden change in consumer behaviour after an unforeseen event is uncertain, so the owner may need adaptable menus and liquidity instead."
+        }
+      ]
     }
   ],
   "formulas": [
@@ -262,13 +299,15 @@
     "For 'analyse', build a business-specific chain from the decision to cost, revenue, cash flow, profit or survival.",
     "Do not equate added value with profit; identify the other costs that still have to be paid.",
     "When assessing an entrepreneur, apply each quality to the problem in the case rather than listing characteristics.",
-    "Evaluate business plans by questioning the assumptions and the experience of the people who prepared them."
+    "Evaluate business plans by questioning the assumptions and the experience of the people who prepared them.",
+    "Do not call an exporter a multinational unless it owns or controls operations in more than one country."
   ],
   "commonMistakes": [
     "Defining capital only as money; productive equipment and buildings are also capital resources.",
     "Giving any forgone choice as opportunity cost instead of the next-best alternative.",
     "Calling a charity a social enterprise without evidence that it trades.",
-    "Assuming a higher selling price always raises added value overall when demand may fall."
+    "Assuming a higher selling price always raises added value overall when demand may fall.",
+    "Treating risk and uncertainty as identical; risk has an estimable probability, whereas uncertainty does not."
   ],
   "quickRecall": [
     {
@@ -298,6 +337,14 @@
     {
       "question": "Give two reasons a business plan may not predict success.",
       "answer": "It is based on estimates and may use optimistic or incomplete assumptions; external conditions can also change."
+    },
+    {
+      "question": "How does an international business differ from a multinational business?",
+      "answer": "An international business trades across borders; a multinational owns or controls operations in more than one country."
+    },
+    {
+      "question": "How does risk differ from uncertainty?",
+      "answer": "Risk has outcomes whose likelihood can be estimated, while uncertainty has no dependable probability."
     }
   ],
   "relatedTopics": [

@@ -8,7 +8,7 @@
   "contentDepth": "full",
   "overview": "Business structure covers both where activity sits in the economy and the legal form chosen by its owners. The strongest answers compare control, liability, continuity, finance, profit sharing and legal requirements in the exact context—not simply whether a form is 'large' or 'small'.",
   "syllabusPoints": [
-    "Distinguish primary, secondary and tertiary activity and explain why sector importance changes over time.",
+    "Distinguish primary, secondary, tertiary and quaternary activity and explain why sector importance changes over time.",
     "Distinguish private-sector and public-sector organisations in mixed, free-market and command economies.",
     "Compare sole traders, partnerships, private limited companies and public limited companies.",
     "Explain limited liability, separate legal identity, continuity and the divorce between ownership and control.",
@@ -29,12 +29,24 @@
       "definition": "Businesses that provide services to consumers or other organisations."
     },
     {
+      "term": "Quaternary sector",
+      "definition": "Knowledge-based services that create, process or share information, such as research, data analysis and software development."
+    },
+    {
       "term": "Private sector",
       "definition": "The part of the economy owned and controlled by individuals or private organisations."
     },
     {
       "term": "Public sector",
       "definition": "Organisations owned or controlled by the state, often providing services or pursuing social objectives."
+    },
+    {
+      "term": "Privatisation",
+      "definition": "The transfer of a state-owned organisation or asset into private ownership."
+    },
+    {
+      "term": "Nationalisation",
+      "definition": "The transfer of a privately owned organisation or asset into state ownership."
     },
     {
       "term": "Limited liability",
@@ -78,12 +90,12 @@
       "id": "01-economic-sectors-and-structural-change",
       "title": "Economic sectors and structural change",
       "content": [
-        "Primary businesses supply resources, secondary businesses transform them and tertiary businesses provide services. A product may pass through all three—for example, cotton farming, clothing manufacture and retailing. Sector classification depends on the main activity, not the product name."
+        "Primary businesses supply resources, secondary businesses transform them, tertiary businesses provide services and quaternary businesses provide knowledge-based services. A product may pass through several sectors—for example, cotton farming, clothing manufacture, retailing and data-led design research. Sector classification depends on the main activity, not the product name."
       ],
       "bullets": [
         "Industrialisation is an increase in the importance of manufacturing as investment, infrastructure and skills develop.",
         "Deindustrialisation is a relative decline in manufacturing, often as productivity rises, production moves abroad or demand shifts toward services.",
-        "Rising incomes, urbanisation, technology and outsourcing usually increase tertiary activity; this does not mean primary and secondary output disappear."
+        "Rising incomes, education, technology and outsourcing usually increase tertiary and quaternary activity; this does not mean primary and secondary output disappear."
       ],
       "examples": []
     },
@@ -96,6 +108,8 @@
       "bullets": [
         "A free-market economy relies mainly on private ownership and price signals.",
         "A command economy relies mainly on state ownership and planning.",
+        "Privatisation may increase competition, access to private finance and cost control, but public-service access or employment may weaken if profit becomes dominant.",
+        "Nationalisation may protect access, strategic control or essential services, but political objectives and weak competitive pressure can reduce efficiency.",
         "Public ownership does not remove the need for efficiency or finance; private ownership does not mean the business ignores law or stakeholders."
       ],
       "examples": []
@@ -259,6 +273,7 @@
   ],
   "examTips": [
     "Public limited company means publicly traded ownership, not a state-owned public-sector organisation.",
+    "Classify research, information and specialist knowledge services as quaternary rather than automatically tertiary.",
     "When comparing structures, use the same decision criterion on both sides—for example control, finance or liability.",
     "Do not say limited liability prevents business failure; it limits shareholders' personal loss.",
     "A recommendation needs a final judgement linked to the case's most important constraint."
@@ -267,12 +282,13 @@
     "Assuming every partnership has exactly two owners or identical legal rules in every country.",
     "Claiming private limited companies cannot sell shares at all; they cannot offer them to the general public.",
     "Discussing only the franchisee when a question asks about franchising for the franchisor.",
-    "Treating sector and legal structure as the same classification."
+    "Treating sector and legal structure as the same classification.",
+    "Assuming privatisation always improves efficiency without considering competition, regulation and service objectives."
   ],
   "quickRecall": [
     {
       "question": "What distinguishes primary, secondary and tertiary activity?",
-      "answer": "Extraction/harvesting, transformation/construction, and service provision respectively."
+      "answer": "Extraction/harvesting, transformation/construction, and service provision respectively; quaternary activity provides knowledge and information services."
     },
     {
       "question": "What two protections usually follow incorporation?",
@@ -293,6 +309,10 @@
     {
       "question": "Give two benefits and two risks of a joint venture.",
       "answer": "Shared resources/risk and local expertise; possible conflict and loss of control or knowledge."
+    },
+    {
+      "question": "What is the difference between privatisation and nationalisation?",
+      "answer": "Privatisation transfers state assets to private ownership; nationalisation transfers private assets to state ownership."
     }
   ],
   "relatedTopics": [

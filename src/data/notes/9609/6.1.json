@@ -6,134 +6,333 @@
   "unitTitle": "A Level",
   "title": "External influences on business activity",
   "contentDepth": "full",
-  "overview": "External influences are forces outside the business that change demand, costs, risk and strategic choices. The current A2 syllabus is broader than a simple PEST checklist: it includes political/legal changes, macroeconomic policy, demographic and social change, technology, competitors/suppliers, international trade and MNCs, plus environmental audits and sustainability.",
+  "overview": "External influences change a business's demand, costs, access to resources and strategic freedom. Strong analysis does not treat PEST as a list: it identifies the transmission route from an external change to a particular firm's decisions and performance, then tests the conclusion against factors such as market position, gearing, import dependence and time period.",
   "syllabusPoints": [
-    "Analyse political and legal influences, including regulation, privatisation and nationalisation.",
-    "Analyse macroeconomic objectives and monetary, fiscal, supply-side and exchange-rate policies.",
-    "Analyse social/demographic change, CSR and pressure groups.",
+    "Analyse political and legal influences, regulation, market failure, privatisation and nationalisation.",
+    "Analyse economic objectives, unemployment and the business effects of economic growth and inflation.",
+    "Analyse fiscal policy, monetary policy, supply-side policy and exchange-rate policy.",
+    "Analyse social and demographic change, corporate social responsibility and pressure groups.",
     "Analyse technological change and the influence of competitors and suppliers.",
-    "Analyse international trade, agreements and multinational businesses.",
+    "Analyse international trade, trade agreements, protectionism and multinational businesses.",
     "Analyse environmental issues, environmental audits and sustainability."
   ],
   "definitions": [
     {
-      "term": "Privatisation",
-      "definition": "Transfer of a business/activity from public/state ownership to private ownership."
+      "term": "Market failure",
+      "definition": "A situation in which an unregulated market does not allocate resources efficiently, for example because external costs are ignored, socially beneficial goods are underprovided or monopoly power restricts competition."
     },
     {
-      "term": "Nationalisation",
-      "definition": "Transfer of privately owned business/activity into state ownership/control."
+      "term": "Unemployment",
+      "definition": "People who are willing and able to work but cannot find employment; it may be cyclical, structural or frictional."
     },
     {
       "term": "Fiscal policy",
-      "definition": "Government decisions on taxation and public spending."
+      "definition": "Government decisions about taxation and public spending used to influence economic activity and resource allocation."
     },
     {
       "term": "Monetary policy",
-      "definition": "Policy influencing interest rates, credit conditions and/or money supply."
+      "definition": "Policy that changes interest rates, credit conditions or the money supply to influence demand, inflation and investment."
     },
     {
       "term": "Supply-side policy",
-      "definition": "Measures intended to improve productive capacity and efficiency."
+      "definition": "Measures intended to increase productive capacity, labour skills, flexibility, competition or efficiency."
     },
     {
-      "term": "CSR",
-      "definition": "A business approach that considers social, ethical and environmental responsibilities as well as financial outcomes."
+      "term": "Exchange rate",
+      "definition": "The price of one currency expressed in another currency."
+    },
+    {
+      "term": "Privatisation",
+      "definition": "The transfer of a state-owned organisation or activity into private ownership."
+    },
+    {
+      "term": "Nationalisation",
+      "definition": "The transfer of a privately owned organisation or activity into state ownership or control."
+    },
+    {
+      "term": "Corporate social responsibility",
+      "definition": "A business approach that accepts responsibilities for social, ethical and environmental effects as well as financial results."
     },
     {
       "term": "Environmental audit",
-      "definition": "A systematic review of a business's environmental impacts and performance."
+      "definition": "A systematic measurement and review of a business's environmental impacts, performance and compliance."
+    },
+    {
+      "term": "Sustainability",
+      "definition": "Meeting present needs while preserving the resources and conditions required for future activity."
     }
   ],
   "sections": [
     {
-      "id": "01-political-and-legal-influences",
-      "title": "Political and legal influences",
+      "id": "01-political-legal-and-market-failure",
+      "title": "Political, legal and market-failure influences",
       "content": [
-        "Employment law, competition law, consumer protection, health/safety, marketing restrictions and ownership policy can change business costs and freedom of action. Regulation may raise compliance cost yet also build trust or prevent unfair competition. Political stability can influence investment risk."
+        "Governments intervene when markets produce outcomes judged inefficient or unfair. External costs such as pollution, underprovision of training or public transport, information gaps and monopoly power are examples of market failure. Taxes, subsidies, standards, direct provision and competition law can correct these problems, but intervention also creates compliance costs and may be poorly designed."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Employment, health and safety, consumer, data and competition law can raise short-run cost while improving trust, workforce security or fair competition.",
+        "A pollution tax internalises an external cost by making the producer face more of the social harm; the firm may raise price, redesign production or accept a lower margin.",
+        "Privatisation may bring private finance and stronger cost incentives, but benefits depend on competition and regulation rather than ownership alone.",
+        "Nationalisation may protect access, employment or strategic supply, but political objectives and weaker market pressure can reduce efficiency.",
+        "Political stability, corruption, trade policy and enforcement quality influence the risk and required return of long-term investment."
+      ],
+      "examples": [
+        {
+          "id": "6.1-1-1",
+          "kind": "analysis",
+          "label": "Correcting an external cost",
+          "content": "A carbon levy raises the unit cost of an energy-intensive producer. Cleaner machinery becomes relatively more attractive, so investment may reduce emissions and future tax exposure. The result depends on access to finance and whether competitors face the same rule."
+        }
+      ]
     },
     {
       "id": "02-economic-influences",
       "title": "Economic influences",
       "content": [
-        "Economic growth can increase demand but may create inflation/capacity pressure. Inflation raises costs and affects real incomes. Higher interest rates increase borrowing cost and can reduce consumption/investment. Tax/spending, supply-side and exchange-rate policies affect firms differently depending on debt, imports, exports and customer income sensitivity."
+        "Governments commonly pursue economic growth, low inflation, high employment, stable external trade and sustainable public finances. These objectives can conflict. Stimulating demand may reduce cyclical unemployment but intensify inflation or imports; anti-inflation policy may weaken sales and investment. A business must interpret the policy and the state of the economy together."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Economic growth usually raises household and business spending, although benefits vary with income elasticity, capacity and the distribution of growth.",
+        "Inflation raises many input and wage costs, complicates planning and may reduce real household income; a firm with pricing power may pass on more of the increase.",
+        "Cyclical unemployment results from weak aggregate demand; structural unemployment comes from a mismatch of location or skills; frictional unemployment occurs while people move between jobs.",
+        "High unemployment may weaken demand but expand the labour pool and reduce wage pressure; skill mismatches can leave vacancies unfilled at the same time.",
+        "Fiscal policy affects disposable income, public contracts and business tax; monetary policy affects borrowing, saving, exchange rates and asset demand.",
+        "Supply-side policy such as training, infrastructure, competition reform or investment incentives acts mainly through capacity and productivity and often has a longer time lag.",
+        "Currency depreciation makes exports cheaper in foreign currency and imports dearer in domestic currency; appreciation has the reverse effect, but contracts and hedging delay some effects."
+      ],
+      "examples": [
+        {
+          "id": "6.1-2-1",
+          "kind": "analysis",
+          "label": "Interest-rate transmission",
+          "content": "A rise in interest rates increases payments on variable-rate debt and may reduce customer borrowing. A leveraged furniture producer can therefore face both higher finance cost and lower demand, squeezing cash flow more than a cash-rich food exporter."
+        },
+        {
+          "id": "6.1-2-2",
+          "kind": "analysis",
+          "label": "Exchange-rate exposure",
+          "content": "Depreciation raises the domestic-currency cost of imported components but may improve the foreign-currency price of exports. The net effect depends on the proportion of imported inputs, export sales, price elasticity, hedging and competitors' currencies."
+        }
+      ]
     },
     {
       "id": "03-social-demographic-and-csr-influences",
       "title": "Social, demographic and CSR influences",
       "content": [
-        "Age structure, migration, education, family patterns and lifestyle changes alter workforce supply and customer demand. CSR can strengthen reputation, recruitment and stakeholder trust, but may raise short-term costs. Pressure groups can influence reputation and policy even without legal authority."
+        "Age structure, migration, education, household composition, income distribution and changing values alter both demand and labour supply. These trends create opportunities only when a business adapts its product, communication and employment practices. Corporate social responsibility can strengthen legitimacy and relationships, but unsupported claims invite accusations of greenwashing."
       ],
-      "bullets": [],
+      "bullets": [
+        "An ageing population may increase demand for healthcare and accessible products while reducing the supply of some workers.",
+        "Migration can widen skills and demand, but language, qualification recognition and social tension may require management action.",
+        "Pressure groups influence businesses through publicity, boycotts, research, shareholder action and lobbying even when they have no direct legal power.",
+        "CSR may improve recruitment, loyalty and risk control; monitoring, safer inputs and higher standards may increase short-run cost.",
+        "The commercial return from CSR depends on stakeholder priorities, credibility, competitors and whether the firm can sustain the commitment."
+      ],
       "examples": []
     },
     {
       "id": "04-technology-competitors-and-suppliers",
       "title": "Technology, competitors and suppliers",
       "content": [
-        "Automation, AI and digital systems can improve productivity, information and customer reach but require investment, skills and cybersecurity. Competitor actions influence price, innovation and promotion; supplier bargaining power, quality, reliability and lead time affect cost and continuity."
+        "Technology can lower unit cost, improve information and open distribution channels, but it also shortens product life cycles and creates capital, training, privacy and cybersecurity risks. Competitor and supplier behaviour determines how much of a technical gain becomes profit rather than a lower market price."
       ],
-      "bullets": [],
+      "bullets": [
+        "Automation is most attractive where volume, standardisation and labour cost justify fixed investment; flexibility may matter more in a volatile niche.",
+        "Digital platforms can extend reach and collect customer data while increasing dependence on algorithms, fees and network security.",
+        "Competitor price cuts, innovation and promotion may force a response, but copying can destroy differentiation or margins.",
+        "Powerful suppliers can raise prices, reduce credit or prioritise other buyers; dual sourcing and long-term contracts trade resilience against possible extra cost.",
+        "Adoption timing matters: moving early can create learning and reputation benefits, while waiting can avoid immature systems and falling prices."
+      ],
       "examples": []
     },
     {
       "id": "05-international-influences-and-mncs",
-      "title": "International influences and MNCs",
+      "title": "International influences and multinational businesses",
       "content": [
-        "Trade agreements can lower barriers and open markets; protectionism can protect domestic firms but raise import costs. Exchange rates affect export competitiveness and imported inputs. MNCs may bring jobs, investment and technology but can also pressure local firms/resources and repatriate profits."
+        "International trade widens markets and sources of supply. Trade agreements may reduce tariffs and align rules, while protection through tariffs, quotas, standards or subsidies shelters selected domestic producers but raises costs for import users and consumers. Multinational investment connects these effects to location decisions and bargaining with governments."
       ],
-      "bullets": [],
+      "bullets": [
+        "Exporting can spread fixed costs and reduce dependence on one market, but transport, adaptation, credit and currency risks rise.",
+        "A tariff helps a protected domestic producer only if demand shifts toward it and it has the capacity and quality to respond.",
+        "An MNC may bring capital, skills, jobs, exports and supplier opportunities to a host country.",
+        "Possible host-country costs include profit repatriation, tax avoidance, pressure on resources, weak local linkages and displacement of domestic firms.",
+        "The MNC may gain market access, resources or lower costs, but faces political, cultural, coordination and reputation risks.",
+        "A judgement should compare the quality and permanence of investment with concessions, regulation and realistic local alternatives."
+      ],
       "examples": []
     },
     {
       "id": "06-environmental-and-sustainability-pressures",
       "title": "Environmental and sustainability pressures",
       "content": [
-        "Climate change, resource scarcity, pollution controls and stakeholder expectations influence product, process and location decisions. Environmental audits identify impacts and targets. Sustainable investment may cost more initially but reduce waste/energy cost and improve long-run legitimacy."
+        "Climate risk, resource scarcity, pollution controls and stakeholder expectations affect product design, processes, supply chains and location. An environmental audit establishes a baseline, identifies significant impacts, sets measures and reviews progress. It informs decisions but does not itself improve performance."
       ],
-      "bullets": [],
+      "bullets": [
+        "Cleaner equipment may require high capital expenditure but lower energy, waste, tax and compliance costs over its life.",
+        "Designing for repair, reuse or recycling can reduce resource exposure and differentiate the product, provided customers value it.",
+        "Audits need reliable boundaries and data: outsourcing a dirty process can make reported operations look cleaner without reducing total impact.",
+        "Sustainability decisions should compare whole-life financial and environmental effects, not only the purchase price.",
+        "Claims should be specific and verifiable; misleading claims can destroy the reputation benefit and provoke regulation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-integrated-external-analysis",
+      "title": "Integrated external analysis",
+      "content": [
+        "External forces interact. A currency depreciation may coincide with higher interest rates, a new emissions rule and changing consumer preferences. Management should rank influences by magnitude, probability, time scale and the firm's exposure, then decide whether to avoid, reduce, transfer or accept each risk."
+      ],
+      "bullets": [
+        "Start with case evidence rather than completing every PEST heading.",
+        "Separate a temporary shock from a structural trend because the appropriate investment response differs.",
+        "Test whether the business can pass on cost, substitute inputs, change market or use reserves.",
+        "Review assumptions as policy, competitors and stakeholder reactions develop."
+      ],
       "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
+  "comparisonTable": {
+    "title": "Macroeconomic policy routes",
+    "columns": [
+      "Policy",
+      "Typical instrument",
+      "Possible business benefit",
+      "Possible business cost"
+    ],
+    "rows": [
+      [
+        "Fiscal policy",
+        "Tax and government spending",
+        "Higher disposable income or public contracts",
+        "Higher tax or crowding out"
+      ],
+      [
+        "Monetary policy",
+        "Interest rates and credit conditions",
+        "Cheaper borrowing and stronger demand when loosened",
+        "Inflation or currency effects; tightening reverses benefits"
+      ],
+      [
+        "Supply-side policy",
+        "Training, infrastructure and competition measures",
+        "Higher productivity and capacity",
+        "Tax cost and long implementation lag"
+      ],
+      [
+        "Exchange-rate policy",
+        "Currency intervention or linked monetary action",
+        "Greater stability or export competitiveness",
+        "Dearer imports or reduced policy freedom"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "External influence transmission",
+    "type": "flow",
+    "nodes": [
+      "External change",
+      "Exposure of this business",
+      "Effect on demand, cost or risk",
+      "Management response",
+      "Cash flow, profit and competitiveness",
+      "Review against stakeholder reaction"
+    ]
+  },
   "analysisChains": [
+    {
+      "title": "A pollution tax addressing market failure",
+      "steps": [
+        "The tax raises the cost of each unit of pollution",
+        "The external cost becomes part of the producer's decision",
+        "Cleaner machinery and lower-waste designs become relatively more attractive",
+        "Pollution may fall while capital expenditure rises",
+        "Long-run compliance cost and reputation risk may decline"
+      ],
+      "evaluation": "The effect depends on the tax rate, enforcement, access to cleaner technology and whether demand allows the cost to be passed on."
+    },
     {
       "title": "Higher interest rates",
       "steps": [
-        "Borrowing becomes more expensive",
-        "Finance costs rise",
-        "Profit margins may fall",
-        "Investment may be delayed"
+        "Variable-rate borrowing becomes more expensive",
+        "Finance costs and customer loan payments rise",
+        "Investment and interest-sensitive demand may fall",
+        "Capacity growth and sales weaken",
+        "Cash flow and profit are squeezed"
       ],
-      "evaluation": "The impact is larger for highly geared firms and smaller for cash-rich businesses with little variable-rate debt."
+      "evaluation": "A cash-rich exporter may be less exposed and could benefit from currency appreciation or interest income; gearing and market type are decisive."
+    },
+    {
+      "title": "Currency depreciation for an exporter",
+      "steps": [
+        "The domestic currency price of exports falls for overseas buyers",
+        "Price competitiveness and export orders may increase",
+        "Capacity use and revenue may rise",
+        "Imported input costs also rise",
+        "The net margin effect depends on export and import exposure"
+      ],
+      "evaluation": "Demand elasticity, hedging, spare capacity, contract currency and competitors' exchange rates can delay or reverse the expected gain."
+    },
+    {
+      "title": "Government-funded skills programme",
+      "steps": [
+        "Relevant training increases worker capability",
+        "Structural skill shortages ease",
+        "Vacancies are filled and productivity improves",
+        "Unit labour cost may fall",
+        "Investment and competitiveness become more attractive"
+      ],
+      "evaluation": "Benefits take time and depend on course quality, employer participation and workers remaining in the industry."
     }
   ],
   "examTips": [
-    "Do not stop at 'costs rise'—continue to price, demand, cash flow, profit or competitiveness.",
-    "The same external change can benefit one firm and harm another; apply the business's import/export/debt/market position.",
-    "Distinguish the policy instrument from its business consequence."
+    "Do not stop at 'costs rise': continue to price, demand, contribution, cash flow, profit or competitiveness.",
+    "Identify the type of unemployment and the policy instrument before analysing the business effect.",
+    "For exchange rates, state whether the currency appreciates or depreciates and whether the business imports, exports or both.",
+    "Evaluate with exposure: gearing, elasticity, market power, spare capacity and time lag often change the conclusion.",
+    "A government intervention should be linked to the market failure it is intended to correct and possible unintended effects."
   ],
   "commonMistakes": [
-    "Using PEST as an unanalysed list.",
-    "Assuming economic growth is always positive.",
-    "Confusing fiscal and monetary policy.",
-    "Ignoring stakeholder reactions in environmental/CSR analysis."
+    "Using PEST as an unanalysed list instead of prioritising case evidence.",
+    "Confusing fiscal policy with monetary policy or describing a policy without its transmission route.",
+    "Assuming economic growth, depreciation or lower interest rates benefit every business.",
+    "Treating all unemployment as weak demand when structural and frictional causes need different responses.",
+    "Calling an environmental audit a solution when it only measures and identifies issues.",
+    "Judging an MNC only by job numbers without considering job quality, linkages, tax, profit flows and alternatives."
   ],
   "quickRecall": [
-    "monetary=interest/credit",
-    "fiscal=tax/spending",
-    "supply-side=capacity/productivity",
-    "social/demographic=demand+labour",
-    "international=trade/exchange/MNC",
-    "sustainability=long-run resource/stakeholder impact"
+    {
+      "question": "What is market failure?",
+      "answer": "An inefficient market allocation, such as ignored external costs, underprovided beneficial goods, information failure or monopoly power."
+    },
+    {
+      "question": "How do fiscal and monetary policy differ?",
+      "answer": "Fiscal policy changes tax and government spending; monetary policy changes interest rates, credit conditions or money supply."
+    },
+    {
+      "question": "What distinguishes cyclical from structural unemployment?",
+      "answer": "Cyclical unemployment comes from weak aggregate demand; structural unemployment comes from a mismatch of skills or location."
+    },
+    {
+      "question": "How may depreciation affect an importer?",
+      "answer": "Foreign inputs cost more in domestic currency, raising unit cost unless the importer hedges, substitutes inputs or passes on the increase."
+    },
+    {
+      "question": "Why can supply-side policy take longer to affect a business?",
+      "answer": "Training, infrastructure and productivity improvements require implementation and time before capacity or efficiency changes."
+    },
+    {
+      "question": "What does an environmental audit do?",
+      "answer": "It measures environmental impacts, checks performance and identifies priorities and targets for improvement."
+    },
+    {
+      "question": "Give one benefit and one cost of inward MNC investment.",
+      "answer": "It may create skilled jobs and supplier demand, but profits may be repatriated or domestic firms displaced."
+    },
+    {
+      "question": "Why might regulation improve long-run performance despite raising cost?",
+      "answer": "It can improve safety, trust, product standards and fair competition, reducing failures and reputation or legal risk."
+    }
   ],
   "relatedTopics": [
     "6.2",

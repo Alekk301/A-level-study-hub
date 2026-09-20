@@ -8,7 +8,7 @@
   "contentDepth": "full",
   "overview": "Stakeholder questions are about power, conflict and consequences. Identify exactly what each group wants, trace how a decision affects them, and judge whose interests should carry most weight in the particular situation.",
   "syllabusPoints": [
-    "Distinguish internal and external stakeholders and explain their objectives.",
+    "Distinguish internal and external stakeholders and explain their roles, rights, responsibilities and objectives.",
     "Analyse how business decisions affect owners, employees, managers, customers, suppliers, lenders, government and communities.",
     "Explain why stakeholder objectives conflict and how compromise may be reached.",
     "Analyse stakeholder influence and business accountability.",
@@ -40,6 +40,14 @@
       "definition": "A situation in which satisfying one group's objective makes another group's objective harder to achieve."
     },
     {
+      "term": "Stakeholder rights",
+      "definition": "Legal, contractual or ethical claims a stakeholder can reasonably expect the business to respect."
+    },
+    {
+      "term": "Stakeholder responsibilities",
+      "definition": "Duties a stakeholder is expected to fulfil in its relationship with the business."
+    },
+    {
       "term": "Pressure group",
       "definition": "An organised group seeking to influence business or government decisions without directly controlling the organisation."
     }
@@ -66,6 +74,20 @@
       "bullets": [
         "Short-term and long-term effects may differ: training costs reduce current profit but can improve productivity and job security later.",
         "Different members of a group may experience opposite effects: automation can improve safety for retained staff while making other roles redundant."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02a-stakeholder-roles-rights-and-responsibilities",
+      "title": "Stakeholder roles, rights and responsibilities",
+      "content": [
+        "A role describes what a stakeholder contributes or does; a right is a claim the business should respect; and a responsibility is a duty owed in return. For example, employees provide effort, have rights to agreed pay and safe conditions, and must follow lawful procedures and perform their work."
+      ],
+      "bullets": [
+        "Owners provide risk capital, have voting and information rights, and should appoint and scrutinise directors responsibly.",
+        "Customers provide revenue, have rights to safe and accurately described products, and should pay as agreed and use products responsibly.",
+        "Suppliers provide inputs, have contractual payment rights, and must deliver the promised quality and timing.",
+        "Government sets and enforces rules, has a right to tax due, and is responsible for consistent law and public infrastructure."
       ],
       "examples": []
     },
@@ -221,6 +243,7 @@
   ],
   "examTips": [
     "Name the stakeholder and its precise objective before explaining an effect.",
+    "Keep role, right and responsibility distinct: contribution, legitimate claim and reciprocal duty are not interchangeable.",
     "For conflict, show why both objectives cannot be fully met from the same limited resource or decision.",
     "Use stakeholder power in evaluation: impact alone does not prove the business will change course.",
     "Judge over a stated time period; a group may lose now but benefit if the business survives."
@@ -229,7 +252,8 @@
     "Listing stakeholders without explaining their interests or the decision's effect.",
     "Calling shareholders and stakeholders the same group.",
     "Assuming all stakeholders have equal power in every context.",
-    "Offering 'communicate more' as a complete solution without explaining what should be communicated and why it changes behaviour."
+    "Offering 'communicate more' as a complete solution without explaining what should be communicated and why it changes behaviour.",
+    "Listing stakeholder objectives when the question asks specifically about roles, rights or responsibilities."
   ],
   "quickRecall": [
     {
@@ -255,6 +279,10 @@
     {
       "question": "How can a business reduce conflict over a factory closure?",
       "answer": "Consult early, give notice and compensation, offer redeployment or retraining, and explain the financial need."
+    },
+    {
+      "question": "How do a stakeholder's role, right and responsibility differ?",
+      "answer": "The role is what the stakeholder does, the right is a legitimate claim, and the responsibility is a duty it should fulfil."
     }
   ],
   "relatedTopics": [

@@ -10,7 +10,8 @@
   "syllabusPoints": [
     "Compare revenue, employees, capital employed, output and market share as measures of business size.",
     "Explain limitations of comparing size between businesses and industries.",
-    "Analyse reasons for growth and methods of internal and external growth.",
+    "Analyse reasons for growth and methods of internal and external growth, including joint ventures and strategic alliances.",
+    "Analyse the strengths and limitations of family businesses.",
     "Analyse advantages and disadvantages of small and large businesses.",
     "Analyse causes and consequences of rapid or unsuccessful growth."
   ],
@@ -42,6 +43,14 @@
     {
       "term": "Takeover",
       "definition": "One business acquires control of another business."
+    },
+    {
+      "term": "Family business",
+      "definition": "A business owned and usually influenced or managed by members of the same family."
+    },
+    {
+      "term": "Strategic alliance",
+      "definition": "An agreement between independent businesses to cooperate in selected activities while remaining separately owned."
     },
     {
       "term": "Economies of scale",
@@ -103,7 +112,9 @@
         "Horizontal: may raise market share and remove competition, but regulators may object.",
         "Backward vertical: may secure inputs and quality, but ties the firm to its own supplier operation.",
         "Forward vertical: may improve access to customers and retain retail margin, but requires new capabilities.",
-        "Conglomerate: spreads risk, but managers may lack expertise and synergies may be weak."
+        "Conglomerate: spreads risk, but managers may lack expertise and synergies may be weak.",
+        "A joint venture creates shared ownership of a project or business; a strategic alliance coordinates selected activities while each partner stays independent.",
+        "Alliances can share technology, distribution or promotion with less commitment than a merger, but weak trust, unclear responsibilities or knowledge leakage can undermine them."
       ],
       "examples": []
     },
@@ -116,6 +127,19 @@
       "bullets": [
         "Limitations include weak bargaining power, fewer specialist managers, limited finance, dependence on key people and less ability to spread risk.",
         "Small does not automatically mean low cost: lack of purchasing economies can make unit cost higher."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05a-family-businesses",
+      "title": "Family businesses",
+      "content": [
+        "Family ownership can support trust, quick informal communication, long-term commitment and continuity of values. It can also make succession, recruitment and objective decisions harder when family relationships and business needs conflict."
+      ],
+      "bullets": [
+        "Patient owners may accept short-run sacrifice to protect the next generation and the firm's reputation.",
+        "Restricting senior roles to relatives can reduce the available skill pool and discourage non-family managers.",
+        "Succession plans, clear job criteria and agreed governance reduce conflict without removing family influence."
       ],
       "examples": []
     },
@@ -247,6 +271,7 @@
   "examTips": [
     "State the measure of size and why it suits this business; never write that one firm is simply 'bigger'.",
     "For growth questions, separate the reason for growth from the method used to achieve it.",
+    "Distinguish a joint venture, which creates shared ownership, from a strategic alliance between independent partners.",
     "Develop economies of scale to lower average cost and then explain the competitive or profit consequence.",
     "Evaluate growth using finance, integration, demand and management capacity—not only percentage sales growth."
   ],
@@ -254,7 +279,8 @@
     "Comparing revenues from different years without considering inflation or exchange rates.",
     "Calling every acquisition a merger; a takeover gives one firm control of another.",
     "Assuming all large firms gain economies of scale indefinitely.",
-    "Treating higher market share as proof of higher profit."
+    "Treating higher market share as proof of higher profit.",
+    "Assuming family loyalty removes conflict or guarantees that relatives have the required management skills."
   ],
   "quickRecall": [
     {
@@ -280,6 +306,14 @@
     {
       "question": "Give two advantages small firms can retain.",
       "answer": "Personal customer service and fast, flexible decisions, among others."
+    },
+    {
+      "question": "How does a strategic alliance differ from a joint venture?",
+      "answer": "Alliance partners cooperate but remain independent; a joint venture creates shared ownership of a project or business."
+    },
+    {
+      "question": "Give one strength and one limitation of a family business.",
+      "answer": "Trust and long-term commitment may be strong, but succession or family conflict can weaken objective decisions."
     }
   ],
   "relatedTopics": [

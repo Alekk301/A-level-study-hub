@@ -6,38 +6,63 @@
   "unitTitle": "A Level",
   "title": "Business strategy",
   "contentDepth": "full",
-  "overview": "Business strategy is the long-term direction used to achieve corporate objectives. High-level answers must move through strategic analysis, strategic choice and implementation. The syllabus includes blue ocean strategy, scenario planning, SWOT, PEST, Porter, core competence, Ansoff, force-field analysis, decision trees, corporate planning/culture, transformational leadership, strategic change, contingency planning and crisis management.",
+  "overview": "Business strategy sets the long-term direction used to achieve corporate objectives. Examination answers should move through strategic analysis, choice and implementation, using tools as evidence rather than as automatic decisions. A credible recommendation integrates marketing, operations, people and finance, identifies the main uncertainty and explains how implementation will be controlled.",
   "syllabusPoints": [
-    "Explain strategy and the stages of strategic management: analysis, choice and implementation.",
-    "Apply blue ocean strategy and scenario planning.",
+    "Explain strategy and the stages of strategic management: analysis, choice, implementation and review.",
+    "Apply blue ocean strategy and scenario planning to strategic choice.",
     "Apply SWOT, PEST, Porter's five forces, core competence, Ansoff, force-field analysis and decision trees.",
-    "Explain corporate planning/culture and transformational leadership in implementation.",
-    "Analyse strategic change, contingency planning and crisis management."
+    "Analyse corporate planning and the relationship between strategy and corporate culture.",
+    "Analyse transformational leadership and the management of strategic change.",
+    "Analyse contingency planning and crisis management."
   ],
   "definitions": [
     {
       "term": "Strategy",
-      "definition": "A long-term direction/plan for achieving major business objectives."
+      "definition": "The long-term direction and coordinated decisions used to achieve major business objectives."
     },
     {
       "term": "Core competence",
-      "definition": "A distinctive capability that creates customer value and is difficult for competitors to imitate."
+      "definition": "A distinctive capability that creates customer value, supports access to markets and is difficult for competitors to copy."
     },
     {
       "term": "Blue ocean strategy",
-      "definition": "Creating uncontested market space/value rather than competing head-on in an existing market."
+      "definition": "Creating new market space through a distinctive value proposition instead of competing directly under existing industry rules."
     },
     {
       "term": "Scenario planning",
-      "definition": "Preparing responses to several plausible future conditions instead of relying on one forecast."
+      "definition": "Preparing and testing responses to several plausible future conditions instead of relying on a single forecast."
     },
     {
-      "term": "Contingency plan",
-      "definition": "A prepared response for a foreseeable disruptive event."
+      "term": "Corporate planning",
+      "definition": "The formal process of setting corporate objectives, analysing the position, choosing strategy, allocating resources and reviewing performance."
+    },
+    {
+      "term": "Corporate culture",
+      "definition": "The shared values, assumptions and expected behaviours that influence how people in an organisation make decisions."
+    },
+    {
+      "term": "Transformational leadership",
+      "definition": "Leadership that creates a compelling vision, challenges existing assumptions and motivates people to commit to significant change."
+    },
+    {
+      "term": "Strategic change",
+      "definition": "A major alteration to long-term direction, capabilities, structure or ways of working."
+    },
+    {
+      "term": "Contingency planning",
+      "definition": "Preparing tested responses, responsibilities and resources for foreseeable disruptive events."
+    },
+    {
+      "term": "Crisis management",
+      "definition": "The coordinated decisions and communication used during and after a serious unexpected event to protect people, operations and trust."
     },
     {
       "term": "Force-field analysis",
-      "definition": "A framework identifying forces driving change and forces restraining it."
+      "definition": "A framework that identifies and weighs forces driving a proposed change and forces restraining it."
+    },
+    {
+      "term": "Expected value",
+      "definition": "The probability-weighted average financial outcome of a decision under stated assumptions."
     }
   ],
   "sections": [
@@ -45,115 +70,320 @@
       "id": "01-strategic-management-process",
       "title": "Strategic management process",
       "content": [
-        "Analysis asks where the business is now; choice compares possible strategic routes; implementation allocates people, finance, operations and controls to deliver the chosen strategy. An analytically attractive strategy can still fail if resources, culture or stakeholder support are weak."
+        "Strategic analysis asks where the business is now and what may change. Strategic choice compares routes against objectives, risk and capability. Implementation converts the decision into people, finance, operations, milestones and control. Review compares outcomes with objectives and feeds new evidence into the next decision."
       ],
-      "bullets": [],
+      "bullets": [
+        "Start with corporate objectives and stakeholder constraints so that attractive options are judged against the same purpose.",
+        "Combine quantitative evidence such as expected returns and cash needs with qualitative evidence such as culture, ethics and brand risk.",
+        "Test resource fit: finance, management attention, skills, capacity, technology and time can each become the binding constraint.",
+        "Set leading indicators and review points rather than waiting for the final profit figure.",
+        "Be ready to adapt or exit if assumptions fail; persistence is not automatically strategic commitment."
+      ],
       "examples": []
     },
     {
       "id": "02-swot-and-pest",
       "title": "SWOT and PEST",
       "content": [
-        "SWOT separates internal strengths/weaknesses from external opportunities/threats. PEST scans broad external forces. Their value comes from connecting factors—for example using a strength to exploit an opportunity—not merely listing them."
+        "SWOT classifies internal strengths and weaknesses and external opportunities and threats. PEST examines political, economic, social and technological influences. Neither tool prioritises factors or proves a strategy: value comes from evidence, links between factors and implications for action."
       ],
-      "bullets": [],
+      "bullets": [
+        "A strong brand is useful only if it helps exploit an opportunity or resist a threat in the case.",
+        "The same factor can be both opportunity and threat for different products, locations or competitors.",
+        "Avoid double counting: an interest-rate rise belongs in the external environment, while excessive debt is an internal weakness.",
+        "Rank issues by likely impact, urgency and the firm's exposure rather than completing every box equally.",
+        "SWOT is a summary of prior analysis, not a substitute for data collection or a recommendation."
+      ],
       "examples": []
     },
     {
       "id": "03-porter-s-five-forces-and-core-competence",
       "title": "Porter's five forces and core competence",
       "content": [
-        "Five forces assess rivalry, threat of entrants/substitutes, buyer power and supplier power. Strong forces tend to reduce industry attractiveness. Core competence focuses internally on hard-to-copy capabilities that create customer value, so the two frameworks answer different strategic questions."
+        "Five forces examine rivalry, new entrants, substitutes, buyer power and supplier power to assess pressure on industry profit. Core competence asks what the business can do distinctively well. An attractive market without relevant capability can still be a poor choice, while a transferable competence can improve a difficult position."
       ],
-      "bullets": [],
+      "bullets": [
+        "Entry threat falls when scale, capital, regulation, switching cost or brand loyalty create barriers.",
+        "Substitutes meet the same need through a different product; close competitors sell within the defined industry.",
+        "Buyer power rises when customers are concentrated, informed and able to switch at low cost.",
+        "Supplier power rises when inputs are differentiated, alternatives are scarce or switching disrupts operations.",
+        "A claimed core competence should create customer value, support more than one product or market and be hard to imitate.",
+        "The frameworks simplify a changing system; complementors, regulation and rapid innovation may matter beyond the five categories."
+      ],
       "examples": []
     },
     {
       "id": "04-ansoff-matrix",
       "title": "Ansoff matrix",
       "content": [
-        "Market penetration uses existing products/existing markets; market development existing products/new markets; product development new products/existing markets; diversification new products/new markets. Risk usually rises as the firm moves further from its existing knowledge, but actual risk depends on capability and evidence."
+        "Market penetration sells existing products in existing markets; market development takes existing products to new markets; product development offers new products to existing markets; diversification combines new products and new markets. Distance from existing knowledge usually raises uncertainty, but the case evidence determines actual risk."
       ],
-      "bullets": [],
+      "bullets": [
+        "Penetration may use promotion, pricing, distribution or loyalty but can trigger retaliation and margin pressure.",
+        "Market development may exploit an existing competence while requiring adaptation, local knowledge and new channels.",
+        "Product development uses customer relationships but introduces research, launch and cannibalisation risk.",
+        "Related diversification may share technology or channels; unrelated diversification offers risk spreading but fewer synergies.",
+        "The matrix identifies the direction, not whether demand exists, finance is available or implementation will work."
+      ],
       "examples": []
     },
     {
       "id": "05-decision-trees-and-force-fields",
-      "title": "Decision trees and force fields",
+      "title": "Decision trees and force-field analysis",
       "content": [
-        "Decision trees combine probabilities and financial outcomes to calculate expected values. Force-field analysis identifies drivers and restraints around change. Both structure judgement but rely on estimates and do not capture every qualitative factor."
+        "A decision tree maps options, probabilities, payoffs and costs. Calculate expected values from right to left, then consider risk, cash timing and qualitative effects. Force-field analysis maps drivers and restraints around change; managers can strengthen a driver, reduce a restraint or redesign the proposal."
       ],
-      "bullets": [],
+      "bullets": [
+        "Expected value = the sum of each outcome multiplied by its probability, less any option cost not already included.",
+        "Probabilities and payoffs are forecasts, so a small numerical lead should not create false confidence.",
+        "Expected value can hide a disastrous outcome that a liquidity-constrained business cannot survive.",
+        "Force weights are judgemental and forces may interact, but the discussion reveals where management effort is needed.",
+        "Reducing resistance through training and participation can be more effective than adding pressure."
+      ],
       "examples": [
         {
-          "id": "05-example-1",
+          "id": "6.2-5-1",
           "kind": "worked",
-          "label": "Worked example",
-          "content": "Expected value of an outcome = probability x payoff; add weighted outcomes for each option."
+          "label": "Expected-value comparison",
+          "content": "Option A has a 0.6 chance of a $500,000 payoff and a 0.4 chance of $100,000: expected payoff = $340,000. If it costs $90,000, net expected value is $250,000. This figure supports comparison but does not show cash timing, maximum loss or strategic fit."
         }
       ]
     },
     {
       "id": "06-blue-ocean-and-scenario-planning",
-      "title": "Blue ocean and scenario planning",
+      "title": "Blue ocean strategy and scenario planning",
       "content": [
-        "Blue ocean seeks new value/market space that makes direct competition less relevant, but demand is uncertain. Scenario planning builds flexible responses to alternative futures and is valuable under uncertainty, though it is time-consuming and cannot predict every event."
+        "Blue ocean strategy seeks value innovation: a combination of buyer value and cost structure that creates new demand rather than competing on established dimensions. Scenario planning explores plausible futures, identifies early signals and prepares flexible responses. Both encourage managers to challenge assumptions, but neither removes uncertainty."
       ],
-      "bullets": [],
+      "bullets": [
+        "Ask which industry features can be eliminated, reduced, raised or created to change the value curve.",
+        "New market space may delay direct rivalry, but customers may not understand or value the offer.",
+        "Scenarios should be distinct, relevant and plausible, not minor variations around one preferred forecast.",
+        "Identify decisions robust across scenarios and options that preserve flexibility until more information arrives.",
+        "Too many scenarios consume management time; too few can hide the assumptions that matter most."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-corporate-planning-and-culture",
+      "title": "Corporate planning and culture",
+      "content": [
+        "Corporate planning links mission and objectives to analysis, budgets, responsibilities, schedules and control. It coordinates functional decisions and exposes resource gaps before commitment. Corporate culture can accelerate implementation when expected behaviour supports the strategy, or create resistance when the new strategy threatens status, identity or established routines."
+      ],
+      "bullets": [
+        "A marketing growth target must be consistent with operations capacity, finance, recruitment and working capital.",
+        "Plans improve coordination and lender confidence but can become rigid, political or obsolete in a changing environment.",
+        "Culture is reinforced by leaders, recruitment, rewards, stories, symbols and informal peer expectations.",
+        "Culture change requires aligned systems and behaviour; a slogan conflicts with incentives that still reward the old priorities.",
+        "A strong culture can support fast coordinated action, yet suppress challenge and produce groupthink."
+      ],
       "examples": []
     },
     {
       "id": "07-implementation-and-change",
-      "title": "Implementation and change",
+      "title": "Implementation and change: legacy section",
       "content": [
-        "Corporate culture may support or resist strategy. Transformational leadership can create vision and commitment. Implementation requires communication, resources, milestones and control. Contingency/crisis planning reduces reaction time when disruptions occur but plans must be updated/tested."
+        "This stable section retains the established topic anchor. Implementation requires clear responsibilities, resources, communication, milestones, measures and corrective action. The detailed culture, leadership, change and contingency sections that follow should be used to develop the analysis."
       ],
-      "bullets": [],
+      "bullets": [
+        "Translate the strategy into functional plans with named owners and deadlines.",
+        "Track adoption, quality, cash and customer indicators as well as final profit.",
+        "Escalate deviations early and revise the plan when assumptions no longer hold."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-leading-and-controlling-strategic-change",
+      "title": "Transformational leadership and strategic change",
+      "content": [
+        "Transformational leadership frames why change is necessary, presents a credible future, models the required behaviour and empowers others to solve implementation problems. Strategic change may affect products, markets, technology, structure and culture at the same time, so commitment must be matched by operational discipline."
+      ],
+      "bullets": [
+        "Resistance may arise from fear of job loss, uncertainty, habit, weak trust, skill gaps or disagreement with the diagnosis.",
+        "Participation can improve information and ownership; urgency may require faster direction where safety or survival is threatened.",
+        "Training, resources, negotiation and fair transition measures address different causes of resistance.",
+        "Transformational leadership can energise change, but charisma without challenge, evidence or controls may encourage excessive risk.",
+        "Use pilots, milestones and feedback to learn before irreversible commitment where the strategy permits it."
+      ],
+      "examples": [
+        {
+          "id": "6.2-8-1",
+          "kind": "analysis",
+          "label": "Reducing resistance",
+          "content": "Involving experienced operators in an automation pilot can reveal workflow problems and increase trust. Training then reduces the skill restraint, so adoption and quality improve. If redundancies remain unavoidable, participation alone will not remove opposition and a fair transition still matters."
+        }
+      ]
+    },
+    {
+      "id": "09-contingency-planning-and-crisis-management",
+      "title": "Contingency planning and crisis management",
+      "content": [
+        "Contingency planning prepares before disruption; crisis management coordinates the live response. Plans should identify critical processes, plausible threats, triggers, decision authority, communication routes, alternative resources, recovery priorities and testing. A plan stored but not rehearsed may create false reassurance."
+      ],
+      "bullets": [
+        "Prioritise events with serious impact and credible likelihood, while keeping adaptable principles for unexpected crises.",
+        "Back-up suppliers, data, sites, finance and trained deputies reduce single points of failure but add cost.",
+        "During a crisis, protect people first, establish verified facts, maintain essential operations and communicate consistently.",
+        "Speed matters, but speculation or concealment can deepen legal and reputation damage.",
+        "After stabilisation, review causes, stakeholder effects and plan failures, then update controls and rehearsals.",
+        "The appropriate level of preparation depends on the potential loss, recovery time, regulation and available resources."
+      ],
       "examples": []
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
+  "formulas": [
+    {
+      "label": "Expected value",
+      "expression": "Σ (probability × financial outcome)",
+      "note": "Deduct option costs consistently and do not treat the result as a guaranteed payoff."
+    }
+  ],
+  "comparisonTable": {
+    "title": "Strategic tools answer different questions",
+    "columns": [
+      "Tool",
+      "Main question",
+      "Important limitation"
+    ],
+    "rows": [
+      [
+        "SWOT / PEST",
+        "What internal and external factors matter?",
+        "Lists do not prioritise or choose"
+      ],
+      [
+        "Five forces",
+        "How strong is industry pressure on profit?",
+        "Industry boundaries and forces change"
+      ],
+      [
+        "Ansoff matrix",
+        "Which product-market direction is proposed?",
+        "It does not measure demand or capability"
+      ],
+      [
+        "Decision tree",
+        "What is the probability-weighted financial outcome?",
+        "Forecasts and averages can hide severe risk"
+      ],
+      [
+        "Force-field analysis",
+        "What drives or restrains this change?",
+        "Weights are subjective and forces interact"
+      ],
+      [
+        "Scenario planning",
+        "How could strategy perform in different futures?",
+        "Scenarios are plausible stories, not predictions"
+      ]
+    ]
+  },
   "diagram": {
-    "title": "Strategic management",
-    "type": "flow",
+    "title": "Strategic management and learning",
+    "type": "cycle",
     "nodes": [
-      "Analyse",
-      "Choose",
-      "Implement",
-      "Review"
+      "Set objectives",
+      "Analyse position and scenarios",
+      "Generate and compare choices",
+      "Select and resource strategy",
+      "Implement and manage change",
+      "Measure, learn and revise"
     ]
   },
   "analysisChains": [
     {
-      "title": "Market development decision",
+      "title": "Market development using a core competence",
       "steps": [
-        "The firm targets a new geographic market",
-        "Potential sales and scale increase",
-        "Research, adaptation and distribution costs rise",
-        "Risk increases because customer behaviour is less familiar"
+        "The firm applies its distinctive logistics capability in a new country",
+        "Reliable delivery supports a differentiated customer promise",
+        "Early repeat purchasing may reduce acquisition cost per order",
+        "Volume and capacity use rise",
+        "Revenue and long-run return may increase"
       ],
-      "evaluation": "The strategy is strongest when the firm's core competence transfers well and the new market has an attractive competitive structure."
+      "evaluation": "The competence must transfer across regulation, geography and customer expectations; local adaptation and distribution investment may outweigh the advantage."
+    },
+    {
+      "title": "Transformational leadership during digital change",
+      "steps": [
+        "Leaders explain why the current model cannot meet future objectives",
+        "Employees understand the purpose and contribute to redesign",
+        "Training and visible leadership reduce uncertainty and skill gaps",
+        "Adoption and process quality improve",
+        "The digital strategy produces benefits sooner"
+      ],
+      "evaluation": "Vision is insufficient if workloads, systems, incentives or finance conflict with the change; transactional controls and milestones remain necessary."
+    },
+    {
+      "title": "Contingency planning for supplier disruption",
+      "steps": [
+        "The business identifies a single critical supplier",
+        "An approved alternative and trigger level are arranged",
+        "A disruption activates the alternative before inventory is exhausted",
+        "Production downtime and missed orders fall",
+        "Cash flow and customer trust are protected"
+      ],
+      "evaluation": "Dual sourcing and safety inventory add cost, so the appropriate protection depends on disruption likelihood, recovery time and the contribution at risk."
+    },
+    {
+      "title": "Blue ocean value innovation",
+      "steps": [
+        "The firm removes features customers do not value",
+        "Cost is released for a new benefit underserved customers value",
+        "The offer becomes distinct from established rivals",
+        "New demand and early loyalty may develop",
+        "Price competition becomes less important"
+      ],
+      "evaluation": "Demand is unproven and imitation may follow; staged testing can preserve cash and reveal whether the new benefit is genuinely valued."
     }
   ],
   "examTips": [
-    "A framework is not a conclusion—use it to make and then challenge a strategic recommendation.",
-    "Paper 4 strategy answers should integrate functions: marketing choices need finance, HR capability and operational capacity.",
-    "Expected value is evidence, not automatically the best decision."
+    "A framework is not a conclusion: apply it to evidence, make a recommendation and then challenge the decisive assumption.",
+    "Paper 4 strategy answers should integrate marketing demand, operational capacity, people capability and financial feasibility.",
+    "For expected value, show the calculation but evaluate probability quality, cash timing, maximum loss and risk attitude.",
+    "Implementation needs named resources, culture and leadership issues, milestones and a method of review.",
+    "In a high-mark judgement, state why the chosen route is better than the strongest alternative under the case's objective and constraint."
   ],
   "commonMistakes": [
-    "Mixing SWOT internal and external factors.",
-    "Writing Ansoff definitions without applying the product/market combination.",
-    "Ignoring implementation after choosing a strategy.",
-    "Assuming diversification is always wrong because it is riskier."
+    "Mixing SWOT internal and external factors or repeating the case without drawing implications.",
+    "Writing Ansoff definitions without identifying the exact existing/new product and market.",
+    "Selecting the highest expected value automatically and ignoring liquidity or a catastrophic outcome.",
+    "Treating transformational leadership as motivational speech without resources, participation or control.",
+    "Ignoring culture and implementation after choosing a strategy.",
+    "Confusing a contingency plan prepared in advance with crisis management during the event."
   ],
   "quickRecall": [
-    "strategy=analysis->choice->implementation",
-    "Porter=industry pressure",
-    "core competence=internal distinctive capability",
-    "Ansoff=product x market",
-    "force field=drivers/restraints",
-    "strategy must be implementable"
+    {
+      "question": "What are the main stages of strategic management?",
+      "answer": "Strategic analysis, strategic choice, implementation and review against objectives."
+    },
+    {
+      "question": "How do SWOT and PEST differ?",
+      "answer": "SWOT combines internal strengths/weaknesses with external opportunities/threats; PEST scans broad external forces only."
+    },
+    {
+      "question": "What are Porter's five forces?",
+      "answer": "Rivalry, threat of entry, threat of substitutes, buyer power and supplier power."
+    },
+    {
+      "question": "What four directions are in the Ansoff matrix?",
+      "answer": "Market penetration, market development, product development and diversification."
+    },
+    {
+      "question": "Why is expected value not necessarily the best choice?",
+      "answer": "It depends on estimated probabilities and averages, and can hide cash timing, qualitative effects or an unaffordable worst outcome."
+    },
+    {
+      "question": "How can culture affect strategy?",
+      "answer": "Shared assumptions and expected behaviour can support the new priorities or resist them despite the formal plan."
+    },
+    {
+      "question": "What distinguishes transformational leadership?",
+      "answer": "It creates a compelling vision, challenges assumptions and builds commitment to substantial change."
+    },
+    {
+      "question": "How do contingency planning and crisis management differ?",
+      "answer": "Contingency planning prepares responses before disruption; crisis management coordinates the live response and recovery."
+    }
   ],
   "relatedTopics": [
     "6.1",
