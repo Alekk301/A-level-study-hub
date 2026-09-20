@@ -8,13 +8,14 @@
   "contentDepth": "full",
   "overview": "External influences change a business's demand, costs, access to resources and strategic freedom. Strong analysis does not treat PEST as a list: it identifies the transmission route from an external change to a particular firm's decisions and performance, then tests the conclusion against factors such as market position, gearing, import dependence and time period.",
   "syllabusPoints": [
-    "Analyse political and legal influences, regulation, market failure, privatisation and nationalisation.",
-    "Analyse economic objectives, unemployment and the business effects of economic growth and inflation.",
-    "Analyse fiscal policy, monetary policy, supply-side policy and exchange-rate policy.",
-    "Analyse social and demographic change, corporate social responsibility and pressure groups.",
+    "Analyse political and legal influences, including regulation, privatisation and nationalisation.",
+    "Analyse macroeconomic objectives and monetary, fiscal, supply-side and exchange-rate policies.",
+    "Analyse social/demographic change, CSR and pressure groups.",
     "Analyse technological change and the influence of competitors and suppliers.",
-    "Analyse international trade, trade agreements, protectionism and multinational businesses.",
-    "Analyse environmental issues, environmental audits and sustainability."
+    "Analyse international trade, agreements and multinational businesses.",
+    "Analyse environmental issues, environmental audits and sustainability.",
+    "Analyse market failure, unemployment and the business effects of economic growth and inflation.",
+    "Analyse social auditing, accounting practices and contract incentives."
   ],
   "definitions": [
     {
@@ -52,6 +53,14 @@
     {
       "term": "Corporate social responsibility",
       "definition": "A business approach that accepts responsibilities for social, ethical and environmental effects as well as financial results."
+    },
+    {
+      "term": "Social audit",
+      "definition": "A systematic measurement and report of a business's social and ethical performance against stated objectives or standards."
+    },
+    {
+      "term": "Contract incentive",
+      "definition": "A reward or condition written into a contract to encourage behaviour that supports an agreed objective."
     },
     {
       "term": "Environmental audit",
@@ -96,9 +105,13 @@
         "Inflation raises many input and wage costs, complicates planning and may reduce real household income; a firm with pricing power may pass on more of the increase.",
         "Cyclical unemployment results from weak aggregate demand; structural unemployment comes from a mismatch of location or skills; frictional unemployment occurs while people move between jobs.",
         "High unemployment may weaken demand but expand the labour pool and reduce wage pressure; skill mismatches can leave vacancies unfilled at the same time.",
-        "Fiscal policy affects disposable income, public contracts and business tax; monetary policy affects borrowing, saving, exchange rates and asset demand.",
+        "Expansionary fiscal policy can increase government spending or reduce taxes: household disposable income and public orders may rise, increasing business demand, output and employment, but stronger demand can add inflation, imports or government debt.",
+        "Contractionary fiscal policy can reduce spending or raise taxes: demand and inflationary pressure may fall, but firms can lose sales or contracts and delay investment as spare capacity increases.",
+        "Monetary policy affects borrowing, saving, exchange rates and asset demand. A rate rise may reduce inflation but also increase finance cost and weaken interest-sensitive sales.",
         "Supply-side policy such as training, infrastructure, competition reform or investment incentives acts mainly through capacity and productivity and often has a longer time lag.",
-        "Currency depreciation makes exports cheaper in foreign currency and imports dearer in domestic currency; appreciation has the reverse effect, but contracts and hedging delay some effects."
+        "Currency depreciation makes exports cheaper in foreign currency and imports dearer in domestic currency; appreciation has the reverse effect, but contracts and hedging delay some effects.",
+        "A government or central bank can influence the exchange rate by changing interest rates or buying and selling currencies from foreign currency reserves. Higher rates or buying the domestic currency may support appreciation, while lower rates or selling it may encourage depreciation.",
+        "Intervention can stabilise import costs and planning, but using reserves is finite and an interest-rate change also affects domestic borrowing, demand and investment. A stronger currency helps importers while potentially weakening exporters' price competitiveness."
       ],
       "examples": [
         {
@@ -112,6 +125,12 @@
           "kind": "analysis",
           "label": "Exchange-rate exposure",
           "content": "Depreciation raises the domestic-currency cost of imported components but may improve the foreign-currency price of exports. The net effect depends on the proportion of imported inputs, export sales, price elasticity, hedging and competitors' currencies."
+        },
+        {
+          "id": "6.1-2-3",
+          "kind": "analysis",
+          "label": "Expansionary fiscal transmission",
+          "content": "A temporary income-tax cut raises disposable income. If consumers spend more on a retailer's products, sales and capacity use may rise; however, the effect is weaker when households save the tax reduction or buy imports, and later fiscal tightening may reverse it."
         }
       ]
     },
@@ -127,6 +146,21 @@
         "Pressure groups influence businesses through publicity, boycotts, research, shareholder action and lobbying even when they have no direct legal power.",
         "CSR may improve recruitment, loyalty and risk control; monitoring, safer inputs and higher standards may increase short-run cost.",
         "The commercial return from CSR depends on stakeholder priorities, credibility, competitors and whether the firm can sustain the commitment."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03a-social-auditing-accounting-and-incentives",
+      "title": "Social auditing, accounting practices and contract incentives",
+      "content": [
+        "A social audit measures and reports effects such as employee welfare, community impact, sourcing standards and equality. Transparent accounting practices determine what is recorded, valued and disclosed, so they shape the credibility of claims and the information available to stakeholders. Contract incentives can turn a social objective into action by linking supplier terms or management rewards to measurable outcomes."
+      ],
+      "bullets": [
+        "A baseline, clear indicators, stakeholder input and independent checking make a social audit more useful; selective boundaries or unverified data can turn it into public relations.",
+        "Accounting practices influence reported performance through measurement choices, provisions and disclosure. Legal compliance does not by itself guarantee a complete picture of social cost or long-term risk.",
+        "A supplier contract can require safety, wage or emissions standards, with audit rights and renewal incentives supporting compliance.",
+        "Management bonuses tied to safety or customer outcomes may align decisions with stakeholders, but narrow measures can be manipulated or displace unmeasured objectives.",
+        "Audits and incentives add monitoring cost; their value depends on material risks, reliable data and credible consequences for failure."
       ],
       "examples": []
     },
@@ -265,7 +299,7 @@
     {
       "title": "Currency depreciation for an exporter",
       "steps": [
-        "The domestic currency price of exports falls for overseas buyers",
+        "The foreign-currency price of exports falls for overseas buyers when the exporter keeps its domestic price unchanged",
         "Price competitiveness and export orders may increase",
         "Capacity use and revenue may rise",
         "Imported input costs also rise",

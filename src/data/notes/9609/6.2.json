@@ -8,12 +8,12 @@
   "contentDepth": "full",
   "overview": "Business strategy sets the long-term direction used to achieve corporate objectives. Examination answers should move through strategic analysis, choice and implementation, using tools as evidence rather than as automatic decisions. A credible recommendation integrates marketing, operations, people and finance, identifies the main uncertainty and explains how implementation will be controlled.",
   "syllabusPoints": [
-    "Explain strategy and the stages of strategic management: analysis, choice, implementation and review.",
-    "Apply blue ocean strategy and scenario planning to strategic choice.",
+    "Explain strategy and the stages of strategic management: analysis, choice and implementation.",
+    "Apply blue ocean strategy and scenario planning.",
     "Apply SWOT, PEST, Porter's five forces, core competence, Ansoff, force-field analysis and decision trees.",
-    "Analyse corporate planning and the relationship between strategy and corporate culture.",
-    "Analyse transformational leadership and the management of strategic change.",
-    "Analyse contingency planning and crisis management."
+    "Explain corporate planning/culture and transformational leadership in implementation.",
+    "Analyse strategic change, contingency planning and crisis management.",
+    "Explain review and control within the strategic-management cycle."
   ],
   "definitions": [
     {
@@ -181,7 +181,7 @@
     },
     {
       "id": "07-implementation-and-change",
-      "title": "Implementation and change: legacy section",
+      "title": "Implementation and change",
       "content": [
         "This stable section retains the established topic anchor. Implementation requires clear responsibilities, resources, communication, milestones, measures and corrective action. The detailed culture, leadership, change and contingency sections that follow should be used to develop the analysis."
       ],
