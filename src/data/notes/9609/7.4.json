@@ -12,7 +12,9 @@
     "Evaluate flexible working contracts and arrangements.",
     "Measure causes/consequences of poor employee performance and recommend improvements.",
     "Explain implementation and usefulness of MBO.",
-    "Analyse the changing role of IT and AI in HRM."
+    "Analyse the changing role of IT and AI in HRM.",
+    "Design a coherent HR policy bundle that fits business objectives and diagnoses performance evidence.",
+    "Interpret changes in employee-performance measures, including percentage-point changes."
   ],
   "definitions": [
     {
@@ -30,6 +32,22 @@
     {
       "term": "Flexible working",
       "definition": "Employment arrangements allowing labour time/location/contract to adapt to employee or business needs."
+    },
+    {
+      "term": "Annualised hours",
+      "definition": "A contract specifying total hours for the year, with working time varied between periods to match demand."
+    },
+    {
+      "term": "Compressed hours",
+      "definition": "Working normal weekly hours over fewer, longer days."
+    },
+    {
+      "term": "Gig economy",
+      "definition": "A labour market in which individuals complete short tasks or contracts, often arranged through digital platforms."
+    },
+    {
+      "term": "Performance appraisal",
+      "definition": "A structured review of employee performance, development needs and future objectives."
     }
   ],
   "sections": [
@@ -37,60 +55,158 @@
       "id": "01-hard-versus-soft-hrm",
       "title": "Hard versus soft HRM",
       "content": [
-        "Hard HRM emphasises workforce numbers, productivity and cost; soft HRM emphasises motivation, development, trust and involvement. Real firms may combine both. Suitable balance depends on skill scarcity, service quality, cost pressure and culture."
+        "Hard HRM emphasises workforce numbers, productivity and cost; soft HRM emphasises motivation, development, trust and involvement. Real firms may combine both. The suitable balance depends on skill scarcity, service quality, cost pressure, business objectives and culture.",
+        "An HR strategy is a connected policy bundle, not a label. Recruitment, contracts, training, rewards, job design and employee relations should reinforce the same objective; conflicting policies can cancel one another."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "A hard approach can match labour cost and numbers quickly to demand, but insecurity may reduce discretionary effort, retention and service quality.",
+        "A soft approach can build firm-specific skill and commitment, but training, consultation and secure contracts create cost and take time to pay back.",
+        "A hospital may use hard workforce budgets and strict safety measures while using soft development and participation to retain scarce nurses."
+      ],
+      "examples": [
+        {
+          "id": "7.4-1-1",
+          "kind": "applied",
+          "label": "A conflicting policy bundle",
+          "content": "A hotel promises empowerment and service training but gives staff insecure shifts and rewards only the number of rooms cleaned. The hard controls may undermine the trust and quality behaviour the soft policies were meant to create."
+        }
+      ]
     },
     {
       "id": "02-flexible-contracts-and-working",
       "title": "Flexible contracts and working",
       "content": [
-        "Temporary, zero-hours, part-time, full-time, annualised hours, flexitime, home working, shifts, job sharing, compressed hours and gig work allow labour to match demand or widen recruitment. Risks include insecurity, coordination difficulty, legal/reputation issues and weaker loyalty/training continuity."
+        "Temporary, zero-hours, part-time, full-time, annualised hours, flexitime, home working, shifts, job sharing, compressed hours and gig work allow labour to match demand or widen recruitment. Risks include insecurity, coordination difficulty, legal and reputation issues and weaker loyalty or training continuity.",
+        "Contract flexibility changes the quantity of labour available; working-time and location flexibility change when or where employees work. The same arrangement can benefit both sides, or transfer all demand risk to workers, depending on notice, choice, pay and access to development."
       ],
-      "bullets": [],
+      "bullets": [
+        "Annualised hours move labour toward seasonal peaks but can create fatigue or overtime cost if hours are allocated badly.",
+        "Compressed hours reduce commuting days and may improve retention, but longer shifts can harm concentration, safety or customer coverage.",
+        "Gig work gives rapid access to capacity and specialist skill, but control, employment status, quality and availability may be uncertain.",
+        "Home working widens recruitment and may reduce office cost, yet requires outcome measures, secure systems and deliberate team communication."
+      ],
       "examples": []
     },
     {
       "id": "03-measuring-poor-performance",
       "title": "Measuring poor performance",
       "content": [
-        "Indicators include productivity, absence, labour turnover, error/defect rates, complaints and missed targets. Causes may be skill gaps, poor equipment, unclear goals, workload, weak motivation, leadership or reward systems. Diagnose the cause before choosing a solution."
+        "Indicators include productivity, absence, labour turnover, error and defect rates, complaints and missed targets. Causes may be skill gaps, poor equipment, unclear goals, workload, weak motivation, leadership or reward systems. Diagnose the cause before choosing a solution.",
+        "Measures show symptoms, not proof of cause. Compare time trends, departments and benchmarks, then use appraisal, exit interviews, observation and employee feedback to separate ability, motivation, resources and external-demand effects."
       ],
-      "bullets": [],
+      "bullets": [
+        "If absence rises from 4% to 6%, it increases by 2 percentage points, or 50% relative to the original rate; state which comparison is used.",
+        "Higher labour productivity can reflect automation or fewer workers, not necessarily better employee performance.",
+        "Low turnover is not always good if weak performers remain and the business needs new skills; high turnover is most damaging where replacement and learning costs are high."
+      ],
       "examples": []
     },
     {
       "id": "04-improving-performance",
       "title": "Improving performance",
       "content": [
-        "Training, coaching, better job design, participation, clearer targets, technology, reward changes, wellbeing support or better recruitment may help. Evaluate cost, implementation time and whether the problem is individual or systemic."
+        "Training, coaching, better job design, participation, clearer targets, technology, reward changes, wellbeing support or better recruitment may help. Evaluate cost, implementation time and whether the problem is individual or systemic.",
+        "Match the policy to diagnosis: training addresses an ability gap, clearer objectives address ambiguity, maintenance addresses equipment failure and job redesign or fair rewards may address motivation. Review several measures so one target is not improved by damaging quality or wellbeing."
       ],
-      "bullets": [],
+      "bullets": [
+        "Appraisal can identify development needs and provide feedback, but biased ratings or a punishment-only meeting reduce trust.",
+        "Participation can reveal process constraints and improve acceptance, but needs real authority and management response.",
+        "Performance-related pay can focus effort on measurable output but may encourage gaming, short-termism or weak teamwork."
+      ],
       "examples": []
     },
     {
       "id": "05-management-by-objectives",
       "title": "Management by Objectives",
       "content": [
-        "Managers and employees agree objectives aligned with higher business goals, measures/timescales, then review progress. Benefits: clarity, participation, alignment and performance evidence. Risks: target gaming, narrow focus, measurement difficulty and time spent negotiating/reviewing."
+        "Managers and employees agree objectives aligned with higher business goals, measures and timescales, then review progress. Benefits include clarity, participation, alignment and performance evidence. Risks include target gaming, narrow focus, measurement difficulty and time spent negotiating and reviewing.",
+        "Implementation cascades the corporate objective into departmental and individual SMART objectives, agrees resources and authority, monitors milestones, gives feedback and reviews results. Employees should understand how their target contributes to the wider objective."
       ],
-      "bullets": [],
+      "bullets": [
+        "Participation can improve realism and commitment, especially where employees know the process better than senior managers.",
+        "Objectives must cover quality, customer and team effects as well as easy quantity measures.",
+        "MBO becomes bureaucratic when targets stay fixed after conditions change or review focuses on blame rather than learning."
+      ],
       "examples": []
     },
     {
       "id": "06-it-and-ai-in-hrm",
       "title": "IT and AI in HRM",
       "content": [
-        "Systems automate applicant screening, scheduling, payroll, training and performance analytics. Benefits include speed/consistency; risks include algorithmic bias, privacy, cybersecurity, inaccurate data and loss of human judgement/trust."
+        "Systems automate applicant screening, scheduling, payroll, training and performance analytics. Benefits include speed and consistency; risks include algorithmic bias, privacy, cybersecurity, inaccurate data and loss of human judgement and trust.",
+        "AI can predict turnover, match candidates, personalise training and answer routine employee queries. It changes HR work toward data interpretation, exception handling, employee experience and governance rather than removing the need for human judgement."
       ],
-      "bullets": [],
+      "bullets": [
+        "Historical recruitment data may encode past discrimination, so apparently neutral screening can reproduce bias at scale.",
+        "Employees need transparency, access controls, correction routes and human review for consequential decisions.",
+        "Automation can release HR time and improve consistency, but system cost, poor data, cyber failure and employee surveillance concerns may offset the gain."
+      ],
       "examples": []
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
+  "formulas": [
+    {
+      "label": "Labour productivity",
+      "expression": "Output in a period ÷ number of employees",
+      "note": "Use labour hours instead of employees if the question specifies hours."
+    },
+    {
+      "label": "Labour turnover",
+      "expression": "(Employees leaving in a period ÷ average number employed) × 100"
+    },
+    {
+      "label": "Percentage-point change",
+      "expression": "New percentage − original percentage",
+      "note": "A change from 4% to 6% is 2 percentage points, but a 50% relative increase."
+    }
+  ],
+  "comparisonTable": {
+    "title": "Flexible-working choices",
+    "columns": [
+      "Arrangement",
+      "Business benefit",
+      "Employee benefit",
+      "Risk"
+    ],
+    "rows": [
+      [
+        "Annualised hours",
+        "Matches labour across seasonal demand",
+        "Planned flexibility across the year",
+        "Fatigue or overtime if allocation is poor"
+      ],
+      [
+        "Compressed hours",
+        "Longer daily coverage",
+        "Fewer commuting days",
+        "Long shifts may reduce safety or quality"
+      ],
+      [
+        "Home working",
+        "Wider talent pool and lower office cost",
+        "Less travel and more location choice",
+        "Isolation, coordination and data security"
+      ],
+      [
+        "Gig work",
+        "Rapid capacity with low fixed commitment",
+        "Independence and choice of assignments",
+        "Uncertain availability, quality and employment status"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Performance diagnosis cycle",
+    "type": "cycle",
+    "nodes": [
+      "Measure trend and benchmark",
+      "Investigate ability, motivation and resources",
+      "Choose aligned HR policy",
+      "Implement with ownership and support",
+      "Review balanced performance measures",
+      "Keep, adapt or stop the policy"
+    ]
+  },
   "analysisChains": [
     {
       "title": "Soft HRM investment",
@@ -101,12 +217,44 @@
         "Labour turnover and recruitment costs may fall"
       ],
       "evaluation": "Benefits depend on retaining trained staff and measuring whether performance gains exceed the programme's cost."
+    },
+    {
+      "title": "Annualised hours for seasonal demand",
+      "steps": [
+        "More contracted hours are scheduled during the peak season",
+        "Staffing better matches customer demand",
+        "Overtime and idle-time cost may fall",
+        "Service capacity and contribution improve"
+      ],
+      "evaluation": "Forecast error can exhaust annual hours too early, while unpopular schedules can increase fatigue, absence and turnover."
+    },
+    {
+      "title": "AI applicant screening",
+      "steps": [
+        "The system compares many applications against job criteria quickly",
+        "Recruitment time and administrative cost fall",
+        "Vacancies may be filled sooner",
+        "Capacity and customer service recover faster"
+      ],
+      "evaluation": "Biased historic data or a weak criterion can exclude strong candidates at scale; audit, transparency and human review are necessary."
+    },
+    {
+      "title": "Management by Objectives",
+      "steps": [
+        "Corporate objectives are translated into agreed employee targets",
+        "Employees understand priorities and how performance is measured",
+        "Effort and coordination focus on the objective",
+        "Progress data allows earlier corrective action",
+        "Productivity or service performance may improve"
+      ],
+      "evaluation": "Narrow or unrealistic targets encourage gaming and stress; measures and objectives need review when conditions change."
     }
   ],
   "examTips": [
     "Flexible working is not automatically soft HRM—the motive and employee treatment matter.",
     "If performance is poor, connect the solution to the actual cause.",
-    "AI evaluation should include bias/data/privacy risk as well as efficiency."
+    "AI evaluation should include bias/data/privacy risk as well as efficiency.",
+    "For an overall HR strategy, show how policies reinforce or contradict one another before reaching a judgement."
   ],
   "commonMistakes": [
     "Treating part-time and temporary as the same.",
@@ -115,11 +263,30 @@
     "Describing MBO as only top-down target setting."
   ],
   "quickRecall": [
-    "hard=labour resource/cost",
-    "soft=people/assets",
-    "flexibility matches labour to need",
-    "MBO=agreed objectives",
-    "AI HRM=efficiency + bias/privacy risk"
+    {
+      "question": "How do hard and soft HRM differ?",
+      "answer": "Hard HRM treats labour mainly as a controllable resource and cost; soft HRM develops employees as assets and partners."
+    },
+    {
+      "question": "What are annualised hours?",
+      "answer": "A yearly total of contracted hours allocated unevenly across periods to match demand."
+    },
+    {
+      "question": "What is a percentage-point change?",
+      "answer": "The arithmetic difference between two percentages, such as 6% minus 4% = 2 percentage points."
+    },
+    {
+      "question": "What is the first step when performance is poor?",
+      "answer": "Diagnose the cause using trends, benchmarks and qualitative evidence before choosing a policy."
+    },
+    {
+      "question": "How is MBO implemented?",
+      "answer": "Align agreed measurable objectives from corporate to individual level, provide resources, monitor progress and review results."
+    },
+    {
+      "question": "What is a central risk of AI in HRM?",
+      "answer": "Biased or inaccurate data can make unfair decisions at scale, alongside privacy and trust risks."
+    }
   ],
   "relatedTopics": [
     "7.1",

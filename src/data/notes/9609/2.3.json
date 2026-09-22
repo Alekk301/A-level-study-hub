@@ -13,7 +13,9 @@
     "Analyse delegation, authority, responsibility and accountability.",
     "Compare autocratic, democratic and laissez-faire leadership.",
     "Explain McGregor's Theory X and Theory Y assumptions.",
-    "Analyse the importance of emotional intelligence and situational management."
+    "Analyse the importance of emotional intelligence and situational management.",
+    "Compare Fayol's management functions with Mintzberg's management roles.",
+    "Explain paternalistic management and assess when different styles fit the situation."
   ],
   "definitions": [
     {
@@ -55,6 +57,10 @@
     {
       "term": "Emotional intelligence",
       "definition": "The ability to recognise and manage one's own emotions and understand and respond effectively to others."
+    },
+    {
+      "term": "Paternalistic management",
+      "definition": "A style in which the manager consults and explains but makes the final decision believed to be in employees' and the business's best interests."
     }
   ],
   "sections": [
@@ -62,12 +68,13 @@
       "id": "01-functions-of-management",
       "title": "Functions of management",
       "content": [
-        "Managers set objectives and plan how to achieve them; organise people, finance and physical resources; direct and motivate employees; coordinate interdependent work; and control by comparing actual performance with targets and correcting deviations."
+        "Fayol's traditional functions show managers setting objectives and planning how to achieve them; organising people, finance and physical resources; directing and motivating employees; coordinating interdependent work; and controlling by comparing actual performance with targets and correcting deviations. Mintzberg instead describes the interpersonal, informational and decisional roles managers perform in daily work."
       ],
       "bullets": [
         "Planning without control gives no evidence that the plan worked.",
         "Control is not only punishment: it includes measurement, feedback, support and corrective action.",
-        "Coordination prevents departments optimising their own targets while damaging the whole business."
+        "Coordination prevents departments optimising their own targets while damaging the whole business.",
+        "Fayol gives a useful management process; Mintzberg better reveals the fragmented relationships, information and decisions through which that process is carried out."
       ],
       "examples": []
     },
@@ -124,13 +131,20 @@
       "id": "06-leadership-styles",
       "title": "Leadership styles",
       "content": [
-        "Autocratic leadership is fast, clear and useful in crisis, confidential decisions or with inexperienced staff, but may reduce ideas and motivation. Democratic leadership uses employee knowledge and builds commitment but takes time. Laissez-faire can release expert creativity and speed specialist decisions but risks drift and weak coordination."
+        "Autocratic leadership is fast, clear and useful in crisis, confidential decisions or with inexperienced staff, but may reduce ideas and motivation. Democratic leadership uses employee knowledge and builds commitment but takes time. Paternalistic managers consult and explain yet retain the decision they believe is best for employees and the business; this can provide security but may become patronising. Laissez-faire can release expert creativity and speed specialist decisions but risks drift and weak coordination."
       ],
       "bullets": [
         "No style is universally best. Consider urgency, risk, workforce competence, task complexity, culture, location and need for innovation.",
         "Managers may use different styles in different decisions rather than displaying one fixed style."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "2.3-6-1",
+          "kind": "applied",
+          "label": "Choosing a style during relocation",
+          "content": "A manager consults employees about travel and caring responsibilities but retains the final site decision because finance and continuity are at risk. This paternalistic approach may protect welfare and speed, although genuine democratic participation could reveal better alternatives and build more commitment."
+        }
+      ]
     },
     {
       "id": "07-mcgregor-s-theory-x-and-theory-y",

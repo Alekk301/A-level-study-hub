@@ -14,7 +14,10 @@
     "Compare induction, on-the-job and off-the-job training.",
     "Distinguish dismissal and redundancy and analyse equality and diversity.",
     "Calculate and interpret labour turnover, absenteeism and labour productivity.",
-    "Explain the role of trade unions and collective bargaining."
+    "Explain the role of trade unions and collective bargaining.",
+    "Explain how HRM supports organisational objectives, employee morale, welfare and work-life balance.",
+    "Analyse employee development for appraisal, intrapreneurship, multi-skilling and flexibility.",
+    "Analyse how cooperation between management and the workforce can benefit both sides."
   ],
   "definitions": [
     {
@@ -60,6 +63,14 @@
     {
       "term": "Collective bargaining",
       "definition": "Negotiation between an employer and employee representatives over terms and conditions of employment."
+    },
+    {
+      "term": "Employee welfare",
+      "definition": "Support for employees' health, safety and wellbeing, including suitable working conditions and help with personal or work-related problems."
+    },
+    {
+      "term": "Performance appraisal",
+      "definition": "A structured review of an employee's performance, development needs and future objectives."
     }
   ],
   "sections": [
@@ -134,12 +145,14 @@
       "id": "06-training-and-development",
       "title": "Training and development",
       "content": [
-        "Induction reduces early mistakes and helps a recruit settle. On-the-job training uses real equipment and is tailored and relatively cheap, but output and quality may suffer while training and poor habits can be passed on. Off-the-job training uses specialists away from normal work and may bring recognised skills, but fees, travel and lost working time raise cost."
+        "Induction reduces early mistakes and helps a recruit settle. On-the-job training uses real equipment and is tailored and relatively cheap, but output and quality may suffer while training and poor habits can be passed on. Off-the-job training uses specialists away from normal work and may bring recognised skills, but fees, travel and lost working time raise cost.",
+        "Development is broader and longer-term than training for the current task. Appraisal can identify career goals and gaps, then promotion, job enrichment, cross-functional work or further training can develop multi-skilling, flexibility and intrapreneurship."
       ],
       "bullets": [
         "Training can raise skill → productivity and quality → lower unit cost/complaints → stronger competitiveness.",
         "It can motivate by showing investment in employees and supporting promotion.",
-        "A trained employee may leave, so retention and opportunities matter alongside the course itself."
+        "A trained employee may leave, so retention and opportunities matter alongside the course itself.",
+        "Giving creative employees authority, resources and tolerance of sensible failure can turn development into intrapreneurial ideas and future revenue."
       ],
       "examples": []
     },
@@ -147,12 +160,14 @@
       "id": "07-dismissal-redundancy-equality-and-diversity",
       "title": "Dismissal, redundancy, equality and diversity",
       "content": [
-        "Dismissal concerns the individual; redundancy concerns the role. Both require fair, lawful procedures. Redundancy can reduce a structural labour surplus but brings payments, lost skills, survivor anxiety and reputation risk. Equality prevents irrelevant discrimination; diversity uses differences in background and perspective as an organisational resource."
+        "Dismissal concerns the individual; redundancy concerns the role. Both require fair, lawful procedures. Redundancy can reduce a structural labour surplus but brings payments, lost skills, survivor anxiety and reputation risk. Equality prevents irrelevant discrimination; diversity uses differences in background and perspective as an organisational resource.",
+        "Employee welfare includes safe and hygienic conditions, work-life balance, counselling and practical support. Better welfare can raise morale and loyalty, reducing absence and turnover, but programmes must address the workforce's real needs to justify their cost."
       ],
       "bullets": [
         "Redeployment, retraining, natural wastage and voluntary redundancy may reduce harm before compulsory redundancy.",
         "Diverse teams may understand wider customers and challenge groupthink, but inclusion and fair processes are needed to convert diversity into performance.",
-        "Unfair treatment can cause legal cost, absenteeism, turnover and recruitment difficulty."
+        "Unfair treatment can cause legal cost, absenteeism, turnover and recruitment difficulty.",
+        "Welfare does not replace fair pay, manageable workload or competent leadership; it should form part of a coherent employment offer."
       ],
       "examples": []
     },

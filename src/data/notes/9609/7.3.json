@@ -11,7 +11,8 @@
     "Explain leadership roles of directors, managers, supervisors and worker representatives and qualities of effective leaders.",
     "Apply trait, behavioural, contingency, power/influence and transformational leadership theories.",
     "Explain Goleman's emotional-intelligence competencies: self-awareness, self-management, social awareness and social skills.",
-    "Evaluate leadership effectiveness in context."
+    "Evaluate leadership effectiveness in context.",
+    "Analyse how leadership power, behaviour and emotional intelligence affect workforce and business performance."
   ],
   "definitions": [
     {
@@ -33,6 +34,18 @@
     {
       "term": "Emotional intelligence",
       "definition": "Ability to understand/manage one's own emotions and recognise/respond effectively to others' emotions."
+    },
+    {
+      "term": "Behavioural theory",
+      "definition": "An approach explaining leadership through observable and learnable task, human and conceptual behaviours."
+    },
+    {
+      "term": "Power",
+      "definition": "A leader's capacity to influence decisions or behaviour through position, rewards, expertise, relationships or other sources."
+    },
+    {
+      "term": "Social awareness",
+      "definition": "Goleman's competency of sensing other people's emotions, needs and perspectives and taking them into account."
     }
   ],
   "sections": [
@@ -40,69 +53,162 @@
       "id": "01-leadership-roles-and-qualities",
       "title": "Leadership roles and qualities",
       "content": [
-        "Directors shape strategic direction/governance; managers translate plans into coordinated action; supervisors lead frontline work; worker representatives communicate employee interests. Important qualities include communication, judgement, integrity, adaptability and ability to motivate—but importance varies by context."
+        "Directors shape strategic direction and governance; managers translate plans into coordinated action; supervisors lead frontline work; worker representatives communicate employee interests. Important qualities include communication, judgement, integrity, adaptability and ability to motivate, but importance varies by context.",
+        "Leadership provides direction, aligns effort and sustains commitment when decisions are uncertain or unpopular. Formal position can create compliance; credibility and expertise are often needed for voluntary commitment and useful challenge."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Directors need strategic judgement and stakeholder accountability; supervisors need operational knowledge, feedback and consistency.",
+        "Worker representatives can improve upward communication and trust but may challenge management where interests conflict.",
+        "A quality is valuable only through behaviour: integrity builds trust when actions match promises and difficult decisions are explained."
+      ],
+      "examples": [
+        {
+          "id": "7.3-1-1",
+          "kind": "applied",
+          "label": "Leading a product recall",
+          "content": "A director accepts responsibility and sets the recall priority, managers coordinate finance and operations, supervisors brief staff, and worker representatives relay safety concerns. Clear roles reduce delay and protect customers and reputation."
+        }
+      ]
     },
     {
       "id": "02-trait-theory",
       "title": "Trait theory",
       "content": [
-        "Looks for personal characteristics linked with leadership. It can help selection/development but risks assuming qualities alone determine success and may underplay context and learned behaviour."
+        "Trait theory looks for personal characteristics linked with leadership, such as confidence, integrity, drive, intelligence and communication. It can inform selection and development but risks assuming qualities alone determine success and may underplay context and learned behaviour.",
+        "A trait does not guarantee a business result. Confidence may reassure employees during change, but excessive confidence can suppress evidence and increase strategic error."
       ],
-      "bullets": [],
+      "bullets": [
+        "Traits are difficult to define and measure consistently across cultures and situations.",
+        "The approach helps identify potential but does not explain which behaviour should be used for a particular workforce or task.",
+        "Many qualities can be developed, so trait theory should not be reduced to the claim that leaders are simply born."
+      ],
       "examples": []
     },
     {
       "id": "03-behavioural-approaches",
       "title": "Behavioural approaches",
       "content": [
-        "Focus on what leaders actually do, such as task-focused versus people-focused behaviour. Behaviour can be developed and adapted, but the same behaviour may not work with every workforce/task."
+        "Behavioural approaches focus on what leaders actually do, including task, human and conceptual behaviours and the balance between task focus and people focus. Behaviour can be observed, learned and adapted, but the same behaviour may not work with every workforce or task.",
+        "Task behaviour sets standards, roles and deadlines; people behaviour listens, coaches and resolves conflict. Both can support performance when matched to the cause of the problem."
       ],
-      "bullets": [],
+      "bullets": [
+        "Clear task direction can reduce error where work is new or safety-critical.",
+        "Coaching and participation can develop skill and commitment where employees can contribute useful knowledge.",
+        "Behavioural theory is more actionable than a trait list but can still ignore situational constraints."
+      ],
       "examples": []
     },
     {
       "id": "04-contingency-theory",
       "title": "Contingency theory",
       "content": [
-        "No single leadership approach is always best. Urgency, employee competence, task structure, risk, culture and degree of change influence what works. A crisis may require faster central direction; expert creative teams may perform better with autonomy."
+        "Contingency theory argues that no single leadership approach is always best. Urgency, employee competence, task structure, risk, culture and degree of change influence what works. A crisis may require faster central direction; expert creative teams may perform better with autonomy.",
+        "Situational choice should name the decision, not label the whole leader. A manager may direct evacuation, consult on process redesign and delegate specialist research in the same week."
       ],
-      "bullets": [],
+      "bullets": [
+        "Urgency and high safety risk favour clarity and speed; complex innovation favours expertise, challenge and participation.",
+        "A dispersed or inexperienced workforce may need different communication and monitoring from a trusted expert team.",
+        "Continually switching approach without explanation can appear inconsistent and reduce trust."
+      ],
       "examples": []
     },
     {
       "id": "05-power-and-influence",
       "title": "Power and influence",
       "content": [
-        "Leaders influence through formal position, expertise, control of rewards/resources, relationships and credibility. Coercive power may gain short-term compliance but damage trust/commitment."
+        "Leaders influence through formal position, expertise, control of rewards and resources, relationships and credibility. Coercive power may gain short-term compliance but damage trust and commitment.",
+        "Legitimate power comes from role; reward and coercive power change consequences; expert power comes from valued knowledge; referent power comes from respect and identification. The useful source depends on what followers need and whether influence must last."
       ],
-      "bullets": [],
+      "bullets": [
+        "Expert power is strong in technical change but weakens when the leader ignores specialists with better evidence.",
+        "Reward power can direct effort to measurable targets but may encourage gaming or crowd out intrinsic motivation.",
+        "Credibility and fair process make influence more durable than fear alone."
+      ],
       "examples": []
     },
     {
       "id": "06-transformational-leadership",
       "title": "Transformational leadership",
       "content": [
-        "Creates vision, challenges old assumptions and inspires followers to support major change. It can increase commitment during transformation but fails if the vision is unrealistic or implementation/resources are weak."
+        "Transformational leadership creates vision, challenges old assumptions and inspires followers to support major change. It can increase commitment during transformation but fails if the vision is unrealistic or implementation and resources are weak.",
+        "The leader must translate purpose into priorities, training, structure, budgets and measures. Inspiration without operational alignment can increase expectations while leaving employees unable to deliver."
       ],
-      "bullets": [],
+      "bullets": [
+        "A credible purpose can reduce resistance and encourage employees to contribute ideas during strategic change.",
+        "Questioning established routines can support innovation but also create uncertainty and change fatigue.",
+        "Transformational leadership needs transactional control of deadlines, resources and standards as well as vision."
+      ],
       "examples": []
     },
     {
       "id": "07-goleman-s-emotional-intelligence",
       "title": "Goleman's emotional intelligence",
       "content": [
-        "Self-awareness means understanding one's emotions/impact; self-management means regulating reactions; social awareness means recognising others' needs/perspectives; social skills cover communication, relationship-building, conflict management and influence."
+        "Self-awareness means understanding one's emotions and impact; self-management means regulating reactions and acting reliably; social awareness means recognising others' needs and perspectives; social skills cover communication, relationship-building, conflict management and influence.",
+        "Emotional intelligence improves how a decision is communicated and implemented. It does not prove the decision is technically correct and should complement evidence, ethics and business competence."
       ],
-      "bullets": [],
+      "bullets": [
+        "Self-awareness can stop defensiveness from distorting a response to bad news.",
+        "Self-management supports calm, consistent behaviour during conflict or crisis.",
+        "Social awareness and skills help tailor communication, negotiate resistance and rebuild cooperation."
+      ],
       "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
+  "comparisonTable": {
+    "title": "Leadership theories compared",
+    "columns": [
+      "Theory",
+      "Main question",
+      "Practical use",
+      "Limitation"
+    ],
+    "rows": [
+      [
+        "Trait",
+        "What qualities does the leader have?",
+        "Selection and development",
+        "Traits do not guarantee the right behaviour or fit"
+      ],
+      [
+        "Behavioural",
+        "What does the leader do?",
+        "Coach task, human and conceptual skills",
+        "One behaviour does not fit every context"
+      ],
+      [
+        "Contingency",
+        "What does this situation require?",
+        "Adapt authority, support and participation",
+        "Diagnosis and adaptation can be difficult"
+      ],
+      [
+        "Power and influence",
+        "Why do followers respond?",
+        "Use position, reward, expertise or credibility",
+        "Coercion may damage long-term trust"
+      ],
+      [
+        "Transformational",
+        "How can purpose mobilise major change?",
+        "Vision, challenge and commitment",
+        "Vision fails without realistic implementation"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Leadership effectiveness",
+    "type": "flow",
+    "nodes": [
+      "Diagnose objective and situation",
+      "Choose behaviour and source of influence",
+      "Communicate with emotional intelligence",
+      "Employees understand and commit",
+      "Action and coordination improve",
+      "Review workforce and business results"
+    ]
+  },
   "analysisChains": [
     {
       "title": "Participative leadership",
@@ -113,12 +219,35 @@
         "Implementation can become more effective"
       ],
       "evaluation": "Participation can slow urgent decisions and is less valuable where employees lack relevant information or expertise."
+    },
+    {
+      "title": "Transformational leadership in digital change",
+      "steps": [
+        "The leader explains why the old process threatens the objective",
+        "A credible vision connects new technology to better customer service",
+        "Training and participation reduce fear and improve skill",
+        "Adoption and process quality rise",
+        "Cost or response time may fall"
+      ],
+      "evaluation": "A compelling vision cannot overcome unreliable technology, insufficient finance or targets and rewards that still favour the old process."
+    },
+    {
+      "title": "Expert power during a quality problem",
+      "steps": [
+        "Employees trust a leader who understands the production process",
+        "The cause and corrective instruction appear credible",
+        "Compliance and useful feedback increase",
+        "Defects and rework may fall",
+        "Unit cost and customer confidence improve"
+      ],
+      "evaluation": "Expertise in one process does not justify ignoring other specialists or customer evidence; influence must remain open to challenge."
     }
   ],
   "examTips": [
     "Do not rely only on old autocratic/democratic labels—the current syllabus explicitly expects the theories above.",
     "Evaluate leadership against workforce skill, urgency, culture and type of change.",
-    "Use emotional intelligence in a business consequence such as conflict, motivation or change management."
+    "Use emotional intelligence in a business consequence such as conflict, motivation or change management.",
+    "Keep theories distinct, then combine them only when the case shows why qualities, behaviour, power and context interact."
   ],
   "commonMistakes": [
     "Treating trait theory as proof that leaders are simply born.",
@@ -127,11 +256,30 @@
     "Using management and leadership as exact synonyms."
   ],
   "quickRecall": [
-    "trait=characteristics",
-    "behavioural=what leader does",
-    "contingency=depends on situation",
-    "transformational=vision/change",
-    "EI=self+social awareness/management"
+    {
+      "question": "What does trait theory study?",
+      "answer": "Personal characteristics associated with effective leadership."
+    },
+    {
+      "question": "Why is behavioural theory useful for development?",
+      "answer": "It treats leadership as observable task, human and conceptual behaviours that can be learned."
+    },
+    {
+      "question": "What is the central claim of contingency theory?",
+      "answer": "The most effective leadership approach depends on the situation."
+    },
+    {
+      "question": "How do expert and legitimate power differ?",
+      "answer": "Expert power comes from valued knowledge; legitimate power comes from formal position."
+    },
+    {
+      "question": "What makes leadership transformational?",
+      "answer": "It uses vision and challenge to create commitment to significant organisational change."
+    },
+    {
+      "question": "What are Goleman's four emotional-intelligence competencies?",
+      "answer": "Self-awareness, self-management, social awareness and social skills."
+    }
   ],
   "relatedTopics": [
     "6.2",

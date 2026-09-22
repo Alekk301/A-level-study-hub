@@ -11,7 +11,9 @@
     "Explain situations where effective communication is essential.",
     "Compare spoken, written, electronic and visual communication methods.",
     "Analyse barriers to communication.",
-    "Explain how communication affects business efficiency and how it can be improved."
+    "Explain how communication affects business efficiency and how it can be improved.",
+    "Distinguish one-way/two-way and vertical/horizontal communication channels.",
+    "Analyse formal and informal communication networks and the role of feedback."
   ],
   "definitions": [
     {
@@ -33,6 +35,22 @@
     {
       "term": "Informal communication",
       "definition": "Unofficial communication outside formal organisational channels."
+    },
+    {
+      "term": "Communication channel",
+      "definition": "The route and medium through which a message travels from sender to receiver."
+    },
+    {
+      "term": "Two-way communication",
+      "definition": "Communication in which the receiver responds, allowing clarification and confirmation of understanding."
+    },
+    {
+      "term": "Vertical communication",
+      "definition": "Messages moving up or down between different levels of the organisational hierarchy."
+    },
+    {
+      "term": "Horizontal communication",
+      "definition": "Messages moving between people or departments at a similar organisational level."
     }
   ],
   "sections": [
@@ -40,60 +58,142 @@
       "id": "01-spoken-communication",
       "title": "Spoken communication",
       "content": [
-        "Fast, rich and allows immediate questions/feedback. It is useful for sensitive or complex discussion but may leave no permanent record and can be impractical for a large dispersed audience."
+        "Spoken communication is fast and rich and allows immediate questions and feedback. It is useful for sensitive, complex or urgent discussion but may leave no permanent record and can be impractical for a large dispersed audience.",
+        "Face-to-face conversation also carries tone and body language, helping a manager judge concern or resistance. A meeting becomes inefficient when too many people attend without a decision, agenda or recorded action."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use conversation for appraisal, conflict or change where emotion and clarification matter.",
+        "Use a briefing for urgent safety instructions, then check understanding and provide a written record where evidence is required.",
+        "Telephone or video adds speed across locations but connection quality, time zones and missing non-verbal cues can reduce understanding."
+      ],
+      "examples": [
+        {
+          "id": "7.2-1-1",
+          "kind": "applied",
+          "label": "Safety briefing",
+          "content": "A factory supervisor demonstrates a new lockout procedure, asks an operator to repeat it and follows with a one-page checklist. Spoken explanation gives immediate feedback while the written record supports consistent safe practice."
+        }
+      ]
     },
     {
       "id": "02-written-communication",
       "title": "Written communication",
       "content": [
-        "Provides a permanent record and allows precise/detail-heavy messages. It can be slower to create/read and lacks immediate feedback unless another channel is used."
+        "Written communication provides a permanent record and allows precise, detailed messages. It can be slower to create and read and lacks immediate feedback unless another channel is used.",
+        "Reports suit evidence and complex recommendations; notices and letters suit stable information; contracts or policies need controlled versions. Poor layout, excessive length or technical language can make a formally correct message ineffective."
       ],
-      "bullets": [],
+      "bullets": [
+        "A record supports accountability, consistency and legal evidence but can make people reluctant to discuss sensitive issues openly.",
+        "Tailor vocabulary, length and translation to the receiver rather than the sender's expertise.",
+        "Request acknowledgement or questions where silence would not prove understanding."
+      ],
       "examples": []
     },
     {
       "id": "03-electronic-and-visual-communication",
       "title": "Electronic and visual communication",
       "content": [
-        "Email, messaging, intranets and collaboration systems provide speed/scale but can create overload, distraction and security issues. Visual charts/diagrams can make patterns clearer but may oversimplify detail."
+        "Email, messaging, intranets and collaboration systems provide speed and scale but can create overload, distraction and security issues. Visual charts and diagrams can make patterns clearer but may oversimplify detail.",
+        "Technology changes transmission, not meaning. An unsuitable channel can spread ambiguity faster, while inaccessible systems exclude employees without reliable devices, bandwidth or digital skills."
       ],
-      "bullets": [],
+      "bullets": [
+        "Email suits a searchable record and dispersed audience but long reply chains obscure the current decision.",
+        "Instant messaging suits short operational updates but may interrupt concentrated work and expose confidential data.",
+        "A graph reveals trend or comparison quickly, but axes and aggregation can mislead and should be supported by labels or explanation."
+      ],
       "examples": []
     },
     {
       "id": "04-barriers",
       "title": "Barriers",
       "content": [
-        "Jargon, language/cultural differences, status, too many hierarchy levels, noise, overload, poor technology, wrong channel and lack of feedback can distort meaning. The exam expects the consequence: errors, delay, conflict, weak decisions or lower productivity."
+        "Jargon, language or cultural differences, status, too many hierarchy levels, noise, overload, poor technology, the wrong channel and lack of feedback can distort meaning. The exam expects the consequence: errors, delay, conflict, weak decisions or lower productivity.",
+        "Locate the barrier in the communication process. A sender may encode an unclear instruction, the channel may distort it, or the receiver may lack time, trust or knowledge to decode it. The remedy should remove that specific failure."
       ],
-      "bullets": [],
+      "bullets": [
+        "Status can stop upward communication because employees fear criticism; anonymous reporting or psychologically safe meetings can improve the signal.",
+        "Filtering across a long chain changes detail; direct cross-functional contact or a shared dashboard can reduce delay.",
+        "Information overload hides priority; summaries, ownership, deadlines and channel rules are better than simply sending more messages."
+      ],
       "examples": []
     },
     {
       "id": "05-improving-communication",
       "title": "Improving communication",
       "content": [
-        "Choose the channel according to urgency, complexity, confidentiality, audience size and need for a record; simplify language; encourage feedback; train staff; improve systems; shorten unnecessary chains; and clarify responsibility for messages."
+        "Choose the channel according to urgency, complexity, confidentiality, audience size and need for a record; simplify language; encourage feedback; train staff; improve systems; shorten unnecessary chains; and clarify responsibility for messages.",
+        "One-way communication is fast and consistent for a simple announcement. Two-way communication takes longer but lets the receiver question, clarify and influence the decision. Vertical channels coordinate authority; horizontal channels coordinate work across functions at a similar level."
       ],
-      "bullets": [],
+      "bullets": [
+        "Feedback is useful only when managers listen and act or explain why they will not; ignored consultation can reduce trust.",
+        "Formal networks create accountability, while informal networks can spread knowledge quickly but also rumours and inaccurate information.",
+        "Managers should model openness, match access to employee needs and close the loop by confirming decisions and responsibilities."
+      ],
       "examples": []
     },
     {
       "id": "06-communication-and-efficiency",
       "title": "Communication and efficiency",
       "content": [
-        "Good communication reduces duplicated work, errors and coordination delay and helps staff understand objectives/change. However, too many meetings/messages can waste time, so 'more communication' is not always better."
+        "Good communication reduces duplicated work, errors and coordination delay and helps staff understand objectives and change. However, too many meetings and messages waste time, so more communication is not always better.",
+        "Effective internal communication can align purchasing, operations and sales forecasts, reducing excess inventory and missed orders. Externally, timely and accurate communication can preserve customer and supplier trust during a delay or crisis."
       ],
-      "bullets": [],
+      "bullets": [
+        "Understanding improves task accuracy, reducing rework, waste and customer complaints.",
+        "Fast horizontal communication can resolve bottlenecks before they stop production.",
+        "Communication has opportunity cost: measure whether a channel improves decisions and action rather than counting messages or meetings."
+      ],
       "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
+  "comparisonTable": {
+    "title": "Choosing a communication method",
+    "columns": [
+      "Method",
+      "Best feature",
+      "Main limitation",
+      "Suitable use"
+    ],
+    "rows": [
+      [
+        "Spoken",
+        "Immediate rich feedback",
+        "Weak record and limited scale",
+        "Sensitive, urgent or complex discussion"
+      ],
+      [
+        "Written",
+        "Precision and permanent record",
+        "Slow and feedback may be delayed",
+        "Policy, contract or detailed report"
+      ],
+      [
+        "Electronic",
+        "Fast distribution and collaboration",
+        "Overload, access and security risk",
+        "Dispersed teams and rapid updates"
+      ],
+      [
+        "Visual",
+        "Shows pattern or process quickly",
+        "Can simplify or mislead",
+        "Data trend, layout or instruction sequence"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Two-way communication loop",
+    "type": "cycle",
+    "nodes": [
+      "Sender has purpose",
+      "Encode clear message",
+      "Choose channel",
+      "Receiver decodes meaning",
+      "Feedback checks understanding",
+      "Sender clarifies or acts"
+    ]
+  },
   "analysisChains": [
     {
       "title": "Poor internal communication",
@@ -104,12 +204,34 @@
         "Profit and reputation may fall"
       ],
       "evaluation": "The best channel depends on urgency, complexity, required evidence and whether immediate feedback is needed."
+    },
+    {
+      "title": "Two-way consultation before a process change",
+      "steps": [
+        "Employees question the proposal and share operating knowledge",
+        "Managers identify practical problems before implementation",
+        "The design improves and employees understand why change is needed",
+        "Resistance and disruption may fall",
+        "Productivity recovers more quickly"
+      ],
+      "evaluation": "Consultation uses time and can delay an urgent decision; it fails if feedback is invited but consistently ignored."
+    },
+    {
+      "title": "Horizontal communication between sales and operations",
+      "steps": [
+        "Sales forecasts and capacity information are shared directly",
+        "Production schedules better match likely orders",
+        "Stockouts and excess inventory fall",
+        "Customer service and cash flow may improve"
+      ],
+      "evaluation": "Shared information must be current and accurate; a fast network spreads poor forecasts as easily as good ones."
     }
   ],
   "examTips": [
     "Recommendations need a reason tied to the message and audience.",
     "Use feedback as evidence of two-way communication/understanding.",
-    "A method's suitability changes with urgency, confidentiality, audience size and need for record."
+    "A method's suitability changes with urgency, confidentiality, audience size and need for record.",
+    "Identify whether the barrier sits with the sender, message, channel or receiver before recommending a remedy."
   ],
   "commonMistakes": [
     "Assuming electronic communication is always best.",
@@ -118,11 +240,30 @@
     "Ignoring data security/confidentiality."
   ],
   "quickRecall": [
-    "spoken=rich/fast",
-    "written=record/detail",
-    "electronic=speed/scale",
-    "visual=pattern clarity",
-    "feedback checks understanding"
+    {
+      "question": "What makes communication effective?",
+      "answer": "The receiver understands the intended meaning and can make the required response."
+    },
+    {
+      "question": "What is the key advantage of two-way communication?",
+      "answer": "Feedback allows questions, clarification and confirmation of understanding."
+    },
+    {
+      "question": "How do vertical and horizontal communication differ?",
+      "answer": "Vertical communication moves between hierarchy levels; horizontal communication moves across similar levels or departments."
+    },
+    {
+      "question": "When is written communication valuable?",
+      "answer": "When precision, detail, consistency or a permanent record matters."
+    },
+    {
+      "question": "Why can electronic communication reduce efficiency?",
+      "answer": "Overload, interruptions, access problems and security risks can offset speed."
+    },
+    {
+      "question": "How should a business remove a communication barrier?",
+      "answer": "Diagnose the specific sender, message, channel or receiver failure and target that cause."
+    }
   ],
   "relatedTopics": [
     "7.1",

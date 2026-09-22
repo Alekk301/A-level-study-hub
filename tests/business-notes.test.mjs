@@ -11,6 +11,56 @@ test.after(async () => vite.close());
 const readNote = async (id) => JSON.parse(await readFile(path.join(root, `src/data/notes/9609/${id}.json`), "utf8"));
 
 const baseSyllabusPoints = {
+  "2.1": [
+    "Explain the purpose and stages of workforce planning.",
+    "Analyse recruitment and selection, including job descriptions, person specifications and internal/external recruitment.",
+    "Explain employment contracts and flexible working arrangements.",
+    "Compare induction, on-the-job and off-the-job training.",
+    "Distinguish dismissal and redundancy and analyse equality and diversity.",
+    "Calculate and interpret labour turnover, absenteeism and labour productivity.",
+    "Explain the role of trade unions and collective bargaining.",
+  ],
+  "2.2": [
+    "Explain why employee motivation matters to business performance.",
+    "Analyse Taylor, Mayo, Maslow, Herzberg, McClelland and Vroom as explanations of motivation.",
+    "Compare financial motivators including wages, salary, piece rate, commission, bonus, profit sharing and fringe benefits.",
+    "Compare non-financial motivators including job rotation, enlargement, enrichment, teamworking, participation, delegation and recognition.",
+    "Assess which methods are appropriate in different business contexts.",
+  ],
+  "2.3": [
+    "Explain the main functions of management: planning, organising, directing, coordinating and controlling.",
+    "Apply Mintzberg's interpersonal, informational and decisional management roles.",
+    "Analyse delegation, authority, responsibility and accountability.",
+    "Compare autocratic, democratic and laissez-faire leadership.",
+    "Explain McGregor's Theory X and Theory Y assumptions.",
+    "Analyse the importance of emotional intelligence and situational management.",
+  ],
+  "7.1": [
+    "Link organisational structure to business objectives.",
+    "Compare functional, hierarchical and matrix structures and grouping by function/product/geography.",
+    "Explain structural change, growth and delayering.",
+    "Use hierarchy, chain of command, span of control, responsibility, authority, delegation and accountability.",
+    "Analyse centralisation/decentralisation and line/staff relationships.",
+  ],
+  "7.2": [
+    "Explain situations where effective communication is essential.",
+    "Compare spoken, written, electronic and visual communication methods.",
+    "Analyse barriers to communication.",
+    "Explain how communication affects business efficiency and how it can be improved.",
+  ],
+  "7.3": [
+    "Explain leadership roles of directors, managers, supervisors and worker representatives and qualities of effective leaders.",
+    "Apply trait, behavioural, contingency, power/influence and transformational leadership theories.",
+    "Explain Goleman's emotional-intelligence competencies: self-awareness, self-management, social awareness and social skills.",
+    "Evaluate leadership effectiveness in context.",
+  ],
+  "7.4": [
+    "Compare hard and soft HRM.",
+    "Evaluate flexible working contracts and arrangements.",
+    "Measure causes/consequences of poor employee performance and recommend improvements.",
+    "Explain implementation and usefulness of MBO.",
+    "Analyse the changing role of IT and AI in HRM.",
+  ],
   "1.1": [
     "Explain business activity, needs and wants, scarcity, choice and opportunity cost.",
     "Explain the four factors of production and the difference between consumer goods, consumer services and capital goods.",
@@ -81,12 +131,54 @@ function assertExamReady(note) {
 }
 
 const unitOne = ["1.1", "1.2", "1.3", "1.4", "1.5", "6.1", "6.2"];
+const unitTwo = ["2.1", "2.2", "2.3", "7.1", "7.2", "7.3", "7.4"];
+test("Business Unit 2 notes are exam ready", async () => {
+  for (const id of unitTwo) assertExamReady(await readNote(id));
+});
+
+test("Unit 2 teaches the syllabus distinctions needed for applied answers", async () => {
+  const coverage = {
+    "2.1": ["employee welfare", "appraisal", "development", "collective bargaining"],
+    "2.2": ["Vroom", "instrumentality", "valence", "participation"],
+    "2.3": ["Fayol", "paternalistic", "Mintzberg", "Theory Y"],
+    "7.1": ["intrapreneurship", "product", "geographical", "accountability", "trust"],
+    "7.2": ["one-way", "two-way", "vertical", "horizontal", "network", "feedback"],
+    "7.3": ["trait", "behavioural", "contingency", "power", "transformational", "self-management"],
+    "7.4": ["annualised", "compressed", "gig", "MBO", "bias", "policy", "percentage points"],
+  };
+  for (const [id, terms] of Object.entries(coverage)) {
+    const note = await readNote(id);
+    const teaching = JSON.stringify(note.sections);
+    for (const term of terms) assert.match(teaching, new RegExp(term, "i"), `${id}: teaching ${term}`);
+    assert.ok(note.sections.some(({ examples }) => examples.length > 0), `${id}: applied example`);
+  }
+});
+
+test("Unit 2 exam focus supports topic-specific answers", async () => {
+  const { businessExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/business.ts");
+  for (const id of unitTwo) {
+    const focus = businessExamFocus[id];
+    assert.ok(focus?.evidence, `${id}: evidence summary`);
+    if (id.startsWith("2.")) assert.equal(focus.component, "AS Level Papers 1 and 2");
+    assert.ok(focus.tasks.length >= 2, `${id}: practice tasks`);
+    for (const task of focus.tasks) {
+      assert.ok(task.markPoints.length >= 4, `${id}: developed mark points`);
+      assert.ok(task.examinerTrap, `${id}: examiner trap`);
+    }
+  }
+  const leadership = JSON.stringify(businessExamFocus["7.3"].tasks);
+  for (const term of ["trait", "behavioural", "contingency", "power", "transformational"])
+    assert.match(leadership, new RegExp(term, "i"), `7.3 exam task coverage: ${term}`);
+  assert.match(JSON.stringify(businessExamFocus["7.4"].tasks), /MBO|Management by Objectives/i);
+  assert.match(JSON.stringify(businessExamFocus["7.4"].tasks), /AI/i);
+});
+
 test("Business Unit 1 notes are exam ready", async () => {
   for (const id of unitOne) assertExamReady(await readNote(id));
 });
 
 test("existing syllabus checklist indexes remain stable", async () => {
-  for (const id of unitOne) {
+  for (const id of [...unitOne, ...unitTwo]) {
     const note = await readNote(id);
     assert.deepEqual(note.syllabusPoints.slice(0, baseSyllabusPoints[id].length), baseSyllabusPoints[id], `${id}: original checklist indexes`);
   }

@@ -166,7 +166,14 @@
         "Creative professionals: autonomy, recognition, mastery and purpose may matter more than piece rate.",
         "Sales staff: commission can focus effort, but include customer satisfaction or profit margin to discourage unsuitable selling."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "2.2-9-1",
+          "kind": "applied",
+          "label": "Repairing a weak sales incentive",
+          "content": "A retailer's staff value stable hours more than a small bonus, and they do not believe managers record team sales accurately. Under Vroom, low valence and instrumentality weaken effort even if the target is achievable. Guaranteed scheduling, transparent measures and participation in target setting may work better."
+        }
+      ]
     }
   ],
   "formulas": [],
