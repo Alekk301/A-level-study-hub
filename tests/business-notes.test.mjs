@@ -154,6 +154,24 @@ test("Unit 2 teaches the syllabus distinctions needed for applied answers", asyn
   }
 });
 
+test("2.1 compares the complete recruitment and selection methods", async () => {
+  const note = await readNote("2.1");
+  const teaching = JSON.stringify(note.sections.filter(({ id }) => /recruitment|selection/.test(id)));
+  assert.match(teaching, /employment agenc(?:y|ies)[\s\S]{0,400}(?:specialist|shortlist|cost)/i);
+  assert.match(teaching, /online recruitment[\s\S]{0,400}(?:reach|applications|screen|filter)/i);
+  assert.match(teaching, /assessment cent(?:re|er)[\s\S]{0,400}(?:multiple|several|cost|time)/i);
+  for (const method of ["employment agenc", "online recruitment", "assessment cent"])
+    assert.match(teaching, new RegExp(`${method}[\\s\\S]{0,500}(?:but|however|yet|limitation|cost)`, "i"), `${method}: trade-off`);
+});
+
+test("7.4 explains flexible-working arrangements rather than listing them", async () => {
+  const note = await readNote("7.4");
+  const section = JSON.stringify(note.sections.find(({ id }) => id === "02-flexible-contracts-and-working"));
+  assert.match(section, /flexitime[\s\S]{0,350}(?:core hours|start|finish)[\s\S]{0,350}(?:coverage|coordination|supervision)/i);
+  assert.match(section, /shift working[\s\S]{0,350}(?:continuous|extended|24)[\s\S]{0,350}(?:fatigue|premium|handover)/i);
+  assert.match(section, /job sharing[\s\S]{0,350}(?:two employees|two people)[\s\S]{0,350}(?:handover|continuity|accountability)/i);
+});
+
 test("Unit 2 exam focus supports topic-specific answers", async () => {
   const { businessExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/business.ts");
   for (const id of unitTwo) {
@@ -171,6 +189,13 @@ test("Unit 2 exam focus supports topic-specific answers", async () => {
     assert.match(leadership, new RegExp(term, "i"), `7.3 exam task coverage: ${term}`);
   assert.match(JSON.stringify(businessExamFocus["7.4"].tasks), /MBO|Management by Objectives/i);
   assert.match(JSON.stringify(businessExamFocus["7.4"].tasks), /AI/i);
+});
+
+test("AS 2.1 exam focus does not assess A2 flexible-working contracts", async () => {
+  const { businessExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/business.ts");
+  const asHrm = JSON.stringify(businessExamFocus["2.1"].tasks);
+  assert.doesNotMatch(asHrm, /flexible[- ](?:working|employment)?[- ]?contract|zero[- ]hours|annualised hours|compressed hours|job sharing|gig economy/i);
+  assert.match(JSON.stringify(businessExamFocus["7.4"].tasks), /flexible/i);
 });
 
 test("Business Unit 1 notes are exam ready", async () => {
