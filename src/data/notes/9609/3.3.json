@@ -13,7 +13,11 @@
     "Analyse promotional objectives, methods, media and budgets.",
     "Compare direct and intermediary channels of distribution.",
     "Explain customer relationship marketing, the 4Cs, e-commerce and digital promotion.",
-    "Assess an integrated marketing mix in context."
+    "Assess an integrated marketing mix in context.",
+    "Distinguish goods and services and their tangible and intangible product attributes.",
+    "Assess competitive, penetration, skimming, discrimination, dynamic, cost-based and psychological pricing.",
+    "Explain advertising, sales and direct promotion, including the promotional roles of packaging and branding.",
+    "Compare physical and digital channels of distribution."
   ],
   "definitions": [
     {
@@ -63,6 +67,14 @@
     {
       "term": "Customer relationship marketing",
       "definition": "Activities designed to build long-term customer satisfaction, loyalty and repeat purchases."
+    },
+    {
+      "term": "Dynamic pricing",
+      "definition": "Changing price in response to real-time demand, capacity, customer or market data."
+    },
+    {
+      "term": "Product portfolio",
+      "definition": "The complete range of products offered by a business and the balance of risk, cash flow and growth between them."
     }
   ],
   "sections": [
@@ -70,11 +82,13 @@
       "id": "01-product-benefits-differentiation-and-portfolio",
       "title": "Product: benefits, differentiation and portfolio",
       "content": [
-        "Customers buy benefits rather than technical features alone. Product decisions include function, quality, design, brand, packaging, service, warranty and range. Consumer products may be convenience, shopping or speciality goods; industrial products are bought for organisational use. A strong USP should solve a valued problem and be difficult to copy."
+        "A product may be a good with tangible attributes that can be seen or touched, or a service whose performance is mainly intangible. Customers buy benefits rather than technical features alone. Product decisions therefore include function, quality, design, brand, packaging, service, warranty and range. Consumer products may be convenience, shopping or speciality goods; industrial products are bought for organisational use. A strong USP should solve a valued problem and be difficult to copy."
       ],
       "bullets": [
         "Branding supports recognition, trust, repeat purchase and premium pricing but needs consistent quality and promotion.",
         "Packaging protects and informs as well as promotes; excessive packaging can increase cost and environmental criticism.",
+        "Product development can replace ageing offers, respond to changing needs and differentiate the business, but research, design, testing and launch absorb scarce finance with no guarantee of demand.",
+        "Boston Matrix portfolio analysis classifies high-share/high-growth stars, high-share/low-growth cash cows, low-share/high-growth question marks and low-share/low-growth dogs. Cash from mature products may fund growth products, but market definitions and past share do not prove future cash flow.",
         "A product portfolio spreads risk and shares brand/distribution resources, but too many variants increase complexity and cannibalisation."
       ],
       "examples": []
@@ -96,7 +110,7 @@
       "id": "03-pricing-methods",
       "title": "Pricing methods",
       "content": [
-        "Cost-plus adds a markup to unit cost and is simple but ignores willingness to pay and rivals. Competitive pricing follows market prices but can create price wars. Skimming suits distinctive innovation and recovers development cost, yet attracts rivals. Penetration builds trial/share but may signal low quality and make later increases difficult. Promotional/loss-leader pricing creates traffic but lowers immediate margin. Psychological pricing uses customer perception; price discrimination extracts different willingness to pay but requires separation and can be seen as unfair."
+        "Cost-based or cost-plus pricing adds a markup to unit cost and is simple but ignores willingness to pay and rivals. Competitive pricing follows market prices but can create price wars. Skimming suits distinctive innovation and recovers development cost, yet attracts rivals. Penetration builds trial/share but may signal low quality and make later increases difficult. Promotional/loss-leader pricing creates traffic but lowers immediate margin. Psychological pricing uses customer perception; price discrimination extracts different willingness to pay but requires separation and can be seen as unfair. Dynamic pricing changes prices as demand or capacity changes, improving utilisation and revenue but needing accurate data and risking perceived unfairness."
       ],
       "bullets": [
         "Contribution pricing accepts an order above variable cost so it contributes to fixed cost, but repeated low prices may fail to cover total cost.",
@@ -128,9 +142,10 @@
       "id": "05-promotion-objectives-and-methods",
       "title": "Promotion objectives and methods",
       "content": [
-        "Promotion informs, persuades, reminds and builds brand. Advertising can reach a large audience but is costly and hard to personalise. Sales promotions create short-run trial or clear inventory but may train customers to wait for deals. Personal selling explains complex products and builds relationships but has high cost per contact. Direct marketing is targeted but may be ignored; sponsorship transfers event associations but gives limited message control; public relations can be credible but coverage is uncertain."
+        "Promotion informs, persuades, reminds and builds brand. Advertising promotion uses paid media and can reach a large audience but is costly and hard to personalise. Sales promotion uses short-term incentives to create trial or clear inventory but may train customers to wait for deals. Direct promotion, including direct mail, email, personal selling and trade events, targets named customers without relying on mass paid media; it can be relevant and measurable but may be ignored or seen as intrusive. Sponsorship transfers event associations but gives limited message control; public relations can be credible but coverage is uncertain."
       ],
       "bullets": [
+        "Packaging protects and informs, but its colour, shape and shelf impact also communicate the offer; branding creates recognition and associations, so both can perform a promotional role.",
         "Select media using the target audience, message complexity, reach, frequency, cost, measurability and product stage.",
         "Evaluate using incremental sales/contribution, awareness, enquiries, conversion and retention—not reach alone.",
         "A promotional budget may be affordable, percentage-of-sales, competitor-based or objective-and-task; only the last starts from what must be achieved."
@@ -141,7 +156,7 @@
       "id": "06-place-and-distribution-channels",
       "title": "Place and distribution channels",
       "content": [
-        "Direct distribution (producer → customer) gives control, customer data and no intermediary margin, but the producer funds selling, delivery, storage and reach. Retailers provide convenience, display and local access but take margin and control. Wholesalers break bulk and serve many small retailers, reducing the producer's logistics burden but adding distance from customers."
+        "Physical distribution moves goods through direct or intermediary channels and requires transport, storage and outlet decisions. Direct distribution (producer → customer) gives control, customer data and no intermediary margin, but the producer funds selling, delivery, storage and reach. Retailers provide convenience, display and local access but take margin and control. Wholesalers break bulk and serve many small retailers, reducing the producer's logistics burden but adding distance from customers. Digital distribution delivers software, media or services online and can be immediate and global, although platforms, cybersecurity and access still matter."
       ],
       "bullets": [
         "Agents bring specialist or foreign-market knowledge without taking ownership of goods, in return for commission.",

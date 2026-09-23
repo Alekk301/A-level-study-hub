@@ -34,6 +34,22 @@
     {
       "term": "R&D",
       "definition": "Research and development activity aimed at creating/improving products, processes or knowledge."
+    },
+    {
+      "term": "Product development",
+      "definition": "The staged process of turning an idea into a tested product that can be launched commercially."
+    },
+    {
+      "term": "Four-period centred moving average",
+      "definition": "A smoothed trend value formed from four-period averages and then centred on an actual period by averaging adjacent results."
+    },
+    {
+      "term": "Qualitative sales forecast",
+      "definition": "A sales estimate based mainly on judgement, experience and informed opinion rather than a statistical time-series calculation."
+    },
+    {
+      "term": "Seasonal variation",
+      "definition": "A regular, repeating difference between actual sales and the underlying trend at the same point in each cycle."
     }
   ],
   "sections": [
@@ -41,15 +57,20 @@
       "id": "01-price-elasticity-of-demand",
       "title": "Price elasticity of demand",
       "content": [
-        "PED = % change in quantity demanded / % change in price. Demand is elastic when absolute PED >1 and inelastic when absolute PED <1. It helps pricing/revenue decisions but estimates depend on time period, competitors and other conditions."
+        "Price elasticity of demand (PED) = percentage change in quantity demanded ÷ percentage change in price. Because price and demand normally move in opposite directions, PED is usually negative. Use the absolute value to classify demand: greater than 1 is elastic, less than 1 is inelastic and equal to 1 is unit elastic. A business can use the estimate to anticipate volume, revenue, capacity and inventory effects of a price change."
       ],
-      "bullets": [],
+      "bullets": [
+        "Elastic demand: a price reduction causes a proportionately larger demand increase, so revenue is likely to rise; a price increase is likely to reduce revenue.",
+        "Inelastic demand: a price increase causes a proportionately smaller demand fall, so revenue is likely to rise. Profit still depends on contribution, total cost and capacity.",
+        "PED varies by segment, price range and time. Substitutes, necessity, brand loyalty, share of income and time to switch influence responsiveness.",
+        "The calculation assumes other influences are unchanged. Competitor reactions, promotion, income and product changes can make a historical estimate misleading."
+      ],
       "examples": [
         {
           "id": "01-example-1",
           "kind": "worked",
-          "label": "Worked example",
-          "content": "PED = %ΔQd / %ΔP"
+          "label": "Worked PED and revenue example",
+          "content": "Price falls from $50 to $45, a change of (−5 ÷ 50) × 100 = −10%. Demand rises from 2,000 to 2,500, a change of (500 ÷ 2,000) × 100 = 25%. PED = 25% ÷ −10% = −2.5, so demand is elastic. Revenue rises from $100,000 to $112,500, but profit rises only if the extra contribution exceeds added production and selling costs."
         }
       ]
     },
@@ -57,15 +78,20 @@
       "id": "02-income-and-promotional-elasticity",
       "title": "Income and promotional elasticity",
       "content": [
-        "YED helps predict how demand changes with income: positive for normal goods, negative for inferior goods. Promotional elasticity estimates how sales respond to promotional changes and can guide budgets, but past responsiveness may not persist."
+        "Income elasticity of demand (YED) = percentage change in demand ÷ percentage change in consumer income. A positive result indicates a normal good; a result above 1 suggests demand is income elastic, often associated with luxuries. A negative result indicates an inferior good in that market. Promotional elasticity of demand = percentage change in demand ÷ percentage change in promotional spending. A positive value above 1 means demand changed proportionately more than spending."
       ],
-      "bullets": [],
+      "bullets": [
+        "YED can inform product mix, capacity and geographic decisions when incomes are forecast to change, but classifications differ between customer groups and over time.",
+        "Promotional elasticity can compare campaign response and guide budgets, but attribution is difficult when price, season, competitors or distribution also change.",
+        "An elasticity coefficient describes responsiveness, not profitability. Extra promotion or output can cost more than the revenue gained.",
+        "Estimates rely on accurate percentage changes and relevant historical data; correlation does not prove that the measured variable caused the demand change."
+      ],
       "examples": [
         {
           "id": "02-example-1",
           "kind": "worked",
-          "label": "Worked example",
-          "content": "YED = %Δdemand / %Δincome\nPromotional elasticity = %Δdemand / %Δpromotion spending"
+          "label": "Worked YED and promotional elasticity example",
+          "content": "If income rises 4% and demand for premium meals rises 10%, YED = 10% ÷ 4% = 2.5: demand is positive and income elastic. If promotion spending then rises 20% and demand rises 6%, promotional elasticity = 6% ÷ 20% = 0.3: demand responded positively but less than proportionately. The business must compare added contribution with the added promotional cost."
         }
       ]
     },
@@ -73,37 +99,90 @@
       "id": "03-product-development-and-r-d",
       "title": "Product development and R&D",
       "content": [
-        "Ideas can come from customers, employees, competitors, suppliers, research and new technology. Development commonly includes idea generation/screening, concept/design, prototype/testing and launch. R&D can create differentiation and future revenue but is expensive, uncertain and potentially imitable."
+        "Product development normally moves through idea generation, screening, concept development and testing, business analysis, prototype development, test marketing and commercial launch. Sources include customers, employees, suppliers, competitors, universities, patents, market research and new technology. Each gate should remove weak ideas before more resources are committed, while retaining evidence about customer value, technical feasibility, cost and strategic fit."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "R&D can create a defensible USP, improve quality or process cost, replace ageing products and open new markets, supporting future revenue and market share.",
+        "An offensive R&D strategy aims to lead with innovation; a defensive strategy improves or responds to rivals' products; follow-the-leader reduces pioneering risk but may leave little differentiation.",
+        "R&D has uncertain outcomes, long lead times, opportunity cost and possible imitation. Legal approval, patents, skills and finance influence whether an idea reaches launch.",
+        "Testing reduces risk but delays revenue and can reveal plans to competitors; a technically successful product can still fail if the target market will not pay enough."
+      ],
+      "examples": [
+        {
+          "id": "03-example-1",
+          "kind": "example",
+          "label": "Development gate decision",
+          "content": "A food producer's prototype scores highly for taste but exceeds the target unit cost by 30%. Business analysis should compare redesign, a premium segment or rejection before national test marketing commits a large promotional budget."
+        }
+      ]
     },
     {
       "id": "04-why-forecast-sales",
       "title": "Why forecast sales",
       "content": [
-        "Forecasts influence staffing, capacity, purchasing, inventory, cash-flow and finance. Underforecasting can cause lost sales/capacity problems; overforecasting can create excess inventory/cost."
+        "A sales forecast estimates future demand so marketing objectives and budgets can be coordinated with operations, human resources and finance. It informs capacity, purchasing, inventory, staffing, distribution, cash-flow forecasts and external finance. Underforecasting can cause stockouts, overtime and lost customers; overforecasting can create idle capacity, waste, excess inventory and cash shortages."
       ],
-      "bullets": [],
+      "bullets": [
+        "Forecasts should be disaggregated by product, segment or market when their patterns differ; one total can conceal opposite trends.",
+        "A forecast is a planning input, not a target that proves itself. Managers should record assumptions, ranges and trigger points for revision.",
+        "Accuracy matters more when decisions are expensive or hard to reverse, such as factory capacity, recruitment or international entry."
+      ],
       "examples": []
     },
     {
       "id": "05-four-period-centred-moving-averages",
       "title": "Four-period centred moving averages",
       "content": [
-        "First calculate averages for successive four-period blocks. Because four is an even number, each average falls between actual time periods; centre it by averaging adjacent four-period moving averages. This produces a trend value aligned with an actual period."
+        "For quarterly data, add four consecutive periods and divide by 4. Move forward one period and repeat. Because four is even, each four-period moving average lies between actual periods; average two adjacent four-period moving averages to produce a centred moving average aligned with a real quarter. The centred series smooths seasonal and random variation so the underlying trend can be extended cautiously."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Keep the first moving averages in chronological order; centring loses observations at both ends of the series.",
+        "Show each total, division and centring step so follow-through marks remain available after one arithmetic error.",
+        "If the question supplies additive seasonal variations, forecast = trend + seasonal variation. Do not mix this with multiplicative percentage factors.",
+        "A longer smoothing period removes more fluctuation but reacts more slowly to a genuine change in trend."
+      ],
+      "examples": [
+        {
+          "id": "05-example-1",
+          "kind": "worked",
+          "label": "Worked four-period centred moving average",
+          "content": "Quarterly sales are 80, 100, 120, 140, 100 and 120 units. First four-period moving average = (80 + 100 + 120 + 140) ÷ 4 = 110. Next = (100 + 120 + 140 + 100) ÷ 4 = 115. Centre these adjacent values: (110 + 115) ÷ 2 = 112.5, aligned with quarter 3. The next four-period average is (120 + 140 + 100 + 120) ÷ 4 = 120, so the centred value for quarter 4 is (115 + 120) ÷ 2 = 117.5."
+        }
+      ]
     },
     {
       "id": "06-qualitative-forecasting",
       "title": "Qualitative forecasting",
       "content": [
-        "Uses expert judgement, sales-force/customer insight, Delphi-style opinion or market knowledge when reliable historical data are limited or conditions are changing. It captures factors a time series may miss but is subjective."
+        "Qualitative forecasting uses informed judgement when historical data are limited, the product is new or conditions are changing. Methods include a jury of executive opinion, sales-force composite, customer or distributor intentions and Delphi forecasting, where experts submit anonymous rounds of estimates and revise them after seeing a summary."
       ],
-      "bullets": [],
+      "bullets": [
+        "It can incorporate competitor moves, regulation, technology and customer intentions before these appear in a time series.",
+        "Sales staff may know local customers but can deliberately understate forecasts to make targets easier; executives may be overconfident or dominated by status.",
+        "Delphi anonymity can reduce group pressure, but expert selection, time and the framing of questions still affect the result.",
+        "Combine qualitative evidence with quantitative trend data, compare assumptions and update forecasts as actual sales arrive."
+      ],
       "examples": []
+    },
+    {
+      "id": "07-using-and-evaluating-forecasts",
+      "title": "Using and evaluating forecasts",
+      "content": [
+        "Forecast quality depends on relevant data, stable relationships and a method suited to the decision. Time-series analysis is objective and repeatable but extrapolates the past. Qualitative methods can anticipate structural change but are subjective. The strongest decision uses both, separates products and markets, and tests a range rather than presenting one precise figure as certain."
+      ],
+      "bullets": [
+        "Compare forecast with actual sales and measure error; investigate whether the cause was random variation, biased assumptions or a lasting market change.",
+        "Scenario forecasts can show capacity and cash-flow effects under low, central and high demand, making contingency actions explicit.",
+        "Forecasts coordinate budgets and resources only if departments share consistent assumptions and revise them together."
+      ],
+      "examples": [
+        {
+          "id": "07-example-1",
+          "kind": "example",
+          "label": "Contextual forecast evaluation",
+          "content": "A footwear business should not apply one historical trend to fashion, work and leisure shoes if their market growth, competition and sustainability preferences differ. Product-level forecasts and current qualitative research are more useful for inventory and promotion decisions."
+        }
+      ]
     }
   ],
   "formulas": [
@@ -121,6 +200,16 @@
       "label": "Promotional elasticity",
       "expression": "% change in demand ÷ % change in promotional spending",
       "note": "Historical estimates do not guarantee the same future response."
+    },
+    {
+      "label": "Percentage change",
+      "expression": "((New value − original value) ÷ original value) × 100",
+      "note": "Retain the sign before substituting into an elasticity formula."
+    },
+    {
+      "label": "Four-period moving average",
+      "expression": "Sum of four consecutive observations ÷ 4",
+      "note": "Average adjacent four-period results to centre an even-period moving average."
     }
   ],
   "comparisonTable": null,
@@ -135,12 +224,36 @@
         "The firm may need differentiation or a lower price"
       ],
       "evaluation": "Elasticity estimates are historical and can change with competitors, income, brand loyalty and the time period considered."
+    },
+    {
+      "title": "Investing in product development",
+      "steps": [
+        "Research identifies an unmet customer problem",
+        "Screening and prototype tests remove weak ideas",
+        "A differentiated product reaches the target market",
+        "Customer value and willingness to pay may increase",
+        "Revenue, market share and future cash flow may grow"
+      ],
+      "evaluation": "Development spending is sunk if technical feasibility, launch timing or demand is misjudged; compare expected return with the opportunity cost and risk."
+    },
+    {
+      "title": "Using a centred moving-average forecast",
+      "steps": [
+        "Seasonal and random variation are smoothed",
+        "The underlying trend becomes clearer",
+        "Purchasing, staffing and capacity can be planned around expected demand",
+        "Stockouts or excess inventory may fall",
+        "Cash flow and customer service may improve"
+      ],
+      "evaluation": "A structural change, new product or aggregated dataset can break the past trend; update the forecast with current qualitative evidence and scenarios."
     }
   ],
   "examTips": [
     "Interpret every elasticity coefficient after calculating it.",
     "Use absolute value to classify PED elastic/inelastic because PED is normally negative.",
-    "With four-period moving averages, show the centring step."
+    "With four-period moving averages, show the four-period totals and the centring step.",
+    "Evaluate a forecast using data relevance, level of aggregation, changing conditions and the decision it will drive.",
+    "Separate a demand or revenue effect from a profit conclusion by considering contribution, cost and capacity."
   ],
   "commonMistakes": [
     "Calling every positive-YED product a luxury.",
@@ -149,11 +262,34 @@
     "Assuming past sales trend must continue."
   ],
   "quickRecall": [
-    "PED=price responsiveness",
-    "YED=income responsiveness",
-    "promotion elasticity=response to promo",
-    "4-period MA needs centring",
-    "forecast drives capacity/finance/inventory"
+    {
+      "question": "How is PED calculated and classified?",
+      "answer": "Percentage change in quantity demanded divided by percentage change in price; use the absolute value, with greater than 1 elastic and less than 1 inelastic."
+    },
+    {
+      "question": "What does a negative YED indicate?",
+      "answer": "Demand falls as income rises, so the product is an inferior good for that market and period."
+    },
+    {
+      "question": "Why does promotional elasticity not prove a campaign was profitable?",
+      "answer": "It measures demand responsiveness, not whether added contribution exceeded promotional and fulfilment costs."
+    },
+    {
+      "question": "What are the main product-development stages?",
+      "answer": "Idea generation, screening, concept development/testing, business analysis, prototype development, test marketing and launch."
+    },
+    {
+      "question": "Why must a four-period moving average be centred?",
+      "answer": "An even-period average lies between periods, so adjacent moving averages must be averaged to align the trend with an actual period."
+    },
+    {
+      "question": "When is qualitative forecasting particularly useful?",
+      "answer": "For new products or changing markets where historical data are limited or no longer representative."
+    },
+    {
+      "question": "How should a business reduce false precision in forecasting?",
+      "answer": "Use relevant disaggregated data, combine quantitative and qualitative evidence, state assumptions and test low, central and high scenarios."
+    }
   ],
   "relatedTopics": [
     "3.2",

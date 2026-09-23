@@ -13,7 +13,9 @@
     "Analyse demand, supply and changes in equilibrium.",
     "Calculate and interpret market size, market growth and market share.",
     "Compare mass and niche marketing.",
-    "Analyse market segmentation in consumer and industrial markets."
+    "Analyse market segmentation in consumer and industrial markets.",
+    "Compare consumer (B2C) and industrial (B2B) marketing and product classifications.",
+    "Explain the aims, benefits and costs of customer relationship marketing."
   ],
   "definitions": [
     {
@@ -63,6 +65,18 @@
     {
       "term": "Unique selling point",
       "definition": "A meaningful feature or benefit that differentiates an offer from competitors."
+    },
+    {
+      "term": "Consumer market",
+      "definition": "A market in which individuals or households buy goods and services for personal use; also called business-to-consumer (B2C) marketing."
+    },
+    {
+      "term": "Industrial market",
+      "definition": "A market in which organisations buy goods and services for use in production or business activity; also called business-to-business (B2B) marketing."
+    },
+    {
+      "term": "Customer relationship marketing",
+      "definition": "Using service, communication and customer data to build loyalty, repeat purchases and long-term profitable relationships."
     }
   ],
   "sections": [
@@ -154,7 +168,7 @@
       "id": "07-market-segmentation",
       "title": "Market segmentation",
       "content": [
-        "Consumer markets may be segmented by age, gender, income/social group, location, lifestyle, values, behaviour and usage. Industrial markets may use industry, organisation size, location, purchase volume, required specification or buying process. Effective segments are identifiable, measurable, reachable, substantial and meaningfully different."
+        "Consumer markets may be segmented geographically by location or climate; demographically by age, gender, income or social group; and psychographically by lifestyle, personality or values. Behaviour and usage can add further evidence. Industrial markets may use industry, organisation size, location, purchase volume, required specification or buying process. Effective segments are identifiable, measurable, reachable, substantial and meaningfully different."
       ],
       "bullets": [
         "Benefits: more relevant products/messages, less wasted promotion, stronger conversion and identification of gaps.",
@@ -174,6 +188,26 @@
         "Premium packaging can strengthen perception but may conflict with environmental expectations."
       ],
       "examples": []
+    },
+    {
+      "id": "09-consumer-industrial-and-relationship-marketing",
+      "title": "Consumer, industrial and relationship marketing",
+      "content": [
+        "Consumer marketing (B2C) sells to individuals for personal use, so buying may involve emotion, brand image, convenience and many small transactions. Industrial marketing (B2B) sells inputs, equipment or services to organisations, so purchases are often higher value, technically specified, negotiated by several decision-makers and judged by reliability, lifetime cost and after-sales support. Consumer products include convenience, shopping and speciality goods; industrial products include raw materials, components, capital equipment and business services."
+      ],
+      "bullets": [
+        "B2C promotion may use broad or lifestyle media and retail availability; B2B marketing more often uses personal selling, demonstrations, tenders, trade events and long-term account management.",
+        "Customer relationship marketing uses reliable service, complaint recovery, useful communication, loyalty schemes and relevant customer data to increase retention and customer lifetime value.",
+        "Retention can reduce acquisition spending and generate referrals, but databases, rewards and service cost money; privacy failures or indiscriminate messages can damage trust."
+      ],
+      "examples": [
+        {
+          "id": "3.1-9-1",
+          "kind": "example",
+          "label": "B2B decision mechanism",
+          "content": "A machine supplier offers a demonstration, maintenance contract and response-time guarantee. These address an industrial buyer's downtime and lifetime-cost concerns more directly than a mass consumer advert."
+        }
+      ]
     }
   ],
   "formulas": [

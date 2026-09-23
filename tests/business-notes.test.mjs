@@ -132,6 +132,103 @@ function assertExamReady(note) {
 
 const unitOne = ["1.1", "1.2", "1.3", "1.4", "1.5", "6.1", "6.2"];
 const unitTwo = ["2.1", "2.2", "2.3", "7.1", "7.2", "7.3", "7.4"];
+const unitThree = ["3.1", "3.2", "3.3", "8.1", "8.2"];
+const baseMarketingSyllabusPoints = {
+  "3.1": [
+    "Explain the role of marketing and the relationship between marketing and corporate objectives.",
+    "Compare market orientation, product orientation, asset-led and societal marketing.",
+    "Analyse demand, supply and changes in equilibrium.",
+    "Calculate and interpret market size, market growth and market share.",
+    "Compare mass and niche marketing.",
+    "Analyse market segmentation in consumer and industrial markets.",
+  ],
+  "3.2": [
+    "Explain the purpose and stages of market research.",
+    "Distinguish primary and secondary, quantitative and qualitative research.",
+    "Compare questionnaires, interviews, focus groups, observation and test marketing.",
+    "Assess internal and external secondary sources.",
+    "Compare random, stratified, quota and convenience sampling.",
+    "Analyse reliability, validity, bias, sample size and the role of information technology.",
+  ],
+  "3.3": [
+    "Analyse product decisions including differentiation, branding, packaging, product portfolios and the product life cycle.",
+    "Compare pricing methods and calculate/interpret price elasticity of demand.",
+    "Analyse promotional objectives, methods, media and budgets.",
+    "Compare direct and intermediary channels of distribution.",
+    "Explain customer relationship marketing, the 4Cs, e-commerce and digital promotion.",
+    "Assess an integrated marketing mix in context.",
+  ],
+  "8.1": [
+    "Calculate and interpret PED, YED and promotional elasticity and discuss their uses/limitations.",
+    "Explain the product-development process, sources of ideas and role of R&D.",
+    "Explain why sales forecasting is used.",
+    "Calculate/use four-period centred moving averages and qualitative forecasting.",
+    "Analyse how forecasts affect business decisions.",
+  ],
+  "8.2": [
+    "Explain contents, benefits and limitations of a marketing plan.",
+    "Develop a coordinated marketing strategy consistent with objectives, target market and resources.",
+    "Analyse the changing role of IT and AI in marketing.",
+    "Analyse international marketing, market selection and entry strategies.",
+    "Evaluate pan-global standardisation versus local adaptation.",
+  ],
+};
+
+test("Business Unit 3 notes are exam ready", async () => {
+  for (const id of unitThree) assertExamReady(await readNote(id));
+  const mix = await readNote("3.3");
+  assert.ok(mix.sections.some(({ id }) => id === "01-product-benefits-differentiation-and-portfolio"));
+  assert.ok(mix.sections.some(({ id }) => id === "05-promotion-objectives-and-methods"));
+});
+
+test("Unit 3 teaches the complete Marketing syllabus through decisions and data", async () => {
+  const coverage = {
+    "3.1": ["consumer market", "industrial market", "B2B", "B2C", "psychographic", "customer relationship marketing"],
+    "3.2": ["sampling frame", "non-response", "reliability", "validity", "tables", "charts", "graphs"],
+    "3.3": ["goods", "services", "tangible", "intangible", "dynamic pricing", "packaging", "branding", "physical distribution"],
+    "8.1": ["promotional elasticity", "product development", "R&D", "four-period", "centred moving average", "qualitative forecasting"],
+    "8.2": ["marketing plan", "coordinated", "IT", "AI", "exporting", "joint venture", "pan-global", "local adaptation"],
+  };
+  for (const [id, terms] of Object.entries(coverage)) {
+    const note = await readNote(id);
+    const teaching = JSON.stringify(note.sections);
+    for (const term of terms) assert.match(teaching, new RegExp(term, "i"), `${id}: teaching ${term}`);
+    assert.ok(note.sections.some(({ examples }) => examples.length > 0), `${id}: applied or worked example`);
+  }
+});
+
+test("Marketing calculations and evidence are taught as methods, not labels", async () => {
+  const research = JSON.stringify((await readNote("3.2")).sections);
+  assert.match(research, /(?:table|chart|graph)[\s\S]{0,500}(?:percentage|average|trend|comparison)/i);
+  const analysis = await readNote("8.1");
+  const movingAverage = JSON.stringify(analysis.sections.find(({ id }) => id === "05-four-period-centred-moving-averages"));
+  assert.match(movingAverage, /four consecutive periods[\s\S]{0,500}adjacent four-period moving averages/i);
+  assert.match(movingAverage, /worked/i);
+  for (const elasticity of ["price", "income", "promotional"])
+    assert.match(JSON.stringify(analysis.sections), new RegExp(`${elasticity}[\\s\\S]{0,500}(?:%|percentage).*(?:interpret|elastic|normal|inferior|response)`, "i"));
+});
+
+test("Unit 3 exam focus is topic-specific and respects AS/A Level boundaries", async () => {
+  const { businessExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/business.ts");
+  for (const id of unitThree) {
+    const focus = businessExamFocus[id];
+    assert.ok(focus?.evidence, `${id}: evidence summary`);
+    if (id.startsWith("3.")) assert.equal(focus.component, "AS Level Papers 1 and 2");
+    assert.ok(focus.tasks.length >= 2, `${id}: practice tasks`);
+    for (const task of focus.tasks) {
+      assert.ok(task.markPoints.length >= 4, `${id}: developed mark points`);
+      assert.ok(task.examinerTrap, `${id}: examiner trap`);
+    }
+  }
+  const asTasks = ["3.1", "3.2", "3.3"].flatMap((id) => businessExamFocus[id].tasks).map(JSON.stringify).join(" ");
+  assert.doesNotMatch(asTasks, /income elasticity|promotional elasticity|centred moving average|pan-global|joint venture|artificial intelligence|\bAI\b/i);
+  const analysisTasks = JSON.stringify(businessExamFocus["8.1"].tasks);
+  for (const term of ["price elasticity", "income elasticity", "promotional elasticity", "centred moving average", "qualitative"])
+    assert.match(analysisTasks, new RegExp(term, "i"), `8.1 exam task coverage: ${term}`);
+  const strategyTasks = JSON.stringify(businessExamFocus["8.2"].tasks);
+  for (const term of ["IT", "AI", "international", "entry", "pan-global", "adaptation"])
+    assert.match(strategyTasks, new RegExp(term, "i"), `8.2 exam task coverage: ${term}`);
+});
 test("Business Unit 2 notes are exam ready", async () => {
   for (const id of unitTwo) assertExamReady(await readNote(id));
 });
@@ -203,9 +300,10 @@ test("Business Unit 1 notes are exam ready", async () => {
 });
 
 test("existing syllabus checklist indexes remain stable", async () => {
-  for (const id of [...unitOne, ...unitTwo]) {
+  for (const id of [...unitOne, ...unitTwo, ...unitThree]) {
     const note = await readNote(id);
-    assert.deepEqual(note.syllabusPoints.slice(0, baseSyllabusPoints[id].length), baseSyllabusPoints[id], `${id}: original checklist indexes`);
+    const original = baseSyllabusPoints[id] ?? baseMarketingSyllabusPoints[id];
+    assert.deepEqual(note.syllabusPoints.slice(0, original.length), original, `${id}: original checklist indexes`);
   }
 });
 

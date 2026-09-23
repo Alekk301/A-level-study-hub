@@ -13,7 +13,8 @@
     "Compare questionnaires, interviews, focus groups, observation and test marketing.",
     "Assess internal and external secondary sources.",
     "Compare random, stratified, quota and convenience sampling.",
-    "Analyse reliability, validity, bias, sample size and the role of information technology."
+    "Analyse reliability, validity, bias, sample size and the role of information technology.",
+    "Interpret quantitative and qualitative evidence presented in tables, charts and graphs."
   ],
   "definitions": [
     {
@@ -55,6 +56,14 @@
     {
       "term": "Validity",
       "definition": "The extent to which the research measures what the decision actually requires."
+    },
+    {
+      "term": "Population",
+      "definition": "The complete group about which the researcher wants to draw conclusions."
+    },
+    {
+      "term": "Non-response bias",
+      "definition": "Distortion caused when people who do not respond differ systematically from those who do."
     }
   ],
   "sections": [
@@ -164,6 +173,26 @@
         "Combine behavioural analytics with targeted qualitative research before a major decision."
       ],
       "examples": []
+    },
+    {
+      "id": "09-interpreting-tables-charts-and-graphs",
+      "title": "Interpreting tables, charts and graphs",
+      "content": [
+        "Read the title, period, units, source and sample before interpreting a table, chart or graph. Calculate a percentage, average, range or change only when it answers the research objective. Then compare groups or time periods, identify a pattern or anomaly, and explain what the evidence does and does not justify. A trend is an association, not proof that one factor caused another."
+      ],
+      "bullets": [
+        "Check whether figures are values, volumes, percentages or percentage-point changes and whether axes start at zero.",
+        "Use both quantitative size and qualitative explanation: a 12% fall shows scale, while interviews may explain why it occurred.",
+        "Evaluate base size, sampling method, response rate, missing categories, timing and whether an average hides important segment differences."
+      ],
+      "examples": [
+        {
+          "id": "3.2-9-1",
+          "kind": "worked",
+          "label": "Interpreting survey data",
+          "content": "A table shows 72 of 120 sampled customers prefer reusable packaging, so 72 ÷ 120 × 100 = 60%. The result supports further testing, not a national launch: the sample came from one city and only 40% of people contacted responded, so location and non-response bias may overstate demand."
+        }
+      ]
     }
   ],
   "formulas": [],
