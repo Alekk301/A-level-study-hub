@@ -6,7 +6,7 @@
   "unitTitle": "A Level",
   "title": "Operations strategy",
   "contentDepth": "full",
-  "overview": "Operations strategy turns resources and processes into long-term capability. The current syllabus includes resource constraints, flexibility, process innovation, IT/AI, ERP, lean production and Critical Path Analysis (CPA). This topic is highly integrative because operations choices depend on HR, marketing and finance.",
+  "overview": "Operations strategy builds the process capability needed to deliver a long-term competitive objective. It is not a list of fashionable tools: managers must fit resource constraints, flexibility, technology, ERP, lean methods and project planning to the operation. A strong exam answer traces each choice through capacity, quality, speed, dependability, flexibility and cost, then tests whether finance, people, data and suppliers can make the promised result happen.",
   "syllabusPoints": [
     "Analyse how HR, marketing and finance resources constrain operations decisions.",
     "Analyse IT and AI in operations and process innovation.",
@@ -16,154 +16,217 @@
     "Construct/interpret CPA networks, critical paths, minimum duration, total/free float and evaluate CPA."
   ],
   "definitions": [
-    {
-      "term": "ERP",
-      "definition": "Enterprise Resource Planning: an integrated information system linking major business functions through shared data."
-    },
-    {
-      "term": "Lean production",
-      "definition": "An approach that seeks customer value using less waste, delay, inventory and non-value activity."
-    },
-    {
-      "term": "Kaizen",
-      "definition": "Continuous incremental improvement involving employees."
-    },
-    {
-      "term": "JIT",
-      "definition": "Just-in-time: materials/components arrive close to when needed, minimising inventory."
-    },
-    {
-      "term": "Critical path",
-      "definition": "The sequence of zero-total-float activities determining minimum project duration."
-    },
-    {
-      "term": "Total float",
-      "definition": "How long an activity can be delayed without delaying overall project completion."
-    },
-    {
-      "term": "Free float",
-      "definition": "How long an activity can be delayed without delaying the earliest start of a following activity."
-    }
+    { "term": "Operations strategy", "definition": "The long-term pattern of decisions about processes, capacity, technology, supply and quality that creates the capabilities required by business strategy." },
+    { "term": "Process innovation", "definition": "Introducing a new or materially improved way of producing or delivering a product." },
+    { "term": "Flexibility", "definition": "The ability to change output volume, delivery timing or product specification in response to need." },
+    { "term": "ERP", "definition": "Enterprise Resource Planning: an integrated system that gives functions access to a shared database and coordinated business processes." },
+    { "term": "Lean production", "definition": "An approach that seeks greater customer value while removing waste, delay, defects, excess inventory and other non-value-adding activity." },
+    { "term": "Kaizen", "definition": "Continuous, usually incremental, improvement involving employees close to the process." },
+    { "term": "Quality circle", "definition": "A small group of employees that meets to identify, analyse and propose solutions to work-related quality or process problems." },
+    { "term": "Simultaneous engineering", "definition": "Developing linked stages or functions in parallel so that design, production and market requirements influence one another earlier." },
+    { "term": "Cell production", "definition": "Organising people and equipment into teams or cells that complete a family of related products or a substantial stage of production." },
+    { "term": "Critical path", "definition": "The path of activities with zero total float that determines the project's minimum completion time." },
+    { "term": "Total float", "definition": "The maximum time an activity may be delayed without delaying completion of the whole project." },
+    { "term": "Free float", "definition": "The maximum time an activity may be delayed without delaying the earliest start of its next activity." },
+    { "term": "Dummy activity", "definition": "A zero-time, zero-resource arrow used only to show the correct dependency in an activity-on-arrow network." }
   ],
   "sections": [
     {
       "id": "01-resource-constraints-and-flexibility",
-      "title": "Resource constraints and flexibility",
+      "title": "Start with strategy, resources and the flexibility required",
       "content": [
-        "Operations decisions depend on available finance, skilled labour and expected demand. Flexibility may mean changing volume, delivery time or specification quickly. It can improve customer response but may require spare capacity, multi-skilled employees, adaptable equipment or responsive suppliers—all with costs."
+        "An operations proposal is feasible only when the other functions can support it. Marketing determines the demand pattern and the promise made to customers; finance limits investment, working capital and acceptable risk; HR determines whether enough employees have the right skills, contracts and willingness to change. A high-speed automated line may fit a large, stable market but fail when finance is expensive or the product changes frequently.",
+        "Flexibility has three distinct forms. Volume flexibility changes how much is produced; delivery flexibility changes when or how quickly orders are supplied; specification flexibility changes the features or customisation offered. Managers can create flexibility through spare capacity, multi-skilled employees, modular equipment, broad supplier relationships and postponing final customisation. Each creates an opportunity cost: unused capacity, training expense, lower specialisation or more complex coordination.",
+        "The decision rule is strategic fit. A premium made-to-order producer may accept higher unit cost to gain specification and delivery flexibility. A mass producer competing on price may prefer high utilisation and standardisation, provided demand is predictable enough to avoid excess inventory."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "HR constraint: scarce technical skill, resistance, training time, contract flexibility and workforce capacity.",
+        "Marketing constraint: forecast uncertainty, promised lead time, variety, service level and product life cycle.",
+        "Finance constraint: capital budget, borrowing cost, cash tied in inventory and payback risk.",
+        "Evaluate the bottleneck: extra technology is of little value if the binding constraint is people, data or demand."
+      ],
+      "examples": [
+        { "id": "01-example-1", "kind": "application", "label": "Applied decision", "content": "A meal producer wins a retailer contract with volatile weekly volumes. A second fixed line raises maximum capacity but may be idle; cross-training and temporary shifts cost more per unit but protect volume flexibility. The better choice depends on forecast confidence, service penalties, labour availability and the contract duration." }
+      ]
     },
     {
       "id": "02-it-ai-and-process-innovation",
       "title": "IT, AI and process innovation",
       "content": [
-        "Automation, sensors, predictive maintenance, scheduling systems and AI can improve speed, consistency and information. Risks include capital cost, cybersecurity, skill shortages, inaccurate models and reduced flexibility if technology is too specialised."
+        "IT collects, transmits and controls operational information. Examples include computer-aided design, computer-aided manufacture, robotics, barcode or RFID tracking, sensor-based monitoring and automated scheduling. AI can recognise defect patterns, predict equipment failure, estimate demand or adjust schedules. The exam value is in the changed process: faster feedback may reduce downtime, waste and late delivery; consistent machine settings may reduce variation; better forecasts may improve capacity and inventory decisions.",
+        "Process innovation may lower variable cost, shorten lead time or enable a different product, but it creates implementation risk. Capital expenditure can raise break-even output and make a fall in demand more damaging. Integration, cybersecurity, data quality, maintenance skill and workforce acceptance affect the realised return. Bias or unusual events can make an AI recommendation unreliable, so managers need validation and human review.",
+        "Technology can also reduce flexibility when equipment is dedicated to one design. Compare the whole-life benefit with purchase, installation, migration, training, maintenance, energy, disruption and obsolescence costs—not merely the supplier's claimed labour saving."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "CAD shortens redesign and shares accurate specifications; CAM turns digital designs into consistent machine instructions.",
+        "Predictive maintenance uses condition data to intervene before failure, but false alerts or missing data can waste resources.",
+        "Automation works best with sufficient volume, stable processes and trained support; human judgement remains important for exceptions.",
+        "Pilot, measure a baseline, train users and review outcomes before scaling."
+      ],
+      "examples": [
+        { "id": "02-example-1", "kind": "worked", "label": "Investment chain", "content": "Sensors identify rising vibration → maintenance is scheduled before breakdown → fewer unplanned stoppages protect output and delivery reliability → overtime and lost-sales costs may fall. The benefit is conditional on accurate thresholds, available engineers and savings exceeding the system's total cost." }
+      ]
     },
     {
       "id": "03-erp",
-      "title": "ERP",
+      "title": "ERP: one data flow across the business",
       "content": [
-        "ERP links purchasing, inventory, sales, finance, HR and production to shared real-time data. It can reduce duplicated entry and improve planning/coordination. Implementation can be expensive and disruptive; poor data, weak training or badly redesigned processes can cause failure."
+        "ERP links modules such as purchasing, inventory, sales, production, finance and HR to a common database. A confirmed customer order can update the production schedule, material requirement, inventory record, delivery plan, invoice and capacity information. This reduces repeated entry and inconsistent versions of the truth.",
+        "The operational gain is not simply 'better communication'. Timely inventory data can prevent duplicate orders; product-cost data can improve pricing; an integrated schedule can expose a capacity shortage; sales visibility can speed customer responses; workforce records can support shift planning; and management information can reveal performance by product or location.",
+        "ERP does not repair a poor process automatically. An organisation may standardise codes, cleanse data, redesign approval routes, train users and phase the launch. Otherwise inaccurate data spread across functions, customisation becomes costly and a failed migration interrupts the whole operation. Central integration also raises cyber and continuity exposure, so access control, backups and tested recovery matter."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Benefit conditions: common data definitions, disciplined entry, compatible processes and management support.",
+        "Risks: high implementation cost, disruption, employee resistance, vendor dependence and loss of poorly planned custom features.",
+        "Measure outcomes such as stock accuracy, order cycle time, schedule adherence and working capital rather than installation alone."
+      ],
+      "examples": [
+        { "id": "03-example-1", "kind": "application", "label": "ERP in context", "content": "A manufacturer currently holds separate sales and production spreadsheets. ERP could show a sales-order change immediately to purchasing and scheduling, reducing excess components and late delivery. Yet rushed migration of incorrect bills of materials may make shortages worse, so phased testing and owner accountability for master data are critical." }
+      ]
     },
     {
       "id": "04-lean-production-tools",
-      "title": "Lean production tools",
+      "title": "Lean tools and the waste they are designed to remove",
       "content": [
-        "Kaizen = continuous small improvements; quality circles = employee groups solving process/quality issues; simultaneous engineering = functions/stages work in parallel; cell production = teams handle a family of products; JIT reduces inventory; waste management removes non-value activity."
+        "Lean production begins with customer value and process flow. Waste may include defects, overproduction, waiting, unnecessary movement or transport, excess processing, excess inventory and underused employee knowledge. The objective is not cost cutting at any price; it is to remove activity that consumes resources without creating value while protecting quality and resilience.",
+        "Kaizen invites frequent small improvements and uses employee knowledge. Quality circles concentrate that participation on defined problems. Cell production can shorten movement, strengthen team ownership and handle product families flexibly, although equipment may be duplicated and teamwork requires training. Simultaneous engineering lets design, production and marketing solve manufacturability or customer problems earlier, reducing late redesign, but parallel work demands strong communication.",
+        "JIT coordinates small, timely deliveries and production with demand. It lowers storage, deterioration and cash tied in inventory and exposes defects quickly. The trade-off is a smaller buffer against supplier failure, transport delay or sudden demand. Supplier quality, information sharing and reliable logistics therefore determine whether a pure JIT system or a selective buffer is more suitable."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Kaizen: low-risk cumulative improvements, but participation can become superficial if suggestions are ignored.",
+        "Quality circles: improve problem solving and ownership, but need time, evidence and authority to implement ideas.",
+        "Simultaneous engineering: faster launch and earlier cross-functional correction, but coordination errors can spread across parallel work.",
+        "Cell production: teamwork, variety and shorter flow, but possible equipment duplication and disruption when one member is absent.",
+        "JIT: lower inventory and faster problem exposure, but greater dependence on stable quality and delivery.",
+        "Waste management: prevent, reduce, reuse or recover waste where the extra resource and environmental benefit exceeds the implementation cost."
+      ],
+      "examples": [
+        { "id": "04-example-1", "kind": "application", "label": "Combining tools", "content": "A furniture maker maps repeated waiting between cutting and finishing. A mixed-skill cell reduces movement, a quality circle redesigns the hand-off and a visual replenishment signal limits work in progress. Output improves only if machinery capacity and finish quality remain balanced; otherwise the bottleneck simply moves." }
+      ]
     },
     {
       "id": "05-lean-trade-offs",
-      "title": "Lean trade-offs",
+      "title": "Implement lean without removing necessary resilience",
       "content": [
-        "Low inventory cuts holding cost and exposes problems but increases dependence on reliable suppliers/transport. Employee involvement can improve ideas/motivation but change may create resistance. Lean should reduce waste, not blindly remove every buffer needed for resilience."
+        "Lean implementation changes behaviour as well as layout. Managers need a measurable problem, process data, employee involvement, supplier coordination and a review cycle. If targets reward output alone, employees may hide defects or produce early, recreating waste. If managers use lean only to remove jobs, trust falls and the knowledge needed for improvement may disappear.",
+        "A lean operation can retain deliberate resilience. Critical imported components may justify safety stock; a second supplier may cost more but reduce interruption risk; spare maintenance capacity may protect dependability. Evaluation should compare the expected cost of disruption with the cost of the buffer, not assume either maximum stock or zero stock is always efficient.",
+        "Strategic evaluation integrates the tools. A flexible premium producer may use cells and Kaizen but reject highly dedicated automation. A stable high-volume producer may combine flow automation, ERP scheduling and JIT. The best package depends on demand variation, product variety, supplier power, employee capability, finance and the cost of failure."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use before-and-after measures: lead time, defect rate, work in progress, delivery reliability and cost per good unit.",
+        "Separate removal of waste from removal of capacity that protects a service promise.",
+        "Review whether the gain is sustainable after training, supplier and maintenance costs."
+      ],
+      "examples": [
+        { "id": "05-example-1", "kind": "worked", "label": "Resilience judgement", "content": "An annual buffer costs $18,000 to hold. A supply interruption is estimated to have a 30% annual probability and cost $90,000, giving an expected disruption cost of $27,000. The simple comparison supports a buffer, but managers should challenge the probability, determine whether the stock covers the actual interruption and consider dual sourcing before deciding." }
+      ]
     },
     {
       "id": "06-critical-path-analysis",
-      "title": "Critical Path Analysis",
+      "title": "Critical Path Analysis: full construction and calculation",
       "content": [
-        "Create the network, calculate earliest/latest times, identify activities with zero total float and find minimum duration. Float helps managers allocate resources and focus monitoring on activities where delay threatens completion."
+        "CPA converts a project into activities, durations and dependencies. Draw arrows in dependency order, add a dummy activity only where needed to preserve logic, then complete the forward pass from left to right. At a merge, use the largest incoming earliest finish because every predecessor must be complete. Complete the backward pass from right to left; at a burst, use the smallest permitted latest start so no successor is delayed.",
+        "An activity's total float shows the delay possible without extending the project. Free float is stricter: it shows delay possible without moving the earliest start of the next activity. Activities with zero total float form the critical path. Managers monitor these activities closely because a delay, unless recovered elsewhere on the critical path, delays the project.",
+        "A dummy activity has no duration or resource. It prevents the diagram from falsely showing that an activity has the wrong predecessor; it is a logic device, not work to schedule."
       ],
-      "bullets": [],
+      "bullets": [
+        "Forward pass: earliest finish = earliest start + duration; use the greatest incoming value at a merge.",
+        "Backward pass: latest start = latest finish - duration; use the smallest outgoing value at a burst.",
+        "Total float = LFT at end node - EST at start node - activity duration.",
+        "Free float = EST at next node - EST at start node - activity duration.",
+        "Critical activities have zero total float; the final earliest time is the minimum project duration."
+      ],
       "examples": [
-        {
-          "id": "06-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Total float = latest finish - earliest start - duration\nFree float = earliest start of next activity - earliest start of current activity - duration"
-        }
+        { "id": "06-example-1", "kind": "worked", "label": "Worked network: find both paths", "content": "Activities are A = 3 days followed by C = 5 days; B = 4 days followed by D = 2 days; both branches must finish before E = 3 days. Route A-C-E = 3 + 5 + 3 = 11 days. Route B-D-E = 4 + 2 + 3 = 9 days. Therefore the critical path is A-C-E and the minimum project duration is 11 days." },
+        { "id": "06-example-2", "kind": "worked", "label": "Forward and backward pass", "content": "A: ES 0, EF 3, LS 0, LF 3, total float 0. B: ES 0, EF 4, LS 2, LF 6, total float 2. C: ES 3, EF 8, LS 3, LF 8, total float 0. D: ES 4, EF 6, LS 6, LF 8, total float 2. E: ES 8, EF 11, LS 8, LF 11, total float 0. At the merge, E cannot start until day 8 because C finishes later than D." },
+        { "id": "06-example-3", "kind": "worked", "label": "Calculate total and free float", "content": "For B, total float = 6 - 0 - 4 = 2 days, but free float = 4 - 0 - 4 = 0 because D begins as early as day 4. For D, total float = 8 - 4 - 2 = 2 days and free float = 8 - 4 - 2 = 2 days. Delaying A, C or E delays project completion because each is critical; delaying D by up to two days does not." }
       ]
     },
     {
       "id": "07-cpa-evaluation",
-      "title": "CPA evaluation",
+      "title": "Use CPA to manage resources, not to pretend uncertainty is gone",
       "content": [
-        "Benefits: shows dependencies, critical tasks, minimum duration and scheduling flexibility. Limitations: activity times are estimates; resource constraints are not automatically solved; complex projects change and require updates; unexpected events can create a new critical path."
+        "CPA makes sequence and dependence visible, identifies minimum duration and focuses management attention on critical tasks. Float supports resource allocation: labour or equipment may be moved temporarily from a non-critical activity without delaying the project, provided the remaining float and knock-on effects are checked. Alternative plans can be modelled before work begins.",
+        "The answer must also challenge the model. Duration estimates may be optimistic; one delayed activity can change the critical path; CPA does not by itself guarantee that the assumed employees, finance or materials are available; and a large changing project can become difficult to update. Shortening a critical task may require costly overtime or create a quality or safety problem.",
+        "Managers should update actual durations, recalculate the network after major changes and combine CPA with budgets, responsibility, risk registers and quality controls. The final judgement depends on estimate reliability, project complexity, the cost of delay and the organisation's ability to act on the information."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "A critical path is a management priority, not proof that every non-critical activity can be ignored.",
+        "Using float consumes contingency; once used, later disruption becomes more dangerous.",
+        "Crashing a project is rational only when the value of earlier completion exceeds the extra cost and risk."
+      ],
+      "examples": [
+        { "id": "07-example-1", "kind": "application", "label": "Interpretation for a manager", "content": "In the 11-day network, the manager might move a specialist from D to C because D has two days of total float and C is critical. Before doing so, the manager must check that D still starts and finishes within its allowed times and that the specialist can actually shorten C without compromising quality." }
+      ]
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": {
-    "title": "Operations decision",
-    "type": "flow",
-    "nodes": [
-      "Objectives",
-      "Capacity & resources",
-      "Method & technology",
-      "Performance review"
+  "formulas": [
+    { "label": "Total float", "expression": "Total float = LFT at end node - EST at start node - activity duration", "variables": "Maximum delay without delaying project completion." },
+    { "label": "Free float", "expression": "Free float = EST at next node - EST at start node - activity duration", "variables": "Maximum delay without delaying the earliest start of the following activity." },
+    { "label": "Expected annual disruption cost", "expression": "Probability of disruption × financial impact", "variables": "A simplified risk comparison; estimates and non-financial effects still require evaluation." }
+  ],
+  "comparisonTable": {
+    "title": "Operations-strategy tools and decision evidence",
+    "columns": ["Tool or choice", "Primary operational gain", "Main dependency or risk", "Useful evidence"],
+    "rows": [
+      ["IT, automation or AI", "Speed, consistency, prediction or lower variable cost", "Capital, skill, data, cyber risk and process fit", "Downtime, defects, cycle time, cost per good unit"],
+      ["ERP", "Integrated information and coordination", "Data quality, migration, training and continuity", "Stock accuracy, order time, schedule adherence"],
+      ["Lean/JIT", "Less waste, inventory and delay", "Supplier reliability, culture and resilience", "Work in progress, lead time, delivery and defects"],
+      ["CPA", "Dependency, timing and resource priorities", "Estimate accuracy and changing constraints", "Critical-path delay, float used, actual duration"]
     ]
+  },
+  "diagram": {
+    "title": "Operations-strategy reasoning",
+    "type": "flow",
+    "nodes": ["Business objective and customer promise", "Demand, finance, people and supply constraints", "Process, technology, ERP and lean choices", "Capacity, quality, speed, dependability, flexibility and cost", "Measure results, manage risk and improve"]
   },
   "analysisChains": [
     {
-      "title": "Just-in-time inventory",
-      "steps": [
-        "Inputs arrive close to when they are needed",
-        "Inventory holding and storage costs fall",
-        "Cash flow may improve",
-        "Disruption risk rises if suppliers are late"
-      ],
-      "evaluation": "JIT is more suitable with reliable suppliers, predictable quality and resilient logistics; buffer stock may be rational in volatile conditions."
+      "title": "ERP and efficiency",
+      "steps": ["Sales, inventory, purchasing and production use one current dataset", "Planners see material and capacity needs sooner", "Duplicate orders, shortages and avoidable waiting may fall", "Working capital, delivery reliability and customer response can improve"],
+      "evaluation": "The chain breaks when master data are inaccurate, processes are not redesigned or users bypass the system; implementation cost and disruption must be recovered by measurable gains."
+    },
+    {
+      "title": "Lean improvement",
+      "steps": ["Employees identify waiting, movement, defects or excess work in progress", "Kaizen and process redesign remove a verified source of waste", "Lead time or cost per good unit falls while flow becomes clearer", "Price, margin, capacity or delivery performance may improve"],
+      "evaluation": "Results depend on employee trust, supplier coordination and whether the removed activity was truly waste rather than a necessary quality or resilience control."
+    },
+    {
+      "title": "Technology investment",
+      "steps": ["Automation or AI changes a defined operational decision or task", "Speed, consistency or prediction improves against a measured baseline", "Downtime, defects, labour hours or inventory may fall", "Unit cost, capacity utilisation or customer dependability may improve"],
+      "evaluation": "Use total life-cycle cost and consider volume, adaptability, employee skill, cyber exposure and the cost of wrong model outputs before concluding it creates competitive advantage."
+    },
+    {
+      "title": "CPA resource decision",
+      "steps": ["The network identifies A-C-E as the zero-total-float path", "Managers prioritise scarce resources and monitoring on these activities", "A threatened critical delay is detected and addressed sooner", "The 11-day completion date is more likely to be protected"],
+      "evaluation": "The benefit depends on realistic durations and rapid updating; using extra resources has an opportunity cost and can delay other activities or projects."
     }
   ],
   "examTips": [
-    "CPA marks depend on working: show times/float and clearly state the critical path.",
-    "ERP/AI answers need implementation risk, not only efficiency benefits.",
-    "JIT evaluation usually hinges on supplier/logistics reliability."
+    "For technology or ERP, identify the data or process changed, then develop the effect beyond 'more efficient' to inventory, capacity, quality, delivery, cost or profit.",
+    "For lean, name the relevant tool and the waste removed; evaluate supplier reliability, employee involvement and resilience.",
+    "In CPA calculations, show each route, forward/backward times and float formula so follow-through marks remain available.",
+    "A critical activity has zero total float. Explain that delay threatens the project duration rather than merely calling it important.",
+    "Integrate HR, marketing and finance into an operations-strategy judgement instead of writing three isolated mini-essays.",
+    "Finish by identifying the binding constraint and the evidence that would make the recommendation change."
   ],
   "commonMistakes": [
-    "Calling any zero-free-float activity critical without checking total float/project delay.",
-    "Assuming lean means 'no inventory ever'.",
-    "Ignoring training/data migration in ERP.",
-    "Treating CPA duration estimates as certain."
+    "Treating AI or automation as a benefit by itself without stating the operational mechanism and whole-life cost.",
+    "Claiming ERP guarantees accurate decisions even when the shared source data may be wrong.",
+    "Equating lean with redundancies or zero stock and ignoring value, quality and supply resilience.",
+    "Using free float to identify the critical path; criticality is determined by total float.",
+    "Adding every route duration without respecting dependency and merge rules.",
+    "Assuming activity-time estimates and the critical path remain fixed throughout a project."
   ],
   "quickRecall": [
-    "flexibility=volume/time/spec",
-    "ERP=integrated shared data",
-    "lean=remove waste",
-    "JIT=low inventory+supplier risk",
-    "critical path=zero total float",
-    "CPA=dependencies+time"
+    { "question": "What three forms of flexibility are on the syllabus?", "answer": "Volume, delivery-time and specification flexibility." },
+    { "question": "Why can ERP improve inventory decisions?", "answer": "Purchasing, sales and production use shared current data, reducing duplicate orders and revealing shortages sooner—if the data are accurate." },
+    { "question": "Name six lean methods in the syllabus.", "answer": "Kaizen, quality circles, simultaneous engineering, cell production, JIT and waste management." },
+    { "question": "What is the critical path in the worked network?", "answer": "A-C-E, with a minimum duration of 11 days." },
+    { "question": "What are B's total and free float?", "answer": "Total float is 2 days; free float is 0 days." },
+    { "question": "What are D's total and free float?", "answer": "Both are 2 days." },
+    { "question": "Why is a dummy activity used?", "answer": "To show the correct dependency in the network; it uses no time or resource." },
+    { "question": "Why is CPA not sufficient by itself?", "answer": "Durations are estimates and the network does not automatically solve resource, finance, quality or risk constraints." }
   ],
-  "relatedTopics": [
-    "6.2",
-    "9.1",
-    "9.2",
-    "10.3"
-  ]
+  "relatedTopics": ["6.2", "9.1", "9.2", "10.3"]
 }

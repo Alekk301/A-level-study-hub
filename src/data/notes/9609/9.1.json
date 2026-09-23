@@ -6,7 +6,7 @@
   "unitTitle": "A Level",
   "title": "Location and scale",
   "contentDepth": "full",
-  "overview": "Location and scale shape cost, responsiveness, risk and long-run competitiveness. You must analyse local/national/international location decisions, offshoring and reshoring, globalisation, and internal/external economies and diseconomies of scale.",
+  "overview": "Location and scale are long-term operations choices that shape total cost, revenue, speed, quality, resilience and strategic control. A strong answer compares whole-location economics with qualitative risks, then judges whether the business has enough demand and management capacity to gain economies without triggering diseconomies.",
   "syllabusPoints": [
     "Analyse factors determining location and relocation at local, national and international levels.",
     "Explain reasons for and impacts of offshoring and reshoring.",
@@ -15,119 +15,202 @@
     "Explain internal/external economies of scale and diseconomies of scale and their effect on unit costs."
   ],
   "definitions": [
-    {
-      "term": "Offshoring",
-      "definition": "Moving business activities or production to another country."
-    },
-    {
-      "term": "Reshoring",
-      "definition": "Returning previously offshored activity to the home country."
-    },
-    {
-      "term": "Economies of scale",
-      "definition": "Reductions in average/unit cost as scale increases."
-    },
-    {
-      "term": "Diseconomies of scale",
-      "definition": "Increases in average/unit cost caused by excessive size/complexity."
-    },
-    {
-      "term": "External economies",
-      "definition": "Cost advantages gained because the industry/region grows, not because one firm alone becomes larger."
-    }
+    { "term": "Optimal location", "definition": "The site expected to make the best contribution to long-term objectives after relevant costs, revenues and qualitative factors are considered." },
+    { "term": "Relocation", "definition": "Moving all or part of an existing operation to a different site." },
+    { "term": "Offshoring", "definition": "Moving an activity from the home country to another country, whether it remains owned by the business or is outsourced." },
+    { "term": "Reshoring", "definition": "Returning an activity that was previously moved abroad to the home country." },
+    { "term": "Scale of operations", "definition": "The size of a business's productive resources and long-run potential output." },
+    { "term": "Internal economy of scale", "definition": "A reduction in average cost arising from growth of the individual business." },
+    { "term": "External economy of scale", "definition": "A cost advantage available to businesses because the industry or regional cluster has grown." },
+    { "term": "Internal diseconomy of scale", "definition": "An increase in average cost caused by management, communication, coordination or motivation problems as the business becomes too large or complex." },
+    { "term": "External diseconomy of scale", "definition": "A cost increase imposed on businesses when growth of an industry or region raises congestion, land, labour or infrastructure costs." },
+    { "term": "Weighted location analysis", "definition": "A decision aid that weights factors by importance, scores each site and totals weighted scores while retaining qualitative judgement." }
   ],
   "sections": [
     {
       "id": "01-location-factors",
-      "title": "Location factors",
+      "title": "Location factors change with the operation",
       "content": [
-        "Important factors include labour skill/cost, land/rent, suppliers, transport, infrastructure, energy, customers, government incentives/tax, law/political stability and sustainability. Weighting depends on the business model—a data centre, luxury retailer and heavy manufacturer should not prioritise the same factors."
+        "Location is strategic, expensive to reverse and usually a compromise. Manufacturing may prioritise input supply, transport, energy, labour productivity and space; a retailer needs customer access, visibility and complementary businesses; an online service may prioritise skills, connectivity, data regulation and reliability. The lowest rent or wage is not necessarily the lowest total cost or highest-profit site."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Quantitative factors include site purchase or rent, wages adjusted for productivity, transport, utilities, taxes, grants, exchange rates, expected revenue and the capital cost of developing the site.",
+        "Qualitative factors include labour skill and attitudes, supplier reliability, customer convenience, infrastructure, political/legal stability, ethics, environmental impact, management control and brand image.",
+        "Local choices compare neighbourhood access and cost; national choices add regional labour, grants and infrastructure; international choices add tariffs, currency, culture, regulation, political risk and long supply chains."
+      ],
+      "examples": [
+        { "id": "9.1-1-1", "kind": "case", "label": "Different critical factors", "content": "A luxury retailer may accept high city-centre rent because footfall and brand status raise revenue. A data centre may instead prioritise reliable low-cost power, cooling, fibre links and legal security. Applying the same checklist without changing the weights would produce a weak decision." }
+      ]
+    },
+    {
+      "id": "02-weighted-location-analysis",
+      "title": "Weighted location analysis: method and limits",
+      "content": [
+        "Use a weighted factor table when several sites must be compared consistently. First choose factors linked to objectives. Give weights that sum to 1 or 100%, score every site on the same scale, multiply each score by its weight and add the weighted scores. Then test whether reasonable changes to weights or assumptions reverse the ranking."
+      ],
+      "bullets": [
+        "Worked scores: market access weight 0.40, labour capability 0.30, logistics 0.20 and political risk 0.10. Site A scores 8, 6, 5 and 7, so its total is (8 × 0.40) + (6 × 0.30) + (5 × 0.20) + (7 × 0.10) = 6.70.",
+        "Site B scores 5, 9, 8 and 4, so its total is (5 × 0.40) + (9 × 0.30) + (8 × 0.20) + (4 × 0.10) = 6.70. The tie reveals a real strategic trade-off rather than a single obvious answer.",
+        "Weights and scores are managerial estimates. Add profit/cash-flow forecasts, one-off relocation cost and non-quantifiable risks; do not present a weighted total as certainty."
+      ],
+      "examples": [
+        { "id": "9.1-2-1", "kind": "worked", "label": "Sensitivity judgement", "content": "If serving customers quickly is the binding objective, Site A's market score may decide the tie. If specialised labour is scarce and quality failures are costly, Site B may be superior. A small change in the market or labour weight should be recalculated before committing capital." }
+      ]
     },
     {
       "id": "02-offshoring",
-      "title": "Offshoring",
+      "title": "Offshoring, reshoring and the ownership distinction",
       "content": [
-        "Can lower labour/input cost, access specialist suppliers and place production nearer growing markets. Risks include longer supply chains, quality/control problems, exchange/political risk, cultural/communication issues and reputational concerns."
+        "Offshoring describes geography; outsourcing describes ownership and control. A firm can offshore to its own overseas factory, outsource locally, or both offshore and outsource to a foreign supplier. Reshoring may restore speed and control but does not automatically mean every input becomes domestic."
       ],
-      "bullets": [],
+      "bullets": [
+        "Reasons to offshore: lower total operating cost, available skills or suppliers, proximity to growing markets, tax or trade access, resource availability and time-zone coverage.",
+        "Risks: longer lead times, tariffs, exchange-rate and political exposure, quality/control gaps, intellectual-property leakage, labour or environmental criticism and single-region disruption.",
+        "Reasons to reshore: automation narrows wage differences, freight/tariff costs rise, demand needs faster response, defects or disruption become expensive, or a home-country origin strengthens the brand.",
+        "Reshoring can raise wages and site costs and requires domestic skills/capacity. Compare total landed cost and risk, not national sentiment alone."
+      ],
       "examples": []
     },
     {
       "id": "03-reshoring",
-      "title": "Reshoring",
+      "title": "Reshoring as a distinct strategic decision",
       "content": [
-        "May improve responsiveness, quality control, supply-chain resilience and home-market reputation. It can also increase direct labour/property cost. Automation can make reshoring more viable by reducing labour-cost differences."
+        "Reshoring returns activities to the home country after they were carried out abroad. It may shorten lead times, strengthen oversight and intellectual-property protection, reduce exchange-rate or trade disruption, and support a home-market reputation. It can also raise wage, property and regulatory costs and sacrifice overseas supplier clusters or specialist skills.",
+        "Compare total delivered cost and strategic risk rather than wages alone. Include transport, inventory in transit, quality failure, management travel, tariff exposure, responsiveness, disruption probability and the one-off cost of transition."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Reshoring may protect dependability and flexibility even when direct production cost rises.",
+        "Moving again creates investment, disruption and redundancy costs.",
+        "Partial reshoring or dual locations may balance efficiency with resilience."
+      ],
+      "examples": [
+        { "id": "03-example-2", "kind": "application", "label": "Conditional judgement", "content": "A fashion brand may reshore final assembly to react to trends while retaining standard component production overseas. The hybrid is worthwhile only if avoided markdowns and faster sales exceed higher home-production and transition costs." }
+      ]
     },
     {
       "id": "04-globalisation-and-location",
-      "title": "Globalisation and location",
+      "title": "Globalisation changes the location network",
       "content": [
-        "Trade liberalisation, digital coordination and global logistics allow firms to split design, production and service across countries. This increases choice but also creates dependence on international networks exposed to tariffs, pandemics, geopolitical tension and currency movement."
+        "Trade agreements, digital coordination, global logistics and multinational supply networks widen the feasible choice of sites. A business may separate design, components, assembly, service and distribution across countries to place each activity near the most valuable resource or market."
       ],
-      "bullets": [],
+      "bullets": [
+        "Potential gain: access to specialised clusters and markets can reduce cost or improve revenue and innovation.",
+        "Potential cost: a longer network increases exposure to tariffs, border delay, geopolitics, pandemics, currency movement and inconsistent standards.",
+        "A resilient network may use regional production, dual sourcing, postponement or selective buffers even if the cheapest single site has a lower forecast cost."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-scale-decisions",
+      "title": "What determines the scale of operations",
+      "content": [
+        "Scale changes when the business increases or decreases its long-run resource base; producing more from the same resources is higher capacity utilisation, not greater scale. Suitable scale depends on owners' objectives, market size and growth, capital, competitor structure, minimum efficient technology, management capability, risk and the scope for economies."
+      ],
+      "bullets": [
+        "Expansion can meet demand, lower average cost and finance specialisation, but ties up capital and may create excess capacity if forecasts fail.",
+        "A niche producer may remain deliberately small to protect craftsmanship, control and scarcity value even when technical expansion is possible.",
+        "The relevant question is whether expected demand can use the new capacity at a profitable price for long enough to recover the investment."
+      ],
       "examples": []
     },
     {
       "id": "05-internal-economies-of-scale",
-      "title": "Internal economies of scale",
+      "title": "Internal economies of scale and the cost mechanism",
       "content": [
-        "Purchasing (bulk discounts), technical (specialised machinery), managerial (specialist managers), financial (access/cost of finance), marketing (spread fixed promotion cost) and risk-bearing/diversification can reduce unit cost as the firm grows."
+        "An internal economy must be named and linked to average cost. Purchasing economies arise when bulk orders reduce input price or order cost per unit. Technical economies spread indivisible high-capacity equipment over more output. Managerial economies use specialists more effectively. Financial economies may reduce borrowing or issue cost. Marketing economies spread campaign cost over more sales. Risk-bearing economies can stabilise revenue across products or markets, although diversification itself also costs money."
       ],
-      "bullets": [],
+      "bullets": [
+        "The chain is scale increases → a specific saving or productivity gain occurs → total cost rises more slowly than output → average cost falls.",
+        "An economy is potential, not guaranteed. Low capacity utilisation, weak purchasing negotiation or management duplication may prevent the saving.",
+        "Lower average cost can support lower price, higher margin or investment, but competitor response and demand elasticity determine the final performance effect."
+      ],
       "examples": []
     },
     {
       "id": "06-external-economies-and-diseconomies",
-      "title": "External economies and diseconomies",
+      "title": "External economies and external diseconomies",
       "content": [
-        "Industry clusters can provide specialist labour, suppliers, infrastructure and knowledge. But very large businesses may suffer communication, coordination, motivation and bureaucracy problems, causing unit costs to rise. Growth is beneficial only while economies outweigh diseconomies."
+        "A growing industry cluster may attract trained labour, specialist suppliers, universities, finance and infrastructure. Every suitable firm can benefit even if it has not grown. Continued clustering may also bid up wages and property, overload transport or create shortages: these are external diseconomies."
       ],
-      "bullets": [],
+      "bullets": [
+        "Keep the source clear: internal effects come from the firm's own scale; external effects come from industry or regional growth.",
+        "Location and scale interact. A cluster can initially lower unit cost, then congestion and scarce labour may make another region more competitive.",
+        "The business should monitor whether a cluster's knowledge and supplier benefits still exceed its land, wage and disruption costs."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-internal-diseconomies-and-control",
+      "title": "Internal diseconomies and ways to control them",
+      "content": [
+        "Large operations can suffer slow or distorted communication, coordination failure, bureaucracy, duplicated functions and employee alienation. Decisions take longer, errors increase and motivation or quality falls, raising average cost. Diseconomies may exist at the same time as purchasing or technical economies; the net effect determines average cost."
+      ],
+      "bullets": [
+        "Decentralisation can shorten decisions and improve local responsiveness but risks inconsistent standards and duplicated resources.",
+        "Management by Objectives can align divisions, while ERP and clearer structures improve information; both fail if data or incentives are poor.",
+        "Demerger or concentration on core activities can reduce complexity, but may lose cross-selling, shared resources or bargaining strength."
+      ],
       "examples": []
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
+  "formulas": [
+    { "label": "Weighted location score", "expression": "Sum of (factor weight × site score)", "note": "Use weights totalling 1 or 100%, a common score scale and sensitivity analysis." },
+    { "label": "Average cost", "expression": "Total cost ÷ output", "note": "Economies and diseconomies concern average cost, not whether total cost rises." }
+  ],
+  "comparisonTable": {
+    "title": "Offshoring and reshoring decision",
+    "columns": ["Criterion", "Offshoring may be stronger when", "Reshoring may be stronger when"],
+    "rows": [
+      ["Cost", "Total landed cost remains much lower", "Automation, freight or tariffs remove the advantage"],
+      ["Demand", "The overseas market is large and stable", "Home demand needs short lead times and customisation"],
+      ["Control", "Processes are standard and easily monitored", "Quality, IP or coordination is strategically critical"],
+      ["Risk", "Supply routes and policy are dependable", "Disruption cost exceeds the operating saving"]
+    ]
+  },
+  "diagram": {
+    "title": "Location judgement",
+    "type": "flow",
+    "nodes": ["Define objectives and critical success factors", "Estimate whole-life costs and revenue", "Weight qualitative factors", "Test risk and sensitivity", "Compare relocation and staying", "Choose with review triggers"]
+  },
   "analysisChains": [
     {
-      "title": "Offshoring production",
-      "steps": [
-        "The firm moves activity to a lower-cost country",
-        "Labour or operating costs may fall",
-        "Unit cost and price competitiveness improve",
-        "Supply-chain, quality and reputation risks increase"
-      ],
-      "evaluation": "The decision depends on total landed cost, reliability, skills, exchange rates and the strategic value of keeping production close to customers."
+      "title": "Offshoring a labour-intensive process",
+      "steps": ["The process moves to a country with lower wages and suitable labour", "Direct labour cost per unit may fall", "The business can lower price or increase contribution", "Demand, profit or investment capacity may improve", "Longer lead times and weaker control can increase defects, inventory and disruption cost"],
+      "evaluation": "Use productivity-adjusted total landed cost and strategic risk. A wage saving is unconvincing if logistics, quality or reputation erases it."
+    },
+    {
+      "title": "Purchasing economy from expansion",
+      "steps": ["A larger operation places bigger recurring orders", "The supplier offers a lower price or delivery cost per input", "Variable cost per unit falls", "Average cost and contribution improve", "The firm can compete on price or finance growth"],
+      "evaluation": "The gain depends on bargaining power, usable demand and not buying excess inventory that ties up cash or becomes obsolete."
+    },
+    {
+      "title": "Communication diseconomy",
+      "steps": ["More sites and management layers lengthen communication", "Information is delayed or distorted", "Local decisions and coordination deteriorate", "Errors, idle time or customer failures increase", "Average cost rises despite other scale economies"],
+      "evaluation": "Decentralisation and integrated data may limit the problem, but only when authority, accountability and data quality are clear."
     }
   ],
   "examTips": [
-    "Location evaluation should weight the MOST important factors, not just list them.",
-    "Keep internal economies (firm growth) separate from external economies (industry/area growth).",
-    "Lowest wage cost does not necessarily mean lowest total operating cost."
+    "Weight location factors according to the operation; do not present a generic list or choose the lowest wage site automatically.",
+    "Separate offshoring from outsourcing and explain whether ownership or only geography changes.",
+    "Name each economy or diseconomy and show the mechanism that changes average cost.",
+    "Distinguish greater scale from higher capacity utilisation of existing resources.",
+    "Use a weighted score as evidence, then challenge its estimates and add qualitative risk before judging."
   ],
   "commonMistakes": [
-    "Treating outsourcing and offshoring as identical.",
-    "Ignoring quality/resilience when discussing offshoring.",
-    "Calling any rise in total cost a diseconomy—diseconomies concern average/unit cost.",
-    "Assuming all large firms gain unlimited economies."
+    "Treating the site with the lowest single cost as the optimal location.",
+    "Calling any outsourced activity offshoring or assuming an overseas owned factory is outsourced.",
+    "Stating that total cost rises as proof of diseconomies; the relevant measure is average cost.",
+    "Confusing external economies with benefits created by one firm's own expansion.",
+    "Assuming economies continue indefinitely without demand, utilisation or management constraints."
   ],
   "quickRecall": [
-    "offshore=move abroad",
-    "reshore=bring back",
-    "internal economies=firm growth",
-    "external economies=cluster/industry",
-    "diseconomies=complexity raises unit cost"
+    { "question": "Why is an optimal location usually a compromise?", "answer": "Sites combine conflicting cost, revenue and qualitative effects, and the most important factors depend on the operation and objective." },
+    { "question": "How is a weighted location score calculated?", "answer": "Multiply each common-scale site score by the factor's weight and add the products, then test sensitivity and qualitative risk." },
+    { "question": "What is the difference between offshoring and outsourcing?", "answer": "Offshoring changes country; outsourcing changes who performs the activity. Either can occur without the other." },
+    { "question": "Why might a business reshore?", "answer": "To improve speed, control, resilience or reputation when automation, freight, tariffs or disruption reduce the overseas cost advantage." },
+    { "question": "Give the mechanism for a technical economy of scale.", "answer": "A large indivisible machine is used at higher output, spreading its fixed cost and potentially increasing productivity, so average cost falls." },
+    { "question": "What causes an internal diseconomy of scale?", "answer": "The firm's own growth creates communication, coordination, bureaucracy or motivation problems that increase average cost." },
+    { "question": "What is an external diseconomy?", "answer": "Industry or regional growth raises costs such as wages, property or congestion for businesses in the area." }
   ],
-  "relatedTopics": [
-    "6.1",
-    "9.2",
-    "9.3"
-  ]
+  "relatedTopics": ["1.3", "4.3", "6.1", "7.1", "9.3", "10.3"]
 }

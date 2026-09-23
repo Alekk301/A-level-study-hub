@@ -133,6 +133,7 @@ function assertExamReady(note) {
 const unitOne = ["1.1", "1.2", "1.3", "1.4", "1.5", "6.1", "6.2"];
 const unitTwo = ["2.1", "2.2", "2.3", "7.1", "7.2", "7.3", "7.4"];
 const unitThree = ["3.1", "3.2", "3.3", "8.1", "8.2"];
+const unitFour = ["4.1", "4.2", "4.3", "9.1", "9.2", "9.3"];
 const baseMarketingSyllabusPoints = {
   "3.1": [
     "Explain the role of marketing and the relationship between marketing and corporate objectives.",
@@ -171,6 +172,53 @@ const baseMarketingSyllabusPoints = {
     "Analyse the changing role of IT and AI in marketing.",
     "Analyse international marketing, market selection and entry strategies.",
     "Evaluate pan-global standardisation versus local adaptation.",
+  ],
+};
+
+const baseOperationsSyllabusPoints = {
+  "4.1": [
+    "Explain the transformation process and the responsibilities of operations management.",
+    "Calculate and interpret labour productivity.",
+    "Distinguish efficiency and effectiveness.",
+    "Compare labour-intensive and capital-intensive operations.",
+    "Compare job, batch, flow and mass-customisation production.",
+    "Analyse technology, flexibility and the relationship between operations and other business functions.",
+  ],
+  "4.2": [
+    "Distinguish raw materials, work in progress and finished-goods inventory.",
+    "Analyse the benefits and costs of holding inventory.",
+    "Interpret inventory-control charts, including maximum level, reorder level, buffer inventory and lead time.",
+    "Explain the purpose of reorder quantity and the effects of changing demand or lead time.",
+    "Analyse just-in-time inventory management and the conditions required for it to work.",
+  ],
+  "4.3": [
+    "Calculate and interpret capacity utilisation.",
+    "Analyse the benefits and risks of high, full and low capacity utilisation.",
+    "Explain causes of excess capacity and capacity shortages.",
+    "Assess short- and long-term responses to capacity problems.",
+    "Analyse outsourcing and business-process outsourcing.",
+  ],
+  "9.1": [
+    "Analyse factors determining location and relocation at local, national and international levels.",
+    "Explain reasons for and impacts of offshoring and reshoring.",
+    "Analyse how globalisation changes location choices.",
+    "Explain factors affecting business scale.",
+    "Explain internal/external economies of scale and diseconomies of scale and their effect on unit costs.",
+  ],
+  "9.2": [
+    "Explain why quality matters and how customer expectations define appropriate quality.",
+    "Analyse quality-control methods.",
+    "Analyse quality-assurance methods.",
+    "Analyse Total Quality Management.",
+    "Explain the purpose, process and limitations of benchmarking.",
+  ],
+  "9.3": [
+    "Analyse how HR, marketing and finance resources constrain operations decisions.",
+    "Analyse IT and AI in operations and process innovation.",
+    "Explain flexibility in volume, delivery time and specification.",
+    "Explain ERP and its effect on efficiency.",
+    "Analyse lean production: Kaizen, quality circles, simultaneous engineering, cell production, JIT and waste management.",
+    "Construct/interpret CPA networks, critical paths, minimum duration, total/free float and evaluate CPA.",
   ],
 };
 
@@ -248,6 +296,76 @@ test("Unit 3 exam focus is topic-specific and respects AS/A Level boundaries", a
   for (const term of ["IT", "AI", "international", "entry", "pan-global", "adaptation"])
     assert.match(strategyTasks, new RegExp(term, "i"), `8.2 exam task coverage: ${term}`);
 });
+
+test("Business Unit 4 notes are exam ready", async () => {
+  for (const id of unitFour) assertExamReady(await readNote(id));
+});
+
+test("Unit 4 teaches the complete Operations syllabus through decisions and trade-offs", async () => {
+  const coverage = {
+    "4.1": ["transformation process", "sustainability", "labour intensive", "capital intensive", "job production", "batch production", "flow production", "mass customisation"],
+    "4.2": ["supply chain management", "JIC", "JIT", "buffer inventory", "re-order level", "lead time", "resilience"],
+    "4.3": ["capacity utilisation", "average fixed cost", "excess capacity", "capacity shortage", "business-process outsourcing", "core activit"],
+    "9.1": ["weighted", "qualitative", "offshoring", "reshoring", "globalisation", "purchasing economies", "external economies", "external diseconomies"],
+    "9.2": ["quality control", "quality assurance", "TQM", "benchmarking", "prevention cost", "appraisal cost", "internal failure", "external failure"],
+    "9.3": ["CAD", "CAM", "AI", "ERP", "Kaizen", "quality circles", "simultaneous engineering", "cell production", "dummy activity", "total float", "free float"],
+  };
+  for (const [id, terms] of Object.entries(coverage)) {
+    const note = await readNote(id);
+    const teaching = JSON.stringify(note.sections);
+    for (const term of terms) assert.match(teaching, new RegExp(term, "i"), `${id}: teaching ${term}`);
+    assert.ok(note.sections.some(({ examples }) => examples.length > 0), `${id}: applied or worked example`);
+  }
+});
+
+test("Operations calculations show complete workings and business interpretation", async () => {
+  const capacity = JSON.stringify((await readNote("4.3")).sections.find(({ id }) => id === "01-calculating-and-interpreting-capacity-utilisation"));
+  assert.match(capacity, /18[ ,]?000\s*\/\s*24[ ,]?000\s*(?:×|x)\s*100\s*=\s*75%/i);
+  assert.match(capacity, /24[ ,]?000\s*-\s*18[ ,]?000\s*=\s*6[ ,]?000/i);
+  assert.match(capacity, /720[ ,]?000\s*\/\s*18[ ,]?000\s*=\s*\$?40[\s\S]{0,250}720[ ,]?000\s*\/\s*24[ ,]?000\s*=\s*\$?30/i);
+  assert.match(capacity, /not automatically better|does not automatically/i);
+
+  const cpa = JSON.stringify((await readNote("9.3")).sections.find(({ id }) => id === "06-critical-path-analysis"));
+  assert.match(cpa, /A-C-E\s*=\s*3\s*\+\s*5\s*\+\s*3\s*=\s*11/i);
+  assert.match(cpa, /B-D-E\s*=\s*4\s*\+\s*2\s*\+\s*3\s*=\s*9/i);
+  assert.match(cpa, /critical path[^.]{0,100}A-C-E[^.]{0,100}11/i);
+  assert.match(cpa, /B[^.]{0,100}total float[^.]{0,100}2/i);
+  assert.match(cpa, /D[^.]{0,100}free float[^.]{0,100}2/i);
+  assert.match(cpa, /delay[^.]{0,150}project completion|project completion[^.]{0,150}delay/i);
+});
+
+test("Unit 4 comparison tables use the note renderer schema", async () => {
+  for (const id of unitFour) {
+    const { comparisonTable } = await readNote(id);
+    if (!comparisonTable) continue;
+    assert.ok(comparisonTable.title, `${id}: comparison table title`);
+    assert.ok(Array.isArray(comparisonTable.columns), `${id}: comparison table columns`);
+    assert.ok(Array.isArray(comparisonTable.rows), `${id}: comparison table rows`);
+    assert.ok(comparisonTable.rows.every((row) => row.length === comparisonTable.columns.length), `${id}: rectangular comparison table`);
+  }
+});
+
+test("Unit 4 exam focus is topic-specific and respects AS/A Level boundaries", async () => {
+  const { businessExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/business.ts");
+  for (const id of unitFour) {
+    const focus = businessExamFocus[id];
+    assert.ok(focus?.evidence, `${id}: evidence summary`);
+    if (id.startsWith("4.")) assert.equal(focus.component, "AS Level Papers 1 and 2");
+    assert.ok(focus.tasks.length >= 2, `${id}: practice tasks`);
+    for (const task of focus.tasks) {
+      assert.ok(task.markPoints.length >= 4, `${id}: developed mark points`);
+      assert.ok(task.examinerTrap, `${id}: examiner trap`);
+    }
+  }
+  const asTasks = ["4.1", "4.2", "4.3"].flatMap((id) => businessExamFocus[id].tasks).map(JSON.stringify).join(" ");
+  assert.doesNotMatch(asTasks, /benchmarking|TQM|critical path|\bCPA\b|\bERP\b|offshoring|reshoring/i);
+  assert.match(JSON.stringify(businessExamFocus["9.1"].tasks), /weighted[\s\S]*(?:offshoring|reshoring)/i);
+  assert.match(JSON.stringify(businessExamFocus["9.2"].tasks), /prevention[\s\S]*appraisal[\s\S]*(?:failure|benchmarking)/i);
+  const strategyTasks = JSON.stringify(businessExamFocus["9.3"].tasks);
+  for (const term of ["ERP", "lean", "critical path", "total float", "free float"])
+    assert.match(strategyTasks, new RegExp(term, "i"), `9.3 exam task coverage: ${term}`);
+});
+
 test("Business Unit 2 notes are exam ready", async () => {
   for (const id of unitTwo) assertExamReady(await readNote(id));
 });
@@ -319,9 +437,9 @@ test("Business Unit 1 notes are exam ready", async () => {
 });
 
 test("existing syllabus checklist indexes remain stable", async () => {
-  for (const id of [...unitOne, ...unitTwo, ...unitThree]) {
+  for (const id of [...unitOne, ...unitTwo, ...unitThree, ...unitFour]) {
     const note = await readNote(id);
-    const original = baseSyllabusPoints[id] ?? baseMarketingSyllabusPoints[id];
+    const original = baseSyllabusPoints[id] ?? baseMarketingSyllabusPoints[id] ?? baseOperationsSyllabusPoints[id];
     assert.deepEqual(note.syllabusPoints.slice(0, original.length), original, `${id}: original checklist indexes`);
   }
 });

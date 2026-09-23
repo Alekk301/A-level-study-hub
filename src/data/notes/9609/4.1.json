@@ -6,7 +6,7 @@
   "unitTitle": "AS Level",
   "title": "The nature of operations",
   "contentDepth": "full",
-  "overview": "Operations transforms inputs into goods and services that customers value. Exam answers should connect method, technology, labour and productivity decisions to capacity, unit cost, quality, flexibility and the ability to meet demand.",
+  "overview": "Operations transforms inputs into goods and services that customers value. Exam answers should connect method, technology, labour, productivity and sustainability decisions to capacity, unit cost, quality, flexibility and the ability to meet demand now and in the future.",
   "syllabusPoints": [
     "Explain the transformation process and the responsibilities of operations management.",
     "Calculate and interpret labour productivity.",
@@ -63,6 +63,10 @@
     {
       "term": "Intellectual capital",
       "definition": "Useful organisational knowledge embodied in employees, systems, data, processes and relationships."
+    },
+    {
+      "term": "Sustainable operations",
+      "definition": "Production that meets present requirements while protecting the resources and environmental systems needed for future production."
     }
   ],
   "sections": [
@@ -113,8 +117,28 @@
       "examples": []
     },
     {
+      "id": "04-sustainable-operations",
+      "title": "Sustainable operations and long-run effectiveness",
+      "content": [
+        "Sustainable operations reduce energy, emissions, non-renewable inputs, packaging, waste and pollution while maintaining the business's ability to produce in future. Methods include energy-efficient equipment, renewable power, reusable or recyclable design, responsible sourcing, water recovery, waste prevention and reverse logistics. Sustainability is not merely a promotional claim: lower material and energy use can reduce unit cost, while verified performance may protect licences, supply and reputation."
+      ],
+      "bullets": [
+        "Benefits can include lower resource cost, less exposure to future carbon or waste regulation, stronger reputation, access to ethical customers and more resilient supply.",
+        "Limitations include investment cost, training, disruption, uncertain payback and the risk that a cheaper-looking alternative shifts environmental harm elsewhere in the supply chain.",
+        "Judge the measure using its whole-life impact and the operation's main footprint. Replacing packaging matters little if the largest impact is energy-intensive production or transport."
+      ],
+      "examples": [
+        {
+          "id": "4.1-4-1",
+          "kind": "case",
+          "label": "Applied decision",
+          "content": "A food processor invests in heat-recovery equipment. Energy use and emissions per unit fall, reducing variable cost and supporting retailer sustainability requirements. The decision is strongest when expected savings over the equipment's life exceed finance, installation and maintenance costs."
+        }
+      ]
+    },
+    {
       "id": "04-labour-intensive-and-capital-intensive-operations",
-      "title": "Labour-intensive and capital-intensive operations",
+      "title": "Labour intensive and capital intensive operations",
       "content": [
         "Labour-intensive operations suit customisation, personal service, variable demand and settings where labour is available and equipment is costly. Capital-intensive operations suit large, stable volumes and standardisation, providing speed and consistency but requiring high investment and utilisation."
       ],
@@ -277,13 +301,24 @@
         "Competitiveness may improve"
       ],
       "evaluation": "Training only addresses a skill constraint; weak machinery, layout, supply or motivation may remain the true bottleneck."
+    },
+    {
+      "title": "Reducing material and energy waste",
+      "steps": [
+        "The process is redesigned to use fewer inputs per good unit",
+        "Waste-disposal, energy and material costs per unit fall",
+        "The business can improve margin or compete on price",
+        "Lower environmental impact may strengthen retailer and customer acceptance"
+      ],
+      "evaluation": "The net benefit depends on the investment, the reliability of claimed savings, input prices and whether customers or regulators reward the improvement."
     }
   ],
   "examTips": [
     "Calculate productivity before judging it; higher output alone may simply reflect more inputs.",
     "Separate efficiency from effectiveness and include quality in any productivity conclusion.",
     "Production-method recommendations need both volume and variety evidence.",
-    "For technology, balance ongoing savings and quality benefits against fixed cost, risk and demand uncertainty."
+    "For technology, balance ongoing savings and quality benefits against fixed cost, risk and demand uncertainty.",
+    "For sustainability, trace a specific operational change to resource use, cost, future capability and stakeholder response rather than making a vague reputation claim."
   ],
   "commonMistakes": [
     "Calling finance only a capital input while ignoring machinery, buildings and equipment.",
@@ -315,6 +350,10 @@
     {
       "question": "What allows mass customisation?",
       "answer": "Flexible technology, modular/standard components, accurate customer information and coordinated processes."
+    },
+    {
+      "question": "Why can a sustainability measure improve both efficiency and effectiveness?",
+      "answer": "It may reduce resource waste and unit cost while meeting customers' or regulators' environmental expectations, although the investment and whole-life impact must be assessed."
     }
   ],
   "relatedTopics": [

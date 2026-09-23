@@ -68,7 +68,7 @@
           "id": "4.3-1-1",
           "kind": "worked",
           "label": "Capacity calculation",
-          "content": "A plant capable of 24,000 units per month produces 18,000. Capacity utilisation = 18,000 ÷ 24,000 × 100 = 75%, leaving 6,000 units (25%) unused."
+          "content": "A plant can sustain 24,000 units per month, produces 18,000 and has monthly fixed costs of $720,000. Capacity utilisation = 18,000 / 24,000 × 100 = 75%. Spare capacity = 24,000 - 18,000 = 6,000 units. At actual output, average fixed cost = $720,000 / 18,000 = $40 per unit; at full capacity it would be $720,000 / 24,000 = $30 per unit. The $10 difference explains the cost pressure, but 100% is not automatically better: maintenance, rush orders and quality need spare time, and additional output only helps if it can be sold profitably."
         }
       ]
     },
@@ -114,7 +114,7 @@
       "id": "05-why-outsource",
       "title": "Why outsource",
       "content": [
-        "Outsourcing may give rapid flexible capacity, specialist expertise, lower cost and access to technology while management focuses on core activities. It converts some fixed cost into variable contractual cost and can avoid risky investment for temporary demand."
+        "Business-process outsourcing transfers an activity or process to an external provider. It may give rapid flexible capacity, specialist expertise, lower cost and access to technology while management focuses on core activities. It converts some fixed cost into variable contractual cost and can avoid risky investment for temporary demand."
       ],
       "bullets": [
         "Examples include overflow production, delivery, payroll, IT support, call centres and specialist design.",

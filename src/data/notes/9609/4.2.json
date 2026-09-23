@@ -54,6 +54,14 @@
     {
       "term": "Stockout",
       "definition": "A shortage in which the business cannot meet production or customer demand from available inventory."
+    },
+    {
+      "term": "Just in case",
+      "definition": "An inventory approach that holds buffer stock to protect production and sales against uncertainty."
+    },
+    {
+      "term": "Supply chain management",
+      "definition": "Coordinating suppliers, purchasing, production, information and distribution so inputs and outputs arrive in the required quantity, quality and time."
     }
   ],
   "sections": [
@@ -86,7 +94,7 @@
       "id": "03-reading-an-inventory-control-chart",
       "title": "Reading an inventory-control chart",
       "content": [
-        "Inventory falls as materials are used or products sold. At the reorder level a new order is placed. During lead time, inventory continues falling toward buffer stock. When the reorder quantity arrives, the vertical rise takes inventory toward its maximum level."
+        "Inventory falls as materials are used or products sold. At the re-order level a new order is placed. During lead time, inventory continues falling toward buffer stock. When the reorder quantity arrives, the vertical rise takes inventory toward its maximum level."
       ],
       "bullets": [
         "Reorder level must cover expected usage during lead time plus an allowance for uncertainty.",
@@ -119,12 +127,13 @@
       "id": "05-just-in-time-inventory-management",
       "title": "Just-in-time inventory management",
       "content": [
-        "JIT seeks continuous flow with raw materials arriving only when needed, little work in progress and finished goods moving quickly to customers. It reduces working capital, storage, waste and hidden defects and frees space, but makes interruption immediately visible and potentially severe."
+        "JIT seeks continuous flow with raw materials arriving only when needed, little work in progress and finished goods moving quickly to customers. It contrasts with just-in-case (JIC), which deliberately holds buffer inventory against delay or a demand surge. JIT reduces working capital, storage, waste and hidden defects and frees space, but makes interruption immediately visible and potentially severe."
       ],
       "bullets": [
         "Requirements: reliable nearby suppliers and transport, consistent quality, accurate demand information, disciplined scheduling, flexible multi-skilled employees and dependable equipment/IT.",
         "Frequent small deliveries may increase transport cost and environmental impact.",
-        "A supplier failure, traffic disruption or sudden demand spike can stop production and damage customer trust."
+        "A supplier failure, traffic disruption or sudden demand spike can stop production and damage customer trust.",
+        "Resilience may require a selective hybrid: JIT for predictable low-risk inputs but buffer inventory, dual suppliers or contingency transport for components whose absence would halt the entire process."
       ],
       "examples": []
     },
@@ -132,7 +141,7 @@
       "id": "06-improving-inventory-performance",
       "title": "Improving inventory performance",
       "content": [
-        "Use accurate forecasts, point-of-sale data, inventory records, barcode/RFID systems, supplier performance measures, ABC prioritisation, quality at source and regular review of slow-moving lines. Work with suppliers on shared forecasts and delivery reliability rather than simply transferring risk."
+        "Supply chain management coordinates suppliers, purchasing, transport, inventory and information from inputs to the final customer. Use accurate forecasts, point-of-sale data, inventory records, barcode/RFID systems, supplier performance measures, ABC prioritisation, quality at source and regular review of slow-moving lines. Work with suppliers on shared forecasts and delivery reliability rather than simply transferring risk."
       ],
       "bullets": [
         "Reduce buffer inventory only after lead-time variability and defect rates have fallen.",

@@ -6,7 +6,7 @@
   "unitTitle": "A Level",
   "title": "Quality management",
   "contentDepth": "full",
-  "overview": "Quality management aims to deliver outputs fit for purpose and consistent with customer expectations. You must distinguish quality control, quality assurance and Total Quality Management and explain how benchmarking can identify performance gaps and support improvement.",
+  "overview": "Quality means reliably meeting the expectations of the target customer and being fit for purpose, not automatically using the most expensive materials. Quality management moves from detecting defects to preventing their causes and building responsibility across processes, suppliers and employees.",
   "syllabusPoints": [
     "Explain why quality matters and how customer expectations define appropriate quality.",
     "Analyse quality-control methods.",
@@ -15,143 +15,190 @@
     "Explain the purpose, process and limitations of benchmarking."
   ],
   "definitions": [
-    {
-      "term": "Quality control",
-      "definition": "Inspection/testing of output to identify defects, often after or at stages of production."
-    },
-    {
-      "term": "Quality assurance",
-      "definition": "Systems and procedures designed to prevent defects by building quality into processes."
-    },
-    {
-      "term": "TQM",
-      "definition": "A whole-organisation culture of continuous quality improvement where everyone is responsible for quality."
-    },
-    {
-      "term": "Benchmarking",
-      "definition": "Comparing performance/processes with a strong external or internal reference to identify improvement gaps."
-    },
-    {
-      "term": "Continuous improvement",
-      "definition": "Ongoing repeated efforts to improve process, quality, cost or customer value."
-    }
+    { "term": "Quality", "definition": "The extent to which a good or service is fit for purpose and consistently meets target-customer expectations." },
+    { "term": "Quality standard", "definition": "A measurable requirement for an input, process, output or service outcome." },
+    { "term": "Quality control", "definition": "Inspecting or testing output, samples or process results to identify departures from a standard." },
+    { "term": "Quality assurance", "definition": "A planned system of standards, procedures and checks across the process intended to prevent defects." },
+    { "term": "Total Quality Management", "definition": "An organisation-wide culture in which everyone is responsible for meeting internal and external customer requirements and improving continuously." },
+    { "term": "Internal customer", "definition": "A person or process inside the business that receives another employee's or department's output." },
+    { "term": "Zero defects", "definition": "The prevention goal of doing work correctly first time rather than accepting a normal level of failure." },
+    { "term": "Benchmarking", "definition": "Comparing selected processes or performance with a strong internal or external reference to identify and close a performance gap." },
+    { "term": "Cost of quality", "definition": "The total of prevention, appraisal, internal-failure and external-failure costs associated with achieving or failing to achieve quality." },
+    { "term": "Continuous improvement", "definition": "Repeated small or systematic changes intended to improve quality, cost, speed or customer value over time." }
   ],
   "sections": [
     {
       "id": "01-why-quality-matters",
-      "title": "Why quality matters",
+      "title": "Quality is relative to customer expectations",
       "content": [
-        "Consistent quality can reduce returns/rework, strengthen reputation, support repeat purchase and premium positioning, and reduce waste. But 'maximum specification' is not always optimal if customers will not pay for it; quality is about meeting target expectations reliably."
+        "A low-priced product can be good quality if it performs reliably for the use promised; a luxury product can be poor quality if finish or service falls below its premium promise. Businesses establish standards through market research, complaints, returns, reviews, warranty data, service times, regulation and technical risk. Quality must cover services as well as manufacturing."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Operations measures may include defect rate, right-first-time rate, delivery reliability, waiting time, accuracy, returns, complaints and repeat purchase.",
+        "Good quality can reduce scrap, rework, refunds and warranty claims while supporting reputation, loyalty, premium pricing and longer relationships.",
+        "Over-engineering wastes resources if extra specification is not valued; under-specification creates failure cost and weakens the brand."
+      ],
+      "examples": [
+        { "id": "9.2-1-1", "kind": "case", "label": "Service standard", "content": "A budget hotel might define quality as a clean room, accurate booking and prompt problem resolution rather than luxury furnishings. Measuring only décor would miss the expectations that determine repeat bookings." }
+      ]
     },
     {
       "id": "02-quality-control",
-      "title": "Quality control",
+      "title": "Quality control: detect, contain and learn",
       "content": [
-        "Inspection detects defects before they reach customers and provides measurable standards. It can be expensive and often finds errors after resources have already been wasted; responsibility may become concentrated in inspectors rather than the workforce."
+        "Quality control compares outputs or process readings with standards. It can inspect every high-risk item, sample a large batch, use statistical control charts or test service calls. Detected output is accepted, reworked, downgraded or rejected; the result should also trigger investigation of the process that caused the problem."
       ],
-      "bullets": [],
+      "bullets": [
+        "Benefits: objective evidence, removal of defective output before delivery, regulatory assurance and useful data about where failures occur.",
+        "Limitations: inspection is an appraisal cost, destructive tests require samples, sampling misses some defects and detection after production means resources may already be wasted.",
+        "A separate inspection culture may reduce production workers' ownership of quality. Control is strongest when findings correct root causes rather than simply reject output."
+      ],
       "examples": []
     },
     {
       "id": "03-quality-assurance",
-      "title": "Quality assurance",
+      "title": "Quality assurance: prevent failure through the process",
       "content": [
-        "Standards, procedures, training and process checks aim to prevent errors at source. It can improve consistency and reduce rework but requires design, documentation, staff commitment and supplier consistency."
+        "Quality assurance builds standards into design, supplier approval, input checks, work instructions, employee training, process records, self-checking, delivery and after-sales service. Traceability lets managers locate where a deviation began. Certification such as ISO 9001 can provide external confidence in the management system, but does not promise every output is defect-free."
       ],
-      "bullets": [],
+      "bullets": [
+        "Benefits: problems are found earlier, rework and final inspection may fall, employees gain responsibility and consistent records support improvement and business-customer trust.",
+        "Limitations: documentation, audit, training and certification cost time and money; rigid procedures can slow response or be followed mechanically without improving the customer outcome.",
+        "Supplier quality is part of assurance. A perfect final process cannot recover time if a critical component arrives late or outside specification."
+      ],
       "examples": []
     },
     {
       "id": "04-total-quality-management",
-      "title": "Total Quality Management",
+      "title": "Total Quality Management: culture and quality chains",
       "content": [
-        "TQM makes quality everyone's responsibility and emphasises customer focus, prevention and continuous improvement. Potential gains include lower defect cost and stronger culture; barriers include training/time cost, employee resistance and difficulty maintaining commitment."
+        "TQM treats every employee as both supplier and internal customer. Each stage passes work that should meet the next stage's requirements, while the whole organisation focuses on the external customer. It combines prevention, right-first-time, continuous improvement, employee involvement, reliable suppliers and evidence-based process control."
       ],
-      "bullets": [],
+      "bullets": [
+        "Possible gains: defects and delay fall, employees solve problems near their source, motivation can rise through responsibility and customer trust improves over time.",
+        "Conditions: visible senior commitment, training, participation, authority to act, suitable measures, supplier involvement, cross-functional coordination and rewards consistent with quality.",
+        "Risks: culture change is slow, meetings and training reduce short-run output, authoritarian management blocks empowerment and a slogan without changed systems creates cynicism.",
+        "TQM does not eliminate all inspection in safety-critical work; prevention and control can be complementary."
+      ],
       "examples": []
     },
     {
-      "id": "05-benchmarking-process",
-      "title": "Benchmarking process",
+      "id": "05-cost-of-quality",
+      "title": "Cost of quality: spend before failure or pay after it",
       "content": [
-        "Identify what to improve, select a comparator/best practice, measure gaps, understand the reasons, adapt practices, implement and review. It can provide external targets but data may be unavailable and blindly copying another firm can fail because objectives/resources differ."
+        "The cost-of-quality model helps compare the cost of conformance with the cost of non-conformance. Prevention cost includes design review, supplier development, training and process improvement. Appraisal cost includes inspection, testing and audits. Internal failure cost occurs before delivery through scrap, rework, downtime and retesting. External failure cost occurs after delivery through returns, warranty, compensation, recalls, lost contracts and reputation damage."
       ],
-      "bullets": [],
+      "bullets": [
+        "Worked audit: a manufacturer spends $20,000 on prevention and $8,000 on appraisal, incurs $12,000 of internal failure and estimates $35,000 of external failure. Total cost of quality = $20,000 + $8,000 + $12,000 + $35,000 = $75,000.",
+        "An extra $10,000 prevention programme is worthwhile only if the expected fall in failure and appraisal cost, plus retained contribution and reputation value, exceeds $10,000 over the relevant period.",
+        "External failure is often understated because future lost demand and retailer trust are difficult to measure. Do not assume the cheapest visible programme is the lowest total cost."
+      ],
+      "examples": [
+        { "id": "9.2-5-1", "kind": "worked", "label": "Decision use", "content": "If training and supplier redesign cost $10,000 and are expected to cut internal failure by $4,000 and external failure by $15,000, the measured net saving is $9,000 before considering sales retained. Management should still test whether those estimates and causal links are credible." }
+      ]
+    },
+    {
+      "id": "05-benchmarking-process",
+      "title": "Benchmarking: compare, adapt, re-measure",
+      "content": [
+        "Benchmarking is a continuous improvement process rather than copying a competitor. Identify what customers and objectives make important; define comparable indicators; measure current performance; select a credible internal, industry or cross-industry reference; diagnose the causes of the gap; adapt a practice; set responsibility and time; then re-measure."
+      ],
+      "bullets": [
+        "Benefits: creates an external reality check, directs effort to a measurable gap, transfers proven ideas and can motivate teams with a clear target.",
+        "Limitations: data may be unavailable, differently defined or outdated; the comparator's resources and strategy may not fit; copying can suppress innovation; analysis and implementation cost may exceed the gain.",
+        "A benchmark is evidence, not an objective by itself. Faster call handling is harmful if it raises repeat calls or reduces resolution quality."
+      ],
       "examples": []
     },
     {
       "id": "06-quality-and-finance-strategy",
-      "title": "Quality and finance/strategy",
+      "title": "Connect quality operations to finance and strategy",
       "content": [
-        "Quality investment can raise short-run costs but reduce warranty, scrap and complaint costs and improve demand/reputation. The judgement depends on defect cost, customer expectations, competitive position and required investment."
+        "Quality improvement changes cost and revenue. Prevention and appraisal require spending now, while fewer internal failures reduce scrap and rework and fewer external failures reduce returns, warranties, lost contracts and reputational damage. Reliable output may support repeat demand or a premium position. The relevant measure is the net effect, not the defect rate alone.",
+        "A quality system should fit product risk and competitive objectives. A safety-critical producer may justify extensive assurance and traceability even when appraisal cost rises; a low-risk commodity producer may emphasise sampling and process control. Finance must allow for training, audit, equipment and transition while operations tests whether cost per good unit and customer outcomes improve."
       ],
-      "bullets": [],
+      "bullets": [
+        "Compare investment with avoided failure cost over an appropriate period.",
+        "Separate higher specification from conformance to the promised specification.",
+        "Include the opportunity cost of disruption and management time during change."
+      ],
+      "examples": [
+        { "id": "06-example-2", "kind": "application", "label": "Strategic link", "content": "If a component supplier wins contracts mainly through dependability, process assurance and traceability may protect revenue as well as reduce rework. The investment is weaker when defects are rare, buyers choose only on price and the audit adds cost without improving outcomes." }
+      ]
+    },
+    {
+      "id": "07-choosing-a-quality-system",
+      "title": "Choosing and integrating quality approaches",
+      "content": [
+        "Use the failure risk, process type, customer promise, regulation, current culture, workforce skill, supplier dependence, defect data and finance. High-risk products may need prevention, traceability and final testing. A personalised service needs behaviour standards, feedback and recovery as well as process records."
+      ],
+      "bullets": [
+        "Quality control is useful for detecting measurable deviations; assurance is stronger for repeatable prevention; TQM integrates behaviour and continuous improvement; benchmarking identifies an external performance gap.",
+        "The methods are not mutually exclusive. A business can assure supplier and process quality, inspect safety-critical output, involve employees through TQM and benchmark delivery reliability.",
+        "Recommend the sequence as well as the method: contain current failures first, remove causes next, then embed and continuously improve the system."
+      ],
       "examples": []
     }
   ],
-  "formulas": [],
+  "formulas": [
+    { "label": "Total cost of quality", "expression": "Prevention cost + appraisal cost + internal-failure cost + external-failure cost", "note": "Include estimated future customer and reputation effects when the case provides a credible basis." },
+    { "label": "Defect rate", "expression": "Defective units ÷ total units checked × 100", "note": "Compare like-for-like products and consistent inspection rules." }
+  ],
   "comparisonTable": {
     "title": "Quality approaches",
-    "columns": [
-      "Approach",
-      "Where quality is checked",
-      "Core idea"
-    ],
+    "columns": ["Approach", "Primary emphasis", "Main value", "Main limitation"],
     "rows": [
-      [
-        "Quality control",
-        "At or after production",
-        "Inspect and reject defects"
-      ],
-      [
-        "Quality assurance",
-        "Throughout the process",
-        "Prevent defects through systems"
-      ],
-      [
-        "TQM",
-        "Across the whole organisation",
-        "Continuous improvement by everyone"
-      ]
+      ["Quality control", "Detect deviations", "Stops some faulty output reaching customers", "May find failure after cost is incurred"],
+      ["Quality assurance", "Prevent through systems", "Builds standards and traceability into stages", "Can become costly bureaucracy"],
+      ["TQM", "Everyone and continuous improvement", "Changes culture and removes causes across the organisation", "Requires long-term commitment and empowerment"],
+      ["Benchmarking", "Learn from a performance gap", "Provides an external or internal reference", "Data or practices may not be comparable"]
     ]
   },
-  "diagram": null,
+  "diagram": {
+    "title": "Quality improvement loop",
+    "type": "flow",
+    "nodes": ["Define customer requirement", "Set measurable standard", "Prevent and perform", "Measure output and process", "Find root cause", "Improve and re-standardise"]
+  },
   "analysisChains": [
     {
-      "title": "Total Quality Management",
-      "steps": [
-        "Every employee takes responsibility for quality",
-        "Defects are prevented earlier",
-        "Waste, rework and complaints may fall",
-        "Reputation and repeat purchasing may improve"
-      ],
-      "evaluation": "TQM needs long-term cultural commitment; training costs and employee resistance can outweigh gains if implementation is superficial."
+      "title": "Prevention investment",
+      "steps": ["Employees and suppliers are trained against clear standards", "Variation and mistakes are prevented earlier", "Scrap, rework, returns and delay fall", "Unit cost and delivery reliability improve", "Repeat demand and contribution may rise"],
+      "evaluation": "The programme adds cost and works only if the diagnosed cause is skill or process design rather than an unrelated product or demand problem."
+    },
+    {
+      "title": "TQM and employee responsibility",
+      "steps": ["Teams become responsible for the quality passed to internal customers", "Problems are identified and corrected near their source", "Right-first-time output rises and waste falls", "Customers receive more consistent value", "Reputation and profit may improve"],
+      "evaluation": "Empowerment, time, data and leadership must be real. Targets or pay systems that reward speed alone can undermine quality behaviour."
+    },
+    {
+      "title": "Benchmarking delivery reliability",
+      "steps": ["The business compares on-time delivery using a common definition", "A gap reveals a process weakness", "Scheduling or supplier practice is adapted", "Late orders and compensation fall", "Customer retention may improve"],
+      "evaluation": "Correlation with the benchmark is not proof of causation; the adapted practice must fit the business and be re-measured against total cost and customer outcomes."
     }
   ],
   "examTips": [
-    "Quality control = detection; quality assurance = prevention/process design.",
-    "TQM answers should include everyone + customer focus + continuous improvement.",
-    "Link quality to revenue/reputation AND cost/rework effects."
+    "Define quality using the target customer's expectations and fitness for purpose, not luxury or maximum specification.",
+    "Quality control detects; quality assurance prevents through a system. Show where responsibility sits and when the cost occurs.",
+    "For TQM, include everyone, internal customers, continuous improvement, right-first-time and the cultural conditions for implementation.",
+    "Use prevention, appraisal, internal failure and external failure to build a complete cost judgement.",
+    "Benchmarking answers must explain adaptation and re-measurement, not recommend copying the market leader."
   ],
   "commonMistakes": [
-    "Equating quality with luxury/highest specification.",
-    "Saying QA guarantees zero defects.",
-    "Treating benchmarking as copying without adaptation.",
-    "Ignoring implementation/training cost of TQM."
+    "Equating quality with the highest specification or price.",
+    "Claiming quality assurance or ISO certification guarantees zero defects.",
+    "Describing inspection as prevention without changing the process that causes defects.",
+    "Treating TQM as a technique confined to the production department.",
+    "Ignoring lost customers and reputation when calculating external-failure cost.",
+    "Treating a benchmark as automatically appropriate despite different markets, resources or definitions."
   ],
   "quickRecall": [
-    "QC detects",
-    "QA prevents",
-    "TQM=everyone+continuous improvement",
-    "benchmark=compare->gap->adapt",
-    "quality must fit customer expectations"
+    { "question": "What makes quality relative rather than absolute?", "answer": "The required standard depends on fitness for purpose and what the target customer reasonably expects at the promised price and use." },
+    { "question": "How does quality control differ from quality assurance?", "answer": "Control detects deviations through inspection or testing; assurance designs standards and checks through the process to prevent defects." },
+    { "question": "What are the four cost-of-quality categories?", "answer": "Prevention, appraisal, internal failure and external failure." },
+    { "question": "What is an internal customer in TQM?", "answer": "The employee or process that receives the output of an earlier employee or stage inside the business." },
+    { "question": "Why can final inspection be expensive even when it protects customers?", "answer": "Resources may already have been wasted, inspectors and tests cost money, and sampling can still miss defects." },
+    { "question": "What are the final two steps in useful benchmarking?", "answer": "Adapt and implement a suitable practice, then re-measure whether the gap and customer outcome improved." },
+    { "question": "Why might more prevention cost increase profit?", "answer": "If it reduces larger failure, rework, warranty and lost-customer costs by more than the additional prevention spend." }
   ],
-  "relatedTopics": [
-    "9.1",
-    "9.3",
-    "8.2"
-  ]
+  "relatedTopics": ["2.1", "2.2", "3.3", "4.1", "4.2", "7.4", "9.3"]
 }
