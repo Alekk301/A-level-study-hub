@@ -15,7 +15,8 @@
     "Compare mass and niche marketing.",
     "Analyse market segmentation in consumer and industrial markets.",
     "Compare consumer (B2C) and industrial (B2B) marketing and product classifications.",
-    "Explain the aims, benefits and costs of customer relationship marketing."
+    "Explain the aims, benefits and costs of customer relationship marketing.",
+    "Compare local, national and international markets and their marketing implications."
   ],
   "definitions": [
     {
@@ -110,11 +111,14 @@
       "id": "03-changing-markets-and-competition",
       "title": "Changing markets and competition",
       "content": [
-        "Customer needs shift with income, demographics, lifestyles, technology, fashion and social values. Globalisation, e-commerce and improved transport expose firms to more competitors and price comparison. Businesses respond through research, innovation, relationship marketing, lower cost, improved service and clearer differentiation."
+        "Customer needs shift with income, demographics, lifestyles, technology, fashion and social values. Globalisation, e-commerce and improved transport expose firms to more competitors and price comparison. Businesses respond through research, innovation, relationship marketing, lower cost, improved service and clearer differentiation.",
+        "A local market serves customers in a limited area, allowing close knowledge and short distribution but restricting reach. A national market reaches one country, increasing potential scale while requiring wider distribution, promotion and resources. An international market crosses national borders, offering larger or faster-growing demand but requiring research and possible adaptation for language, culture, income, law, currency and channels."
       ],
       "bullets": [
         "Reacting fastest is useful only if the response is accurate and affordable.",
-        "Existing customer data may miss new segments or reinforce past assumptions."
+        "Existing customer data may miss new segments or reinforce past assumptions.",
+        "Wider geographic reach can spread fixed marketing costs and diversify demand, but coordination, logistics, competition and financial exposure usually increase.",
+        "Choose market scope by accessible demand, resources, operational capacity and the cost of adaptation—not population size alone."
       ],
       "examples": []
     },

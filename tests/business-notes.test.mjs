@@ -152,7 +152,7 @@ const baseMarketingSyllabusPoints = {
   ],
   "3.3": [
     "Analyse product decisions including differentiation, branding, packaging, product portfolios and the product life cycle.",
-    "Compare pricing methods and calculate/interpret price elasticity of demand.",
+    "Compare pricing methods. A Level extension: calculate and interpret price elasticity of demand (PED); PED is not assessed in AS Marketing.",
     "Analyse promotional objectives, methods, media and budgets.",
     "Compare direct and intermediary channels of distribution.",
     "Explain customer relationship marketing, the 4Cs, e-commerce and digital promotion.",
@@ -183,7 +183,7 @@ test("Business Unit 3 notes are exam ready", async () => {
 
 test("Unit 3 teaches the complete Marketing syllabus through decisions and data", async () => {
   const coverage = {
-    "3.1": ["consumer market", "industrial market", "B2B", "B2C", "psychographic", "customer relationship marketing"],
+    "3.1": ["consumer market", "industrial market", "B2B", "B2C", "psychographic", "customer relationship marketing", "local market", "national market", "international market"],
     "3.2": ["sampling frame", "non-response", "reliability", "validity", "tables", "charts", "graphs"],
     "3.3": ["goods", "services", "tangible", "intangible", "dynamic pricing", "packaging", "branding", "physical distribution"],
     "8.1": ["promotional elasticity", "product development", "R&D", "four-period", "centred moving average", "qualitative forecasting"],
@@ -195,6 +195,9 @@ test("Unit 3 teaches the complete Marketing syllabus through decisions and data"
     for (const term of terms) assert.match(teaching, new RegExp(term, "i"), `${id}: teaching ${term}`);
     assert.ok(note.sections.some(({ examples }) => examples.length > 0), `${id}: applied or worked example`);
   }
+  const marketScope = JSON.stringify((await readNote("3.1")).sections.find(({ id }) => id === "03-changing-markets-and-competition"));
+  assert.match(marketScope, /local market[\s\S]*national market[\s\S]*international market/i);
+  assert.match(marketScope, /reach[\s\S]*(?:resources|capacity)[\s\S]*adaptation/i);
 });
 
 test("Marketing calculations and evidence are taught as methods, not labels", async () => {
@@ -203,9 +206,25 @@ test("Marketing calculations and evidence are taught as methods, not labels", as
   const analysis = await readNote("8.1");
   const movingAverage = JSON.stringify(analysis.sections.find(({ id }) => id === "05-four-period-centred-moving-averages"));
   assert.match(movingAverage, /four consecutive periods[\s\S]{0,500}adjacent four-period moving averages/i);
-  assert.match(movingAverage, /worked/i);
+  assert.match(movingAverage, /seasonal variation[\s\S]{0,500}actual[^.]{0,100}centred trend/i);
+  assert.match(movingAverage, /same (?:quarter|season)[\s\S]{0,500}(?:extrapolate|project)[\s\S]{0,500}(?:forecast|seasonal variation)/i);
+  assert.match(movingAverage, /worked[\s\S]{0,1000}forecast/i);
+  const elasticityTeaching = JSON.stringify(analysis.sections.find(({ id }) => id === "02-income-and-promotional-elasticity"));
+  assert.match(elasticityTeaching, /0\s*<\s*YED\s*<\s*1[\s\S]{0,200}(?:necessity|income inelastic)/i);
+  assert.match(elasticityTeaching, /promotional elasticity[\s\S]{0,500}(?:between 0 and 1|0\s*<)[\s\S]{0,300}negative/i);
   for (const elasticity of ["price", "income", "promotional"])
     assert.match(JSON.stringify(analysis.sections), new RegExp(`${elasticity}[\\s\\S]{0,500}(?:%|percentage).*(?:interpret|elastic|normal|inferior|response)`, "i"));
+});
+
+test("AS Marketing labels PED as an A Level bridge without moving the compatibility slot", async () => {
+  const mix = await readNote("3.3");
+  assert.match(mix.syllabusPoints[1], /A Level extension[\s\S]*not assessed in AS/i);
+  const ped = mix.sections.find(({ id }) => id === "04-price-elasticity-of-demand");
+  assert.match(ped.title, /A Level extension/i);
+  assert.match(JSON.stringify(ped), /not assessed in AS/i);
+  assert.ok(mix.examTips.some((tip) => /A Level extension[\s\S]*PED/i.test(tip)));
+  assert.ok(mix.quickRecall.some(({ question, answer }) => /A Level extension/i.test(question) && /not assessed in AS/i.test(answer)));
+  assert.ok(mix.formulas.some(({ label }) => /A Level extension[\s\S]*price elasticity/i.test(label)));
 });
 
 test("Unit 3 exam focus is topic-specific and respects AS/A Level boundaries", async () => {

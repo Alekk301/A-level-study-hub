@@ -6,10 +6,10 @@
   "unitTitle": "AS Level",
   "title": "The marketing mix",
   "contentDepth": "full",
-  "overview": "The marketing mix coordinates product, price, promotion and place for a defined target market. Each decision changes the effectiveness of the others, so exam evaluation should test whether the whole mix is consistent with the objective, customer, competition, product stage, capacity and budget.",
+  "overview": "The marketing mix coordinates product, price, promotion and place for a defined target market. Each decision changes the effectiveness of the others, so exam evaluation should test whether the whole mix is consistent with the objective, customer, competition, product stage, capacity and budget. The retained PED material is clearly marked as an A Level bridge and is not assessed in AS Marketing.",
   "syllabusPoints": [
     "Analyse product decisions including differentiation, branding, packaging, product portfolios and the product life cycle.",
-    "Compare pricing methods and calculate/interpret price elasticity of demand.",
+    "Compare pricing methods. A Level extension: calculate and interpret price elasticity of demand (PED); PED is not assessed in AS Marketing.",
     "Analyse promotional objectives, methods, media and budgets.",
     "Compare direct and intermediary channels of distribution.",
     "Explain customer relationship marketing, the 4Cs, e-commerce and digital promotion.",
@@ -49,8 +49,8 @@
       "definition": "Charging different customer groups different prices for the same or very similar product when resale can be limited."
     },
     {
-      "term": "Price elasticity of demand",
-      "definition": "The responsiveness of quantity demanded to a change in price."
+      "term": "A Level extension: price elasticity of demand",
+      "definition": "The responsiveness of quantity demanded to a change in price; this concept is not assessed in AS Marketing."
     },
     {
       "term": "Above-the-line promotion",
@@ -114,15 +114,15 @@
       ],
       "bullets": [
         "Contribution pricing accepts an order above variable cost so it contributes to fixed cost, but repeated low prices may fail to cover total cost.",
-        "Choose using objective, costs, competition, brand, product stage, capacity and PED."
+        "At AS, choose using objective, costs, competition, brand, product stage and capacity. At A Level, PED can provide additional evidence about likely demand response."
       ],
       "examples": []
     },
     {
       "id": "04-price-elasticity-of-demand",
-      "title": "Price elasticity of demand",
+      "title": "A Level extension · Price elasticity of demand",
       "content": [
-        "PED is normally negative because price and quantity demanded move in opposite directions; exams often discuss its magnitude. If |PED| > 1, demand is elastic and a price fall tends to increase total revenue. If |PED| < 1, demand is inelastic and a price rise tends to increase total revenue, assuming other factors remain unchanged."
+        "A Level bridge only: PED is not assessed in AS Marketing. PED is normally negative because price and quantity demanded move in opposite directions; exams often discuss its magnitude. If |PED| > 1, demand is elastic and a price fall tends to increase total revenue. If |PED| < 1, demand is inelastic and a price rise tends to increase total revenue, assuming other factors remain unchanged."
       ],
       "bullets": [
         "Demand is more elastic when close substitutes exist, the purchase is a large share of income, buyers have time to switch and loyalty is weak.",
@@ -205,7 +205,7 @@
   ],
   "formulas": [
     {
-      "label": "Price elasticity of demand",
+      "label": "A Level extension · Price elasticity of demand",
       "expression": "% change in quantity demanded ÷ % change in price",
       "note": "Usually negative; use the absolute value when classifying elastic or inelastic demand."
     },
@@ -305,14 +305,14 @@
   ],
   "examTips": [
     "Treat the mix as an integrated decision: show how at least two elements support or conflict with one another.",
-    "For PED, calculate percentage changes from the original values and separate revenue from profit.",
+    "A Level extension only: for PED, calculate percentage changes from the original values and separate revenue from profit; PED is not assessed in AS Marketing.",
     "Evaluate promotion with a business outcome and cost, not merely audience size.",
     "Channel recommendations should consider control, reach, customer convenience, product characteristics and margin."
   ],
   "commonMistakes": [
     "Describing place as the firm's factory or office location rather than distribution to customers.",
     "Assuming every product passes through predictable life-cycle stages for a fixed duration.",
-    "Saying an inelastic product has no response to price; it has a proportionately smaller response.",
+    "A Level extension: saying an inelastic product has no response to price; it has a proportionately smaller response.",
     "Calling all online attention successful promotion without measuring conversion or contribution."
   ],
   "quickRecall": [
@@ -321,8 +321,8 @@
       "answer": "Product, price, promotion and place."
     },
     {
-      "question": "When is demand price elastic?",
-      "answer": "When the absolute PED value is greater than 1, so quantity changes proportionately more than price."
+      "question": "A Level extension: when is demand price elastic?",
+      "answer": "This is not assessed in AS Marketing. At A Level, demand is price elastic when the absolute PED value is greater than 1, so quantity changes proportionately more than price."
     },
     {
       "question": "Why can price skimming attract competitors?",

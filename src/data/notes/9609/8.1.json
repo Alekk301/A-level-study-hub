@@ -78,7 +78,7 @@
       "id": "02-income-and-promotional-elasticity",
       "title": "Income and promotional elasticity",
       "content": [
-        "Income elasticity of demand (YED) = percentage change in demand ÷ percentage change in consumer income. A positive result indicates a normal good; a result above 1 suggests demand is income elastic, often associated with luxuries. A negative result indicates an inferior good in that market. Promotional elasticity of demand = percentage change in demand ÷ percentage change in promotional spending. A positive value above 1 means demand changed proportionately more than spending."
+        "Income elasticity of demand (YED) = percentage change in demand ÷ percentage change in consumer income. A positive result indicates a normal good: 0 < YED < 1 is income inelastic and often associated with necessities, while YED > 1 is income elastic and often associated with luxuries. A negative result indicates an inferior good in that market. Promotional elasticity of demand = percentage change in demand ÷ percentage change in promotional spending. A promotional elasticity between 0 and 1 shows a positive but less-than-proportionate response; above 1 shows a more-than-proportionate response. A negative value means measured demand fell while promotional spending rose, but other changing factors may be responsible."
       ],
       "bullets": [
         "YED can inform product mix, capacity and geographic decisions when incomes are forecast to change, but classifications differ between customer groups and over time.",
@@ -138,15 +138,17 @@
       "bullets": [
         "Keep the first moving averages in chronological order; centring loses observations at both ends of the series.",
         "Show each total, division and centring step so follow-through marks remain available after one arithmetic error.",
-        "If the question supplies additive seasonal variations, forecast = trend + seasonal variation. Do not mix this with multiplicative percentage factors.",
+        "For an additive model, seasonal variation = actual value − centred trend for every period with a centred moving average.",
+        "Average the seasonal variations for the same quarter or season across years to estimate the typical seasonal effect.",
+        "Extrapolate the trend to the forecast period, then calculate forecast = projected trend + average seasonal variation for that season. Do not mix this with multiplicative percentage factors.",
         "A longer smoothing period removes more fluctuation but reacts more slowly to a genuine change in trend."
       ],
       "examples": [
         {
           "id": "05-example-1",
           "kind": "worked",
-          "label": "Worked four-period centred moving average",
-          "content": "Quarterly sales are 80, 100, 120, 140, 100 and 120 units. First four-period moving average = (80 + 100 + 120 + 140) ÷ 4 = 110. Next = (100 + 120 + 140 + 100) ÷ 4 = 115. Centre these adjacent values: (110 + 115) ÷ 2 = 112.5, aligned with quarter 3. The next four-period average is (120 + 140 + 100 + 120) ÷ 4 = 120, so the centred value for quarter 4 is (115 + 120) ÷ 2 = 117.5."
+          "label": "Worked moving average and additive forecast",
+          "content": "Quarterly sales are 80, 100, 120, 140, 100 and 120 units. First four-period moving average = (80 + 100 + 120 + 140) ÷ 4 = 110. Next = (100 + 120 + 140 + 100) ÷ 4 = 115. Centre these adjacent values: (110 + 115) ÷ 2 = 112.5, aligned with quarter 3. The next four-period average is 120, so the centred value for quarter 4 is (115 + 120) ÷ 2 = 117.5. Repeat across the full dataset. If Q3 actual sales of 120 and 132 have centred trends of 112.5 and 124.5, their seasonal variations are +7.5 and +7.5, so the average Q3 seasonal variation is +7.5. If the trend is extrapolated to 130 for the next Q3, forecast sales = 130 + 7.5 = 137.5 units."
         }
       ]
     },
@@ -210,6 +212,16 @@
       "label": "Four-period moving average",
       "expression": "Sum of four consecutive observations ÷ 4",
       "note": "Average adjacent four-period results to centre an even-period moving average."
+    },
+    {
+      "label": "Additive seasonal variation",
+      "expression": "Actual value − centred moving average",
+      "note": "Average the variations for the same season across years."
+    },
+    {
+      "label": "Additive sales forecast",
+      "expression": "Projected trend + average seasonal variation",
+      "note": "Use the seasonal variation for the forecast quarter or season."
     }
   ],
   "comparisonTable": null,
@@ -279,8 +291,8 @@
       "answer": "Idea generation, screening, concept development/testing, business analysis, prototype development, test marketing and launch."
     },
     {
-      "question": "Why must a four-period moving average be centred?",
-      "answer": "An even-period average lies between periods, so adjacent moving averages must be averaged to align the trend with an actual period."
+      "question": "How is an additive forecast produced from four-period centred moving averages?",
+      "answer": "Centre adjacent four-period averages, calculate actual minus centred trend, average variations for the same season, extrapolate the trend, then add that season's average variation."
     },
     {
       "question": "When is qualitative forecasting particularly useful?",
