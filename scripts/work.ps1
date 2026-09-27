@@ -2,11 +2,14 @@
 #   .\work start             get the newest changes before editing anything
 #   .\work finish "message"  save your changes and upload them to GitHub
 #   .\work publish           send the finished dev work to the live site
+# -Auto (used by the Claude Code hooks in .claude/settings.json) never prompts: finish uses an
+# automatic message, and start first saves any work a previous session left behind.
 # See docs/WORK-CYCLE.md for the full routine.
 param(
   [Parameter(Position = 0)][ValidateSet('start', 'finish', 'publish', 'status')][string]$Command = 'status',
   [Parameter(Position = 1)][string]$Message,
-  [switch]$SkipChecks
+  [switch]$SkipChecks,
+  [switch]$Auto
 )
 
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
@@ -55,6 +58,37 @@ if (Test-Path (Join-Path $projectRoot '.git\rebase-merge')) {
   Stop-OnConflict
 }
 
+function Invoke-Finish {
+  $branch = git branch --show-current
+  if ($branch -ne $workBranch) {
+    Stop-Work "Stopped: you're on '$branch', not '$workBranch'. Run  .\work start  first."
+  }
+
+  if (Get-Changes) {
+    if (-not $Message -and $Auto) { $Message = "Auto-save from $env:COMPUTERNAME, $(Get-Date -Format 'yyyy-MM-dd HH:mm')" }
+    if (-not $Message) { $Message = Read-Host 'Describe what you changed' }
+    if (-not $Message) { Stop-Work 'Stopped: a description is needed to save your changes.' }
+    Invoke-Git add -A
+    Invoke-Git commit --quiet -m $Message
+  }
+
+  Invoke-Git fetch --quiet $remote
+  if (Test-Git rev-parse --verify --quiet "refs/remotes/$remote/$workBranch") {
+    git pull --rebase --quiet $remote $workBranch
+    if ($LASTEXITCODE -ne 0) { Stop-OnConflict }
+    $unpushed = git rev-list --count "$remote/$workBranch..HEAD"
+    if ([int]$unpushed -eq 0) {
+      Write-Host "`nNothing new to save. GitHub already has everything." -ForegroundColor Green
+      return
+    }
+  }
+
+  Write-Host "Uploading to GitHub..."
+  Invoke-Git push --quiet -u $remote $workBranch
+  Write-Host "`nSaved to GitHub. It's safe to switch computers." -ForegroundColor Green
+  Write-Host "Vercel will build a preview of '$workBranch'. Run  .\work publish  when it's ready to go live."
+}
+
 switch ($Command) {
   'status' {
     Invoke-Git fetch --quiet $remote
@@ -63,6 +97,16 @@ switch ($Command) {
   }
 
   'start' {
+    if ($Auto -and (git branch --show-current) -eq $workBranch) {
+      # Save anything a previous session left unsaved or unpushed before pulling.
+      $hasUnpushed = (Test-Git rev-parse --verify --quiet "refs/remotes/$remote/$workBranch") -and
+        [int](git rev-list --count "$remote/$workBranch..HEAD") -gt 0
+      if ((Get-Changes) -or $hasUnpushed) {
+        Write-Host "Saving work left over from the last session..."
+        Invoke-Finish
+      }
+    }
+
     if (Get-Changes) {
       Stop-Work @"
 Stopped: this computer has unsaved changes from last time:
@@ -102,35 +146,7 @@ Run  .\work finish "describe the changes"  first, then  .\work start  again.
     Write-Host "`nYou're on '$workBranch'. Edit away, then run  .\work finish `"message`"  when done."
   }
 
-  'finish' {
-    $branch = git branch --show-current
-    if ($branch -ne $workBranch) {
-      Stop-Work "Stopped: you're on '$branch', not '$workBranch'. Run  .\work start  first."
-    }
-
-    if (Get-Changes) {
-      if (-not $Message) { $Message = Read-Host 'Describe what you changed' }
-      if (-not $Message) { Stop-Work 'Stopped: a description is needed to save your changes.' }
-      Invoke-Git add -A
-      Invoke-Git commit --quiet -m $Message
-    }
-
-    Invoke-Git fetch --quiet $remote
-    if (Test-Git rev-parse --verify --quiet "refs/remotes/$remote/$workBranch") {
-      git pull --rebase --quiet $remote $workBranch
-      if ($LASTEXITCODE -ne 0) { Stop-OnConflict }
-      $unpushed = git rev-list --count "$remote/$workBranch..HEAD"
-      if ([int]$unpushed -eq 0) {
-        Write-Host "`nNothing new to save. GitHub already has everything." -ForegroundColor Green
-        exit 0
-      }
-    }
-
-    Write-Host "Uploading to GitHub..."
-    Invoke-Git push --quiet -u $remote $workBranch
-    Write-Host "`nSaved to GitHub. It's safe to switch computers." -ForegroundColor Green
-    Write-Host "Vercel will build a preview of '$workBranch'. Run  .\work publish  when it's ready to go live."
-  }
+  'finish' { Invoke-Finish }
 
   'publish' {
     if (Get-Changes) { Stop-Work 'Stopped: you have unsaved changes. Run  .\work finish "message"  first.' }

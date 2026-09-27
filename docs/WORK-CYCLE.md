@@ -4,6 +4,17 @@ Both computers share one working branch, `dev`. Pushing `dev` only creates a Ver
 the live site changes only when you run `.\work publish`, which merges `dev` into the
 Production Branch `rebuild/react-vite`.
 
+## Automatic in Claude Code
+
+`.claude/settings.json` runs the cycle for you whenever you use Claude Code in this folder:
+
+- **Session start:** `work start -Auto` saves anything the last session left behind, then downloads
+  the newest changes.
+- **Session end** (`/exit`, closing the window): `work finish -Auto` commits everything with an
+  "Auto-save from <computer>" message and uploads it.
+
+Edits made outside Claude Code (e.g. in VS Code alone) are not covered — use the commands below.
+
 ## The cycle
 
 Run these from the project folder (in PowerShell, keep the `.\`; in Command Prompt, drop it).

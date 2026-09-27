@@ -17,8 +17,10 @@ before changing anything.
 
 The owner edits this project from more than one computer using the cycle in
 `docs/WORK-CYCLE.md`: day-to-day work happens on the shared `dev` branch, not
-`rebuild/react-vite`. At the start of a session run `.\work start`; when the owner is done, offer to
-run `.\work finish "<summary>"`. Only run `.\work publish` when the owner asks to go live.
+`rebuild/react-vite`. Hooks in `.claude/settings.json` run `work start -Auto` at session start and
+`work finish -Auto` at session end; if the start hook reports "Stopped", resolve that first. When a
+piece of work is done, run `.\work finish "<summary>"` for a descriptive commit. Only run
+`.\work publish` when the owner asks to go live.
 
 ## Normal workflow
 

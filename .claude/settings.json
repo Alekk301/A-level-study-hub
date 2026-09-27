@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "scripts\\work.ps1", "start", "-Auto"],
+            "timeout": 120,
+            "statusMessage": "Getting the newest changes from GitHub..."
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "scripts\\work.ps1", "finish", "-Auto"],
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}
