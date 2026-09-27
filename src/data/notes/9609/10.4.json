@@ -6,7 +6,7 @@
   "unitTitle": "A Level",
   "title": "Finance and accounting strategy",
   "contentDepth": "full",
-  "overview": "Finance and accounting strategy uses published financial information to support long-term decisions. You must assess performance over time/against competitors and analyse how debt/equity, dividend decisions, business growth and other strategies affect ratios. The key evaluation point is that accounts are useful evidence but not perfect objective truth.",
+  "overview": "Finance strategy connects accounting evidence to long-term choices about investment, working capital, debt, equity, dividends and growth. The goal is not to improve a ratio cosmetically: it is to choose a coherent policy that supports corporate objectives while keeping liquidity, return, control, risk and stakeholder consequences within acceptable limits.",
   "syllabusPoints": [
     "Explain how financial statements/annual reports support strategy and stakeholder decisions.",
     "Assess performance over time and against competitors using accounting data and ratios.",
@@ -16,132 +16,189 @@
     "Evaluate limitations of published accounts and ratio analysis."
   ],
   "definitions": [
-    {
-      "term": "Annual report",
-      "definition": "Financial statements plus narrative/governance/risk information reporting company performance and position."
-    },
-    {
-      "term": "Debt finance",
-      "definition": "Borrowed long-term finance with contractual interest/repayment."
-    },
-    {
-      "term": "Equity finance",
-      "definition": "Finance provided by owners/shareholders, affecting ownership and shareholder returns rather than creating contractual interest."
-    },
-    {
-      "term": "Dividend policy",
-      "definition": "The approach to distributing profit to shareholders versus retaining it for reinvestment."
-    },
-    {
-      "term": "Window dressing",
-      "definition": "Actions/accounting presentation intended to make reported position/performance look more favourable around reporting time."
-    }
+    { "term": "Finance strategy", "definition": "Long-term approach to acquiring, allocating and controlling finance so corporate objectives can be achieved at acceptable risk." },
+    { "term": "Annual report", "definition": "Package containing financial statements and narrative, governance, risk, sustainability and other information for stakeholders." },
+    { "term": "Audit opinion", "definition": "Independent auditor's conclusion on whether statements meet the relevant reporting requirements; it is not a guarantee of future success." },
+    { "term": "Debt finance", "definition": "Borrowed finance with contractual interest and repayment, usually preserving ownership control." },
+    { "term": "Equity finance", "definition": "Owner/shareholder finance with no contractual repayment but possible dilution of ownership and earnings." },
+    { "term": "Dividend policy", "definition": "Approach to distributing profit to shareholders versus retaining it for liquidity and investment." },
+    { "term": "Financial risk", "definition": "Risk created by fixed finance commitments and inability to meet interest or repayment when cash flow weakens." },
+    { "term": "Window dressing", "definition": "Temporary action or presentation designed to make reported position look stronger at the reporting date." }
   ],
   "sections": [
     {
       "id": "01-using-accounts-strategically",
-      "title": "Using accounts strategically",
+      "title": "From accounting evidence to strategy",
       "content": [
-        "Accounts reveal profitability, liquidity, efficiency, financing and resource position. Weak liquidity may constrain expansion; strong ROCE may support investment; falling margins may trigger cost/price/product changes. Financial evidence should be combined with market, HR and operations information."
+        "Financial statements and ratios reveal resources, profitability, liquidity, efficiency, financing and investor return. Strategy uses that evidence to diagnose constraints and opportunities: weak liquidity may delay expansion; falling margins may require product, price, cost or process action; underused assets may support growth without major investment.",
+        "Use a sequence: objective -> evidence -> diagnosis -> option -> financial and non-financial consequence -> implementation -> control. A ratio target is not an objective by itself unless it supports survival, growth, return or another corporate aim."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use a balanced set of ratios; improving one can worsen another.",
+        "Separate a temporary investment effect from persistent weak performance.",
+        "Attach targets, owners, time periods and review triggers to the chosen policy."
+      ],
+      "examples": [
+        { "id": "10.4-1-1", "kind": "analysis", "label": "Diagnosis before action", "content": "Operating margin falls while sales grow and defect returns rise. The strategy should diagnose quality and failure cost before cutting promotion or staff. Better process quality may reduce rework, improve margin and protect reputation even if training initially increases expense." }
+      ]
     },
     {
       "id": "02-annual-reports-and-stakeholders",
-      "title": "Annual reports and stakeholders",
+      "title": "Annual reports and stakeholder decisions",
       "content": [
-        "Annual reports can contain statements, strategic commentary, risk, governance, sustainability and audit information. Investors, lenders, employees, suppliers and managers use different information. Narrative sections provide context but management may emphasise favourable aspects."
+        "An annual report may include the financial statements, notes, strategic or directors' report, governance, principal risks, sustainability information and an independent audit report. Notes explain accounting policies and unusual items that headline ratios can hide. Narrative sections add context but management selects how to present its story.",
+        "Managers plan and control; investors assess return and risk; lenders assess repayment; suppliers assess payment confidence; employees consider continuity; government and communities consider compliance and impact. The same report supports different decisions."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "An unmodified audit opinion increases confidence in reporting, not certainty that strategy will succeed.",
+        "Forward-looking statements remain assumptions and should be tested against external evidence.",
+        "Stakeholders need information relevant to their own time horizon and exposure."
+      ],
+      "examples": [
+        { "id": "10.4-2-1", "kind": "application", "label": "Different users", "content": "A high dividend may please an income investor, while a lender may prefer retained cash and lower debt. Employees may focus on continuity and planned restructuring. A strategy answer should identify whose decision is being supported." }
+      ]
     },
     {
       "id": "03-debt-versus-equity",
-      "title": "Debt versus equity",
+      "title": "Debt, equity and the capital structure",
       "content": [
-        "Debt avoids ownership dilution and can be cost-effective, but raises gearing and fixed interest/repayment risk. Equity can reduce debt pressure and strengthen finance capacity but dilutes control/earnings per share and may create dividend expectations. Choice depends on cash-flow stability, interest rates, investor appetite and desired control."
+        "Debt preserves ownership and interest may be predictable, but raises gearing, fixed cash commitments and covenant/security risk. Equity has no contractual repayment and can absorb uncertainty, but dilutes control and earnings per share and creates expectations of future return. Retained earnings preserve control but have opportunity cost and may be insufficient.",
+        "Match the source to purpose and cash timing. Stable cash flows and low existing gearing can support debt; uncertain, long-payback innovation may suit equity. Compare total cost, availability, flexibility, control and downside survival, not interest alone."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Debt can raise ROCE and shareholder return if project return exceeds finance cost, but losses are also magnified.",
+        "New equity can reduce gearing yet market dilution or weak demand may make it expensive.",
+        "A mixed or staged package can avoid an all-or-nothing choice."
+      ],
+      "examples": [
+        { "id": "10.4-3-1", "kind": "worked", "label": "Debt-financed strategy", "content": "Current gearing is 40%. A large loan is forecast to raise gearing to 60%. Debt preserves owner control and funds expansion, but interest and repayment risk rise before new cash inflows arrive. Use the 40% to 60% change with cash-flow sensitivity, project NPV and rate risk before recommending the strategy." }
+      ]
     },
     {
       "id": "04-dividend-strategy",
-      "title": "Dividend strategy",
+      "title": "Dividend strategy and investor return",
       "content": [
-        "Higher dividends may attract income-seeking shareholders and signal confidence but reduce retained funds for investment/liquidity. Lower dividends support self-financed growth but may disappoint investors. Dividend decisions affect yield, cover and retained earnings."
+        "Higher dividends increase immediate owner cash return and may signal confidence, but reduce retained earnings, liquidity and self-financed investment. Lower dividends increase dividend cover and funds retained, but may disappoint income investors or signal weakness if communication is poor.",
+        "A sustainable policy aligns payout with recurring profit, cash generation, investment opportunities, debt commitments and shareholder preferences. Directors decide dividends; they cannot directly guarantee market price."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Dividend yield can rise because dividend rises or share price falls; interpret the cause.",
+        "High cover provides a buffer and retention, but may be excessive where good investment opportunities are absent.",
+        "A stable policy can reduce uncertainty but should not force borrowing merely to maintain payout."
+      ],
+      "examples": [
+        { "id": "10.4-4-1", "kind": "analysis", "label": "Payout trade-off", "content": "Profit is $5m and annual dividend $4m, so dividend cover = $5m / $4m = 1.25 times. Raising payout further offers little profit buffer and may constrain investment. Retain more if a credible positive-NPV project exists; otherwise explain why shareholders should wait." }
+      ]
     },
     {
       "id": "05-growth-and-ratio-effects",
-      "title": "Growth and ratio effects",
+      "title": "Growth and other strategies change ratios",
       "content": [
-        "Expansion can initially weaken liquidity or raise gearing because working capital/capital expenditure must be financed. Later economies/productivity/revenue may improve margins and ROCE. A short-term ratio decline after strategic investment is not automatically failure."
+        "Organic growth can raise inventory, receivables and capacity cost before customer cash and utilisation catch up. Acquisition can add assets, debt and integration cost. Initially, liquidity, margins or ROCE may weaken even if the long-term strategy is sound. Later economies, revenue and productivity must materialise to justify the dip.",
+        "Price changes, quality programmes, automation, outsourcing, international entry and HR policies all affect accounting results. Show the mechanism rather than claiming growth always improves performance."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Growth financed by debt may raise gearing; equity may dilute ownership and earnings per share.",
+        "Working-capital growth can create overtrading even when profit increases.",
+        "Set leading indicators such as orders, defects, utilisation and collection days before annual ratios confirm the outcome."
+      ],
+      "examples": [
+        { "id": "10.4-5-1", "kind": "analysis", "label": "Temporary ratio decline", "content": "A new factory raises capital employed immediately while profit grows only after commissioning. ROCE may fall in year 1. Judge utilisation ramp-up, order book, cash buffer and expected NPV before labelling the strategy a failure." }
+      ]
     },
     {
-      "id": "06-limitations-of-published-accounts",
-      "title": "Limitations of published accounts",
+      "id": "06-integrated-policy",
+      "title": "Build an integrated finance policy",
       "content": [
-        "Accounts are mostly historical, use estimates/accounting policies, can be affected by inflation, one-offs and window dressing, and omit many intangible strengths. Cross-company comparisons can be distorted by different business models/policies. Ratios diagnose symptoms but do not prove causes."
+        "Working-capital, investment, finance and dividend decisions interact. Aggressive growth funded by debt and high dividends can create a cash squeeze even when projected profit is attractive. A coherent package might combine staged investment, selective credit control, retained earnings and a long-term loan with contingency headroom.",
+        "Stress-test lower sales, delayed receipts, higher cost and interest rates. Decide minimum liquidity, maximum acceptable gearing and review triggers without turning them into rigid universal numbers."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Align finance maturity with asset life and cash generation.",
+        "Protect strategic capabilities rather than cutting every cost to improve a short-term margin.",
+        "Explain stakeholder conflict and how communication, phasing or safeguards reduce it."
+      ],
+      "examples": [
+        { "id": "10.4-6-1", "kind": "method", "label": "Integrated recommendation", "content": "Fund the first expansion stage with retained earnings plus a fixed-rate long-term loan, reduce dividend growth temporarily and tighten only overdue credit. Review when utilisation reaches 75% and operating cash meets debt service under the downside forecast." }
+      ]
     },
     {
-      "id": "07-integrated-judgement",
-      "title": "Integrated judgement",
+      "id": "07-limitations-of-published-accounts",
+      "title": "Limits of the evidence",
       "content": [
-        "A finance strategy should support overall objectives. A business pursuing fast growth may accept temporarily higher gearing; a mature firm with stable cash might return more cash to shareholders. The recommendation must fit risk, cash generation and strategic opportunity."
+        "Accounts are historical, affected by estimates, accounting policy, asset age, inflation, one-off events, reporting-date seasonality and possible window dressing. Acquisitions or discontinued products can break trends. Competitors may use different policies or operate different models.",
+        "Financial data omits or incompletely measures employee skill, culture, brand, innovation, quality, environmental impact and customer loyalty. Ratio analysis diagnoses symptoms, not causation. Combine the annual report with budgets, cash forecasts, market research, operational metrics and current external evidence."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Read notes and narrative rather than relying on a ratio table alone.",
+        "Audit provides reasonable assurance about statements, not a forecast or endorsement of strategy.",
+        "Ask whether later events have made year-end evidence obsolete."
+      ],
+      "examples": [
+        { "id": "10.4-7-1", "kind": "evaluation", "label": "Evidence quality", "content": "A competitor reports higher ROCE but leases many assets while the business owns them. Different asset financing and age can distort the comparison. Restate where possible or use additional operating evidence before copying the competitor's strategy." }
+      ]
+    },
+    {
+      "id": "08-strategic-judgement",
+      "title": "Paper 4 strategic judgement",
+      "content": [
+        "A strong answer selects the most relevant financial evidence, connects it to the corporate objective, develops effects across functions and stakeholders, challenges assumptions and states how implementation will be controlled. A list of ratios or generic debt/equity advantages is not strategy.",
+        "Make the recommendation conditional. State which constraint is decisive now, the time horizon and the measurable event that would change the choice."
+      ],
+      "bullets": [
+        "Use case figures throughout; do not repeat every appendix number.",
+        "Link finance to marketing demand, operations capacity, HR capability and external change.",
+        "Distinguish management action from outcomes influenced by markets and interest rates."
+      ],
+      "examples": [
+        { "id": "10.4-8-1", "kind": "method", "label": "Judgement frame", "content": "Recommend option -> cite decisive ratio/cash evidence -> explain strategic mechanism -> weigh stakeholder and implementation risk -> identify time horizon and reversal trigger." }
+      ]
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
+  "formulas": [
+    { "label": "Gearing effect", "expression": "non-current liabilities / capital employed x 100", "note": "Model debt/equity changes using the Cambridge formula." },
+    { "label": "Dividend cover", "expression": "profit for the year / annual dividend", "note": "Shows payout buffer and retained proportion indirectly." },
+    { "label": "Dividend yield (%)", "expression": "dividend per share / market price per share x 100", "note": "Market price can change for reasons beyond management control." },
+    { "label": "ROCE (%)", "expression": "profit from operations / capital employed x 100", "note": "Growth can raise capital before profit arrives." }
+  ],
+  "comparisonTable": {
+    "title": "Strategic finance trade-offs",
+    "columns": ["Policy", "Potential gain", "Main risk", "Best fit"],
+    "rows": [
+      ["More debt", "Control retained and growth funded", "Interest, repayment and gearing", "Stable cash and credible return"],
+      ["More equity", "Risk-bearing permanent finance", "Dilution and investor expectations", "Uncertain long-payback growth"],
+      ["Higher dividend", "Immediate investor return", "Less liquidity and reinvestment", "Mature cash-generative business"],
+      ["More retention", "Internal finance and lower debt need", "Investor dissatisfaction or idle funds", "Credible positive-return opportunities"]
+    ]
+  },
+  "diagram": { "title": "Integrated finance strategy", "type": "flow", "nodes": ["Corporate objective", "Financial and non-financial diagnosis", "Finance, investment, working-capital and dividend package", "Implementation and stakeholder effects", "Targets, scenarios and review"] },
   "analysisChains": [
-    {
-      "title": "Debt-financed growth",
-      "steps": [
-        "New finance funds expansion without diluting ownership",
-        "Revenue and profit may grow",
-        "Interest and repayment commitments increase",
-        "Gearing and financial risk rise"
-      ],
-      "evaluation": "Debt is more defensible with stable cash flows and low existing gearing; equity may be safer for uncertain, long-payback strategies."
-    }
+    { "title": "Debt-financed growth", "steps": ["Borrowing funds expansion without immediate dilution", "Capital employed, gearing and interest commitments rise", "Capacity and revenue may grow", "Profitability improves only if return exceeds full finance and operating cost", "Investor return rises or financial risk dominates"], "evaluation": "Stable cash, low starting gearing, fixed-rate terms and strong demand make debt more defensible." },
+    { "title": "Lower dividend to fund investment", "steps": ["More profit is retained", "Liquidity or internal investment finance strengthens", "Debt need and interest exposure may fall", "A positive project can raise future profit and share value", "Current income investors receive less"], "evaluation": "Retention is justified only by credible opportunities and transparent targets; otherwise return surplus cash." },
+    { "title": "Working-capital control programme", "steps": ["Overdue receivables and unsuitable inventory fall", "Cash conversion improves", "Short-term borrowing and finance cost may fall", "Liquidity and resilience strengthen", "Resources become available for strategy"], "evaluation": "Over-tight credit or inventory cuts can lose customers and cause shortages, so segment and monitor service." }
   ],
   "examTips": [
-    "Paper 4 answers should link financial evidence to corporate objectives and non-financial evidence.",
-    "Do not recommend debt/equity from gearing alone—include cash flow, control, interest rates and investor appetite.",
-    "Ask whether a weak ratio is structural or a temporary effect of a deliberate strategy."
+    "Start with the corporate objective and diagnose using a balanced set of financial evidence.",
+    "Explain how debt, equity, dividend or growth changes specific ratios and cash risk.",
+    "Use annual-report narrative and notes to interpret figures, but challenge management bias and forecast uncertainty.",
+    "Integrate finance with marketing, operations, HR, stakeholders and external change.",
+    "Finish with implementation, time horizon and a measurable trigger that could reverse the judgement."
   ],
   "commonMistakes": [
-    "Treating published accounts as forecasts.",
-    "Assuming higher dividends always increase shareholder value.",
-    "Assuming low gearing automatically means the finance strategy is optimal.",
-    "Using ratios without benchmarks or plausible causes."
+    "Treating a higher ratio as automatically better without diagnosing why it changed.",
+    "Recommending debt or equity from gearing alone while ignoring cash timing, control and access.",
+    "Assuming higher dividends always increase investor return or market price.",
+    "Calling an audit opinion a guarantee of future performance.",
+    "Improving year-end ratios cosmetically while damaging long-term capability."
   ],
   "quickRecall": [
-    "accounts=evidence not strategy",
-    "debt=gearing+fixed interest",
-    "equity=dilution/no contractual interest",
-    "dividend=payout vs retained growth",
-    "growth may temporarily weaken ratios",
-    "ratios diagnose not prove"
+    { "question": "What belongs in an integrated finance strategy?", "answer": "Investment, working capital, source of finance, dividend policy, risk controls and review targets aligned with objectives." },
+    { "question": "What does an audit opinion not guarantee?", "answer": "Future performance, successful strategy or the accuracy of management forecasts." },
+    { "question": "How does more debt usually affect gearing?", "answer": "It raises non-current liabilities and usually raises gearing and fixed financial risk." },
+    { "question": "What is the central dividend trade-off?", "answer": "Immediate shareholder cash return versus retained liquidity and investment finance." },
+    { "question": "Why may growth weaken ROCE first?", "answer": "Capital employed can rise before new capacity produces operating profit." },
+    { "question": "Why can ratios not prove cause?", "answer": "They are historical relationships affected by policy, estimates and many possible operational or external drivers." },
+    { "question": "What makes a strategic judgement strong?", "answer": "A contextual objective, integrated consequences, evidence limits, implementation plan, time horizon and reversal trigger." }
   ],
-  "relatedTopics": [
-    "6.2",
-    "8.2",
-    "9.3",
-    "10.1",
-    "10.2",
-    "10.3"
-  ]
+  "relatedTopics": ["5.1", "5.2", "5.3", "5.5", "6.2", "8.2", "9.3", "10.1", "10.2", "10.3"]
 }

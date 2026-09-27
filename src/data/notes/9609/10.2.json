@@ -6,7 +6,7 @@
   "unitTitle": "A Level",
   "title": "Analysis of published accounts",
   "contentDepth": "full",
-  "overview": "Ratio analysis converts financial-statement data into indicators of liquidity, profitability, efficiency, gearing and investor return. Calculation is only the first step: top answers compare, diagnose causes, explain consequences, propose actions and recognise limitations.",
+  "overview": "Ratios compress financial statements into signals about liquidity, profitability, financial efficiency, gearing and investor return. A calculation earns only the start of an answer. The examiner-ready method is calculate accurately, compare with a meaningful benchmark, diagnose plausible causes, trace business consequences, propose a contextual response and evaluate the evidence limits.",
   "syllabusPoints": [
     "Calculate/interpret current and acid-test ratios.",
     "Calculate/interpret ROCE, gross profit margin and operating profit margin.",
@@ -16,194 +16,201 @@
     "Assess performance over time/against competitors and limitations of ratio analysis."
   ],
   "definitions": [
-    {
-      "term": "Liquidity",
-      "definition": "Ability to meet short-term obligations when they fall due."
-    },
-    {
-      "term": "Profitability",
-      "definition": "Ability to generate profit relative to revenue or capital employed."
-    },
-    {
-      "term": "Efficiency",
-      "definition": "How effectively working capital/assets are managed to support operations."
-    },
-    {
-      "term": "Gearing",
-      "definition": "Extent to which long-term capital relies on non-current debt."
-    },
-    {
-      "term": "ROCE",
-      "definition": "Operating profit generated as a percentage of capital employed."
-    },
-    {
-      "term": "P/E ratio",
-      "definition": "Market price per share relative to earnings per share, often reflecting market expectations."
-    }
+    { "term": "Liquidity", "definition": "Ability to meet short-term obligations when they fall due." },
+    { "term": "Profitability", "definition": "Ability to generate profit relative to revenue or long-term capital used." },
+    { "term": "Financial efficiency", "definition": "How effectively inventory, receivables, payables and capital are managed to support performance." },
+    { "term": "Capital employed", "definition": "Issued shares plus reserves plus non-current liabilities under the Cambridge formula appendix." },
+    { "term": "Gearing", "definition": "The proportion of capital employed financed by non-current liabilities." },
+    { "term": "Earnings per share", "definition": "Profit attributable to each ordinary share; used as the denominator of the price/earnings ratio." },
+    { "term": "Dividend yield", "definition": "Dividend per share as a percentage of market price per share." },
+    { "term": "Dividend cover", "definition": "How many times profit for the year covers the annual dividend." },
+    { "term": "Price/earnings ratio", "definition": "Market price per share divided by earnings per share, reflecting how highly the market values current earnings." },
+    { "term": "Window dressing", "definition": "Actions or presentation around the reporting date that make reported position appear temporarily stronger." }
   ],
   "sections": [
     {
       "id": "01-liquidity-ratios",
-      "title": "Liquidity ratios",
+      "title": "Liquidity: current and acid-test ratios",
       "content": [
-        "Current ratio compares current assets with current liabilities. Acid test removes inventory because it may be less liquid. Very low ratios can signal payment risk; very high ratios may signal inefficient working capital. Industry context matters."
+        "Current ratio compares all current assets with current liabilities. Acid test removes inventory because it may take time to sell, may be obsolete or may realise less than its recorded value. Low liquidity can delay payments and disrupt supply; extremely high liquidity can indicate idle cash, excessive inventory or weak receivables collection.",
+        "There is no universal ideal. Supermarkets may operate with low ratios because customers pay immediately while suppliers allow credit. A seasonal manufacturer may need a larger buffer. Interpret trend, cash conversion, access to finance and the timing of liabilities."
       ],
-      "bullets": [],
+      "bullets": [
+        "Possible improvements: collect receivables faster, reduce suitable inventory, negotiate supplier credit, refinance short debt or inject long-term finance.",
+        "A short-term loan that adds equal cash and current liability may not solve the underlying cycle.",
+        "Do not claim a ratio below 1 always means failure or a high ratio always means strength."
+      ],
       "examples": [
-        {
-          "id": "01-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Current ratio = Current assets / Current liabilities\nAcid test = (Current assets - Inventory) / Current liabilities"
-        }
+        { "id": "10.2-1-1", "kind": "worked", "label": "Current and acid-test interpretation", "content": "Current assets $180,000; inventory $60,000; current liabilities $120,000. Current ratio = $180,000 / $120,000 = 1.5 : 1. Acid-test ratio = ($180,000 - $60,000) / $120,000 = 1.0 : 1. The business has $1.50 of current assets per $1 of short-term liabilities, but only $1.00 after inventory is removed; compare collection timing and supplier terms before judging liquidity." }
       ]
     },
     {
       "id": "02-profitability-ratios",
-      "title": "Profitability ratios",
+      "title": "Profitability: margins and ROCE",
       "content": [
-        "Gross margin reflects selling price and direct cost of sales; operating margin also reflects operating expenses. ROCE relates operating profit to long-term capital committed."
+        "Gross profit margin reflects selling price, sales mix and cost of sales. Operating profit margin also captures operating expenses such as administration and distribution. ROCE compares profit from operations with long-term finance committed, so it asks whether the business uses capital productively.",
+        "Diagnose the gap. If gross margin falls but operating margin falls by the same amount, direct costs or price may dominate. If gross margin is stable while operating margin falls, overhead growth is more likely. ROCE can fall after investment before the new capacity generates profit."
       ],
-      "bullets": [],
+      "bullets": [
+        "Improve a margin through price, mix, purchasing, productivity or waste reduction only if demand, quality and capacity consequences are acceptable.",
+        "Compare ROCE with prior years, competitors, objectives and finance cost, using consistent accounting policies.",
+        "Revenue growth with a falling margin may still raise absolute profit; calculate rather than assume."
+      ],
       "examples": [
-        {
-          "id": "02-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Gross profit margin = Gross profit / Revenue x100\nOperating profit margin = Profit from operations / Revenue x100\nROCE = Profit from operations / Capital employed x100"
-        }
+        { "id": "10.2-2-1", "kind": "worked", "label": "Margin and ROCE diagnosis", "content": "Revenue $1,000,000; gross profit $360,000; profit from operations $120,000; capital employed $800,000. Gross profit margin = $360,000 / $1,000,000 x 100 = 36%. Operating profit margin = $120,000 / $1,000,000 x 100 = 12%. ROCE = $120,000 / $800,000 x 100 = 15%. The 24 percentage-point gap between gross and operating margins directs attention to operating expenses; 15% ROCE needs a trend and finance-cost benchmark." }
       ]
     },
     {
       "id": "03-efficiency-ratios",
-      "title": "Efficiency ratios",
+      "title": "Financial efficiency: inventory, receivables and payables",
       "content": [
-        "Inventory turnover indicates how often inventory is sold/used. Receivables days estimates collection speed from credit customers; payables days estimates payment time to suppliers. Faster is not automatically better if it causes stockouts, customer loss or supplier conflict."
+        "Rate of inventory turnover shows how many times average inventory is sold or used during the period. Receivables days estimates average customer collection time using credit sales. Payables days estimates average supplier payment time using credit purchases. Use the exact credit figure when provided rather than total revenue or purchases.",
+        "Direction is contextual. Faster inventory turnover can release cash but may cause stockouts. Fewer receivables days improves cash but strict terms may lose customers. More payables days preserves cash but may lose discounts, trust or supply."
       ],
-      "bullets": [],
+      "bullets": [
+        "Compare days with stated credit terms and aged balances, not just last year.",
+        "Inventory turnover varies by product: food and luxury machinery cannot share one benchmark.",
+        "A change may be caused by sales mix, purchasing, disruption or accounting cut-off as well as management efficiency."
+      ],
       "examples": [
-        {
-          "id": "03-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Inventory turnover = Cost of sales / Average inventory\nReceivables days = Trade receivables / Credit sales x365\nPayables days = Trade payables / Credit purchases x365"
-        }
+        { "id": "10.2-3-1", "kind": "worked", "label": "Inventory turnover", "content": "Cost of sales is $600,000 and average inventory is $100,000. Rate of inventory turnover = $600,000 / $100,000 = 6 times per year. If the competitor turns stock 9 times, the business may hold slow inventory, but product mix and service-buffer needs must be checked before reducing stock." },
+        { "id": "10.2-3-2", "kind": "worked", "label": "Receivables and payables days", "content": "Trade receivables $75,000 and credit sales $750,000 give receivables days = $75,000 / $750,000 x 365 = 36.5 days. Trade payables $48,000 and credit purchases $438,000 give payables days = $48,000 / $438,000 x 365 = 40 days. Cash is collected before suppliers are paid on average, but overdue customer concentration and supplier terms still matter." }
       ]
     },
     {
       "id": "04-gearing",
-      "title": "Gearing",
+      "title": "Gearing and financial risk",
       "content": [
-        "Higher gearing means greater reliance on long-term debt and therefore more fixed interest/repayment risk. Debt can still improve owners' returns when operating returns exceed borrowing cost. Context includes cash-flow stability and interest rates."
+        "Cambridge gearing is non-current liabilities divided by capital employed. Higher gearing means more fixed interest and repayment exposure. It can magnify owner returns when operating return exceeds debt cost, preserve control and fund growth, but it reduces resilience when cash flow is volatile or rates rise.",
+        "The percentage needs context. A utility with predictable cash may sustain debt that would be dangerous for a start-up. Evaluate interest cover/cash evidence when available, asset security, maturity, rate structure and how the borrowed funds will be used."
       ],
-      "bullets": [],
+      "bullets": [
+        "Debt-financed growth usually raises gearing initially; retained profit or new equity can lower it.",
+        "Paying debt with scarce cash may improve gearing but weaken liquidity.",
+        "A figure over 50% signals more debt than equity under this formula, not automatic insolvency."
+      ],
       "examples": [
-        {
-          "id": "04-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Gearing (%) = Non-current liabilities / Capital employed x100"
-        }
+        { "id": "10.2-4-1", "kind": "worked", "label": "Gearing with a strategic consequence", "content": "Non-current liabilities $300,000; issued shares $250,000; reserves $200,000. Capital employed = $250,000 + $200,000 + $300,000 = $750,000. Gearing = $300,000 / $750,000 x 100 = 40%. Borrowing another $150,000 would raise debt and interest risk; judge it against expected project cash flow and the current 40% base." }
       ]
     },
     {
       "id": "05-investor-ratios",
-      "title": "Investor ratios",
+      "title": "Investor return: P/E, dividend yield and dividend cover",
       "content": [
-        "P/E indicates how highly the market values earnings; dividend yield compares cash dividend with market price; dividend cover indicates how many times profit covers the dividend and therefore how much safety/retention exists."
+        "Price/earnings compares market price with earnings per share. A high P/E may signal growth expectations or overvaluation; a low P/E may signal weak expectations or an overlooked opportunity. Dividend yield measures current cash return relative to share price. Dividend cover measures how safely profit supports the payout and how much is retained.",
+        "Investor objectives differ. Income investors may value yield and stability; growth investors may accept low dividends if retained earnings fund positive investments. Market price is affected by external sentiment and expectations, so management cannot control every movement."
       ],
-      "bullets": [],
+      "bullets": [
+        "Use profit for the year / annual dividend for Cambridge dividend cover.",
+        "Higher dividends raise payout now but lower cover and retained finance, all else equal.",
+        "A falling share price mechanically raises dividend yield if dividend is unchanged; that is not necessarily good news."
+      ],
       "examples": [
-        {
-          "id": "05-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "P/E = Market price per share / Earnings per share\nDividend yield = Dividend per share / Market price per share x100\nDividend cover = Profit for the year / Annual dividend"
-        }
+        { "id": "10.2-5-1", "kind": "worked", "label": "Investor-ratio set", "content": "Market price $4.00; earnings per share $0.40; dividend per share $0.16; profit for year $2,000,000; annual dividend $800,000. P/E = $4.00 / $0.40 = 10 times. Dividend yield = $0.16 / $4.00 x 100 = 4%. Dividend cover = $2,000,000 / $800,000 = 2.5 times. The payout has a profit buffer, but investor appeal depends on growth, risk and alternative returns." }
       ]
     },
     {
-      "id": "06-interpreting-and-improving",
-      "title": "Interpreting and improving",
+      "id": "06-comparative-diagnosis",
+      "title": "From ratio to comparative diagnosis",
       "content": [
-        "Use previous years, targets, competitors or industry averages. Then move from result -> possible cause -> consequence -> action. Improvements may have trade-offs: tighter receivables collection improves cash but may reduce customer attractiveness."
+        "Use a disciplined chain: result -> direction -> benchmark -> plausible cause -> consequence -> response -> qualification. A trend shows change but not cause. A competitor benchmark adds perspective but only when industry, size, product mix and accounting policies are comparable.",
+        "Use ratios together. Falling operating margin, slower receivables and higher gearing can connect: weak cost control and delayed cash increase borrowing, which raises risk. One ratio alone could support several explanations."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Quantify change in percentage points where comparing percentages; do not call it a percent change unless calculated.",
+        "Name evidence from the case before proposing a cause.",
+        "Recommend a response only after diagnosing whether price, volume, cost, working capital or financing is driving the result."
+      ],
+      "examples": [
+        { "id": "10.2-6-1", "kind": "analysis", "label": "Integrated trend", "content": "Operating margin falls from 14% to 9%, receivables days rise from 32 to 51 and gearing rises from 35% to 55%. Slower collection may have created a cash gap financed by debt while higher operating costs reduced margin. Tighten credit selectively and diagnose expenses before more borrowing; test whether rapid sales growth explains some of the working-capital strain." }
+      ]
     },
     {
-      "id": "07-limitations",
-      "title": "Limitations",
+      "id": "07-improving-performance",
+      "title": "Improving ratios without damaging the business",
       "content": [
-        "Ratios rely on historical accounts and accounting policies, can be distorted by one-off items/inflation/window dressing, omit many intangibles and can be misleading across different business models. They identify symptoms, not proven causes."
+        "A ratio target can create perverse action. Cutting inventory improves liquidity and turnover only until shortages lose sales. Delaying suppliers improves short-term cash but may remove discounts or reliability. Raising price improves margins only if lost volume and competitor response do not outweigh the gain.",
+        "Choose a policy bundle linked to the diagnosed cause, assign a metric and time horizon, and monitor stakeholder effects. Sustainable performance matters more than cosmetically improving the reporting-date number."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Liquidity: credit control, inventory design, supplier negotiation and suitable long-term finance.",
+        "Profitability: value-based price, product mix, purchasing, process quality and justified overhead control.",
+        "Investor return: profitable investment, appropriate dividends, risk control and credible communication."
+      ],
+      "examples": [
+        { "id": "10.2-7-1", "kind": "application", "label": "Avoiding a cosmetic fix", "content": "Pressuring every customer to pay immediately may reduce receivables days, but a large business buyer could switch supplier. Segment overdue/high-risk accounts, preserve justified strategic credit and track cash collected, bad debt and customer retention." }
+      ]
+    },
+    {
+      "id": "08-limitations",
+      "title": "Limitations of published accounts and ratio analysis",
+      "content": [
+        "Published figures are historical, may be months old, use estimates and accounting policies, and can be distorted by inflation, one-off items, acquisitions, seasonal reporting dates and window dressing. Intangible strengths such as skills, innovation, culture, brand and customer loyalty are incompletely recorded.",
+        "Ratios reveal symptoms, not proven causes. Cross-company comparison can fail where product mix, geography, accounting year, asset age or policy differs. Use notes to accounts, narrative reports, cash forecasts and operational/market evidence before deciding."
+      ],
+      "bullets": [
+        "Audited does not mean every forecast or strategic claim is guaranteed.",
+        "Averages can hide a single overdue customer or obsolete inventory category.",
+        "External conditions can change after year end, so current evidence matters."
+      ],
+      "examples": [
+        { "id": "10.2-8-1", "kind": "evaluation", "label": "Comparison limit", "content": "A retailer and manufacturer both report current ratio 1.2:1. The retailer may collect cash immediately and turn stock quickly, while the manufacturer waits months for customers. The identical ratio therefore does not imply identical liquidity risk." }
+      ]
     }
   ],
   "formulas": [
-    {
-      "label": "Current ratio",
-      "expression": "current assets ÷ current liabilities",
-      "note": "Interpret using business model and trend, not a universal ideal."
-    },
-    {
-      "label": "Acid-test ratio",
-      "expression": "(current assets − inventory) ÷ current liabilities",
-      "note": "Removes the least liquid current asset."
-    },
-    {
-      "label": "Operating profit margin",
-      "expression": "operating profit ÷ revenue × 100",
-      "note": "Shows control of operating costs relative to sales."
-    },
-    {
-      "label": "ROCE",
-      "expression": "operating profit ÷ capital employed × 100",
-      "note": "Compare with previous years, competitors and finance cost."
-    },
-    {
-      "label": "Gearing",
-      "expression": "non-current liabilities ÷ capital employed × 100",
-      "note": "Higher gearing generally increases financial risk."
-    }
+    { "label": "Current ratio", "expression": "current assets / current liabilities", "note": "Answer as a ratio." },
+    { "label": "Acid-test ratio", "expression": "(current assets - inventory) / current liabilities", "note": "Answer as a ratio." },
+    { "label": "Gross profit margin (%)", "expression": "gross profit / revenue x 100", "note": "Shows price and cost-of-sales outcome." },
+    { "label": "Operating profit margin (%)", "expression": "profit from operations / revenue x 100", "note": "Includes operating expenses." },
+    { "label": "ROCE (%)", "expression": "profit from operations / capital employed x 100", "note": "Capital employed = issued shares + reserves + non-current liabilities." },
+    { "label": "Trade receivables turnover (days)", "expression": "trade receivables / credit sales x 365", "note": "Use credit sales where given." },
+    { "label": "Trade payables turnover (days)", "expression": "trade payables / credit purchases x 365", "note": "Use credit purchases where given." },
+    { "label": "Rate of inventory turnover (times)", "expression": "cost of sales / average inventory", "note": "Industry and product context determine interpretation." },
+    { "label": "Gearing (%)", "expression": "non-current liabilities / capital employed x 100", "note": "Use the Cambridge denominator." },
+    { "label": "Price/earnings ratio", "expression": "market price per share / earnings per share", "note": "Answer in times." },
+    { "label": "Dividend yield (%)", "expression": "dividend per share / market price per share x 100", "note": "Current cash return relative to price." },
+    { "label": "Dividend cover", "expression": "profit for the year / annual dividend", "note": "Answer in times." }
   ],
-  "comparisonTable": null,
-  "diagram": null,
+  "comparisonTable": {
+    "title": "Ratio families and the next question",
+    "columns": ["Family", "Signal", "Next evidence"],
+    "rows": [
+      ["Liquidity", "Short-term payment position", "Cash timing, aged receivables, supplier terms"],
+      ["Profitability", "Margin and return", "Price, mix, direct cost, overhead, utilisation"],
+      ["Efficiency", "Working-capital speed", "Stockouts, credit policy, product/industry context"],
+      ["Gearing", "Long-term debt exposure", "Cash stability, interest rate, maturity, project return"],
+      ["Investor", "Market valuation and payout", "Growth opportunity, risk, dividend policy, sentiment"]
+    ]
+  },
+  "diagram": { "title": "Ratio analysis chain", "type": "flow", "nodes": ["Calculate with correct formula", "Compare trend or benchmark", "Diagnose plausible cause", "Trace business consequence", "Recommend and qualify"] },
   "analysisChains": [
-    {
-      "title": "Weak liquidity",
-      "steps": [
-        "Current liabilities are high relative to liquid current assets",
-        "Short-term payment pressure rises",
-        "Suppliers may tighten credit terms",
-        "Operations can be disrupted despite reported profit"
-      ],
-      "evaluation": "A low ratio is not automatically bad: supermarkets can operate with low inventory days and strong, predictable cash sales."
-    }
+    { "title": "Slower receivables collection", "steps": ["Receivables days rise", "Cash remains tied up in customers", "Liquidity pressure increases", "The business borrows or delays suppliers", "Interest cost or supply risk reduces performance"], "evaluation": "Longer terms may support sales; target overdue or weak-credit accounts rather than all customers." },
+    { "title": "Margin improvement through cheaper inputs", "steps": ["Unit cost of sales falls", "Gross profit margin rises if price/volume hold", "Operating profit and ROCE may rise", "More internal finance becomes available", "Price, investment or dividend choices widen"], "evaluation": "If quality falls, complaints and lost demand can reverse the apparent gain." },
+    { "title": "Debt-financed expansion", "steps": ["Non-current liabilities and capital employed rise", "Gearing and interest commitments increase", "New capacity may raise revenue and operating profit", "ROCE improves only if incremental return is strong", "Shareholder return may rise or financial risk may dominate"], "evaluation": "Judge cash-flow stability, existing gearing, interest rate, utilisation and time before the project earns." }
   ],
   "examTips": [
-    "Never call a ratio 'good' without a benchmark/context.",
-    "After calculation use: direction -> cause -> consequence -> possible action.",
-    "Use the Cambridge gearing formula: non-current liabilities / capital employed x100."
+    "Write formula, substituted figures, answer and unit; then interpret rather than stopping at arithmetic.",
+    "Compare percentages in percentage points unless you deliberately calculate percentage change.",
+    "Use profit from operations and Cambridge capital employed in ROCE and gearing.",
+    "A ratio is a symptom: support causes with case evidence and explain a consequence.",
+    "End with a conditional judgement based on objectives, benchmark quality and time horizon."
   ],
   "commonMistakes": [
-    "Using revenue instead of credit sales/purchases where credit figures are provided.",
-    "Assuming lower inventory is always better.",
-    "Comparing unlike companies without industry/accounting context.",
-    "Mixing gross and operating margins."
+    "Using total sales or purchases when credit figures are supplied for turnover days.",
+    "Assuming faster inventory turnover or longer payables days is always better.",
+    "Calling a ratio good or bad without trend, competitor, target or business-model context.",
+    "Using net profit instead of profit from operations in operating margin or ROCE.",
+    "Treating correlation between two ratios as proof of the cause."
   ],
   "quickRecall": [
-    "liquidity=short-term payment",
-    "margin=profit/revenue",
-    "ROCE=operating profit/capital",
-    "efficiency=inventory/receivable/payable",
-    "gearing=long-term debt exposure",
-    "ratios need benchmarks"
+    { "question": "Why does acid test remove inventory?", "answer": "Inventory may be slower or less certain to convert into cash than other current assets." },
+    { "question": "What is Cambridge capital employed?", "answer": "Issued shares plus reserves plus non-current liabilities." },
+    { "question": "What does a falling gross margin direct you to investigate?", "answer": "Selling price, product mix and cost of sales before operating expenses." },
+    { "question": "Why are lower receivables days not automatically best?", "answer": "Strict credit may improve cash but lose valuable customers or sales." },
+    { "question": "What does gearing measure?", "answer": "Non-current liabilities as a percentage of capital employed." },
+    { "question": "How can dividend yield rise for a negative reason?", "answer": "An unchanged dividend divided by a falling share price produces a higher yield." },
+    { "question": "What is the ratio-analysis answer chain?", "answer": "Calculate, compare, diagnose, explain consequence, recommend and qualify." }
   ],
-  "relatedTopics": [
-    "10.1",
-    "10.3",
-    "10.4"
-  ]
+  "relatedTopics": ["5.3", "5.4", "10.1", "10.3", "10.4"]
 }

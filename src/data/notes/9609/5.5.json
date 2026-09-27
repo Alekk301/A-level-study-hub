@@ -58,14 +58,21 @@
       "id": "01-why-businesses-use-budgets",
       "title": "Why businesses use budgets",
       "content": [
-        "Budgets convert objectives into resource limits and performance targets. They support planning, coordination, allocation, communication, motivation and control. Comparing actuals with budget highlights where investigation and corrective action may be needed."
+        "Budgets convert objectives into resource limits and performance targets. A budget holder is responsible for agreeing and controlling a particular budget. Budgets support planning, coordination, allocation, communication, motivation and control. Comparing actuals with budget highlights where investigation and corrective action may be needed."
       ],
       "bullets": [
         "A sales budget influences production, staffing, purchasing and cash budgets, so assumptions must be coordinated.",
         "A budget does not itself reduce cost; managers must act on the information.",
         "Participation can improve information and acceptance, but negotiation may create budget slack."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "5.5-6-1",
+          "kind": "worked",
+          "label": "Revenue variance with action",
+          "content": "Budgeted revenue is $400,000 and actual revenue is $360,000. Revenue variance = actual - budget = $360,000 - $400,000 = -$40,000, so it is $40,000 adverse. The budget holder should investigate price, volume and market causes before corrective action; the label alone does not show who is responsible."
+        }
+      ]
     },
     {
       "id": "02-budget-versus-forecast",

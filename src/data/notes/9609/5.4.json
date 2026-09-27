@@ -79,10 +79,10 @@
       "id": "02-using-total-average-and-marginal-information",
       "title": "Using total, average and marginal information",
       "content": [
-        "Total cost supports profit and cash planning; average cost informs long-run pricing and efficiency comparison; marginal cost is the extra cost of one more unit. Decisions may fail if managers use historic averages for a short-run order whose relevant extra cost is different."
+        "Full costing allocates both fixed and variable costs to output, so total and average cost support long-run pricing, profit and performance decisions. Contribution costing focuses on selling price minus variable cost and is useful for short-run choices when fixed cost will not change. Marginal cost is the extra cost of one more unit. Decisions may fail if managers use historic full-cost averages for a special order whose relevant extra cost is different."
       ],
       "bullets": [
-        "Price normally needs to cover total cost in the long run.",
+        "Price normally needs to cover full cost in the long run; contribution costing is not a reason to accept permanently loss-making prices.",
         "A special order above variable cost can add contribution when spare capacity exists, but it may affect regular customers or trigger extra fixed cost.",
         "Cost data should be current, relevant and interpreted with qualitative evidence."
       ],
@@ -124,7 +124,7 @@
           "id": "5.4-4-1",
           "kind": "worked",
           "label": "Break-even and safety",
-          "content": "Fixed cost $45,000; price $25; variable cost $10. Contribution = $15. Break-even = 45,000 ÷ 15 = 3,000 units. At sales of 4,200, margin of safety = 1,200 units."
+          "content": "Fixed cost $45,000; price $25; variable cost $10. Formula: contribution per unit = price − variable cost. Substitution: $25 − $10 = $15 per unit. Formula: break-even output = fixed cost ÷ contribution per unit. Substitution: $45,000 ÷ $15 = 3,000 units. At sales of 4,200 units, margin of safety = 4,200 − 3,000 = 1,200 units. Sales can therefore fall by 1,200 units before a loss begins, although the risk estimate depends on price and costs remaining valid."
         }
       ]
     },

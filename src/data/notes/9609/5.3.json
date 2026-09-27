@@ -74,7 +74,7 @@
           "id": "5.3-1-1",
           "kind": "worked",
           "label": "Three-line calculation",
-          "content": "Opening balance $4,000; inflows $18,500; outflows $23,000. Net cash flow = −$4,500. Closing balance = $4,000 − $4,500 = −$500, so at least $500 plus a safety buffer is needed before period end."
+          "content": "Opening balance $4,000; inflows $18,500; outflows $23,000. Formula: net cash flow = total inflows − total outflows. Substitution: $18,500 − $23,000 = −$4,500 for the period. Formula: closing balance = opening balance + net cash flow. Substitution: $4,000 + (−$4,500) = −$500. The business faces a $500 cash shortage, so it needs at least a $500 overdraft plus a safety buffer before period end."
         }
       ]
     },
@@ -133,7 +133,7 @@
       "id": "06-increasing-or-accelerating-inflows",
       "title": "Increasing or accelerating inflows",
       "content": [
-        "Strengthen credit checks, set shorter terms, invoice promptly, chase overdue accounts, offer an economically justified early-payment discount, require deposits, increase cash sales, factor debts, sell unused assets or seek suitable finance."
+        "Strengthen credit control through credit checks, credit limits, shorter terms, prompt invoices and systematic pursuit of overdue accounts. The business may also offer an economically justified early-payment discount, require deposits, increase cash sales, factor debts, sell unused assets or seek suitable finance."
       ],
       "bullets": [
         "Tighter credit may lose customers to rivals.",

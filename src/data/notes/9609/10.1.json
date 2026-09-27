@@ -6,147 +6,186 @@
   "unitTitle": "A Level",
   "title": "Financial statements",
   "contentDepth": "full",
-  "overview": "Financial statements communicate performance over a period and financial position at a date. At A2 you must interpret the statement of profit or loss and statement of financial position, understand relationships between them, and know inventory valuation using net realisable value and straight-line depreciation.",
+  "overview": "Financial statements turn transactions into evidence about performance over a period and financial position at one date. Cambridge does not require candidates to prepare a complete set of accounts, but it does require confident amendment, calculation and interpretation: trace each change through profit, retained earnings, assets, liabilities and equity, then explain the business consequence.",
   "syllabusPoints": [
     "Explain and interpret the statement of profit or loss and effects of changes on its figures.",
     "Explain and interpret the statement of financial position and links with profit data.",
     "Explain inventory-valuation difficulty and net realisable value.",
-    "Calculate/explain straight-line depreciation and its effect on profit and asset values."
+    "Calculate/explain straight-line depreciation and its effect on profit and asset values.",
+    "Amend statement figures accurately and use the result to support a business decision."
   ],
   "definitions": [
-    {
-      "term": "Gross profit",
-      "definition": "Revenue minus cost of sales."
-    },
-    {
-      "term": "Profit from operations",
-      "definition": "Gross profit minus operating expenses."
-    },
-    {
-      "term": "Net current assets",
-      "definition": "Current assets minus current liabilities."
-    },
-    {
-      "term": "Net realisable value",
-      "definition": "Expected selling value of inventory less the costs necessary to complete/sell it."
-    },
-    {
-      "term": "Depreciation",
-      "definition": "Allocation of a non-current asset's depreciable amount over its useful life."
-    },
-    {
-      "term": "Retained earnings",
-      "definition": "Profits retained in the business rather than distributed to owners."
-    }
+    { "term": "Revenue", "definition": "Income earned from normal sales during the accounting period, whether or not all customers have paid cash yet." },
+    { "term": "Cost of sales", "definition": "The direct cost of the goods or services sold during the period." },
+    { "term": "Gross profit", "definition": "Revenue minus cost of sales; evidence about pricing and direct-cost control before operating expenses." },
+    { "term": "Profit from operations", "definition": "Gross profit minus operating expenses; also called operating profit in the syllabus formula appendix." },
+    { "term": "Net current assets", "definition": "Current assets minus current liabilities, showing the accounting working-capital position at the reporting date." },
+    { "term": "Equity", "definition": "Owners' long-term claim on net assets, including issued share capital and reserves." },
+    { "term": "Retained earnings", "definition": "Accumulated profit kept in the business after taxation and dividends rather than distributed to owners." },
+    { "term": "Net realisable value", "definition": "Expected selling value of inventory minus further costs needed to complete and sell it." },
+    { "term": "Depreciation", "definition": "The annual allocation of a non-current asset's depreciable amount over its estimated useful life." },
+    { "term": "Carrying value", "definition": "The cost of a non-current asset minus accumulated depreciation shown in the statement of financial position." }
   ],
   "sections": [
     {
       "id": "01-statement-of-profit-or-loss",
-      "title": "Statement of profit or loss",
+      "title": "Statement of profit or loss: the performance story",
       "content": [
-        "Shows performance over a period. Typical flow: revenue -> cost of sales -> gross profit -> operating expenses -> profit from operations -> finance/tax/other items -> profit for the year. Trace a change through every affected subtotal rather than discussing one line only."
+        "The statement covers a period. Its sequence is revenue - cost of sales = gross profit; gross profit - operating expenses = profit from operations; after finance items and taxation comes profit for the year; after dividends, the balance retained can strengthen reserves. Each subtotal answers a different question, so never call every result simply 'profit'.",
+        "A change must be followed through. A higher selling price may raise revenue and gross profit only if volume does not fall enough. Higher material cost raises cost of sales and reduces both gross and operating profit. Higher administration cost leaves gross profit unchanged but reduces profit from operations."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use the stated period and currency units before calculating.",
+        "Credit sales enter revenue before the cash may arrive, so profit is not the bank balance.",
+        "Taxation and dividends occur after operating profit; dividends are a distribution of profit, not an operating expense."
+      ],
+      "examples": [
+        { "id": "10.1-1-1", "kind": "worked", "label": "Amending operating profit", "content": "Revenue $800,000 - cost of sales $500,000 = gross profit $300,000. Operating expenses of $190,000 give profit from operations = $300,000 - $190,000 = $110,000. If energy expense rises by $15,000, revised operating profit = $95,000. The $15,000 fall reduces the buffer for interest, taxation, dividends and reinvestment." }
+      ]
     },
     {
       "id": "02-statement-of-financial-position",
-      "title": "Statement of financial position",
+      "title": "Statement of financial position: resources and financing",
       "content": [
-        "A snapshot at a specific date showing non-current assets, current assets, current liabilities, net current assets, non-current liabilities and equity/reserves. It indicates resources controlled and financing obligations."
+        "The statement is a snapshot at one date. Non-current assets support more than one period. Current assets include inventory, trade receivables and cash. Current liabilities are due within the short term; net current assets equal current assets minus current liabilities. Equity contains issued shares and reserves.",
+        "The accounting equation links the two sides: assets are financed by liabilities and equity. A large asset base is not proof of liquidity because premises or machinery cannot normally pay tomorrow's supplier bill."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "A bank loan received increases cash and liabilities; it does not create profit.",
+        "Buying machinery for cash changes the mix of assets immediately, then depreciation affects later profit and carrying value.",
+        "Net current assets can be positive while cash is weak if inventory is obsolete or receivables are slow."
+      ],
+      "examples": [
+        { "id": "10.1-2-1", "kind": "worked", "label": "Working-capital position", "content": "Inventory $70,000 + receivables $55,000 + cash $15,000 = current assets $140,000. Current liabilities are $95,000. Net current assets = $140,000 - $95,000 = $45,000. The positive $45,000 does not remove liquidity risk because $125,000 is tied up in inventory and receivables." }
+      ]
     },
     {
       "id": "03-how-the-statements-connect",
-      "title": "How the statements connect",
+      "title": "How the two statements connect",
       "content": [
-        "Retained profit can increase equity/reserves. Depreciation reduces profit and reduces the carrying value of non-current assets. Inventory valuation affects both current assets and cost of sales/profit. The statements therefore must be analysed together."
+        "Profit retained during the period adds to reserves/equity, but the cash effect depends on credit timing and other transactions. Depreciation reduces operating profit and the asset's carrying value. An inventory write-down raises cost of sales or records a loss, reducing profit, while also reducing current assets. Dividends reduce retained earnings and cash when paid.",
+        "State the line affected in the statement of profit or loss, the line affected in the statement of financial position and the decision consequence."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Higher closing inventory can raise reported profit by reducing cost of sales, but only if the valuation is recoverable.",
+        "A profitable period can still end with less cash after asset purchases, debt repayment, dividends or slower customer payment.",
+        "A depreciation charge is non-cash in the current period, but the original asset purchase was a cash investment."
+      ],
+      "examples": [
+        { "id": "10.1-3-1", "kind": "analysis", "label": "Trace the connection", "content": "A $12,000 inventory write-down reduces inventory/current assets by $12,000 and reduces profit for the year by $12,000. Lower profit then reduces retained earnings. Managers should investigate damage, obsolescence or weak demand rather than treating the accounting adjustment as the original cause." }
+      ]
     },
     {
       "id": "04-inventory-valuation-and-nrv",
-      "title": "Inventory valuation and NRV",
+      "title": "Inventory valuation and net realisable value",
       "content": [
-        "Inventory may become damaged, obsolete or fall in selling price. Reporting it above what can be recovered overstates assets and potentially profit. NRV reflects expected recoverable amount after costs needed to complete/sell."
+        "Inventory is difficult to value when items are damaged, obsolete, unfinished, customised or subject to falling prices. Net realisable value (NRV) asks what can actually be recovered: expected selling price minus completion and selling costs. If NRV is below recorded cost, using the lower recoverable figure avoids overstating current assets and profit.",
+        "NRV still depends on estimates. Evidence should include recent selling prices, defect rates, disposal cost, demand and product age."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Do not subtract costs already incurred again; deduct future costs needed to complete and sell.",
+        "A write-down changes reported figures but does not itself create an immediate cash outflow.",
+        "Overvaluation can make liquidity and profitability appear stronger than reality."
+      ],
+      "examples": [
+        { "id": "10.1-4-1", "kind": "worked", "label": "Net realisable value decision", "content": "An item cost $45. Expected selling price is $50, but completion and selling cost is $12. Net realisable value = $50 - $12 = $38 per item. Because $38 is below the $45 recorded cost, value inventory at $38. The $7 write-down per item lowers inventory/current assets and reported profit." }
+      ]
     },
     {
       "id": "05-straight-line-depreciation",
       "title": "Straight-line depreciation",
       "content": [
-        "The same depreciation expense is charged each year across useful life. It reduces reported profit and the carrying amount of the asset but is not itself a current-year cash payment."
+        "Straight-line depreciation spreads cost minus expected residual value equally over estimated useful life. The annual expense reduces profit from operations. Accumulated depreciation reduces the asset's carrying value. There is no cash payment when the annual charge is recorded.",
+        "Useful life and residual value are estimates. A shorter useful life or lower residual value increases annual depreciation and lowers current reported profit. Comparisons are weaker when policies or asset ages differ."
       ],
-      "bullets": [],
+      "bullets": [
+        "Depreciable amount = original cost - residual value.",
+        "Carrying value after n years = cost - accumulated depreciation, subject to not falling below residual value.",
+        "Depreciation matches asset use with the periods benefiting, but it does not create a replacement fund."
+      ],
       "examples": [
-        {
-          "id": "05-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "Annual depreciation = (cost - residual value) / useful life"
-        }
+        { "id": "10.1-5-1", "kind": "worked", "label": "Depreciation and effect", "content": "A machine costs $120,000, has residual value $20,000 and useful life 5 years. Annual depreciation = ($120,000 - $20,000) / 5 = $20,000 per year. After two years, carrying value = $120,000 - (2 x $20,000) = $80,000. Each annual $20,000 charge lowers profit and asset value but is not a current cash outflow." }
       ]
     },
     {
-      "id": "06-using-statements-strategically",
-      "title": "Using statements strategically",
+      "id": "06-amending-statements",
+      "title": "Amending figures without losing the meaning",
       "content": [
-        "Statements provide evidence of profitability, liquidity, asset use and financing but are mainly historical. Managers/investors should combine them with ratios, cash-flow forecasts and non-financial information."
+        "For an amendment, identify the transaction, decide whether it affects performance, position or both, recalculate the relevant subtotal and state the consequence. Avoid rebuilding irrelevant lines. A depreciation revision or inventory write-down reduces profit; a new loan increases cash and non-current liabilities but only later interest affects profit.",
+        "Show each subtotal to protect follow-through marks. A visible method demonstrates correct classification even if one arithmetic result is wrong."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Label whether the result is dollars, a reporting date or an annual figure.",
+        "Do not treat the purchase of a non-current asset as the whole year's operating expense.",
+        "Check that assets remain consistent with liabilities plus equity after an amendment."
+      ],
+      "examples": [
+        { "id": "10.1-6-1", "kind": "method", "label": "Four-step amendment", "content": "Classify -> calculate -> trace -> interpret. A $9,000 higher depreciation charge reduces operating profit, retained earnings and non-current asset carrying value by $9,000; it may worsen profitability ratios but does not directly reduce this year's cash." }
+      ]
+    },
+    {
+      "id": "07-using-statements-for-decisions",
+      "title": "Using statements for decisions",
+      "content": [
+        "Managers use margins, working capital, assets and financing to diagnose where strategy may need to change. Lenders look for repayment capacity and security; investors consider profitability, growth, dividends and risk; suppliers consider short-term payment evidence. The same number can lead stakeholders to different questions.",
+        "Statements are historical and partly estimated. Combine them with cash-flow forecasts, ratios, budgets, market demand, employee capability, capacity, environmental impact and objectives."
+      ],
+      "bullets": [
+        "A fall in operating profit may justify cost diagnosis, not an automatic across-the-board cut.",
+        "Rising assets after investment are positive only if utilisation and future returns are credible.",
+        "A judgement should identify the decision, evidence, limitation and further information needed."
+      ],
+      "examples": [
+        { "id": "10.1-7-1", "kind": "application", "label": "Decision from linked evidence", "content": "Operating profit falls while receivables rise. One hypothesis is weaker credit control: cash arrives later and bad-debt risk rises. Before tightening terms, compare customer mix, sales growth, overdue age and competitor terms because strict collection could lose valuable customers." }
+      ]
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": {
-    "title": "How statements connect",
-    "type": "flow",
-    "nodes": [
-      "Trading activity",
-      "Profit or loss",
-      "Retained earnings",
-      "Financial position"
+  "formulas": [
+    { "label": "Gross profit", "expression": "revenue - cost of sales", "note": "Result before operating expenses." },
+    { "label": "Profit from operations", "expression": "gross profit - operating expenses", "note": "Use the statement's stated expense lines and units." },
+    { "label": "Net current assets", "expression": "current assets - current liabilities", "note": "An accounting position, not necessarily cash immediately available." },
+    { "label": "Net realisable value", "expression": "expected selling price - costs to complete and sell", "note": "Use when recoverable value is below recorded cost." },
+    { "label": "Straight-line depreciation", "expression": "(cost - residual value) / useful life", "note": "The syllabus assesses straight-line depreciation only." }
+  ],
+  "comparisonTable": {
+    "title": "What the statements reveal",
+    "columns": ["Evidence", "Main insight", "Do not conclude automatically"],
+    "rows": [
+      ["Gross profit", "Pricing and direct-cost outcome", "That cash has been collected"],
+      ["Profit from operations", "Operating performance", "That every cost reduction is sustainable"],
+      ["Net current assets", "Short-term accounting position", "That every current asset is liquid"],
+      ["Non-current assets", "Long-term productive resources", "That capacity is well used"],
+      ["Equity and liabilities", "How assets are financed", "That lower debt is always optimal"]
     ]
   },
+  "diagram": { "title": "How accounting changes flow", "type": "flow", "nodes": ["Transaction or estimate", "Statement line and subtotal", "Profit retained or distributed", "Assets, liabilities and equity", "Ratio and strategy consequence"] },
   "analysisChains": [
-    {
-      "title": "Higher depreciation expense",
-      "steps": [
-        "Annual operating expenses increase",
-        "Reported profit falls",
-        "The asset's carrying value falls",
-        "Cash does not leave the business at the point depreciation is charged"
-      ],
-      "evaluation": "Depreciation methods are accounting estimates, so comparisons require consistent policies and attention to asset age."
-    }
+    { "title": "Slower customer payment", "steps": ["Credit sales still enter revenue", "Trade receivables rise before cash arrives", "Profit may look healthy while cash weakens", "The business may borrow or delay suppliers", "Finance cost and relationship risk increase"], "evaluation": "Longer credit may win valuable customers, so segment by risk and contribution rather than removing credit indiscriminately." },
+    { "title": "Inventory written down to NRV", "steps": ["Expected recovery falls below recorded cost", "Inventory/current assets are reduced", "Cost or loss rises and profit falls", "Retained earnings and reported liquidity weaken", "Managers receive a realistic warning about obsolete stock"], "evaluation": "Use current evidence; excessive caution can understate performance just as optimism can overstate it." },
+    { "title": "Higher annual depreciation", "steps": ["Operating expense increases", "Profit from operations and retained earnings fall", "Non-current asset carrying value falls", "Profitability ratios may weaken", "Current cash is unchanged by recording the charge"], "evaluation": "A higher charge may reflect shorter useful life rather than deteriorating cash performance, so compare policies and asset age." }
   ],
   "examTips": [
-    "If a transaction/change affects both statements, explain both effects.",
-    "Depreciation is an expense/allocation, not a cash outflow in the year it is charged.",
-    "Use statement terminology precisely."
+    "Show formula, substitution, answer and unit before interpreting the business effect.",
+    "Trace an amendment through both statements when it affects both; name the exact lines.",
+    "Use profit from operations for Cambridge operating-margin and ROCE work.",
+    "Distinguish a non-cash depreciation charge from the original cash purchase.",
+    "Use statements as evidence, then qualify with timing, estimates and non-financial information."
   ],
   "commonMistakes": [
-    "Confusing gross profit and operating profit.",
-    "Putting non-current liabilities into current liabilities.",
-    "Saying depreciation creates cash for replacement.",
-    "Ignoring obsolescence in inventory valuation."
+    "Treating revenue, gross profit, operating profit and cash as interchangeable.",
+    "Recording the whole purchase price of a non-current asset as the current year's operating expense.",
+    "Using expected selling price as NRV without deducting completion and selling costs.",
+    "Saying depreciation creates cash or guarantees replacement finance.",
+    "Calling positive net current assets proof that every payment can be made on time."
   ],
   "quickRecall": [
-    "gross profit=revenue-cost of sales",
-    "operating profit=gross profit-operating expenses",
-    "SFP=snapshot",
-    "NRV=recoverable inventory value",
-    "straight-line=equal annual charge"
+    { "question": "What is the sequence from revenue to operating profit?", "answer": "Revenue - cost of sales = gross profit; gross profit - operating expenses = profit from operations." },
+    { "question": "Why can profit rise before cash?", "answer": "Credit sales enter revenue when earned, while customer cash may arrive later." },
+    { "question": "How is NRV calculated?", "answer": "Expected selling price minus further costs needed to complete and sell inventory." },
+    { "question": "What does an inventory write-down affect?", "answer": "It reduces inventory/current assets and profit, which also reduces retained earnings." },
+    { "question": "How is straight-line depreciation calculated?", "answer": "Cost minus residual value, divided by useful life." },
+    { "question": "Does depreciation directly reduce current cash?", "answer": "No. It is an accounting allocation; the asset purchase caused the cash outflow." },
+    { "question": "Why is a statement of financial position a snapshot?", "answer": "It reports assets, liabilities and equity at one specific date." }
   ],
-  "relatedTopics": [
-    "5.4",
-    "10.2",
-    "10.4"
-  ]
+  "relatedTopics": ["5.1", "5.3", "5.5", "10.2", "10.4"]
 }

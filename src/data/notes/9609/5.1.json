@@ -69,7 +69,14 @@
         "Timing matters: equipment may be a one-off capital need while several months of wages are recurring revenue expenditure.",
         "Contingency finance recognises that forecasts are uncertain, but unused borrowing can still cost interest or fees."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "5.1-3-1",
+          "kind": "worked",
+          "label": "Working-capital check",
+          "content": "Current assets are $24,000 and current liabilities are $17,000. Working capital = $24,000 - $17,000 = $7,000. The positive $7,000 buffer suggests some short-term payment capacity, but the manager must still check how quickly inventory and receivables become cash."
+        }
+      ]
     },
     {
       "id": "02-why-established-businesses-need-finance",
@@ -93,7 +100,7 @@
       "bullets": [
         "Inventory is a current asset but may be slow to sell or lose value.",
         "Trade receivables are recorded assets but do not pay bills until customers pay.",
-        "Trade credit from suppliers delays cash outflow but creates a current liability."
+        "Trade credit from suppliers delays cash outflow but creates trade payables, a current liability."
       ],
       "examples": []
     },
@@ -126,7 +133,7 @@
       "id": "06-liquidity-and-business-survival",
       "title": "Liquidity and business survival",
       "content": [
-        "Liquidity is about timing and access, not only total asset value. A firm unable to pay a supplier, employee, tax authority or lender may lose essential inputs, face legal action or be forced into liquidation even if its property and equipment exceed its debts."
+        "Liquidity is about timing and access, not only total asset value. A firm unable to pay a supplier, employee, tax authority or lender may lose essential inputs, face legal action or be forced into insolvency even if its property and equipment exceed its debts. A sole trader may face bankruptcy, while an insolvent company may enter administration so an appointed administrator can try to rescue it or achieve a better result for creditors; if rescue is not viable, liquidation sells assets and closes the company."
       ],
       "bullets": [
         "Forecast cash by period and identify the size and duration of the maximum shortage.",

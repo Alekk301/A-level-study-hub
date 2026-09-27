@@ -6,7 +6,7 @@
   "unitTitle": "A Level",
   "title": "Investment appraisal",
   "contentDepth": "full",
-  "overview": "Investment appraisal compares long-term projects using payback, Accounting Rate of Return (ARR) and Net Present Value (NPV). You must calculate each method, understand what it measures, compare its strengths/limitations and integrate qualitative strategic factors before recommending a project.",
+  "overview": "Investment appraisal tests whether a long-term project fits a business's liquidity, return and value objectives. Payback, Accounting Rate of Return (ARR) and Net Present Value (NPV) answer different questions, so the strongest recommendation calculates all available evidence, explains conflicting rankings and integrates forecast risk, strategic fit and stakeholder effects.",
   "syllabusPoints": [
     "Explain why businesses use investment appraisal.",
     "Calculate and interpret payback period.",
@@ -15,177 +15,174 @@
     "Use qualitative and quantitative factors to make investment decisions and compare method limitations."
   ],
   "definitions": [
-    {
-      "term": "Payback period",
-      "definition": "Time required for cumulative net cash inflows to recover the initial investment."
-    },
-    {
-      "term": "ARR",
-      "definition": "Average annual accounting profit as a percentage of average investment."
-    },
-    {
-      "term": "Discount factor",
-      "definition": "Factor converting a future cash flow into present value."
-    },
-    {
-      "term": "NPV",
-      "definition": "Total present value of future net cash flows minus the initial investment."
-    },
-    {
-      "term": "Time value of money",
-      "definition": "The principle that money available now is worth more than the same nominal amount received later."
-    }
+    { "term": "Investment appraisal", "definition": "Quantitative and qualitative assessment of a long-term capital project before resources are committed." },
+    { "term": "Net cash flow", "definition": "Cash inflow minus cash outflow for a period; used by payback and NPV." },
+    { "term": "Payback period", "definition": "Time required for cumulative net cash inflows to recover the initial investment." },
+    { "term": "Accounting Rate of Return (ARR)", "definition": "Average annual accounting profit as a percentage of average investment." },
+    { "term": "Average investment", "definition": "The average capital tied up, commonly (initial investment plus residual value) divided by two when the question supplies those figures." },
+    { "term": "Discount factor", "definition": "Multiplier that converts a future cash flow into present value at a stated discount rate." },
+    { "term": "Net Present Value (NPV)", "definition": "Total present value of future net cash flows minus initial investment." },
+    { "term": "Time value of money", "definition": "Money received now is worth more than the same nominal amount later because it can earn a return and future receipt is uncertain." }
   ],
   "sections": [
     {
       "id": "01-why-appraise-investments",
-      "title": "Why appraise investments",
+      "title": "Why investment appraisal is needed",
       "content": [
-        "Major capital projects tie up finance for years and involve uncertain future returns. Appraisal provides structured evidence on liquidity, return and value, helping compare alternatives and justify resource allocation."
+        "Capital projects consume scarce finance, affect capacity and cost for years and may be difficult to reverse. Appraisal compares liquidity speed, accounting return and value after recognising timing. It supports prioritisation, lending discussions and post-investment targets.",
+        "A model does not remove uncertainty. Demand, price, operating cost, project life, residual value and discount rate are forecasts. Managers should use sensitivity or scenarios and identify which assumption would reverse the decision."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Use incremental project cash flows, not total business sales.",
+        "Keep cash flows for payback/NPV separate from accounting profit for ARR.",
+        "Compare results with the firm's target payback, target ARR and required return where provided."
+      ],
+      "examples": [
+        { "id": "10.3-1-1", "kind": "application", "label": "Decision frame", "content": "A cash-constrained technology firm may prioritise payback because obsolescence and liquidity risk are high. A financially secure firm comparing long-lived projects may place more weight on positive NPV and strategic capacity. Neither criterion is automatically best without the objective and constraint." }
+      ]
     },
     {
       "id": "02-payback",
-      "title": "Payback",
+      "title": "Payback period",
       "content": [
-        "Add net cash inflows until initial cost is recovered. Short payback is useful when liquidity/risk/technology change matter, but ignores cash flows after payback and usually ignores time value of money."
+        "List annual net cash inflows and accumulate them until they recover initial cost. If recovery occurs during a year and flows are assumed even, divide the amount still unrecovered at the start of that year by that year's inflow. State years and months or a decimal year.",
+        "Short payback reduces the time cash is exposed and can help liquidity, especially where technology or demand changes quickly. It ignores cash flows after payback and usually ignores time value, so it cannot measure total profitability or value."
       ],
-      "bullets": [],
+      "bullets": [
+        "Decision rule: accept if payback is within the target, or prefer the shorter payback if all else is comparable.",
+        "Subtract each year's net cash flow from the unrecovered balance to avoid cumulative errors.",
+        "A project paying back quickly can still have low lifetime return."
+      ],
       "examples": [
-        {
-          "id": "02-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "If £100k is invested and £80k has been recovered after year 2, with £40k in year 3, another £20k/£40k=0.5 year -> payback 2.5 years."
-        }
+        { "id": "10.3-2-1", "kind": "worked", "label": "Payback with a partial year", "content": "Initial investment $100,000. Net cash inflows are $40,000 in year 1, $40,000 in year 2 and $40,000 in year 3. After year 2, $80,000 has been recovered, leaving $20,000. Fraction of year 3 = $20,000 / $40,000 = 0.5 year. Payback = 2.5 years. This meets a 3-year target and limits liquidity exposure, but later cash flows still matter." }
       ]
     },
     {
       "id": "03-arr",
-      "title": "ARR",
+      "title": "Accounting Rate of Return (ARR)",
       "content": [
-        "Uses average annual accounting profit and average investment, producing a familiar percentage. It considers profitability over the project life but uses accounting profit rather than cash and ignores timing of returns."
+        "ARR uses average annual accounting profit, not cash flow. Find total accounting profit across the project, divide by project life, then divide by average investment and multiply by 100. Under the standard convention, average investment is (initial investment + residual value) / 2; follow any convention explicitly specified in the question.",
+        "ARR provides a percentage familiar for targets and comparison and considers profit across the life. It ignores when profit occurs, depends on depreciation and accounting estimates, and may be inconsistent where conventions differ."
       ],
-      "bullets": [],
+      "bullets": [
+        "Decision rule: accept if ARR exceeds the target or finance benchmark, subject to risk and strategy.",
+        "Do not put total cash inflow or revenue in the numerator.",
+        "Show the average-profit and average-investment stages before the percentage."
+      ],
       "examples": [
-        {
-          "id": "03-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "ARR = Average annual profit / Average investment x100"
-        }
+        { "id": "10.3-3-1", "kind": "worked", "label": "ARR with average investment", "content": "Initial investment $180,000; residual value $20,000; project life 4 years; total accounting profit $100,000. Average annual profit = $100,000 / 4 = $25,000 per year. Average investment = ($180,000 + $20,000) / 2 = $100,000. ARR = $25,000 / $100,000 x 100 = 25%. It exceeds a 20% target, so it passes the accounting-return test, but timing and forecast risk still need evaluation." }
       ]
     },
     {
       "id": "04-npv",
-      "title": "NPV",
+      "title": "Net Present Value (NPV)",
       "content": [
-        "Discount each future net cash flow at the required rate and subtract the initial cost. Positive NPV means discounted inflows exceed the initial investment at that required return. Higher NPV generally adds more financial value, but forecasts and discount rate may be wrong."
+        "Multiply each future net cash flow by its supplied discount factor to find present value. Add the present values and subtract the initial investment. Positive NPV means the discounted inflows exceed cost at the chosen discount rate; negative NPV fails that financial test. When projects are mutually exclusive and comparable, higher positive NPV adds more forecast value.",
+        "NPV recognises timing and all project cash flows, but depends on the accuracy of flows, life and discount rate. A single rate may not capture project-specific risk, inflation or changing finance conditions."
       ],
-      "bullets": [],
+      "bullets": [
+        "Decision rule: financially accept NPV greater than zero at the required rate.",
+        "Use the table's discount factors; do not add undiscounted and discounted figures together.",
+        "Keep the initial investment as a time-zero outflow and show its negative sign."
+      ],
       "examples": [
-        {
-          "id": "04-example-1",
-          "kind": "worked",
-          "label": "Worked example",
-          "content": "NPV = sum of discounted net cash inflows - initial investment"
-        }
+        { "id": "10.3-4-1", "kind": "worked", "label": "NPV and interpretation", "content": "The discounted year 1-5 net cash flows total $132,000 and initial investment is $120,000. NPV = $132,000 - $120,000 = +$12,000. The positive $12,000 means the project is financially acceptable at the stated discount rate and is forecast to add present value. Accept only if the cash-flow assumptions, risk and strategic fit are credible." }
       ]
     },
     {
-      "id": "05-qualitative-factors",
-      "title": "Qualitative factors",
+      "id": "05-conflicting-results-and-sensitivity",
+      "title": "When the methods disagree",
       "content": [
-        "Strategic fit, brand, employee impact, environmental effect, technological flexibility, legal constraints, risk and competitor reaction can outweigh a small numerical advantage. Quantitative appraisal supports judgement rather than replacing it."
+        "A project may pay back quickly but generate little later value, or have high NPV but slow payback. Do not average unlike measures. Explain what each method prioritises, link that priority to the business's objective and constraint, and test whether a plausible forecast change reverses the ranking.",
+        "Sensitivity can recalculate lower sales, higher operating cost, delayed launch, shorter life or a different discount rate. Focus on the assumption with the largest decision impact rather than changing every number mechanically."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Cash shortage and high uncertainty increase the relevance of payback.",
+        "Long-lived projects and shareholder-value objectives increase the relevance of NPV.",
+        "Management targets may use ARR, but accounting policy can affect comparison."
+      ],
+      "examples": [
+        { "id": "10.3-5-1", "kind": "analysis", "label": "Conflicting ranking", "content": "Project A pays back in 2.2 years with NPV $30,000; Project B pays back in 3.6 years with NPV $85,000. A may suit severe liquidity or obsolescence risk; B may add more value for a well-financed firm. Recalculate B under delayed cash inflows before recommending it." }
+      ]
     },
     {
-      "id": "06-comparing-methods",
-      "title": "Comparing methods",
+      "id": "06-qualitative-and-strategic-factors",
+      "title": "Qualitative and strategic judgement",
       "content": [
-        "Payback emphasises speed/liquidity, ARR accounting profitability and NPV timing/opportunity cost. Rankings can differ. Strong evaluation asks which criterion matters most for the business's objectives/risk and how reliable the forecasts are."
+        "Consider alignment with objectives, product/market strategy, capacity bottlenecks, quality, flexibility, skills, employee response, customer service, environmental effects, regulation, reputation, supplier dependence and competitor reaction. Availability and source of finance can constrain even a positive project.",
+        "Forecast reliability must be tested alongside strategic fit, stakeholder effects and risk. Implementation matters: disruption, training, installation, cybersecurity, maintenance and fallback arrangements can change actual cash flows and stakeholder outcomes."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "A mandatory safety or legal investment may proceed despite a weak standalone return.",
+        "A project with good figures may be rejected if it damages a core capability or exceeds management capacity.",
+        "State what evidence would change the recommendation: pilot results, orders, finance rate or sensitivity threshold."
+      ],
+      "examples": [
+        { "id": "10.3-6-1", "kind": "evaluation", "label": "Beyond the ranking", "content": "An automated line has the highest NPV but requires scarce technicians and may interrupt delivery during installation. Phase implementation or training may protect customer contracts even if it slightly lowers the numerical return." }
+      ]
+    },
+    {
+      "id": "07-exam-decision-structure",
+      "title": "Building the recommendation",
+      "content": [
+        "Start with the verified calculation and decision rule. Compare the competing method, then develop one project-specific benefit and one risk to cash, profit, objective or stakeholder. Finish with a conditional judgement stating the decisive criterion and assumption.",
+        "Official schemes separate calculation from evaluation: accurate figures do not by themselves justify the final choice. Conversely, qualitative discussion should not ignore a clear positive or negative NPV."
+      ],
+      "bullets": [
+        "Quantitative: result, unit, criterion and comparison.",
+        "Qualitative: factor, contextual mechanism and business consequence.",
+        "Judgement: objective, constraint, time horizon and reversal trigger."
+      ],
+      "examples": [
+        { "id": "10.3-7-1", "kind": "method", "label": "Recommendation sentence", "content": "Choose Project B because its +$85,000 NPV best supports long-term value and finance is available, despite slower payback; switch to A if sensitivity testing shows B's cash inflows fall enough to make NPV negative or if the firm cannot fund the 3.6-year exposure." }
+      ]
     }
   ],
   "formulas": [
-    {
-      "label": "ARR",
-      "expression": "average annual profit ÷ initial investment × 100",
-      "note": "Use the definition required by the question if a different denominator is specified."
-    },
-    {
-      "label": "NPV",
-      "expression": "sum of discounted net cash flows − initial investment",
-      "note": "A positive NPV is financially acceptable at the chosen discount rate."
-    }
+    { "label": "Payback fraction", "expression": "amount unrecovered at start of final year / net cash inflow in final year", "note": "Add completed years and state years/months." },
+    { "label": "Average annual profit", "expression": "total accounting profit over project life / number of years", "note": "ARR uses profit, not cash flow." },
+    { "label": "Average investment", "expression": "(initial investment + residual value) / 2", "note": "Use the convention stated by the question if different." },
+    { "label": "ARR (%)", "expression": "average annual profit / average investment x 100", "note": "Compare with the target return." },
+    { "label": "Present value", "expression": "net cash flow x discount factor", "note": "Use the factor for the correct year and rate." },
+    { "label": "NPV", "expression": "sum of discounted net cash flows - initial investment", "note": "Positive NPV is financially acceptable at the chosen discount rate." }
   ],
   "comparisonTable": {
-    "title": "Investment appraisal compared",
-    "columns": [
-      "Method",
-      "Main advantage",
-      "Main limitation"
-    ],
+    "title": "Investment appraisal methods",
+    "columns": ["Method", "Best insight", "Main limitation", "Useful when"],
     "rows": [
-      [
-        "Payback",
-        "Simple liquidity/risk signal",
-        "Ignores later cash flows and time value"
-      ],
-      [
-        "ARR",
-        "Shows percentage accounting return",
-        "Uses profit and ignores timing"
-      ],
-      [
-        "NPV",
-        "Includes all cash flows and time value",
-        "Depends on forecasts and discount rate"
-      ]
+      ["Payback", "Recovery speed and exposure", "Ignores later flows and usually time value", "Liquidity or obsolescence risk dominates"],
+      ["ARR", "Accounting profit percentage", "Ignores timing and depends on accounting estimates", "Management uses a return target"],
+      ["NPV", "Present value after required return", "Forecast and discount-rate sensitive", "Long-term value and timing matter"]
     ]
   },
-  "diagram": null,
+  "diagram": { "title": "Investment recommendation", "type": "flow", "nodes": ["Verify cash and profit data", "Calculate payback, ARR and NPV", "Compare decision rules", "Test assumptions and qualitative factors", "Recommend with reversal trigger"] },
   "analysisChains": [
-    {
-      "title": "Positive net present value",
-      "steps": [
-        "Discounted cash inflows exceed the initial cost",
-        "The project earns more than the chosen discount rate",
-        "Shareholder value should increase if forecasts are accurate",
-        "The project is financially acceptable"
-      ],
-      "evaluation": "NPV is only as reliable as its cash-flow forecasts and discount rate; strategic fit, risk and capacity constraints still matter."
-    }
+    { "title": "Fast payback under uncertainty", "steps": ["Initial cash is recovered sooner", "Exposure to later demand or technology change falls", "Liquidity becomes available for another use", "Borrowing need and interest risk may fall", "The project becomes more resilient"], "evaluation": "Fast recovery says nothing about later value; compare lifetime NPV and strategic benefits." },
+    { "title": "Positive NPV automation", "steps": ["Discounted inflows exceed initial cost", "The project is forecast to earn above the required return", "Capacity or unit-cost performance may improve", "Profit and future cash may strengthen", "Shareholder value can rise"], "evaluation": "Data reliability, training, downtime, demand and technology life can make the forecast wrong." },
+    { "title": "Higher discount rate", "steps": ["Future cash is discounted more heavily", "Present values fall", "NPV declines", "Marginal projects may become negative", "Capital is redirected to safer or higher-return options"], "evaluation": "The chosen rate should reflect finance opportunity cost and risk; one rate may not suit every project." }
   ],
   "examTips": [
-    "Use cash flows for payback/NPV; use accounting PROFIT for ARR.",
-    "For partial-year payback, calculate the fraction of the final year.",
-    "Positive NPV is only as reliable as the cash-flow forecasts and discount rate."
+    "Use net cash flow for payback and NPV, but accounting profit and average investment for ARR.",
+    "Show formula, substitution, answer and unit; use the decision rule explicitly.",
+    "For partial-year payback, divide the unrecovered balance by that year's cash inflow.",
+    "Do not let a positive NPV end the answer; test forecast reliability and strategic fit.",
+    "Resolve conflicting rankings using the business objective, constraint and time horizon."
   ],
   "commonMistakes": [
-    "Using sales revenue rather than net cash flow in payback.",
-    "Calculating ARR using cash inflow.",
-    "Automatically choosing shortest payback despite poor NPV/fit.",
-    "Forgetting the initial investment in NPV."
+    "Using revenue or profit instead of net cash flow for payback or NPV.",
+    "Using initial investment as the ARR denominator when the syllabus requires average investment.",
+    "Including depreciation as an NPV cash outflow without a stated tax cash effect.",
+    "Choosing shortest payback automatically while ignoring later cash flows.",
+    "Treating supplied discount factors as percentages rather than multipliers."
   ],
   "quickRecall": [
-    "payback=recovery time",
-    "ARR=average profit/average investment",
-    "NPV=discounted flows-initial cost",
-    "NPV recognises time value",
-    "qualitative factors still matter"
+    { "question": "What does payback measure?", "answer": "How long cumulative net cash inflows take to recover initial investment." },
+    { "question": "What data does ARR use?", "answer": "Average annual accounting profit divided by average investment, multiplied by 100." },
+    { "question": "What is the NPV acceptance rule?", "answer": "NPV above zero is financially acceptable at the stated discount rate." },
+    { "question": "Why may payback and NPV rank projects differently?", "answer": "Payback prioritises recovery speed and ignores later flows, while NPV includes timing and all forecast flows." },
+    { "question": "Name three qualitative factors.", "answer": "Strategic fit, employee/skill impact and environmental or customer consequences; finance and implementation risk also matter." },
+    { "question": "What should sensitivity analysis identify?", "answer": "Whether a plausible change in an important assumption reverses the decision." },
+    { "question": "Why is appraisal not a guarantee?", "answer": "Cash flows, project life, residual value and discount rate are forecasts or assumptions." }
   ],
-  "relatedTopics": [
-    "6.2",
-    "9.3",
-    "10.1",
-    "10.2",
-    "10.4"
-  ]
+  "relatedTopics": ["5.1", "5.2", "6.2", "9.3", "10.1", "10.2", "10.4"]
 }

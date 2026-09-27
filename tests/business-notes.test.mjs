@@ -134,6 +134,7 @@ const unitOne = ["1.1", "1.2", "1.3", "1.4", "1.5", "6.1", "6.2"];
 const unitTwo = ["2.1", "2.2", "2.3", "7.1", "7.2", "7.3", "7.4"];
 const unitThree = ["3.1", "3.2", "3.3", "8.1", "8.2"];
 const unitFour = ["4.1", "4.2", "4.3", "9.1", "9.2", "9.3"];
+const unitFive = ["5.1", "5.2", "5.3", "5.4", "5.5", "10.1", "10.2", "10.3", "10.4"];
 const baseMarketingSyllabusPoints = {
   "3.1": [
     "Explain the role of marketing and the relationship between marketing and corporate objectives.",
@@ -219,6 +220,79 @@ const baseOperationsSyllabusPoints = {
     "Explain ERP and its effect on efficiency.",
     "Analyse lean production: Kaizen, quality circles, simultaneous engineering, cell production, JIT and waste management.",
     "Construct/interpret CPA networks, critical paths, minimum duration, total/free float and evaluate CPA.",
+  ],
+};
+
+const baseFinanceSyllabusPoints = {
+  "5.1": [
+    "Explain why start-ups and existing businesses need finance.",
+    "Distinguish start-up capital and working capital.",
+    "Distinguish capital expenditure and revenue expenditure.",
+    "Explain working capital and liquidity.",
+    "Distinguish cash from profit and analyse why profitable businesses may fail.",
+    "Assess finance needs by purpose, amount and time period.",
+  ],
+  "5.2": [
+    "Distinguish internal and external sources of finance.",
+    "Analyse retained profit, sale of assets and owner investment.",
+    "Analyse share capital, loans, overdrafts, trade credit, debt factoring, grants, crowdfunding and microfinance.",
+    "Analyse leasing, hire purchase, venture capital and debentures/long-term debt.",
+    "Distinguish short-, medium- and long-term finance.",
+    "Recommend finance using purpose, duration, amount, cost, control, risk, gearing, legal form and availability.",
+    "Explain information lenders and investors use when making decisions.",
+  ],
+  "5.3": [
+    "Distinguish cash inflows, cash outflows, net cash flow, opening balance and closing balance.",
+    "Construct and amend cash-flow forecasts.",
+    "Explain the difference between cash and profit.",
+    "Analyse the uses and limitations of cash-flow forecasts.",
+    "Analyse causes of cash-flow problems.",
+    "Assess methods of improving cash flow.",
+  ],
+  "5.4": [
+    "Distinguish fixed, variable, total, average, direct and indirect costs.",
+    "Calculate total cost, average cost, total revenue, profit and contribution.",
+    "Calculate break-even output and margin of safety.",
+    "Construct and interpret break-even charts.",
+    "Analyse how changes in price, fixed cost, variable cost and output affect break-even and profit.",
+    "Assess the uses and limitations of cost and break-even information.",
+  ],
+  "5.5": [
+    "Explain the purposes of budgets and the role of budget holders.",
+    "Distinguish budgets from forecasts.",
+    "Explain revenue, cost, profit and cash budgets.",
+    "Compare incremental, zero-based and flexible budgeting.",
+    "Calculate and interpret favourable and adverse variances.",
+    "Analyse the benefits, behavioural effects and limitations of budgeting.",
+  ],
+  "10.1": [
+    "Explain and interpret the statement of profit or loss and effects of changes on its figures.",
+    "Explain and interpret the statement of financial position and links with profit data.",
+    "Explain inventory-valuation difficulty and net realisable value.",
+    "Calculate/explain straight-line depreciation and its effect on profit and asset values.",
+  ],
+  "10.2": [
+    "Calculate/interpret current and acid-test ratios.",
+    "Calculate/interpret ROCE, gross profit margin and operating profit margin.",
+    "Calculate/interpret inventory turnover, receivables days and payables days.",
+    "Calculate/interpret gearing.",
+    "Calculate/interpret P/E ratio, dividend yield and dividend cover.",
+    "Assess performance over time/against competitors and limitations of ratio analysis.",
+  ],
+  "10.3": [
+    "Explain why businesses use investment appraisal.",
+    "Calculate and interpret payback period.",
+    "Calculate and interpret ARR.",
+    "Calculate and interpret NPV using discounted cash flow.",
+    "Use qualitative and quantitative factors to make investment decisions and compare method limitations.",
+  ],
+  "10.4": [
+    "Explain how financial statements/annual reports support strategy and stakeholder decisions.",
+    "Assess performance over time and against competitors using accounting data and ratios.",
+    "Analyse how debt and equity financing strategies affect ratios and risk.",
+    "Analyse dividend strategy and its stakeholder/ratio effects.",
+    "Analyse how growth/other strategies affect ratios.",
+    "Evaluate limitations of published accounts and ratio analysis.",
   ],
 };
 
@@ -411,6 +485,85 @@ test("Unit 4 exam focus is topic-specific and respects AS/A Level boundaries", a
     assert.match(strategyTasks, new RegExp(term, "i"), `9.3 exam task coverage: ${term}`);
 });
 
+test("Business Unit 5 notes are exam ready", async () => {
+  for (const id of unitFive) assertExamReady(await readNote(id));
+});
+
+test("Unit 5 teaches the complete Finance syllabus through decisions and trade-offs", async () => {
+  const coverage = {
+    "5.1": ["bankruptcy", "liquidation", "administration", "trade receivables", "trade payables", "capital expenditure", "revenue expenditure"],
+    "5.2": ["owners investment", "sale and leaseback", "debenture", "venture capital", "debt factoring", "micro-finance", "crowd funding", "government grant"],
+    "5.3": ["opening balance", "closing balance", "credit control", "overtrading", "sensitivity"],
+    "5.4": ["full costing", "contribution costing", "special order", "marginal cost", "margin of safety", "break-even chart"],
+    "5.5": ["incremental", "flexible", "zero-based", "budget holder", "favourable", "adverse", "motivation"],
+    "10.1": ["cost of sales", "profit from operations", "taxation", "dividends", "reserves", "net realisable value", "straight-line"],
+    "10.2": ["current ratio", "acid test", "gross profit margin", "operating profit margin", "ROCE", "receivables", "payables", "inventory turnover", "gearing", "dividend yield", "dividend cover", "price/earnings"],
+    "10.3": ["payback", "average investment", "discount factor", "net present value", "qualitative"],
+    "10.4": ["annual report", "audit", "debt", "equity", "dividend", "growth", "window dressing", "stakeholder"],
+  };
+  for (const [id, terms] of Object.entries(coverage)) {
+    const teaching = JSON.stringify((await readNote(id)).sections);
+    for (const term of terms) assert.match(teaching, new RegExp(term, "i"), `${id}: teaching ${term}`);
+    assert.ok((await readNote(id)).sections.some(({ examples }) => examples.length > 0), `${id}: applied or worked example`);
+  }
+});
+
+test("Finance calculations show formula, substitution, answer, unit and interpretation", async () => {
+  const worked = Object.fromEntries(await Promise.all(unitFive.map(async (id) => [id, JSON.stringify((await readNote(id)).sections.flatMap(({ examples }) => examples))])));
+  assert.match(worked["5.1"], /working capital[\s\S]*\$?24[ ,]?000\s*-\s*\$?17[ ,]?000\s*=\s*\$?7[ ,]?000[\s\S]*(?:liquid|payment|short-term)/i);
+  assert.match(worked["5.3"], /\$?18[ ,]?500\s*(?:-|−)\s*\$?23[ ,]?000\s*=\s*(?:-|−)\$?4[ ,]?500[\s\S]*(?:closing|balance)[\s\S]*(?:-|−)\$?500[\s\S]*(?:shortage|overdraft|buffer)/i);
+  assert.match(worked["5.4"], /\$?45[ ,]?000\s*(?:÷|\/)[\s\S]*\$?15\s*=\s*3[ ,]?000 units[\s\S]*margin of safety[\s\S]*1[ ,]?200 units[\s\S]*(?:profit|risk|sales)/i);
+  assert.match(worked["5.5"], /revenue variance[\s\S]*\$?360[ ,]?000\s*(?:-|−)\s*\$?400[ ,]?000\s*=\s*(?:-|−)\$?40[ ,]?000[\s\S]*adverse[\s\S]*(?:investigate|performance|action)/i);
+  assert.match(worked["10.1"], /net realisable value[\s\S]*(?:45|50)[\s\S]*(?:38|40)[\s\S]*(?:inventory|profit)/i);
+  assert.match(worked["10.1"], /depreciation[\s\S]*\([\s\S]*120[ ,]?000[\s\S]*20[ ,]?000[\s\S]*5[\s\S]*20[ ,]?000 per year[\s\S]*(?:profit|asset)/i);
+  assert.match(worked["10.2"], /current ratio[\s\S]*\$?180[ ,]?000\s*(?:÷|\/)[\s\S]*\$?120[ ,]?000\s*=\s*1\.5\s*:\s*1[\s\S]*(?:liquid|liabilit)/i);
+  assert.match(worked["10.2"], /inventory turnover[\s\S]*\$?600[ ,]?000\s*(?:÷|\/)[\s\S]*\$?100[ ,]?000\s*=\s*6 times[\s\S]*(?:stock|inventory)/i);
+  assert.match(worked["10.3"], /payback[\s\S]*2\.5 years[\s\S]*(?:recover|liquid|risk)/i);
+  assert.match(worked["10.3"], /ARR[\s\S]*\$?25[ ,]?000\s*(?:÷|\/)[\s\S]*\$?100[ ,]?000\s*(?:×|x)\s*100\s*=\s*25%[\s\S]*(?:target|return|accept)/i);
+  assert.match(worked["10.3"], /NPV[\s\S]*\$?132[ ,]?000\s*(?:-|−)\s*\$?120[ ,]?000\s*=\s*\+?\$?12[ ,]?000[\s\S]*(?:positive|accept|value)/i);
+  assert.match(worked["10.4"], /gearing[\s\S]*(?:40|60)%[\s\S]*(?:interest|risk|strategy)/i);
+});
+
+test("10.2 uses every current Cambridge ratio formula and explains comparative diagnosis", async () => {
+  const note = await readNote("10.2");
+  const formulas = note.formulas.map(({ label, expression, note }) => `${label}: ${expression}. ${note ?? ""}`).join("\n");
+  for (const term of ["Current ratio", "Acid-test", "Gross profit margin", "Operating profit margin", "ROCE", "Trade receivables turnover", "Trade payables turnover", "Rate of inventory turnover", "Gearing", "Price/earnings", "Dividend yield", "Dividend cover"])
+    assert.match(formulas, new RegExp(term, "i"), `10.2 formula: ${term}`);
+  assert.match(formulas, /capital employed[\s\S]*(?:issued shares|share capital)[\s\S]*reserves[\s\S]*non-current liabilities/i);
+  assert.match(JSON.stringify(note.sections), /trend[\s\S]*(?:competitor|industry)[\s\S]*(?:cause|diagnos)[\s\S]*(?:consequence|decision)/i);
+});
+
+test("10.3 uses the syllabus ARR denominator and complete appraisal decision rules", async () => {
+  const note = await readNote("10.3");
+  const arr = note.formulas.find(({ label }) => /ARR/i.test(label));
+  assert.match(arr.expression, /average annual profit[\s\S]*average investment[\s\S]*100/i);
+  assert.doesNotMatch(arr.expression, /initial investment/i);
+  const teaching = JSON.stringify(note.sections);
+  assert.match(teaching, /positive NPV[\s\S]*(?:accept|financially acceptable)[\s\S]*discount rate/i);
+  assert.match(teaching, /forecast reliability[\s\S]*(?:strategic fit|stakeholder|risk)/i);
+});
+
+test("Unit 5 exam focus is topic-specific and every Business topic has exam practice", async () => {
+  const { businessExamFocus } = await vite.ssrLoadModule("/src/data/exam-focus/business.ts");
+  for (const id of unitFive) {
+    const focus = businessExamFocus[id];
+    assert.ok(focus?.evidence, `${id}: evidence summary`);
+    if (id.startsWith("5.")) assert.equal(focus.component, "AS Level Papers 1 and 2");
+    assert.ok(focus.tasks.length >= 2, `${id}: practice tasks`);
+    for (const task of focus.tasks) {
+      assert.ok(task.markPoints.length >= 4, `${id}: developed mark points`);
+      assert.ok(task.examinerTrap, `${id}: examiner trap`);
+    }
+  }
+  for (const id of [...unitOne, ...unitTwo, ...unitThree, ...unitFour, ...unitFive])
+    assert.ok(businessExamFocus[id], `${id}: exam focus`);
+  const asTasks = ["5.1", "5.2", "5.3", "5.4", "5.5"].flatMap((id) => businessExamFocus[id].tasks).map(JSON.stringify).join(" ");
+  assert.doesNotMatch(asTasks, /net present value|\bNPV\b|accounting rate of return|\bARR\b|published accounts|dividend yield|price\/earnings/i);
+  assert.match(JSON.stringify(businessExamFocus["10.2"].tasks), /liquidity[\s\S]*profitability[\s\S]*(?:efficiency|gearing)[\s\S]*(?:investor|dividend)/i);
+  assert.match(JSON.stringify(businessExamFocus["10.3"].tasks), /payback[\s\S]*ARR[\s\S]*NPV[\s\S]*qualitative/i);
+  assert.match(JSON.stringify(businessExamFocus["10.4"].tasks), /annual report[\s\S]*(?:debt|equity)[\s\S]*dividend[\s\S]*growth/i);
+});
+
 test("Business Unit 2 notes are exam ready", async () => {
   for (const id of unitTwo) assertExamReady(await readNote(id));
 });
@@ -482,9 +635,9 @@ test("Business Unit 1 notes are exam ready", async () => {
 });
 
 test("existing syllabus checklist indexes remain stable", async () => {
-  for (const id of [...unitOne, ...unitTwo, ...unitThree, ...unitFour]) {
+  for (const id of [...unitOne, ...unitTwo, ...unitThree, ...unitFour, ...unitFive]) {
     const note = await readNote(id);
-    const original = baseSyllabusPoints[id] ?? baseMarketingSyllabusPoints[id] ?? baseOperationsSyllabusPoints[id];
+    const original = baseSyllabusPoints[id] ?? baseMarketingSyllabusPoints[id] ?? baseOperationsSyllabusPoints[id] ?? baseFinanceSyllabusPoints[id];
     assert.deepEqual(note.syllabusPoints.slice(0, original.length), original, `${id}: original checklist indexes`);
   }
 });
