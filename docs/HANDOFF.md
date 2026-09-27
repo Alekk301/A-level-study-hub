@@ -6,8 +6,8 @@ Update this file before moving work between Codex, Claude Code, computers, or ma
 
 - Repository: <https://github.com/Alekk301/A-level-study-hub>
 - Newest development and Vercel Production Branch: `rebuild/react-vite`
-- Latest verified source at handoff preparation: `cbb210a` (`fix: align Business content with
-  syllabus boundaries`), fetched on 2026-09-27
+- Latest verified source: `68ddeb2` (`docs: add Claude transfer and operations guide (#19)`),
+  fetched on 2026-09-27
 - Vercel team: `Alevel`
 - Vercel project: `a-level-study-hub`
 - Production URL: <https://a-level-study-hub.vercel.app/>
@@ -19,10 +19,12 @@ The commit is a checkpoint, not a permanently current version.
 
 ## Current project state
 
-- The Business 9609 update is on `github/rebuild/react-vite` at `cbb210a`.
-- That branch contains 68 commits not present on `github/main`; `main` is not the newest project
+- The Business 9609 update (`cbb210a`) and the Claude handoff documentation (PR #19, formerly
+  `docs/claude-handoff`) are both merged into `github/rebuild/react-vite` at `68ddeb2`.
+- That branch contains 69 commits not present on `github/main`; `main` is not the newest project
   line and must not be used as the transfer baseline.
-- This handoff work is on `docs/claude-handoff`, based directly on `cbb210a`.
+- The project has been transferred to Claude Code on a fresh clone of `rebuild/react-vite`, with
+  the remote named `github` as the project instructions expect.
 - The application requires Node.js 22.13 or newer and npm 10 or newer.
 - `package-lock.json` is the dependency source of truth; use `npm ci`.
 - Required local verification is `npm run data:validate`, `npm run lint`, and `npm test`.
@@ -30,6 +32,19 @@ The commit is a checkpoint, not a permanently current version.
 - The repository also supports a Sites/Cloudflare-compatible Vinext build through `npm run build`.
 - No project `.env` values are referenced by the application source at this checkpoint.
 - There is no account database. Student state is stored in each browser's `localStorage`.
+
+## Latest verification
+
+On 2026-09-27, Claude Code verified a fresh clone of `68ddeb2` on Windows with Node.js 24.19.0 and
+npm 11.17.0, after `npm ci`, running the scripts from Git Bash:
+
+- data validation passed: 4 subjects, 153 topics, 104 detailed notes and 919 paper records;
+- ESLint completed without errors;
+- the Vinext and native Vercel/Next production builds passed;
+- all 65 Node tests passed.
+
+npm 11 did not run the install scripts of `esbuild`, `workerd`, `sharp` and `unrs-resolver`
+because they are not yet covered by `allowScripts`. The checks above passed without them.
 
 ## Verification during handoff preparation
 
