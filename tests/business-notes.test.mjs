@@ -533,12 +533,15 @@ test("Finance review fixes preserve anchors and teach omitted methods accurately
   };
   for (const [id, expectedIds] of Object.entries(stableIds)) {
     const sectionIds = (await readNote(id)).sections.map(({ id: sectionId }) => sectionId);
-    for (const expectedId of expectedIds) assert.ok(sectionIds.includes(expectedId), `${id}: stable section ${expectedId}`);
+    for (const expectedId of expectedIds)
+      assert.equal(sectionIds.filter((sectionId) => sectionId === expectedId).length, 1, `${id}: unique stable section ${expectedId}`);
   }
 
   const sources = JSON.stringify((await readNote("5.2")).sections);
   assert.match(sources, /taking on new partners|new partner/i);
   assert.match(sources, /business mortgage/i);
+  assert.match(sources, /ordinary partners[\s\S]*(?:unlimited liability|personally liable)/i);
+  assert.doesNotMatch(sources, /new partners[\s\S]{0,180}(?:wider|increase|greater) liability/i);
 
   const statements = JSON.stringify((await readNote("10.1")).sections);
   assert.match(statements, /net assets[\s\S]*(?:total assets[\s\S]*total liabilities|assets[\s\S]*liabilities)[\s\S]*(?:equity|owners)/i);
