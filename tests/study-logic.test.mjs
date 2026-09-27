@@ -126,6 +126,39 @@ test("notes are grouped into coursebook chapters before their subtopics", async 
   ]);
   assert.equal(businessA2.find(({ number }) => number === "7").linkAnchor, "02-economic-influences");
   assert.equal(businessA2.find(({ number }) => number === "9").linkAnchor, "07-corporate-planning-and-culture");
+
+  const expectedBusinessParts = [
+    "Unit 1 · Business and its environment",
+    "Unit 2 · Human resource management",
+    "Unit 3 · Marketing",
+    "Unit 4 · Operations management",
+    "Unit 5 · Finance and accounting",
+  ];
+  assert.deepEqual(
+    [...new Set([...businessAs, ...businessA2].map(({ partTitle }) => partTitle))],
+    expectedBusinessParts,
+  );
+});
+
+test("every Business coursebook chapter anchor resolves exactly once in its target note", async () => {
+  const { getNoteChapters, getSubject } = await vite.ssrLoadModule(
+    "/src/data/subjects.ts",
+  );
+  const { loadTopicNote } = await vite.ssrLoadModule("/src/data/notes/index.ts");
+  const subject = getSubject("9609");
+  const chapters = [
+    ...getNoteChapters(subject, "AS"),
+    ...getNoteChapters(subject, "A2"),
+  ];
+  for (const chapter of chapters.filter(({ linkAnchor }) => linkAnchor)) {
+    const topicId = chapter.topics[0].topic.id;
+    const note = await loadTopicNote(subject.code, topicId);
+    assert.equal(
+      note.sections.filter(({ id }) => id === chapter.linkAnchor).length,
+      1,
+      `9609 Chapter ${chapter.number} anchor ${chapter.linkAnchor} in ${topicId}`,
+    );
+  }
 });
 
 test("stored syllabus checks survive hydration without losing older study data", async () => {

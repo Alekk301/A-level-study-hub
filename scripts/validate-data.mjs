@@ -9,6 +9,7 @@ const papers = JSON.parse(await fs.readFile(path.join(dataRoot, "papers/papers.j
 const searchIndex = JSON.parse(await fs.readFile(path.join(dataRoot, "generated/search-index.json"), "utf8"));
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
+const validExampleKinds = new Set(["example", "worked", "code", "pseudocode", "formula", "analysis"]);
 
 const requiredCodes = ["9709", "9618", "9609", "9701"];
 assert(subjects.length === 4, `Expected four subjects, found ${subjects.length}.`);
@@ -67,6 +68,14 @@ for (const subject of subjects) {
     assert(Array.isArray(note.examTips), `${key} examTips must be an array.`);
     assert(Array.isArray(note.commonMistakes), `${key} commonMistakes must be an array.`);
     assert(Array.isArray(note.quickRecall), `${key} quickRecall must be an array.`);
+    for (const [sectionIndex, section] of (note.sections ?? []).entries()) {
+      for (const [exampleIndex, example] of (section.examples ?? []).entries()) {
+        assert(
+          validExampleKinds.has(example.kind),
+          `${key} section ${sectionIndex + 1} example ${exampleIndex + 1} has invalid kind ${example.kind}.`,
+        );
+      }
+    }
     for (const [index, item] of (note.quickRecall ?? []).entries()) {
       assert(
         typeof item === "string" ||

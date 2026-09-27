@@ -13,7 +13,7 @@
     "Analyse delegation, authority, responsibility and accountability.",
     "Compare autocratic, democratic and laissez-faire leadership.",
     "Explain McGregor's Theory X and Theory Y assumptions.",
-    "Analyse the importance of emotional intelligence and situational management.",
+    "Analyse situational management. A Level extension: analyse the importance of emotional intelligence.",
     "Compare Fayol's management functions with Mintzberg's management roles.",
     "Explain paternalistic management and assess when different styles fit the situation."
   ],
@@ -55,7 +55,7 @@
       "definition": "A leader gives capable employees substantial freedom to decide how work is completed."
     },
     {
-      "term": "Emotional intelligence",
+      "term": "A Level extension: emotional intelligence",
       "definition": "The ability to recognise and manage one's own emotions and understand and respond effectively to others."
     },
     {
@@ -140,7 +140,7 @@
       "examples": [
         {
           "id": "2.3-6-1",
-          "kind": "applied",
+          "kind": "example",
           "label": "Choosing a style during relocation",
           "content": "A manager consults employees about travel and caring responsibilities but retains the final site decision because finance and continuity are at risk. This paternalistic approach may protect welfare and speed, although genuine democratic participation could reveal better alternatives and build more commitment."
         }
@@ -161,7 +161,7 @@
     },
     {
       "id": "08-emotional-intelligence-and-manager-effectiveness",
-      "title": "Emotional intelligence and manager effectiveness",
+      "title": "A Level extension · Emotional intelligence and manager effectiveness",
       "content": [
         "Self-awareness helps a manager judge strengths and emotional triggers; self-management supports calm and integrity; social awareness helps interpret others; relationship skills support persuasion, conflict resolution and teamwork."
       ],
@@ -273,7 +273,8 @@
     "Treating management and leadership as complete synonyms.",
     "Saying delegation removes a manager's accountability.",
     "Calling Theory X and Theory Y fixed categories of employee.",
-    "Assuming laissez-faire means no objectives, monitoring or accountability."
+    "Assuming laissez-faire means no objectives, monitoring or accountability.",
+    "A Level extension: treating emotional intelligence as a substitute for technical knowledge or evidence."
   ],
   "quickRecall": [
     {
@@ -297,7 +298,7 @@
       "answer": "They are contrasting management assumptions about employees' attitude to work, responsibility and self-direction."
     },
     {
-      "question": "Name the four broad elements of emotional intelligence.",
+      "question": "A Level extension: name the four broad elements of emotional intelligence.",
       "answer": "Self-awareness, self-management, social awareness and relationship/social skills."
     }
   ],

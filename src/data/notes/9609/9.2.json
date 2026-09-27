@@ -39,7 +39,7 @@
         "Over-engineering wastes resources if extra specification is not valued; under-specification creates failure cost and weakens the brand."
       ],
       "examples": [
-        { "id": "9.2-1-1", "kind": "case", "label": "Service standard", "content": "A budget hotel might define quality as a clean room, accurate booking and prompt problem resolution rather than luxury furnishings. Measuring only décor would miss the expectations that determine repeat bookings." }
+        { "id": "9.2-1-1", "kind": "example", "label": "Service standard", "content": "A budget hotel might define quality as a clean room, accurate booking and prompt problem resolution rather than luxury furnishings. Measuring only décor would miss the expectations that determine repeat bookings." }
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Include the opportunity cost of disruption and management time during change."
       ],
       "examples": [
-        { "id": "06-example-2", "kind": "application", "label": "Strategic link", "content": "If a component supplier wins contracts mainly through dependability, process assurance and traceability may protect revenue as well as reduce rework. The investment is weaker when defects are rare, buyers choose only on price and the audit adds cost without improving outcomes." }
+        { "id": "06-example-2", "kind": "analysis", "label": "Strategic link", "content": "If a component supplier wins contracts mainly through dependability, process assurance and traceability may protect revenue as well as reduce rework. The investment is weaker when defects are rare, buyers choose only on price and the audit adds cost without improving outcomes." }
       ]
     },
     {

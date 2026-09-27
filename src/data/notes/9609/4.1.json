@@ -138,7 +138,7 @@
       "examples": [
         {
           "id": "4.1-4-1",
-          "kind": "case",
+          "kind": "example",
           "label": "Applied decision",
           "content": "A food processor invests in heat-recovery equipment. Energy use and emissions per unit fall, reducing variable cost and supporting retailer sustainability requirements. The decision is strongest when expected savings over the equipment's life exceed finance, installation and maintenance costs."
         }

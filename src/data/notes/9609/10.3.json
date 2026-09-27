@@ -38,7 +38,7 @@
         "Compare results with the firm's target payback, target ARR and required return where provided."
       ],
       "examples": [
-        { "id": "10.3-1-1", "kind": "application", "label": "Decision frame", "content": "A cash-constrained technology firm may prioritise payback because obsolescence and liquidity risk are high. A financially secure firm comparing long-lived projects may place more weight on positive NPV and strategic capacity. Neither criterion is automatically best without the objective and constraint." }
+        { "id": "10.3-1-1", "kind": "analysis", "label": "Decision frame", "content": "A cash-constrained technology firm may prioritise payback because obsolescence and liquidity risk are high. A financially secure firm comparing long-lived projects may place more weight on positive NPV and strategic capacity. Neither criterion is automatically best without the objective and constraint." }
       ]
     },
     {
@@ -119,7 +119,7 @@
         "State what evidence would change the recommendation: pilot results, orders, finance rate or sensitivity threshold."
       ],
       "examples": [
-        { "id": "10.3-6-1", "kind": "evaluation", "label": "Beyond the ranking", "content": "An automated line has the highest NPV but requires scarce technicians and may interrupt delivery during installation. Phase implementation or training may protect customer contracts even if it slightly lowers the numerical return." }
+        { "id": "10.3-6-1", "kind": "analysis", "label": "Beyond the ranking", "content": "An automated line has the highest NPV but requires scarce technicians and may interrupt delivery during installation. Phase implementation or training may protect customer contracts even if it slightly lowers the numerical return." }
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Judgement: objective, constraint, time horizon and reversal trigger."
       ],
       "examples": [
-        { "id": "10.3-7-1", "kind": "method", "label": "Recommendation sentence", "content": "Choose Project B because its +$85,000 NPV best supports long-term value and finance is available, despite slower payback; switch to A if sensitivity testing shows B's cash inflows fall enough to make NPV negative or if the firm cannot fund the 3.6-year exposure." }
+        { "id": "10.3-7-1", "kind": "worked", "label": "Recommendation sentence", "content": "Choose Project B because its +$85,000 NPV best supports long-term value and finance is available, despite slower payback; switch to A if sensitivity testing shows B's cash inflows fall enough to make NPV negative or if the firm cannot fund the 3.6-year exposure." }
       ]
     }
   ],

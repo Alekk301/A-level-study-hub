@@ -14,7 +14,7 @@
     "Explain limited liability, separate legal identity, continuity and the divorce between ownership and control.",
     "Analyse franchises, co-operatives, joint ventures and social enterprises.",
     "Recommend an appropriate business form using contextual factors.",
-    "Explain quaternary activity and the effects of privatisation and nationalisation."
+    "Explain quaternary activity. A Level extension: explain the effects of privatisation and nationalisation."
   ],
   "definitions": [
     {
@@ -42,11 +42,11 @@
       "definition": "Organisations owned or controlled by the state, often providing services or pursuing social objectives."
     },
     {
-      "term": "Privatisation",
+      "term": "A Level extension: privatisation",
       "definition": "The transfer of a state-owned organisation or asset into private ownership."
     },
     {
-      "term": "Nationalisation",
+      "term": "A Level extension: nationalisation",
       "definition": "The transfer of a privately owned organisation or asset into state ownership."
     },
     {
@@ -102,15 +102,15 @@
     },
     {
       "id": "02-private-public-and-mixed-economies",
-      "title": "Private, public and mixed economies",
+      "title": "Private, public and mixed economies · A Level extension: privatisation and nationalisation",
       "content": [
         "Private-sector owners usually pursue profit, growth or personal objectives and bear commercial risk. Public-sector organisations are accountable to government and may prioritise access, quality, employment or strategic control. Most economies are mixed: markets allocate many resources while the state owns, regulates or funds selected activities."
       ],
       "bullets": [
         "A free-market economy relies mainly on private ownership and price signals.",
         "A command economy relies mainly on state ownership and planning.",
-        "Privatisation may increase competition, access to private finance and cost control, but public-service access or employment may weaken if profit becomes dominant.",
-        "Nationalisation may protect access, strategic control or essential services, but political objectives and weak competitive pressure can reduce efficiency.",
+        "A Level extension: privatisation may increase competition, access to private finance and cost control, but public-service access or employment may weaken if profit becomes dominant.",
+        "A Level extension: nationalisation may protect access, strategic control or essential services, but political objectives and weak competitive pressure can reduce efficiency.",
         "Public ownership does not remove the need for efficiency or finance; private ownership does not mean the business ignores law or stakeholders."
       ],
       "examples": []
@@ -284,7 +284,7 @@
     "Claiming private limited companies cannot sell shares at all; they cannot offer them to the general public.",
     "Discussing only the franchisee when a question asks about franchising for the franchisor.",
     "Treating sector and legal structure as the same classification.",
-    "Assuming privatisation always improves efficiency without considering competition, regulation and service objectives."
+    "A Level extension: assuming privatisation always improves efficiency without considering competition, regulation and service objectives."
   ],
   "quickRecall": [
     {
@@ -312,7 +312,7 @@
       "answer": "Shared resources/risk and local expertise; possible conflict and loss of control or knowledge."
     },
     {
-      "question": "What is the difference between privatisation and nationalisation?",
+      "question": "A Level extension: what is the difference between privatisation and nationalisation?",
       "answer": "Privatisation transfers state assets to private ownership; nationalisation transfers private assets to state ownership."
     }
   ],

@@ -39,7 +39,7 @@
         "Local choices compare neighbourhood access and cost; national choices add regional labour, grants and infrastructure; international choices add tariffs, currency, culture, regulation, political risk and long supply chains."
       ],
       "examples": [
-        { "id": "9.1-1-1", "kind": "case", "label": "Different critical factors", "content": "A luxury retailer may accept high city-centre rent because footfall and brand status raise revenue. A data centre may instead prioritise reliable low-cost power, cooling, fibre links and legal security. Applying the same checklist without changing the weights would produce a weak decision." }
+        { "id": "9.1-1-1", "kind": "example", "label": "Different critical factors", "content": "A luxury retailer may accept high city-centre rent because footfall and brand status raise revenue. A data centre may instead prioritise reliable low-cost power, cooling, fibre links and legal security. Applying the same checklist without changing the weights would produce a weak decision." }
       ]
     },
     {
@@ -84,7 +84,7 @@
         "Partial reshoring or dual locations may balance efficiency with resilience."
       ],
       "examples": [
-        { "id": "03-example-2", "kind": "application", "label": "Conditional judgement", "content": "A fashion brand may reshore final assembly to react to trends while retaining standard component production overseas. The hybrid is worthwhile only if avoided markdowns and faster sales exceed higher home-production and transition costs." }
+        { "id": "03-example-2", "kind": "analysis", "label": "Conditional judgement", "content": "A fashion brand may reshore final assembly to react to trends while retaining standard component production overseas. The hybrid is worthwhile only if avoided markdowns and faster sales exceed higher home-production and transition costs." }
       ]
     },
     {

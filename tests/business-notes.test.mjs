@@ -33,7 +33,7 @@ const baseSyllabusPoints = {
     "Analyse delegation, authority, responsibility and accountability.",
     "Compare autocratic, democratic and laissez-faire leadership.",
     "Explain McGregor's Theory X and Theory Y assumptions.",
-    "Analyse the importance of emotional intelligence and situational management.",
+    "Analyse situational management. A Level extension: analyse the importance of emotional intelligence.",
   ],
   "7.1": [
     "Link organisational structure to business objectives.",
@@ -87,7 +87,7 @@ const baseSyllabusPoints = {
   "1.4": [
     "Explain why businesses set aims, objectives, strategies and tactics.",
     "Analyse common objectives including survival, profit, growth, market share and shareholder return.",
-    "Apply SMART criteria and management by objectives.",
+    "Apply SMART criteria. A Level extension: explain management by objectives.",
     "Explain the role and limitations of mission statements.",
     "Analyse why objectives change and how ethics and corporate social responsibility influence decisions.",
     "Analyse conflicts between objectives and the importance of communicating them.",
@@ -672,6 +672,29 @@ test("existing syllabus checklist indexes remain stable", async () => {
     const note = await readNote(id);
     const original = baseSyllabusPoints[id] ?? baseMarketingSyllabusPoints[id] ?? baseOperationsSyllabusPoints[id] ?? baseFinanceSyllabusPoints[id];
     assert.deepEqual(note.syllabusPoints.slice(0, original.length), original, `${id}: original checklist indexes`);
+  }
+});
+
+test("AS notes clearly label A Level extension material", async () => {
+  const extensions = [
+    ["1.2", /privatisation|nationalisation/i, 6],
+    ["1.4", /management by objectives|\bMBO\b/i, 2],
+    ["2.3", /emotional intelligence/i, 5],
+  ];
+
+  for (const [id, concept, checklistIndex] of extensions) {
+    const note = await readNote(id);
+    const checklist = note.syllabusPoints.find((point) => concept.test(point));
+    const definition = note.definitions.find(({ term }) => concept.test(term));
+    const section = note.sections.find((item) => concept.test(JSON.stringify(item)));
+    const recall = note.quickRecall.find(({ question, answer }) => concept.test(`${question} ${answer}`));
+    assert.match(checklist, /A Level extension/i, `${id}: checklist boundary`);
+    assert.equal(note.syllabusPoints.indexOf(checklist), checklistIndex, `${id}: persisted checklist index`);
+    assert.match(definition.term, /A Level extension/i, `${id}: definition boundary`);
+    assert.match(section.title, /A Level extension/i, `${id}: teaching boundary`);
+    assert.match(recall.question, /A Level extension/i, `${id}: recall boundary`);
+    for (const mistake of note.commonMistakes.filter((item) => concept.test(item)))
+      assert.match(mistake, /A Level extension/i, `${id}: mistake boundary`);
   }
 });
 

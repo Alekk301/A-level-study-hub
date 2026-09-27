@@ -122,7 +122,7 @@
         "Check that assets remain consistent with liabilities plus equity after an amendment."
       ],
       "examples": [
-        { "id": "10.1-6-1", "kind": "method", "label": "Four-step amendment", "content": "Classify -> calculate -> trace -> interpret. A $9,000 higher depreciation charge reduces operating profit, retained earnings and non-current asset carrying value by $9,000; it may worsen profitability ratios but does not directly reduce this year's cash." }
+        { "id": "10.1-6-1", "kind": "worked", "label": "Four-step amendment", "content": "Classify -> calculate -> trace -> interpret. A $9,000 higher depreciation charge reduces operating profit, retained earnings and non-current asset carrying value by $9,000; it may worsen profitability ratios but does not directly reduce this year's cash." }
       ]
     },
     {
@@ -138,7 +138,7 @@
         "A judgement should identify the decision, evidence, limitation and further information needed."
       ],
       "examples": [
-        { "id": "10.1-7-1", "kind": "application", "label": "Decision from linked evidence", "content": "Operating profit falls while receivables rise. One hypothesis is weaker credit control: cash arrives later and bad-debt risk rises. Before tightening terms, compare customer mix, sales growth, overdue age and competitor terms because strict collection could lose valuable customers." }
+        { "id": "10.1-7-1", "kind": "analysis", "label": "Decision from linked evidence", "content": "Operating profit falls while receivables rise. One hypothesis is weaker credit control: cash arrives later and bad-debt risk rises. Before tightening terms, compare customer mix, sales growth, overdue age and competitor terms because strict collection could lose valuable customers." }
       ]
     }
   ],

@@ -50,7 +50,7 @@
         "Evaluate the bottleneck: extra technology is of little value if the binding constraint is people, data or demand."
       ],
       "examples": [
-        { "id": "01-example-1", "kind": "application", "label": "Applied decision", "content": "A meal producer wins a retailer contract with volatile weekly volumes. A second fixed line raises maximum capacity but may be idle; cross-training and temporary shifts cost more per unit but protect volume flexibility. The better choice depends on forecast confidence, service penalties, labour availability and the contract duration." }
+        { "id": "01-example-1", "kind": "analysis", "label": "Applied decision", "content": "A meal producer wins a retailer contract with volatile weekly volumes. A second fixed line raises maximum capacity but may be idle; cross-training and temporary shifts cost more per unit but protect volume flexibility. The better choice depends on forecast confidence, service penalties, labour availability and the contract duration." }
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Measure outcomes such as stock accuracy, order cycle time, schedule adherence and working capital rather than installation alone."
       ],
       "examples": [
-        { "id": "03-example-1", "kind": "application", "label": "ERP in context", "content": "A manufacturer currently holds separate sales and production spreadsheets. ERP could show a sales-order change immediately to purchasing and scheduling, reducing excess components and late delivery. Yet rushed migration of incorrect bills of materials may make shortages worse, so phased testing and owner accountability for master data are critical." }
+        { "id": "03-example-1", "kind": "analysis", "label": "ERP in context", "content": "A manufacturer currently holds separate sales and production spreadsheets. ERP could show a sales-order change immediately to purchasing and scheduling, reducing excess components and late delivery. Yet rushed migration of incorrect bills of materials may make shortages worse, so phased testing and owner accountability for master data are critical." }
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Waste management: prevent, reduce, reuse or recover waste where the extra resource and environmental benefit exceeds the implementation cost."
       ],
       "examples": [
-        { "id": "04-example-1", "kind": "application", "label": "Combining tools", "content": "A furniture maker maps repeated waiting between cutting and finishing. A mixed-skill cell reduces movement, a quality circle redesigns the hand-off and a visual replenishment signal limits work in progress. Output improves only if machinery capacity and finish quality remain balanced; otherwise the bottleneck simply moves." }
+        { "id": "04-example-1", "kind": "analysis", "label": "Combining tools", "content": "A furniture maker maps repeated waiting between cutting and finishing. A mixed-skill cell reduces movement, a quality circle redesigns the hand-off and a visual replenishment signal limits work in progress. Output improves only if machinery capacity and finish quality remain balanced; otherwise the bottleneck simply moves." }
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Crashing a project is rational only when the value of earlier completion exceeds the extra cost and risk."
       ],
       "examples": [
-        { "id": "07-example-1", "kind": "application", "label": "Interpretation for a manager", "content": "In the 11-day network, the manager might move a specialist from D to C because D has two days of total float and C is critical. Before doing so, the manager must check that D still starts and finishes within its allowed times and that the specialist can actually shorten C without compromising quality." }
+        { "id": "07-example-1", "kind": "analysis", "label": "Interpretation for a manager", "content": "In the 11-day network, the manager might move a specialist from D to C because D has two days of total float and C is critical. Before doing so, the manager must check that D still starts and finishes within its allowed times and that the specialist can actually shorten C without compromising quality." }
       ]
     }
   ],

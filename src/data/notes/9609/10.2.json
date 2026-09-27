@@ -138,7 +138,7 @@
         "Investor return: profitable investment, appropriate dividends, risk control and credible communication."
       ],
       "examples": [
-        { "id": "10.2-7-1", "kind": "application", "label": "Avoiding a cosmetic fix", "content": "Pressuring every customer to pay immediately may reduce receivables days, but a large business buyer could switch supplier. Segment overdue/high-risk accounts, preserve justified strategic credit and track cash collected, bad debt and customer retention." }
+        { "id": "10.2-7-1", "kind": "analysis", "label": "Avoiding a cosmetic fix", "content": "Pressuring every customer to pay immediately may reduce receivables days, but a large business buyer could switch supplier. Segment overdue/high-risk accounts, preserve justified strategic credit and track cash collected, bad debt and customer retention." }
       ]
     },
     {
@@ -154,7 +154,7 @@
         "External conditions can change after year end, so current evidence matters."
       ],
       "examples": [
-        { "id": "10.2-8-1", "kind": "evaluation", "label": "Comparison limit", "content": "A retailer and manufacturer both report current ratio 1.2:1. The retailer may collect cash immediately and turn stock quickly, while the manufacturer waits months for customers. The identical ratio therefore does not imply identical liquidity risk." }
+        { "id": "10.2-8-1", "kind": "analysis", "label": "Comparison limit", "content": "A retailer and manufacturer both report current ratio 1.2:1. The retailer may collect cash immediately and turn stock quickly, while the manufacturer waits months for customers. The identical ratio therefore does not imply identical liquidity risk." }
       ]
     }
   ],

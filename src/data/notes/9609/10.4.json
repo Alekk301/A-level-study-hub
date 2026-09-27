@@ -55,7 +55,7 @@
         "Stakeholders need information relevant to their own time horizon and exposure."
       ],
       "examples": [
-        { "id": "10.4-2-1", "kind": "application", "label": "Different users", "content": "A high dividend may please an income investor, while a lender may prefer retained cash and lower debt. Employees may focus on continuity and planned restructuring. A strategy answer should identify whose decision is being supported." }
+        { "id": "10.4-2-1", "kind": "analysis", "label": "Different users", "content": "A high dividend may please an income investor, while a lender may prefer retained cash and lower debt. Employees may focus on continuity and planned restructuring. A strategy answer should identify whose decision is being supported." }
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Explain stakeholder conflict and how communication, phasing or safeguards reduce it."
       ],
       "examples": [
-        { "id": "10.4-6-1", "kind": "method", "label": "Integrated recommendation", "content": "Fund the first expansion stage with retained earnings plus a fixed-rate long-term loan, reduce dividend growth temporarily and tighten only overdue credit. Review when utilisation reaches 75% and operating cash meets debt service under the downside forecast." }
+        { "id": "10.4-6-1", "kind": "worked", "label": "Integrated recommendation", "content": "Fund the first expansion stage with retained earnings plus a fixed-rate long-term loan, reduce dividend growth temporarily and tighten only overdue credit. Review when utilisation reaches 75% and operating cash meets debt service under the downside forecast." }
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Ask whether later events have made year-end evidence obsolete."
       ],
       "examples": [
-        { "id": "10.4-7-1", "kind": "evaluation", "label": "Evidence quality", "content": "A competitor reports higher ROCE but leases many assets while the business owns them. Different asset financing and age can distort the comparison. Restate where possible or use additional operating evidence before copying the competitor's strategy." }
+        { "id": "10.4-7-1", "kind": "analysis", "label": "Evidence quality", "content": "A competitor reports higher ROCE but leases many assets while the business owns them. Different asset financing and age can distort the comparison. Restate where possible or use additional operating evidence before copying the competitor's strategy." }
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Distinguish management action from outcomes influenced by markets and interest rates."
       ],
       "examples": [
-        { "id": "10.4-8-1", "kind": "method", "label": "Judgement frame", "content": "Recommend option -> cite decisive ratio/cash evidence -> explain strategic mechanism -> weigh stakeholder and implementation risk -> identify time horizon and reversal trigger." }
+        { "id": "10.4-8-1", "kind": "worked", "label": "Judgement frame", "content": "Recommend option -> cite decisive ratio/cash evidence -> explain strategic mechanism -> weigh stakeholder and implementation risk -> identify time horizon and reversal trigger." }
       ]
     }
   ],

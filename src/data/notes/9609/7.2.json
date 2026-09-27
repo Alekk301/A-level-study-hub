@@ -69,7 +69,7 @@
       "examples": [
         {
           "id": "7.2-1-1",
-          "kind": "applied",
+          "kind": "example",
           "label": "Safety briefing",
           "content": "A factory supervisor demonstrates a new lockout procedure, asks an operator to repeat it and follows with a one-page checklist. Spoken explanation gives immediate feedback while the written record supports consistent safe practice."
         }

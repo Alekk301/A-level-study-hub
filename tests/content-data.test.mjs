@@ -36,3 +36,22 @@ test("Business recall validation rejects whitespace-only questions and answers",
     await rm(fixtureRoot, { recursive: true, force: true });
   }
 });
+
+test("note validation rejects example kinds outside the declared schema", async () => {
+  const fixtureRoot = await mkdtemp(path.join(tmpdir(), "caie-data-validation-"));
+  try {
+    await mkdir(path.join(fixtureRoot, "scripts"));
+    await cp(path.join(root, "scripts/validate-data.mjs"), path.join(fixtureRoot, "scripts/validate-data.mjs"));
+    await cp(path.join(root, "src/data"), path.join(fixtureRoot, "src/data"), { recursive: true });
+    const notePath = path.join(fixtureRoot, "src/data/notes/9609/10.4.json");
+    const note = JSON.parse(await readFile(notePath, "utf8"));
+    note.sections[0].examples[0].kind = "case-study";
+    await writeFile(notePath, JSON.stringify(note));
+
+    const result = spawnSync("node", ["scripts/validate-data.mjs"], { cwd: fixtureRoot, encoding: "utf8" });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /9609:10\.4 section 1 example 1 has invalid kind case-study/);
+  } finally {
+    await rm(fixtureRoot, { recursive: true, force: true });
+  }
+});

@@ -10,7 +10,7 @@
   "syllabusPoints": [
     "Explain why businesses set aims, objectives, strategies and tactics.",
     "Analyse common objectives including survival, profit, growth, market share and shareholder return.",
-    "Apply SMART criteria and management by objectives.",
+    "Apply SMART criteria. A Level extension: explain management by objectives.",
     "Explain the role and limitations of mission statements.",
     "Analyse why objectives change and how ethics and corporate social responsibility influence decisions.",
     "Analyse conflicts between objectives and the importance of communicating them.",
@@ -54,7 +54,7 @@
       "definition": "Seeking a level of profit sufficient to satisfy owners while also meeting other objectives."
     },
     {
-      "term": "Management by objectives",
+      "term": "A Level extension: management by objectives",
       "definition": "Coordinating and motivating staff by translating corporate objectives into agreed divisional, departmental and individual targets."
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "id": "04-management-by-objectives",
-      "title": "Management by objectives",
+      "title": "A Level extension · Management by objectives",
       "content": [
         "Senior objectives are divided into targets for divisions, departments, managers and employees. Ideally managers and staff agree targets, resources and review dates, which clarifies how each role contributes and can increase ownership."
       ],
@@ -280,7 +280,8 @@
     "Treating a mission statement as a numerical target.",
     "Assuming profit maximisation always means raising price.",
     "Equating legal behaviour with ethical behaviour; ethics can require more than the law.",
-    "Discussing a target without checking whether the budget and other resources can support it."
+    "Discussing a target without checking whether the budget and other resources can support it.",
+    "A Level extension: describing management by objectives as imposed targets rather than an agreed cascade with resources and review."
   ],
   "quickRecall": [
     {
@@ -296,7 +297,7 @@
       "answer": "They may value sufficient income alongside independence, leisure, control, quality or other stakeholder aims."
     },
     {
-      "question": "How does management by objectives work?",
+      "question": "A Level extension: how does management by objectives work?",
       "answer": "Corporate aims are translated into agreed targets for divisions, departments and individuals, then performance is reviewed."
     },
     {
