@@ -118,8 +118,15 @@ for (const topic of businessTopics) {
   assert(note.commonMistakes.length >= 4, `${key} needs at least four common mistakes.`);
   assert(note.quickRecall.length >= 6, `${key} needs at least six recall checks.`);
   assert(
-    note.quickRecall.every((item) => item && typeof item.question === "string" && typeof item.answer === "string"),
-    `${key} quick recall must use question-and-answer disclosures.`,
+    note.quickRecall.every(
+      (item) =>
+        item &&
+        typeof item.question === "string" &&
+        item.question.trim() &&
+        typeof item.answer === "string" &&
+        item.answer.trim(),
+    ),
+    `${key} quick recall must use non-empty question-and-answer disclosures.`,
   );
   assert(JSON.stringify(note).length >= 8_000, `${key} is unexpectedly shallow for the detailed Business set.`);
 }

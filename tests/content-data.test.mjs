@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 
@@ -11,4 +14,25 @@ test("all subject, note, search and paper data passes validation", () => {
     encoding: "utf8",
   });
   assert.match(output, /Data valid: 4 subjects, 153 topics, 104 detailed notes, 919 paper records/);
+});
+
+test("Business recall validation rejects whitespace-only questions and answers", async () => {
+  const fixtureRoot = await mkdtemp(path.join(tmpdir(), "caie-data-validation-"));
+  try {
+    await mkdir(path.join(fixtureRoot, "scripts"));
+    await cp(path.join(root, "scripts/validate-data.mjs"), path.join(fixtureRoot, "scripts/validate-data.mjs"));
+    await cp(path.join(root, "src/data"), path.join(fixtureRoot, "src/data"), { recursive: true });
+    const notePath = path.join(fixtureRoot, "src/data/notes/9609/10.4.json");
+    const original = JSON.parse(await readFile(notePath, "utf8"));
+    for (const field of ["question", "answer"]) {
+      const note = structuredClone(original);
+      note.quickRecall[0][field] = "   ";
+      await writeFile(notePath, JSON.stringify(note));
+      const result = spawnSync("node", ["scripts/validate-data.mjs"], { cwd: fixtureRoot, encoding: "utf8" });
+      assert.notEqual(result.status, 0, `whitespace-only ${field} should fail validation`);
+      assert.match(result.stderr, /9609:10\.4 quick recall must use non-empty question-and-answer disclosures/);
+    }
+  } finally {
+    await rm(fixtureRoot, { recursive: true, force: true });
+  }
 });
