@@ -22,12 +22,12 @@ run `.\work finish "<summary>"`. Only run `.\work publish` when the owner asks t
 
 ## Normal workflow
 
-- Start a short-lived branch from the latest `github/rebuild/react-vite`.
+- Work on `dev` after `.\work start` (see "Working across computers" above).
 - Keep changes focused and reuse existing components, scripts, and patterns.
 - For content changes, run `npm run data:build` and review the regenerated registry and search index.
 - Before committing or publishing, run `npm run data:validate`, `npm run lint`, and `npm test`.
-- Push the feature branch, inspect its Vercel Preview deployment, and merge it into
-  `rebuild/react-vite` only after review.
+- `.\work finish` pushes `dev` and creates a Vercel Preview; inspect it, and merge into
+  `rebuild/react-vite` with `.\work publish` only after review and when the owner asks.
 - Never force-push the Production Branch.
 - Update `docs/HANDOFF.md` whenever unfinished work, verification results, branch state, or
   deployment details change.
