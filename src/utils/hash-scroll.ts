@@ -2,6 +2,7 @@ type HashScrollDocument = Pick<Document, "getElementById" | "images">;
 type HashScrollWindow = Pick<
   Window,
   | "location"
+  | "scrollY"
   | "requestAnimationFrame"
   | "cancelAnimationFrame"
   | "setTimeout"
@@ -17,6 +18,7 @@ export function keepHashTargetAligned(
   pageWindow: HashScrollWindow = window,
 ) {
   const imageCleanups = new Set<() => void>();
+  let alignedScrollY: number | null = null;
 
   const getTarget = () => {
     const id = pageWindow.location.hash.slice(1);
@@ -38,7 +40,11 @@ export function keepHashTargetAligned(
       );
       if (image.complete || !isBeforeTarget) return;
 
-      const realign = () => scrollToHash();
+      const realign = () => {
+        if (alignedScrollY !== pageWindow.scrollY) return;
+        scrollToHash();
+        alignedScrollY = pageWindow.scrollY;
+      };
       image.addEventListener("load", realign, { once: true });
       image.addEventListener("error", realign, { once: true });
       imageCleanups.add(() => {
@@ -49,6 +55,7 @@ export function keepHashTargetAligned(
   };
   const alignAndWatch = () => {
     scrollToHash();
+    alignedScrollY = pageWindow.scrollY;
     watchImagesBeforeTarget();
   };
 

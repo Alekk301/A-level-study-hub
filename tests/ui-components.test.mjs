@@ -41,6 +41,7 @@ test("keeps deep links aligned when an image above the target loads late", async
   );
   let scrolls = 0;
   const listeners = new Map();
+  const windowListeners = new Map();
   const target = { scrollIntoView: () => { scrolls += 1; } };
   const imageBefore = {
     complete: false,
@@ -55,11 +56,49 @@ test("keeps deep links aligned when an image above the target loads late", async
     removeEventListener: () => {},
   };
   const documentStub = {
-    getElementById: (id) => id === "late-target" ? target : null,
+    getElementById: (id) => ["late-target", "next-target"].includes(id) ? target : null,
     images: [imageBefore, imageAfter],
   };
   const windowStub = {
     location: { hash: "#late-target" },
+    scrollY: 100,
+    requestAnimationFrame: (callback) => { callback(); return 1; },
+    cancelAnimationFrame: () => {},
+    setTimeout: () => 2,
+    clearTimeout: () => {},
+    addEventListener: (name, callback) => windowListeners.set(name, callback),
+    removeEventListener: (name) => windowListeners.delete(name),
+  };
+
+  const cleanup = keepHashTargetAligned(documentStub, windowStub);
+  assert.equal(scrolls, 1);
+  assert.equal(typeof listeners.get("load"), "function");
+  listeners.get("load")();
+  assert.equal(scrolls, 2, "a late image load above the target must realign it");
+  windowStub.location.hash = "#next-target";
+  windowListeners.get("hashchange")();
+  assert.equal(scrolls, 3, "changing the hash must align the new target");
+  cleanup();
+  assert.equal(listeners.size, 0);
+  assert.equal(windowListeners.size, 0);
+});
+
+test("does not snap back to a hash target after the user scrolls away", async () => {
+  const { keepHashTargetAligned } = await vite.ssrLoadModule(
+    "/src/utils/hash-scroll.ts",
+  );
+  let scrolls = 0;
+  let loadImage;
+  const target = { scrollIntoView: () => { scrolls += 1; } };
+  const image = {
+    complete: false,
+    compareDocumentPosition: () => 4,
+    addEventListener: (name, callback) => { if (name === "load") loadImage = callback; },
+    removeEventListener: () => {},
+  };
+  const windowStub = {
+    location: { hash: "#late-target" },
+    scrollY: 100,
     requestAnimationFrame: (callback) => { callback(); return 1; },
     cancelAnimationFrame: () => {},
     setTimeout: () => 2,
@@ -68,13 +107,11 @@ test("keeps deep links aligned when an image above the target loads late", async
     removeEventListener: () => {},
   };
 
-  const cleanup = keepHashTargetAligned(documentStub, windowStub);
+  keepHashTargetAligned({ getElementById: () => target, images: [image] }, windowStub);
   assert.equal(scrolls, 1);
-  assert.equal(typeof listeners.get("load"), "function");
-  listeners.get("load")();
-  assert.equal(scrolls, 2, "a late image load above the target must realign it");
-  cleanup();
-  assert.equal(listeners.size, 0);
+  windowStub.scrollY = 420;
+  loadImage();
+  assert.equal(scrolls, 1, "late image settlement must respect deliberate user scrolling");
 });
 
 test("forwards progress semantics to the primitive", async () => {
