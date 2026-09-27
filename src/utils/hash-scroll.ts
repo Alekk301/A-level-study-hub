@@ -24,7 +24,14 @@ export function keepHashTargetAligned(
     const id = pageWindow.location.hash.slice(1);
     return id ? pageDocument.getElementById(id) : null;
   };
-  const scrollToHash = () => getTarget()?.scrollIntoView({ block: "start" });
+  const scrollToHash = () => {
+    const target = getTarget();
+    if (!target) return false;
+    target.scrollIntoView({ behavior: "instant", block: "start" });
+    alignedScrollY = pageWindow.scrollY;
+    return true;
+  };
+  const userMoved = () => alignedScrollY !== null && alignedScrollY !== pageWindow.scrollY;
   const stopWatchingImages = () => {
     imageCleanups.forEach((cleanup) => cleanup());
     imageCleanups.clear();
@@ -41,9 +48,8 @@ export function keepHashTargetAligned(
       if (image.complete || !isBeforeTarget) return;
 
       const realign = () => {
-        if (alignedScrollY !== pageWindow.scrollY) return;
+        if (userMoved()) return;
         scrollToHash();
-        alignedScrollY = pageWindow.scrollY;
       };
       image.addEventListener("load", realign, { once: true });
       image.addEventListener("error", realign, { once: true });
@@ -53,20 +59,20 @@ export function keepHashTargetAligned(
       });
     });
   };
-  const alignAndWatch = () => {
-    scrollToHash();
-    alignedScrollY = pageWindow.scrollY;
-    watchImagesBeforeTarget();
+  const alignAndWatch = (respectCurrentPosition = false) => {
+    if (respectCurrentPosition && userMoved()) return;
+    if (scrollToHash()) watchImagesBeforeTarget();
   };
 
-  const frame = pageWindow.requestAnimationFrame(alignAndWatch);
-  const retry = pageWindow.setTimeout(alignAndWatch, 100);
-  pageWindow.addEventListener("hashchange", alignAndWatch);
+  const frame = pageWindow.requestAnimationFrame(() => alignAndWatch());
+  const retry = pageWindow.setTimeout(() => alignAndWatch(true), 100);
+  const handleHashChange = () => alignAndWatch();
+  pageWindow.addEventListener("hashchange", handleHashChange);
 
   return () => {
     pageWindow.cancelAnimationFrame(frame);
     pageWindow.clearTimeout(retry);
-    pageWindow.removeEventListener("hashchange", alignAndWatch);
+    pageWindow.removeEventListener("hashchange", handleHashChange);
     stopWatchingImages();
   };
 }
