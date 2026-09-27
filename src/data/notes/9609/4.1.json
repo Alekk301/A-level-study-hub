@@ -13,7 +13,9 @@
     "Distinguish efficiency and effectiveness.",
     "Compare labour-intensive and capital-intensive operations.",
     "Compare job, batch, flow and mass-customisation production.",
-    "Analyse technology, flexibility and the relationship between operations and other business functions."
+    "Analyse technology, flexibility and the relationship between operations and other business functions.",
+    "Explain enterprise as the fourth factor of production alongside land, labour and capital.",
+    "Explain how operations contributes to added value."
   ],
   "definitions": [
     {
@@ -23,6 +25,10 @@
     {
       "term": "Transformation process",
       "definition": "Converting inputs such as materials, labour, information and capital into outputs."
+    },
+    {
+      "term": "Enterprise",
+      "definition": "The fourth factor of production: it organises land, labour and capital, accepts risk and makes decisions about how resources will be used."
     },
     {
       "term": "Productivity",
@@ -74,12 +80,14 @@
       "id": "01-the-transformation-process",
       "title": "The transformation process",
       "content": [
-        "Inputs include materials, land, labour, capital, information, time and ideas. Transformation may physically manufacture, transport, store, inform or provide an experience. Outputs include goods, services and waste. Feedback about quality, cost and customer satisfaction helps control the process."
+        "The four factors of production used as inputs are land, labour, capital and enterprise. Land covers natural resources; labour is human effort; capital is man-made productive equipment; and enterprise organises the other factors, accepts risk and makes operating decisions. Inputs can also include materials, information, time and ideas. Transformation may physically manufacture, transport, store, inform or provide an experience. Outputs include goods, services and waste. Feedback about quality, cost and customer satisfaction helps control the process.",
+        "Operations contributes to added value when transformation makes the output more useful to customers, so the selling price can exceed the cost of inputs. Better design, quality, speed, reliability or convenience may increase what customers are willing to pay, while less waste can reduce input cost without removing customer value. Added value is not the same as profit because wages, rent, promotion and other operating costs still have to be paid."
       ],
       "bullets": [
         "Operations must deliver the required quantity, quality, cost, speed, dependability and flexibility.",
         "An efficient operation can still be ineffective if it produces something customers do not want.",
-        "Marketing forecasts demand, HR supplies skills and finance funds assets and working capital; operations decisions cannot be isolated."
+        "Marketing forecasts demand, HR supplies skills and finance funds assets and working capital; operations decisions cannot be isolated.",
+        "Operations can add value through a more desirable output and through efficient use of inputs, but a cost saving that damages the customer benefit can reduce value instead."
       ],
       "examples": []
     },
@@ -354,6 +362,14 @@
     {
       "question": "Why can a sustainability measure improve both efficiency and effectiveness?",
       "answer": "It may reduce resource waste and unit cost while meeting customers' or regulators' environmental expectations, although the investment and whole-life impact must be assessed."
+    },
+    {
+      "question": "What is enterprise as a factor of production?",
+      "answer": "The fourth factor: it organises land, labour and capital, accepts risk and makes decisions about using those resources."
+    },
+    {
+      "question": "How can operations contribute to added value?",
+      "answer": "By transforming inputs into an output customers value more through quality, design, speed, reliability or convenience, and by reducing input waste without removing that value."
     }
   ],
   "relatedTopics": [

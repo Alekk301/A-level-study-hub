@@ -318,6 +318,51 @@ test("Unit 4 teaches the complete Operations syllabus through decisions and trad
   }
 });
 
+test("4.1 teaches enterprise and the operations route to added value", async () => {
+  const note = await readNote("4.1");
+  const enterprise = note.definitions.find(({ term }) => term === "Enterprise");
+  assert.ok(enterprise, "4.1: Enterprise definition");
+  assert.match(enterprise.definition, /organis(?:e|es|ing)[\s\S]*(?:land|labour|capital)[\s\S]*(?:risk|decision)/i);
+
+  const transformation = note.sections.find(({ id }) => id === "01-the-transformation-process");
+  const teaching = JSON.stringify(transformation);
+  assert.match(teaching, /land[\s\S]*labour[\s\S]*capital[\s\S]*enterprise/i);
+  assert.match(teaching, /added value[\s\S]*(?:customer|selling price)[\s\S]*(?:input cost|cost of inputs)/i);
+  assert.match(teaching, /(?:quality|design|convenience|speed|reliability)[\s\S]*(?:willing to pay|selling price|value)/i);
+
+  const appended = note.syllabusPoints.slice(baseOperationsSyllabusPoints["4.1"].length);
+  assert.ok(appended.some((point) => /enterprise[\s\S]*fourth factor|fourth factor[\s\S]*enterprise/i.test(point)));
+  assert.ok(appended.some((point) => /operations[\s\S]*added value/i.test(point)));
+});
+
+test("9.3 constructs an activity-on-arrow network and proves why a dummy is needed", async () => {
+  const note = await readNote("9.3");
+  const definitions = new Map(note.definitions.map(({ term, definition }) => [term, definition]));
+  assert.match(definitions.get("Node / event") ?? "", /point[\s\S]*activit[\s\S]*(?:start|finish)/i);
+  assert.match(definitions.get("Activity arrow") ?? "", /task[\s\S]*duration[\s\S]*(?:direction|dependency)/i);
+  assert.match(definitions.get("Earliest event time") ?? "", /earliest[\s\S]*event[\s\S]*occur/i);
+  assert.match(definitions.get("Latest event time") ?? "", /latest[\s\S]*event[\s\S]*(?:occur|delay)/i);
+
+  const cpa = note.sections.find(({ id }) => id === "06-critical-path-analysis");
+  const construction = JSON.stringify(cpa);
+  assert.match(construction, /list[\s\S]*(?:duration|time)[\s\S]*immediate predecessor/i);
+  assert.match(construction, /draw[\s\S]*activity arrow[\s\S]*start event[\s\S]*finish event/i);
+  assert.match(construction, /number[\s\S]*node[\s\S]*(?:left to right|direction of the arrows)/i);
+  assert.match(construction, /earliest event time[\s\S]*maximum[\s\S]*incoming/i);
+  assert.match(construction, /latest event time[\s\S]*minimum[\s\S]*outgoing/i);
+  const dummy = cpa.examples.find(({ id }) => id === "06-example-4");
+  assert.ok(dummy, "9.3: worked dummy-activity dependency");
+  assert.match(dummy.content, /A[^.]{0,80}1\s*(?:→|->)\s*2[^.]{0,80}B[^.]{0,80}1\s*(?:→|->)\s*3/i);
+  assert.match(dummy.content, /dummy[^.]{0,80}2\s*(?:→|->)\s*3[^.]{0,80}(?:zero|0)[ -]?(?:day|duration|time)/i);
+  assert.match(dummy.content, /C[^.]{0,80}2\s*(?:→|->)\s*4[^.]{0,100}A only/i);
+  assert.match(dummy.content, /D[^.]{0,80}3\s*(?:→|->)\s*4[^.]{0,100}(?:both A and B|A and B)/i);
+  assert.match(dummy.content, /without the dummy[\s\S]*(?:wrongly|falsely)[\s\S]*depend/i);
+  assert.match(dummy.content, /node 1[^.]{0,80}EET 0[^.]{0,80}LET 0/i);
+  assert.match(dummy.content, /node 2[^.]{0,80}EET 3[^.]{0,80}LET 3/i);
+  assert.match(dummy.content, /node 3[^.]{0,80}EET 4[^.]{0,80}LET 6/i);
+  assert.match(dummy.content, /node 4[^.]{0,80}EET 8[^.]{0,80}LET 8/i);
+});
+
 test("Operations calculations show complete workings and business interpretation", async () => {
   const capacity = JSON.stringify((await readNote("4.3")).sections.find(({ id }) => id === "01-calculating-and-interpreting-capacity-utilisation"));
   assert.match(capacity, /18[ ,]?000\s*\/\s*24[ ,]?000\s*(?:×|x)\s*100\s*=\s*75%/i);

@@ -19,6 +19,10 @@
     { "term": "Operations strategy", "definition": "The long-term pattern of decisions about processes, capacity, technology, supply and quality that creates the capabilities required by business strategy." },
     { "term": "Process innovation", "definition": "Introducing a new or materially improved way of producing or delivering a product." },
     { "term": "Flexibility", "definition": "The ability to change output volume, delivery timing or product specification in response to need." },
+    { "term": "Node / event", "definition": "A point in an activity-on-arrow network showing when one or more activities start or finish; the event itself consumes no time or resources." },
+    { "term": "Activity arrow", "definition": "A task in the project, drawn as an arrow and labelled with its duration; the arrow's direction shows the dependency sequence." },
+    { "term": "Earliest event time", "definition": "The earliest time an event can occur after all activities leading into its node have finished." },
+    { "term": "Latest event time", "definition": "The latest time an event can occur without delaying completion of the whole project." },
     { "term": "ERP", "definition": "Enterprise Resource Planning: an integrated system that gives functions access to a shared database and coordinated business processes." },
     { "term": "Lean production", "definition": "An approach that seeks greater customer value while removing waste, delay, defects, excess inventory and other non-value-adding activity." },
     { "term": "Kaizen", "definition": "Continuous, usually incremental, improvement involving employees close to the process." },
@@ -125,11 +129,13 @@
       "id": "06-critical-path-analysis",
       "title": "Critical Path Analysis: full construction and calculation",
       "content": [
-        "CPA converts a project into activities, durations and dependencies. Draw arrows in dependency order, add a dummy activity only where needed to preserve logic, then complete the forward pass from left to right. At a merge, use the largest incoming earliest finish because every predecessor must be complete. Complete the backward pass from right to left; at a burst, use the smallest permitted latest start so no successor is delayed.",
+        "Construct an activity-on-arrow network from an activity table. First list every activity, its duration and its immediate predecessor or predecessors. Draw a start event, then draw one activity arrow for each task from its start event to its finish event; the arrow's direction shows sequence, not physical distance. Add a zero-duration dummy only when it is needed to preserve a dependency. Check that no activity is omitted, no two real activities have the same start and finish nodes, and no loop runs back to an earlier event. Number each node from left to right in the direction of the arrows after the logic is correct.",
+        "A node is an event rather than a task. Record the earliest event time (EET) and latest event time (LET) at each node. For the forward pass, set the start EET to zero and use the maximum of all incoming completion times at a merge because every predecessor must finish. For the backward pass, set the final LET equal to the project duration and use the minimum of all outgoing permitted start times at a burst so no successor is delayed.",
         "An activity's total float shows the delay possible without extending the project. Free float is stricter: it shows delay possible without moving the earliest start of the next activity. Activities with zero total float form the critical path. Managers monitor these activities closely because a delay, unless recovered elsewhere on the critical path, delays the project.",
         "A dummy activity has no duration or resource. It prevents the diagram from falsely showing that an activity has the wrong predecessor; it is a logic device, not work to schedule."
       ],
       "bullets": [
+        "Construction order: activity table → dependency arrows → necessary dummy arrows → node numbers → forward pass → backward pass → float and critical path.",
         "Forward pass: earliest finish = earliest start + duration; use the greatest incoming value at a merge.",
         "Backward pass: latest start = latest finish - duration; use the smallest outgoing value at a burst.",
         "Total float = LFT at end node - EST at start node - activity duration.",
@@ -139,7 +145,8 @@
       "examples": [
         { "id": "06-example-1", "kind": "worked", "label": "Worked network: find both paths", "content": "Activities are A = 3 days followed by C = 5 days; B = 4 days followed by D = 2 days; both branches must finish before E = 3 days. Route A-C-E = 3 + 5 + 3 = 11 days. Route B-D-E = 4 + 2 + 3 = 9 days. Therefore the critical path is A-C-E and the minimum project duration is 11 days." },
         { "id": "06-example-2", "kind": "worked", "label": "Forward and backward pass", "content": "A: ES 0, EF 3, LS 0, LF 3, total float 0. B: ES 0, EF 4, LS 2, LF 6, total float 2. C: ES 3, EF 8, LS 3, LF 8, total float 0. D: ES 4, EF 6, LS 6, LF 8, total float 2. E: ES 8, EF 11, LS 8, LF 11, total float 0. At the merge, E cannot start until day 8 because C finishes later than D." },
-        { "id": "06-example-3", "kind": "worked", "label": "Calculate total and free float", "content": "For B, total float = 6 - 0 - 4 = 2 days, but free float = 4 - 0 - 4 = 0 because D begins as early as day 4. For D, total float = 8 - 4 - 2 = 2 days and free float = 8 - 4 - 2 = 2 days. Delaying A, C or E delays project completion because each is critical; delaying D by up to two days does not." }
+        { "id": "06-example-3", "kind": "worked", "label": "Calculate total and free float", "content": "For B, total float = 6 - 0 - 4 = 2 days, but free float = 4 - 0 - 4 = 0 because D begins as early as day 4. For D, total float = 8 - 4 - 2 = 2 days and free float = 8 - 4 - 2 = 2 days. Delaying A, C or E delays project completion because each is critical; delaying D by up to two days does not." },
+        { "id": "06-example-4", "kind": "worked", "label": "Construct a dependency that needs a dummy", "content": "Suppose C needs A only, while D needs both A and B. A is 1 → 2 (3 days) and B is 1 → 3 (4 days). A dummy activity 2 → 3 has zero-day duration. C is 2 → 4 (5 days), so C begins after A only. D is 3 → 4 (2 days), so D begins after both A and B because node 3 cannot occur until B and the dummy from A are complete. Without the dummy, merging A and B before C would falsely make C depend on B; starting D directly after B would wrongly omit its dependence on A. The forward and backward passes give node 1: EET 0, LET 0. Node 2: EET 3, LET 3. Node 3: EET 4, LET 6. Node 4: EET 8, LET 8. The network duration is 8 days and A-C is the critical path." }
       ]
     },
     {
@@ -205,6 +212,7 @@
   "examTips": [
     "For technology or ERP, identify the data or process changed, then develop the effect beyond 'more efficient' to inventory, capacity, quality, delivery, cost or profit.",
     "For lean, name the relevant tool and the waste removed; evaluate supplier reliability, employee involvement and resilience.",
+    "When constructing a network, begin from the predecessor table and explain any dummy through the exact false dependency it prevents.",
     "In CPA calculations, show each route, forward/backward times and float formula so follow-through marks remain available.",
     "A critical activity has zero total float. Explain that delay threatens the project duration rather than merely calling it important.",
     "Integrate HR, marketing and finance into an operations-strategy judgement instead of writing three isolated mini-essays.",
@@ -226,6 +234,8 @@
     { "question": "What are B's total and free float?", "answer": "Total float is 2 days; free float is 0 days." },
     { "question": "What are D's total and free float?", "answer": "Both are 2 days." },
     { "question": "Why is a dummy activity used?", "answer": "To show the correct dependency in the network; it uses no time or resource." },
+    { "question": "What do a node and an activity arrow show?", "answer": "A node is a start or finish event; an activity arrow is a task whose direction shows dependency and whose label gives its duration." },
+    { "question": "How are event times selected at merges and bursts?", "answer": "Use the maximum incoming completion time for the forward-pass EET and the minimum outgoing permitted time for the backward-pass LET." },
     { "question": "Why is CPA not sufficient by itself?", "answer": "Durations are estimates and the network does not automatically solve resource, finance, quality or risk constraints." }
   ],
   "relatedTopics": ["6.2", "9.1", "9.2", "10.3"]
