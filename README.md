@@ -87,6 +87,11 @@ npm test
 
 `npm test` runs a fresh production build before the Node test suite.
 
+## Project handoff
+
+- [Current operational state](docs/HANDOFF.md)
+- [Transfer, operate and publish with Claude Code](docs/CLAUDE-TRANSFER-GUIDE.md)
+
 ## Architecture
 
 This is a React 19 application using Next-compatible file routing. Content is structured JSON, topic files are loaded on demand, and personal study state stays in the browser. The only server-side route is the restricted PDF proxy used by the inline paper viewer.
