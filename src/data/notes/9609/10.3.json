@@ -86,11 +86,12 @@
         "Keep the initial investment as a time-zero outflow and show its negative sign."
       ],
       "examples": [
-        { "id": "10.3-4-1", "kind": "worked", "label": "NPV and interpretation", "content": "The discounted year 1-5 net cash flows total $132,000 and initial investment is $120,000. NPV = $132,000 - $120,000 = +$12,000. The positive $12,000 means the project is financially acceptable at the stated discount rate and is forecast to add present value. Accept only if the cash-flow assumptions, risk and strategic fit are credible." }
+        { "id": "10.3-4-1", "kind": "worked", "label": "NPV and interpretation", "content": "The discounted year 1-5 net cash flows total $132,000 and initial investment is $120,000. NPV = $132,000 - $120,000 = +$12,000. The positive $12,000 means the project is financially acceptable at the stated discount rate and is forecast to add present value. Accept only if the cash-flow assumptions, risk and strategic fit are credible." },
+        { "id": "10.3-4-2", "kind": "worked", "label": "Discount each yearly cash flow", "content": "Formula: present value = net cash flow × discount factor. Year 1: $50,000 × 0.909 = $45,450 present value. Year 2: $70,000 × 0.826 = $57,820 present value. Total present value = $45,450 + $57,820 = $103,270. With an initial investment of $90,000, NPV = $103,270 − $90,000 = +$13,270. The positive $13,270 is financially acceptable at the stated discount rate, subject to cash-flow and risk assumptions." }
       ]
     },
     {
-      "id": "05-conflicting-results-and-sensitivity",
+      "id": "06-comparing-methods",
       "title": "When the methods disagree",
       "content": [
         "A project may pay back quickly but generate little later value, or have high NPV but slow payback. Do not average unlike measures. Explain what each method prioritises, link that priority to the business's objective and constraint, and test whether a plausible forecast change reverses the ranking.",
@@ -106,7 +107,7 @@
       ]
     },
     {
-      "id": "06-qualitative-and-strategic-factors",
+      "id": "05-qualitative-factors",
       "title": "Qualitative and strategic judgement",
       "content": [
         "Consider alignment with objectives, product/market strategy, capacity bottlenecks, quality, flexibility, skills, employee response, customer service, environmental effects, regulation, reputation, supplier dependence and competitor reaction. Availability and source of finance can constrain even a positive project.",

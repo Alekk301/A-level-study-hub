@@ -524,6 +524,36 @@ test("Finance calculations show formula, substitution, answer, unit and interpre
   assert.match(worked["10.4"], /gearing[\s\S]*(?:40|60)%[\s\S]*(?:interest|risk|strategy)/i);
 });
 
+test("Finance review fixes preserve anchors and teach omitted methods accurately", async () => {
+  const stableIds = {
+    "10.1": ["06-using-statements-strategically"],
+    "10.2": ["06-interpreting-and-improving", "07-limitations"],
+    "10.3": ["05-qualitative-factors", "06-comparing-methods"],
+    "10.4": ["06-limitations-of-published-accounts", "07-integrated-judgement"],
+  };
+  for (const [id, expectedIds] of Object.entries(stableIds)) {
+    const sectionIds = (await readNote(id)).sections.map(({ id: sectionId }) => sectionId);
+    for (const expectedId of expectedIds) assert.ok(sectionIds.includes(expectedId), `${id}: stable section ${expectedId}`);
+  }
+
+  const sources = JSON.stringify((await readNote("5.2")).sections);
+  assert.match(sources, /taking on new partners|new partner/i);
+  assert.match(sources, /business mortgage/i);
+
+  const statements = JSON.stringify((await readNote("10.1")).sections);
+  assert.match(statements, /net assets[\s\S]*(?:total assets[\s\S]*total liabilities|assets[\s\S]*liabilities)[\s\S]*(?:equity|owners)/i);
+  assert.match(statements, /accrual[\s\S]*expense[\s\S]*liabilit/i);
+  assert.match(statements, /prepayment[\s\S]*expense[\s\S]*asset/i);
+
+  const appraisalExamples = JSON.stringify((await readNote("10.3")).sections.flatMap(({ examples }) => examples));
+  assert.match(appraisalExamples, /net cash flow[\s\S]*(?:×|x)\s*discount factor[\s\S]*present value/i);
+  assert.match(appraisalExamples, /\$?50[ ,]?000\s*(?:×|x)\s*0\.909\s*=\s*\$?45[ ,]?450[\s\S]*\$?70[ ,]?000\s*(?:×|x)\s*0\.826\s*=\s*\$?57[ ,]?820[\s\S]*\$?103[ ,]?270\s*(?:-|−)\s*\$?90[ ,]?000\s*=\s*\+?\$?13[ ,]?270/i);
+
+  const strategy = JSON.stringify((await readNote("10.4")).sections);
+  assert.match(strategy, /ROCE[\s\S]*project(?:'s)? operating return[\s\S]*(?:existing|current) business ROCE/i);
+  assert.match(strategy, /finance cost[\s\S]*(?:shareholder return|financial risk|leverage)/i);
+});
+
 test("10.2 uses every current Cambridge ratio formula and explains comparative diagnosis", async () => {
   const note = await readNote("10.2");
   const formulas = note.formulas.map(({ label, expression, note }) => `${label}: ${expression}. ${note ?? ""}`).join("\n");

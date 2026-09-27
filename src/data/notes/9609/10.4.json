@@ -66,7 +66,7 @@
         "Match the source to purpose and cash timing. Stable cash flows and low existing gearing can support debt; uncertain, long-payback innovation may suit equity. Compare total cost, availability, flexibility, control and downside survival, not interest alone."
       ],
       "bullets": [
-        "Debt can raise ROCE and shareholder return if project return exceeds finance cost, but losses are also magnified.",
+        "A debt-funded project raises overall ROCE only if the project's operating return exceeds the existing business ROCE. Finance cost does not determine ROCE direction because ROCE uses profit from operations before interest; finance cost instead affects cash, leverage risk and shareholder return.",
         "New equity can reduce gearing yet market dilution or weak demand may make it expensive.",
         "A mixed or staged package can avoid an all-or-nothing choice."
       ],
@@ -123,7 +123,7 @@
       ]
     },
     {
-      "id": "07-limitations-of-published-accounts",
+      "id": "06-limitations-of-published-accounts",
       "title": "Limits of the evidence",
       "content": [
         "Accounts are historical, affected by estimates, accounting policy, asset age, inflation, one-off events, reporting-date seasonality and possible window dressing. Acquisitions or discontinued products can break trends. Competitors may use different policies or operate different models.",
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "id": "08-strategic-judgement",
+      "id": "07-integrated-judgement",
       "title": "Paper 4 strategic judgement",
       "content": [
         "A strong answer selects the most relevant financial evidence, connects it to the corporate objective, develops effects across functions and stakeholders, challenges assumptions and states how implementation will be controlled. A list of ratios or generic debt/equity advantages is not strategy.",

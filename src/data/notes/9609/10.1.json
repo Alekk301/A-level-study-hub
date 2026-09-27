@@ -20,6 +20,7 @@
     { "term": "Gross profit", "definition": "Revenue minus cost of sales; evidence about pricing and direct-cost control before operating expenses." },
     { "term": "Profit from operations", "definition": "Gross profit minus operating expenses; also called operating profit in the syllabus formula appendix." },
     { "term": "Net current assets", "definition": "Current assets minus current liabilities, showing the accounting working-capital position at the reporting date." },
+    { "term": "Net assets", "definition": "Total assets minus total liabilities; under the accounting equation this equals owners' equity." },
     { "term": "Equity", "definition": "Owners' long-term claim on net assets, including issued share capital and reserves." },
     { "term": "Retained earnings", "definition": "Accumulated profit kept in the business after taxation and dividends rather than distributed to owners." },
     { "term": "Net realisable value", "definition": "Expected selling value of inventory minus further costs needed to complete and sell it." },
@@ -56,7 +57,7 @@
         "Net current assets can be positive while cash is weak if inventory is obsolete or receivables are slow."
       ],
       "examples": [
-        { "id": "10.1-2-1", "kind": "worked", "label": "Working-capital position", "content": "Inventory $70,000 + receivables $55,000 + cash $15,000 = current assets $140,000. Current liabilities are $95,000. Net current assets = $140,000 - $95,000 = $45,000. The positive $45,000 does not remove liquidity risk because $125,000 is tied up in inventory and receivables." }
+        { "id": "10.1-2-1", "kind": "worked", "label": "Working-capital and net-assets position", "content": "Inventory $70,000 + receivables $55,000 + cash $15,000 = current assets $140,000. Current liabilities are $95,000. Net current assets = $140,000 - $95,000 = $45,000. Separately, total assets of $600,000 minus total liabilities of $220,000 gives net assets = $380,000, which equals owners' equity. The positive $45,000 working-capital position does not remove liquidity risk because $125,000 is tied up in inventory and receivables." }
       ]
     },
     {
@@ -112,6 +113,7 @@
       "title": "Amending figures without losing the meaning",
       "content": [
         "For an amendment, identify the transaction, decide whether it affects performance, position or both, recalculate the relevant subtotal and state the consequence. Avoid rebuilding irrelevant lines. A depreciation revision or inventory write-down reduces profit; a new loan increases cash and non-current liabilities but only later interest affects profit.",
+        "An accrual records an expense already incurred but not yet paid, increasing the period's expense and a current liability. A prepayment is cash paid for a future period: remove that amount from the current period's expense and record a current asset. Both adjustments match expense to the period receiving the benefit.",
         "Show each subtotal to protect follow-through marks. A visible method demonstrates correct classification even if one arithmetic result is wrong."
       ],
       "bullets": [
@@ -124,7 +126,7 @@
       ]
     },
     {
-      "id": "07-using-statements-for-decisions",
+      "id": "06-using-statements-strategically",
       "title": "Using statements for decisions",
       "content": [
         "Managers use margins, working capital, assets and financing to diagnose where strategy may need to change. Lenders look for repayment capacity and security; investors consider profitability, growth, dividends and risk; suppliers consider short-term payment evidence. The same number can lead stakeholders to different questions.",
@@ -144,6 +146,7 @@
     { "label": "Gross profit", "expression": "revenue - cost of sales", "note": "Result before operating expenses." },
     { "label": "Profit from operations", "expression": "gross profit - operating expenses", "note": "Use the statement's stated expense lines and units." },
     { "label": "Net current assets", "expression": "current assets - current liabilities", "note": "An accounting position, not necessarily cash immediately available." },
+    { "label": "Net assets", "expression": "total assets - total liabilities", "note": "Equals owners' equity under the accounting equation." },
     { "label": "Net realisable value", "expression": "expected selling price - costs to complete and sell", "note": "Use when recoverable value is below recorded cost." },
     { "label": "Straight-line depreciation", "expression": "(cost - residual value) / useful life", "note": "The syllabus assesses straight-line depreciation only." }
   ],
