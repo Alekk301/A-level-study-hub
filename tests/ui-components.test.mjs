@@ -224,6 +224,16 @@ test("renders curated, accessible visual explainers across every subject and Bus
   );
   assert.ok(economicPolicy);
   assert.ok(controlledChange);
+  assert.equal(economicPolicy.layout, "flow");
+  assert.equal(controlledChange.layout, "flow");
+  assert.equal(
+    economicPolicy.examLink,
+    "Build all four links for the business in the case; the same policy can help one firm and harm another because exposure and timing differ.",
+  );
+  assert.equal(
+    controlledChange.examLink,
+    "Evaluate implementation as well as the strategy: judge resources, culture, leadership, stakeholder response, controls and the quality of contingency preparation.",
+  );
 
   const economicPolicyHtml = renderToStaticMarkup(
     React.createElement(TopicVisual, { visual: economicPolicy }),
