@@ -71,6 +71,21 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
     return () => { active = false; };
   }, [subjectCode, topicId, lookupKey, recordOpened]);
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (!note || !window.location.hash) return;
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ block: "start" });
+    };
+    const frame = window.requestAnimationFrame(scrollToHash);
+    const retry = window.setTimeout(scrollToHash, 100);
+    window.addEventListener("hashchange", scrollToHash);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(retry);
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, [note]);
+
   const tocItems = useMemo<TocItem[]>(() => {
     if (!note) return [];
     return [

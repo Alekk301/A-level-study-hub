@@ -31,6 +31,21 @@ test("keeps responsive navigation, note TOC and reduced-motion safeguards", asyn
   assert.match(responsive, /@media \(max-width: 420px\)/);
   assert.match(theme, /:focus-visible/);
   assert.match(theme, /@media \(prefers-reduced-motion: reduce\)/);
+  const notes = await readFile(path.join(root, "src/styles/notes.css"), "utf8");
+  assert.match(notes, /\.topic-visuals \.topic-visual \{[^}]*min-width: 0/);
+});
+
+test("scrolls deep links after an asynchronously loaded topic note mounts", async () => {
+  const source = await readFile(path.join(root, "src/views/TopicPage.tsx"), "utf8");
+
+  assert.match(source, /if \(!note \|\| !window\.location\.hash\) return;/);
+  assert.match(source, /document\.getElementById\(window\.location\.hash\.slice\(1\)\)/);
+  assert.match(source, /scrollIntoView\(\{ block: "start" \}\)/);
+  assert.match(source, /window\.requestAnimationFrame\(scrollToHash\)/);
+  assert.match(source, /window\.setTimeout\(scrollToHash, 100\)/);
+  assert.match(source, /window\.addEventListener\("hashchange", scrollToHash\)/);
+  assert.match(source, /window\.clearTimeout\(retry\)/);
+  assert.match(source, /window\.removeEventListener\("hashchange", scrollToHash\)/);
 });
 
 test("forwards progress semantics to the primitive", async () => {
@@ -145,6 +160,25 @@ test("renders labelled, syntax-highlighted programming examples", async () => {
   assert.match(html, />Python</);
   assert.match(html, /class="code-token code-token--keyword">def</);
   assert.match(html, /<pre[^>]*><code/);
+});
+
+test("renders note examples safely when JSON contains a descriptive kind", async () => {
+  const { ExampleBlock } = await vite.ssrLoadModule(
+    "/src/components/notes/ExampleBlock.tsx",
+  );
+  const html = renderToStaticMarkup(
+    React.createElement(ExampleBlock, {
+      example: {
+        id: "business-application",
+        kind: "application",
+        label: "Applied decision",
+        content: "Connect the option to the business context.",
+      },
+    }),
+  );
+
+  assert.match(html, /Applied decision/);
+  assert.match(html, /Connect the option to the business context/);
 });
 
 test("does not highlight Python operators as comments", async () => {

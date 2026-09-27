@@ -49,7 +49,7 @@ function languageLabel(language: NonNullable<NoteExample["language"]>) {
 }
 
 export function ExampleBlock({ example }: { example: NoteExample }) {
-  const Icon = icons[example.kind];
+  const Icon = icons[example.kind] ?? Lightbulb;
   const isCode = example.kind === "code" || example.kind === "pseudocode" || example.kind === "formula" || example.content.includes("\n");
   return (
     <aside className={`example-block example-block--${example.kind}`} aria-label={example.label}>
