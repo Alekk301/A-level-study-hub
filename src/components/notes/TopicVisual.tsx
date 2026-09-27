@@ -648,6 +648,16 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
     ], examLink: "Do not jump directly from an interest-rate or exchange-rate change to profit; show the intermediate cost, demand or cash-flow mechanism.",
   },
   {
+    subject: "9609", topic: "6.1", title: "Economic-policy transmission chain", layout: "flow",
+    description: "Policy instruments affect business performance through demand, costs, currency and labour conditions; the result depends on the firm's exposure and the time period considered.",
+    nodes: [
+      { label: "Policy instrument", detail: "Identify the fiscal, monetary, supply-side or exchange-rate action and its direction." },
+      { label: "Immediate effect", detail: "Trace the first change in demand, borrowing cost, input cost, currency value or labour conditions." },
+      { label: "Contextual business decision", detail: "Apply the effect to pricing, output, investment, employment, sourcing or market choice." },
+      { label: "Exposure and time horizon", detail: "Develop the performance effect, then qualify it by gearing, import/export exposure, industry and response time." },
+    ], examLink: "Build all four links for the business in the case; the same policy can help one firm and harm another because exposure and timing differ.",
+  },
+  {
     subject: "9609", topic: "6.2", title: "Porter's five forces", layout: "tree",
     description: "The five forces explain pressure on industry profitability and the ability of firms to defend prices, margins and market position.",
     nodes: [
@@ -678,6 +688,16 @@ export const topicVisualCatalog: TopicVisualSpec[] = [
       { label: "Expected value", detail: "Multiply every payoff by its probability, then add along each option." },
       { label: "Judgement", detail: "Compare EMV with risk, timing, finance, objectives and non-financial effects." },
     ], examLink: "Expected value is a probability-weighted long-run average, not the outcome the business will definitely receive.",
+  },
+  {
+    subject: "9609", topic: "6.2", title: "From corporate plan to controlled change", layout: "flow",
+    description: "Corporate planning turns evidence and direction into resourced action, aligns culture and leadership with implementation, and keeps change under review when conditions shift.",
+    nodes: [
+      { label: "Direction and evidence", detail: "Start with mission, objectives, forecasts and strategic analysis rather than an unsupported ambition." },
+      { label: "Plan, resources and responsibility", detail: "Set actions, budgets, timescales, ownership and measurable milestones." },
+      { label: "Culture, leadership and change", detail: "Align behaviour, communicate the case, reduce resistance and build the capability to implement." },
+      { label: "Contingency and crisis response", detail: "Monitor results and assumptions, trigger corrective action and protect continuity if disruption becomes a crisis." },
+    ], examLink: "Evaluate implementation as well as the strategy: judge resources, culture, leadership, stakeholder response, controls and the quality of contingency preparation.",
   },
   {
     subject: "9609", topic: "7.1", title: "Centralisation–decentralisation continuum", layout: "continuum",

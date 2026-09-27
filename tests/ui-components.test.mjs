@@ -216,6 +216,29 @@ test("renders curated, accessible visual explainers across every subject and Bus
   }
   assert.ok(getTopicVisuals("9609", "6.2").length >= 5);
 
+  const economicPolicy = getTopicVisuals("9609", "6.1").find(
+    ({ title }) => title === "Economic-policy transmission chain",
+  );
+  const controlledChange = getTopicVisuals("9609", "6.2").find(
+    ({ title }) => title === "From corporate plan to controlled change",
+  );
+  assert.ok(economicPolicy);
+  assert.ok(controlledChange);
+
+  const economicPolicyHtml = renderToStaticMarkup(
+    React.createElement(TopicVisual, { visual: economicPolicy }),
+  );
+  assert.match(economicPolicyHtml, /role="img"/);
+  assert.match(economicPolicyHtml, /aria-label="Policy instruments affect business performance/);
+  assert.match(economicPolicyHtml, /Exposure and time horizon/);
+
+  const controlledChangeHtml = renderToStaticMarkup(
+    React.createElement(TopicVisual, { visual: controlledChange }),
+  );
+  assert.match(controlledChangeHtml, /role="img"/);
+  assert.match(controlledChangeHtml, /aria-label="Corporate planning turns evidence and direction/);
+  assert.match(controlledChangeHtml, /Contingency and crisis response/);
+
   const motivationVisuals = getTopicVisuals("9609", "2.2");
   assert.equal(motivationVisuals.length, 2);
   const motivation = renderToStaticMarkup(
