@@ -35,17 +35,46 @@ test("keeps responsive navigation, note TOC and reduced-motion safeguards", asyn
   assert.match(notes, /\.topic-visuals \.topic-visual \{[^}]*min-width: 0/);
 });
 
-test("scrolls deep links after an asynchronously loaded topic note mounts", async () => {
-  const source = await readFile(path.join(root, "src/views/TopicPage.tsx"), "utf8");
+test("keeps deep links aligned when an image above the target loads late", async () => {
+  const { keepHashTargetAligned } = await vite.ssrLoadModule(
+    "/src/utils/hash-scroll.ts",
+  );
+  let scrolls = 0;
+  const listeners = new Map();
+  const target = { scrollIntoView: () => { scrolls += 1; } };
+  const imageBefore = {
+    complete: false,
+    compareDocumentPosition: () => 4,
+    addEventListener: (name, callback) => listeners.set(name, callback),
+    removeEventListener: (name) => listeners.delete(name),
+  };
+  const imageAfter = {
+    complete: false,
+    compareDocumentPosition: () => 0,
+    addEventListener: () => assert.fail("an image after the target must not be observed"),
+    removeEventListener: () => {},
+  };
+  const documentStub = {
+    getElementById: (id) => id === "late-target" ? target : null,
+    images: [imageBefore, imageAfter],
+  };
+  const windowStub = {
+    location: { hash: "#late-target" },
+    requestAnimationFrame: (callback) => { callback(); return 1; },
+    cancelAnimationFrame: () => {},
+    setTimeout: () => 2,
+    clearTimeout: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  };
 
-  assert.match(source, /if \(!note \|\| !window\.location\.hash\) return;/);
-  assert.match(source, /document\.getElementById\(window\.location\.hash\.slice\(1\)\)/);
-  assert.match(source, /scrollIntoView\(\{ block: "start" \}\)/);
-  assert.match(source, /window\.requestAnimationFrame\(scrollToHash\)/);
-  assert.match(source, /window\.setTimeout\(scrollToHash, 100\)/);
-  assert.match(source, /window\.addEventListener\("hashchange", scrollToHash\)/);
-  assert.match(source, /window\.clearTimeout\(retry\)/);
-  assert.match(source, /window\.removeEventListener\("hashchange", scrollToHash\)/);
+  const cleanup = keepHashTargetAligned(documentStub, windowStub);
+  assert.equal(scrolls, 1);
+  assert.equal(typeof listeners.get("load"), "function");
+  listeners.get("load")();
+  assert.equal(scrolls, 2, "a late image load above the target must realign it");
+  cleanup();
+  assert.equal(listeners.size, 0);
 });
 
 test("forwards progress semantics to the primitive", async () => {

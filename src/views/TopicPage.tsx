@@ -28,6 +28,7 @@ import { getExamFocus } from "@/src/data/exam-focus";
 import { getTopic, getTopicNeighbours } from "@/src/data/subjects";
 import { useStudy } from "@/src/hooks/use-study";
 import type { TopicNote } from "@/src/types/content";
+import { keepHashTargetAligned } from "@/src/utils/hash-scroll";
 import { paths } from "@/src/utils/paths";
 
 function TopicLoading() {
@@ -72,18 +73,8 @@ export function TopicPage({ subjectCode, topicId }: { subjectCode: string; topic
   }, [subjectCode, topicId, lookupKey, recordOpened]);
 
   useEffect(() => {
-    const scrollToHash = () => {
-      if (!note || !window.location.hash) return;
-      document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ block: "start" });
-    };
-    const frame = window.requestAnimationFrame(scrollToHash);
-    const retry = window.setTimeout(scrollToHash, 100);
-    window.addEventListener("hashchange", scrollToHash);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.clearTimeout(retry);
-      window.removeEventListener("hashchange", scrollToHash);
-    };
+    if (!note) return;
+    return keepHashTargetAligned();
   }, [note]);
 
   const tocItems = useMemo<TocItem[]>(() => {
