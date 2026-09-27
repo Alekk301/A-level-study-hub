@@ -13,6 +13,13 @@ before changing anything.
 4. Use Node.js 22.13 or newer and npm 10 or newer. Install locked dependencies with `npm ci`.
 5. Establish a clean baseline by running `npm run data:validate`, `npm run lint`, and `npm test`.
 
+## Working across computers
+
+The owner edits this project from more than one computer using the cycle in
+`docs/WORK-CYCLE.md`: day-to-day work happens on the shared `dev` branch, not
+`rebuild/react-vite`. At the start of a session run `.\work start`; when the owner is done, offer to
+run `.\work finish "<summary>"`. Only run `.\work publish` when the owner asks to go live.
+
 ## Normal workflow
 
 - Start a short-lived branch from the latest `github/rebuild/react-vite`.
