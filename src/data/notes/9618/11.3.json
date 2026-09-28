@@ -1,0 +1,290 @@
+{
+  "id": "11.3",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Structured Programming",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to write or complete pseudocode that declares and calls procedures and functions with parameters, to state whether a given parameter is passed by value or by reference, and to trace such pseudocode to determine whether a subroutine's changes are visible to the calling code afterwards. Answers score when a procedure and a function are correctly distinguished by whether a value is returned, when BYVAL and BYREF are matched to the correct behaviour rather than guessed, when a trace explicitly shows a variable's value in the caller both before and after the call, and when the stated benefits of structured programming (reuse, independent testing, easier design, easier fault isolation) are given as reasons rather than asserted alone.",
+  "syllabusPoints": [
+    "Show understanding of structured (top-down) programming, breaking a problem down into a hierarchy of smaller, self-contained procedures and functions called from a main routine.",
+    "Show understanding of the difference between a procedure, which performs a task, and a function, which performs a task and returns a single value usable in an expression.",
+    "Use parameters to pass data into a procedure or function.",
+    "Show understanding of the difference between passing a parameter by value, where the subroutine receives a copy, and by reference, where the subroutine receives the actual variable itself.",
+    "Show understanding of the difference between a local variable, accessible only within the subroutine it is declared in, and a global variable, accessible from anywhere in the program.",
+    "Explain the benefits of structured programming with subroutines, including reuse, independent testing, easier design of large problems, and easier fault isolation."
+  ],
+  "definitions": [
+    {
+      "term": "Structured (top-down) programming",
+      "definition": "An approach to program design in which a problem is broken down into a hierarchy of smaller, self-contained procedures and functions, each handling one well-defined sub-task, connected together by a main routine that calls them."
+    },
+    {
+      "term": "Procedure",
+      "definition": "A subroutine that performs a task, such as carrying out a calculation or displaying output, but does not itself return a value that can be used in an expression; it is called as a statement on its own, for example CALL ProcedureName(...)."
+    },
+    {
+      "term": "Function",
+      "definition": "A subroutine that performs a task and returns exactly one value, which can then be used directly within an expression, such as Result <- FunctionName(...) or IF FunctionName(...) = 0 THEN."
+    },
+    {
+      "term": "Parameter",
+      "definition": "A value or variable passed into a procedure or function when it is called, allowing data to be supplied to the subroutine without relying on global variables; the subroutine's declaration lists the parameters it expects to receive."
+    },
+    {
+      "term": "Pass by value (BYVAL)",
+      "definition": "A method of passing a parameter in which the subroutine receives only a copy of the argument's value; any change made to that parameter inside the subroutine has no effect on the original variable in the calling code."
+    },
+    {
+      "term": "Pass by reference (BYREF)",
+      "definition": "A method of passing a parameter in which the subroutine receives the actual variable itself, not a copy; any change made to that parameter inside the subroutine changes the original variable in the calling code too."
+    },
+    {
+      "term": "Local variable",
+      "definition": "A variable declared inside a procedure or function, which exists and can be accessed only while that subroutine is running; it is created when the subroutine starts and ceases to exist once the subroutine ends."
+    },
+    {
+      "term": "Global variable",
+      "definition": "A variable declared at the top level of a program, outside any subroutine, and accessible from anywhere in the program, including from inside every procedure and function; its use is generally best avoided except where genuinely necessary, since it makes a subroutine's behaviour depend on state outside its own parameters."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-structured-top-down-programming",
+      "title": "Structured (top-down) programming",
+      "content": [
+        "Structured programming breaks a problem down into a hierarchy of smaller, self-contained procedures and functions, called subroutines, each responsible for one well-defined sub-task rather than one single block of code trying to handle an entire problem at once. A program's main routine sits at the top of this hierarchy and calls the subroutines it needs, in the order they are needed, often calling further subroutines from inside those subroutines to break a sub-task down even further; this top-down process of repeatedly splitting a large problem into smaller, more manageable pieces is exactly the decomposition step of computational thinking applied directly to a program's structure.",
+        "A subroutine is self-contained: the rest of the program interacts with it only through its parameters (the data supplied to it) and, for a function, its return value, without needing to know how the subroutine achieves its task internally. This means a subroutine's internal workings can be changed later, to fix a fault or improve efficiency, without needing to change anything about how the rest of the program calls it, provided its parameters and return value stay the same."
+      ],
+      "bullets": [
+        "A large problem is decomposed into a hierarchy of smaller procedures and functions, each handling one well-defined sub-task.",
+        "The main routine sits at the top of the hierarchy and calls subroutines, which may themselves call further subroutines.",
+        "A subroutine is self-contained: the rest of the program only needs to know its parameters and, for a function, its return value, not how it works internally."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-procedures-vs-functions",
+      "title": "Procedures versus functions",
+      "content": [
+        "A procedure performs a task, such as displaying a formatted report or updating several variables, but does not return a value that can itself be used inside an expression; it is called on its own as a statement, for example CALL DisplayReport(StudentName, Score). A function also performs a task, but it additionally returns exactly one value as its result, and it is called from within an expression rather than as a standalone statement, for example Total <- Total + CalculateBonus(Score), where CalculateBonus(Score) is evaluated to a single value that is then used directly in the surrounding calculation.",
+        "Choosing between the two depends on what the calling code actually needs: if the calling code needs a single computed value it can use in a further expression or condition, a function is correct, declared with a stated return type and containing at least one RETURN value statement; if the calling code only needs an action carried out, with no single value handed back for further use, a procedure is correct."
+      ],
+      "bullets": [
+        "A procedure is called as its own statement, using CALL, and does not return a usable value.",
+        "A function is called from within an expression and returns exactly one value, using RETURN, which can be used directly in a calculation or condition.",
+        "The choice depends on what the calling code needs back: a single usable value means a function; an action with no value returned means a procedure."
+      ],
+      "examples": [
+        {
+          "id": "02-procedure-vs-function-worked",
+          "kind": "worked",
+          "label": "Worked example: a procedure and a function performing related tasks",
+          "content": "PROCEDURE DisplayResult(Name : STRING, Score : INTEGER)\n  OUTPUT Name, \" scored \", Score\nENDPROCEDURE\n\nFUNCTION Grade(Score : INTEGER) RETURNS CHAR\n  IF Score >= 50 THEN\n    RETURN 'P'\n  ELSE\n    RETURN 'F'\n  ENDIF\nENDFUNCTION\n\n// Calling the procedure: called as a statement on its own, nothing is returned\nCALL DisplayResult(\"Amir\", 62)          // OUTPUT: Amir scored 62\n\n// Calling the function: called from within an expression, its result is used directly\nDECLARE StudentGrade : CHAR\nStudentGrade <- Grade(62)               // StudentGrade now holds 'P'\nOUTPUT \"Grade: \", StudentGrade          // OUTPUT: Grade: P\n\n// Grade(62) could not have been written as CALL Grade(62) on its own, since its\n// single returned value would then have nowhere to go and nothing would use it."
+        }
+      ]
+    },
+    {
+      "id": "03-parameters",
+      "title": "Parameters: passing data into a subroutine",
+      "content": [
+        "A parameter is a value or variable passed into a procedure or function when it is called, giving the subroutine the data it needs to carry out its task without relying on that data already being available as a global variable. A subroutine's declaration lists the parameters it expects, each with an identifier and a data type, for example PROCEDURE UpdateScore(PlayerName : STRING, Points : INTEGER); when the subroutine is called, an argument is supplied for each declared parameter, in the same order, for example CALL UpdateScore(\"Beth\", 15), and inside the subroutine, Points refers to the value 15 for the duration of that call.",
+        "Passing data through explicitly declared parameters, rather than through global variables, makes a subroutine's inputs clear from its declaration alone, and makes the subroutine reusable in a different program, or a different part of the same program, since it does not depend on any particular global variable already existing with the right value in it."
+      ],
+      "bullets": [
+        "A subroutine's parameters are declared with an identifier and data type in its header; each call supplies one argument for each declared parameter, in order.",
+        "Parameters make a subroutine's required inputs explicit and visible in its own declaration, rather than hidden inside dependence on global variables.",
+        "A subroutine written to use parameters, rather than global variables, can be reused elsewhere without needing any particular global variable to already exist."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-by-value-vs-by-reference",
+      "title": "Passing by value versus passing by reference",
+      "content": [
+        "When a parameter is passed by value, written BYVAL, the subroutine receives only a copy of the argument's current value; the subroutine works with that copy for the rest of the call, so any change made to the parameter inside the subroutine changes only the copy, leaving the original variable back in the calling code completely unaffected once the subroutine finishes and control returns. When a parameter is passed by reference, written BYREF, the subroutine instead receives the actual variable itself, not a copy of its value; any change made to the parameter inside the subroutine is therefore a change made directly to that same original variable, and it remains changed in the calling code after the subroutine finishes and control returns.",
+        "The choice between BYVAL and BYREF matters whenever a subroutine needs to change one of its parameters: BYVAL is used when the calling code's original variable must be protected from any change the subroutine makes internally, and BYREF is used specifically when the subroutine is intended to change the calling code's original variable, such as a procedure designed to update a variable in place rather than return a new value."
+      ],
+      "bullets": [
+        "BYVAL: the subroutine receives a copy; changes inside the subroutine do not affect the original variable in the calling code.",
+        "BYREF: the subroutine receives the actual variable itself; changes inside the subroutine do affect the original variable in the calling code.",
+        "BYREF is chosen specifically when a subroutine is meant to update the caller's variable in place; BYVAL is chosen to protect the caller's variable from any internal change."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-by-value-vs-by-reference-worked",
+      "title": "Worked trace: the same starting value, by value and by reference",
+      "content": [
+        "The clearest way to see the difference between BYVAL and BYREF is to call two otherwise identical procedures with the same starting value, change the parameter inside each one by the same amount, and then check the caller's original variable after each call has finished. Both procedures below add 10 to their parameter and output it from inside the procedure; the only difference between them is BYVAL versus BYREF in the parameter's declaration.",
+        "Tracing both calls with Number starting at 5 in each case shows the value printed inside the procedure is 15 in both versions, since the addition itself behaves identically either way; the difference only appears afterwards, in what OUTPUT Number prints back in the main routine once each procedure has finished and control has returned to it."
+      ],
+      "bullets": [
+        "Both procedures compute the same result, 15, inside themselves; BYVAL and BYREF do not change what happens to the parameter during the call itself.",
+        "After the BYVAL call finishes, Number in the caller is unchanged at 5, because the procedure only ever had a copy of it.",
+        "After the BYREF call finishes, Number in the caller has been changed to 15, because the procedure operated on the actual variable itself."
+      ],
+      "examples": [
+        {
+          "id": "05-byval-byref-trace",
+          "kind": "worked",
+          "label": "Worked trace: AddTenByValue versus AddTenByReference, both called with Number = 5",
+          "content": "PROCEDURE AddTenByValue(BYVAL X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by value), X = \", X\nENDPROCEDURE\n\nPROCEDURE AddTenByReference(BYREF X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by reference), X = \", X\nENDPROCEDURE\n\n-- Call 1: by value --\nDECLARE Number : INTEGER\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByValue(Number)\n// Inside AddTenByValue: X receives a COPY of Number's value, 5\n//   X <- X + 10  =>  X becomes 15 (only the copy changes)\n// OUTPUT inside procedure: \"Inside procedure (by value), X = 15\"\n// Procedure ends; the copy X is discarded, Number itself was never touched\nOUTPUT \"After call, Number = \", Number         // After call, Number = 5  (UNCHANGED)\n\n-- Call 2: by reference --\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByReference(Number)\n// Inside AddTenByReference: X IS Number itself, not a copy\n//   X <- X + 10  =>  Number becomes 15 directly, because X and Number are the same variable\n// OUTPUT inside procedure: \"Inside procedure (by reference), X = 15\"\n// Procedure ends; Number remains changed, since X was never a separate copy\nOUTPUT \"After call, Number = \", Number         // After call, Number = 15  (CHANGED)\n\n-- Summary of the trace --\n// Both procedures print X = 15 from inside themselves: the +10 happens identically\n// either way. The difference is entirely in what Number equals back in the caller\n// AFTER the call returns: still 5 after AddTenByValue (a copy was changed, not\n// Number), but 15 after AddTenByReference (Number itself was changed)."
+        }
+      ]
+    },
+    {
+      "id": "06-local-vs-global-variables",
+      "title": "Local versus global variables",
+      "content": [
+        "A local variable is declared inside a procedure or function and exists only while that particular call to the subroutine is running: it is created fresh when the subroutine starts and ceases to exist as soon as the subroutine finishes, so it cannot be accessed from outside that subroutine, and a new call to the same subroutine creates an entirely new, separate copy of that local variable with no memory of any previous call's value. A global variable, by contrast, is declared at the top level of the program, outside every subroutine, and is accessible from anywhere in the program, including from inside every procedure and function, without needing to be passed in as a parameter at all.",
+        "Global variables are generally best avoided except where genuinely necessary, because a subroutine that reads or changes a global variable has a hidden dependency and a hidden side effect that is not visible in its own declaration or parameter list; this makes such a subroutine harder to understand, harder to reuse elsewhere, and harder to test in isolation, since its behaviour then depends on program state outside itself rather than solely on the arguments it was explicitly given."
+      ],
+      "bullets": [
+        "A local variable exists only while its own subroutine is running, and a fresh copy is created on every separate call.",
+        "A global variable is declared outside every subroutine and is accessible from anywhere in the program, without being passed in as a parameter.",
+        "Global variables are generally avoided, because a subroutine that depends on one has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-benefits-of-structured-programming",
+      "title": "Benefits of structured programming with subroutines",
+      "content": [
+        "Breaking a program into procedures and functions brings several concrete benefits. Reuse: a subroutine written once to perform a specific sub-task can be called from many different places in the same program, or copied into a different program entirely, instead of the same logic being written out again in full every time it is needed, which also means a fix or improvement made once inside the subroutine automatically benefits every place that calls it. Independent testing: because a subroutine is self-contained, interacting with the rest of the program only through its parameters and return value, it can be tested on its own, with a range of chosen test inputs, before it is even connected to the rest of the program, rather than only being testable as part of the whole finished system.",
+        "Easier design of large problems: breaking a large, complex problem down into a hierarchy of smaller procedures and functions, each with one well-defined sub-task, makes that problem far easier to design and to reason about than trying to plan one single undivided block of code to handle everything at once. Easier fault isolation: when a program does not behave correctly, a fault can be traced to one specific, smaller subroutine responsible for the affected behaviour, and investigated and corrected within that subroutine alone, rather than having to search through an entire, undivided program to find where the fault might be."
+      ],
+      "bullets": [
+        "Reuse: a subroutine written once can be called repeatedly from different places, instead of the same code being duplicated everywhere it is needed.",
+        "Independent testing and easier design: a self-contained subroutine can be tested on its own before integration, and a large problem is easier to design as a hierarchy of smaller sub-tasks.",
+        "Easier fault isolation: a fault can be traced to one specific, smaller subroutine, rather than searched for across an entire undivided program."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Pass by value versus pass by reference",
+    "columns": [
+      "Aspect",
+      "BYVAL (by value)",
+      "BYREF (by reference)"
+    ],
+    "rows": [
+      [
+        "What the subroutine receives",
+        "A copy of the argument's value",
+        "The actual variable itself"
+      ],
+      [
+        "Effect of changing the parameter inside the subroutine",
+        "Only the copy changes; the original variable is unaffected",
+        "The original variable changes too, since it is the same variable"
+      ],
+      [
+        "Caller's variable after the call returns",
+        "Unchanged, whatever the subroutine did to its parameter",
+        "Changed, if the subroutine changed its parameter"
+      ],
+      [
+        "Typical use",
+        "Protecting the caller's original variable from any change",
+        "A subroutine specifically intended to update the caller's variable in place"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Top-down decomposition of a program into subroutines",
+    "type": "layers",
+    "nodes": [
+      "Main routine: calls subroutines in the order the overall task requires",
+      "Procedure: performs a task, called with CALL, returns no usable value",
+      "Function: performs a task, called from within an expression, returns exactly one value with RETURN",
+      "Parameters carry data into each subroutine, by value (a copy) or by reference (the actual variable)",
+      "Local variables exist only inside the subroutine that declares them, for the duration of one call",
+      "Control returns to the main routine (or the calling subroutine) once the subroutine finishes"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing why a procedure's change is not visible after it returns",
+      "steps": [
+        "A procedure is declared PROCEDURE Reset(BYVAL Total : INTEGER), and its body sets Total <- 0",
+        "The main routine calls CALL Reset(RunningTotal), where RunningTotal currently holds 50, intending RunningTotal to become 0",
+        "Because the parameter is declared BYVAL, Reset receives only a copy of RunningTotal's value, 50, not RunningTotal itself",
+        "Tracing the call shows Total <- 0 sets the copy to 0 inside Reset, but RunningTotal in the main routine is never touched, since Total was never the same variable as RunningTotal"
+      ],
+      "evaluation": "RunningTotal is still 50 after the call, not 0, because BYVAL only ever gives the subroutine a copy to change; the parameter's declaration must be changed to BYREF Total : INTEGER for a change made inside Reset to actually change RunningTotal in the calling code, which is what the procedure's own name and evident intention require."
+    },
+    {
+      "title": "Diagnosing a fault caused by relying on a global variable instead of a parameter",
+      "steps": [
+        "A function FUNCTION ApplyDiscount() RETURNS REAL is written to read a global variable Price directly, rather than receiving Price as a parameter, and returns Price * 0.9",
+        "The function is called correctly the first time, when the global Price happens to hold the intended value, and produces the correct discounted result",
+        "Later in the same program, Price is reused as a general-purpose variable for an unrelated calculation, and ApplyDiscount() is called again for a different, unrelated item",
+        "Tracing this second call shows ApplyDiscount() still reads whatever value Price currently holds from the unrelated calculation, not the price of the item it is actually meant to be discounting"
+      ],
+      "evaluation": "The fault is that ApplyDiscount() has a hidden dependency on the global variable Price instead of receiving the item's price as an explicit parameter, so its result depends on whatever else in the program most recently changed Price; rewriting it as FUNCTION ApplyDiscount(ItemPrice : REAL) RETURNS REAL, returning ItemPrice * 0.9, removes the hidden dependency and makes the function's behaviour depend only on the argument it is explicitly given."
+    },
+    {
+      "title": "Comparing one undivided block of code against structured subroutines for testing a fault",
+      "steps": [
+        "A program that validates input, performs a calculation, and formats output is written as one single, undivided block of code with no subroutines",
+        "Testing reveals the final formatted output is sometimes wrong, but the fault could be in the validation, the calculation, or the formatting, since all three are mixed together in the same block",
+        "The same program is instead written as three separate subroutines, ValidateInput(), Calculate() and FormatOutput(), each called in turn from the main routine",
+        "Each subroutine is tested on its own with a range of test inputs, and the fault is traced specifically to Calculate(), which is producing a wrong result for one particular kind of input"
+      ],
+      "evaluation": "In the undivided block, the fault could be anywhere across the whole program and finding it requires examining all of it; broken into subroutines, each one can be tested independently, so the fault is isolated to Calculate() alone, and only that one smaller subroutine needs to be examined and corrected, demonstrating the fault-isolation benefit of structured programming directly."
+    }
+  ],
+  "examTips": [
+    "State explicitly whether a subroutine is a procedure or a function by whether it returns a usable value, and check it is called correctly: CALL for a procedure, from within an expression for a function.",
+    "When asked whether a parameter is BYVAL or BYREF, trace what happens to the caller's original variable after the subroutine returns, not just what happens to the parameter while the subroutine is running.",
+    "Use BYREF only when a subroutine is genuinely intended to change the caller's variable; using BYREF where BYVAL was intended risks accidentally changing a variable that should have been protected.",
+    "When explaining the benefits of structured programming, give the specific reason (reuse, independent testing, easier design, easier fault isolation) rather than simply asserting that subroutines are 'better' or 'clearer'."
+  ],
+  "commonMistakes": [
+    "Assuming a change made to a BYVAL parameter inside a subroutine will be visible in the caller's original variable after the call returns, when it will not be.",
+    "Confusing a procedure with a function, for example trying to use a procedure's non-existent return value inside an expression, or calling a function with CALL as if it were a procedure.",
+    "Relying on a global variable to pass data into or out of a subroutine instead of using an explicit parameter, creating a hidden dependency that is easy to introduce faults through.",
+    "Assuming a local variable keeps its value between separate calls to the same subroutine, when in fact a fresh copy is created on every call.",
+    "Forgetting to trace the caller's variable both before and after a call when asked whether a parameter was passed by value or by reference, and guessing instead of tracing."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is structured (top-down) programming?",
+      "answer": "Breaking a problem down into a hierarchy of smaller, self-contained procedures and functions (subroutines), each handling one well-defined sub-task, connected by a main routine that calls them."
+    },
+    {
+      "question": "What is the difference between a procedure and a function?",
+      "answer": "A procedure performs a task but does not return a value; a function performs a task and returns exactly one value that can be used within an expression."
+    },
+    {
+      "question": "What is the difference between passing a parameter by value and by reference?",
+      "answer": "By value, the subroutine receives a copy, so changes inside it do not affect the caller's original variable; by reference, the subroutine receives the actual variable itself, so changes inside it do affect the caller's original variable."
+    },
+    {
+      "question": "In the worked trace, why was Number still 5 after AddTenByValue(Number) but 15 after AddTenByReference(Number), given both started with Number = 5?",
+      "answer": "AddTenByValue only ever changed a copy of Number, leaving the original untouched; AddTenByReference changed Number itself directly, since its parameter was the actual variable, not a copy."
+    },
+    {
+      "question": "What is the difference between a local variable and a global variable?",
+      "answer": "A local variable is declared inside a subroutine and exists only while that subroutine is running; a global variable is declared at the top level and is accessible from anywhere in the program."
+    },
+    {
+      "question": "Why are global variables generally best avoided in a subroutine's design?",
+      "answer": "Because a subroutine that depends on a global variable has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test independently."
+    },
+    {
+      "question": "Name four benefits of structured programming with subroutines.",
+      "answer": "Reuse of code instead of duplication, independent testing of each subroutine, easier design of large problems as a hierarchy of smaller pieces, and easier fault isolation to one specific subroutine."
+    }
+  ],
+  "relatedTopics": [
+    "9.1",
+    "11.1",
+    "11.2",
+    "12.2"
+  ]
+}

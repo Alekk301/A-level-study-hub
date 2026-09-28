@@ -12930,7 +12930,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "11.2",
     "title": "Constructs",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -12941,19 +12941,352 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Use selection (IF) and iteration (FOR/WHILE/REPEAT) constructs, including nested constructs, to control program flow."
+        "text": "Paper 1 asks candidates to write, complete or trace pseudocode that uses the three basic programming constructs — sequence, selection and iteration — correctly, including choosing the right kind of loop for a given situation and nesting constructs inside one another. Answers score when IF...ENDIF and CASE OF...ENDCASE are laid out with every branch and keyword present, when a FOR loop is chosen only when the number of repetitions is known in advance, when the choice between WHILE...ENDWHILE and REPEAT...UNTIL correctly reflects whether the loop body must be guaranteed to run at least once, and when a trace table updates every variable, including a loop counter or condition variable, on every single pass."
       },
       {
-        "kind": "Quick recall",
-        "text": "selection"
+        "kind": "Definition",
+        "label": "Sequence",
+        "text": "The execution of a program's statements one after another, in exactly the order they are written, with no branching or repetition; it is the simplest of the three basic constructs."
       },
       {
-        "kind": "Quick recall",
-        "text": "FOR/WHILE/REPEAT"
+        "kind": "Definition",
+        "label": "Selection",
+        "text": "A construct that chooses between two or more alternative paths through a program based on the evaluation of a condition, using IF...THEN...ELSE...ENDIF for a two-way choice or CASE OF...ENDCASE for a choice between several values of one variable."
       },
       {
-        "kind": "Quick recall",
-        "text": "nesting"
+        "kind": "Definition",
+        "label": "Iteration",
+        "text": "A construct, also called repetition or looping, that repeats a block of statements, either a known number of times (FOR) or until a condition is met (WHILE or REPEAT)."
+      },
+      {
+        "kind": "Definition",
+        "label": "CASE OF...ENDCASE",
+        "text": "A selection construct that compares a single variable against a list of possible values (or ranges), executing only the statements listed under the matching value, with an optional OTHERWISE clause for any value not otherwise listed."
+      },
+      {
+        "kind": "Definition",
+        "label": "Count-controlled loop (FOR)",
+        "text": "A loop written FOR counter <- start TO end ... NEXT counter that repeats its body an exact, predetermined number of times, once for each value the counter takes from start to end inclusive; used when the number of repetitions is known before the loop begins."
+      },
+      {
+        "kind": "Definition",
+        "label": "Pre-condition loop (WHILE)",
+        "text": "A loop written WHILE condition ... ENDWHILE that tests its condition before each repetition of its body; if the condition is already false the first time it is tested, the body does not execute at all."
+      },
+      {
+        "kind": "Definition",
+        "label": "Post-condition loop (REPEAT)",
+        "text": "A loop written REPEAT ... UNTIL condition that tests its condition after each repetition of its body; because the test happens after the body has run, the body always executes at least once, even if the condition is already true before the loop starts."
+      },
+      {
+        "kind": "Definition",
+        "label": "Nesting",
+        "text": "Placing one construct entirely inside another, such as an IF statement inside a FOR loop, so that the inner construct is fully executed (or fully skipped) as part of a single pass of the outer construct."
+      },
+      {
+        "kind": "Section",
+        "text": "Sequence: the simplest construct"
+      },
+      {
+        "kind": "Content",
+        "label": "Sequence: the simplest construct",
+        "text": "Sequence is the execution of a program's statements one after another, strictly in the order they are written on the page, with no branching to an alternative path and no statement repeated. It is the default behaviour of a program and the construct every other construct builds on top of: a selection construct decides which sequence of statements to run next, and an iteration construct decides how many times a sequence of statements is run, but within any single branch or single pass of a loop, the statements inside it are still executed in plain sequence."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequence: the simplest construct",
+        "text": "Because sequence has no branching, tracing a purely sequential fragment is straightforward: each statement is executed exactly once, in the order it appears, and any variable's value after the fragment has run is simply the result of applying every statement to it in turn. Sequence only becomes error-prone when statements are written in the wrong order, for example reading a value with INPUT after it has already been used in a calculation instead of before."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequence: the simplest construct",
+        "text": "Sequence executes every statement exactly once, in the order it is written, with no branching and no repetition."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequence: the simplest construct",
+        "text": "Selection and iteration are both built on top of sequence: they control which sequence of statements runs, or how many times it runs."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequence: the simplest construct",
+        "text": "A sequential fragment is traced by applying each statement, in order, exactly once; getting the order of statements wrong is the main source of error."
+      },
+      {
+        "kind": "Section",
+        "text": "Selection: IF...THEN...ELSE...ENDIF"
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: IF...THEN...ELSE...ENDIF",
+        "text": "Selection chooses between alternative paths through a program based on a condition. The two-way form, IF condition THEN ... ELSE ... ENDIF, evaluates condition; if it is TRUE, only the statements between THEN and ELSE are executed, and if it is FALSE, only the statements between ELSE and ENDIF are executed. The ELSE branch is optional: IF condition THEN ... ENDIF, with no ELSE, simply skips its statements entirely when condition is FALSE and continues with whatever follows ENDIF."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: IF...THEN...ELSE...ENDIF",
+        "text": "Every IF statement in this specification's pseudocode must be closed with ENDIF, and marking an answer against this construct means checking that THEN, ELSE (if present) and ENDIF are all present and correctly matched, since a missing or misplaced ENDIF changes which statements belong inside the selection and which fall outside it, especially once IF statements are nested inside one another."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: IF...THEN...ELSE...ENDIF",
+        "text": "IF...THEN...ELSE...ENDIF makes a two-way choice: exactly one of the THEN branch or the ELSE branch executes, never both and never neither."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: IF...THEN...ELSE...ENDIF",
+        "text": "The ELSE branch is optional; without it, the THEN branch simply does nothing when the condition is FALSE."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: IF...THEN...ELSE...ENDIF",
+        "text": "ENDIF must close every IF statement; a missing or misplaced ENDIF changes which statements are inside the selection, particularly when IF statements are nested."
+      },
+      {
+        "kind": "Section",
+        "text": "Selection: CASE OF...ENDCASE"
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: CASE OF...ENDCASE",
+        "text": "CASE OF...ENDCASE chooses between several possible values of one single variable, rather than repeatedly testing separate conditions as a chain of IF...ELSE IF statements would. It is written CASE OF identifier, followed by one or more value : statement lines, each giving one possible value (or range of values) for identifier and the statement or statements to execute if identifier currently holds that value, and it is closed with ENDCASE. An optional OTHERWISE clause catches any value of identifier not explicitly listed above it, playing the same role a final, unconditional ELSE would play at the end of a chain of IF statements."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: CASE OF...ENDCASE",
+        "text": "CASE OF is the natural choice whenever a program must branch on the different possible values of a single variable, such as branching on a menu choice entered as a single character or a grade letter, because it lays every possible value out clearly as its own branch, rather than requiring a separate, explicitly repeated condition on the same variable for every branch."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: CASE OF...ENDCASE",
+        "text": "CASE OF identifier lists each possible value of identifier as its own branch, ending with ENDCASE; only the branch matching identifier's current value executes."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: CASE OF...ENDCASE",
+        "text": "OTHERWISE, if present, executes only when identifier's value matches none of the listed branches, in the same role a final ELSE plays in a chain of IF statements."
+      },
+      {
+        "kind": "Content",
+        "label": "Selection: CASE OF...ENDCASE",
+        "text": "CASE OF suits branching on the different values of one single variable; IF...ELSE IF is still needed for conditions that are not all comparisons of the same one variable."
+      },
+      {
+        "kind": "Example",
+        "label": "Selection: CASE OF...ENDCASE",
+        "text": "DECLARE MenuChoice : CHAR\nOUTPUT \"1: Add record  2: Delete record  3: Search  Anything else: Quit\"\nINPUT MenuChoice\n\nCASE OF MenuChoice\n  '1' : OUTPUT \"Adding a new record\"\n  '2' : OUTPUT \"Deleting a record\"\n  '3' : OUTPUT \"Searching for a record\"\n  OTHERWISE : OUTPUT \"Exiting the program\"\nENDCASE\n\n// If MenuChoice = '2', only the line OUTPUT \"Deleting a record\" executes;\n// the other three branches, including OTHERWISE, are all skipped.\n// If MenuChoice = 'X' (not listed), only OTHERWISE executes, printing \"Exiting the program\"."
+      },
+      {
+        "kind": "Section",
+        "text": "Iteration: the count-controlled FOR loop"
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the count-controlled FOR loop",
+        "text": "A FOR loop is used whenever the exact number of times a block of statements must repeat is already known before the loop begins, such as processing every element of an array of a known fixed size, or printing something a fixed number of times. It is written FOR counter <- start TO end, followed by the statements to repeat, and closed with NEXT counter; counter is automatically set to start, the body is executed, counter is then automatically increased by 1, and this repeats until counter has taken and executed the value end, after which the loop ends and execution continues after NEXT counter."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the count-controlled FOR loop",
+        "text": "Because a FOR loop automatically manages its own counter, incrementing it and testing it internally, it never needs a separate condition to be written or checked by the programmer, unlike WHILE or REPEAT; this also means a FOR loop always executes its body a predetermined number of times, ((end - start) + 1) times, and is the wrong choice whenever the number of repetitions is not actually known in advance, such as repeating until the user enters a specific value."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the count-controlled FOR loop",
+        "text": "FOR counter <- start TO end ... NEXT counter repeats its body exactly ((end - start) + 1) times, once for each value counter takes from start to end inclusive."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the count-controlled FOR loop",
+        "text": "counter is set, tested and incremented automatically by the FOR loop itself; the programmer never writes a separate condition or increment statement."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the count-controlled FOR loop",
+        "text": "FOR is the right choice only when the number of repetitions is known before the loop starts; it is the wrong construct whenever the loop must instead run until some condition becomes true or false."
+      },
+      {
+        "kind": "Section",
+        "text": "Iteration: the pre-condition WHILE...ENDWHILE loop"
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the pre-condition WHILE...ENDWHILE loop",
+        "text": "A WHILE loop is a pre-condition loop: it tests its condition immediately before every repetition of its body, including before the very first repetition. It is written WHILE condition, followed by the statements to repeat, closed with ENDWHILE; condition is evaluated, and only if it is TRUE does the body execute once, after which condition is evaluated again, and this continues until condition is evaluated as FALSE, at which point the loop ends without executing its body again."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the pre-condition WHILE...ENDWHILE loop",
+        "text": "Because the test happens before the body runs every single time, a WHILE loop's body can execute zero times: if condition is already FALSE the very first time it is tested, the body between WHILE and ENDWHILE is skipped entirely and execution continues immediately after ENDWHILE. WHILE is the correct choice whenever it is possible that the loop body should not run at all, for example validating an input that might already be valid the first time it is entered."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the pre-condition WHILE...ENDWHILE loop",
+        "text": "WHILE condition ... ENDWHILE tests condition before every repetition, including before the first one."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the pre-condition WHILE...ENDWHILE loop",
+        "text": "If condition is FALSE the first time it is tested, the loop body executes zero times and is skipped entirely."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the pre-condition WHILE...ENDWHILE loop",
+        "text": "WHILE is the right choice whenever the loop body might legitimately need to be skipped altogether, such as validation that could already pass on the first attempt."
+      },
+      {
+        "kind": "Section",
+        "text": "Iteration: the post-condition REPEAT...UNTIL loop"
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the post-condition REPEAT...UNTIL loop",
+        "text": "A REPEAT loop is a post-condition loop: it tests its condition immediately after every repetition of its body, never before. It is written REPEAT, followed by the statements to repeat, then UNTIL condition; the body executes once unconditionally, condition is then evaluated, and if it is FALSE the body executes again, repeating until condition is finally evaluated as TRUE, at which point the loop ends."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the post-condition REPEAT...UNTIL loop",
+        "text": "Because the test happens only after the body has already run, a REPEAT loop's body always executes at least once, even if condition would already have been TRUE before the loop started; there is no way to skip the first execution of a REPEAT loop's body. REPEAT is the correct choice whenever the body must run at least once regardless of any condition, such as displaying a menu at least once before checking whether the user chose to quit, or reading a first piece of input before there is anything to validate."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the post-condition REPEAT...UNTIL loop",
+        "text": "REPEAT ... UNTIL condition tests condition after every repetition, never before, so the body always runs at least once."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the post-condition REPEAT...UNTIL loop",
+        "text": "A REPEAT loop's body cannot be skipped, even if condition is already TRUE before the loop begins."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: the post-condition REPEAT...UNTIL loop",
+        "text": "REPEAT is the right choice whenever the body must run at least once regardless of the starting condition, such as showing a menu before checking whether to exit."
+      },
+      {
+        "kind": "Section",
+        "text": "WHILE versus REPEAT: the same validation, traced both ways"
+      },
+      {
+        "kind": "Content",
+        "label": "WHILE versus REPEAT: the same validation, traced both ways",
+        "text": "The choice between WHILE and REPEAT only matters when there is a real chance the loop body should not run at all; if the body must always run at least once regardless, both loops behave identically after their first pass, but they can differ sharply on that very first pass. Validating an input that might already be valid the first time it is entered is the clearest case, because it forces the two loops to behave differently: WHILE's pre-condition test can skip the body entirely if the very first value entered already passes, while REPEAT's post-condition test guarantees the body executes at least once no matter what, so a REPEAT version of the same validation must ask for the input before it can test it, whereas a WHILE version must have something to test before the loop is even reached."
+      },
+      {
+        "kind": "Content",
+        "label": "WHILE versus REPEAT: the same validation, traced both ways",
+        "text": "The worked trace below validates a number that must be between 1 and 10 inclusive, using an input where the very first value entered, 5, is already valid. Both versions are traced with exactly this same input to show precisely where they diverge."
+      },
+      {
+        "kind": "Content",
+        "label": "WHILE versus REPEAT: the same validation, traced both ways",
+        "text": "The difference between WHILE and REPEAT is only visible on the first pass: WHILE can skip its body entirely, REPEAT never can."
+      },
+      {
+        "kind": "Content",
+        "label": "WHILE versus REPEAT: the same validation, traced both ways",
+        "text": "A WHILE loop needs an initial value for the condition variable before the loop is reached, so the condition has something to test on its first, pre-body check."
+      },
+      {
+        "kind": "Content",
+        "label": "WHILE versus REPEAT: the same validation, traced both ways",
+        "text": "A REPEAT loop needs no such initial value, because INPUT happens inside the body itself, which is guaranteed to run at least once before UNTIL is ever tested."
+      },
+      {
+        "kind": "Example",
+        "label": "WHILE versus REPEAT: the same validation, traced both ways",
+        "text": "-- Version 1: WHILE (pre-condition) --\nDECLARE Number : INTEGER\nNumber <- 0                      // must be given a starting value that fails the test,\n                                  // since WHILE tests BEFORE the body has run even once\nWHILE Number < 1 OR Number > 10\n  OUTPUT \"Enter a number from 1 to 10: \"\n  INPUT Number\nENDWHILE\nOUTPUT \"Valid number accepted: \", Number\n\nTrace (input typed: 5):\nStep | Number before test | Condition (Number<1 OR Number>10) | Body runs?\n1    | 0                   | TRUE (0 < 1)                        | Yes -> INPUT reads 5, Number <- 5\n2    | 5                   | FALSE (5 is not <1 and not >10)     | No  -> loop ends\nOUTPUT: \"Valid number accepted: 5\"\n-- The body ran exactly once: the initial dummy value 0 was needed only to make the\n-- FIRST test TRUE so the loop would be entered at all; once 5 was read, the SECOND\n-- test was FALSE and the loop ended without running the body again.\n\n-- Version 2: REPEAT (post-condition) --\nDECLARE Number : INTEGER\nREPEAT\n  OUTPUT \"Enter a number from 1 to 10: \"\n  INPUT Number\nUNTIL Number >= 1 AND Number <= 10\nOUTPUT \"Valid number accepted: \", Number\n\nTrace (input typed: 5):\nStep | Body action                | Number after | Condition (Number>=1 AND Number<=10) checked after body\n1    | INPUT reads 5, Number <- 5 | 5            | TRUE (5 is >=1 and <=10) -> loop ends\nOUTPUT: \"Valid number accepted: 5\"\n\n-- Comparing the two traces with the SAME first input, 5:\n-- WHILE needed Number pre-set to a value (0) that fails the test, purely so the loop\n--   would be entered at all before anything had been read; REPEAT needed no such\n--   pre-set value, because INPUT is inside the body, which always runs at least once.\n-- Both versions accept 5 after exactly one INPUT in this case, because 5 is already\n--   valid; the difference is structural, not in this particular trace's final answer:\n--   REPEAT's body is guaranteed to run once even if the very first value were invalid\n--   and needed several more attempts, and so is WHILE's body from its second pass\n--   onward -- but only REPEAT guarantees that FIRST pass unconditionally, while WHILE's\n--   first pass depends entirely on Number's pre-loop value passing the pre-condition test."
+      },
+      {
+        "kind": "Section",
+        "text": "Nesting selection and iteration"
+      },
+      {
+        "kind": "Content",
+        "label": "Nesting selection and iteration",
+        "text": "Constructs are nested by placing one entirely inside another, such as an IF statement inside the body of a FOR loop, or a FOR loop inside one branch of an IF statement; the inner construct is fully executed, in its entirety, as part of each single pass of the outer construct, and each construct must still be closed with its own matching keyword (ENDIF, ENDCASE, NEXT counter, ENDWHILE or UNTIL condition) at the correct depth of nesting. Indentation is used to show this structure clearly on the page, but it is the matching keywords, not the indentation itself, that actually determine which statements belong to which construct when the pseudocode is traced."
+      },
+      {
+        "kind": "Content",
+        "label": "Nesting selection and iteration",
+        "text": "Tracing nested constructs requires working from the outside in on each pass: for each repetition of the outer loop, the inner construct is evaluated completely, using the outer loop's current values where the inner construct refers to them, before moving on to the outer loop's next repetition. A trace table for nested constructs typically needs a row, or a sub-row, for every pass of the inner construct within every single pass of the outer one, since skipping a value produced by the inner construct is a common source of tracing errors."
+      },
+      {
+        "kind": "Content",
+        "label": "Nesting selection and iteration",
+        "text": "One construct nested inside another is fully executed as part of a single pass of the outer construct; each construct needs its own correctly matched closing keyword."
+      },
+      {
+        "kind": "Content",
+        "label": "Nesting selection and iteration",
+        "text": "Indentation shows nesting clearly to a reader, but the closing keywords (ENDIF, ENDCASE, NEXT, ENDWHILE, UNTIL) are what actually determine the structure when tracing."
+      },
+      {
+        "kind": "Content",
+        "label": "Nesting selection and iteration",
+        "text": "Tracing nested constructs works from the outside in: for every pass of the outer construct, the inner construct is traced completely before moving to the outer construct's next pass."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the three basic programming constructs?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the three basic programming constructs?",
+        "text": "Sequence (statements executed in written order), selection (choosing between alternative paths based on a condition) and iteration (repeating a block of statements)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between IF...THEN...ELSE...ENDIF and CASE OF...ENDCASE?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between IF...THEN...ELSE...ENDIF and CASE OF...ENDCASE?",
+        "text": "IF...THEN...ELSE...ENDIF makes a two-way choice based on any condition; CASE OF...ENDCASE chooses between several possible values of one single variable, with an optional OTHERWISE for unlisted values."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "When should a FOR loop be used, and how many times does FOR counter <- start TO end repeat?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "When should a FOR loop be used, and how many times does FOR counter <- start TO end repeat?",
+        "text": "When the exact number of repetitions is known before the loop begins; it repeats exactly ((end - start) + 1) times."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "When is a WHILE loop's condition tested, and what does this mean for how many times its body can execute?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "When is a WHILE loop's condition tested, and what does this mean for how many times its body can execute?",
+        "text": "Before every repetition, including the first; this means the body can execute zero times if the condition is already FALSE the first time it is tested."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "When is a REPEAT loop's condition tested, and what does this mean for how many times its body can execute?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "When is a REPEAT loop's condition tested, and what does this mean for how many times its body can execute?",
+        "text": "After every repetition, never before; this means the body always executes at least once, even if the condition would already have been TRUE before the loop started."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Given the same first input that is already valid, what is the key structural difference between validating it with WHILE versus with REPEAT?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Given the same first input that is already valid, what is the key structural difference between validating it with WHILE versus with REPEAT?",
+        "text": "WHILE needs a pre-loop dummy value that fails the test, purely to enter the loop before anything real has been read, and can then skip its body entirely; REPEAT needs no dummy value, because INPUT sits inside its body, which always runs at least once before the condition is ever tested."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is nesting shown, and what actually determines a nested construct's boundaries when tracing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is nesting shown, and what actually determines a nested construct's boundaries when tracing?",
+        "text": "Indentation shows nesting clearly to a reader, but it is each construct's own correctly matched closing keyword (ENDIF, ENDCASE, NEXT, ENDWHILE, UNTIL) that actually determines its boundaries when the pseudocode is traced."
       }
     ]
   },
@@ -12969,7 +13302,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "11.3",
     "title": "Structured Programming",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -12980,19 +13313,323 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Break programs into procedures and functions with parameters, improving modularity and controlling variable scope."
+        "text": "Paper 1 asks candidates to write or complete pseudocode that declares and calls procedures and functions with parameters, to state whether a given parameter is passed by value or by reference, and to trace such pseudocode to determine whether a subroutine's changes are visible to the calling code afterwards. Answers score when a procedure and a function are correctly distinguished by whether a value is returned, when BYVAL and BYREF are matched to the correct behaviour rather than guessed, when a trace explicitly shows a variable's value in the caller both before and after the call, and when the stated benefits of structured programming (reuse, independent testing, easier design, easier fault isolation) are given as reasons rather than asserted alone."
       },
       {
-        "kind": "Quick recall",
-        "text": "procedures/functions"
+        "kind": "Definition",
+        "label": "Structured (top-down) programming",
+        "text": "An approach to program design in which a problem is broken down into a hierarchy of smaller, self-contained procedures and functions, each handling one well-defined sub-task, connected together by a main routine that calls them."
       },
       {
-        "kind": "Quick recall",
-        "text": "parameters"
+        "kind": "Definition",
+        "label": "Procedure",
+        "text": "A subroutine that performs a task, such as carrying out a calculation or displaying output, but does not itself return a value that can be used in an expression; it is called as a statement on its own, for example CALL ProcedureName(...)."
       },
       {
-        "kind": "Quick recall",
-        "text": "scope/modularity"
+        "kind": "Definition",
+        "label": "Function",
+        "text": "A subroutine that performs a task and returns exactly one value, which can then be used directly within an expression, such as Result <- FunctionName(...) or IF FunctionName(...) = 0 THEN."
+      },
+      {
+        "kind": "Definition",
+        "label": "Parameter",
+        "text": "A value or variable passed into a procedure or function when it is called, allowing data to be supplied to the subroutine without relying on global variables; the subroutine's declaration lists the parameters it expects to receive."
+      },
+      {
+        "kind": "Definition",
+        "label": "Pass by value (BYVAL)",
+        "text": "A method of passing a parameter in which the subroutine receives only a copy of the argument's value; any change made to that parameter inside the subroutine has no effect on the original variable in the calling code."
+      },
+      {
+        "kind": "Definition",
+        "label": "Pass by reference (BYREF)",
+        "text": "A method of passing a parameter in which the subroutine receives the actual variable itself, not a copy; any change made to that parameter inside the subroutine changes the original variable in the calling code too."
+      },
+      {
+        "kind": "Definition",
+        "label": "Local variable",
+        "text": "A variable declared inside a procedure or function, which exists and can be accessed only while that subroutine is running; it is created when the subroutine starts and ceases to exist once the subroutine ends."
+      },
+      {
+        "kind": "Definition",
+        "label": "Global variable",
+        "text": "A variable declared at the top level of a program, outside any subroutine, and accessible from anywhere in the program, including from inside every procedure and function; its use is generally best avoided except where genuinely necessary, since it makes a subroutine's behaviour depend on state outside its own parameters."
+      },
+      {
+        "kind": "Section",
+        "text": "Structured (top-down) programming"
+      },
+      {
+        "kind": "Content",
+        "label": "Structured (top-down) programming",
+        "text": "Structured programming breaks a problem down into a hierarchy of smaller, self-contained procedures and functions, called subroutines, each responsible for one well-defined sub-task rather than one single block of code trying to handle an entire problem at once. A program's main routine sits at the top of this hierarchy and calls the subroutines it needs, in the order they are needed, often calling further subroutines from inside those subroutines to break a sub-task down even further; this top-down process of repeatedly splitting a large problem into smaller, more manageable pieces is exactly the decomposition step of computational thinking applied directly to a program's structure."
+      },
+      {
+        "kind": "Content",
+        "label": "Structured (top-down) programming",
+        "text": "A subroutine is self-contained: the rest of the program interacts with it only through its parameters (the data supplied to it) and, for a function, its return value, without needing to know how the subroutine achieves its task internally. This means a subroutine's internal workings can be changed later, to fix a fault or improve efficiency, without needing to change anything about how the rest of the program calls it, provided its parameters and return value stay the same."
+      },
+      {
+        "kind": "Content",
+        "label": "Structured (top-down) programming",
+        "text": "A large problem is decomposed into a hierarchy of smaller procedures and functions, each handling one well-defined sub-task."
+      },
+      {
+        "kind": "Content",
+        "label": "Structured (top-down) programming",
+        "text": "The main routine sits at the top of the hierarchy and calls subroutines, which may themselves call further subroutines."
+      },
+      {
+        "kind": "Content",
+        "label": "Structured (top-down) programming",
+        "text": "A subroutine is self-contained: the rest of the program only needs to know its parameters and, for a function, its return value, not how it works internally."
+      },
+      {
+        "kind": "Section",
+        "text": "Procedures versus functions"
+      },
+      {
+        "kind": "Content",
+        "label": "Procedures versus functions",
+        "text": "A procedure performs a task, such as displaying a formatted report or updating several variables, but does not return a value that can itself be used inside an expression; it is called on its own as a statement, for example CALL DisplayReport(StudentName, Score). A function also performs a task, but it additionally returns exactly one value as its result, and it is called from within an expression rather than as a standalone statement, for example Total <- Total + CalculateBonus(Score), where CalculateBonus(Score) is evaluated to a single value that is then used directly in the surrounding calculation."
+      },
+      {
+        "kind": "Content",
+        "label": "Procedures versus functions",
+        "text": "Choosing between the two depends on what the calling code actually needs: if the calling code needs a single computed value it can use in a further expression or condition, a function is correct, declared with a stated return type and containing at least one RETURN value statement; if the calling code only needs an action carried out, with no single value handed back for further use, a procedure is correct."
+      },
+      {
+        "kind": "Content",
+        "label": "Procedures versus functions",
+        "text": "A procedure is called as its own statement, using CALL, and does not return a usable value."
+      },
+      {
+        "kind": "Content",
+        "label": "Procedures versus functions",
+        "text": "A function is called from within an expression and returns exactly one value, using RETURN, which can be used directly in a calculation or condition."
+      },
+      {
+        "kind": "Content",
+        "label": "Procedures versus functions",
+        "text": "The choice depends on what the calling code needs back: a single usable value means a function; an action with no value returned means a procedure."
+      },
+      {
+        "kind": "Example",
+        "label": "Procedures versus functions",
+        "text": "PROCEDURE DisplayResult(Name : STRING, Score : INTEGER)\n  OUTPUT Name, \" scored \", Score\nENDPROCEDURE\n\nFUNCTION Grade(Score : INTEGER) RETURNS CHAR\n  IF Score >= 50 THEN\n    RETURN 'P'\n  ELSE\n    RETURN 'F'\n  ENDIF\nENDFUNCTION\n\n// Calling the procedure: called as a statement on its own, nothing is returned\nCALL DisplayResult(\"Amir\", 62)          // OUTPUT: Amir scored 62\n\n// Calling the function: called from within an expression, its result is used directly\nDECLARE StudentGrade : CHAR\nStudentGrade <- Grade(62)               // StudentGrade now holds 'P'\nOUTPUT \"Grade: \", StudentGrade          // OUTPUT: Grade: P\n\n// Grade(62) could not have been written as CALL Grade(62) on its own, since its\n// single returned value would then have nowhere to go and nothing would use it."
+      },
+      {
+        "kind": "Section",
+        "text": "Parameters: passing data into a subroutine"
+      },
+      {
+        "kind": "Content",
+        "label": "Parameters: passing data into a subroutine",
+        "text": "A parameter is a value or variable passed into a procedure or function when it is called, giving the subroutine the data it needs to carry out its task without relying on that data already being available as a global variable. A subroutine's declaration lists the parameters it expects, each with an identifier and a data type, for example PROCEDURE UpdateScore(PlayerName : STRING, Points : INTEGER); when the subroutine is called, an argument is supplied for each declared parameter, in the same order, for example CALL UpdateScore(\"Beth\", 15), and inside the subroutine, Points refers to the value 15 for the duration of that call."
+      },
+      {
+        "kind": "Content",
+        "label": "Parameters: passing data into a subroutine",
+        "text": "Passing data through explicitly declared parameters, rather than through global variables, makes a subroutine's inputs clear from its declaration alone, and makes the subroutine reusable in a different program, or a different part of the same program, since it does not depend on any particular global variable already existing with the right value in it."
+      },
+      {
+        "kind": "Content",
+        "label": "Parameters: passing data into a subroutine",
+        "text": "A subroutine's parameters are declared with an identifier and data type in its header; each call supplies one argument for each declared parameter, in order."
+      },
+      {
+        "kind": "Content",
+        "label": "Parameters: passing data into a subroutine",
+        "text": "Parameters make a subroutine's required inputs explicit and visible in its own declaration, rather than hidden inside dependence on global variables."
+      },
+      {
+        "kind": "Content",
+        "label": "Parameters: passing data into a subroutine",
+        "text": "A subroutine written to use parameters, rather than global variables, can be reused elsewhere without needing any particular global variable to already exist."
+      },
+      {
+        "kind": "Section",
+        "text": "Passing by value versus passing by reference"
+      },
+      {
+        "kind": "Content",
+        "label": "Passing by value versus passing by reference",
+        "text": "When a parameter is passed by value, written BYVAL, the subroutine receives only a copy of the argument's current value; the subroutine works with that copy for the rest of the call, so any change made to the parameter inside the subroutine changes only the copy, leaving the original variable back in the calling code completely unaffected once the subroutine finishes and control returns. When a parameter is passed by reference, written BYREF, the subroutine instead receives the actual variable itself, not a copy of its value; any change made to the parameter inside the subroutine is therefore a change made directly to that same original variable, and it remains changed in the calling code after the subroutine finishes and control returns."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing by value versus passing by reference",
+        "text": "The choice between BYVAL and BYREF matters whenever a subroutine needs to change one of its parameters: BYVAL is used when the calling code's original variable must be protected from any change the subroutine makes internally, and BYREF is used specifically when the subroutine is intended to change the calling code's original variable, such as a procedure designed to update a variable in place rather than return a new value."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing by value versus passing by reference",
+        "text": "BYVAL: the subroutine receives a copy; changes inside the subroutine do not affect the original variable in the calling code."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing by value versus passing by reference",
+        "text": "BYREF: the subroutine receives the actual variable itself; changes inside the subroutine do affect the original variable in the calling code."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing by value versus passing by reference",
+        "text": "BYREF is chosen specifically when a subroutine is meant to update the caller's variable in place; BYVAL is chosen to protect the caller's variable from any internal change."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked trace: the same starting value, by value and by reference"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked trace: the same starting value, by value and by reference",
+        "text": "The clearest way to see the difference between BYVAL and BYREF is to call two otherwise identical procedures with the same starting value, change the parameter inside each one by the same amount, and then check the caller's original variable after each call has finished. Both procedures below add 10 to their parameter and output it from inside the procedure; the only difference between them is BYVAL versus BYREF in the parameter's declaration."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked trace: the same starting value, by value and by reference",
+        "text": "Tracing both calls with Number starting at 5 in each case shows the value printed inside the procedure is 15 in both versions, since the addition itself behaves identically either way; the difference only appears afterwards, in what OUTPUT Number prints back in the main routine once each procedure has finished and control has returned to it."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked trace: the same starting value, by value and by reference",
+        "text": "Both procedures compute the same result, 15, inside themselves; BYVAL and BYREF do not change what happens to the parameter during the call itself."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked trace: the same starting value, by value and by reference",
+        "text": "After the BYVAL call finishes, Number in the caller is unchanged at 5, because the procedure only ever had a copy of it."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked trace: the same starting value, by value and by reference",
+        "text": "After the BYREF call finishes, Number in the caller has been changed to 15, because the procedure operated on the actual variable itself."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked trace: the same starting value, by value and by reference",
+        "text": "PROCEDURE AddTenByValue(BYVAL X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by value), X = \", X\nENDPROCEDURE\n\nPROCEDURE AddTenByReference(BYREF X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by reference), X = \", X\nENDPROCEDURE\n\n-- Call 1: by value --\nDECLARE Number : INTEGER\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByValue(Number)\n// Inside AddTenByValue: X receives a COPY of Number's value, 5\n//   X <- X + 10  =>  X becomes 15 (only the copy changes)\n// OUTPUT inside procedure: \"Inside procedure (by value), X = 15\"\n// Procedure ends; the copy X is discarded, Number itself was never touched\nOUTPUT \"After call, Number = \", Number         // After call, Number = 5  (UNCHANGED)\n\n-- Call 2: by reference --\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByReference(Number)\n// Inside AddTenByReference: X IS Number itself, not a copy\n//   X <- X + 10  =>  Number becomes 15 directly, because X and Number are the same variable\n// OUTPUT inside procedure: \"Inside procedure (by reference), X = 15\"\n// Procedure ends; Number remains changed, since X was never a separate copy\nOUTPUT \"After call, Number = \", Number         // After call, Number = 15  (CHANGED)\n\n-- Summary of the trace --\n// Both procedures print X = 15 from inside themselves: the +10 happens identically\n// either way. The difference is entirely in what Number equals back in the caller\n// AFTER the call returns: still 5 after AddTenByValue (a copy was changed, not\n// Number), but 15 after AddTenByReference (Number itself was changed)."
+      },
+      {
+        "kind": "Section",
+        "text": "Local versus global variables"
+      },
+      {
+        "kind": "Content",
+        "label": "Local versus global variables",
+        "text": "A local variable is declared inside a procedure or function and exists only while that particular call to the subroutine is running: it is created fresh when the subroutine starts and ceases to exist as soon as the subroutine finishes, so it cannot be accessed from outside that subroutine, and a new call to the same subroutine creates an entirely new, separate copy of that local variable with no memory of any previous call's value. A global variable, by contrast, is declared at the top level of the program, outside every subroutine, and is accessible from anywhere in the program, including from inside every procedure and function, without needing to be passed in as a parameter at all."
+      },
+      {
+        "kind": "Content",
+        "label": "Local versus global variables",
+        "text": "Global variables are generally best avoided except where genuinely necessary, because a subroutine that reads or changes a global variable has a hidden dependency and a hidden side effect that is not visible in its own declaration or parameter list; this makes such a subroutine harder to understand, harder to reuse elsewhere, and harder to test in isolation, since its behaviour then depends on program state outside itself rather than solely on the arguments it was explicitly given."
+      },
+      {
+        "kind": "Content",
+        "label": "Local versus global variables",
+        "text": "A local variable exists only while its own subroutine is running, and a fresh copy is created on every separate call."
+      },
+      {
+        "kind": "Content",
+        "label": "Local versus global variables",
+        "text": "A global variable is declared outside every subroutine and is accessible from anywhere in the program, without being passed in as a parameter."
+      },
+      {
+        "kind": "Content",
+        "label": "Local versus global variables",
+        "text": "Global variables are generally avoided, because a subroutine that depends on one has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test."
+      },
+      {
+        "kind": "Section",
+        "text": "Benefits of structured programming with subroutines"
+      },
+      {
+        "kind": "Content",
+        "label": "Benefits of structured programming with subroutines",
+        "text": "Breaking a program into procedures and functions brings several concrete benefits. Reuse: a subroutine written once to perform a specific sub-task can be called from many different places in the same program, or copied into a different program entirely, instead of the same logic being written out again in full every time it is needed, which also means a fix or improvement made once inside the subroutine automatically benefits every place that calls it. Independent testing: because a subroutine is self-contained, interacting with the rest of the program only through its parameters and return value, it can be tested on its own, with a range of chosen test inputs, before it is even connected to the rest of the program, rather than only being testable as part of the whole finished system."
+      },
+      {
+        "kind": "Content",
+        "label": "Benefits of structured programming with subroutines",
+        "text": "Easier design of large problems: breaking a large, complex problem down into a hierarchy of smaller procedures and functions, each with one well-defined sub-task, makes that problem far easier to design and to reason about than trying to plan one single undivided block of code to handle everything at once. Easier fault isolation: when a program does not behave correctly, a fault can be traced to one specific, smaller subroutine responsible for the affected behaviour, and investigated and corrected within that subroutine alone, rather than having to search through an entire, undivided program to find where the fault might be."
+      },
+      {
+        "kind": "Content",
+        "label": "Benefits of structured programming with subroutines",
+        "text": "Reuse: a subroutine written once can be called repeatedly from different places, instead of the same code being duplicated everywhere it is needed."
+      },
+      {
+        "kind": "Content",
+        "label": "Benefits of structured programming with subroutines",
+        "text": "Independent testing and easier design: a self-contained subroutine can be tested on its own before integration, and a large problem is easier to design as a hierarchy of smaller sub-tasks."
+      },
+      {
+        "kind": "Content",
+        "label": "Benefits of structured programming with subroutines",
+        "text": "Easier fault isolation: a fault can be traced to one specific, smaller subroutine, rather than searched for across an entire undivided program."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is structured (top-down) programming?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is structured (top-down) programming?",
+        "text": "Breaking a problem down into a hierarchy of smaller, self-contained procedures and functions (subroutines), each handling one well-defined sub-task, connected by a main routine that calls them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a procedure and a function?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a procedure and a function?",
+        "text": "A procedure performs a task but does not return a value; a function performs a task and returns exactly one value that can be used within an expression."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between passing a parameter by value and by reference?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between passing a parameter by value and by reference?",
+        "text": "By value, the subroutine receives a copy, so changes inside it do not affect the caller's original variable; by reference, the subroutine receives the actual variable itself, so changes inside it do affect the caller's original variable."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "In the worked trace, why was Number still 5 after AddTenByValue(Number) but 15 after AddTenByReference(Number), given both started with Number = 5?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "In the worked trace, why was Number still 5 after AddTenByValue(Number) but 15 after AddTenByReference(Number), given both started with Number = 5?",
+        "text": "AddTenByValue only ever changed a copy of Number, leaving the original untouched; AddTenByReference changed Number itself directly, since its parameter was the actual variable, not a copy."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a local variable and a global variable?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a local variable and a global variable?",
+        "text": "A local variable is declared inside a subroutine and exists only while that subroutine is running; a global variable is declared at the top level and is accessible from anywhere in the program."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why are global variables generally best avoided in a subroutine's design?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why are global variables generally best avoided in a subroutine's design?",
+        "text": "Because a subroutine that depends on a global variable has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test independently."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name four benefits of structured programming with subroutines."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name four benefits of structured programming with subroutines.",
+        "text": "Reuse of code instead of duplication, independent testing of each subroutine, easier design of large problems as a hierarchy of smaller pieces, and easier fault isolation to one specific subroutine."
       }
     ]
   },

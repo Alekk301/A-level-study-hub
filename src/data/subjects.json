@@ -1082,7 +1082,7 @@
               "FOR/WHILE/REPEAT",
               "nesting"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "11.3",
@@ -1097,7 +1097,7 @@
               "parameters",
               "scope/modularity"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "12.1",
