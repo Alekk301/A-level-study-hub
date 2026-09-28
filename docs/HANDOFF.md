@@ -43,10 +43,11 @@ The commit is a checkpoint, not a permanently current version.
   3.2 Logic Gates, 4.1 CPU Architecture, 4.2 Assembly Language, 4.3 Bit manipulation,
   5.1 Operating Systems, 5.2 Language Translators, 6.1 Data Security, 6.2 Data Integrity,
   7.1 Ethics and Ownership, 8.1 Database Concepts, 8.2 Database Management Systems (DBMS),
-  9.1 Computational Thinking Skills, 9.2 Algorithms (all 2026-09-28).
+  9.1 Computational Thinking Skills, 9.2 Algorithms, 10.1 Data Types and Records, 10.2 Arrays
+  (all 2026-09-28).
 - Remaining short notes to rebuild: 8.3, 10.4.
 - Remaining topics with no note file yet:
-  10.1, 10.2, 10.3, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3.
+  10.3, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
 - Once all AS notes exist, add a strict 9618 AS block to `scripts/validate-data.mjs` like the
   Business one.

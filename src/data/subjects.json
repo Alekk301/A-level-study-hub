@@ -1008,7 +1008,7 @@
               "records",
               "type selection"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "10.2",
@@ -1022,7 +1022,7 @@
               "1D/2D arrays",
               "indexing/traversal"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "10.3",

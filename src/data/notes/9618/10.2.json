@@ -1,0 +1,321 @@
+{
+  "id": "10.2",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Arrays",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to declare one-dimensional and two-dimensional arrays, write loops that read, process or search their elements, and trace such loops using a trace table. Answers score when indices are used correctly from 0 up to LENGTH - 1, when a FOR loop's bounds exactly match the array's declared size, and when a 2D array is addressed consistently with a row index and a column index inside nested loops, rather than treating it as a single list.",
+  "syllabusPoints": [
+    "Show understanding of an array as a fixed-size data structure holding multiple values of the same data type, each accessed by an index, with the first element at index 0.",
+    "Declare a one-dimensional array of a given data type and size.",
+    "Use a counter-controlled loop to read, process or search the elements of a one-dimensional array.",
+    "Declare a two-dimensional array of a given data type, addressed by a row index and a column index.",
+    "Use nested counter-controlled loops to process every element of a two-dimensional array.",
+    "Distinguish an array (fixed size, one data type, accessed by index) from a record (fixed set of named fields, possibly different data types, accessed by field name).",
+    "Show understanding that accessing an index outside an array's declared range causes a runtime error (an array bound error)."
+  ],
+  "definitions": [
+    {
+      "term": "Array",
+      "definition": "A fixed-size data structure that holds multiple values of the same data type, with each individual value (element) accessed using an index."
+    },
+    {
+      "term": "Index",
+      "definition": "A whole number that identifies the position of a specific element within an array; in this specification, indexing starts at 0, so the first element is at index 0."
+    },
+    {
+      "term": "Element",
+      "definition": "One individual value stored within an array, accessed by giving the array's name together with an index, for example Scores[3]."
+    },
+    {
+      "term": "One-dimensional (1D) array",
+      "definition": "An array in which each element is identified by a single index, representing a simple list of values, for example Scores[0] to Scores[9]."
+    },
+    {
+      "term": "Two-dimensional (2D) array",
+      "definition": "An array in which each element is identified by two indices, a row index and a column index, representing a grid or table of values, for example Grid[row, col]."
+    },
+    {
+      "term": "Counter-controlled loop",
+      "definition": "A loop, typically a FOR loop, that repeats a fixed, known number of times using a counter variable, commonly used to step through every index of an array in turn."
+    },
+    {
+      "term": "Nested loop",
+      "definition": "A loop placed entirely inside the body of another loop; used with a 2D array so the outer loop steps through each row and the inner loop steps through each column within that row."
+    },
+    {
+      "term": "Array bound error",
+      "definition": "A runtime error that occurs when a program attempts to access an array element using an index outside the array's declared valid range."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-what-an-array-is",
+      "title": "Arrays as a fixed-size, same-type structure",
+      "content": [
+        "An array is a data structure that holds multiple values under a single variable name, where every value stored in it must be of the same declared data type, and the array's size is fixed once it is declared. Each individual value in the array is called an element, and each element is accessed by giving its position, called its index, in square brackets after the array's name, for example Scores[3]. This specification uses zero-based indexing: the first element of an array is always at index 0, the second element is at index 1, and an array declared to hold n elements has valid indices running from 0 to n - 1, not from 1 to n.",
+        "Because every element of an array shares the same data type, an array is the appropriate structure for a collection of similar values that will typically be processed together, such as a set of exam scores, a list of names, or the readings from a sensor taken at regular intervals. This is different from a record (see 10.1), which groups together a fixed set of named fields that may each have a different data type."
+      ],
+      "bullets": [
+        "An array's size is fixed at the point it is declared; it cannot grow or shrink while the program is running.",
+        "Every element of an array must be of the same declared data type, for example all INTEGER or all STRING.",
+        "Indexing starts at 0, so an array declared with 10 elements has valid indices 0 to 9, and index 10 does not exist."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-declaring-a-1d-array",
+      "title": "Declaring a one-dimensional array",
+      "content": [
+        "A one-dimensional array is declared using DECLARE ArrayName : ARRAY[LowerBound : UpperBound] OF DataType, stating the range of valid indices and the data type of every element. For an array of 10 scores indexed from 0, this is written DECLARE Scores : ARRAY[0:9] OF INTEGER, which creates exactly 10 elements, Scores[0] through to Scores[9]. The lower bound does not have to be 0 in the general pseudocode syntax, but this specification's examples and mark schemes consistently index arrays starting from 0, and candidates should follow that convention unless a question states otherwise.",
+        "Once declared, an individual element is used in exactly the same way as an ordinary variable of the array's declared data type: it can appear in an assignment, an expression, a condition or an output statement, for example Scores[0] <- 67 or IF Scores[2] > 50 THEN."
+      ],
+      "bullets": [
+        "DECLARE Scores : ARRAY[0:9] OF INTEGER declares an array of 10 integers, indexed 0 to 9.",
+        "An individual element, such as Scores[4], is used exactly like an ordinary variable of the array's data type.",
+        "The array's declared bounds fix both its size and its valid range of indices for the rest of the program."
+      ],
+      "examples": [
+        {
+          "id": "02-declaring-1d-array-pseudocode",
+          "kind": "pseudocode",
+          "label": "Declaring and assigning elements of a 1D array",
+          "content": "DECLARE Scores : ARRAY[0:9] OF INTEGER\n\nScores[0] <- 67\nScores[1] <- 82\nScores[2] <- 45\n\nOUTPUT Scores[1]        // outputs 82\nIF Scores[2] < 50 THEN\n  OUTPUT \"Score at index 2 is a fail\"\nENDIF"
+        }
+      ]
+    },
+    {
+      "id": "03-looping-through-a-1d-array",
+      "title": "Looping through a one-dimensional array",
+      "content": [
+        "A counter-controlled FOR loop is the standard way to read, process or search every element of a 1D array, because the array's size, and therefore the exact number of times the loop must repeat, is fixed and known. The loop counter is used directly as the array's index, running from the array's lower bound to its upper bound inclusive, so that every element is visited exactly once and no index outside the array's declared range is ever used. This same loop structure is reused for many purposes: outputting every element, calculating a total or an average, counting how many elements meet a condition, or searching for a specific target value.",
+        "The upper bound used in the loop must exactly match the array's declared upper bound. Using a bound that is one too high causes an array bound error by accessing a non-existent index; using a bound that is one too low causes the last element to be silently skipped, which is a logic error rather than a runtime error, since the program still runs but produces an incomplete result."
+      ],
+      "bullets": [
+        "FOR Index <- 0 TO 9 exactly matches an array declared as ARRAY[0:9], visiting every element exactly once.",
+        "The loop counter is used directly as the array index, so the same variable both controls the loop and selects which element is processed.",
+        "A loop bound that does not exactly match the array's declared bounds either skips an element (logic error) or accesses a non-existent index (array bound error)."
+      ],
+      "examples": [
+        {
+          "id": "03-summing-a-1d-array-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: summing the elements of a 1D array with a FOR loop",
+          "content": "DECLARE Scores : ARRAY[0:4] OF INTEGER\nDECLARE Total : INTEGER\nDECLARE Index : INTEGER\n\nScores[0] <- 12\nScores[1] <- 45\nScores[2] <- 30\nScores[3] <- 8\nScores[4] <- 20\n\nTotal <- 0\nFOR Index <- 0 TO 4\n  Total <- Total + Scores[Index]\nNEXT Index\n\nOUTPUT Total\n\nTrace table:\nStep | Index | Scores[Index] | Total\n1    | 0     | 12            | 12\n2    | 1     | 45            | 57\n3    | 2     | 30            | 87\n4    | 3     | 8             | 95\n5    | 4     | 20            | 115\n\nThe loop runs for Index = 0 to 4 inclusive, matching the array's declared bounds ARRAY[0:4] exactly, and the final output is Total = 115."
+        },
+        {
+          "id": "03-searching-a-1d-array-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: searching a 1D array for a target value",
+          "content": "DECLARE Names : ARRAY[0:4] OF STRING\nDECLARE Index : INTEGER\nDECLARE Found : BOOLEAN\n\nNames[0] <- \"Wei\"\nNames[1] <- \"Fatima\"\nNames[2] <- \"Carlos\"\nNames[3] <- \"Aisha\"\nNames[4] <- \"Tom\"\n\nFound <- FALSE\nFOR Index <- 0 TO 4\n  IF Names[Index] = \"Aisha\" THEN\n    Found <- TRUE\n    OUTPUT \"Found at index \", Index\n  ENDIF\nNEXT Index\n\nTrace table (relevant steps only):\nStep | Index | Names[Index] | Comparison            | Found\n1    | 0     | \"Wei\"        | \"Wei\" = \"Aisha\"? No    | FALSE\n2    | 1     | \"Fatima\"     | No                     | FALSE\n3    | 2     | \"Carlos\"     | No                     | FALSE\n4    | 3     | \"Aisha\"      | Yes                    | TRUE\n5    | 4     | \"Tom\"        | No                     | TRUE\n\n\"Aisha\" is located at index 3; the loop continues to index 4 because a simple FOR loop does not stop early, even though the target has already been found."
+        }
+      ]
+    },
+    {
+      "id": "04-declaring-a-2d-array",
+      "title": "Declaring a two-dimensional array",
+      "content": [
+        "A two-dimensional array represents a grid or table of values, and each of its elements is identified by two indices instead of one: a row index and a column index. It is declared using DECLARE ArrayName : ARRAY[RowLower:RowUpper, ColLower:ColUpper] OF DataType. For a 3-row by 4-column grid of integers, this is written DECLARE Grid : ARRAY[0:2, 0:3] OF INTEGER, creating 3 rows (indexed 0 to 2) and 4 columns (indexed 0 to 3) within each row, giving 12 elements in total.",
+        "An individual element is accessed by giving both indices, separated by a comma, in the order row then column, for example Grid[1, 2] refers to the element in row 1, column 2. As with a 1D array, both indices are zero-based, so a 3-row grid has valid row indices 0, 1 and 2, and a 4-column grid has valid column indices 0, 1, 2 and 3."
+      ],
+      "bullets": [
+        "DECLARE Grid : ARRAY[0:2, 0:3] OF INTEGER declares a grid with 3 rows and 4 columns, 12 elements in total.",
+        "An element is accessed as Grid[row, col], with the row index given first and the column index second.",
+        "Both the row index and the column index are zero-based, independently of each other."
+      ],
+      "examples": [
+        {
+          "id": "04-declaring-2d-array-pseudocode",
+          "kind": "pseudocode",
+          "label": "Declaring and assigning elements of a 2D array",
+          "content": "DECLARE Grid : ARRAY[0:2, 0:3] OF INTEGER\n\nGrid[0, 0] <- 5\nGrid[0, 1] <- 9\nGrid[1, 2] <- 7\n\nOUTPUT Grid[1, 2]      // outputs 7"
+        }
+      ]
+    },
+    {
+      "id": "05-nested-loops-for-a-2d-array",
+      "title": "Using nested loops to process a 2D array",
+      "content": [
+        "Processing every element of a 2D array requires two counter-controlled loops nested inside one another: an outer loop that steps through each row, and an inner loop, running completely for every single value of the outer loop, that steps through each column within that row. For every fixed value of the row counter, the inner loop's counter runs through its full range of column indices before the outer loop moves on to the next row, so together the nested loops visit every element of the grid exactly once, in row-by-row order.",
+        "As with a 1D array, each loop's bounds must exactly match the array's declared bounds for that dimension: the outer loop's bounds must match the row bounds, and the inner loop's bounds must match the column bounds. Getting the two loops the wrong way around, or swapping the row and column index inside Grid[row, col], still visits every element but reads or writes the wrong element at each step, which is a logic error rather than a runtime error."
+      ],
+      "bullets": [
+        "The outer loop's counter selects the row; the inner loop's counter, which runs its full range for every row, selects the column within that row.",
+        "Each loop's bounds must exactly match the corresponding dimension of the array's declared bounds, exactly as for a 1D array.",
+        "Using the wrong index as the row or column inside the square brackets processes an existing element, but the wrong one, which is a logic error to check for carefully when tracing."
+      ],
+      "examples": [
+        {
+          "id": "05-summing-2d-array-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: summing every element of a 2D array with nested loops",
+          "content": "DECLARE Grid : ARRAY[0:1, 0:2] OF INTEGER\nDECLARE Row : INTEGER\nDECLARE Col : INTEGER\nDECLARE Total : INTEGER\n\nGrid[0, 0] <- 3\nGrid[0, 1] <- 6\nGrid[0, 2] <- 2\nGrid[1, 0] <- 5\nGrid[1, 1] <- 1\nGrid[1, 2] <- 4\n\nTotal <- 0\nFOR Row <- 0 TO 1\n  FOR Col <- 0 TO 2\n    Total <- Total + Grid[Row, Col]\n  NEXT Col\nNEXT Row\n\nOUTPUT Total\n\nTrace table:\nStep | Row | Col | Grid[Row, Col] | Total\n1    | 0   | 0   | 3              | 3\n2    | 0   | 1   | 6              | 9\n3    | 0   | 2   | 2              | 11\n4    | 1   | 0   | 5              | 16\n5    | 1   | 1   | 1              | 17\n6    | 1   | 2   | 4              | 21\n\nFor each value of Row, the inner loop runs completely through Col = 0 to 2 before Row increments, visiting all 6 elements of the grid exactly once. The final output is Total = 21."
+        }
+      ]
+    },
+    {
+      "id": "06-array-bound-errors",
+      "title": "Array bound errors",
+      "content": [
+        "An array's declared bounds fix the only valid range of indices that can be used to access it; attempting to access an index outside this range, such as Scores[10] on an array declared ARRAY[0:9], causes a runtime error called an array bound error. This is different from a logic error: the program does not run to completion and produce a wrong answer, it stops (or reports an error) at the exact point the invalid index is used, because there is no element at that position for the program to read or write.",
+        "Array bound errors commonly arise from an off-by-one mistake in a loop's bounds, such as writing FOR Index <- 0 TO 10 for an array declared ARRAY[0:9], or from forgetting that indexing starts at 0 and writing FOR Index <- 1 TO 10 for the same array, which both skips index 0 and attempts to access the non-existent index 10."
+      ],
+      "bullets": [
+        "An array bound error is a runtime error, occurring only when the program actually executes a statement using an out-of-range index.",
+        "It is distinct from a logic error: a logic error still produces a result, just an incorrect one, whereas an array bound error stops execution at the invalid access.",
+        "A loop bound that is one too high (accessing index n for an array valid up to n - 1) is a frequent, specific cause of an array bound error."
+      ],
+      "examples": [
+        {
+          "id": "06-array-bound-error-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: identifying an array bound error",
+          "content": "DECLARE Scores : ARRAY[0:9] OF INTEGER\nDECLARE Index : INTEGER\n\nFOR Index <- 0 TO 10\n  Scores[Index] <- Index * 2\nNEXT Index\n\nScores is declared ARRAY[0:9], so its only valid indices are 0 to 9.\nWhen Index reaches 10, the statement Scores[10] <- 20 attempts to access\nan index that does not exist, causing an array bound error at that point.\n\nCorrection: change the loop header to FOR Index <- 0 TO 9, so the loop's\nbounds exactly match the array's declared bounds."
+        }
+      ]
+    },
+    {
+      "id": "07-arrays-versus-records",
+      "title": "Arrays compared with records",
+      "content": [
+        "An array and a record are both structures for grouping multiple values together, but they group data in fundamentally different ways and are used for different situations. An array holds many values that are all the same data type, accessed by a numeric index, and is suited to a collection of similar values that will typically be processed together in a loop, such as a set of scores. A record holds a fixed set of named fields that may each be of a different data type, accessed by name using dot notation, and is suited to grouping together the different pieces of data that describe one single real-world thing, such as one student's ID, name, date of birth and fee status (see 10.1).",
+        "The two structures are frequently combined: an array of records is used when many real-world things, each described by several related fields, need to be stored and processed together, for example an array of StudentRecord values representing a whole class, looped through with a FOR loop in exactly the way a simple array is, but with each element itself being an entire record accessed with dot notation."
+      ],
+      "bullets": [
+        "An array's elements share one data type and are accessed by numeric index; a record's fields can differ in data type and are accessed by name.",
+        "An array suits a collection of similar values processed together in a loop; a record suits the different attributes of one single real-world thing.",
+        "An array of records combines both: a fixed-size, indexed collection where each element is itself a record with several named fields."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Arrays compared with records",
+    "columns": [
+      "Aspect",
+      "Array",
+      "Record"
+    ],
+    "rows": [
+      [
+        "Data type of contents",
+        "Every element must be the same declared data type",
+        "Each field can have its own, possibly different, data type"
+      ],
+      [
+        "How an item is accessed",
+        "By numeric index, e.g. Scores[3]",
+        "By field name, e.g. Student.Name"
+      ],
+      [
+        "Typical use",
+        "A collection of similar values processed together, e.g. a set of scores",
+        "The different attributes of one single real-world thing, e.g. one student"
+      ],
+      [
+        "Processed using",
+        "A counter-controlled loop (FOR loop) over the index range",
+        "Direct reference to each named field, not a loop over the fields"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Nested loops visiting every element of a 2D array",
+    "type": "flow",
+    "nodes": [
+      "Declare Grid as ARRAY[0:R, 0:C] OF INTEGER",
+      "Outer loop: FOR Row <- 0 TO R",
+      "Inner loop: FOR Col <- 0 TO C",
+      "Process Grid[Row, Col]",
+      "Inner loop ends; Row increments and the inner loop restarts from Col = 0",
+      "Outer loop ends once every row from 0 to R has been processed"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing an off-by-one bug in a 1D array loop",
+      "steps": [
+        "An array is declared DECLARE Scores : ARRAY[0:9] OF INTEGER, holding 10 elements",
+        "A loop intended to output every element is written as FOR Index <- 1 TO 9",
+        "Tracing the loop shows Index never takes the value 0, so Scores[0] is never output",
+        "Tracing further shows Index reaches 9, the array's correct upper bound, so no array bound error occurs, only a skipped element"
+      ],
+      "evaluation": "This is a logic error, not a runtime error: because the loop's upper bound is correct but its lower bound is wrong, the program runs to completion but silently omits the first element; the fix is to start the loop at Index <- 0 to match the array's declared lower bound."
+    },
+    {
+      "title": "Diagnosing an array bound error caused by an incorrect upper bound",
+      "steps": [
+        "An array is declared DECLARE Readings : ARRAY[0:19] OF REAL, holding 20 elements with valid indices 0 to 19",
+        "A loop is written as FOR Index <- 0 TO 20, one more than the array's declared upper bound",
+        "Tracing the loop shows Index eventually reaches 20 and the statement Readings[Index] is executed with Index = 20",
+        "Index 20 does not exist in an array declared with indices 0 to 19, so this access is checked against the array's bounds"
+      ],
+      "evaluation": "This is an array bound error, a runtime error, because index 20 is outside the array's declared valid range; the fix is to change the loop's upper bound to 19 so it exactly matches the array's declared upper bound."
+    },
+    {
+      "title": "Choosing between an array and a record for a new data requirement",
+      "steps": [
+        "A scenario requires storing ten temperature readings taken every hour from one sensor",
+        "The ten readings are checked and found to all be the same data type, REAL, and are naturally processed together, for example to calculate their average",
+        "A separate part of the same scenario requires storing one sensor's ID, location name and installation date together",
+        "The sensor's ID, location and installation date are checked and found to be different data types describing one single sensor"
+      ],
+      "evaluation": "The ten temperature readings are best stored in a 1D array, since they are the same data type and are processed together with a loop, while the sensor's own details are best stored in a record, since they are different data types describing one single real-world thing; a full design would combine both, using a record for the sensor's details and an array field within it (or alongside it) for its readings."
+    }
+  ],
+  "examTips": [
+    "Always check that a FOR loop's bounds exactly match an array's declared bounds before tracing it; a mismatch by one is the most common source of both logic errors and array bound errors.",
+    "Remember that indexing starts at 0, so an array declared with n elements has valid indices 0 to n - 1, not 1 to n.",
+    "For a 2D array, trace the row and column indices as separate columns in the trace table, and check that the inner loop runs completely for every value of the outer loop's counter.",
+    "When asked to compare an array and a record, mention both how each is accessed (index versus field name) and what each is suited to storing (same-type collection versus one real-world thing's attributes)."
+  ],
+  "commonMistakes": [
+    "Assuming an array's first element is at index 1 instead of index 0.",
+    "Writing a loop's upper bound one higher than the array's declared upper bound, causing an array bound error.",
+    "Writing a loop's lower or upper bound one short of the array's declared bounds, silently skipping the first or last element (a logic error, not a runtime error).",
+    "Swapping the row and column index when accessing a 2D array element, for example writing Grid[Col, Row] instead of Grid[Row, Col].",
+    "Describing an array bound error as a logic error, or a logic error (a skipped element) as an array bound error, rather than distinguishing that one stops execution and the other does not."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is an array?",
+      "answer": "A fixed-size data structure holding multiple values of the same data type, with each element accessed by an index; the first element is at index 0."
+    },
+    {
+      "question": "How is a one-dimensional array of 10 integers, indexed from 0, declared?",
+      "answer": "DECLARE Scores : ARRAY[0:9] OF INTEGER."
+    },
+    {
+      "question": "Why is a FOR loop the natural choice for processing every element of an array?",
+      "answer": "Because the array's size, and therefore the exact number of times the loop must repeat, is fixed and known, so the loop counter can be used directly as the index."
+    },
+    {
+      "question": "How is an element of a 2D array accessed?",
+      "answer": "With a row index and a column index together, for example Grid[Row, Col], both zero-based."
+    },
+    {
+      "question": "What structure is used to process every element of a 2D array, and why?",
+      "answer": "Nested loops: an outer loop stepping through each row, and an inner loop, running its full range for every row, stepping through each column within that row."
+    },
+    {
+      "question": "What is the main difference between an array and a record?",
+      "answer": "An array holds many values of the same data type, accessed by index; a record holds a fixed set of named fields, which may have different data types, accessed by field name."
+    },
+    {
+      "question": "What is an array bound error?",
+      "answer": "A runtime error caused by attempting to access an array element using an index outside the array's declared valid range."
+    },
+    {
+      "question": "How does an array bound error differ from a logic error involving a skipped array element?",
+      "answer": "An array bound error stops execution at the point the invalid index is accessed; a skipped element from an incorrect loop bound still lets the program run to completion, just with an incomplete or incorrect result."
+    }
+  ],
+  "relatedTopics": [
+    "9.2",
+    "10.1",
+    "10.3"
+  ]
+}
