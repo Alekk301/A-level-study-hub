@@ -7335,7 +7335,7 @@
     "unitTitle": "AS Theory",
     "topicId": "4.2",
     "title": "Assembly Language",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -7346,23 +7346,288 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Read and trace simple assembly language programs, understanding opcodes, operands and addressing modes."
+        "text": "Assembly language is a low-level language in which each instruction corresponds to one machine-code instruction. Paper 1 gives you the CAIE instruction set and asks you to trace short programs in a trace table, write or complete short programs, identify the addressing mode an instruction uses, and describe how a two-pass assembler turns source code with labels into machine code."
       },
       {
-        "kind": "Quick recall",
-        "text": "opcodes/operands"
+        "kind": "Definition",
+        "label": "Machine code",
+        "text": "Instructions in binary that the processor can execute directly."
       },
       {
-        "kind": "Quick recall",
-        "text": "addressing"
+        "kind": "Definition",
+        "label": "Assembly language",
+        "text": "A low-level language that uses mnemonics and labels, where each instruction translates to one machine-code instruction."
       },
       {
-        "kind": "Quick recall",
-        "text": "assembler"
+        "kind": "Definition",
+        "label": "Opcode",
+        "text": "The part of an instruction that specifies the operation to be performed, e.g. LDD or ADD."
       },
       {
-        "kind": "Quick recall",
-        "text": "tracing"
+        "kind": "Definition",
+        "label": "Operand",
+        "text": "The part of an instruction that specifies the data, or the address of the data, to be used."
+      },
+      {
+        "kind": "Definition",
+        "label": "Assembler",
+        "text": "A translator that converts assembly language into machine code."
+      },
+      {
+        "kind": "Definition",
+        "label": "Symbol table",
+        "text": "A table built by the assembler that records each label and the address it represents."
+      },
+      {
+        "kind": "Definition",
+        "label": "Addressing mode",
+        "text": "The way the operand of an instruction is interpreted to find the data to be used."
+      },
+      {
+        "kind": "Definition",
+        "label": "Trace table",
+        "text": "A table recording the values of the accumulator, registers and memory locations after each instruction is executed."
+      },
+      {
+        "kind": "Section",
+        "text": "Assembly language and machine code"
+      },
+      {
+        "kind": "Content",
+        "label": "Assembly language and machine code",
+        "text": "The processor only understands machine code: binary patterns made of an opcode and an operand. Assembly language replaces the binary opcodes with short mnemonics (such as LDD, ADD, JMP) and lets programmers use labels instead of numeric addresses. There is a one-to-one relationship: each assembly instruction becomes exactly one machine-code instruction. Assembly language is specific to one processor's instruction set, so a program written for one processor type will not run on another."
+      },
+      {
+        "kind": "Content",
+        "label": "Assembly language and machine code",
+        "text": "Assembly language is used where precise control of hardware, speed or small program size matters, e.g. device drivers and embedded systems."
+      },
+      {
+        "kind": "Content",
+        "label": "Assembly language and machine code",
+        "text": "It is harder to write, read and debug than a high-level language."
+      },
+      {
+        "kind": "Content",
+        "label": "Assembly language and machine code",
+        "text": "In the CAIE instruction set, #n is a denary value, Bn is binary and &n is hexadecimal."
+      },
+      {
+        "kind": "Section",
+        "text": "The two-pass assembler"
+      },
+      {
+        "kind": "Content",
+        "label": "The two-pass assembler",
+        "text": "A program can refer to a label before the label is defined, for example jumping forward to a label further down the code (a forward reference). The assembler therefore reads the source code twice. In the first pass it reads each line, removes comments and white space, and adds every label to the symbol table with its address, calculated by counting instructions from the start address. In the second pass it replaces every label with its address from the symbol table, converts each mnemonic into its binary opcode using an opcode table, and generates the machine code (object code). Errors such as undefined labels or unknown mnemonics are reported."
+      },
+      {
+        "kind": "Content",
+        "label": "The two-pass assembler",
+        "text": "Pass 1: build the symbol table (labels → addresses)."
+      },
+      {
+        "kind": "Content",
+        "label": "The two-pass assembler",
+        "text": "Pass 2: translate opcodes and replace labels using the symbol table, producing object code."
+      },
+      {
+        "kind": "Content",
+        "label": "The two-pass assembler",
+        "text": "A single pass would fail on forward references, because the address of a label later in the code is not yet known."
+      },
+      {
+        "kind": "Example",
+        "label": "The two-pass assembler",
+        "text": "Program starts at address 100:\n100 START: LDD COUNT\n101        CMP #0\n102        JPE FINISH\n103        JMP START\n104 FINISH: END\n105 COUNT:  5\nSymbol table: START → 100, FINISH → 104, COUNT → 105\nJPE FINISH is a forward reference: FINISH is only reached later in pass 1."
+      },
+      {
+        "kind": "Section",
+        "text": "Instruction groups"
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "The CAIE instruction set groups instructions by purpose. Data movement instructions copy values between memory, the accumulator and the index register: LDM #n loads a number into the ACC, LDD loads from an address, LDI loads indirectly, LDX loads indexed, LDR #n loads a number into the IX, MOV copies the ACC into another register, and STO stores the ACC to memory. Input and output use IN (read a character and store its ASCII value in the ACC) and OUT (output the character whose ASCII value is in the ACC). Arithmetic instructions are ADD and SUB (with an address or a number), and INC and DEC (add or subtract 1 from the ACC or IX). CMP compares the ACC with an address or a number, and CMI compares indirectly. JMP is an unconditional jump; JPE jumps if the last comparison was equal and JPN jumps if it was not equal. END returns control to the operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "Compare instructions do not change the ACC; they set a flag that the next conditional jump reads."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "Conditional jumps are how selection and loops are built in assembly language."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "STO copies the ACC into memory; the ACC keeps its value."
+      },
+      {
+        "kind": "Section",
+        "text": "Addressing modes"
+      },
+      {
+        "kind": "Content",
+        "label": "Addressing modes",
+        "text": "In immediate addressing the operand is the value itself (LDM #150 puts 150 into the ACC). In direct addressing the operand is the address of the value (LDD 150 loads the contents of address 150). In indirect addressing the operand is an address that holds another address, where the value is found (LDI 150 reads address 150, uses that value as an address, and loads from there). In indexed addressing the operand is added to the contents of the index register to form the address (LDX 150 with IX = 1 loads from address 151). In relative addressing the address is given as an offset from the address of the current instruction, so the code works wherever it is placed in memory."
+      },
+      {
+        "kind": "Content",
+        "label": "Addressing modes",
+        "text": "Immediate: fastest, but the value is fixed in the program."
+      },
+      {
+        "kind": "Content",
+        "label": "Addressing modes",
+        "text": "Indirect: useful for pointers, where the address of the data changes at run time."
+      },
+      {
+        "kind": "Content",
+        "label": "Addressing modes",
+        "text": "Indexed: ideal for stepping through an array by incrementing IX in a loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Addressing modes",
+        "text": "Relative: makes code relocatable because no absolute addresses are used."
+      },
+      {
+        "kind": "Example",
+        "label": "Addressing modes",
+        "text": "Memory: address 150 contains 300, address 151 contains 20, address 300 contains 45. IX contains 1.\nLDM #150 (immediate) → ACC = 150\nLDD 150 (direct) → ACC = 300\nLDI 150 (indirect) → address 150 holds 300, so load from 300 → ACC = 45\nLDX 150 (indexed) → address 150 + 1 = 151 → ACC = 20"
+      },
+      {
+        "kind": "Section",
+        "text": "Tracing a program"
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a program",
+        "text": "To trace a program, draw a table with columns for the instruction address, the ACC, the IX if used, each memory location that changes, and any output. Work through the instructions one at a time, following jumps, and write a new row only when a value changes. Keep track of the result of each CMP so you know whether the next conditional jump is taken."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a program",
+        "text": "Start by writing the initial memory values in the first row."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a program",
+        "text": "After a JPE or JPN, write down whether the jump was taken before continuing."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a program",
+        "text": "Stop at END; the final row shows the program's result."
+      },
+      {
+        "kind": "Example",
+        "label": "Tracing a program",
+        "text": "Initial memory: 200 = 3 (counter), 201 = 0 (total), 202 = 5 (value)\n100 LDD 201\n101 ADD 202\n102 STO 201\n103 LDD 200\n104 DEC ACC\n105 STO 200\n106 CMP #0\n107 JPN 100\n108 END\n\nFirst pass through the loop (instruction: ACC | 200 | 201):\nStart:        – | 3 | 0\n100 LDD 201:  0 | 3 | 0\n101 ADD 202:  5 | 3 | 0\n102 STO 201:  5 | 3 | 5\n103 LDD 200:  3 | 3 | 5\n104 DEC ACC:  2 | 3 | 5\n105 STO 200:  2 | 2 | 5\n106 CMP #0: 2 ≠ 0, so 107 JPN jumps to 100\n\nEnd of each later pass:\nPass 2: ACC 1 | 200 = 1 | 201 = 10 → JPN jumps to 100\nPass 3: ACC 0 | 200 = 0 | 201 = 15 → CMP equal, JPN not taken, END\nResult: address 201 holds 15, i.e. 5 × 3."
+      },
+      {
+        "kind": "Section",
+        "text": "Writing short programs"
+      },
+      {
+        "kind": "Content",
+        "label": "Writing short programs",
+        "text": "Plan the task in steps first: what must be loaded, what calculation or comparison is needed, where the result is stored, and where the program must jump. Use labels for jump destinations and data locations so the program is easy to follow. Selection is written as a CMP followed by a conditional jump; a loop is a block that ends with a comparison and a jump back to its start."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing short programs",
+        "text": "An IF is: CMP, conditional jump past the 'then' block, then block, label after it."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing short programs",
+        "text": "A counting loop needs a counter in memory or in the IX, a DEC or INC, a CMP and a conditional jump."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing short programs",
+        "text": "Remember that LDD overwrites the ACC, so store any result you still need first."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing short programs",
+        "text": "        LDD NUM1\n        CMP NUM2\n        JPE YES\n        LDM #78      ; ASCII 'N'\n        OUT\n        JMP DONE\nYES:    LDM #89      ; ASCII 'Y'\n        OUT\nDONE:   END"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the relationship between assembly language and machine code?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the relationship between assembly language and machine code?",
+        "text": "One-to-one: each assembly instruction translates into exactly one machine-code instruction."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens in the first pass of a two-pass assembler?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens in the first pass of a two-pass assembler?",
+        "text": "Comments are removed and each label is added to the symbol table with its address."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens in the second pass?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens in the second pass?",
+        "text": "Labels are replaced by addresses from the symbol table and mnemonics are converted to binary opcodes, producing object code."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Address 80 contains 95 and address 95 contains 7. What does LDI 80 load?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Address 80 contains 95 and address 95 contains 7. What does LDI 80 load?",
+        "text": "7 (address 80 gives the address 95, whose contents are 7)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "IX = 3. Which address does LDX 60 read from?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "IX = 3. Which address does LDX 60 read from?",
+        "text": "63."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between JPE and JMP?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between JPE and JMP?",
+        "text": "JPE jumps only if the last comparison was equal; JMP always jumps."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does IN do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does IN do?",
+        "text": "Reads a character from the keyboard and stores its ASCII value in the ACC."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is relative addressing useful?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is relative addressing useful?",
+        "text": "Addresses are offsets from the current instruction, so the code works wherever it is loaded in memory."
       }
     ]
   },
@@ -7378,7 +7643,7 @@
     "unitTitle": "AS Theory",
     "topicId": "4.3",
     "title": "Bit manipulation",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -7389,19 +7654,260 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Use logical shifts, masks and bitwise operators to manipulate individual bits within a byte."
+        "text": "Bit manipulation means changing or testing individual bits inside a byte or word. Paper 1 asks you to carry out logical, arithmetic and cyclic shifts, explain their effect on the value, and use masks with AND, OR and XOR to test, set, clear and toggle bits, often in the context of a register whose bits monitor or control devices such as sensors, lights and motors."
       },
       {
-        "kind": "Quick recall",
-        "text": "shifts"
+        "kind": "Definition",
+        "label": "Logical shift",
+        "text": "Moving all bits left or right; bits shifted out are lost and 0s are shifted in at the other end."
       },
       {
-        "kind": "Quick recall",
-        "text": "masks"
+        "kind": "Definition",
+        "label": "Arithmetic shift",
+        "text": "A shift that preserves the sign bit, so it can be used to multiply or divide two's complement numbers by powers of 2."
       },
       {
-        "kind": "Quick recall",
-        "text": "bitwise logic"
+        "kind": "Definition",
+        "label": "Cyclic shift (rotation)",
+        "text": "A shift in which each bit leaving one end is re-inserted at the other end, so no bits are lost."
+      },
+      {
+        "kind": "Definition",
+        "label": "Mask",
+        "text": "A binary pattern combined with a value using AND, OR or XOR to select, set, clear or change particular bits."
+      },
+      {
+        "kind": "Definition",
+        "label": "Least significant bit (LSB)",
+        "text": "The rightmost bit, with place value 1."
+      },
+      {
+        "kind": "Definition",
+        "label": "Most significant bit (MSB)",
+        "text": "The leftmost bit, which has the largest place value and is the sign bit in two's complement."
+      },
+      {
+        "kind": "Definition",
+        "label": "Status/control register",
+        "text": "A byte or word in which each bit records the state of, or controls, one device or condition."
+      },
+      {
+        "kind": "Section",
+        "text": "Logical shifts"
+      },
+      {
+        "kind": "Content",
+        "label": "Logical shifts",
+        "text": "In a logical shift every bit moves the stated number of places. In a logical shift left, bits leaving the MSB are lost and 0s enter at the LSB; in a logical shift right, bits leaving the LSB are lost and 0s enter at the MSB. For unsigned numbers, each place shifted left multiplies by 2 and each place shifted right divides by 2 (discarding any remainder), as long as no 1 bits are lost off the left end."
+      },
+      {
+        "kind": "Content",
+        "label": "Logical shifts",
+        "text": "CAIE instructions: LSL #n shifts the ACC left n places; LSR #n shifts it right n places."
+      },
+      {
+        "kind": "Content",
+        "label": "Logical shifts",
+        "text": "A 1 lost off the left end means the result is too big for the register: the multiplication is wrong."
+      },
+      {
+        "kind": "Content",
+        "label": "Logical shifts",
+        "text": "A 1 lost off the right end means the division has a remainder that has been discarded."
+      },
+      {
+        "kind": "Example",
+        "label": "Logical shifts",
+        "text": "00010110 (22) LSL #2 → 01011000 (88) = 22 × 4\n10110100 (180) LSR #2 → 00101101 (45) = 180 ÷ 4\n00010111 (23) LSR #1 → 00001011 (11): the 1 shifted out is lost, so 23 ÷ 2 gives 11, not 11.5"
+      },
+      {
+        "kind": "Section",
+        "text": "Arithmetic shifts"
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic shifts",
+        "text": "Arithmetic shifts are used with two's complement numbers so that the sign is kept. In an arithmetic shift right, the MSB (sign bit) is copied into the vacated positions, so a negative number stays negative and is divided by 2 for each place. In an arithmetic shift left, the bits move left and 0s enter at the LSB, but the sign bit must stay the same; if the bit that would move into the sign position differs from the original sign, the result has overflowed."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic shifts",
+        "text": "Arithmetic shift right on a negative number fills with 1s; a logical shift right would fill with 0s and make it positive."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic shifts",
+        "text": "Arithmetic shift right of an odd negative number rounds down (towards negative infinity)."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic shifts",
+        "text": "Use arithmetic shifts when the question says the value is in two's complement."
+      },
+      {
+        "kind": "Example",
+        "label": "Arithmetic shifts",
+        "text": "11101000 = −128 + 64 + 32 + 8 = −24\nArithmetic shift right 2 places, copying the sign bit in:\n11111010 = −128 + 64 + 32 + 16 + 8 + 2 = −6\n−24 ÷ 4 = −6 ✓\n(A logical shift right would give 00111010 = 58, which is wrong.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Cyclic shifts"
+      },
+      {
+        "kind": "Content",
+        "label": "Cyclic shifts",
+        "text": "In a cyclic shift (rotation) the bit leaving one end re-enters at the other end, so the same bits are kept in a different order. Rotations are used in encryption algorithms, hashing, and to examine each bit in turn: after 8 single-place rotations of a byte, every bit has passed through the MSB or LSB position and the value is back where it started."
+      },
+      {
+        "kind": "Content",
+        "label": "Cyclic shifts",
+        "text": "Cyclic shifts do not multiply or divide; they rearrange the bits."
+      },
+      {
+        "kind": "Content",
+        "label": "Cyclic shifts",
+        "text": "Some processors rotate through the carry flag, treating it as an extra bit."
+      },
+      {
+        "kind": "Content",
+        "label": "Cyclic shifts",
+        "text": "Rotating a byte left by n places is the same as rotating it right by 8 − n places."
+      },
+      {
+        "kind": "Example",
+        "label": "Cyclic shifts",
+        "text": "10010011 cyclic shift left 1 place\nThe MSB (1) leaves the left and re-enters on the right\nResult: 00100111"
+      },
+      {
+        "kind": "Section",
+        "text": "Masks with AND, OR and XOR"
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "A mask selects which bits an operation affects. AND with a mask keeps bits where the mask is 1 and clears bits where the mask is 0. OR with a mask sets to 1 the bits where the mask is 1 and leaves the others unchanged. XOR with a mask flips (toggles) the bits where the mask is 1 and leaves the others unchanged."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "Test a bit: AND with a mask that has 1 only in that position; a non-zero result means the bit is 1."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "Set a bit: OR with a mask that has 1 in that position."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "Clear a bit: AND with a mask that has 0 in that position and 1s everywhere else."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "Toggle a bit: XOR with a mask that has 1 in that position."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "CAIE instructions: AND, OR and XOR each take #n, Bn, &n or an address, and store the result in the ACC."
+      },
+      {
+        "kind": "Example",
+        "label": "Masks with AND, OR and XOR",
+        "text": "Value: 01010010\nTest bit 6 (value 64): 01010010 AND 01000000 = 01000000 → non-zero, so bit 6 is 1\nSet bit 0: 01010010 OR 00000001 = 01010011\nClear bit 4 (value 16): 01010010 AND 11101111 = 01000010\nToggle bit 1 (value 2): 01010010 XOR 00000010 = 01010000"
+      },
+      {
+        "kind": "Section",
+        "text": "Using bits to monitor and control devices"
+      },
+      {
+        "kind": "Content",
+        "label": "Using bits to monitor and control devices",
+        "text": "Embedded and control systems often use a single byte as a register in which each bit represents one device or sensor: for example, bit 0 might show whether a door is open and bit 3 might switch on a pump. Storing eight on/off states in one byte saves memory. Masks let the program test one sensor without disturbing the others, and turn one device on or off while leaving the rest unchanged, which is essential because the whole byte is written back at once."
+      },
+      {
+        "kind": "Content",
+        "label": "Using bits to monitor and control devices",
+        "text": "Monitoring: read the register, AND with a mask, and compare the result with 0."
+      },
+      {
+        "kind": "Content",
+        "label": "Using bits to monitor and control devices",
+        "text": "Control: read the register, OR (to switch on) or AND (to switch off) with a mask, then store it back."
+      },
+      {
+        "kind": "Content",
+        "label": "Using bits to monitor and control devices",
+        "text": "Using OR or AND with the correct mask avoids accidentally changing other devices' bits."
+      },
+      {
+        "kind": "Example",
+        "label": "Using bits to monitor and control devices",
+        "text": "; Bit 5 of STATUS is a smoke sensor; bit 0 of LIGHTS is the warning light\n        LDD STATUS\n        AND B00100000   ; keep only bit 5\n        CMP #0\n        JPE SAFE        ; bit 5 is 0: no smoke\n        LDD LIGHTS\n        OR B00000001    ; set bit 0 without changing the other lights\n        STO LIGHTS\nSAFE:   END"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the effect of LSL #3 on an unsigned value?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the effect of LSL #3 on an unsigned value?",
+        "text": "It multiplies the value by 2^3 = 8 (if no 1 bits are lost)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does an arithmetic right shift differ from a logical right shift?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does an arithmetic right shift differ from a logical right shift?",
+        "text": "An arithmetic right shift copies the sign bit into the vacated positions; a logical right shift inserts 0s."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens to the bits shifted out in a cyclic shift?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens to the bits shifted out in a cyclic shift?",
+        "text": "They re-enter at the other end, so no bits are lost."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which operation and mask test whether bit 2 is set?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which operation and mask test whether bit 2 is set?",
+        "text": "AND with 00000100; a non-zero result means the bit is set."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which operation and mask clear bit 7?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which operation and mask clear bit 7?",
+        "text": "AND with 01111111."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which operation toggles a bit?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which operation toggles a bit?",
+        "text": "XOR with a mask that has 1 in that bit's position."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give one reason for storing device states as bits in one byte."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give one reason for storing device states as bits in one byte.",
+        "text": "It saves memory and lets all eight states be read or written in one operation."
       }
     ]
   },

@@ -40,10 +40,10 @@ The commit is a checkpoint, not a permanently current version.
   chains, exam tips, common mistakes, question-and-answer recall). Set the topic's
   `contentDepth` to `"full"` in `subjects.json` when its note is rebuilt.
 - Done: 1.1 Data Representation, 1.2 Multimedia, 1.3 Compression, 2.1 Networks, 3.1 Computers,
-  3.2 Logic Gates, 4.1 CPU Architecture
+  3.2 Logic Gates, 4.1 CPU Architecture, 4.2 Assembly Language, 4.3 Bit manipulation
   (all 2026-09-28).
 - Remaining short notes to rebuild: 8.3, 9.2, 10.4.
-- Remaining topics with no note file yet: 4.2, 4.3, 5.1, 5.2, 6.1, 6.2, 7.1, 8.1, 8.2,
+- Remaining topics with no note file yet: 5.1, 5.2, 6.1, 6.2, 7.1, 8.1, 8.2,
   9.1, 10.1, 10.2, 10.3, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
 - Once all AS notes exist, add a strict 9618 AS block to `scripts/validate-data.mjs` like the

@@ -822,7 +822,7 @@
               "assembler",
               "tracing"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "4.3",
@@ -837,7 +837,7 @@
               "masks",
               "bitwise logic"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.1",

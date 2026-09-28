@@ -1,0 +1,302 @@
+{
+  "id": "4.3",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Bit manipulation",
+  "contentDepth": "full",
+  "overview": "Bit manipulation means changing or testing individual bits inside a byte or word. Paper 1 asks you to carry out logical, arithmetic and cyclic shifts, explain their effect on the value, and use masks with AND, OR and XOR to test, set, clear and toggle bits, often in the context of a register whose bits monitor or control devices such as sensors, lights and motors.",
+  "syllabusPoints": [
+    "Show understanding of and perform binary shifts: logical, arithmetic and cyclic; left shift and right shift.",
+    "Show understanding of how bit manipulation can be used to monitor and control a device.",
+    "Carry out bit manipulation operations, including testing and setting a bit using bit masking.",
+    "Use the CAIE bitwise instructions AND, OR, XOR, LSL and LSR in assembly language."
+  ],
+  "definitions": [
+    {
+      "term": "Logical shift",
+      "definition": "Moving all bits left or right; bits shifted out are lost and 0s are shifted in at the other end."
+    },
+    {
+      "term": "Arithmetic shift",
+      "definition": "A shift that preserves the sign bit, so it can be used to multiply or divide two's complement numbers by powers of 2."
+    },
+    {
+      "term": "Cyclic shift (rotation)",
+      "definition": "A shift in which each bit leaving one end is re-inserted at the other end, so no bits are lost."
+    },
+    {
+      "term": "Mask",
+      "definition": "A binary pattern combined with a value using AND, OR or XOR to select, set, clear or change particular bits."
+    },
+    {
+      "term": "Least significant bit (LSB)",
+      "definition": "The rightmost bit, with place value 1."
+    },
+    {
+      "term": "Most significant bit (MSB)",
+      "definition": "The leftmost bit, which has the largest place value and is the sign bit in two's complement."
+    },
+    {
+      "term": "Status/control register",
+      "definition": "A byte or word in which each bit records the state of, or controls, one device or condition."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-logical-shifts",
+      "title": "Logical shifts",
+      "content": [
+        "In a logical shift every bit moves the stated number of places. In a logical shift left, bits leaving the MSB are lost and 0s enter at the LSB; in a logical shift right, bits leaving the LSB are lost and 0s enter at the MSB. For unsigned numbers, each place shifted left multiplies by 2 and each place shifted right divides by 2 (discarding any remainder), as long as no 1 bits are lost off the left end."
+      ],
+      "bullets": [
+        "CAIE instructions: LSL #n shifts the ACC left n places; LSR #n shifts it right n places.",
+        "A 1 lost off the left end means the result is too big for the register: the multiplication is wrong.",
+        "A 1 lost off the right end means the division has a remainder that has been discarded."
+      ],
+      "examples": [
+        {
+          "id": "4.3-1-1",
+          "kind": "worked",
+          "label": "Logical shifts as multiplication and division",
+          "content": "00010110 (22) LSL #2 → 01011000 (88) = 22 × 4\n10110100 (180) LSR #2 → 00101101 (45) = 180 ÷ 4\n00010111 (23) LSR #1 → 00001011 (11): the 1 shifted out is lost, so 23 ÷ 2 gives 11, not 11.5"
+        }
+      ]
+    },
+    {
+      "id": "02-arithmetic-shifts",
+      "title": "Arithmetic shifts",
+      "content": [
+        "Arithmetic shifts are used with two's complement numbers so that the sign is kept. In an arithmetic shift right, the MSB (sign bit) is copied into the vacated positions, so a negative number stays negative and is divided by 2 for each place. In an arithmetic shift left, the bits move left and 0s enter at the LSB, but the sign bit must stay the same; if the bit that would move into the sign position differs from the original sign, the result has overflowed."
+      ],
+      "bullets": [
+        "Arithmetic shift right on a negative number fills with 1s; a logical shift right would fill with 0s and make it positive.",
+        "Arithmetic shift right of an odd negative number rounds down (towards negative infinity).",
+        "Use arithmetic shifts when the question says the value is in two's complement."
+      ],
+      "examples": [
+        {
+          "id": "4.3-2-1",
+          "kind": "worked",
+          "label": "Arithmetic shift right of a negative number",
+          "content": "11101000 = −128 + 64 + 32 + 8 = −24\nArithmetic shift right 2 places, copying the sign bit in:\n11111010 = −128 + 64 + 32 + 16 + 8 + 2 = −6\n−24 ÷ 4 = −6 ✓\n(A logical shift right would give 00111010 = 58, which is wrong.)"
+        }
+      ]
+    },
+    {
+      "id": "03-cyclic-shifts",
+      "title": "Cyclic shifts",
+      "content": [
+        "In a cyclic shift (rotation) the bit leaving one end re-enters at the other end, so the same bits are kept in a different order. Rotations are used in encryption algorithms, hashing, and to examine each bit in turn: after 8 single-place rotations of a byte, every bit has passed through the MSB or LSB position and the value is back where it started."
+      ],
+      "bullets": [
+        "Cyclic shifts do not multiply or divide; they rearrange the bits.",
+        "Some processors rotate through the carry flag, treating it as an extra bit.",
+        "Rotating a byte left by n places is the same as rotating it right by 8 − n places."
+      ],
+      "examples": [
+        {
+          "id": "4.3-3-1",
+          "kind": "worked",
+          "label": "Cyclic shift left",
+          "content": "10010011 cyclic shift left 1 place\nThe MSB (1) leaves the left and re-enters on the right\nResult: 00100111"
+        }
+      ]
+    },
+    {
+      "id": "04-masks-and-bitwise-operations",
+      "title": "Masks with AND, OR and XOR",
+      "content": [
+        "A mask selects which bits an operation affects. AND with a mask keeps bits where the mask is 1 and clears bits where the mask is 0. OR with a mask sets to 1 the bits where the mask is 1 and leaves the others unchanged. XOR with a mask flips (toggles) the bits where the mask is 1 and leaves the others unchanged."
+      ],
+      "bullets": [
+        "Test a bit: AND with a mask that has 1 only in that position; a non-zero result means the bit is 1.",
+        "Set a bit: OR with a mask that has 1 in that position.",
+        "Clear a bit: AND with a mask that has 0 in that position and 1s everywhere else.",
+        "Toggle a bit: XOR with a mask that has 1 in that position.",
+        "CAIE instructions: AND, OR and XOR each take #n, Bn, &n or an address, and store the result in the ACC."
+      ],
+      "examples": [
+        {
+          "id": "4.3-4-1",
+          "kind": "worked",
+          "label": "Four mask operations on the same byte",
+          "content": "Value: 01010010\nTest bit 6 (value 64): 01010010 AND 01000000 = 01000000 → non-zero, so bit 6 is 1\nSet bit 0: 01010010 OR 00000001 = 01010011\nClear bit 4 (value 16): 01010010 AND 11101111 = 01000010\nToggle bit 1 (value 2): 01010010 XOR 00000010 = 01010000"
+        }
+      ]
+    },
+    {
+      "id": "05-monitoring-and-control",
+      "title": "Using bits to monitor and control devices",
+      "content": [
+        "Embedded and control systems often use a single byte as a register in which each bit represents one device or sensor: for example, bit 0 might show whether a door is open and bit 3 might switch on a pump. Storing eight on/off states in one byte saves memory. Masks let the program test one sensor without disturbing the others, and turn one device on or off while leaving the rest unchanged, which is essential because the whole byte is written back at once."
+      ],
+      "bullets": [
+        "Monitoring: read the register, AND with a mask, and compare the result with 0.",
+        "Control: read the register, OR (to switch on) or AND (to switch off) with a mask, then store it back.",
+        "Using OR or AND with the correct mask avoids accidentally changing other devices' bits."
+      ],
+      "examples": [
+        {
+          "id": "4.3-5-1",
+          "kind": "code",
+          "label": "Turn on a warning light if a sensor bit is set",
+          "content": "; Bit 5 of STATUS is a smoke sensor; bit 0 of LIGHTS is the warning light\n        LDD STATUS\n        AND B00100000   ; keep only bit 5\n        CMP #0\n        JPE SAFE        ; bit 5 is 0: no smoke\n        LDD LIGHTS\n        OR B00000001    ; set bit 0 without changing the other lights\n        STO LIGHTS\nSAFE:   END"
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Logical shift left",
+      "expression": "unsigned value × 2^n for a shift of n places (if no 1 bits are lost)"
+    },
+    {
+      "label": "Logical shift right",
+      "expression": "unsigned value ÷ 2^n for a shift of n places (remainder discarded)"
+    },
+    {
+      "label": "Test a bit",
+      "expression": "value AND mask ≠ 0 → bit is set"
+    },
+    {
+      "label": "Set, clear, toggle",
+      "expression": "set: value OR mask; clear: value AND (NOT mask); toggle: value XOR mask"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Types of shift",
+    "columns": [
+      "Shift",
+      "Bits shifted out",
+      "Bits shifted in",
+      "Main use"
+    ],
+    "rows": [
+      [
+        "Logical left",
+        "Lost from the MSB end",
+        "0s at the LSB",
+        "Multiply unsigned values by 2^n"
+      ],
+      [
+        "Logical right",
+        "Lost from the LSB end",
+        "0s at the MSB",
+        "Divide unsigned values by 2^n"
+      ],
+      [
+        "Arithmetic right",
+        "Lost from the LSB end",
+        "Copies of the sign bit",
+        "Divide two's complement values by 2^n"
+      ],
+      [
+        "Arithmetic left",
+        "Lost; sign bit must be unchanged",
+        "0s at the LSB",
+        "Multiply two's complement values by 2^n"
+      ],
+      [
+        "Cyclic",
+        "Re-enter at the other end",
+        "The bits that left",
+        "Encryption, hashing, examining each bit"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Testing and setting a device bit",
+    "type": "flow",
+    "nodes": [
+      "Load the register into the ACC",
+      "AND with a mask to isolate the bit",
+      "Compare the result with 0",
+      "OR / AND with a mask to change a control bit",
+      "Store the register back"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Using a shift instead of multiplication",
+      "steps": [
+        "Shifting left one place doubles an unsigned binary value",
+        "A shift is a single fast operation for the processor",
+        "Multiplying by 2, 4, 8 … can be done with LSL instead of repeated addition",
+        "But only powers of 2 can be done this way, and 1s lost off the left end cause a wrong result"
+      ],
+      "evaluation": "Shifts are ideal for fast multiplication and division by powers of 2, but the programmer must check the range to avoid losing bits."
+    },
+    {
+      "title": "Storing eight device states in one byte",
+      "steps": [
+        "Each bit represents one device as on (1) or off (0)",
+        "Eight devices need only one byte of memory and one read or write",
+        "Masks let one device be tested or changed without affecting the others",
+        "But the program is harder to read, and an incorrect mask can change the wrong device"
+      ],
+      "evaluation": "Bit-level storage is well suited to embedded systems with little memory, provided masks are named and documented clearly."
+    },
+    {
+      "title": "Choosing an arithmetic rather than a logical right shift",
+      "steps": [
+        "The value is a negative two's complement number with MSB 1",
+        "A logical right shift would insert 0s and make the value positive",
+        "An arithmetic right shift copies the sign bit, so it stays negative",
+        "The result is the correct value divided by 2^n"
+      ],
+      "evaluation": "Use logical shifts for unsigned values and bit patterns, and arithmetic shifts for signed values."
+    }
+  ],
+  "examTips": [
+    "Write the value before and after each shift, one place at a time if needed, and state the denary value if asked for the effect.",
+    "When asked for a mask, state both the mask and the operation (e.g. 'AND with 11110111').",
+    "Say what happens to the other bits: OR and XOR leave bits unchanged where the mask is 0; AND leaves bits unchanged where the mask is 1.",
+    "Check whether the value is signed before choosing an arithmetic or logical shift.",
+    "In assembly answers, remember that AND/OR/XOR change the ACC, so reload or store values as needed."
+  ],
+  "commonMistakes": [
+    "Using OR to clear a bit or AND to set a bit.",
+    "Forgetting that bits shifted out in a logical shift are lost.",
+    "Filling with 0s in an arithmetic right shift of a negative number.",
+    "Counting bit positions from the left; bit 0 is the LSB on the right.",
+    "Claiming a cyclic shift multiplies or divides the value.",
+    "Changing the whole register when only one device should change."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the effect of LSL #3 on an unsigned value?",
+      "answer": "It multiplies the value by 2^3 = 8 (if no 1 bits are lost)."
+    },
+    {
+      "question": "How does an arithmetic right shift differ from a logical right shift?",
+      "answer": "An arithmetic right shift copies the sign bit into the vacated positions; a logical right shift inserts 0s."
+    },
+    {
+      "question": "What happens to the bits shifted out in a cyclic shift?",
+      "answer": "They re-enter at the other end, so no bits are lost."
+    },
+    {
+      "question": "Which operation and mask test whether bit 2 is set?",
+      "answer": "AND with 00000100; a non-zero result means the bit is set."
+    },
+    {
+      "question": "Which operation and mask clear bit 7?",
+      "answer": "AND with 01111111."
+    },
+    {
+      "question": "Which operation toggles a bit?",
+      "answer": "XOR with a mask that has 1 in that bit's position."
+    },
+    {
+      "question": "Give one reason for storing device states as bits in one byte.",
+      "answer": "It saves memory and lets all eight states be read or written in one operation."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "3.2",
+    "4.2"
+  ]
+}
