@@ -1037,7 +1037,7 @@
               "EOF",
               "sequential processing"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "10.4",
@@ -1052,7 +1052,7 @@
               "queues",
               "linked-list concepts"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "11.1",

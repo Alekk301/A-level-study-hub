@@ -11566,7 +11566,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "10.3",
     "title": "Files",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -11577,19 +11577,333 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Open, read from, write to and close files, processing records sequentially while checking for end-of-file."
+        "text": "Paper 1 asks candidates to write or complete pseudocode that opens a text file in the correct mode, reads or writes its records using a loop controlled by an end-of-file check, and closes the file afterwards. Answers score when OPENFILE, READFILE, WRITEFILE and CLOSEFILE are used with the exact required syntax, when a reading loop is built around WHILE NOT EOF(file) rather than a fixed count, and when a line read from a file is explicitly converted to the correct data type before it is used in a calculation."
       },
       {
-        "kind": "Quick recall",
-        "text": "open/read/write/close"
+        "kind": "Definition",
+        "label": "File",
+        "text": "A named collection of data stored on a permanent storage device (such as a disk), which continues to exist after the program that created it has ended, unlike data held only in a program's variables."
       },
       {
-        "kind": "Quick recall",
-        "text": "EOF"
+        "kind": "Definition",
+        "label": "OPENFILE",
+        "text": "The pseudocode command that opens a named file ready for use, stating the mode it is opened in: FOR READ, FOR WRITE or FOR APPEND."
       },
       {
-        "kind": "Quick recall",
-        "text": "sequential processing"
+        "kind": "Definition",
+        "label": "READ mode",
+        "text": "A file mode that opens an existing file so its contents can be read; the file must already exist, and its contents are not changed by reading."
+      },
+      {
+        "kind": "Definition",
+        "label": "WRITE mode",
+        "text": "A file mode that opens a file for writing; if the file does not exist it is created, and if it already exists its previous contents are erased and overwritten."
+      },
+      {
+        "kind": "Definition",
+        "label": "APPEND mode",
+        "text": "A file mode that opens a file so new data can be written after its existing content, without erasing anything already stored in the file."
+      },
+      {
+        "kind": "Definition",
+        "label": "EOF (end of file)",
+        "text": "A function, used as EOF(FileName), that returns TRUE once every line of an open file has been read, allowing a reading loop to stop without needing to know the number of records in advance."
+      },
+      {
+        "kind": "Definition",
+        "label": "CLOSEFILE",
+        "text": "The pseudocode command that closes an open file, releasing it so other programs or processes can use it and ensuring any data still held in a buffer is actually written to the storage device."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sequential file access",
+        "text": "Reading or writing a file's records in order, one after another from the start of the file, rather than jumping directly to a specific record."
+      },
+      {
+        "kind": "Section",
+        "text": "Why data must be stored in a file"
+      },
+      {
+        "kind": "Content",
+        "label": "Why data must be stored in a file",
+        "text": "A variable's value exists only while the program that declared it is running: the moment the program ends, every variable and everything it held is lost, because a variable is stored only in main memory (RAM), which is cleared or reused once the program terminates. If data needs to be available the next time the program runs, or needs to be shared with a different program, or simply needs to survive after the program that produced it has ended, it must be written to a file stored on a permanent storage device such as a hard disk or solid-state drive, rather than left in a variable."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data must be stored in a file",
+        "text": "A text file is the simplest form of permanent storage used at this level: it holds human-readable characters, organised into lines, and a program can later open that same file again, even after being closed down and restarted, and read back exactly the data that was written to it."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data must be stored in a file",
+        "text": "Data held only in a variable is lost as soon as the program that declared it ends; this is why permanent storage in a file is needed for data that must persist."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data must be stored in a file",
+        "text": "A file exists independently of any one running program, so it can be read again by the same program later, or by a different program altogether."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data must be stored in a file",
+        "text": "This specification uses simple text files, where each line typically represents one record of data."
+      },
+      {
+        "kind": "Section",
+        "text": "The open, process, close sequence"
+      },
+      {
+        "kind": "Content",
+        "label": "The open, process, close sequence",
+        "text": "Every use of a file, whether reading from it or writing to it, follows the same three-stage sequence: open the file, stating the mode it is needed in; perform the reads or writes the program requires; then close the file. The file must be opened before any READFILE or WRITEFILE statement can be used on it, because opening is what makes the file available to the program and tells the operating system which mode — read, write, or append — the program intends to use it in."
+      },
+      {
+        "kind": "Content",
+        "label": "The open, process, close sequence",
+        "text": "OPENFILE \"filename.txt\" FOR READ is used purely to read an existing file's contents; OPENFILE \"filename.txt\" FOR WRITE is used to write new data, creating the file if it does not already exist or erasing it if it does; OPENFILE \"filename.txt\" FOR APPEND is used to add further data onto the end of a file without disturbing what is already stored in it."
+      },
+      {
+        "kind": "Content",
+        "label": "The open, process, close sequence",
+        "text": "The correct order is always open, then read or write, then close; a file cannot be read from or written to before it has been opened."
+      },
+      {
+        "kind": "Content",
+        "label": "The open, process, close sequence",
+        "text": "The mode given in OPENFILE (READ, WRITE or APPEND) must match what the program is actually about to do with the file."
+      },
+      {
+        "kind": "Content",
+        "label": "The open, process, close sequence",
+        "text": "A single program can open, process and close several different files, or the same file more than once in different modes at different points."
+      },
+      {
+        "kind": "Example",
+        "label": "The open, process, close sequence",
+        "text": "OPENFILE \"scores.txt\" FOR READ\n// ... READFILE statements here ...\nCLOSEFILE \"scores.txt\"\n\nOPENFILE \"log.txt\" FOR WRITE\n// ... WRITEFILE statements here ...\nCLOSEFILE \"log.txt\""
+      },
+      {
+        "kind": "Section",
+        "text": "Why a file must be closed"
+      },
+      {
+        "kind": "Content",
+        "label": "Why a file must be closed",
+        "text": "Closing a file with CLOSEFILE once processing is finished matters for two distinct reasons. First, an open file is often locked to the program that opened it, so leaving it open unnecessarily prevents any other program or process from using that same file; closing it releases this lock and makes the file available again. Second, when a program writes data, the data is frequently held temporarily in a memory buffer before being physically written to the storage device, for efficiency; CLOSEFILE forces any data still waiting in this buffer to actually be written to disk, so failing to close a file after writing to it can result in some or all of the written data never actually being saved."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a file must be closed",
+        "text": "For this reason, a well-written file-handling algorithm always closes every file it opens, including in situations where an error occurs partway through processing, so that the file is released and no buffered data is lost regardless of how the processing turns out."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a file must be closed",
+        "text": "Closing a file releases it, so it is no longer locked to the program that had it open and can be used by other programs or processes."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a file must be closed",
+        "text": "Closing a file after writing ensures data waiting in a buffer is actually written to the storage device, rather than being lost."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a file must be closed",
+        "text": "Every OPENFILE should be matched by a corresponding CLOSEFILE once the program has finished using that file."
+      },
+      {
+        "kind": "Section",
+        "text": "Reading a file sequentially using EOF"
+      },
+      {
+        "kind": "Content",
+        "label": "Reading a file sequentially using EOF",
+        "text": "Unlike an array, whose fixed size is known when it is declared, the number of records stored in a file is not usually known in advance, so a file cannot simply be read with a FOR loop counting up to a fixed number. Instead, a file is read sequentially, from its first line to its last, inside a loop controlled by the EOF (end-of-file) function: EOF(FileName) returns TRUE once every line of the file has already been read, and FALSE while there are still more lines left to read. The standard structure is therefore a WHILE NOT EOF(FileName) loop, which keeps reading and processing one line at a time for as long as lines remain, and stops automatically as soon as the last line has been read, whatever the actual number of records in the file turns out to be."
+      },
+      {
+        "kind": "Content",
+        "label": "Reading a file sequentially using EOF",
+        "text": "Each call to READFILE FileName, Data reads the next line of the file into the variable Data and simultaneously advances the file's internal position on to the following line, so that the next READFILE call, or the next EOF check, reflects that the previous line has now been consumed."
+      },
+      {
+        "kind": "Content",
+        "label": "Reading a file sequentially using EOF",
+        "text": "A file's number of records is not known in advance, so it is read with WHILE NOT EOF(FileName), not a counter-controlled FOR loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Reading a file sequentially using EOF",
+        "text": "EOF(FileName) becomes TRUE only once every line has been read; checking it before each READFILE prevents attempting to read past the end of the file."
+      },
+      {
+        "kind": "Content",
+        "label": "Reading a file sequentially using EOF",
+        "text": "READFILE FileName, Data reads the next line into Data and moves the file's read position on to the line after it."
+      },
+      {
+        "kind": "Example",
+        "label": "Reading a file sequentially using EOF",
+        "text": "DECLARE LineData : STRING\nDECLARE Number : INTEGER\nDECLARE Total : INTEGER\n\nTotal <- 0\nOPENFILE \"numbers.txt\" FOR READ\n\nWHILE NOT EOF(\"numbers.txt\")\n  READFILE \"numbers.txt\", LineData\n  Number <- INT(LineData)\n  Total <- Total + Number\nENDWHILE\n\nCLOSEFILE \"numbers.txt\"\nOUTPUT Total\n\n// If numbers.txt contains the lines 12, 45, 7 and 20 (one number per line):\nTrace table:\nStep | LineData | Number | Total | EOF(\"numbers.txt\") after read\n1    | \"12\"     | 12     | 12    | FALSE\n2    | \"45\"     | 45     | 57    | FALSE\n3    | \"7\"      | 7      | 64    | FALSE\n4    | \"20\"     | 20     | 84    | TRUE\n\nThe loop checks EOF before each read; once it becomes TRUE after the fourth line, the loop condition WHILE NOT EOF(...) is FALSE, so the loop stops and the final output is Total = 84."
+      },
+      {
+        "kind": "Section",
+        "text": "WRITE mode versus APPEND mode"
+      },
+      {
+        "kind": "Content",
+        "label": "WRITE mode versus APPEND mode",
+        "text": "Opening a file FOR WRITE and opening it FOR APPEND both make a file ready to have data written to it, but they behave very differently towards any data the file already contains. OPENFILE FileName FOR WRITE always starts the file empty: if the file already exists, everything previously stored in it is erased the moment it is opened in this mode, and if it does not yet exist, a new, empty file is created. This mode is used when a file's entire previous content should be discarded and replaced, for example creating a fresh log file for a new run of a program."
+      },
+      {
+        "kind": "Content",
+        "label": "WRITE mode versus APPEND mode",
+        "text": "OPENFILE FileName FOR APPEND, in contrast, keeps every line already in the file untouched, and any new WRITEFILE statements add their data strictly after the existing content, at the end of the file. This mode is used when new data needs to accumulate over time without destroying records already saved, for example adding a new transaction to an existing transaction log each time the program runs, rather than overwriting the whole log every time."
+      },
+      {
+        "kind": "Content",
+        "label": "WRITE mode versus APPEND mode",
+        "text": "FOR WRITE erases an existing file's contents (or creates a new, empty file) before anything is written to it."
+      },
+      {
+        "kind": "Content",
+        "label": "WRITE mode versus APPEND mode",
+        "text": "FOR APPEND keeps a file's existing contents and adds new data strictly after them, at the end of the file."
+      },
+      {
+        "kind": "Content",
+        "label": "WRITE mode versus APPEND mode",
+        "text": "Choosing WRITE when APPEND was needed permanently destroys previously saved data; this choice cannot be undone once the file has been opened in that mode."
+      },
+      {
+        "kind": "Example",
+        "label": "WRITE mode versus APPEND mode",
+        "text": "// Program run 1: create a brand-new log, discarding anything previously in it\nOPENFILE \"log.txt\" FOR WRITE\nWRITEFILE \"log.txt\", \"Student,Score\"\nWRITEFILE \"log.txt\", \"Aisha,72\"\nCLOSEFILE \"log.txt\"\n// log.txt now contains exactly two lines: \"Student,Score\" and \"Aisha,72\"\n\n// Program run 2 (later): add a further record without losing what is already there\nOPENFILE \"log.txt\" FOR APPEND\nWRITEFILE \"log.txt\", \"Carlos,58\"\nCLOSEFILE \"log.txt\"\n// log.txt now contains three lines: the original two, plus \"Carlos,58\" added at the end.\n// Opening log.txt FOR WRITE again at this point would instead erase all three lines."
+      },
+      {
+        "kind": "Section",
+        "text": "Converting a line read from a file to the correct data type"
+      },
+      {
+        "kind": "Content",
+        "label": "Converting a line read from a file to the correct data type",
+        "text": "Every line read from a text file with READFILE is read as a string, regardless of what the data actually represents, because a text file simply stores sequences of characters with no information about what data type each line was originally meant to hold. If a line read from a file needs to be used as a number, for example to be added to a running total or compared numerically with another value, it must first be explicitly converted from a string to the required numeric type, using a conversion function such as INT(LineData) for a whole number or a corresponding function for a real number, before that conversion the value is only a string and cannot be used correctly in arithmetic."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting a line read from a file to the correct data type",
+        "text": "Forgetting this conversion is a frequent source of error: attempting arithmetic directly on a string read from a file either causes a type error, or, in a language that performs implicit string concatenation, silently joins values together as text instead of adding them numerically, producing a result that looks plausible but is completely wrong."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting a line read from a file to the correct data type",
+        "text": "A line read from a text file with READFILE is always a string, whatever the data conceptually represents."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting a line read from a file to the correct data type",
+        "text": "A string read from a file must be explicitly converted, for example with INT(LineData), before it can be used in numeric processing such as a running total."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting a line read from a file to the correct data type",
+        "text": "Skipping this conversion is a common cause of a type error, or of numbers being wrongly joined together as text instead of added."
+      },
+      {
+        "kind": "Section",
+        "text": "Writing records to a file"
+      },
+      {
+        "kind": "Content",
+        "label": "Writing records to a file",
+        "text": "WRITEFILE FileName, Data writes the value of Data as the next line of the open file, which must have been opened FOR WRITE or FOR APPEND beforehand; attempting to WRITEFILE a file that was opened FOR READ is not valid, because a file opened for reading has not been made ready to accept new data. Each call to WRITEFILE typically adds exactly one new line, so writing several records to a file normally means calling WRITEFILE once for each record, often from inside a loop that processes each record of some existing data structure, such as an array, in turn."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing records to a file",
+        "text": "As with reading, the file must be closed with CLOSEFILE once every WRITEFILE call intended for that run of the program has been made, both to release the file and to guarantee that every line written has actually been saved to the storage device rather than left sitting in a buffer."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing records to a file",
+        "text": "WRITEFILE FileName, Data requires the file to have been opened FOR WRITE or FOR APPEND; it cannot be used on a file opened FOR READ."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing records to a file",
+        "text": "Each WRITEFILE call normally writes one line, so writing several records means calling WRITEFILE once per record, often inside a loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing records to a file",
+        "text": "CLOSEFILE after writing is essential, not optional, since it is what guarantees buffered data is actually saved to disk."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing records to a file",
+        "text": "DECLARE Scores : ARRAY[0:2] OF INTEGER\nDECLARE Index : INTEGER\n\nScores[0] <- 67\nScores[1] <- 82\nScores[2] <- 45\n\nOPENFILE \"results.txt\" FOR WRITE\nFOR Index <- 0 TO 2\n  WRITEFILE \"results.txt\", Scores[Index]\nNEXT Index\nCLOSEFILE \"results.txt\"\n\n// results.txt now contains three lines, in order: 67, then 82, then 45.\n// Because the file was opened FOR WRITE, any previous contents of results.txt\n// were erased first; opening FOR APPEND instead would have kept them and added\n// these three new lines after them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why must data be written to a file if it needs to survive after a program ends?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why must data be written to a file if it needs to survive after a program ends?",
+        "text": "Because data held only in variables exists in main memory and is lost the moment the program that declared it terminates; a file stored on permanent storage continues to exist afterwards."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the standard sequence for using a file?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the standard sequence for using a file?",
+        "text": "Open the file in the required mode (READ, WRITE or APPEND), perform the necessary reads or writes, then close the file."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two reasons why a file must be closed once processing is finished."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two reasons why a file must be closed once processing is finished.",
+        "text": "Closing releases the file so other programs or processes can use it, and ensures any data still waiting in a buffer is actually written to the storage device."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a file read when the number of records it contains is not known in advance?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a file read when the number of records it contains is not known in advance?",
+        "text": "Sequentially, using a loop controlled by an end-of-file check, WHILE NOT EOF(FileName), rather than a counter-controlled loop with a fixed number of repetitions."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between opening a file FOR WRITE and FOR APPEND?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between opening a file FOR WRITE and FOR APPEND?",
+        "text": "FOR WRITE creates a new, empty file or erases an existing file's contents; FOR APPEND keeps a file's existing contents and adds new data after them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What data type is a line read from a text file with READFILE?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What data type is a line read from a text file with READFILE?",
+        "text": "Always a string, regardless of what the data conceptually represents; it must be explicitly converted to a numeric type before use in a calculation."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does CLOSEFILE guarantee that simply finishing the last READFILE or WRITEFILE call does not?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does CLOSEFILE guarantee that simply finishing the last READFILE or WRITEFILE call does not?",
+        "text": "That the file is released for other programs to use and that any data still held in a buffer has actually been written to the storage device."
       }
     ]
   },
@@ -11605,7 +11919,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "10.4",
     "title": "Introduction to Abstract Data Types (ADT)",
-    "contentDepth": "in-depth",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -11616,25 +11930,202 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "A focused revision guide to introduction to abstract data types (adt)."
+        "text": "Paper 1 asks candidates to describe a stack, a queue or a linked list in terms of the operations available on it, to write or complete pseudocode that pushes, pops, enqueues or dequeues values while checking for overflow and underflow, and to trace such pseudocode with a set of real values. Answers score when a structure is described by what it does (its operations) rather than by a specific implementation, when an overflow or underflow check is included and explained, and when a trace correctly updates a pointer, such as a stack's top or a queue's front and rear, at every single operation."
+      },
+      {
+        "kind": "Definition",
+        "label": "Abstract data type (ADT)",
+        "text": "A data structure defined by the operations that can be performed on it and how it behaves, rather than by the specific details of how it is actually implemented underneath."
+      },
+      {
+        "kind": "Definition",
+        "label": "Stack",
+        "text": "A last-in-first-out (LIFO) abstract data type in which items can only be added to, or removed from, one end, called the top."
+      },
+      {
+        "kind": "Definition",
+        "label": "Push / Pop",
+        "text": "The two operations on a stack: push adds a new item onto the top of the stack; pop removes and returns the item currently on the top of the stack."
+      },
+      {
+        "kind": "Definition",
+        "label": "Stack overflow / underflow",
+        "text": "Stack overflow is an error caused by attempting to push onto a stack that is already full; stack underflow is an error caused by attempting to pop from a stack that is already empty."
+      },
+      {
+        "kind": "Definition",
+        "label": "Queue",
+        "text": "A first-in-first-out (FIFO) abstract data type in which items are added at one end, the rear, and removed from the other end, the front."
+      },
+      {
+        "kind": "Definition",
+        "label": "Enqueue / Dequeue",
+        "text": "The two operations on a queue: enqueue adds a new item at the rear of the queue; dequeue removes and returns the item currently at the front of the queue."
+      },
+      {
+        "kind": "Definition",
+        "label": "Circular queue",
+        "text": "A queue implementation that treats the storage available to it as circular, so that space freed at the front by a dequeue is reused by later enqueue operations instead of every remaining element having to be shifted forward."
+      },
+      {
+        "kind": "Definition",
+        "label": "Linked list",
+        "text": "A data structure made up of nodes, where each node stores a data value together with a pointer to the next node, traversed in order from a head pointer until a null (end) pointer is reached."
       },
       {
         "kind": "Section",
-        "text": "Stacks (LIFO)"
+        "text": "Abstract data types: behaviour, not implementation"
       },
       {
         "kind": "Content",
-        "label": "Stacks (LIFO)",
-        "text": "Add/remove only from the top — push() to add, pop() to remove. Used for undo functions and managing recursive calls."
+        "label": "Abstract data types: behaviour, not implementation",
+        "text": "An abstract data type, or ADT, is a data structure that is defined by the operations that can be performed on it, and by the rules governing what those operations do, rather than by the specific way it is actually built underneath. A stack, for example, is defined as an ADT purely by saying items can be pushed onto it and popped off it, in last-in-first-out order; it does not matter to a program using a stack whether that stack happens to be implemented internally using an array with a pointer to the current top, or using a linked list, as long as push and pop behave correctly. This separation, between what a structure does and how it is built, is called abstraction: a programmer using a stack only needs to know its interface, its set of available operations, not the implementation details underneath them."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstract data types: behaviour, not implementation",
+        "text": "This specification introduces three ADTs at AS level: the stack (LIFO), the queue (FIFO), and the linked list. Each is characterised by a small, specific set of operations, and exam answers describing them should focus on those operations and the order in which items are added and removed, not on low-level implementation detail unless a question specifically asks how the structure could be implemented using an array."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstract data types: behaviour, not implementation",
+        "text": "An ADT is defined by its operations and their behaviour, not by how it happens to be implemented internally."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstract data types: behaviour, not implementation",
+        "text": "A stack, a queue and a linked list are each ADTs introduced at AS level, each with its own small set of defining operations."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstract data types: behaviour, not implementation",
+        "text": "Describing an ADT well means naming its operations and the order items are added and removed in, not describing a specific implementation unless asked."
       },
       {
         "kind": "Section",
-        "text": "Queues (FIFO)"
+        "text": "The stack: a LIFO structure"
       },
       {
         "kind": "Content",
-        "label": "Queues (FIFO)",
-        "text": "Add at the rear (enqueue), remove from the front (dequeue). A circular queue reuses freed space at the front rather than shifting all elements."
+        "label": "The stack: a LIFO structure",
+        "text": "A stack is a last-in-first-out (LIFO) structure: the most recently added item is always the first one removed, exactly like a physical stack of plates, where a new plate is placed on top and the top plate is always the one taken off first. A stack supports exactly two operations that change its content: push, which adds a new item onto the top of the stack, and pop, which removes and returns whichever item is currently on the top. A pointer, usually called Top, keeps track of the position of the topmost item (or the next free space, depending on the exact implementation chosen); push moves this pointer to add the new item, and pop reads the item at the pointer before moving the pointer back."
+      },
+      {
+        "kind": "Content",
+        "label": "The stack: a LIFO structure",
+        "text": "Because a stack has a fixed maximum capacity when implemented using a fixed-size array, every push operation must first check whether the stack is already full; attempting to push onto a full stack is called stack overflow and must be detected and reported rather than allowed to corrupt the stack. Equally, every pop operation must first check whether the stack is already empty; attempting to pop from an empty stack is called stack underflow, since there is no item present to remove."
+      },
+      {
+        "kind": "Content",
+        "label": "The stack: a LIFO structure",
+        "text": "Push adds an item onto the top of the stack; pop removes and returns the item currently on the top; only the top of a stack can ever be accessed directly."
+      },
+      {
+        "kind": "Content",
+        "label": "The stack: a LIFO structure",
+        "text": "A pointer, Top, tracks the current top of the stack and is updated by every push and every pop."
+      },
+      {
+        "kind": "Content",
+        "label": "The stack: a LIFO structure",
+        "text": "Stack overflow (pushing onto a full stack) and stack underflow (popping from an empty stack) must both be checked for before the corresponding operation is carried out."
+      },
+      {
+        "kind": "Example",
+        "label": "The stack: a LIFO structure",
+        "text": "DECLARE Stack : ARRAY[0:3] OF INTEGER\nDECLARE Top : INTEGER\n\nTop <- -1   // -1 means the stack is empty\n\nPROCEDURE Push(Value : INTEGER)\n  IF Top = 3 THEN\n    OUTPUT \"Stack overflow\"\n  ELSE\n    Top <- Top + 1\n    Stack[Top] <- Value\n  ENDIF\nENDPROCEDURE\n\nPROCEDURE Pop() RETURNS INTEGER\n  IF Top = -1 THEN\n    OUTPUT \"Stack underflow\"\n    RETURN 0\n  ELSE\n    DECLARE Removed : INTEGER\n    Removed <- Stack[Top]\n    Top <- Top - 1\n    RETURN Removed\n  ENDIF\nENDPROCEDURE\n\n// Sequence of calls: Push(5), Push(9), Push(2), Pop(), Push(7)\n\nTrace table:\nStep | Call     | Top before | Action                 | Stack contents (index 0..Top) | Top after\n1    | Push(5)  | -1         | Not full, Top<-0, Stack[0]<-5 | [5]                     | 0\n2    | Push(9)  | 0          | Not full, Top<-1, Stack[1]<-9 | [5, 9]                  | 1\n3    | Push(2)  | 1          | Not full, Top<-2, Stack[2]<-2 | [5, 9, 2]                | 2\n4    | Pop()    | 2          | Not empty, Removed<-Stack[2]=2, Top<-1 | [5, 9]         | 1\n5    | Push(7)  | 1          | Not full, Top<-2, Stack[2]<-7 | [5, 9, 7]                | 2\n\nPop() at step 4 returns 2, the last value pushed and not yet popped, confirming LIFO order: the most recently added item still present is always the one removed next."
+      },
+      {
+        "kind": "Section",
+        "text": "Applications of a stack"
+      },
+      {
+        "kind": "Content",
+        "label": "Applications of a stack",
+        "text": "A stack's LIFO behaviour makes it the natural structure for any situation where the most recently completed action must be the first one undone. Undo functionality in software is a direct application: every action a user performs is pushed onto a stack, and choosing Undo pops the most recent action off the stack and reverses it, so that repeated Undo presses reverse actions in exactly the opposite order to the order they were originally performed in."
+      },
+      {
+        "kind": "Content",
+        "label": "Applications of a stack",
+        "text": "Managing function calls, including recursive calls, is another key application: whenever a function or procedure is called, the computer pushes information about that call (such as where to return to, and its local variables) onto a call stack; when the function finishes and returns, this information is popped back off. Because recursion involves a function calling itself repeatedly before any of those calls return, the call stack grows with each recursive call and shrinks again as each call returns, unwinding in exactly the reverse order the calls were originally made in, which is precisely LIFO behaviour."
+      },
+      {
+        "kind": "Content",
+        "label": "Applications of a stack",
+        "text": "Undo functionality pushes each action performed, and pops the most recent one off to reverse it, undoing actions in the reverse order they were performed."
+      },
+      {
+        "kind": "Content",
+        "label": "Applications of a stack",
+        "text": "Function calls, including recursive calls, are managed using a call stack, which stores each call's return information and is popped as each call returns."
+      },
+      {
+        "kind": "Content",
+        "label": "Applications of a stack",
+        "text": "Recursion in particular relies on the call stack's LIFO order to ensure calls unwind in exactly the reverse order to the order they were made."
+      },
+      {
+        "kind": "Section",
+        "text": "The queue: a FIFO structure"
+      },
+      {
+        "kind": "Content",
+        "label": "The queue: a FIFO structure",
+        "text": "A queue is a first-in-first-out (FIFO) structure: the earliest item added to the queue is always the first one removed, exactly like people queueing in a line, where the person who joined first is served first. A queue supports two operations that change its content: enqueue, which adds a new item at the rear of the queue, and dequeue, which removes and returns whichever item is currently at the front of the queue. Two pointers are needed, Front and Rear, since additions and removals happen at opposite ends of the structure: enqueue adds an item at the position Rear points to and then advances Rear, while dequeue reads the item at the position Front points to and then advances Front."
+      },
+      {
+        "kind": "Content",
+        "label": "The queue: a FIFO structure",
+        "text": "As with a stack, every enqueue operation must first check whether the queue is already full, since attempting to enqueue onto a full queue is called queue overflow, and every dequeue operation must first check whether the queue is already empty, since attempting to dequeue from an empty queue is called queue underflow."
+      },
+      {
+        "kind": "Content",
+        "label": "The queue: a FIFO structure",
+        "text": "Enqueue adds an item at the rear of the queue; dequeue removes and returns the item at the front; items are always removed in the same order they were added."
+      },
+      {
+        "kind": "Content",
+        "label": "The queue: a FIFO structure",
+        "text": "Two pointers, Front and Rear, are needed because items are added at one end and removed from the other."
+      },
+      {
+        "kind": "Content",
+        "label": "The queue: a FIFO structure",
+        "text": "Queue overflow (enqueuing onto a full queue) and queue underflow (dequeuing from an empty queue) must both be checked for before the corresponding operation is carried out."
+      },
+      {
+        "kind": "Example",
+        "label": "The queue: a FIFO structure",
+        "text": "DECLARE Queue : ARRAY[0:3] OF STRING\nDECLARE Front, Rear, Count : INTEGER\n\nFront <- 0\nRear <- 0\nCount <- 0   // number of items currently in the queue\n\nPROCEDURE Enqueue(Value : STRING)\n  IF Count = 4 THEN\n    OUTPUT \"Queue overflow\"\n  ELSE\n    Queue[Rear] <- Value\n    Rear <- Rear + 1\n    Count <- Count + 1\n  ENDIF\nENDPROCEDURE\n\nPROCEDURE Dequeue() RETURNS STRING\n  IF Count = 0 THEN\n    OUTPUT \"Queue underflow\"\n    RETURN \"\"\n  ELSE\n    DECLARE Removed : STRING\n    Removed <- Queue[Front]\n    Front <- Front + 1\n    Count <- Count - 1\n    RETURN Removed\n  ENDIF\nENDPROCEDURE\n\n// Sequence of calls: Enqueue(\"Amir\"), Enqueue(\"Beth\"), Dequeue(), Enqueue(\"Chen\")\n\nTrace table:\nStep | Call           | Count before | Action                                   | Front | Rear | Count after\n1    | Enqueue(\"Amir\") | 0           | Not full, Queue[0]<-\"Amir\", Rear<-1       | 0     | 1    | 1\n2    | Enqueue(\"Beth\") | 1           | Not full, Queue[1]<-\"Beth\", Rear<-2       | 0     | 2    | 2\n3    | Dequeue()       | 2           | Not empty, Removed<-Queue[0]=\"Amir\", Front<-1 | 1     | 2    | 1\n4    | Enqueue(\"Chen\") | 1           | Not full, Queue[2]<-\"Chen\", Rear<-3       | 1     | 3    | 2\n\nDequeue() at step 3 returns \"Amir\", the first item added and not yet removed, confirming FIFO order; after step 4 the queue holds \"Beth\" then \"Chen\", with Front = 1 and Rear = 3."
+      },
+      {
+        "kind": "Section",
+        "text": "The circular queue"
+      },
+      {
+        "kind": "Content",
+        "label": "The circular queue",
+        "text": "In the simple queue implementation above, Front only ever increases as items are dequeued, so the array positions before Front become permanently unused once passed, even though they are empty and could be reused; eventually Rear reaches the end of the array even though many of the earlier positions are free, and without correction the queue would report overflow despite genuinely having space available. A circular queue solves this by treating the array's positions as if they wrapped around in a circle: when Rear (or Front) reaches the last index of the array, the next enqueue (or dequeue) wraps it back around to index 0 instead of moving past the end, typically calculated using Rear <- (Rear + 1) MOD ArraySize."
+      },
+      {
+        "kind": "Content",
+        "label": "The circular queue",
+        "text": "This wrap-around means the freed space at the front of the queue, left behind by earlier dequeue operations, is reused by later enqueue operations, instead of every remaining item having to be shifted forward to make the used positions contiguous again. A circular queue therefore makes far better use of a fixed-size array than a simple queue that never reuses positions before the current Front."
+      },
+      {
+        "kind": "Content",
+        "label": "The circular queue",
+        "text": "In a simple (non-circular) queue, positions before Front become permanently unused, wasting space even while they are actually empty."
+      },
+      {
+        "kind": "Content",
+        "label": "The circular queue",
+        "text": "A circular queue wraps Front and Rear back to index 0 once they pass the last index, typically using MOD arithmetic such as Rear <- (Rear + 1) MOD ArraySize."
+      },
+      {
+        "kind": "Content",
+        "label": "The circular queue",
+        "text": "This reuses freed space at the front of the queue directly, avoiding the need to shift every remaining element forward to reclaim it."
       },
       {
         "kind": "Section",
@@ -11643,19 +12134,133 @@
       {
         "kind": "Content",
         "label": "Linked lists",
-        "text": "Each node stores data plus a pointer to the next node — insertion/deletion just changes pointers, no shifting like an array."
+        "text": "A linked list stores a sequence of items as a chain of separate nodes rather than as one contiguous block like an array. Each node holds two things: a data value, and a pointer that gives the location of the next node in the sequence. A separate pointer, Head, points to the very first node in the list; the list is traversed by starting at Head and repeatedly following each node's next-node pointer to move on to the following node, continuing until a pointer is reached that does not point to another node at all, usually written as a null pointer, which marks the end of the list."
       },
       {
-        "kind": "Quick recall",
-        "text": "stacks"
+        "kind": "Content",
+        "label": "Linked lists",
+        "text": "Because each node only needs to know the location of the one node that comes after it, a linked list does not need its items to be stored in adjacent memory locations the way an array's elements do, and it does not need to know its final size in advance the way an array does."
       },
       {
-        "kind": "Quick recall",
-        "text": "queues"
+        "kind": "Content",
+        "label": "Linked lists",
+        "text": "Each node stores a data value plus a pointer to the next node in the list."
       },
       {
-        "kind": "Quick recall",
-        "text": "linked-list concepts"
+        "kind": "Content",
+        "label": "Linked lists",
+        "text": "The list is traversed from a Head pointer, following each next-node pointer in turn, until a null pointer marks the end of the list."
+      },
+      {
+        "kind": "Content",
+        "label": "Linked lists",
+        "text": "Unlike an array, a linked list's nodes do not need to occupy adjacent memory locations, and the list does not need a fixed size declared in advance."
+      },
+      {
+        "kind": "Section",
+        "text": "Inserting and deleting nodes in a linked list"
+      },
+      {
+        "kind": "Content",
+        "label": "Inserting and deleting nodes in a linked list",
+        "text": "Inserting a new item into an array at a position other than the end requires every element from that position onward to be shifted one place along, to make room for the new value, since an array's elements must remain in contiguous, unbroken order. A linked list avoids this entirely: to insert a new node between two existing nodes, only two pointers need to change — the new node's next-node pointer is set to point to the node that used to come next, and the previous node's next-node pointer is changed to point to the new node instead. No existing node's data value is moved, and no other node's pointer needs to change at all."
+      },
+      {
+        "kind": "Content",
+        "label": "Inserting and deleting nodes in a linked list",
+        "text": "Deleting a node from a linked list is equally efficient: the node immediately before the one being deleted simply has its next-node pointer changed to point directly to the node that came after the deleted node, skipping over it. The deleted node's memory can then be freed. As with insertion, this changes only a small, fixed number of pointers, however long the list is, whereas deleting an element from partway through an array requires shifting every subsequent element back by one position to close the resulting gap."
+      },
+      {
+        "kind": "Content",
+        "label": "Inserting and deleting nodes in a linked list",
+        "text": "Inserting a node only changes two pointers: the new node's next-node pointer, and the previous node's next-node pointer; no data values are shifted."
+      },
+      {
+        "kind": "Content",
+        "label": "Inserting and deleting nodes in a linked list",
+        "text": "Deleting a node only changes one pointer: the previous node's next-node pointer is redirected to skip over the deleted node."
+      },
+      {
+        "kind": "Content",
+        "label": "Inserting and deleting nodes in a linked list",
+        "text": "An array requires shifting every subsequent element to insert or delete partway through it; a linked list never does, regardless of the list's length."
+      },
+      {
+        "kind": "Example",
+        "label": "Inserting and deleting nodes in a linked list",
+        "text": "// Linked list before insertion: Head -> [\"Amir\"|next] -> [\"Chen\"|next] -> NULL\n// A new node holding \"Beth\" must be inserted between \"Amir\" and \"Chen\"\n\nDECLARE NewNode : NODE\nNewNode.Data <- \"Beth\"\n\n// Step 1: point the new node forward to whatever \"Amir\"'s node currently points to\nNewNode.Next <- AmirNode.Next        // NewNode.Next now points to ChenNode\n\n// Step 2: point \"Amir\"'s node to the new node instead of directly to \"Chen\"'s node\nAmirNode.Next <- NewNode             // AmirNode.Next now points to NewNode\n\n// Linked list after insertion: Head -> [\"Amir\"|next] -> [\"Beth\"|next] -> [\"Chen\"|next] -> NULL\n// Only two pointers changed (NewNode.Next and AmirNode.Next); \"Amir\" and \"Chen\"'s\n// data values were never moved, unlike inserting into the middle of an array."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is an abstract data type (ADT)?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is an abstract data type (ADT)?",
+        "text": "A data structure defined by the operations that can be performed on it and how it behaves, independent of how it is actually implemented."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the two operations that change a stack's contents, and what order does a stack remove items in?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the two operations that change a stack's contents, and what order does a stack remove items in?",
+        "text": "Push (add to the top) and pop (remove from the top); a stack is LIFO, so the most recently added item is always removed first."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What must be checked before a push, and before a pop, on a stack?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What must be checked before a push, and before a pop, on a stack?",
+        "text": "Before a push, check for stack overflow (the stack is already full); before a pop, check for stack underflow (the stack is already empty)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name two applications of a stack."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name two applications of a stack.",
+        "text": "Providing undo functionality, and managing function calls and recursion using a call stack."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the two operations that change a queue's contents, and what order does a queue remove items in?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the two operations that change a queue's contents, and what order does a queue remove items in?",
+        "text": "Enqueue (add at the rear) and dequeue (remove from the front); a queue is FIFO, so the earliest added item is always removed first."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a circular queue do differently from a simple queue?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a circular queue do differently from a simple queue?",
+        "text": "It reuses freed space at the front of the queue, by wrapping Front and Rear back to index 0 once they pass the last index, instead of leaving that space permanently unused."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does each node in a linked list store, and how is the list traversed?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does each node in a linked list store, and how is the list traversed?",
+        "text": "A data value and a pointer to the next node; the list is traversed by following next-node pointers from a Head pointer until a null pointer marks the end."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is inserting or deleting a node in a linked list more efficient than in an array?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is inserting or deleting a node in a linked list more efficient than in an array?",
+        "text": "It only requires changing a small, fixed number of pointers, whereas an array requires shifting every subsequent element to keep its data contiguous."
       }
     ]
   },

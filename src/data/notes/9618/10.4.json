@@ -5,55 +5,297 @@
   "unitId": "AS-P",
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Introduction to Abstract Data Types (ADT)",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to introduction to abstract data types (adt).",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to describe a stack, a queue or a linked list in terms of the operations available on it, to write or complete pseudocode that pushes, pops, enqueues or dequeues values while checking for overflow and underflow, and to trace such pseudocode with a set of real values. Answers score when a structure is described by what it does (its operations) rather than by a specific implementation, when an overflow or underflow check is included and explained, and when a trace correctly updates a pointer, such as a stack's top or a queue's front and rear, at every single operation.",
   "syllabusPoints": [
-    "stacks",
-    "queues",
-    "linked-list concepts"
+    "Show understanding of an abstract data type (ADT) as a data structure defined by the operations that can be performed on it, independent of how it is actually implemented.",
+    "Show understanding of a stack as a last-in-first-out (LIFO) structure, and describe the push and pop operations, including checking for stack overflow and stack underflow.",
+    "Identify applications of a stack, such as providing undo functionality and managing function calls and recursion.",
+    "Show understanding of a queue as a first-in-first-out (FIFO) structure, and describe the enqueue and dequeue operations, including checking for queue overflow and queue underflow.",
+    "Show understanding of a circular queue, and explain how it reuses freed space at the front of the queue instead of shifting every remaining element forward.",
+    "Show understanding of a linked list, in which each node stores a data value and a pointer to the next node, traversed from a head pointer until a null pointer is reached.",
+    "Explain why inserting or deleting a node in a linked list only requires changing a small number of pointers, unlike inserting or deleting an element in an array."
   ],
-  "definitions": [],
+  "definitions": [
+    {
+      "term": "Abstract data type (ADT)",
+      "definition": "A data structure defined by the operations that can be performed on it and how it behaves, rather than by the specific details of how it is actually implemented underneath."
+    },
+    {
+      "term": "Stack",
+      "definition": "A last-in-first-out (LIFO) abstract data type in which items can only be added to, or removed from, one end, called the top."
+    },
+    {
+      "term": "Push / Pop",
+      "definition": "The two operations on a stack: push adds a new item onto the top of the stack; pop removes and returns the item currently on the top of the stack."
+    },
+    {
+      "term": "Stack overflow / underflow",
+      "definition": "Stack overflow is an error caused by attempting to push onto a stack that is already full; stack underflow is an error caused by attempting to pop from a stack that is already empty."
+    },
+    {
+      "term": "Queue",
+      "definition": "A first-in-first-out (FIFO) abstract data type in which items are added at one end, the rear, and removed from the other end, the front."
+    },
+    {
+      "term": "Enqueue / Dequeue",
+      "definition": "The two operations on a queue: enqueue adds a new item at the rear of the queue; dequeue removes and returns the item currently at the front of the queue."
+    },
+    {
+      "term": "Circular queue",
+      "definition": "A queue implementation that treats the storage available to it as circular, so that space freed at the front by a dequeue is reused by later enqueue operations instead of every remaining element having to be shifted forward."
+    },
+    {
+      "term": "Linked list",
+      "definition": "A data structure made up of nodes, where each node stores a data value together with a pointer to the next node, traversed in order from a head pointer until a null (end) pointer is reached."
+    }
+  ],
   "sections": [
     {
-      "id": "01-stacks-lifo",
-      "title": "Stacks (LIFO)",
+      "id": "01-what-an-adt-is",
+      "title": "Abstract data types: behaviour, not implementation",
       "content": [
-        "Add/remove only from the top — push() to add, pop() to remove. Used for undo functions and managing recursive calls."
+        "An abstract data type, or ADT, is a data structure that is defined by the operations that can be performed on it, and by the rules governing what those operations do, rather than by the specific way it is actually built underneath. A stack, for example, is defined as an ADT purely by saying items can be pushed onto it and popped off it, in last-in-first-out order; it does not matter to a program using a stack whether that stack happens to be implemented internally using an array with a pointer to the current top, or using a linked list, as long as push and pop behave correctly. This separation, between what a structure does and how it is built, is called abstraction: a programmer using a stack only needs to know its interface, its set of available operations, not the implementation details underneath them.",
+        "This specification introduces three ADTs at AS level: the stack (LIFO), the queue (FIFO), and the linked list. Each is characterised by a small, specific set of operations, and exam answers describing them should focus on those operations and the order in which items are added and removed, not on low-level implementation detail unless a question specifically asks how the structure could be implemented using an array."
       ],
-      "bullets": [],
+      "bullets": [
+        "An ADT is defined by its operations and their behaviour, not by how it happens to be implemented internally.",
+        "A stack, a queue and a linked list are each ADTs introduced at AS level, each with its own small set of defining operations.",
+        "Describing an ADT well means naming its operations and the order items are added and removed in, not describing a specific implementation unless asked."
+      ],
       "examples": []
     },
     {
-      "id": "02-queues-fifo",
-      "title": "Queues (FIFO)",
+      "id": "02-stack-lifo",
+      "title": "The stack: a LIFO structure",
       "content": [
-        "Add at the rear (enqueue), remove from the front (dequeue). A circular queue reuses freed space at the front rather than shifting all elements."
+        "A stack is a last-in-first-out (LIFO) structure: the most recently added item is always the first one removed, exactly like a physical stack of plates, where a new plate is placed on top and the top plate is always the one taken off first. A stack supports exactly two operations that change its content: push, which adds a new item onto the top of the stack, and pop, which removes and returns whichever item is currently on the top. A pointer, usually called Top, keeps track of the position of the topmost item (or the next free space, depending on the exact implementation chosen); push moves this pointer to add the new item, and pop reads the item at the pointer before moving the pointer back.",
+        "Because a stack has a fixed maximum capacity when implemented using a fixed-size array, every push operation must first check whether the stack is already full; attempting to push onto a full stack is called stack overflow and must be detected and reported rather than allowed to corrupt the stack. Equally, every pop operation must first check whether the stack is already empty; attempting to pop from an empty stack is called stack underflow, since there is no item present to remove."
       ],
-      "bullets": [],
+      "bullets": [
+        "Push adds an item onto the top of the stack; pop removes and returns the item currently on the top; only the top of a stack can ever be accessed directly.",
+        "A pointer, Top, tracks the current top of the stack and is updated by every push and every pop.",
+        "Stack overflow (pushing onto a full stack) and stack underflow (popping from an empty stack) must both be checked for before the corresponding operation is carried out."
+      ],
+      "examples": [
+        {
+          "id": "02-stack-push-pop-pseudocode",
+          "kind": "worked",
+          "label": "Worked trace: push and pop operations on a stack of capacity 4",
+          "content": "DECLARE Stack : ARRAY[0:3] OF INTEGER\nDECLARE Top : INTEGER\n\nTop <- -1   // -1 means the stack is empty\n\nPROCEDURE Push(Value : INTEGER)\n  IF Top = 3 THEN\n    OUTPUT \"Stack overflow\"\n  ELSE\n    Top <- Top + 1\n    Stack[Top] <- Value\n  ENDIF\nENDPROCEDURE\n\nPROCEDURE Pop() RETURNS INTEGER\n  IF Top = -1 THEN\n    OUTPUT \"Stack underflow\"\n    RETURN 0\n  ELSE\n    DECLARE Removed : INTEGER\n    Removed <- Stack[Top]\n    Top <- Top - 1\n    RETURN Removed\n  ENDIF\nENDPROCEDURE\n\n// Sequence of calls: Push(5), Push(9), Push(2), Pop(), Push(7)\n\nTrace table:\nStep | Call     | Top before | Action                 | Stack contents (index 0..Top) | Top after\n1    | Push(5)  | -1         | Not full, Top<-0, Stack[0]<-5 | [5]                     | 0\n2    | Push(9)  | 0          | Not full, Top<-1, Stack[1]<-9 | [5, 9]                  | 1\n3    | Push(2)  | 1          | Not full, Top<-2, Stack[2]<-2 | [5, 9, 2]                | 2\n4    | Pop()    | 2          | Not empty, Removed<-Stack[2]=2, Top<-1 | [5, 9]         | 1\n5    | Push(7)  | 1          | Not full, Top<-2, Stack[2]<-7 | [5, 9, 7]                | 2\n\nPop() at step 4 returns 2, the last value pushed and not yet popped, confirming LIFO order: the most recently added item still present is always the one removed next."
+        }
+      ]
+    },
+    {
+      "id": "03-stack-applications",
+      "title": "Applications of a stack",
+      "content": [
+        "A stack's LIFO behaviour makes it the natural structure for any situation where the most recently completed action must be the first one undone. Undo functionality in software is a direct application: every action a user performs is pushed onto a stack, and choosing Undo pops the most recent action off the stack and reverses it, so that repeated Undo presses reverse actions in exactly the opposite order to the order they were originally performed in.",
+        "Managing function calls, including recursive calls, is another key application: whenever a function or procedure is called, the computer pushes information about that call (such as where to return to, and its local variables) onto a call stack; when the function finishes and returns, this information is popped back off. Because recursion involves a function calling itself repeatedly before any of those calls return, the call stack grows with each recursive call and shrinks again as each call returns, unwinding in exactly the reverse order the calls were originally made in, which is precisely LIFO behaviour."
+      ],
+      "bullets": [
+        "Undo functionality pushes each action performed, and pops the most recent one off to reverse it, undoing actions in the reverse order they were performed.",
+        "Function calls, including recursive calls, are managed using a call stack, which stores each call's return information and is popped as each call returns.",
+        "Recursion in particular relies on the call stack's LIFO order to ensure calls unwind in exactly the reverse order to the order they were made."
+      ],
       "examples": []
     },
     {
-      "id": "03-linked-lists",
+      "id": "04-queue-fifo",
+      "title": "The queue: a FIFO structure",
+      "content": [
+        "A queue is a first-in-first-out (FIFO) structure: the earliest item added to the queue is always the first one removed, exactly like people queueing in a line, where the person who joined first is served first. A queue supports two operations that change its content: enqueue, which adds a new item at the rear of the queue, and dequeue, which removes and returns whichever item is currently at the front of the queue. Two pointers are needed, Front and Rear, since additions and removals happen at opposite ends of the structure: enqueue adds an item at the position Rear points to and then advances Rear, while dequeue reads the item at the position Front points to and then advances Front.",
+        "As with a stack, every enqueue operation must first check whether the queue is already full, since attempting to enqueue onto a full queue is called queue overflow, and every dequeue operation must first check whether the queue is already empty, since attempting to dequeue from an empty queue is called queue underflow."
+      ],
+      "bullets": [
+        "Enqueue adds an item at the rear of the queue; dequeue removes and returns the item at the front; items are always removed in the same order they were added.",
+        "Two pointers, Front and Rear, are needed because items are added at one end and removed from the other.",
+        "Queue overflow (enqueuing onto a full queue) and queue underflow (dequeuing from an empty queue) must both be checked for before the corresponding operation is carried out."
+      ],
+      "examples": [
+        {
+          "id": "04-queue-enqueue-dequeue-pseudocode",
+          "kind": "worked",
+          "label": "Worked trace: enqueue and dequeue operations on a queue of capacity 4",
+          "content": "DECLARE Queue : ARRAY[0:3] OF STRING\nDECLARE Front, Rear, Count : INTEGER\n\nFront <- 0\nRear <- 0\nCount <- 0   // number of items currently in the queue\n\nPROCEDURE Enqueue(Value : STRING)\n  IF Count = 4 THEN\n    OUTPUT \"Queue overflow\"\n  ELSE\n    Queue[Rear] <- Value\n    Rear <- Rear + 1\n    Count <- Count + 1\n  ENDIF\nENDPROCEDURE\n\nPROCEDURE Dequeue() RETURNS STRING\n  IF Count = 0 THEN\n    OUTPUT \"Queue underflow\"\n    RETURN \"\"\n  ELSE\n    DECLARE Removed : STRING\n    Removed <- Queue[Front]\n    Front <- Front + 1\n    Count <- Count - 1\n    RETURN Removed\n  ENDIF\nENDPROCEDURE\n\n// Sequence of calls: Enqueue(\"Amir\"), Enqueue(\"Beth\"), Dequeue(), Enqueue(\"Chen\")\n\nTrace table:\nStep | Call           | Count before | Action                                   | Front | Rear | Count after\n1    | Enqueue(\"Amir\") | 0           | Not full, Queue[0]<-\"Amir\", Rear<-1       | 0     | 1    | 1\n2    | Enqueue(\"Beth\") | 1           | Not full, Queue[1]<-\"Beth\", Rear<-2       | 0     | 2    | 2\n3    | Dequeue()       | 2           | Not empty, Removed<-Queue[0]=\"Amir\", Front<-1 | 1     | 2    | 1\n4    | Enqueue(\"Chen\") | 1           | Not full, Queue[2]<-\"Chen\", Rear<-3       | 1     | 3    | 2\n\nDequeue() at step 3 returns \"Amir\", the first item added and not yet removed, confirming FIFO order; after step 4 the queue holds \"Beth\" then \"Chen\", with Front = 1 and Rear = 3."
+        }
+      ]
+    },
+    {
+      "id": "05-circular-queue",
+      "title": "The circular queue",
+      "content": [
+        "In the simple queue implementation above, Front only ever increases as items are dequeued, so the array positions before Front become permanently unused once passed, even though they are empty and could be reused; eventually Rear reaches the end of the array even though many of the earlier positions are free, and without correction the queue would report overflow despite genuinely having space available. A circular queue solves this by treating the array's positions as if they wrapped around in a circle: when Rear (or Front) reaches the last index of the array, the next enqueue (or dequeue) wraps it back around to index 0 instead of moving past the end, typically calculated using Rear <- (Rear + 1) MOD ArraySize.",
+        "This wrap-around means the freed space at the front of the queue, left behind by earlier dequeue operations, is reused by later enqueue operations, instead of every remaining item having to be shifted forward to make the used positions contiguous again. A circular queue therefore makes far better use of a fixed-size array than a simple queue that never reuses positions before the current Front."
+      ],
+      "bullets": [
+        "In a simple (non-circular) queue, positions before Front become permanently unused, wasting space even while they are actually empty.",
+        "A circular queue wraps Front and Rear back to index 0 once they pass the last index, typically using MOD arithmetic such as Rear <- (Rear + 1) MOD ArraySize.",
+        "This reuses freed space at the front of the queue directly, avoiding the need to shift every remaining element forward to reclaim it."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-linked-lists",
       "title": "Linked lists",
       "content": [
-        "Each node stores data plus a pointer to the next node — insertion/deletion just changes pointers, no shifting like an array."
+        "A linked list stores a sequence of items as a chain of separate nodes rather than as one contiguous block like an array. Each node holds two things: a data value, and a pointer that gives the location of the next node in the sequence. A separate pointer, Head, points to the very first node in the list; the list is traversed by starting at Head and repeatedly following each node's next-node pointer to move on to the following node, continuing until a pointer is reached that does not point to another node at all, usually written as a null pointer, which marks the end of the list.",
+        "Because each node only needs to know the location of the one node that comes after it, a linked list does not need its items to be stored in adjacent memory locations the way an array's elements do, and it does not need to know its final size in advance the way an array does."
       ],
-      "bullets": [],
+      "bullets": [
+        "Each node stores a data value plus a pointer to the next node in the list.",
+        "The list is traversed from a Head pointer, following each next-node pointer in turn, until a null pointer marks the end of the list.",
+        "Unlike an array, a linked list's nodes do not need to occupy adjacent memory locations, and the list does not need a fixed size declared in advance."
+      ],
       "examples": []
+    },
+    {
+      "id": "07-linked-list-insertion-deletion",
+      "title": "Inserting and deleting nodes in a linked list",
+      "content": [
+        "Inserting a new item into an array at a position other than the end requires every element from that position onward to be shifted one place along, to make room for the new value, since an array's elements must remain in contiguous, unbroken order. A linked list avoids this entirely: to insert a new node between two existing nodes, only two pointers need to change — the new node's next-node pointer is set to point to the node that used to come next, and the previous node's next-node pointer is changed to point to the new node instead. No existing node's data value is moved, and no other node's pointer needs to change at all.",
+        "Deleting a node from a linked list is equally efficient: the node immediately before the one being deleted simply has its next-node pointer changed to point directly to the node that came after the deleted node, skipping over it. The deleted node's memory can then be freed. As with insertion, this changes only a small, fixed number of pointers, however long the list is, whereas deleting an element from partway through an array requires shifting every subsequent element back by one position to close the resulting gap."
+      ],
+      "bullets": [
+        "Inserting a node only changes two pointers: the new node's next-node pointer, and the previous node's next-node pointer; no data values are shifted.",
+        "Deleting a node only changes one pointer: the previous node's next-node pointer is redirected to skip over the deleted node.",
+        "An array requires shifting every subsequent element to insert or delete partway through it; a linked list never does, regardless of the list's length."
+      ],
+      "examples": [
+        {
+          "id": "07-linked-list-insert-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: inserting a node into a linked list by changing pointers only",
+          "content": "// Linked list before insertion: Head -> [\"Amir\"|next] -> [\"Chen\"|next] -> NULL\n// A new node holding \"Beth\" must be inserted between \"Amir\" and \"Chen\"\n\nDECLARE NewNode : NODE\nNewNode.Data <- \"Beth\"\n\n// Step 1: point the new node forward to whatever \"Amir\"'s node currently points to\nNewNode.Next <- AmirNode.Next        // NewNode.Next now points to ChenNode\n\n// Step 2: point \"Amir\"'s node to the new node instead of directly to \"Chen\"'s node\nAmirNode.Next <- NewNode             // AmirNode.Next now points to NewNode\n\n// Linked list after insertion: Head -> [\"Amir\"|next] -> [\"Beth\"|next] -> [\"Chen\"|next] -> NULL\n// Only two pointers changed (NewNode.Next and AmirNode.Next); \"Amir\" and \"Chen\"'s\n// data values were never moved, unlike inserting into the middle of an array."
+        }
+      ]
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "comparisonTable": {
+    "title": "Stack, queue and linked list compared",
+    "columns": [
+      "Structure",
+      "Order items are removed in",
+      "Operations",
+      "Pointers needed"
+    ],
+    "rows": [
+      [
+        "Stack",
+        "LIFO — last item added is first removed",
+        "push (add to top), pop (remove from top)",
+        "Top"
+      ],
+      [
+        "Queue",
+        "FIFO — first item added is first removed",
+        "enqueue (add at rear), dequeue (remove from front)",
+        "Front and Rear"
+      ],
+      [
+        "Linked list",
+        "Order of the chain of nodes, following pointers",
+        "traverse (follow next-node pointers), insert, delete",
+        "Head, plus each node's own next-node pointer"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Stack push and pop operations at the top",
+    "type": "stack",
+    "nodes": [
+      "Empty stack: Top = -1",
+      "Push(5): Top <- 0, Stack[0] = 5",
+      "Push(9): Top <- 1, Stack[1] = 9",
+      "Push(2): Top <- 2, Stack[2] = 2",
+      "Pop() returns 2 (the top item): Top <- 1",
+      "Stack now holds [5, 9], with Top = 1"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing a missing overflow check in a push procedure",
+      "steps": [
+        "A stack is declared DECLARE Stack : ARRAY[0:2] OF INTEGER, holding a maximum of 3 items, with Top initialised to -1",
+        "A Push procedure is written as Top <- Top + 1 followed by Stack[Top] <- Value, with no check on Top's value beforehand",
+        "The sequence Push(4), Push(8), Push(1), Push(6) is traced against this procedure",
+        "After the third push, Top = 2, the array's declared upper bound; tracing the fourth push shows Top becoming 3 and Stack[3] being written to"
+      ],
+      "evaluation": "Stack[3] does not exist in an array declared ARRAY[0:2], so the fourth push causes an array bound error resulting from an undetected stack overflow; the fix is to check IF Top = 2 THEN report stack overflow before incrementing Top and writing to the array, so a full stack rejects further pushes instead of writing past its bounds."
+    },
+    {
+      "title": "Comparing a stack and a queue for reversing a sequence of items",
+      "steps": [
+        "A sequence of four items, A, B, C, D, needs to be reversed to D, C, B, A",
+        "The four items are pushed onto a stack in order A, B, C, D, then popped one at a time",
+        "Tracing the pops shows they are returned in the order D, C, B, A, because a stack is LIFO",
+        "The same four items are instead enqueued onto a queue in order A, B, C, D, then dequeued one at a time, and this trace shows them returned in the order A, B, C, D, because a queue is FIFO"
+      ],
+      "evaluation": "A stack naturally reverses the order of a sequence of items passed through it, because its LIFO behaviour returns the most recently added item first, while a queue preserves the original order, because its FIFO behaviour always returns the earliest added item first; a stack, not a queue, is therefore the correct structure to choose for reversing a sequence."
+    },
+    {
+      "title": "Deciding between an array and a linked list for frequent mid-list insertion",
+      "steps": [
+        "A program frequently needs to insert new records into the middle of an ordered list of 10,000 existing records, not just at the end",
+        "Implemented using an array, each mid-list insertion is traced as requiring every record after the insertion point to be shifted one place along to make room",
+        "Implemented using a linked list, each mid-list insertion is traced as requiring only two pointers to be changed: the new node's next-node pointer, and the previous node's next-node pointer",
+        "Both implementations are compared for the amount of work a single mid-list insertion requires as the list's size grows to 10,000 records"
+      ],
+      "evaluation": "An array's mid-list insertion cost grows with the number of records that must be shifted, which can be very large for a 10,000-record list, whereas a linked list's mid-list insertion cost stays the same small, fixed number of pointer changes regardless of the list's size, making a linked list the more efficient choice whenever frequent insertion or deletion away from the end of the data is required."
+    }
+  ],
   "examTips": [
-    "Pseudocode for push/pop or enqueue/dequeue should always include an overflow/underflow check — frequently a separate mark."
+    "Describe a stack or queue by its operations and their order (LIFO or FIFO), not by a specific implementation, unless the question explicitly asks how it could be implemented using an array.",
+    "Always include, and explain, an overflow check before every push or enqueue, and an underflow check before every pop or dequeue; these checks are frequently a separate mark on their own.",
+    "When tracing a stack, queue or linked list, update every relevant pointer (Top; Front and Rear; or a node's next-node pointer) at every single operation, not just the data values.",
+    "When explaining why a linked list is efficient for insertion or deletion, state explicitly that only a small number of pointers change, in contrast to an array, which requires shifting every subsequent element."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Describing a stack or queue in terms of one specific implementation (such as a particular array layout) instead of the operations that define it as an ADT.",
+    "Omitting the overflow check before a push or enqueue, or the underflow check before a pop or dequeue, so a full or empty structure is not correctly detected.",
+    "Confusing a stack's LIFO order with a queue's FIFO order, for example expecting a queue to return the most recently added item first.",
+    "Forgetting that a circular queue must wrap Front and Rear back to index 0 using MOD arithmetic, instead treating the underlying array as if it were not circular.",
+    "Believing that inserting into a linked list still requires shifting other nodes' data along, rather than only changing a small number of pointers."
+  ],
   "quickRecall": [
-    "stacks",
-    "queues",
-    "linked-list concepts"
+    {
+      "question": "What is an abstract data type (ADT)?",
+      "answer": "A data structure defined by the operations that can be performed on it and how it behaves, independent of how it is actually implemented."
+    },
+    {
+      "question": "What are the two operations that change a stack's contents, and what order does a stack remove items in?",
+      "answer": "Push (add to the top) and pop (remove from the top); a stack is LIFO, so the most recently added item is always removed first."
+    },
+    {
+      "question": "What must be checked before a push, and before a pop, on a stack?",
+      "answer": "Before a push, check for stack overflow (the stack is already full); before a pop, check for stack underflow (the stack is already empty)."
+    },
+    {
+      "question": "Name two applications of a stack.",
+      "answer": "Providing undo functionality, and managing function calls and recursion using a call stack."
+    },
+    {
+      "question": "What are the two operations that change a queue's contents, and what order does a queue remove items in?",
+      "answer": "Enqueue (add at the rear) and dequeue (remove from the front); a queue is FIFO, so the earliest added item is always removed first."
+    },
+    {
+      "question": "What does a circular queue do differently from a simple queue?",
+      "answer": "It reuses freed space at the front of the queue, by wrapping Front and Rear back to index 0 once they pass the last index, instead of leaving that space permanently unused."
+    },
+    {
+      "question": "What does each node in a linked list store, and how is the list traversed?",
+      "answer": "A data value and a pointer to the next node; the list is traversed by following next-node pointers from a Head pointer until a null pointer marks the end."
+    },
+    {
+      "question": "Why is inserting or deleting a node in a linked list more efficient than in an array?",
+      "answer": "It only requires changing a small, fixed number of pointers, whereas an array requires shifting every subsequent element to keep its data contiguous."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "10.2",
+    "10.3",
+    "19.1",
+    "20.2"
+  ]
 }
