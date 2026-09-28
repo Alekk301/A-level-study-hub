@@ -13645,7 +13645,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "12.1",
     "title": "Program Development Life Cycle",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -13656,27 +13656,318 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Follow the stages of analysis, design, coding, testing and maintenance when developing software."
+        "text": "Paper 1 asks candidates to name and describe the stages of the program development life cycle, to identify which stage a given activity belongs to, and to explain why development is iterative rather than a single one-way pass from analysis through to maintenance. Answers score when analysis, design, coding, testing and documentation are each described in terms of what is actually produced at that stage, when the two kinds of documentation (technical and user) are correctly distinguished by their intended reader, when the three kinds of maintenance (corrective, adaptive, perfective) are matched to the correct trigger rather than guessed, and when a described fault is traced back to the specific earlier stage genuinely responsible for it, not simply patched at the stage where it was noticed."
       },
       {
-        "kind": "Quick recall",
-        "text": "analysis"
+        "kind": "Definition",
+        "label": "Program development life cycle",
+        "text": "The sequence of stages a program passes through from being identified as a problem to being released and maintained: analysis, design, coding, testing, documentation and maintenance."
       },
       {
-        "kind": "Quick recall",
-        "text": "design"
+        "kind": "Definition",
+        "label": "Analysis",
+        "text": "The stage in which the problem to be solved is investigated and understood, identifying the inputs required, the outputs needed, the processing that must convert one into the other, and any constraints the solution must work within."
       },
       {
-        "kind": "Quick recall",
-        "text": "coding"
+        "kind": "Definition",
+        "label": "Design",
+        "text": "The stage in which the structure of a solution and the algorithms it will use are planned, for example with structure diagrams, pseudocode or flowcharts, before any program code is written."
       },
       {
-        "kind": "Quick recall",
-        "text": "testing"
+        "kind": "Definition",
+        "label": "Coding (implementation)",
+        "text": "The stage in which the design is translated into actual program code in a chosen programming language."
       },
       {
-        "kind": "Quick recall",
-        "text": "maintenance"
+        "kind": "Definition",
+        "label": "Testing",
+        "text": "The stage in which the coded program is run against chosen test data to check that it behaves correctly and meets its original specification, ideally before it is released to users."
+      },
+      {
+        "kind": "Definition",
+        "label": "Technical documentation",
+        "text": "Documentation written for future developers who will maintain or extend a program, describing how the program works internally, such as its design, variable and subroutine descriptions, and algorithms used."
+      },
+      {
+        "kind": "Definition",
+        "label": "User documentation",
+        "text": "Documentation written for the end users of a program, explaining how to use it, such as installation instructions, a guide to its features, and how to resolve common problems."
+      },
+      {
+        "kind": "Definition",
+        "label": "Maintenance",
+        "text": "Work carried out on a program after it has been released, comprising corrective maintenance (fixing faults), adaptive maintenance (adjusting to a new environment) and perfective maintenance (improving or extending the program)."
+      },
+      {
+        "kind": "Section",
+        "text": "Analysis: understanding the problem"
+      },
+      {
+        "kind": "Content",
+        "label": "Analysis: understanding the problem",
+        "text": "Analysis is the first stage of the program development life cycle, in which the problem itself is investigated before any thought is given to how it will be solved in code. This means identifying exactly what inputs the program will need to accept, what outputs it must produce, and what processing must be carried out to turn the given inputs into the required outputs. Analysis also identifies any constraints the solution must work within, such as a maximum amount of memory or processing time available, hardware the program must run on, or rules the data itself must obey, for example that a percentage mark can only be a whole number from 0 to 100."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysis: understanding the problem",
+        "text": "Analysis is easy to under-value because it produces no code and can feel like it is delaying the 'real' work of programming, but a problem the analysis stage fails to identify, such as a case the program will actually need to handle that nobody thought to ask about, cannot be fixed simply by writing better code later; the resulting design and every later stage built on top of it will all be missing something the analysis should have caught, and the omission will only be discovered once the program is tested, or worse, once it has already been released."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysis: understanding the problem",
+        "text": "Analysis identifies the required inputs, outputs, processing and any constraints of the problem, before any solution is designed."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysis: understanding the problem",
+        "text": "Constraints can include hardware limits, performance requirements, or rules the data itself must satisfy."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysis: understanding the problem",
+        "text": "A problem analysis fails to identify cannot be fixed by better code later; it propagates, unnoticed, into every stage built on top of it."
+      },
+      {
+        "kind": "Section",
+        "text": "Design: planning the solution before coding"
+      },
+      {
+        "kind": "Content",
+        "label": "Design: planning the solution before coding",
+        "text": "Design takes the understanding produced by analysis and plans, on paper or in a design tool, the structure and algorithms a solution will actually use, before a single line of program code is written. This includes deciding how the problem will be broken down into smaller, self-contained parts, and working out the precise logic each part needs, using tools such as structure diagrams to show the solution's overall structure and pseudocode or flowcharts to plan an algorithm's exact logic in detail, as covered in more depth in Program Design (12.2)."
+      },
+      {
+        "kind": "Content",
+        "label": "Design: planning the solution before coding",
+        "text": "Designing a solution before coding it lets mistakes in the underlying logic be caught and corrected while they are still cheap to fix, since changing a diagram or a page of pseudocode costs far less than changing a large amount of already-written, already-tested code built around a flawed plan."
+      },
+      {
+        "kind": "Content",
+        "label": "Design: planning the solution before coding",
+        "text": "Design plans a solution's structure and algorithms before any code is written, using tools such as structure diagrams, pseudocode and flowcharts."
+      },
+      {
+        "kind": "Content",
+        "label": "Design: planning the solution before coding",
+        "text": "Design turns the understanding produced by analysis into a concrete plan the coding stage can follow directly."
+      },
+      {
+        "kind": "Content",
+        "label": "Design: planning the solution before coding",
+        "text": "Fixing a flaw in a design is far cheaper than fixing the same flaw after a large amount of code has already been written around it."
+      },
+      {
+        "kind": "Section",
+        "text": "Coding (implementation)"
+      },
+      {
+        "kind": "Content",
+        "label": "Coding (implementation)",
+        "text": "Coding, also called implementation, is the stage in which the design is translated into actual program code, in whichever programming language has been chosen for the project. A design produced with structure diagrams and pseudocode gives the programmer a clear plan to follow, so coding becomes primarily a matter of expressing that already-worked-out logic correctly in the target language's own syntax, rather than working out the logic itself for the first time while also worrying about syntax."
+      },
+      {
+        "kind": "Content",
+        "label": "Coding (implementation)",
+        "text": "Coding that follows a proper design still requires care: a design's pseudocode may need to be adapted to the particular features and limitations of the chosen language, and the programmer must still avoid introducing new errors, such as typing mistakes or misused syntax, that were not present in the design itself."
+      },
+      {
+        "kind": "Content",
+        "label": "Coding (implementation)",
+        "text": "Coding translates an already-completed design into working program code in the chosen language."
+      },
+      {
+        "kind": "Content",
+        "label": "Coding (implementation)",
+        "text": "A good design makes coding primarily a matter of expressing already-worked-out logic correctly, rather than inventing that logic while also fighting syntax."
+      },
+      {
+        "kind": "Content",
+        "label": "Coding (implementation)",
+        "text": "Coding can still introduce its own new errors, such as typing mistakes, even when the underlying design was entirely correct."
+      },
+      {
+        "kind": "Section",
+        "text": "Testing"
+      },
+      {
+        "kind": "Content",
+        "label": "Testing",
+        "text": "Testing checks that the coded program actually behaves correctly and meets the specification produced during analysis, running the program against chosen test data and comparing the actual results it produces to the results that were expected. The methods and categories of test data used for this, including white-box and black-box testing and normal, boundary and erroneous test data, are covered in detail in Program Testing and Maintenance (12.3)."
+      },
+      {
+        "kind": "Content",
+        "label": "Testing",
+        "text": "Testing is most valuable when it happens before release, since a fault found and corrected during testing costs far less, and affects far fewer people, than the same fault being found by a user after the program has already been released; but testing before release, however thorough, can never guarantee every possible fault has been found, which is one reason corrective maintenance still exists after release."
+      },
+      {
+        "kind": "Content",
+        "label": "Testing",
+        "text": "Testing runs the coded program against chosen test data and compares the actual results to the expected results from the specification."
+      },
+      {
+        "kind": "Content",
+        "label": "Testing",
+        "text": "A fault found during testing, before release, is far cheaper to correct than the same fault found by a user afterwards."
+      },
+      {
+        "kind": "Content",
+        "label": "Testing",
+        "text": "Testing before release reduces, but can never completely eliminate, the chance that a fault remains undiscovered until after release."
+      },
+      {
+        "kind": "Section",
+        "text": "Documentation: technical and user"
+      },
+      {
+        "kind": "Content",
+        "label": "Documentation: technical and user",
+        "text": "Documentation is produced to support a program both for the people who will maintain it in the future and for the people who will actually use it, and these are two genuinely different kinds of writing aimed at two genuinely different readers. Technical documentation is written for future developers, describing how the program actually works internally: its design, the purpose of its variables and subroutines, the algorithms it uses, and anything a developer would need to understand before safely changing it. User documentation is written for end users, explaining how to use the program itself: how to install it, how to use each of its features, and how to resolve common problems, without assuming any knowledge of how the program works internally at all."
+      },
+      {
+        "kind": "Content",
+        "label": "Documentation: technical and user",
+        "text": "Confusing the two, for example giving an end user a description of the program's internal variable names and algorithms, or giving a future developer only a guide to clicking buttons, fails the reader either document was actually written for; each must be written with its intended reader's own needs and existing knowledge in mind."
+      },
+      {
+        "kind": "Content",
+        "label": "Documentation: technical and user",
+        "text": "Technical documentation is written for future developers and describes how the program works internally."
+      },
+      {
+        "kind": "Content",
+        "label": "Documentation: technical and user",
+        "text": "User documentation is written for end users and explains how to use the program's features, without assuming internal knowledge."
+      },
+      {
+        "kind": "Content",
+        "label": "Documentation: technical and user",
+        "text": "Writing the wrong kind of documentation for a given reader, such as internal detail for an end user, fails that reader's actual needs."
+      },
+      {
+        "kind": "Section",
+        "text": "Maintenance: corrective, adaptive and perfective"
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance: corrective, adaptive and perfective",
+        "text": "Maintenance is an ongoing stage carried out after a program has been released, rather than a single event, and it is divided into three kinds by why the change is being made. Corrective maintenance fixes a fault discovered after release, such as a bug reported by users that pre-release testing failed to catch. Adaptive maintenance changes the program so that it continues to work correctly in a new environment, for example when it must run on new hardware or a new operating system it was not originally written for, even though the program's own required behaviour has not changed."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance: corrective, adaptive and perfective",
+        "text": "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as adding a new feature that was never part of the original specification, or improving the program's performance where it already worked correctly but more slowly than desired. The three are distinguished by their trigger, not by how large the change is: a one-line fix for a reported bug is still corrective maintenance, and a large new feature is still perfective maintenance, because what matters is why the change was made, not how much code it touches."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance: corrective, adaptive and perfective",
+        "text": "Corrective maintenance fixes a fault discovered after release that pre-release testing did not catch."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance: corrective, adaptive and perfective",
+        "text": "Adaptive maintenance changes the program so it keeps working correctly in a new environment, such as new hardware or a new operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance: corrective, adaptive and perfective",
+        "text": "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as a new feature or better performance."
+      },
+      {
+        "kind": "Section",
+        "text": "Development is iterative, not strictly one-way"
+      },
+      {
+        "kind": "Content",
+        "label": "Development is iterative, not strictly one-way",
+        "text": "The stages of the life cycle are usually presented in the order analysis, design, coding, testing, documentation and maintenance, and it is tempting to picture development as a single, one-way pass straight through them. In practice, development is iterative: a problem discovered at a later stage very often sends the developer back to an earlier stage to fix it there, rather than being patched only at the stage where it happened to be noticed. Which earlier stage a problem sends the developer back to depends entirely on what actually caused it, and correctly identifying that stage, rather than simply patching the symptom where it surfaced, is exactly what separates a genuine fix from a temporary workaround."
+      },
+      {
+        "kind": "Content",
+        "label": "Development is iterative, not strictly one-way",
+        "text": "A fault found during coding that stems from an unclear or incomplete design sends the developer back to design, not merely to a different way of writing the same code. A fault found during testing that stems from the original analysis missing some case the program actually needs to handle sends the developer all the way back to analysis, since the design and the code built on top of an incomplete analysis will both need to change once that missing case is correctly identified, not just the specific line of code where the test happened to fail."
+      },
+      {
+        "kind": "Content",
+        "label": "Development is iterative, not strictly one-way",
+        "text": "Although presented in a fixed order, real development is iterative: a later stage can send the developer back to an earlier one."
+      },
+      {
+        "kind": "Content",
+        "label": "Development is iterative, not strictly one-way",
+        "text": "Which stage a problem sends the developer back to depends on what actually caused it, not on which stage merely happened to notice it."
+      },
+      {
+        "kind": "Content",
+        "label": "Development is iterative, not strictly one-way",
+        "text": "A fault stemming from an incomplete design sends the developer back to design; a fault stemming from an incomplete analysis sends the developer back to analysis, not just to a code fix."
+      },
+      {
+        "kind": "Example",
+        "label": "Development is iterative, not strictly one-way",
+        "text": "A program is written to calculate a student's overall grade from three test scores, each expected to be out of 100. The original analysis identified the inputs as \"three scores\" and the processing as \"average the three scores and convert to a grade\", but never asked what should happen if a student has been absent for one test and so has no score for it.\n\nDuring testing, a tester enters a missing score as 0 for the absent test, and the program averages it in as if it were a genuine mark of zero, producing a grade far lower than the student's actual performance on the two tests they did sit.\n\n-- Tracing the fault back --\n// Symptom noticed at: TESTING (the wrong grade is produced for this test case)\n// Could the CODE be patched directly? Only by adding a special case for a score\n//   of 0, which would then wrongly treat a genuine mark of zero the same way.\n// Is this really a CODING fault? No: the code correctly implements the design\n//   it was given; the design never described how to handle a missing score\n//   at all, so there is nothing wrong with how the design was translated into code.\n// Is this really a DESIGN fault? No: the design correctly implements the\n//   analysis it was given, an average of three scores; a missing score was\n//   never part of what the design was asked to handle in the first place.\n// Root cause: ANALYSIS never identified \"a test may have no score, because the\n//   student was absent\" as a case the program needed to handle at all.\n\n-- Correct fix --\n// Return to ANALYSIS: identify that a missing score is a distinct case, decide\n//   how it should be represented (e.g. a special value, not 0) and how it should\n//   affect the average (e.g. average only the scores that exist).\n// Only then revise the DESIGN's algorithm to handle this case, and only then\n//   update the CODE to match the revised design.\n// Patching only the code at the point testing found the fault would leave the\n//   design and the analysis both still silently missing the same case."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the six stages of the program development life cycle?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the six stages of the program development life cycle?",
+        "text": "Analysis, design, coding (implementation), testing, documentation and maintenance."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does the analysis stage identify?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does the analysis stage identify?",
+        "text": "The problem's required inputs, outputs, processing, and any constraints the solution must work within."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a solution designed before it is coded?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a solution designed before it is coded?",
+        "text": "So mistakes in the underlying logic can be caught and fixed while still cheap to change, rather than after a large amount of code has already been written around them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between technical documentation and user documentation?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between technical documentation and user documentation?",
+        "text": "Technical documentation is written for future developers and describes how the program works internally; user documentation is written for end users and explains how to use the program's features."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the three kinds of maintenance, and what triggers each?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the three kinds of maintenance, and what triggers each?",
+        "text": "Corrective maintenance fixes a fault discovered after release; adaptive maintenance keeps the program working correctly in a new environment; perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is program development described as iterative rather than strictly one-way?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is program development described as iterative rather than strictly one-way?",
+        "text": "Because a problem discovered at a later stage, such as testing, often has its root cause in an earlier stage, such as design or analysis, and must be corrected there rather than only patched where it was noticed."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "If testing reveals the program cannot handle a case the original analysis never identified, which stage must development return to, and why?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "If testing reveals the program cannot handle a case the original analysis never identified, which stage must development return to, and why?",
+        "text": "Analysis, because the design and code both faithfully implement an analysis that was itself incomplete; fixing only the code at the point testing found the fault would leave that same gap unaddressed."
       }
     ]
   },
@@ -13692,7 +13983,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "12.2",
     "title": "Program Design",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -13703,19 +13994,323 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Use structure charts and pseudocode to design a program's structure and data before coding it."
+        "text": "Paper 1 asks candidates to produce or interpret a structure diagram for a given problem, to write pseudocode for a given algorithm, to describe or complete a flowchart using the correct standard symbols, and to identify the data structures and variables a solution will need. Answers score when a structure diagram's boxes correctly show a genuine hierarchy of decomposition rather than an arbitrary grouping, when pseudocode uses the exact keywords and layout expected for sequence, selection and iteration, when a flowchart's symbols (terminator, parallelogram, rectangle, diamond) are matched to the correct purpose rather than used interchangeably, and when a flowchart's arrows correctly represent the same logic pseudocode would express with IF, FOR, WHILE or REPEAT."
       },
       {
-        "kind": "Quick recall",
-        "text": "structure charts"
+        "kind": "Definition",
+        "label": "Program design",
+        "text": "The stage of working out a program's structure and logic, on paper or in a design tool, before any code is written, so that mistakes are caught and corrected while they are still cheap to change."
       },
       {
-        "kind": "Quick recall",
-        "text": "pseudocode"
+        "kind": "Definition",
+        "label": "Structure diagram (hierarchy chart)",
+        "text": "A diagram showing a program's decomposition into a hierarchy of subroutines, drawn as a tree of boxes with the main routine at the top and the subroutines it calls shown below it, connected by lines."
       },
       {
-        "kind": "Quick recall",
-        "text": "data structures"
+        "kind": "Definition",
+        "label": "Pseudocode",
+        "text": "A structured, language-independent way of writing out an algorithm's exact logic in detail, using consistent keywords for sequence, selection and iteration, before that logic is implemented in a real programming language."
+      },
+      {
+        "kind": "Definition",
+        "label": "Flowchart",
+        "text": "A diagram that shows the flow of control through an algorithm using standard symbols connected by arrows, as a diagrammatic alternative to writing the same logic in pseudocode."
+      },
+      {
+        "kind": "Definition",
+        "label": "Terminator symbol",
+        "text": "An oval-shaped flowchart symbol used to show the single start point and the single end point of a flowchart."
+      },
+      {
+        "kind": "Definition",
+        "label": "Input/output symbol",
+        "text": "A parallelogram-shaped flowchart symbol used to show a point where data is read in (input) or displayed (output)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Process symbol",
+        "text": "A rectangle-shaped flowchart symbol used to show a step that carries out processing, such as a calculation or an assignment."
+      },
+      {
+        "kind": "Definition",
+        "label": "Decision symbol",
+        "text": "A diamond-shaped flowchart symbol used to show a point where a condition is tested, with a separate outward arrow for each possible outcome of the test."
+      },
+      {
+        "kind": "Section",
+        "text": "Why a solution is designed before it is coded"
+      },
+      {
+        "kind": "Content",
+        "label": "Why a solution is designed before it is coded",
+        "text": "Designing a solution means working out a program's structure and logic on paper, or in a dedicated design tool, before any actual program code is written. The purpose of doing this separately from coding is that a mistake in a design, such as a step missing from an algorithm or a subroutine that has been given the wrong responsibility, is caught and fixed while it is still cheap to change: correcting a box on a diagram, or a few lines of pseudocode, costs far less time and effort than correcting the same underlying mistake once a large amount of actual program code has already been written around it and tested against it."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a solution is designed before it is coded",
+        "text": "This is why design is treated as its own distinct stage of the program development life cycle (12.1), sitting between analysis and coding: analysis establishes what the solution needs to achieve, design works out how it will achieve it in terms of structure and logic, and only coding turns that already-worked-out plan into a real program in a specific language."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a solution is designed before it is coded",
+        "text": "Designing a solution separately from coding it means mistakes are caught and fixed while they are still cheap to change."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a solution is designed before it is coded",
+        "text": "A flawed design corrected on paper costs far less than the same flaw corrected after a large amount of code has already been written around it."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a solution is designed before it is coded",
+        "text": "Design sits between analysis (what the solution needs to achieve) and coding (turning an already-worked-out plan into real program code)."
+      },
+      {
+        "kind": "Section",
+        "text": "Structure diagrams (hierarchy charts)"
+      },
+      {
+        "kind": "Content",
+        "label": "Structure diagrams (hierarchy charts)",
+        "text": "A structure diagram, also called a hierarchy chart, shows a program's decomposition into a hierarchy of subroutines, matching the decomposition concept covered in Structured Programming (11.3) but expressed as a diagram rather than as code. It is drawn as a tree of boxes, with the main routine's box at the top, connected downward by lines to a box for each subroutine it calls directly; any of those subroutines that themselves call further subroutines have their own boxes connected downward in the same way, so the diagram's depth shows how many levels the problem has actually been broken down through."
+      },
+      {
+        "kind": "Content",
+        "label": "Structure diagrams (hierarchy charts)",
+        "text": "A structure diagram deliberately shows only which subroutine calls which, and the overall hierarchy this produces, not the detailed logic inside any individual subroutine; that detailed logic is instead planned separately, using pseudocode or a flowchart for each subroutine in turn. A well-designed structure diagram groups genuinely related sub-tasks under a shared parent box and keeps each box's own responsibility narrow and well-defined, rather than arbitrarily grouping unrelated tasks together under one box merely because they happen to run one after another."
+      },
+      {
+        "kind": "Content",
+        "label": "Structure diagrams (hierarchy charts)",
+        "text": "A structure diagram is a tree of boxes, with the main routine at the top calling the subroutines below it, showing which subroutine calls which."
+      },
+      {
+        "kind": "Content",
+        "label": "Structure diagrams (hierarchy charts)",
+        "text": "It shows only the hierarchy of calls between subroutines, not the detailed logic inside any one of them; that is planned separately with pseudocode or a flowchart."
+      },
+      {
+        "kind": "Content",
+        "label": "Structure diagrams (hierarchy charts)",
+        "text": "A well-designed structure diagram groups genuinely related sub-tasks together and keeps each box's responsibility narrow, rather than grouping unrelated tasks arbitrarily."
+      },
+      {
+        "kind": "Section",
+        "text": "Using pseudocode to plan an algorithm's logic"
+      },
+      {
+        "kind": "Content",
+        "label": "Using pseudocode to plan an algorithm's logic",
+        "text": "Pseudocode is used to plan an algorithm's exact logic in detail, laying out precisely which steps happen in what order, which conditions are tested and how, and which parts of the algorithm repeat, before any of it is written in a real programming language's own syntax. It uses the same three basic constructs covered in Constructs (11.2): sequence for steps executed one after another, selection (IF...THEN...ELSE...ENDIF or CASE OF...ENDCASE) for a choice between alternative paths, and iteration (FOR, WHILE or REPEAT) for a block of steps that repeats."
+      },
+      {
+        "kind": "Content",
+        "label": "Using pseudocode to plan an algorithm's logic",
+        "text": "Working out an algorithm's logic in pseudocode first, rather than directly in the target programming language, lets the programmer focus entirely on whether the logic itself is correct, without also having to fight the target language's particular syntax rules at the same time; once the pseudocode's logic has been checked and is believed correct, translating it into a real language becomes a much more mechanical, lower-risk step."
+      },
+      {
+        "kind": "Content",
+        "label": "Using pseudocode to plan an algorithm's logic",
+        "text": "Pseudocode plans an algorithm's exact logic, using sequence, selection and iteration, before any of it is written in a real programming language."
+      },
+      {
+        "kind": "Content",
+        "label": "Using pseudocode to plan an algorithm's logic",
+        "text": "Writing an algorithm's logic in pseudocode first separates the question of whether the logic is correct from the separate question of getting a target language's syntax right."
+      },
+      {
+        "kind": "Content",
+        "label": "Using pseudocode to plan an algorithm's logic",
+        "text": "Once pseudocode has been checked for correctness, translating it into a real language becomes a comparatively mechanical, lower-risk step, as described in Program Development Life Cycle (12.1)."
+      },
+      {
+        "kind": "Section",
+        "text": "Flowcharts and the standard symbols"
+      },
+      {
+        "kind": "Content",
+        "label": "Flowcharts and the standard symbols",
+        "text": "A flowchart is a diagrammatic alternative to pseudocode: it shows exactly the same kind of logic, using standard symbols connected by arrows that show the flow of control through the algorithm, rather than using pseudocode's keywords and indentation. Four standard symbols are used: a terminator, drawn as an oval, marks the single start point and the single end point of the flowchart; a parallelogram marks a point where data is read in with an input or displayed as an output; a rectangle marks a process, such as a calculation or an assignment to a variable; and a diamond marks a decision, where a condition is tested, with a separate arrow leading out of the diamond for each possible outcome of that test, such as one arrow labelled YES and one labelled NO."
+      },
+      {
+        "kind": "Content",
+        "label": "Flowcharts and the standard symbols",
+        "text": "Choosing the correct symbol for each step matters just as much as choosing the correct pseudocode keyword would: using a rectangle where a decision should have been shown as a diamond, for example, would hide the fact that the flow of control actually branches at that point, in exactly the same way that forgetting an IF in pseudocode would hide a branch that should have been there."
+      },
+      {
+        "kind": "Content",
+        "label": "Flowcharts and the standard symbols",
+        "text": "Terminator (oval): marks the single start and single end point of the flowchart."
+      },
+      {
+        "kind": "Content",
+        "label": "Flowcharts and the standard symbols",
+        "text": "Parallelogram: marks input or output; rectangle: marks a process such as a calculation or assignment."
+      },
+      {
+        "kind": "Content",
+        "label": "Flowcharts and the standard symbols",
+        "text": "Diamond: marks a decision, with a separate arrow for each possible outcome of the condition being tested."
+      },
+      {
+        "kind": "Section",
+        "text": "Representing sequence, selection and iteration in a flowchart"
+      },
+      {
+        "kind": "Content",
+        "label": "Representing sequence, selection and iteration in a flowchart",
+        "text": "Sequence is represented in a flowchart simply by a chain of symbols connected one after another by single arrows, each leading directly into the next, with no arrow ever branching or looping back; this mirrors sequence in pseudocode, where each statement is likewise executed once, in the order it is written. Selection is represented by a decision diamond with two (or more, for a multi-way choice) arrows leading out of it, one for each possible outcome of the condition; the arrows for the different outcomes lead to different symbols representing the different paths, and, for a two-way IF...ELSE choice, those paths rejoin at a single point afterwards, mirroring how IF...THEN...ELSE...ENDIF is closed by a single ENDIF regardless of which branch was actually taken."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing sequence, selection and iteration in a flowchart",
+        "text": "Iteration is represented by an arrow that loops back from a later point in the flowchart to an earlier one, so that the symbols between them are revisited and executed again; a decision diamond controls whether this loop-back arrow is followed again or whether the flow instead continues past the loop. Where that decision diamond is positioned relative to the looped block of symbols shows whether the loop is a pre-condition loop, tested before the block (matching WHILE...ENDWHILE) so the block can be skipped entirely, or a post-condition loop, tested after the block (matching REPEAT...UNTIL) so the block always executes at least once."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing sequence, selection and iteration in a flowchart",
+        "text": "Sequence: a chain of symbols connected by single, non-branching, non-looping arrows, one after another, matching pseudocode's execution order."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing sequence, selection and iteration in a flowchart",
+        "text": "Selection: a decision diamond with one arrow per possible outcome, leading to different paths that, for a two-way choice, rejoin afterwards, matching IF...THEN...ELSE...ENDIF."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing sequence, selection and iteration in a flowchart",
+        "text": "Iteration: an arrow loops back to an earlier point, controlled by a decision diamond positioned before the loop (matching WHILE) or after it (matching REPEAT)."
+      },
+      {
+        "kind": "Section",
+        "text": "Identifying data structures and variables during design"
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying data structures and variables during design",
+        "text": "Design also identifies the data structures and variables a solution will actually need, before coding begins, rather than leaving this to be worked out improvised, on the fly, while writing code. This means deciding what each variable will represent and what data type it needs, for example whether a running total needs to be an INTEGER or a REAL, and deciding whether a single variable is enough for a given piece of data or whether a data structure such as an array is actually needed instead, for example to hold every one of several students' scores rather than only the most recently read one."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying data structures and variables during design",
+        "text": "Identifying data structures and variables as part of design, rather than only once coding has already begun, means the chosen structure fits the algorithm's actual needs from the outset; discovering only partway through coding that a single variable cannot hold everything the algorithm turns out to need, for example because every previous score is actually needed later and not just the running total, is exactly the kind of design flaw that should have been caught earlier, at the design stage, rather than forcing a restructure of already-written code."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying data structures and variables during design",
+        "text": "Design decides what each variable will represent and its data type, and whether a data structure such as an array is needed instead of a single variable."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying data structures and variables during design",
+        "text": "Deciding this during design, rather than while coding, means the chosen structure fits the algorithm's actual needs from the outset."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying data structures and variables during design",
+        "text": "Discovering only during coding that a single variable cannot hold everything actually needed is a design flaw that design should have caught first."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked example: the same algorithm as pseudocode and as a flowchart"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "The same algorithm's logic can be planned equally validly as pseudocode or as a flowchart, since both are simply two different ways of representing the identical underlying sequence, selection and iteration; choosing between them is usually a matter of preference or of which is clearer for a particular audience, not a difference in what can actually be expressed. The worked example below finds the largest of three numbers entered by the user, expressed first as pseudocode and then described, step by step, as the flowchart symbols and arrows that represent the exact same logic."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "Comparing the two side by side shows each pseudocode construct has a direct flowchart equivalent: INPUT statements become parallelogram symbols, IF...THEN...ELSE...ENDIF becomes a decision diamond with two arrows that rejoin afterwards, and OUTPUT becomes a further parallelogram symbol just before the terminator that ends the flowchart."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "The same algorithm can be planned equally validly as pseudocode or as a flowchart; both represent the identical sequence, selection and iteration."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "Each pseudocode construct has a direct flowchart equivalent: INPUT and OUTPUT become parallelograms, IF...ELSE becomes a decision diamond with two arrows."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "Comparing a pseudocode version and a flowchart version of the same algorithm side by side is a reliable way to check both were planned identically."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "DECLARE A, B, C, Largest : INTEGER\n\nOUTPUT \"Enter three numbers: \"\nINPUT A\nINPUT B\nINPUT C\n\nIF A > B THEN\n  IF A > C THEN\n    Largest <- A\n  ELSE\n    Largest <- C\n  ENDIF\nELSE\n  IF B > C THEN\n    Largest <- B\n  ELSE\n    Largest <- C\n  ENDIF\nENDIF\n\nOUTPUT \"The largest number is \", Largest"
+      },
+      {
+        "kind": "Example",
+        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
+        "text": "1. Terminator (oval): \"Start\".\n2. Parallelogram: \"Input A, B, C\" -- an arrow leads down from Start into this symbol.\n3. Diamond: \"Is A > B?\" -- an arrow leads down from the input parallelogram into this decision.\n   - YES arrow (e.g. leading right then down) goes to a second diamond: \"Is A > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- A\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n   - NO arrow (e.g. leading left then down) from the first diamond goes to a third diamond: \"Is B > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- B\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n4. All four possible rectangles (\"Largest <- A\", \"Largest <- C\" from the first branch, \"Largest <- B\", \"Largest <- C\" from the second branch) have their arrows rejoin at a single point below them, exactly as ENDIF closes both nested IF statements in the pseudocode.\n5. From that rejoined point, an arrow leads down into a parallelogram: \"Output Largest\".\n6. An arrow leads down from the output parallelogram into a final terminator (oval): \"End\".\n\n-- Comparing the two: each nested IF...THEN...ELSE...ENDIF in the pseudocode is one\n-- decision diamond with two outward arrows in the flowchart, its two branches are the\n-- symbols each arrow leads to, and its ENDIF is the single point where those two\n-- branches' arrows rejoin before the flowchart continues -- the flowchart's structure\n-- and the pseudocode's structure express exactly the same nested selection logic."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a solution designed before it is coded?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a solution designed before it is coded?",
+        "text": "So mistakes in the design are caught and corrected while still cheap to change, rather than after a large amount of code has already been written around them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a structure diagram show, and what does it deliberately not show?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a structure diagram show, and what does it deliberately not show?",
+        "text": "It shows a program's decomposition into a hierarchy of subroutines, as a tree of boxes with the main routine at the top; it does not show the detailed logic inside any individual subroutine, which is planned separately."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is pseudocode used for during design?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is pseudocode used for during design?",
+        "text": "Planning an algorithm's exact logic in detail, using sequence, selection and iteration, before it is implemented in a real programming language."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the four standard flowchart symbols and their shapes?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the four standard flowchart symbols and their shapes?",
+        "text": "Terminator (oval) for start/end, input/output (parallelogram), process (rectangle), and decision (diamond)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is selection (IF...THEN...ELSE...ENDIF) represented in a flowchart?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is selection (IF...THEN...ELSE...ENDIF) represented in a flowchart?",
+        "text": "As a decision diamond with one outward arrow per possible outcome, leading to different paths that rejoin at a single point afterwards."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does a flowchart distinguish a pre-condition (WHILE) loop from a post-condition (REPEAT) loop?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does a flowchart distinguish a pre-condition (WHILE) loop from a post-condition (REPEAT) loop?",
+        "text": "By where the decision diamond is positioned relative to the looped block: before the block for a pre-condition loop, which can be skipped entirely, or after the block for a post-condition loop, which always runs at least once."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why does design need to identify data structures and variables before coding begins?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why does design need to identify data structures and variables before coding begins?",
+        "text": "So the chosen structure fits what the algorithm actually needs from the outset, rather than discovering only during coding that a single variable cannot hold everything required."
       }
     ]
   },
@@ -13731,7 +14326,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "12.3",
     "title": "Program Testing and Maintenance",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -13742,19 +14337,347 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Design normal, boundary and erroneous test data, and know the different types of maintenance (corrective, adaptive, perfective)."
+        "text": "Paper 1 asks candidates to distinguish white-box from black-box testing, to select correctly categorised normal, boundary and erroneous test data for a given validation rule, to complete or evaluate a test plan, and to identify the correct kind of maintenance for a described scenario. Answers score when a boundary value is placed exactly on the edge of a valid range rather than just outside it, when erroneous data is genuinely outside the valid range rather than merely unusual, when a test plan's rows each state the test data, its category, the expected result and the actual result, and when a maintenance example is classified by its actual trigger rather than by how large the change is."
       },
       {
-        "kind": "Quick recall",
-        "text": "normal/boundary/invalid tests"
+        "kind": "Definition",
+        "label": "Testing",
+        "text": "The process of checking that a program behaves correctly and meets its specification, by running it against chosen test data and comparing the actual results produced to the expected results, ideally before the program is released."
       },
       {
-        "kind": "Quick recall",
-        "text": "debugging"
+        "kind": "Definition",
+        "label": "White-box testing",
+        "text": "A testing approach that uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through the code, rather than testing only from the outside."
       },
       {
-        "kind": "Quick recall",
-        "text": "maintenance types"
+        "kind": "Definition",
+        "label": "Black-box testing",
+        "text": "A testing approach that tests only a program's inputs against its expected outputs, based purely on its specification, with no reference to how the code inside the program is actually written."
+      },
+      {
+        "kind": "Definition",
+        "label": "Normal data",
+        "text": "Typical, valid test data that lies clearly within the accepted range or set of values, which a program is expected to accept and process correctly."
+      },
+      {
+        "kind": "Definition",
+        "label": "Boundary (extreme) data",
+        "text": "Valid test data that lies exactly on the edge of an accepted range, since errors in a program's logic are especially likely to occur precisely at a boundary."
+      },
+      {
+        "kind": "Definition",
+        "label": "Erroneous (invalid) data",
+        "text": "Test data that lies outside the accepted range or set of values and should be rejected by the program's validation, used to check the program correctly refuses it rather than crashing or producing a wrong result."
+      },
+      {
+        "kind": "Definition",
+        "label": "Test plan (test table)",
+        "text": "A table recording, for each test carried out, the test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has actually been run."
+      },
+      {
+        "kind": "Definition",
+        "label": "Corrective maintenance",
+        "text": "Maintenance that fixes a fault discovered after a program's release, often found through user-reported issues that pre-release testing did not catch."
+      },
+      {
+        "kind": "Section",
+        "text": "The purpose of testing"
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of testing",
+        "text": "Testing checks that a program behaves correctly and meets the specification produced during analysis, by running the program against chosen test data and comparing the results it actually produces with the results that were expected. Testing is most valuable when it happens before a program is released, since a fault caught during testing is corrected before it can affect any real user, whereas the same fault surviving into release will eventually be found by an actual user instead, at a point when it is both more disruptive and more expensive to fix."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of testing",
+        "text": "Testing can never prove with absolute certainty that a program contains no faults at all, since it is generally impossible to test every single one of the enormous number of possible inputs a program could ever receive; what thorough testing can do is give reasonable confidence that the program behaves correctly across a well-chosen, representative range of inputs, including the kinds of input most likely to reveal a fault if one exists."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of testing",
+        "text": "Testing compares a program's actual results, for chosen test data, against the results expected from its specification."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of testing",
+        "text": "Testing before release is more valuable than finding the same fault afterwards, since it is caught before it can affect a real user."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of testing",
+        "text": "Testing cannot prove a program is completely free of faults; it can only give reasonable confidence based on a well-chosen range of test data."
+      },
+      {
+        "kind": "Section",
+        "text": "White-box testing"
+      },
+      {
+        "kind": "Content",
+        "label": "White-box testing",
+        "text": "White-box testing uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through that code, rather than treating the program as something whose internal workings are unknown. This means a tester writing white-box tests can see, for example, that a program contains an IF statement with two branches, and can deliberately choose test data that forces execution down each of those branches at least once, ensuring every part of the code actually gets run and checked by at least one test, not only the parts a black-box tester might happen to exercise by chance."
+      },
+      {
+        "kind": "Content",
+        "label": "White-box testing",
+        "text": "White-box testing is particularly effective at finding faults hidden inside a rarely executed branch of code, such as an ELSE branch that only runs for an unusual combination of conditions, because the tester can see that branch exists in the code and can deliberately construct test data that reaches it, rather than relying on it being reached by chance."
+      },
+      {
+        "kind": "Content",
+        "label": "White-box testing",
+        "text": "White-box testing uses knowledge of a program's internal code and logic to design tests that reach every path or branch through it."
+      },
+      {
+        "kind": "Content",
+        "label": "White-box testing",
+        "text": "A white-box tester can see a branch exists in the code and deliberately construct test data to reach it."
+      },
+      {
+        "kind": "Content",
+        "label": "White-box testing",
+        "text": "White-box testing is especially effective at finding faults hidden inside rarely executed branches of code."
+      },
+      {
+        "kind": "Section",
+        "text": "Black-box testing"
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box testing",
+        "text": "Black-box testing tests only a program's inputs against its expected outputs, based purely on the program's specification, without any reference to how the code inside the program is actually written; the program is treated as a sealed box whose internal workings are not examined at all, only what goes in and what comes out. This means black-box test data can be chosen purely from what the specification says the program should do, for example that a percentage mark must be a whole number from 0 to 100 inclusive, entirely independently of how the validation happens to be coded internally."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box testing",
+        "text": "Black-box testing is well suited to checking that a program actually meets its specification from a user's point of view, and it can be carried out by someone who has never seen the program's code at all, but because it is guided only by the specification, it can miss a fault hidden inside a part of the code that the specification does not obviously suggest a test should reach, which is exactly the kind of fault white-box testing is designed to catch instead."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box testing",
+        "text": "Black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box testing",
+        "text": "Black-box test data can be chosen entirely from the specification, independently of how the program happens to be coded."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box testing",
+        "text": "Black-box testing can miss a fault hidden in code the specification does not obviously suggest testing, which white-box testing is designed to catch."
+      },
+      {
+        "kind": "Section",
+        "text": "Categories of test data: normal, boundary and erroneous"
+      },
+      {
+        "kind": "Content",
+        "label": "Categories of test data: normal, boundary and erroneous",
+        "text": "Thorough testing uses three categories of test data together, since each is chosen to reveal a different kind of possible fault. Normal data is typical, valid data that lies clearly within the accepted range, which the program is expected to accept and process correctly without any argument about whether it should be accepted at all; it checks the program's core, everyday behaviour works as intended. Boundary (or extreme) data is valid data that lies exactly on the very edge of an accepted range, chosen because a program's logic is especially likely to contain an error exactly at a boundary, for example a comparison mistakenly written with < where <= was needed, which normal data comfortably inside the range would never reveal."
+      },
+      {
+        "kind": "Content",
+        "label": "Categories of test data: normal, boundary and erroneous",
+        "text": "Erroneous (or invalid) data is data that lies outside the accepted range and should be rejected by the program's validation; it checks that the program actually refuses data it should refuse, rather than crashing, producing a nonsensical result, or silently accepting something it should not. A boundary value is still a valid value the program should accept; the values immediately outside the valid range, just past each boundary, are erroneous data, not boundary data, and this distinction, though easy to blur, is exactly what a boundary/erroneous question is testing."
+      },
+      {
+        "kind": "Content",
+        "label": "Categories of test data: normal, boundary and erroneous",
+        "text": "Normal data is typical, valid data comfortably inside the accepted range, checking the program's everyday behaviour."
+      },
+      {
+        "kind": "Content",
+        "label": "Categories of test data: normal, boundary and erroneous",
+        "text": "Boundary data is valid data lying exactly on the edge of the accepted range, since errors are especially likely to occur exactly at a boundary."
+      },
+      {
+        "kind": "Content",
+        "label": "Categories of test data: normal, boundary and erroneous",
+        "text": "Erroneous data lies outside the accepted range and should be rejected; a boundary value is still valid and accepted, while the value just past it is erroneous, not boundary."
+      },
+      {
+        "kind": "Section",
+        "text": "Choosing boundary and erroneous values correctly for a range"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing boundary and erroneous values correctly for a range",
+        "text": "For a validation rule accepting whole numbers from a lower limit to an upper limit inclusive, the two boundary values are exactly the lower limit and exactly the upper limit themselves, since both are still valid, accepted values that sit right at the very edge of the range. The two most useful erroneous values are the value immediately below the lower limit and the value immediately above the upper limit, since these are the values closest to being valid while still genuinely lying outside the accepted range, making them the values most likely to reveal a validation rule that has been coded with an off-by-one mistake, such as using < instead of <=."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing boundary and erroneous values correctly for a range",
+        "text": "For a rule accepting whole numbers from 0 to 100 inclusive, for example, the boundary values are 0 and 100 themselves, since both must be accepted; the erroneous values are -1 and 101, the values immediately outside each end of the range, since both must be rejected. It would be a mistake to describe -1 or 101 as boundary data: they are not valid values the program should accept at all, so they belong in the erroneous category, testing that the range's edges are enforced strictly rather than loosely."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing boundary and erroneous values correctly for a range",
+        "text": "For a range from a lower limit to an upper limit inclusive, the boundary values are exactly the lower limit and exactly the upper limit, both of which must be accepted."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing boundary and erroneous values correctly for a range",
+        "text": "The most useful erroneous values are the value immediately below the lower limit and immediately above the upper limit, both of which must be rejected."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing boundary and erroneous values correctly for a range",
+        "text": "For 0 to 100 inclusive, 0 and 100 are boundary data (valid, must be accepted); -1 and 101 are erroneous data (invalid, must be rejected), not boundary data."
+      },
+      {
+        "kind": "Section",
+        "text": "Test plans (test tables)"
+      },
+      {
+        "kind": "Content",
+        "label": "Test plans (test tables)",
+        "text": "A test plan, or test table, records each individual test carried out on a program in a consistent, structured way, so that a discrepancy between what was expected and what actually happened is immediately visible rather than buried in unstructured notes. Each row of a test plan records the test data actually used, the category that test data belongs to (normal, boundary or erroneous), the expected result the specification says should be produced, and the actual result the program produced once the test was actually run."
+      },
+      {
+        "kind": "Content",
+        "label": "Test plans (test tables)",
+        "text": "Recording the expected result before a test is run, and only then recording the actual result once it has been, keeps the comparison between them honest: any test whose actual result differs from its expected result is a fault that has been found and must be investigated, and a test plan makes exactly which tests passed and which failed clear at a glance, for a whole range of normal, boundary and erroneous data together."
+      },
+      {
+        "kind": "Content",
+        "label": "Test plans (test tables)",
+        "text": "A test plan records, for each test, the test data used, its category, the expected result and the actual result once the test has been run."
+      },
+      {
+        "kind": "Content",
+        "label": "Test plans (test tables)",
+        "text": "Recording the expected result before running the test, then the actual result afterwards, keeps the comparison between them honest."
+      },
+      {
+        "kind": "Content",
+        "label": "Test plans (test tables)",
+        "text": "A test plan makes any discrepancy between expected and actual results immediately visible, across a whole range of test data at once."
+      },
+      {
+        "kind": "Section",
+        "text": "Maintenance revisited: corrective, adaptive and perfective"
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance revisited: corrective, adaptive and perfective",
+        "text": "Corrective maintenance fixes a fault discovered after a program has already been released, and such faults are very often found through issues reported by actual users, rather than through any further deliberate testing after release; a fault that reaches corrective maintenance is, by definition, one that pre-release testing failed to catch. Adaptive maintenance changes a program so it continues to work correctly in a new environment, such as new hardware or a new operating system, even though the program's own required behaviour has not changed; perfective maintenance improves or extends a program beyond what is strictly necessary to keep it working, such as adding a feature or improving performance."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance revisited: corrective, adaptive and perfective",
+        "text": "Thorough pre-release testing, using well-chosen normal, boundary and erroneous data and a mixture of white-box and black-box techniques, reduces how much corrective maintenance is needed after release, because more faults are caught and fixed before any user ever encounters them. It can never eliminate corrective maintenance entirely, however, because testing cannot cover every one of the enormous number of possible inputs and real-world conditions a released program will eventually be used under, so some faults will always remain to be discovered, and corrected, only after release."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance revisited: corrective, adaptive and perfective",
+        "text": "Corrective maintenance fixes a fault, discovered after release, that pre-release testing failed to catch, often reported by actual users."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance revisited: corrective, adaptive and perfective",
+        "text": "Adaptive maintenance keeps a program working correctly in a new environment; perfective maintenance improves or extends it beyond what is strictly necessary."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance revisited: corrective, adaptive and perfective",
+        "text": "Thorough pre-release testing reduces, but can never completely eliminate, how much corrective maintenance is needed after release."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked example: a test plan for validating a percentage mark"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: a test plan for validating a percentage mark",
+        "text": "The worked test plan below validates a percentage mark, which the specification requires to be a whole number from 0 to 100 inclusive. Following the reasoning above, the two boundary values are 0 and 100 themselves, both of which must be accepted; two of the most useful erroneous values are -1 and 101, the values immediately outside each end of the valid range, both of which must be rejected; and a normal value, such as 65, is chosen comfortably inside the range to check the program's everyday behaviour."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: a test plan for validating a percentage mark",
+        "text": "Each row below states the test data, its category, the expected result taken from the specification, and a plausible actual result once the test has actually been run, exactly as a completed test plan should."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: a test plan for validating a percentage mark",
+        "text": "0 and 100 are the boundary values for this rule, since both are valid and must be accepted."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: a test plan for validating a percentage mark",
+        "text": "-1 and 101 are erroneous values, since both are invalid and must be rejected, not boundary values."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: a test plan for validating a percentage mark",
+        "text": "65 is a normal value, comfortably inside the valid range, checking the program's everyday accepted behaviour."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked example: a test plan for validating a percentage mark",
+        "text": "Test data | Category  | Expected result           | Actual result\n----------|-----------|----------------------------|----------------------------\n65        | Normal    | Accepted, stored as 65     | Accepted, stored as 65\n0         | Boundary  | Accepted, stored as 0      | Accepted, stored as 0\n100       | Boundary  | Accepted, stored as 100    | Accepted, stored as 100\n-1        | Erroneous | Rejected; error message    | Rejected; error message shown\n101       | Erroneous | Rejected; error message    | Accepted, stored as 101  <-- FAULT\n\n-- Reading the table --\n// The -1 row shows the LOWER boundary is being enforced correctly: -1 is rejected,\n//   exactly as expected, so no fault is revealed there.\n// The 101 row shows a genuine fault: 101 is outside the valid range and should have\n//   been rejected, but the actual result shows the program accepted it anyway --\n//   most likely because the validation condition was coded with < 101 (or <= 101)\n//   instead of the correct <= 100, an off-by-one mistake at exactly the kind of\n//   boundary this erroneous test value was specifically chosen to reveal.\n// Note that 101 itself is ERRONEOUS data here, not boundary data: the boundary\n//   values for this rule are 0 and 100, the valid values at the very edges of the\n//   range; 101 is the value just past the upper boundary, so it belongs outside\n//   the valid range entirely, in the erroneous category."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between white-box testing and black-box testing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between white-box testing and black-box testing?",
+        "text": "White-box testing uses knowledge of the program's internal code and logic to test every path or branch through it; black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the three categories of test data, and what does each check?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the three categories of test data, and what does each check?",
+        "text": "Normal data (typical, valid values, checking everyday behaviour), boundary/extreme data (valid values exactly on the edge of the range, where errors are especially likely), and erroneous/invalid data (values outside the range that should be rejected)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "For a rule accepting whole numbers from 0 to 100 inclusive, what are the boundary values and what are two useful erroneous values?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "For a rule accepting whole numbers from 0 to 100 inclusive, what are the boundary values and what are two useful erroneous values?",
+        "text": "The boundary values are 0 and 100 (both valid, must be accepted); useful erroneous values are -1 and 101 (both invalid, must be rejected)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why are -1 and 101 erroneous data rather than boundary data for a 0-to-100 rule?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why are -1 and 101 erroneous data rather than boundary data for a 0-to-100 rule?",
+        "text": "Because boundary data must still be a valid value on the edge of the range; -1 and 101 both lie outside the valid range entirely and should be rejected, not accepted."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What four things does each row of a test plan record?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What four things does each row of a test plan record?",
+        "text": "The test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has been run."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is corrective maintenance, and how does it relate to pre-release testing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is corrective maintenance, and how does it relate to pre-release testing?",
+        "text": "Corrective maintenance fixes a fault discovered after release, often found through user-reported issues that pre-release testing did not catch; thorough testing reduces but never fully eliminates the need for it."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why can testing never prove a program is completely free of faults?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why can testing never prove a program is completely free of faults?",
+        "text": "Because it is generally impossible to test every one of the enormous number of possible inputs a program could ever receive; testing can only give reasonable confidence based on a well-chosen range of test data."
       }
     ]
   },

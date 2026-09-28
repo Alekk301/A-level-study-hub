@@ -1,0 +1,284 @@
+{
+  "id": "12.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Program Development Life Cycle",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to name and describe the stages of the program development life cycle, to identify which stage a given activity belongs to, and to explain why development is iterative rather than a single one-way pass from analysis through to maintenance. Answers score when analysis, design, coding, testing and documentation are each described in terms of what is actually produced at that stage, when the two kinds of documentation (technical and user) are correctly distinguished by their intended reader, when the three kinds of maintenance (corrective, adaptive, perfective) are matched to the correct trigger rather than guessed, and when a described fault is traced back to the specific earlier stage genuinely responsible for it, not simply patched at the stage where it was noticed.",
+  "syllabusPoints": [
+    "Show understanding of the stages of the program development life cycle: analysis, design, coding, testing, documentation and maintenance.",
+    "Describe the analysis stage, in which the problem, its required inputs, outputs, processing and any constraints are identified and understood.",
+    "Describe the design stage, in which the structure and algorithms of a solution are planned before any code is written.",
+    "Describe the coding (implementation) stage, in which the program code is written from the design.",
+    "Describe the testing stage, in which the program is checked to ensure it behaves correctly and meets its specification.",
+    "Describe the documentation stage, distinguishing technical documentation, written for future developers, from user documentation, written for end users.",
+    "Show understanding that maintenance is an ongoing stage after release, comprising corrective, adaptive and perfective maintenance.",
+    "Show understanding that the stages of the life cycle are iterative: a problem found at a later stage may require returning to an earlier one."
+  ],
+  "definitions": [
+    {
+      "term": "Program development life cycle",
+      "definition": "The sequence of stages a program passes through from being identified as a problem to being released and maintained: analysis, design, coding, testing, documentation and maintenance."
+    },
+    {
+      "term": "Analysis",
+      "definition": "The stage in which the problem to be solved is investigated and understood, identifying the inputs required, the outputs needed, the processing that must convert one into the other, and any constraints the solution must work within."
+    },
+    {
+      "term": "Design",
+      "definition": "The stage in which the structure of a solution and the algorithms it will use are planned, for example with structure diagrams, pseudocode or flowcharts, before any program code is written."
+    },
+    {
+      "term": "Coding (implementation)",
+      "definition": "The stage in which the design is translated into actual program code in a chosen programming language."
+    },
+    {
+      "term": "Testing",
+      "definition": "The stage in which the coded program is run against chosen test data to check that it behaves correctly and meets its original specification, ideally before it is released to users."
+    },
+    {
+      "term": "Technical documentation",
+      "definition": "Documentation written for future developers who will maintain or extend a program, describing how the program works internally, such as its design, variable and subroutine descriptions, and algorithms used."
+    },
+    {
+      "term": "User documentation",
+      "definition": "Documentation written for the end users of a program, explaining how to use it, such as installation instructions, a guide to its features, and how to resolve common problems."
+    },
+    {
+      "term": "Maintenance",
+      "definition": "Work carried out on a program after it has been released, comprising corrective maintenance (fixing faults), adaptive maintenance (adjusting to a new environment) and perfective maintenance (improving or extending the program)."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-analysis",
+      "title": "Analysis: understanding the problem",
+      "content": [
+        "Analysis is the first stage of the program development life cycle, in which the problem itself is investigated before any thought is given to how it will be solved in code. This means identifying exactly what inputs the program will need to accept, what outputs it must produce, and what processing must be carried out to turn the given inputs into the required outputs. Analysis also identifies any constraints the solution must work within, such as a maximum amount of memory or processing time available, hardware the program must run on, or rules the data itself must obey, for example that a percentage mark can only be a whole number from 0 to 100.",
+        "Analysis is easy to under-value because it produces no code and can feel like it is delaying the 'real' work of programming, but a problem the analysis stage fails to identify, such as a case the program will actually need to handle that nobody thought to ask about, cannot be fixed simply by writing better code later; the resulting design and every later stage built on top of it will all be missing something the analysis should have caught, and the omission will only be discovered once the program is tested, or worse, once it has already been released."
+      ],
+      "bullets": [
+        "Analysis identifies the required inputs, outputs, processing and any constraints of the problem, before any solution is designed.",
+        "Constraints can include hardware limits, performance requirements, or rules the data itself must satisfy.",
+        "A problem analysis fails to identify cannot be fixed by better code later; it propagates, unnoticed, into every stage built on top of it."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-design",
+      "title": "Design: planning the solution before coding",
+      "content": [
+        "Design takes the understanding produced by analysis and plans, on paper or in a design tool, the structure and algorithms a solution will actually use, before a single line of program code is written. This includes deciding how the problem will be broken down into smaller, self-contained parts, and working out the precise logic each part needs, using tools such as structure diagrams to show the solution's overall structure and pseudocode or flowcharts to plan an algorithm's exact logic in detail, as covered in more depth in Program Design (12.2).",
+        "Designing a solution before coding it lets mistakes in the underlying logic be caught and corrected while they are still cheap to fix, since changing a diagram or a page of pseudocode costs far less than changing a large amount of already-written, already-tested code built around a flawed plan."
+      ],
+      "bullets": [
+        "Design plans a solution's structure and algorithms before any code is written, using tools such as structure diagrams, pseudocode and flowcharts.",
+        "Design turns the understanding produced by analysis into a concrete plan the coding stage can follow directly.",
+        "Fixing a flaw in a design is far cheaper than fixing the same flaw after a large amount of code has already been written around it."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-coding",
+      "title": "Coding (implementation)",
+      "content": [
+        "Coding, also called implementation, is the stage in which the design is translated into actual program code, in whichever programming language has been chosen for the project. A design produced with structure diagrams and pseudocode gives the programmer a clear plan to follow, so coding becomes primarily a matter of expressing that already-worked-out logic correctly in the target language's own syntax, rather than working out the logic itself for the first time while also worrying about syntax.",
+        "Coding that follows a proper design still requires care: a design's pseudocode may need to be adapted to the particular features and limitations of the chosen language, and the programmer must still avoid introducing new errors, such as typing mistakes or misused syntax, that were not present in the design itself."
+      ],
+      "bullets": [
+        "Coding translates an already-completed design into working program code in the chosen language.",
+        "A good design makes coding primarily a matter of expressing already-worked-out logic correctly, rather than inventing that logic while also fighting syntax.",
+        "Coding can still introduce its own new errors, such as typing mistakes, even when the underlying design was entirely correct."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-testing",
+      "title": "Testing",
+      "content": [
+        "Testing checks that the coded program actually behaves correctly and meets the specification produced during analysis, running the program against chosen test data and comparing the actual results it produces to the results that were expected. The methods and categories of test data used for this, including white-box and black-box testing and normal, boundary and erroneous test data, are covered in detail in Program Testing and Maintenance (12.3).",
+        "Testing is most valuable when it happens before release, since a fault found and corrected during testing costs far less, and affects far fewer people, than the same fault being found by a user after the program has already been released; but testing before release, however thorough, can never guarantee every possible fault has been found, which is one reason corrective maintenance still exists after release."
+      ],
+      "bullets": [
+        "Testing runs the coded program against chosen test data and compares the actual results to the expected results from the specification.",
+        "A fault found during testing, before release, is far cheaper to correct than the same fault found by a user afterwards.",
+        "Testing before release reduces, but can never completely eliminate, the chance that a fault remains undiscovered until after release."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-documentation",
+      "title": "Documentation: technical and user",
+      "content": [
+        "Documentation is produced to support a program both for the people who will maintain it in the future and for the people who will actually use it, and these are two genuinely different kinds of writing aimed at two genuinely different readers. Technical documentation is written for future developers, describing how the program actually works internally: its design, the purpose of its variables and subroutines, the algorithms it uses, and anything a developer would need to understand before safely changing it. User documentation is written for end users, explaining how to use the program itself: how to install it, how to use each of its features, and how to resolve common problems, without assuming any knowledge of how the program works internally at all.",
+        "Confusing the two, for example giving an end user a description of the program's internal variable names and algorithms, or giving a future developer only a guide to clicking buttons, fails the reader either document was actually written for; each must be written with its intended reader's own needs and existing knowledge in mind."
+      ],
+      "bullets": [
+        "Technical documentation is written for future developers and describes how the program works internally.",
+        "User documentation is written for end users and explains how to use the program's features, without assuming internal knowledge.",
+        "Writing the wrong kind of documentation for a given reader, such as internal detail for an end user, fails that reader's actual needs."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-maintenance",
+      "title": "Maintenance: corrective, adaptive and perfective",
+      "content": [
+        "Maintenance is an ongoing stage carried out after a program has been released, rather than a single event, and it is divided into three kinds by why the change is being made. Corrective maintenance fixes a fault discovered after release, such as a bug reported by users that pre-release testing failed to catch. Adaptive maintenance changes the program so that it continues to work correctly in a new environment, for example when it must run on new hardware or a new operating system it was not originally written for, even though the program's own required behaviour has not changed.",
+        "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as adding a new feature that was never part of the original specification, or improving the program's performance where it already worked correctly but more slowly than desired. The three are distinguished by their trigger, not by how large the change is: a one-line fix for a reported bug is still corrective maintenance, and a large new feature is still perfective maintenance, because what matters is why the change was made, not how much code it touches."
+      ],
+      "bullets": [
+        "Corrective maintenance fixes a fault discovered after release that pre-release testing did not catch.",
+        "Adaptive maintenance changes the program so it keeps working correctly in a new environment, such as new hardware or a new operating system.",
+        "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as a new feature or better performance."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-iterative-development",
+      "title": "Development is iterative, not strictly one-way",
+      "content": [
+        "The stages of the life cycle are usually presented in the order analysis, design, coding, testing, documentation and maintenance, and it is tempting to picture development as a single, one-way pass straight through them. In practice, development is iterative: a problem discovered at a later stage very often sends the developer back to an earlier stage to fix it there, rather than being patched only at the stage where it happened to be noticed. Which earlier stage a problem sends the developer back to depends entirely on what actually caused it, and correctly identifying that stage, rather than simply patching the symptom where it surfaced, is exactly what separates a genuine fix from a temporary workaround.",
+        "A fault found during coding that stems from an unclear or incomplete design sends the developer back to design, not merely to a different way of writing the same code. A fault found during testing that stems from the original analysis missing some case the program actually needs to handle sends the developer all the way back to analysis, since the design and the code built on top of an incomplete analysis will both need to change once that missing case is correctly identified, not just the specific line of code where the test happened to fail."
+      ],
+      "bullets": [
+        "Although presented in a fixed order, real development is iterative: a later stage can send the developer back to an earlier one.",
+        "Which stage a problem sends the developer back to depends on what actually caused it, not on which stage merely happened to notice it.",
+        "A fault stemming from an incomplete design sends the developer back to design; a fault stemming from an incomplete analysis sends the developer back to analysis, not just to a code fix."
+      ],
+      "examples": [
+        {
+          "id": "07-iteration-worked",
+          "kind": "worked",
+          "label": "Worked example: tracing a testing fault back to the stage actually responsible",
+          "content": "A program is written to calculate a student's overall grade from three test scores, each expected to be out of 100. The original analysis identified the inputs as \"three scores\" and the processing as \"average the three scores and convert to a grade\", but never asked what should happen if a student has been absent for one test and so has no score for it.\n\nDuring testing, a tester enters a missing score as 0 for the absent test, and the program averages it in as if it were a genuine mark of zero, producing a grade far lower than the student's actual performance on the two tests they did sit.\n\n-- Tracing the fault back --\n// Symptom noticed at: TESTING (the wrong grade is produced for this test case)\n// Could the CODE be patched directly? Only by adding a special case for a score\n//   of 0, which would then wrongly treat a genuine mark of zero the same way.\n// Is this really a CODING fault? No: the code correctly implements the design\n//   it was given; the design never described how to handle a missing score\n//   at all, so there is nothing wrong with how the design was translated into code.\n// Is this really a DESIGN fault? No: the design correctly implements the\n//   analysis it was given, an average of three scores; a missing score was\n//   never part of what the design was asked to handle in the first place.\n// Root cause: ANALYSIS never identified \"a test may have no score, because the\n//   student was absent\" as a case the program needed to handle at all.\n\n-- Correct fix --\n// Return to ANALYSIS: identify that a missing score is a distinct case, decide\n//   how it should be represented (e.g. a special value, not 0) and how it should\n//   affect the average (e.g. average only the scores that exist).\n// Only then revise the DESIGN's algorithm to handle this case, and only then\n//   update the CODE to match the revised design.\n// Patching only the code at the point testing found the fault would leave the\n//   design and the analysis both still silently missing the same case."
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "The three kinds of maintenance",
+    "columns": [
+      "Kind",
+      "Trigger",
+      "Example",
+      "Was the program's required behaviour unchanged before the trigger?"
+    ],
+    "rows": [
+      [
+        "Corrective",
+        "A fault discovered after release that pre-release testing failed to catch",
+        "Fixing a reported bug that produces a wrong result for a particular input",
+        "Yes; the program was already supposed to behave correctly, it simply did not"
+      ],
+      [
+        "Adaptive",
+        "A change in the environment the program must run in",
+        "Updating the program to run on a new operating system or new hardware",
+        "Yes; the program's own required behaviour is unchanged, only its environment has changed"
+      ],
+      [
+        "Perfective",
+        "A desire to improve or extend the program beyond what is strictly necessary to keep it working",
+        "Adding a new feature, or making an already-correct program run faster",
+        "No; new behaviour or improved performance is being added that was not previously required"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "The program development life cycle, with iteration back to earlier stages",
+    "type": "cycle",
+    "nodes": [
+      "Analysis: identify inputs, outputs, processing and constraints",
+      "Design: plan structure and algorithms before coding",
+      "Coding: translate the design into program code",
+      "Testing: check the program against the specification",
+      "Documentation: technical (for developers) and user (for end users)",
+      "Maintenance: corrective, adaptive and perfective, ongoing after release",
+      "A problem found at any stage can send development back to an earlier stage, not only forward"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing a testing fault caused by an incomplete analysis",
+      "steps": [
+        "A program that calculates an average of three scores is tested with an input where one score is missing because a student was absent, and produces an incorrectly low grade",
+        "The code is checked and correctly implements the design's instruction to average all three scores, so the code itself is not at fault",
+        "The design is checked and correctly implements the analysis's instruction to average three scores, so the design itself is not at fault either",
+        "The original analysis is checked last, and is found never to have identified that a score could be missing at all, only that three scores would always be supplied"
+      ],
+      "evaluation": "The fault must be corrected by returning to analysis, not by patching the code at the point testing found it, because the root cause is a case analysis never identified; the design and the code both faithfully implement an analysis that was itself incomplete, so fixing only the code would leave that same gap for the next similar case."
+    },
+    {
+      "title": "Distinguishing adaptive maintenance from perfective maintenance for the same reported change",
+      "steps": [
+        "A working, already-released program is changed so that it now also runs correctly on a newly released operating system, with no new features added and no existing feature working any differently to a user",
+        "This change is checked against the definition of adaptive maintenance: adjusting a program so it continues to work correctly in a new environment",
+        "A second, separate change adds a completely new export-to-PDF feature to the same program, which was never part of its original specification and was not needed to keep the program working",
+        "This second change is checked against the definition of perfective maintenance: improving or extending a program beyond what is strictly necessary to keep it working"
+      ],
+      "evaluation": "The operating-system change is adaptive maintenance because it exists only to keep the program's existing, unchanged behaviour working in a new environment; the export-to-PDF change is perfective maintenance because it adds new capability the program did not strictly need in order to keep working, and classifying maintenance correctly depends on why a change was made, not on how large or how technical it is."
+    },
+    {
+      "title": "Deciding whether a coding-stage discovery requires returning to design",
+      "steps": [
+        "While coding a menu-driven program, a programmer discovers the design's structure diagram shows a single subroutine responsible for both validating a user's input and then processing it, with no way to reuse the validation on its own elsewhere in the program",
+        "The programmer considers simply writing the validation and processing logic together inside one subroutine in code, exactly as the structure diagram shows, since that would match the design as given",
+        "The programmer instead checks whether following the design as given would cause a problem later, and finds the same input validation logic is actually needed again in two other, unrelated parts of the program",
+        "Coding the design exactly as given would mean duplicating the same validation logic in three separate places in the final program, rather than writing it once"
+      ],
+      "evaluation": "This is a design fault, not merely a coding inconvenience, because the structure diagram itself decomposed the problem in a way that prevents a genuinely needed reuse; the correct response is to return to design and split validation into its own separate, reusable subroutine, rather than coding around the flawed structure or duplicating the logic three times in the final program."
+    }
+  ],
+  "examTips": [
+    "Describe each stage by what it actually produces (a specification, a design, working code, tested results, documentation) rather than by a vague one-word label.",
+    "When distinguishing technical from user documentation, identify the intended reader first (a future developer or an end user); the content each needs follows directly from that.",
+    "When classifying a maintenance example, ask why the change was made (a fault, a new environment, or an improvement beyond what was necessary), not how big the change is.",
+    "When a question describes a fault found at one stage, trace it back to the specific earlier stage that actually caused it before answering, rather than assuming the stage where it was noticed is the stage responsible."
+  ],
+  "commonMistakes": [
+    "Treating the life cycle as a strictly one-way sequence, and assuming a fault found during testing or coding can only be fixed at the stage where it was found.",
+    "Confusing technical documentation with user documentation, for example describing internal variable names or algorithms in a document meant for end users.",
+    "Classifying maintenance by how large the change is rather than by its actual trigger, for example assuming a small bug fix cannot be corrective maintenance because it seems too minor to count.",
+    "Assuming thorough testing before release removes the need for any corrective maintenance afterwards, rather than merely reducing how much is needed.",
+    "Skipping analysis as unimportant because it produces no code, and moving straight to design or coding without identifying the required inputs, outputs, processing and constraints first."
+  ],
+  "quickRecall": [
+    {
+      "question": "What are the six stages of the program development life cycle?",
+      "answer": "Analysis, design, coding (implementation), testing, documentation and maintenance."
+    },
+    {
+      "question": "What does the analysis stage identify?",
+      "answer": "The problem's required inputs, outputs, processing, and any constraints the solution must work within."
+    },
+    {
+      "question": "Why is a solution designed before it is coded?",
+      "answer": "So mistakes in the underlying logic can be caught and fixed while still cheap to change, rather than after a large amount of code has already been written around them."
+    },
+    {
+      "question": "What is the difference between technical documentation and user documentation?",
+      "answer": "Technical documentation is written for future developers and describes how the program works internally; user documentation is written for end users and explains how to use the program's features."
+    },
+    {
+      "question": "What are the three kinds of maintenance, and what triggers each?",
+      "answer": "Corrective maintenance fixes a fault discovered after release; adaptive maintenance keeps the program working correctly in a new environment; perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working."
+    },
+    {
+      "question": "Why is program development described as iterative rather than strictly one-way?",
+      "answer": "Because a problem discovered at a later stage, such as testing, often has its root cause in an earlier stage, such as design or analysis, and must be corrected there rather than only patched where it was noticed."
+    },
+    {
+      "question": "If testing reveals the program cannot handle a case the original analysis never identified, which stage must development return to, and why?",
+      "answer": "Analysis, because the design and code both faithfully implement an analysis that was itself incomplete; fixing only the code at the point testing found the fault would leave that same gap unaddressed."
+    }
+  ],
+  "relatedTopics": [
+    "12.2",
+    "12.3",
+    "11.3"
+  ]
+}

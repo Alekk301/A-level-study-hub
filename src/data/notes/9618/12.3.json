@@ -1,0 +1,295 @@
+{
+  "id": "12.3",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Program Testing and Maintenance",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to distinguish white-box from black-box testing, to select correctly categorised normal, boundary and erroneous test data for a given validation rule, to complete or evaluate a test plan, and to identify the correct kind of maintenance for a described scenario. Answers score when a boundary value is placed exactly on the edge of a valid range rather than just outside it, when erroneous data is genuinely outside the valid range rather than merely unusual, when a test plan's rows each state the test data, its category, the expected result and the actual result, and when a maintenance example is classified by its actual trigger rather than by how large the change is.",
+  "syllabusPoints": [
+    "Show understanding of the purpose of testing: to check a program behaves correctly and meets its specification, ideally before it is released.",
+    "Show understanding of white-box testing, using knowledge of a program's internal code and logic to test every path or branch through it.",
+    "Show understanding of black-box testing, testing a program's inputs against its expected outputs based purely on its specification.",
+    "Select and categorise test data as normal, boundary (extreme) or erroneous (invalid).",
+    "Design and complete a test plan (test table) recording test data, its category, the expected result and the actual result.",
+    "Show understanding of corrective, adaptive and perfective maintenance in the context of faults found after release.",
+    "Show understanding that thorough testing before release reduces, but never fully eliminates, the corrective maintenance needed afterwards."
+  ],
+  "definitions": [
+    {
+      "term": "Testing",
+      "definition": "The process of checking that a program behaves correctly and meets its specification, by running it against chosen test data and comparing the actual results produced to the expected results, ideally before the program is released."
+    },
+    {
+      "term": "White-box testing",
+      "definition": "A testing approach that uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through the code, rather than testing only from the outside."
+    },
+    {
+      "term": "Black-box testing",
+      "definition": "A testing approach that tests only a program's inputs against its expected outputs, based purely on its specification, with no reference to how the code inside the program is actually written."
+    },
+    {
+      "term": "Normal data",
+      "definition": "Typical, valid test data that lies clearly within the accepted range or set of values, which a program is expected to accept and process correctly."
+    },
+    {
+      "term": "Boundary (extreme) data",
+      "definition": "Valid test data that lies exactly on the edge of an accepted range, since errors in a program's logic are especially likely to occur precisely at a boundary."
+    },
+    {
+      "term": "Erroneous (invalid) data",
+      "definition": "Test data that lies outside the accepted range or set of values and should be rejected by the program's validation, used to check the program correctly refuses it rather than crashing or producing a wrong result."
+    },
+    {
+      "term": "Test plan (test table)",
+      "definition": "A table recording, for each test carried out, the test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has actually been run."
+    },
+    {
+      "term": "Corrective maintenance",
+      "definition": "Maintenance that fixes a fault discovered after a program's release, often found through user-reported issues that pre-release testing did not catch."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-purpose-of-testing",
+      "title": "The purpose of testing",
+      "content": [
+        "Testing checks that a program behaves correctly and meets the specification produced during analysis, by running the program against chosen test data and comparing the results it actually produces with the results that were expected. Testing is most valuable when it happens before a program is released, since a fault caught during testing is corrected before it can affect any real user, whereas the same fault surviving into release will eventually be found by an actual user instead, at a point when it is both more disruptive and more expensive to fix.",
+        "Testing can never prove with absolute certainty that a program contains no faults at all, since it is generally impossible to test every single one of the enormous number of possible inputs a program could ever receive; what thorough testing can do is give reasonable confidence that the program behaves correctly across a well-chosen, representative range of inputs, including the kinds of input most likely to reveal a fault if one exists."
+      ],
+      "bullets": [
+        "Testing compares a program's actual results, for chosen test data, against the results expected from its specification.",
+        "Testing before release is more valuable than finding the same fault afterwards, since it is caught before it can affect a real user.",
+        "Testing cannot prove a program is completely free of faults; it can only give reasonable confidence based on a well-chosen range of test data."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-white-box-testing",
+      "title": "White-box testing",
+      "content": [
+        "White-box testing uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through that code, rather than treating the program as something whose internal workings are unknown. This means a tester writing white-box tests can see, for example, that a program contains an IF statement with two branches, and can deliberately choose test data that forces execution down each of those branches at least once, ensuring every part of the code actually gets run and checked by at least one test, not only the parts a black-box tester might happen to exercise by chance.",
+        "White-box testing is particularly effective at finding faults hidden inside a rarely executed branch of code, such as an ELSE branch that only runs for an unusual combination of conditions, because the tester can see that branch exists in the code and can deliberately construct test data that reaches it, rather than relying on it being reached by chance."
+      ],
+      "bullets": [
+        "White-box testing uses knowledge of a program's internal code and logic to design tests that reach every path or branch through it.",
+        "A white-box tester can see a branch exists in the code and deliberately construct test data to reach it.",
+        "White-box testing is especially effective at finding faults hidden inside rarely executed branches of code."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-black-box-testing",
+      "title": "Black-box testing",
+      "content": [
+        "Black-box testing tests only a program's inputs against its expected outputs, based purely on the program's specification, without any reference to how the code inside the program is actually written; the program is treated as a sealed box whose internal workings are not examined at all, only what goes in and what comes out. This means black-box test data can be chosen purely from what the specification says the program should do, for example that a percentage mark must be a whole number from 0 to 100 inclusive, entirely independently of how the validation happens to be coded internally.",
+        "Black-box testing is well suited to checking that a program actually meets its specification from a user's point of view, and it can be carried out by someone who has never seen the program's code at all, but because it is guided only by the specification, it can miss a fault hidden inside a part of the code that the specification does not obviously suggest a test should reach, which is exactly the kind of fault white-box testing is designed to catch instead."
+      ],
+      "bullets": [
+        "Black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code.",
+        "Black-box test data can be chosen entirely from the specification, independently of how the program happens to be coded.",
+        "Black-box testing can miss a fault hidden in code the specification does not obviously suggest testing, which white-box testing is designed to catch."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-categories-of-test-data",
+      "title": "Categories of test data: normal, boundary and erroneous",
+      "content": [
+        "Thorough testing uses three categories of test data together, since each is chosen to reveal a different kind of possible fault. Normal data is typical, valid data that lies clearly within the accepted range, which the program is expected to accept and process correctly without any argument about whether it should be accepted at all; it checks the program's core, everyday behaviour works as intended. Boundary (or extreme) data is valid data that lies exactly on the very edge of an accepted range, chosen because a program's logic is especially likely to contain an error exactly at a boundary, for example a comparison mistakenly written with < where <= was needed, which normal data comfortably inside the range would never reveal.",
+        "Erroneous (or invalid) data is data that lies outside the accepted range and should be rejected by the program's validation; it checks that the program actually refuses data it should refuse, rather than crashing, producing a nonsensical result, or silently accepting something it should not. A boundary value is still a valid value the program should accept; the values immediately outside the valid range, just past each boundary, are erroneous data, not boundary data, and this distinction, though easy to blur, is exactly what a boundary/erroneous question is testing."
+      ],
+      "bullets": [
+        "Normal data is typical, valid data comfortably inside the accepted range, checking the program's everyday behaviour.",
+        "Boundary data is valid data lying exactly on the edge of the accepted range, since errors are especially likely to occur exactly at a boundary.",
+        "Erroneous data lies outside the accepted range and should be rejected; a boundary value is still valid and accepted, while the value just past it is erroneous, not boundary."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-choosing-boundary-and-erroneous-data",
+      "title": "Choosing boundary and erroneous values correctly for a range",
+      "content": [
+        "For a validation rule accepting whole numbers from a lower limit to an upper limit inclusive, the two boundary values are exactly the lower limit and exactly the upper limit themselves, since both are still valid, accepted values that sit right at the very edge of the range. The two most useful erroneous values are the value immediately below the lower limit and the value immediately above the upper limit, since these are the values closest to being valid while still genuinely lying outside the accepted range, making them the values most likely to reveal a validation rule that has been coded with an off-by-one mistake, such as using < instead of <=.",
+        "For a rule accepting whole numbers from 0 to 100 inclusive, for example, the boundary values are 0 and 100 themselves, since both must be accepted; the erroneous values are -1 and 101, the values immediately outside each end of the range, since both must be rejected. It would be a mistake to describe -1 or 101 as boundary data: they are not valid values the program should accept at all, so they belong in the erroneous category, testing that the range's edges are enforced strictly rather than loosely."
+      ],
+      "bullets": [
+        "For a range from a lower limit to an upper limit inclusive, the boundary values are exactly the lower limit and exactly the upper limit, both of which must be accepted.",
+        "The most useful erroneous values are the value immediately below the lower limit and immediately above the upper limit, both of which must be rejected.",
+        "For 0 to 100 inclusive, 0 and 100 are boundary data (valid, must be accepted); -1 and 101 are erroneous data (invalid, must be rejected), not boundary data."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-test-plans",
+      "title": "Test plans (test tables)",
+      "content": [
+        "A test plan, or test table, records each individual test carried out on a program in a consistent, structured way, so that a discrepancy between what was expected and what actually happened is immediately visible rather than buried in unstructured notes. Each row of a test plan records the test data actually used, the category that test data belongs to (normal, boundary or erroneous), the expected result the specification says should be produced, and the actual result the program produced once the test was actually run.",
+        "Recording the expected result before a test is run, and only then recording the actual result once it has been, keeps the comparison between them honest: any test whose actual result differs from its expected result is a fault that has been found and must be investigated, and a test plan makes exactly which tests passed and which failed clear at a glance, for a whole range of normal, boundary and erroneous data together."
+      ],
+      "bullets": [
+        "A test plan records, for each test, the test data used, its category, the expected result and the actual result once the test has been run.",
+        "Recording the expected result before running the test, then the actual result afterwards, keeps the comparison between them honest.",
+        "A test plan makes any discrepancy between expected and actual results immediately visible, across a whole range of test data at once."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-maintenance-and-testing",
+      "title": "Maintenance revisited: corrective, adaptive and perfective",
+      "content": [
+        "Corrective maintenance fixes a fault discovered after a program has already been released, and such faults are very often found through issues reported by actual users, rather than through any further deliberate testing after release; a fault that reaches corrective maintenance is, by definition, one that pre-release testing failed to catch. Adaptive maintenance changes a program so it continues to work correctly in a new environment, such as new hardware or a new operating system, even though the program's own required behaviour has not changed; perfective maintenance improves or extends a program beyond what is strictly necessary to keep it working, such as adding a feature or improving performance.",
+        "Thorough pre-release testing, using well-chosen normal, boundary and erroneous data and a mixture of white-box and black-box techniques, reduces how much corrective maintenance is needed after release, because more faults are caught and fixed before any user ever encounters them. It can never eliminate corrective maintenance entirely, however, because testing cannot cover every one of the enormous number of possible inputs and real-world conditions a released program will eventually be used under, so some faults will always remain to be discovered, and corrected, only after release."
+      ],
+      "bullets": [
+        "Corrective maintenance fixes a fault, discovered after release, that pre-release testing failed to catch, often reported by actual users.",
+        "Adaptive maintenance keeps a program working correctly in a new environment; perfective maintenance improves or extends it beyond what is strictly necessary.",
+        "Thorough pre-release testing reduces, but can never completely eliminate, how much corrective maintenance is needed after release."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-worked-test-plan",
+      "title": "Worked example: a test plan for validating a percentage mark",
+      "content": [
+        "The worked test plan below validates a percentage mark, which the specification requires to be a whole number from 0 to 100 inclusive. Following the reasoning above, the two boundary values are 0 and 100 themselves, both of which must be accepted; two of the most useful erroneous values are -1 and 101, the values immediately outside each end of the valid range, both of which must be rejected; and a normal value, such as 65, is chosen comfortably inside the range to check the program's everyday behaviour.",
+        "Each row below states the test data, its category, the expected result taken from the specification, and a plausible actual result once the test has actually been run, exactly as a completed test plan should."
+      ],
+      "bullets": [
+        "0 and 100 are the boundary values for this rule, since both are valid and must be accepted.",
+        "-1 and 101 are erroneous values, since both are invalid and must be rejected, not boundary values.",
+        "65 is a normal value, comfortably inside the valid range, checking the program's everyday accepted behaviour."
+      ],
+      "examples": [
+        {
+          "id": "08-percentage-test-plan",
+          "kind": "worked",
+          "label": "Worked test plan: validating a percentage mark (0 to 100 inclusive)",
+          "content": "Test data | Category  | Expected result           | Actual result\n----------|-----------|----------------------------|----------------------------\n65        | Normal    | Accepted, stored as 65     | Accepted, stored as 65\n0         | Boundary  | Accepted, stored as 0      | Accepted, stored as 0\n100       | Boundary  | Accepted, stored as 100    | Accepted, stored as 100\n-1        | Erroneous | Rejected; error message    | Rejected; error message shown\n101       | Erroneous | Rejected; error message    | Accepted, stored as 101  <-- FAULT\n\n-- Reading the table --\n// The -1 row shows the LOWER boundary is being enforced correctly: -1 is rejected,\n//   exactly as expected, so no fault is revealed there.\n// The 101 row shows a genuine fault: 101 is outside the valid range and should have\n//   been rejected, but the actual result shows the program accepted it anyway --\n//   most likely because the validation condition was coded with < 101 (or <= 101)\n//   instead of the correct <= 100, an off-by-one mistake at exactly the kind of\n//   boundary this erroneous test value was specifically chosen to reveal.\n// Note that 101 itself is ERRONEOUS data here, not boundary data: the boundary\n//   values for this rule are 0 and 100, the valid values at the very edges of the\n//   range; 101 is the value just past the upper boundary, so it belongs outside\n//   the valid range entirely, in the erroneous category."
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Normal, boundary and erroneous test data compared",
+    "columns": [
+      "Category",
+      "Definition",
+      "Should the program accept it?",
+      "Example for 0 to 100 inclusive"
+    ],
+    "rows": [
+      [
+        "Normal",
+        "Typical, valid data comfortably inside the accepted range",
+        "Yes, accepted and processed correctly",
+        "65"
+      ],
+      [
+        "Boundary (extreme)",
+        "Valid data lying exactly on the edge of the accepted range",
+        "Yes, accepted; errors are especially likely to occur exactly here",
+        "0 and 100"
+      ],
+      [
+        "Erroneous (invalid)",
+        "Data lying outside the accepted range",
+        "No, must be rejected by validation",
+        "-1 and 101"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "White-box versus black-box testing",
+    "type": "flow",
+    "nodes": [
+      "White-box testing: the tester can see the program's internal code and logic",
+      "Test data is chosen deliberately to reach every path and every branch through the code",
+      "Black-box testing: the tester treats the program as a sealed box, seeing only inputs and outputs",
+      "Test data is chosen purely from the specification, comparing actual output against expected output",
+      "Used together, the two approaches catch faults the other approach alone would be likely to miss"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing a fault revealed by an erroneous test value, not a boundary value",
+      "steps": [
+        "A program validates a percentage mark that must be a whole number from 0 to 100 inclusive, and a test plan includes the erroneous value 101, expecting it to be rejected",
+        "Running the test shows the actual result is that 101 is accepted and stored, which does not match the expected result of rejection, revealing a fault",
+        "The validation condition in the code is checked and is found to read IF Mark >= 0 AND Mark <= 101 THEN Accept, using 101 instead of 100 as the upper limit",
+        "Re-checking the categories confirms 101 was correctly chosen as erroneous data, since it lies outside the specified valid range of 0 to 100 inclusive, not on its edge"
+      ],
+      "evaluation": "The fault is an off-by-one error in the upper-bound comparison, which should read Mark <= 100, not Mark <= 101; this fault was specifically revealed by choosing 101 as erroneous test data immediately outside the valid range, which is exactly the kind of fault erroneous boundary-adjacent values are chosen to catch, distinct from testing 100 itself, which is boundary data and was correctly accepted."
+    },
+    {
+      "title": "Distinguishing a boundary value from an erroneous value for the same range",
+      "steps": [
+        "A validation rule requires a whole number of full percentage marks from 0 to 100 inclusive, and a candidate proposes testing with the values 0, 100 and 101",
+        "The candidate initially labels all three as boundary values, reasoning that they are all 'near the edge' of the range",
+        "Checking the definition of boundary data shows it must still be a valid value that lies exactly on the edge of the accepted range and should be accepted",
+        "0 and 100 are both valid values at the exact edges of the range and should be accepted, but 101 is not a valid value at all; it lies outside the range and should be rejected"
+      ],
+      "evaluation": "0 and 100 are correctly boundary data, since both are valid and sit exactly on the edge of the range; 101 must be reclassified as erroneous data, not boundary data, since it lies outside the valid range and should be rejected, and confusing 'near the edge' with 'boundary' is exactly the mistake this distinction is designed to catch."
+    },
+    {
+      "title": "Choosing white-box testing to reach a rarely executed branch black-box testing missed",
+      "steps": [
+        "A program's specification describes only two outcomes for a grade calculation: pass or fail, so black-box testing is designed using only pass and fail input values drawn from the specification",
+        "The program's actual code, however, contains a third, undocumented branch that assigns a special grade for a score of exactly 100, which nothing in the specification mentioned and which black-box testing therefore never targeted",
+        "A white-box tester, working from the code itself rather than only the specification, identifies this third branch and deliberately constructs a test using a score of exactly 100 to reach it",
+        "Running this white-box test reveals the special-grade branch produces an incorrect result, a fault that black-box testing, guided only by the specification, was never going to find"
+      ],
+      "evaluation": "White-box testing found this fault because it works from the code's actual branches rather than only from the specification, letting the tester deliberately target a branch the specification never mentioned; this demonstrates why thorough testing uses white-box and black-box techniques together, since each can catch faults the other is structurally unable to reach."
+    }
+  ],
+  "examTips": [
+    "For a range from a lower limit to an upper limit inclusive, the boundary values are exactly the lower limit and the upper limit themselves; the values just outside them are erroneous, not boundary.",
+    "State explicitly whether given test data is normal, boundary or erroneous, and justify the classification against the specification's actual valid range, not against a vague sense of how 'unusual' the value looks.",
+    "When completing a test plan, always record the expected result before comparing it to the actual result, and state clearly what fault, if any, an actual result that differs from the expected one reveals.",
+    "When classifying maintenance, ask what triggered the change (a fault, a new environment, or an improvement beyond necessity), not how large the change was."
+  ],
+  "commonMistakes": [
+    "Treating a value just outside a valid range, such as -1 or 101 for a 0-to-100 rule, as boundary data instead of erroneous data.",
+    "Choosing boundary values that are not actually valid, such as testing 100 and 101 for a 0-to-100 rule and calling both boundary data, when only 100 is valid.",
+    "Relying only on black-box testing and never examining the code itself, missing faults hidden in branches the specification never mentions.",
+    "Writing a test plan without recording the expected result before the actual result, making it harder to see clearly whether a test has actually passed or failed.",
+    "Assuming thorough pre-release testing removes all need for corrective maintenance afterwards, rather than merely reducing how much is needed."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between white-box testing and black-box testing?",
+      "answer": "White-box testing uses knowledge of the program's internal code and logic to test every path or branch through it; black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code."
+    },
+    {
+      "question": "What are the three categories of test data, and what does each check?",
+      "answer": "Normal data (typical, valid values, checking everyday behaviour), boundary/extreme data (valid values exactly on the edge of the range, where errors are especially likely), and erroneous/invalid data (values outside the range that should be rejected)."
+    },
+    {
+      "question": "For a rule accepting whole numbers from 0 to 100 inclusive, what are the boundary values and what are two useful erroneous values?",
+      "answer": "The boundary values are 0 and 100 (both valid, must be accepted); useful erroneous values are -1 and 101 (both invalid, must be rejected)."
+    },
+    {
+      "question": "Why are -1 and 101 erroneous data rather than boundary data for a 0-to-100 rule?",
+      "answer": "Because boundary data must still be a valid value on the edge of the range; -1 and 101 both lie outside the valid range entirely and should be rejected, not accepted."
+    },
+    {
+      "question": "What four things does each row of a test plan record?",
+      "answer": "The test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has been run."
+    },
+    {
+      "question": "What is corrective maintenance, and how does it relate to pre-release testing?",
+      "answer": "Corrective maintenance fixes a fault discovered after release, often found through user-reported issues that pre-release testing did not catch; thorough testing reduces but never fully eliminates the need for it."
+    },
+    {
+      "question": "Why can testing never prove a program is completely free of faults?",
+      "answer": "Because it is generally impossible to test every one of the enormous number of possible inputs a program could ever receive; testing can only give reasonable confidence based on a well-chosen range of test data."
+    }
+  ],
+  "relatedTopics": [
+    "12.1",
+    "12.2",
+    "11.3"
+  ]
+}

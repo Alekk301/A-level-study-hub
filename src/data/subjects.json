@@ -1114,7 +1114,7 @@
               "testing",
               "maintenance"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "12.2",
@@ -1129,7 +1129,7 @@
               "pseudocode",
               "data structures"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "12.3",
@@ -1144,7 +1144,7 @@
               "debugging",
               "maintenance types"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           }
         ]
       },

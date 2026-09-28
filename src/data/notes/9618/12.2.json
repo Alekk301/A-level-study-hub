@@ -1,0 +1,293 @@
+{
+  "id": "12.2",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Program Design",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to produce or interpret a structure diagram for a given problem, to write pseudocode for a given algorithm, to describe or complete a flowchart using the correct standard symbols, and to identify the data structures and variables a solution will need. Answers score when a structure diagram's boxes correctly show a genuine hierarchy of decomposition rather than an arbitrary grouping, when pseudocode uses the exact keywords and layout expected for sequence, selection and iteration, when a flowchart's symbols (terminator, parallelogram, rectangle, diamond) are matched to the correct purpose rather than used interchangeably, and when a flowchart's arrows correctly represent the same logic pseudocode would express with IF, FOR, WHILE or REPEAT.",
+  "syllabusPoints": [
+    "Show understanding of the purpose of designing a solution before coding it, so that errors are found and corrected while still cheap to fix.",
+    "Produce a structure diagram (hierarchy chart) showing a program's decomposition into a hierarchy of subroutines.",
+    "Use pseudocode to plan an algorithm's exact logic in detail before implementing it in a programming language.",
+    "Use a flowchart, with the standard symbols for terminator, input/output, process and decision, as a diagrammatic alternative to pseudocode.",
+    "Show how a flowchart represents each of the three basic constructs: sequence, selection and iteration.",
+    "Identify the data structures and variables a solution will need as part of designing it, before coding begins."
+  ],
+  "definitions": [
+    {
+      "term": "Program design",
+      "definition": "The stage of working out a program's structure and logic, on paper or in a design tool, before any code is written, so that mistakes are caught and corrected while they are still cheap to change."
+    },
+    {
+      "term": "Structure diagram (hierarchy chart)",
+      "definition": "A diagram showing a program's decomposition into a hierarchy of subroutines, drawn as a tree of boxes with the main routine at the top and the subroutines it calls shown below it, connected by lines."
+    },
+    {
+      "term": "Pseudocode",
+      "definition": "A structured, language-independent way of writing out an algorithm's exact logic in detail, using consistent keywords for sequence, selection and iteration, before that logic is implemented in a real programming language."
+    },
+    {
+      "term": "Flowchart",
+      "definition": "A diagram that shows the flow of control through an algorithm using standard symbols connected by arrows, as a diagrammatic alternative to writing the same logic in pseudocode."
+    },
+    {
+      "term": "Terminator symbol",
+      "definition": "An oval-shaped flowchart symbol used to show the single start point and the single end point of a flowchart."
+    },
+    {
+      "term": "Input/output symbol",
+      "definition": "A parallelogram-shaped flowchart symbol used to show a point where data is read in (input) or displayed (output)."
+    },
+    {
+      "term": "Process symbol",
+      "definition": "A rectangle-shaped flowchart symbol used to show a step that carries out processing, such as a calculation or an assignment."
+    },
+    {
+      "term": "Decision symbol",
+      "definition": "A diamond-shaped flowchart symbol used to show a point where a condition is tested, with a separate outward arrow for each possible outcome of the test."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-purpose-of-design",
+      "title": "Why a solution is designed before it is coded",
+      "content": [
+        "Designing a solution means working out a program's structure and logic on paper, or in a dedicated design tool, before any actual program code is written. The purpose of doing this separately from coding is that a mistake in a design, such as a step missing from an algorithm or a subroutine that has been given the wrong responsibility, is caught and fixed while it is still cheap to change: correcting a box on a diagram, or a few lines of pseudocode, costs far less time and effort than correcting the same underlying mistake once a large amount of actual program code has already been written around it and tested against it.",
+        "This is why design is treated as its own distinct stage of the program development life cycle (12.1), sitting between analysis and coding: analysis establishes what the solution needs to achieve, design works out how it will achieve it in terms of structure and logic, and only coding turns that already-worked-out plan into a real program in a specific language."
+      ],
+      "bullets": [
+        "Designing a solution separately from coding it means mistakes are caught and fixed while they are still cheap to change.",
+        "A flawed design corrected on paper costs far less than the same flaw corrected after a large amount of code has already been written around it.",
+        "Design sits between analysis (what the solution needs to achieve) and coding (turning an already-worked-out plan into real program code)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-structure-diagrams",
+      "title": "Structure diagrams (hierarchy charts)",
+      "content": [
+        "A structure diagram, also called a hierarchy chart, shows a program's decomposition into a hierarchy of subroutines, matching the decomposition concept covered in Structured Programming (11.3) but expressed as a diagram rather than as code. It is drawn as a tree of boxes, with the main routine's box at the top, connected downward by lines to a box for each subroutine it calls directly; any of those subroutines that themselves call further subroutines have their own boxes connected downward in the same way, so the diagram's depth shows how many levels the problem has actually been broken down through.",
+        "A structure diagram deliberately shows only which subroutine calls which, and the overall hierarchy this produces, not the detailed logic inside any individual subroutine; that detailed logic is instead planned separately, using pseudocode or a flowchart for each subroutine in turn. A well-designed structure diagram groups genuinely related sub-tasks under a shared parent box and keeps each box's own responsibility narrow and well-defined, rather than arbitrarily grouping unrelated tasks together under one box merely because they happen to run one after another."
+      ],
+      "bullets": [
+        "A structure diagram is a tree of boxes, with the main routine at the top calling the subroutines below it, showing which subroutine calls which.",
+        "It shows only the hierarchy of calls between subroutines, not the detailed logic inside any one of them; that is planned separately with pseudocode or a flowchart.",
+        "A well-designed structure diagram groups genuinely related sub-tasks together and keeps each box's responsibility narrow, rather than grouping unrelated tasks arbitrarily."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-pseudocode-planning",
+      "title": "Using pseudocode to plan an algorithm's logic",
+      "content": [
+        "Pseudocode is used to plan an algorithm's exact logic in detail, laying out precisely which steps happen in what order, which conditions are tested and how, and which parts of the algorithm repeat, before any of it is written in a real programming language's own syntax. It uses the same three basic constructs covered in Constructs (11.2): sequence for steps executed one after another, selection (IF...THEN...ELSE...ENDIF or CASE OF...ENDCASE) for a choice between alternative paths, and iteration (FOR, WHILE or REPEAT) for a block of steps that repeats.",
+        "Working out an algorithm's logic in pseudocode first, rather than directly in the target programming language, lets the programmer focus entirely on whether the logic itself is correct, without also having to fight the target language's particular syntax rules at the same time; once the pseudocode's logic has been checked and is believed correct, translating it into a real language becomes a much more mechanical, lower-risk step."
+      ],
+      "bullets": [
+        "Pseudocode plans an algorithm's exact logic, using sequence, selection and iteration, before any of it is written in a real programming language.",
+        "Writing an algorithm's logic in pseudocode first separates the question of whether the logic is correct from the separate question of getting a target language's syntax right.",
+        "Once pseudocode has been checked for correctness, translating it into a real language becomes a comparatively mechanical, lower-risk step, as described in Program Development Life Cycle (12.1)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-flowchart-symbols",
+      "title": "Flowcharts and the standard symbols",
+      "content": [
+        "A flowchart is a diagrammatic alternative to pseudocode: it shows exactly the same kind of logic, using standard symbols connected by arrows that show the flow of control through the algorithm, rather than using pseudocode's keywords and indentation. Four standard symbols are used: a terminator, drawn as an oval, marks the single start point and the single end point of the flowchart; a parallelogram marks a point where data is read in with an input or displayed as an output; a rectangle marks a process, such as a calculation or an assignment to a variable; and a diamond marks a decision, where a condition is tested, with a separate arrow leading out of the diamond for each possible outcome of that test, such as one arrow labelled YES and one labelled NO.",
+        "Choosing the correct symbol for each step matters just as much as choosing the correct pseudocode keyword would: using a rectangle where a decision should have been shown as a diamond, for example, would hide the fact that the flow of control actually branches at that point, in exactly the same way that forgetting an IF in pseudocode would hide a branch that should have been there."
+      ],
+      "bullets": [
+        "Terminator (oval): marks the single start and single end point of the flowchart.",
+        "Parallelogram: marks input or output; rectangle: marks a process such as a calculation or assignment.",
+        "Diamond: marks a decision, with a separate arrow for each possible outcome of the condition being tested."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-flowcharts-for-constructs",
+      "title": "Representing sequence, selection and iteration in a flowchart",
+      "content": [
+        "Sequence is represented in a flowchart simply by a chain of symbols connected one after another by single arrows, each leading directly into the next, with no arrow ever branching or looping back; this mirrors sequence in pseudocode, where each statement is likewise executed once, in the order it is written. Selection is represented by a decision diamond with two (or more, for a multi-way choice) arrows leading out of it, one for each possible outcome of the condition; the arrows for the different outcomes lead to different symbols representing the different paths, and, for a two-way IF...ELSE choice, those paths rejoin at a single point afterwards, mirroring how IF...THEN...ELSE...ENDIF is closed by a single ENDIF regardless of which branch was actually taken.",
+        "Iteration is represented by an arrow that loops back from a later point in the flowchart to an earlier one, so that the symbols between them are revisited and executed again; a decision diamond controls whether this loop-back arrow is followed again or whether the flow instead continues past the loop. Where that decision diamond is positioned relative to the looped block of symbols shows whether the loop is a pre-condition loop, tested before the block (matching WHILE...ENDWHILE) so the block can be skipped entirely, or a post-condition loop, tested after the block (matching REPEAT...UNTIL) so the block always executes at least once."
+      ],
+      "bullets": [
+        "Sequence: a chain of symbols connected by single, non-branching, non-looping arrows, one after another, matching pseudocode's execution order.",
+        "Selection: a decision diamond with one arrow per possible outcome, leading to different paths that, for a two-way choice, rejoin afterwards, matching IF...THEN...ELSE...ENDIF.",
+        "Iteration: an arrow loops back to an earlier point, controlled by a decision diamond positioned before the loop (matching WHILE) or after it (matching REPEAT)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-data-structures-and-variables",
+      "title": "Identifying data structures and variables during design",
+      "content": [
+        "Design also identifies the data structures and variables a solution will actually need, before coding begins, rather than leaving this to be worked out improvised, on the fly, while writing code. This means deciding what each variable will represent and what data type it needs, for example whether a running total needs to be an INTEGER or a REAL, and deciding whether a single variable is enough for a given piece of data or whether a data structure such as an array is actually needed instead, for example to hold every one of several students' scores rather than only the most recently read one.",
+        "Identifying data structures and variables as part of design, rather than only once coding has already begun, means the chosen structure fits the algorithm's actual needs from the outset; discovering only partway through coding that a single variable cannot hold everything the algorithm turns out to need, for example because every previous score is actually needed later and not just the running total, is exactly the kind of design flaw that should have been caught earlier, at the design stage, rather than forcing a restructure of already-written code."
+      ],
+      "bullets": [
+        "Design decides what each variable will represent and its data type, and whether a data structure such as an array is needed instead of a single variable.",
+        "Deciding this during design, rather than while coding, means the chosen structure fits the algorithm's actual needs from the outset.",
+        "Discovering only during coding that a single variable cannot hold everything actually needed is a design flaw that design should have caught first."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-pseudocode-vs-flowchart-worked",
+      "title": "Worked example: the same algorithm as pseudocode and as a flowchart",
+      "content": [
+        "The same algorithm's logic can be planned equally validly as pseudocode or as a flowchart, since both are simply two different ways of representing the identical underlying sequence, selection and iteration; choosing between them is usually a matter of preference or of which is clearer for a particular audience, not a difference in what can actually be expressed. The worked example below finds the largest of three numbers entered by the user, expressed first as pseudocode and then described, step by step, as the flowchart symbols and arrows that represent the exact same logic.",
+        "Comparing the two side by side shows each pseudocode construct has a direct flowchart equivalent: INPUT statements become parallelogram symbols, IF...THEN...ELSE...ENDIF becomes a decision diamond with two arrows that rejoin afterwards, and OUTPUT becomes a further parallelogram symbol just before the terminator that ends the flowchart."
+      ],
+      "bullets": [
+        "The same algorithm can be planned equally validly as pseudocode or as a flowchart; both represent the identical sequence, selection and iteration.",
+        "Each pseudocode construct has a direct flowchart equivalent: INPUT and OUTPUT become parallelograms, IF...ELSE becomes a decision diamond with two arrows.",
+        "Comparing a pseudocode version and a flowchart version of the same algorithm side by side is a reliable way to check both were planned identically."
+      ],
+      "examples": [
+        {
+          "id": "07-largest-of-three-pseudocode",
+          "kind": "pseudocode",
+          "label": "Worked example: finding the largest of three numbers, as pseudocode",
+          "content": "DECLARE A, B, C, Largest : INTEGER\n\nOUTPUT \"Enter three numbers: \"\nINPUT A\nINPUT B\nINPUT C\n\nIF A > B THEN\n  IF A > C THEN\n    Largest <- A\n  ELSE\n    Largest <- C\n  ENDIF\nELSE\n  IF B > C THEN\n    Largest <- B\n  ELSE\n    Largest <- C\n  ENDIF\nENDIF\n\nOUTPUT \"The largest number is \", Largest"
+        },
+        {
+          "id": "07-largest-of-three-flowchart",
+          "kind": "worked",
+          "label": "The same algorithm described as the equivalent flowchart",
+          "content": "1. Terminator (oval): \"Start\".\n2. Parallelogram: \"Input A, B, C\" -- an arrow leads down from Start into this symbol.\n3. Diamond: \"Is A > B?\" -- an arrow leads down from the input parallelogram into this decision.\n   - YES arrow (e.g. leading right then down) goes to a second diamond: \"Is A > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- A\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n   - NO arrow (e.g. leading left then down) from the first diamond goes to a third diamond: \"Is B > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- B\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n4. All four possible rectangles (\"Largest <- A\", \"Largest <- C\" from the first branch, \"Largest <- B\", \"Largest <- C\" from the second branch) have their arrows rejoin at a single point below them, exactly as ENDIF closes both nested IF statements in the pseudocode.\n5. From that rejoined point, an arrow leads down into a parallelogram: \"Output Largest\".\n6. An arrow leads down from the output parallelogram into a final terminator (oval): \"End\".\n\n-- Comparing the two: each nested IF...THEN...ELSE...ENDIF in the pseudocode is one\n-- decision diamond with two outward arrows in the flowchart, its two branches are the\n-- symbols each arrow leads to, and its ENDIF is the single point where those two\n-- branches' arrows rejoin before the flowchart continues -- the flowchart's structure\n-- and the pseudocode's structure express exactly the same nested selection logic."
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Flowchart symbols and their pseudocode equivalents",
+    "columns": [
+      "Flowchart symbol",
+      "Shape",
+      "Purpose",
+      "Pseudocode equivalent"
+    ],
+    "rows": [
+      [
+        "Terminator",
+        "Oval",
+        "Marks the single start point or the single end point of the flowchart",
+        "The implicit start and end of the pseudocode itself"
+      ],
+      [
+        "Input/output",
+        "Parallelogram",
+        "Reads in data (input) or displays data (output)",
+        "INPUT identifier or OUTPUT identifier"
+      ],
+      [
+        "Process",
+        "Rectangle",
+        "Carries out processing, such as a calculation or an assignment",
+        "An assignment statement, e.g. Total <- Total + Value"
+      ],
+      [
+        "Decision",
+        "Diamond",
+        "Tests a condition, with one outward arrow per possible outcome",
+        "IF...THEN...ELSE...ENDIF, CASE OF...ENDCASE, or a loop's condition test"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "A structure diagram: decomposition of a program into a hierarchy of subroutines",
+    "type": "layers",
+    "nodes": [
+      "Main routine, at the top of the diagram, calling each subroutine it needs",
+      "First-level subroutines, each handling one well-defined sub-task called directly by the main routine",
+      "Second-level subroutines, called by a first-level subroutine to break its own sub-task down further",
+      "Lines connect each box downward to the subroutines it calls, showing the call hierarchy, not the internal logic",
+      "The detailed logic inside any one box is planned separately, using pseudocode or a flowchart for that subroutine"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing a structure diagram that groups unrelated sub-tasks together",
+      "steps": [
+        "A structure diagram for a student-records program has a single box, ValidateAndSaveAndPrint, directly under the main routine, with no further boxes beneath it",
+        "The requirement is that each box represent one well-defined sub-task, so the diagram's hierarchy is genuinely useful for planning and for later reuse of individual parts",
+        "Examining ValidateAndSaveAndPrint shows it is actually responsible for three unrelated sub-tasks bundled together: validating input, saving a record to storage, and printing a receipt",
+        "Because all three are combined in one box, none of the three can be reused, tested, or replaced independently of the other two, even though they have nothing to do with one another"
+      ],
+      "evaluation": "The structure diagram should be redrawn with three separate boxes, ValidateInput, SaveRecord and PrintReceipt, each called directly by the main routine, because a structure diagram's boxes are meant to reflect a genuine decomposition into well-defined sub-tasks, and bundling unrelated tasks into one box defeats the purpose of drawing the hierarchy in the first place."
+    },
+    {
+      "title": "Choosing the correct flowchart symbol for a step that was drawn incorrectly",
+      "steps": [
+        "A flowchart drawn for a login check uses a rectangle for the step \"Is the entered password correct?\", with a single arrow leading out of it to \"Grant access\"",
+        "The requirement is that every point where the flow of control can branch into more than one possible path is shown as a decision (diamond), with a separate arrow for each outcome",
+        "Checking the rectangle used for this step shows it has only one outward arrow, so there is no way for the flowchart to show what happens if the password is wrong",
+        "The step is, in fact, testing a condition with two distinct outcomes (correct or incorrect), which is precisely what a diamond, not a rectangle, is meant to represent"
+      ],
+      "evaluation": "The symbol must be changed from a rectangle to a diamond, with two outward arrows, one labelled YES leading to \"Grant access\" and one labelled NO leading to a step such as \"Reject login\"; using a rectangle here hid the fact that control genuinely branches at this point, in exactly the way an omitted IF in pseudocode would hide the same branch."
+    },
+    {
+      "title": "Deciding whether a single variable or an array is needed during design",
+      "steps": [
+        "A design is being planned for a program that must read in the scores of thirty students and then, once all thirty have been entered, print out every score again in the reverse order it was entered",
+        "The design initially plans a single variable, Score, to hold each value as it is read in, since a single variable was enough for the running-total algorithms seen earlier in the course",
+        "Checking this plan against the actual requirement shows that once a later score has been read into Score, the previous score it overwrote is no longer available anywhere, yet the reverse-order output needs every one of the thirty scores to still exist after all thirty have been read",
+        "A single variable can hold only one value at a time, but the requirement needs all thirty values to still be available together, after input has finished, in order to print them out again"
+      ],
+      "evaluation": "The design must use an array of thirty elements, not a single variable, because the requirement to output every score again afterwards means every one of the thirty values must still exist at once; catching this during design, before any code is written, avoids discovering only partway through coding that a single variable cannot hold what the algorithm actually needs."
+    }
+  ],
+  "examTips": [
+    "Draw a structure diagram's boxes to reflect a genuine hierarchy of well-defined sub-tasks, not an arbitrary grouping of unrelated tasks that merely happen to run one after another.",
+    "Use exact pseudocode keywords and correct closing keywords (ENDIF, ENDCASE, NEXT, ENDWHILE, UNTIL) when planning an algorithm, matching the constructs covered in 11.2.",
+    "Match each flowchart symbol to its specific purpose (terminator for start/end, parallelogram for input/output, rectangle for a process, diamond for a decision with multiple outward arrows) rather than using them interchangeably.",
+    "Before coding, identify whether a single variable is enough or whether a data structure such as an array is actually needed, based on whether every value must still be available together later, not just the most recent one."
+  ],
+  "commonMistakes": [
+    "Drawing a structure diagram that groups unrelated sub-tasks into one box, making individual parts impossible to test or reuse independently.",
+    "Using a rectangle (process) instead of a diamond (decision) for a step that actually tests a condition with more than one possible outcome.",
+    "Forgetting that a two-way selection's branches in a flowchart must rejoin at a single point afterwards, matching how ENDIF closes both branches in pseudocode.",
+    "Confusing a pre-condition loop (decision before the looped block, matching WHILE) with a post-condition loop (decision after the looped block, matching REPEAT) when drawing or reading a flowchart.",
+    "Leaving the choice of data structures and variables until coding has already begun, rather than identifying what the algorithm actually needs during design."
+  ],
+  "quickRecall": [
+    {
+      "question": "Why is a solution designed before it is coded?",
+      "answer": "So mistakes in the design are caught and corrected while still cheap to change, rather than after a large amount of code has already been written around them."
+    },
+    {
+      "question": "What does a structure diagram show, and what does it deliberately not show?",
+      "answer": "It shows a program's decomposition into a hierarchy of subroutines, as a tree of boxes with the main routine at the top; it does not show the detailed logic inside any individual subroutine, which is planned separately."
+    },
+    {
+      "question": "What is pseudocode used for during design?",
+      "answer": "Planning an algorithm's exact logic in detail, using sequence, selection and iteration, before it is implemented in a real programming language."
+    },
+    {
+      "question": "What are the four standard flowchart symbols and their shapes?",
+      "answer": "Terminator (oval) for start/end, input/output (parallelogram), process (rectangle), and decision (diamond)."
+    },
+    {
+      "question": "How is selection (IF...THEN...ELSE...ENDIF) represented in a flowchart?",
+      "answer": "As a decision diamond with one outward arrow per possible outcome, leading to different paths that rejoin at a single point afterwards."
+    },
+    {
+      "question": "How does a flowchart distinguish a pre-condition (WHILE) loop from a post-condition (REPEAT) loop?",
+      "answer": "By where the decision diamond is positioned relative to the looped block: before the block for a pre-condition loop, which can be skipped entirely, or after the block for a post-condition loop, which always runs at least once."
+    },
+    {
+      "question": "Why does design need to identify data structures and variables before coding begins?",
+      "answer": "So the chosen structure fits what the algorithm actually needs from the outset, rather than discovering only during coding that a single variable cannot hold everything required."
+    }
+  ],
+  "relatedTopics": [
+    "11.2",
+    "11.3",
+    "12.1",
+    "12.3"
+  ]
+}

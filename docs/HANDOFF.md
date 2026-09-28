@@ -33,7 +33,7 @@ The commit is a checkpoint, not a permanently current version.
 - No project `.env` values are referenced by the application source at this checkpoint.
 - There is no account database. Student state is stored in each browser's `localStorage`.
 
-## Computer Science 9618 AS notes rebuild (in progress on `dev`)
+## Computer Science 9618 AS notes rebuild (complete)
 
 - Goal: bring every AS topic up to the depth of the A2 notes, using `9618/1.1.json` as the
   template (7+ sections, worked examples, formulas, comparison table, diagram, three analysis
@@ -46,12 +46,13 @@ The commit is a checkpoint, not a permanently current version.
   9.1 Computational Thinking Skills, 9.2 Algorithms, 10.1 Data Types and Records, 10.2 Arrays,
   10.3 Files, 10.4 Introduction to ADT (all 2026-09-28), 8.3 DDL and DML,
   11.1 Programming Basics (2026-09-28), 11.2 Constructs, 11.3 Structured Programming
-  (2026-09-28).
-- Remaining topics with no note file yet:
-  12.1, 12.2, 12.3.
+  (2026-09-28), 12.1 Program Development Life Cycle, 12.2 Program Design, 12.3 Program Testing
+  and Maintenance (2026-09-28).
+- Remaining topics with no note file yet: none. Every AS topic for 9618 now has a full-depth
+  note; the AS notes rebuild is complete.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
-- Once all AS notes exist, add a strict 9618 AS block to `scripts/validate-data.mjs` like the
-  Business one.
+- Now that all AS notes exist, the previously deferred follow-up is actionable: add a strict
+  9618 AS block to `scripts/validate-data.mjs` like the Business one. This has not been done yet.
 - The Python-example test in `tests/computer-science-notes.test.mjs` needs `python` on PATH; it
   fails with exit code 9009 on computers without Python (installed on the laptop 2026-09-28).
 
