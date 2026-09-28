@@ -5,46 +5,356 @@
   "unitId": "AS-T",
   "unitTitle": "AS Theory",
   "title": "Logic Gates and Logic Circuits",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to logic gates and logic circuits.",
+  "contentDepth": "full",
+  "overview": "Logic gates are the building blocks of every digital circuit. Paper 1 expects you to know the six gates and their truth tables, and to move confidently between four forms of the same logic: a problem statement, a logic expression, a logic circuit and a truth table. Many questions give one form and ask for another, so a systematic method for each conversion is worth more than memorising examples.",
   "syllabusPoints": [
-    "truth tables",
-    "logic expressions",
-    "circuit design"
+    "Understand and define the functions of the NOT, AND, OR, NAND, NOR and XOR (EOR) gates, including the binary output produced from all possible binary inputs.",
+    "Draw and recognise the symbol for each logic gate.",
+    "Construct the truth table for each logic gate.",
+    "Construct a logic circuit from a problem statement, a logic expression or a truth table.",
+    "Construct a truth table from a problem statement, a logic circuit or a logic expression.",
+    "Construct a logic expression from a problem statement, a logic circuit or a truth table.",
+    "Show understanding that some circuits can be constructed with fewer gates to produce the same outputs."
   ],
-  "definitions": [],
+  "definitions": [
+    {
+      "term": "Logic gate",
+      "definition": "An electronic component that performs a Boolean operation on one or more binary inputs to produce a single binary output."
+    },
+    {
+      "term": "Truth table",
+      "definition": "A table listing every possible combination of inputs to a gate or circuit and the output produced by each."
+    },
+    {
+      "term": "Logic expression",
+      "definition": "A statement of a circuit's output using inputs and the operators AND, OR, NOT, NAND, NOR and XOR, e.g. X = (A AND B) OR NOT C."
+    },
+    {
+      "term": "Logic circuit",
+      "definition": "A combination of connected logic gates that produces an output from a set of inputs."
+    },
+    {
+      "term": "NAND gate",
+      "definition": "An AND gate followed by NOT: the output is 0 only when all inputs are 1."
+    },
+    {
+      "term": "NOR gate",
+      "definition": "An OR gate followed by NOT: the output is 1 only when all inputs are 0."
+    },
+    {
+      "term": "XOR (EOR) gate",
+      "definition": "Exclusive OR: the output is 1 when the inputs are different and 0 when they are the same."
+    },
+    {
+      "term": "Sum of products",
+      "definition": "A way of writing an expression from a truth table by ORing together one AND term for each row where the output is 1."
+    }
+  ],
   "sections": [
     {
-      "id": "01-basic-gates",
-      "title": "Basic gates",
+      "id": "01-the-six-gates",
+      "title": "The six logic gates",
       "content": [
-        "Know the truth tables for AND, OR, NOT, NAND, NOR, XOR cold — these underpin every logic circuit question."
+        "NOT has one input and inverts it. AND outputs 1 only when both inputs are 1. OR outputs 1 when at least one input is 1. NAND and NOR are AND and OR with the output inverted. XOR outputs 1 when exactly one of its two inputs is 1. Every gate except NOT takes two inputs in 9618 questions."
       ],
-      "bullets": [],
+      "bullets": [
+        "Symbols: NOT is a triangle with a small circle at the output; AND has a flat back and a semicircular front; OR has a curved back and a pointed front.",
+        "A small circle (bubble) at the output means 'inverted': NAND is the AND symbol with a bubble, NOR is the OR symbol with a bubble.",
+        "XOR is the OR symbol with an extra curved line across the inputs.",
+        "Useful shortcuts: AND is like multiplication, OR is 'any 1', XOR is 'different'."
+      ],
       "examples": []
     },
     {
-      "id": "02-circuits-expressions",
-      "title": "Circuits ↔ expressions",
+      "id": "02-expressions-from-statements",
+      "title": "From a problem statement to an expression",
       "content": [
-        "Be able to convert fluently both ways: write the Boolean expression from a given circuit diagram, and describe/draw a circuit from an expression such as Q = (A·B) + (¬C)."
+        "Read the statement carefully and assign each condition to an input. Look for the connecting words: 'and', 'or', 'not', 'but not' and 'either … or … but not both'. Build the expression in brackets so the order of operations is clear, then check it against the statement with one or two sample inputs."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "'Either A or B but not both' is XOR.",
+        "'Neither A nor B' is NOR (equivalently NOT A AND NOT B).",
+        "'Not both A and B' is NAND.",
+        "Use brackets around every sub-expression to avoid ambiguity."
+      ],
+      "examples": [
+        {
+          "id": "3.2-2-1",
+          "kind": "worked",
+          "label": "Alarm system statement",
+          "content": "An alarm (X) sounds if the system is armed (A = 1) and either a door is open (D = 1) or motion is detected (M = 1).\nX = A AND (D OR M)"
+        },
+        {
+          "id": "3.2-2-2",
+          "kind": "worked",
+          "label": "Pump statement with a NOT condition",
+          "content": "A pump (P) runs if the tank is not full (F = 0) and either the manual switch is on (S = 1) or the timer is on (T = 1), but not when both switch and timer are on.\nP = (NOT F) AND (S XOR T)"
+        }
+      ]
+    },
+    {
+      "id": "03-truth-tables",
+      "title": "Building a truth table",
+      "content": [
+        "List every combination of inputs in binary counting order: two inputs need 4 rows (00 to 11) and three inputs need 8 rows (000 to 111). Add a working column for each intermediate part of the expression or each gate output in the circuit, then combine the working columns to find the final output. Working columns earn method marks and catch mistakes."
+      ],
+      "bullets": [
+        "Number of rows = 2^n, where n is the number of inputs.",
+        "Count in binary down the input columns so no combination is missed or repeated.",
+        "Label intermediate columns clearly, e.g. 'A AND B' or 'gate 2 output'."
+      ],
+      "examples": [
+        {
+          "id": "3.2-3-1",
+          "kind": "worked",
+          "label": "Truth table for X = (A AND B) OR NOT C",
+          "content": "A B C | A AND B | NOT C | X\n0 0 0 |    0    |   1   | 1\n0 0 1 |    0    |   0   | 0\n0 1 0 |    0    |   1   | 1\n0 1 1 |    0    |   0   | 0\n1 0 0 |    0    |   1   | 1\n1 0 1 |    0    |   0   | 0\n1 1 0 |    1    |   1   | 1\n1 1 1 |    1    |   0   | 1"
+        }
+      ]
+    },
+    {
+      "id": "04-circuits-from-expressions",
+      "title": "Drawing a circuit from an expression",
+      "content": [
+        "Work from the innermost brackets outwards. Each operator becomes one gate: draw the gates for the bracketed parts first, feed their outputs into the gates that combine them, and finish with the gate that produces the final output. Where an input is needed in more than one place, branch the input line rather than creating a duplicate input."
+      ],
+      "bullets": [
+        "Count the operators first: the number of gates normally equals the number of operators.",
+        "Use only the gates the question allows; some questions restrict you to certain gates or a maximum number.",
+        "Draw each gate with the correct symbol; an unclear symbol can lose the mark."
+      ],
+      "examples": [
+        {
+          "id": "3.2-4-1",
+          "kind": "example",
+          "label": "Gates for X = (A AND B) OR NOT C",
+          "content": "Gate 1: AND with inputs A and B\nGate 2: NOT with input C\nGate 3: OR with inputs from gate 1 and gate 2; its output is X"
+        }
+      ]
+    },
+    {
+      "id": "05-expressions-from-circuits",
+      "title": "Writing an expression from a circuit",
+      "content": [
+        "Label the output of every gate, working from the inputs towards the final output. Write each gate's output as an expression in terms of its inputs, then substitute these into the next gate. The expression for the final gate is the expression for the whole circuit."
+      ],
+      "bullets": [
+        "Keep each gate's expression in brackets as you substitute.",
+        "Check your expression by drawing a truth table for it and comparing it with the circuit's truth table.",
+        "Check the circles on the gate symbols carefully: they turn AND into NAND and OR into NOR."
+      ],
+      "examples": [
+        {
+          "id": "3.2-5-1",
+          "kind": "worked",
+          "label": "Tracing a three-gate circuit",
+          "content": "Gate 1 is NOR with inputs A and B → P = A NOR B\nGate 2 is AND with inputs B and C → Q = B AND C\nGate 3 is OR with inputs P and Q → X = P OR Q\nX = (A NOR B) OR (B AND C)"
+        }
+      ]
+    },
+    {
+      "id": "06-expressions-from-truth-tables",
+      "title": "Writing an expression from a truth table",
+      "content": [
+        "Use the sum-of-products method. For each row where the output is 1, write an AND term that is true only for that row: use the input itself where it is 1 and NOT of the input where it is 0. Then join all the terms with OR. The result is always correct, although it may not be the simplest expression."
+      ],
+      "bullets": [
+        "One AND term per output-1 row.",
+        "If there are more 1s than 0s, it can be quicker to write an expression for the 0 rows and invert the whole thing.",
+        "Recognise familiar patterns first: output 1 only on 11 is AND; output 1 on 01 and 10 is XOR."
+      ],
+      "examples": [
+        {
+          "id": "3.2-6-1",
+          "kind": "worked",
+          "label": "Sum of products",
+          "content": "A B | X\n0 0 | 0\n0 1 | 1\n1 0 | 1\n1 1 | 0\nRow 01 → (NOT A AND B)\nRow 10 → (A AND NOT B)\nX = (NOT A AND B) OR (A AND NOT B), which is A XOR B"
+        }
+      ]
+    },
+    {
+      "id": "07-fewer-gates",
+      "title": "Producing the same output with fewer gates",
+      "content": [
+        "Different circuits can give identical truth tables. A circuit that uses fewer gates is cheaper to manufacture, uses less power, produces less heat and responds faster, because signals pass through fewer gates. You show two circuits are equivalent by showing their truth tables match for every input combination. At AS level this is usually done by spotting a simpler equivalent, such as replacing (NOT A AND B) OR (A AND NOT B) with a single XOR gate, or replacing NOT (A AND B) with a single NAND gate."
+      ],
+      "bullets": [
+        "NOT (A OR B) = A NOR B, one gate instead of two.",
+        "A AND A = A and A OR A = A, so a gate with both inputs from the same source can often be removed.",
+        "NAND and NOR are 'universal': any circuit can be built using only one of them, which simplifies manufacturing.",
+        "Formal simplification with Boolean algebra and Karnaugh maps is covered at A Level in topic 15.2."
+      ],
+      "examples": [
+        {
+          "id": "3.2-7-1",
+          "kind": "worked",
+          "label": "Proving two circuits are equivalent",
+          "content": "Circuit 1: NOT (A AND B)\nCircuit 2: (NOT A) OR (NOT B)\nA B | Circuit 1 | Circuit 2\n0 0 |     1     |     1\n0 1 |     1     |     1\n1 0 |     1     |     1\n1 1 |     0     |     0\nThe outputs match on every row, so both are equivalent to A NAND B and a single gate can replace either circuit."
+        }
+      ]
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "formulas": [
+    {
+      "label": "Rows in a truth table",
+      "expression": "rows = 2^n for n inputs"
+    },
+    {
+      "label": "NAND",
+      "expression": "A NAND B = NOT (A AND B)"
+    },
+    {
+      "label": "NOR",
+      "expression": "A NOR B = NOT (A OR B)"
+    },
+    {
+      "label": "XOR",
+      "expression": "A XOR B = (A AND NOT B) OR (NOT A AND B)"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Truth tables for the two-input gates",
+    "columns": [
+      "A",
+      "B",
+      "AND",
+      "OR",
+      "NAND",
+      "NOR",
+      "XOR"
+    ],
+    "rows": [
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "The four forms of the same logic",
+    "type": "cycle",
+    "nodes": [
+      "Problem statement",
+      "Logic expression",
+      "Logic circuit",
+      "Truth table"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Replacing a three-gate circuit with one gate",
+      "steps": [
+        "A truth table shows both circuits give the same output for every input",
+        "The single-gate version needs fewer components",
+        "Signals pass through fewer gates, so the output is produced faster",
+        "Less power is used and less heat is produced, and the chip is cheaper to make"
+      ],
+      "evaluation": "Simplifying is always worthwhile when the outputs are identical, which is why it matters to verify equivalence with a complete truth table rather than a few sample rows."
+    },
+    {
+      "title": "Using a truth table to check a derived expression",
+      "steps": [
+        "Write the expression from the circuit gate by gate",
+        "Construct the truth table for the expression with working columns",
+        "Compare it with the circuit's truth table row by row",
+        "Any mismatched row points directly to the gate or bracket that was misread"
+      ],
+      "evaluation": "This takes a few minutes but turns an uncertain answer into a checked one, which is valuable in multi-part questions that build on the expression."
+    },
+    {
+      "title": "Building every circuit from NAND gates only",
+      "steps": [
+        "NOT, AND and OR can each be built from NAND gates alone",
+        "So any circuit can be made using a single type of gate",
+        "Manufacturers need to produce only one type of gate, cutting cost",
+        "But the NAND-only version may need more gates than a mixed-gate design"
+      ],
+      "evaluation": "NAND-only design simplifies production, but the designer still has to minimise the total gate count for speed and power."
+    }
+  ],
   "examTips": [
-    "Build a truth table for your derived expression and compare it against the circuit's own truth table as a fast self-check."
+    "Always list truth-table inputs in binary counting order and include every row.",
+    "Include working columns for intermediate gate outputs; they earn method marks and make errors easy to find.",
+    "Draw gate symbols carefully and label inputs and the output exactly as named in the question.",
+    "For 'write an expression from the truth table', the sum-of-products method is always accepted, even if not the simplest.",
+    "If a question limits the number or type of gates, count your gates before moving on."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Confusing OR with XOR: OR gives 1 when both inputs are 1, XOR gives 0.",
+    "Missing the inversion bubble when reading NAND or NOR from a diagram.",
+    "Leaving out rows in a three-input truth table (it needs 8).",
+    "Writing expressions without brackets, so the order of operations is ambiguous.",
+    "Drawing a separate input for each use of a variable instead of branching one input line.",
+    "Confusing 'neither … nor' (NOR) with 'not both' (NAND)."
+  ],
   "quickRecall": [
-    "truth tables",
-    "logic expressions",
-    "circuit design"
+    {
+      "question": "When does a NAND gate output 0?",
+      "answer": "Only when all its inputs are 1."
+    },
+    {
+      "question": "When does an XOR gate output 1?",
+      "answer": "When its two inputs are different."
+    },
+    {
+      "question": "How many rows does a truth table for four inputs need?",
+      "answer": "2^4 = 16 rows."
+    },
+    {
+      "question": "Which gate matches the statement 'neither A nor B'?",
+      "answer": "NOR."
+    },
+    {
+      "question": "Describe the sum-of-products method.",
+      "answer": "For each row with output 1, write an AND term using each input or its NOT, then join the terms with OR."
+    },
+    {
+      "question": "How do you prove two circuits are equivalent?",
+      "answer": "Show that their truth tables give the same output for every combination of inputs."
+    },
+    {
+      "question": "Give two benefits of using fewer gates.",
+      "answer": "Any two of: lower cost, less power used, less heat produced, faster output."
+    },
+    {
+      "question": "What single gate is equivalent to NOT (A OR B)?",
+      "answer": "A NOR B."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "4.3",
+    "15.2"
+  ]
 }

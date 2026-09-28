@@ -5,48 +5,339 @@
   "unitId": "AS-T",
   "unitTitle": "AS Theory",
   "title": "Central Processing Unit (CPU) Architecture",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to central processing unit (cpu) architecture.",
+  "contentDepth": "full",
+  "overview": "This topic explains how a processor actually runs a program. Paper 1 asks you to describe the Von Neumann model and the stored program concept, state the role of each register and component, explain how the address, data and control buses move data, describe the fetch-execute cycle in register transfer notation, explain the factors that affect performance, and describe how interrupts are detected and handled.",
   "syllabusPoints": [
-    "ALU/CU/registers",
-    "buses",
-    "fetch-decode-execute",
-    "interrupts/performance"
+    "Show understanding of the basic Von Neumann model for a computer system and the stored program concept.",
+    "Show understanding of the purpose and role of registers, including the difference between general purpose and special purpose registers: PC, MDR, MAR, ACC, IX, CIR and the Status Register.",
+    "Show understanding of the purpose and roles of the Arithmetic and Logic Unit (ALU), Control Unit (CU), system clock and Immediate Access Store (IAS).",
+    "Show understanding of how data are transferred between components of the computer system using the address bus, data bus and control bus.",
+    "Show understanding of how processor type and number of cores, bus width, clock speed and cache memory affect the performance of the computer system.",
+    "Understand how ports (USB, HDMI, VGA) provide connection to peripheral devices.",
+    "Describe the stages of the Fetch-Execute (F-E) cycle and describe it using register transfer notation.",
+    "Describe the purpose of interrupts, their possible causes, how they are handled and when they are detected during the F-E cycle."
   ],
-  "definitions": [],
+  "definitions": [
+    {
+      "term": "Stored program concept",
+      "definition": "Instructions and data are both stored in the same main memory, and instructions are fetched and executed one at a time in sequence."
+    },
+    {
+      "term": "Register",
+      "definition": "A very fast storage location inside the processor that holds a single item of data, an address or an instruction."
+    },
+    {
+      "term": "Program Counter (PC)",
+      "definition": "A special purpose register holding the address of the next instruction to be fetched."
+    },
+    {
+      "term": "Memory Address Register (MAR)",
+      "definition": "Holds the address of the memory location currently being read from or written to."
+    },
+    {
+      "term": "Memory Data Register (MDR)",
+      "definition": "Holds the data or instruction just read from memory, or waiting to be written to memory."
+    },
+    {
+      "term": "Current Instruction Register (CIR)",
+      "definition": "Holds the instruction currently being decoded and executed."
+    },
+    {
+      "term": "Accumulator (ACC)",
+      "definition": "A general purpose register that stores the results of calculations carried out by the ALU."
+    },
+    {
+      "term": "Index Register (IX)",
+      "definition": "A register whose contents are added to an address to give the effective address, used in indexed addressing to step through arrays."
+    },
+    {
+      "term": "Status Register",
+      "definition": "A register whose individual bits (flags) record conditions such as carry, overflow, a negative or zero result, and whether an interrupt has occurred."
+    },
+    {
+      "term": "Interrupt",
+      "definition": "A signal to the processor, from hardware or software, indicating that an event needs attention."
+    },
+    {
+      "term": "Interrupt Service Routine (ISR)",
+      "definition": "The program that is run to deal with a particular type of interrupt."
+    }
+  ],
   "sections": [
     {
-      "id": "01-von-neumann-architecture",
-      "title": "Von Neumann architecture",
+      "id": "01-von-neumann-model",
+      "title": "The Von Neumann model",
       "content": [
-        "A single memory stores both data and instructions. Key buses: address bus (memory locations, one-directional), data bus (data/instructions, bi-directional), control bus (control signals)."
+        "In the Von Neumann model, a single processor is connected to one main memory that stores both program instructions and data (the stored program concept). The processor fetches one instruction at a time from memory, decodes it and executes it, in sequence, unless an instruction changes the order. Because instructions and data share the same memory and buses, they cannot be fetched at the same time, which limits speed (the Von Neumann bottleneck)."
       ],
-      "bullets": [],
+      "bullets": [
+        "Main memory is the Immediate Access Store (IAS): the processor can access it directly.",
+        "Programs must be loaded into main memory before they can run.",
+        "Instructions and data are both just binary patterns; the processor treats a value as an instruction because the PC pointed to it."
+      ],
       "examples": []
     },
     {
-      "id": "02-fetch-decode-execute-cycle",
-      "title": "Fetch–decode–execute cycle",
+      "id": "02-alu-cu-clock",
+      "title": "ALU, control unit, clock and IAS",
       "content": [
-        "1. Address in the PC copies to the MAR; PC increments. 2. Instruction at that address fetched into the MDR, then copied to the CIR. 3. Decoded and executed, using the ACC for arithmetic where needed."
+        "The Arithmetic and Logic Unit (ALU) performs arithmetic operations (such as addition and subtraction), logical operations (such as AND, OR, comparisons) and shifts, and stores results in the accumulator. The Control Unit (CU) decodes each instruction and sends control signals along the control bus to coordinate the other components and the movement of data. The system clock generates regular pulses that synchronise all operations; each step of the F-E cycle starts on a clock pulse. The Immediate Access Store holds the programs and data currently in use, so the processor can fetch them directly."
       ],
-      "bullets": [],
+      "bullets": [
+        "ALU = calculates and compares; CU = decodes and directs.",
+        "Clock speed is measured in hertz: 3 GHz means 3 billion clock cycles per second.",
+        "The CU also manages the F-E cycle itself, including checking for interrupts."
+      ],
       "examples": []
+    },
+    {
+      "id": "03-registers",
+      "title": "General and special purpose registers",
+      "content": [
+        "A general purpose register can hold any data the program is working on; in 9618 the accumulator (ACC) is the main general purpose register, and the ALU places results there. Special purpose registers each have one fixed job in running the program: the PC, MAR, MDR, CIR, IX and Status Register. Registers are much faster than main memory because they are inside the processor, so data being actively used are kept there."
+      ],
+      "bullets": [
+        "PC: address of the next instruction. MAR: address being accessed. MDR: data being transferred.",
+        "CIR: the instruction being executed. IX: offset for indexed addressing.",
+        "Status Register flags: carry (C), negative (N), overflow (V), zero (Z) and interrupt flags.",
+        "Only the MAR and MDR connect directly to the address and data buses."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-system-buses",
+      "title": "The address, data and control buses",
+      "content": [
+        "A bus is a set of parallel wires that carries signals between components. The address bus carries the address of the memory location or input/output port being accessed, from the MAR to memory; it is one-directional. The data bus carries data and instructions between the processor, memory and input/output devices; it is bi-directional. The control bus carries control and timing signals, such as memory read, memory write, clock and interrupt request; it is bi-directional because components send signals back to the processor."
+      ],
+      "bullets": [
+        "Address bus width sets the maximum addressable memory: n lines address 2^n locations.",
+        "Data bus width sets how many bits can be transferred in one operation (the word size).",
+        "Memory read: address on the address bus, 'read' signal on the control bus, data returned on the data bus."
+      ],
+      "examples": [
+        {
+          "id": "4.1-4-1",
+          "kind": "worked",
+          "label": "Addressable memory from the address bus width",
+          "content": "A 16-line address bus can address 2^16 = 65,536 locations.\nIncreasing it to 32 lines gives 2^32 = 4,294,967,296 locations (4 GiB of byte-addressable memory)."
+        }
+      ]
+    },
+    {
+      "id": "05-fetch-execute-cycle",
+      "title": "The fetch-execute cycle",
+      "content": [
+        "In the fetch stage, the address of the next instruction is copied from the PC to the MAR. The PC is incremented so it points to the following instruction. The instruction held at the address in the MAR is copied into the MDR along the data bus, then copied from the MDR into the CIR. In the decode stage the CU decodes the instruction in the CIR to find the operation (opcode) and the operand. In the execute stage the instruction is carried out, for example by fetching the operand from memory and using the ALU. At the end of each cycle the processor checks for interrupts before fetching the next instruction."
+      ],
+      "bullets": [
+        "Register transfer notation: MAR ← [PC] means 'copy the contents of the PC into the MAR'.",
+        "Square brackets mean 'the contents of'; [[MAR]] means 'the contents of the address held in the MAR'.",
+        "A jump instruction changes the flow by loading a new address into the PC."
+      ],
+      "examples": [
+        {
+          "id": "4.1-5-1",
+          "kind": "worked",
+          "label": "Fetch stage in register transfer notation",
+          "content": "MAR ← [PC]\nPC ← [PC] + 1\nMDR ← [[MAR]]\nCIR ← [MDR]"
+        },
+        {
+          "id": "4.1-5-2",
+          "kind": "worked",
+          "label": "Executing LDD 200 (load direct from address 200)",
+          "content": "The instruction is decoded: opcode LDD, operand 200\nMAR ← 200\nMDR ← [[MAR]]  (the value stored at address 200)\nACC ← [MDR]"
+        }
+      ]
+    },
+    {
+      "id": "06-performance",
+      "title": "Factors affecting performance",
+      "content": [
+        "A higher clock speed means more cycles per second, so more instructions are executed per second, although it produces more heat. More cores allow several instructions to be processed at the same time, but only if the software is written to split its work between cores, and cores sharing data and buses limits the gain. A wider data bus moves more bits in one transfer, and a wider address bus allows more memory to be addressed. Cache memory is small, fast SRAM close to the processor holding frequently used instructions and data; a larger cache means the processor waits less often for slower main memory."
+      ],
+      "bullets": [
+        "Doubling cores does not double performance, because some tasks cannot be split and cores must coordinate.",
+        "Overclocking raises clock speed but risks overheating and instability.",
+        "Cache helps because programs repeatedly use the same instructions and data (for example in loops).",
+        "The processor type (its architecture and instruction set) also affects how much work each clock cycle does."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-ports",
+      "title": "Ports",
+      "content": [
+        "Ports let peripheral devices connect to the computer. USB (Universal Serial Bus) is a general-purpose serial connection for keyboards, mice, printers, storage and phones; it supplies power, and devices are detected and their drivers loaded automatically. HDMI (High-Definition Multimedia Interface) is a digital port that carries high-definition video and audio together to monitors and televisions, and supports copy protection. VGA (Video Graphics Array) is an older analogue video-only port; it cannot carry sound and gives lower quality at high resolutions."
+      ],
+      "bullets": [
+        "USB: many device types, supplies power, plug-and-play.",
+        "HDMI: digital video and audio in one cable.",
+        "VGA: analogue, video only, being replaced by HDMI and DisplayPort."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-interrupts",
+      "title": "Interrupts",
+      "content": [
+        "An interrupt tells the processor that an event needs attention, so the processor does not have to keep checking every device. Causes include hardware (a key pressed, a printer out of paper, a data transfer complete), software errors (division by zero, trying to access a memory address the program is not allowed to use), timer signals used for scheduling, and user actions such as Ctrl+Alt+Delete. The processor checks for interrupts at the end of each F-E cycle. If there is one with a higher priority than the current task, the contents of the registers (including the PC) are saved on a stack, the appropriate Interrupt Service Routine is loaded and run, and then the saved register values are restored so the original program continues where it left off."
+      ],
+      "bullets": [
+        "Interrupts have priorities; a lower-priority interrupt waits while a higher-priority one is serviced.",
+        "Saving the registers is essential so the interrupted program can resume correctly.",
+        "The interrupt flag in the status register records that an interrupt is waiting."
+      ],
+      "examples": [
+        {
+          "id": "4.1-8-1",
+          "kind": "worked",
+          "label": "Handling an interrupt",
+          "content": "1. At the end of the current F-E cycle, the processor checks for an interrupt\n2. It compares the interrupt's priority with the current task\n3. If higher, it saves the contents of the registers (including PC) on the stack\n4. The address of the correct ISR is loaded into the PC\n5. The ISR runs and handles the event\n6. The saved register values are restored and the original program resumes"
+        }
+      ]
     }
   ],
-  "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "formulas": [
+    {
+      "label": "Addressable locations",
+      "expression": "locations = 2^(address bus width)"
+    },
+    {
+      "label": "Clock cycles",
+      "expression": "cycles per second = clock speed in Hz (e.g. 3 GHz = 3 × 10^9 cycles per second)"
+    },
+    {
+      "label": "Fetch stage",
+      "expression": "MAR ← [PC]; PC ← [PC] + 1; MDR ← [[MAR]]; CIR ← [MDR]"
+    }
+  ],
+  "comparisonTable": {
+    "title": "The three system buses",
+    "columns": [
+      "Bus",
+      "Carries",
+      "Direction",
+      "Effect of making it wider"
+    ],
+    "rows": [
+      [
+        "Address bus",
+        "Memory and I/O addresses",
+        "One-directional (processor to memory)",
+        "More memory locations can be addressed"
+      ],
+      [
+        "Data bus",
+        "Data and instructions",
+        "Bi-directional",
+        "More bits moved per transfer, so faster processing"
+      ],
+      [
+        "Control bus",
+        "Control and timing signals (read, write, clock, interrupt)",
+        "Bi-directional",
+        "Not normally described in terms of width"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "The fetch-execute cycle",
+    "type": "cycle",
+    "nodes": [
+      "MAR ← [PC]",
+      "PC ← [PC] + 1",
+      "MDR ← [[MAR]]",
+      "CIR ← [MDR]",
+      "Decode and execute",
+      "Check for interrupts"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Upgrading from a dual-core to a quad-core processor",
+      "steps": [
+        "Four instructions can be processed at the same time instead of two",
+        "Programs designed for multiple cores, such as video editors, finish sooner",
+        "More applications can run at once without slowing each other",
+        "But single-threaded programs use one core only and see little benefit"
+      ],
+      "evaluation": "The upgrade helps most for multitasking and parallel software; for a single old program, a higher clock speed or more cache may help more."
+    },
+    {
+      "title": "Increasing the size of cache memory",
+      "steps": [
+        "More frequently used instructions and data are held close to the processor",
+        "The processor finds what it needs in cache more often",
+        "Fewer slow accesses to main memory are needed, so fewer cycles are wasted waiting",
+        "But cache is expensive SRAM and the gain shrinks as cache grows"
+      ],
+      "evaluation": "Cache gives a large gain for programs with loops and repeated data; beyond a certain size, the cost outweighs the extra speed."
+    },
+    {
+      "title": "Using interrupts instead of repeatedly checking a printer",
+      "steps": [
+        "The processor does not need to keep asking the printer whether it is ready",
+        "It continues executing other programs while the printer prints",
+        "The printer sends an interrupt when its buffer is empty or it runs out of paper",
+        "The processor then runs the ISR only when action is actually needed"
+      ],
+      "evaluation": "Interrupts make far better use of processor time; the only cost is the small overhead of saving and restoring registers."
+    }
+  ],
   "examTips": [
-    "Register-transfer notation questions want exact register abbreviations (PC, MAR, MDR, CIR, ACC) in the correct order — learn the cycle as a numbered sequence."
+    "Learn the fetch stage as four lines of register transfer notation and write them in order.",
+    "Use square brackets correctly: [PC] means the contents of the PC.",
+    "When explaining a performance factor, give the cause and the effect (e.g. more cache → fewer memory accesses → faster).",
+    "Say that interrupts are checked at the end of (or start of) each F-E cycle, and that register contents are saved before the ISR runs.",
+    "Match each register to its full name and role; examiners reject vague answers like 'stores data'."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Saying the PC holds the current instruction; it holds the address of the next instruction.",
+    "Describing the address bus as bi-directional.",
+    "Forgetting to increment the PC during the fetch stage.",
+    "Saying that doubling cores doubles performance.",
+    "Leaving out saving the registers when describing interrupt handling.",
+    "Confusing the MAR (an address) with the MDR (data or an instruction)."
+  ],
   "quickRecall": [
-    "ALU/CU/registers",
-    "buses",
-    "fetch-decode-execute",
-    "interrupts/performance"
+    {
+      "question": "What is the stored program concept?",
+      "answer": "Instructions and data are stored together in main memory, and instructions are fetched and executed one after another."
+    },
+    {
+      "question": "What does the MAR hold?",
+      "answer": "The address of the memory location currently being read from or written to."
+    },
+    {
+      "question": "Write the fetch stage in register transfer notation.",
+      "answer": "MAR ← [PC]; PC ← [PC] + 1; MDR ← [[MAR]]; CIR ← [MDR]."
+    },
+    {
+      "question": "Which bus is one-directional?",
+      "answer": "The address bus."
+    },
+    {
+      "question": "How does cache memory improve performance?",
+      "answer": "It holds frequently used instructions and data in fast memory near the processor, reducing slower main-memory accesses."
+    },
+    {
+      "question": "Give three causes of an interrupt.",
+      "answer": "Any three of: key press, printer out of paper, data transfer complete, timer signal, division by zero, illegal memory access."
+    },
+    {
+      "question": "When does the processor check for interrupts?",
+      "answer": "At the end of each fetch-execute cycle, before fetching the next instruction."
+    },
+    {
+      "question": "What does the status register store?",
+      "answer": "Flags recording conditions such as carry, overflow, negative or zero results, and interrupts."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "3.1",
+    "4.2",
+    "5.1",
+    "15.1"
+  ]
 }

@@ -790,7 +790,7 @@
               "logic expressions",
               "circuit design"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "4.1",
@@ -806,7 +806,7 @@
               "fetch-decode-execute",
               "interrupts/performance"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           },
           {
             "id": "4.2",
