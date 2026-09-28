@@ -882,7 +882,7 @@
               "authentication/access control",
               "firewalls/backups"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "6.2",
@@ -896,7 +896,7 @@
               "validation/verification",
               "parity/checksums/check digits"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "7.1",

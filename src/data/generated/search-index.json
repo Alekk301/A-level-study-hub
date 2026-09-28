@@ -8551,7 +8551,7 @@
     "unitTitle": "AS Theory",
     "topicId": "6.1",
     "title": "Data Security",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -8562,19 +8562,311 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Identify common security threats and the defences (authentication, access control, firewalls, backups) used against them."
+        "text": "Paper 1 asks candidates to identify security threats to data and systems, and to describe the defences used against each one. Answers score when a named threat is matched to a specific defence and the link between them is explained, rather than the two being listed separately."
       },
       {
-        "kind": "Quick recall",
-        "text": "threats"
+        "kind": "Definition",
+        "label": "Malware",
+        "text": "Malicious software designed to damage, disrupt or gain unauthorised access to a computer system, including viruses, worms, trojans, spyware, adware and ransomware."
       },
       {
-        "kind": "Quick recall",
-        "text": "authentication/access control"
+        "kind": "Definition",
+        "label": "Phishing",
+        "text": "Sending fraudulent messages that appear to come from a trustworthy source, intended to trick the recipient into revealing personal data or clicking a malicious link."
       },
       {
-        "kind": "Quick recall",
-        "text": "firewalls/backups"
+        "kind": "Definition",
+        "label": "Pharming",
+        "text": "Malicious code that redirects a user from a legitimate website to a fake one without any action by the user, typically by corrupting DNS records or a local hosts file."
+      },
+      {
+        "kind": "Definition",
+        "label": "Social engineering",
+        "text": "Manipulating people into breaking normal security procedures, for example by impersonating IT support or persuading someone to reveal a password."
+      },
+      {
+        "kind": "Definition",
+        "label": "Firewall",
+        "text": "Hardware or software that monitors and controls incoming and outgoing network traffic according to a set of security rules."
+      },
+      {
+        "kind": "Definition",
+        "label": "Encryption",
+        "text": "Scrambling data using an algorithm and a key so that it can only be read by someone who has the correct key to decrypt it."
+      },
+      {
+        "kind": "Definition",
+        "label": "Two-step verification",
+        "text": "An authentication method that requires a second, independent piece of evidence, such as a one-time code sent to a registered device, in addition to a password."
+      },
+      {
+        "kind": "Definition",
+        "label": "Access rights",
+        "text": "Permissions that determine what a logged-in user is allowed to view, change or run, following the principle of giving each user only what they need."
+      },
+      {
+        "kind": "Section",
+        "text": "Why data needs to be protected"
+      },
+      {
+        "kind": "Content",
+        "label": "Why data needs to be protected",
+        "text": "Data held by an organisation is valuable, and losing control of it can cause financial loss, identity theft, reputational damage and legal consequences under data protection legislation. Security threats can come from outside an organisation (hackers, malware, phishing) or from inside it (a careless or malicious employee), so defences must cover both technical controls and staff behaviour."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data needs to be protected",
+        "text": "A breach can expose personal data protected by law, leading to fines and loss of trust."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data needs to be protected",
+        "text": "Some threats aim to steal data; others aim to damage or deny access to it."
+      },
+      {
+        "kind": "Content",
+        "label": "Why data needs to be protected",
+        "text": "No single defence is sufficient; systems use several layers together."
+      },
+      {
+        "kind": "Section",
+        "text": "Malware"
+      },
+      {
+        "kind": "Content",
+        "label": "Malware",
+        "text": "Malware is a general term for software designed to cause harm. A virus attaches itself to a host file or program and spreads only when a user runs the infected file. A worm is a standalone program that replicates itself and spreads across a network on its own, without needing a host file or any action from a user. A trojan horse disguises itself as legitimate, useful software but carries a hidden malicious payload, often opening a backdoor for an attacker. Spyware secretly monitors a user's activity and gathers data such as keystrokes or browsing habits. Adware displays unwanted adverts and may also track browsing behaviour. Ransomware encrypts a victim's files and demands payment for the key needed to decrypt them."
+      },
+      {
+        "kind": "Content",
+        "label": "Malware",
+        "text": "Malware commonly enters a system through email attachments, infected downloads, removable media or compromised websites."
+      },
+      {
+        "kind": "Content",
+        "label": "Malware",
+        "text": "Anti-malware software scans for known malware signatures and suspicious behaviour, then quarantines or removes infected files."
+      },
+      {
+        "kind": "Content",
+        "label": "Malware",
+        "text": "Keeping anti-malware software and its signature database up to date is essential, because it cannot detect threats it does not recognise."
+      },
+      {
+        "kind": "Section",
+        "text": "Phishing, pharming and social engineering"
+      },
+      {
+        "kind": "Content",
+        "label": "Phishing, pharming and social engineering",
+        "text": "Phishing relies on a message, often an email, that looks like it is from a trustworthy source and asks the user to click a link or reveal personal data such as a password. Pharming does not rely on the user being deceived by a message at all: malicious code corrupts DNS lookups or a device's hosts file so that typing a legitimate address still leads to a fake site. Social engineering is a wider category that exploits human behaviour rather than a technical weakness, for example an attacker phoning an employee, pretending to be IT support, and persuading them to reveal a password."
+      },
+      {
+        "kind": "Content",
+        "label": "Phishing, pharming and social engineering",
+        "text": "Checking a sender's address and hovering over links before clicking helps identify phishing attempts."
+      },
+      {
+        "kind": "Content",
+        "label": "Phishing, pharming and social engineering",
+        "text": "Pharming can succeed even when a user types the correct web address themselves."
+      },
+      {
+        "kind": "Content",
+        "label": "Phishing, pharming and social engineering",
+        "text": "Staff training reduces social engineering risk because it targets people, not software."
+      },
+      {
+        "kind": "Section",
+        "text": "Hacking and unauthorised access"
+      },
+      {
+        "kind": "Content",
+        "label": "Hacking and unauthorised access",
+        "text": "Hacking is gaining unauthorised access to a computer system, sometimes to view, steal, alter or destroy data, and sometimes simply to prove it can be done. Weak passwords, unpatched software and poorly configured networks make hacking easier. Once inside a system, an attacker with the same access as a legitimate user can be very difficult to distinguish from normal activity, which is why monitoring and logging matter alongside prevention."
+      },
+      {
+        "kind": "Content",
+        "label": "Hacking and unauthorised access",
+        "text": "Regular software updates close known vulnerabilities before they can be exploited."
+      },
+      {
+        "kind": "Content",
+        "label": "Hacking and unauthorised access",
+        "text": "Strong, unique passwords make it harder for an attacker to guess or crack account credentials."
+      },
+      {
+        "kind": "Content",
+        "label": "Hacking and unauthorised access",
+        "text": "Logging user activity helps an organisation detect and investigate unauthorised access after the fact."
+      },
+      {
+        "kind": "Section",
+        "text": "Authentication"
+      },
+      {
+        "kind": "Content",
+        "label": "Authentication",
+        "text": "Authentication confirms that a user is who they claim to be. A password is a shared secret; its strength depends on length and the mixture of characters used, and it should not be a predictable word. Biometrics measure a physical characteristic, such as a fingerprint, retina pattern or face, that is very difficult to replicate, forget or share. Two-step verification adds a second, independent factor, such as a one-time code sent to a registered device, so a stolen password alone is not enough to log in. A digital certificate, issued by a trusted certificate authority, confirms the identity of a website or sender and enables encrypted communication with it."
+      },
+      {
+        "kind": "Content",
+        "label": "Authentication",
+        "text": "Authentication proves identity; access rights then decide what that identified user may do."
+      },
+      {
+        "kind": "Content",
+        "label": "Authentication",
+        "text": "Combining factors (something you know, something you have, something you are) is stronger than any one alone."
+      },
+      {
+        "kind": "Content",
+        "label": "Authentication",
+        "text": "A digital certificate lets a browser confirm it is really connected to the website it expects."
+      },
+      {
+        "kind": "Section",
+        "text": "Access rights and physical security"
+      },
+      {
+        "kind": "Content",
+        "label": "Access rights and physical security",
+        "text": "Access rights restrict what a logged-in user may view, edit or run, following the principle that each account should hold only the permissions it needs. This limits the damage a compromised account or a careless employee can cause. Physical security protects the hardware itself: locked server rooms, biometric door locks, CCTV, security guards and cable locks for portable devices all reduce the risk of theft, tampering or accidental damage."
+      },
+      {
+        "kind": "Content",
+        "label": "Access rights and physical security",
+        "text": "Different accounts can have different rights, for example only an administrator can install software or change permissions."
+      },
+      {
+        "kind": "Content",
+        "label": "Access rights and physical security",
+        "text": "Physical theft of a device bypasses many software defences if its storage is not also encrypted."
+      },
+      {
+        "kind": "Content",
+        "label": "Access rights and physical security",
+        "text": "Visitor sign-in and restricted areas are simple, effective physical controls."
+      },
+      {
+        "kind": "Section",
+        "text": "Firewalls"
+      },
+      {
+        "kind": "Content",
+        "label": "Firewalls",
+        "text": "A firewall sits between a trusted internal network and an untrusted external network, such as the internet, and monitors traffic passing between them. It checks each connection attempt against a set of rules, for example allowing or blocking traffic based on IP address, port number or protocol, and can be implemented in hardware, software, or both. Traffic that does not match an allowed rule is blocked and may be logged for later review."
+      },
+      {
+        "kind": "Content",
+        "label": "Firewalls",
+        "text": "A firewall filters traffic; it does not inspect the meaning of the data inside an allowed connection."
+      },
+      {
+        "kind": "Content",
+        "label": "Firewalls",
+        "text": "Firewalls cannot stop threats carried inside traffic they are configured to allow, such as a phishing link in an email."
+      },
+      {
+        "kind": "Content",
+        "label": "Firewalls",
+        "text": "Both incoming and outgoing traffic can be filtered, which also helps contain an already-infected device."
+      },
+      {
+        "kind": "Section",
+        "text": "Encryption and secure protocols"
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption and secure protocols",
+        "text": "Encryption scrambles data using an algorithm and a key, so that anyone who intercepts it without the correct key sees only unreadable ciphertext. It protects the confidentiality of data in transit and in storage, even if a firewall or authentication has already been bypassed. Secure protocols such as SSL/TLS, shown as HTTPS in a browser's address bar, encrypt data sent between a device and a website. The detailed mechanics of encryption algorithms and digital certificates are covered further at A2 in topic 17.1."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption and secure protocols",
+        "text": "Encryption protects confidentiality; it does not by itself prevent data being intercepted, only prevent it being understood."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption and secure protocols",
+        "text": "A padlock icon or 'https' indicates an encrypted connection, but does not guarantee the site itself is trustworthy."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption and secure protocols",
+        "text": "Sensitive stored data can also be encrypted, so a stolen device does not expose readable files."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a virus and a worm?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a virus and a worm?",
+        "text": "A virus attaches to a host file and needs a user to run that file to spread; a worm is a standalone program that replicates itself across a network without needing a host file or user action."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does ransomware do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does ransomware do?",
+        "text": "It encrypts a victim's files and demands payment for the key needed to decrypt them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is phishing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is phishing?",
+        "text": "Sending fraudulent messages that appear to come from a trustworthy source to trick a user into revealing personal data or clicking a malicious link."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does pharming differ from phishing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does pharming differ from phishing?",
+        "text": "Pharming redirects a user to a fake website without any action by the user, typically by corrupting DNS records or a hosts file, rather than relying on a message that tricks the user into clicking."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is two-step verification?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is two-step verification?",
+        "text": "An authentication method requiring a second, independent piece of evidence, such as a one-time code sent to a registered device, in addition to a password."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a firewall do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a firewall do?",
+        "text": "It monitors and controls incoming and outgoing network traffic against a set of rules, blocking traffic that does not meet them."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why are biometrics considered a strong authentication method?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why are biometrics considered a strong authentication method?",
+        "text": "They measure a physical characteristic unique to an individual, which is very difficult to copy, forget or share compared with a password."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two physical security measures that protect data."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two physical security measures that protect data.",
+        "text": "Any two of: locked server rooms, biometric door locks, CCTV, security guards, cable locks for portable devices."
       }
     ]
   },
@@ -8590,7 +8882,7 @@
     "unitTitle": "AS Theory",
     "topicId": "6.2",
     "title": "Data Integrity",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -8601,15 +8893,283 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Use validation and verification methods, plus parity checks and check digits, to catch data errors."
+        "text": "Paper 1 asks candidates to describe and apply validation and verification techniques, and to explain how parity checks and check digits detect errors introduced during data entry and transmission. Answers score when a named check is matched to a concrete example and its limitation is stated, not just its purpose."
       },
       {
-        "kind": "Quick recall",
-        "text": "validation/verification"
+        "kind": "Definition",
+        "label": "Data integrity",
+        "text": "The accuracy, consistency and reliability of data throughout its life, from entry to storage and transmission."
       },
       {
-        "kind": "Quick recall",
-        "text": "parity/checksums/check digits"
+        "kind": "Definition",
+        "label": "Validation",
+        "text": "An automated check performed by software to ensure that data entered meets defined rules before it is accepted, without confirming the data is actually true."
+      },
+      {
+        "kind": "Definition",
+        "label": "Verification",
+        "text": "A check that data entered or copied matches its original source, catching transcription errors."
+      },
+      {
+        "kind": "Definition",
+        "label": "Check digit",
+        "text": "An extra digit calculated from the other digits in a code and added to it, used to detect data-entry errors such as mistyped or transposed digits."
+      },
+      {
+        "kind": "Definition",
+        "label": "Parity bit",
+        "text": "An extra bit added to a unit of data so that the total number of 1-bits is even (even parity) or odd (odd parity), letting a receiver detect single-bit transmission errors."
+      },
+      {
+        "kind": "Definition",
+        "label": "Checksum",
+        "text": "A value calculated from a block of transmitted data and sent with it, recalculated by the receiver to detect whether the block has changed."
+      },
+      {
+        "kind": "Definition",
+        "label": "Transcription error",
+        "text": "An error introduced when a person copies or types data incorrectly, for example transposing two digits."
+      },
+      {
+        "kind": "Section",
+        "text": "What is data integrity?"
+      },
+      {
+        "kind": "Content",
+        "label": "What is data integrity?",
+        "text": "Data integrity is the accuracy and consistency of data over its lifetime. It is a different concern from data security: security protects data from unauthorised access, while integrity is about whether the data itself is correct and has not been corrupted. Integrity can be threatened by human input error, hardware faults, software bugs, transmission errors on a communication line, or malicious alteration."
+      },
+      {
+        "kind": "Content",
+        "label": "What is data integrity?",
+        "text": "Data can be perfectly secure (no one unauthorised can reach it) yet still be inaccurate."
+      },
+      {
+        "kind": "Content",
+        "label": "What is data integrity?",
+        "text": "Integrity checks aim to catch errors as early as possible, ideally before data is stored or used."
+      },
+      {
+        "kind": "Content",
+        "label": "What is data integrity?",
+        "text": "No single check guarantees data is correct; several checks are normally combined."
+      },
+      {
+        "kind": "Section",
+        "text": "Validation"
+      },
+      {
+        "kind": "Content",
+        "label": "Validation",
+        "text": "Validation is an automated check, carried out by software, that rejects data failing to meet defined rules before it can be accepted. It only confirms that a value is reasonable or plausible for its field; it cannot confirm the value is actually true. Common validation checks include a range check (a value must fall between set boundaries, for example a percentage mark between 0 and 100), a length check (the number of characters must be within set boundaries, for example a password of at least eight characters), a type check (data must be of an expected data type, for example a numeric age), a presence check (a required field must not be left empty), a format check (data must match a specified pattern, for example a date as DD/MM/YYYY), an existence or lookup check (data must match an item already held in a table or file, for example a product code that exists in a stock file), and a check digit (an extra digit calculated from the other digits in a code, described in detail below)."
+      },
+      {
+        "kind": "Content",
+        "label": "Validation",
+        "text": "A value that passes every validation check can still be the wrong value for that record."
+      },
+      {
+        "kind": "Content",
+        "label": "Validation",
+        "text": "Validation rules are defined once in the software and applied automatically to every entry."
+      },
+      {
+        "kind": "Content",
+        "label": "Validation",
+        "text": "Combining several checks on one field catches more kinds of error than relying on just one."
+      },
+      {
+        "kind": "Section",
+        "text": "Verification"
+      },
+      {
+        "kind": "Content",
+        "label": "Verification",
+        "text": "Verification checks that data entered or copied matches its original source; it catches transcription errors rather than judging whether a value is reasonable. Visual checking (proofreading) means comparing the data shown on screen or on a printout against the original document. Double data entry means the same data is entered twice, independently, often by two different people, and the two entries are compared automatically; any mismatch is flagged for a human to resolve."
+      },
+      {
+        "kind": "Content",
+        "label": "Verification",
+        "text": "Verification cannot detect an error that already exists in the original source document."
+      },
+      {
+        "kind": "Content",
+        "label": "Verification",
+        "text": "Double data entry cannot detect an error made identically by both entries, though this is unlikely by chance."
+      },
+      {
+        "kind": "Content",
+        "label": "Verification",
+        "text": "Verification and validation are complementary and are normally both used on the same data."
+      },
+      {
+        "kind": "Section",
+        "text": "Errors during data transmission"
+      },
+      {
+        "kind": "Content",
+        "label": "Errors during data transmission",
+        "text": "Data sent over a communication line can be altered by electrical interference or 'noise' on the line, causing one or more bits to be received differently from how they were sent. Because the receiver cannot see the original data to compare it directly, transmission errors must be detected using extra information sent alongside the data itself, such as a parity bit or a checksum."
+      },
+      {
+        "kind": "Content",
+        "label": "Errors during data transmission",
+        "text": "Longer transmissions and noisier lines increase the chance that a bit is altered."
+      },
+      {
+        "kind": "Content",
+        "label": "Errors during data transmission",
+        "text": "Detecting an error only shows that something changed; it does not by itself say which bit changed."
+      },
+      {
+        "kind": "Content",
+        "label": "Errors during data transmission",
+        "text": "When an error is detected, the usual response is to request the data again."
+      },
+      {
+        "kind": "Section",
+        "text": "Parity checks"
+      },
+      {
+        "kind": "Content",
+        "label": "Parity checks",
+        "text": "Before transmission, an extra parity bit is added to each unit of data so that the total number of 1-bits, including the parity bit, matches an agreed rule: even parity requires an even total, odd parity requires an odd total. The receiver recounts the 1-bits in the data it received and compares the result with the agreed parity. If the count no longer matches, at least one bit has changed and an error is flagged, usually leading to a retransmission request."
+      },
+      {
+        "kind": "Content",
+        "label": "Parity checks",
+        "text": "The sender and receiver must agree in advance whether even or odd parity is being used."
+      },
+      {
+        "kind": "Content",
+        "label": "Parity checks",
+        "text": "A single-bit error is always detected, because it always changes whether the total count is even or odd."
+      },
+      {
+        "kind": "Content",
+        "label": "Parity checks",
+        "text": "If exactly two bits change, the total count of 1-bits returns to what was expected, so the error is missed."
+      },
+      {
+        "kind": "Example",
+        "label": "Parity checks",
+        "text": "Data to send: 1 0 1 1 0 0 1 (four 1-bits)\nEven parity requires an even total, so the parity bit added = 0\nTransmitted byte: 1 0 1 1 0 0 1 0 (parity bit is the last bit)\n\nReceived byte: 1 0 1 1 0 1 1 0 (one bit has changed in transit)\nReceiver counts the 1-bits: five 1-bits, an odd total\nExpected even parity, but the total is odd, so an error is detected\nThe receiver requests the data again"
+      },
+      {
+        "kind": "Section",
+        "text": "Checksums"
+      },
+      {
+        "kind": "Content",
+        "label": "Checksums",
+        "text": "A checksum is calculated from an entire block of data, for example by adding together the numeric value of every byte in the block, and is transmitted along with that block. The receiver performs the same calculation on the data it received and compares its result with the transmitted checksum. A mismatch shows the block has changed during transmission. Checksums are used to check larger blocks of data, whereas a parity bit is normally used to check one small unit, such as a byte, at a time."
+      },
+      {
+        "kind": "Content",
+        "label": "Checksums",
+        "text": "A checksum can be defeated by errors that cancel out, just as parity can, though this is less likely across a large block."
+      },
+      {
+        "kind": "Content",
+        "label": "Checksums",
+        "text": "Checksums are common in file transfers and network protocols, protecting an entire packet or file."
+      },
+      {
+        "kind": "Content",
+        "label": "Checksums",
+        "text": "Like parity, a checksum only detects that an error occurred; it does not correct it."
+      },
+      {
+        "kind": "Section",
+        "text": "Check digits"
+      },
+      {
+        "kind": "Content",
+        "label": "Check digits",
+        "text": "A check digit is an extra digit added to a code, calculated from the other digits using a fixed algorithm, and is used to detect data-entry errors such as a mistyped digit or two digits being transposed. When a code is entered or scanned, the system repeats the calculation on the digits received and compares the result with the check digit that was entered; a mismatch means the code has probably been entered incorrectly, and the record is rejected. Check digits are widely used in identifiers such as ISBNs and barcodes."
+      },
+      {
+        "kind": "Content",
+        "label": "Check digits",
+        "text": "A check digit catches most single-digit and transposition errors, which are the most common typing mistakes."
+      },
+      {
+        "kind": "Content",
+        "label": "Check digits",
+        "text": "A check digit cannot confirm the code refers to the correct, intended item, only that it is internally consistent."
+      },
+      {
+        "kind": "Content",
+        "label": "Check digits",
+        "text": "Different code systems use different algorithms; the calculation method must be agreed in advance."
+      },
+      {
+        "kind": "Example",
+        "label": "Check digits",
+        "text": "Code digits: 0 4 4 0 5 2 3 7 X (positions 1-9, X is the check digit to find)\n\nMultiply each digit by its weight (position counted from the left, 10 down to 2):\n0x10 + 4x9 + 4x8 + 0x7 + 5x6 + 2x5 + 3x4 + 7x3 = 0+36+32+0+30+10+12+21 = 141\n\nDivide the total by 11 and find the remainder: 141 / 11 = 12 remainder 9\nCheck digit = 11 - 9 = 2\n\nIf the calculated check digit is 10, the digit X is used instead\nThe completed code is: 0 4 4 0 5 2 3 7 2"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between validation and verification?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between validation and verification?",
+        "text": "Validation is an automated check that data meets defined rules, such as type, range or format; verification checks that data entered or copied matches its original source."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two examples of validation checks."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two examples of validation checks.",
+        "text": "Any two of: range check, length check, type check, presence check, format check, check digit, existence/lookup check."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why can validated data still be wrong?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why can validated data still be wrong?",
+        "text": "Validation only confirms the data is a reasonable, plausible value for its field; it cannot confirm the value is actually true or accurate."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe double data entry."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe double data entry.",
+        "text": "The same data is entered twice, independently, and the two entries are compared automatically; a mismatch flags a possible error for a person to resolve."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a parity bit used for?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a parity bit used for?",
+        "text": "An extra bit added to a unit of data so the total number of 1-bits is even or odd as agreed, letting a receiver detect single-bit transmission errors."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why can parity fail to detect an error?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why can parity fail to detect an error?",
+        "text": "If an even number of bits change, the total count of 1-bits is restored to the expected parity, so the error is not detected."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a check digit used for?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a check digit used for?",
+        "text": "An extra digit, calculated from the other digits in a code, added to detect data-entry errors such as mistyped or transposed digits."
       }
     ]
   },

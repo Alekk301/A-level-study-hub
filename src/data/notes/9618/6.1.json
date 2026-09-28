@@ -1,0 +1,294 @@
+{
+  "id": "6.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Data Security",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to identify security threats to data and systems, and to describe the defences used against each one. Answers score when a named threat is matched to a specific defence and the link between them is explained, rather than the two being listed separately.",
+  "syllabusPoints": [
+    "Identify and describe security threats to data and systems, including malware (viruses, worms, trojans, spyware, adware and ransomware), phishing, pharming, hacking and social engineering.",
+    "Describe methods used to help keep data safe from security threats, including access rights, anti-malware software, authentication, firewalls, encryption and privacy settings.",
+    "Explain how authentication techniques, including passwords, biometrics, two-step verification and digital certificates, help confirm the identity of a user.",
+    "Describe the role of a firewall (hardware or software) in controlling network traffic entering and leaving a system.",
+    "Show understanding of the need for physical security measures to protect hardware and data."
+  ],
+  "definitions": [
+    {
+      "term": "Malware",
+      "definition": "Malicious software designed to damage, disrupt or gain unauthorised access to a computer system, including viruses, worms, trojans, spyware, adware and ransomware."
+    },
+    {
+      "term": "Phishing",
+      "definition": "Sending fraudulent messages that appear to come from a trustworthy source, intended to trick the recipient into revealing personal data or clicking a malicious link."
+    },
+    {
+      "term": "Pharming",
+      "definition": "Malicious code that redirects a user from a legitimate website to a fake one without any action by the user, typically by corrupting DNS records or a local hosts file."
+    },
+    {
+      "term": "Social engineering",
+      "definition": "Manipulating people into breaking normal security procedures, for example by impersonating IT support or persuading someone to reveal a password."
+    },
+    {
+      "term": "Firewall",
+      "definition": "Hardware or software that monitors and controls incoming and outgoing network traffic according to a set of security rules."
+    },
+    {
+      "term": "Encryption",
+      "definition": "Scrambling data using an algorithm and a key so that it can only be read by someone who has the correct key to decrypt it."
+    },
+    {
+      "term": "Two-step verification",
+      "definition": "An authentication method that requires a second, independent piece of evidence, such as a one-time code sent to a registered device, in addition to a password."
+    },
+    {
+      "term": "Access rights",
+      "definition": "Permissions that determine what a logged-in user is allowed to view, change or run, following the principle of giving each user only what they need."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-data-needs-protecting",
+      "title": "Why data needs to be protected",
+      "content": [
+        "Data held by an organisation is valuable, and losing control of it can cause financial loss, identity theft, reputational damage and legal consequences under data protection legislation. Security threats can come from outside an organisation (hackers, malware, phishing) or from inside it (a careless or malicious employee), so defences must cover both technical controls and staff behaviour."
+      ],
+      "bullets": [
+        "A breach can expose personal data protected by law, leading to fines and loss of trust.",
+        "Some threats aim to steal data; others aim to damage or deny access to it.",
+        "No single defence is sufficient; systems use several layers together."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-malware",
+      "title": "Malware",
+      "content": [
+        "Malware is a general term for software designed to cause harm. A virus attaches itself to a host file or program and spreads only when a user runs the infected file. A worm is a standalone program that replicates itself and spreads across a network on its own, without needing a host file or any action from a user. A trojan horse disguises itself as legitimate, useful software but carries a hidden malicious payload, often opening a backdoor for an attacker. Spyware secretly monitors a user's activity and gathers data such as keystrokes or browsing habits. Adware displays unwanted adverts and may also track browsing behaviour. Ransomware encrypts a victim's files and demands payment for the key needed to decrypt them."
+      ],
+      "bullets": [
+        "Malware commonly enters a system through email attachments, infected downloads, removable media or compromised websites.",
+        "Anti-malware software scans for known malware signatures and suspicious behaviour, then quarantines or removes infected files.",
+        "Keeping anti-malware software and its signature database up to date is essential, because it cannot detect threats it does not recognise."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-phishing-pharming-social-engineering",
+      "title": "Phishing, pharming and social engineering",
+      "content": [
+        "Phishing relies on a message, often an email, that looks like it is from a trustworthy source and asks the user to click a link or reveal personal data such as a password. Pharming does not rely on the user being deceived by a message at all: malicious code corrupts DNS lookups or a device's hosts file so that typing a legitimate address still leads to a fake site. Social engineering is a wider category that exploits human behaviour rather than a technical weakness, for example an attacker phoning an employee, pretending to be IT support, and persuading them to reveal a password."
+      ],
+      "bullets": [
+        "Checking a sender's address and hovering over links before clicking helps identify phishing attempts.",
+        "Pharming can succeed even when a user types the correct web address themselves.",
+        "Staff training reduces social engineering risk because it targets people, not software."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-hacking-and-unauthorised-access",
+      "title": "Hacking and unauthorised access",
+      "content": [
+        "Hacking is gaining unauthorised access to a computer system, sometimes to view, steal, alter or destroy data, and sometimes simply to prove it can be done. Weak passwords, unpatched software and poorly configured networks make hacking easier. Once inside a system, an attacker with the same access as a legitimate user can be very difficult to distinguish from normal activity, which is why monitoring and logging matter alongside prevention."
+      ],
+      "bullets": [
+        "Regular software updates close known vulnerabilities before they can be exploited.",
+        "Strong, unique passwords make it harder for an attacker to guess or crack account credentials.",
+        "Logging user activity helps an organisation detect and investigate unauthorised access after the fact."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-authentication",
+      "title": "Authentication",
+      "content": [
+        "Authentication confirms that a user is who they claim to be. A password is a shared secret; its strength depends on length and the mixture of characters used, and it should not be a predictable word. Biometrics measure a physical characteristic, such as a fingerprint, retina pattern or face, that is very difficult to replicate, forget or share. Two-step verification adds a second, independent factor, such as a one-time code sent to a registered device, so a stolen password alone is not enough to log in. A digital certificate, issued by a trusted certificate authority, confirms the identity of a website or sender and enables encrypted communication with it."
+      ],
+      "bullets": [
+        "Authentication proves identity; access rights then decide what that identified user may do.",
+        "Combining factors (something you know, something you have, something you are) is stronger than any one alone.",
+        "A digital certificate lets a browser confirm it is really connected to the website it expects."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-access-rights-and-physical-security",
+      "title": "Access rights and physical security",
+      "content": [
+        "Access rights restrict what a logged-in user may view, edit or run, following the principle that each account should hold only the permissions it needs. This limits the damage a compromised account or a careless employee can cause. Physical security protects the hardware itself: locked server rooms, biometric door locks, CCTV, security guards and cable locks for portable devices all reduce the risk of theft, tampering or accidental damage."
+      ],
+      "bullets": [
+        "Different accounts can have different rights, for example only an administrator can install software or change permissions.",
+        "Physical theft of a device bypasses many software defences if its storage is not also encrypted.",
+        "Visitor sign-in and restricted areas are simple, effective physical controls."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-firewalls",
+      "title": "Firewalls",
+      "content": [
+        "A firewall sits between a trusted internal network and an untrusted external network, such as the internet, and monitors traffic passing between them. It checks each connection attempt against a set of rules, for example allowing or blocking traffic based on IP address, port number or protocol, and can be implemented in hardware, software, or both. Traffic that does not match an allowed rule is blocked and may be logged for later review."
+      ],
+      "bullets": [
+        "A firewall filters traffic; it does not inspect the meaning of the data inside an allowed connection.",
+        "Firewalls cannot stop threats carried inside traffic they are configured to allow, such as a phishing link in an email.",
+        "Both incoming and outgoing traffic can be filtered, which also helps contain an already-infected device."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-encryption-and-secure-protocols",
+      "title": "Encryption and secure protocols",
+      "content": [
+        "Encryption scrambles data using an algorithm and a key, so that anyone who intercepts it without the correct key sees only unreadable ciphertext. It protects the confidentiality of data in transit and in storage, even if a firewall or authentication has already been bypassed. Secure protocols such as SSL/TLS, shown as HTTPS in a browser's address bar, encrypt data sent between a device and a website. The detailed mechanics of encryption algorithms and digital certificates are covered further at A2 in topic 17.1."
+      ],
+      "bullets": [
+        "Encryption protects confidentiality; it does not by itself prevent data being intercepted, only prevent it being understood.",
+        "A padlock icon or 'https' indicates an encrypted connection, but does not guarantee the site itself is trustworthy.",
+        "Sensitive stored data can also be encrypted, so a stolen device does not expose readable files."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Common malware types",
+    "columns": [
+      "Malware",
+      "How it behaves",
+      "Typical harm"
+    ],
+    "rows": [
+      [
+        "Virus",
+        "Attaches to a host file and spreads when a user runs the infected file",
+        "Corrupts or deletes data, disrupts normal use"
+      ],
+      [
+        "Worm",
+        "Self-replicates and spreads across a network without a host file or user action",
+        "Consumes bandwidth and system resources, can carry a payload"
+      ],
+      [
+        "Trojan horse",
+        "Disguised as legitimate software",
+        "Opens a backdoor for an attacker or installs further malware"
+      ],
+      [
+        "Spyware",
+        "Runs hidden, monitors user activity",
+        "Steals passwords, browsing data or keystrokes"
+      ],
+      [
+        "Adware",
+        "Displays unwanted adverts, may track browsing",
+        "Disrupts use and can expose browsing habits"
+      ],
+      [
+        "Ransomware",
+        "Encrypts files on the device and connected drives",
+        "Data becomes unusable until a ransom is paid or a backup is restored"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "How a firewall filters traffic",
+    "type": "flow",
+    "nodes": [
+      "Traffic arrives from the internet",
+      "Firewall checks the traffic against its rule set",
+      "Traffic matching an allowed rule passes through",
+      "Traffic violating the rules is blocked and may be logged",
+      "Allowed traffic reaches the internal network"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "A phishing email leading to a compromised account",
+      "steps": [
+        "An email arrives that appears to be from a trusted bank",
+        "A link in the email opens a convincing but fake login page",
+        "The user enters their username and password on the fake page",
+        "The attacker captures the credentials and logs into the real account"
+      ],
+      "evaluation": "Checking sender addresses and links reduces the risk, but a well-crafted message can still fool a careful user, so two-step verification limits the damage even if a password is stolen."
+    },
+    {
+      "title": "Ransomware encrypting a shared drive",
+      "steps": [
+        "An employee opens an infected email attachment",
+        "The ransomware installs itself and begins encrypting files on the local disk",
+        "It also encrypts files on any connected network drives",
+        "A message demands payment for the decryption key"
+      ],
+      "evaluation": "Regular offline backups let the organisation restore its files without paying, while restricted access rights limit how many shared files a single infected account can reach."
+    },
+    {
+      "title": "A firewall blocking an unauthorised connection attempt",
+      "steps": [
+        "An external computer attempts to connect to a port used by an internal server",
+        "The firewall checks the connection attempt against its rule set",
+        "No rule allows that port from that external address",
+        "The connection is dropped and the attempt may be logged"
+      ],
+      "evaluation": "Firewalls stop many automated and unsolicited connection attempts, but cannot detect a threat disguised as traffic they are configured to allow, such as a phishing link opened by a user."
+    }
+  ],
+  "examTips": [
+    "Match each threat to a specific defence and explain the link, rather than listing threats and defences as two separate lists.",
+    "State what a piece of malware actually does, for example 'encrypts files and demands payment', rather than only naming it.",
+    "Distinguish phishing (a fraudulent message) from pharming (redirection via corrupted DNS or a hosts file) precisely.",
+    "When asked about authentication, explain why the method confirms identity, for example biometrics use a characteristic that is very hard to replicate."
+  ],
+  "commonMistakes": [
+    "Confusing a virus with a worm; a virus needs a host file and user action, a worm self-replicates across a network on its own.",
+    "Saying a firewall 'stops all attacks'; it only filters traffic against its rule set and cannot detect social engineering.",
+    "Describing phishing and pharming as the same technique.",
+    "Treating encryption as something that prevents data being intercepted, when it only prevents intercepted data being understood.",
+    "Confusing access rights (what a logged-in user may do) with authentication (proving who the user is)."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between a virus and a worm?",
+      "answer": "A virus attaches to a host file and needs a user to run that file to spread; a worm is a standalone program that replicates itself across a network without needing a host file or user action."
+    },
+    {
+      "question": "What does ransomware do?",
+      "answer": "It encrypts a victim's files and demands payment for the key needed to decrypt them."
+    },
+    {
+      "question": "What is phishing?",
+      "answer": "Sending fraudulent messages that appear to come from a trustworthy source to trick a user into revealing personal data or clicking a malicious link."
+    },
+    {
+      "question": "How does pharming differ from phishing?",
+      "answer": "Pharming redirects a user to a fake website without any action by the user, typically by corrupting DNS records or a hosts file, rather than relying on a message that tricks the user into clicking."
+    },
+    {
+      "question": "What is two-step verification?",
+      "answer": "An authentication method requiring a second, independent piece of evidence, such as a one-time code sent to a registered device, in addition to a password."
+    },
+    {
+      "question": "What does a firewall do?",
+      "answer": "It monitors and controls incoming and outgoing network traffic against a set of rules, blocking traffic that does not meet them."
+    },
+    {
+      "question": "Why are biometrics considered a strong authentication method?",
+      "answer": "They measure a physical characteristic unique to an individual, which is very difficult to copy, forget or share compared with a password."
+    },
+    {
+      "question": "Give two physical security measures that protect data.",
+      "answer": "Any two of: locked server rooms, biometric door locks, CCTV, security guards, cable locks for portable devices."
+    }
+  ],
+  "relatedTopics": [
+    "6.2",
+    "7.1",
+    "17.1",
+    "5.1"
+  ]
+}
