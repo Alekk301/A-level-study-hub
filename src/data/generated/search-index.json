@@ -9454,7 +9454,7 @@
     "unitTitle": "AS Theory",
     "topicId": "8.1",
     "title": "Database Concepts",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -9465,19 +9465,307 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Understand tables, records, fields, keys and relationships, and the basic idea behind normalisation."
+        "text": "Paper 1 asks candidates to explain why relational databases are used in place of flat-file systems, and to identify entities, attributes, keys and relationships from a given scenario. Answers score when a candidate can justify a design choice, such as why a foreign key is needed, rather than only naming database terms."
       },
       {
-        "kind": "Quick recall",
-        "text": "tables/records/fields"
+        "kind": "Definition",
+        "label": "Entity",
+        "text": "A distinct object, person or thing about which data is stored, such as a customer or a product; an entity becomes a table in a relational database."
       },
       {
-        "kind": "Quick recall",
-        "text": "keys/relationships"
+        "kind": "Definition",
+        "label": "Attribute",
+        "text": "A property of an entity that describes it, such as a customer's name or date of birth; an attribute becomes a field (column) in a table."
       },
       {
-        "kind": "Quick recall",
-        "text": "normalisation ideas"
+        "kind": "Definition",
+        "label": "Record",
+        "text": "A single row in a table, holding the complete set of field values for one occurrence of an entity."
+      },
+      {
+        "kind": "Definition",
+        "label": "Primary key",
+        "text": "A field, or combination of fields, that uniquely identifies each record in a table and cannot contain duplicate or null values."
+      },
+      {
+        "kind": "Definition",
+        "label": "Foreign key",
+        "text": "A field in one table that holds the primary key value of a related record in another table, creating a link (typically one-to-many) between the two tables."
+      },
+      {
+        "kind": "Definition",
+        "label": "Data redundancy",
+        "text": "Storing the same piece of data more than once in a database, which wastes storage and creates a risk of inconsistency when the data changes."
+      },
+      {
+        "kind": "Definition",
+        "label": "Data inconsistency",
+        "text": "A situation where duplicated data does not match across a database because only some of the copies were updated."
+      },
+      {
+        "kind": "Definition",
+        "label": "Normalisation",
+        "text": "The process of organising data into related tables to remove redundancy, so that each fact is stored once and linked using keys."
+      },
+      {
+        "kind": "Section",
+        "text": "Entities and attributes"
+      },
+      {
+        "kind": "Content",
+        "label": "Entities and attributes",
+        "text": "An entity is a distinct object, person or thing that an organisation needs to store data about, such as a Student, a Book or an Order. An attribute is a property that describes an entity, such as a student's name, date of birth or student number. Identifying the entities in a scenario, and the attributes that belong to each one, is the first step in designing a database, because each entity becomes a separate table and each of its attributes becomes a field in that table."
+      },
+      {
+        "kind": "Content",
+        "label": "Entities and attributes",
+        "text": "An entity represents a real-world thing the system needs to track, not a single fact about it."
+      },
+      {
+        "kind": "Content",
+        "label": "Entities and attributes",
+        "text": "Grouping attributes under the correct entity avoids mixing unrelated data in one table, for example keeping book details separate from borrower details."
+      },
+      {
+        "kind": "Content",
+        "label": "Entities and attributes",
+        "text": "The same real-world scenario can often be modelled as more than one entity, for example a Library system needing both a Book entity and a Member entity."
+      },
+      {
+        "kind": "Section",
+        "text": "From entities to tables, records and fields"
+      },
+      {
+        "kind": "Content",
+        "label": "From entities to tables, records and fields",
+        "text": "An entity is implemented as a table, its attributes become the table's fields (columns), and each individual occurrence of the entity, such as one specific student, is stored as a record (row) made up of a value for every field. For example, a Student entity with attributes StudentID, Name and DateOfBirth becomes a Student table with three fields, and each enrolled student is one record in that table with its own values for those three fields."
+      },
+      {
+        "kind": "Content",
+        "label": "From entities to tables, records and fields",
+        "text": "A table's structure (its fields and their data types) is fixed; the records within it change as data is added, edited or deleted."
+      },
+      {
+        "kind": "Content",
+        "label": "From entities to tables, records and fields",
+        "text": "Every record in a table has the same fields, even if some field values are left empty for a particular record."
+      },
+      {
+        "kind": "Content",
+        "label": "From entities to tables, records and fields",
+        "text": "Choosing an appropriate data type for each field (for example integer, text or date) constrains what can be stored and helps maintain data integrity."
+      },
+      {
+        "kind": "Section",
+        "text": "Primary keys"
+      },
+      {
+        "kind": "Content",
+        "label": "Primary keys",
+        "text": "A table needs a way to identify each record uniquely, because two records could otherwise have identical values in every other field, for example two students both named 'Sam Khan'. A primary key is a field, or combination of fields, chosen so that its value is unique for every record and is never left empty. Once chosen, the primary key is also what a foreign key in another table refers to in order to link related records together."
+      },
+      {
+        "kind": "Content",
+        "label": "Primary keys",
+        "text": "A primary key must be unique and not null for every record, so it reliably distinguishes one record from every other."
+      },
+      {
+        "kind": "Content",
+        "label": "Primary keys",
+        "text": "An existing attribute can be used as a primary key only if it is guaranteed to be unique, such as a StudentID; a name is not suitable because names can repeat."
+      },
+      {
+        "kind": "Content",
+        "label": "Primary keys",
+        "text": "A composite primary key combines two or more fields when no single field is unique on its own."
+      },
+      {
+        "kind": "Section",
+        "text": "Foreign keys and relationships"
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and relationships",
+        "text": "A foreign key is a field in one table that stores the primary key value of a related record in another table, creating a link between them. This is how a relational database represents a relationship without repeating the related data itself. Most relationships modelled at this level are one-to-many: one record in the 'one' table can relate to many records in the 'many' table, but each record in the 'many' table relates to only one record in the 'one' table. For example, one Borrower can have many Loan records, so the Loan table holds a foreign key BorrowerID referring back to the Borrower table's primary key."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and relationships",
+        "text": "The foreign key is placed on the 'many' side of a one-to-many relationship, referring back to the primary key on the 'one' side."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and relationships",
+        "text": "A foreign key value must match an existing primary key value in the related table, which is what keeps the link valid (referential integrity)."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and relationships",
+        "text": "Following the foreign key from a record lets a query retrieve the related record's data without storing it twice."
+      },
+      {
+        "kind": "Section",
+        "text": "Problems with flat-file systems"
+      },
+      {
+        "kind": "Content",
+        "label": "Problems with flat-file systems",
+        "text": "A flat-file system stores all of its data in a single table, even when that data describes more than one entity. This forces repeating groups of data to be duplicated in every record that needs them, for example storing a full Borrower's name and address in every Loan record for that borrower. This duplication causes data redundancy (the same fact stored many times, wasting storage) and creates the risk of data inconsistency, because if a borrower's address changes, every duplicated copy must be updated and a missed record leaves the data contradictory. A flat-file system also makes it harder to enforce data integrity, since there is no separate table structure or key relationship to check that data is entered consistently, and it typically supports only limited or no concurrent access, since the single file is more easily locked by one user at a time."
+      },
+      {
+        "kind": "Content",
+        "label": "Problems with flat-file systems",
+        "text": "Redundancy wastes storage space and makes updates slower, because one real-world change may require editing many records."
+      },
+      {
+        "kind": "Content",
+        "label": "Problems with flat-file systems",
+        "text": "Inconsistency arises specifically when only some duplicated copies of a fact are updated, leaving the data contradictory."
+      },
+      {
+        "kind": "Content",
+        "label": "Problems with flat-file systems",
+        "text": "A relational database avoids this by storing each fact once, in the table for the entity it describes, and linking tables with keys instead of duplicating data."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked example: splitting a flat-file table"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: splitting a flat-file table",
+        "text": "Consider a flat-file Loan table that records every book loan by storing BookTitle, BookAuthor, BorrowerName and BorrowerAddress directly in each loan record. If the same borrower takes out five books, their name and address are duplicated across all five records; if that borrower moves house, all five records must be found and updated, and missing even one leaves inconsistent data. Splitting this into two related tables solves the problem: a Borrower table holds BorrowerID (primary key), BorrowerName and BorrowerAddress once per borrower, and a Loan table holds LoanID (primary key), BookTitle, BookAuthor and BorrowerID (foreign key) referring back to the Borrower table. The borrower's details are now stored exactly once, no matter how many books they borrow, and a change to their address only needs to be made in a single record."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: splitting a flat-file table",
+        "text": "The repeating borrower details are removed from the Loan table and placed in their own Borrower table."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: splitting a flat-file table",
+        "text": "The foreign key BorrowerID in the Loan table replaces the duplicated name and address, linking each loan back to the correct borrower."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: splitting a flat-file table",
+        "text": "This is the core idea behind normalisation: remove repeating or duplicated data by moving it into a separate related table."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked example: splitting a flat-file table",
+        "text": "Flat-file Loan table (redundant):\nLoanID | BookTitle | BookAuthor | BorrowerName | BorrowerAddress\n1 | Dune | Herbert | A. Khan | 12 Elm Rd\n2 | 1984 | Orwell | A. Khan | 12 Elm Rd\n3 | Emma | Austen | A. Khan | 12 Elm Rd\n\nSplit into two related tables:\nBorrower table:\nBorrowerID (PK) | BorrowerName | BorrowerAddress\nB01 | A. Khan | 12 Elm Rd\n\nLoan table:\nLoanID (PK) | BookTitle | BookAuthor | BorrowerID (FK)\n1 | Dune | Herbert | B01\n2 | 1984 | Orwell | B01\n3 | Emma | Austen | B01\n\nBorrowerName and BorrowerAddress are now stored once; each loan links to it using the foreign key BorrowerID."
+      },
+      {
+        "kind": "Section",
+        "text": "The purpose of normalisation"
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of normalisation",
+        "text": "Normalisation is the process of organising the fields and tables of a relational database to minimise redundancy. Informally, it works by identifying repeating groups of data (like the borrower details repeated for every loan) and data that depends on only part of a key or on another non-key field, and moving that data into its own table, linked back using a key. The result is a set of smaller, related tables where each fact about an entity is stored in exactly one place. This directly solves the flat-file problems described above: because a fact is stored only once, there is nothing to keep inconsistent, updates only need to be made in one record, and storage is not wasted on duplicated data."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of normalisation",
+        "text": "Normalisation does not delete data; it reorganises where each fact is stored and links tables using primary and foreign keys."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of normalisation",
+        "text": "A normalised design trades off a small amount of extra work when retrieving data (the database must follow keys to join related tables) against a large reduction in redundancy and inconsistency risk."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of normalisation",
+        "text": "Well-normalised tables make it easier to maintain data integrity, since each fact has a single authoritative record."
+      },
+      {
+        "kind": "Section",
+        "text": "Entity-relationship (ER) diagrams"
+      },
+      {
+        "kind": "Content",
+        "label": "Entity-relationship (ER) diagrams",
+        "text": "An entity-relationship (ER) diagram is used to model the entities in a system and the relationships between them before the tables themselves are built. Each entity is shown as a labelled box, and a line connecting two entities shows that a relationship exists between them, typically annotated to show whether it is one-to-one, one-to-many or many-to-many. Producing an ER diagram first helps a designer confirm the entities and relationships are correct, and identify where foreign keys will be needed, before committing to the detailed table structure with fields and data types."
+      },
+      {
+        "kind": "Content",
+        "label": "Entity-relationship (ER) diagrams",
+        "text": "An ER diagram works at the level of entities and relationships, not individual fields or data types."
+      },
+      {
+        "kind": "Content",
+        "label": "Entity-relationship (ER) diagrams",
+        "text": "A one-to-many relationship on an ER diagram tells the designer that a foreign key is needed on the 'many' side of that relationship."
+      },
+      {
+        "kind": "Content",
+        "label": "Entity-relationship (ER) diagrams",
+        "text": "Designing the ER diagram before building tables helps catch a missing entity or an incorrect relationship early, when it is cheaper to fix."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between an entity and an attribute?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between an entity and an attribute?",
+        "text": "An entity is a distinct object or thing data is stored about, such as a Student; an attribute is a property that describes it, such as the student's name, and becomes a field in the entity's table."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why does a table need a primary key?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why does a table need a primary key?",
+        "text": "To uniquely identify each record, since a key must be unique and never empty for every record, distinguishing records that might otherwise share identical values in other fields."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a foreign key do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a foreign key do?",
+        "text": "It is a field in one table that stores the primary key value of a related record in another table, creating a relationship (typically one-to-many) between the two tables."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two problems caused by a flat-file system."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two problems caused by a flat-file system.",
+        "text": "Any two of: data redundancy, data inconsistency, poor data integrity, limited concurrent access."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the purpose of normalisation?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the purpose of normalisation?",
+        "text": "To remove data redundancy by organising data into related tables, so that each fact is stored once and linked using primary and foreign keys."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is an ER diagram used for?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is an ER diagram used for?",
+        "text": "To model the entities in a system and the relationships between them, before the detailed tables and fields are designed."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "In a one-to-many relationship between Borrower and Loan, which table holds the foreign key?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "In a one-to-many relationship between Borrower and Loan, which table holds the foreign key?",
+        "text": "The Loan table (the 'many' side) holds a foreign key referring back to the primary key of the Borrower table (the 'one' side)."
       }
     ]
   },
@@ -9493,7 +9781,7 @@
     "unitTitle": "AS Theory",
     "topicId": "8.2",
     "title": "Database Management Systems (DBMS)",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -9504,23 +9792,278 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Understand the DBMS's role in managing the data dictionary, access rights, backup/recovery and concurrent access."
+        "text": "Paper 1 asks candidates to explain what a DBMS does and why using one is an improvement over a flat-file system. Answers score when a named function of a DBMS, such as concurrency control or the data dictionary, is explained in terms of the specific problem it solves, rather than the DBMS being described only as 'software that manages a database'."
       },
       {
-        "kind": "Quick recall",
-        "text": "data dictionary"
+        "kind": "Definition",
+        "label": "Database management system (DBMS)",
+        "text": "Software that creates, maintains and controls access to a database, sitting between the user or application and the physical data stored on disk."
       },
       {
-        "kind": "Quick recall",
-        "text": "access rights"
+        "kind": "Definition",
+        "label": "Data dictionary",
+        "text": "Metadata held by a DBMS describing a database's tables, fields, data types, keys and the relationships between tables."
       },
       {
-        "kind": "Quick recall",
-        "text": "backup/recovery"
+        "kind": "Definition",
+        "label": "Data independence",
+        "text": "The separation of how data is physically stored from how an application accesses it, so that changes to physical storage do not require an application to be rewritten."
       },
       {
-        "kind": "Quick recall",
-        "text": "concurrency"
+        "kind": "Definition",
+        "label": "Concurrency control",
+        "text": "Techniques used by a DBMS to manage simultaneous access to a database by multiple users, so that their updates do not conflict or overwrite each other."
+      },
+      {
+        "kind": "Definition",
+        "label": "Record locking",
+        "text": "A concurrency control technique in which a DBMS temporarily prevents other users from editing a record while one user is updating it."
+      },
+      {
+        "kind": "Definition",
+        "label": "Access control",
+        "text": "Restrictions set by a DBMS that determine which users may view, add, edit or delete particular data."
+      },
+      {
+        "kind": "Definition",
+        "label": "Backup",
+        "text": "A separate copy of a database's data, taken regularly and stored securely, used to restore the database if the original data is lost or corrupted."
+      },
+      {
+        "kind": "Definition",
+        "label": "Recovery",
+        "text": "The process of restoring a database to a correct, usable state after a failure, using a backup and, where available, a log of transactions made since that backup."
+      },
+      {
+        "kind": "Section",
+        "text": "What a DBMS is"
+      },
+      {
+        "kind": "Content",
+        "label": "What a DBMS is",
+        "text": "A database management system (DBMS) is software that sits between the user or an application and the physical data files stored on disk. Rather than an application reading and writing raw data files directly, it sends requests to the DBMS, which is responsible for creating the database structure, storing and retrieving data on request, and controlling who is allowed to access it. This separation means the application only needs to know how to communicate with the DBMS, not the details of how or where the data is physically stored."
+      },
+      {
+        "kind": "Content",
+        "label": "What a DBMS is",
+        "text": "A DBMS is a layer of software, not the data itself or the application that uses it."
+      },
+      {
+        "kind": "Content",
+        "label": "What a DBMS is",
+        "text": "Examples include software such as MySQL, Oracle Database and Microsoft SQL Server."
+      },
+      {
+        "kind": "Content",
+        "label": "What a DBMS is",
+        "text": "Every request to create, read, update or delete data passes through the DBMS, which is what lets it enforce structure and rules consistently."
+      },
+      {
+        "kind": "Section",
+        "text": "The data dictionary"
+      },
+      {
+        "kind": "Content",
+        "label": "The data dictionary",
+        "text": "The data dictionary is metadata that the DBMS holds about the database itself: the names of its tables, the fields within each table, each field's data type and length, which fields are primary and foreign keys, and the relationships between tables. The DBMS consults the data dictionary whenever it processes a request, for example to check that a value being entered matches the field's defined data type, or to know which table a foreign key refers to. Keeping this information centrally means every part of the system uses the same definitions, rather than each application having its own separate understanding of the data's structure."
+      },
+      {
+        "kind": "Content",
+        "label": "The data dictionary",
+        "text": "The data dictionary describes the structure of the data ('data about data'), not the data records themselves."
+      },
+      {
+        "kind": "Content",
+        "label": "The data dictionary",
+        "text": "Validation rules, such as a field's data type or length, are enforced by checking against the data dictionary."
+      },
+      {
+        "kind": "Content",
+        "label": "The data dictionary",
+        "text": "Because the structure is defined once, centrally, it is far less likely that two applications interpret the same field inconsistently."
+      },
+      {
+        "kind": "Section",
+        "text": "Data independence"
+      },
+      {
+        "kind": "Content",
+        "label": "Data independence",
+        "text": "Data independence means that an application using a database does not need to be changed when the way data is physically stored changes, for example if the DBMS reorganises how records are stored on disk, adds an index, or moves data to different storage hardware. This is possible because the application communicates only with the DBMS, using the logical structure defined in the data dictionary, rather than reading the physical files directly. The DBMS is responsible for translating between the logical view the application uses and the physical storage underneath, so a change to the physical layer is handled entirely inside the DBMS."
+      },
+      {
+        "kind": "Content",
+        "label": "Data independence",
+        "text": "Without a DBMS, an application that reads physical files directly would need to be rewritten whenever the physical storage layout changed."
+      },
+      {
+        "kind": "Content",
+        "label": "Data independence",
+        "text": "Data independence reduces the cost and risk of maintaining a system, since storage can be optimised without touching application code."
+      },
+      {
+        "kind": "Content",
+        "label": "Data independence",
+        "text": "It relies on the application only ever interacting with the database through the DBMS, never bypassing it to access files directly."
+      },
+      {
+        "kind": "Section",
+        "text": "Concurrency control"
+      },
+      {
+        "kind": "Content",
+        "label": "Concurrency control",
+        "text": "Many users may need to access, and sometimes update, the same database at the same time. Without control, two users could read the same record, both make changes, and save them one after another, with the second save silently overwriting the first user's update as if it had never happened. A DBMS provides concurrency control to prevent this, commonly using record locking: when one user begins updating a record, the DBMS locks it so other users cannot update the same record until the first update is complete, after which the lock is released. This ensures updates are applied safely, without one user's work being lost because of another user's simultaneous edit."
+      },
+      {
+        "kind": "Content",
+        "label": "Concurrency control",
+        "text": "The problem concurrency control solves is specifically simultaneous updates conflicting, not simply many users reading data at once."
+      },
+      {
+        "kind": "Content",
+        "label": "Concurrency control",
+        "text": "Record locking is usually applied at the level of an individual record, so other records remain available to other users while one record is locked."
+      },
+      {
+        "kind": "Content",
+        "label": "Concurrency control",
+        "text": "Without concurrency control, a lost update can occur without either user being aware that their change was overwritten."
+      },
+      {
+        "kind": "Section",
+        "text": "Access control and security"
+      },
+      {
+        "kind": "Content",
+        "label": "Access control and security",
+        "text": "A DBMS controls what different users are permitted to do, typically by assigning each user account a set of access rights, such as read-only access to some tables, and read-and-write access to others, while other data remains completely hidden from that account. This follows the principle that a user should only be given the access their role actually requires. Centralising access control in the DBMS means every request is checked against the same set of permissions, rather than security being left to individual applications to enforce inconsistently."
+      },
+      {
+        "kind": "Content",
+        "label": "Access control and security",
+        "text": "Access rights can be set per user, per table, or even per field, depending on the DBMS."
+      },
+      {
+        "kind": "Content",
+        "label": "Access control and security",
+        "text": "Restricting access limits the damage that a compromised account or an honest mistake by a careless user can cause."
+      },
+      {
+        "kind": "Content",
+        "label": "Access control and security",
+        "text": "Because the DBMS enforces access control centrally, it applies consistently no matter which application or query is used to reach the data."
+      },
+      {
+        "kind": "Section",
+        "text": "Backup and recovery"
+      },
+      {
+        "kind": "Content",
+        "label": "Backup and recovery",
+        "text": "A DBMS supports taking regular backups: complete copies of the database's data, stored securely and separately from the live system, so that data is not permanently lost if the original is deleted, corrupted or damaged by a hardware failure. If a failure occurs, recovery is the process of restoring the database to a correct, usable state, normally by reloading the most recent backup and, where a transaction log is kept, reapplying any changes made since that backup so as little data as possible is lost. Backup and recovery protect against events a DBMS's other controls do not prevent, such as hardware failure, accidental deletion or a natural disaster affecting the server."
+      },
+      {
+        "kind": "Content",
+        "label": "Backup and recovery",
+        "text": "A backup only protects data that existed at the time it was taken; more frequent backups reduce how much data could be lost."
+      },
+      {
+        "kind": "Content",
+        "label": "Backup and recovery",
+        "text": "A transaction log recording changes since the last backup allows recovery to restore data right up to the point of failure, not only to the backup itself."
+      },
+      {
+        "kind": "Content",
+        "label": "Backup and recovery",
+        "text": "Backups should be stored somewhere separate from the live database, so the same failure cannot destroy both at once."
+      },
+      {
+        "kind": "Section",
+        "text": "DBMS-based systems compared with flat-file systems"
+      },
+      {
+        "kind": "Content",
+        "label": "DBMS-based systems compared with flat-file systems",
+        "text": "A flat-file system has no software layer managing shared structure, concurrent access or centralised security: each application that uses the file must handle these issues itself, or the problems described in topic 8.1, such as redundancy and inconsistency, go unchecked. A DBMS-based system directly addresses these weaknesses: the data dictionary and normalised table structure reduce redundancy and improve data integrity, concurrency control allows many users to work with the database safely at the same time, centralised access control restricts what each user may do, and built-in backup and recovery protect against data loss. The trade-off is that a DBMS is more complex software to set up, licence and maintain than a simple flat file, but for any system with multiple users or applications sharing data, this cost is normally justified by the reliability and control it provides."
+      },
+      {
+        "kind": "Content",
+        "label": "DBMS-based systems compared with flat-file systems",
+        "text": "A flat-file system leaves problems like redundancy, inconsistency and unmanaged concurrent access to be solved by each application separately, if at all."
+      },
+      {
+        "kind": "Content",
+        "label": "DBMS-based systems compared with flat-file systems",
+        "text": "A DBMS solves these problems once, centrally, and enforces the solution for every application that connects to it."
+      },
+      {
+        "kind": "Content",
+        "label": "DBMS-based systems compared with flat-file systems",
+        "text": "Choosing a DBMS over a flat-file system is usually justified whenever data is shared between multiple users or multiple applications."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a DBMS?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a DBMS?",
+        "text": "Software that creates, maintains and controls access to a database, sitting between the user or application and the physical data stored on disk."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does the data dictionary store?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does the data dictionary store?",
+        "text": "Metadata about the database's tables, fields, data types, keys and the relationships between tables."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is data independence?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is data independence?",
+        "text": "The separation of physical data storage from how an application accesses data, so the application does not need to change when the physical storage structure changes."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is concurrency control needed?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is concurrency control needed?",
+        "text": "To manage simultaneous access by multiple users so that their updates do not conflict or overwrite each other, for example using record locking."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two functions of a DBMS."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two functions of a DBMS.",
+        "text": "Any two of: maintaining the data dictionary, providing data independence, concurrency control, access control and security, backup and recovery."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a transaction log allow during recovery?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a transaction log allow during recovery?",
+        "text": "It allows changes made since the last backup to be reapplied, restoring the database up to the point just before the failure rather than only to the backup."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two advantages of a DBMS-based system over a flat-file system."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two advantages of a DBMS-based system over a flat-file system.",
+        "text": "Any two of: reduced redundancy, improved data integrity, controlled concurrent access, centralised security, structured backup and recovery."
       }
     ]
   },

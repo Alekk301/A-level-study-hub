@@ -926,7 +926,7 @@
               "keys/relationships",
               "normalisation ideas"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "8.2",
@@ -942,7 +942,7 @@
               "backup/recovery",
               "concurrency"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "8.3",

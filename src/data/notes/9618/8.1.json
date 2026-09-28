@@ -1,0 +1,287 @@
+{
+  "id": "8.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Database Concepts",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to explain why relational databases are used in place of flat-file systems, and to identify entities, attributes, keys and relationships from a given scenario. Answers score when a candidate can justify a design choice, such as why a foreign key is needed, rather than only naming database terms.",
+  "syllabusPoints": [
+    "Show understanding of the concept of an entity and its attributes, and how these map onto a database table as fields.",
+    "Show understanding of the need for a primary key to uniquely identify each record in a table.",
+    "Show understanding of how a foreign key is used to create a relationship between two tables.",
+    "Show understanding of the problems associated with flat-file systems, including data redundancy and data inconsistency.",
+    "Show understanding of the purpose of normalisation in removing data redundancy by organising data into related tables.",
+    "Show understanding of the use of entity-relationship (ER) diagrams to model entities and the relationships between them."
+  ],
+  "definitions": [
+    {
+      "term": "Entity",
+      "definition": "A distinct object, person or thing about which data is stored, such as a customer or a product; an entity becomes a table in a relational database."
+    },
+    {
+      "term": "Attribute",
+      "definition": "A property of an entity that describes it, such as a customer's name or date of birth; an attribute becomes a field (column) in a table."
+    },
+    {
+      "term": "Record",
+      "definition": "A single row in a table, holding the complete set of field values for one occurrence of an entity."
+    },
+    {
+      "term": "Primary key",
+      "definition": "A field, or combination of fields, that uniquely identifies each record in a table and cannot contain duplicate or null values."
+    },
+    {
+      "term": "Foreign key",
+      "definition": "A field in one table that holds the primary key value of a related record in another table, creating a link (typically one-to-many) between the two tables."
+    },
+    {
+      "term": "Data redundancy",
+      "definition": "Storing the same piece of data more than once in a database, which wastes storage and creates a risk of inconsistency when the data changes."
+    },
+    {
+      "term": "Data inconsistency",
+      "definition": "A situation where duplicated data does not match across a database because only some of the copies were updated."
+    },
+    {
+      "term": "Normalisation",
+      "definition": "The process of organising data into related tables to remove redundancy, so that each fact is stored once and linked using keys."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-entities-and-attributes",
+      "title": "Entities and attributes",
+      "content": [
+        "An entity is a distinct object, person or thing that an organisation needs to store data about, such as a Student, a Book or an Order. An attribute is a property that describes an entity, such as a student's name, date of birth or student number. Identifying the entities in a scenario, and the attributes that belong to each one, is the first step in designing a database, because each entity becomes a separate table and each of its attributes becomes a field in that table."
+      ],
+      "bullets": [
+        "An entity represents a real-world thing the system needs to track, not a single fact about it.",
+        "Grouping attributes under the correct entity avoids mixing unrelated data in one table, for example keeping book details separate from borrower details.",
+        "The same real-world scenario can often be modelled as more than one entity, for example a Library system needing both a Book entity and a Member entity."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-tables-records-and-fields",
+      "title": "From entities to tables, records and fields",
+      "content": [
+        "An entity is implemented as a table, its attributes become the table's fields (columns), and each individual occurrence of the entity, such as one specific student, is stored as a record (row) made up of a value for every field. For example, a Student entity with attributes StudentID, Name and DateOfBirth becomes a Student table with three fields, and each enrolled student is one record in that table with its own values for those three fields."
+      ],
+      "bullets": [
+        "A table's structure (its fields and their data types) is fixed; the records within it change as data is added, edited or deleted.",
+        "Every record in a table has the same fields, even if some field values are left empty for a particular record.",
+        "Choosing an appropriate data type for each field (for example integer, text or date) constrains what can be stored and helps maintain data integrity."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-primary-keys",
+      "title": "Primary keys",
+      "content": [
+        "A table needs a way to identify each record uniquely, because two records could otherwise have identical values in every other field, for example two students both named 'Sam Khan'. A primary key is a field, or combination of fields, chosen so that its value is unique for every record and is never left empty. Once chosen, the primary key is also what a foreign key in another table refers to in order to link related records together."
+      ],
+      "bullets": [
+        "A primary key must be unique and not null for every record, so it reliably distinguishes one record from every other.",
+        "An existing attribute can be used as a primary key only if it is guaranteed to be unique, such as a StudentID; a name is not suitable because names can repeat.",
+        "A composite primary key combines two or more fields when no single field is unique on its own."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-foreign-keys-and-relationships",
+      "title": "Foreign keys and relationships",
+      "content": [
+        "A foreign key is a field in one table that stores the primary key value of a related record in another table, creating a link between them. This is how a relational database represents a relationship without repeating the related data itself. Most relationships modelled at this level are one-to-many: one record in the 'one' table can relate to many records in the 'many' table, but each record in the 'many' table relates to only one record in the 'one' table. For example, one Borrower can have many Loan records, so the Loan table holds a foreign key BorrowerID referring back to the Borrower table's primary key."
+      ],
+      "bullets": [
+        "The foreign key is placed on the 'many' side of a one-to-many relationship, referring back to the primary key on the 'one' side.",
+        "A foreign key value must match an existing primary key value in the related table, which is what keeps the link valid (referential integrity).",
+        "Following the foreign key from a record lets a query retrieve the related record's data without storing it twice."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-problems-with-flat-file-systems",
+      "title": "Problems with flat-file systems",
+      "content": [
+        "A flat-file system stores all of its data in a single table, even when that data describes more than one entity. This forces repeating groups of data to be duplicated in every record that needs them, for example storing a full Borrower's name and address in every Loan record for that borrower. This duplication causes data redundancy (the same fact stored many times, wasting storage) and creates the risk of data inconsistency, because if a borrower's address changes, every duplicated copy must be updated and a missed record leaves the data contradictory. A flat-file system also makes it harder to enforce data integrity, since there is no separate table structure or key relationship to check that data is entered consistently, and it typically supports only limited or no concurrent access, since the single file is more easily locked by one user at a time."
+      ],
+      "bullets": [
+        "Redundancy wastes storage space and makes updates slower, because one real-world change may require editing many records.",
+        "Inconsistency arises specifically when only some duplicated copies of a fact are updated, leaving the data contradictory.",
+        "A relational database avoids this by storing each fact once, in the table for the entity it describes, and linking tables with keys instead of duplicating data."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-worked-example-splitting-a-flat-file",
+      "title": "Worked example: splitting a flat-file table",
+      "content": [
+        "Consider a flat-file Loan table that records every book loan by storing BookTitle, BookAuthor, BorrowerName and BorrowerAddress directly in each loan record. If the same borrower takes out five books, their name and address are duplicated across all five records; if that borrower moves house, all five records must be found and updated, and missing even one leaves inconsistent data. Splitting this into two related tables solves the problem: a Borrower table holds BorrowerID (primary key), BorrowerName and BorrowerAddress once per borrower, and a Loan table holds LoanID (primary key), BookTitle, BookAuthor and BorrowerID (foreign key) referring back to the Borrower table. The borrower's details are now stored exactly once, no matter how many books they borrow, and a change to their address only needs to be made in a single record."
+      ],
+      "bullets": [
+        "The repeating borrower details are removed from the Loan table and placed in their own Borrower table.",
+        "The foreign key BorrowerID in the Loan table replaces the duplicated name and address, linking each loan back to the correct borrower.",
+        "This is the core idea behind normalisation: remove repeating or duplicated data by moving it into a separate related table."
+      ],
+      "examples": [
+        {
+          "id": "e1-flat-file-vs-split",
+          "kind": "worked",
+          "label": "Flat-file table split into two related tables",
+          "content": "Flat-file Loan table (redundant):\nLoanID | BookTitle | BookAuthor | BorrowerName | BorrowerAddress\n1 | Dune | Herbert | A. Khan | 12 Elm Rd\n2 | 1984 | Orwell | A. Khan | 12 Elm Rd\n3 | Emma | Austen | A. Khan | 12 Elm Rd\n\nSplit into two related tables:\nBorrower table:\nBorrowerID (PK) | BorrowerName | BorrowerAddress\nB01 | A. Khan | 12 Elm Rd\n\nLoan table:\nLoanID (PK) | BookTitle | BookAuthor | BorrowerID (FK)\n1 | Dune | Herbert | B01\n2 | 1984 | Orwell | B01\n3 | Emma | Austen | B01\n\nBorrowerName and BorrowerAddress are now stored once; each loan links to it using the foreign key BorrowerID."
+        }
+      ]
+    },
+    {
+      "id": "07-normalisation",
+      "title": "The purpose of normalisation",
+      "content": [
+        "Normalisation is the process of organising the fields and tables of a relational database to minimise redundancy. Informally, it works by identifying repeating groups of data (like the borrower details repeated for every loan) and data that depends on only part of a key or on another non-key field, and moving that data into its own table, linked back using a key. The result is a set of smaller, related tables where each fact about an entity is stored in exactly one place. This directly solves the flat-file problems described above: because a fact is stored only once, there is nothing to keep inconsistent, updates only need to be made in one record, and storage is not wasted on duplicated data."
+      ],
+      "bullets": [
+        "Normalisation does not delete data; it reorganises where each fact is stored and links tables using primary and foreign keys.",
+        "A normalised design trades off a small amount of extra work when retrieving data (the database must follow keys to join related tables) against a large reduction in redundancy and inconsistency risk.",
+        "Well-normalised tables make it easier to maintain data integrity, since each fact has a single authoritative record."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-entity-relationship-diagrams",
+      "title": "Entity-relationship (ER) diagrams",
+      "content": [
+        "An entity-relationship (ER) diagram is used to model the entities in a system and the relationships between them before the tables themselves are built. Each entity is shown as a labelled box, and a line connecting two entities shows that a relationship exists between them, typically annotated to show whether it is one-to-one, one-to-many or many-to-many. Producing an ER diagram first helps a designer confirm the entities and relationships are correct, and identify where foreign keys will be needed, before committing to the detailed table structure with fields and data types."
+      ],
+      "bullets": [
+        "An ER diagram works at the level of entities and relationships, not individual fields or data types.",
+        "A one-to-many relationship on an ER diagram tells the designer that a foreign key is needed on the 'many' side of that relationship.",
+        "Designing the ER diagram before building tables helps catch a missing entity or an incorrect relationship early, when it is cheaper to fix."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Flat-file table vs relational tables for the same data",
+    "columns": [
+      "Aspect",
+      "Flat-file table",
+      "Relational (normalised) tables"
+    ],
+    "rows": [
+      [
+        "Repeated borrower details",
+        "Duplicated in every loan record for that borrower",
+        "Stored once in the Borrower table, linked by a foreign key"
+      ],
+      [
+        "Updating an address",
+        "Every duplicated record must be found and updated",
+        "Only the single record in the Borrower table is updated"
+      ],
+      [
+        "Risk if an update is missed",
+        "Data becomes inconsistent between duplicated copies",
+        "No duplicated copies exist, so this risk is removed"
+      ],
+      [
+        "Storage use",
+        "Wasted on repeated data",
+        "Each fact stored exactly once"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Modelling a one-to-many relationship with a foreign key",
+    "type": "flow",
+    "nodes": [
+      "Identify entities: Borrower and Loan",
+      "Give each table a primary key: BorrowerID and LoanID",
+      "Recognise the relationship: one Borrower can have many Loans",
+      "Add BorrowerID as a foreign key in the Loan table",
+      "Each Loan record now links back to exactly one Borrower record"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Detecting redundancy in a flat-file Loan table",
+      "steps": [
+        "A single Loan table stores BookTitle, BorrowerName and BorrowerAddress in every record",
+        "A borrower who takes out several books has their name and address repeated in every one of those records",
+        "The same borrower's address is changed after a house move",
+        "Only some of the duplicated records are updated, leaving the others showing the old address"
+      ],
+      "evaluation": "This is data inconsistency caused directly by redundancy; splitting the borrower's details into their own table with a foreign key link removes the duplication and the inconsistency risk it creates."
+    },
+    {
+      "title": "Choosing a primary key for a Student table",
+      "steps": [
+        "A Student table includes fields FirstName, LastName and StudentID",
+        "FirstName and LastName are checked and found to repeat across different students",
+        "StudentID is checked and confirmed to be unique and always present for every student",
+        "StudentID is selected as the primary key"
+      ],
+      "evaluation": "A primary key must guarantee uniqueness for every possible record, not just the current data, so a field that could plausibly repeat (like a name) is unsuitable even if no duplicates exist yet."
+    },
+    {
+      "title": "Adding a foreign key to link Loan records to Borrowers",
+      "steps": [
+        "A separate Borrower table is created with BorrowerID as its primary key",
+        "The Loan table is redesigned to remove BorrowerName and BorrowerAddress",
+        "A new field BorrowerID is added to the Loan table as a foreign key",
+        "Each Loan record is updated to hold the correct BorrowerID value matching a record in the Borrower table"
+      ],
+      "evaluation": "The foreign key recreates the link between a loan and its borrower without duplicating the borrower's details, but it only works correctly if every foreign key value matches an existing primary key value in the Borrower table."
+    }
+  ],
+  "examTips": [
+    "When asked to identify entities and attributes from a scenario, list the entities first, then assign each attribute to exactly one entity.",
+    "State clearly which field is the primary key and why it is unique for every record, not just that a table 'has a primary key'.",
+    "Explain a foreign key by naming both tables it links and which side of the relationship each table is on.",
+    "When explaining why normalisation is used, mention that it removes redundancy, which in turn prevents the specific inconsistency that redundancy causes."
+  ],
+  "commonMistakes": [
+    "Confusing an entity (a type of thing, such as Student) with a record (one specific occurrence, such as one particular student).",
+    "Choosing a non-unique attribute, such as a name, as a primary key.",
+    "Placing the foreign key on the 'one' side of a one-to-many relationship instead of the 'many' side.",
+    "Describing data redundancy and data inconsistency as the same problem, rather than redundancy being the duplication that creates the risk of inconsistency.",
+    "Saying normalisation 'deletes data', rather than explaining that it reorganises where each fact is stored, linked by keys."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between an entity and an attribute?",
+      "answer": "An entity is a distinct object or thing data is stored about, such as a Student; an attribute is a property that describes it, such as the student's name, and becomes a field in the entity's table."
+    },
+    {
+      "question": "Why does a table need a primary key?",
+      "answer": "To uniquely identify each record, since a key must be unique and never empty for every record, distinguishing records that might otherwise share identical values in other fields."
+    },
+    {
+      "question": "What does a foreign key do?",
+      "answer": "It is a field in one table that stores the primary key value of a related record in another table, creating a relationship (typically one-to-many) between the two tables."
+    },
+    {
+      "question": "Give two problems caused by a flat-file system.",
+      "answer": "Any two of: data redundancy, data inconsistency, poor data integrity, limited concurrent access."
+    },
+    {
+      "question": "What is the purpose of normalisation?",
+      "answer": "To remove data redundancy by organising data into related tables, so that each fact is stored once and linked using primary and foreign keys."
+    },
+    {
+      "question": "What is an ER diagram used for?",
+      "answer": "To model the entities in a system and the relationships between them, before the detailed tables and fields are designed."
+    },
+    {
+      "question": "In a one-to-many relationship between Borrower and Loan, which table holds the foreign key?",
+      "answer": "The Loan table (the 'many' side) holds a foreign key referring back to the primary key of the Borrower table (the 'one' side)."
+    }
+  ],
+  "relatedTopics": [
+    "8.2",
+    "8.3",
+    "9.2"
+  ]
+}
