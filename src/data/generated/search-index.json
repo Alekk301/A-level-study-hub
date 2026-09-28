@@ -10079,7 +10079,7 @@
     "unitTitle": "AS Theory",
     "topicId": "8.3",
     "title": "DDL and DML",
-    "contentDepth": "in-depth",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -10090,39 +10090,356 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "A focused revision guide to ddl and dml."
+        "text": "Paper 1 asks candidates to write or complete SQL statements that create a table's structure, and separately, SQL statements that retrieve, add, change or remove the data held in that structure. Answers score when a CREATE TABLE statement correctly names a PRIMARY KEY and a FOREIGN KEY, when a SELECT query's WHERE, ORDER BY, GROUP BY and JOIN clauses are written with the exact required syntax, and when the candidate can state the actual rows a given query returns against a given set of sample data, not just describe what the query does in words."
+      },
+      {
+        "kind": "Definition",
+        "label": "Data Definition Language (DDL)",
+        "text": "The subset of SQL statements that define or change a database's structure, such as CREATE TABLE, ALTER TABLE and DROP TABLE; DDL statements affect a table's design, not the data stored inside it."
+      },
+      {
+        "kind": "Definition",
+        "label": "Data Manipulation Language (DML)",
+        "text": "The subset of SQL statements that work with the data stored in a database's tables, such as SELECT, INSERT, UPDATE and DELETE; DML statements read or change data without altering the table's structure."
+      },
+      {
+        "kind": "Definition",
+        "label": "CREATE TABLE",
+        "text": "The DDL statement that defines a new table by listing its field names, each field's data type, and constraints such as PRIMARY KEY and FOREIGN KEY."
+      },
+      {
+        "kind": "Definition",
+        "label": "PRIMARY KEY",
+        "text": "A constraint named in CREATE TABLE stating that a field, or combination of fields, uniquely identifies each record in that table and cannot hold duplicate or null values."
+      },
+      {
+        "kind": "Definition",
+        "label": "FOREIGN KEY",
+        "text": "A constraint named in CREATE TABLE stating that a field's value must match a primary key value in a named related table, implemented as FOREIGN KEY (field) REFERENCES OtherTable(field)."
+      },
+      {
+        "kind": "Definition",
+        "label": "WHERE clause",
+        "text": "A clause added to SELECT, UPDATE or DELETE that restricts the statement to only the rows matching a given condition, instead of every row in the table."
+      },
+      {
+        "kind": "Definition",
+        "label": "JOIN ... ON",
+        "text": "A clause used in a SELECT statement to combine rows from two related tables, matching a foreign key in one table against the primary key it refers to in the other."
+      },
+      {
+        "kind": "Definition",
+        "label": "GROUP BY",
+        "text": "A clause that groups rows sharing the same value in a given column, so an aggregate function such as AVG or COUNT is calculated separately for each group rather than for the whole table."
       },
       {
         "kind": "Section",
-        "text": "Key SQL statements"
+        "text": "DDL versus DML"
       },
       {
         "kind": "Content",
-        "label": "Key SQL statements",
-        "text": "GROUP BY groups rows for aggregate functions (COUNT, SUM, AVG) — any non-aggregated column in SELECT must also appear in GROUP BY."
+        "label": "DDL versus DML",
+        "text": "SQL statements fall into two groups, distinguished by what they act on. Data Definition Language (DDL) statements define or change a database's structure: CREATE TABLE builds a new table, ALTER TABLE changes an existing table's structure (for example adding a field), and DROP TABLE removes a table and its structure entirely. Data Manipulation Language (DML) statements, by contrast, work with the data held inside tables whose structure already exists: SELECT retrieves data, INSERT adds new records, UPDATE changes existing records, and DELETE removes records. A useful test is to ask whether a statement changes what fields a table has (DDL) or changes which rows of data are present or returned (DML)."
+      },
+      {
+        "kind": "Content",
+        "label": "DDL versus DML",
+        "text": "DDL statements (CREATE TABLE, ALTER TABLE, DROP TABLE) define or change a table's structure."
+      },
+      {
+        "kind": "Content",
+        "label": "DDL versus DML",
+        "text": "DML statements (SELECT, INSERT, UPDATE, DELETE) read or change the data stored inside a table's existing structure."
+      },
+      {
+        "kind": "Content",
+        "label": "DDL versus DML",
+        "text": "Running a DROP TABLE statement removes both the table's structure and every record of data it held, since the structure no longer exists for the data to be stored in."
+      },
+      {
+        "kind": "Section",
+        "text": "CREATE TABLE: defining structure, keys and relationships"
+      },
+      {
+        "kind": "Content",
+        "label": "CREATE TABLE: defining structure, keys and relationships",
+        "text": "CREATE TABLE lists a new table's field names in order, giving each one a data type, and can include constraints such as PRIMARY KEY to name the field that uniquely identifies each record, and FOREIGN KEY ... REFERENCES to name a field that links to the primary key of another table. The worked example used throughout this topic defines a Student table and a related Mark table: each student has many marks, but each mark belongs to exactly one student, so the foreign key StudentID is placed in the Mark table (the 'many' side), referencing the primary key StudentID in the Student table (the 'one' side)."
+      },
+      {
+        "kind": "Content",
+        "label": "CREATE TABLE: defining structure, keys and relationships",
+        "text": "Once both CREATE TABLE statements have run, the database enforces this link: a Mark row can only be inserted if its StudentID value already exists as a StudentID in the Student table, which is what keeps the two tables' data consistent with each other."
+      },
+      {
+        "kind": "Content",
+        "label": "CREATE TABLE: defining structure, keys and relationships",
+        "text": "PRIMARY KEY inside CREATE TABLE names the field guaranteed to be unique and not null for every record in that table."
+      },
+      {
+        "kind": "Content",
+        "label": "CREATE TABLE: defining structure, keys and relationships",
+        "text": "FOREIGN KEY (field) REFERENCES OtherTable(field) names the field that must match a primary key value in another named table."
+      },
+      {
+        "kind": "Content",
+        "label": "CREATE TABLE: defining structure, keys and relationships",
+        "text": "A foreign key is defined on the 'many' side of a one-to-many relationship, referring back to the primary key on the 'one' side."
       },
       {
         "kind": "Example",
-        "label": "Key SQL statements",
-        "text": "SELECT column1, column2 FROM table WHERE condition ORDER BY column1;"
+        "label": "CREATE TABLE: defining structure, keys and relationships",
+        "text": "CREATE TABLE Student (\n  StudentID INTEGER PRIMARY KEY,\n  Name VARCHAR(30),\n  TutorGroup VARCHAR(5)\n);\n\nCREATE TABLE Mark (\n  MarkID INTEGER PRIMARY KEY,\n  StudentID INTEGER,\n  Subject VARCHAR(20),\n  Score INTEGER,\n  FOREIGN KEY (StudentID) REFERENCES Student(StudentID)\n);\n\n-- Sample data used in every query in this topic:\n-- Student: (1,'Aisha','A1'), (2,'Wei','A2'), (3,'Carlos','A1'), (4,'Fatima','A2')\n-- Mark: (1,1,'Maths',78), (2,2,'Maths',65), (3,1,'Physics',82), (4,3,'Maths',91), (5,4,'Maths',58)"
+      },
+      {
+        "kind": "Section",
+        "text": "Changing and removing structure: ALTER TABLE and DROP TABLE"
+      },
+      {
+        "kind": "Content",
+        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
+        "text": "ALTER TABLE changes an existing table's structure without needing to recreate it, most commonly to add a new field, for example ALTER TABLE Student ADD DateOfBirth DATE; adds a DateOfBirth field to every existing record in the Student table, with the new field left empty until a value is supplied for each student. DROP TABLE removes a table's structure entirely, along with every record of data it contained; DROP TABLE Mark; would permanently delete the Mark table and all five of its rows, and could not be undone by any DML statement, since the table's structure no longer exists for data to be recovered into."
+      },
+      {
+        "kind": "Content",
+        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
+        "text": "Because DROP TABLE is irreversible and destroys both structure and data, it is normally used only when a table is genuinely no longer needed, in contrast to DELETE, which removes rows of data but leaves the table's structure intact and ready to receive new records."
+      },
+      {
+        "kind": "Content",
+        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
+        "text": "ALTER TABLE ... ADD field datatype; adds a new field to an existing table's structure."
+      },
+      {
+        "kind": "Content",
+        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
+        "text": "DROP TABLE tablename; permanently removes a table's structure and every record it held."
+      },
+      {
+        "kind": "Content",
+        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
+        "text": "DROP TABLE is a DDL statement that removes structure and data together; DELETE is a DML statement that removes data only, leaving the table's structure in place."
+      },
+      {
+        "kind": "Section",
+        "text": "SELECT with WHERE and ORDER BY"
+      },
+      {
+        "kind": "Content",
+        "label": "SELECT with WHERE and ORDER BY",
+        "text": "A SELECT statement retrieves data from a table. A WHERE clause restricts the rows returned to only those matching a stated condition, and an ORDER BY clause sorts the returned rows by a named column, ascending by default. Applied to the Student table above, selecting only students in tutor group 'A1' and sorting the result alphabetically by name checks every row's TutorGroup value against the condition before the result is sorted."
+      },
+      {
+        "kind": "Content",
+        "label": "SELECT with WHERE and ORDER BY",
+        "text": "WHERE is evaluated for every row of the table; only rows for which the condition is TRUE are included in the result."
+      },
+      {
+        "kind": "Content",
+        "label": "SELECT with WHERE and ORDER BY",
+        "text": "ORDER BY sorts the rows that already matched WHERE; it does not itself filter any rows out."
+      },
+      {
+        "kind": "Content",
+        "label": "SELECT with WHERE and ORDER BY",
+        "text": "Text values used in a condition, such as 'A1', are written in quotes; numeric values, such as 78, are not."
       },
       {
         "kind": "Example",
-        "label": "Key SQL statements",
-        "text": "SELECT a.name, b.total FROM CustomersA a JOIN OrdersB b ON a.id = b.cust_id;"
+        "label": "SELECT with WHERE and ORDER BY",
+        "text": "SELECT Name FROM Student WHERE TutorGroup = 'A1' ORDER BY Name;\n\n-- Checking every Student row against TutorGroup = 'A1':\n-- (1,'Aisha','A1')  -> matches\n-- (2,'Wei','A2')    -> does not match\n-- (3,'Carlos','A1') -> matches\n-- (4,'Fatima','A2') -> does not match\n\n-- Matching rows sorted alphabetically by Name:\nName\n-----\nAisha\nCarlos"
+      },
+      {
+        "kind": "Section",
+        "text": "Aggregate functions and GROUP BY"
+      },
+      {
+        "kind": "Content",
+        "label": "Aggregate functions and GROUP BY",
+        "text": "An aggregate function calculates a single summary value from a set of rows: COUNT counts rows, SUM totals a numeric column, AVG calculates its average, and MIN and MAX find its smallest and largest values. Used alone, an aggregate function summarises the whole table; combined with GROUP BY, it calculates a separate summary for each distinct value in the grouped column. A strict rule governs this: every column named in the SELECT list that is not itself an aggregate function must also appear in the GROUP BY clause, because otherwise the database would not know which single value to display for a column that could differ between the several rows making up one group."
+      },
+      {
+        "kind": "Content",
+        "label": "Aggregate functions and GROUP BY",
+        "text": "Applied to the Mark table joined with Student, finding the average Maths score for each tutor group requires GROUP BY TutorGroup, and only TutorGroup (not, for example, Name) may appear un-aggregated in the SELECT list, because a tutor group such as 'A1' contains more than one student and therefore more than one possible Name."
+      },
+      {
+        "kind": "Content",
+        "label": "Aggregate functions and GROUP BY",
+        "text": "COUNT, SUM, AVG, MIN and MAX each reduce a set of rows to a single summary value."
+      },
+      {
+        "kind": "Content",
+        "label": "Aggregate functions and GROUP BY",
+        "text": "GROUP BY splits the table into groups sharing the same value in the grouped column before the aggregate function is applied to each group separately."
+      },
+      {
+        "kind": "Content",
+        "label": "Aggregate functions and GROUP BY",
+        "text": "Any column in the SELECT list that is not aggregated must also appear in GROUP BY, since it must have exactly one value per group for the result to make sense."
       },
       {
         "kind": "Example",
-        "label": "Key SQL statements",
-        "text": "INSERT INTO table (col1, col2) VALUES (val1, val2);\nUPDATE table SET col1 = val WHERE condition;\nDELETE FROM table WHERE condition;"
+        "label": "Aggregate functions and GROUP BY",
+        "text": "SELECT TutorGroup, AVG(Score) FROM Student JOIN Mark ON Student.StudentID = Mark.StudentID WHERE Subject = 'Maths' GROUP BY TutorGroup;\n\n-- Maths marks only, joined to each student's TutorGroup:\n-- Aisha  (A1) -> 78   (MarkID 1)\n-- Wei    (A2) -> 65   (MarkID 2)\n-- Carlos (A1) -> 91   (MarkID 4)\n-- Fatima (A2) -> 58   (MarkID 5)\n\n-- Grouped by TutorGroup:\n-- A1: (78 + 91) / 2 = 169 / 2 = 84.5\n-- A2: (65 + 58) / 2 = 123 / 2 = 61.5\n\nTutorGroup | AVG(Score)\n-----------|------------\nA1         | 84.5\nA2         | 61.5\n\n-- Invalid version of this query: SELECT TutorGroup, Name, AVG(Score) ... GROUP BY TutorGroup;\n-- is rejected (or ambiguous), because Name is not aggregated and does not appear in\n-- GROUP BY, yet group 'A1' alone contains two different Name values (Aisha and Carlos)."
       },
       {
-        "kind": "Quick recall",
-        "text": "definition/manipulation"
+        "kind": "Section",
+        "text": "Combining two tables with JOIN ... ON"
       },
       {
-        "kind": "Quick recall",
-        "text": "SQL-style SELECT/INSERT/UPDATE/DELETE"
+        "kind": "Content",
+        "label": "Combining two tables with JOIN ... ON",
+        "text": "A JOIN combines matching rows from two tables into a single result, using an ON condition that states how a row in one table is matched to a row in the other. For tables related by a foreign key, the ON condition matches the foreign key in the 'many' table to the primary key it refers to in the 'one' table, for example ON Student.StudentID = Mark.StudentID. Every Mark row is combined with the one Student row whose StudentID matches, producing a result that pairs each mark with the details of the student it belongs to, without ever storing the student's name inside the Mark table itself."
+      },
+      {
+        "kind": "Content",
+        "label": "Combining two tables with JOIN ... ON",
+        "text": "The ON condition should match the foreign key to the primary key it references; matching the wrong pair of columns produces incorrect or meaningless pairings."
+      },
+      {
+        "kind": "Content",
+        "label": "Combining two tables with JOIN ... ON",
+        "text": "A JOIN reads data from two tables at once; it does not change either table's stored data."
+      },
+      {
+        "kind": "Content",
+        "label": "Combining two tables with JOIN ... ON",
+        "text": "WHERE can be combined with JOIN ... ON to further filter the joined rows, for example restricting the result to one subject or one tutor group."
+      },
+      {
+        "kind": "Example",
+        "label": "Combining two tables with JOIN ... ON",
+        "text": "SELECT Student.Name, Mark.Score\nFROM Student JOIN Mark ON Student.StudentID = Mark.StudentID\nWHERE Student.TutorGroup = 'A1' AND Mark.Subject = 'Maths';\n\n-- Student rows in tutor group A1: Aisha (StudentID 1), Carlos (StudentID 3)\n-- Their Maths marks, matched by StudentID: Aisha -> MarkID 1 (78), Carlos -> MarkID 4 (91)\n\nName   | Score\n-------|------\nAisha  | 78\nCarlos | 91"
+      },
+      {
+        "kind": "Section",
+        "text": "INSERT INTO: adding new data"
+      },
+      {
+        "kind": "Content",
+        "label": "INSERT INTO: adding new data",
+        "text": "INSERT INTO adds a new record to an existing table, naming the fields being supplied and the values to store in them, in matching order. INSERT INTO does not create or change a table's structure; the table, and every field named, must already exist, which is why INSERT is DML rather than DDL. Adding a new Physics mark of 70 for Wei (StudentID 2) as MarkID 6 does not affect any of the five existing Mark records."
+      },
+      {
+        "kind": "Content",
+        "label": "INSERT INTO: adding new data",
+        "text": "INSERT INTO table (field1, field2, ...) VALUES (value1, value2, ...); adds exactly one new record per statement."
+      },
+      {
+        "kind": "Content",
+        "label": "INSERT INTO: adding new data",
+        "text": "The values supplied must be listed in the same order as the fields named, and must match each field's declared data type."
+      },
+      {
+        "kind": "Content",
+        "label": "INSERT INTO: adding new data",
+        "text": "A value inserted into a foreign key field must match an existing primary key value in the related table, or the insert is rejected."
+      },
+      {
+        "kind": "Example",
+        "label": "INSERT INTO: adding new data",
+        "text": "INSERT INTO Mark (MarkID, StudentID, Subject, Score)\nVALUES (6, 2, 'Physics', 70);\n\n-- The Mark table now holds a sixth row: (6, 2, 'Physics', 70)\n-- StudentID 2 already exists in the Student table (Wei), so the foreign key is valid."
+      },
+      {
+        "kind": "Section",
+        "text": "UPDATE and DELETE: changing and removing data"
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE: changing and removing data",
+        "text": "UPDATE changes the value of one or more fields in existing records, and DELETE removes existing records entirely; both should normally include a WHERE clause, since omitting it applies the statement to every single record in the table. Correcting a data-entry error in Wei's Maths score, and removing Fatima's Maths record entirely, both use a WHERE clause naming the specific record affected, leaving every other record in the Mark table completely unchanged."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE: changing and removing data",
+        "text": "UPDATE table SET field = value WHERE condition; changes the named field only in rows matching the condition."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE: changing and removing data",
+        "text": "DELETE FROM table WHERE condition; removes only the rows matching the condition, leaving the table's structure intact."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE: changing and removing data",
+        "text": "Omitting WHERE from UPDATE or DELETE applies the change, or the deletion, to every record in the table, which is rarely what is intended."
+      },
+      {
+        "kind": "Example",
+        "label": "UPDATE and DELETE: changing and removing data",
+        "text": "UPDATE Mark SET Score = 85 WHERE MarkID = 2;\n-- Wei's Maths mark (MarkID 2) changes from 65 to 85; the other four Mark rows are unaffected.\n\nDELETE FROM Mark WHERE StudentID = 4 AND Subject = 'Maths';\n-- Fatima's Maths mark (MarkID 5) is removed entirely; the Student table is unaffected,\n-- since DELETE removes rows from Mark only, not from the table it names."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between DDL and DML?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between DDL and DML?",
+        "text": "DDL statements define or change a database's structure (CREATE TABLE, ALTER TABLE, DROP TABLE); DML statements work with the data held inside tables whose structure already exists (SELECT, INSERT, UPDATE, DELETE)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does PRIMARY KEY do inside a CREATE TABLE statement?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does PRIMARY KEY do inside a CREATE TABLE statement?",
+        "text": "It names the field, or combination of fields, that must be unique and not null for every record, so each record can be uniquely identified."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does FOREIGN KEY (field) REFERENCES OtherTable(field) do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does FOREIGN KEY (field) REFERENCES OtherTable(field) do?",
+        "text": "It names a field whose value must match a primary key value in the named related table, creating and enforcing a link between the two tables."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the rule for columns in a SELECT list when GROUP BY is used?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the rule for columns in a SELECT list when GROUP BY is used?",
+        "text": "Every column in the SELECT list that is not an aggregate function must also appear in the GROUP BY clause, since it must have exactly one value for every group."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "For SELECT Name FROM Student WHERE TutorGroup = 'A1' ORDER BY Name; against the sample Student data, what rows are returned?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "For SELECT Name FROM Student WHERE TutorGroup = 'A1' ORDER BY Name; against the sample Student data, what rows are returned?",
+        "text": "Aisha, then Carlos, in alphabetical order — the only two students whose TutorGroup is 'A1'."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a JOIN ... ON condition typically match, when two tables are related by a foreign key?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a JOIN ... ON condition typically match, when two tables are related by a foreign key?",
+        "text": "The foreign key in the 'many' table against the primary key it references in the 'one' table, for example Student.StudentID = Mark.StudentID."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which three DML statements change the data stored in a table, and what does each do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which three DML statements change the data stored in a table, and what does each do?",
+        "text": "INSERT INTO adds a new record; UPDATE changes field values in existing records matching a condition; DELETE removes existing records matching a condition."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens if the WHERE clause is left out of an UPDATE or DELETE statement?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens if the WHERE clause is left out of an UPDATE or DELETE statement?",
+        "text": "The statement is applied to every record in the table, not just the intended one, since there is no condition restricting which rows it affects."
       }
     ]
   },
@@ -12276,7 +12593,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "11.1",
     "title": "Programming Basics",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -12287,19 +12604,317 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Use variables, constants, operators and input/output statements — the building blocks of any program."
+        "text": "Paper 1 asks candidates to write or complete short pseudocode fragments that declare variables and constants, assign and combine values with the correct arithmetic and string operators, and produce the correct output. Answers score when a variable or constant is declared with an appropriate, meaningful identifier, when the assignment operator <- is used correctly and never confused with the equality comparison =, when an expression's value is evaluated in the correct operator precedence order (using brackets where needed), and when a value entered with INPUT is explicitly converted to the right data type before it is used in a calculation."
       },
       {
-        "kind": "Quick recall",
-        "text": "variables/constants"
+        "kind": "Definition",
+        "label": "Variable",
+        "text": "A named storage location in memory whose value can be read and changed while the program runs; a variable is declared before use, typically with DECLARE identifier : datatype."
       },
       {
-        "kind": "Quick recall",
-        "text": "operators"
+        "kind": "Definition",
+        "label": "Constant",
+        "text": "A named value that is fixed for the entire run of a program once declared, using CONSTANT identifier = value; unlike a variable, a constant's value cannot be changed while the program is running."
       },
       {
-        "kind": "Quick recall",
-        "text": "input/output"
+        "kind": "Definition",
+        "label": "Identifier",
+        "text": "The name given to a variable, constant, procedure or function; a well-chosen identifier is meaningful (describes what it holds or does) and follows the naming rules of the language, such as containing no spaces."
+      },
+      {
+        "kind": "Definition",
+        "label": "Assignment statement",
+        "text": "A statement, written using <- in this specification's pseudocode, that stores the value on the right-hand side into the variable named on the left-hand side, overwriting whatever value that variable held before."
+      },
+      {
+        "kind": "Definition",
+        "label": "Equality comparison",
+        "text": "An operator, written =, that tests whether two values are equal, producing TRUE or FALSE; used inside a condition (such as IF or WHILE), it does not change either value, unlike the assignment operator <-."
+      },
+      {
+        "kind": "Definition",
+        "label": "DIV and MOD",
+        "text": "Integer arithmetic operators: DIV performs division and discards any remainder, returning only the whole-number quotient; MOD returns only the remainder left over after that same integer division."
+      },
+      {
+        "kind": "Definition",
+        "label": "Operator precedence",
+        "text": "The fixed order in which the operators within an expression are evaluated when no brackets are present: ^ (exponent) first, then * / DIV MOD, then + -, evaluated left to right within the same level; brackets are used to force a different order."
+      },
+      {
+        "kind": "Definition",
+        "label": "Concatenation",
+        "text": "Joining two or more strings together end to end to form one longer string, written using the & operator in this specification's pseudocode."
+      },
+      {
+        "kind": "Section",
+        "text": "Variables and constants"
+      },
+      {
+        "kind": "Content",
+        "label": "Variables and constants",
+        "text": "A variable is a named storage location whose value can change while a program runs, such as a running total that increases each time a new value is added to it. It is declared before use, stating its identifier and data type, for example DECLARE Total : INTEGER, and its value is then set or changed with assignment statements as the program executes. A constant, by contrast, is a named value that must stay fixed for the whole program once it has been declared, using CONSTANT identifier = value, for example CONSTANT VATRate = 0.2; a constant is used for a value that the program relies on repeatedly but which should never be accidentally changed while the program runs, such as a fixed tax rate or the number of days in a week."
+      },
+      {
+        "kind": "Content",
+        "label": "Variables and constants",
+        "text": "A variable's value can be read and changed as many times as needed while the program runs; a constant's value is fixed from the point it is declared."
+      },
+      {
+        "kind": "Content",
+        "label": "Variables and constants",
+        "text": "DECLARE identifier : datatype declares a variable; CONSTANT identifier = value declares a constant and gives it its one, unchanging value at the same time."
+      },
+      {
+        "kind": "Content",
+        "label": "Variables and constants",
+        "text": "Using a constant for a value that should never change (such as a tax rate) makes it impossible to accidentally overwrite that value elsewhere in the program."
+      },
+      {
+        "kind": "Section",
+        "text": "Choosing appropriate identifiers"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing appropriate identifiers",
+        "text": "An identifier is the name given to a variable, constant, procedure or function. A well-chosen identifier is meaningful, describing what the item actually holds or does, such as StudentAge rather than a vague name like X or a single letter, so that the program's purpose is clear to anyone reading it later, including the programmer themselves. An identifier must also follow the naming rules of the language being used, which commonly include starting with a letter, containing no spaces, and avoiding characters that are reserved for other purposes, such as punctuation used in the language's own syntax."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing appropriate identifiers",
+        "text": "A meaningful identifier, such as TotalScore, makes a program's purpose clear without needing extra comments to explain it."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing appropriate identifiers",
+        "text": "Identifiers in this specification's pseudocode cannot contain spaces; a multi-word name is usually written by joining the words, such as StudentName."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing appropriate identifiers",
+        "text": "Two different variables in the same program must always be given different identifiers, since the identifier is what a statement uses to refer to a specific variable."
+      },
+      {
+        "kind": "Section",
+        "text": "Assignment versus equality comparison"
+      },
+      {
+        "kind": "Content",
+        "label": "Assignment versus equality comparison",
+        "text": "The assignment statement, written with <- in this specification's pseudocode, stores the value on its right-hand side into the variable named on its left-hand side, overwriting any value that variable held before; for example, Total <- Total + 10 reads Total's current value, adds 10 to it, and stores the result back into Total. This is a different operation from the equality comparison, written with =, which tests whether two values are equal and produces TRUE or FALSE without changing either value; = is used inside a condition, such as IF Total = 100 THEN, to check Total's current value rather than to change it."
+      },
+      {
+        "kind": "Content",
+        "label": "Assignment versus equality comparison",
+        "text": "Confusing these two operators is a common and serious error: writing IF Total <- 100 THEN would assign 100 to Total rather than checking whether it already equals 100, silently changing the program's data instead of testing it."
+      },
+      {
+        "kind": "Content",
+        "label": "Assignment versus equality comparison",
+        "text": "<- assigns a value to a variable, changing what that variable holds; = compares two values, changing nothing."
+      },
+      {
+        "kind": "Content",
+        "label": "Assignment versus equality comparison",
+        "text": "= is used inside a condition (IF, WHILE, UNTIL) to test a value; <- is used in an assignment statement to set a value."
+      },
+      {
+        "kind": "Content",
+        "label": "Assignment versus equality comparison",
+        "text": "Writing <- where = was needed inside a condition silently changes a variable's value instead of testing it, which can be very difficult to spot when tracing a program."
+      },
+      {
+        "kind": "Section",
+        "text": "Basic input and output"
+      },
+      {
+        "kind": "Content",
+        "label": "Basic input and output",
+        "text": "INPUT reads a value typed in by the user while the program is running and stores it in a named variable, for example INPUT StudentName reads whatever the user types and stores it in the variable StudentName. OUTPUT displays a value, or several values, to the user, for example OUTPUT \"Name: \", StudentName displays the text 'Name: ' followed by the value currently stored in StudentName. A value read with INPUT is always stored as a string, whatever it conceptually represents, which matters when that value needs to be used in an arithmetic calculation."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic input and output",
+        "text": "INPUT identifier reads a value entered by the user and stores it in the named variable."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic input and output",
+        "text": "OUTPUT identifier, or OUTPUT with several comma-separated items, displays those values to the user."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic input and output",
+        "text": "A value read with INPUT is stored as a string, even if the user typed digits; using it as a number requires an explicit conversion first."
+      },
+      {
+        "kind": "Section",
+        "text": "Arithmetic operators and operator precedence"
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic operators and operator precedence",
+        "text": "This specification's pseudocode provides the arithmetic operators +, -, *, / (division), DIV (integer division, discarding the remainder), MOD (the remainder after integer division), and ^ (exponent, raising a number to a power). When an expression mixes several operators, they are not evaluated strictly left to right; instead they follow a fixed order of precedence: ^ is evaluated first, then * / DIV MOD (evaluated left to right among themselves), and finally + - (also evaluated left to right). Brackets can be used to override this order, since anything inside brackets is always evaluated before the result is used in the rest of the expression, regardless of what operators surround the brackets."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic operators and operator precedence",
+        "text": "Evaluating an expression correctly means applying this order carefully, one operation at a time, rather than assuming operators are applied in the order they are written."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic operators and operator precedence",
+        "text": "Order of precedence, highest to lowest: ^, then * / DIV MOD, then + -; operators at the same level are evaluated left to right."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic operators and operator precedence",
+        "text": "DIV and MOD have the same precedence as * and /, not the same as + and -."
+      },
+      {
+        "kind": "Content",
+        "label": "Arithmetic operators and operator precedence",
+        "text": "Brackets are evaluated before anything outside them and should be used whenever the intended order differs from standard precedence."
+      },
+      {
+        "kind": "Example",
+        "label": "Arithmetic operators and operator precedence",
+        "text": "Expression: 2 + 3 * 4 DIV 2\n\nStep 1: * and DIV are higher precedence than +, and are evaluated left to right first.\n         3 * 4 = 12\n         Expression is now: 2 + 12 DIV 2\n\nStep 2: DIV is evaluated next (same precedence level as *, next in left-to-right order).\n         12 DIV 2 = 6\n         Expression is now: 2 + 6\n\nStep 3: + is evaluated last.\n         2 + 6 = 8\n\nResult: 2 + 3 * 4 DIV 2 evaluates to 8.\n\n-- Compare with brackets forcing a different order:\n-- (2 + 3) * 4 DIV 2\n--   Step 1: (2 + 3) = 5   [brackets evaluated first]\n--   Step 2: 5 * 4 = 20\n--   Step 3: 20 DIV 2 = 10\n-- Result: (2 + 3) * 4 DIV 2 evaluates to 10, a different result from the un-bracketed expression."
+      },
+      {
+        "kind": "Section",
+        "text": "Basic string-handling operations"
+      },
+      {
+        "kind": "Content",
+        "label": "Basic string-handling operations",
+        "text": "This specification's pseudocode provides functions for working with strings: LENGTH(ThisString) returns the number of characters in ThisString; LEFT(ThisString, x) returns the leftmost x characters; RIGHT(ThisString, x) returns the rightmost x characters; and MID(ThisString, x, y) returns y characters starting at position x, counting from 1. Strings are joined together using concatenation, written with the & operator, for example FirstName & \" \" & LastName joins two strings with a space between them."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic string-handling operations",
+        "text": "These functions are commonly used together, for example to extract a fixed-format code's individual parts, or to build a formatted message by concatenating separate pieces of text and data together into one output string."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic string-handling operations",
+        "text": "LENGTH(ThisString) counts every character in ThisString, including spaces."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic string-handling operations",
+        "text": "LEFT and RIGHT extract characters from a fixed end of the string; MID extracts characters from any starting position, given a start position and a count."
+      },
+      {
+        "kind": "Content",
+        "label": "Basic string-handling operations",
+        "text": "& concatenates (joins) strings together; the values being joined must themselves be strings, or be converted to strings first."
+      },
+      {
+        "kind": "Example",
+        "label": "Basic string-handling operations",
+        "text": "DECLARE FullString : STRING\nFullString <- \"CAMBRIDGE\"\n\n// FullString, indexed from position 1:\n// C(1) A(2) M(3) B(4) R(5) I(6) D(7) G(8) E(9)\n\nOUTPUT LENGTH(FullString)        // 9  (the string has 9 characters)\nOUTPUT LEFT(FullString, 4)       // \"CAMB\"  (the leftmost 4 characters)\nOUTPUT RIGHT(FullString, 3)      // \"DGE\"   (the rightmost 3 characters)\nOUTPUT MID(FullString, 4, 5)     // \"BRIDG\" (5 characters starting at position 4: B,R,I,D,G)\n\nDECLARE FirstName, LastName, FullName : STRING\nFirstName <- \"Ada\"\nLastName <- \"Lovelace\"\nFullName <- FirstName & \" \" & LastName\nOUTPUT FullName                  // \"Ada Lovelace\""
+      },
+      {
+        "kind": "Section",
+        "text": "Converting between a string and a number"
+      },
+      {
+        "kind": "Content",
+        "label": "Converting between a string and a number",
+        "text": "A value read using INPUT is always stored as a string, even if the user types only digits, because INPUT has no way of knowing in advance whether the text entered is meant to be used as a number. If that value needs to be used in an arithmetic calculation, it must first be explicitly converted from a string to a numeric type, for example using a function such as INT(ThisString) to convert a string into an integer, before it is used in any calculation; the reverse conversion, from a number to a string, is needed when a numeric value must be concatenated with other text using &."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting between a string and a number",
+        "text": "A value from INPUT is a string; it must be explicitly converted, for example with INT(...), before it can be used in arithmetic."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting between a string and a number",
+        "text": "Attempting arithmetic directly on a string value causes a type error, or, in a language that allows it, silently produces the wrong result by treating the operation as concatenation instead of addition."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting between a string and a number",
+        "text": "Converting a number to a string is needed the other way round, whenever a numeric value must be joined with text using the & concatenation operator."
+      },
+      {
+        "kind": "Example",
+        "label": "Converting between a string and a number",
+        "text": "DECLARE InputText : STRING\nDECLARE Number, Total : INTEGER\n\nTotal <- 0\nOUTPUT \"Enter a number: \"\nINPUT InputText          // InputText now holds a STRING, e.g. \"25\", not an INTEGER\n\nNumber <- INT(InputText) // Number now holds the INTEGER 25, converted from the string\nTotal <- Total + Number  // valid: Total (INTEGER) + Number (INTEGER)\nOUTPUT Total              // 25\n\n// Total <- Total + InputText, using the un-converted string directly, would be invalid:\n// it combines an INTEGER (Total) with a STRING (InputText) instead of two INTEGER values."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a variable and a constant?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a variable and a constant?",
+        "text": "A variable's value can change while the program runs and is declared with DECLARE; a constant's value is fixed for the whole program once declared with CONSTANT and cannot be reassigned."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does the assignment operator <- do, and how does it differ from =?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does the assignment operator <- do, and how does it differ from =?",
+        "text": "<- stores the value on its right-hand side into the variable on its left, overwriting the variable's previous value; = tests whether two values are equal and is used inside a condition, without changing either value."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What do INPUT and OUTPUT do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What do INPUT and OUTPUT do?",
+        "text": "INPUT reads a value typed by the user and stores it, as a string, in a named variable; OUTPUT displays one or more values to the user."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What do the operators DIV and MOD calculate?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What do the operators DIV and MOD calculate?",
+        "text": "DIV performs integer division and discards the remainder (giving only the whole-number quotient); MOD returns only the remainder left over from that same division."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the order of operator precedence, from highest to lowest, and what overrides it?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the order of operator precedence, from highest to lowest, and what overrides it?",
+        "text": "^ first, then * / DIV MOD, then + -, each level evaluated left to right; brackets override this order and are always evaluated first."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "For the string \"CAMBRIDGE\", what do LENGTH, LEFT(...,4), RIGHT(...,3) and MID(...,4,5) each return?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "For the string \"CAMBRIDGE\", what do LENGTH, LEFT(...,4), RIGHT(...,3) and MID(...,4,5) each return?",
+        "text": "LENGTH returns 9; LEFT(...,4) returns \"CAMB\"; RIGHT(...,3) returns \"DGE\"; MID(...,4,5) returns \"BRIDG\" (5 characters starting at position 4)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How are two strings joined together in this specification's pseudocode?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How are two strings joined together in this specification's pseudocode?",
+        "text": "Using the concatenation operator &, for example FirstName & \" \" & LastName."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why must a value read with INPUT be converted before it is used in a calculation?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why must a value read with INPUT be converted before it is used in a calculation?",
+        "text": "Because INPUT always stores the entered value as a string, whatever it represents; it must be explicitly converted to a numeric type, for example with INT(...), before being used in arithmetic."
       }
     ]
   },

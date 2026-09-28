@@ -956,7 +956,7 @@
               "definition/manipulation",
               "SQL-style SELECT/INSERT/UPDATE/DELETE"
             ],
-            "contentDepth": "in-depth"
+            "contentDepth": "full"
           }
         ]
       },
@@ -1067,7 +1067,7 @@
               "operators",
               "input/output"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "11.2",

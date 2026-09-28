@@ -58,6 +58,7 @@ export const noteLoaders: Record<string, () => Promise<TopicNote>> = {
   "9618:10.2": () => import("./9618/10.2.json").then((module) => module.default as TopicNote),
   "9618:10.3": () => import("./9618/10.3.json").then((module) => module.default as TopicNote),
   "9618:10.4": () => import("./9618/10.4.json").then((module) => module.default as TopicNote),
+  "9618:11.1": () => import("./9618/11.1.json").then((module) => module.default as TopicNote),
   "9618:13.1": () => import("./9618/13.1.json").then((module) => module.default as TopicNote),
   "9618:13.2": () => import("./9618/13.2.json").then((module) => module.default as TopicNote),
   "9618:13.3": () => import("./9618/13.3.json").then((module) => module.default as TopicNote),

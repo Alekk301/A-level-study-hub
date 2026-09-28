@@ -1,0 +1,297 @@
+{
+  "id": "11.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Programming Basics",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to write or complete short pseudocode fragments that declare variables and constants, assign and combine values with the correct arithmetic and string operators, and produce the correct output. Answers score when a variable or constant is declared with an appropriate, meaningful identifier, when the assignment operator <- is used correctly and never confused with the equality comparison =, when an expression's value is evaluated in the correct operator precedence order (using brackets where needed), and when a value entered with INPUT is explicitly converted to the right data type before it is used in a calculation.",
+  "syllabusPoints": [
+    "Show understanding of the difference between a variable, whose value can change while a program runs, and a constant, whose value is fixed for the whole program once declared with CONSTANT.",
+    "Use appropriate, meaningful identifiers for variables and constants, following the naming rules of the language being used.",
+    "Use the assignment statement (<-) to store a value in a variable, and distinguish assignment from the equality comparison (=) used in a condition.",
+    "Use INPUT to read a value from the user into a variable, and OUTPUT to display a value.",
+    "Use arithmetic operators (+, -, *, /, DIV, MOD, ^) correctly, applying the standard order of operator precedence and using brackets to override it where needed.",
+    "Use basic string-handling operations, including LENGTH, LEFT, RIGHT, MID, concatenation with &, and converting between a string and a number."
+  ],
+  "definitions": [
+    {
+      "term": "Variable",
+      "definition": "A named storage location in memory whose value can be read and changed while the program runs; a variable is declared before use, typically with DECLARE identifier : datatype."
+    },
+    {
+      "term": "Constant",
+      "definition": "A named value that is fixed for the entire run of a program once declared, using CONSTANT identifier = value; unlike a variable, a constant's value cannot be changed while the program is running."
+    },
+    {
+      "term": "Identifier",
+      "definition": "The name given to a variable, constant, procedure or function; a well-chosen identifier is meaningful (describes what it holds or does) and follows the naming rules of the language, such as containing no spaces."
+    },
+    {
+      "term": "Assignment statement",
+      "definition": "A statement, written using <- in this specification's pseudocode, that stores the value on the right-hand side into the variable named on the left-hand side, overwriting whatever value that variable held before."
+    },
+    {
+      "term": "Equality comparison",
+      "definition": "An operator, written =, that tests whether two values are equal, producing TRUE or FALSE; used inside a condition (such as IF or WHILE), it does not change either value, unlike the assignment operator <-."
+    },
+    {
+      "term": "DIV and MOD",
+      "definition": "Integer arithmetic operators: DIV performs division and discards any remainder, returning only the whole-number quotient; MOD returns only the remainder left over after that same integer division."
+    },
+    {
+      "term": "Operator precedence",
+      "definition": "The fixed order in which the operators within an expression are evaluated when no brackets are present: ^ (exponent) first, then * / DIV MOD, then + -, evaluated left to right within the same level; brackets are used to force a different order."
+    },
+    {
+      "term": "Concatenation",
+      "definition": "Joining two or more strings together end to end to form one longer string, written using the & operator in this specification's pseudocode."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-variables-and-constants",
+      "title": "Variables and constants",
+      "content": [
+        "A variable is a named storage location whose value can change while a program runs, such as a running total that increases each time a new value is added to it. It is declared before use, stating its identifier and data type, for example DECLARE Total : INTEGER, and its value is then set or changed with assignment statements as the program executes. A constant, by contrast, is a named value that must stay fixed for the whole program once it has been declared, using CONSTANT identifier = value, for example CONSTANT VATRate = 0.2; a constant is used for a value that the program relies on repeatedly but which should never be accidentally changed while the program runs, such as a fixed tax rate or the number of days in a week."
+      ],
+      "bullets": [
+        "A variable's value can be read and changed as many times as needed while the program runs; a constant's value is fixed from the point it is declared.",
+        "DECLARE identifier : datatype declares a variable; CONSTANT identifier = value declares a constant and gives it its one, unchanging value at the same time.",
+        "Using a constant for a value that should never change (such as a tax rate) makes it impossible to accidentally overwrite that value elsewhere in the program."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-choosing-identifiers",
+      "title": "Choosing appropriate identifiers",
+      "content": [
+        "An identifier is the name given to a variable, constant, procedure or function. A well-chosen identifier is meaningful, describing what the item actually holds or does, such as StudentAge rather than a vague name like X or a single letter, so that the program's purpose is clear to anyone reading it later, including the programmer themselves. An identifier must also follow the naming rules of the language being used, which commonly include starting with a letter, containing no spaces, and avoiding characters that are reserved for other purposes, such as punctuation used in the language's own syntax."
+      ],
+      "bullets": [
+        "A meaningful identifier, such as TotalScore, makes a program's purpose clear without needing extra comments to explain it.",
+        "Identifiers in this specification's pseudocode cannot contain spaces; a multi-word name is usually written by joining the words, such as StudentName.",
+        "Two different variables in the same program must always be given different identifiers, since the identifier is what a statement uses to refer to a specific variable."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-assignment-versus-equality",
+      "title": "Assignment versus equality comparison",
+      "content": [
+        "The assignment statement, written with <- in this specification's pseudocode, stores the value on its right-hand side into the variable named on its left-hand side, overwriting any value that variable held before; for example, Total <- Total + 10 reads Total's current value, adds 10 to it, and stores the result back into Total. This is a different operation from the equality comparison, written with =, which tests whether two values are equal and produces TRUE or FALSE without changing either value; = is used inside a condition, such as IF Total = 100 THEN, to check Total's current value rather than to change it.",
+        "Confusing these two operators is a common and serious error: writing IF Total <- 100 THEN would assign 100 to Total rather than checking whether it already equals 100, silently changing the program's data instead of testing it."
+      ],
+      "bullets": [
+        "<- assigns a value to a variable, changing what that variable holds; = compares two values, changing nothing.",
+        "= is used inside a condition (IF, WHILE, UNTIL) to test a value; <- is used in an assignment statement to set a value.",
+        "Writing <- where = was needed inside a condition silently changes a variable's value instead of testing it, which can be very difficult to spot when tracing a program."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-input-and-output",
+      "title": "Basic input and output",
+      "content": [
+        "INPUT reads a value typed in by the user while the program is running and stores it in a named variable, for example INPUT StudentName reads whatever the user types and stores it in the variable StudentName. OUTPUT displays a value, or several values, to the user, for example OUTPUT \"Name: \", StudentName displays the text 'Name: ' followed by the value currently stored in StudentName. A value read with INPUT is always stored as a string, whatever it conceptually represents, which matters when that value needs to be used in an arithmetic calculation."
+      ],
+      "bullets": [
+        "INPUT identifier reads a value entered by the user and stores it in the named variable.",
+        "OUTPUT identifier, or OUTPUT with several comma-separated items, displays those values to the user.",
+        "A value read with INPUT is stored as a string, even if the user typed digits; using it as a number requires an explicit conversion first."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-arithmetic-operators-and-precedence",
+      "title": "Arithmetic operators and operator precedence",
+      "content": [
+        "This specification's pseudocode provides the arithmetic operators +, -, *, / (division), DIV (integer division, discarding the remainder), MOD (the remainder after integer division), and ^ (exponent, raising a number to a power). When an expression mixes several operators, they are not evaluated strictly left to right; instead they follow a fixed order of precedence: ^ is evaluated first, then * / DIV MOD (evaluated left to right among themselves), and finally + - (also evaluated left to right). Brackets can be used to override this order, since anything inside brackets is always evaluated before the result is used in the rest of the expression, regardless of what operators surround the brackets.",
+        "Evaluating an expression correctly means applying this order carefully, one operation at a time, rather than assuming operators are applied in the order they are written."
+      ],
+      "bullets": [
+        "Order of precedence, highest to lowest: ^, then * / DIV MOD, then + -; operators at the same level are evaluated left to right.",
+        "DIV and MOD have the same precedence as * and /, not the same as + and -.",
+        "Brackets are evaluated before anything outside them and should be used whenever the intended order differs from standard precedence."
+      ],
+      "examples": [
+        {
+          "id": "05-precedence-worked",
+          "kind": "worked",
+          "label": "Worked example: evaluating 2 + 3 * 4 DIV 2 step by step",
+          "content": "Expression: 2 + 3 * 4 DIV 2\n\nStep 1: * and DIV are higher precedence than +, and are evaluated left to right first.\n         3 * 4 = 12\n         Expression is now: 2 + 12 DIV 2\n\nStep 2: DIV is evaluated next (same precedence level as *, next in left-to-right order).\n         12 DIV 2 = 6\n         Expression is now: 2 + 6\n\nStep 3: + is evaluated last.\n         2 + 6 = 8\n\nResult: 2 + 3 * 4 DIV 2 evaluates to 8.\n\n-- Compare with brackets forcing a different order:\n-- (2 + 3) * 4 DIV 2\n--   Step 1: (2 + 3) = 5   [brackets evaluated first]\n--   Step 2: 5 * 4 = 20\n--   Step 3: 20 DIV 2 = 10\n-- Result: (2 + 3) * 4 DIV 2 evaluates to 10, a different result from the un-bracketed expression."
+        }
+      ]
+    },
+    {
+      "id": "06-string-handling-operations",
+      "title": "Basic string-handling operations",
+      "content": [
+        "This specification's pseudocode provides functions for working with strings: LENGTH(ThisString) returns the number of characters in ThisString; LEFT(ThisString, x) returns the leftmost x characters; RIGHT(ThisString, x) returns the rightmost x characters; and MID(ThisString, x, y) returns y characters starting at position x, counting from 1. Strings are joined together using concatenation, written with the & operator, for example FirstName & \" \" & LastName joins two strings with a space between them.",
+        "These functions are commonly used together, for example to extract a fixed-format code's individual parts, or to build a formatted message by concatenating separate pieces of text and data together into one output string."
+      ],
+      "bullets": [
+        "LENGTH(ThisString) counts every character in ThisString, including spaces.",
+        "LEFT and RIGHT extract characters from a fixed end of the string; MID extracts characters from any starting position, given a start position and a count.",
+        "& concatenates (joins) strings together; the values being joined must themselves be strings, or be converted to strings first."
+      ],
+      "examples": [
+        {
+          "id": "06-string-functions-worked",
+          "kind": "worked",
+          "label": "Worked example: LENGTH, LEFT, RIGHT and MID applied to \"CAMBRIDGE\"",
+          "content": "DECLARE FullString : STRING\nFullString <- \"CAMBRIDGE\"\n\n// FullString, indexed from position 1:\n// C(1) A(2) M(3) B(4) R(5) I(6) D(7) G(8) E(9)\n\nOUTPUT LENGTH(FullString)        // 9  (the string has 9 characters)\nOUTPUT LEFT(FullString, 4)       // \"CAMB\"  (the leftmost 4 characters)\nOUTPUT RIGHT(FullString, 3)      // \"DGE\"   (the rightmost 3 characters)\nOUTPUT MID(FullString, 4, 5)     // \"BRIDG\" (5 characters starting at position 4: B,R,I,D,G)\n\nDECLARE FirstName, LastName, FullName : STRING\nFirstName <- \"Ada\"\nLastName <- \"Lovelace\"\nFullName <- FirstName & \" \" & LastName\nOUTPUT FullName                  // \"Ada Lovelace\""
+        }
+      ]
+    },
+    {
+      "id": "07-converting-between-string-and-number",
+      "title": "Converting between a string and a number",
+      "content": [
+        "A value read using INPUT is always stored as a string, even if the user types only digits, because INPUT has no way of knowing in advance whether the text entered is meant to be used as a number. If that value needs to be used in an arithmetic calculation, it must first be explicitly converted from a string to a numeric type, for example using a function such as INT(ThisString) to convert a string into an integer, before it is used in any calculation; the reverse conversion, from a number to a string, is needed when a numeric value must be concatenated with other text using &."
+      ],
+      "bullets": [
+        "A value from INPUT is a string; it must be explicitly converted, for example with INT(...), before it can be used in arithmetic.",
+        "Attempting arithmetic directly on a string value causes a type error, or, in a language that allows it, silently produces the wrong result by treating the operation as concatenation instead of addition.",
+        "Converting a number to a string is needed the other way round, whenever a numeric value must be joined with text using the & concatenation operator."
+      ],
+      "examples": [
+        {
+          "id": "07-string-to-number-worked",
+          "kind": "worked",
+          "label": "Worked example: converting a string read by INPUT before using it in arithmetic",
+          "content": "DECLARE InputText : STRING\nDECLARE Number, Total : INTEGER\n\nTotal <- 0\nOUTPUT \"Enter a number: \"\nINPUT InputText          // InputText now holds a STRING, e.g. \"25\", not an INTEGER\n\nNumber <- INT(InputText) // Number now holds the INTEGER 25, converted from the string\nTotal <- Total + Number  // valid: Total (INTEGER) + Number (INTEGER)\nOUTPUT Total              // 25\n\n// Total <- Total + InputText, using the un-converted string directly, would be invalid:\n// it combines an INTEGER (Total) with a STRING (InputText) instead of two INTEGER values."
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Variable vs constant",
+    "columns": [
+      "Aspect",
+      "Variable",
+      "Constant"
+    ],
+    "rows": [
+      [
+        "Declared with",
+        "DECLARE identifier : datatype",
+        "CONSTANT identifier = value"
+      ],
+      [
+        "Value during execution",
+        "Can be changed as many times as needed",
+        "Fixed from the moment it is declared; cannot be reassigned"
+      ],
+      [
+        "Set using",
+        "Assignment (<-) or INPUT, at any point after declaration",
+        "Given its one value at the point it is declared"
+      ],
+      [
+        "Typical use",
+        "A running total, a counter, a value entered by the user",
+        "A fixed value used repeatedly, such as a tax rate or a maximum array size"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "The basic shape of a simple program",
+    "type": "flow",
+    "nodes": [
+      "DECLARE variables and CONSTANTs with meaningful identifiers",
+      "INPUT reads data typed by the user into a variable, as a string",
+      "Assignment (<-) stores a computed or converted value in a variable",
+      "Arithmetic expressions are evaluated following operator precedence, using brackets where needed",
+      "String operations extract or combine substrings using LEFT, RIGHT, MID and &",
+      "OUTPUT displays the final result to the user"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Diagnosing assignment used where a comparison was needed",
+      "steps": [
+        "A candidate wants to check whether the variable Age already equals 18 inside a condition, and writes IF Age <- 18 THEN",
+        "<- is the assignment operator, so this line stores the value 18 into Age rather than comparing Age's existing value against 18",
+        "Tracing the program shows Age is set to exactly 18 immediately before the condition is evaluated, whatever value Age held beforehand, and the condition itself is then always TRUE",
+        "Rewriting the line as IF Age = 18 THEN, using the equality comparison operator, correctly tests Age's existing value without changing it"
+      ],
+      "evaluation": "Assignment (<-) changes a variable's value; equality comparison (=) only tests it. Using <- inside a condition silently overwrites the variable being tested, producing a condition that is always true and destroying the value that should have been checked."
+    },
+    {
+      "title": "Diagnosing a wrong result caused by missing brackets",
+      "steps": [
+        "A candidate wants the average of three scores, Score1 = 60, Score2 = 70 and Score3 = 90, and writes Average <- Score1 + Score2 + Score3 / 3",
+        "Division (/) has higher precedence than addition (+), so / is evaluated before either +",
+        "Tracing this: Score3 / 3 = 90 / 3 = 30 is calculated first, then Score1 + Score2 + 30 = 60 + 70 + 30 = 160 is calculated, giving Average = 160",
+        "Rewriting the expression as Average <- (Score1 + Score2 + Score3) / 3 forces the three scores to be added first because of the brackets: (60 + 70 + 90) / 3 = 220 / 3 = 73.33 (2 d.p.)"
+      ],
+      "evaluation": "Without brackets, standard operator precedence evaluates / before +, so an expression that needs addition to happen first must use brackets to force that order; omitting them silently produces a plausible-looking but wrong result rather than an error the program would flag."
+    },
+    {
+      "title": "Diagnosing a type error from an un-converted INPUT value",
+      "steps": [
+        "A program declares Total : INTEGER and InputText : STRING, then executes INPUT InputText to read a number the user types",
+        "The user types 25, so InputText now holds the string \"25\", not the integer 25",
+        "The program then executes Total <- Total + InputText without first converting InputText",
+        "This is checked against the data types involved: Total is declared INTEGER, but InputText is a STRING, so Total + InputText combines two different data types directly"
+      ],
+      "evaluation": "INPUT always stores what is entered as a string, so a value that will be used in arithmetic must be explicitly converted first, for example Number <- INT(InputText) followed by Total <- Total + Number; skipping this conversion causes a type error, or, in a language that permits it, silently and incorrectly concatenates the values as text instead of adding them numerically."
+    }
+  ],
+  "examTips": [
+    "Use <- for every assignment statement and = only for equality comparison inside a condition; never interchange the two, even under time pressure.",
+    "Add brackets whenever the order needed differs from standard operator precedence; do not assume a marker, or the computer, will infer the intended order from how the expression is written.",
+    "Declare a fixed value that must never change during execution as a CONSTANT, not a variable, and be ready to explain why that protects the program from an accidental change.",
+    "When a value has been read with INPUT and is needed in a calculation, show the explicit conversion step, such as INT(...), rather than using the string value directly."
+  ],
+  "commonMistakes": [
+    "Writing <- inside a condition where = (equality comparison) was needed, silently changing the variable being tested instead of checking it.",
+    "Choosing a vague, non-meaningful identifier, or one that breaks the language's naming rules, such as an identifier containing a space.",
+    "Applying operators strictly left to right instead of following operator precedence, and omitting brackets that were needed to force the intended order.",
+    "Confusing DIV (integer division, discarding the remainder) with ordinary division /, for example expecting 7 DIV 2 to give 3.5 instead of 3.",
+    "Using a value read with INPUT directly in a calculation without converting it from a string to a number first."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is the difference between a variable and a constant?",
+      "answer": "A variable's value can change while the program runs and is declared with DECLARE; a constant's value is fixed for the whole program once declared with CONSTANT and cannot be reassigned."
+    },
+    {
+      "question": "What does the assignment operator <- do, and how does it differ from =?",
+      "answer": "<- stores the value on its right-hand side into the variable on its left, overwriting the variable's previous value; = tests whether two values are equal and is used inside a condition, without changing either value."
+    },
+    {
+      "question": "What do INPUT and OUTPUT do?",
+      "answer": "INPUT reads a value typed by the user and stores it, as a string, in a named variable; OUTPUT displays one or more values to the user."
+    },
+    {
+      "question": "What do the operators DIV and MOD calculate?",
+      "answer": "DIV performs integer division and discards the remainder (giving only the whole-number quotient); MOD returns only the remainder left over from that same division."
+    },
+    {
+      "question": "What is the order of operator precedence, from highest to lowest, and what overrides it?",
+      "answer": "^ first, then * / DIV MOD, then + -, each level evaluated left to right; brackets override this order and are always evaluated first."
+    },
+    {
+      "question": "For the string \"CAMBRIDGE\", what do LENGTH, LEFT(...,4), RIGHT(...,3) and MID(...,4,5) each return?",
+      "answer": "LENGTH returns 9; LEFT(...,4) returns \"CAMB\"; RIGHT(...,3) returns \"DGE\"; MID(...,4,5) returns \"BRIDG\" (5 characters starting at position 4)."
+    },
+    {
+      "question": "How are two strings joined together in this specification's pseudocode?",
+      "answer": "Using the concatenation operator &, for example FirstName & \" \" & LastName."
+    },
+    {
+      "question": "Why must a value read with INPUT be converted before it is used in a calculation?",
+      "answer": "Because INPUT always stores the entered value as a string, whatever it represents; it must be explicitly converted to a numeric type, for example with INT(...), before being used in arithmetic."
+    }
+  ],
+  "relatedTopics": [
+    "9.1",
+    "9.2",
+    "10.1",
+    "11.2"
+  ]
+}

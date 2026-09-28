@@ -44,10 +44,10 @@ The commit is a checkpoint, not a permanently current version.
   5.1 Operating Systems, 5.2 Language Translators, 6.1 Data Security, 6.2 Data Integrity,
   7.1 Ethics and Ownership, 8.1 Database Concepts, 8.2 Database Management Systems (DBMS),
   9.1 Computational Thinking Skills, 9.2 Algorithms, 10.1 Data Types and Records, 10.2 Arrays,
-  10.3 Files, 10.4 Introduction to ADT (all 2026-09-28).
-- Remaining short notes to rebuild: 8.3.
+  10.3 Files, 10.4 Introduction to ADT (all 2026-09-28), 8.3 DDL and DML,
+  11.1 Programming Basics (2026-09-28).
 - Remaining topics with no note file yet:
-  11.1, 11.2, 11.3, 12.1, 12.2, 12.3.
+  11.2, 11.3, 12.1, 12.2, 12.3.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
 - Once all AS notes exist, add a strict 9618 AS block to `scripts/validate-data.mjs` like the
   Business one.
