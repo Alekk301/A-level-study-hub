@@ -1,0 +1,342 @@
+{
+  "id": "1.2",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Multimedia",
+  "contentDepth": "full",
+  "overview": "Images and sound must be turned into binary before a computer can store them. Paper 1 asks you to explain how bitmaps and vector graphics are encoded, calculate bitmap and sound file sizes, describe how changing resolution, colour depth, sampling rate or sampling resolution affects quality and size, and justify choosing a bitmap or a vector graphic for a given task.",
+  "syllabusPoints": [
+    "Show understanding of how data for a bitmapped image are encoded, using the terms pixel, file header, image resolution, screen resolution and colour depth (bit depth).",
+    "Perform calculations to estimate the file size for a bitmap image.",
+    "Show understanding of the effects of changing elements of a bitmap image on the image quality and file size.",
+    "Show understanding of how data for a vector graphic are encoded, using the terms drawing object, property and drawing list.",
+    "Justify the use of a bitmap image or a vector graphic for a given task.",
+    "Show understanding of how sound is represented and encoded, using the terms sampling, sampling rate, sampling resolution, analogue data and digital data.",
+    "Show understanding of the impact of changing the sampling rate and resolution, and calculate the file size of a sound file."
+  ],
+  "definitions": [
+    {
+      "term": "Pixel",
+      "definition": "The smallest addressable element of a bitmap image; a single dot of one colour."
+    },
+    {
+      "term": "Image resolution",
+      "definition": "The number of pixels in an image, given as width × height (for example 1920 × 1080)."
+    },
+    {
+      "term": "Screen resolution",
+      "definition": "The number of pixels a display screen can show horizontally and vertically."
+    },
+    {
+      "term": "Colour depth (bit depth)",
+      "definition": "The number of bits used to store the colour of each pixel; n bits allow 2^n different colours."
+    },
+    {
+      "term": "File header",
+      "definition": "Data at the start of an image or sound file describing the file, such as its type, dimensions, colour depth or sampling rate."
+    },
+    {
+      "term": "Drawing object",
+      "definition": "A single shape in a vector graphic, such as a line, rectangle or circle."
+    },
+    {
+      "term": "Property",
+      "definition": "A value that defines how a drawing object looks, such as its coordinates, size, line colour, line width or fill colour."
+    },
+    {
+      "term": "Drawing list",
+      "definition": "The set of commands in a vector graphic file that define every drawing object and its properties."
+    },
+    {
+      "term": "Sampling rate",
+      "definition": "The number of samples of a sound wave's amplitude taken per second, measured in hertz (Hz)."
+    },
+    {
+      "term": "Sampling resolution",
+      "definition": "The number of bits used to store each sound sample; it sets how many amplitude levels can be recorded."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-encoding-bitmap-images",
+      "title": "Encoding bitmap images",
+      "content": [
+        "A bitmap image is a grid of pixels. Each pixel's colour is stored as a binary code, and the codes are stored in order, row by row. The number of bits per pixel is the colour depth: 1 bit gives 2 colours (black and white), 8 bits give 256 colours and 24 bits give over 16.7 million colours (8 bits each for red, green and blue). A file header at the start of the file records information the software needs to rebuild the image, such as the file type, image width and height, and colour depth."
+      ],
+      "bullets": [
+        "Image resolution is a property of the image (how many pixels it contains); screen resolution is a property of the display.",
+        "If the image resolution is higher than the screen resolution, the image is scaled down or only part of it is shown.",
+        "Enlarging a bitmap beyond its resolution makes the individual pixels visible (pixelation)."
+      ],
+      "examples": [
+        {
+          "id": "1.2-1-1",
+          "kind": "worked",
+          "label": "Colours available from a colour depth",
+          "content": "Colour depth 4 bits → 2^4 = 16 colours\nColour depth 8 bits → 2^8 = 256 colours\nColour depth 24 bits → 2^24 = 16,777,216 colours"
+        }
+      ]
+    },
+    {
+      "id": "02-bitmap-file-size",
+      "title": "Calculating bitmap file size",
+      "content": [
+        "The pixel data in a bitmap take up (number of pixels) × (colour depth) bits. Multiply the width by the height to find the number of pixels, multiply by the colour depth, then divide by 8 to convert bits to bytes. The result is an estimate, because the file header adds a small amount of extra data."
+      ],
+      "bullets": [
+        "Divide by 8 for bytes, then by 1024 for KiB or by 1000 for kB, depending on the unit the question asks for.",
+        "Keep the calculation in one line of working so method marks can be awarded.",
+        "State that the file header makes the real file slightly larger than the estimate."
+      ],
+      "examples": [
+        {
+          "id": "1.2-2-1",
+          "kind": "worked",
+          "label": "File size of a 1024 × 768 image with 16-bit colour",
+          "content": "Pixels = 1024 × 768 = 786,432\nBits = 786,432 × 16 = 12,582,912 bits\nBytes = 12,582,912 ÷ 8 = 1,572,864 bytes\nKiB = 1,572,864 ÷ 1024 = 1536 KiB\nMiB = 1536 ÷ 1024 = 1.5 MiB"
+        }
+      ]
+    },
+    {
+      "id": "03-changing-bitmap-quality",
+      "title": "Effect of changing resolution and colour depth",
+      "content": [
+        "Increasing the image resolution gives more pixels, so finer detail can be shown and the image can be enlarged further before pixelation appears. Increasing the colour depth allows more colours, so shades and gradients look more realistic with less colour banding. Both changes increase the file size in direct proportion: doubling the colour depth doubles the size, and doubling both the width and the height quadruples it."
+      ],
+      "bullets": [
+        "Reducing resolution or colour depth reduces file size but lowers quality; this is a trade-off, not a free saving.",
+        "A larger file takes longer to download or transmit and uses more storage.",
+        "Always link a change to both effects the question asks for: quality and file size."
+      ],
+      "examples": [
+        {
+          "id": "1.2-3-1",
+          "kind": "worked",
+          "label": "Predicting the new file size",
+          "content": "An image is 2 MiB. Its width and height are both halved and its colour depth is changed from 24 bits to 8 bits.\nPixels fall to ½ × ½ = ¼ of the original\nBits per pixel fall to 8 ÷ 24 = ⅓ of the original\nNew size = 2 MiB × ¼ × ⅓ ≈ 0.17 MiB"
+        }
+      ]
+    },
+    {
+      "id": "04-vector-graphics",
+      "title": "Encoding vector graphics",
+      "content": [
+        "A vector graphic does not store pixels. Instead it stores a drawing list: a set of commands describing each drawing object and its properties, such as a circle's centre coordinates, radius, line colour, line width and fill colour. When the image is displayed, the software recalculates every object from these properties, so the graphic can be scaled to any size without losing quality."
+      ],
+      "bullets": [
+        "File size depends on the number and complexity of objects, not on the display size.",
+        "Scaling only changes property values, so edges stay sharp at any size.",
+        "Vector graphics are poor at representing photographs, because natural scenes cannot be broken down into simple shapes."
+      ],
+      "examples": [
+        {
+          "id": "1.2-4-1",
+          "kind": "example",
+          "label": "A drawing list entry",
+          "content": "Circle: centre (120, 80), radius 40, line colour black, line width 2, fill colour red\nRectangle: top-left (20, 20), width 60, height 30, line colour blue, fill none"
+        }
+      ]
+    },
+    {
+      "id": "05-bitmap-or-vector",
+      "title": "Choosing a bitmap or a vector graphic",
+      "content": [
+        "Choose a bitmap when the image has continuous tones and fine, irregular detail, such as a photograph or a scanned document. Choose a vector graphic when the image is built from lines and shapes and must be resized, such as a logo, a diagram, a map, a font or a technical drawing. In a justification, name the feature of the task and link it to a property of the format."
+      ],
+      "bullets": [
+        "Logo printed on a pen and on a billboard → vector, because it must scale without pixelation.",
+        "Photograph from a digital camera → bitmap, because each pixel's colour can be captured individually.",
+        "Simple diagrams are often smaller as vectors; complex photographs would need a vast drawing list."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-sampling-sound",
+      "title": "Sampling sound",
+      "content": [
+        "Sound is an analogue wave: its amplitude varies continuously over time. To store it digitally, the amplitude is measured (sampled) at regular time intervals, and each measurement is rounded to the nearest level that can be stored with the sampling resolution. These binary sample values are stored in order, with a file header recording details such as the sampling rate and sampling resolution. Played back, the samples are converted into an approximation of the original wave."
+      ],
+      "bullets": [
+        "Analogue data vary continuously; digital data take discrete values.",
+        "The sampling rate controls how often the wave is measured; the sampling resolution controls how precisely each measurement is stored.",
+        "A sampling resolution of n bits gives 2^n possible amplitude levels, e.g. 16 bits gives 65,536."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-sound-quality-and-file-size",
+      "title": "Sound quality and file size",
+      "content": [
+        "A higher sampling rate captures changes in the wave more often, so rapid changes (higher frequencies) are represented and the playback is closer to the original. A higher sampling resolution rounds each sample less, so the amplitude is recorded more accurately with less quantisation error. Both improve accuracy but increase the file size: file size = sampling rate × sampling resolution × duration in seconds (× number of channels)."
+      ],
+      "bullets": [
+        "Doubling the sampling rate or the sampling resolution doubles the file size.",
+        "Stereo sound has two channels, so it needs twice the data of mono.",
+        "Beyond a certain point, extra quality cannot be heard, so a larger file brings no practical benefit."
+      ],
+      "examples": [
+        {
+          "id": "1.2-7-1",
+          "kind": "worked",
+          "label": "File size of a 30-second stereo recording",
+          "content": "Sampling rate = 44,100 Hz, sampling resolution = 16 bits, 2 channels, 30 seconds\nBits = 44,100 × 16 × 2 × 30 = 42,336,000 bits\nBytes = 42,336,000 ÷ 8 = 5,292,000 bytes\nMiB = 5,292,000 ÷ 1024 ÷ 1024 ≈ 5.05 MiB"
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Bitmap file size",
+      "expression": "size in bits = width (pixels) × height (pixels) × colour depth (bits)"
+    },
+    {
+      "label": "Colours from a colour depth",
+      "expression": "number of colours = 2^(colour depth)"
+    },
+    {
+      "label": "Sound file size",
+      "expression": "size in bits = sampling rate (Hz) × sampling resolution (bits) × duration (s) × channels"
+    },
+    {
+      "label": "Amplitude levels",
+      "expression": "number of levels = 2^(sampling resolution)"
+    },
+    {
+      "label": "Converting units",
+      "expression": "bytes = bits ÷ 8; KiB = bytes ÷ 1024; MiB = KiB ÷ 1024"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Bitmap images and vector graphics",
+    "columns": [
+      "Feature",
+      "Bitmap image",
+      "Vector graphic"
+    ],
+    "rows": [
+      [
+        "What is stored",
+        "The colour of every pixel",
+        "A drawing list of objects and their properties"
+      ],
+      [
+        "Effect of enlarging",
+        "Pixelation; quality falls",
+        "Redrawn from properties; stays sharp"
+      ],
+      [
+        "File size depends on",
+        "Resolution × colour depth",
+        "Number and complexity of objects"
+      ],
+      [
+        "Best suited to",
+        "Photographs and scanned images",
+        "Logos, diagrams, maps, fonts"
+      ],
+      [
+        "Editing",
+        "Individual pixels can be changed",
+        "Individual objects can be moved or resized"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Digitising a sound",
+    "type": "flow",
+    "nodes": [
+      "Analogue sound wave",
+      "Measure amplitude at regular intervals (sampling rate)",
+      "Round each sample to a level (sampling resolution)",
+      "Store samples as binary with a file header",
+      "Play back as an approximation of the wave"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Increasing the colour depth of a bitmap",
+      "steps": [
+        "Each pixel is stored with more bits",
+        "More colours can be represented, e.g. 256 to 16.7 million",
+        "Gradients and skin tones look smoother and more realistic",
+        "But the file size rises in proportion, so it takes more storage and longer to transmit"
+      ],
+      "evaluation": "A high colour depth is worth it for photographs; for a two-colour icon or line drawing it only wastes space."
+    },
+    {
+      "title": "Increasing the sampling rate of a recording",
+      "steps": [
+        "Samples are taken more often each second",
+        "Faster changes in the wave are captured",
+        "The digital sound is a more accurate copy of the analogue original",
+        "But the file size rises in proportion to the sampling rate"
+      ],
+      "evaluation": "Music needs a high sampling rate to sound faithful; speech for a voice call can use a much lower rate, saving bandwidth with little loss of clarity."
+    },
+    {
+      "title": "Using a vector graphic for a company logo",
+      "steps": [
+        "The logo is stored as shapes and their properties",
+        "It can be scaled for a business card or a large banner",
+        "Edges stay sharp because each object is recalculated at the new size",
+        "The file stays small because it holds a short drawing list"
+      ],
+      "evaluation": "Vectors suit logos and diagrams, but a photographic background in the logo would need to be a bitmap."
+    }
+  ],
+  "examTips": [
+    "In file-size calculations, write the full expression with units before calculating, and state the final unit clearly.",
+    "Check whether the question wants bits, bytes, KiB or MiB, and whether to use 1024 or 1000.",
+    "When describing a change (e.g. higher resolution), give its effect on both quality and file size.",
+    "For 'justify bitmap or vector' questions, tie the answer to the specific task (scaling, photographic detail, editing).",
+    "Use the exact syllabus terms: drawing object, property, drawing list, sampling rate, sampling resolution."
+  ],
+  "commonMistakes": [
+    "Forgetting to divide by 8 to convert a size in bits into bytes.",
+    "Confusing image resolution (pixels in the image) with screen resolution (pixels on the display).",
+    "Saying vector graphics are made of pixels, or that bitmaps store shapes.",
+    "Confusing sampling rate (how often) with sampling resolution (how many bits per sample).",
+    "Forgetting to multiply by 2 for a stereo recording.",
+    "Claiming that raising quality settings has no cost; every increase also increases file size."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is colour depth?",
+      "answer": "The number of bits used to represent the colour of each pixel."
+    },
+    {
+      "question": "How many colours can a 12-bit colour depth represent?",
+      "answer": "2^12 = 4096 colours."
+    },
+    {
+      "question": "How do you estimate the file size of a bitmap?",
+      "answer": "Width × height × colour depth gives bits; divide by 8 for bytes."
+    },
+    {
+      "question": "What does a vector graphic's drawing list contain?",
+      "answer": "Commands defining each drawing object and its properties, such as coordinates, size and colours."
+    },
+    {
+      "question": "Why does a vector graphic not pixelate when enlarged?",
+      "answer": "Each object is recalculated from its properties at the new size rather than stretching stored pixels."
+    },
+    {
+      "question": "What is the difference between sampling rate and sampling resolution?",
+      "answer": "Sampling rate is how many samples are taken per second; sampling resolution is how many bits store each sample."
+    },
+    {
+      "question": "What is the formula for the size of a sound file?",
+      "answer": "Sampling rate × sampling resolution × duration in seconds × number of channels (in bits)."
+    },
+    {
+      "question": "What does a file header store?",
+      "answer": "Information about the file needed to decode it, such as file type, dimensions and colour depth, or sampling rate and resolution."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "1.3"
+  ]
+}

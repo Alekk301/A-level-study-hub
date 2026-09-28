@@ -708,14 +708,14 @@
             "levels": [
               "AS"
             ],
-            "summary": "Convert between binary, denary and hexadecimal, use two's complement and BCD, and perform binary addition/shifts while spotting overflow.",
+            "summary": "Convert between binary, denary and hexadecimal, use two's complement and BCD, and perform binary addition/subtraction while spotting overflow.",
             "focusPoints": [
               "binary/denary/hex",
               "BCD and complements",
               "ASCII/Unicode",
               "binary arithmetic/overflow"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "1.2",
@@ -730,7 +730,7 @@
               "sound sampling",
               "file-size calculations"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "1.3",
@@ -744,7 +744,7 @@
               "lossless/lossy",
               "compression trade-offs"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "2.1",

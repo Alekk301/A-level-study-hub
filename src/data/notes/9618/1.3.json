@@ -1,0 +1,282 @@
+{
+  "id": "1.3",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Compression",
+  "contentDepth": "full",
+  "overview": "Compression reduces the size of a file so it takes less storage and transmits faster. Paper 1 asks why compression is needed, what separates lossy from lossless methods, which method suits a given file and use, and how different file types are compressed, with run-length encoding (RLE) as the method you must be able to apply and trace.",
+  "syllabusPoints": [
+    "Show understanding of the need for and examples of the use of compression.",
+    "Show understanding of lossy and lossless compression and justify the use of a method in a given situation.",
+    "Show understanding of how a text file, bitmap image, vector graphic and sound file can be compressed.",
+    "Describe and apply run-length encoding (RLE)."
+  ],
+  "definitions": [
+    {
+      "term": "Compression",
+      "definition": "Encoding data so that it uses fewer bits than the original representation."
+    },
+    {
+      "term": "Lossless compression",
+      "definition": "Compression in which no data are lost, so the original file can be reconstructed exactly."
+    },
+    {
+      "term": "Lossy compression",
+      "definition": "Compression that permanently removes data judged to be unnecessary, so the original cannot be reconstructed exactly."
+    },
+    {
+      "term": "Run-length encoding (RLE)",
+      "definition": "A lossless method that replaces a run of identical consecutive values with a single copy of the value and a count of how many times it repeats."
+    },
+    {
+      "term": "Dictionary (token) compression",
+      "definition": "A lossless method that replaces repeated words or patterns with short codes stored in a dictionary."
+    },
+    {
+      "term": "Perceptual coding",
+      "definition": "A lossy technique that removes the parts of a sound or image that human senses are least able to notice."
+    },
+    {
+      "term": "Compression ratio",
+      "definition": "Original size divided by compressed size; a higher ratio means greater compression."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-compress",
+      "title": "Why compression is needed",
+      "content": [
+        "Uncompressed images, audio and video are very large. Compressing them means less storage space is used, files transfer and download faster, less bandwidth is used on a network, and media can be streamed in real time without long buffering. Compression is used for email attachments, web pages, streaming services, backups and archives."
+      ],
+      "bullets": [
+        "Smaller files → faster transmission → lower data costs and less network congestion.",
+        "Compression and decompression take processing time, which is the price paid for smaller files.",
+        "Both sender and receiver need compatible software to compress and decompress."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-lossless-and-lossy",
+      "title": "Lossless and lossy compression",
+      "content": [
+        "Lossless compression finds patterns or redundancy in the data and records them more efficiently; decompressing gives back every original bit. Lossy compression goes further by discarding data, usually detail that people will barely notice, so it achieves much smaller files, but the removed data are lost permanently and quality falls with each extra level of compression."
+      ],
+      "bullets": [
+        "Lossless is essential for text, program files, spreadsheets and databases, where one changed bit could corrupt meaning or stop a program working.",
+        "Lossy suits photographs, music and video for streaming or the web, where a small loss of quality is acceptable for a large saving.",
+        "Once lossy compression has been applied, the discarded data cannot be recovered by decompressing."
+      ],
+      "examples": [
+        {
+          "id": "1.3-2-1",
+          "kind": "analysis",
+          "label": "Justifying a method",
+          "content": "A program's executable file must be sent to users → lossless, because any lost bit would change the instructions and the program might not run.\nA holiday photo is uploaded to social media → lossy, because the file becomes much smaller and the loss of fine detail is not noticeable on a phone screen."
+        }
+      ]
+    },
+    {
+      "id": "03-run-length-encoding",
+      "title": "Run-length encoding (RLE)",
+      "content": [
+        "RLE replaces each run of repeated consecutive values with a count and one copy of the value. It works well on data with long runs, such as simple graphics with large areas of one colour, but can make data with few repeats larger, because every single value now needs a count as well."
+      ],
+      "bullets": [
+        "RLE is lossless: expanding each count/value pair gives back the exact original.",
+        "In a bitmap, each row of pixels is encoded as runs of colour codes.",
+        "In text, a flag character is often used to mark where an encoded run starts, so single characters can be left unencoded."
+      ],
+      "examples": [
+        {
+          "id": "1.3-3-1",
+          "kind": "worked",
+          "label": "RLE on a string",
+          "content": "Original: AAAAABBBCCCCCCCCD (17 characters)\nRuns: 5 × A, 3 × B, 8 × C, 1 × D\nEncoded: 5A 3B 8C 1D (8 characters)\nThe data have been reduced from 17 to 8 characters."
+        },
+        {
+          "id": "1.3-3-2",
+          "kind": "worked",
+          "label": "RLE making data larger",
+          "content": "Original: ABCDEF (6 characters)\nEncoded: 1A 1B 1C 1D 1E 1F (12 characters)\nWith no repeated runs, RLE doubles the size, which is why it only suits data with long runs."
+        }
+      ]
+    },
+    {
+      "id": "04-compressing-text",
+      "title": "Compressing text files",
+      "content": [
+        "Text must always be compressed losslessly. A common approach is dictionary-based: repeated words or groups of characters are stored once in a dictionary, and each occurrence in the file is replaced by a short index into the dictionary. RLE can also be used where characters repeat consecutively, such as runs of spaces."
+      ],
+      "bullets": [
+        "The dictionary must be stored with or be known to the decompressor, which adds a small overhead.",
+        "The more often a word repeats, the greater the saving."
+      ],
+      "examples": [
+        {
+          "id": "1.3-4-1",
+          "kind": "example",
+          "label": "Dictionary encoding",
+          "content": "Dictionary: 1 = 'the', 2 = 'cat', 3 = 'sat'\n'the cat sat the cat' → 1 2 3 1 2"
+        }
+      ]
+    },
+    {
+      "id": "05-compressing-images",
+      "title": "Compressing bitmap images and vector graphics",
+      "content": [
+        "A bitmap can be compressed losslessly with RLE, which is effective on images with large areas of the same colour. Lossy methods reduce the colour depth, reduce the resolution, or group together pixels of similar colour and store them as one colour, which works well on photographs where neighbouring pixels are similar. A vector graphic is already compact because it stores a drawing list, but its text-based drawing list can be further compressed losslessly, for example with dictionary methods."
+      ],
+      "bullets": [
+        "Reducing colour depth or resolution before saving is a form of lossy compression.",
+        "Lossy image compression can create visible artefacts such as blockiness or colour banding at high compression levels.",
+        "Vector graphics should use lossless compression so that object properties are not altered."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-compressing-sound",
+      "title": "Compressing sound files",
+      "content": [
+        "Lossy sound compression uses perceptual coding: it removes sounds outside the range of human hearing, and quieter sounds that are masked by louder sounds at the same time. The sampling rate or sampling resolution can also be reduced. Lossless audio compression exists for situations where perfect quality is needed, such as studio master recordings, but it gives much smaller savings."
+      ],
+      "bullets": [
+        "Removing frequencies humans cannot hear reduces size with no audible loss.",
+        "Reducing the sampling rate or resolution lowers accuracy, so quality falls noticeably at extreme settings.",
+        "Streaming services use lossy compression so music plays without buffering on limited bandwidth."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Compression ratio",
+      "expression": "compression ratio = original size ÷ compressed size"
+    },
+    {
+      "label": "Percentage saved",
+      "expression": "saving (%) = (original size − compressed size) ÷ original size × 100"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Lossless and lossy compression",
+    "columns": [
+      "Feature",
+      "Lossless",
+      "Lossy"
+    ],
+    "rows": [
+      [
+        "Original recoverable?",
+        "Yes, exactly",
+        "No, data are permanently removed"
+      ],
+      [
+        "Size reduction",
+        "Moderate reduction",
+        "Much greater reduction"
+      ],
+      [
+        "Typical methods",
+        "RLE, dictionary encoding",
+        "Perceptual coding, reducing resolution or colour depth"
+      ],
+      [
+        "Suitable for",
+        "Text, programs, data files, medical images",
+        "Photos, music and video for web or streaming"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Choosing a compression method",
+    "type": "flow",
+    "nodes": [
+      "Identify the file type and its use",
+      "Must every bit be preserved?",
+      "Yes → lossless (RLE or dictionary)",
+      "No → lossy, if small quality loss is acceptable",
+      "Balance file size against quality"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Using lossy compression for a music streaming service",
+      "steps": [
+        "Sounds humans cannot hear or will not notice are removed",
+        "Each track becomes much smaller",
+        "Less bandwidth is needed, so music starts quickly without buffering",
+        "But some detail is lost permanently, which trained listeners may notice"
+      ],
+      "evaluation": "For casual listening on phones the saving outweighs the quality loss; a recording studio archiving masters would use lossless compression instead."
+    },
+    {
+      "title": "Applying RLE to an image",
+      "steps": [
+        "Runs of identical pixels are replaced by a count and a colour",
+        "Images with large blocks of one colour shrink greatly",
+        "The original can be rebuilt exactly because RLE is lossless",
+        "But a photograph with few repeated neighbouring pixels may barely shrink or even grow"
+      ],
+      "evaluation": "RLE suits simple graphics such as icons and diagrams; photographs are better served by lossy methods."
+    },
+    {
+      "title": "Compressing a text document before emailing it",
+      "steps": [
+        "A lossless dictionary method replaces repeated words with short codes",
+        "The attachment becomes smaller and sends faster",
+        "The recipient decompresses it and gets back the identical text",
+        "The only cost is processing time to compress and decompress"
+      ],
+      "evaluation": "Lossy compression would never be acceptable here, because losing characters would change the meaning of the document."
+    }
+  ],
+  "examTips": [
+    "When justifying a method, name the file type and explain the consequence of losing data for that specific use.",
+    "Show RLE as clear count/value pairs and count the characters before and after to prove the saving.",
+    "Say 'permanently removes data' for lossy compression; 'reduces quality' alone rarely gets the mark.",
+    "Describe a specific technique for each file type: dictionary for text, RLE or colour reduction for images, perceptual coding for sound."
+  ],
+  "commonMistakes": [
+    "Saying lossy data can be recovered when the file is decompressed.",
+    "Recommending lossy compression for text, program code or spreadsheets.",
+    "Assuming RLE always reduces file size; it can increase it when there are few runs.",
+    "Describing compression only as 'making the file smaller' without explaining how.",
+    "Confusing compression with encryption; compression reduces size, encryption protects confidentiality."
+  ],
+  "quickRecall": [
+    {
+      "question": "Give two reasons for compressing files.",
+      "answer": "Any two of: less storage space, faster transmission or download, less bandwidth used, allows real-time streaming."
+    },
+    {
+      "question": "What is the key difference between lossless and lossy compression?",
+      "answer": "Lossless allows the original to be reconstructed exactly; lossy permanently removes data."
+    },
+    {
+      "question": "Encode WWWWWBBBWW using RLE.",
+      "answer": "5W 3B 2W."
+    },
+    {
+      "question": "Why must text files use lossless compression?",
+      "answer": "Losing any character would change the content and meaning of the text."
+    },
+    {
+      "question": "What is perceptual coding?",
+      "answer": "Lossy sound compression that removes sounds humans cannot hear or would not notice, such as quiet sounds masked by louder ones."
+    },
+    {
+      "question": "When does RLE work badly?",
+      "answer": "When the data contain few consecutive repeated values, because each value needs a count too and the file may grow."
+    },
+    {
+      "question": "How can a bitmap be compressed with a lossy method?",
+      "answer": "Reduce the resolution or colour depth, or group similar colours together and store them as one colour."
+    }
+  ],
+  "relatedTopics": [
+    "1.1",
+    "1.2"
+  ]
+}
