@@ -1,0 +1,258 @@
+{
+  "id": "7.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Ethics and Ownership",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to discuss the moral, ethical, legal and social issues raised by computing, including privacy, intellectual property and the wider effects of technology on society. Answers score when a general issue is applied to a specific scenario, not when it is only defined.",
+  "syllabusPoints": [
+    "Show understanding of privacy issues associated with the collection, storage and use of personal data.",
+    "Show understanding of intellectual property rights (IPR), including copyright, and the need for software licensing.",
+    "Describe different types of software licence, including proprietary, freeware, shareware and open-source, and single-user, multi-user, site and network licences.",
+    "Describe methods of preventing plagiarism, including plagiarism-detection software and correct referencing.",
+    "Discuss the wider moral and ethical impact of computing on society, including automation, employment and environmental effects."
+  ],
+  "definitions": [
+    {
+      "term": "Privacy",
+      "definition": "An individual's right to control what personal data is collected about them and how it is used."
+    },
+    {
+      "term": "Personal data",
+      "definition": "Any data that can identify a living individual, either on its own or combined with other data."
+    },
+    {
+      "term": "Intellectual property (IP)",
+      "definition": "Original creative or intellectual work, such as software, music or writing, that the law allows its creator to own and control."
+    },
+    {
+      "term": "Copyright",
+      "definition": "A legal right that automatically protects an original work, giving the creator control over how it is copied, distributed and used."
+    },
+    {
+      "term": "Software licence",
+      "definition": "A legal agreement that states how software may be used, copied and distributed by whoever obtains it."
+    },
+    {
+      "term": "Open-source software",
+      "definition": "Software distributed with its source code, which users are legally permitted to view, modify and redistribute, usually under specific licence conditions."
+    },
+    {
+      "term": "Plagiarism",
+      "definition": "Presenting someone else's work or ideas as one's own, without proper acknowledgement of the original source."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-privacy-and-personal-data",
+      "title": "Privacy and personal data",
+      "content": [
+        "Computers make it easy to collect, store, search and share huge amounts of personal data, which raises the risk that data is used in ways an individual did not expect or agree to. Common concerns include organisations collecting more data than they need, sharing data with third parties without clear consent, tracking a person's online activity using cookies, and combining separate datasets to build a detailed profile of an individual."
+      ],
+      "bullets": [
+        "Individuals often cannot see or control what data organisations hold about them.",
+        "Data collected for one purpose can be reused for an unrelated purpose without the individual's knowledge.",
+        "Even anonymised data can sometimes identify a person when combined with other sources."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-data-protection-principles",
+      "title": "Data protection principles",
+      "content": [
+        "Organisations that hold personal data are generally expected to follow good-practice principles: collect and process data fairly and lawfully; use it only for the specific purpose it was collected for; collect no more data than is necessary; keep it accurate and up to date; keep it no longer than necessary; and keep it secure against unauthorised access, loss or damage. These principles balance an organisation's need to use data against an individual's right to privacy."
+      ],
+      "bullets": [
+        "Data protection is about how data is handled responsibly; data security is about protecting it from unauthorised access (topic 6.1).",
+        "An individual is usually entitled to find out what data an organisation holds about them and to have inaccurate data corrected.",
+        "Breaching these principles can lead to legal penalties as well as loss of public trust."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-intellectual-property-and-copyright",
+      "title": "Intellectual property and copyright",
+      "content": [
+        "Intellectual property law recognises that creators of original work, such as software, images, music and writing, have a right to control and benefit from that work. Copyright protects an original work automatically from the moment it is created, without needing to be registered, and normally prevents others from copying, distributing or adapting the work without permission. Copyright encourages people to create original work by allowing them to be credited and paid for it, but it must be balanced against the public benefit of being able to use, build on and share ideas."
+      ],
+      "bullets": [
+        "Copying software without permission or a valid licence is normally a breach of copyright.",
+        "Copyright applies to source code, images, sound and other creative digital content, not only to physical works.",
+        "Ideas themselves are generally not protected, only the specific expression of them."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-software-licences",
+      "title": "Software licences",
+      "content": [
+        "A software licence sets out the legal terms under which software may be used. Proprietary (commercial) software is owned by a company, and users normally pay to use it under restrictive terms that forbid copying or modifying it. Freeware can be used and redistributed at no cost, but its source code is not normally available and it cannot be modified. Shareware can be tried free of charge, often for a limited period or with limited features, and payment is expected if the user continues using it. Open-source software is distributed with its source code, and its licence permits users to view, modify and redistribute it, sometimes with conditions such as sharing any modifications under the same licence. Separately, a licence can define how many people or devices may use the software: a single-user licence permits one user or device, a multi-user licence permits a set number of users, a site licence permits use across every device at one location, and a network licence permits use across a network up to an agreed number of simultaneous users."
+      ],
+      "bullets": [
+        "Open-source does not always mean free of restrictions; its licence can still require attribution or sharing modifications.",
+        "A site licence is usually more cost-effective than buying separate single-user licences for a large organisation.",
+        "Using software beyond the terms of its licence, for example on more devices than permitted, is a breach of that licence."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-plagiarism",
+      "title": "Plagiarism",
+      "content": [
+        "Plagiarism is presenting someone else's work, ideas or code as one's own without acknowledging the original source. It can range from copying a whole piece of work to reusing specific passages, images or code without citation. Plagiarism-detection software compares submitted work against a large database of existing sources, online content and other submissions, highlighting matching or closely similar sections for a human to review. Clear referencing and citation, which credit the original source of any quoted or adapted material, are the main way individuals avoid committing plagiarism."
+      ],
+      "bullets": [
+        "Plagiarism-detection software flags similarity; a human still judges whether it is a genuine copyright or academic-integrity issue.",
+        "Paraphrasing an idea without citing its source can still count as plagiarism.",
+        "Reusing open-source code without following its licence's attribution terms can be both plagiarism and a licence breach."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-wider-ethical-impact-of-computing",
+      "title": "Wider ethical impact of computing",
+      "content": [
+        "Computing has effects on society that go beyond any single piece of data or software. Automation and artificial intelligence can replace jobs that were previously done by people, raising questions about retraining and the fair distribution of the benefits of new technology. Devices become obsolete quickly, contributing to electronic waste (e-waste), which can release harmful substances if not recycled responsibly. Algorithms and artificial intelligence systems can also unintentionally reproduce or amplify bias present in the data they were trained on, which raises questions of fairness and accountability."
+      ],
+      "bullets": [
+        "Automation can increase efficiency and lower costs, while also reducing demand for certain kinds of work.",
+        "Responsible e-waste disposal and recycling schemes reduce the environmental impact of frequent hardware upgrades.",
+        "Decisions made by automated systems, such as AI-based screening, may need human oversight to catch unfair outcomes."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Types of software licence",
+    "columns": [
+      "Licence type",
+      "What it allows",
+      "Typical use"
+    ],
+    "rows": [
+      [
+        "Proprietary (commercial)",
+        "Use under paid, restrictive terms; source code is closed",
+        "Most retail and business software"
+      ],
+      [
+        "Freeware",
+        "Free use and redistribution; source code is normally closed",
+        "Free utilities and apps"
+      ],
+      [
+        "Shareware",
+        "Free trial, often limited by time or features, payment expected to continue",
+        "Trial versions of paid software"
+      ],
+      [
+        "Open-source",
+        "Source code available; may be viewed, modified and redistributed under its licence terms",
+        "Community-developed and customisable software"
+      ],
+      [
+        "Site licence",
+        "Use on every device at one location",
+        "Schools and organisations with many devices"
+      ],
+      [
+        "Network licence",
+        "Use across a network up to an agreed number of simultaneous users",
+        "Shared software on an organisation's network"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "How the data protection principles apply to personal data",
+    "type": "flow",
+    "nodes": [
+      "Data is collected fairly, lawfully and only for a stated purpose",
+      "Only the data actually needed is collected",
+      "Data is kept accurate, secure and up to date",
+      "Data is kept no longer than necessary",
+      "The individual can ask what data is held and have errors corrected"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Plagiarism-detection software flagging copied coursework",
+      "steps": [
+        "A student submits coursework containing text copied from an online source",
+        "Plagiarism-detection software compares the submission against its database of existing sources",
+        "The software highlights the matching passages and reports a similarity score",
+        "A teacher reviews the flagged sections to decide whether it is a genuine breach"
+      ],
+      "evaluation": "Detection software finds matches efficiently across huge volumes of text, but it cannot judge intent or context, so a human must still interpret the result before any action is taken."
+    },
+    {
+      "title": "A company reusing open-source code without following its licence",
+      "steps": [
+        "A developer includes a popular open-source library in a commercial product",
+        "The open-source licence requires any modifications to be published under the same licence",
+        "The company modifies the code but keeps its product closed-source",
+        "The company is now in breach of the open-source licence, not just copyright law generally"
+      ],
+      "evaluation": "Open-source software still carries legal conditions; using it correctly requires checking and complying with its specific licence, not just assuming it can be used freely."
+    },
+    {
+      "title": "Short device lifespans contributing to e-waste",
+      "steps": [
+        "New software and features require increasingly powerful hardware",
+        "Consumers replace working devices sooner to keep up with new requirements",
+        "Discarded devices that are not recycled responsibly contribute to electronic waste",
+        "Harmful materials inside the devices can pollute soil and water if not handled correctly"
+      ],
+      "evaluation": "Manufacturers and consumers can reduce this impact through longer software support, repairable design and responsible recycling schemes, though this often has to be weighed against the commercial benefits of frequent upgrades."
+    }
+  ],
+  "examTips": [
+    "Apply a named issue (privacy, copyright, plagiarism) to the specific scenario in the question, rather than only defining the term.",
+    "State the specific type of software licence involved and what it does and does not permit.",
+    "Distinguish data protection (responsible handling of data) from data security (protecting data from unauthorised access, topic 6.1).",
+    "When discussing wider ethical impact, give both a benefit and a drawback, since these are usually 'discuss' questions."
+  ],
+  "commonMistakes": [
+    "Confusing data protection principles with data security measures.",
+    "Assuming open-source software has no licence conditions at all.",
+    "Saying copyright must be registered, when it applies automatically from creation.",
+    "Describing plagiarism-detection software as proving plagiarism, when it only flags similarity for a human to judge.",
+    "Giving only one side (benefit or drawback) when a question asks to discuss the wider impact of computing."
+  ],
+  "quickRecall": [
+    {
+      "question": "Name two data protection principles an organisation should follow.",
+      "answer": "Any two of: collect and use data fairly and lawfully, collect only what is necessary, keep it accurate, keep it no longer than necessary, keep it secure."
+    },
+    {
+      "question": "What does copyright protect, and when does it start?",
+      "answer": "It protects an original work, such as software or writing, from being copied or distributed without permission; it applies automatically from the moment the work is created."
+    },
+    {
+      "question": "What is the difference between freeware and open-source software?",
+      "answer": "Freeware can be used free of charge but its source code is normally closed; open-source software is distributed with its source code, which users may view, modify and redistribute under its licence terms."
+    },
+    {
+      "question": "What is a site licence?",
+      "answer": "A software licence that permits the software to be used on every device at one physical location."
+    },
+    {
+      "question": "How does plagiarism-detection software work?",
+      "answer": "It compares submitted work against a database of existing sources and flags closely matching or similar sections for a person to review."
+    },
+    {
+      "question": "Give one way computing can affect employment.",
+      "answer": "Automation or artificial intelligence can replace tasks previously done by people, reducing demand for certain jobs while potentially creating others."
+    },
+    {
+      "question": "Give one environmental concern linked to computing.",
+      "answer": "Frequent hardware replacement contributes to electronic waste (e-waste), which can release harmful substances if not recycled responsibly."
+    }
+  ],
+  "relatedTopics": [
+    "6.1",
+    "6.2"
+  ]
+}

@@ -13,7 +13,7 @@ test("all subject, note, search and paper data passes validation", () => {
     cwd: root,
     encoding: "utf8",
   });
-  assert.match(output, /Data valid: 4 subjects, 153 topics, 115 detailed notes, 919 paper records/);
+  assert.match(output, /Data valid: 4 subjects, 153 topics, 116 detailed notes, 919 paper records/);
 });
 
 test("Business recall validation rejects whitespace-only questions and answers", async () => {

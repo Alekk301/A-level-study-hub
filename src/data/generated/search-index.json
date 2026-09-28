@@ -9185,7 +9185,7 @@
     "unitTitle": "AS Theory",
     "topicId": "7.1",
     "title": "Ethics and Ownership",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -9196,19 +9196,249 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Consider privacy, copyright/licensing and the wider ethical impact of computing on society."
+        "text": "Paper 1 asks candidates to discuss the moral, ethical, legal and social issues raised by computing, including privacy, intellectual property and the wider effects of technology on society. Answers score when a general issue is applied to a specific scenario, not when it is only defined."
       },
       {
-        "kind": "Quick recall",
-        "text": "privacy"
+        "kind": "Definition",
+        "label": "Privacy",
+        "text": "An individual's right to control what personal data is collected about them and how it is used."
       },
       {
-        "kind": "Quick recall",
-        "text": "copyright/licensing"
+        "kind": "Definition",
+        "label": "Personal data",
+        "text": "Any data that can identify a living individual, either on its own or combined with other data."
       },
       {
-        "kind": "Quick recall",
-        "text": "ethical impacts"
+        "kind": "Definition",
+        "label": "Intellectual property (IP)",
+        "text": "Original creative or intellectual work, such as software, music or writing, that the law allows its creator to own and control."
+      },
+      {
+        "kind": "Definition",
+        "label": "Copyright",
+        "text": "A legal right that automatically protects an original work, giving the creator control over how it is copied, distributed and used."
+      },
+      {
+        "kind": "Definition",
+        "label": "Software licence",
+        "text": "A legal agreement that states how software may be used, copied and distributed by whoever obtains it."
+      },
+      {
+        "kind": "Definition",
+        "label": "Open-source software",
+        "text": "Software distributed with its source code, which users are legally permitted to view, modify and redistribute, usually under specific licence conditions."
+      },
+      {
+        "kind": "Definition",
+        "label": "Plagiarism",
+        "text": "Presenting someone else's work or ideas as one's own, without proper acknowledgement of the original source."
+      },
+      {
+        "kind": "Section",
+        "text": "Privacy and personal data"
+      },
+      {
+        "kind": "Content",
+        "label": "Privacy and personal data",
+        "text": "Computers make it easy to collect, store, search and share huge amounts of personal data, which raises the risk that data is used in ways an individual did not expect or agree to. Common concerns include organisations collecting more data than they need, sharing data with third parties without clear consent, tracking a person's online activity using cookies, and combining separate datasets to build a detailed profile of an individual."
+      },
+      {
+        "kind": "Content",
+        "label": "Privacy and personal data",
+        "text": "Individuals often cannot see or control what data organisations hold about them."
+      },
+      {
+        "kind": "Content",
+        "label": "Privacy and personal data",
+        "text": "Data collected for one purpose can be reused for an unrelated purpose without the individual's knowledge."
+      },
+      {
+        "kind": "Content",
+        "label": "Privacy and personal data",
+        "text": "Even anonymised data can sometimes identify a person when combined with other sources."
+      },
+      {
+        "kind": "Section",
+        "text": "Data protection principles"
+      },
+      {
+        "kind": "Content",
+        "label": "Data protection principles",
+        "text": "Organisations that hold personal data are generally expected to follow good-practice principles: collect and process data fairly and lawfully; use it only for the specific purpose it was collected for; collect no more data than is necessary; keep it accurate and up to date; keep it no longer than necessary; and keep it secure against unauthorised access, loss or damage. These principles balance an organisation's need to use data against an individual's right to privacy."
+      },
+      {
+        "kind": "Content",
+        "label": "Data protection principles",
+        "text": "Data protection is about how data is handled responsibly; data security is about protecting it from unauthorised access (topic 6.1)."
+      },
+      {
+        "kind": "Content",
+        "label": "Data protection principles",
+        "text": "An individual is usually entitled to find out what data an organisation holds about them and to have inaccurate data corrected."
+      },
+      {
+        "kind": "Content",
+        "label": "Data protection principles",
+        "text": "Breaching these principles can lead to legal penalties as well as loss of public trust."
+      },
+      {
+        "kind": "Section",
+        "text": "Intellectual property and copyright"
+      },
+      {
+        "kind": "Content",
+        "label": "Intellectual property and copyright",
+        "text": "Intellectual property law recognises that creators of original work, such as software, images, music and writing, have a right to control and benefit from that work. Copyright protects an original work automatically from the moment it is created, without needing to be registered, and normally prevents others from copying, distributing or adapting the work without permission. Copyright encourages people to create original work by allowing them to be credited and paid for it, but it must be balanced against the public benefit of being able to use, build on and share ideas."
+      },
+      {
+        "kind": "Content",
+        "label": "Intellectual property and copyright",
+        "text": "Copying software without permission or a valid licence is normally a breach of copyright."
+      },
+      {
+        "kind": "Content",
+        "label": "Intellectual property and copyright",
+        "text": "Copyright applies to source code, images, sound and other creative digital content, not only to physical works."
+      },
+      {
+        "kind": "Content",
+        "label": "Intellectual property and copyright",
+        "text": "Ideas themselves are generally not protected, only the specific expression of them."
+      },
+      {
+        "kind": "Section",
+        "text": "Software licences"
+      },
+      {
+        "kind": "Content",
+        "label": "Software licences",
+        "text": "A software licence sets out the legal terms under which software may be used. Proprietary (commercial) software is owned by a company, and users normally pay to use it under restrictive terms that forbid copying or modifying it. Freeware can be used and redistributed at no cost, but its source code is not normally available and it cannot be modified. Shareware can be tried free of charge, often for a limited period or with limited features, and payment is expected if the user continues using it. Open-source software is distributed with its source code, and its licence permits users to view, modify and redistribute it, sometimes with conditions such as sharing any modifications under the same licence. Separately, a licence can define how many people or devices may use the software: a single-user licence permits one user or device, a multi-user licence permits a set number of users, a site licence permits use across every device at one location, and a network licence permits use across a network up to an agreed number of simultaneous users."
+      },
+      {
+        "kind": "Content",
+        "label": "Software licences",
+        "text": "Open-source does not always mean free of restrictions; its licence can still require attribution or sharing modifications."
+      },
+      {
+        "kind": "Content",
+        "label": "Software licences",
+        "text": "A site licence is usually more cost-effective than buying separate single-user licences for a large organisation."
+      },
+      {
+        "kind": "Content",
+        "label": "Software licences",
+        "text": "Using software beyond the terms of its licence, for example on more devices than permitted, is a breach of that licence."
+      },
+      {
+        "kind": "Section",
+        "text": "Plagiarism"
+      },
+      {
+        "kind": "Content",
+        "label": "Plagiarism",
+        "text": "Plagiarism is presenting someone else's work, ideas or code as one's own without acknowledging the original source. It can range from copying a whole piece of work to reusing specific passages, images or code without citation. Plagiarism-detection software compares submitted work against a large database of existing sources, online content and other submissions, highlighting matching or closely similar sections for a human to review. Clear referencing and citation, which credit the original source of any quoted or adapted material, are the main way individuals avoid committing plagiarism."
+      },
+      {
+        "kind": "Content",
+        "label": "Plagiarism",
+        "text": "Plagiarism-detection software flags similarity; a human still judges whether it is a genuine copyright or academic-integrity issue."
+      },
+      {
+        "kind": "Content",
+        "label": "Plagiarism",
+        "text": "Paraphrasing an idea without citing its source can still count as plagiarism."
+      },
+      {
+        "kind": "Content",
+        "label": "Plagiarism",
+        "text": "Reusing open-source code without following its licence's attribution terms can be both plagiarism and a licence breach."
+      },
+      {
+        "kind": "Section",
+        "text": "Wider ethical impact of computing"
+      },
+      {
+        "kind": "Content",
+        "label": "Wider ethical impact of computing",
+        "text": "Computing has effects on society that go beyond any single piece of data or software. Automation and artificial intelligence can replace jobs that were previously done by people, raising questions about retraining and the fair distribution of the benefits of new technology. Devices become obsolete quickly, contributing to electronic waste (e-waste), which can release harmful substances if not recycled responsibly. Algorithms and artificial intelligence systems can also unintentionally reproduce or amplify bias present in the data they were trained on, which raises questions of fairness and accountability."
+      },
+      {
+        "kind": "Content",
+        "label": "Wider ethical impact of computing",
+        "text": "Automation can increase efficiency and lower costs, while also reducing demand for certain kinds of work."
+      },
+      {
+        "kind": "Content",
+        "label": "Wider ethical impact of computing",
+        "text": "Responsible e-waste disposal and recycling schemes reduce the environmental impact of frequent hardware upgrades."
+      },
+      {
+        "kind": "Content",
+        "label": "Wider ethical impact of computing",
+        "text": "Decisions made by automated systems, such as AI-based screening, may need human oversight to catch unfair outcomes."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name two data protection principles an organisation should follow."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name two data protection principles an organisation should follow.",
+        "text": "Any two of: collect and use data fairly and lawfully, collect only what is necessary, keep it accurate, keep it no longer than necessary, keep it secure."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does copyright protect, and when does it start?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does copyright protect, and when does it start?",
+        "text": "It protects an original work, such as software or writing, from being copied or distributed without permission; it applies automatically from the moment the work is created."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between freeware and open-source software?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between freeware and open-source software?",
+        "text": "Freeware can be used free of charge but its source code is normally closed; open-source software is distributed with its source code, which users may view, modify and redistribute under its licence terms."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a site licence?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a site licence?",
+        "text": "A software licence that permits the software to be used on every device at one physical location."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does plagiarism-detection software work?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does plagiarism-detection software work?",
+        "text": "It compares submitted work against a database of existing sources and flags closely matching or similar sections for a person to review."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give one way computing can affect employment."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give one way computing can affect employment.",
+        "text": "Automation or artificial intelligence can replace tasks previously done by people, reducing demand for certain jobs while potentially creating others."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give one environmental concern linked to computing."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give one environmental concern linked to computing.",
+        "text": "Frequent hardware replacement contributes to electronic waste (e-waste), which can release harmful substances if not recycled responsibly."
       }
     ]
   },
