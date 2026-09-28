@@ -760,7 +760,7 @@
               "IP/MAC/DNS/URLs",
               "Ethernet"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.1",
@@ -775,7 +775,7 @@
               "embedded systems",
               "memory/storage/I-O"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "3.2",

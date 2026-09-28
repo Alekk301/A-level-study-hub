@@ -5784,7 +5784,7 @@
     "unitTitle": "AS Theory",
     "topicId": "2.1",
     "title": "Networks including the internet",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -5795,23 +5795,428 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Distinguish LANs from WANs, know the hardware/media involved, and understand IP addresses, MAC addresses, DNS and URLs."
+        "text": "This is one of the broadest AS topics. Paper 1 asks you to compare LANs and WANs, client-server and peer-to-peer models, and network topologies; describe the hardware that builds a LAN and connects it to the internet; explain Ethernet and CSMA/CD, cloud computing and bit streaming; and explain how IP addresses, URLs and DNS let data find its way across the internet. Most marks come from precise definitions and justified choices for a given scenario."
       },
       {
-        "kind": "Quick recall",
-        "text": "LAN/WAN"
+        "kind": "Definition",
+        "label": "Local area network (LAN)",
+        "text": "A network of connected devices over a small geographical area, such as a single building or site, usually owned by one organisation."
       },
       {
-        "kind": "Quick recall",
-        "text": "devices/media"
+        "kind": "Definition",
+        "label": "Wide area network (WAN)",
+        "text": "A network covering a large geographical area, often linking LANs, using communication infrastructure owned by third parties."
       },
       {
-        "kind": "Quick recall",
-        "text": "IP/MAC/DNS/URLs"
+        "kind": "Definition",
+        "label": "Client-server model",
+        "text": "A network model in which central servers provide services and resources that client devices request."
       },
       {
-        "kind": "Quick recall",
-        "text": "Ethernet"
+        "kind": "Definition",
+        "label": "Peer-to-peer model",
+        "text": "A network model with no central server, in which each device can both share and request resources."
+      },
+      {
+        "kind": "Definition",
+        "label": "Topology",
+        "text": "The physical or logical arrangement of the devices and connections in a network."
+      },
+      {
+        "kind": "Definition",
+        "label": "Router",
+        "text": "A device that forwards packets between different networks, choosing a route using the destination IP address."
+      },
+      {
+        "kind": "Definition",
+        "label": "Switch",
+        "text": "A device that connects devices within a LAN and forwards each frame only to the device whose MAC address matches the destination."
+      },
+      {
+        "kind": "Definition",
+        "label": "CSMA/CD",
+        "text": "Carrier Sense Multiple Access with Collision Detection: the Ethernet method for sharing a medium, detecting collisions and retransmitting after a random delay."
+      },
+      {
+        "kind": "Definition",
+        "label": "Bit streaming",
+        "text": "Transmitting a continuous sequence of bits, such as audio or video, which is played as it arrives rather than after the whole file has downloaded."
+      },
+      {
+        "kind": "Definition",
+        "label": "IP address",
+        "text": "A numerical address that identifies a device on a network so that packets can be routed to it."
+      },
+      {
+        "kind": "Definition",
+        "label": "Domain Name Service (DNS)",
+        "text": "A distributed system of servers that translates domain names into IP addresses."
+      },
+      {
+        "kind": "Definition",
+        "label": "Cloud computing",
+        "text": "Using storage, processing or software provided over the internet by remote servers instead of local hardware."
+      },
+      {
+        "kind": "Section",
+        "text": "Why networks are used; LANs and WANs"
+      },
+      {
+        "kind": "Content",
+        "label": "Why networks are used; LANs and WANs",
+        "text": "Networking devices lets users share resources such as printers, files, storage and an internet connection, communicate by email and messaging, and be managed centrally (software updates, backups and security settings applied from one place). A LAN covers a small area such as a school or office, with infrastructure owned by the organisation, and typically gives high data transfer rates. A WAN covers a large area, such as a country or the whole world, usually by connecting LANs through leased lines, the telephone network or satellites owned by telecommunications companies. The internet is the largest WAN."
+      },
+      {
+        "kind": "Content",
+        "label": "Why networks are used; LANs and WANs",
+        "text": "LAN: small area, organisation-owned hardware, higher speeds, fewer errors."
+      },
+      {
+        "kind": "Content",
+        "label": "Why networks are used; LANs and WANs",
+        "text": "WAN: large area, third-party infrastructure, generally lower speeds and higher latency."
+      },
+      {
+        "kind": "Content",
+        "label": "Why networks are used; LANs and WANs",
+        "text": "Benefit of a network always links to a resource being shared or a task being centralised."
+      },
+      {
+        "kind": "Section",
+        "text": "Client-server and peer-to-peer models"
+      },
+      {
+        "kind": "Content",
+        "label": "Client-server and peer-to-peer models",
+        "text": "In the client-server model, clients send requests and dedicated servers respond, for example a file server, print server, email server or web server. Data and security are managed centrally, so backups and access rights are easier to control, but the servers are costly and are a single point of failure unless duplicated. In a peer-to-peer network every device (peer) has equal status and shares its own resources directly with others. It is cheap and simple for a few devices, but files are spread across machines, backups are harder, and security depends on each user."
+      },
+      {
+        "kind": "Content",
+        "label": "Client-server and peer-to-peer models",
+        "text": "A thin client relies heavily on the server for processing and storage; it needs a constant connection but is cheap and easy to manage."
+      },
+      {
+        "kind": "Content",
+        "label": "Client-server and peer-to-peer models",
+        "text": "A thick (fat) client does most of its processing and storage locally; it can keep working if the server is unavailable but needs more powerful hardware."
+      },
+      {
+        "kind": "Content",
+        "label": "Client-server and peer-to-peer models",
+        "text": "Justify client-server for large organisations needing central security and backup; justify peer-to-peer for small homes or offices, or for sharing files among many users without a central bottleneck."
+      },
+      {
+        "kind": "Example",
+        "label": "Client-server and peer-to-peer models",
+        "text": "A school with 800 students: client-server, because accounts, permissions and backups must be controlled centrally and students must be able to log in from any computer.\nThree friends sharing files at home: peer-to-peer, because a dedicated server would be an unnecessary cost for so few devices."
+      },
+      {
+        "kind": "Section",
+        "text": "Bus, star, mesh and hybrid topologies"
+      },
+      {
+        "kind": "Content",
+        "label": "Bus, star, mesh and hybrid topologies",
+        "text": "In a bus topology all devices share one backbone cable with a terminator at each end; every packet travels along the whole cable and each device checks whether it is the destination. It is cheap, but a break in the backbone stops the whole network, and performance falls as traffic grows because of collisions. In a star topology each device has its own link to a central switch, which forwards each packet only to the destination device, so one broken link affects only one device, but the central switch is a single point of failure. In a mesh topology devices are connected to several others, so packets can take alternative routes; a full mesh is very reliable but needs a lot of cabling. A hybrid topology combines two or more topologies, such as several stars joined by a bus."
+      },
+      {
+        "kind": "Content",
+        "label": "Bus, star, mesh and hybrid topologies",
+        "text": "Star is the most common LAN topology: easy to add devices and fewer collisions."
+      },
+      {
+        "kind": "Content",
+        "label": "Bus, star, mesh and hybrid topologies",
+        "text": "Mesh is used where reliability matters, and the internet itself is a partial mesh of routers."
+      },
+      {
+        "kind": "Content",
+        "label": "Bus, star, mesh and hybrid topologies",
+        "text": "Wireless networks are often described as a mesh or star around a wireless access point."
+      },
+      {
+        "kind": "Section",
+        "text": "Cloud computing"
+      },
+      {
+        "kind": "Content",
+        "label": "Cloud computing",
+        "text": "Cloud computing provides storage, processing power or software over the internet from a provider's servers. A public cloud is owned by a provider and shared by many customers who pay for what they use. A private cloud is used by one organisation only, either on its own premises or hosted for it, giving more control over security at higher cost."
+      },
+      {
+        "kind": "Content",
+        "label": "Cloud computing",
+        "text": "Benefits: no need to buy and maintain servers, storage can be scaled up or down quickly, data can be accessed from anywhere, and the provider handles backups and updates."
+      },
+      {
+        "kind": "Content",
+        "label": "Cloud computing",
+        "text": "Drawbacks: needs a reliable internet connection, ongoing subscription costs, less control over where data are stored, and security and privacy depend on a third party."
+      },
+      {
+        "kind": "Content",
+        "label": "Cloud computing",
+        "text": "Data protection laws may restrict storing personal data on servers in another country."
+      },
+      {
+        "kind": "Section",
+        "text": "Wired and wireless networks"
+      },
+      {
+        "kind": "Content",
+        "label": "Wired and wireless networks",
+        "text": "Wired networks use copper cable (twisted pair or coaxial) or fibre-optic cable. Fibre carries light, so it has the highest bandwidth, works over long distances and does not suffer electrical interference, but it is expensive. Wireless networks use radio waves (Wi-Fi), microwaves or satellites. They let users move around and avoid cabling costs, but they are slower, have a limited range, suffer interference from walls and other devices, and are easier to intercept, so encryption is essential."
+      },
+      {
+        "kind": "Content",
+        "label": "Wired and wireless networks",
+        "text": "Wired: faster, more reliable and more secure; less flexible and costly to install in existing buildings."
+      },
+      {
+        "kind": "Content",
+        "label": "Wired and wireless networks",
+        "text": "Wireless: flexible and cheap to extend; lower speed, interference and security risks."
+      },
+      {
+        "kind": "Content",
+        "label": "Wired and wireless networks",
+        "text": "Satellites cover remote areas but add significant delay because of the distance the signal travels."
+      },
+      {
+        "kind": "Section",
+        "text": "LAN hardware and routers"
+      },
+      {
+        "kind": "Content",
+        "label": "LAN hardware and routers",
+        "text": "Each device needs a network interface card (NIC), or a wireless NIC (WNIC), which has a unique MAC address and connects the device to the medium. A switch connects devices in a star LAN and forwards frames only to the intended device using MAC addresses. A wireless access point (WAP) lets wireless devices join the wired LAN. A server provides shared services. A repeater boosts a weakened signal so it can travel further, and a bridge joins two LAN segments that use the same protocol so they act as one network. A router connects different networks, such as a LAN to the internet: it reads the destination IP address of each packet and uses its routing table to forward it towards its destination by the best available route."
+      },
+      {
+        "kind": "Content",
+        "label": "LAN hardware and routers",
+        "text": "A switch works within one network using MAC addresses; a router works between networks using IP addresses."
+      },
+      {
+        "kind": "Content",
+        "label": "LAN hardware and routers",
+        "text": "A home 'router' usually combines a router, switch, WAP and modem in one box."
+      },
+      {
+        "kind": "Content",
+        "label": "LAN hardware and routers",
+        "text": "A router can also assign private IP addresses to local devices and translate them to the network's public address."
+      },
+      {
+        "kind": "Section",
+        "text": "Ethernet and CSMA/CD"
+      },
+      {
+        "kind": "Content",
+        "label": "Ethernet and CSMA/CD",
+        "text": "Ethernet is the standard protocol family for wired LANs. Data are sent in frames that contain the source and destination MAC addresses. Where devices share a medium, two devices may transmit at the same moment and their signals collide. CSMA/CD manages this: a device listens to check the medium is idle before sending (carrier sense); if a collision is detected while transmitting, it stops, sends a jam signal so all devices know, waits a random time, then tries again. Because each device waits a different random time, a repeat collision is unlikely."
+      },
+      {
+        "kind": "Content",
+        "label": "Ethernet and CSMA/CD",
+        "text": "The random back-off is the key point: fixed waits would cause the same collision again."
+      },
+      {
+        "kind": "Content",
+        "label": "Ethernet and CSMA/CD",
+        "text": "After repeated collisions the maximum random wait increases."
+      },
+      {
+        "kind": "Content",
+        "label": "Ethernet and CSMA/CD",
+        "text": "Modern switched Ethernet gives each device its own link to the switch, so collisions rarely occur."
+      },
+      {
+        "kind": "Example",
+        "label": "Ethernet and CSMA/CD",
+        "text": "1. Device checks whether the medium is idle\n2. If busy, it waits; if idle, it starts transmitting\n3. It keeps monitoring the medium while transmitting\n4. A collision is detected, so it stops and sends a jam signal\n5. It waits a random back-off time\n6. It returns to step 1 and retransmits"
+      },
+      {
+        "kind": "Section",
+        "text": "Bit streaming"
+      },
+      {
+        "kind": "Content",
+        "label": "Bit streaming",
+        "text": "In bit streaming, audio or video is sent as a continuous stream of bits and played as it arrives. The data are compressed, and a buffer on the receiving device stores a few seconds ahead so playback continues smoothly if the connection briefly slows. On-demand streaming sends pre-recorded content (such as a film) whenever a user chooses to watch it, so it can be paused, rewound and fast-forwarded. Real-time (live) streaming sends an event as it happens, such as a live sports match, so the viewer cannot skip ahead."
+      },
+      {
+        "kind": "Content",
+        "label": "Bit streaming",
+        "text": "The bit rate is the number of bits per second the stream needs; higher quality means a higher bit rate."
+      },
+      {
+        "kind": "Content",
+        "label": "Bit streaming",
+        "text": "If the broadband speed is lower than the stream's bit rate, the buffer empties and playback stops to rebuffer."
+      },
+      {
+        "kind": "Content",
+        "label": "Bit streaming",
+        "text": "Services often lower the resolution automatically when the connection is slow."
+      },
+      {
+        "kind": "Example",
+        "label": "Bit streaming",
+        "text": "A 1080p stream needs 5 Mbps. The household has 20 Mbps and two people stream at once.\nRequired = 2 × 5 = 10 Mbps, which is below 20 Mbps, so both streams should play smoothly, with capacity left for other traffic."
+      },
+      {
+        "kind": "Section",
+        "text": "The internet, the WWW and internet hardware"
+      },
+      {
+        "kind": "Content",
+        "label": "The internet, the WWW and internet hardware",
+        "text": "The internet is the global network of interconnected networks: the physical infrastructure of devices, routers and links. The World Wide Web is a service that runs on the internet: a collection of linked web pages and resources accessed using HTTP or HTTPS through a browser. Email and file transfer are other services that also use the internet. Hardware supporting the internet includes modems, which convert between the digital signals of a computer and the analogue signals of a telephone line; the public switched telephone network (PSTN); dedicated (leased) lines rented for exclusive use by one organisation; and the cell phone network, which uses radio masts and base stations to give mobile devices internet access."
+      },
+      {
+        "kind": "Content",
+        "label": "The internet, the WWW and internet hardware",
+        "text": "Internet = the network (hardware); WWW = one service using it (web pages)."
+      },
+      {
+        "kind": "Content",
+        "label": "The internet, the WWW and internet hardware",
+        "text": "A dedicated line gives a guaranteed, secure, constant connection, but is expensive."
+      },
+      {
+        "kind": "Content",
+        "label": "The internet, the WWW and internet hardware",
+        "text": "Cellular networks provide mobile access; each cell has a base station connected to the wider network."
+      },
+      {
+        "kind": "Section",
+        "text": "IP addresses and subnetting"
+      },
+      {
+        "kind": "Content",
+        "label": "IP addresses and subnetting",
+        "text": "An IPv4 address is 32 bits, written as four denary numbers from 0 to 255 separated by dots, for example 192.168.10.25. This allows about 4.3 billion addresses, which is not enough for every device. IPv6 uses 128 bits, written as eight groups of four hexadecimal digits separated by colons, giving a vastly larger address space. A public IP address is unique on the internet and can be reached from outside; private addresses (such as the 192.168.x.x range) are used inside a LAN, can be reused by other LANs, and reach the internet through the router's public address. A static IP address stays the same and is used for servers that must always be found at the same address; a dynamic address is assigned automatically each time a device connects."
+      },
+      {
+        "kind": "Content",
+        "label": "IP addresses and subnetting",
+        "text": "Subnetting splits a network into smaller sub-networks: part of the address identifies the network (and subnet) and the rest identifies the host."
+      },
+      {
+        "kind": "Content",
+        "label": "IP addresses and subnetting",
+        "text": "Subnetting improves security and performance by keeping traffic within a department and reducing broadcast traffic."
+      },
+      {
+        "kind": "Content",
+        "label": "IP addresses and subnetting",
+        "text": "IPv6 groups of leading zeros can be shortened, and one run of all-zero groups can be replaced by ::."
+      },
+      {
+        "kind": "Example",
+        "label": "IP addresses and subnetting",
+        "text": "192.168.300.4 → invalid: 300 is greater than 255, so it does not fit in 8 bits.\n10.0.0.256 → invalid for the same reason.\n172.16.5.1 → valid: four numbers, each 0–255."
+      },
+      {
+        "kind": "Section",
+        "text": "URLs and the Domain Name Service"
+      },
+      {
+        "kind": "Content",
+        "label": "URLs and the Domain Name Service",
+        "text": "A URL (Uniform Resource Locator) gives the location of a resource on the web, for example https://www.example.com/notes/index.html. It is made of the protocol (https), the domain name (www.example.com) and the path to the file (/notes/index.html). Computers route by IP address, so the domain name must be looked up. The browser asks a DNS server for the IP address. If that server does not have the entry, it asks other DNS servers in a hierarchy until the address is found. The IP address is returned to the browser, which then sends its request to the web server at that address."
+      },
+      {
+        "kind": "Content",
+        "label": "URLs and the Domain Name Service",
+        "text": "Domain names are easier for people to remember than IP addresses."
+      },
+      {
+        "kind": "Content",
+        "label": "URLs and the Domain Name Service",
+        "text": "DNS results are cached so repeat lookups are faster."
+      },
+      {
+        "kind": "Content",
+        "label": "URLs and the Domain Name Service",
+        "text": "If a website's server moves to a new IP address, only the DNS record needs updating, not the URL."
+      },
+      {
+        "kind": "Example",
+        "label": "URLs and the Domain Name Service",
+        "text": "1. The user types a URL into the browser\n2. The browser extracts the domain name and sends it to a DNS server\n3. The DNS server looks up the IP address, querying other DNS servers if necessary\n4. The IP address is returned to the browser\n5. The browser sends an HTTP(S) request to that IP address\n6. The web server returns the page, which the browser renders"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two differences between a LAN and a WAN."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two differences between a LAN and a WAN.",
+        "text": "A LAN covers a small area and uses the organisation's own hardware; a WAN covers a large area and uses third-party infrastructure such as leased lines."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a thin client and a thick client?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a thin client and a thick client?",
+        "text": "A thin client relies on the server for most processing and storage; a thick client processes and stores data locally."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a router do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a router do?",
+        "text": "It forwards packets between networks, using the destination IP address and a routing table to choose the route."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens in CSMA/CD when a collision is detected?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens in CSMA/CD when a collision is detected?",
+        "text": "Transmission stops, a jam signal is sent, the device waits a random time and then retransmits."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between on-demand and real-time streaming?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between on-demand and real-time streaming?",
+        "text": "On-demand streams pre-recorded content when requested and can be paused or skipped; real-time streams a live event as it happens."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How many bits are in IPv4 and IPv6 addresses?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How many bits are in IPv4 and IPv6 addresses?",
+        "text": "IPv4 is 32 bits; IPv6 is 128 bits."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a static IP address used for a web server?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a static IP address used for a web server?",
+        "text": "So its address never changes and DNS records keep pointing to it."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the role of DNS?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the role of DNS?",
+        "text": "It translates a domain name into the IP address of the server hosting the resource."
       }
     ]
   },
@@ -5827,7 +6232,7 @@
     "unitTitle": "AS Theory",
     "topicId": "3.1",
     "title": "Computers and their components",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -5838,19 +6243,350 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Identify the core hardware components of a computer system, including embedded systems and memory/storage/input-output devices."
+        "text": "A computer system needs input, output, primary memory and secondary storage, and Paper 1 expects you to explain why each is needed and how common devices work internally. Questions ask you to describe the operation of printers, disks, flash memory, touchscreens and other devices step by step, compare types of RAM and ROM, explain buffers and embedded systems, and describe how monitoring and control systems use sensors, actuators and feedback."
       },
       {
-        "kind": "Quick recall",
-        "text": "system components"
+        "kind": "Definition",
+        "label": "Primary memory",
+        "text": "Memory directly accessible by the processor (RAM and ROM), holding the data and instructions currently in use."
       },
       {
-        "kind": "Quick recall",
-        "text": "embedded systems"
+        "kind": "Definition",
+        "label": "Secondary storage",
+        "text": "Non-volatile storage, such as a hard disk or SSD, that keeps programs and data permanently when the power is off."
       },
       {
-        "kind": "Quick recall",
-        "text": "memory/storage/I-O"
+        "kind": "Definition",
+        "label": "Volatile",
+        "text": "Describes memory that loses its contents when the power is switched off."
+      },
+      {
+        "kind": "Definition",
+        "label": "Embedded system",
+        "text": "A computer system with a dedicated function built into a larger device, such as a washing machine controller."
+      },
+      {
+        "kind": "Definition",
+        "label": "Buffer",
+        "text": "An area of memory that temporarily holds data being transferred between devices or processes that work at different speeds."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sensor",
+        "text": "An input device that measures a physical quantity, such as temperature or light, and sends the reading to a computer."
+      },
+      {
+        "kind": "Definition",
+        "label": "Actuator",
+        "text": "An output device, such as a motor, valve or heater, that performs a physical action when signalled by a computer."
+      },
+      {
+        "kind": "Definition",
+        "label": "Feedback",
+        "text": "Using the output of a control system to affect its next input, so the system can keep a variable close to a set value."
+      },
+      {
+        "kind": "Section",
+        "text": "Input, output, memory and storage"
+      },
+      {
+        "kind": "Content",
+        "label": "Input, output, memory and storage",
+        "text": "Input devices capture data and instructions from users or the environment so the computer has something to process. Output devices present the results in a form people or other devices can use. Primary memory holds the programs and data currently being used, so the processor can access them quickly. Because RAM is volatile, secondary storage is needed to keep programs and files permanently. Removable storage, such as USB flash drives and optical discs, lets data be carried between computers and kept as off-site backups."
+      },
+      {
+        "kind": "Content",
+        "label": "Input, output, memory and storage",
+        "text": "The processor can only execute programs that are in primary memory; they are loaded there from secondary storage."
+      },
+      {
+        "kind": "Content",
+        "label": "Input, output, memory and storage",
+        "text": "Secondary storage is slower than RAM but cheaper per gigabyte and much larger."
+      },
+      {
+        "kind": "Content",
+        "label": "Input, output, memory and storage",
+        "text": "Link each component to its purpose in the scenario given, not just its name."
+      },
+      {
+        "kind": "Section",
+        "text": "Embedded systems"
+      },
+      {
+        "kind": "Content",
+        "label": "Embedded systems",
+        "text": "An embedded system is a microprocessor or microcontroller with its own memory and input/output, built into a larger device to carry out one dedicated task. Examples include the controllers in washing machines, microwave ovens, car engine management systems, traffic lights and fitness trackers. The program is usually stored in ROM or flash memory and runs as soon as the device is switched on."
+      },
+      {
+        "kind": "Content",
+        "label": "Embedded systems",
+        "text": "Benefits: small, cheap to mass-produce, low power use, reliable because the task is fixed, and quick to respond."
+      },
+      {
+        "kind": "Content",
+        "label": "Embedded systems",
+        "text": "Drawbacks: difficult or impossible to upgrade, hard to repair, and a device connected to the internet may be vulnerable to hacking if it cannot be updated."
+      },
+      {
+        "kind": "Content",
+        "label": "Embedded systems",
+        "text": "A general-purpose computer can run many programs; an embedded system is designed for one."
+      },
+      {
+        "kind": "Section",
+        "text": "Laser printers and 3D printers"
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers and 3D printers",
+        "text": "In a laser printer, the printing drum is given a positive electrostatic charge. A laser beam, directed by a rotating mirror, removes the charge from areas of the drum that match the image. The drum is coated with positively charged toner, which sticks only to the discharged areas. Negatively charged paper passes over the drum and attracts the toner, then the paper passes through a fuser, where heated rollers melt the toner onto it. Finally the charge is removed from the drum ready for the next page. A 3D printer builds a solid object layer by layer from a digital design: the design is sliced into thin layers, and material such as plastic filament is heated and extruded through a nozzle (or resin is hardened by light) to form each layer on top of the previous one."
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers and 3D printers",
+        "text": "Laser printers are fast and suited to high-volume text printing; the whole page is prepared on the drum before printing."
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers and 3D printers",
+        "text": "3D printing is used for prototypes, custom medical implants and spare parts."
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers and 3D printers",
+        "text": "Give laser printer steps in the correct order: charge, laser discharges image, toner, paper, fuser, discharge drum."
+      },
+      {
+        "kind": "Section",
+        "text": "Microphones and speakers"
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "In a microphone, sound waves make a diaphragm vibrate. The diaphragm is attached to a coil of wire around a magnet, so its movement induces a varying electrical current that matches the sound wave. This analogue signal is converted to digital by an analogue-to-digital converter (ADC). A speaker works in reverse: digital data are converted to an analogue signal by a digital-to-analogue converter (DAC) and amplified. The varying current passes through a coil attached to a cone, producing a changing magnetic field that pushes against a permanent magnet, so the cone vibrates and creates sound waves."
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "Microphone: sound → vibration → electrical signal → ADC."
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "Speaker: DAC → amplified signal → coil and magnet → cone vibrates → sound."
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "The frequency of the vibration sets the pitch; the amplitude sets the volume."
+      },
+      {
+        "kind": "Section",
+        "text": "Magnetic, solid state and optical storage"
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, solid state and optical storage",
+        "text": "A magnetic hard disk has platters coated with magnetic material that spin at high speed. Read/write heads on an actuator arm move across the surface; to write, a head magnetises tiny areas in one of two directions to represent 0 or 1, and to read, it detects the direction of magnetisation. Data are arranged in concentric tracks divided into sectors. Solid state (flash) memory has no moving parts: data are stored as electric charge trapped in floating-gate transistors arranged in a grid of NAND or NOR cells, and blocks are erased electrically before being rewritten. An optical disc reader shines a laser onto the spinning disc; the surface has pits and lands along a spiral track, and the change between them alters the reflected light, which a sensor reads as binary. An optical writer uses a stronger laser to change the reflectivity of a dye or alloy layer to create the equivalent of pits."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, solid state and optical storage",
+        "text": "SSDs are faster, quieter, lighter, more robust and use less power than hard disks, but cost more per gigabyte and have a limited number of write cycles."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, solid state and optical storage",
+        "text": "Hard disks give large capacity cheaply, but moving parts make them slower and vulnerable to shocks."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, solid state and optical storage",
+        "text": "Optical discs are cheap and portable but have low capacity and slow access compared with other storage."
+      },
+      {
+        "kind": "Section",
+        "text": "Touchscreens and virtual reality headsets"
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens and virtual reality headsets",
+        "text": "A capacitive touchscreen has a layer that stores electric charge. A finger conducts electricity, so touching the screen changes the charge at that point; sensors at the corners or in a grid measure the change, and the processor calculates the location. Capacitive screens support multi-touch but do not work with an ordinary gloved finger. A resistive touchscreen has two flexible conductive layers separated by a small gap; pressing brings the layers into contact, completing a circuit, and the position is calculated from the change in voltage. A virtual reality headset has a separate display (or half of a screen) for each eye, showing slightly different images to create a 3D effect, with lenses to focus the image. Sensors such as gyroscopes and accelerometers track head movement, so the image is updated to match where the user is looking."
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens and virtual reality headsets",
+        "text": "Capacitive: clear, durable, multi-touch; needs a conductive touch."
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens and virtual reality headsets",
+        "text": "Resistive: cheap, works with a stylus or gloves; less clear and more easily damaged."
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens and virtual reality headsets",
+        "text": "VR headsets need a high refresh rate and fast tracking to avoid motion sickness."
+      },
+      {
+        "kind": "Section",
+        "text": "Buffers"
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "A buffer is a temporary area of memory used when data move between two devices or processes that work at different speeds. For example, the processor can send a document to a printer's buffer much faster than the printer can print it, and then continue with other work while the printer empties the buffer. In video streaming, incoming data fill a buffer so playback can continue smoothly if the network briefly slows."
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "A buffer lets the faster device carry on with other tasks instead of waiting."
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "When a printer buffer is empty, the printer sends an interrupt to request more data."
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "A keyboard buffer holds keypresses until the program is ready to read them."
+      },
+      {
+        "kind": "Section",
+        "text": "RAM and ROM"
+      },
+      {
+        "kind": "Content",
+        "label": "RAM and ROM",
+        "text": "RAM (random access memory) is volatile read/write memory that holds the operating system, programs and data currently in use. ROM (read-only memory) is non-volatile and holds data that must not be lost or changed, such as the start-up instructions (bootstrap) that run when the computer is switched on. Dynamic RAM (DRAM) stores each bit as charge in a capacitor, which leaks, so it must be refreshed thousands of times a second. Static RAM (SRAM) stores each bit in a flip-flop circuit that does not need refreshing. SRAM is faster but more expensive and takes more space per bit, so it is used for cache memory; DRAM is cheaper and denser, so it is used for main memory."
+      },
+      {
+        "kind": "Content",
+        "label": "RAM and ROM",
+        "text": "PROM: programmed once after manufacture; the contents cannot then be changed."
+      },
+      {
+        "kind": "Content",
+        "label": "RAM and ROM",
+        "text": "EPROM: can be erased by exposing the chip to ultraviolet light and then reprogrammed; the chip is usually removed to do this."
+      },
+      {
+        "kind": "Content",
+        "label": "RAM and ROM",
+        "text": "EEPROM: can be erased and rewritten electrically while in the circuit, a byte or block at a time; flash memory is a type of EEPROM."
+      },
+      {
+        "kind": "Content",
+        "label": "RAM and ROM",
+        "text": "Firmware updates in modern devices are possible because the firmware is stored in EEPROM or flash."
+      },
+      {
+        "kind": "Section",
+        "text": "Monitoring and control systems"
+      },
+      {
+        "kind": "Content",
+        "label": "Monitoring and control systems",
+        "text": "A monitoring system uses sensors to take readings at regular intervals, stores and processes them, and may output warnings or graphs, but it does not change the environment. Examples include hospital patient monitoring and weather stations. A control system also takes sensor readings, but compares them with a stored set value and uses actuators to change conditions. Sensor readings are analogue, so an ADC converts them to digital; signals to actuators may need a DAC. Feedback makes control continuous: the output affects the next sensor reading, so the system keeps adjusting to hold the value close to the set point."
+      },
+      {
+        "kind": "Content",
+        "label": "Monitoring and control systems",
+        "text": "Monitoring = read and report; control = read, compare, act."
+      },
+      {
+        "kind": "Content",
+        "label": "Monitoring and control systems",
+        "text": "Typical sensors: temperature, light, pressure, moisture, infrared (motion), pH, gas."
+      },
+      {
+        "kind": "Content",
+        "label": "Monitoring and control systems",
+        "text": "The computer does not measure anything itself; the sensor measures and the computer processes."
+      },
+      {
+        "kind": "Content",
+        "label": "Monitoring and control systems",
+        "text": "Describe control as a loop: read, convert, compare, act, repeat."
+      },
+      {
+        "kind": "Example",
+        "label": "Monitoring and control systems",
+        "text": "1. A temperature sensor measures the air temperature\n2. An ADC converts the analogue reading to digital\n3. The microprocessor compares the reading with the stored set value (e.g. 24 °C)\n4. If it is too low, a signal switches the heater on; if too high, a signal opens the window using an actuator\n5. The new temperature affects the next reading (feedback)\n6. The process repeats continuously"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is secondary storage needed?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is secondary storage needed?",
+        "text": "RAM is volatile, so programs and data must be kept permanently on non-volatile storage when the power is off."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give one benefit and one drawback of embedded systems."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give one benefit and one drawback of embedded systems.",
+        "text": "Benefit: small, cheap, low power or reliable. Drawback: hard to upgrade or repair, or vulnerable if connected and not updated."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the purpose of the fuser in a laser printer?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the purpose of the fuser in a laser printer?",
+        "text": "Heated rollers melt the toner so it bonds permanently to the paper."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why does DRAM need refreshing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why does DRAM need refreshing?",
+        "text": "Each bit is stored as charge in a capacitor, which leaks away over time."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is an EEPROM different from an EPROM?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is an EEPROM different from an EPROM?",
+        "text": "EEPROM is erased electrically in the circuit; EPROM is erased with ultraviolet light."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a buffer used when printing?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a buffer used when printing?",
+        "text": "The printer is much slower than the processor, so data are held in the buffer and the processor can continue other work."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a sensor and an actuator?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a sensor and an actuator?",
+        "text": "A sensor measures a physical quantity as input; an actuator performs a physical action as output."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does a capacitive touchscreen detect a touch?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does a capacitive touchscreen detect a touch?",
+        "text": "The finger changes the electric charge at the touch point, and sensors measure the change to calculate the position."
       }
     ]
   },

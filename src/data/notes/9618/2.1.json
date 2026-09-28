@@ -1,0 +1,404 @@
+{
+  "id": "2.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Networks including the internet",
+  "contentDepth": "full",
+  "overview": "This is one of the broadest AS topics. Paper 1 asks you to compare LANs and WANs, client-server and peer-to-peer models, and network topologies; describe the hardware that builds a LAN and connects it to the internet; explain Ethernet and CSMA/CD, cloud computing and bit streaming; and explain how IP addresses, URLs and DNS let data find its way across the internet. Most marks come from precise definitions and justified choices for a given scenario.",
+  "syllabusPoints": [
+    "Show understanding of the purpose and benefits of networking devices, and the characteristics of a LAN and a WAN.",
+    "Explain the client-server and peer-to-peer models of networking, including thin and thick clients, and justify the use of a model for a given situation.",
+    "Show understanding of the bus, star, mesh and hybrid topologies, how packets are transmitted in each, and justify the use of a topology.",
+    "Show understanding of cloud computing, including public and private clouds, and its benefits and drawbacks.",
+    "Show understanding of the differences between and implications of wired and wireless networks.",
+    "Describe the hardware used to support a LAN, and the role and function of a router.",
+    "Show understanding of Ethernet and how collisions are detected and avoided using CSMA/CD.",
+    "Show understanding of real-time and on-demand bit streaming and the importance of bit rate and broadband speed.",
+    "Show understanding of the differences between the World Wide Web and the internet, and describe the hardware that supports the internet.",
+    "Explain the use of IPv4 and IPv6 addresses, public and private addresses, static and dynamic addresses, and subnetting.",
+    "Explain how a URL is used to locate a resource on the WWW and the role of the Domain Name Service (DNS)."
+  ],
+  "definitions": [
+    {
+      "term": "Local area network (LAN)",
+      "definition": "A network of connected devices over a small geographical area, such as a single building or site, usually owned by one organisation."
+    },
+    {
+      "term": "Wide area network (WAN)",
+      "definition": "A network covering a large geographical area, often linking LANs, using communication infrastructure owned by third parties."
+    },
+    {
+      "term": "Client-server model",
+      "definition": "A network model in which central servers provide services and resources that client devices request."
+    },
+    {
+      "term": "Peer-to-peer model",
+      "definition": "A network model with no central server, in which each device can both share and request resources."
+    },
+    {
+      "term": "Topology",
+      "definition": "The physical or logical arrangement of the devices and connections in a network."
+    },
+    {
+      "term": "Router",
+      "definition": "A device that forwards packets between different networks, choosing a route using the destination IP address."
+    },
+    {
+      "term": "Switch",
+      "definition": "A device that connects devices within a LAN and forwards each frame only to the device whose MAC address matches the destination."
+    },
+    {
+      "term": "CSMA/CD",
+      "definition": "Carrier Sense Multiple Access with Collision Detection: the Ethernet method for sharing a medium, detecting collisions and retransmitting after a random delay."
+    },
+    {
+      "term": "Bit streaming",
+      "definition": "Transmitting a continuous sequence of bits, such as audio or video, which is played as it arrives rather than after the whole file has downloaded."
+    },
+    {
+      "term": "IP address",
+      "definition": "A numerical address that identifies a device on a network so that packets can be routed to it."
+    },
+    {
+      "term": "Domain Name Service (DNS)",
+      "definition": "A distributed system of servers that translates domain names into IP addresses."
+    },
+    {
+      "term": "Cloud computing",
+      "definition": "Using storage, processing or software provided over the internet by remote servers instead of local hardware."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-purpose-lan-and-wan",
+      "title": "Why networks are used; LANs and WANs",
+      "content": [
+        "Networking devices lets users share resources such as printers, files, storage and an internet connection, communicate by email and messaging, and be managed centrally (software updates, backups and security settings applied from one place). A LAN covers a small area such as a school or office, with infrastructure owned by the organisation, and typically gives high data transfer rates. A WAN covers a large area, such as a country or the whole world, usually by connecting LANs through leased lines, the telephone network or satellites owned by telecommunications companies. The internet is the largest WAN."
+      ],
+      "bullets": [
+        "LAN: small area, organisation-owned hardware, higher speeds, fewer errors.",
+        "WAN: large area, third-party infrastructure, generally lower speeds and higher latency.",
+        "Benefit of a network always links to a resource being shared or a task being centralised."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-client-server-and-peer-to-peer",
+      "title": "Client-server and peer-to-peer models",
+      "content": [
+        "In the client-server model, clients send requests and dedicated servers respond, for example a file server, print server, email server or web server. Data and security are managed centrally, so backups and access rights are easier to control, but the servers are costly and are a single point of failure unless duplicated. In a peer-to-peer network every device (peer) has equal status and shares its own resources directly with others. It is cheap and simple for a few devices, but files are spread across machines, backups are harder, and security depends on each user."
+      ],
+      "bullets": [
+        "A thin client relies heavily on the server for processing and storage; it needs a constant connection but is cheap and easy to manage.",
+        "A thick (fat) client does most of its processing and storage locally; it can keep working if the server is unavailable but needs more powerful hardware.",
+        "Justify client-server for large organisations needing central security and backup; justify peer-to-peer for small homes or offices, or for sharing files among many users without a central bottleneck."
+      ],
+      "examples": [
+        {
+          "id": "2.1-2-1",
+          "kind": "analysis",
+          "label": "Choosing a model",
+          "content": "A school with 800 students: client-server, because accounts, permissions and backups must be controlled centrally and students must be able to log in from any computer.\nThree friends sharing files at home: peer-to-peer, because a dedicated server would be an unnecessary cost for so few devices."
+        }
+      ]
+    },
+    {
+      "id": "03-topologies",
+      "title": "Bus, star, mesh and hybrid topologies",
+      "content": [
+        "In a bus topology all devices share one backbone cable with a terminator at each end; every packet travels along the whole cable and each device checks whether it is the destination. It is cheap, but a break in the backbone stops the whole network, and performance falls as traffic grows because of collisions. In a star topology each device has its own link to a central switch, which forwards each packet only to the destination device, so one broken link affects only one device, but the central switch is a single point of failure. In a mesh topology devices are connected to several others, so packets can take alternative routes; a full mesh is very reliable but needs a lot of cabling. A hybrid topology combines two or more topologies, such as several stars joined by a bus."
+      ],
+      "bullets": [
+        "Star is the most common LAN topology: easy to add devices and fewer collisions.",
+        "Mesh is used where reliability matters, and the internet itself is a partial mesh of routers.",
+        "Wireless networks are often described as a mesh or star around a wireless access point."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-cloud-computing",
+      "title": "Cloud computing",
+      "content": [
+        "Cloud computing provides storage, processing power or software over the internet from a provider's servers. A public cloud is owned by a provider and shared by many customers who pay for what they use. A private cloud is used by one organisation only, either on its own premises or hosted for it, giving more control over security at higher cost."
+      ],
+      "bullets": [
+        "Benefits: no need to buy and maintain servers, storage can be scaled up or down quickly, data can be accessed from anywhere, and the provider handles backups and updates.",
+        "Drawbacks: needs a reliable internet connection, ongoing subscription costs, less control over where data are stored, and security and privacy depend on a third party.",
+        "Data protection laws may restrict storing personal data on servers in another country."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-wired-and-wireless",
+      "title": "Wired and wireless networks",
+      "content": [
+        "Wired networks use copper cable (twisted pair or coaxial) or fibre-optic cable. Fibre carries light, so it has the highest bandwidth, works over long distances and does not suffer electrical interference, but it is expensive. Wireless networks use radio waves (Wi-Fi), microwaves or satellites. They let users move around and avoid cabling costs, but they are slower, have a limited range, suffer interference from walls and other devices, and are easier to intercept, so encryption is essential."
+      ],
+      "bullets": [
+        "Wired: faster, more reliable and more secure; less flexible and costly to install in existing buildings.",
+        "Wireless: flexible and cheap to extend; lower speed, interference and security risks.",
+        "Satellites cover remote areas but add significant delay because of the distance the signal travels."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-lan-hardware-and-routers",
+      "title": "LAN hardware and routers",
+      "content": [
+        "Each device needs a network interface card (NIC), or a wireless NIC (WNIC), which has a unique MAC address and connects the device to the medium. A switch connects devices in a star LAN and forwards frames only to the intended device using MAC addresses. A wireless access point (WAP) lets wireless devices join the wired LAN. A server provides shared services. A repeater boosts a weakened signal so it can travel further, and a bridge joins two LAN segments that use the same protocol so they act as one network. A router connects different networks, such as a LAN to the internet: it reads the destination IP address of each packet and uses its routing table to forward it towards its destination by the best available route."
+      ],
+      "bullets": [
+        "A switch works within one network using MAC addresses; a router works between networks using IP addresses.",
+        "A home 'router' usually combines a router, switch, WAP and modem in one box.",
+        "A router can also assign private IP addresses to local devices and translate them to the network's public address."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-ethernet-and-csma-cd",
+      "title": "Ethernet and CSMA/CD",
+      "content": [
+        "Ethernet is the standard protocol family for wired LANs. Data are sent in frames that contain the source and destination MAC addresses. Where devices share a medium, two devices may transmit at the same moment and their signals collide. CSMA/CD manages this: a device listens to check the medium is idle before sending (carrier sense); if a collision is detected while transmitting, it stops, sends a jam signal so all devices know, waits a random time, then tries again. Because each device waits a different random time, a repeat collision is unlikely."
+      ],
+      "bullets": [
+        "The random back-off is the key point: fixed waits would cause the same collision again.",
+        "After repeated collisions the maximum random wait increases.",
+        "Modern switched Ethernet gives each device its own link to the switch, so collisions rarely occur."
+      ],
+      "examples": [
+        {
+          "id": "2.1-7-1",
+          "kind": "worked",
+          "label": "CSMA/CD step by step",
+          "content": "1. Device checks whether the medium is idle\n2. If busy, it waits; if idle, it starts transmitting\n3. It keeps monitoring the medium while transmitting\n4. A collision is detected, so it stops and sends a jam signal\n5. It waits a random back-off time\n6. It returns to step 1 and retransmits"
+        }
+      ]
+    },
+    {
+      "id": "08-bit-streaming",
+      "title": "Bit streaming",
+      "content": [
+        "In bit streaming, audio or video is sent as a continuous stream of bits and played as it arrives. The data are compressed, and a buffer on the receiving device stores a few seconds ahead so playback continues smoothly if the connection briefly slows. On-demand streaming sends pre-recorded content (such as a film) whenever a user chooses to watch it, so it can be paused, rewound and fast-forwarded. Real-time (live) streaming sends an event as it happens, such as a live sports match, so the viewer cannot skip ahead."
+      ],
+      "bullets": [
+        "The bit rate is the number of bits per second the stream needs; higher quality means a higher bit rate.",
+        "If the broadband speed is lower than the stream's bit rate, the buffer empties and playback stops to rebuffer.",
+        "Services often lower the resolution automatically when the connection is slow."
+      ],
+      "examples": [
+        {
+          "id": "2.1-8-1",
+          "kind": "worked",
+          "label": "Can the connection stream this video?",
+          "content": "A 1080p stream needs 5 Mbps. The household has 20 Mbps and two people stream at once.\nRequired = 2 × 5 = 10 Mbps, which is below 20 Mbps, so both streams should play smoothly, with capacity left for other traffic."
+        }
+      ]
+    },
+    {
+      "id": "09-internet-and-www",
+      "title": "The internet, the WWW and internet hardware",
+      "content": [
+        "The internet is the global network of interconnected networks: the physical infrastructure of devices, routers and links. The World Wide Web is a service that runs on the internet: a collection of linked web pages and resources accessed using HTTP or HTTPS through a browser. Email and file transfer are other services that also use the internet. Hardware supporting the internet includes modems, which convert between the digital signals of a computer and the analogue signals of a telephone line; the public switched telephone network (PSTN); dedicated (leased) lines rented for exclusive use by one organisation; and the cell phone network, which uses radio masts and base stations to give mobile devices internet access."
+      ],
+      "bullets": [
+        "Internet = the network (hardware); WWW = one service using it (web pages).",
+        "A dedicated line gives a guaranteed, secure, constant connection, but is expensive.",
+        "Cellular networks provide mobile access; each cell has a base station connected to the wider network."
+      ],
+      "examples": []
+    },
+    {
+      "id": "10-ip-addressing",
+      "title": "IP addresses and subnetting",
+      "content": [
+        "An IPv4 address is 32 bits, written as four denary numbers from 0 to 255 separated by dots, for example 192.168.10.25. This allows about 4.3 billion addresses, which is not enough for every device. IPv6 uses 128 bits, written as eight groups of four hexadecimal digits separated by colons, giving a vastly larger address space. A public IP address is unique on the internet and can be reached from outside; private addresses (such as the 192.168.x.x range) are used inside a LAN, can be reused by other LANs, and reach the internet through the router's public address. A static IP address stays the same and is used for servers that must always be found at the same address; a dynamic address is assigned automatically each time a device connects."
+      ],
+      "bullets": [
+        "Subnetting splits a network into smaller sub-networks: part of the address identifies the network (and subnet) and the rest identifies the host.",
+        "Subnetting improves security and performance by keeping traffic within a department and reducing broadcast traffic.",
+        "IPv6 groups of leading zeros can be shortened, and one run of all-zero groups can be replaced by ::."
+      ],
+      "examples": [
+        {
+          "id": "2.1-10-1",
+          "kind": "worked",
+          "label": "Is this a valid IPv4 address?",
+          "content": "192.168.300.4 → invalid: 300 is greater than 255, so it does not fit in 8 bits.\n10.0.0.256 → invalid for the same reason.\n172.16.5.1 → valid: four numbers, each 0–255."
+        }
+      ]
+    },
+    {
+      "id": "11-urls-and-dns",
+      "title": "URLs and the Domain Name Service",
+      "content": [
+        "A URL (Uniform Resource Locator) gives the location of a resource on the web, for example https://www.example.com/notes/index.html. It is made of the protocol (https), the domain name (www.example.com) and the path to the file (/notes/index.html). Computers route by IP address, so the domain name must be looked up. The browser asks a DNS server for the IP address. If that server does not have the entry, it asks other DNS servers in a hierarchy until the address is found. The IP address is returned to the browser, which then sends its request to the web server at that address."
+      ],
+      "bullets": [
+        "Domain names are easier for people to remember than IP addresses.",
+        "DNS results are cached so repeat lookups are faster.",
+        "If a website's server moves to a new IP address, only the DNS record needs updating, not the URL."
+      ],
+      "examples": [
+        {
+          "id": "2.1-11-1",
+          "kind": "worked",
+          "label": "What happens when a URL is entered",
+          "content": "1. The user types a URL into the browser\n2. The browser extracts the domain name and sends it to a DNS server\n3. The DNS server looks up the IP address, querying other DNS servers if necessary\n4. The IP address is returned to the browser\n5. The browser sends an HTTP(S) request to that IP address\n6. The web server returns the page, which the browser renders"
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "label": "Streaming capacity",
+      "expression": "total bit rate needed = bit rate per stream × number of streams"
+    },
+    {
+      "label": "Transfer time",
+      "expression": "time (s) = file size (bits) ÷ transfer rate (bits per second)"
+    },
+    {
+      "label": "IPv4 address space",
+      "expression": "2^32 ≈ 4.3 billion addresses"
+    },
+    {
+      "label": "IPv6 address space",
+      "expression": "2^128 addresses"
+    }
+  ],
+  "comparisonTable": {
+    "title": "Network topologies",
+    "columns": [
+      "Topology",
+      "How packets travel",
+      "Advantage",
+      "Drawback"
+    ],
+    "rows": [
+      [
+        "Bus",
+        "Along a shared backbone to every device",
+        "Cheap; little cabling",
+        "Backbone failure stops everything; collisions rise with traffic"
+      ],
+      [
+        "Star",
+        "Through a central switch to the destination only",
+        "One cable fault affects one device; easy to expand",
+        "Central switch is a single point of failure"
+      ],
+      [
+        "Mesh",
+        "Through connected devices by alternative routes",
+        "Very reliable; no single point of failure",
+        "Expensive and complex cabling"
+      ],
+      [
+        "Hybrid",
+        "Depends on the combined topologies",
+        "Flexible; can be scaled across sites",
+        "More complex to design and manage"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Looking up a web page",
+    "type": "flow",
+    "nodes": [
+      "User enters URL",
+      "Browser asks DNS server for the domain's IP address",
+      "DNS returns the IP address",
+      "Browser sends HTTP(S) request via routers",
+      "Web server returns the page"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Moving a company's files to a public cloud",
+      "steps": [
+        "The company no longer needs to buy and maintain its own file servers",
+        "Storage can be increased instantly as the business grows",
+        "Staff can reach files from home or while travelling",
+        "But access depends on the internet connection and the provider's security"
+      ],
+      "evaluation": "Cloud storage suits a growing firm with reliable broadband; an organisation holding highly sensitive data may prefer a private cloud to keep control."
+    },
+    {
+      "title": "Using a star rather than a bus topology in an office",
+      "steps": [
+        "Each computer has its own cable to a central switch",
+        "The switch sends packets only to the destination device",
+        "Collisions are reduced and one faulty cable affects only one device",
+        "But more cabling is needed and the switch becomes a single point of failure"
+      ],
+      "evaluation": "The extra cost of cabling and a switch is justified by better reliability and performance; a spare switch reduces the single-point-of-failure risk."
+    },
+    {
+      "title": "Replacing cabled connections with Wi-Fi in a school",
+      "steps": [
+        "Students can use laptops and tablets anywhere in the building",
+        "No new cables need to be installed in old buildings",
+        "But speeds fall when many devices share one access point",
+        "Signals can be intercepted, so strong encryption and authentication are required"
+      ],
+      "evaluation": "A combination works best: wired connections for fixed computers and servers, and Wi-Fi for mobile devices."
+    }
+  ],
+  "examTips": [
+    "Distinguish the internet (infrastructure) from the WWW (a service of linked web pages) in one clear sentence each.",
+    "When describing CSMA/CD, include listening first, collision detection, the jam signal and the random wait.",
+    "For 'justify a topology or model' questions, link each point to the scenario (number of users, security, budget, reliability).",
+    "Explain DNS as a sequence of steps ending with the browser contacting the web server's IP address.",
+    "Say a router uses IP addresses to forward between networks and a switch uses MAC addresses within a LAN."
+  ],
+  "commonMistakes": [
+    "Using 'internet' and 'World Wide Web' as if they mean the same thing.",
+    "Saying a switch broadcasts every packet to all devices; that describes a hub or a bus.",
+    "Forgetting that the back-off time in CSMA/CD is random.",
+    "Writing an IPv4 address with a value above 255, or describing IPv6 as denary.",
+    "Saying DNS stores web pages; it only maps domain names to IP addresses.",
+    "Claiming peer-to-peer networks have a central server."
+  ],
+  "quickRecall": [
+    {
+      "question": "Give two differences between a LAN and a WAN.",
+      "answer": "A LAN covers a small area and uses the organisation's own hardware; a WAN covers a large area and uses third-party infrastructure such as leased lines."
+    },
+    {
+      "question": "What is the difference between a thin client and a thick client?",
+      "answer": "A thin client relies on the server for most processing and storage; a thick client processes and stores data locally."
+    },
+    {
+      "question": "What does a router do?",
+      "answer": "It forwards packets between networks, using the destination IP address and a routing table to choose the route."
+    },
+    {
+      "question": "What happens in CSMA/CD when a collision is detected?",
+      "answer": "Transmission stops, a jam signal is sent, the device waits a random time and then retransmits."
+    },
+    {
+      "question": "What is the difference between on-demand and real-time streaming?",
+      "answer": "On-demand streams pre-recorded content when requested and can be paused or skipped; real-time streams a live event as it happens."
+    },
+    {
+      "question": "How many bits are in IPv4 and IPv6 addresses?",
+      "answer": "IPv4 is 32 bits; IPv6 is 128 bits."
+    },
+    {
+      "question": "Why is a static IP address used for a web server?",
+      "answer": "So its address never changes and DNS records keep pointing to it."
+    },
+    {
+      "question": "What is the role of DNS?",
+      "answer": "It translates a domain name into the IP address of the server hosting the resource."
+    }
+  ],
+  "relatedTopics": [
+    "6.1",
+    "14.1",
+    "14.2",
+    "17.1"
+  ]
+}
