@@ -7923,7 +7923,7 @@
     "unitTitle": "AS Theory",
     "topicId": "5.1",
     "title": "Operating Systems",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -7934,19 +7934,306 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Understand the OS's role in managing processes, memory, files, the user interface and security."
+        "text": "System software makes the hardware usable. Paper 1 asks why a computer needs an operating system, what the OS does in each of its management roles (memory, files, security, hardware and processes), what common utility programs are for, and why programmers use library programs, including dynamic link libraries (DLLs). Answers score when each task is linked to a specific action the OS or utility performs."
       },
       {
-        "kind": "Quick recall",
-        "text": "process/memory/file management"
+        "kind": "Definition",
+        "label": "Operating system (OS)",
+        "text": "System software that manages the computer's hardware and software resources and provides an interface between the user, applications and the hardware."
       },
       {
-        "kind": "Quick recall",
-        "text": "UI"
+        "kind": "Definition",
+        "label": "Utility software",
+        "text": "System software that performs a specific maintenance or management task, such as backing up, compressing or checking for malware."
       },
       {
-        "kind": "Quick recall",
-        "text": "security"
+        "kind": "Definition",
+        "label": "Process",
+        "text": "A program that has been loaded into memory and is being executed."
+      },
+      {
+        "kind": "Definition",
+        "label": "Device driver",
+        "text": "Software that lets the operating system communicate with a particular hardware device."
+      },
+      {
+        "kind": "Definition",
+        "label": "Fragmentation",
+        "text": "When a file is stored in non-contiguous blocks scattered across a disk, slowing access."
+      },
+      {
+        "kind": "Definition",
+        "label": "Program library",
+        "text": "A collection of pre-written, pre-tested routines that programmers can use in their own programs."
+      },
+      {
+        "kind": "Definition",
+        "label": "Dynamic link library (DLL)",
+        "text": "A library file that is linked to a program when the program is run, rather than being copied into it when it is compiled."
+      },
+      {
+        "kind": "Section",
+        "text": "Why a computer needs an operating system"
+      },
+      {
+        "kind": "Content",
+        "label": "Why a computer needs an operating system",
+        "text": "Without an operating system, every application would have to control the hardware directly, manage its own memory and handle its own files. The OS hides this complexity. It provides a user interface (command-line or graphical) so users can run programs and manage files, provides services that applications call (for example to save a file or print), and shares the hardware fairly and safely between all running programs and users."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a computer needs an operating system",
+        "text": "It provides an interface between the user and the hardware."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a computer needs an operating system",
+        "text": "It provides a platform on which applications run, so programmers do not need to write hardware-control code."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a computer needs an operating system",
+        "text": "It manages resources (processor time, memory, storage, devices) between competing programs."
+      },
+      {
+        "kind": "Section",
+        "text": "Memory management"
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management",
+        "text": "The OS decides which programs and data are held in main memory and where. It allocates memory to each process when it starts and frees it when it ends, keeps track of which parts of memory are in use, and protects each process's memory so one program cannot read or overwrite another's data. When physical memory is full, it can use virtual memory: part of secondary storage is treated as extra memory, and data not currently needed are moved out of RAM."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management",
+        "text": "Memory protection stops a faulty program crashing other programs or the OS itself."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management",
+        "text": "Memory optimisation decides which data stay in RAM and which can be moved to secondary storage."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management",
+        "text": "Heavy use of virtual memory slows the computer because secondary storage is much slower than RAM."
+      },
+      {
+        "kind": "Section",
+        "text": "File management"
+      },
+      {
+        "kind": "Content",
+        "label": "File management",
+        "text": "The OS organises data on secondary storage into files and directories (folders). It keeps track of where each file is physically stored, provides a naming system with file extensions, lets users and programs create, open, save, copy, move, rename and delete files, and controls which users are allowed to read or change each file."
+      },
+      {
+        "kind": "Content",
+        "label": "File management",
+        "text": "A hierarchical directory structure lets files be organised logically."
+      },
+      {
+        "kind": "Content",
+        "label": "File management",
+        "text": "File permissions (read, write, execute) are set for users and groups."
+      },
+      {
+        "kind": "Content",
+        "label": "File management",
+        "text": "The OS hides the physical location of data, so users work with names rather than disk addresses."
+      },
+      {
+        "kind": "Section",
+        "text": "Security management"
+      },
+      {
+        "kind": "Content",
+        "label": "Security management",
+        "text": "The OS protects data and resources from unauthorised access and loss. It manages user accounts and authentication with usernames and passwords (or biometrics), assigns access rights so users can only use what they are entitled to, keeps the system updated with security patches, and may include a firewall. It can also log user activity and support data recovery and backups."
+      },
+      {
+        "kind": "Content",
+        "label": "Security management",
+        "text": "Different users can have different privileges, e.g. only an administrator can install software."
+      },
+      {
+        "kind": "Content",
+        "label": "Security management",
+        "text": "Automatic updates close security holes discovered after release."
+      },
+      {
+        "kind": "Content",
+        "label": "Security management",
+        "text": "Encryption of stored data may be provided by the OS."
+      },
+      {
+        "kind": "Section",
+        "text": "Hardware (input/output and peripheral) management"
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "The OS communicates with input and output devices through device drivers, which translate general OS commands into the specific signals a device understands. It receives and handles interrupts from devices, manages buffers and queues so slow devices do not hold up the processor, and uses spooling so that, for example, several print jobs can be queued on disk and printed in turn."
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "New hardware usually needs only a new driver, not a new operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "Plug-and-play detects a connected device and loads its driver automatically."
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "The OS controls which process may use a device at any one time."
+      },
+      {
+        "kind": "Section",
+        "text": "Process management"
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "The OS allows several processes to share the processor, a technique called multitasking. The scheduler decides which process runs next and gives each one a short time slice, switching between them so quickly that they appear to run at the same time. The OS allocates resources to processes, handles interrupts, and resolves conflicts when two processes need the same resource, so that neither is stuck waiting forever."
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "Each process is in a state such as running, ready or blocked (waiting for an event)."
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "Priorities can give more processor time to important tasks."
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "Detailed scheduling algorithms are covered at A Level in topic 16.1."
+      },
+      {
+        "kind": "Section",
+        "text": "Utility software"
+      },
+      {
+        "kind": "Content",
+        "label": "Utility software",
+        "text": "A disk formatter prepares a storage device for use by setting up the file system and dividing the disk into tracks and sectors; formatting erases existing data. A virus checker scans files and memory for malware, comparing them with a database of known virus signatures and watching for suspicious behaviour, then quarantines or deletes infected files; it must be updated regularly. Defragmentation software rearranges the blocks of fragmented files on a hard disk so each file is stored contiguously, reducing read/write head movement and access time. Disk contents analysis and repair software checks for errors such as bad sectors, marks them as unusable, and recovers data where possible. File compression software reduces file sizes to save storage and speed up transmission. Back-up software copies files to another storage medium, often automatically on a schedule and incrementally (only files that have changed), so data can be restored after loss or damage."
+      },
+      {
+        "kind": "Content",
+        "label": "Utility software",
+        "text": "Defragmenting an SSD is unnecessary, because it has no moving parts, and it wears the flash memory."
+      },
+      {
+        "kind": "Content",
+        "label": "Utility software",
+        "text": "A full backup copies everything; an incremental backup copies only changes since the last backup."
+      },
+      {
+        "kind": "Content",
+        "label": "Utility software",
+        "text": "Disk analysis tools can also show which files and folders use the most space."
+      },
+      {
+        "kind": "Section",
+        "text": "Program libraries and DLLs"
+      },
+      {
+        "kind": "Content",
+        "label": "Program libraries and DLLs",
+        "text": "Programmers rarely write everything from scratch. Program libraries contain pre-written, pre-tested routines, for example for mathematical functions, graphics or file handling, which can be called from new programs. A static library routine is copied into the executable when the program is compiled. A dynamic link library (DLL) is kept as a separate file and linked to the program only when it runs, so many programs can share one copy."
+      },
+      {
+        "kind": "Content",
+        "label": "Program libraries and DLLs",
+        "text": "Library benefits: saves development time, routines are already tested so they are reliable, and expert code can be used for complex tasks."
+      },
+      {
+        "kind": "Content",
+        "label": "Program libraries and DLLs",
+        "text": "DLL benefits: executable files are smaller, one copy in memory can be shared by several programs, and updating the DLL improves every program that uses it without recompiling them."
+      },
+      {
+        "kind": "Content",
+        "label": "Program libraries and DLLs",
+        "text": "DLL drawbacks: the program fails if the DLL is missing, and an updated DLL that is incompatible can break programs that depend on it."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two reasons why a computer needs an operating system."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two reasons why a computer needs an operating system.",
+        "text": "Any two of: provides a user interface, hides hardware complexity, provides a platform for applications, manages resources between programs."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does the OS do in memory management?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does the OS do in memory management?",
+        "text": "Allocates and frees memory for processes, tracks memory use, protects each process's memory, and manages virtual memory."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a device driver?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a device driver?",
+        "text": "Software that translates OS commands into signals a specific hardware device understands."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is defragmentation useful on a hard disk?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is defragmentation useful on a hard disk?",
+        "text": "It stores each file contiguously, so the read/write heads move less and files are accessed faster."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does a virus checker detect malware?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does a virus checker detect malware?",
+        "text": "It compares files against a database of known virus signatures and monitors for suspicious behaviour."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a DLL?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a DLL?",
+        "text": "A library file linked to a program when it runs, which can be shared by several programs."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two benefits of using DLLs."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two benefits of using DLLs.",
+        "text": "Any two of: smaller executables, one shared copy in memory, updates apply to all programs without recompiling."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give one drawback of DLLs."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give one drawback of DLLs.",
+        "text": "The program will not run if the DLL is missing, or an incompatible update can break it."
       }
     ]
   },
@@ -7962,7 +8249,7 @@
     "unitTitle": "AS Theory",
     "topicId": "5.2",
     "title": "Language Translators",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -7973,19 +8260,282 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Compare compilers, interpreters and assemblers, and understand the stages of translating source code."
+        "text": "Programs are written in assembly language or high-level languages, but the processor only runs machine code, so a translator is needed. Paper 1 asks why assemblers, compilers and interpreters are needed, the benefits and drawbacks of compiling versus interpreting, how languages such as Java are partly compiled and partly interpreted, and which features of an Integrated Development Environment (IDE) help programmers write, check, present and debug code."
       },
       {
-        "kind": "Quick recall",
-        "text": "compiler/interpreter/assembler"
+        "kind": "Definition",
+        "label": "Source code",
+        "text": "A program as written by the programmer in assembly language or a high-level language."
       },
       {
-        "kind": "Quick recall",
-        "text": "translation stages"
+        "kind": "Definition",
+        "label": "Object code",
+        "text": "The machine code produced by translating source code."
       },
       {
-        "kind": "Quick recall",
-        "text": "errors"
+        "kind": "Definition",
+        "label": "Compiler",
+        "text": "A translator that converts the whole of a high-level program into machine code in one go, producing an executable file."
+      },
+      {
+        "kind": "Definition",
+        "label": "Interpreter",
+        "text": "A translator that analyses and executes a high-level program one statement at a time, without producing a separate executable file."
+      },
+      {
+        "kind": "Definition",
+        "label": "Assembler",
+        "text": "A translator that converts assembly language into machine code."
+      },
+      {
+        "kind": "Definition",
+        "label": "Intermediate code (bytecode)",
+        "text": "Partly translated code that is independent of any processor and is run by a virtual machine."
+      },
+      {
+        "kind": "Definition",
+        "label": "Integrated Development Environment (IDE)",
+        "text": "A single program providing the tools needed to write, translate, test and debug code."
+      },
+      {
+        "kind": "Definition",
+        "label": "Breakpoint",
+        "text": "A marker set on a line of code at which execution pauses so the programmer can inspect variables."
+      },
+      {
+        "kind": "Section",
+        "text": "Why translators are needed"
+      },
+      {
+        "kind": "Content",
+        "label": "Why translators are needed",
+        "text": "A processor can only execute machine code in its own instruction set. Programmers write in assembly language or high-level languages because they are far easier to write and read, so the source code must be translated before or while it runs. An assembler translates assembly language, with each instruction becoming one machine-code instruction. A compiler or interpreter translates high-level languages, where one statement may become many machine-code instructions."
+      },
+      {
+        "kind": "Content",
+        "label": "Why translators are needed",
+        "text": "Assembly language → assembler (one-to-one)."
+      },
+      {
+        "kind": "Content",
+        "label": "Why translators are needed",
+        "text": "High-level language → compiler or interpreter (one-to-many)."
+      },
+      {
+        "kind": "Content",
+        "label": "Why translators are needed",
+        "text": "Translators also detect errors, such as syntax errors, during translation."
+      },
+      {
+        "kind": "Section",
+        "text": "Compilers"
+      },
+      {
+        "kind": "Content",
+        "label": "Compilers",
+        "text": "A compiler reads the whole source program, checks it for errors and, if there are none, produces a complete executable file of object code. The executable can be run many times without the source code or the compiler being present. Syntax errors are reported together after the compiler has analysed the whole program, so the programmer must fix them and compile again."
+      },
+      {
+        "kind": "Content",
+        "label": "Compilers",
+        "text": "Benefits: the compiled program runs quickly, it can be distributed without the source code (protecting it from copying), and the compiler is not needed to run it."
+      },
+      {
+        "kind": "Content",
+        "label": "Compilers",
+        "text": "Drawbacks: the whole program must be recompiled after every change, errors are reported only after compilation, and the executable only runs on one type of processor and operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Compilers",
+        "text": "Compilers are used when a finished program is distributed to users."
+      },
+      {
+        "kind": "Section",
+        "text": "Interpreters"
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters",
+        "text": "An interpreter translates and executes the program one statement at a time. If it meets an error, it stops at that line and reports it, so the programmer can fix it and continue. No executable file is produced: the source code and the interpreter are needed every time the program runs, and each statement is translated again each time it is executed, including inside loops."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters",
+        "text": "Benefits: errors are found and reported immediately at the line where they occur, parts of a program can be tested before it is finished, and the same source can run on any computer with a suitable interpreter."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters",
+        "text": "Drawbacks: execution is slower, the source code must be given to users, and the interpreter must be installed on every computer that runs the program."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters",
+        "text": "Interpreters are useful while developing and debugging a program."
+      },
+      {
+        "kind": "Section",
+        "text": "Partly compiled, partly interpreted languages"
+      },
+      {
+        "kind": "Content",
+        "label": "Partly compiled, partly interpreted languages",
+        "text": "Some languages combine both approaches. Java source code is compiled into bytecode, an intermediate code that does not depend on any particular processor. The bytecode is then run by the Java Virtual Machine (JVM), which interprets it (or translates it to machine code as it runs) on the target computer. The same bytecode can therefore run on any device with a JVM, while the initial compilation catches syntax errors and does much of the translation work in advance."
+      },
+      {
+        "kind": "Content",
+        "label": "Partly compiled, partly interpreted languages",
+        "text": "'Write once, run anywhere': the bytecode is portable between platforms."
+      },
+      {
+        "kind": "Content",
+        "label": "Partly compiled, partly interpreted languages",
+        "text": "Faster than a pure interpreter because the source has already been analysed and translated to bytecode."
+      },
+      {
+        "kind": "Content",
+        "label": "Partly compiled, partly interpreted languages",
+        "text": "Python is also compiled to bytecode before being interpreted."
+      },
+      {
+        "kind": "Section",
+        "text": "IDE features for coding and error detection"
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for coding and error detection",
+        "text": "An IDE brings an editor, translator and debugging tools together. When coding, context-sensitive prompts (auto-complete) suggest suitable keywords, variable names and the parameters a function expects, based on what has been typed so far, which saves time and reduces typing errors. For initial error detection, dynamic syntax checking checks each line as it is typed and highlights syntax errors, such as a missing bracket or a misspelled keyword, immediately, before the program is translated."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for coding and error detection",
+        "text": "Context-sensitive prompts reduce the need to remember exact names and parameter orders."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for coding and error detection",
+        "text": "Dynamic syntax checks find syntax errors only; logic errors still need testing and debugging."
+      },
+      {
+        "kind": "Section",
+        "text": "IDE features for presentation"
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for presentation",
+        "text": "Prettyprint formats code automatically to make its structure clear, for example by colour-coding keywords, variables and comments and by indenting the contents of loops and selection statements. Expanding and collapsing code blocks lets the programmer hide the body of a procedure, loop or other block, showing only its first line, so they can see the overall structure of a long program and focus on the part they are working on."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for presentation",
+        "text": "Colour coding makes typing errors stand out, e.g. a keyword that is not highlighted is probably misspelled."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for presentation",
+        "text": "Consistent indentation makes it easier to see where each block starts and ends."
+      },
+      {
+        "kind": "Section",
+        "text": "IDE features for debugging"
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for debugging",
+        "text": "Debugging tools help find logic and run-time errors. Single stepping executes the program one statement at a time, so the programmer can follow the exact path taken. A breakpoint pauses execution at a chosen line, so the program runs normally up to the suspected problem area and then stops. A report window (variable watch window) displays the current values of variables as the program runs or while it is paused, so the programmer can see where a value first becomes incorrect."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for debugging",
+        "text": "Breakpoints and single stepping are usually combined: run to a breakpoint, then step line by line."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for debugging",
+        "text": "Watching variables replaces adding temporary output statements to the code."
+      },
+      {
+        "kind": "Content",
+        "label": "IDE features for debugging",
+        "text": "These tools find the location of an error; the programmer still has to work out the correction."
+      },
+      {
+        "kind": "Example",
+        "label": "IDE features for debugging",
+        "text": "A loop should total 10 values but gives the wrong answer.\n1. Set a breakpoint at the start of the loop\n2. Add the total and loop counter to the watch/report window\n3. Single step through each pass of the loop\n4. Notice that the loop counter starts at 2, so the first value is never added\n5. Correct the starting value and run the program again"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which translator converts assembly language into machine code?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which translator converts assembly language into machine code?",
+        "text": "An assembler."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two benefits of a compiler."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two benefits of a compiler.",
+        "text": "Any two of: faster execution, no translator needed to run, source code not distributed, compiled once and run many times."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two benefits of an interpreter during development."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two benefits of an interpreter during development.",
+        "text": "Errors are reported at the line they occur, and parts of a program can be tested before it is complete."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is Java partly compiled and partly interpreted?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is Java partly compiled and partly interpreted?",
+        "text": "Source code is compiled to bytecode, which is then interpreted by the Java Virtual Machine on the target computer."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a context-sensitive prompt?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a context-sensitive prompt?",
+        "text": "An IDE suggestion of keywords, identifiers or parameters that fit what the programmer is currently typing."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is dynamic syntax checking?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is dynamic syntax checking?",
+        "text": "The IDE checks each line for syntax errors as it is typed and highlights them immediately."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a breakpoint do?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a breakpoint do?",
+        "text": "It pauses execution at a chosen line so variable values can be examined."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the purpose of the report (watch) window?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the purpose of the report (watch) window?",
+        "text": "To display the current values of variables while the program runs or is paused."
       }
     ]
   },

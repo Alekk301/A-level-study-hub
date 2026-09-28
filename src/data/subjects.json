@@ -852,7 +852,7 @@
               "UI",
               "security"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "5.2",
@@ -867,7 +867,7 @@
               "translation stages",
               "errors"
             ],
-            "contentDepth": "quick"
+            "contentDepth": "full"
           },
           {
             "id": "6.1",

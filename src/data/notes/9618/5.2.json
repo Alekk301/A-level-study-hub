@@ -1,0 +1,284 @@
+{
+  "id": "5.2",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Language Translators",
+  "contentDepth": "full",
+  "overview": "Programs are written in assembly language or high-level languages, but the processor only runs machine code, so a translator is needed. Paper 1 asks why assemblers, compilers and interpreters are needed, the benefits and drawbacks of compiling versus interpreting, how languages such as Java are partly compiled and partly interpreted, and which features of an Integrated Development Environment (IDE) help programmers write, check, present and debug code.",
+  "syllabusPoints": [
+    "Show understanding of the need for an assembler for translation of an assembly language program, and a compiler or interpreter for translation of a high-level language program.",
+    "Show understanding of the benefits and drawbacks of using either a compiler or an interpreter.",
+    "Show awareness that high-level language programs may be partially compiled and partially interpreted, such as Java (console mode).",
+    "Describe features found in a typical Integrated Development Environment (IDE), including for coding (context-sensitive prompts), for initial error detection (dynamic syntax checks), for presentation (prettyprint, expand and collapse code blocks) and for debugging (single stepping, breakpoints, report window)."
+  ],
+  "definitions": [
+    {
+      "term": "Source code",
+      "definition": "A program as written by the programmer in assembly language or a high-level language."
+    },
+    {
+      "term": "Object code",
+      "definition": "The machine code produced by translating source code."
+    },
+    {
+      "term": "Compiler",
+      "definition": "A translator that converts the whole of a high-level program into machine code in one go, producing an executable file."
+    },
+    {
+      "term": "Interpreter",
+      "definition": "A translator that analyses and executes a high-level program one statement at a time, without producing a separate executable file."
+    },
+    {
+      "term": "Assembler",
+      "definition": "A translator that converts assembly language into machine code."
+    },
+    {
+      "term": "Intermediate code (bytecode)",
+      "definition": "Partly translated code that is independent of any processor and is run by a virtual machine."
+    },
+    {
+      "term": "Integrated Development Environment (IDE)",
+      "definition": "A single program providing the tools needed to write, translate, test and debug code."
+    },
+    {
+      "term": "Breakpoint",
+      "definition": "A marker set on a line of code at which execution pauses so the programmer can inspect variables."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-need-for-translators",
+      "title": "Why translators are needed",
+      "content": [
+        "A processor can only execute machine code in its own instruction set. Programmers write in assembly language or high-level languages because they are far easier to write and read, so the source code must be translated before or while it runs. An assembler translates assembly language, with each instruction becoming one machine-code instruction. A compiler or interpreter translates high-level languages, where one statement may become many machine-code instructions."
+      ],
+      "bullets": [
+        "Assembly language → assembler (one-to-one).",
+        "High-level language → compiler or interpreter (one-to-many).",
+        "Translators also detect errors, such as syntax errors, during translation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-compilers",
+      "title": "Compilers",
+      "content": [
+        "A compiler reads the whole source program, checks it for errors and, if there are none, produces a complete executable file of object code. The executable can be run many times without the source code or the compiler being present. Syntax errors are reported together after the compiler has analysed the whole program, so the programmer must fix them and compile again."
+      ],
+      "bullets": [
+        "Benefits: the compiled program runs quickly, it can be distributed without the source code (protecting it from copying), and the compiler is not needed to run it.",
+        "Drawbacks: the whole program must be recompiled after every change, errors are reported only after compilation, and the executable only runs on one type of processor and operating system.",
+        "Compilers are used when a finished program is distributed to users."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-interpreters",
+      "title": "Interpreters",
+      "content": [
+        "An interpreter translates and executes the program one statement at a time. If it meets an error, it stops at that line and reports it, so the programmer can fix it and continue. No executable file is produced: the source code and the interpreter are needed every time the program runs, and each statement is translated again each time it is executed, including inside loops."
+      ],
+      "bullets": [
+        "Benefits: errors are found and reported immediately at the line where they occur, parts of a program can be tested before it is finished, and the same source can run on any computer with a suitable interpreter.",
+        "Drawbacks: execution is slower, the source code must be given to users, and the interpreter must be installed on every computer that runs the program.",
+        "Interpreters are useful while developing and debugging a program."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-partial-compilation",
+      "title": "Partly compiled, partly interpreted languages",
+      "content": [
+        "Some languages combine both approaches. Java source code is compiled into bytecode, an intermediate code that does not depend on any particular processor. The bytecode is then run by the Java Virtual Machine (JVM), which interprets it (or translates it to machine code as it runs) on the target computer. The same bytecode can therefore run on any device with a JVM, while the initial compilation catches syntax errors and does much of the translation work in advance."
+      ],
+      "bullets": [
+        "'Write once, run anywhere': the bytecode is portable between platforms.",
+        "Faster than a pure interpreter because the source has already been analysed and translated to bytecode.",
+        "Python is also compiled to bytecode before being interpreted."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-ide-coding-and-error-detection",
+      "title": "IDE features for coding and error detection",
+      "content": [
+        "An IDE brings an editor, translator and debugging tools together. When coding, context-sensitive prompts (auto-complete) suggest suitable keywords, variable names and the parameters a function expects, based on what has been typed so far, which saves time and reduces typing errors. For initial error detection, dynamic syntax checking checks each line as it is typed and highlights syntax errors, such as a missing bracket or a misspelled keyword, immediately, before the program is translated."
+      ],
+      "bullets": [
+        "Context-sensitive prompts reduce the need to remember exact names and parameter orders.",
+        "Dynamic syntax checks find syntax errors only; logic errors still need testing and debugging."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-ide-presentation",
+      "title": "IDE features for presentation",
+      "content": [
+        "Prettyprint formats code automatically to make its structure clear, for example by colour-coding keywords, variables and comments and by indenting the contents of loops and selection statements. Expanding and collapsing code blocks lets the programmer hide the body of a procedure, loop or other block, showing only its first line, so they can see the overall structure of a long program and focus on the part they are working on."
+      ],
+      "bullets": [
+        "Colour coding makes typing errors stand out, e.g. a keyword that is not highlighted is probably misspelled.",
+        "Consistent indentation makes it easier to see where each block starts and ends."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-ide-debugging",
+      "title": "IDE features for debugging",
+      "content": [
+        "Debugging tools help find logic and run-time errors. Single stepping executes the program one statement at a time, so the programmer can follow the exact path taken. A breakpoint pauses execution at a chosen line, so the program runs normally up to the suspected problem area and then stops. A report window (variable watch window) displays the current values of variables as the program runs or while it is paused, so the programmer can see where a value first becomes incorrect."
+      ],
+      "bullets": [
+        "Breakpoints and single stepping are usually combined: run to a breakpoint, then step line by line.",
+        "Watching variables replaces adding temporary output statements to the code.",
+        "These tools find the location of an error; the programmer still has to work out the correction."
+      ],
+      "examples": [
+        {
+          "id": "5.2-7-1",
+          "kind": "analysis",
+          "label": "Debugging a wrong total",
+          "content": "A loop should total 10 values but gives the wrong answer.\n1. Set a breakpoint at the start of the loop\n2. Add the total and loop counter to the watch/report window\n3. Single step through each pass of the loop\n4. Notice that the loop counter starts at 2, so the first value is never added\n5. Correct the starting value and run the program again"
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Compiler and interpreter",
+    "columns": [
+      "Feature",
+      "Compiler",
+      "Interpreter"
+    ],
+    "rows": [
+      [
+        "Translation",
+        "Whole program before execution",
+        "One statement at a time during execution"
+      ],
+      [
+        "Output",
+        "Executable object code file",
+        "No executable file"
+      ],
+      [
+        "Error reporting",
+        "All errors listed after compilation",
+        "Stops at the first error found"
+      ],
+      [
+        "Execution speed",
+        "Fast",
+        "Slower; statements re-translated each time"
+      ],
+      [
+        "Needed to run the program",
+        "Only the executable",
+        "Source code and interpreter"
+      ],
+      [
+        "Best suited to",
+        "Distributing finished programs",
+        "Developing and debugging"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "How Java programs are translated",
+    "type": "flow",
+    "nodes": [
+      "Java source code",
+      "Compiled to bytecode",
+      "Bytecode distributed",
+      "Java Virtual Machine interprets it on the target computer"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Distributing a finished game as compiled code",
+      "steps": [
+        "The game is compiled once into an executable",
+        "Users run it without needing a compiler",
+        "It runs as fast as possible because no translation happens during play",
+        "The source code is not shared, so it is harder for others to copy"
+      ],
+      "evaluation": "Compiling is the right choice for distribution, but a separate executable must be produced for each platform the game supports."
+    },
+    {
+      "title": "Using an interpreter while developing",
+      "steps": [
+        "The program is executed line by line",
+        "An error stops execution at the exact line where it occurred",
+        "The programmer can fix it and rerun immediately without recompiling everything",
+        "Unfinished programs can be tested section by section"
+      ],
+      "evaluation": "Interpreting speeds up development and debugging; once the program works, compiling it gives faster execution for users."
+    },
+    {
+      "title": "Using breakpoints and a watch window rather than output statements",
+      "steps": [
+        "The program pauses exactly where the problem is suspected",
+        "Variable values can be inspected without changing the code",
+        "Single stepping shows which branch of each IF is taken",
+        "There are no leftover debug output statements to remove afterwards"
+      ],
+      "evaluation": "IDE debugging tools find logic errors faster and more safely than editing the code to print values."
+    }
+  ],
+  "examTips": [
+    "Compare compilers and interpreters point by point: translation, output, error reporting, speed and what is needed to run.",
+    "When asked to describe an IDE feature, say what it does and how it helps the programmer.",
+    "Link each IDE feature to its category (coding, error detection, presentation, debugging) as the syllabus does.",
+    "For Java, mention bytecode, the virtual machine and the benefit of portability."
+  ],
+  "commonMistakes": [
+    "Saying an interpreter produces an executable file.",
+    "Claiming a compiler finds logic errors; it finds syntax errors.",
+    "Confusing breakpoints (pause at a line) with single stepping (run one line at a time).",
+    "Saying compiled programs run on any computer; they are specific to one processor and OS.",
+    "Describing prettyprint as a printing feature rather than code formatting."
+  ],
+  "quickRecall": [
+    {
+      "question": "Which translator converts assembly language into machine code?",
+      "answer": "An assembler."
+    },
+    {
+      "question": "Give two benefits of a compiler.",
+      "answer": "Any two of: faster execution, no translator needed to run, source code not distributed, compiled once and run many times."
+    },
+    {
+      "question": "Give two benefits of an interpreter during development.",
+      "answer": "Errors are reported at the line they occur, and parts of a program can be tested before it is complete."
+    },
+    {
+      "question": "How is Java partly compiled and partly interpreted?",
+      "answer": "Source code is compiled to bytecode, which is then interpreted by the Java Virtual Machine on the target computer."
+    },
+    {
+      "question": "What is a context-sensitive prompt?",
+      "answer": "An IDE suggestion of keywords, identifiers or parameters that fit what the programmer is currently typing."
+    },
+    {
+      "question": "What is dynamic syntax checking?",
+      "answer": "The IDE checks each line for syntax errors as it is typed and highlights them immediately."
+    },
+    {
+      "question": "What does a breakpoint do?",
+      "answer": "It pauses execution at a chosen line so variable values can be examined."
+    },
+    {
+      "question": "What is the purpose of the report (watch) window?",
+      "answer": "To display the current values of variables while the program runs or is paused."
+    }
+  ],
+  "relatedTopics": [
+    "4.2",
+    "5.1",
+    "12.3",
+    "16.2"
+  ]
+}

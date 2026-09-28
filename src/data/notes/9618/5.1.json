@@ -1,0 +1,291 @@
+{
+  "id": "5.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-T",
+  "unitTitle": "AS Theory",
+  "title": "Operating Systems",
+  "contentDepth": "full",
+  "overview": "System software makes the hardware usable. Paper 1 asks why a computer needs an operating system, what the OS does in each of its management roles (memory, files, security, hardware and processes), what common utility programs are for, and why programmers use library programs, including dynamic link libraries (DLLs). Answers score when each task is linked to a specific action the OS or utility performs.",
+  "syllabusPoints": [
+    "Explain why a computer system requires an operating system.",
+    "Explain the key management tasks carried out by the operating system, including memory management, file management, security management, hardware management (input/output/peripherals) and process management.",
+    "Show understanding of the need for typical utility software, including disk formatter, virus checker, defragmentation software, disk contents analysis/disk repair software, file compression and back-up software.",
+    "Show understanding that software under development is often constructed using existing code from program libraries.",
+    "Describe the benefits to the developer of software constructed using library files, including dynamic link library (DLL) files."
+  ],
+  "definitions": [
+    {
+      "term": "Operating system (OS)",
+      "definition": "System software that manages the computer's hardware and software resources and provides an interface between the user, applications and the hardware."
+    },
+    {
+      "term": "Utility software",
+      "definition": "System software that performs a specific maintenance or management task, such as backing up, compressing or checking for malware."
+    },
+    {
+      "term": "Process",
+      "definition": "A program that has been loaded into memory and is being executed."
+    },
+    {
+      "term": "Device driver",
+      "definition": "Software that lets the operating system communicate with a particular hardware device."
+    },
+    {
+      "term": "Fragmentation",
+      "definition": "When a file is stored in non-contiguous blocks scattered across a disk, slowing access."
+    },
+    {
+      "term": "Program library",
+      "definition": "A collection of pre-written, pre-tested routines that programmers can use in their own programs."
+    },
+    {
+      "term": "Dynamic link library (DLL)",
+      "definition": "A library file that is linked to a program when the program is run, rather than being copied into it when it is compiled."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-why-an-os",
+      "title": "Why a computer needs an operating system",
+      "content": [
+        "Without an operating system, every application would have to control the hardware directly, manage its own memory and handle its own files. The OS hides this complexity. It provides a user interface (command-line or graphical) so users can run programs and manage files, provides services that applications call (for example to save a file or print), and shares the hardware fairly and safely between all running programs and users."
+      ],
+      "bullets": [
+        "It provides an interface between the user and the hardware.",
+        "It provides a platform on which applications run, so programmers do not need to write hardware-control code.",
+        "It manages resources (processor time, memory, storage, devices) between competing programs."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-memory-management",
+      "title": "Memory management",
+      "content": [
+        "The OS decides which programs and data are held in main memory and where. It allocates memory to each process when it starts and frees it when it ends, keeps track of which parts of memory are in use, and protects each process's memory so one program cannot read or overwrite another's data. When physical memory is full, it can use virtual memory: part of secondary storage is treated as extra memory, and data not currently needed are moved out of RAM."
+      ],
+      "bullets": [
+        "Memory protection stops a faulty program crashing other programs or the OS itself.",
+        "Memory optimisation decides which data stay in RAM and which can be moved to secondary storage.",
+        "Heavy use of virtual memory slows the computer because secondary storage is much slower than RAM."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-file-management",
+      "title": "File management",
+      "content": [
+        "The OS organises data on secondary storage into files and directories (folders). It keeps track of where each file is physically stored, provides a naming system with file extensions, lets users and programs create, open, save, copy, move, rename and delete files, and controls which users are allowed to read or change each file."
+      ],
+      "bullets": [
+        "A hierarchical directory structure lets files be organised logically.",
+        "File permissions (read, write, execute) are set for users and groups.",
+        "The OS hides the physical location of data, so users work with names rather than disk addresses."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-security-management",
+      "title": "Security management",
+      "content": [
+        "The OS protects data and resources from unauthorised access and loss. It manages user accounts and authentication with usernames and passwords (or biometrics), assigns access rights so users can only use what they are entitled to, keeps the system updated with security patches, and may include a firewall. It can also log user activity and support data recovery and backups."
+      ],
+      "bullets": [
+        "Different users can have different privileges, e.g. only an administrator can install software.",
+        "Automatic updates close security holes discovered after release.",
+        "Encryption of stored data may be provided by the OS."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-hardware-management",
+      "title": "Hardware (input/output and peripheral) management",
+      "content": [
+        "The OS communicates with input and output devices through device drivers, which translate general OS commands into the specific signals a device understands. It receives and handles interrupts from devices, manages buffers and queues so slow devices do not hold up the processor, and uses spooling so that, for example, several print jobs can be queued on disk and printed in turn."
+      ],
+      "bullets": [
+        "New hardware usually needs only a new driver, not a new operating system.",
+        "Plug-and-play detects a connected device and loads its driver automatically.",
+        "The OS controls which process may use a device at any one time."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-process-management",
+      "title": "Process management",
+      "content": [
+        "The OS allows several processes to share the processor, a technique called multitasking. The scheduler decides which process runs next and gives each one a short time slice, switching between them so quickly that they appear to run at the same time. The OS allocates resources to processes, handles interrupts, and resolves conflicts when two processes need the same resource, so that neither is stuck waiting forever."
+      ],
+      "bullets": [
+        "Each process is in a state such as running, ready or blocked (waiting for an event).",
+        "Priorities can give more processor time to important tasks.",
+        "Detailed scheduling algorithms are covered at A Level in topic 16.1."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-utility-software",
+      "title": "Utility software",
+      "content": [
+        "A disk formatter prepares a storage device for use by setting up the file system and dividing the disk into tracks and sectors; formatting erases existing data. A virus checker scans files and memory for malware, comparing them with a database of known virus signatures and watching for suspicious behaviour, then quarantines or deletes infected files; it must be updated regularly. Defragmentation software rearranges the blocks of fragmented files on a hard disk so each file is stored contiguously, reducing read/write head movement and access time. Disk contents analysis and repair software checks for errors such as bad sectors, marks them as unusable, and recovers data where possible. File compression software reduces file sizes to save storage and speed up transmission. Back-up software copies files to another storage medium, often automatically on a schedule and incrementally (only files that have changed), so data can be restored after loss or damage."
+      ],
+      "bullets": [
+        "Defragmenting an SSD is unnecessary, because it has no moving parts, and it wears the flash memory.",
+        "A full backup copies everything; an incremental backup copies only changes since the last backup.",
+        "Disk analysis tools can also show which files and folders use the most space."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-program-libraries-and-dlls",
+      "title": "Program libraries and DLLs",
+      "content": [
+        "Programmers rarely write everything from scratch. Program libraries contain pre-written, pre-tested routines, for example for mathematical functions, graphics or file handling, which can be called from new programs. A static library routine is copied into the executable when the program is compiled. A dynamic link library (DLL) is kept as a separate file and linked to the program only when it runs, so many programs can share one copy."
+      ],
+      "bullets": [
+        "Library benefits: saves development time, routines are already tested so they are reliable, and expert code can be used for complex tasks.",
+        "DLL benefits: executable files are smaller, one copy in memory can be shared by several programs, and updating the DLL improves every program that uses it without recompiling them.",
+        "DLL drawbacks: the program fails if the DLL is missing, and an updated DLL that is incompatible can break programs that depend on it."
+      ],
+      "examples": []
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Utility software",
+    "columns": [
+      "Utility",
+      "What it does",
+      "Why it is needed"
+    ],
+    "rows": [
+      [
+        "Disk formatter",
+        "Sets up the file system and divides the disk into tracks and sectors",
+        "A new or reused disk must be prepared before it can store files"
+      ],
+      [
+        "Virus checker",
+        "Scans for malware and quarantines or deletes it",
+        "Protects data from being corrupted, deleted or stolen"
+      ],
+      [
+        "Defragmentation",
+        "Moves the parts of each file on a hard disk so they are stored contiguously",
+        "Reduces head movement, so files load faster"
+      ],
+      [
+        "Disk analysis / repair",
+        "Finds and marks bad sectors and recovers data",
+        "Prevents data being written to damaged areas"
+      ],
+      [
+        "File compression",
+        "Reduces the size of files",
+        "Saves storage and speeds up transmission"
+      ],
+      [
+        "Back-up",
+        "Copies files to another medium, often on a schedule",
+        "Data can be restored after loss, damage or attack"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Where the operating system sits",
+    "type": "layers",
+    "nodes": [
+      "User",
+      "Application software",
+      "Operating system and utilities",
+      "Device drivers",
+      "Hardware"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Defragmenting a heavily used hard disk",
+      "steps": [
+        "Over time, files are split into blocks scattered across the disk",
+        "Reading a file requires the read/write heads to move to many locations",
+        "Defragmentation stores each file's blocks next to each other",
+        "The heads move less, so files open faster, and free space becomes one contiguous area"
+      ],
+      "evaluation": "Defragmentation helps magnetic hard disks noticeably; it gives no benefit on SSDs and shortens their life, so it should not be used on them."
+    },
+    {
+      "title": "Using a DLL for a spell-checking routine",
+      "steps": [
+        "Several applications link to the same spell-check DLL when they run",
+        "Only one copy is stored and loaded into memory",
+        "Each application's executable file is smaller",
+        "When the DLL is updated with new words, every application benefits without being recompiled"
+      ],
+      "evaluation": "Shared DLLs save space and simplify updates, but every application now depends on that file being present and compatible."
+    },
+    {
+      "title": "Scheduling processes with time slices",
+      "steps": [
+        "The processor is given to each ready process in turn for a short time slice",
+        "Switching happens many times a second",
+        "Users see several programs responding at the same time",
+        "But each switch has an overhead, as register contents must be saved and restored"
+      ],
+      "evaluation": "Multitasking greatly improves usability and processor use; the scheduler must balance time slice length against switching overhead."
+    }
+  ],
+  "examTips": [
+    "For each OS management task, give a specific action (e.g. 'allocates memory to processes and prevents them overwriting each other') rather than just naming it.",
+    "When a question asks for the need for a utility, explain the problem it solves, not just what it is called.",
+    "Separate the benefits of libraries in general from the extra benefits of DLLs.",
+    "Say that defragmentation applies to magnetic disks and explain why (fewer head movements)."
+  ],
+  "commonMistakes": [
+    "Saying the OS is an application program.",
+    "Describing defragmentation as deleting files or freeing up space.",
+    "Saying formatting only 'cleans' the disk, without mentioning setting up the file system, tracks and sectors.",
+    "Claiming antivirus software removes all threats; it only detects threats it recognises or behaviour it flags.",
+    "Confusing a DLL with the program itself; the DLL is a separate file loaded at run time.",
+    "Listing OS roles without describing what the OS actually does in each."
+  ],
+  "quickRecall": [
+    {
+      "question": "Give two reasons why a computer needs an operating system.",
+      "answer": "Any two of: provides a user interface, hides hardware complexity, provides a platform for applications, manages resources between programs."
+    },
+    {
+      "question": "What does the OS do in memory management?",
+      "answer": "Allocates and frees memory for processes, tracks memory use, protects each process's memory, and manages virtual memory."
+    },
+    {
+      "question": "What is a device driver?",
+      "answer": "Software that translates OS commands into signals a specific hardware device understands."
+    },
+    {
+      "question": "Why is defragmentation useful on a hard disk?",
+      "answer": "It stores each file contiguously, so the read/write heads move less and files are accessed faster."
+    },
+    {
+      "question": "How does a virus checker detect malware?",
+      "answer": "It compares files against a database of known virus signatures and monitors for suspicious behaviour."
+    },
+    {
+      "question": "What is a DLL?",
+      "answer": "A library file linked to a program when it runs, which can be shared by several programs."
+    },
+    {
+      "question": "Give two benefits of using DLLs.",
+      "answer": "Any two of: smaller executables, one shared copy in memory, updates apply to all programs without recompiling."
+    },
+    {
+      "question": "Give one drawback of DLLs.",
+      "answer": "The program will not run if the DLL is missing, or an incompatible update can break it."
+    }
+  ],
+  "relatedTopics": [
+    "3.1",
+    "5.2",
+    "6.1",
+    "16.1"
+  ]
+}
