@@ -5,46 +5,306 @@
   "unitId": "AS-P",
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Algorithms",
-  "contentDepth": "in-depth",
-  "overview": "A focused revision guide to algorithms.",
+  "contentDepth": "full",
+  "overview": "Paper 1 asks candidates to trace a given algorithm using a trace table, to describe or complete a linear search, binary search, bubble sort or insertion sort, and to identify and correct a logic error revealed by a trace. Answers score when a trace table shows every variable's value after every relevant step, and when an efficiency comparison is justified in terms of how the number of steps grows as the data gets larger, rather than a bare claim that one algorithm is 'faster'.",
   "syllabusPoints": [
-    "pseudocode/flowcharts",
-    "searching/sorting",
-    "trace tables"
+    "Show understanding of how a trace table is used to test an algorithm by hand, recording the value of each variable at each step.",
+    "Describe, and trace, a linear search algorithm, and know that it works on unsorted data by checking each item in turn.",
+    "Describe, and trace, a binary search algorithm, and know that it requires sorted data and repeatedly halves the search interval.",
+    "Describe, and trace, a bubble sort algorithm, which repeatedly swaps adjacent out-of-order pairs of items.",
+    "Describe, and trace, an insertion sort algorithm, which builds up a sorted section of the data one item at a time.",
+    "Use a trace table to identify a logic error in a given algorithm and state the correction needed to fix it.",
+    "Compare the efficiency of algorithms informally, explaining how the number of steps required changes as the size of the data set increases."
   ],
-  "definitions": [],
+  "definitions": [
+    {
+      "term": "Trace table",
+      "definition": "A table used to test an algorithm by hand, with a column for each variable and a row for each step, recording how every variable's value changes as the algorithm executes."
+    },
+    {
+      "term": "Linear search",
+      "definition": "A search algorithm that checks each item of a list in turn, from the start, until the target is found or every item has been checked; it works on data in any order."
+    },
+    {
+      "term": "Binary search",
+      "definition": "A search algorithm that repeatedly compares the target with the middle item of a sorted list and discards the half that cannot contain it, until the target is found or the search interval is empty."
+    },
+    {
+      "term": "Bubble sort",
+      "definition": "A sorting algorithm that repeatedly steps through a list, comparing and swapping adjacent items that are in the wrong order, until a complete pass makes no swaps."
+    },
+    {
+      "term": "Insertion sort",
+      "definition": "A sorting algorithm that builds up a sorted section of the list one item at a time, taking each new item and shifting the larger items in the sorted section along to insert it in its correct position."
+    },
+    {
+      "term": "Logic error",
+      "definition": "A mistake in an algorithm that causes it to run and produce a result, but the result is incorrect, because the algorithm does not do what its specification requires."
+    },
+    {
+      "term": "Sentinel value",
+      "definition": "A specific value used in an algorithm to signal that a boundary or ending condition has been reached, such as the end of user input."
+    }
+  ],
   "sections": [
     {
-      "id": "01-searching",
-      "title": "Searching",
+      "id": "01-pseudocode-flowcharts-and-trace-tables",
+      "title": "Representing and testing algorithms",
       "content": [
-        "Linear search: checks every item, works unsorted, O(n). Binary search: halves the search space each time, needs sorted data, O(log n)."
+        "Before an algorithm's efficiency or correctness can be discussed, it needs to be expressed precisely, usually as pseudocode or a flowchart, and then tested. Testing an algorithm 'by hand', without running it as program code, is done using a trace table: a table with one column for every variable the algorithm uses, plus a column for output where relevant, and one row for every step at which a variable's value changes. Working through the algorithm's instructions one at a time and filling in a new row whenever a value changes shows exactly what the algorithm does for a chosen set of test data, without needing a computer to run it.",
+        "A trace table is the standard way both to confirm an algorithm behaves as intended for typical data, and to test how it behaves for edge cases, such as an empty list, a single-item list, or a target value that does not appear in the data at all."
       ],
-      "bullets": [],
+      "bullets": [
+        "Every variable used by the algorithm needs its own column in the trace table, so its value at each step is visible.",
+        "A new row is added to the trace table each time a variable's value changes, not for every single line of the algorithm.",
+        "Choosing test data that includes edge cases, not only typical values, is what makes a trace genuinely test the algorithm rather than just illustrate it."
+      ],
       "examples": []
     },
     {
-      "id": "02-sorting",
-      "title": "Sorting",
+      "id": "02-linear-search",
+      "title": "Linear search",
       "content": [
-        "Bubble sort: swaps adjacent out-of-order pairs repeatedly, O(n²). Insertion sort: builds a sorted section by inserting each item into place. Be ready to trace either step-by-step."
+        "Linear search checks the items of a list one at a time, starting from the first, comparing each one with the target value. If an item matches the target, the search stops and reports where it was found; if every item has been checked without a match, the search reports that the target is not present. Because it checks items in the order they appear, linear search does not require the list to be sorted, which makes it the correct choice when data is unsorted or is searched only once, so that sorting it first would cost more than it saves.",
+        "Linear search's main weakness is that, for a list with n items, it may need to check up to all n of them if the target is near the end or absent altogether, so the number of comparisons it needs grows directly in proportion to the size of the list."
       ],
-      "bullets": [],
+      "bullets": [
+        "Linear search works on data in any order, unlike binary search, which requires the data to be sorted first.",
+        "In the best case the target is the first item checked; in the worst case, every item in the list must be checked.",
+        "A trace of a linear search should record the index currently being checked and the value found there at each step."
+      ],
+      "examples": [
+        {
+          "id": "02-linear-search-trace",
+          "kind": "worked",
+          "label": "Worked trace: linear search for 15",
+          "content": "Array: [23, 7, 41, 15, 9, 34]   Target: 15\n\nPseudocode:\nIndex <- 0\nFound <- FALSE\nWHILE Index < LENGTH(Array) AND Found = FALSE\n  IF Array[Index] = Target THEN\n    Found <- TRUE\n  ELSE\n    Index <- Index + 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Index | Array[Index] | Comparison           | Found\n1    | 0     | 23           | 23 = 15? No           | FALSE\n2    | 1     | 7            | 7 = 15? No             | FALSE\n3    | 2     | 41           | 41 = 15? No            | FALSE\n4    | 3     | 15           | 15 = 15? Yes           | TRUE\n\nThe loop stops as soon as Found becomes TRUE. Index = 3, so 15 is reported as found at index 3, after 4 comparisons."
+        }
+      ]
+    },
+    {
+      "id": "03-binary-search",
+      "title": "Binary search",
+      "content": [
+        "Binary search only works on data that is already sorted. It keeps track of a lower boundary (low) and an upper boundary (high) for the part of the list that could still contain the target, starting with the whole list. At each step it calculates the index midway between low and high, compares the value there with the target, and then discards half of the remaining search interval: if the target is larger, the new lower boundary moves to just past the middle; if it is smaller, the new upper boundary moves to just before the middle. This repeats, with the search interval roughly halving each time, until the target is found or the interval becomes empty (low becomes greater than high), meaning the target is not present.",
+        "Because each comparison eliminates about half of the remaining items rather than just one, binary search needs far fewer comparisons than linear search once the list is reasonably large, but this advantage only exists because the data has been sorted first."
+      ],
+      "bullets": [
+        "Binary search requires the data to already be in sorted order; running it on unsorted data can give an incorrect result.",
+        "The middle index is usually calculated as mid = (low + high) DIV 2, using integer division.",
+        "A trace of a binary search should record low, high and mid at every step, along with the comparison made and the resulting narrower interval."
+      ],
+      "examples": [
+        {
+          "id": "03-binary-search-trace",
+          "kind": "worked",
+          "label": "Worked trace: binary search for 34",
+          "content": "Sorted array (indices 0-7): [4, 9, 15, 23, 34, 41, 56, 68]   Target: 34\n\nPseudocode:\nLow <- 0\nHigh <- LENGTH(Array) - 1\nFound <- FALSE\nWHILE Low <= High AND Found = FALSE\n  Mid <- (Low + High) DIV 2\n  IF Array[Mid] = Target THEN\n    Found <- TRUE\n  ELSE IF Array[Mid] < Target THEN\n    Low <- Mid + 1\n  ELSE\n    High <- Mid - 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Low | High | Mid | Array[Mid] | Comparison         | Action\n1    | 0   | 7    | 3   | 23         | 34 > 23            | Low <- Mid + 1 = 4\n2    | 4   | 7    | 5   | 41         | 34 < 41            | High <- Mid - 1 = 4\n3    | 4   | 4    | 4   | 34         | 34 = 34, Found     | Found <- TRUE\n\nThe target 34 is located at index 4 after only 3 comparisons, compared with the 5 comparisons a linear search would need checking the array from the start."
+        }
+      ]
+    },
+    {
+      "id": "04-bubble-sort",
+      "title": "Bubble sort",
+      "content": [
+        "Bubble sort repeatedly passes through the list, comparing each pair of adjacent items and swapping them if they are in the wrong order. On each complete pass, the largest remaining unsorted value 'bubbles up' into its correct position at the end of the unsorted section. The algorithm keeps making passes until a complete pass makes no swaps at all, which proves the list is now fully sorted, so an efficient implementation uses a flag to detect this and stop early rather than always making a fixed number of passes.",
+        "Bubble sort's weakness is that, for a list of n items sorted in the worst possible starting order (fully reversed), it may need close to n passes, each comparing close to n adjacent pairs, so the total number of comparisons grows roughly with the square of the list's size."
+      ],
+      "bullets": [
+        "A pass compares every adjacent pair from the start of the unsorted section to its end, swapping any pair that is in the wrong order.",
+        "A pass that completes with no swaps proves the list is fully sorted, so the algorithm can stop immediately rather than making further, unnecessary passes.",
+        "A trace of a bubble sort should show the complete state of the array after every pass, not only which pairs were swapped."
+      ],
+      "examples": [
+        {
+          "id": "04-bubble-sort-trace",
+          "kind": "worked",
+          "label": "Worked trace: bubble sort on [5, 2, 8, 1, 4]",
+          "content": "Initial array: [5, 2, 8, 1, 4]\n\nPass 1:\nCompare 5,2 -> out of order -> swap -> [2, 5, 8, 1, 4]\nCompare 5,8 -> in order -> no swap -> [2, 5, 8, 1, 4]\nCompare 8,1 -> out of order -> swap -> [2, 5, 1, 8, 4]\nCompare 8,4 -> out of order -> swap -> [2, 5, 1, 4, 8]\nEnd of pass 1: [2, 5, 1, 4, 8]   Swapped this pass? Yes\n\nPass 2:\nCompare 2,5 -> in order -> no swap -> [2, 5, 1, 4, 8]\nCompare 5,1 -> out of order -> swap -> [2, 1, 5, 4, 8]\nCompare 5,4 -> out of order -> swap -> [2, 1, 4, 5, 8]\nCompare 5,8 -> in order -> no swap -> [2, 1, 4, 5, 8]\nEnd of pass 2: [2, 1, 4, 5, 8]   Swapped this pass? Yes\n\nPass 3:\nCompare 2,1 -> out of order -> swap -> [1, 2, 4, 5, 8]\nCompare 2,4 -> in order -> no swap\nCompare 4,5 -> in order -> no swap\nCompare 5,8 -> in order -> no swap\nEnd of pass 3: [1, 2, 4, 5, 8]   Swapped this pass? Yes\n\nPass 4:\nCompare 1,2 -> no swap\nCompare 2,4 -> no swap\nCompare 4,5 -> no swap\nCompare 5,8 -> no swap\nEnd of pass 4: [1, 2, 4, 5, 8]   Swapped this pass? No\n\nNo swaps were made in pass 4, so the array [1, 2, 4, 5, 8] is confirmed sorted and the algorithm stops."
+        }
+      ]
+    },
+    {
+      "id": "05-insertion-sort",
+      "title": "Insertion sort",
+      "content": [
+        "Insertion sort builds up a sorted section of the list from left to right, one item at a time. It treats the first item as an already-sorted section of length one, then, for each following item in turn, removes it, compares it with the items already in the sorted section from right to left, shifts each larger item one place to the right to make room, and inserts the removed item into the gap that results. Unlike bubble sort, which repeatedly compares across the whole unsorted section, insertion sort only shifts items that are actually larger than the one being inserted, so it does very little work when the list is already close to sorted.",
+        "In the worst case, when the list starts in reverse order, every new item must be shifted past every item already in the sorted section, so the total number of comparisons and shifts again grows roughly with the square of the list's size; but in the best case, when the list is already sorted, each new item requires only a single comparison and no shifting at all."
+      ],
+      "bullets": [
+        "The sorted section grows by exactly one item after each pass, from left to right through the list.",
+        "An item is only shifted if it is larger than the item being inserted; already-correct items are left untouched.",
+        "Insertion sort adapts well to data that is already nearly sorted, doing far less work than bubble sort in that situation."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-finding-a-logic-error-with-a-trace-table",
+      "title": "Using a trace table to find and correct a logic error",
+      "content": [
+        "A trace table is also the standard tool for locating a logic error: an algorithm that runs without crashing but produces an incorrect result because it does not do what its specification requires. Tracing the algorithm with a simple, known set of test data, and comparing the traced result with the result that should have been produced, shows exactly which step the algorithm diverges from the intended behaviour at, which usually points directly to the line that needs to be corrected.",
+        "A common source of this kind of error is an off-by-one mistake in a loop's starting or ending value, causing the algorithm to skip the first or last item of a list without the programmer necessarily noticing from reading the code alone."
+      ],
+      "bullets": [
+        "Choose test data with a known, easily calculated correct answer, so the traced result can be checked against it directly.",
+        "The step where the traced value first differs from what is expected identifies the specific line responsible for the error.",
+        "Correcting a logic error usually means changing a condition, a loop boundary, or an initial value, rather than restructuring the whole algorithm."
+      ],
+      "examples": [
+        {
+          "id": "06-logic-error-trace",
+          "kind": "worked",
+          "label": "Worked trace: locating an off-by-one error in a sum algorithm",
+          "content": "Array (indices 0-3): [10, 20, 30, 40]   Intended purpose: output the sum of all four values (should be 100)\n\nGiven (buggy) pseudocode:\nTotal <- 0\nFOR Index <- 1 TO 3\n  Total <- Total + Array[Index]\nNEXT Index\nOUTPUT Total\n\nTrace table:\nStep | Index | Array[Index] | Total\n1    | 1     | 20           | 20\n2    | 2     | 30           | 50\n3    | 3     | 40           | 90\n\nOutput produced: 90\nExpected output: 100\n\nThe trace shows Array[0] = 10 is never added to Total, because the loop starts at Index <- 1 instead of Index <- 0, so the first element of the zero-indexed array is skipped.\n\nCorrection: change the loop header to FOR Index <- 0 TO 3, so every element from Array[0] to Array[3] is included in the sum."
+        }
+      ]
+    },
+    {
+      "id": "07-comparing-algorithm-efficiency",
+      "title": "Comparing algorithm efficiency",
+      "content": [
+        "Comparing algorithms informally means explaining how the number of steps each one needs changes as the size of the data set grows, not simply asserting that one algorithm is 'faster'. Linear search's number of comparisons grows directly in proportion to the list's size, so searching a list ten times longer may need up to ten times as many comparisons; binary search's number of comparisons grows far more slowly, because each comparison discards about half of what remains, so a list ten times longer only needs a few more comparisons, not ten times as many. This is why binary search scales so much better than linear search as a list grows large, though it only works because the data has already been sorted, which itself has a cost.",
+        "Bubble sort becomes very slow on large lists because, in the worst case, both the number of passes and the number of comparisons within each pass grow with the size of the list, so the total work grows with the square of the list's size: doubling the list roughly quadruples the number of comparisons needed. Insertion sort has the same worst-case growth, but performs far fewer comparisons and shifts than bubble sort when the data is already close to sorted, which matters when comparing which sort is more suitable for a particular data set."
+      ],
+      "bullets": [
+        "A useful efficiency comparison names how the number of steps grows as the data set gets larger, not just which algorithm 'wins' on one specific example.",
+        "Binary search scales much better than linear search on large lists, but requires sorted data, which linear search does not.",
+        "Bubble sort's number of comparisons grows with the square of the list's size in the worst case, making it impractical for very large, unordered lists."
+      ],
       "examples": []
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "comparisonTable": {
+    "title": "Searching and sorting algorithms compared",
+    "columns": [
+      "Algorithm",
+      "Requires sorted data?",
+      "How it works",
+      "Efficiency on a large list"
+    ],
+    "rows": [
+      [
+        "Linear search",
+        "No",
+        "Checks each item in turn, from the start, until the target is found or the list is exhausted",
+        "Number of comparisons grows in direct proportion to the list's size"
+      ],
+      [
+        "Binary search",
+        "Yes",
+        "Repeatedly compares the target with the middle item and discards the half that cannot contain it",
+        "Number of comparisons grows very slowly as the list gets larger, far better than linear search"
+      ],
+      [
+        "Bubble sort",
+        "No (sorts unsorted data)",
+        "Repeatedly swaps adjacent out-of-order pairs until a complete pass makes no swaps",
+        "Becomes very slow on large lists; work grows roughly with the square of the list's size"
+      ],
+      [
+        "Insertion sort",
+        "No (sorts unsorted data)",
+        "Builds a sorted section by inserting each new item into its correct position among the items already sorted",
+        "Same worst-case growth as bubble sort, but far faster on data that is already close to sorted"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "Binary search: repeatedly halving the search interval",
+    "type": "flow",
+    "nodes": [
+      "Set Low to 0 and High to the index of the last item",
+      "While Low <= High and the target has not been found",
+      "Calculate Mid as (Low + High) DIV 2",
+      "If Array[Mid] equals the target, it is found",
+      "If the target is larger, set Low to Mid + 1; if smaller, set High to Mid - 1",
+      "If Low becomes greater than High, the target is not present"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Choosing between linear and binary search as a customer list grows",
+      "steps": [
+        "A customer list of 50 records is searched using linear search, needing up to 50 comparisons in the worst case",
+        "The list grows to 50,000 records as the business expands",
+        "Searched with linear search, the worst-case number of comparisons grows in direct proportion, up to 50,000",
+        "If the list is instead kept sorted, a binary search of the same 50,000 records needs only around 17 comparisons in the worst case, since each comparison discards about half of what remains"
+      ],
+      "evaluation": "Binary search's comparisons grow far more slowly than linear search's as the list gets larger, but this advantage depends entirely on the list being kept sorted, which linear search does not require and binary search cannot work without."
+    },
+    {
+      "title": "Diagnosing an incompletely sorted bubble sort result",
+      "steps": [
+        "A bubble sort is traced on the array [4, 1, 3, 2] using an inner loop that only compares indices 0 and 1 on every pass",
+        "The trace shows index 0 and 1 becoming correctly ordered after the first pass",
+        "The trace shows the value at index 3 never being compared with, or swapped past, the value at index 2",
+        "The array output at the end of the trace is left partially unsorted, with the last two items still in the wrong order"
+      ],
+      "evaluation": "The trace reveals the inner loop's comparison range is too narrow to reach every adjacent pair in the list; correcting it to compare every adjacent pair up to the current unsorted boundary allows every out-of-order pair to be swapped into place."
+    },
+    {
+      "title": "Deciding between insertion sort and bubble sort for a nearly sorted list",
+      "steps": [
+        "A list of 1,000 items is already sorted except for a single item that is out of place near the start",
+        "Traced with insertion sort, most items require only one comparison against the sorted section and no shifting at all",
+        "Traced with bubble sort, a full pass still compares every adjacent pair in the list regardless of how few items are actually out of place",
+        "Both algorithms are compared on the total number of comparisons each performs for this specific, nearly sorted list"
+      ],
+      "evaluation": "Insertion sort adapts to data that is already close to sorted by doing very little extra work, while bubble sort's basic form performs a full pass of comparisons across the whole list even when very few items are out of place, making insertion sort the better choice here despite both having the same worst-case growth."
+    }
+  ],
   "examTips": [
-    "When comparing algorithms, state both the Big O and a practical reason — e.g. \"binary search is O(log n) so it scales far better than linear search's O(n)\"."
+    "In a trace table question, give every variable its own column and add a new row every time any variable's value changes, including loop counters.",
+    "When describing binary search, state explicitly that the data must be sorted first; this precondition is a common mark point on its own.",
+    "When tracing a sort, show the full state of the array after each pass or each comparison, not just a description of which items were swapped.",
+    "When comparing algorithm efficiency, explain how the number of steps changes as the data set grows larger, rather than only stating which algorithm is 'better'."
   ],
-  "commonMistakes": [],
+  "commonMistakes": [
+    "Leaving a variable out of a trace table, or failing to add a new row when that variable's value changes.",
+    "Applying binary search to data that has not been confirmed to be sorted.",
+    "Recalculating Mid as (Low + High) / 2 without integer division, giving a non-integer index.",
+    "Describing bubble sort as stopping after a fixed number of passes, rather than stopping when a complete pass makes no swaps.",
+    "Claiming an algorithm is simply 'faster' without explaining how its number of steps grows as the size of the data increases."
+  ],
   "quickRecall": [
-    "pseudocode/flowcharts",
-    "searching/sorting",
-    "trace tables"
+    {
+      "question": "What is a trace table used for?",
+      "answer": "To test an algorithm by hand, recording the value of every variable at each step where it changes, so the algorithm's behaviour can be checked without running it as code."
+    },
+    {
+      "question": "Does linear search require sorted data?",
+      "answer": "No; it checks each item in turn from the start and works correctly on data in any order."
+    },
+    {
+      "question": "What does binary search do at each step?",
+      "answer": "It compares the target with the middle item of the current search interval and discards the half of the interval that cannot contain the target."
+    },
+    {
+      "question": "When does a bubble sort stop?",
+      "answer": "When a complete pass through the list makes no swaps, which proves the list is fully sorted."
+    },
+    {
+      "question": "How does insertion sort place a new item?",
+      "answer": "It shifts the items in the already-sorted section that are larger than the new item one place to the right, then inserts the new item into the resulting gap."
+    },
+    {
+      "question": "How is a logic error located using a trace table?",
+      "answer": "By tracing the algorithm with test data that has a known correct result and finding the exact step where the traced value first diverges from what is expected."
+    },
+    {
+      "question": "Why does binary search scale better than linear search on a large list?",
+      "answer": "Each comparison in binary search discards about half of the remaining data, so the number of comparisons needed grows far more slowly than linear search's, which grows in direct proportion to the list's size."
+    },
+    {
+      "question": "Why does bubble sort become very slow on a large list?",
+      "answer": "In the worst case both the number of passes and the number of comparisons per pass grow with the list's size, so the total work grows roughly with the square of the list's size."
+    }
   ],
-  "relatedTopics": []
+  "relatedTopics": [
+    "9.1",
+    "11.2",
+    "19.1",
+    "19.2"
+  ]
 }

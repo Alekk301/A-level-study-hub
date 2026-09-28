@@ -1,0 +1,308 @@
+{
+  "id": "9.1",
+  "subject": "9618",
+  "level": "AS",
+  "unitId": "AS-P",
+  "unitTitle": "AS Problem-solving & Programming",
+  "title": "Computational Thinking Skills",
+  "contentDepth": "full",
+  "overview": "Paper 1 gives candidates a short, unfamiliar problem statement and asks them to apply computational thinking before any code is written: identifying the inputs, outputs and processing needed, breaking the problem into smaller parts, and expressing a solution as structured English, pseudocode or a flowchart. Answers score when a candidate applies these skills to the specific scenario given, rather than only naming abstraction or decomposition as general terms.",
+  "syllabusPoints": [
+    "Show understanding of abstraction as the process of removing unnecessary detail from a problem so as to concentrate on the information relevant to solving it.",
+    "Show understanding of decomposition as breaking a complex problem down into smaller, more manageable sub-problems.",
+    "Show understanding of algorithmic thinking as devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem.",
+    "Show understanding of pattern recognition as identifying similarities between a new problem and a problem already solved, so an existing solution can be reused or adapted.",
+    "Be able to identify the inputs, outputs and processing steps required to solve a given problem.",
+    "Be able to represent an algorithm using structured English, pseudocode or a flowchart, as a precursor to writing program code."
+  ],
+  "definitions": [
+    {
+      "term": "Abstraction",
+      "definition": "The process of removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+    },
+    {
+      "term": "Decomposition",
+      "definition": "Breaking a complex problem down into smaller, more manageable sub-problems, each of which can be solved and tested on its own."
+    },
+    {
+      "term": "Algorithmic thinking",
+      "definition": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem or a sub-problem."
+    },
+    {
+      "term": "Pattern recognition",
+      "definition": "Identifying similarities between a new problem and a problem already solved, so that an existing solution or technique can be reused or adapted."
+    },
+    {
+      "term": "Input",
+      "definition": "Data that must be supplied to an algorithm, from a user, a file or a sensor, before it can carry out its processing."
+    },
+    {
+      "term": "Processing",
+      "definition": "The steps an algorithm performs on its inputs, such as calculations, comparisons or validation, in order to produce its outputs."
+    },
+    {
+      "term": "Structured English",
+      "definition": "A restricted form of natural language, written as short, numbered, unambiguous steps, used to outline an algorithm before it is expressed more formally."
+    },
+    {
+      "term": "Flowchart",
+      "definition": "A diagram that represents an algorithm using standard symbols for start/end, process, decision and input/output, connected by arrows showing the flow of control."
+    }
+  ],
+  "sections": [
+    {
+      "id": "01-abstraction",
+      "title": "Abstraction",
+      "content": [
+        "Abstraction is the skill of deciding what matters for solving a problem and deliberately ignoring everything else. A real-world scenario usually contains far more detail than an algorithm needs, and including irrelevant detail makes a solution harder to design, harder to test and more likely to contain errors. Applying abstraction means reading a problem statement and asking, for each piece of information given, whether it actually affects the outcome the algorithm must produce; if it does not, it is left out of the model of the problem entirely."
+      ],
+      "bullets": [
+        "Abstraction is applied before decomposition or algorithm design, since it determines what the rest of the solution needs to account for.",
+        "Two different real-world scenarios can abstract to the same underlying problem, for example calculating a taxi fare and calculating a parking charge can both abstract to 'a rate multiplied by a duration'.",
+        "Leaving out irrelevant detail is not the same as leaving out detail that is inconvenient; a detail can only be discarded if it genuinely does not affect the required output."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-decomposition",
+      "title": "Decomposition",
+      "content": [
+        "Decomposition is the process of breaking a complex problem into smaller sub-problems that are each easier to understand, solve and test than the original problem as a whole. Each sub-problem can often be tackled independently, with its own inputs and outputs, and the overall solution is produced by combining the solutions to the sub-problems. Decomposition also makes a large problem manageable for more than one person to work on, and makes it far easier to locate and fix an error, since a fault can usually be traced to a single sub-problem rather than the whole system."
+      ],
+      "bullets": [
+        "A well-decomposed sub-problem should be small enough to be solved and tested on its own, independent of the other sub-problems.",
+        "Decomposition can be applied repeatedly: a sub-problem that is still too complex can itself be broken down further.",
+        "Combining correctly solved sub-problems does not automatically guarantee the overall system is correct; the way they interact must also be checked."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-algorithmic-thinking",
+      "title": "Algorithmic thinking",
+      "content": [
+        "Algorithmic thinking is the skill of devising a sequence of instructions that solves a problem precisely, in a fixed order, with no step left ambiguous or open to interpretation. Every instruction must be specific enough that it could be followed exactly by someone, or something, with no understanding of the problem itself. This is what distinguishes an algorithm from a general description of a method: a description might say 'sort the list', whereas an algorithm states exactly how each comparison and swap is carried out, in what order, and when the process stops."
+      ],
+      "bullets": [
+        "An algorithm must terminate after a finite number of steps for every valid input, not only for the input it happened to be designed around.",
+        "Ambiguity is the main danger in algorithmic thinking; a step such as 'check if the number is big' is not precise enough to be an instruction in an algorithm.",
+        "Algorithmic thinking must account for edge cases, such as an empty list or a boundary value, not only the typical case a designer first has in mind."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-pattern-recognition",
+      "title": "Pattern recognition",
+      "content": [
+        "Pattern recognition is noticing that a new problem shares structure with a problem that has already been solved, so that the existing solution, or the technique used to solve it, can be reused or adapted rather than designed again from nothing. This is what allows a programmer to recognise, for example, that 'find the highest mark in a list of exam results' and 'find the most expensive item in a list of prices' are really the same underlying problem: iterate through a list, keeping track of the largest value seen so far. Recognising the pattern means the already-tested logic for one can be adapted almost directly for the other."
+      ],
+      "bullets": [
+        "Pattern recognition relies on abstraction: two problems only look similar once their irrelevant, scenario-specific detail has been stripped away.",
+        "A recognised pattern can be reused as a template, saving the effort of devising and testing a new algorithm from scratch.",
+        "Failing to recognise a pattern is not a fatal error, but it wastes time solving a problem that already has a known, tested solution."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-inputs-outputs-and-processing",
+      "title": "Identifying inputs, outputs and processing",
+      "content": [
+        "Before an algorithm can be designed, a problem statement must be analysed to identify exactly what data needs to be supplied to it (the inputs), what result it must produce (the outputs), and what has to be done to the inputs to produce those outputs (the processing). Inputs might come from a user typing values, a file being read, or a sensor; outputs are whatever the algorithm must display, return or store; and processing covers everything in between, including calculations, comparisons, validation and any repetition needed. Explicitly identifying these three elements gives a clear specification for the algorithm before a single line of structured English, pseudocode or program code is written."
+      ],
+      "bullets": [
+        "An input that is never used in the processing, or an output that is never produced by any processing step, is a sign the analysis is incomplete or incorrect.",
+        "Processing should be broken down into the individual operations needed, such as 'validate each mark', 'add valid marks to a running total' and 'divide the total by the count', rather than left as one vague step.",
+        "Validation of inputs, where the problem statement requires it, is itself a processing step and should be identified alongside the calculation steps."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-structured-english-and-pseudocode",
+      "title": "Representing algorithms: structured English and pseudocode",
+      "content": [
+        "Structured English expresses an algorithm as a numbered sequence of short, plain-language steps, written carefully enough to avoid ambiguity but without the strict syntax of a programming language; it is useful as an early, quick outline of a solution. Pseudocode goes a step further: it uses a consistent, keyword-based notation, such as INPUT, OUTPUT, IF/THEN/ELSE, WHILE and FOR, that closely resembles the structure of real program code without being tied to any particular programming language's exact syntax. Pseudocode is the more precise and more commonly examined representation, because it forces the same level of detail, sequencing and decision-making that the final program code will need, making the later translation into a working program much more direct."
+      ],
+      "bullets": [
+        "Structured English is closer to natural language and is quicker to sketch out, but is more prone to ambiguity than pseudocode.",
+        "Pseudocode is closer to final code and is the representation most directly comparable to what will eventually be typed into a programming language.",
+        "Both representations must still specify the exact sequence, repetition and decisions involved; neither is a substitute for precise algorithmic thinking."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-flowcharts",
+      "title": "Representing algorithms: flowcharts",
+      "content": [
+        "A flowchart represents an algorithm as a diagram, using standard symbols connected by arrows to show the flow of control: an oval for start and end, a rectangle for a process step, a parallelogram for input or output, and a diamond for a decision with a branch for each possible outcome. Flowcharts are particularly effective at showing the overall shape of an algorithm's logic, especially where it branches or repeats, because the diagram makes the possible paths through the algorithm visible at a glance in a way that a linear list of steps does not."
+      ],
+      "bullets": [
+        "A decision (diamond) symbol must have every possible outcome labelled, for example 'Yes' and 'No', with a path leading from each.",
+        "A flowchart showing repetition must include an arrow leading back to an earlier point in the diagram, forming a loop, with a decision symbol controlling when it stops.",
+        "Flowcharts can become difficult to read for a long or highly detailed algorithm, where pseudocode is usually clearer."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-worked-example-average-of-valid-marks",
+      "title": "Worked example: averaging valid exam marks",
+      "content": [
+        "Problem statement: write an algorithm that repeatedly asks the user to enter exam marks, one at a time, and calculates the average of the valid marks entered; a mark is invalid if it is below zero, and the user signals that they have finished entering marks by typing the sentinel value -999. Applying computational thinking begins with identifying the inputs, outputs and processing before any structured representation is attempted, then decomposing the problem into the smaller steps that will become the algorithm.",
+        "Inputs: a sequence of marks typed by the user, ending with the sentinel value -999. Outputs: the average of the marks that were valid (zero or above, and not the sentinel). Processing: read a mark; check whether it is the sentinel value and, if so, stop reading further marks; otherwise check whether the mark is valid (zero or above); if valid, add it to a running total and increase a count of valid marks by one; once input has stopped, calculate the average by dividing the total by the count.",
+        "Decomposing this into smaller steps gives: (1) initialise a total and a count to zero; (2) repeatedly input a mark and test it against the sentinel value, stopping the loop when the sentinel is entered; (3) for every non-sentinel mark, test whether it is valid and, if so, add it to the total and increase the count; (4) after the loop ends, calculate and output the average, using the total and the count accumulated in steps 2 and 3. Each of these steps can be checked separately: step 2 can be tested with a short run that enters only the sentinel value, and step 3 can be tested separately with a mix of valid and invalid marks, before the two are combined."
+      ],
+      "bullets": [
+        "Identifying inputs, outputs and processing first prevents an algorithm being designed around the wrong data, such as forgetting that the sentinel value must be excluded from the average.",
+        "Decomposing the problem separates 'reading marks until the sentinel is entered' from 'deciding whether a mark is valid', which can then be designed, and tested, independently.",
+        "The algorithm must handle the edge case of no valid marks being entered at all, since dividing by a count of zero is undefined and needs to be guarded against."
+      ],
+      "examples": [
+        {
+          "id": "08-io-processing-table",
+          "kind": "worked",
+          "label": "Inputs, outputs and processing for the averaging problem",
+          "content": "Inputs:\n- A sequence of marks entered one at a time by the user\n- The sentinel value -999, entered to signal the end of input\n\nOutputs:\n- The average of the valid marks entered (marks that are >= 0, excluding the sentinel)\n\nProcessing steps:\n1. Set Total to 0 and Count to 0\n2. Input Mark\n3. WHILE Mark <> -999\n     IF Mark >= 0 THEN\n       Total <- Total + Mark\n       Count <- Count + 1\n     ENDIF\n     Input Mark\n   ENDWHILE\n4. IF Count > 0 THEN\n     Average <- Total / Count\n     OUTPUT Average\n   ELSE\n     OUTPUT \"No valid marks were entered\"\n   ENDIF"
+        },
+        {
+          "id": "08-pseudocode-average",
+          "kind": "pseudocode",
+          "label": "Pseudocode for averaging valid exam marks",
+          "language": "cambridge-pseudocode",
+          "content": "Total <- 0\nCount <- 0\nINPUT Mark\nWHILE Mark <> -999\n  IF Mark >= 0 THEN\n    Total <- Total + Mark\n    Count <- Count + 1\n  ENDIF\n  INPUT Mark\nENDWHILE\nIF Count > 0 THEN\n  OUTPUT Total / Count\nELSE\n  OUTPUT \"No valid marks were entered\"\nENDIF"
+        }
+      ]
+    }
+  ],
+  "formulas": [],
+  "comparisonTable": {
+    "title": "Ways to represent an algorithm",
+    "columns": [
+      "Aspect",
+      "Structured English",
+      "Pseudocode",
+      "Flowchart"
+    ],
+    "rows": [
+      [
+        "Form",
+        "Numbered steps written in short, plain, structured language",
+        "Keyword-based notation resembling program code (INPUT, IF, WHILE, OUTPUT)",
+        "A diagram using standard symbols linked by arrows showing the flow of control"
+      ],
+      [
+        "Precision",
+        "Less precise; depends on careful, unambiguous wording",
+        "More precise; closely mirrors the structure of real code",
+        "Precise for showing branches and loops, but detailed processing can be hard to fit into a box"
+      ],
+      [
+        "Closeness to final code",
+        "Furthest from code; a further translation step is still needed",
+        "Closest to code; often translates almost line by line into a programming language",
+        "Shows the logic and flow of control clearly, but must still be converted into written statements"
+      ],
+      [
+        "Best used for",
+        "A quick, early outline of a solution before detail is added",
+        "A detailed design ready to be converted directly into program code",
+        "Visualising the overall shape of an algorithm, especially its branching and repetition"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "From problem statement to program code",
+    "type": "flow",
+    "nodes": [
+      "Read the problem statement",
+      "Apply abstraction: identify what is relevant, discard what is not",
+      "Identify the inputs, outputs and processing required",
+      "Apply decomposition: split the problem into smaller sub-problems",
+      "Apply algorithmic thinking: sequence precise steps that solve each sub-problem",
+      "Represent the algorithm in structured English, pseudocode or a flowchart",
+      "Trace the algorithm by hand to check it before writing program code"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Applying abstraction to a car park charging scenario",
+      "steps": [
+        "A scenario describes each car's registration number, colour, driver's name, entry time and exit time",
+        "The problem only requires calculating a charge based on how long the car was parked",
+        "Registration number, colour and driver's name are identified as irrelevant to that calculation and discarded",
+        "The abstracted model of the problem keeps only entry time and exit time as the relevant data"
+      ],
+      "evaluation": "Abstraction reduces the problem to only the data actually needed for the required calculation, which simplifies the algorithm and reduces the chance of irrelevant detail being mistakenly used in the processing."
+    },
+    {
+      "title": "Decomposing a school library system",
+      "steps": [
+        "The overall problem 'manage a school library' is too large to design or test as a single algorithm",
+        "It is broken into sub-problems: checking a book out, checking a book in, searching the catalogue, and calculating an overdue fine",
+        "The 'calculate an overdue fine' sub-problem is designed and tested on its own, using sample due dates and return dates",
+        "The tested sub-problem is then combined with the others to form the complete library system"
+      ],
+      "evaluation": "Decomposition allows each sub-problem to be solved and tested independently, which makes a fault far easier to trace to a specific sub-problem, but the way the sub-problems pass data to each other still has to be checked once they are combined."
+    },
+    {
+      "title": "Applying algorithmic thinking to a grade-boundary classifier",
+      "steps": [
+        "The problem is stated as: given a numeric mark, output the grade associated with it",
+        "A step-by-step sequence of comparisons is devised, checking the mark against each grade boundary from highest to lowest",
+        "Every possible mark is checked to confirm it maps to exactly one grade, including marks that fall exactly on a boundary",
+        "The sequence is tested with a mark exactly equal to a boundary value to confirm it is classified into the correct grade"
+      ],
+      "evaluation": "An unambiguous, step-by-step algorithm must give a defined result for every possible input, including edge values exactly on a boundary, not only for the typical values a designer first thinks of."
+    }
+  ],
+  "examTips": [
+    "When asked to apply abstraction to a scenario, name the specific details you are discarding and explain why they do not affect the required output.",
+    "When asked to decompose a problem, give sub-problems that are genuinely independent and could each be tested on their own, not just a restatement of the whole problem in several parts.",
+    "When identifying inputs, outputs and processing, list them separately and explicitly, rather than folding processing steps into a vague description of the output.",
+    "When representing an algorithm, match the representation to what is asked for; pseudocode marks are usually awarded for correct keywords, sequencing and indentation, not just a correct overall idea."
+  ],
+  "commonMistakes": [
+    "Naming abstraction or decomposition as a general concept without applying it to the specific detail of the given scenario.",
+    "Decomposing a problem into steps that are still too large or too dependent on each other to be tested independently.",
+    "Forgetting to identify an input or output that the problem statement implies but does not state directly, such as a sentinel value needed to end a loop.",
+    "Writing an algorithm's steps in a vague, ambiguous way, such as 'check the value', rather than stating the exact comparison being made.",
+    "Confusing a flowchart's decision symbol (a diamond, with a labelled branch for each outcome) with its process symbol (a rectangle)."
+  ],
+  "quickRecall": [
+    {
+      "question": "What is abstraction?",
+      "answer": "Removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+    },
+    {
+      "question": "What is decomposition?",
+      "answer": "Breaking a complex problem down into smaller, more manageable sub-problems that can be solved and tested independently."
+    },
+    {
+      "question": "What is algorithmic thinking?",
+      "answer": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem."
+    },
+    {
+      "question": "What is pattern recognition, in computational thinking?",
+      "answer": "Identifying similarities between a new problem and a problem already solved, so an existing solution or technique can be reused or adapted."
+    },
+    {
+      "question": "What three things must be identified before an algorithm is designed?",
+      "answer": "The inputs required, the outputs to be produced, and the processing needed to turn the inputs into the outputs."
+    },
+    {
+      "question": "Name three ways an algorithm can be represented before it is coded.",
+      "answer": "Structured English, pseudocode, or a flowchart."
+    },
+    {
+      "question": "Which representation of an algorithm is closest to final program code?",
+      "answer": "Pseudocode, because it uses keyword-based notation resembling real code, unlike structured English or a flowchart."
+    },
+    {
+      "question": "What symbol does a flowchart use for a decision, and what must label its branches?",
+      "answer": "A diamond, with each possible outcome (such as 'Yes' and 'No') labelled on its own branch."
+    }
+  ],
+  "relatedTopics": [
+    "9.2",
+    "10.1",
+    "11.1",
+    "12.2"
+  ]
+}

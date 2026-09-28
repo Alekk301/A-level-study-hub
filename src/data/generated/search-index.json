@@ -10138,7 +10138,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "9.1",
     "title": "Computational Thinking Skills",
-    "contentDepth": "quick",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -10149,23 +10149,331 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Apply decomposition, abstraction and pattern recognition to break down and design solutions to a problem."
+        "text": "Paper 1 gives candidates a short, unfamiliar problem statement and asks them to apply computational thinking before any code is written: identifying the inputs, outputs and processing needed, breaking the problem into smaller parts, and expressing a solution as structured English, pseudocode or a flowchart. Answers score when a candidate applies these skills to the specific scenario given, rather than only naming abstraction or decomposition as general terms."
       },
       {
-        "kind": "Quick recall",
-        "text": "decomposition"
+        "kind": "Definition",
+        "label": "Abstraction",
+        "text": "The process of removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
       },
       {
-        "kind": "Quick recall",
-        "text": "abstraction"
+        "kind": "Definition",
+        "label": "Decomposition",
+        "text": "Breaking a complex problem down into smaller, more manageable sub-problems, each of which can be solved and tested on its own."
       },
       {
-        "kind": "Quick recall",
-        "text": "pattern recognition"
+        "kind": "Definition",
+        "label": "Algorithmic thinking",
+        "text": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem or a sub-problem."
       },
       {
-        "kind": "Quick recall",
-        "text": "algorithmic thinking"
+        "kind": "Definition",
+        "label": "Pattern recognition",
+        "text": "Identifying similarities between a new problem and a problem already solved, so that an existing solution or technique can be reused or adapted."
+      },
+      {
+        "kind": "Definition",
+        "label": "Input",
+        "text": "Data that must be supplied to an algorithm, from a user, a file or a sensor, before it can carry out its processing."
+      },
+      {
+        "kind": "Definition",
+        "label": "Processing",
+        "text": "The steps an algorithm performs on its inputs, such as calculations, comparisons or validation, in order to produce its outputs."
+      },
+      {
+        "kind": "Definition",
+        "label": "Structured English",
+        "text": "A restricted form of natural language, written as short, numbered, unambiguous steps, used to outline an algorithm before it is expressed more formally."
+      },
+      {
+        "kind": "Definition",
+        "label": "Flowchart",
+        "text": "A diagram that represents an algorithm using standard symbols for start/end, process, decision and input/output, connected by arrows showing the flow of control."
+      },
+      {
+        "kind": "Section",
+        "text": "Abstraction"
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction",
+        "text": "Abstraction is the skill of deciding what matters for solving a problem and deliberately ignoring everything else. A real-world scenario usually contains far more detail than an algorithm needs, and including irrelevant detail makes a solution harder to design, harder to test and more likely to contain errors. Applying abstraction means reading a problem statement and asking, for each piece of information given, whether it actually affects the outcome the algorithm must produce; if it does not, it is left out of the model of the problem entirely."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction",
+        "text": "Abstraction is applied before decomposition or algorithm design, since it determines what the rest of the solution needs to account for."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction",
+        "text": "Two different real-world scenarios can abstract to the same underlying problem, for example calculating a taxi fare and calculating a parking charge can both abstract to 'a rate multiplied by a duration'."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction",
+        "text": "Leaving out irrelevant detail is not the same as leaving out detail that is inconvenient; a detail can only be discarded if it genuinely does not affect the required output."
+      },
+      {
+        "kind": "Section",
+        "text": "Decomposition"
+      },
+      {
+        "kind": "Content",
+        "label": "Decomposition",
+        "text": "Decomposition is the process of breaking a complex problem into smaller sub-problems that are each easier to understand, solve and test than the original problem as a whole. Each sub-problem can often be tackled independently, with its own inputs and outputs, and the overall solution is produced by combining the solutions to the sub-problems. Decomposition also makes a large problem manageable for more than one person to work on, and makes it far easier to locate and fix an error, since a fault can usually be traced to a single sub-problem rather than the whole system."
+      },
+      {
+        "kind": "Content",
+        "label": "Decomposition",
+        "text": "A well-decomposed sub-problem should be small enough to be solved and tested on its own, independent of the other sub-problems."
+      },
+      {
+        "kind": "Content",
+        "label": "Decomposition",
+        "text": "Decomposition can be applied repeatedly: a sub-problem that is still too complex can itself be broken down further."
+      },
+      {
+        "kind": "Content",
+        "label": "Decomposition",
+        "text": "Combining correctly solved sub-problems does not automatically guarantee the overall system is correct; the way they interact must also be checked."
+      },
+      {
+        "kind": "Section",
+        "text": "Algorithmic thinking"
+      },
+      {
+        "kind": "Content",
+        "label": "Algorithmic thinking",
+        "text": "Algorithmic thinking is the skill of devising a sequence of instructions that solves a problem precisely, in a fixed order, with no step left ambiguous or open to interpretation. Every instruction must be specific enough that it could be followed exactly by someone, or something, with no understanding of the problem itself. This is what distinguishes an algorithm from a general description of a method: a description might say 'sort the list', whereas an algorithm states exactly how each comparison and swap is carried out, in what order, and when the process stops."
+      },
+      {
+        "kind": "Content",
+        "label": "Algorithmic thinking",
+        "text": "An algorithm must terminate after a finite number of steps for every valid input, not only for the input it happened to be designed around."
+      },
+      {
+        "kind": "Content",
+        "label": "Algorithmic thinking",
+        "text": "Ambiguity is the main danger in algorithmic thinking; a step such as 'check if the number is big' is not precise enough to be an instruction in an algorithm."
+      },
+      {
+        "kind": "Content",
+        "label": "Algorithmic thinking",
+        "text": "Algorithmic thinking must account for edge cases, such as an empty list or a boundary value, not only the typical case a designer first has in mind."
+      },
+      {
+        "kind": "Section",
+        "text": "Pattern recognition"
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition",
+        "text": "Pattern recognition is noticing that a new problem shares structure with a problem that has already been solved, so that the existing solution, or the technique used to solve it, can be reused or adapted rather than designed again from nothing. This is what allows a programmer to recognise, for example, that 'find the highest mark in a list of exam results' and 'find the most expensive item in a list of prices' are really the same underlying problem: iterate through a list, keeping track of the largest value seen so far. Recognising the pattern means the already-tested logic for one can be adapted almost directly for the other."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition",
+        "text": "Pattern recognition relies on abstraction: two problems only look similar once their irrelevant, scenario-specific detail has been stripped away."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition",
+        "text": "A recognised pattern can be reused as a template, saving the effort of devising and testing a new algorithm from scratch."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition",
+        "text": "Failing to recognise a pattern is not a fatal error, but it wastes time solving a problem that already has a known, tested solution."
+      },
+      {
+        "kind": "Section",
+        "text": "Identifying inputs, outputs and processing"
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying inputs, outputs and processing",
+        "text": "Before an algorithm can be designed, a problem statement must be analysed to identify exactly what data needs to be supplied to it (the inputs), what result it must produce (the outputs), and what has to be done to the inputs to produce those outputs (the processing). Inputs might come from a user typing values, a file being read, or a sensor; outputs are whatever the algorithm must display, return or store; and processing covers everything in between, including calculations, comparisons, validation and any repetition needed. Explicitly identifying these three elements gives a clear specification for the algorithm before a single line of structured English, pseudocode or program code is written."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying inputs, outputs and processing",
+        "text": "An input that is never used in the processing, or an output that is never produced by any processing step, is a sign the analysis is incomplete or incorrect."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying inputs, outputs and processing",
+        "text": "Processing should be broken down into the individual operations needed, such as 'validate each mark', 'add valid marks to a running total' and 'divide the total by the count', rather than left as one vague step."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifying inputs, outputs and processing",
+        "text": "Validation of inputs, where the problem statement requires it, is itself a processing step and should be identified alongside the calculation steps."
+      },
+      {
+        "kind": "Section",
+        "text": "Representing algorithms: structured English and pseudocode"
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: structured English and pseudocode",
+        "text": "Structured English expresses an algorithm as a numbered sequence of short, plain-language steps, written carefully enough to avoid ambiguity but without the strict syntax of a programming language; it is useful as an early, quick outline of a solution. Pseudocode goes a step further: it uses a consistent, keyword-based notation, such as INPUT, OUTPUT, IF/THEN/ELSE, WHILE and FOR, that closely resembles the structure of real program code without being tied to any particular programming language's exact syntax. Pseudocode is the more precise and more commonly examined representation, because it forces the same level of detail, sequencing and decision-making that the final program code will need, making the later translation into a working program much more direct."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: structured English and pseudocode",
+        "text": "Structured English is closer to natural language and is quicker to sketch out, but is more prone to ambiguity than pseudocode."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: structured English and pseudocode",
+        "text": "Pseudocode is closer to final code and is the representation most directly comparable to what will eventually be typed into a programming language."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: structured English and pseudocode",
+        "text": "Both representations must still specify the exact sequence, repetition and decisions involved; neither is a substitute for precise algorithmic thinking."
+      },
+      {
+        "kind": "Section",
+        "text": "Representing algorithms: flowcharts"
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: flowcharts",
+        "text": "A flowchart represents an algorithm as a diagram, using standard symbols connected by arrows to show the flow of control: an oval for start and end, a rectangle for a process step, a parallelogram for input or output, and a diamond for a decision with a branch for each possible outcome. Flowcharts are particularly effective at showing the overall shape of an algorithm's logic, especially where it branches or repeats, because the diagram makes the possible paths through the algorithm visible at a glance in a way that a linear list of steps does not."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: flowcharts",
+        "text": "A decision (diamond) symbol must have every possible outcome labelled, for example 'Yes' and 'No', with a path leading from each."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: flowcharts",
+        "text": "A flowchart showing repetition must include an arrow leading back to an earlier point in the diagram, forming a loop, with a decision symbol controlling when it stops."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing algorithms: flowcharts",
+        "text": "Flowcharts can become difficult to read for a long or highly detailed algorithm, where pseudocode is usually clearer."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked example: averaging valid exam marks"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Problem statement: write an algorithm that repeatedly asks the user to enter exam marks, one at a time, and calculates the average of the valid marks entered; a mark is invalid if it is below zero, and the user signals that they have finished entering marks by typing the sentinel value -999. Applying computational thinking begins with identifying the inputs, outputs and processing before any structured representation is attempted, then decomposing the problem into the smaller steps that will become the algorithm."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Inputs: a sequence of marks typed by the user, ending with the sentinel value -999. Outputs: the average of the marks that were valid (zero or above, and not the sentinel). Processing: read a mark; check whether it is the sentinel value and, if so, stop reading further marks; otherwise check whether the mark is valid (zero or above); if valid, add it to a running total and increase a count of valid marks by one; once input has stopped, calculate the average by dividing the total by the count."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Decomposing this into smaller steps gives: (1) initialise a total and a count to zero; (2) repeatedly input a mark and test it against the sentinel value, stopping the loop when the sentinel is entered; (3) for every non-sentinel mark, test whether it is valid and, if so, add it to the total and increase the count; (4) after the loop ends, calculate and output the average, using the total and the count accumulated in steps 2 and 3. Each of these steps can be checked separately: step 2 can be tested with a short run that enters only the sentinel value, and step 3 can be tested separately with a mix of valid and invalid marks, before the two are combined."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Identifying inputs, outputs and processing first prevents an algorithm being designed around the wrong data, such as forgetting that the sentinel value must be excluded from the average."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Decomposing the problem separates 'reading marks until the sentinel is entered' from 'deciding whether a mark is valid', which can then be designed, and tested, independently."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "The algorithm must handle the edge case of no valid marks being entered at all, since dividing by a count of zero is undefined and needs to be guarded against."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Inputs:\n- A sequence of marks entered one at a time by the user\n- The sentinel value -999, entered to signal the end of input\n\nOutputs:\n- The average of the valid marks entered (marks that are >= 0, excluding the sentinel)\n\nProcessing steps:\n1. Set Total to 0 and Count to 0\n2. Input Mark\n3. WHILE Mark <> -999\n     IF Mark >= 0 THEN\n       Total <- Total + Mark\n       Count <- Count + 1\n     ENDIF\n     Input Mark\n   ENDWHILE\n4. IF Count > 0 THEN\n     Average <- Total / Count\n     OUTPUT Average\n   ELSE\n     OUTPUT \"No valid marks were entered\"\n   ENDIF"
+      },
+      {
+        "kind": "Example",
+        "label": "Worked example: averaging valid exam marks",
+        "text": "Total <- 0\nCount <- 0\nINPUT Mark\nWHILE Mark <> -999\n  IF Mark >= 0 THEN\n    Total <- Total + Mark\n    Count <- Count + 1\n  ENDIF\n  INPUT Mark\nENDWHILE\nIF Count > 0 THEN\n  OUTPUT Total / Count\nELSE\n  OUTPUT \"No valid marks were entered\"\nENDIF"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is abstraction?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is abstraction?",
+        "text": "Removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is decomposition?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is decomposition?",
+        "text": "Breaking a complex problem down into smaller, more manageable sub-problems that can be solved and tested independently."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is algorithmic thinking?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is algorithmic thinking?",
+        "text": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is pattern recognition, in computational thinking?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is pattern recognition, in computational thinking?",
+        "text": "Identifying similarities between a new problem and a problem already solved, so an existing solution or technique can be reused or adapted."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What three things must be identified before an algorithm is designed?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What three things must be identified before an algorithm is designed?",
+        "text": "The inputs required, the outputs to be produced, and the processing needed to turn the inputs into the outputs."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name three ways an algorithm can be represented before it is coded."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name three ways an algorithm can be represented before it is coded.",
+        "text": "Structured English, pseudocode, or a flowchart."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which representation of an algorithm is closest to final program code?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which representation of an algorithm is closest to final program code?",
+        "text": "Pseudocode, because it uses keyword-based notation resembling real code, unlike structured English or a flowchart."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What symbol does a flowchart use for a decision, and what must label its branches?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What symbol does a flowchart use for a decision, and what must label its branches?",
+        "text": "A diamond, with each possible outcome (such as 'Yes' and 'No') labelled on its own branch."
       }
     ]
   },
@@ -10181,7 +10489,7 @@
     "unitTitle": "AS Problem-solving & Programming",
     "topicId": "9.2",
     "title": "Algorithms",
-    "contentDepth": "in-depth",
+    "contentDepth": "full",
     "aliases": [
       "computer science",
       "computing",
@@ -10192,37 +10500,337 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "A focused revision guide to algorithms."
+        "text": "Paper 1 asks candidates to trace a given algorithm using a trace table, to describe or complete a linear search, binary search, bubble sort or insertion sort, and to identify and correct a logic error revealed by a trace. Answers score when a trace table shows every variable's value after every relevant step, and when an efficiency comparison is justified in terms of how the number of steps grows as the data gets larger, rather than a bare claim that one algorithm is 'faster'."
+      },
+      {
+        "kind": "Definition",
+        "label": "Trace table",
+        "text": "A table used to test an algorithm by hand, with a column for each variable and a row for each step, recording how every variable's value changes as the algorithm executes."
+      },
+      {
+        "kind": "Definition",
+        "label": "Linear search",
+        "text": "A search algorithm that checks each item of a list in turn, from the start, until the target is found or every item has been checked; it works on data in any order."
+      },
+      {
+        "kind": "Definition",
+        "label": "Binary search",
+        "text": "A search algorithm that repeatedly compares the target with the middle item of a sorted list and discards the half that cannot contain it, until the target is found or the search interval is empty."
+      },
+      {
+        "kind": "Definition",
+        "label": "Bubble sort",
+        "text": "A sorting algorithm that repeatedly steps through a list, comparing and swapping adjacent items that are in the wrong order, until a complete pass makes no swaps."
+      },
+      {
+        "kind": "Definition",
+        "label": "Insertion sort",
+        "text": "A sorting algorithm that builds up a sorted section of the list one item at a time, taking each new item and shifting the larger items in the sorted section along to insert it in its correct position."
+      },
+      {
+        "kind": "Definition",
+        "label": "Logic error",
+        "text": "A mistake in an algorithm that causes it to run and produce a result, but the result is incorrect, because the algorithm does not do what its specification requires."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sentinel value",
+        "text": "A specific value used in an algorithm to signal that a boundary or ending condition has been reached, such as the end of user input."
       },
       {
         "kind": "Section",
-        "text": "Searching"
+        "text": "Representing and testing algorithms"
       },
       {
         "kind": "Content",
-        "label": "Searching",
-        "text": "Linear search: checks every item, works unsorted, O(n). Binary search: halves the search space each time, needs sorted data, O(log n)."
+        "label": "Representing and testing algorithms",
+        "text": "Before an algorithm's efficiency or correctness can be discussed, it needs to be expressed precisely, usually as pseudocode or a flowchart, and then tested. Testing an algorithm 'by hand', without running it as program code, is done using a trace table: a table with one column for every variable the algorithm uses, plus a column for output where relevant, and one row for every step at which a variable's value changes. Working through the algorithm's instructions one at a time and filling in a new row whenever a value changes shows exactly what the algorithm does for a chosen set of test data, without needing a computer to run it."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing and testing algorithms",
+        "text": "A trace table is the standard way both to confirm an algorithm behaves as intended for typical data, and to test how it behaves for edge cases, such as an empty list, a single-item list, or a target value that does not appear in the data at all."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing and testing algorithms",
+        "text": "Every variable used by the algorithm needs its own column in the trace table, so its value at each step is visible."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing and testing algorithms",
+        "text": "A new row is added to the trace table each time a variable's value changes, not for every single line of the algorithm."
+      },
+      {
+        "kind": "Content",
+        "label": "Representing and testing algorithms",
+        "text": "Choosing test data that includes edge cases, not only typical values, is what makes a trace genuinely test the algorithm rather than just illustrate it."
       },
       {
         "kind": "Section",
-        "text": "Sorting"
+        "text": "Linear search"
       },
       {
         "kind": "Content",
-        "label": "Sorting",
-        "text": "Bubble sort: swaps adjacent out-of-order pairs repeatedly, O(n²). Insertion sort: builds a sorted section by inserting each item into place. Be ready to trace either step-by-step."
+        "label": "Linear search",
+        "text": "Linear search checks the items of a list one at a time, starting from the first, comparing each one with the target value. If an item matches the target, the search stops and reports where it was found; if every item has been checked without a match, the search reports that the target is not present. Because it checks items in the order they appear, linear search does not require the list to be sorted, which makes it the correct choice when data is unsorted or is searched only once, so that sorting it first would cost more than it saves."
       },
       {
-        "kind": "Quick recall",
-        "text": "pseudocode/flowcharts"
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "Linear search's main weakness is that, for a list with n items, it may need to check up to all n of them if the target is near the end or absent altogether, so the number of comparisons it needs grows directly in proportion to the size of the list."
       },
       {
-        "kind": "Quick recall",
-        "text": "searching/sorting"
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "Linear search works on data in any order, unlike binary search, which requires the data to be sorted first."
       },
       {
-        "kind": "Quick recall",
-        "text": "trace tables"
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "In the best case the target is the first item checked; in the worst case, every item in the list must be checked."
+      },
+      {
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "A trace of a linear search should record the index currently being checked and the value found there at each step."
+      },
+      {
+        "kind": "Example",
+        "label": "Linear search",
+        "text": "Array: [23, 7, 41, 15, 9, 34]   Target: 15\n\nPseudocode:\nIndex <- 0\nFound <- FALSE\nWHILE Index < LENGTH(Array) AND Found = FALSE\n  IF Array[Index] = Target THEN\n    Found <- TRUE\n  ELSE\n    Index <- Index + 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Index | Array[Index] | Comparison           | Found\n1    | 0     | 23           | 23 = 15? No           | FALSE\n2    | 1     | 7            | 7 = 15? No             | FALSE\n3    | 2     | 41           | 41 = 15? No            | FALSE\n4    | 3     | 15           | 15 = 15? Yes           | TRUE\n\nThe loop stops as soon as Found becomes TRUE. Index = 3, so 15 is reported as found at index 3, after 4 comparisons."
+      },
+      {
+        "kind": "Section",
+        "text": "Binary search"
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "Binary search only works on data that is already sorted. It keeps track of a lower boundary (low) and an upper boundary (high) for the part of the list that could still contain the target, starting with the whole list. At each step it calculates the index midway between low and high, compares the value there with the target, and then discards half of the remaining search interval: if the target is larger, the new lower boundary moves to just past the middle; if it is smaller, the new upper boundary moves to just before the middle. This repeats, with the search interval roughly halving each time, until the target is found or the interval becomes empty (low becomes greater than high), meaning the target is not present."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "Because each comparison eliminates about half of the remaining items rather than just one, binary search needs far fewer comparisons than linear search once the list is reasonably large, but this advantage only exists because the data has been sorted first."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "Binary search requires the data to already be in sorted order; running it on unsorted data can give an incorrect result."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "The middle index is usually calculated as mid = (low + high) DIV 2, using integer division."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "A trace of a binary search should record low, high and mid at every step, along with the comparison made and the resulting narrower interval."
+      },
+      {
+        "kind": "Example",
+        "label": "Binary search",
+        "text": "Sorted array (indices 0-7): [4, 9, 15, 23, 34, 41, 56, 68]   Target: 34\n\nPseudocode:\nLow <- 0\nHigh <- LENGTH(Array) - 1\nFound <- FALSE\nWHILE Low <= High AND Found = FALSE\n  Mid <- (Low + High) DIV 2\n  IF Array[Mid] = Target THEN\n    Found <- TRUE\n  ELSE IF Array[Mid] < Target THEN\n    Low <- Mid + 1\n  ELSE\n    High <- Mid - 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Low | High | Mid | Array[Mid] | Comparison         | Action\n1    | 0   | 7    | 3   | 23         | 34 > 23            | Low <- Mid + 1 = 4\n2    | 4   | 7    | 5   | 41         | 34 < 41            | High <- Mid - 1 = 4\n3    | 4   | 4    | 4   | 34         | 34 = 34, Found     | Found <- TRUE\n\nThe target 34 is located at index 4 after only 3 comparisons, compared with the 5 comparisons a linear search would need checking the array from the start."
+      },
+      {
+        "kind": "Section",
+        "text": "Bubble sort"
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "Bubble sort repeatedly passes through the list, comparing each pair of adjacent items and swapping them if they are in the wrong order. On each complete pass, the largest remaining unsorted value 'bubbles up' into its correct position at the end of the unsorted section. The algorithm keeps making passes until a complete pass makes no swaps at all, which proves the list is now fully sorted, so an efficient implementation uses a flag to detect this and stop early rather than always making a fixed number of passes."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "Bubble sort's weakness is that, for a list of n items sorted in the worst possible starting order (fully reversed), it may need close to n passes, each comparing close to n adjacent pairs, so the total number of comparisons grows roughly with the square of the list's size."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "A pass compares every adjacent pair from the start of the unsorted section to its end, swapping any pair that is in the wrong order."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "A pass that completes with no swaps proves the list is fully sorted, so the algorithm can stop immediately rather than making further, unnecessary passes."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "A trace of a bubble sort should show the complete state of the array after every pass, not only which pairs were swapped."
+      },
+      {
+        "kind": "Example",
+        "label": "Bubble sort",
+        "text": "Initial array: [5, 2, 8, 1, 4]\n\nPass 1:\nCompare 5,2 -> out of order -> swap -> [2, 5, 8, 1, 4]\nCompare 5,8 -> in order -> no swap -> [2, 5, 8, 1, 4]\nCompare 8,1 -> out of order -> swap -> [2, 5, 1, 8, 4]\nCompare 8,4 -> out of order -> swap -> [2, 5, 1, 4, 8]\nEnd of pass 1: [2, 5, 1, 4, 8]   Swapped this pass? Yes\n\nPass 2:\nCompare 2,5 -> in order -> no swap -> [2, 5, 1, 4, 8]\nCompare 5,1 -> out of order -> swap -> [2, 1, 5, 4, 8]\nCompare 5,4 -> out of order -> swap -> [2, 1, 4, 5, 8]\nCompare 5,8 -> in order -> no swap -> [2, 1, 4, 5, 8]\nEnd of pass 2: [2, 1, 4, 5, 8]   Swapped this pass? Yes\n\nPass 3:\nCompare 2,1 -> out of order -> swap -> [1, 2, 4, 5, 8]\nCompare 2,4 -> in order -> no swap\nCompare 4,5 -> in order -> no swap\nCompare 5,8 -> in order -> no swap\nEnd of pass 3: [1, 2, 4, 5, 8]   Swapped this pass? Yes\n\nPass 4:\nCompare 1,2 -> no swap\nCompare 2,4 -> no swap\nCompare 4,5 -> no swap\nCompare 5,8 -> no swap\nEnd of pass 4: [1, 2, 4, 5, 8]   Swapped this pass? No\n\nNo swaps were made in pass 4, so the array [1, 2, 4, 5, 8] is confirmed sorted and the algorithm stops."
+      },
+      {
+        "kind": "Section",
+        "text": "Insertion sort"
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort",
+        "text": "Insertion sort builds up a sorted section of the list from left to right, one item at a time. It treats the first item as an already-sorted section of length one, then, for each following item in turn, removes it, compares it with the items already in the sorted section from right to left, shifts each larger item one place to the right to make room, and inserts the removed item into the gap that results. Unlike bubble sort, which repeatedly compares across the whole unsorted section, insertion sort only shifts items that are actually larger than the one being inserted, so it does very little work when the list is already close to sorted."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort",
+        "text": "In the worst case, when the list starts in reverse order, every new item must be shifted past every item already in the sorted section, so the total number of comparisons and shifts again grows roughly with the square of the list's size; but in the best case, when the list is already sorted, each new item requires only a single comparison and no shifting at all."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort",
+        "text": "The sorted section grows by exactly one item after each pass, from left to right through the list."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort",
+        "text": "An item is only shifted if it is larger than the item being inserted; already-correct items are left untouched."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort",
+        "text": "Insertion sort adapts well to data that is already nearly sorted, doing far less work than bubble sort in that situation."
+      },
+      {
+        "kind": "Section",
+        "text": "Using a trace table to find and correct a logic error"
+      },
+      {
+        "kind": "Content",
+        "label": "Using a trace table to find and correct a logic error",
+        "text": "A trace table is also the standard tool for locating a logic error: an algorithm that runs without crashing but produces an incorrect result because it does not do what its specification requires. Tracing the algorithm with a simple, known set of test data, and comparing the traced result with the result that should have been produced, shows exactly which step the algorithm diverges from the intended behaviour at, which usually points directly to the line that needs to be corrected."
+      },
+      {
+        "kind": "Content",
+        "label": "Using a trace table to find and correct a logic error",
+        "text": "A common source of this kind of error is an off-by-one mistake in a loop's starting or ending value, causing the algorithm to skip the first or last item of a list without the programmer necessarily noticing from reading the code alone."
+      },
+      {
+        "kind": "Content",
+        "label": "Using a trace table to find and correct a logic error",
+        "text": "Choose test data with a known, easily calculated correct answer, so the traced result can be checked against it directly."
+      },
+      {
+        "kind": "Content",
+        "label": "Using a trace table to find and correct a logic error",
+        "text": "The step where the traced value first differs from what is expected identifies the specific line responsible for the error."
+      },
+      {
+        "kind": "Content",
+        "label": "Using a trace table to find and correct a logic error",
+        "text": "Correcting a logic error usually means changing a condition, a loop boundary, or an initial value, rather than restructuring the whole algorithm."
+      },
+      {
+        "kind": "Example",
+        "label": "Using a trace table to find and correct a logic error",
+        "text": "Array (indices 0-3): [10, 20, 30, 40]   Intended purpose: output the sum of all four values (should be 100)\n\nGiven (buggy) pseudocode:\nTotal <- 0\nFOR Index <- 1 TO 3\n  Total <- Total + Array[Index]\nNEXT Index\nOUTPUT Total\n\nTrace table:\nStep | Index | Array[Index] | Total\n1    | 1     | 20           | 20\n2    | 2     | 30           | 50\n3    | 3     | 40           | 90\n\nOutput produced: 90\nExpected output: 100\n\nThe trace shows Array[0] = 10 is never added to Total, because the loop starts at Index <- 1 instead of Index <- 0, so the first element of the zero-indexed array is skipped.\n\nCorrection: change the loop header to FOR Index <- 0 TO 3, so every element from Array[0] to Array[3] is included in the sum."
+      },
+      {
+        "kind": "Section",
+        "text": "Comparing algorithm efficiency"
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithm efficiency",
+        "text": "Comparing algorithms informally means explaining how the number of steps each one needs changes as the size of the data set grows, not simply asserting that one algorithm is 'faster'. Linear search's number of comparisons grows directly in proportion to the list's size, so searching a list ten times longer may need up to ten times as many comparisons; binary search's number of comparisons grows far more slowly, because each comparison discards about half of what remains, so a list ten times longer only needs a few more comparisons, not ten times as many. This is why binary search scales so much better than linear search as a list grows large, though it only works because the data has already been sorted, which itself has a cost."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithm efficiency",
+        "text": "Bubble sort becomes very slow on large lists because, in the worst case, both the number of passes and the number of comparisons within each pass grow with the size of the list, so the total work grows with the square of the list's size: doubling the list roughly quadruples the number of comparisons needed. Insertion sort has the same worst-case growth, but performs far fewer comparisons and shifts than bubble sort when the data is already close to sorted, which matters when comparing which sort is more suitable for a particular data set."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithm efficiency",
+        "text": "A useful efficiency comparison names how the number of steps grows as the data set gets larger, not just which algorithm 'wins' on one specific example."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithm efficiency",
+        "text": "Binary search scales much better than linear search on large lists, but requires sorted data, which linear search does not."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithm efficiency",
+        "text": "Bubble sort's number of comparisons grows with the square of the list's size in the worst case, making it impractical for very large, unordered lists."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a trace table used for?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a trace table used for?",
+        "text": "To test an algorithm by hand, recording the value of every variable at each step where it changes, so the algorithm's behaviour can be checked without running it as code."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Does linear search require sorted data?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Does linear search require sorted data?",
+        "text": "No; it checks each item in turn from the start and works correctly on data in any order."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does binary search do at each step?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does binary search do at each step?",
+        "text": "It compares the target with the middle item of the current search interval and discards the half of the interval that cannot contain the target."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "When does a bubble sort stop?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "When does a bubble sort stop?",
+        "text": "When a complete pass through the list makes no swaps, which proves the list is fully sorted."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does insertion sort place a new item?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does insertion sort place a new item?",
+        "text": "It shifts the items in the already-sorted section that are larger than the new item one place to the right, then inserts the new item into the resulting gap."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a logic error located using a trace table?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a logic error located using a trace table?",
+        "text": "By tracing the algorithm with test data that has a known correct result and finding the exact step where the traced value first diverges from what is expected."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why does binary search scale better than linear search on a large list?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why does binary search scale better than linear search on a large list?",
+        "text": "Each comparison in binary search discards about half of the remaining data, so the number of comparisons needed grows far more slowly than linear search's, which grows in direct proportion to the list's size."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why does bubble sort become very slow on a large list?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why does bubble sort become very slow on a large list?",
+        "text": "In the worst case both the number of passes and the number of comparisons per pass grow with the list's size, so the total work grows roughly with the square of the list's size."
       }
     ]
   },
