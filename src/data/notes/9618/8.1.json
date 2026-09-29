@@ -6,277 +6,372 @@
   "unitTitle": "AS Theory",
   "title": "Database Concepts",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to explain why relational databases are used in place of flat-file systems, and to identify entities, attributes, keys and relationships from a given scenario. Answers score when a candidate can justify a design choice, such as why a foreign key is needed, rather than only naming database terms.",
+  "overview": "This topic covers why organisations moved from separate data files to relational databases, the vocabulary of the relational model (tuple, attribute, primary, candidate, secondary and foreign keys, referential integrity, indexing), how E-R diagrams document one-to-one, one-to-many and many-to-many relationships, and normalisation to Third Normal Form. Paper 1 regularly gives a scenario, a set of data or a set of tables and asks you to draw the E-R diagram, say whether the tables are in 3NF and justify it, or produce a normalised design with every primary and foreign key identified. Marks come from precise terms applied to the given data, not from general statements.",
   "syllabusPoints": [
-    "Show understanding of the concept of an entity and its attributes, and how these map onto a database table as fields.",
-    "Show understanding of the need for a primary key to uniquely identify each record in a table.",
-    "Show understanding of how a foreign key is used to create a relationship between two tables.",
-    "Show understanding of the problems associated with flat-file systems, including data redundancy and data inconsistency.",
-    "Show understanding of the purpose of normalisation in removing data redundancy by organising data into related tables.",
-    "Show understanding of the use of entity-relationship (ER) diagrams to model entities and the relationships between them."
+    "Show understanding of the limitations of using a file-based approach for the storage and retrieval of data.",
+    "Describe the features of a relational database that address the limitations of a file-based approach.",
+    "Show understanding of and use the terminology associated with a relational database model, including entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, relationship (one-to-many, one-to-one, many-to-many), referential integrity and indexing.",
+    "Use an entity-relationship (E-R) diagram to document a database design.",
+    "Show understanding of the normalisation process, including First Normal Form (1NF), Second Normal Form (2NF) and Third Normal Form (3NF).",
+    "Explain why a given set of database tables are, or are not, in 3NF.",
+    "Produce a normalised database design for a description of a database, a given set of data, or a given set of tables."
   ],
   "definitions": [
     {
-      "term": "Entity",
-      "definition": "A distinct object, person or thing about which data is stored, such as a customer or a product; an entity becomes a table in a relational database."
+      "term": "Tuple",
+      "definition": "The formal name for one row of a relation (table): the set of attribute values stored for a single instance of the entity. Commonly called a record."
     },
     {
       "term": "Attribute",
-      "definition": "A property of an entity that describes it, such as a customer's name or date of birth; an attribute becomes a field (column) in a table."
-    },
-    {
-      "term": "Record",
-      "definition": "A single row in a table, holding the complete set of field values for one occurrence of an entity."
+      "definition": "A named column of a relation holding one property of the entity, such as MemberName. Commonly called a field. Each attribute value in a tuple must be atomic (a single value or no value)."
     },
     {
       "term": "Primary key",
-      "definition": "A field, or combination of fields, that uniquely identifies each record in a table and cannot contain duplicate or null values."
+      "definition": "The attribute, or combination of attributes, chosen to identify each tuple in a table uniquely; every tuple must have a value for it and no two tuples may share that value."
+    },
+    {
+      "term": "Candidate key",
+      "definition": "Any attribute, or minimal combination of attributes, that is guaranteed to be unique for every tuple and so could be chosen as the primary key."
+    },
+    {
+      "term": "Secondary key",
+      "definition": "A candidate key that was not chosen as the primary key. It is still unique and is often indexed so that tuples can also be searched for quickly by it."
     },
     {
       "term": "Foreign key",
-      "definition": "A field in one table that holds the primary key value of a related record in another table, creating a link (typically one-to-many) between the two tables."
+      "definition": "An attribute in one table that refers to the primary key of another table, so that the two tables are linked in a relationship."
+    },
+    {
+      "term": "Referential integrity",
+      "definition": "The rule, enforced through a foreign key, that a value can only be stored in the foreign key if the same value already exists as a primary key in the table it refers to."
+    },
+    {
+      "term": "Index",
+      "definition": "A small secondary structure holding the values of one key attribute in order, each with a pointer to the matching tuple in the main table, so searches on that attribute are much faster than scanning every tuple."
     },
     {
       "term": "Data redundancy",
-      "definition": "Storing the same piece of data more than once in a database, which wastes storage and creates a risk of inconsistency when the data changes."
+      "definition": "The same data being stored more than once, either within one file or across several files, which wastes storage and creates the risk of inconsistent copies."
     },
     {
-      "term": "Data inconsistency",
-      "definition": "A situation where duplicated data does not match across a database because only some of the copies were updated."
-    },
-    {
-      "term": "Normalisation",
-      "definition": "The process of organising data into related tables to remove redundancy, so that each fact is stored once and linked using keys."
+      "term": "Third Normal Form (3NF)",
+      "definition": "A table design in 2NF in which no non-key attribute depends on another non-key attribute: every non-key attribute depends on the key, the whole key and nothing but the key."
     }
   ],
   "sections": [
     {
-      "id": "01-entities-and-attributes",
-      "title": "Entities and attributes",
-      "content": [
-        "An entity is a distinct object, person or thing that an organisation needs to store data about, such as a Student, a Book or an Order. An attribute is a property that describes an entity, such as a student's name, date of birth or student number. Identifying the entities in a scenario, and the attributes that belong to each one, is the first step in designing a database, because each entity becomes a separate table and each of its attributes becomes a field in that table."
-      ],
-      "bullets": [
-        "An entity represents a real-world thing the system needs to track, not a single fact about it.",
-        "Grouping attributes under the correct entity avoids mixing unrelated data in one table, for example keeping book details separate from borrower details.",
-        "The same real-world scenario can often be modelled as more than one entity, for example a Library system needing both a Book entity and a Member entity."
-      ],
-      "examples": []
-    },
-    {
-      "id": "02-tables-records-and-fields",
-      "title": "From entities to tables, records and fields",
-      "content": [
-        "An entity is implemented as a table, its attributes become the table's fields (columns), and each individual occurrence of the entity, such as one specific student, is stored as a record (row) made up of a value for every field. For example, a Student entity with attributes StudentID, Name and DateOfBirth becomes a Student table with three fields, and each enrolled student is one record in that table with its own values for those three fields."
-      ],
-      "bullets": [
-        "A table's structure (its fields and their data types) is fixed; the records within it change as data is added, edited or deleted.",
-        "Every record in a table has the same fields, even if some field values are left empty for a particular record.",
-        "Choosing an appropriate data type for each field (for example integer, text or date) constrains what can be stored and helps maintain data integrity."
-      ],
-      "examples": []
-    },
-    {
-      "id": "03-primary-keys",
-      "title": "Primary keys",
-      "content": [
-        "A table needs a way to identify each record uniquely, because two records could otherwise have identical values in every other field, for example two students both named 'Sam Khan'. A primary key is a field, or combination of fields, chosen so that its value is unique for every record and is never left empty. Once chosen, the primary key is also what a foreign key in another table refers to in order to link related records together."
-      ],
-      "bullets": [
-        "A primary key must be unique and not null for every record, so it reliably distinguishes one record from every other.",
-        "An existing attribute can be used as a primary key only if it is guaranteed to be unique, such as a StudentID; a name is not suitable because names can repeat.",
-        "A composite primary key combines two or more fields when no single field is unique on its own."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-foreign-keys-and-relationships",
-      "title": "Foreign keys and relationships",
-      "content": [
-        "A foreign key is a field in one table that stores the primary key value of a related record in another table, creating a link between them. This is how a relational database represents a relationship without repeating the related data itself. Most relationships modelled at this level are one-to-many: one record in the 'one' table can relate to many records in the 'many' table, but each record in the 'many' table relates to only one record in the 'one' table. For example, one Borrower can have many Loan records, so the Loan table holds a foreign key BorrowerID referring back to the Borrower table's primary key."
-      ],
-      "bullets": [
-        "The foreign key is placed on the 'many' side of a one-to-many relationship, referring back to the primary key on the 'one' side.",
-        "A foreign key value must match an existing primary key value in the related table, which is what keeps the link valid (referential integrity).",
-        "Following the foreign key from a record lets a query retrieve the related record's data without storing it twice."
-      ],
-      "examples": []
-    },
-    {
       "id": "05-problems-with-flat-file-systems",
-      "title": "Problems with flat-file systems",
+      "title": "Limitations of a file-based approach",
       "content": [
-        "A flat-file system stores all of its data in a single table, even when that data describes more than one entity. This forces repeating groups of data to be duplicated in every record that needs them, for example storing a full Borrower's name and address in every Loan record for that borrower. This duplication causes data redundancy (the same fact stored many times, wasting storage) and creates the risk of data inconsistency, because if a borrower's address changes, every duplicated copy must be updated and a missed record leaves the data contradictory. A flat-file system also makes it harder to enforce data integrity, since there is no separate table structure or key relationship to check that data is entered consistently, and it typically supports only limited or no concurrent access, since the single file is more easily locked by one user at a time."
+        "In a file-based approach each department or program keeps its own data files, usually text files whose layout is defined by the program that uses them. Imagine a sports centre that keeps one file of member details for the front desk, another for the finance office and another for the coaches. The problems fall into three groups. First, integrity within a file: nothing checks data as it is typed, so a member can be entered twice with slightly different spellings, a required item can be left blank, or a class code can be entered for a class that does not exist. Second, redundancy across files: the member's name and phone number are stored in every department's file, so when the member changes their number only some copies may be updated and the files then contradict each other (data inconsistency). Third, data dependency: each program is written around the exact layout of its file (for example, that the fourth item on each line is the phone number), so adding a new item of data means rewriting the file and every program that reads it, and the files are poorly suited to any new application, such as analysing attendance over several years. A single shared file does not help either, because a file cannot restrict access to part of its contents, so staff who need contact details could also read bank details (a data privacy problem)."
       ],
       "bullets": [
-        "Redundancy wastes storage space and makes updates slower, because one real-world change may require editing many records.",
-        "Inconsistency arises specifically when only some duplicated copies of a fact are updated, leaving the data contradictory.",
-        "A relational database avoids this by storing each fact once, in the table for the entity it describes, and linking tables with keys instead of duplicating data."
+        "Data redundancy: the same data held in several files, wasting storage and making every change a multi-file job.",
+        "Data inconsistency: when only some of the redundant copies are updated, different files give different values for the same fact.",
+        "Poor data integrity: no built-in validation or checks when data is entered, so errors, duplicates and references to things that do not exist go undetected.",
+        "Data dependency (program-data dependence): programs rely on the file's physical layout, so any change to the data structure forces the programs to be rewritten.",
+        "Poor privacy and security: access cannot be controlled for part of a file, so anyone who can open the file can read all of it.",
+        "Difficult to share and to use for new purposes: each file suits the program it was built for, so extracting combined data for a new task is slow and complex."
       ],
       "examples": []
     },
     {
       "id": "06-worked-example-splitting-a-flat-file",
-      "title": "Worked example: splitting a flat-file table",
+      "title": "Features of a relational database that address these limitations",
       "content": [
-        "Consider a flat-file Loan table that records every book loan by storing BookTitle, BookAuthor, BorrowerName and BorrowerAddress directly in each loan record. If the same borrower takes out five books, their name and address are duplicated across all five records; if that borrower moves house, all five records must be found and updated, and missing even one leaves inconsistent data. Splitting this into two related tables solves the problem: a Borrower table holds BorrowerID (primary key), BorrowerName and BorrowerAddress once per borrower, and a Loan table holds LoanID (primary key), BookTitle, BookAuthor and BorrowerID (foreign key) referring back to the Borrower table. The borrower's details are now stored exactly once, no matter how many books they borrow, and a change to their address only needs to be made in a single record."
+        "A relational database stores data in a collection of related tables (relations), each holding data about one entity, and all access goes through a database management system (DBMS). Each limitation of the file-based approach has a matching feature. Data about one thing is stored once, in the table for that entity, and other tables refer to it through a key rather than copying it, which removes redundancy and with it the chance of inconsistent copies. Every table has a primary key, and the DBMS refuses a new tuple whose key value already exists, so duplicates cannot be created. Foreign keys give referential integrity: a value cannot be entered that refers to something missing from the linked table. Data types and validation rules defined for each attribute are checked whenever data is entered. Because programs send queries to the DBMS rather than reading files directly, new attributes or tables can be added without rewriting existing programs (data independence), and any combination of tables can be queried for a new purpose. Finally, access rights can be set per user or group and per table, so different staff see only the data they need."
       ],
       "bullets": [
-        "The repeating borrower details are removed from the Loan table and placed in their own Borrower table.",
-        "The foreign key BorrowerID in the Loan table replaces the duplicated name and address, linking each loan back to the correct borrower.",
-        "This is the core idea behind normalisation: remove repeating or duplicated data by moving it into a separate related table."
+        "Redundancy and inconsistency are removed because each fact is stored in one place and linked by keys.",
+        "Primary keys guarantee each tuple is unique; foreign keys enforce referential integrity between tables.",
+        "Validation (data types, ranges, required fields) is applied centrally, whatever program enters the data.",
+        "Programs are independent of the physical storage, so the structure can be extended without breaking them.",
+        "Queries can join any related tables, making new uses of the data straightforward.",
+        "Access rights can be granted to individual users or groups for individual tables, solving the privacy problem of a single shared file."
       ],
       "examples": [
         {
           "id": "e1-flat-file-vs-split",
           "kind": "worked",
-          "label": "Flat-file table split into two related tables",
-          "content": "Flat-file Loan table (redundant):\nLoanID | BookTitle | BookAuthor | BorrowerName | BorrowerAddress\n1 | Dune | Herbert | A. Khan | 12 Elm Rd\n2 | 1984 | Orwell | A. Khan | 12 Elm Rd\n3 | Emma | Austen | A. Khan | 12 Elm Rd\n\nSplit into two related tables:\nBorrower table:\nBorrowerID (PK) | BorrowerName | BorrowerAddress\nB01 | A. Khan | 12 Elm Rd\n\nLoan table:\nLoanID (PK) | BookTitle | BookAuthor | BorrowerID (FK)\n1 | Dune | Herbert | B01\n2 | 1984 | Orwell | B01\n3 | Emma | Austen | B01\n\nBorrowerName and BorrowerAddress are now stored once; each loan links to it using the foreign key BorrowerID."
+          "label": "Redundant file data re-stored as two related tables",
+          "content": "File-based data (one line per class booking):\nBookingNo | MemberName | MemberPhone | ClassName\n1 | O. Haddad | 555-0104 | Yoga\n2 | O. Haddad | 555-0104 | Spin\n3 | O. Haddad | 555-0104 | Pilates\n\nProblem: O. Haddad's phone number is stored three times. If it changes and only line 1 is edited, lines 2 and 3 are now inconsistent.\n\nRelational design:\nMember(MemberID, MemberName, MemberPhone)       primary key MemberID\nBooking(BookingNo, ClassName, MemberID)         primary key BookingNo, foreign key MemberID\n\nMember:\nMemberID | MemberName | MemberPhone\nM104 | O. Haddad | 555-0104\n\nBooking:\nBookingNo | ClassName | MemberID\n1 | Yoga | M104\n2 | Spin | M104\n3 | Pilates | M104\n\nThe phone number is now stored once, so one edit updates it for every booking. Referential integrity also stops a booking being entered for a MemberID that is not in the Member table."
+        }
+      ]
+    },
+    {
+      "id": "02-tables-records-and-fields",
+      "title": "Relational terminology: entity, table, tuple and attribute",
+      "content": [
+        "An entity is a type of thing (a person, object, event or transaction) about which data is stored and of which there are many instances, such as Member or Class. In a relational database each entity becomes a table, which the formal model calls a relation. A table's columns are its attributes (informally, fields) and each row is a tuple (informally, a record) holding the data for one instance of the entity, such as one particular member. A table design is written as the table name followed by its attributes in brackets, with the primary key underlined (or labelled PK in typed answers), for example Member(MemberID, MemberName, MemberPhone). Two principles of the model matter in exam answers: each attribute value in a tuple is atomic, meaning it holds one value or none (never a list), and neither the rows nor the columns have a defined order, which is why data is always retrieved by a query rather than by position."
+      ],
+      "bullets": [
+        "Entity = the type of thing (Member); tuple/record = one instance (the row for member M104).",
+        "Attribute = field = column; tuple = record = row. Use the formal terms when a question asks for relational terminology.",
+        "Atomic values: a MemberPhone attribute holds one number; storing 'Yoga, Spin' in a single ClassName attribute breaks this rule.",
+        "Do not confuse a relation (a table) with a relationship (a link between two tables)."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-primary-keys",
+      "title": "Primary, candidate and secondary keys",
+      "content": [
+        "Every table must have a primary key: an attribute, or combination of attributes, that has a value in every tuple and whose value is never repeated. The DBMS rejects an insert that would duplicate an existing primary key value, which is how the key guarantees each tuple is unique. Sometimes a table has more than one attribute that is guaranteed unique. For a Member table, both MemberID and a unique EmailAddress might qualify; each is a candidate key. One candidate is chosen as the primary key (usually the short, stable one that never changes, here MemberID) and any candidate not chosen becomes a secondary key, which can still be used, and indexed, to find tuples. Often no natural attribute is guaranteed unique, for example names repeat, so an identifier such as MemberID is created specifically to be the primary key. When no single attribute is unique but a combination is, the primary key is a composite (compound) key, as in a ClassMember table where neither ClassID nor MemberID is unique alone but the pair is."
+      ],
+      "bullets": [
+        "Primary key: unique and never empty; one per table (it may be composite).",
+        "Candidate key: any attribute or minimal attribute combination that could serve as the primary key.",
+        "Secondary key: a candidate key that was not chosen as the primary key (some textbooks also use the phrase for any attribute indexed for searching; the coursebook meaning is the candidate-key one).",
+        "Choose a primary key that is guaranteed unique for all possible data, not just the current rows: a name that happens to be unique today is still unsuitable."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-foreign-keys-and-relationships",
+      "title": "Foreign keys and referential integrity",
+      "content": [
+        "Tables are linked by a foreign key: an attribute in one table whose values are primary key values of another table. In Class(ClassID, ClassName, Day, InstructorID) the attribute InstructorID is a foreign key referring to the primary key of Instructor(InstructorID, InstructorName). The referenced table must be created first, then the foreign key is declared in the referring table. From then on the DBMS enforces referential integrity: it will not accept an InstructorID in Class unless that value already exists in Instructor, and it will not allow an Instructor tuple to be deleted (or its key changed) while Class tuples still refer to it, unless the change is cascaded. This prevents 'orphan' tuples that point to nothing. A foreign key does not have to be unique in its own table: many classes can share the same InstructorID, which is exactly what makes a one-to-many relationship."
+      ],
+      "bullets": [
+        "The foreign key goes in the table on the 'many' side of a one-to-many relationship and refers to the primary key on the 'one' side.",
+        "A foreign key may repeat within its table and may be part of a composite primary key (as in a link table).",
+        "Referential integrity means every foreign key value matches an existing primary key value in the referenced table.",
+        "The foreign key and the primary key it references must have the same data type (and normally the same meaning), even if the names differ."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-indexing",
+      "title": "Indexing",
+      "content": [
+        "Finding a tuple by scanning every row of a large table is slow. An index is a separate, much smaller structure associated with one attribute of a table, normally the primary key or a secondary key. It holds that attribute's values in order, each with a pointer to the position of the matching tuple in the main table. To find a tuple, the DBMS searches the ordered index (which can use a fast method such as a binary search or a tree) and follows the pointer straight to the tuple. The DBMS normally indexes the primary key automatically, and further indexes can be created on attributes that are searched or joined on frequently. The cost is extra storage, and slightly slower inserts, updates and deletes, because each index must be updated whenever the indexed data changes."
+      ],
+      "bullets": [
+        "Purpose: faster searching and sorting on the indexed attribute, especially for tables with many tuples.",
+        "An index contains only the key values and pointers, not the rest of each tuple.",
+        "Worth adding to attributes that are searched or used in joins often; not worth it for small tables or rarely searched attributes.",
+        "Trade-off: faster retrieval versus extra storage and extra work on every change to the data."
+      ],
+      "examples": [
+        {
+          "id": "e2-index",
+          "kind": "example",
+          "label": "An index on the secondary key EmailAddress",
+          "content": "Member table (stored in the order members joined):\nRow | MemberID | MemberName | EmailAddress\n1 | M120 | T. Reyes | treyes@mail.test\n2 | M104 | O. Haddad | ohaddad@mail.test\n3 | M117 | L. Ortiz | lortiz@mail.test\n\nIndex on EmailAddress (sorted, with pointers):\nEmailAddress | Row\nlortiz@mail.test | 3\nohaddad@mail.test | 2\ntreyes@mail.test | 1\n\nSearching for ohaddad@mail.test: search the sorted index, find pointer 2, read row 2 directly instead of checking every row of the table."
+        }
+      ]
+    },
+    {
+      "id": "08-entity-relationship-diagrams",
+      "title": "E-R diagrams and relationship types",
+      "content": [
+        "An entity-relationship (E-R) diagram documents a database design before any tables are built. Each entity is drawn as a rectangle containing its name, and each relationship as a line between two entities. The ends of the line show the cardinality: a single line end means 'one', and a crow's foot (three prongs) means 'many'. There are three types of relationship. In a one-to-one (1:1) relationship each instance of A is linked to at most one instance of B and vice versa, such as Member and Locker when each member rents one locker; these are rare and can be implemented with a foreign key on either side. In a one-to-many (1:M) relationship one instance of A is linked to many of B but each B to only one A, such as one Instructor teaching many Classes; the foreign key goes in the 'many' table. In a many-to-many (M:M) relationship each A is linked to many B and each B to many A, such as Member and Class (a member attends many classes, a class has many members). To design an E-R diagram from a scenario: pick the entities (nouns with many instances), decide which pairs are directly related, then decide the cardinality by reading the relationship in both directions, one instance at a time: 'one Instructor teaches many Classes' and 'one Class is taught by one Instructor' gives 1:M. More detailed diagrams also label each relationship with a verb and show the minimum as well as the maximum cardinality (for example, a new class may have zero members so far)."
+      ],
+      "bullets": [
+        "Always read a relationship both ways, starting each sentence with 'one': one Member attends many Classes; one Class has many Members, so the relationship is M:M.",
+        "The crow's foot is drawn at the 'many' end: on a 1:M line between Instructor and Class it touches the Class box.",
+        "The entity at the crow's-foot end of a 1:M relationship is the one that will hold the foreign key.",
+        "An E-R diagram shows entities and relationships, not every attribute; list attributes and keys separately in a key table or table designs."
+      ],
+      "examples": [
+        {
+          "id": "e3-er-diagram",
+          "kind": "worked",
+          "label": "E-R diagram for a sports centre (text form)",
+          "content": "Scenario: Each class is taught by one instructor; an instructor can teach many classes. A member can attend many classes and a class has many members. Each member may rent one locker and each locker is rented by at most one member.\n\nEntities: Instructor, Class, Member, Locker\n\nRelationships (| = one, <  or > = crow's foot / many):\nInstructor |------< Class          1:M  one Instructor teaches many Classes; one Class is taught by one Instructor\nClass      >------< Member         M:M  one Class has many Members; one Member attends many Classes\nMember     |------| Locker         1:1  one Member rents one Locker; one Locker is rented by one Member\n\nThe M:M relationship between Class and Member cannot be implemented directly and must be resolved with a link entity (next section)."
+        }
+      ]
+    },
+    {
+      "id": "10-resolving-many-to-many",
+      "title": "Resolving a many-to-many relationship with a link table",
+      "content": [
+        "A many-to-many relationship cannot be implemented directly. A foreign key attribute holds one value in each tuple, so a single ClassID attribute in Member could not record the several classes that member attends (and storing a list would break the atomic-value rule). Putting a foreign key in both tables fails as well, because each table would have to exist before the other. The solution is to add a link (associative) entity between the two, turning one M:M relationship into two 1:M relationships. For Class and Member the link entity ClassMember holds one tuple for each member in each class. Its primary key is the composite of the two foreign keys (ClassID, MemberID), since neither is unique alone but the pair is, and it is also the natural place for any data that belongs to the pairing itself, such as whether that member has paid for that class. The resulting logical E-R model can be summarised in a key table listing each table with its primary and foreign keys."
+      ],
+      "bullets": [
+        "Class >----< Member becomes Class |----< ClassMember >----| Member.",
+        "The link table holds a foreign key to each of the original tables; together they usually form its composite primary key.",
+        "Attributes that describe the combination (FeePaid, date enrolled, grade) belong in the link table, not in either original table.",
+        "Every many end in the logical model is a table that contains a foreign key."
+      ],
+      "examples": [
+        {
+          "id": "e4-key-table",
+          "kind": "example",
+          "label": "Key table for the sports centre logical model",
+          "content": "Table | Primary key | Foreign key(s)\nInstructor | InstructorID | (none)\nClass | ClassID | InstructorID\nMember | MemberID | (none)\nClassMember | ClassID + MemberID | ClassID, MemberID\nLocker | LockerNo | MemberID\n\nLocker holds MemberID as its foreign key for the 1:1 relationship (it could equally have been LockerNo in Member)."
         }
       ]
     },
     {
       "id": "07-normalisation",
-      "title": "The purpose of normalisation",
+      "title": "The normalisation process: 1NF, 2NF and 3NF",
       "content": [
-        "Normalisation is the process of organising the fields and tables of a relational database to minimise redundancy. Informally, it works by identifying repeating groups of data (like the borrower details repeated for every loan) and data that depends on only part of a key or on another non-key field, and moving that data into its own table, linked back using a key. The result is a set of smaller, related tables where each fact about an entity is stored in exactly one place. This directly solves the flat-file problems described above: because a fact is stored only once, there is nothing to keep inconsistent, updates only need to be made in one record, and storage is not wasted on duplicated data."
+        "Normalisation is a step-by-step technique for turning a list of data items (from a form, a description or an existing table) into a set of table designs with no unnecessary redundancy. Start by listing all the attributes, marking any repeating group: a set of attributes that takes several sets of values while the other attributes have one value each. First Normal Form (1NF): a table is in 1NF when it has a primary key, all attribute values are atomic and there are no repeating groups; to get there, move the repeating group into a new table whose primary key combines the original key (now also a foreign key) with the attribute that identifies each repeat. Second Normal Form (2NF): a 1NF table is in 2NF when every non-key attribute depends on the whole primary key; a partial dependency, where a non-key attribute depends on only part of a composite key, is removed by moving that attribute to a new table keyed by that part. A table with a single-attribute primary key is automatically in 2NF once it is in 1NF. Third Normal Form (3NF): a 2NF table is in 3NF when no non-key attribute depends on another non-key attribute; such a non-key (transitive) dependency is removed by moving the dependent attributes to a new table whose primary key is the attribute they depend on, and leaving that attribute behind as a foreign key. Each step splits tables but never loses data: the keys let the original data be rebuilt by joining tables."
       ],
       "bullets": [
-        "Normalisation does not delete data; it reorganises where each fact is stored and links tables using primary and foreign keys.",
-        "A normalised design trades off a small amount of extra work when retrieving data (the database must follow keys to join related tables) against a large reduction in redundancy and inconsistency risk.",
-        "Well-normalised tables make it easier to maintain data integrity, since each fact has a single authoritative record."
+        "1NF: remove repeating groups; every table has a primary key and atomic values.",
+        "2NF: remove partial dependencies (only possible when the primary key is composite).",
+        "3NF: remove non-key dependencies (a non-key attribute determined by another non-key attribute).",
+        "Each time an attribute group is moved out, the attribute it depends on stays behind as a foreign key so the link is kept."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "e5-normalisation",
+          "kind": "worked",
+          "label": "Worked example: normalising a class register to 3NF",
+          "content": "Class register sheets (unnormalised data). Assumptions: each class runs on one day with one instructor; FeePaid records whether that member has paid for that class.\n\nClassID | ClassName | Day | InstructorID | InstructorName | MemberID | MemberName | MemberPhone | FeePaid\nC01 | Yoga | Mon | I3 | P. Nair | M104 | O. Haddad | 555-0104 | Y\n    |      |     |    |         | M117 | L. Ortiz  | 555-0117 | N\nC02 | Spin | Wed | I3 | P. Nair | M104 | O. Haddad | 555-0104 | Y\n    |      |     |    |         | M120 | T. Reyes  | 555-0120 | Y\n\nUNF: (ClassID, ClassName, Day, InstructorID, InstructorName, (MemberID, MemberName, MemberPhone, FeePaid))\nThe inner brackets mark the repeating group: one class has many members.\n\nSTEP 1 - 1NF: move the repeating group to its own table.\nClass(ClassID, ClassName, Day, InstructorID, InstructorName)                PK ClassID\nClassMember(ClassID(fk), MemberID, MemberName, MemberPhone, FeePaid)        PK ClassID + MemberID\nClass: (C01, Yoga, Mon, I3, P. Nair), (C02, Spin, Wed, I3, P. Nair)\nClassMember: (C01, M104, O. Haddad, 555-0104, Y), (C01, M117, L. Ortiz, 555-0117, N), (C02, M104, O. Haddad, 555-0104, Y), (C02, M120, T. Reyes, 555-0120, Y)\nRedundancy left: O. Haddad's name and phone appear twice; P. Nair appears twice.\n\nSTEP 2 - 2NF: check each non-key attribute of the composite-key table.\nMemberName -> depends on MemberID only (partial dependency)\nMemberPhone -> depends on MemberID only (partial dependency)\nFeePaid -> depends on ClassID AND MemberID (a member can have paid for one class but not for another) - stays.\nClass has a single-attribute key, so it is already in 2NF.\nClass(ClassID, ClassName, Day, InstructorID, InstructorName)\nMember(MemberID, MemberName, MemberPhone)\nClassMember(ClassID(fk), MemberID(fk), FeePaid)                             PK ClassID + MemberID\nMember: (M104, O. Haddad, 555-0104), (M117, L. Ortiz, 555-0117), (M120, T. Reyes, 555-0120)\nClassMember: (C01, M104, Y), (C01, M117, N), (C02, M104, Y), (C02, M120, Y)\n\nSTEP 3 - 3NF: look for a non-key attribute that depends on another non-key attribute.\nIn Class, InstructorName depends on InstructorID, which is not the key (non-key dependency).\nMember and ClassMember have none.\nInstructor(InstructorID, InstructorName)\nClass(ClassID, ClassName, Day, InstructorID(fk))\nMember(MemberID, MemberName, MemberPhone)\nClassMember(ClassID(fk), MemberID(fk), FeePaid)\nInstructor: (I3, P. Nair)\nClass: (C01, Yoga, Mon, I3), (C02, Spin, Wed, I3)\n\nCheck: every fact is now stored once (P. Nair once, O. Haddad's phone once), every non-key attribute depends on the key, the whole key and nothing but the key, and joining the four tables on their keys rebuilds the original sheets exactly."
+        }
+      ]
     },
     {
-      "id": "08-entity-relationship-diagrams",
-      "title": "Entity-relationship (ER) diagrams",
+      "id": "11-checking-3nf-and-designing",
+      "title": "Explaining whether tables are in 3NF and producing a normalised design",
       "content": [
-        "An entity-relationship (ER) diagram is used to model the entities in a system and the relationships between them before the tables themselves are built. Each entity is shown as a labelled box, and a line connecting two entities shows that a relationship exists between them, typically annotated to show whether it is one-to-one, one-to-many or many-to-many. Producing an ER diagram first helps a designer confirm the entities and relationships are correct, and identify where foreign keys will be needed, before committing to the detailed table structure with fields and data types."
+        "To decide whether a given set of tables is in 3NF, test each table in turn with three questions and quote the attributes involved in your answer. Is there a repeating group or a non-atomic value? If so, it is not in 1NF. Does the table have a composite primary key with a non-key attribute that depends on only part of it? If so, it is not in 2NF. Is there a non-key attribute that depends on another non-key attribute? If so, it is not in 3NF. If a table passes all three it is in 3NF, and the set of tables is in 3NF only if every table is. To produce a normalised design from a written description, pick out the entities and their attributes, decide the relationship between each pair, resolve any many-to-many relationship with a link table, give every table a primary key and place a foreign key at the many end of each 1:M relationship; then check the result against the three questions. From a given set of data or tables, follow the 1NF to 2NF to 3NF steps and state which dependency each split removes."
       ],
       "bullets": [
-        "An ER diagram works at the level of entities and relationships, not individual fields or data types.",
-        "A one-to-many relationship on an ER diagram tells the designer that a foreign key is needed on the 'many' side of that relationship.",
-        "Designing the ER diagram before building tables helps catch a missing entity or an incorrect relationship early, when it is cheaper to fix."
+        "Name the exact dependency: 'SubjectName depends only on SubjectCode, part of the composite key' earns the mark; 'it has redundancy' does not.",
+        "A table with a single-attribute primary key cannot have a partial dependency, so only non-key dependencies need checking for it.",
+        "Write every final table in the form TableName(PK, attributes, FK(fk)) and clearly identify both primary and foreign keys.",
+        "State any assumption the design depends on (for example, 'each class has only one instructor')."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "e6-is-it-3nf",
+          "kind": "worked",
+          "label": "Are these tables in 3NF?",
+          "content": "Student(StudentID, StudentName, TutorID, TutorName)               PK StudentID\nResult(StudentID, SubjectCode, SubjectName, Grade)                 PK StudentID + SubjectCode\n\nStudent: single-attribute key, so no partial dependency. But TutorName depends on TutorID, a non-key attribute -> non-key dependency, so NOT in 3NF.\nResult: SubjectName depends only on SubjectCode, part of the composite key -> partial dependency, so NOT in 2NF (and therefore not in 3NF). Grade depends on both StudentID and SubjectCode, which is correct.\n\n3NF design:\nStudent(StudentID, StudentName, TutorID(fk))\nTutor(TutorID, TutorName)\nResult(StudentID(fk), SubjectCode(fk), Grade)       PK StudentID + SubjectCode\nSubject(SubjectCode, SubjectName)"
+        },
+        {
+          "id": "e7-design-from-description",
+          "kind": "worked",
+          "label": "Normalised design from a description",
+          "content": "Description: A vet practice records owners (name, phone) and their pets (name, species). An owner can have several pets; each pet has one owner. Each appointment is for one pet with one vet on a given date and time; a vet sees many appointments.\n\nEntities: Owner, Pet, Vet, Appointment\nRelationships: Owner 1:M Pet; Pet 1:M Appointment; Vet 1:M Appointment (no M:M to resolve)\n\nOwner(OwnerID, OwnerName, OwnerPhone)\nPet(PetID, PetName, Species, OwnerID(fk))\nVet(VetID, VetName)\nAppointment(AppointmentID, AppDate, AppTime, PetID(fk), VetID(fk))\n\nCheck: every table has a single-attribute primary key (so 2NF is automatic) and no non-key attribute determines another (for example, OwnerPhone is stored only in Owner, not in Pet), so the design is in 3NF."
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Flat-file table vs relational tables for the same data",
+    "title": "The three normal forms",
     "columns": [
-      "Aspect",
-      "Flat-file table",
-      "Relational (normalised) tables"
+      "Normal form",
+      "A table is in this form when",
+      "Problem removed",
+      "How to fix a table that fails"
     ],
     "rows": [
       [
-        "Repeated borrower details",
-        "Duplicated in every loan record for that borrower",
-        "Stored once in the Borrower table, linked by a foreign key"
+        "1NF",
+        "It has a primary key, every attribute value is atomic and there is no repeating group",
+        "Repeating groups and multi-valued attributes",
+        "Move the repeating group into a new table whose key is the original key (as a foreign key) plus the attribute identifying each repeat"
       ],
       [
-        "Updating an address",
-        "Every duplicated record must be found and updated",
-        "Only the single record in the Borrower table is updated"
+        "2NF",
+        "It is in 1NF and every non-key attribute depends on the whole primary key",
+        "Partial dependencies on part of a composite key",
+        "Move each partially dependent attribute to a new table keyed by the part of the key it depends on"
       ],
       [
-        "Risk if an update is missed",
-        "Data becomes inconsistent between duplicated copies",
-        "No duplicated copies exist, so this risk is removed"
-      ],
-      [
-        "Storage use",
-        "Wasted on repeated data",
-        "Each fact stored exactly once"
+        "3NF",
+        "It is in 2NF and no non-key attribute depends on another non-key attribute",
+        "Non-key (transitive) dependencies",
+        "Move the dependent attributes to a new table keyed by the attribute they depend on, and keep that attribute as a foreign key"
       ]
     ]
   },
   "diagram": {
-    "title": "Modelling a one-to-many relationship with a foreign key",
+    "title": "Normalising data to 3NF",
     "type": "flow",
     "nodes": [
-      "Identify entities: Borrower and Loan",
-      "Give each table a primary key: BorrowerID and LoanID",
-      "Recognise the relationship: one Borrower can have many Loans",
-      "Add BorrowerID as a foreign key in the Loan table",
-      "Each Loan record now links back to exactly one Borrower record"
+      "List all attributes; bracket any repeating group (UNF)",
+      "1NF: move the repeating group to a new table with a composite key and a foreign key",
+      "2NF: move attributes that depend on only part of a composite key",
+      "3NF: move attributes that depend on another non-key attribute",
+      "Check each table: the key, the whole key and nothing but the key; mark every PK and FK"
     ]
   },
   "analysisChains": [
     {
-      "title": "Detecting redundancy in a flat-file Loan table",
+      "title": "Why a file-based system breaks when the data changes",
       "steps": [
-        "A single Loan table stores BookTitle, BorrowerName and BorrowerAddress in every record",
-        "A borrower who takes out several books has their name and address repeated in every one of those records",
-        "The same borrower's address is changed after a house move",
-        "Only some of the duplicated records are updated, leaving the others showing the old address"
+        "The finance program reads a member file where the fourth item on each line is the phone number",
+        "The centre decides to also store an emergency contact for each member",
+        "The file layout has to be rewritten, and every program that reads the file must be changed to match",
+        "Meanwhile the front-desk file, which also stores phone numbers, is updated separately and drifts out of step"
       ],
-      "evaluation": "This is data inconsistency caused directly by redundancy; splitting the borrower's details into their own table with a foreign key link removes the duplication and the inconsistency risk it creates."
+      "evaluation": "This shows both data dependency and redundancy. In a relational database the new attribute is added once to the Member table through the DBMS, existing queries keep working, and the phone number exists in one place only."
     },
     {
-      "title": "Choosing a primary key for a Student table",
+      "title": "Why a many-to-many relationship needs a link table",
       "steps": [
-        "A Student table includes fields FirstName, LastName and StudentID",
-        "FirstName and LastName are checked and found to repeat across different students",
-        "StudentID is checked and confirmed to be unique and always present for every student",
-        "StudentID is selected as the primary key"
+        "A member attends several classes and each class has several members",
+        "A single foreign key ClassID in Member could hold only one class per member",
+        "Storing a list of class IDs in one attribute would break the atomic-value rule of 1NF",
+        "A link table ClassMember(ClassID, MemberID) stores one tuple per member per class, turning the M:M into two 1:M relationships"
       ],
-      "evaluation": "A primary key must guarantee uniqueness for every possible record, not just the current data, so a field that could plausibly repeat (like a name) is unsuitable even if no duplicates exist yet."
+      "evaluation": "The link table's composite key prevents the same member being enrolled twice in the same class, and it gives a proper home to data about the enrolment itself, such as FeePaid."
     },
     {
-      "title": "Adding a foreign key to link Loan records to Borrowers",
+      "title": "How referential integrity protects a design",
       "steps": [
-        "A separate Borrower table is created with BorrowerID as its primary key",
-        "The Loan table is redesigned to remove BorrowerName and BorrowerAddress",
-        "A new field BorrowerID is added to the Loan table as a foreign key",
-        "Each Loan record is updated to hold the correct BorrowerID value matching a record in the Borrower table"
+        "Class holds InstructorID as a foreign key referencing Instructor",
+        "A user tries to add a class with InstructorID I9, which is not in the Instructor table",
+        "The DBMS rejects the insert because the foreign key value has no matching primary key",
+        "Later, deleting instructor I3 is also refused while classes C01 and C02 still refer to I3"
       ],
-      "evaluation": "The foreign key recreates the link between a loan and its borrower without duplicating the borrower's details, but it only works correctly if every foreign key value matches an existing primary key value in the Borrower table."
+      "evaluation": "Referential integrity stops orphan records that point to nothing, a check a file-based system cannot make; the cost is that related data must be entered and deleted in the correct order."
     }
   ],
   "examTips": [
-    "When asked to identify entities and attributes from a scenario, list the entities first, then assign each attribute to exactly one entity.",
-    "State clearly which field is the primary key and why it is unique for every record, not just that a table 'has a primary key'.",
-    "Explain a foreign key by naming both tables it links and which side of the relationship each table is on.",
-    "When explaining why normalisation is used, mention that it removes redundancy, which in turn prevents the specific inconsistency that redundancy causes."
+    "When asked for limitations of a file-based approach, name the problem and its consequence: 'the same data is stored in several files (redundancy), so an update to one copy can leave the others inconsistent'.",
+    "When asked for relational features, match each to the limitation it fixes, for example primary key prevents duplicates, foreign key gives referential integrity, data stored once removes redundancy.",
+    "On an E-R diagram, put the crow's foot at the 'many' end and make sure each relationship line is between the right pair of entities; resolve M:M with a link entity when a logical model is asked for.",
+    "When explaining whether a table is in 3NF, quote the attributes: 'X depends on Y, which is not the primary key' or 'X depends only on part of the composite key (Y)'.",
+    "In a normalised design, show every table in the form Table(Key, attributes, ForeignKey) and state which attributes are primary keys and which are foreign keys; a design with no foreign keys cannot be linked."
   ],
   "commonMistakes": [
-    "Confusing an entity (a type of thing, such as Student) with a record (one specific occurrence, such as one particular student).",
-    "Choosing a non-unique attribute, such as a name, as a primary key.",
-    "Placing the foreign key on the 'one' side of a one-to-many relationship instead of the 'many' side.",
-    "Describing data redundancy and data inconsistency as the same problem, rather than redundancy being the duplication that creates the risk of inconsistency.",
-    "Saying normalisation 'deletes data', rather than explaining that it reorganises where each fact is stored, linked by keys."
+    "Confusing a relation (a table) with a relationship (a link between tables), or an entity (a type of thing) with a tuple (one instance).",
+    "Defining a secondary key as 'a second primary key'; it is a candidate key that was not chosen as the primary key.",
+    "Putting the foreign key on the 'one' side of a 1:M relationship, or trying to implement an M:M relationship without a link table.",
+    "Claiming a table with a single-attribute primary key is not in 2NF; partial dependency is only possible with a composite key.",
+    "Removing a dependency in 3NF but forgetting to leave the determining attribute behind as a foreign key, which breaks the link between the tables.",
+    "Treating a repeating group as fixed columns (Class1, Class2, Class3) and calling the table normalised; repeated columns are still a repeating group."
   ],
   "quickRecall": [
     {
-      "question": "What is the difference between an entity and an attribute?",
-      "answer": "An entity is a distinct object or thing data is stored about, such as a Student; an attribute is a property that describes it, such as the student's name, and becomes a field in the entity's table."
+      "question": "Give three limitations of a file-based approach.",
+      "answer": "Any three of: data redundancy; data inconsistency; no built-in validation so poor data integrity; data dependency (programs must be rewritten if file structure changes); no control over access to part of a file; hard to combine data for new uses."
     },
     {
-      "question": "Why does a table need a primary key?",
-      "answer": "To uniquely identify each record, since a key must be unique and never empty for every record, distinguishing records that might otherwise share identical values in other fields."
+      "question": "What is the difference between a candidate key and a secondary key?",
+      "answer": "A candidate key is any attribute (or minimal combination) that could be the primary key; a secondary key is a candidate key that was not chosen as the primary key."
     },
     {
-      "question": "What does a foreign key do?",
-      "answer": "It is a field in one table that stores the primary key value of a related record in another table, creating a relationship (typically one-to-many) between the two tables."
+      "question": "What is referential integrity?",
+      "answer": "The rule, enforced by a foreign key, that a value can only be entered in the foreign key if the same value exists as a primary key in the referenced table."
     },
     {
-      "question": "Give two problems caused by a flat-file system.",
-      "answer": "Any two of: data redundancy, data inconsistency, poor data integrity, limited concurrent access."
+      "question": "What does an index contain and why is it used?",
+      "answer": "The values of one key attribute in order, each with a pointer to the matching tuple; it makes searching on that attribute much faster than scanning the whole table."
     },
     {
-      "question": "What is the purpose of normalisation?",
-      "answer": "To remove data redundancy by organising data into related tables, so that each fact is stored once and linked using primary and foreign keys."
+      "question": "How is a many-to-many relationship implemented in a relational database?",
+      "answer": "With a link table containing a foreign key to each of the two tables, usually combined as its composite primary key, creating two one-to-many relationships."
     },
     {
-      "question": "What is an ER diagram used for?",
-      "answer": "To model the entities in a system and the relationships between them, before the detailed tables and fields are designed."
+      "question": "What must be true for a table to be in 2NF?",
+      "answer": "It is in 1NF and every non-key attribute depends on the whole primary key, so there are no partial dependencies on part of a composite key."
     },
     {
-      "question": "In a one-to-many relationship between Borrower and Loan, which table holds the foreign key?",
-      "answer": "The Loan table (the 'many' side) holds a foreign key referring back to the primary key of the Borrower table (the 'one' side)."
+      "question": "What does 3NF remove?",
+      "answer": "Non-key dependencies: a non-key attribute that depends on another non-key attribute is moved to a new table keyed by that attribute, which stays behind as a foreign key."
+    },
+    {
+      "question": "Is Student(StudentID, StudentName, TutorID, TutorName) in 3NF?",
+      "answer": "No. TutorName depends on TutorID, which is a non-key attribute; split into Student(StudentID, StudentName, TutorID(fk)) and Tutor(TutorID, TutorName)."
     }
   ],
   "relatedTopics": [

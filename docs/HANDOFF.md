@@ -52,9 +52,9 @@ The commit is a checkpoint, not a permanently current version.
   monitoring/control (3.1) and bit manipulation (4.3); ch8 → 5.1–5.2; ch9 → 6.1–6.2; ch10 → 7.1;
   ch11 → 8.1–8.3; ch12 → 9.1–9.2; ch13 → 10.1–10.4; ch14 → 11.1–11.3; ch15 → 12.1–12.3.
 - Second pass (research method) done: 1.1, 1.2, 1.3, 2.1, 3.1, 3.2, 4.1, 4.2, 4.3, 5.1, 5.2, 6.1,
-  6.2, 7.1 (2026-09-29). 6.1 and 6.2 replaced the desktop's first-pass versions, which omitted
+  6.2, 7.1, 8.1, 8.2 (2026-09-29). 6.1 and 6.2 replaced the desktop's first-pass versions, which omitted
   syllabus items; 7.1 was rewritten because the first pass followed the wrong syllabus outcomes.
-- Second pass still to do, in order: 8.1, 8.2, 8.3, 9.1, 9.2, 10.1, 10.2, 10.3, 10.4, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3. For each,
+- Second pass still to do, in order: 8.3, 9.1, 9.2, 10.1, 10.2, 10.3, 10.4, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3. For each,
   check every syllabus outcome is covered, reorder sections to the coursebook, and fix gaps.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
 - Follow-up not done yet: add a strict 9618 AS block to `scripts/validate-data.mjs` like the

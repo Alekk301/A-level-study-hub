@@ -9990,307 +9990,474 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to explain why relational databases are used in place of flat-file systems, and to identify entities, attributes, keys and relationships from a given scenario. Answers score when a candidate can justify a design choice, such as why a foreign key is needed, rather than only naming database terms."
+        "text": "This topic covers why organisations moved from separate data files to relational databases, the vocabulary of the relational model (tuple, attribute, primary, candidate, secondary and foreign keys, referential integrity, indexing), how E-R diagrams document one-to-one, one-to-many and many-to-many relationships, and normalisation to Third Normal Form. Paper 1 regularly gives a scenario, a set of data or a set of tables and asks you to draw the E-R diagram, say whether the tables are in 3NF and justify it, or produce a normalised design with every primary and foreign key identified. Marks come from precise terms applied to the given data, not from general statements."
       },
       {
         "kind": "Definition",
-        "label": "Entity",
-        "text": "A distinct object, person or thing about which data is stored, such as a customer or a product; an entity becomes a table in a relational database."
+        "label": "Tuple",
+        "text": "The formal name for one row of a relation (table): the set of attribute values stored for a single instance of the entity. Commonly called a record."
       },
       {
         "kind": "Definition",
         "label": "Attribute",
-        "text": "A property of an entity that describes it, such as a customer's name or date of birth; an attribute becomes a field (column) in a table."
-      },
-      {
-        "kind": "Definition",
-        "label": "Record",
-        "text": "A single row in a table, holding the complete set of field values for one occurrence of an entity."
+        "text": "A named column of a relation holding one property of the entity, such as MemberName. Commonly called a field. Each attribute value in a tuple must be atomic (a single value or no value)."
       },
       {
         "kind": "Definition",
         "label": "Primary key",
-        "text": "A field, or combination of fields, that uniquely identifies each record in a table and cannot contain duplicate or null values."
+        "text": "The attribute, or combination of attributes, chosen to identify each tuple in a table uniquely; every tuple must have a value for it and no two tuples may share that value."
+      },
+      {
+        "kind": "Definition",
+        "label": "Candidate key",
+        "text": "Any attribute, or minimal combination of attributes, that is guaranteed to be unique for every tuple and so could be chosen as the primary key."
+      },
+      {
+        "kind": "Definition",
+        "label": "Secondary key",
+        "text": "A candidate key that was not chosen as the primary key. It is still unique and is often indexed so that tuples can also be searched for quickly by it."
       },
       {
         "kind": "Definition",
         "label": "Foreign key",
-        "text": "A field in one table that holds the primary key value of a related record in another table, creating a link (typically one-to-many) between the two tables."
+        "text": "An attribute in one table that refers to the primary key of another table, so that the two tables are linked in a relationship."
+      },
+      {
+        "kind": "Definition",
+        "label": "Referential integrity",
+        "text": "The rule, enforced through a foreign key, that a value can only be stored in the foreign key if the same value already exists as a primary key in the table it refers to."
+      },
+      {
+        "kind": "Definition",
+        "label": "Index",
+        "text": "A small secondary structure holding the values of one key attribute in order, each with a pointer to the matching tuple in the main table, so searches on that attribute are much faster than scanning every tuple."
       },
       {
         "kind": "Definition",
         "label": "Data redundancy",
-        "text": "Storing the same piece of data more than once in a database, which wastes storage and creates a risk of inconsistency when the data changes."
+        "text": "The same data being stored more than once, either within one file or across several files, which wastes storage and creates the risk of inconsistent copies."
       },
       {
         "kind": "Definition",
-        "label": "Data inconsistency",
-        "text": "A situation where duplicated data does not match across a database because only some of the copies were updated."
-      },
-      {
-        "kind": "Definition",
-        "label": "Normalisation",
-        "text": "The process of organising data into related tables to remove redundancy, so that each fact is stored once and linked using keys."
+        "label": "Third Normal Form (3NF)",
+        "text": "A table design in 2NF in which no non-key attribute depends on another non-key attribute: every non-key attribute depends on the key, the whole key and nothing but the key."
       },
       {
         "kind": "Section",
-        "text": "Entities and attributes"
+        "text": "Limitations of a file-based approach"
       },
       {
         "kind": "Content",
-        "label": "Entities and attributes",
-        "text": "An entity is a distinct object, person or thing that an organisation needs to store data about, such as a Student, a Book or an Order. An attribute is a property that describes an entity, such as a student's name, date of birth or student number. Identifying the entities in a scenario, and the attributes that belong to each one, is the first step in designing a database, because each entity becomes a separate table and each of its attributes becomes a field in that table."
+        "label": "Limitations of a file-based approach",
+        "text": "In a file-based approach each department or program keeps its own data files, usually text files whose layout is defined by the program that uses them. Imagine a sports centre that keeps one file of member details for the front desk, another for the finance office and another for the coaches. The problems fall into three groups. First, integrity within a file: nothing checks data as it is typed, so a member can be entered twice with slightly different spellings, a required item can be left blank, or a class code can be entered for a class that does not exist. Second, redundancy across files: the member's name and phone number are stored in every department's file, so when the member changes their number only some copies may be updated and the files then contradict each other (data inconsistency). Third, data dependency: each program is written around the exact layout of its file (for example, that the fourth item on each line is the phone number), so adding a new item of data means rewriting the file and every program that reads it, and the files are poorly suited to any new application, such as analysing attendance over several years. A single shared file does not help either, because a file cannot restrict access to part of its contents, so staff who need contact details could also read bank details (a data privacy problem)."
       },
       {
         "kind": "Content",
-        "label": "Entities and attributes",
-        "text": "An entity represents a real-world thing the system needs to track, not a single fact about it."
+        "label": "Limitations of a file-based approach",
+        "text": "Data redundancy: the same data held in several files, wasting storage and making every change a multi-file job."
       },
       {
         "kind": "Content",
-        "label": "Entities and attributes",
-        "text": "Grouping attributes under the correct entity avoids mixing unrelated data in one table, for example keeping book details separate from borrower details."
+        "label": "Limitations of a file-based approach",
+        "text": "Data inconsistency: when only some of the redundant copies are updated, different files give different values for the same fact."
       },
       {
         "kind": "Content",
-        "label": "Entities and attributes",
-        "text": "The same real-world scenario can often be modelled as more than one entity, for example a Library system needing both a Book entity and a Member entity."
+        "label": "Limitations of a file-based approach",
+        "text": "Poor data integrity: no built-in validation or checks when data is entered, so errors, duplicates and references to things that do not exist go undetected."
+      },
+      {
+        "kind": "Content",
+        "label": "Limitations of a file-based approach",
+        "text": "Data dependency (program-data dependence): programs rely on the file's physical layout, so any change to the data structure forces the programs to be rewritten."
+      },
+      {
+        "kind": "Content",
+        "label": "Limitations of a file-based approach",
+        "text": "Poor privacy and security: access cannot be controlled for part of a file, so anyone who can open the file can read all of it."
+      },
+      {
+        "kind": "Content",
+        "label": "Limitations of a file-based approach",
+        "text": "Difficult to share and to use for new purposes: each file suits the program it was built for, so extracting combined data for a new task is slow and complex."
       },
       {
         "kind": "Section",
-        "text": "From entities to tables, records and fields"
+        "text": "Features of a relational database that address these limitations"
       },
       {
         "kind": "Content",
-        "label": "From entities to tables, records and fields",
-        "text": "An entity is implemented as a table, its attributes become the table's fields (columns), and each individual occurrence of the entity, such as one specific student, is stored as a record (row) made up of a value for every field. For example, a Student entity with attributes StudentID, Name and DateOfBirth becomes a Student table with three fields, and each enrolled student is one record in that table with its own values for those three fields."
+        "label": "Features of a relational database that address these limitations",
+        "text": "A relational database stores data in a collection of related tables (relations), each holding data about one entity, and all access goes through a database management system (DBMS). Each limitation of the file-based approach has a matching feature. Data about one thing is stored once, in the table for that entity, and other tables refer to it through a key rather than copying it, which removes redundancy and with it the chance of inconsistent copies. Every table has a primary key, and the DBMS refuses a new tuple whose key value already exists, so duplicates cannot be created. Foreign keys give referential integrity: a value cannot be entered that refers to something missing from the linked table. Data types and validation rules defined for each attribute are checked whenever data is entered. Because programs send queries to the DBMS rather than reading files directly, new attributes or tables can be added without rewriting existing programs (data independence), and any combination of tables can be queried for a new purpose. Finally, access rights can be set per user or group and per table, so different staff see only the data they need."
       },
       {
         "kind": "Content",
-        "label": "From entities to tables, records and fields",
-        "text": "A table's structure (its fields and their data types) is fixed; the records within it change as data is added, edited or deleted."
+        "label": "Features of a relational database that address these limitations",
+        "text": "Redundancy and inconsistency are removed because each fact is stored in one place and linked by keys."
       },
       {
         "kind": "Content",
-        "label": "From entities to tables, records and fields",
-        "text": "Every record in a table has the same fields, even if some field values are left empty for a particular record."
+        "label": "Features of a relational database that address these limitations",
+        "text": "Primary keys guarantee each tuple is unique; foreign keys enforce referential integrity between tables."
       },
       {
         "kind": "Content",
-        "label": "From entities to tables, records and fields",
-        "text": "Choosing an appropriate data type for each field (for example integer, text or date) constrains what can be stored and helps maintain data integrity."
-      },
-      {
-        "kind": "Section",
-        "text": "Primary keys"
+        "label": "Features of a relational database that address these limitations",
+        "text": "Validation (data types, ranges, required fields) is applied centrally, whatever program enters the data."
       },
       {
         "kind": "Content",
-        "label": "Primary keys",
-        "text": "A table needs a way to identify each record uniquely, because two records could otherwise have identical values in every other field, for example two students both named 'Sam Khan'. A primary key is a field, or combination of fields, chosen so that its value is unique for every record and is never left empty. Once chosen, the primary key is also what a foreign key in another table refers to in order to link related records together."
+        "label": "Features of a relational database that address these limitations",
+        "text": "Programs are independent of the physical storage, so the structure can be extended without breaking them."
       },
       {
         "kind": "Content",
-        "label": "Primary keys",
-        "text": "A primary key must be unique and not null for every record, so it reliably distinguishes one record from every other."
+        "label": "Features of a relational database that address these limitations",
+        "text": "Queries can join any related tables, making new uses of the data straightforward."
       },
       {
         "kind": "Content",
-        "label": "Primary keys",
-        "text": "An existing attribute can be used as a primary key only if it is guaranteed to be unique, such as a StudentID; a name is not suitable because names can repeat."
-      },
-      {
-        "kind": "Content",
-        "label": "Primary keys",
-        "text": "A composite primary key combines two or more fields when no single field is unique on its own."
-      },
-      {
-        "kind": "Section",
-        "text": "Foreign keys and relationships"
-      },
-      {
-        "kind": "Content",
-        "label": "Foreign keys and relationships",
-        "text": "A foreign key is a field in one table that stores the primary key value of a related record in another table, creating a link between them. This is how a relational database represents a relationship without repeating the related data itself. Most relationships modelled at this level are one-to-many: one record in the 'one' table can relate to many records in the 'many' table, but each record in the 'many' table relates to only one record in the 'one' table. For example, one Borrower can have many Loan records, so the Loan table holds a foreign key BorrowerID referring back to the Borrower table's primary key."
-      },
-      {
-        "kind": "Content",
-        "label": "Foreign keys and relationships",
-        "text": "The foreign key is placed on the 'many' side of a one-to-many relationship, referring back to the primary key on the 'one' side."
-      },
-      {
-        "kind": "Content",
-        "label": "Foreign keys and relationships",
-        "text": "A foreign key value must match an existing primary key value in the related table, which is what keeps the link valid (referential integrity)."
-      },
-      {
-        "kind": "Content",
-        "label": "Foreign keys and relationships",
-        "text": "Following the foreign key from a record lets a query retrieve the related record's data without storing it twice."
-      },
-      {
-        "kind": "Section",
-        "text": "Problems with flat-file systems"
-      },
-      {
-        "kind": "Content",
-        "label": "Problems with flat-file systems",
-        "text": "A flat-file system stores all of its data in a single table, even when that data describes more than one entity. This forces repeating groups of data to be duplicated in every record that needs them, for example storing a full Borrower's name and address in every Loan record for that borrower. This duplication causes data redundancy (the same fact stored many times, wasting storage) and creates the risk of data inconsistency, because if a borrower's address changes, every duplicated copy must be updated and a missed record leaves the data contradictory. A flat-file system also makes it harder to enforce data integrity, since there is no separate table structure or key relationship to check that data is entered consistently, and it typically supports only limited or no concurrent access, since the single file is more easily locked by one user at a time."
-      },
-      {
-        "kind": "Content",
-        "label": "Problems with flat-file systems",
-        "text": "Redundancy wastes storage space and makes updates slower, because one real-world change may require editing many records."
-      },
-      {
-        "kind": "Content",
-        "label": "Problems with flat-file systems",
-        "text": "Inconsistency arises specifically when only some duplicated copies of a fact are updated, leaving the data contradictory."
-      },
-      {
-        "kind": "Content",
-        "label": "Problems with flat-file systems",
-        "text": "A relational database avoids this by storing each fact once, in the table for the entity it describes, and linking tables with keys instead of duplicating data."
-      },
-      {
-        "kind": "Section",
-        "text": "Worked example: splitting a flat-file table"
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: splitting a flat-file table",
-        "text": "Consider a flat-file Loan table that records every book loan by storing BookTitle, BookAuthor, BorrowerName and BorrowerAddress directly in each loan record. If the same borrower takes out five books, their name and address are duplicated across all five records; if that borrower moves house, all five records must be found and updated, and missing even one leaves inconsistent data. Splitting this into two related tables solves the problem: a Borrower table holds BorrowerID (primary key), BorrowerName and BorrowerAddress once per borrower, and a Loan table holds LoanID (primary key), BookTitle, BookAuthor and BorrowerID (foreign key) referring back to the Borrower table. The borrower's details are now stored exactly once, no matter how many books they borrow, and a change to their address only needs to be made in a single record."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: splitting a flat-file table",
-        "text": "The repeating borrower details are removed from the Loan table and placed in their own Borrower table."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: splitting a flat-file table",
-        "text": "The foreign key BorrowerID in the Loan table replaces the duplicated name and address, linking each loan back to the correct borrower."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: splitting a flat-file table",
-        "text": "This is the core idea behind normalisation: remove repeating or duplicated data by moving it into a separate related table."
+        "label": "Features of a relational database that address these limitations",
+        "text": "Access rights can be granted to individual users or groups for individual tables, solving the privacy problem of a single shared file."
       },
       {
         "kind": "Example",
-        "label": "Worked example: splitting a flat-file table",
-        "text": "Flat-file Loan table (redundant):\nLoanID | BookTitle | BookAuthor | BorrowerName | BorrowerAddress\n1 | Dune | Herbert | A. Khan | 12 Elm Rd\n2 | 1984 | Orwell | A. Khan | 12 Elm Rd\n3 | Emma | Austen | A. Khan | 12 Elm Rd\n\nSplit into two related tables:\nBorrower table:\nBorrowerID (PK) | BorrowerName | BorrowerAddress\nB01 | A. Khan | 12 Elm Rd\n\nLoan table:\nLoanID (PK) | BookTitle | BookAuthor | BorrowerID (FK)\n1 | Dune | Herbert | B01\n2 | 1984 | Orwell | B01\n3 | Emma | Austen | B01\n\nBorrowerName and BorrowerAddress are now stored once; each loan links to it using the foreign key BorrowerID."
+        "label": "Features of a relational database that address these limitations",
+        "text": "File-based data (one line per class booking):\nBookingNo | MemberName | MemberPhone | ClassName\n1 | O. Haddad | 555-0104 | Yoga\n2 | O. Haddad | 555-0104 | Spin\n3 | O. Haddad | 555-0104 | Pilates\n\nProblem: O. Haddad's phone number is stored three times. If it changes and only line 1 is edited, lines 2 and 3 are now inconsistent.\n\nRelational design:\nMember(MemberID, MemberName, MemberPhone)       primary key MemberID\nBooking(BookingNo, ClassName, MemberID)         primary key BookingNo, foreign key MemberID\n\nMember:\nMemberID | MemberName | MemberPhone\nM104 | O. Haddad | 555-0104\n\nBooking:\nBookingNo | ClassName | MemberID\n1 | Yoga | M104\n2 | Spin | M104\n3 | Pilates | M104\n\nThe phone number is now stored once, so one edit updates it for every booking. Referential integrity also stops a booking being entered for a MemberID that is not in the Member table."
       },
       {
         "kind": "Section",
-        "text": "The purpose of normalisation"
+        "text": "Relational terminology: entity, table, tuple and attribute"
       },
       {
         "kind": "Content",
-        "label": "The purpose of normalisation",
-        "text": "Normalisation is the process of organising the fields and tables of a relational database to minimise redundancy. Informally, it works by identifying repeating groups of data (like the borrower details repeated for every loan) and data that depends on only part of a key or on another non-key field, and moving that data into its own table, linked back using a key. The result is a set of smaller, related tables where each fact about an entity is stored in exactly one place. This directly solves the flat-file problems described above: because a fact is stored only once, there is nothing to keep inconsistent, updates only need to be made in one record, and storage is not wasted on duplicated data."
+        "label": "Relational terminology: entity, table, tuple and attribute",
+        "text": "An entity is a type of thing (a person, object, event or transaction) about which data is stored and of which there are many instances, such as Member or Class. In a relational database each entity becomes a table, which the formal model calls a relation. A table's columns are its attributes (informally, fields) and each row is a tuple (informally, a record) holding the data for one instance of the entity, such as one particular member. A table design is written as the table name followed by its attributes in brackets, with the primary key underlined (or labelled PK in typed answers), for example Member(MemberID, MemberName, MemberPhone). Two principles of the model matter in exam answers: each attribute value in a tuple is atomic, meaning it holds one value or none (never a list), and neither the rows nor the columns have a defined order, which is why data is always retrieved by a query rather than by position."
       },
       {
         "kind": "Content",
-        "label": "The purpose of normalisation",
-        "text": "Normalisation does not delete data; it reorganises where each fact is stored and links tables using primary and foreign keys."
+        "label": "Relational terminology: entity, table, tuple and attribute",
+        "text": "Entity = the type of thing (Member); tuple/record = one instance (the row for member M104)."
       },
       {
         "kind": "Content",
-        "label": "The purpose of normalisation",
-        "text": "A normalised design trades off a small amount of extra work when retrieving data (the database must follow keys to join related tables) against a large reduction in redundancy and inconsistency risk."
+        "label": "Relational terminology: entity, table, tuple and attribute",
+        "text": "Attribute = field = column; tuple = record = row. Use the formal terms when a question asks for relational terminology."
       },
       {
         "kind": "Content",
-        "label": "The purpose of normalisation",
-        "text": "Well-normalised tables make it easier to maintain data integrity, since each fact has a single authoritative record."
+        "label": "Relational terminology: entity, table, tuple and attribute",
+        "text": "Atomic values: a MemberPhone attribute holds one number; storing 'Yoga, Spin' in a single ClassName attribute breaks this rule."
+      },
+      {
+        "kind": "Content",
+        "label": "Relational terminology: entity, table, tuple and attribute",
+        "text": "Do not confuse a relation (a table) with a relationship (a link between two tables)."
       },
       {
         "kind": "Section",
-        "text": "Entity-relationship (ER) diagrams"
+        "text": "Primary, candidate and secondary keys"
       },
       {
         "kind": "Content",
-        "label": "Entity-relationship (ER) diagrams",
-        "text": "An entity-relationship (ER) diagram is used to model the entities in a system and the relationships between them before the tables themselves are built. Each entity is shown as a labelled box, and a line connecting two entities shows that a relationship exists between them, typically annotated to show whether it is one-to-one, one-to-many or many-to-many. Producing an ER diagram first helps a designer confirm the entities and relationships are correct, and identify where foreign keys will be needed, before committing to the detailed table structure with fields and data types."
+        "label": "Primary, candidate and secondary keys",
+        "text": "Every table must have a primary key: an attribute, or combination of attributes, that has a value in every tuple and whose value is never repeated. The DBMS rejects an insert that would duplicate an existing primary key value, which is how the key guarantees each tuple is unique. Sometimes a table has more than one attribute that is guaranteed unique. For a Member table, both MemberID and a unique EmailAddress might qualify; each is a candidate key. One candidate is chosen as the primary key (usually the short, stable one that never changes, here MemberID) and any candidate not chosen becomes a secondary key, which can still be used, and indexed, to find tuples. Often no natural attribute is guaranteed unique, for example names repeat, so an identifier such as MemberID is created specifically to be the primary key. When no single attribute is unique but a combination is, the primary key is a composite (compound) key, as in a ClassMember table where neither ClassID nor MemberID is unique alone but the pair is."
       },
       {
         "kind": "Content",
-        "label": "Entity-relationship (ER) diagrams",
-        "text": "An ER diagram works at the level of entities and relationships, not individual fields or data types."
+        "label": "Primary, candidate and secondary keys",
+        "text": "Primary key: unique and never empty; one per table (it may be composite)."
       },
       {
         "kind": "Content",
-        "label": "Entity-relationship (ER) diagrams",
-        "text": "A one-to-many relationship on an ER diagram tells the designer that a foreign key is needed on the 'many' side of that relationship."
+        "label": "Primary, candidate and secondary keys",
+        "text": "Candidate key: any attribute or minimal attribute combination that could serve as the primary key."
       },
       {
         "kind": "Content",
-        "label": "Entity-relationship (ER) diagrams",
-        "text": "Designing the ER diagram before building tables helps catch a missing entity or an incorrect relationship early, when it is cheaper to fix."
+        "label": "Primary, candidate and secondary keys",
+        "text": "Secondary key: a candidate key that was not chosen as the primary key (some textbooks also use the phrase for any attribute indexed for searching; the coursebook meaning is the candidate-key one)."
+      },
+      {
+        "kind": "Content",
+        "label": "Primary, candidate and secondary keys",
+        "text": "Choose a primary key that is guaranteed unique for all possible data, not just the current rows: a name that happens to be unique today is still unsuitable."
+      },
+      {
+        "kind": "Section",
+        "text": "Foreign keys and referential integrity"
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and referential integrity",
+        "text": "Tables are linked by a foreign key: an attribute in one table whose values are primary key values of another table. In Class(ClassID, ClassName, Day, InstructorID) the attribute InstructorID is a foreign key referring to the primary key of Instructor(InstructorID, InstructorName). The referenced table must be created first, then the foreign key is declared in the referring table. From then on the DBMS enforces referential integrity: it will not accept an InstructorID in Class unless that value already exists in Instructor, and it will not allow an Instructor tuple to be deleted (or its key changed) while Class tuples still refer to it, unless the change is cascaded. This prevents 'orphan' tuples that point to nothing. A foreign key does not have to be unique in its own table: many classes can share the same InstructorID, which is exactly what makes a one-to-many relationship."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and referential integrity",
+        "text": "The foreign key goes in the table on the 'many' side of a one-to-many relationship and refers to the primary key on the 'one' side."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and referential integrity",
+        "text": "A foreign key may repeat within its table and may be part of a composite primary key (as in a link table)."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and referential integrity",
+        "text": "Referential integrity means every foreign key value matches an existing primary key value in the referenced table."
+      },
+      {
+        "kind": "Content",
+        "label": "Foreign keys and referential integrity",
+        "text": "The foreign key and the primary key it references must have the same data type (and normally the same meaning), even if the names differ."
+      },
+      {
+        "kind": "Section",
+        "text": "Indexing"
+      },
+      {
+        "kind": "Content",
+        "label": "Indexing",
+        "text": "Finding a tuple by scanning every row of a large table is slow. An index is a separate, much smaller structure associated with one attribute of a table, normally the primary key or a secondary key. It holds that attribute's values in order, each with a pointer to the position of the matching tuple in the main table. To find a tuple, the DBMS searches the ordered index (which can use a fast method such as a binary search or a tree) and follows the pointer straight to the tuple. The DBMS normally indexes the primary key automatically, and further indexes can be created on attributes that are searched or joined on frequently. The cost is extra storage, and slightly slower inserts, updates and deletes, because each index must be updated whenever the indexed data changes."
+      },
+      {
+        "kind": "Content",
+        "label": "Indexing",
+        "text": "Purpose: faster searching and sorting on the indexed attribute, especially for tables with many tuples."
+      },
+      {
+        "kind": "Content",
+        "label": "Indexing",
+        "text": "An index contains only the key values and pointers, not the rest of each tuple."
+      },
+      {
+        "kind": "Content",
+        "label": "Indexing",
+        "text": "Worth adding to attributes that are searched or used in joins often; not worth it for small tables or rarely searched attributes."
+      },
+      {
+        "kind": "Content",
+        "label": "Indexing",
+        "text": "Trade-off: faster retrieval versus extra storage and extra work on every change to the data."
+      },
+      {
+        "kind": "Example",
+        "label": "Indexing",
+        "text": "Member table (stored in the order members joined):\nRow | MemberID | MemberName | EmailAddress\n1 | M120 | T. Reyes | treyes@mail.test\n2 | M104 | O. Haddad | ohaddad@mail.test\n3 | M117 | L. Ortiz | lortiz@mail.test\n\nIndex on EmailAddress (sorted, with pointers):\nEmailAddress | Row\nlortiz@mail.test | 3\nohaddad@mail.test | 2\ntreyes@mail.test | 1\n\nSearching for ohaddad@mail.test: search the sorted index, find pointer 2, read row 2 directly instead of checking every row of the table."
+      },
+      {
+        "kind": "Section",
+        "text": "E-R diagrams and relationship types"
+      },
+      {
+        "kind": "Content",
+        "label": "E-R diagrams and relationship types",
+        "text": "An entity-relationship (E-R) diagram documents a database design before any tables are built. Each entity is drawn as a rectangle containing its name, and each relationship as a line between two entities. The ends of the line show the cardinality: a single line end means 'one', and a crow's foot (three prongs) means 'many'. There are three types of relationship. In a one-to-one (1:1) relationship each instance of A is linked to at most one instance of B and vice versa, such as Member and Locker when each member rents one locker; these are rare and can be implemented with a foreign key on either side. In a one-to-many (1:M) relationship one instance of A is linked to many of B but each B to only one A, such as one Instructor teaching many Classes; the foreign key goes in the 'many' table. In a many-to-many (M:M) relationship each A is linked to many B and each B to many A, such as Member and Class (a member attends many classes, a class has many members). To design an E-R diagram from a scenario: pick the entities (nouns with many instances), decide which pairs are directly related, then decide the cardinality by reading the relationship in both directions, one instance at a time: 'one Instructor teaches many Classes' and 'one Class is taught by one Instructor' gives 1:M. More detailed diagrams also label each relationship with a verb and show the minimum as well as the maximum cardinality (for example, a new class may have zero members so far)."
+      },
+      {
+        "kind": "Content",
+        "label": "E-R diagrams and relationship types",
+        "text": "Always read a relationship both ways, starting each sentence with 'one': one Member attends many Classes; one Class has many Members, so the relationship is M:M."
+      },
+      {
+        "kind": "Content",
+        "label": "E-R diagrams and relationship types",
+        "text": "The crow's foot is drawn at the 'many' end: on a 1:M line between Instructor and Class it touches the Class box."
+      },
+      {
+        "kind": "Content",
+        "label": "E-R diagrams and relationship types",
+        "text": "The entity at the crow's-foot end of a 1:M relationship is the one that will hold the foreign key."
+      },
+      {
+        "kind": "Content",
+        "label": "E-R diagrams and relationship types",
+        "text": "An E-R diagram shows entities and relationships, not every attribute; list attributes and keys separately in a key table or table designs."
+      },
+      {
+        "kind": "Example",
+        "label": "E-R diagrams and relationship types",
+        "text": "Scenario: Each class is taught by one instructor; an instructor can teach many classes. A member can attend many classes and a class has many members. Each member may rent one locker and each locker is rented by at most one member.\n\nEntities: Instructor, Class, Member, Locker\n\nRelationships (| = one, <  or > = crow's foot / many):\nInstructor |------< Class          1:M  one Instructor teaches many Classes; one Class is taught by one Instructor\nClass      >------< Member         M:M  one Class has many Members; one Member attends many Classes\nMember     |------| Locker         1:1  one Member rents one Locker; one Locker is rented by one Member\n\nThe M:M relationship between Class and Member cannot be implemented directly and must be resolved with a link entity (next section)."
+      },
+      {
+        "kind": "Section",
+        "text": "Resolving a many-to-many relationship with a link table"
+      },
+      {
+        "kind": "Content",
+        "label": "Resolving a many-to-many relationship with a link table",
+        "text": "A many-to-many relationship cannot be implemented directly. A foreign key attribute holds one value in each tuple, so a single ClassID attribute in Member could not record the several classes that member attends (and storing a list would break the atomic-value rule). Putting a foreign key in both tables fails as well, because each table would have to exist before the other. The solution is to add a link (associative) entity between the two, turning one M:M relationship into two 1:M relationships. For Class and Member the link entity ClassMember holds one tuple for each member in each class. Its primary key is the composite of the two foreign keys (ClassID, MemberID), since neither is unique alone but the pair is, and it is also the natural place for any data that belongs to the pairing itself, such as whether that member has paid for that class. The resulting logical E-R model can be summarised in a key table listing each table with its primary and foreign keys."
+      },
+      {
+        "kind": "Content",
+        "label": "Resolving a many-to-many relationship with a link table",
+        "text": "Class >----< Member becomes Class |----< ClassMember >----| Member."
+      },
+      {
+        "kind": "Content",
+        "label": "Resolving a many-to-many relationship with a link table",
+        "text": "The link table holds a foreign key to each of the original tables; together they usually form its composite primary key."
+      },
+      {
+        "kind": "Content",
+        "label": "Resolving a many-to-many relationship with a link table",
+        "text": "Attributes that describe the combination (FeePaid, date enrolled, grade) belong in the link table, not in either original table."
+      },
+      {
+        "kind": "Content",
+        "label": "Resolving a many-to-many relationship with a link table",
+        "text": "Every many end in the logical model is a table that contains a foreign key."
+      },
+      {
+        "kind": "Example",
+        "label": "Resolving a many-to-many relationship with a link table",
+        "text": "Table | Primary key | Foreign key(s)\nInstructor | InstructorID | (none)\nClass | ClassID | InstructorID\nMember | MemberID | (none)\nClassMember | ClassID + MemberID | ClassID, MemberID\nLocker | LockerNo | MemberID\n\nLocker holds MemberID as its foreign key for the 1:1 relationship (it could equally have been LockerNo in Member)."
+      },
+      {
+        "kind": "Section",
+        "text": "The normalisation process: 1NF, 2NF and 3NF"
+      },
+      {
+        "kind": "Content",
+        "label": "The normalisation process: 1NF, 2NF and 3NF",
+        "text": "Normalisation is a step-by-step technique for turning a list of data items (from a form, a description or an existing table) into a set of table designs with no unnecessary redundancy. Start by listing all the attributes, marking any repeating group: a set of attributes that takes several sets of values while the other attributes have one value each. First Normal Form (1NF): a table is in 1NF when it has a primary key, all attribute values are atomic and there are no repeating groups; to get there, move the repeating group into a new table whose primary key combines the original key (now also a foreign key) with the attribute that identifies each repeat. Second Normal Form (2NF): a 1NF table is in 2NF when every non-key attribute depends on the whole primary key; a partial dependency, where a non-key attribute depends on only part of a composite key, is removed by moving that attribute to a new table keyed by that part. A table with a single-attribute primary key is automatically in 2NF once it is in 1NF. Third Normal Form (3NF): a 2NF table is in 3NF when no non-key attribute depends on another non-key attribute; such a non-key (transitive) dependency is removed by moving the dependent attributes to a new table whose primary key is the attribute they depend on, and leaving that attribute behind as a foreign key. Each step splits tables but never loses data: the keys let the original data be rebuilt by joining tables."
+      },
+      {
+        "kind": "Content",
+        "label": "The normalisation process: 1NF, 2NF and 3NF",
+        "text": "1NF: remove repeating groups; every table has a primary key and atomic values."
+      },
+      {
+        "kind": "Content",
+        "label": "The normalisation process: 1NF, 2NF and 3NF",
+        "text": "2NF: remove partial dependencies (only possible when the primary key is composite)."
+      },
+      {
+        "kind": "Content",
+        "label": "The normalisation process: 1NF, 2NF and 3NF",
+        "text": "3NF: remove non-key dependencies (a non-key attribute determined by another non-key attribute)."
+      },
+      {
+        "kind": "Content",
+        "label": "The normalisation process: 1NF, 2NF and 3NF",
+        "text": "Each time an attribute group is moved out, the attribute it depends on stays behind as a foreign key so the link is kept."
+      },
+      {
+        "kind": "Example",
+        "label": "The normalisation process: 1NF, 2NF and 3NF",
+        "text": "Class register sheets (unnormalised data). Assumptions: each class runs on one day with one instructor; FeePaid records whether that member has paid for that class.\n\nClassID | ClassName | Day | InstructorID | InstructorName | MemberID | MemberName | MemberPhone | FeePaid\nC01 | Yoga | Mon | I3 | P. Nair | M104 | O. Haddad | 555-0104 | Y\n    |      |     |    |         | M117 | L. Ortiz  | 555-0117 | N\nC02 | Spin | Wed | I3 | P. Nair | M104 | O. Haddad | 555-0104 | Y\n    |      |     |    |         | M120 | T. Reyes  | 555-0120 | Y\n\nUNF: (ClassID, ClassName, Day, InstructorID, InstructorName, (MemberID, MemberName, MemberPhone, FeePaid))\nThe inner brackets mark the repeating group: one class has many members.\n\nSTEP 1 - 1NF: move the repeating group to its own table.\nClass(ClassID, ClassName, Day, InstructorID, InstructorName)                PK ClassID\nClassMember(ClassID(fk), MemberID, MemberName, MemberPhone, FeePaid)        PK ClassID + MemberID\nClass: (C01, Yoga, Mon, I3, P. Nair), (C02, Spin, Wed, I3, P. Nair)\nClassMember: (C01, M104, O. Haddad, 555-0104, Y), (C01, M117, L. Ortiz, 555-0117, N), (C02, M104, O. Haddad, 555-0104, Y), (C02, M120, T. Reyes, 555-0120, Y)\nRedundancy left: O. Haddad's name and phone appear twice; P. Nair appears twice.\n\nSTEP 2 - 2NF: check each non-key attribute of the composite-key table.\nMemberName -> depends on MemberID only (partial dependency)\nMemberPhone -> depends on MemberID only (partial dependency)\nFeePaid -> depends on ClassID AND MemberID (a member can have paid for one class but not for another) - stays.\nClass has a single-attribute key, so it is already in 2NF.\nClass(ClassID, ClassName, Day, InstructorID, InstructorName)\nMember(MemberID, MemberName, MemberPhone)\nClassMember(ClassID(fk), MemberID(fk), FeePaid)                             PK ClassID + MemberID\nMember: (M104, O. Haddad, 555-0104), (M117, L. Ortiz, 555-0117), (M120, T. Reyes, 555-0120)\nClassMember: (C01, M104, Y), (C01, M117, N), (C02, M104, Y), (C02, M120, Y)\n\nSTEP 3 - 3NF: look for a non-key attribute that depends on another non-key attribute.\nIn Class, InstructorName depends on InstructorID, which is not the key (non-key dependency).\nMember and ClassMember have none.\nInstructor(InstructorID, InstructorName)\nClass(ClassID, ClassName, Day, InstructorID(fk))\nMember(MemberID, MemberName, MemberPhone)\nClassMember(ClassID(fk), MemberID(fk), FeePaid)\nInstructor: (I3, P. Nair)\nClass: (C01, Yoga, Mon, I3), (C02, Spin, Wed, I3)\n\nCheck: every fact is now stored once (P. Nair once, O. Haddad's phone once), every non-key attribute depends on the key, the whole key and nothing but the key, and joining the four tables on their keys rebuilds the original sheets exactly."
+      },
+      {
+        "kind": "Section",
+        "text": "Explaining whether tables are in 3NF and producing a normalised design"
+      },
+      {
+        "kind": "Content",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "To decide whether a given set of tables is in 3NF, test each table in turn with three questions and quote the attributes involved in your answer. Is there a repeating group or a non-atomic value? If so, it is not in 1NF. Does the table have a composite primary key with a non-key attribute that depends on only part of it? If so, it is not in 2NF. Is there a non-key attribute that depends on another non-key attribute? If so, it is not in 3NF. If a table passes all three it is in 3NF, and the set of tables is in 3NF only if every table is. To produce a normalised design from a written description, pick out the entities and their attributes, decide the relationship between each pair, resolve any many-to-many relationship with a link table, give every table a primary key and place a foreign key at the many end of each 1:M relationship; then check the result against the three questions. From a given set of data or tables, follow the 1NF to 2NF to 3NF steps and state which dependency each split removes."
+      },
+      {
+        "kind": "Content",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "Name the exact dependency: 'SubjectName depends only on SubjectCode, part of the composite key' earns the mark; 'it has redundancy' does not."
+      },
+      {
+        "kind": "Content",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "A table with a single-attribute primary key cannot have a partial dependency, so only non-key dependencies need checking for it."
+      },
+      {
+        "kind": "Content",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "Write every final table in the form TableName(PK, attributes, FK(fk)) and clearly identify both primary and foreign keys."
+      },
+      {
+        "kind": "Content",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "State any assumption the design depends on (for example, 'each class has only one instructor')."
+      },
+      {
+        "kind": "Example",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "Student(StudentID, StudentName, TutorID, TutorName)               PK StudentID\nResult(StudentID, SubjectCode, SubjectName, Grade)                 PK StudentID + SubjectCode\n\nStudent: single-attribute key, so no partial dependency. But TutorName depends on TutorID, a non-key attribute -> non-key dependency, so NOT in 3NF.\nResult: SubjectName depends only on SubjectCode, part of the composite key -> partial dependency, so NOT in 2NF (and therefore not in 3NF). Grade depends on both StudentID and SubjectCode, which is correct.\n\n3NF design:\nStudent(StudentID, StudentName, TutorID(fk))\nTutor(TutorID, TutorName)\nResult(StudentID(fk), SubjectCode(fk), Grade)       PK StudentID + SubjectCode\nSubject(SubjectCode, SubjectName)"
+      },
+      {
+        "kind": "Example",
+        "label": "Explaining whether tables are in 3NF and producing a normalised design",
+        "text": "Description: A vet practice records owners (name, phone) and their pets (name, species). An owner can have several pets; each pet has one owner. Each appointment is for one pet with one vet on a given date and time; a vet sees many appointments.\n\nEntities: Owner, Pet, Vet, Appointment\nRelationships: Owner 1:M Pet; Pet 1:M Appointment; Vet 1:M Appointment (no M:M to resolve)\n\nOwner(OwnerID, OwnerName, OwnerPhone)\nPet(PetID, PetName, Species, OwnerID(fk))\nVet(VetID, VetName)\nAppointment(AppointmentID, AppDate, AppTime, PetID(fk), VetID(fk))\n\nCheck: every table has a single-attribute primary key (so 2NF is automatic) and no non-key attribute determines another (for example, OwnerPhone is stored only in Owner, not in Pet), so the design is in 3NF."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between an entity and an attribute?"
+        "text": "Give three limitations of a file-based approach."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between an entity and an attribute?",
-        "text": "An entity is a distinct object or thing data is stored about, such as a Student; an attribute is a property that describes it, such as the student's name, and becomes a field in the entity's table."
+        "label": "Give three limitations of a file-based approach.",
+        "text": "Any three of: data redundancy; data inconsistency; no built-in validation so poor data integrity; data dependency (programs must be rewritten if file structure changes); no control over access to part of a file; hard to combine data for new uses."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why does a table need a primary key?"
+        "text": "What is the difference between a candidate key and a secondary key?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why does a table need a primary key?",
-        "text": "To uniquely identify each record, since a key must be unique and never empty for every record, distinguishing records that might otherwise share identical values in other fields."
+        "label": "What is the difference between a candidate key and a secondary key?",
+        "text": "A candidate key is any attribute (or minimal combination) that could be the primary key; a secondary key is a candidate key that was not chosen as the primary key."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does a foreign key do?"
+        "text": "What is referential integrity?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does a foreign key do?",
-        "text": "It is a field in one table that stores the primary key value of a related record in another table, creating a relationship (typically one-to-many) between the two tables."
+        "label": "What is referential integrity?",
+        "text": "The rule, enforced by a foreign key, that a value can only be entered in the foreign key if the same value exists as a primary key in the referenced table."
       },
       {
         "kind": "Quick recall question",
-        "text": "Give two problems caused by a flat-file system."
+        "text": "What does an index contain and why is it used?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Give two problems caused by a flat-file system.",
-        "text": "Any two of: data redundancy, data inconsistency, poor data integrity, limited concurrent access."
+        "label": "What does an index contain and why is it used?",
+        "text": "The values of one key attribute in order, each with a pointer to the matching tuple; it makes searching on that attribute much faster than scanning the whole table."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the purpose of normalisation?"
+        "text": "How is a many-to-many relationship implemented in a relational database?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the purpose of normalisation?",
-        "text": "To remove data redundancy by organising data into related tables, so that each fact is stored once and linked using primary and foreign keys."
+        "label": "How is a many-to-many relationship implemented in a relational database?",
+        "text": "With a link table containing a foreign key to each of the two tables, usually combined as its composite primary key, creating two one-to-many relationships."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is an ER diagram used for?"
+        "text": "What must be true for a table to be in 2NF?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is an ER diagram used for?",
-        "text": "To model the entities in a system and the relationships between them, before the detailed tables and fields are designed."
+        "label": "What must be true for a table to be in 2NF?",
+        "text": "It is in 1NF and every non-key attribute depends on the whole primary key, so there are no partial dependencies on part of a composite key."
       },
       {
         "kind": "Quick recall question",
-        "text": "In a one-to-many relationship between Borrower and Loan, which table holds the foreign key?"
+        "text": "What does 3NF remove?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "In a one-to-many relationship between Borrower and Loan, which table holds the foreign key?",
-        "text": "The Loan table (the 'many' side) holds a foreign key referring back to the primary key of the Borrower table (the 'one' side)."
+        "label": "What does 3NF remove?",
+        "text": "Non-key dependencies: a non-key attribute that depends on another non-key attribute is moved to a new table keyed by that attribute, which stays behind as a foreign key."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Is Student(StudentID, StudentName, TutorID, TutorName) in 3NF?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Is Student(StudentID, StudentName, TutorID, TutorName) in 3NF?",
+        "text": "No. TutorName depends on TutorID, which is a non-key attribute; split into Student(StudentID, StudentName, TutorID(fk)) and Tutor(TutorID, TutorName)."
       }
     ]
   },
@@ -10317,278 +10484,366 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to explain what a DBMS does and why using one is an improvement over a flat-file system. Answers score when a named function of a DBMS, such as concurrency control or the data dictionary, is explained in terms of the specific problem it solves, rather than the DBMS being described only as 'software that manages a database'."
+        "text": "A DBMS is the software through which every user and program reaches a database. This topic covers the DBMS features that fix the problems of a file-based approach (data management through a data dictionary, data modelling, the logical schema, data integrity, and data security through backup procedures and access rights for individuals and groups) and the software tools a DBMS provides in practice: the developer interface and the query processor. Paper 1 questions typically ask you to name a feature and explain the file-based problem it solves, describe what a data dictionary holds, or explain how access rights and backups protect the data in a given scenario."
       },
       {
         "kind": "Definition",
         "label": "Database management system (DBMS)",
-        "text": "Software that creates, maintains and controls access to a database, sitting between the user or application and the physical data stored on disk."
+        "text": "Software that controls all access to the data in a database: it creates and maintains the structure, stores and retrieves data on request, and enforces integrity and security rules."
+      },
+      {
+        "kind": "Definition",
+        "label": "Database administrator (DBA)",
+        "text": "The person who uses the DBMS to set up and customise the database for its users, including defining views and access rights and organising backups."
       },
       {
         "kind": "Definition",
         "label": "Data dictionary",
-        "text": "Metadata held by a DBMS describing a database's tables, fields, data types, keys and the relationships between tables."
+        "text": "A part of the database, maintained by the DBMS and visible only to the DBA, holding metadata (data about the data): table and attribute names, data types, keys, relationships, validation rules, indexes, access rights and physical storage details."
       },
       {
         "kind": "Definition",
-        "label": "Data independence",
-        "text": "The separation of how data is physically stored from how an application accesses it, so that changes to physical storage do not require an application to be rewritten."
+        "label": "Data modelling",
+        "text": "Analysing an organisation's data to identify its entities, attributes and relationships, typically as an E-R diagram, so the structure can be defined in the DBMS."
       },
       {
         "kind": "Definition",
-        "label": "Concurrency control",
-        "text": "Techniques used by a DBMS to manage simultaneous access to a database by multiple users, so that their updates do not conflict or overwrite each other."
+        "label": "Logical schema",
+        "text": "The overall description of how the database is organised as seen by users and programmers (its tables, attributes, keys, relationships and constraints), independent of how the data is physically stored. Also called the conceptual schema."
       },
       {
         "kind": "Definition",
-        "label": "Record locking",
-        "text": "A concurrency control technique in which a DBMS temporarily prevents other users from editing a record while one user is updating it."
+        "label": "Data integrity",
+        "text": "The accuracy, completeness and consistency of the stored data, maintained by the DBMS through keys, referential integrity, validation rules and controlled updates."
       },
       {
         "kind": "Definition",
-        "label": "Access control",
-        "text": "Restrictions set by a DBMS that determine which users may view, add, edit or delete particular data."
+        "label": "Access rights",
+        "text": "Permissions assigned by the DBA to an individual user or a group of users stating which tables or views they can reach and whether they can read, insert, update or delete data."
       },
       {
         "kind": "Definition",
         "label": "Backup",
-        "text": "A separate copy of a database's data, taken regularly and stored securely, used to restore the database if the original data is lost or corrupted."
+        "text": "A copy of the database made at regular, planned intervals and stored separately from the live data, so the database can be restored if the original is lost or corrupted."
       },
       {
         "kind": "Definition",
-        "label": "Recovery",
-        "text": "The process of restoring a database to a correct, usable state after a failure, using a backup and, where available, a log of transactions made since that backup."
+        "label": "Developer interface",
+        "text": "The part of a DBMS giving developers access to tools for creating tables, defining attributes, data types and keys, and building forms, queries and reports."
+      },
+      {
+        "kind": "Definition",
+        "label": "Query processor",
+        "text": "The DBMS software that accepts a query, checks it against the data dictionary, turns it into an efficient plan and executes it to retrieve or change the data."
       },
       {
         "kind": "Section",
-        "text": "What a DBMS is"
+        "text": "The DBMS and the problems it solves"
       },
       {
         "kind": "Content",
-        "label": "What a DBMS is",
-        "text": "A database management system (DBMS) is software that sits between the user or an application and the physical data files stored on disk. Rather than an application reading and writing raw data files directly, it sends requests to the DBMS, which is responsible for creating the database structure, storing and retrieving data on request, and controlling who is allowed to access it. This separation means the application only needs to know how to communicate with the DBMS, not the details of how or where the data is physically stored."
+        "label": "The DBMS and the problems it solves",
+        "text": "A database is more than a collection of files: it is data organised according to a model (for AS, the relational model) and managed by a database management system. Programs and users never read or write the stored data directly; they send requests to the DBMS, which carries out the operation and applies the same rules every time. This single controlling layer is what solves the problems of the file-based approach. Data is held once and shared by every department instead of each department keeping its own copy, which removes redundancy and inconsistency. Structure is defined once, centrally, in the data dictionary, instead of inside each program. Validation, key and relationship rules are enforced whoever enters the data. Access is controlled per user or group rather than being all-or-nothing for a file. Backups are organised centrally by the database administrator (DBA) instead of being left to chance. The syllabus groups these features as data management, data modelling, the logical schema, data integrity and data security."
       },
       {
         "kind": "Content",
-        "label": "What a DBMS is",
-        "text": "A DBMS is a layer of software, not the data itself or the application that uses it."
+        "label": "The DBMS and the problems it solves",
+        "text": "Every create, read, update and delete request passes through the DBMS, so rules are applied consistently."
       },
       {
         "kind": "Content",
-        "label": "What a DBMS is",
-        "text": "Examples include software such as MySQL, Oracle Database and Microsoft SQL Server."
+        "label": "The DBMS and the problems it solves",
+        "text": "The DBA is the person who uses the DBMS to set up the database, user views, access rights and backup routines."
       },
       {
         "kind": "Content",
-        "label": "What a DBMS is",
-        "text": "Every request to create, read, update or delete data passes through the DBMS, which is what lets it enforce structure and rules consistently."
+        "label": "The DBMS and the problems it solves",
+        "text": "Examples of relational DBMS software include MySQL, PostgreSQL, Microsoft Access and Microsoft SQL Server."
       },
       {
         "kind": "Section",
-        "text": "The data dictionary"
+        "text": "Data modelling"
       },
       {
         "kind": "Content",
-        "label": "The data dictionary",
-        "text": "The data dictionary is metadata that the DBMS holds about the database itself: the names of its tables, the fields within each table, each field's data type and length, which fields are primary and foreign keys, and the relationships between tables. The DBMS consults the data dictionary whenever it processes a request, for example to check that a value being entered matches the field's defined data type, or to know which table a foreign key refers to. Keeping this information centrally means every part of the system uses the same definitions, rather than each application having its own separate understanding of the data's structure."
+        "label": "Data modelling",
+        "text": "Before a database is built its data must be modelled: the designer identifies the entities the organisation needs to store data about, their attributes and the relationships between them, usually drawn as an E-R diagram (see 8.1). The first model is conceptual, describing the data without reference to any particular technology. It is then turned into a logical model for a relational database, where each entity becomes a table, many-to-many relationships are resolved with link tables, and primary and foreign keys are chosen. Many DBMSs include modelling tools that let the designer draw tables and relationship lines, and then generate the table definitions directly from the diagram, or show the relationships between existing tables. This is a feature a file-based approach lacks: there, the structure of each file is decided separately by each program's author, with no overall model of how the data fits together."
       },
       {
         "kind": "Content",
-        "label": "The data dictionary",
-        "text": "The data dictionary describes the structure of the data ('data about data'), not the data records themselves."
+        "label": "Data modelling",
+        "text": "Data modelling produces the entities, attributes, relationships and keys that the logical schema records."
       },
       {
         "kind": "Content",
-        "label": "The data dictionary",
-        "text": "Validation rules, such as a field's data type or length, are enforced by checking against the data dictionary."
+        "label": "Data modelling",
+        "text": "A good model is what makes normalised, non-redundant tables possible."
       },
       {
         "kind": "Content",
-        "label": "The data dictionary",
-        "text": "Because the structure is defined once, centrally, it is far less likely that two applications interpret the same field inconsistently."
+        "label": "Data modelling",
+        "text": "DBMS relationship tools let the designer declare foreign keys so that referential integrity is then enforced automatically."
       },
       {
         "kind": "Section",
-        "text": "Data independence"
+        "text": "The logical schema and data independence"
       },
       {
         "kind": "Content",
-        "label": "Data independence",
-        "text": "Data independence means that an application using a database does not need to be changed when the way data is physically stored changes, for example if the DBMS reorganises how records are stored on disk, adds an index, or moves data to different storage hardware. This is possible because the application communicates only with the DBMS, using the logical structure defined in the data dictionary, rather than reading the physical files directly. The DBMS is responsible for translating between the logical view the application uses and the physical storage underneath, so a change to the physical layer is handled entirely inside the DBMS."
+        "label": "The logical schema and data independence",
+        "text": "A DBMS describes a database at three levels. At the internal level, the internal schema records how the data is physically stored on disk; only the DBMS software deals with this. At the conceptual level there is a single logical schema: the complete description of the database as users and programmers understand it, meaning every table, attribute, data type, key, relationship and constraint, with no mention of physical storage. The DBA controls this level. At the external level, each user group or program has its own view (external schema) showing only the part of the database it needs; for example, a finance view might include member payments but not coaching notes. Separating the levels gives data independence. If the physical storage is reorganised or moved to new hardware, the logical schema is unchanged, so programs keep working. If a new attribute or table is added to the logical schema, existing views and the programs that use them are unaffected, and only new programs that need the new data have to be written. This is the direct fix for the data dependency problem of file-based systems."
       },
       {
         "kind": "Content",
-        "label": "Data independence",
-        "text": "Without a DBMS, an application that reads physical files directly would need to be rewritten whenever the physical storage layout changed."
+        "label": "The logical schema and data independence",
+        "text": "Logical schema = what data is held and how it is organised; internal schema = how it is stored physically."
       },
       {
         "kind": "Content",
-        "label": "Data independence",
-        "text": "Data independence reduces the cost and risk of maintaining a system, since storage can be optimised without touching application code."
+        "label": "The logical schema and data independence",
+        "text": "External views are also a security mechanism, because a user can only reach the data in their view."
       },
       {
         "kind": "Content",
-        "label": "Data independence",
-        "text": "It relies on the application only ever interacting with the database through the DBMS, never bypassing it to access files directly."
+        "label": "The logical schema and data independence",
+        "text": "Data independence means changes at one level do not force changes to programs working at a higher level."
       },
       {
         "kind": "Section",
-        "text": "Concurrency control"
+        "text": "Data security: access rights for individuals and groups"
       },
       {
         "kind": "Content",
-        "label": "Concurrency control",
-        "text": "Many users may need to access, and sometimes update, the same database at the same time. Without control, two users could read the same record, both make changes, and save them one after another, with the second save silently overwriting the first user's update as if it had never happened. A DBMS provides concurrency control to prevent this, commonly using record locking: when one user begins updating a record, the DBMS locks it so other users cannot update the same record until the first update is complete, after which the lock is released. This ensures updates are applied safely, without one user's work being lost because of another user's simultaneous edit."
+        "label": "Data security: access rights for individuals and groups",
+        "text": "In a file-based system anyone who can open a file can read all of it. A DBMS lets the DBA control access at a much finer level. Each person logs in with their own user account, authenticated by a password or similar, so the DBMS knows who is making every request. The DBA then assigns access rights, which state which tables or views the account can use and which operations are allowed on each: read (SELECT), insert, update or delete. Rather than setting rights one person at a time, users with the same job are usually placed in a group (or role), such as Reception, Finance or Coaches, and the rights are granted to the group; a new employee then only needs to be added to the right group, and a change of job means moving them to another group. Individual rights can still be added or removed where one person needs something different, such as a manager who can delete records. Following the principle of least privilege, each user or group receives only the access their work requires, which protects confidential data and limits the damage from mistakes or a compromised account."
       },
       {
         "kind": "Content",
-        "label": "Concurrency control",
-        "text": "The problem concurrency control solves is specifically simultaneous updates conflicting, not simply many users reading data at once."
+        "label": "Data security: access rights for individuals and groups",
+        "text": "Authentication (user ID and password) establishes who the user is; access rights then decide what that user may do."
       },
       {
         "kind": "Content",
-        "label": "Concurrency control",
-        "text": "Record locking is usually applied at the level of an individual record, so other records remain available to other users while one record is locked."
+        "label": "Data security: access rights for individuals and groups",
+        "text": "Rights can be limited to particular tables, to views that hide some attributes, and to particular operations."
       },
       {
         "kind": "Content",
-        "label": "Concurrency control",
-        "text": "Without concurrency control, a lost update can occur without either user being aware that their change was overwritten."
+        "label": "Data security: access rights for individuals and groups",
+        "text": "Group rights make administration simpler and more consistent than setting every user's rights separately."
+      },
+      {
+        "kind": "Content",
+        "label": "Data security: access rights for individuals and groups",
+        "text": "The DBMS can also keep an audit log of who accessed or changed which data."
+      },
+      {
+        "kind": "Example",
+        "label": "Data security: access rights for individuals and groups",
+        "text": "Group | Member | ClassMember | Payment | Instructor\nReception | read, insert, update | read, insert, delete | none | read\nFinance | read | read | read, insert, update | none\nCoaches | read (view without phone numbers) | read | none | read\nDBA | full | full | full | full\n\nA receptionist can enrol a member in a class but cannot see or alter payment records; a coach sees who is in a class without seeing members' contact details."
       },
       {
         "kind": "Section",
-        "text": "Access control and security"
+        "text": "Software tools: the developer interface"
       },
       {
         "kind": "Content",
-        "label": "Access control and security",
-        "text": "A DBMS controls what different users are permitted to do, typically by assigning each user account a set of access rights, such as read-only access to some tables, and read-and-write access to others, while other data remains completely hidden from that account. This follows the principle that a user should only be given the access their role actually requires. Centralising access control in the DBMS means every request is checked against the same set of permissions, rather than security being left to individual applications to enforce inconsistently."
+        "label": "Software tools: the developer interface",
+        "text": "The developer interface is the part of the DBMS that gives developers the tools to build and change a database. Through it a developer creates tables, names each attribute and sets its data type and size, declares the primary key and foreign keys (which records the relationships and switches on referential integrity), adds validation rules such as a range check or a required field, and creates indexes. The same interface is used to build the parts that end users see: data-entry forms, saved queries and formatted reports, which can be combined into a user interface so staff can work with the data without knowing SQL. Most DBMSs offer both a graphical way of doing this (design grids, drag-and-drop form designers, query-by-example) and a way to type SQL commands directly. Graphical tools are quicker for simple tasks, while writing SQL gives the developer precise control and is needed for more complex queries; in either case the DBMS ultimately carries out the work using its DDL and DML (see 8.3)."
       },
       {
         "kind": "Content",
-        "label": "Access control and security",
-        "text": "Access rights can be set per user, per table, or even per field, depending on the DBMS."
+        "label": "Software tools: the developer interface",
+        "text": "Used for: creating and altering tables, attributes, data types, keys, validation rules and indexes."
       },
       {
         "kind": "Content",
-        "label": "Access control and security",
-        "text": "Restricting access limits the damage that a compromised account or an honest mistake by a careless user can cause."
+        "label": "Software tools: the developer interface",
+        "text": "Also used for: designing forms for data entry, queries for retrieving data and reports for presenting output."
       },
       {
         "kind": "Content",
-        "label": "Access control and security",
-        "text": "Because the DBMS enforces access control centrally, it applies consistently no matter which application or query is used to reach the data."
+        "label": "Software tools: the developer interface",
+        "text": "Every change to the structure made here is recorded in the data dictionary."
       },
       {
         "kind": "Section",
-        "text": "Backup and recovery"
+        "text": "Software tools: the query processor"
       },
       {
         "kind": "Content",
-        "label": "Backup and recovery",
-        "text": "A DBMS supports taking regular backups: complete copies of the database's data, stored securely and separately from the live system, so that data is not permanently lost if the original is deleted, corrupted or damaged by a hardware failure. If a failure occurs, recovery is the process of restoring the database to a correct, usable state, normally by reloading the most recent backup and, where a transaction log is kept, reapplying any changes made since that backup so as little data as possible is lost. Backup and recovery protect against events a DBMS's other controls do not prevent, such as hardware failure, accidental deletion or a natural disaster affecting the server."
+        "label": "Software tools: the query processor",
+        "text": "A query is a request to select data that meets stated conditions, or to change data. The query processor is the DBMS software that accepts a query, whether typed in SQL or built with a graphical query tool, and carries it out. It first checks the query: that it is correctly formed, that every table and attribute named exists (by looking them up in the data dictionary) and that the user has the access rights needed. It then works out an efficient way of executing it, for example deciding to use an index on a key attribute rather than scanning a whole table, or choosing the order in which to join tables. Finally it executes the plan against the stored data and returns the result, such as a table of matching rows, or makes the requested changes. Structure-changing (DDL) statements are handled by updating the data dictionary; data-handling (DML) statements are compiled and run against the tables. Because users only describe what data they want, not how to find it, the same query keeps working even if the physical storage or indexes change."
       },
       {
         "kind": "Content",
-        "label": "Backup and recovery",
-        "text": "A backup only protects data that existed at the time it was taken; more frequent backups reduce how much data could be lost."
+        "label": "Software tools: the query processor",
+        "text": "Purpose: allow queries to be created and executed so data can be extracted or updated."
       },
       {
         "kind": "Content",
-        "label": "Backup and recovery",
-        "text": "A transaction log recording changes since the last backup allows recovery to restore data right up to the point of failure, not only to the backup itself."
+        "label": "Software tools: the query processor",
+        "text": "Steps: check syntax and names against the data dictionary, check access rights, optimise, execute, return the result."
       },
       {
         "kind": "Content",
-        "label": "Backup and recovery",
-        "text": "Backups should be stored somewhere separate from the live database, so the same failure cannot destroy both at once."
+        "label": "Software tools: the query processor",
+        "text": "Query results can be used directly, fed into a report, or built into a form in the user interface."
+      },
+      {
+        "kind": "Example",
+        "label": "Software tools: the query processor",
+        "text": "Query from a receptionist:\nSELECT MemberName FROM Member WHERE MemberID = 'M104';\n\n1. Parse: the statement is valid SQL.\n2. Check names: the data dictionary confirms table Member and attributes MemberName, MemberID exist, and MemberID is VARCHAR so 'M104' is a valid comparison.\n3. Check rights: the Reception group has read access to Member.\n4. Optimise: MemberID is the primary key and has an index, so use the index instead of reading every row.\n5. Execute: follow the index pointer to the M104 row.\n6. Return: MemberName = O. Haddad."
       },
       {
         "kind": "Section",
-        "text": "DBMS-based systems compared with flat-file systems"
+        "text": "Data management: the data dictionary"
       },
       {
         "kind": "Content",
-        "label": "DBMS-based systems compared with flat-file systems",
-        "text": "A flat-file system has no software layer managing shared structure, concurrent access or centralised security: each application that uses the file must handle these issues itself, or the problems described in topic 8.1, such as redundancy and inconsistency, go unchecked. A DBMS-based system directly addresses these weaknesses: the data dictionary and normalised table structure reduce redundancy and improve data integrity, concurrency control allows many users to work with the database safely at the same time, centralised access control restricts what each user may do, and built-in backup and recovery protect against data loss. The trade-off is that a DBMS is more complex software to set up, licence and maintain than a simple flat file, but for any system with multiple users or applications sharing data, this cost is normally justified by the reliability and control it provides."
+        "label": "Data management: the data dictionary",
+        "text": "Data management in a DBMS is centred on the data dictionary: a part of the database, maintained by the DBMS and normally hidden from everyone except the DBA, that holds metadata, meaning data about the data rather than the data itself. It stores the name of every table, the name, data type and size of every attribute, primary and foreign keys and the relationships they form, validation rules and default values, indexes, user views and access rights, and details of how the data is physically stored. The DBMS keeps it up to date automatically whenever the structure is changed through the developer interface or a DDL command, and consults it constantly: the query processor uses it to check that names in a query exist and to find indexes, and the data-entry process uses it to check each new value against its data type and validation rule. In a file-based system this information is scattered inside each program; in a DBMS it is held once and shared, so every program works to the same definitions."
       },
       {
         "kind": "Content",
-        "label": "DBMS-based systems compared with flat-file systems",
-        "text": "A flat-file system leaves problems like redundancy, inconsistency and unmanaged concurrent access to be solved by each application separately, if at all."
+        "label": "Data management: the data dictionary",
+        "text": "Metadata examples to quote: table names, attribute names, data types, field lengths, primary/foreign keys, validation rules, relationships, access rights."
       },
       {
         "kind": "Content",
-        "label": "DBMS-based systems compared with flat-file systems",
-        "text": "A DBMS solves these problems once, centrally, and enforces the solution for every application that connects to it."
+        "label": "Data management: the data dictionary",
+        "text": "The data dictionary does not contain the records themselves (for example, not a member's actual phone number)."
       },
       {
         "kind": "Content",
-        "label": "DBMS-based systems compared with flat-file systems",
-        "text": "Choosing a DBMS over a flat-file system is usually justified whenever data is shared between multiple users or multiple applications."
+        "label": "Data management: the data dictionary",
+        "text": "Because definitions are central, a change such as lengthening an attribute is made once and applies to every program."
+      },
+      {
+        "kind": "Example",
+        "label": "Data management: the data dictionary",
+        "text": "Table: Member\nAttribute | Data type | Size | Key | Validation\nMemberID | VARCHAR | 4 | Primary key | Format: letter M followed by 3 digits\nMemberName | VARCHAR | 40 | - | Required\nMemberPhone | VARCHAR | 15 | - | -\nEmailAddress | VARCHAR | 60 | Secondary key (indexed) | Must be unique\nIndexes: MemberID, EmailAddress\nReferenced by: ClassMember.MemberID (foreign key)"
+      },
+      {
+        "kind": "Section",
+        "text": "Data integrity"
+      },
+      {
+        "kind": "Content",
+        "label": "Data integrity",
+        "text": "Data integrity means the stored data is accurate, complete and consistent. A DBMS maintains it with several features that a file-based approach lacks. Entity integrity: every table has a primary key and the DBMS rejects a missing or duplicate key value, so no tuple is recorded twice. Referential integrity: a foreign key value is accepted only if it matches an existing primary key in the referenced table, and a referenced tuple cannot be deleted while others still depend on it. Validation: each value is checked against the data type, size and any rule held in the data dictionary (a range check on a price, a format check on an ID, a presence check on a required attribute). Single storage: because each fact is held once, there are no copies to fall out of step. Controlled updates: a transaction that is interrupted part way, for example by a power failure, is either completed or fully undone, so the database is never left half-updated, and when several users update at the same time the DBMS uses record locking so one user's change cannot silently overwrite another's."
+      },
+      {
+        "kind": "Content",
+        "label": "Data integrity",
+        "text": "Validation reduces errors but cannot guarantee correctness: a valid but wrong phone number will still be accepted."
+      },
+      {
+        "kind": "Content",
+        "label": "Data integrity",
+        "text": "Keys and referential integrity are declared once in the DBMS and then enforced for every program and user."
+      },
+      {
+        "kind": "Content",
+        "label": "Data integrity",
+        "text": "Record locking stops two users updating the same tuple at once, preventing a lost update."
+      },
+      {
+        "kind": "Section",
+        "text": "Data security: backup procedures"
+      },
+      {
+        "kind": "Content",
+        "label": "Data security: backup procedures",
+        "text": "Access rights protect data from people who should not see or change it, but they do not protect against hardware failure, accidental deletion, corruption, malware or a fire in the server room. For that, the DBA sets up a backup procedure, and the DBMS provides tools to run it, often automatically. A good procedure states what is copied, how often, where the copies are kept, how long they are kept and how they are tested. A common pattern is a full backup of the whole database at regular intervals (for example, every night when few users are working) with incremental backups of only the changes in between. Copies are stored off-site or in the cloud, and often encrypted, so that the event that damages the live system cannot also destroy the backups, and several generations are kept in case the most recent copy is itself corrupted. Many DBMSs also keep a transaction log of every change since the last backup. To recover, the latest backup is restored and the logged transactions are reapplied, bringing the database back to its state just before the failure. Restores should be tested regularly, because a backup that cannot be restored gives no protection."
+      },
+      {
+        "kind": "Content",
+        "label": "Data security: backup procedures",
+        "text": "Backup frequency is set by how much data the organisation can afford to lose: data changed since the last backup (and not in a log) is lost."
+      },
+      {
+        "kind": "Content",
+        "label": "Data security: backup procedures",
+        "text": "Store backups away from the live database, for example off-site or in the cloud."
+      },
+      {
+        "kind": "Content",
+        "label": "Data security: backup procedures",
+        "text": "Keep several generations of backups, and test that they can actually be restored."
+      },
+      {
+        "kind": "Content",
+        "label": "Data security: backup procedures",
+        "text": "A transaction log lets recovery go beyond the last backup up to the point of failure."
+      },
+      {
+        "kind": "Example",
+        "label": "Data security: backup procedures",
+        "text": "Procedure: full backup every night at 01:00 to an encrypted cloud store; 14 nightly copies kept; transaction log kept on a separate disk.\n\nThe server disk fails at 15:30 on Thursday.\n1. Replace the disk and restore Thursday's 01:00 full backup: the database is now as it was at 01:00.\n2. Reapply the transaction log from 01:00 to 15:30: all changes made during Thursday are restored.\n3. Only transactions still in progress at 15:30 are lost.\nWithout the log, every change made between 01:00 and 15:30 would have been lost."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is a DBMS?"
+        "text": "What is a data dictionary? Give two items it holds."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is a DBMS?",
-        "text": "Software that creates, maintains and controls access to a database, sitting between the user or application and the physical data stored on disk."
+        "label": "What is a data dictionary? Give two items it holds.",
+        "text": "A part of the database holding metadata (data about the data). Any two of: table names, attribute names, data types, field lengths, primary/foreign keys, validation rules, relationships, indexes, access rights."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does the data dictionary store?"
+        "text": "What is the logical schema?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does the data dictionary store?",
-        "text": "Metadata about the database's tables, fields, data types, keys and the relationships between tables."
+        "label": "What is the logical schema?",
+        "text": "The overall description of the database as seen by users and programmers: its tables, attributes, keys, relationships and constraints, independent of physical storage."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is data independence?"
+        "text": "How does a DBMS maintain data integrity?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is data independence?",
-        "text": "The separation of physical data storage from how an application accesses data, so the application does not need to change when the physical storage structure changes."
+        "label": "How does a DBMS maintain data integrity?",
+        "text": "Through primary keys (no duplicate or missing keys), referential integrity on foreign keys, validation rules from the data dictionary, storing each fact once, and controlled updates such as record locking."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is concurrency control needed?"
+        "text": "Why are access rights often given to groups rather than individuals?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is concurrency control needed?",
-        "text": "To manage simultaneous access by multiple users so that their updates do not conflict or overwrite each other, for example using record locking."
+        "label": "Why are access rights often given to groups rather than individuals?",
+        "text": "Users with the same job need the same access, so granting rights to a group is quicker and more consistent; new or moving staff just join the appropriate group."
       },
       {
         "kind": "Quick recall question",
-        "text": "Give two functions of a DBMS."
+        "text": "Give three features of a good backup procedure."
       },
       {
         "kind": "Quick recall answer",
-        "label": "Give two functions of a DBMS.",
-        "text": "Any two of: maintaining the data dictionary, providing data independence, concurrency control, access control and security, backup and recovery."
+        "label": "Give three features of a good backup procedure.",
+        "text": "Any three of: regular scheduled backups (full and incremental), stored off-site or in the cloud, encrypted, several generations kept, restores tested, transaction log kept to recover up to the failure."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does a transaction log allow during recovery?"
+        "text": "What is the developer interface used for?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does a transaction log allow during recovery?",
-        "text": "It allows changes made since the last backup to be reapplied, restoring the database up to the point just before the failure rather than only to the backup."
+        "label": "What is the developer interface used for?",
+        "text": "Creating and altering tables, attributes, data types, keys, validation rules and indexes, and building forms, queries and reports for the user interface."
       },
       {
         "kind": "Quick recall question",
-        "text": "Give two advantages of a DBMS-based system over a flat-file system."
+        "text": "What does the query processor do?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Give two advantages of a DBMS-based system over a flat-file system.",
-        "text": "Any two of: reduced redundancy, improved data integrity, controlled concurrent access, centralised security, structured backup and recovery."
+        "label": "What does the query processor do?",
+        "text": "Accepts a query, checks it against the data dictionary and the user's rights, works out an efficient way to run it (for example using an index) and executes it to return or change data."
       }
     ]
   },

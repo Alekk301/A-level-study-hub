@@ -921,11 +921,11 @@
             "levels": [
               "AS"
             ],
-            "summary": "Understand tables, records, fields, keys and relationships, and the basic idea behind normalisation.",
+            "summary": "Explain file-based limitations and the relational features that fix them, use relational terminology and E-R diagrams, and normalise data to 3NF.",
             "focusPoints": [
-              "tables/records/fields",
-              "keys/relationships",
-              "normalisation ideas"
+              "file-based vs relational",
+              "keys/relationships/E-R diagrams",
+              "normalisation to 3NF"
             ],
             "contentDepth": "full"
           },
@@ -936,12 +936,11 @@
             "levels": [
               "AS"
             ],
-            "summary": "Understand the DBMS's role in managing the data dictionary, access rights, backup/recovery and concurrent access.",
+            "summary": "Explain the DBMS features that address file-based problems (data dictionary, data modelling, logical schema, integrity, security and backup) and the developer interface and query processor tools.",
             "focusPoints": [
-              "data dictionary",
-              "access rights",
-              "backup/recovery",
-              "concurrency"
+              "data dictionary/modelling/logical schema",
+              "integrity/security/backup",
+              "developer interface/query processor"
             ],
             "contentDepth": "full"
           },

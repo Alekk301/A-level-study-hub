@@ -6,267 +6,337 @@
   "unitTitle": "AS Theory",
   "title": "Database Management Systems (DBMS)",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to explain what a DBMS does and why using one is an improvement over a flat-file system. Answers score when a named function of a DBMS, such as concurrency control or the data dictionary, is explained in terms of the specific problem it solves, rather than the DBMS being described only as 'software that manages a database'.",
+  "overview": "A DBMS is the software through which every user and program reaches a database. This topic covers the DBMS features that fix the problems of a file-based approach (data management through a data dictionary, data modelling, the logical schema, data integrity, and data security through backup procedures and access rights for individuals and groups) and the software tools a DBMS provides in practice: the developer interface and the query processor. Paper 1 questions typically ask you to name a feature and explain the file-based problem it solves, describe what a data dictionary holds, or explain how access rights and backups protect the data in a given scenario.",
   "syllabusPoints": [
-    "Show understanding of the role of a database management system (DBMS) in creating, maintaining and controlling access to a database.",
-    "Show understanding of the purpose of the data dictionary in storing metadata about a database's tables, fields and relationships.",
-    "Show understanding of data independence and why it allows an application to continue working when the physical storage structure changes.",
-    "Show understanding of the need for concurrency control when multiple users access and update a database at the same time.",
-    "Show understanding of the need for access control and security to restrict what different users of a database may do.",
-    "Show understanding of the need for backup and recovery procedures to protect data held in a database."
+    "Show understanding of the features provided by a Database Management System (DBMS) that address the issues of a file-based approach, including data management (maintaining a data dictionary), data modelling and the logical schema.",
+    "Show understanding of the features provided by a DBMS that address the issues of a file-based approach, including data integrity.",
+    "Show understanding of the features provided by a DBMS that address the issues of a file-based approach, including data security: backup procedures and the use of access rights for individuals / groups of users.",
+    "Show understanding of how software tools found within a DBMS are used in practice, including the use and purpose of the developer interface.",
+    "Show understanding of how software tools found within a DBMS are used in practice, including the use and purpose of the query processor."
   ],
   "definitions": [
     {
       "term": "Database management system (DBMS)",
-      "definition": "Software that creates, maintains and controls access to a database, sitting between the user or application and the physical data stored on disk."
+      "definition": "Software that controls all access to the data in a database: it creates and maintains the structure, stores and retrieves data on request, and enforces integrity and security rules."
+    },
+    {
+      "term": "Database administrator (DBA)",
+      "definition": "The person who uses the DBMS to set up and customise the database for its users, including defining views and access rights and organising backups."
     },
     {
       "term": "Data dictionary",
-      "definition": "Metadata held by a DBMS describing a database's tables, fields, data types, keys and the relationships between tables."
+      "definition": "A part of the database, maintained by the DBMS and visible only to the DBA, holding metadata (data about the data): table and attribute names, data types, keys, relationships, validation rules, indexes, access rights and physical storage details."
     },
     {
-      "term": "Data independence",
-      "definition": "The separation of how data is physically stored from how an application accesses it, so that changes to physical storage do not require an application to be rewritten."
+      "term": "Data modelling",
+      "definition": "Analysing an organisation's data to identify its entities, attributes and relationships, typically as an E-R diagram, so the structure can be defined in the DBMS."
     },
     {
-      "term": "Concurrency control",
-      "definition": "Techniques used by a DBMS to manage simultaneous access to a database by multiple users, so that their updates do not conflict or overwrite each other."
+      "term": "Logical schema",
+      "definition": "The overall description of how the database is organised as seen by users and programmers (its tables, attributes, keys, relationships and constraints), independent of how the data is physically stored. Also called the conceptual schema."
     },
     {
-      "term": "Record locking",
-      "definition": "A concurrency control technique in which a DBMS temporarily prevents other users from editing a record while one user is updating it."
+      "term": "Data integrity",
+      "definition": "The accuracy, completeness and consistency of the stored data, maintained by the DBMS through keys, referential integrity, validation rules and controlled updates."
     },
     {
-      "term": "Access control",
-      "definition": "Restrictions set by a DBMS that determine which users may view, add, edit or delete particular data."
+      "term": "Access rights",
+      "definition": "Permissions assigned by the DBA to an individual user or a group of users stating which tables or views they can reach and whether they can read, insert, update or delete data."
     },
     {
       "term": "Backup",
-      "definition": "A separate copy of a database's data, taken regularly and stored securely, used to restore the database if the original data is lost or corrupted."
+      "definition": "A copy of the database made at regular, planned intervals and stored separately from the live data, so the database can be restored if the original is lost or corrupted."
     },
     {
-      "term": "Recovery",
-      "definition": "The process of restoring a database to a correct, usable state after a failure, using a backup and, where available, a log of transactions made since that backup."
+      "term": "Developer interface",
+      "definition": "The part of a DBMS giving developers access to tools for creating tables, defining attributes, data types and keys, and building forms, queries and reports."
+    },
+    {
+      "term": "Query processor",
+      "definition": "The DBMS software that accepts a query, checks it against the data dictionary, turns it into an efficient plan and executes it to retrieve or change the data."
     }
   ],
   "sections": [
     {
       "id": "01-what-a-dbms-is",
-      "title": "What a DBMS is",
+      "title": "The DBMS and the problems it solves",
       "content": [
-        "A database management system (DBMS) is software that sits between the user or an application and the physical data files stored on disk. Rather than an application reading and writing raw data files directly, it sends requests to the DBMS, which is responsible for creating the database structure, storing and retrieving data on request, and controlling who is allowed to access it. This separation means the application only needs to know how to communicate with the DBMS, not the details of how or where the data is physically stored."
+        "A database is more than a collection of files: it is data organised according to a model (for AS, the relational model) and managed by a database management system. Programs and users never read or write the stored data directly; they send requests to the DBMS, which carries out the operation and applies the same rules every time. This single controlling layer is what solves the problems of the file-based approach. Data is held once and shared by every department instead of each department keeping its own copy, which removes redundancy and inconsistency. Structure is defined once, centrally, in the data dictionary, instead of inside each program. Validation, key and relationship rules are enforced whoever enters the data. Access is controlled per user or group rather than being all-or-nothing for a file. Backups are organised centrally by the database administrator (DBA) instead of being left to chance. The syllabus groups these features as data management, data modelling, the logical schema, data integrity and data security."
       ],
       "bullets": [
-        "A DBMS is a layer of software, not the data itself or the application that uses it.",
-        "Examples include software such as MySQL, Oracle Database and Microsoft SQL Server.",
-        "Every request to create, read, update or delete data passes through the DBMS, which is what lets it enforce structure and rules consistently."
+        "Every create, read, update and delete request passes through the DBMS, so rules are applied consistently.",
+        "The DBA is the person who uses the DBMS to set up the database, user views, access rights and backup routines.",
+        "Examples of relational DBMS software include MySQL, PostgreSQL, Microsoft Access and Microsoft SQL Server."
       ],
       "examples": []
     },
     {
-      "id": "02-the-data-dictionary",
-      "title": "The data dictionary",
+      "id": "08-data-modelling",
+      "title": "Data modelling",
       "content": [
-        "The data dictionary is metadata that the DBMS holds about the database itself: the names of its tables, the fields within each table, each field's data type and length, which fields are primary and foreign keys, and the relationships between tables. The DBMS consults the data dictionary whenever it processes a request, for example to check that a value being entered matches the field's defined data type, or to know which table a foreign key refers to. Keeping this information centrally means every part of the system uses the same definitions, rather than each application having its own separate understanding of the data's structure."
+        "Before a database is built its data must be modelled: the designer identifies the entities the organisation needs to store data about, their attributes and the relationships between them, usually drawn as an E-R diagram (see 8.1). The first model is conceptual, describing the data without reference to any particular technology. It is then turned into a logical model for a relational database, where each entity becomes a table, many-to-many relationships are resolved with link tables, and primary and foreign keys are chosen. Many DBMSs include modelling tools that let the designer draw tables and relationship lines, and then generate the table definitions directly from the diagram, or show the relationships between existing tables. This is a feature a file-based approach lacks: there, the structure of each file is decided separately by each program's author, with no overall model of how the data fits together."
       ],
       "bullets": [
-        "The data dictionary describes the structure of the data ('data about data'), not the data records themselves.",
-        "Validation rules, such as a field's data type or length, are enforced by checking against the data dictionary.",
-        "Because the structure is defined once, centrally, it is far less likely that two applications interpret the same field inconsistently."
+        "Data modelling produces the entities, attributes, relationships and keys that the logical schema records.",
+        "A good model is what makes normalised, non-redundant tables possible.",
+        "DBMS relationship tools let the designer declare foreign keys so that referential integrity is then enforced automatically."
       ],
       "examples": []
     },
     {
       "id": "03-data-independence",
-      "title": "Data independence",
+      "title": "The logical schema and data independence",
       "content": [
-        "Data independence means that an application using a database does not need to be changed when the way data is physically stored changes, for example if the DBMS reorganises how records are stored on disk, adds an index, or moves data to different storage hardware. This is possible because the application communicates only with the DBMS, using the logical structure defined in the data dictionary, rather than reading the physical files directly. The DBMS is responsible for translating between the logical view the application uses and the physical storage underneath, so a change to the physical layer is handled entirely inside the DBMS."
+        "A DBMS describes a database at three levels. At the internal level, the internal schema records how the data is physically stored on disk; only the DBMS software deals with this. At the conceptual level there is a single logical schema: the complete description of the database as users and programmers understand it, meaning every table, attribute, data type, key, relationship and constraint, with no mention of physical storage. The DBA controls this level. At the external level, each user group or program has its own view (external schema) showing only the part of the database it needs; for example, a finance view might include member payments but not coaching notes. Separating the levels gives data independence. If the physical storage is reorganised or moved to new hardware, the logical schema is unchanged, so programs keep working. If a new attribute or table is added to the logical schema, existing views and the programs that use them are unaffected, and only new programs that need the new data have to be written. This is the direct fix for the data dependency problem of file-based systems."
       ],
       "bullets": [
-        "Without a DBMS, an application that reads physical files directly would need to be rewritten whenever the physical storage layout changed.",
-        "Data independence reduces the cost and risk of maintaining a system, since storage can be optimised without touching application code.",
-        "It relies on the application only ever interacting with the database through the DBMS, never bypassing it to access files directly."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-concurrency-control",
-      "title": "Concurrency control",
-      "content": [
-        "Many users may need to access, and sometimes update, the same database at the same time. Without control, two users could read the same record, both make changes, and save them one after another, with the second save silently overwriting the first user's update as if it had never happened. A DBMS provides concurrency control to prevent this, commonly using record locking: when one user begins updating a record, the DBMS locks it so other users cannot update the same record until the first update is complete, after which the lock is released. This ensures updates are applied safely, without one user's work being lost because of another user's simultaneous edit."
-      ],
-      "bullets": [
-        "The problem concurrency control solves is specifically simultaneous updates conflicting, not simply many users reading data at once.",
-        "Record locking is usually applied at the level of an individual record, so other records remain available to other users while one record is locked.",
-        "Without concurrency control, a lost update can occur without either user being aware that their change was overwritten."
+        "Logical schema = what data is held and how it is organised; internal schema = how it is stored physically.",
+        "External views are also a security mechanism, because a user can only reach the data in their view.",
+        "Data independence means changes at one level do not force changes to programs working at a higher level."
       ],
       "examples": []
     },
     {
       "id": "05-access-control-and-security",
-      "title": "Access control and security",
+      "title": "Data security: access rights for individuals and groups",
       "content": [
-        "A DBMS controls what different users are permitted to do, typically by assigning each user account a set of access rights, such as read-only access to some tables, and read-and-write access to others, while other data remains completely hidden from that account. This follows the principle that a user should only be given the access their role actually requires. Centralising access control in the DBMS means every request is checked against the same set of permissions, rather than security being left to individual applications to enforce inconsistently."
+        "In a file-based system anyone who can open a file can read all of it. A DBMS lets the DBA control access at a much finer level. Each person logs in with their own user account, authenticated by a password or similar, so the DBMS knows who is making every request. The DBA then assigns access rights, which state which tables or views the account can use and which operations are allowed on each: read (SELECT), insert, update or delete. Rather than setting rights one person at a time, users with the same job are usually placed in a group (or role), such as Reception, Finance or Coaches, and the rights are granted to the group; a new employee then only needs to be added to the right group, and a change of job means moving them to another group. Individual rights can still be added or removed where one person needs something different, such as a manager who can delete records. Following the principle of least privilege, each user or group receives only the access their work requires, which protects confidential data and limits the damage from mistakes or a compromised account."
       ],
       "bullets": [
-        "Access rights can be set per user, per table, or even per field, depending on the DBMS.",
-        "Restricting access limits the damage that a compromised account or an honest mistake by a careless user can cause.",
-        "Because the DBMS enforces access control centrally, it applies consistently no matter which application or query is used to reach the data."
+        "Authentication (user ID and password) establishes who the user is; access rights then decide what that user may do.",
+        "Rights can be limited to particular tables, to views that hide some attributes, and to particular operations.",
+        "Group rights make administration simpler and more consistent than setting every user's rights separately.",
+        "The DBMS can also keep an audit log of who accessed or changed which data."
+      ],
+      "examples": [
+        {
+          "id": "e1-access-rights",
+          "kind": "example",
+          "label": "Access rights by group for a sports centre database",
+          "content": "Group | Member | ClassMember | Payment | Instructor\nReception | read, insert, update | read, insert, delete | none | read\nFinance | read | read | read, insert, update | none\nCoaches | read (view without phone numbers) | read | none | read\nDBA | full | full | full | full\n\nA receptionist can enrol a member in a class but cannot see or alter payment records; a coach sees who is in a class without seeing members' contact details."
+        }
+      ]
+    },
+    {
+      "id": "09-developer-interface",
+      "title": "Software tools: the developer interface",
+      "content": [
+        "The developer interface is the part of the DBMS that gives developers the tools to build and change a database. Through it a developer creates tables, names each attribute and sets its data type and size, declares the primary key and foreign keys (which records the relationships and switches on referential integrity), adds validation rules such as a range check or a required field, and creates indexes. The same interface is used to build the parts that end users see: data-entry forms, saved queries and formatted reports, which can be combined into a user interface so staff can work with the data without knowing SQL. Most DBMSs offer both a graphical way of doing this (design grids, drag-and-drop form designers, query-by-example) and a way to type SQL commands directly. Graphical tools are quicker for simple tasks, while writing SQL gives the developer precise control and is needed for more complex queries; in either case the DBMS ultimately carries out the work using its DDL and DML (see 8.3)."
+      ],
+      "bullets": [
+        "Used for: creating and altering tables, attributes, data types, keys, validation rules and indexes.",
+        "Also used for: designing forms for data entry, queries for retrieving data and reports for presenting output.",
+        "Every change to the structure made here is recorded in the data dictionary."
+      ],
+      "examples": []
+    },
+    {
+      "id": "10-query-processor",
+      "title": "Software tools: the query processor",
+      "content": [
+        "A query is a request to select data that meets stated conditions, or to change data. The query processor is the DBMS software that accepts a query, whether typed in SQL or built with a graphical query tool, and carries it out. It first checks the query: that it is correctly formed, that every table and attribute named exists (by looking them up in the data dictionary) and that the user has the access rights needed. It then works out an efficient way of executing it, for example deciding to use an index on a key attribute rather than scanning a whole table, or choosing the order in which to join tables. Finally it executes the plan against the stored data and returns the result, such as a table of matching rows, or makes the requested changes. Structure-changing (DDL) statements are handled by updating the data dictionary; data-handling (DML) statements are compiled and run against the tables. Because users only describe what data they want, not how to find it, the same query keeps working even if the physical storage or indexes change."
+      ],
+      "bullets": [
+        "Purpose: allow queries to be created and executed so data can be extracted or updated.",
+        "Steps: check syntax and names against the data dictionary, check access rights, optimise, execute, return the result.",
+        "Query results can be used directly, fed into a report, or built into a form in the user interface."
+      ],
+      "examples": [
+        {
+          "id": "e2-query-processing",
+          "kind": "worked",
+          "label": "How the query processor handles one query",
+          "content": "Query from a receptionist:\nSELECT MemberName FROM Member WHERE MemberID = 'M104';\n\n1. Parse: the statement is valid SQL.\n2. Check names: the data dictionary confirms table Member and attributes MemberName, MemberID exist, and MemberID is VARCHAR so 'M104' is a valid comparison.\n3. Check rights: the Reception group has read access to Member.\n4. Optimise: MemberID is the primary key and has an index, so use the index instead of reading every row.\n5. Execute: follow the index pointer to the M104 row.\n6. Return: MemberName = O. Haddad."
+        }
+      ]
+    },
+    {
+      "id": "02-the-data-dictionary",
+      "title": "Data management: the data dictionary",
+      "content": [
+        "Data management in a DBMS is centred on the data dictionary: a part of the database, maintained by the DBMS and normally hidden from everyone except the DBA, that holds metadata, meaning data about the data rather than the data itself. It stores the name of every table, the name, data type and size of every attribute, primary and foreign keys and the relationships they form, validation rules and default values, indexes, user views and access rights, and details of how the data is physically stored. The DBMS keeps it up to date automatically whenever the structure is changed through the developer interface or a DDL command, and consults it constantly: the query processor uses it to check that names in a query exist and to find indexes, and the data-entry process uses it to check each new value against its data type and validation rule. In a file-based system this information is scattered inside each program; in a DBMS it is held once and shared, so every program works to the same definitions."
+      ],
+      "bullets": [
+        "Metadata examples to quote: table names, attribute names, data types, field lengths, primary/foreign keys, validation rules, relationships, access rights.",
+        "The data dictionary does not contain the records themselves (for example, not a member's actual phone number).",
+        "Because definitions are central, a change such as lengthening an attribute is made once and applies to every program."
+      ],
+      "examples": [
+        {
+          "id": "e3-data-dictionary",
+          "kind": "example",
+          "label": "Part of the data dictionary for the Member table",
+          "content": "Table: Member\nAttribute | Data type | Size | Key | Validation\nMemberID | VARCHAR | 4 | Primary key | Format: letter M followed by 3 digits\nMemberName | VARCHAR | 40 | - | Required\nMemberPhone | VARCHAR | 15 | - | -\nEmailAddress | VARCHAR | 60 | Secondary key (indexed) | Must be unique\nIndexes: MemberID, EmailAddress\nReferenced by: ClassMember.MemberID (foreign key)"
+        }
+      ]
+    },
+    {
+      "id": "11-data-integrity",
+      "title": "Data integrity",
+      "content": [
+        "Data integrity means the stored data is accurate, complete and consistent. A DBMS maintains it with several features that a file-based approach lacks. Entity integrity: every table has a primary key and the DBMS rejects a missing or duplicate key value, so no tuple is recorded twice. Referential integrity: a foreign key value is accepted only if it matches an existing primary key in the referenced table, and a referenced tuple cannot be deleted while others still depend on it. Validation: each value is checked against the data type, size and any rule held in the data dictionary (a range check on a price, a format check on an ID, a presence check on a required attribute). Single storage: because each fact is held once, there are no copies to fall out of step. Controlled updates: a transaction that is interrupted part way, for example by a power failure, is either completed or fully undone, so the database is never left half-updated, and when several users update at the same time the DBMS uses record locking so one user's change cannot silently overwrite another's."
+      ],
+      "bullets": [
+        "Validation reduces errors but cannot guarantee correctness: a valid but wrong phone number will still be accepted.",
+        "Keys and referential integrity are declared once in the DBMS and then enforced for every program and user.",
+        "Record locking stops two users updating the same tuple at once, preventing a lost update."
       ],
       "examples": []
     },
     {
       "id": "06-backup-and-recovery",
-      "title": "Backup and recovery",
+      "title": "Data security: backup procedures",
       "content": [
-        "A DBMS supports taking regular backups: complete copies of the database's data, stored securely and separately from the live system, so that data is not permanently lost if the original is deleted, corrupted or damaged by a hardware failure. If a failure occurs, recovery is the process of restoring the database to a correct, usable state, normally by reloading the most recent backup and, where a transaction log is kept, reapplying any changes made since that backup so as little data as possible is lost. Backup and recovery protect against events a DBMS's other controls do not prevent, such as hardware failure, accidental deletion or a natural disaster affecting the server."
+        "Access rights protect data from people who should not see or change it, but they do not protect against hardware failure, accidental deletion, corruption, malware or a fire in the server room. For that, the DBA sets up a backup procedure, and the DBMS provides tools to run it, often automatically. A good procedure states what is copied, how often, where the copies are kept, how long they are kept and how they are tested. A common pattern is a full backup of the whole database at regular intervals (for example, every night when few users are working) with incremental backups of only the changes in between. Copies are stored off-site or in the cloud, and often encrypted, so that the event that damages the live system cannot also destroy the backups, and several generations are kept in case the most recent copy is itself corrupted. Many DBMSs also keep a transaction log of every change since the last backup. To recover, the latest backup is restored and the logged transactions are reapplied, bringing the database back to its state just before the failure. Restores should be tested regularly, because a backup that cannot be restored gives no protection."
       ],
       "bullets": [
-        "A backup only protects data that existed at the time it was taken; more frequent backups reduce how much data could be lost.",
-        "A transaction log recording changes since the last backup allows recovery to restore data right up to the point of failure, not only to the backup itself.",
-        "Backups should be stored somewhere separate from the live database, so the same failure cannot destroy both at once."
+        "Backup frequency is set by how much data the organisation can afford to lose: data changed since the last backup (and not in a log) is lost.",
+        "Store backups away from the live database, for example off-site or in the cloud.",
+        "Keep several generations of backups, and test that they can actually be restored.",
+        "A transaction log lets recovery go beyond the last backup up to the point of failure."
       ],
-      "examples": []
-    },
-    {
-      "id": "07-dbms-vs-flat-file-in-practice",
-      "title": "DBMS-based systems compared with flat-file systems",
-      "content": [
-        "A flat-file system has no software layer managing shared structure, concurrent access or centralised security: each application that uses the file must handle these issues itself, or the problems described in topic 8.1, such as redundancy and inconsistency, go unchecked. A DBMS-based system directly addresses these weaknesses: the data dictionary and normalised table structure reduce redundancy and improve data integrity, concurrency control allows many users to work with the database safely at the same time, centralised access control restricts what each user may do, and built-in backup and recovery protect against data loss. The trade-off is that a DBMS is more complex software to set up, licence and maintain than a simple flat file, but for any system with multiple users or applications sharing data, this cost is normally justified by the reliability and control it provides."
-      ],
-      "bullets": [
-        "A flat-file system leaves problems like redundancy, inconsistency and unmanaged concurrent access to be solved by each application separately, if at all.",
-        "A DBMS solves these problems once, centrally, and enforces the solution for every application that connects to it.",
-        "Choosing a DBMS over a flat-file system is usually justified whenever data is shared between multiple users or multiple applications."
-      ],
-      "examples": []
+      "examples": [
+        {
+          "id": "e4-backup-procedure",
+          "kind": "worked",
+          "label": "Recovering after a disk failure",
+          "content": "Procedure: full backup every night at 01:00 to an encrypted cloud store; 14 nightly copies kept; transaction log kept on a separate disk.\n\nThe server disk fails at 15:30 on Thursday.\n1. Replace the disk and restore Thursday's 01:00 full backup: the database is now as it was at 01:00.\n2. Reapply the transaction log from 01:00 to 15:30: all changes made during Thursday are restored.\n3. Only transactions still in progress at 15:30 are lost.\nWithout the log, every change made between 01:00 and 15:30 would have been lost."
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Flat-file system vs DBMS",
+    "title": "File-based problems and the DBMS features that address them",
     "columns": [
-      "Aspect",
-      "Flat-file system",
-      "DBMS"
+      "File-based problem",
+      "DBMS feature",
+      "How the feature solves it"
     ],
     "rows": [
       [
-        "Redundancy and integrity",
-        "Data often duplicated across records; little to enforce consistency",
-        "Normalised tables and a data dictionary reduce redundancy and enforce data types and keys"
+        "Structure hidden inside each program; files defined separately",
+        "Data management: data dictionary",
+        "All table, attribute, type and key definitions are held once as metadata and shared by every program"
       ],
       [
-        "Concurrent access",
-        "Little or no control; simultaneous updates can overwrite each other",
-        "Concurrency control (e.g. record locking) manages simultaneous updates safely"
+        "No overall plan of how the data fits together",
+        "Data modelling",
+        "Entities, attributes and relationships are designed as one model and implemented as linked tables"
       ],
       [
-        "Security",
-        "Access control, if any, is handled separately by each application",
-        "Centralised access rights control what each user may view or change"
+        "Programs depend on file layout; structure changes force rewrites",
+        "Logical schema and external views",
+        "Programs work with the logical structure, so physical or additional changes do not break them (data independence)"
       ],
       [
-        "Changing physical storage",
-        "Applications reading the file directly may need rewriting",
-        "Data independence means applications are unaffected by physical storage changes"
+        "Redundant copies, duplicates, no checks on entry",
+        "Data integrity",
+        "Data stored once; primary keys, referential integrity and validation rules enforced for every entry"
       ],
       [
-        "Backup and recovery",
-        "Usually manual and inconsistent, if done at all",
-        "Structured backup and recovery procedures are built into the DBMS"
+        "Anyone who opens a file can read all of it",
+        "Data security: access rights",
+        "Individual and group rights control which tables or views each user may read or change"
+      ],
+      [
+        "Backups ad hoc or forgotten",
+        "Data security: backup procedures",
+        "Scheduled, off-site, tested backups plus a transaction log allow full recovery"
       ]
     ]
   },
   "diagram": {
-    "title": "How a DBMS sits between the user and the physical database",
+    "title": "Three-level view of a database managed by a DBMS",
     "type": "layers",
     "nodes": [
-      "User or application",
-      "DBMS: query processor and access control",
-      "DBMS: data dictionary (metadata)",
-      "Physical database (stored data files)"
+      "External level: user and program views (each with its own access rights)",
+      "Conceptual level: the logical schema, controlled by the DBA",
+      "DBMS software: developer interface, query processor, data dictionary",
+      "Internal level: internal schema and physical storage on disk"
     ]
   },
   "analysisChains": [
     {
-      "title": "Preventing a lost update with record locking",
+      "title": "Adding a new attribute without breaking existing programs",
       "steps": [
-        "Two employees open the same customer record at the same time to update the address",
-        "The DBMS locks the record for the first employee who begins saving their change",
-        "The second employee's save request is held until the lock is released",
-        "The second employee's update is then applied to the already-updated record, rather than silently overwriting the first change"
+        "The sports centre decides to record an emergency contact for each member",
+        "The developer adds the attribute EmergencyContact to Member through the developer interface",
+        "The DBMS updates the data dictionary and the logical schema; existing views are unchanged",
+        "Existing reception and finance programs continue to run, and only a new form is written to capture the new data"
       ],
-      "evaluation": "Record locking prevents the second update from destroying the first, but it means the second user must wait briefly, so a busy system needs locks to be held only as long as necessary to avoid excessive delay."
+      "evaluation": "This is data independence in practice. In a file-based system the file layout and every program reading it would have had to be rewritten."
     },
     {
-      "title": "Recovering a database after a server failure",
+      "title": "Using groups to manage access rights",
       "steps": [
-        "A server hardware fault corrupts the live database files",
-        "The most recent full backup is reloaded onto a replacement server",
-        "The transaction log recorded since that backup is checked",
-        "Transactions from the log are reapplied to bring the database up to the point just before the failure"
+        "Reception staff need to enrol members; finance staff need to record payments; coaches only need class lists",
+        "The DBA creates a group for each role and grants rights to tables or views per group",
+        "A new receptionist is added to the Reception group and immediately has exactly the right access",
+        "When a coach moves to finance, the DBA moves the account between groups rather than editing individual rights"
       ],
-      "evaluation": "Using a transaction log alongside a backup limits data loss to whatever occurred between the last logged transaction and the failure, rather than losing everything back to the last backup."
+      "evaluation": "Group rights are quicker to manage and less error-prone than per-user rights, and they apply least privilege so confidential data such as payments is seen only by those who need it."
     },
     {
-      "title": "Restricting access for a new junior employee account",
+      "title": "Why backups must be stored off-site",
       "steps": [
-        "A new employee is given a user account on the company database",
-        "The DBMS administrator assigns access rights allowing read-only access to the customer table",
-        "The account is not given any access to the payroll table",
-        "The employee can view customer data to do their job, but cannot view or change payroll data"
+        "The centre backs up nightly to a second disk inside the same server",
+        "A fire destroys the server room",
+        "Both the live database and every backup copy are lost at the same time",
+        "The data cannot be recovered"
       ],
-      "evaluation": "Restricting access rights to only what a role needs limits the damage a mistake or a compromised account could cause, though rights must be reviewed and updated as an employee's role changes."
+      "evaluation": "A backup only protects against events that cannot also reach it. Storing copies off-site or in the cloud, keeping several generations and testing restores make the backup procedure effective."
     }
   ],
   "examTips": [
-    "Describe a DBMS by what it does (creates, maintains and controls access to a database, between the user and the physical data), not just as 'database software'.",
-    "When explaining a DBMS function such as concurrency control, name the specific problem it solves, for example one user's update overwriting another's.",
-    "Explain data independence in terms of the application not needing to change when physical storage changes, not merely 'data is kept separate'.",
-    "For backup and recovery questions, mention that a transaction log lets recovery restore data up to the point of failure, not only to the last backup."
+    "For 'describe a feature of a DBMS that addresses a file-based limitation', give the feature, the limitation and the link: 'the data dictionary holds all attribute definitions once, so programs no longer each define the file structure'.",
+    "When asked what a data dictionary contains, give concrete metadata items (attribute names, data types, field lengths, primary keys, validation rules), never actual data values.",
+    "For access rights, mention both individuals and groups and name the type of access (read-only, read/write, delete, no access) for specific tables or views in the scenario.",
+    "For backup procedures, cover frequency, full versus incremental, storage off-site or in the cloud, keeping several copies and testing the restore.",
+    "Distinguish the two software tools: the developer interface is for building the database and its forms and reports; the query processor is for creating and executing queries."
   ],
   "commonMistakes": [
-    "Describing a DBMS only as 'a place data is stored', rather than as software controlling access to that data.",
-    "Confusing the data dictionary (metadata about structure) with the actual data records stored in the tables.",
-    "Explaining concurrency control as simply 'letting many users access the database', rather than as managing simultaneous updates so they do not conflict.",
-    "Treating a backup and a transaction log as the same thing, when the log records changes made since the last backup.",
-    "Saying access control and authentication are the same; authentication confirms who a user is, access control then decides what that user may do."
+    "Saying the data dictionary stores the data; it stores metadata about the structure of the data.",
+    "Confusing the logical schema (what data is held and how it is organised) with physical storage (how it is held on disk).",
+    "Treating access rights as the same as passwords; a password authenticates the user, access rights decide what that user can do.",
+    "Describing a backup as 'saving the data' without saying it is a separate copy, made regularly and stored away from the live database.",
+    "Calling the query processor 'where you type SQL'; it checks, optimises and executes queries, whatever interface was used to create them.",
+    "Listing DBMS features without linking each one to the file-based problem it solves when the question asks for that link."
   ],
   "quickRecall": [
     {
-      "question": "What is a DBMS?",
-      "answer": "Software that creates, maintains and controls access to a database, sitting between the user or application and the physical data stored on disk."
+      "question": "What is a data dictionary? Give two items it holds.",
+      "answer": "A part of the database holding metadata (data about the data). Any two of: table names, attribute names, data types, field lengths, primary/foreign keys, validation rules, relationships, indexes, access rights."
     },
     {
-      "question": "What does the data dictionary store?",
-      "answer": "Metadata about the database's tables, fields, data types, keys and the relationships between tables."
+      "question": "What is the logical schema?",
+      "answer": "The overall description of the database as seen by users and programmers: its tables, attributes, keys, relationships and constraints, independent of physical storage."
     },
     {
-      "question": "What is data independence?",
-      "answer": "The separation of physical data storage from how an application accesses data, so the application does not need to change when the physical storage structure changes."
+      "question": "How does a DBMS maintain data integrity?",
+      "answer": "Through primary keys (no duplicate or missing keys), referential integrity on foreign keys, validation rules from the data dictionary, storing each fact once, and controlled updates such as record locking."
     },
     {
-      "question": "Why is concurrency control needed?",
-      "answer": "To manage simultaneous access by multiple users so that their updates do not conflict or overwrite each other, for example using record locking."
+      "question": "Why are access rights often given to groups rather than individuals?",
+      "answer": "Users with the same job need the same access, so granting rights to a group is quicker and more consistent; new or moving staff just join the appropriate group."
     },
     {
-      "question": "Give two functions of a DBMS.",
-      "answer": "Any two of: maintaining the data dictionary, providing data independence, concurrency control, access control and security, backup and recovery."
+      "question": "Give three features of a good backup procedure.",
+      "answer": "Any three of: regular scheduled backups (full and incremental), stored off-site or in the cloud, encrypted, several generations kept, restores tested, transaction log kept to recover up to the failure."
     },
     {
-      "question": "What does a transaction log allow during recovery?",
-      "answer": "It allows changes made since the last backup to be reapplied, restoring the database up to the point just before the failure rather than only to the backup."
+      "question": "What is the developer interface used for?",
+      "answer": "Creating and altering tables, attributes, data types, keys, validation rules and indexes, and building forms, queries and reports for the user interface."
     },
     {
-      "question": "Give two advantages of a DBMS-based system over a flat-file system.",
-      "answer": "Any two of: reduced redundancy, improved data integrity, controlled concurrent access, centralised security, structured backup and recovery."
+      "question": "What does the query processor do?",
+      "answer": "Accepts a query, checks it against the data dictionary and the user's rights, works out an efficient way to run it (for example using an index) and executes it to return or change data."
     }
   ],
   "relatedTopics": [
     "8.1",
     "8.3",
     "6.1",
-    "10.4"
+    "6.2"
   ]
 }
