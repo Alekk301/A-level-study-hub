@@ -15382,323 +15382,479 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to write or complete pseudocode that declares and calls procedures and functions with parameters, to state whether a given parameter is passed by value or by reference, and to trace such pseudocode to determine whether a subroutine's changes are visible to the calling code afterwards. Answers score when a procedure and a function are correctly distinguished by whether a value is returned, when BYVAL and BYREF are matched to the correct behaviour rather than guessed, when a trace explicitly shows a variable's value in the caller both before and after the call, and when the stated benefits of structured programming (reuse, independent testing, easier design, easier fault isolation) are given as reasons rather than asserted alone."
-      },
-      {
-        "kind": "Definition",
-        "label": "Structured (top-down) programming",
-        "text": "An approach to program design in which a problem is broken down into a hierarchy of smaller, self-contained procedures and functions, each handling one well-defined sub-task, connected together by a main routine that calls them."
+        "text": "Topic 9.1 showed how decomposition turns a problem into modules; this topic is about writing those modules in Cambridge pseudocode. Paper 2 expects a procedure written as PROCEDURE … ENDPROCEDURE and run with CALL, taking none, one or several parameters; a function written as FUNCTION … RETURNS <type> … ENDFUNCTION whose RETURN value takes the place of the call inside an expression; and parameters marked BYVAL or BYREF, with a trace showing whether the caller's variable has changed after the call. Candidates must also explain when a procedure or a function is the right choice, use the words header, interface, parameter, argument and return value accurately, and write pseudocode that does not waste work. Marks are lost for putting CALL in front of a function, for a function with no RETURN on some path, for passing a constant to a BYREF parameter, and for assuming a BYVAL change reaches the caller."
       },
       {
         "kind": "Definition",
         "label": "Procedure",
-        "text": "A subroutine that performs a task, such as carrying out a calculation or displaying output, but does not itself return a value that can be used in an expression; it is called as a statement on its own, for example CALL ProcedureName(...)."
+        "text": "A named block of statements that carries out a task and is run with a CALL statement. It does not hand a value back to the point of call, although it can change the caller's variables through BYREF parameters."
       },
       {
         "kind": "Definition",
         "label": "Function",
-        "text": "A subroutine that performs a task and returns exactly one value, which can then be used directly within an expression, such as Result <- FunctionName(...) or IF FunctionName(...) = 0 THEN."
+        "text": "A named block of statements that works out and returns exactly one value of a stated data type. It is called inside an expression, never with CALL, and the returned value takes the place of the call when the expression is evaluated."
+      },
+      {
+        "kind": "Definition",
+        "label": "Procedure/function header",
+        "text": "The first line of a procedure or function definition: the keyword, the identifier, the parameter list with each parameter's data type (and BYVAL/BYREF), and for a function the RETURNS data type."
+      },
+      {
+        "kind": "Definition",
+        "label": "Procedure/function interface",
+        "text": "What the rest of the program needs to know to use a subroutine: the number, order, data types and passing method of its parameters, and for a function the type of value it returns."
       },
       {
         "kind": "Definition",
         "label": "Parameter",
-        "text": "A value or variable passed into a procedure or function when it is called, allowing data to be supplied to the subroutine without relying on global variables; the subroutine's declaration lists the parameters it expects to receive."
+        "text": "An identifier listed in the subroutine header that acts as a variable inside the subroutine and receives a value (or, BYREF, access to a variable) when the subroutine is called."
       },
       {
         "kind": "Definition",
-        "label": "Pass by value (BYVAL)",
-        "text": "A method of passing a parameter in which the subroutine receives only a copy of the argument's value; any change made to that parameter inside the subroutine has no effect on the original variable in the calling code."
+        "label": "Argument",
+        "text": "The actual value, variable or expression written in the brackets of a call, matched by position to the corresponding parameter."
       },
       {
         "kind": "Definition",
-        "label": "Pass by reference (BYREF)",
-        "text": "A method of passing a parameter in which the subroutine receives the actual variable itself, not a copy; any change made to that parameter inside the subroutine changes the original variable in the calling code too."
+        "label": "Return value",
+        "text": "The single value a function sends back with RETURN; it replaces the function call in the expression that called it."
       },
       {
         "kind": "Definition",
-        "label": "Local variable",
-        "text": "A variable declared inside a procedure or function, which exists and can be accessed only while that subroutine is running; it is created when the subroutine starts and ceases to exist once the subroutine ends."
+        "label": "BYVAL (by value)",
+        "text": "The parameter receives a copy of the argument's value, so changes made inside the subroutine do not affect the caller's variable. It is the default when no method is stated."
       },
       {
         "kind": "Definition",
-        "label": "Global variable",
-        "text": "A variable declared at the top level of a program, outside any subroutine, and accessible from anywhere in the program, including from inside every procedure and function; its use is generally best avoided except where genuinely necessary, since it makes a subroutine's behaviour depend on state outside its own parameters."
+        "label": "BYREF (by reference)",
+        "text": "The parameter receives the address of the caller's variable, so the parameter and the argument are the same memory location and any change made inside the procedure is still there after the call. The argument must be a variable."
       },
       {
         "kind": "Section",
-        "text": "Structured (top-down) programming"
+        "text": "Subroutines: giving a block of code a name"
       },
       {
         "kind": "Content",
-        "label": "Structured (top-down) programming",
-        "text": "Structured programming breaks a problem down into a hierarchy of smaller, self-contained procedures and functions, called subroutines, each responsible for one well-defined sub-task rather than one single block of code trying to handle an entire problem at once. A program's main routine sits at the top of this hierarchy and calls the subroutines it needs, in the order they are needed, often calling further subroutines from inside those subroutines to break a sub-task down even further; this top-down process of repeatedly splitting a large problem into smaller, more manageable pieces is exactly the decomposition step of computational thinking applied directly to a program's structure."
+        "label": "Subroutines: giving a block of code a name",
+        "text": "A subroutine is a set of statements that has been given an identifier so it can be run by name from anywhere in the program. Cambridge pseudocode has two kinds: procedures and functions. Both are written out once, above the main program that uses them, and are then run by calling them. When the subroutine finishes, control goes back to the statement just after the point of call."
       },
       {
         "kind": "Content",
-        "label": "Structured (top-down) programming",
-        "text": "A subroutine is self-contained: the rest of the program interacts with it only through its parameters (the data supplied to it) and, for a function, its return value, without needing to know how the subroutine achieves its task internally. This means a subroutine's internal workings can be changed later, to fix a fault or improve efficiency, without needing to change anything about how the rest of the program calls it, provided its parameters and return value stay the same."
+        "label": "Subroutines: giving a block of code a name",
+        "text": "Subroutines are how the modules found by decomposition (9.1) and drawn on a structure chart (12.2) turn into code. Because each one has a single job and receives its data through parameters, it can be written, tested and corrected on its own, and then used again wherever the same job is needed."
       },
       {
         "kind": "Content",
-        "label": "Structured (top-down) programming",
-        "text": "A large problem is decomposed into a hierarchy of smaller procedures and functions, each handling one well-defined sub-task."
+        "label": "Subroutines: giving a block of code a name",
+        "text": "Two kinds of subroutine: a procedure (run with CALL) and a function (used inside an expression, returns one value)."
       },
       {
         "kind": "Content",
-        "label": "Structured (top-down) programming",
-        "text": "The main routine sits at the top of the hierarchy and calls subroutines, which may themselves call further subroutines."
+        "label": "Subroutines: giving a block of code a name",
+        "text": "Definitions come before the main program; a call jumps into the subroutine and control returns to the line after the call."
       },
       {
         "kind": "Content",
-        "label": "Structured (top-down) programming",
-        "text": "A subroutine is self-contained: the rest of the program only needs to know its parameters and, for a function, its return value, not how it works internally."
+        "label": "Subroutines: giving a block of code a name",
+        "text": "Data goes in through parameters; a function sends one value back with RETURN."
       },
       {
         "kind": "Section",
-        "text": "Procedures versus functions"
+        "text": "Defining and calling a procedure"
       },
       {
         "kind": "Content",
-        "label": "Procedures versus functions",
-        "text": "A procedure performs a task, such as displaying a formatted report or updating several variables, but does not return a value that can itself be used inside an expression; it is called on its own as a statement, for example CALL DisplayReport(StudentName, Score). A function also performs a task, but it additionally returns exactly one value as its result, and it is called from within an expression rather than as a standalone statement, for example Total <- Total + CalculateBonus(Score), where CalculateBonus(Score) is evaluated to a single value that is then used directly in the surrounding calculation."
+        "label": "Defining and calling a procedure",
+        "text": "A procedure is written PROCEDURE <identifier>(<parameter list>), then its statements, then ENDPROCEDURE. The brackets may be empty, or hold one or more parameters, each written <identifier> : <data type> and separated by commas. The parameters behave as variables inside the procedure body. Any variable the procedure needs just for its own work is declared inside it, so it is local."
       },
       {
         "kind": "Content",
-        "label": "Procedures versus functions",
-        "text": "Choosing between the two depends on what the calling code actually needs: if the calling code needs a single computed value it can use in a further expression or condition, a function is correct, declared with a stated return type and containing at least one RETURN value statement; if the calling code only needs an action carried out, with no single value handed back for further use, a procedure is correct."
+        "label": "Defining and calling a procedure",
+        "text": "A procedure is run with CALL <identifier>(<arguments>), and this is a complete statement on its own line. The arguments must match the parameters in number, order and data type: the first argument goes to the first parameter, and so on. A procedure with no parameters is still called with empty brackets, CALL <identifier>(). Unless BYREF is written, parameters are passed by value."
       },
       {
         "kind": "Content",
-        "label": "Procedures versus functions",
-        "text": "A procedure is called as its own statement, using CALL, and does not return a usable value."
+        "label": "Defining and calling a procedure",
+        "text": "Syntax: PROCEDURE Name(P1 : TYPE, P2 : TYPE) … ENDPROCEDURE; with no parameters, PROCEDURE Name() … ENDPROCEDURE."
       },
       {
         "kind": "Content",
-        "label": "Procedures versus functions",
-        "text": "A function is called from within an expression and returns exactly one value, using RETURN, which can be used directly in a calculation or condition."
+        "label": "Defining and calling a procedure",
+        "text": "Call: CALL Name(arg1, arg2) as a statement by itself; CALL Name() when there are no parameters."
       },
       {
         "kind": "Content",
-        "label": "Procedures versus functions",
-        "text": "The choice depends on what the calling code needs back: a single usable value means a function; an action with no value returned means a procedure."
+        "label": "Defining and calling a procedure",
+        "text": "Arguments are matched to parameters by position, so the order and data types must agree."
+      },
+      {
+        "kind": "Content",
+        "label": "Defining and calling a procedure",
+        "text": "Variables declared inside the procedure are local to it."
       },
       {
         "kind": "Example",
-        "label": "Procedures versus functions",
-        "text": "PROCEDURE DisplayResult(Name : STRING, Score : INTEGER)\n  OUTPUT Name, \" scored \", Score\nENDPROCEDURE\n\nFUNCTION Grade(Score : INTEGER) RETURNS CHAR\n  IF Score >= 50 THEN\n    RETURN 'P'\n  ELSE\n    RETURN 'F'\n  ENDIF\nENDFUNCTION\n\n// Calling the procedure: called as a statement on its own, nothing is returned\nCALL DisplayResult(\"Amir\", 62)          // OUTPUT: Amir scored 62\n\n// Calling the function: called from within an expression, its result is used directly\nDECLARE StudentGrade : CHAR\nStudentGrade <- Grade(62)               // StudentGrade now holds 'P'\nOUTPUT \"Grade: \", StudentGrade          // OUTPUT: Grade: P\n\n// Grade(62) could not have been written as CALL Grade(62) on its own, since its\n// single returned value would then have nowhere to go and nothing would use it."
+        "label": "Defining and calling a procedure",
+        "text": "PROCEDURE ShowRule()\n   OUTPUT \"----------\"\nENDPROCEDURE\n\nPROCEDURE ShowTitle(Title : STRING)\n   OUTPUT \"== \", Title, \" ==\"\nENDPROCEDURE\n\nPROCEDURE ShowRow(Symbol : STRING, Count : INTEGER)\n   DECLARE Line : STRING\n   DECLARE Index : INTEGER\n   Line ← \"\"\n   FOR Index ← 1 TO Count\n      Line ← Line & Symbol\n   NEXT Index\n   OUTPUT Line\nENDPROCEDURE\n\n// main program\nCALL ShowTitle(\"Pattern\")\nCALL ShowRule()\nCALL ShowRow(\"*\", 3)\nCALL ShowRow(\"#\", 5)\nCALL ShowRule()\n\nOutput:\n== Pattern ==\n----------\n***\n#####\n----------\n\nShowRow is called twice with different arguments: \"*\" and 3 the first time, \"#\" and 5 the second. Line and Index are local, so each call starts with its own fresh copies."
       },
       {
         "kind": "Section",
-        "text": "Parameters: passing data into a subroutine"
+        "text": "Where a procedure is appropriate"
       },
       {
         "kind": "Content",
-        "label": "Parameters: passing data into a subroutine",
-        "text": "A parameter is a value or variable passed into a procedure or function when it is called, giving the subroutine the data it needs to carry out its task without relying on that data already being available as a global variable. A subroutine's declaration lists the parameters it expects, each with an identifier and a data type, for example PROCEDURE UpdateScore(PlayerName : STRING, Points : INTEGER); when the subroutine is called, an argument is supplied for each declared parameter, in the same order, for example CALL UpdateScore(\"Beth\", 15), and inside the subroutine, Points refers to the value 15 for the duration of that call."
+        "label": "Where a procedure is appropriate",
+        "text": "Use a procedure when a part of the algorithm is an action rather than a calculation of one answer: displaying a menu or a report, writing records to a file, sorting an array, or reading and validating several inputs. It is also the right choice when a task has to change more than one of the caller's variables, since a procedure can do this through BYREF parameters, whereas a function returns only one value."
       },
       {
         "kind": "Content",
-        "label": "Parameters: passing data into a subroutine",
-        "text": "Passing data through explicitly declared parameters, rather than through global variables, makes a subroutine's inputs clear from its declaration alone, and makes the subroutine reusable in a different program, or a different part of the same program, since it does not depend on any particular global variable already existing with the right value in it."
+        "label": "Where a procedure is appropriate",
+        "text": "In practice a procedure is worth writing whenever the same group of steps appears in more than one place, or whenever a step of the design is big enough to be its own sub-task. Writing it once removes duplicated code, gives the main program a short, readable outline of calls, allows the procedure to be tested by itself, and means a later fix is made in one place only."
       },
       {
         "kind": "Content",
-        "label": "Parameters: passing data into a subroutine",
-        "text": "A subroutine's parameters are declared with an identifier and data type in its header; each call supplies one argument for each declared parameter, in order."
+        "label": "Where a procedure is appropriate",
+        "text": "Choose a procedure for an action with no single result: output, file handling, updating an array, input with validation."
       },
       {
         "kind": "Content",
-        "label": "Parameters: passing data into a subroutine",
-        "text": "Parameters make a subroutine's required inputs explicit and visible in its own declaration, rather than hidden inside dependence on global variables."
+        "label": "Where a procedure is appropriate",
+        "text": "Choose a procedure (with BYREF parameters) when several of the caller's variables must be updated."
       },
       {
         "kind": "Content",
-        "label": "Parameters: passing data into a subroutine",
-        "text": "A subroutine written to use parameters, rather than global variables, can be reused elsewhere without needing any particular global variable to already exist."
+        "label": "Where a procedure is appropriate",
+        "text": "Any repeated group of steps is a candidate: write once, call many times, fix in one place."
+      },
+      {
+        "kind": "Content",
+        "label": "Where a procedure is appropriate",
+        "text": "Each procedure can be tested on its own before it is joined to the rest of the program."
       },
       {
         "kind": "Section",
-        "text": "Passing by value versus passing by reference"
+        "text": "Defining and using a function"
       },
       {
         "kind": "Content",
-        "label": "Passing by value versus passing by reference",
-        "text": "When a parameter is passed by value, written BYVAL, the subroutine receives only a copy of the argument's current value; the subroutine works with that copy for the rest of the call, so any change made to the parameter inside the subroutine changes only the copy, leaving the original variable back in the calling code completely unaffected once the subroutine finishes and control returns. When a parameter is passed by reference, written BYREF, the subroutine instead receives the actual variable itself, not a copy of its value; any change made to the parameter inside the subroutine is therefore a change made directly to that same original variable, and it remains changed in the calling code after the subroutine finishes and control returns."
+        "label": "Defining and using a function",
+        "text": "A function is written FUNCTION <identifier>(<parameter list>) RETURNS <data type>, then its statements, then ENDFUNCTION. The body must contain a RETURN <expression> statement on every path through it, and the value returned must be of the type named after RETURNS. RETURN takes effect at once: the function stops, and any statements after it are skipped. This allows a function to have more than one RETURN, for example one in each branch of an IF."
       },
       {
         "kind": "Content",
-        "label": "Passing by value versus passing by reference",
-        "text": "The choice between BYVAL and BYREF matters whenever a subroutine needs to change one of its parameters: BYVAL is used when the calling code's original variable must be protected from any change the subroutine makes internally, and BYREF is used specifically when the subroutine is intended to change the calling code's original variable, such as a procedure designed to update a variable in place rather than return a new value."
+        "label": "Defining and using a function",
+        "text": "A function call is not a statement by itself, so it is never preceded by CALL. It is written where a value is needed: on the right of an assignment, in an OUTPUT list, in a condition, or as an argument to another call. When the function reaches RETURN, the returned value replaces the call and the rest of the expression is then evaluated. The pseudocode guide also says parameters should not be passed BYREF to a function, so a function's only effect on the caller is its return value."
       },
       {
         "kind": "Content",
-        "label": "Passing by value versus passing by reference",
-        "text": "BYVAL: the subroutine receives a copy; changes inside the subroutine do not affect the original variable in the calling code."
+        "label": "Defining and using a function",
+        "text": "Syntax: FUNCTION Name(P1 : TYPE) RETURNS TYPE … RETURN value … ENDFUNCTION."
       },
       {
         "kind": "Content",
-        "label": "Passing by value versus passing by reference",
-        "text": "BYREF: the subroutine receives the actual variable itself; changes inside the subroutine do affect the original variable in the calling code."
+        "label": "Defining and using a function",
+        "text": "Every path through the body must reach a RETURN; RETURN ends the function immediately."
       },
       {
         "kind": "Content",
-        "label": "Passing by value versus passing by reference",
-        "text": "BYREF is chosen specifically when a subroutine is meant to update the caller's variable in place; BYVAL is chosen to protect the caller's variable from any internal change."
-      },
-      {
-        "kind": "Section",
-        "text": "Worked trace: the same starting value, by value and by reference"
+        "label": "Defining and using a function",
+        "text": "Call it inside an expression, never with CALL; the return value replaces the call."
       },
       {
         "kind": "Content",
-        "label": "Worked trace: the same starting value, by value and by reference",
-        "text": "The clearest way to see the difference between BYVAL and BYREF is to call two otherwise identical procedures with the same starting value, change the parameter inside each one by the same amount, and then check the caller's original variable after each call has finished. Both procedures below add 10 to their parameter and output it from inside the procedure; the only difference between them is BYVAL versus BYREF in the parameter's declaration."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked trace: the same starting value, by value and by reference",
-        "text": "Tracing both calls with Number starting at 5 in each case shows the value printed inside the procedure is 15 in both versions, since the addition itself behaves identically either way; the difference only appears afterwards, in what OUTPUT Number prints back in the main routine once each procedure has finished and control has returned to it."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked trace: the same starting value, by value and by reference",
-        "text": "Both procedures compute the same result, 15, inside themselves; BYVAL and BYREF do not change what happens to the parameter during the call itself."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked trace: the same starting value, by value and by reference",
-        "text": "After the BYVAL call finishes, Number in the caller is unchanged at 5, because the procedure only ever had a copy of it."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked trace: the same starting value, by value and by reference",
-        "text": "After the BYREF call finishes, Number in the caller has been changed to 15, because the procedure operated on the actual variable itself."
+        "label": "Defining and using a function",
+        "text": "Function parameters are passed by value."
       },
       {
         "kind": "Example",
-        "label": "Worked trace: the same starting value, by value and by reference",
-        "text": "PROCEDURE AddTenByValue(BYVAL X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by value), X = \", X\nENDPROCEDURE\n\nPROCEDURE AddTenByReference(BYREF X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by reference), X = \", X\nENDPROCEDURE\n\n-- Call 1: by value --\nDECLARE Number : INTEGER\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByValue(Number)\n// Inside AddTenByValue: X receives a COPY of Number's value, 5\n//   X <- X + 10  =>  X becomes 15 (only the copy changes)\n// OUTPUT inside procedure: \"Inside procedure (by value), X = 15\"\n// Procedure ends; the copy X is discarded, Number itself was never touched\nOUTPUT \"After call, Number = \", Number         // After call, Number = 5  (UNCHANGED)\n\n-- Call 2: by reference --\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByReference(Number)\n// Inside AddTenByReference: X IS Number itself, not a copy\n//   X <- X + 10  =>  Number becomes 15 directly, because X and Number are the same variable\n// OUTPUT inside procedure: \"Inside procedure (by reference), X = 15\"\n// Procedure ends; Number remains changed, since X was never a separate copy\nOUTPUT \"After call, Number = \", Number         // After call, Number = 15  (CHANGED)\n\n-- Summary of the trace --\n// Both procedures print X = 15 from inside themselves: the +10 happens identically\n// either way. The difference is entirely in what Number equals back in the caller\n// AFTER the call returns: still 5 after AddTenByValue (a copy was changed, not\n// Number), but 15 after AddTenByReference (Number itself was changed)."
+        "label": "Defining and using a function",
+        "text": "FUNCTION Square(N : INTEGER) RETURNS INTEGER\n   RETURN N * N\nENDFUNCTION\n\nFUNCTION Larger(A : INTEGER, B : INTEGER) RETURNS INTEGER\n   IF A > B THEN\n      RETURN A\n   ENDIF\n   RETURN B\nENDFUNCTION\n\nDECLARE Result : INTEGER\nResult ← 50 + Square(3) * 2\nOUTPUT Larger(Result, Square(8))\nOUTPUT Larger(4, 7)\n\nStep-by-step:\nResult ← 50 + Square(3) * 2\n   Square(3) returns 9     → 50 + 9 * 2\n   * before +              → 50 + 18 = 68, so Result = 68\nOUTPUT Larger(Result, Square(8))\n   Square(8) returns 64    → Larger(68, 64)\n   68 > 64 is TRUE         → RETURN 68; the final RETURN B is never reached\n   Output: 68\nOUTPUT Larger(4, 7)\n   4 > 7 is FALSE          → skip the IF, reach RETURN 7\n   Output: 7\n\nWriting CALL Square(3) would be wrong: the 9 it returns would have nowhere to go."
       },
       {
         "kind": "Section",
-        "text": "Local versus global variables"
+        "text": "Where a function is appropriate: procedure or function?"
       },
       {
         "kind": "Content",
-        "label": "Local versus global variables",
-        "text": "A local variable is declared inside a procedure or function and exists only while that particular call to the subroutine is running: it is created fresh when the subroutine starts and ceases to exist as soon as the subroutine finishes, so it cannot be accessed from outside that subroutine, and a new call to the same subroutine creates an entirely new, separate copy of that local variable with no memory of any previous call's value. A global variable, by contrast, is declared at the top level of the program, outside every subroutine, and is accessible from anywhere in the program, including from inside every procedure and function, without needing to be passed in as a parameter at all."
+        "label": "Where a function is appropriate: procedure or function?",
+        "text": "Use a function when a part of the algorithm works out one answer that the caller then uses: a total, an average, the larger of two values, the position of an item in an array, or a TRUE/FALSE result from a validation check such as IsValidDate(Day, Month, Year). Because the answer comes back as a value, it can go straight into an expression or a condition, for example IF IsValidDate(D, M, Y) THEN … . The built-in routines such as LENGTH, MID and INT are functions for exactly this reason."
       },
       {
         "kind": "Content",
-        "label": "Local versus global variables",
-        "text": "Global variables are generally best avoided except where genuinely necessary, because a subroutine that reads or changes a global variable has a hidden dependency and a hidden side effect that is not visible in its own declaration or parameter list; this makes such a subroutine harder to understand, harder to reuse elsewhere, and harder to test in isolation, since its behaviour then depends on program state outside itself rather than solely on the arguments it was explicitly given."
+        "label": "Where a function is appropriate: procedure or function?",
+        "text": "The quick test is to ask what the caller needs back. If the answer is one value, write a function. If the answer is nothing, or several values, write a procedure (using BYREF for values that must come back). Converting one into the other changes the call as well as the header: a procedure call is a CALL statement, while a function call sits inside an expression."
       },
       {
         "kind": "Content",
-        "label": "Local versus global variables",
-        "text": "A local variable exists only while its own subroutine is running, and a fresh copy is created on every separate call."
+        "label": "Where a function is appropriate: procedure or function?",
+        "text": "Function: exactly one value is needed back, often used in a calculation or condition."
       },
       {
         "kind": "Content",
-        "label": "Local versus global variables",
-        "text": "A global variable is declared outside every subroutine and is accessible from anywhere in the program, without being passed in as a parameter."
+        "label": "Where a function is appropriate: procedure or function?",
+        "text": "Procedure: an action with no value back, or several values back through BYREF."
       },
       {
         "kind": "Content",
-        "label": "Local versus global variables",
-        "text": "Global variables are generally avoided, because a subroutine that depends on one has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test."
+        "label": "Where a function is appropriate: procedure or function?",
+        "text": "Validation checks are often written as BOOLEAN functions so they can be used directly in IF or WHILE conditions."
       },
       {
         "kind": "Section",
-        "text": "Benefits of structured programming with subroutines"
+        "text": "Local and global variables"
       },
       {
         "kind": "Content",
-        "label": "Benefits of structured programming with subroutines",
-        "text": "Breaking a program into procedures and functions brings several concrete benefits. Reuse: a subroutine written once to perform a specific sub-task can be called from many different places in the same program, or copied into a different program entirely, instead of the same logic being written out again in full every time it is needed, which also means a fix or improvement made once inside the subroutine automatically benefits every place that calls it. Independent testing: because a subroutine is self-contained, interacting with the rest of the program only through its parameters and return value, it can be tested on its own, with a range of chosen test inputs, before it is even connected to the rest of the program, rather than only being testable as part of the whole finished system."
+        "label": "Local and global variables",
+        "text": "A variable declared inside a procedure or function is local: it exists only while that call is running and cannot be seen from the main program or from other subroutines. Parameters behave the same way. Each new call creates fresh local variables, so no value is carried over from a previous call. A variable declared in the main program, outside every subroutine, is global and can be read or changed from anywhere."
       },
       {
         "kind": "Content",
-        "label": "Benefits of structured programming with subroutines",
-        "text": "Easier design of large problems: breaking a large, complex problem down into a hierarchy of smaller procedures and functions, each with one well-defined sub-task, makes that problem far easier to design and to reason about than trying to plan one single undivided block of code to handle everything at once. Easier fault isolation: when a program does not behave correctly, a fault can be traced to one specific, smaller subroutine responsible for the affected behaviour, and investigated and corrected within that subroutine alone, rather than having to search through an entire, undivided program to find where the fault might be."
+        "label": "Local and global variables",
+        "text": "Good practice is to keep any variable that a subroutine alone needs as a local, and to pass data in through parameters rather than relying on globals. A subroutine that quietly reads or alters a global is harder to reuse and to test, because its behaviour depends on something not shown in its header. Exam questions sometimes state that an array is global to keep the answer short; otherwise, use parameters."
       },
       {
         "kind": "Content",
-        "label": "Benefits of structured programming with subroutines",
-        "text": "Reuse: a subroutine written once can be called repeatedly from different places, instead of the same code being duplicated everywhere it is needed."
+        "label": "Local and global variables",
+        "text": "Local: declared inside a subroutine, exists only during that call, invisible outside it."
       },
       {
         "kind": "Content",
-        "label": "Benefits of structured programming with subroutines",
-        "text": "Independent testing and easier design: a self-contained subroutine can be tested on its own before integration, and a large problem is easier to design as a hierarchy of smaller sub-tasks."
+        "label": "Local and global variables",
+        "text": "Global: declared outside all subroutines, visible everywhere."
       },
       {
         "kind": "Content",
-        "label": "Benefits of structured programming with subroutines",
-        "text": "Easier fault isolation: a fault can be traced to one specific, smaller subroutine, rather than searched for across an entire undivided program."
+        "label": "Local and global variables",
+        "text": "Prefer locals and parameters; hidden use of globals makes subroutines harder to test and reuse."
+      },
+      {
+        "kind": "Section",
+        "text": "Terminology: header, interface, parameter, argument, return value"
+      },
+      {
+        "kind": "Content",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "The header is the first line of a definition. It names the subroutine and lists its parameters with their data types, and for a function it ends with RETURNS and a type. A parameter is one of the identifiers in that list; inside the body it is used like a variable. An argument is what is actually supplied in the brackets when the subroutine is called; it can be a literal, a variable or a whole expression (except that a BYREF argument must be a variable). Arguments are matched to parameters by position, not by name, so the names do not need to agree."
+      },
+      {
+        "kind": "Content",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "The interface is everything a programmer needs to know to use the subroutine without reading its body: how many parameters there are, their order, data types and passing method, and the type of value a function returns. The return value is the single value that a function's RETURN statement sends back. Because callers depend only on the interface, the body can later be rewritten, for instance to make it faster, without changing a single call."
+      },
+      {
+        "kind": "Content",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "Header: the first line, with identifier, parameter list and (for a function) RETURNS type."
+      },
+      {
+        "kind": "Content",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "Parameter: an identifier in the header. Argument: the value or variable given in the call."
+      },
+      {
+        "kind": "Content",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "Interface: number, order, types and passing method of the parameters, plus the return type."
+      },
+      {
+        "kind": "Content",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "Return value: the one value sent back by RETURN, which replaces the function call."
+      },
+      {
+        "kind": "Example",
+        "label": "Terminology: header, interface, parameter, argument, return value",
+        "text": "FUNCTION CountChar(Word : STRING, Target : STRING) RETURNS INTEGER   // header\n   DECLARE Index, Total : INTEGER                                   // local variables\n   Total ← 0\n   FOR Index ← 1 TO LENGTH(Word)\n      IF MID(Word, Index, 1) = Target THEN\n         Total ← Total + 1\n      ENDIF\n   NEXT Index\n   RETURN Total                                                     // return value\nENDFUNCTION\n\nDECLARE Place : STRING\nDECLARE Count : INTEGER\nPlace ← \"Mississippi\"\nCount ← CountChar(\"banana\", \"a\") + CountChar(Place, \"s\")\n\nParameters:  Word, Target\nArguments:   \"banana\" and \"a\" in the first call; Place and \"s\" in the second\nInterface:   two STRING parameters (by value, the default), returns an INTEGER\nTrace:       CountChar(\"banana\", \"a\") returns 3 (positions 2, 4, 6)\n             CountChar(\"Mississippi\", \"s\") returns 4 (positions 3, 4, 6, 7)\n             Count ← 3 + 4, so Count = 7"
+      },
+      {
+        "kind": "Section",
+        "text": "Passing parameters BYVAL and BYREF"
+      },
+      {
+        "kind": "Content",
+        "label": "Passing parameters BYVAL and BYREF",
+        "text": "Writing BYVAL or BYREF in front of a parameter in the header states how it is passed. BYVAL copies the argument's current value into the parameter; the procedure works on that copy, and the caller's variable is exactly as it was when the call ends. The argument may therefore be a literal or an expression. BYREF passes the address of the caller's variable, so inside the procedure the parameter is just another name for that same memory location. Every assignment to the parameter changes the caller's variable, and the argument must be a variable, not a constant or an expression."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing parameters BYVAL and BYREF",
+        "text": "If neither keyword is written, BYVAL is assumed. A keyword also carries on to the parameters that follow it until the other keyword appears, so in PROCEDURE Swap(BYREF X : INTEGER, Y : INTEGER) both X and Y are passed by reference. BYREF is used with procedures only; functions take BYVAL parameters and send their result back with RETURN. Choose BYREF when the purpose of the procedure is to update the caller's variables, and BYVAL whenever the caller's data should be protected."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing parameters BYVAL and BYREF",
+        "text": "BYVAL: a copy is passed; the caller's variable cannot be changed; argument may be any expression. Default."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing parameters BYVAL and BYREF",
+        "text": "BYREF: the variable's address is passed; changes inside the procedure remain after the call; argument must be a variable."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing parameters BYVAL and BYREF",
+        "text": "A BYVAL/BYREF keyword applies to the following parameters too, until the other keyword is written."
+      },
+      {
+        "kind": "Content",
+        "label": "Passing parameters BYVAL and BYREF",
+        "text": "Do not use BYREF with a function: a function returns its result with RETURN."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked traces: BYVAL and BYREF side by side"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "To decide what a call does to the caller, trace the caller's variables before and after each call, not just the parameters. In the first trace, Step is BYVAL and Total is BYREF. Doubling Step changes only the copy, so P stays 3 however many times the procedure is called, while every change to Total is made directly to Q."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "The second trace uses the same swap body twice. With BYREF applying to both parameters, the values are exchanged. With Y marked BYVAL, the assignment Y ← Temp changes only a copy, so the caller ends with the same value in both variables. That half-working swap is a classic exam trace."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "Always record the caller's variables after the call returns: that is where BYVAL and BYREF differ."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "A BYVAL parameter can be changed inside the procedure; the change is simply thrown away at the end."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "A swap needs both parameters BYREF; with one BYVAL, both variables end up holding the same value."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "PROCEDURE Update(BYVAL Step : INTEGER, BYREF Total : INTEGER)\n   Step ← Step * 2\n   Total ← Total + Step\nENDPROCEDURE\n\nDECLARE P, Q : INTEGER\nP ← 3\nQ ← 4\nCALL Update(P, Q)\nOUTPUT P, \" \", Q\nCALL Update(P, Q)\nOUTPUT P, \" \", Q\n\nStatement             | Step | Total (= Q) | P | Q  | OUTPUT\nP ← 3, Q ← 4          |      |             | 3 | 4  |\nCALL Update: enter    | 3    | 4           | 3 | 4  |\nStep ← Step * 2       | 6    | 4           | 3 | 4  |\nTotal ← Total + Step  | 6    | 10          | 3 | 10 |\nreturn, OUTPUT        |      |             | 3 | 10 | 3 10\nCALL Update: enter    | 3    | 10          | 3 | 10 |\nStep ← Step * 2       | 6    | 10          | 3 | 10 |\nTotal ← Total + Step  | 6    | 16          | 3 | 16 |\nreturn, OUTPUT        |      |             | 3 | 16 | 3 16\n\nStep starts at 3 on each call because it is a fresh copy of P; Q keeps growing because Total is Q."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "PROCEDURE SwapBoth(BYREF X : INTEGER, Y : INTEGER)     // BYREF covers X and Y\n   DECLARE Temp : INTEGER\n   Temp ← X\n   X ← Y\n   Y ← Temp\nENDPROCEDURE\n\nPROCEDURE SwapOne(BYREF X : INTEGER, BYVAL Y : INTEGER) // only X is BYREF\n   DECLARE Temp : INTEGER\n   Temp ← X\n   X ← Y\n   Y ← Temp\nENDPROCEDURE\n\nFirst ← 1\nSecond ← 2\nCALL SwapBoth(First, Second)\n   Temp ← 1; X ← 2 (First = 2); Y ← 1 (Second = 1)\n   After the call: First = 2, Second = 1   → swapped\n\nFirst ← 1\nSecond ← 2\nCALL SwapOne(First, Second)\n   Temp ← 1; X ← 2 (First = 2); Y ← 1 changes only the copy\n   After the call: First = 2, Second = 2   → not swapped"
+      },
+      {
+        "kind": "Example",
+        "label": "Worked traces: BYVAL and BYREF side by side",
+        "text": "# Assigning to an int parameter in Python never changes the caller's\n# variable, so it behaves like BYVAL. To imitate BYREF, pass a one-item\n# list and change item [0], which the caller can see.\n\ndef update(step, total_ref):        # BYVAL Step, BYREF Total\n    step = step * 2\n    total_ref[0] = total_ref[0] + step\n\np, q = 3, [4]\nupdate(p, q)\nprint(p, q[0])                      # 3 10\nupdate(p, q)\nprint(p, q[0])                      # 3 16\n\ndef swap_one(x_ref, y):              # BYREF X, BYVAL Y\n    temp = x_ref[0]\n    x_ref[0] = y\n    y = temp                         # only the local copy changes\n\nfirst, second = [1], 2\nswap_one(first, second)\nprint(first[0], second)             # 2 2"
+      },
+      {
+        "kind": "Section",
+        "text": "Writing efficient pseudocode"
+      },
+      {
+        "kind": "Content",
+        "label": "Writing efficient pseudocode",
+        "text": "Efficient pseudocode reaches the correct result without doing unnecessary work. Three habits cover most exam questions. First, do not repeat a calculation whose answer does not change: work it out once before a loop, or store a function's return value in a variable instead of calling the function twice. Second, stop a loop as soon as the answer is known: a search that has found its item should not keep checking the rest of the array, so a WHILE or REPEAT loop with a flag suits it better than a FOR loop over every element. Third, reuse modules: one procedure with parameters is better than several near-identical copies."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing efficient pseudocode",
+        "text": "Choosing the right structure is part of efficiency as well: a CASE instead of a long chain of separate IFs that are all tested, a FOR loop when the number of passes is fixed, and a condition-controlled loop when it is not. Efficient code is also usually shorter and clearer, which reduces the chance of errors."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing efficient pseudocode",
+        "text": "Move calculations that do not change out of the loop; store a return value rather than calling the same function again."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing efficient pseudocode",
+        "text": "Exit early: use a condition-controlled loop with a flag when the job can finish before the end of the data."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing efficient pseudocode",
+        "text": "Reuse one parameterised subroutine rather than writing several similar ones."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing efficient pseudocode",
+        "text": "Use IF … ELSE or CASE so that once one branch is chosen the other tests are skipped."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing efficient pseudocode",
+        "text": "// 1. Repeated calculation\n// Wasteful: Average(Marks) is worked out twice\nIF Average(Marks) >= 50 THEN\n   OUTPUT \"Pass, mean \", Average(Marks)\nENDIF\n// Better: call once, keep the return value\nMean ← Average(Marks)\nIF Mean >= 50 THEN\n   OUTPUT \"Pass, mean \", Mean\nENDIF\n\n// 2. Exiting a loop early (Names has 1000 elements, SearchName is in Names[3])\n// Wasteful: always checks all 1000 elements\nFound ← FALSE\nFOR Index ← 1 TO 1000\n   IF Names[Index] = SearchName THEN\n      Found ← TRUE\n   ENDIF\nNEXT Index\n// Better: stops as soon as the name is found\nFound ← FALSE\nIndex ← 1\nWHILE Index <= 1000 AND NOT Found\n   IF Names[Index] = SearchName THEN\n      Found ← TRUE\n   ELSE\n      Index ← Index + 1\n   ENDIF\nENDWHILE\n\nComparisons of Names[Index] with SearchName:\n   FOR version:   1000 (every element)\n   WHILE version: 3 (Index 1 no, 2 no, 3 yes; Found = TRUE ends the loop, Index = 3)"
       },
       {
         "kind": "Quick recall question",
-        "text": "What is structured (top-down) programming?"
+        "text": "How is a procedure with no parameters defined and called?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is structured (top-down) programming?",
-        "text": "Breaking a problem down into a hierarchy of smaller, self-contained procedures and functions (subroutines), each handling one well-defined sub-task, connected by a main routine that calls them."
+        "label": "How is a procedure with no parameters defined and called?",
+        "text": "PROCEDURE Name() … ENDPROCEDURE, called with the statement CALL Name()."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between a procedure and a function?"
+        "text": "Give the general form of a function header."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between a procedure and a function?",
-        "text": "A procedure performs a task but does not return a value; a function performs a task and returns exactly one value that can be used within an expression."
+        "label": "Give the general form of a function header.",
+        "text": "FUNCTION Name(P1 : TYPE, P2 : TYPE) RETURNS TYPE."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between passing a parameter by value and by reference?"
+        "text": "What happens to a function call when RETURN is executed?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between passing a parameter by value and by reference?",
-        "text": "By value, the subroutine receives a copy, so changes inside it do not affect the caller's original variable; by reference, the subroutine receives the actual variable itself, so changes inside it do affect the caller's original variable."
+        "label": "What happens to a function call when RETURN is executed?",
+        "text": "The function ends immediately and the returned value replaces the call in the expression, which is then evaluated."
       },
       {
         "kind": "Quick recall question",
-        "text": "In the worked trace, why was Number still 5 after AddTenByValue(Number) but 15 after AddTenByReference(Number), given both started with Number = 5?"
+        "text": "What is the difference between a parameter and an argument?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "In the worked trace, why was Number still 5 after AddTenByValue(Number) but 15 after AddTenByReference(Number), given both started with Number = 5?",
-        "text": "AddTenByValue only ever changed a copy of Number, leaving the original untouched; AddTenByReference changed Number itself directly, since its parameter was the actual variable, not a copy."
+        "label": "What is the difference between a parameter and an argument?",
+        "text": "A parameter is the identifier listed in the subroutine header; an argument is the actual value, variable or expression supplied in the call."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between a local variable and a global variable?"
+        "text": "What does a subroutine's interface consist of?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between a local variable and a global variable?",
-        "text": "A local variable is declared inside a subroutine and exists only while that subroutine is running; a global variable is declared at the top level and is accessible from anywhere in the program."
+        "label": "What does a subroutine's interface consist of?",
+        "text": "The number, order, data types and passing method of its parameters, and for a function the data type returned."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why are global variables generally best avoided in a subroutine's design?"
+        "text": "After PROCEDURE Update(BYVAL Step : INTEGER, BYREF Total : INTEGER) with Step ← Step * 2 and Total ← Total + Step, what are P and Q after CALL Update(P, Q) with P = 3, Q = 4?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why are global variables generally best avoided in a subroutine's design?",
-        "text": "Because a subroutine that depends on a global variable has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test independently."
+        "label": "After PROCEDURE Update(BYVAL Step : INTEGER, BYREF Total : INTEGER) with Step ← Step * 2 and Total ← Total + Step, what are P and Q after CALL Update(P, Q) with P = 3, Q = 4?",
+        "text": "P = 3 (only a copy was doubled) and Q = 10 (4 + 6, changed through BYREF)."
       },
       {
         "kind": "Quick recall question",
-        "text": "Name four benefits of structured programming with subroutines."
+        "text": "If no BYVAL or BYREF is written, how is a parameter passed?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Name four benefits of structured programming with subroutines.",
-        "text": "Reuse of code instead of duplication, independent testing of each subroutine, easier design of large problems as a hierarchy of smaller pieces, and easier fault isolation to one specific subroutine."
+        "label": "If no BYVAL or BYREF is written, how is a parameter passed?",
+        "text": "By value; BYVAL is the default."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "When is a function more appropriate than a procedure?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "When is a function more appropriate than a procedure?",
+        "text": "When the task produces exactly one value that the caller uses, for example in a calculation or as a condition."
       }
     ]
   },
@@ -15725,105 +15881,139 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to name and describe the stages of the program development life cycle, to identify which stage a given activity belongs to, and to explain why development is iterative rather than a single one-way pass from analysis through to maintenance. Answers score when analysis, design, coding, testing and documentation are each described in terms of what is actually produced at that stage, when the two kinds of documentation (technical and user) are correctly distinguished by their intended reader, when the three kinds of maintenance (corrective, adaptive, perfective) are matched to the correct trigger rather than guessed, and when a described fault is traced back to the specific earlier stage genuinely responsible for it, not simply patched at the stage where it was noticed."
+        "text": "A program development life cycle is the planned route a piece of software takes from an idea to a working, maintained product. Paper 2 asks why such a life cycle is used, why one model does not suit every project, and for the principles, benefits and drawbacks of the waterfall, iterative and rapid application development (RAD) models. It also asks what happens in the analysis, design, coding, testing and maintenance stages. Answers score when each stage is described by what it produces (for example a requirements specification from analysis), when a model's benefit or drawback is tied to how that model works rather than listed from memory, and when a recommended model is justified against the details of the scenario given: how stable the requirements are, the size of the project, how available the client is and how quickly the software is needed."
       },
       {
         "kind": "Definition",
         "label": "Program development life cycle",
-        "text": "The sequence of stages a program passes through from being identified as a problem to being released and maintained: analysis, design, coding, testing, documentation and maintenance."
+        "text": "The ordered set of stages that software passes through during its development and use: analysis, design, coding, testing and maintenance. When maintenance can no longer keep the program fit for purpose, a new cycle begins."
       },
       {
         "kind": "Definition",
-        "label": "Analysis",
-        "text": "The stage in which the problem to be solved is investigated and understood, identifying the inputs required, the outputs needed, the processing that must convert one into the other, and any constraints the solution must work within."
+        "label": "Requirements specification",
+        "text": "The document produced by analysis that states precisely what the new system must do and any constraints on it; later stages design, build and test against it."
       },
       {
         "kind": "Definition",
-        "label": "Design",
-        "text": "The stage in which the structure of a solution and the algorithms it will use are planned, for example with structure diagrams, pseudocode or flowcharts, before any program code is written."
+        "label": "Waterfall model",
+        "text": "A linear life cycle in which each stage is finished and signed off before the next begins, with the output of one stage becoming the input to the next."
       },
       {
         "kind": "Definition",
-        "label": "Coding (implementation)",
-        "text": "The stage in which the design is translated into actual program code in a chosen programming language."
+        "label": "Iterative model",
+        "text": "A life cycle that begins by building a small part of the requirements and then repeats cycles of planning, building, testing and review, each adding to a working version, until the whole system is complete."
       },
       {
         "kind": "Definition",
-        "label": "Testing",
-        "text": "The stage in which the coded program is run against chosen test data to check that it behaves correctly and meets its original specification, ideally before it is released to users."
+        "label": "Rapid application development (RAD)",
+        "text": "A life cycle with minimal up-front planning in which modules are built as prototypes, often in parallel, refined through short cycles with frequent user feedback, and joined together for fast delivery."
       },
       {
         "kind": "Definition",
-        "label": "Technical documentation",
-        "text": "Documentation written for future developers who will maintain or extend a program, describing how the program works internally, such as its design, variable and subroutine descriptions, and algorithms used."
-      },
-      {
-        "kind": "Definition",
-        "label": "User documentation",
-        "text": "Documentation written for the end users of a program, explaining how to use it, such as installation instructions, a guide to its features, and how to resolve common problems."
+        "label": "Prototype",
+        "text": "A working model of part of a system, built quickly so that users can try it and say what should change."
       },
       {
         "kind": "Definition",
         "label": "Maintenance",
-        "text": "Work carried out on a program after it has been released, comprising corrective maintenance (fixing faults), adaptive maintenance (adjusting to a new environment) and perfective maintenance (improving or extending the program)."
+        "text": "Changes made to a program after it is in use: corrective (fixing faults found later), adaptive (responding to a new environment or new requirements) and perfective (improving performance or usability)."
       },
       {
         "kind": "Section",
-        "text": "Analysis: understanding the problem"
+        "text": "The purpose of a development life cycle"
       },
       {
         "kind": "Content",
-        "label": "Analysis: understanding the problem",
-        "text": "Analysis is the first stage of the program development life cycle, in which the problem itself is investigated before any thought is given to how it will be solved in code. This means identifying exactly what inputs the program will need to accept, what outputs it must produce, and what processing must be carried out to turn the given inputs into the required outputs. Analysis also identifies any constraints the solution must work within, such as a maximum amount of memory or processing time available, hardware the program must run on, or rules the data itself must obey, for example that a percentage mark can only be a whole number from 0 to 100."
+        "label": "The purpose of a development life cycle",
+        "text": "A small program for your own use can be written by thinking for a few minutes and then typing. Commercial software is different: it is larger, involves a team, and is paid for by a client who expects particular results. A development life cycle gives that work a defined structure. The job is divided into stages (analysis, design, coding, testing and maintenance), each with a clear purpose and a clear output, so that progress can be planned, checked and managed."
       },
       {
         "kind": "Content",
-        "label": "Analysis: understanding the problem",
-        "text": "Analysis is easy to under-value because it produces no code and can feel like it is delaying the 'real' work of programming, but a problem the analysis stage fails to identify, such as a case the program will actually need to handle that nobody thought to ask about, cannot be fixed simply by writing better code later; the resulting design and every later stage built on top of it will all be missing something the analysis should have caught, and the omission will only be discovered once the program is tested, or worse, once it has already been released."
+        "label": "The purpose of a development life cycle",
+        "text": "Working to a life cycle means the problem is understood before anything is built, the solution is planned before it is coded, and the product is tested against what the client actually asked for. It also makes it easier to estimate time and cost, to share the work between team members, and to produce documentation along the way. The stages form a cycle because, when a program can no longer be maintained to meet its users' needs, the process starts again with a fresh analysis."
       },
       {
         "kind": "Content",
-        "label": "Analysis: understanding the problem",
-        "text": "Analysis identifies the required inputs, outputs, processing and any constraints of the problem, before any solution is designed."
+        "label": "The purpose of a development life cycle",
+        "text": "Purpose: give development a structured, manageable sequence of stages with defined outputs."
       },
       {
         "kind": "Content",
-        "label": "Analysis: understanding the problem",
-        "text": "Constraints can include hardware limits, performance requirements, or rules the data itself must satisfy."
+        "label": "The purpose of a development life cycle",
+        "text": "Benefits: the problem is understood first, work can be planned and costed, progress can be measured, the product is checked against the requirements."
       },
       {
         "kind": "Content",
-        "label": "Analysis: understanding the problem",
-        "text": "A problem analysis fails to identify cannot be fixed by better code later; it propagates, unnoticed, into every stage built on top of it."
+        "label": "The purpose of a development life cycle",
+        "text": "Stages: analysis → design → coding → testing → maintenance, and back to analysis when the system is no longer fit for purpose."
       },
       {
         "kind": "Section",
-        "text": "Design: planning the solution before coding"
+        "text": "Analysis"
       },
       {
         "kind": "Content",
-        "label": "Design: planning the solution before coding",
-        "text": "Design takes the understanding produced by analysis and plans, on paper or in a design tool, the structure and algorithms a solution will actually use, before a single line of program code is written. This includes deciding how the problem will be broken down into smaller, self-contained parts, and working out the precise logic each part needs, using tools such as structure diagrams to show the solution's overall structure and pseudocode or flowcharts to plan an algorithm's exact logic in detail, as covered in more depth in Program Design (12.2)."
+        "label": "Analysis",
+        "text": "Analysis is about understanding the problem, not solving it yet. The analyst investigates the current system if there is one, for example by interviewing users, observing how they work and examining existing documents, and uses abstraction to concentrate on what matters. The problem is then defined clearly and precisely: the inputs, the outputs, the processing needed between them and any constraints, such as hardware, budget, deadlines or rules on the data."
       },
       {
         "kind": "Content",
-        "label": "Design: planning the solution before coding",
-        "text": "Designing a solution before coding it lets mistakes in the underlying logic be caught and corrected while they are still cheap to fix, since changing a diagram or a page of pseudocode costs far less than changing a large amount of already-written, already-tested code built around a flawed plan."
+        "label": "Analysis",
+        "text": "The result is a requirements specification that the client can agree to. Possible solutions may be compared at this stage and the most suitable one chosen. Everything later is judged against this document, so a requirement missed here tends to surface much later, when it is expensive to fix."
       },
       {
         "kind": "Content",
-        "label": "Design: planning the solution before coding",
-        "text": "Design plans a solution's structure and algorithms before any code is written, using tools such as structure diagrams, pseudocode and flowcharts."
+        "label": "Analysis",
+        "text": "Investigate the problem and any existing system (interviews, observation, documents)."
       },
       {
         "kind": "Content",
-        "label": "Design: planning the solution before coding",
-        "text": "Design turns the understanding produced by analysis into a concrete plan the coding stage can follow directly."
+        "label": "Analysis",
+        "text": "Define inputs, outputs, processing and constraints precisely."
       },
       {
         "kind": "Content",
-        "label": "Design: planning the solution before coding",
-        "text": "Fixing a flaw in a design is far cheaper than fixing the same flaw after a large amount of code has already been written around it."
+        "label": "Analysis",
+        "text": "Output: an agreed requirements specification; possible solutions compared and one chosen."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysis",
+        "text": "A requirement missed in analysis usually shows up only in testing or after release."
+      },
+      {
+        "kind": "Example",
+        "label": "Analysis",
+        "text": "A program works out a student's grade from three test scores. The requirements said \"average three scores\" and never considered a student who was absent for one test.\n\nTesting: a tester enters 0 for the missed test. The average falls from 70 (marks 68 and 72) to 46.7, and the grade drops sharply.\n\nWhere is the fault?\n   Coding? No. The code averages three numbers, exactly as designed.\n   Design? No. The design follows the specification it was given.\n   Analysis? Yes. \"A score may be missing\" was never identified as a requirement.\n\nFix: go back to analysis and add the requirement (e.g. average only the tests actually taken), then update the design, then the code, then re-test.\nPatching the code alone (e.g. ignoring every 0) would wrongly discard a genuine mark of 0."
+      },
+      {
+        "kind": "Section",
+        "text": "Design"
+      },
+      {
+        "kind": "Content",
+        "label": "Design",
+        "text": "Design decides how the requirements will be met, in enough detail that a programmer could build the solution from it. A useful starting point is an identifier table listing the data the program needs. From that the designer chooses data structures (a 1D or 2D array, a record) and decides whether data must be kept permanently in a file. The program is decomposed into modules, shown on a structure chart, and each algorithm is planned as a flowchart or in pseudocode (see 12.2). Test data can also be planned here."
+      },
+      {
+        "kind": "Content",
+        "label": "Design",
+        "text": "Design mistakes are much cheaper to correct on paper than after the code has been written, which is why it comes before coding."
+      },
+      {
+        "kind": "Content",
+        "label": "Design",
+        "text": "Plan data: identifier table, data structures, files."
+      },
+      {
+        "kind": "Content",
+        "label": "Design",
+        "text": "Plan structure: decomposition into modules on a structure chart."
+      },
+      {
+        "kind": "Content",
+        "label": "Design",
+        "text": "Plan logic: flowcharts or pseudocode for each module; plan test data."
       },
       {
         "kind": "Section",
@@ -15832,27 +16022,27 @@
       {
         "kind": "Content",
         "label": "Coding (implementation)",
-        "text": "Coding, also called implementation, is the stage in which the design is translated into actual program code, in whichever programming language has been chosen for the project. A design produced with structure diagrams and pseudocode gives the programmer a clear plan to follow, so coding becomes primarily a matter of expressing that already-worked-out logic correctly in the target language's own syntax, rather than working out the logic itself for the first time while also worrying about syntax."
+        "text": "In coding, often called implementation, the design is turned into program code. A suitable high-level language has to be chosen, taking into account what the problem needs and what the team knows well. The pseudocode is then translated into that language, module by module."
       },
       {
         "kind": "Content",
         "label": "Coding (implementation)",
-        "text": "Coding that follows a proper design still requires care: a design's pseudocode may need to be adapted to the particular features and limitations of the chosen language, and the programmer must still avoid introducing new errors, such as typing mistakes or misused syntax, that were not present in the design itself."
+        "text": "Code rarely works first time. Syntax errors stop it compiling, and once it runs it may crash or give wrong output, so the programmer debugs as they go. Each module is normally tested on its own as it is written, and tested again after every change, so that fixing one thing does not break another."
       },
       {
         "kind": "Content",
         "label": "Coding (implementation)",
-        "text": "Coding translates an already-completed design into working program code in the chosen language."
+        "text": "Choose a suitable programming language; translate the design into code."
       },
       {
         "kind": "Content",
         "label": "Coding (implementation)",
-        "text": "A good design makes coding primarily a matter of expressing already-worked-out logic correctly, rather than inventing that logic while also fighting syntax."
+        "text": "Remove syntax errors so it translates, then debug crashes and wrong output."
       },
       {
         "kind": "Content",
         "label": "Coding (implementation)",
-        "text": "Coding can still introduce its own new errors, such as typing mistakes, even when the underlying design was entirely correct."
+        "text": "Test each module as it is written and again after each change."
       },
       {
         "kind": "Section",
@@ -15861,182 +16051,259 @@
       {
         "kind": "Content",
         "label": "Testing",
-        "text": "Testing checks that the coded program actually behaves correctly and meets the specification produced during analysis, running the program against chosen test data and comparing the actual results it produces to the results that were expected. The methods and categories of test data used for this, including white-box and black-box testing and normal, boundary and erroneous test data, are covered in detail in Program Testing and Maintenance (12.3)."
+        "text": "Getting some output is not the same as the program being correct. Testing checks, in a planned and thorough way, that the whole program meets every requirement in the specification, accepts valid input, rejects invalid input sensibly and behaves reliably in all situations. Normal, boundary and erroneous test data and methods such as white-box, black-box, alpha and beta testing are covered in 12.3."
       },
       {
         "kind": "Content",
         "label": "Testing",
-        "text": "Testing is most valuable when it happens before release, since a fault found and corrected during testing costs far less, and affects far fewer people, than the same fault being found by a user after the program has already been released; but testing before release, however thorough, can never guarantee every possible fault has been found, which is one reason corrective maintenance still exists after release."
+        "text": "When a test fails, the cause is traced back to the stage where it began, which may be coding, design or even analysis. Testing can show that errors are present but can never prove that none are left, which is one reason maintenance is needed later."
       },
       {
         "kind": "Content",
         "label": "Testing",
-        "text": "Testing runs the coded program against chosen test data and compares the actual results to the expected results from the specification."
+        "text": "Check the whole program against the requirements specification."
       },
       {
         "kind": "Content",
         "label": "Testing",
-        "text": "A fault found during testing, before release, is far cheaper to correct than the same fault found by a user afterwards."
+        "text": "Use planned test data covering valid, boundary and invalid input (details in 12.3)."
       },
       {
         "kind": "Content",
         "label": "Testing",
-        "text": "Testing before release reduces, but can never completely eliminate, the chance that a fault remains undiscovered until after release."
+        "text": "A failed test is traced back to the stage that caused it; testing cannot prove a program is error-free."
       },
       {
         "kind": "Section",
-        "text": "Documentation: technical and user"
+        "text": "Maintenance"
       },
       {
         "kind": "Content",
-        "label": "Documentation: technical and user",
-        "text": "Documentation is produced to support a program both for the people who will maintain it in the future and for the people who will actually use it, and these are two genuinely different kinds of writing aimed at two genuinely different readers. Technical documentation is written for future developers, describing how the program actually works internally: its design, the purpose of its variables and subroutines, the algorithms it uses, and anything a developer would need to understand before safely changing it. User documentation is written for end users, explaining how to use the program itself: how to install it, how to use each of its features, and how to resolve common problems, without assuming any knowledge of how the program works internally at all."
+        "label": "Maintenance",
+        "text": "Once the software is in use, maintenance keeps it useful. Corrective maintenance fixes faults that testing missed. Adaptive maintenance changes the program because its environment or the requirements have changed, for example new hardware, a new operating system or a new law. Perfective maintenance makes the program better without changing what it does, such as making it faster or easier to use. The three types are covered fully in 12.3."
       },
       {
         "kind": "Content",
-        "label": "Documentation: technical and user",
-        "text": "Confusing the two, for example giving an end user a description of the program's internal variable names and algorithms, or giving a future developer only a guide to clicking buttons, fails the reader either document was actually written for; each must be written with its intended reader's own needs and existing knowledge in mind."
+        "label": "Maintenance",
+        "text": "Maintenance can carry on for years, and it relies on the documentation produced in earlier stages. When changes can no longer keep the system fit for purpose, a new analysis begins, which is what makes the process a cycle rather than a straight line."
       },
       {
         "kind": "Content",
-        "label": "Documentation: technical and user",
-        "text": "Technical documentation is written for future developers and describes how the program works internally."
+        "label": "Maintenance",
+        "text": "Corrective: fix faults found after release."
       },
       {
         "kind": "Content",
-        "label": "Documentation: technical and user",
-        "text": "User documentation is written for end users and explains how to use the program's features, without assuming internal knowledge."
+        "label": "Maintenance",
+        "text": "Adaptive: respond to a changed environment or changed requirements."
       },
       {
         "kind": "Content",
-        "label": "Documentation: technical and user",
-        "text": "Writing the wrong kind of documentation for a given reader, such as internal detail for an end user, fails that reader's actual needs."
+        "label": "Maintenance",
+        "text": "Perfective: improve performance or usability."
+      },
+      {
+        "kind": "Content",
+        "label": "Maintenance",
+        "text": "When maintenance is no longer enough, the cycle restarts with analysis."
       },
       {
         "kind": "Section",
-        "text": "Maintenance: corrective, adaptive and perfective"
+        "text": "The waterfall model"
       },
       {
         "kind": "Content",
-        "label": "Maintenance: corrective, adaptive and perfective",
-        "text": "Maintenance is an ongoing stage carried out after a program has been released, rather than a single event, and it is divided into three kinds by why the change is being made. Corrective maintenance fixes a fault discovered after release, such as a bug reported by users that pre-release testing failed to catch. Adaptive maintenance changes the program so that it continues to work correctly in a new environment, for example when it must run on new hardware or a new operating system it was not originally written for, even though the program's own required behaviour has not changed."
+        "label": "The waterfall model",
+        "text": "Principles: the stages are carried out one after another, like water falling down steps. Each stage is completed, and its output (the specification, the design, the code) is passed down as the input to the next. All requirements are fixed at the start. Arrows back up to the previous stage allow for going back when more work is found to be needed, but the model assumes this is rare. Nothing usable is delivered until the end."
       },
       {
         "kind": "Content",
-        "label": "Maintenance: corrective, adaptive and perfective",
-        "text": "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as adding a new feature that was never part of the original specification, or improving the program's performance where it already worked correctly but more slowly than desired. The three are distinguished by their trigger, not by how large the change is: a one-line fix for a reported bug is still corrective maintenance, and a large new feature is still perfective maintenance, because what matters is why the change was made, not how much code it touches."
+        "label": "The waterfall model",
+        "text": "Benefits: it is simple to understand and easy to manage, because every stage has a defined output and a clear end point; one stage is handled at a time; and it suits smaller projects whose requirements are well understood and fixed. Drawbacks: working software appears only late in the project; changing requirements cannot easily be accommodated; progress inside a stage is hard to measure; modules are brought together only at the end, so integration problems are found late; and it is a poor choice for complex, long-running or ongoing projects."
       },
       {
         "kind": "Content",
-        "label": "Maintenance: corrective, adaptive and perfective",
-        "text": "Corrective maintenance fixes a fault discovered after release that pre-release testing did not catch."
+        "label": "The waterfall model",
+        "text": "Principle: strictly sequential stages, each finished before the next; requirements fixed at the start."
       },
       {
         "kind": "Content",
-        "label": "Maintenance: corrective, adaptive and perfective",
-        "text": "Adaptive maintenance changes the program so it keeps working correctly in a new environment, such as new hardware or a new operating system."
+        "label": "The waterfall model",
+        "text": "Benefits: simple, easy to manage, clear milestones and outputs; good for small, well-understood projects."
       },
       {
         "kind": "Content",
-        "label": "Maintenance: corrective, adaptive and perfective",
-        "text": "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as a new feature or better performance."
+        "label": "The waterfall model",
+        "text": "Drawbacks: no working product until late, cannot cope with changing requirements, late integration, poor for large or long projects."
       },
       {
         "kind": "Section",
-        "text": "Development is iterative, not strictly one-way"
+        "text": "The iterative model"
       },
       {
         "kind": "Content",
-        "label": "Development is iterative, not strictly one-way",
-        "text": "The stages of the life cycle are usually presented in the order analysis, design, coding, testing, documentation and maintenance, and it is tempting to picture development as a single, one-way pass straight through them. In practice, development is iterative: a problem discovered at a later stage very often sends the developer back to an earlier stage to fix it there, rather than being patched only at the stage where it happened to be noticed. Which earlier stage a problem sends the developer back to depends entirely on what actually caused it, and correctly identifying that stage, rather than simply patching the symptom where it surfaced, is exactly what separates a genuine fix from a temporary workaround."
+        "label": "The iterative model",
+        "text": "Principles: development does not wait for a complete specification. A small subset of the requirements is built first, giving a working, if limited, version. It is then reviewed, more requirements are identified, and another cycle of design, coding and testing adds to it. The cycles repeat until the whole system is complete, often tackling the highest-risk parts first."
       },
       {
         "kind": "Content",
-        "label": "Development is iterative, not strictly one-way",
-        "text": "A fault found during coding that stems from an unclear or incomplete design sends the developer back to design, not merely to a different way of writing the same code. A fault found during testing that stems from the original analysis missing some case the program actually needs to handle sends the developer all the way back to analysis, since the design and the code built on top of an incomplete analysis will both need to change once that missing case is correctly identified, not just the specific line of code where the test happened to fail."
+        "label": "The iterative model",
+        "text": "Benefits: a working model exists early, so design or functional flaws are spotted and corrected quickly; the client can try each version and give feedback; progress is visible after each cycle; changing the scope costs less; each increment is small, so it is easier to test and debug; and lessons from one cycle improve the next. It suits large and mission-critical projects. Drawbacks: it needs more resources and management; a small system may be hard to split into useful increments; because not all requirements are known at the start, the overall design may need reworking later; and planning the increments may require a view of the complete system anyway."
       },
       {
         "kind": "Content",
-        "label": "Development is iterative, not strictly one-way",
-        "text": "Although presented in a fixed order, real development is iterative: a later stage can send the developer back to an earlier one."
+        "label": "The iterative model",
+        "text": "Principle: build a small part, review, then add more in repeated cycles until complete."
       },
       {
         "kind": "Content",
-        "label": "Development is iterative, not strictly one-way",
-        "text": "Which stage a problem sends the developer back to depends on what actually caused it, not on which stage merely happened to notice it."
+        "label": "The iterative model",
+        "text": "Benefits: early working versions, early fault detection, regular client feedback, measurable progress, lower cost of change, risks tackled early."
       },
       {
         "kind": "Content",
-        "label": "Development is iterative, not strictly one-way",
-        "text": "A fault stemming from an incomplete design sends the developer back to design; a fault stemming from an incomplete analysis sends the developer back to analysis, not just to a code fix."
+        "label": "The iterative model",
+        "text": "Drawbacks: more resources, hard to divide small systems, design issues from requirements that arrive late."
+      },
+      {
+        "kind": "Section",
+        "text": "Rapid application development (RAD)"
+      },
+      {
+        "kind": "Content",
+        "label": "Rapid application development (RAD)",
+        "text": "Principles: RAD replaces detailed up-front planning with prototyping. Modules are built as prototypes, often by separate small teams at the same time, and users try them and suggest changes. Analysis, design, coding and testing are squeezed into a series of short, repeated cycles, requirements are allowed to change as the work proceeds, and the finished prototypes are joined together to give the complete product quickly."
+      },
+      {
+        "kind": "Content",
+        "label": "Rapid application development (RAD)",
+        "text": "Benefits: much shorter development time; changing requirements are welcomed rather than resisted; users give feedback from the first review, so the product matches what they need; integrating from the start avoids a big integration problem at the end; progress is measurable; and components are often reused. Drawbacks: the system must be one that can be split into modules; it needs highly skilled developers and designers; users must be available and involved throughout; and it is best suited to component-based projects that need a short development time. Speed can also mean less formal documentation."
+      },
+      {
+        "kind": "Content",
+        "label": "Rapid application development (RAD)",
+        "text": "Principle: minimal planning, prototypes built in parallel, short feedback cycles, prototypes integrated into the final product."
+      },
+      {
+        "kind": "Content",
+        "label": "Rapid application development (RAD)",
+        "text": "Benefits: fast delivery, flexible requirements, strong user feedback, early integration, component reuse."
+      },
+      {
+        "kind": "Content",
+        "label": "Rapid application development (RAD)",
+        "text": "Drawbacks: needs modular systems, skilled staff and constant user involvement; documentation may be thin."
+      },
+      {
+        "kind": "Section",
+        "text": "Why different programs need different life cycles"
+      },
+      {
+        "kind": "Content",
+        "label": "Why different programs need different life cycles",
+        "text": "No single model suits every program. The right choice depends on how clearly the requirements are known and whether they will change, the size and complexity of the system, how much risk is involved, how quickly something usable is needed, how skilled the team is, and whether the client can take part throughout."
+      },
+      {
+        "kind": "Content",
+        "label": "Why different programs need different life cycles",
+        "text": "Waterfall fits a small or well-understood job with fixed, agreed requirements, such as software that must follow a fixed standard. The iterative model fits a large or critical system where the full requirements emerge over time and early working versions reduce risk. RAD fits a system that has to be delivered quickly, can be split into components and has users available to test prototypes, such as a business app whose screens need regular user input."
+      },
+      {
+        "kind": "Content",
+        "label": "Why different programs need different life cycles",
+        "text": "Deciding factors: stability of requirements, size and complexity, risk, deadline, team skill, client availability."
+      },
+      {
+        "kind": "Content",
+        "label": "Why different programs need different life cycles",
+        "text": "Fixed, clear requirements and a small project → waterfall."
+      },
+      {
+        "kind": "Content",
+        "label": "Why different programs need different life cycles",
+        "text": "Large or critical project with evolving requirements → iterative."
+      },
+      {
+        "kind": "Content",
+        "label": "Why different programs need different life cycles",
+        "text": "Short deadline, modular system, users available throughout → RAD."
       },
       {
         "kind": "Example",
-        "label": "Development is iterative, not strictly one-way",
-        "text": "A program is written to calculate a student's overall grade from three test scores, each expected to be out of 100. The original analysis identified the inputs as \"three scores\" and the processing as \"average the three scores and convert to a grade\", but never asked what should happen if a student has been absent for one test and so has no score for it.\n\nDuring testing, a tester enters a missing score as 0 for the absent test, and the program averages it in as if it were a genuine mark of zero, producing a grade far lower than the student's actual performance on the two tests they did sit.\n\n-- Tracing the fault back --\n// Symptom noticed at: TESTING (the wrong grade is produced for this test case)\n// Could the CODE be patched directly? Only by adding a special case for a score\n//   of 0, which would then wrongly treat a genuine mark of zero the same way.\n// Is this really a CODING fault? No: the code correctly implements the design\n//   it was given; the design never described how to handle a missing score\n//   at all, so there is nothing wrong with how the design was translated into code.\n// Is this really a DESIGN fault? No: the design correctly implements the\n//   analysis it was given, an average of three scores; a missing score was\n//   never part of what the design was asked to handle in the first place.\n// Root cause: ANALYSIS never identified \"a test may have no score, because the\n//   student was absent\" as a case the program needed to handle at all.\n\n-- Correct fix --\n// Return to ANALYSIS: identify that a missing score is a distinct case, decide\n//   how it should be represented (e.g. a special value, not 0) and how it should\n//   affect the average (e.g. average only the scores that exist).\n// Only then revise the DESIGN's algorithm to handle this case, and only then\n//   update the CODE to match the revised design.\n// Patching only the code at the point testing found the fault would leave the\n//   design and the analysis both still silently missing the same case."
+        "label": "Why different programs need different life cycles",
+        "text": "Scenario A: a program to calculate payroll deductions to a tax rule that is fully published and will not change this year. Small team, fixed deadline.\n   → Waterfall. Requirements are complete and stable, so each stage can be finished and signed off in order; the clear milestones make it easy to manage.\n\nScenario B: a hospital system for patient records, scheduling and prescriptions, to be used for many years; staff are not yet sure of every feature they need.\n   → Iterative. Build the high-risk records core first, deliver working versions, and add features as requirements become clear; each increment is tested on its own.\n\nScenario C: a shop needs a customer ordering app in eight weeks. The manager can meet the developers every week to try screens.\n   → RAD. Tight deadline, the app splits into separate screens/modules built in parallel as prototypes, and the available user gives constant feedback."
       },
       {
         "kind": "Quick recall question",
-        "text": "What are the six stages of the program development life cycle?"
+        "text": "What is the purpose of a program development life cycle?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What are the six stages of the program development life cycle?",
-        "text": "Analysis, design, coding (implementation), testing, documentation and maintenance."
+        "label": "What is the purpose of a program development life cycle?",
+        "text": "To give development a structured sequence of stages with defined outputs, so the work can be planned, managed and checked against the requirements."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does the analysis stage identify?"
+        "text": "Name the stages of the program development life cycle."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does the analysis stage identify?",
-        "text": "The problem's required inputs, outputs, processing, and any constraints the solution must work within."
+        "label": "Name the stages of the program development life cycle.",
+        "text": "Analysis, design, coding (implementation), testing and maintenance."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is a solution designed before it is coded?"
+        "text": "What is the main output of the analysis stage?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is a solution designed before it is coded?",
-        "text": "So mistakes in the underlying logic can be caught and fixed while still cheap to change, rather than after a large amount of code has already been written around them."
+        "label": "What is the main output of the analysis stage?",
+        "text": "A requirements specification defining what the system must do and any constraints."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between technical documentation and user documentation?"
+        "text": "State one benefit and one drawback of the waterfall model."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between technical documentation and user documentation?",
-        "text": "Technical documentation is written for future developers and describes how the program works internally; user documentation is written for end users and explains how to use the program's features."
+        "label": "State one benefit and one drawback of the waterfall model.",
+        "text": "Benefit: simple and easy to manage, with clear stages and outputs. Drawback: no working software until late, and changing requirements are hard to accommodate."
       },
       {
         "kind": "Quick recall question",
-        "text": "What are the three kinds of maintenance, and what triggers each?"
+        "text": "How does the iterative model begin?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What are the three kinds of maintenance, and what triggers each?",
-        "text": "Corrective maintenance fixes a fault discovered after release; adaptive maintenance keeps the program working correctly in a new environment; perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working."
+        "label": "How does the iterative model begin?",
+        "text": "By building a small subset of the requirements, then adding to it through repeated cycles of review, design, coding and testing."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is program development described as iterative rather than strictly one-way?"
+        "text": "What is a prototype, and why does RAD use them?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is program development described as iterative rather than strictly one-way?",
-        "text": "Because a problem discovered at a later stage, such as testing, often has its root cause in an earlier stage, such as design or analysis, and must be corrected there rather than only patched where it was noticed."
+        "label": "What is a prototype, and why does RAD use them?",
+        "text": "A working model of part of a system; RAD uses prototypes so users can give feedback quickly instead of relying on detailed up-front planning."
       },
       {
         "kind": "Quick recall question",
-        "text": "If testing reveals the program cannot handle a case the original analysis never identified, which stage must development return to, and why?"
+        "text": "Give two conditions a project needs for RAD to be suitable."
       },
       {
         "kind": "Quick recall answer",
-        "label": "If testing reveals the program cannot handle a case the original analysis never identified, which stage must development return to, and why?",
-        "text": "Analysis, because the design and code both faithfully implement an analysis that was itself incomplete; fixing only the code at the point testing found the fault would leave that same gap unaddressed."
+        "label": "Give two conditions a project needs for RAD to be suitable.",
+        "text": "Any two of: the system can be split into modules; skilled developers are available; users can be involved throughout; a short development time is required."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is it called a life cycle?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is it called a life cycle?",
+        "text": "Because when maintenance can no longer keep the program fit for purpose, development begins again with a new analysis."
       }
     ]
   },

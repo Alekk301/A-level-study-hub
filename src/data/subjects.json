@@ -1100,11 +1100,13 @@
             "levels": [
               "AS"
             ],
-            "summary": "Break programs into procedures and functions with parameters, improving modularity and controlling variable scope.",
+            "summary": "Define and call procedures and functions, pass parameters by value or by reference, use the correct terminology and write efficient pseudocode.",
             "focusPoints": [
-              "procedures/functions",
-              "parameters",
-              "scope/modularity"
+              "PROCEDURE/CALL",
+              "FUNCTION/RETURNS",
+              "BYVAL/BYREF",
+              "header/interface/argument",
+              "efficient pseudocode"
             ],
             "contentDepth": "full"
           },
@@ -1115,13 +1117,13 @@
             "levels": [
               "AS"
             ],
-            "summary": "Follow the stages of analysis, design, coding, testing and maintenance when developing software.",
+            "summary": "Explain the purpose of a development life cycle, compare the waterfall, iterative and RAD models, and describe the analysis, design, coding, testing and maintenance stages.",
             "focusPoints": [
-              "analysis",
-              "design",
-              "coding",
-              "testing",
-              "maintenance"
+              "purpose of a life cycle",
+              "waterfall",
+              "iterative",
+              "RAD",
+              "life-cycle stages"
             ],
             "contentDepth": "full"
           },

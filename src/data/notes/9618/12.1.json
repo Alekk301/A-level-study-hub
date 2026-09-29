@@ -6,77 +6,91 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Program Development Life Cycle",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to name and describe the stages of the program development life cycle, to identify which stage a given activity belongs to, and to explain why development is iterative rather than a single one-way pass from analysis through to maintenance. Answers score when analysis, design, coding, testing and documentation are each described in terms of what is actually produced at that stage, when the two kinds of documentation (technical and user) are correctly distinguished by their intended reader, when the three kinds of maintenance (corrective, adaptive, perfective) are matched to the correct trigger rather than guessed, and when a described fault is traced back to the specific earlier stage genuinely responsible for it, not simply patched at the stage where it was noticed.",
+  "overview": "A program development life cycle is the planned route a piece of software takes from an idea to a working, maintained product. Paper 2 asks why such a life cycle is used, why one model does not suit every project, and for the principles, benefits and drawbacks of the waterfall, iterative and rapid application development (RAD) models. It also asks what happens in the analysis, design, coding, testing and maintenance stages. Answers score when each stage is described by what it produces (for example a requirements specification from analysis), when a model's benefit or drawback is tied to how that model works rather than listed from memory, and when a recommended model is justified against the details of the scenario given: how stable the requirements are, the size of the project, how available the client is and how quickly the software is needed.",
   "syllabusPoints": [
-    "Show understanding of the stages of the program development life cycle: analysis, design, coding, testing, documentation and maintenance.",
-    "Describe the analysis stage, in which the problem, its required inputs, outputs, processing and any constraints are identified and understood.",
-    "Describe the design stage, in which the structure and algorithms of a solution are planned before any code is written.",
-    "Describe the coding (implementation) stage, in which the program code is written from the design.",
-    "Describe the testing stage, in which the program is checked to ensure it behaves correctly and meets its specification.",
-    "Describe the documentation stage, distinguishing technical documentation, written for future developers, from user documentation, written for end users.",
-    "Show understanding that maintenance is an ongoing stage after release, comprising corrective, adaptive and perfective maintenance.",
-    "Show understanding that the stages of the life cycle are iterative: a problem found at a later stage may require returning to an earlier one."
+    "Show understanding of the purpose of a development life cycle.",
+    "Show understanding of the need for different development life cycles depending on the program being developed.",
+    "Describe the principles, benefits and drawbacks of each type of life cycle, including waterfall, iterative and rapid application development (RAD).",
+    "Show understanding of the analysis, design, coding, testing and maintenance stages in the program development life cycle."
   ],
   "definitions": [
     {
       "term": "Program development life cycle",
-      "definition": "The sequence of stages a program passes through from being identified as a problem to being released and maintained: analysis, design, coding, testing, documentation and maintenance."
+      "definition": "The ordered set of stages that software passes through during its development and use: analysis, design, coding, testing and maintenance. When maintenance can no longer keep the program fit for purpose, a new cycle begins."
     },
     {
-      "term": "Analysis",
-      "definition": "The stage in which the problem to be solved is investigated and understood, identifying the inputs required, the outputs needed, the processing that must convert one into the other, and any constraints the solution must work within."
+      "term": "Requirements specification",
+      "definition": "The document produced by analysis that states precisely what the new system must do and any constraints on it; later stages design, build and test against it."
     },
     {
-      "term": "Design",
-      "definition": "The stage in which the structure of a solution and the algorithms it will use are planned, for example with structure diagrams, pseudocode or flowcharts, before any program code is written."
+      "term": "Waterfall model",
+      "definition": "A linear life cycle in which each stage is finished and signed off before the next begins, with the output of one stage becoming the input to the next."
     },
     {
-      "term": "Coding (implementation)",
-      "definition": "The stage in which the design is translated into actual program code in a chosen programming language."
+      "term": "Iterative model",
+      "definition": "A life cycle that begins by building a small part of the requirements and then repeats cycles of planning, building, testing and review, each adding to a working version, until the whole system is complete."
     },
     {
-      "term": "Testing",
-      "definition": "The stage in which the coded program is run against chosen test data to check that it behaves correctly and meets its original specification, ideally before it is released to users."
+      "term": "Rapid application development (RAD)",
+      "definition": "A life cycle with minimal up-front planning in which modules are built as prototypes, often in parallel, refined through short cycles with frequent user feedback, and joined together for fast delivery."
     },
     {
-      "term": "Technical documentation",
-      "definition": "Documentation written for future developers who will maintain or extend a program, describing how the program works internally, such as its design, variable and subroutine descriptions, and algorithms used."
-    },
-    {
-      "term": "User documentation",
-      "definition": "Documentation written for the end users of a program, explaining how to use it, such as installation instructions, a guide to its features, and how to resolve common problems."
+      "term": "Prototype",
+      "definition": "A working model of part of a system, built quickly so that users can try it and say what should change."
     },
     {
       "term": "Maintenance",
-      "definition": "Work carried out on a program after it has been released, comprising corrective maintenance (fixing faults), adaptive maintenance (adjusting to a new environment) and perfective maintenance (improving or extending the program)."
+      "definition": "Changes made to a program after it is in use: corrective (fixing faults found later), adaptive (responding to a new environment or new requirements) and perfective (improving performance or usability)."
     }
   ],
   "sections": [
     {
-      "id": "01-analysis",
-      "title": "Analysis: understanding the problem",
+      "id": "08-purpose-of-life-cycle",
+      "title": "The purpose of a development life cycle",
       "content": [
-        "Analysis is the first stage of the program development life cycle, in which the problem itself is investigated before any thought is given to how it will be solved in code. This means identifying exactly what inputs the program will need to accept, what outputs it must produce, and what processing must be carried out to turn the given inputs into the required outputs. Analysis also identifies any constraints the solution must work within, such as a maximum amount of memory or processing time available, hardware the program must run on, or rules the data itself must obey, for example that a percentage mark can only be a whole number from 0 to 100.",
-        "Analysis is easy to under-value because it produces no code and can feel like it is delaying the 'real' work of programming, but a problem the analysis stage fails to identify, such as a case the program will actually need to handle that nobody thought to ask about, cannot be fixed simply by writing better code later; the resulting design and every later stage built on top of it will all be missing something the analysis should have caught, and the omission will only be discovered once the program is tested, or worse, once it has already been released."
+        "A small program for your own use can be written by thinking for a few minutes and then typing. Commercial software is different: it is larger, involves a team, and is paid for by a client who expects particular results. A development life cycle gives that work a defined structure. The job is divided into stages (analysis, design, coding, testing and maintenance), each with a clear purpose and a clear output, so that progress can be planned, checked and managed.",
+        "Working to a life cycle means the problem is understood before anything is built, the solution is planned before it is coded, and the product is tested against what the client actually asked for. It also makes it easier to estimate time and cost, to share the work between team members, and to produce documentation along the way. The stages form a cycle because, when a program can no longer be maintained to meet its users' needs, the process starts again with a fresh analysis."
       ],
       "bullets": [
-        "Analysis identifies the required inputs, outputs, processing and any constraints of the problem, before any solution is designed.",
-        "Constraints can include hardware limits, performance requirements, or rules the data itself must satisfy.",
-        "A problem analysis fails to identify cannot be fixed by better code later; it propagates, unnoticed, into every stage built on top of it."
+        "Purpose: give development a structured, manageable sequence of stages with defined outputs.",
+        "Benefits: the problem is understood first, work can be planned and costed, progress can be measured, the product is checked against the requirements.",
+        "Stages: analysis → design → coding → testing → maintenance, and back to analysis when the system is no longer fit for purpose."
       ],
       "examples": []
     },
     {
-      "id": "02-design",
-      "title": "Design: planning the solution before coding",
+      "id": "01-analysis",
+      "title": "Analysis",
       "content": [
-        "Design takes the understanding produced by analysis and plans, on paper or in a design tool, the structure and algorithms a solution will actually use, before a single line of program code is written. This includes deciding how the problem will be broken down into smaller, self-contained parts, and working out the precise logic each part needs, using tools such as structure diagrams to show the solution's overall structure and pseudocode or flowcharts to plan an algorithm's exact logic in detail, as covered in more depth in Program Design (12.2).",
-        "Designing a solution before coding it lets mistakes in the underlying logic be caught and corrected while they are still cheap to fix, since changing a diagram or a page of pseudocode costs far less than changing a large amount of already-written, already-tested code built around a flawed plan."
+        "Analysis is about understanding the problem, not solving it yet. The analyst investigates the current system if there is one, for example by interviewing users, observing how they work and examining existing documents, and uses abstraction to concentrate on what matters. The problem is then defined clearly and precisely: the inputs, the outputs, the processing needed between them and any constraints, such as hardware, budget, deadlines or rules on the data.",
+        "The result is a requirements specification that the client can agree to. Possible solutions may be compared at this stage and the most suitable one chosen. Everything later is judged against this document, so a requirement missed here tends to surface much later, when it is expensive to fix."
       ],
       "bullets": [
-        "Design plans a solution's structure and algorithms before any code is written, using tools such as structure diagrams, pseudocode and flowcharts.",
-        "Design turns the understanding produced by analysis into a concrete plan the coding stage can follow directly.",
-        "Fixing a flaw in a design is far cheaper than fixing the same flaw after a large amount of code has already been written around it."
+        "Investigate the problem and any existing system (interviews, observation, documents).",
+        "Define inputs, outputs, processing and constraints precisely.",
+        "Output: an agreed requirements specification; possible solutions compared and one chosen.",
+        "A requirement missed in analysis usually shows up only in testing or after release."
+      ],
+      "examples": [
+        {
+          "id": "07-iteration-worked",
+          "kind": "worked",
+          "label": "Worked example: a testing fault traced back to analysis",
+          "content": "A program works out a student's grade from three test scores. The requirements said \"average three scores\" and never considered a student who was absent for one test.\n\nTesting: a tester enters 0 for the missed test. The average falls from 70 (marks 68 and 72) to 46.7, and the grade drops sharply.\n\nWhere is the fault?\n   Coding? No. The code averages three numbers, exactly as designed.\n   Design? No. The design follows the specification it was given.\n   Analysis? Yes. \"A score may be missing\" was never identified as a requirement.\n\nFix: go back to analysis and add the requirement (e.g. average only the tests actually taken), then update the design, then the code, then re-test.\nPatching the code alone (e.g. ignoring every 0) would wrongly discard a genuine mark of 0."
+        }
+      ]
+    },
+    {
+      "id": "02-design",
+      "title": "Design",
+      "content": [
+        "Design decides how the requirements will be met, in enough detail that a programmer could build the solution from it. A useful starting point is an identifier table listing the data the program needs. From that the designer chooses data structures (a 1D or 2D array, a record) and decides whether data must be kept permanently in a file. The program is decomposed into modules, shown on a structure chart, and each algorithm is planned as a flowchart or in pseudocode (see 12.2). Test data can also be planned here.",
+        "Design mistakes are much cheaper to correct on paper than after the code has been written, which is why it comes before coding."
+      ],
+      "bullets": [
+        "Plan data: identifier table, data structures, files.",
+        "Plan structure: decomposition into modules on a structure chart.",
+        "Plan logic: flowcharts or pseudocode for each module; plan test data."
       ],
       "examples": []
     },
@@ -84,13 +98,13 @@
       "id": "03-coding",
       "title": "Coding (implementation)",
       "content": [
-        "Coding, also called implementation, is the stage in which the design is translated into actual program code, in whichever programming language has been chosen for the project. A design produced with structure diagrams and pseudocode gives the programmer a clear plan to follow, so coding becomes primarily a matter of expressing that already-worked-out logic correctly in the target language's own syntax, rather than working out the logic itself for the first time while also worrying about syntax.",
-        "Coding that follows a proper design still requires care: a design's pseudocode may need to be adapted to the particular features and limitations of the chosen language, and the programmer must still avoid introducing new errors, such as typing mistakes or misused syntax, that were not present in the design itself."
+        "In coding, often called implementation, the design is turned into program code. A suitable high-level language has to be chosen, taking into account what the problem needs and what the team knows well. The pseudocode is then translated into that language, module by module.",
+        "Code rarely works first time. Syntax errors stop it compiling, and once it runs it may crash or give wrong output, so the programmer debugs as they go. Each module is normally tested on its own as it is written, and tested again after every change, so that fixing one thing does not break another."
       ],
       "bullets": [
-        "Coding translates an already-completed design into working program code in the chosen language.",
-        "A good design makes coding primarily a matter of expressing already-worked-out logic correctly, rather than inventing that logic while also fighting syntax.",
-        "Coding can still introduce its own new errors, such as typing mistakes, even when the underlying design was entirely correct."
+        "Choose a suitable programming language; translate the design into code.",
+        "Remove syntax errors so it translates, then debug crashes and wrong output.",
+        "Test each module as it is written and again after each change."
       ],
       "examples": []
     },
@@ -98,187 +112,246 @@
       "id": "04-testing",
       "title": "Testing",
       "content": [
-        "Testing checks that the coded program actually behaves correctly and meets the specification produced during analysis, running the program against chosen test data and comparing the actual results it produces to the results that were expected. The methods and categories of test data used for this, including white-box and black-box testing and normal, boundary and erroneous test data, are covered in detail in Program Testing and Maintenance (12.3).",
-        "Testing is most valuable when it happens before release, since a fault found and corrected during testing costs far less, and affects far fewer people, than the same fault being found by a user after the program has already been released; but testing before release, however thorough, can never guarantee every possible fault has been found, which is one reason corrective maintenance still exists after release."
+        "Getting some output is not the same as the program being correct. Testing checks, in a planned and thorough way, that the whole program meets every requirement in the specification, accepts valid input, rejects invalid input sensibly and behaves reliably in all situations. Normal, boundary and erroneous test data and methods such as white-box, black-box, alpha and beta testing are covered in 12.3.",
+        "When a test fails, the cause is traced back to the stage where it began, which may be coding, design or even analysis. Testing can show that errors are present but can never prove that none are left, which is one reason maintenance is needed later."
       ],
       "bullets": [
-        "Testing runs the coded program against chosen test data and compares the actual results to the expected results from the specification.",
-        "A fault found during testing, before release, is far cheaper to correct than the same fault found by a user afterwards.",
-        "Testing before release reduces, but can never completely eliminate, the chance that a fault remains undiscovered until after release."
-      ],
-      "examples": []
-    },
-    {
-      "id": "05-documentation",
-      "title": "Documentation: technical and user",
-      "content": [
-        "Documentation is produced to support a program both for the people who will maintain it in the future and for the people who will actually use it, and these are two genuinely different kinds of writing aimed at two genuinely different readers. Technical documentation is written for future developers, describing how the program actually works internally: its design, the purpose of its variables and subroutines, the algorithms it uses, and anything a developer would need to understand before safely changing it. User documentation is written for end users, explaining how to use the program itself: how to install it, how to use each of its features, and how to resolve common problems, without assuming any knowledge of how the program works internally at all.",
-        "Confusing the two, for example giving an end user a description of the program's internal variable names and algorithms, or giving a future developer only a guide to clicking buttons, fails the reader either document was actually written for; each must be written with its intended reader's own needs and existing knowledge in mind."
-      ],
-      "bullets": [
-        "Technical documentation is written for future developers and describes how the program works internally.",
-        "User documentation is written for end users and explains how to use the program's features, without assuming internal knowledge.",
-        "Writing the wrong kind of documentation for a given reader, such as internal detail for an end user, fails that reader's actual needs."
+        "Check the whole program against the requirements specification.",
+        "Use planned test data covering valid, boundary and invalid input (details in 12.3).",
+        "A failed test is traced back to the stage that caused it; testing cannot prove a program is error-free."
       ],
       "examples": []
     },
     {
       "id": "06-maintenance",
-      "title": "Maintenance: corrective, adaptive and perfective",
+      "title": "Maintenance",
       "content": [
-        "Maintenance is an ongoing stage carried out after a program has been released, rather than a single event, and it is divided into three kinds by why the change is being made. Corrective maintenance fixes a fault discovered after release, such as a bug reported by users that pre-release testing failed to catch. Adaptive maintenance changes the program so that it continues to work correctly in a new environment, for example when it must run on new hardware or a new operating system it was not originally written for, even though the program's own required behaviour has not changed.",
-        "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as adding a new feature that was never part of the original specification, or improving the program's performance where it already worked correctly but more slowly than desired. The three are distinguished by their trigger, not by how large the change is: a one-line fix for a reported bug is still corrective maintenance, and a large new feature is still perfective maintenance, because what matters is why the change was made, not how much code it touches."
+        "Once the software is in use, maintenance keeps it useful. Corrective maintenance fixes faults that testing missed. Adaptive maintenance changes the program because its environment or the requirements have changed, for example new hardware, a new operating system or a new law. Perfective maintenance makes the program better without changing what it does, such as making it faster or easier to use. The three types are covered fully in 12.3.",
+        "Maintenance can carry on for years, and it relies on the documentation produced in earlier stages. When changes can no longer keep the system fit for purpose, a new analysis begins, which is what makes the process a cycle rather than a straight line."
       ],
       "bullets": [
-        "Corrective maintenance fixes a fault discovered after release that pre-release testing did not catch.",
-        "Adaptive maintenance changes the program so it keeps working correctly in a new environment, such as new hardware or a new operating system.",
-        "Perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working, such as a new feature or better performance."
+        "Corrective: fix faults found after release.",
+        "Adaptive: respond to a changed environment or changed requirements.",
+        "Perfective: improve performance or usability.",
+        "When maintenance is no longer enough, the cycle restarts with analysis."
       ],
       "examples": []
     },
     {
-      "id": "07-iterative-development",
-      "title": "Development is iterative, not strictly one-way",
+      "id": "09-waterfall-model",
+      "title": "The waterfall model",
       "content": [
-        "The stages of the life cycle are usually presented in the order analysis, design, coding, testing, documentation and maintenance, and it is tempting to picture development as a single, one-way pass straight through them. In practice, development is iterative: a problem discovered at a later stage very often sends the developer back to an earlier stage to fix it there, rather than being patched only at the stage where it happened to be noticed. Which earlier stage a problem sends the developer back to depends entirely on what actually caused it, and correctly identifying that stage, rather than simply patching the symptom where it surfaced, is exactly what separates a genuine fix from a temporary workaround.",
-        "A fault found during coding that stems from an unclear or incomplete design sends the developer back to design, not merely to a different way of writing the same code. A fault found during testing that stems from the original analysis missing some case the program actually needs to handle sends the developer all the way back to analysis, since the design and the code built on top of an incomplete analysis will both need to change once that missing case is correctly identified, not just the specific line of code where the test happened to fail."
+        "Principles: the stages are carried out one after another, like water falling down steps. Each stage is completed, and its output (the specification, the design, the code) is passed down as the input to the next. All requirements are fixed at the start. Arrows back up to the previous stage allow for going back when more work is found to be needed, but the model assumes this is rare. Nothing usable is delivered until the end.",
+        "Benefits: it is simple to understand and easy to manage, because every stage has a defined output and a clear end point; one stage is handled at a time; and it suits smaller projects whose requirements are well understood and fixed. Drawbacks: working software appears only late in the project; changing requirements cannot easily be accommodated; progress inside a stage is hard to measure; modules are brought together only at the end, so integration problems are found late; and it is a poor choice for complex, long-running or ongoing projects."
       ],
       "bullets": [
-        "Although presented in a fixed order, real development is iterative: a later stage can send the developer back to an earlier one.",
-        "Which stage a problem sends the developer back to depends on what actually caused it, not on which stage merely happened to notice it.",
-        "A fault stemming from an incomplete design sends the developer back to design; a fault stemming from an incomplete analysis sends the developer back to analysis, not just to a code fix."
+        "Principle: strictly sequential stages, each finished before the next; requirements fixed at the start.",
+        "Benefits: simple, easy to manage, clear milestones and outputs; good for small, well-understood projects.",
+        "Drawbacks: no working product until late, cannot cope with changing requirements, late integration, poor for large or long projects."
+      ],
+      "examples": []
+    },
+    {
+      "id": "10-iterative-model",
+      "title": "The iterative model",
+      "content": [
+        "Principles: development does not wait for a complete specification. A small subset of the requirements is built first, giving a working, if limited, version. It is then reviewed, more requirements are identified, and another cycle of design, coding and testing adds to it. The cycles repeat until the whole system is complete, often tackling the highest-risk parts first.",
+        "Benefits: a working model exists early, so design or functional flaws are spotted and corrected quickly; the client can try each version and give feedback; progress is visible after each cycle; changing the scope costs less; each increment is small, so it is easier to test and debug; and lessons from one cycle improve the next. It suits large and mission-critical projects. Drawbacks: it needs more resources and management; a small system may be hard to split into useful increments; because not all requirements are known at the start, the overall design may need reworking later; and planning the increments may require a view of the complete system anyway."
+      ],
+      "bullets": [
+        "Principle: build a small part, review, then add more in repeated cycles until complete.",
+        "Benefits: early working versions, early fault detection, regular client feedback, measurable progress, lower cost of change, risks tackled early.",
+        "Drawbacks: more resources, hard to divide small systems, design issues from requirements that arrive late."
+      ],
+      "examples": []
+    },
+    {
+      "id": "11-rad-model",
+      "title": "Rapid application development (RAD)",
+      "content": [
+        "Principles: RAD replaces detailed up-front planning with prototyping. Modules are built as prototypes, often by separate small teams at the same time, and users try them and suggest changes. Analysis, design, coding and testing are squeezed into a series of short, repeated cycles, requirements are allowed to change as the work proceeds, and the finished prototypes are joined together to give the complete product quickly.",
+        "Benefits: much shorter development time; changing requirements are welcomed rather than resisted; users give feedback from the first review, so the product matches what they need; integrating from the start avoids a big integration problem at the end; progress is measurable; and components are often reused. Drawbacks: the system must be one that can be split into modules; it needs highly skilled developers and designers; users must be available and involved throughout; and it is best suited to component-based projects that need a short development time. Speed can also mean less formal documentation."
+      ],
+      "bullets": [
+        "Principle: minimal planning, prototypes built in parallel, short feedback cycles, prototypes integrated into the final product.",
+        "Benefits: fast delivery, flexible requirements, strong user feedback, early integration, component reuse.",
+        "Drawbacks: needs modular systems, skilled staff and constant user involvement; documentation may be thin."
+      ],
+      "examples": []
+    },
+    {
+      "id": "12-choosing-a-life-cycle",
+      "title": "Why different programs need different life cycles",
+      "content": [
+        "No single model suits every program. The right choice depends on how clearly the requirements are known and whether they will change, the size and complexity of the system, how much risk is involved, how quickly something usable is needed, how skilled the team is, and whether the client can take part throughout.",
+        "Waterfall fits a small or well-understood job with fixed, agreed requirements, such as software that must follow a fixed standard. The iterative model fits a large or critical system where the full requirements emerge over time and early working versions reduce risk. RAD fits a system that has to be delivered quickly, can be split into components and has users available to test prototypes, such as a business app whose screens need regular user input."
+      ],
+      "bullets": [
+        "Deciding factors: stability of requirements, size and complexity, risk, deadline, team skill, client availability.",
+        "Fixed, clear requirements and a small project → waterfall.",
+        "Large or critical project with evolving requirements → iterative.",
+        "Short deadline, modular system, users available throughout → RAD."
       ],
       "examples": [
         {
-          "id": "07-iteration-worked",
+          "id": "12-choosing-worked",
           "kind": "worked",
-          "label": "Worked example: tracing a testing fault back to the stage actually responsible",
-          "content": "A program is written to calculate a student's overall grade from three test scores, each expected to be out of 100. The original analysis identified the inputs as \"three scores\" and the processing as \"average the three scores and convert to a grade\", but never asked what should happen if a student has been absent for one test and so has no score for it.\n\nDuring testing, a tester enters a missing score as 0 for the absent test, and the program averages it in as if it were a genuine mark of zero, producing a grade far lower than the student's actual performance on the two tests they did sit.\n\n-- Tracing the fault back --\n// Symptom noticed at: TESTING (the wrong grade is produced for this test case)\n// Could the CODE be patched directly? Only by adding a special case for a score\n//   of 0, which would then wrongly treat a genuine mark of zero the same way.\n// Is this really a CODING fault? No: the code correctly implements the design\n//   it was given; the design never described how to handle a missing score\n//   at all, so there is nothing wrong with how the design was translated into code.\n// Is this really a DESIGN fault? No: the design correctly implements the\n//   analysis it was given, an average of three scores; a missing score was\n//   never part of what the design was asked to handle in the first place.\n// Root cause: ANALYSIS never identified \"a test may have no score, because the\n//   student was absent\" as a case the program needed to handle at all.\n\n-- Correct fix --\n// Return to ANALYSIS: identify that a missing score is a distinct case, decide\n//   how it should be represented (e.g. a special value, not 0) and how it should\n//   affect the average (e.g. average only the scores that exist).\n// Only then revise the DESIGN's algorithm to handle this case, and only then\n//   update the CODE to match the revised design.\n// Patching only the code at the point testing found the fault would leave the\n//   design and the analysis both still silently missing the same case."
+          "label": "Worked example: matching scenarios to life cycles",
+          "content": "Scenario A: a program to calculate payroll deductions to a tax rule that is fully published and will not change this year. Small team, fixed deadline.\n   → Waterfall. Requirements are complete and stable, so each stage can be finished and signed off in order; the clear milestones make it easy to manage.\n\nScenario B: a hospital system for patient records, scheduling and prescriptions, to be used for many years; staff are not yet sure of every feature they need.\n   → Iterative. Build the high-risk records core first, deliver working versions, and add features as requirements become clear; each increment is tested on its own.\n\nScenario C: a shop needs a customer ordering app in eight weeks. The manager can meet the developers every week to try screens.\n   → RAD. Tight deadline, the app splits into separate screens/modules built in parallel as prototypes, and the available user gives constant feedback."
         }
       ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "The three kinds of maintenance",
+    "title": "Waterfall, iterative and RAD compared",
     "columns": [
-      "Kind",
-      "Trigger",
-      "Example",
-      "Was the program's required behaviour unchanged before the trigger?"
+      "Aspect",
+      "Waterfall",
+      "Iterative",
+      "RAD"
     ],
     "rows": [
       [
-        "Corrective",
-        "A fault discovered after release that pre-release testing failed to catch",
-        "Fixing a reported bug that produces a wrong result for a particular input",
-        "Yes; the program was already supposed to behave correctly, it simply did not"
+        "Principle",
+        "Stages done once, in order, each completed before the next",
+        "Small subset built first, then repeated cycles add to it",
+        "Prototypes built quickly, often in parallel, refined through short cycles"
       ],
       [
-        "Adaptive",
-        "A change in the environment the program must run in",
-        "Updating the program to run on a new operating system or new hardware",
-        "Yes; the program's own required behaviour is unchanged, only its environment has changed"
+        "Requirements",
+        "Fixed in full at the start",
+        "Grow and are refined after each cycle",
+        "Expected to change during development"
       ],
       [
-        "Perfective",
-        "A desire to improve or extend the program beyond what is strictly necessary to keep it working",
-        "Adding a new feature, or making an already-correct program run faster",
-        "No; new behaviour or improved performance is being added that was not previously required"
+        "Working software",
+        "Only at the end",
+        "Early, and after every cycle",
+        "Early prototypes; product delivered fast"
+      ],
+      [
+        "User involvement",
+        "Mainly at analysis and at delivery",
+        "Review at the end of each cycle",
+        "Continuous, throughout"
+      ],
+      [
+        "Main benefit",
+        "Simple to manage, clear milestones",
+        "Early fault detection and feedback, lower risk",
+        "Fast delivery that closely matches user needs"
+      ],
+      [
+        "Main drawback",
+        "Cannot cope with changing requirements; problems found late",
+        "More resources; design may need rework",
+        "Needs a modular system, skilled team and committed users"
+      ],
+      [
+        "Best suited to",
+        "Small projects with clear, stable requirements",
+        "Large or mission-critical systems",
+        "Modular projects needing short development times"
       ]
     ]
   },
   "diagram": {
-    "title": "The program development life cycle, with iteration back to earlier stages",
+    "title": "The program development life cycle",
     "type": "cycle",
     "nodes": [
-      "Analysis: identify inputs, outputs, processing and constraints",
-      "Design: plan structure and algorithms before coding",
-      "Coding: translate the design into program code",
-      "Testing: check the program against the specification",
-      "Documentation: technical (for developers) and user (for end users)",
-      "Maintenance: corrective, adaptive and perfective, ongoing after release",
-      "A problem found at any stage can send development back to an earlier stage, not only forward"
+      "Analysis: investigate the problem, agree the requirements specification",
+      "Design: data structures, structure chart, algorithms, test plan",
+      "Coding: translate the design into a programming language, debug modules",
+      "Testing: check the whole program against the requirements",
+      "Maintenance: corrective, adaptive and perfective changes in use; when no longer fit for purpose, return to analysis"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing a testing fault caused by an incomplete analysis",
+      "title": "Why waterfall struggles when requirements change",
       "steps": [
-        "A program that calculates an average of three scores is tested with an input where one score is missing because a student was absent, and produces an incorrectly low grade",
-        "The code is checked and correctly implements the design's instruction to average all three scores, so the code itself is not at fault",
-        "The design is checked and correctly implements the analysis's instruction to average three scores, so the design itself is not at fault either",
-        "The original analysis is checked last, and is found never to have identified that a score could be missing at all, only that three scores would always be supplied"
+        "In waterfall, requirements are fixed at analysis and each later stage builds on the previous stage's output",
+        "The client sees working software only near the end of the project",
+        "If the client then realises a key feature is wrong or missing, the change affects the specification, the design and the code",
+        "Several completed stages must be reopened, adding cost and delay"
       ],
-      "evaluation": "The fault must be corrected by returning to analysis, not by patching the code at the point testing found it, because the root cause is a case analysis never identified; the design and the code both faithfully implement an analysis that was itself incomplete, so fixing only the code would leave that same gap for the next similar case."
+      "evaluation": "Waterfall works well only when requirements are clear and stable at the start; where they are likely to change, an iterative or RAD approach, which shows working versions early, finds such problems while they are still cheap to fix."
     },
     {
-      "title": "Distinguishing adaptive maintenance from perfective maintenance for the same reported change",
+      "title": "How the iterative model reduces risk on a large project",
       "steps": [
-        "A working, already-released program is changed so that it now also runs correctly on a newly released operating system, with no new features added and no existing feature working any differently to a user",
-        "This change is checked against the definition of adaptive maintenance: adjusting a program so it continues to work correctly in a new environment",
-        "A second, separate change adds a completely new export-to-PDF feature to the same program, which was never part of its original specification and was not needed to keep the program working",
-        "This second change is checked against the definition of perfective maintenance: improving or extending a program beyond what is strictly necessary to keep it working"
+        "The team identifies the riskiest part of the system and builds it in the first increment",
+        "The increment is tested and reviewed with the client, so faults and misunderstandings appear early",
+        "What is learned is carried into the planning of the next increment",
+        "Each cycle delivers a larger working product, so progress can be measured"
       ],
-      "evaluation": "The operating-system change is adaptive maintenance because it exists only to keep the program's existing, unchanged behaviour working in a new environment; the export-to-PDF change is perfective maintenance because it adds new capability the program did not strictly need in order to keep working, and classifying maintenance correctly depends on why a change was made, not on how large or how technical it is."
+      "evaluation": "Tackling risk first and reviewing often means major problems are found when little depends on them. The cost is extra resources and the chance that a design based on early, incomplete requirements needs reworking."
     },
     {
-      "title": "Deciding whether a coding-stage discovery requires returning to design",
+      "title": "When RAD is not a good choice",
       "steps": [
-        "While coding a menu-driven program, a programmer discovers the design's structure diagram shows a single subroutine responsible for both validating a user's input and then processing it, with no way to reuse the validation on its own elsewhere in the program",
-        "The programmer considers simply writing the validation and processing logic together inside one subroutine in code, exactly as the structure diagram shows, since that would match the design as given",
-        "The programmer instead checks whether following the design as given would cause a problem later, and finds the same input validation logic is actually needed again in two other, unrelated parts of the program",
-        "Coding the design exactly as given would mean duplicating the same validation logic in three separate places in the final program, rather than writing it once"
+        "RAD depends on users trying prototypes and giving feedback throughout",
+        "It also depends on the system being divisible into modules that small, skilled teams can build in parallel",
+        "Suppose the client can meet developers only at the start and end, and the system is one tightly linked calculation engine",
+        "Neither condition holds: prototypes would get no feedback, and the work cannot be split among parallel teams"
       ],
-      "evaluation": "This is a design fault, not merely a coding inconvenience, because the structure diagram itself decomposed the problem in a way that prevents a genuinely needed reuse; the correct response is to return to design and split validation into its own separate, reusable subroutine, rather than coding around the flawed structure or duplicating the logic three times in the final program."
+      "evaluation": "RAD's speed comes from constant user involvement and modular, parallel building. Without them it loses its advantages, and a more planned model such as waterfall (if requirements are clear) or iterative would be a better fit."
     }
   ],
   "examTips": [
-    "Describe each stage by what it actually produces (a specification, a design, working code, tested results, documentation) rather than by a vague one-word label.",
-    "When distinguishing technical from user documentation, identify the intended reader first (a future developer or an end user); the content each needs follows directly from that.",
-    "When classifying a maintenance example, ask why the change was made (a fault, a new environment, or an improvement beyond what was necessary), not how big the change is.",
-    "When a question describes a fault found at one stage, trace it back to the specific earlier stage that actually caused it before answering, rather than assuming the stage where it was noticed is the stage responsible."
+    "For 'describe the principles', say how the model runs (the order of stages, when requirements are fixed, how often software is delivered), not just its name or its benefits.",
+    "Tie each benefit or drawback to the principle behind it: waterfall delivers late because each stage must finish first; RAD needs users throughout because it relies on prototype feedback.",
+    "When recommending a model for a scenario, quote the scenario details (changing requirements, deadline, project size, client availability) in your justification.",
+    "Describe a stage by its activities and its output: analysis produces the requirements specification, design produces structure charts and pseudocode, and so on.",
+    "Remember the five stages named in the syllabus: analysis, design, coding, testing, maintenance."
   ],
   "commonMistakes": [
-    "Treating the life cycle as a strictly one-way sequence, and assuming a fault found during testing or coding can only be fixed at the stage where it was found.",
-    "Confusing technical documentation with user documentation, for example describing internal variable names or algorithms in a document meant for end users.",
-    "Classifying maintenance by how large the change is rather than by its actual trigger, for example assuming a small bug fix cannot be corrective maintenance because it seems too minor to count.",
-    "Assuming thorough testing before release removes the need for any corrective maintenance afterwards, rather than merely reducing how much is needed.",
-    "Skipping analysis as unimportant because it produces no code, and moving straight to design or coding without identifying the required inputs, outputs, processing and constraints first."
+    "Describing waterfall as allowing no return to an earlier stage at all; the model does allow going back, but it is costly and assumed to be rare.",
+    "Confusing the iterative model with RAD: iterative adds planned increments to a working system, while RAD relies on quickly built prototypes and continuous user feedback with minimal planning.",
+    "Giving generic benefits such as 'it is faster' or 'it is better' without saying why the model's principles produce them.",
+    "Treating testing as the only place faults are fixed, rather than tracing a fault back to the stage (analysis, design or coding) where it began.",
+    "Listing RAD's need for skilled developers and user involvement as benefits instead of as conditions that can make it unsuitable.",
+    "Leaving out maintenance, or treating the life cycle as ending when the program is delivered."
   ],
   "quickRecall": [
     {
-      "question": "What are the six stages of the program development life cycle?",
-      "answer": "Analysis, design, coding (implementation), testing, documentation and maintenance."
+      "question": "What is the purpose of a program development life cycle?",
+      "answer": "To give development a structured sequence of stages with defined outputs, so the work can be planned, managed and checked against the requirements."
     },
     {
-      "question": "What does the analysis stage identify?",
-      "answer": "The problem's required inputs, outputs, processing, and any constraints the solution must work within."
+      "question": "Name the stages of the program development life cycle.",
+      "answer": "Analysis, design, coding (implementation), testing and maintenance."
     },
     {
-      "question": "Why is a solution designed before it is coded?",
-      "answer": "So mistakes in the underlying logic can be caught and fixed while still cheap to change, rather than after a large amount of code has already been written around them."
+      "question": "What is the main output of the analysis stage?",
+      "answer": "A requirements specification defining what the system must do and any constraints."
     },
     {
-      "question": "What is the difference between technical documentation and user documentation?",
-      "answer": "Technical documentation is written for future developers and describes how the program works internally; user documentation is written for end users and explains how to use the program's features."
+      "question": "State one benefit and one drawback of the waterfall model.",
+      "answer": "Benefit: simple and easy to manage, with clear stages and outputs. Drawback: no working software until late, and changing requirements are hard to accommodate."
     },
     {
-      "question": "What are the three kinds of maintenance, and what triggers each?",
-      "answer": "Corrective maintenance fixes a fault discovered after release; adaptive maintenance keeps the program working correctly in a new environment; perfective maintenance improves or extends the program beyond what is strictly necessary to keep it working."
+      "question": "How does the iterative model begin?",
+      "answer": "By building a small subset of the requirements, then adding to it through repeated cycles of review, design, coding and testing."
     },
     {
-      "question": "Why is program development described as iterative rather than strictly one-way?",
-      "answer": "Because a problem discovered at a later stage, such as testing, often has its root cause in an earlier stage, such as design or analysis, and must be corrected there rather than only patched where it was noticed."
+      "question": "What is a prototype, and why does RAD use them?",
+      "answer": "A working model of part of a system; RAD uses prototypes so users can give feedback quickly instead of relying on detailed up-front planning."
     },
     {
-      "question": "If testing reveals the program cannot handle a case the original analysis never identified, which stage must development return to, and why?",
-      "answer": "Analysis, because the design and code both faithfully implement an analysis that was itself incomplete; fixing only the code at the point testing found the fault would leave that same gap unaddressed."
+      "question": "Give two conditions a project needs for RAD to be suitable.",
+      "answer": "Any two of: the system can be split into modules; skilled developers are available; users can be involved throughout; a short development time is required."
+    },
+    {
+      "question": "Why is it called a life cycle?",
+      "answer": "Because when maintenance can no longer keep the program fit for purpose, development begins again with a new analysis."
     }
   ],
   "relatedTopics": [
+    "9.1",
+    "11.3",
     "12.2",
-    "12.3",
-    "11.3"
+    "12.3"
   ]
 }

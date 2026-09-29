@@ -6,279 +6,382 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Structured Programming",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to write or complete pseudocode that declares and calls procedures and functions with parameters, to state whether a given parameter is passed by value or by reference, and to trace such pseudocode to determine whether a subroutine's changes are visible to the calling code afterwards. Answers score when a procedure and a function are correctly distinguished by whether a value is returned, when BYVAL and BYREF are matched to the correct behaviour rather than guessed, when a trace explicitly shows a variable's value in the caller both before and after the call, and when the stated benefits of structured programming (reuse, independent testing, easier design, easier fault isolation) are given as reasons rather than asserted alone.",
+  "overview": "Topic 9.1 showed how decomposition turns a problem into modules; this topic is about writing those modules in Cambridge pseudocode. Paper 2 expects a procedure written as PROCEDURE … ENDPROCEDURE and run with CALL, taking none, one or several parameters; a function written as FUNCTION … RETURNS <type> … ENDFUNCTION whose RETURN value takes the place of the call inside an expression; and parameters marked BYVAL or BYREF, with a trace showing whether the caller's variable has changed after the call. Candidates must also explain when a procedure or a function is the right choice, use the words header, interface, parameter, argument and return value accurately, and write pseudocode that does not waste work. Marks are lost for putting CALL in front of a function, for a function with no RETURN on some path, for passing a constant to a BYREF parameter, and for assuming a BYVAL change reaches the caller.",
   "syllabusPoints": [
-    "Show understanding of structured (top-down) programming, breaking a problem down into a hierarchy of smaller, self-contained procedures and functions called from a main routine.",
-    "Show understanding of the difference between a procedure, which performs a task, and a function, which performs a task and returns a single value usable in an expression.",
-    "Use parameters to pass data into a procedure or function.",
-    "Show understanding of the difference between passing a parameter by value, where the subroutine receives a copy, and by reference, where the subroutine receives the actual variable itself.",
-    "Show understanding of the difference between a local variable, accessible only within the subroutine it is declared in, and a global variable, accessible from anywhere in the program.",
-    "Explain the benefits of structured programming with subroutines, including reuse, independent testing, easier design of large problems, and easier fault isolation."
+    "Define and use a procedure, which may have none, one or more parameters.",
+    "Explain where in the construction of an algorithm it would be appropriate to use a procedure.",
+    "Use parameters, passed either by reference or by value.",
+    "Define and use a function; a function is used in an expression, and its return value replaces the call.",
+    "Explain where in the construction of an algorithm it is appropriate to use a function.",
+    "Use the terminology associated with procedures and functions, including procedure/function header, procedure/function interface, parameter, argument and return value.",
+    "Write efficient pseudocode."
   ],
   "definitions": [
     {
-      "term": "Structured (top-down) programming",
-      "definition": "An approach to program design in which a problem is broken down into a hierarchy of smaller, self-contained procedures and functions, each handling one well-defined sub-task, connected together by a main routine that calls them."
-    },
-    {
       "term": "Procedure",
-      "definition": "A subroutine that performs a task, such as carrying out a calculation or displaying output, but does not itself return a value that can be used in an expression; it is called as a statement on its own, for example CALL ProcedureName(...)."
+      "definition": "A named block of statements that carries out a task and is run with a CALL statement. It does not hand a value back to the point of call, although it can change the caller's variables through BYREF parameters."
     },
     {
       "term": "Function",
-      "definition": "A subroutine that performs a task and returns exactly one value, which can then be used directly within an expression, such as Result <- FunctionName(...) or IF FunctionName(...) = 0 THEN."
+      "definition": "A named block of statements that works out and returns exactly one value of a stated data type. It is called inside an expression, never with CALL, and the returned value takes the place of the call when the expression is evaluated."
+    },
+    {
+      "term": "Procedure/function header",
+      "definition": "The first line of a procedure or function definition: the keyword, the identifier, the parameter list with each parameter's data type (and BYVAL/BYREF), and for a function the RETURNS data type."
+    },
+    {
+      "term": "Procedure/function interface",
+      "definition": "What the rest of the program needs to know to use a subroutine: the number, order, data types and passing method of its parameters, and for a function the type of value it returns."
     },
     {
       "term": "Parameter",
-      "definition": "A value or variable passed into a procedure or function when it is called, allowing data to be supplied to the subroutine without relying on global variables; the subroutine's declaration lists the parameters it expects to receive."
+      "definition": "An identifier listed in the subroutine header that acts as a variable inside the subroutine and receives a value (or, BYREF, access to a variable) when the subroutine is called."
     },
     {
-      "term": "Pass by value (BYVAL)",
-      "definition": "A method of passing a parameter in which the subroutine receives only a copy of the argument's value; any change made to that parameter inside the subroutine has no effect on the original variable in the calling code."
+      "term": "Argument",
+      "definition": "The actual value, variable or expression written in the brackets of a call, matched by position to the corresponding parameter."
     },
     {
-      "term": "Pass by reference (BYREF)",
-      "definition": "A method of passing a parameter in which the subroutine receives the actual variable itself, not a copy; any change made to that parameter inside the subroutine changes the original variable in the calling code too."
+      "term": "Return value",
+      "definition": "The single value a function sends back with RETURN; it replaces the function call in the expression that called it."
     },
     {
-      "term": "Local variable",
-      "definition": "A variable declared inside a procedure or function, which exists and can be accessed only while that subroutine is running; it is created when the subroutine starts and ceases to exist once the subroutine ends."
+      "term": "BYVAL (by value)",
+      "definition": "The parameter receives a copy of the argument's value, so changes made inside the subroutine do not affect the caller's variable. It is the default when no method is stated."
     },
     {
-      "term": "Global variable",
-      "definition": "A variable declared at the top level of a program, outside any subroutine, and accessible from anywhere in the program, including from inside every procedure and function; its use is generally best avoided except where genuinely necessary, since it makes a subroutine's behaviour depend on state outside its own parameters."
+      "term": "BYREF (by reference)",
+      "definition": "The parameter receives the address of the caller's variable, so the parameter and the argument are the same memory location and any change made inside the procedure is still there after the call. The argument must be a variable."
     }
   ],
   "sections": [
     {
       "id": "01-structured-top-down-programming",
-      "title": "Structured (top-down) programming",
+      "title": "Subroutines: giving a block of code a name",
       "content": [
-        "Structured programming breaks a problem down into a hierarchy of smaller, self-contained procedures and functions, called subroutines, each responsible for one well-defined sub-task rather than one single block of code trying to handle an entire problem at once. A program's main routine sits at the top of this hierarchy and calls the subroutines it needs, in the order they are needed, often calling further subroutines from inside those subroutines to break a sub-task down even further; this top-down process of repeatedly splitting a large problem into smaller, more manageable pieces is exactly the decomposition step of computational thinking applied directly to a program's structure.",
-        "A subroutine is self-contained: the rest of the program interacts with it only through its parameters (the data supplied to it) and, for a function, its return value, without needing to know how the subroutine achieves its task internally. This means a subroutine's internal workings can be changed later, to fix a fault or improve efficiency, without needing to change anything about how the rest of the program calls it, provided its parameters and return value stay the same."
+        "A subroutine is a set of statements that has been given an identifier so it can be run by name from anywhere in the program. Cambridge pseudocode has two kinds: procedures and functions. Both are written out once, above the main program that uses them, and are then run by calling them. When the subroutine finishes, control goes back to the statement just after the point of call.",
+        "Subroutines are how the modules found by decomposition (9.1) and drawn on a structure chart (12.2) turn into code. Because each one has a single job and receives its data through parameters, it can be written, tested and corrected on its own, and then used again wherever the same job is needed."
       ],
       "bullets": [
-        "A large problem is decomposed into a hierarchy of smaller procedures and functions, each handling one well-defined sub-task.",
-        "The main routine sits at the top of the hierarchy and calls subroutines, which may themselves call further subroutines.",
-        "A subroutine is self-contained: the rest of the program only needs to know its parameters and, for a function, its return value, not how it works internally."
+        "Two kinds of subroutine: a procedure (run with CALL) and a function (used inside an expression, returns one value).",
+        "Definitions come before the main program; a call jumps into the subroutine and control returns to the line after the call.",
+        "Data goes in through parameters; a function sends one value back with RETURN."
       ],
       "examples": []
     },
     {
-      "id": "02-procedures-vs-functions",
-      "title": "Procedures versus functions",
+      "id": "08-defining-procedures",
+      "title": "Defining and calling a procedure",
       "content": [
-        "A procedure performs a task, such as displaying a formatted report or updating several variables, but does not return a value that can itself be used inside an expression; it is called on its own as a statement, for example CALL DisplayReport(StudentName, Score). A function also performs a task, but it additionally returns exactly one value as its result, and it is called from within an expression rather than as a standalone statement, for example Total <- Total + CalculateBonus(Score), where CalculateBonus(Score) is evaluated to a single value that is then used directly in the surrounding calculation.",
-        "Choosing between the two depends on what the calling code actually needs: if the calling code needs a single computed value it can use in a further expression or condition, a function is correct, declared with a stated return type and containing at least one RETURN value statement; if the calling code only needs an action carried out, with no single value handed back for further use, a procedure is correct."
+        "A procedure is written PROCEDURE <identifier>(<parameter list>), then its statements, then ENDPROCEDURE. The brackets may be empty, or hold one or more parameters, each written <identifier> : <data type> and separated by commas. The parameters behave as variables inside the procedure body. Any variable the procedure needs just for its own work is declared inside it, so it is local.",
+        "A procedure is run with CALL <identifier>(<arguments>), and this is a complete statement on its own line. The arguments must match the parameters in number, order and data type: the first argument goes to the first parameter, and so on. A procedure with no parameters is still called with empty brackets, CALL <identifier>(). Unless BYREF is written, parameters are passed by value."
       ],
       "bullets": [
-        "A procedure is called as its own statement, using CALL, and does not return a usable value.",
-        "A function is called from within an expression and returns exactly one value, using RETURN, which can be used directly in a calculation or condition.",
-        "The choice depends on what the calling code needs back: a single usable value means a function; an action with no value returned means a procedure."
+        "Syntax: PROCEDURE Name(P1 : TYPE, P2 : TYPE) … ENDPROCEDURE; with no parameters, PROCEDURE Name() … ENDPROCEDURE.",
+        "Call: CALL Name(arg1, arg2) as a statement by itself; CALL Name() when there are no parameters.",
+        "Arguments are matched to parameters by position, so the order and data types must agree.",
+        "Variables declared inside the procedure are local to it."
       ],
       "examples": [
         {
-          "id": "02-procedure-vs-function-worked",
+          "id": "08-procedure-params",
           "kind": "worked",
-          "label": "Worked example: a procedure and a function performing related tasks",
-          "content": "PROCEDURE DisplayResult(Name : STRING, Score : INTEGER)\n  OUTPUT Name, \" scored \", Score\nENDPROCEDURE\n\nFUNCTION Grade(Score : INTEGER) RETURNS CHAR\n  IF Score >= 50 THEN\n    RETURN 'P'\n  ELSE\n    RETURN 'F'\n  ENDIF\nENDFUNCTION\n\n// Calling the procedure: called as a statement on its own, nothing is returned\nCALL DisplayResult(\"Amir\", 62)          // OUTPUT: Amir scored 62\n\n// Calling the function: called from within an expression, its result is used directly\nDECLARE StudentGrade : CHAR\nStudentGrade <- Grade(62)               // StudentGrade now holds 'P'\nOUTPUT \"Grade: \", StudentGrade          // OUTPUT: Grade: P\n\n// Grade(62) could not have been written as CALL Grade(62) on its own, since its\n// single returned value would then have nowhere to go and nothing would use it."
+          "label": "Procedures with no, one and two parameters",
+          "content": "PROCEDURE ShowRule()\n   OUTPUT \"----------\"\nENDPROCEDURE\n\nPROCEDURE ShowTitle(Title : STRING)\n   OUTPUT \"== \", Title, \" ==\"\nENDPROCEDURE\n\nPROCEDURE ShowRow(Symbol : STRING, Count : INTEGER)\n   DECLARE Line : STRING\n   DECLARE Index : INTEGER\n   Line ← \"\"\n   FOR Index ← 1 TO Count\n      Line ← Line & Symbol\n   NEXT Index\n   OUTPUT Line\nENDPROCEDURE\n\n// main program\nCALL ShowTitle(\"Pattern\")\nCALL ShowRule()\nCALL ShowRow(\"*\", 3)\nCALL ShowRow(\"#\", 5)\nCALL ShowRule()\n\nOutput:\n== Pattern ==\n----------\n***\n#####\n----------\n\nShowRow is called twice with different arguments: \"*\" and 3 the first time, \"#\" and 5 the second. Line and Index are local, so each call starts with its own fresh copies."
         }
       ]
     },
     {
-      "id": "03-parameters",
-      "title": "Parameters: passing data into a subroutine",
+      "id": "07-benefits-of-structured-programming",
+      "title": "Where a procedure is appropriate",
       "content": [
-        "A parameter is a value or variable passed into a procedure or function when it is called, giving the subroutine the data it needs to carry out its task without relying on that data already being available as a global variable. A subroutine's declaration lists the parameters it expects, each with an identifier and a data type, for example PROCEDURE UpdateScore(PlayerName : STRING, Points : INTEGER); when the subroutine is called, an argument is supplied for each declared parameter, in the same order, for example CALL UpdateScore(\"Beth\", 15), and inside the subroutine, Points refers to the value 15 for the duration of that call.",
-        "Passing data through explicitly declared parameters, rather than through global variables, makes a subroutine's inputs clear from its declaration alone, and makes the subroutine reusable in a different program, or a different part of the same program, since it does not depend on any particular global variable already existing with the right value in it."
+        "Use a procedure when a part of the algorithm is an action rather than a calculation of one answer: displaying a menu or a report, writing records to a file, sorting an array, or reading and validating several inputs. It is also the right choice when a task has to change more than one of the caller's variables, since a procedure can do this through BYREF parameters, whereas a function returns only one value.",
+        "In practice a procedure is worth writing whenever the same group of steps appears in more than one place, or whenever a step of the design is big enough to be its own sub-task. Writing it once removes duplicated code, gives the main program a short, readable outline of calls, allows the procedure to be tested by itself, and means a later fix is made in one place only."
       ],
       "bullets": [
-        "A subroutine's parameters are declared with an identifier and data type in its header; each call supplies one argument for each declared parameter, in order.",
-        "Parameters make a subroutine's required inputs explicit and visible in its own declaration, rather than hidden inside dependence on global variables.",
-        "A subroutine written to use parameters, rather than global variables, can be reused elsewhere without needing any particular global variable to already exist."
+        "Choose a procedure for an action with no single result: output, file handling, updating an array, input with validation.",
+        "Choose a procedure (with BYREF parameters) when several of the caller's variables must be updated.",
+        "Any repeated group of steps is a candidate: write once, call many times, fix in one place.",
+        "Each procedure can be tested on its own before it is joined to the rest of the program."
       ],
       "examples": []
     },
     {
-      "id": "04-by-value-vs-by-reference",
-      "title": "Passing by value versus passing by reference",
+      "id": "09-defining-functions",
+      "title": "Defining and using a function",
       "content": [
-        "When a parameter is passed by value, written BYVAL, the subroutine receives only a copy of the argument's current value; the subroutine works with that copy for the rest of the call, so any change made to the parameter inside the subroutine changes only the copy, leaving the original variable back in the calling code completely unaffected once the subroutine finishes and control returns. When a parameter is passed by reference, written BYREF, the subroutine instead receives the actual variable itself, not a copy of its value; any change made to the parameter inside the subroutine is therefore a change made directly to that same original variable, and it remains changed in the calling code after the subroutine finishes and control returns.",
-        "The choice between BYVAL and BYREF matters whenever a subroutine needs to change one of its parameters: BYVAL is used when the calling code's original variable must be protected from any change the subroutine makes internally, and BYREF is used specifically when the subroutine is intended to change the calling code's original variable, such as a procedure designed to update a variable in place rather than return a new value."
+        "A function is written FUNCTION <identifier>(<parameter list>) RETURNS <data type>, then its statements, then ENDFUNCTION. The body must contain a RETURN <expression> statement on every path through it, and the value returned must be of the type named after RETURNS. RETURN takes effect at once: the function stops, and any statements after it are skipped. This allows a function to have more than one RETURN, for example one in each branch of an IF.",
+        "A function call is not a statement by itself, so it is never preceded by CALL. It is written where a value is needed: on the right of an assignment, in an OUTPUT list, in a condition, or as an argument to another call. When the function reaches RETURN, the returned value replaces the call and the rest of the expression is then evaluated. The pseudocode guide also says parameters should not be passed BYREF to a function, so a function's only effect on the caller is its return value."
       ],
       "bullets": [
-        "BYVAL: the subroutine receives a copy; changes inside the subroutine do not affect the original variable in the calling code.",
-        "BYREF: the subroutine receives the actual variable itself; changes inside the subroutine do affect the original variable in the calling code.",
-        "BYREF is chosen specifically when a subroutine is meant to update the caller's variable in place; BYVAL is chosen to protect the caller's variable from any internal change."
+        "Syntax: FUNCTION Name(P1 : TYPE) RETURNS TYPE … RETURN value … ENDFUNCTION.",
+        "Every path through the body must reach a RETURN; RETURN ends the function immediately.",
+        "Call it inside an expression, never with CALL; the return value replaces the call.",
+        "Function parameters are passed by value."
+      ],
+      "examples": [
+        {
+          "id": "09-function-expression-trace",
+          "kind": "worked",
+          "label": "Trace: return values replacing calls in expressions",
+          "content": "FUNCTION Square(N : INTEGER) RETURNS INTEGER\n   RETURN N * N\nENDFUNCTION\n\nFUNCTION Larger(A : INTEGER, B : INTEGER) RETURNS INTEGER\n   IF A > B THEN\n      RETURN A\n   ENDIF\n   RETURN B\nENDFUNCTION\n\nDECLARE Result : INTEGER\nResult ← 50 + Square(3) * 2\nOUTPUT Larger(Result, Square(8))\nOUTPUT Larger(4, 7)\n\nStep-by-step:\nResult ← 50 + Square(3) * 2\n   Square(3) returns 9     → 50 + 9 * 2\n   * before +              → 50 + 18 = 68, so Result = 68\nOUTPUT Larger(Result, Square(8))\n   Square(8) returns 64    → Larger(68, 64)\n   68 > 64 is TRUE         → RETURN 68; the final RETURN B is never reached\n   Output: 68\nOUTPUT Larger(4, 7)\n   4 > 7 is FALSE          → skip the IF, reach RETURN 7\n   Output: 7\n\nWriting CALL Square(3) would be wrong: the 9 it returns would have nowhere to go."
+        }
+      ]
+    },
+    {
+      "id": "02-procedures-vs-functions",
+      "title": "Where a function is appropriate: procedure or function?",
+      "content": [
+        "Use a function when a part of the algorithm works out one answer that the caller then uses: a total, an average, the larger of two values, the position of an item in an array, or a TRUE/FALSE result from a validation check such as IsValidDate(Day, Month, Year). Because the answer comes back as a value, it can go straight into an expression or a condition, for example IF IsValidDate(D, M, Y) THEN … . The built-in routines such as LENGTH, MID and INT are functions for exactly this reason.",
+        "The quick test is to ask what the caller needs back. If the answer is one value, write a function. If the answer is nothing, or several values, write a procedure (using BYREF for values that must come back). Converting one into the other changes the call as well as the header: a procedure call is a CALL statement, while a function call sits inside an expression."
+      ],
+      "bullets": [
+        "Function: exactly one value is needed back, often used in a calculation or condition.",
+        "Procedure: an action with no value back, or several values back through BYREF.",
+        "Validation checks are often written as BOOLEAN functions so they can be used directly in IF or WHILE conditions."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-local-vs-global-variables",
+      "title": "Local and global variables",
+      "content": [
+        "A variable declared inside a procedure or function is local: it exists only while that call is running and cannot be seen from the main program or from other subroutines. Parameters behave the same way. Each new call creates fresh local variables, so no value is carried over from a previous call. A variable declared in the main program, outside every subroutine, is global and can be read or changed from anywhere.",
+        "Good practice is to keep any variable that a subroutine alone needs as a local, and to pass data in through parameters rather than relying on globals. A subroutine that quietly reads or alters a global is harder to reuse and to test, because its behaviour depends on something not shown in its header. Exam questions sometimes state that an array is global to keep the answer short; otherwise, use parameters."
+      ],
+      "bullets": [
+        "Local: declared inside a subroutine, exists only during that call, invisible outside it.",
+        "Global: declared outside all subroutines, visible everywhere.",
+        "Prefer locals and parameters; hidden use of globals makes subroutines harder to test and reuse."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-parameters",
+      "title": "Terminology: header, interface, parameter, argument, return value",
+      "content": [
+        "The header is the first line of a definition. It names the subroutine and lists its parameters with their data types, and for a function it ends with RETURNS and a type. A parameter is one of the identifiers in that list; inside the body it is used like a variable. An argument is what is actually supplied in the brackets when the subroutine is called; it can be a literal, a variable or a whole expression (except that a BYREF argument must be a variable). Arguments are matched to parameters by position, not by name, so the names do not need to agree.",
+        "The interface is everything a programmer needs to know to use the subroutine without reading its body: how many parameters there are, their order, data types and passing method, and the type of value a function returns. The return value is the single value that a function's RETURN statement sends back. Because callers depend only on the interface, the body can later be rewritten, for instance to make it faster, without changing a single call."
+      ],
+      "bullets": [
+        "Header: the first line, with identifier, parameter list and (for a function) RETURNS type.",
+        "Parameter: an identifier in the header. Argument: the value or variable given in the call.",
+        "Interface: number, order, types and passing method of the parameters, plus the return type.",
+        "Return value: the one value sent back by RETURN, which replaces the function call."
+      ],
+      "examples": [
+        {
+          "id": "03-terminology-labelled",
+          "kind": "worked",
+          "label": "Labelling the parts of a function and its calls",
+          "content": "FUNCTION CountChar(Word : STRING, Target : STRING) RETURNS INTEGER   // header\n   DECLARE Index, Total : INTEGER                                   // local variables\n   Total ← 0\n   FOR Index ← 1 TO LENGTH(Word)\n      IF MID(Word, Index, 1) = Target THEN\n         Total ← Total + 1\n      ENDIF\n   NEXT Index\n   RETURN Total                                                     // return value\nENDFUNCTION\n\nDECLARE Place : STRING\nDECLARE Count : INTEGER\nPlace ← \"Mississippi\"\nCount ← CountChar(\"banana\", \"a\") + CountChar(Place, \"s\")\n\nParameters:  Word, Target\nArguments:   \"banana\" and \"a\" in the first call; Place and \"s\" in the second\nInterface:   two STRING parameters (by value, the default), returns an INTEGER\nTrace:       CountChar(\"banana\", \"a\") returns 3 (positions 2, 4, 6)\n             CountChar(\"Mississippi\", \"s\") returns 4 (positions 3, 4, 6, 7)\n             Count ← 3 + 4, so Count = 7"
+        }
+      ]
+    },
+    {
+      "id": "04-by-value-vs-by-reference",
+      "title": "Passing parameters BYVAL and BYREF",
+      "content": [
+        "Writing BYVAL or BYREF in front of a parameter in the header states how it is passed. BYVAL copies the argument's current value into the parameter; the procedure works on that copy, and the caller's variable is exactly as it was when the call ends. The argument may therefore be a literal or an expression. BYREF passes the address of the caller's variable, so inside the procedure the parameter is just another name for that same memory location. Every assignment to the parameter changes the caller's variable, and the argument must be a variable, not a constant or an expression.",
+        "If neither keyword is written, BYVAL is assumed. A keyword also carries on to the parameters that follow it until the other keyword appears, so in PROCEDURE Swap(BYREF X : INTEGER, Y : INTEGER) both X and Y are passed by reference. BYREF is used with procedures only; functions take BYVAL parameters and send their result back with RETURN. Choose BYREF when the purpose of the procedure is to update the caller's variables, and BYVAL whenever the caller's data should be protected."
+      ],
+      "bullets": [
+        "BYVAL: a copy is passed; the caller's variable cannot be changed; argument may be any expression. Default.",
+        "BYREF: the variable's address is passed; changes inside the procedure remain after the call; argument must be a variable.",
+        "A BYVAL/BYREF keyword applies to the following parameters too, until the other keyword is written.",
+        "Do not use BYREF with a function: a function returns its result with RETURN."
       ],
       "examples": []
     },
     {
       "id": "05-by-value-vs-by-reference-worked",
-      "title": "Worked trace: the same starting value, by value and by reference",
+      "title": "Worked traces: BYVAL and BYREF side by side",
       "content": [
-        "The clearest way to see the difference between BYVAL and BYREF is to call two otherwise identical procedures with the same starting value, change the parameter inside each one by the same amount, and then check the caller's original variable after each call has finished. Both procedures below add 10 to their parameter and output it from inside the procedure; the only difference between them is BYVAL versus BYREF in the parameter's declaration.",
-        "Tracing both calls with Number starting at 5 in each case shows the value printed inside the procedure is 15 in both versions, since the addition itself behaves identically either way; the difference only appears afterwards, in what OUTPUT Number prints back in the main routine once each procedure has finished and control has returned to it."
+        "To decide what a call does to the caller, trace the caller's variables before and after each call, not just the parameters. In the first trace, Step is BYVAL and Total is BYREF. Doubling Step changes only the copy, so P stays 3 however many times the procedure is called, while every change to Total is made directly to Q.",
+        "The second trace uses the same swap body twice. With BYREF applying to both parameters, the values are exchanged. With Y marked BYVAL, the assignment Y ← Temp changes only a copy, so the caller ends with the same value in both variables. That half-working swap is a classic exam trace."
       ],
       "bullets": [
-        "Both procedures compute the same result, 15, inside themselves; BYVAL and BYREF do not change what happens to the parameter during the call itself.",
-        "After the BYVAL call finishes, Number in the caller is unchanged at 5, because the procedure only ever had a copy of it.",
-        "After the BYREF call finishes, Number in the caller has been changed to 15, because the procedure operated on the actual variable itself."
+        "Always record the caller's variables after the call returns: that is where BYVAL and BYREF differ.",
+        "A BYVAL parameter can be changed inside the procedure; the change is simply thrown away at the end.",
+        "A swap needs both parameters BYREF; with one BYVAL, both variables end up holding the same value."
       ],
       "examples": [
         {
           "id": "05-byval-byref-trace",
           "kind": "worked",
-          "label": "Worked trace: AddTenByValue versus AddTenByReference, both called with Number = 5",
-          "content": "PROCEDURE AddTenByValue(BYVAL X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by value), X = \", X\nENDPROCEDURE\n\nPROCEDURE AddTenByReference(BYREF X : INTEGER)\n  X <- X + 10\n  OUTPUT \"Inside procedure (by reference), X = \", X\nENDPROCEDURE\n\n-- Call 1: by value --\nDECLARE Number : INTEGER\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByValue(Number)\n// Inside AddTenByValue: X receives a COPY of Number's value, 5\n//   X <- X + 10  =>  X becomes 15 (only the copy changes)\n// OUTPUT inside procedure: \"Inside procedure (by value), X = 15\"\n// Procedure ends; the copy X is discarded, Number itself was never touched\nOUTPUT \"After call, Number = \", Number         // After call, Number = 5  (UNCHANGED)\n\n-- Call 2: by reference --\nNumber <- 5\nOUTPUT \"Before call, Number = \", Number        // Before call, Number = 5\nCALL AddTenByReference(Number)\n// Inside AddTenByReference: X IS Number itself, not a copy\n//   X <- X + 10  =>  Number becomes 15 directly, because X and Number are the same variable\n// OUTPUT inside procedure: \"Inside procedure (by reference), X = 15\"\n// Procedure ends; Number remains changed, since X was never a separate copy\nOUTPUT \"After call, Number = \", Number         // After call, Number = 15  (CHANGED)\n\n-- Summary of the trace --\n// Both procedures print X = 15 from inside themselves: the +10 happens identically\n// either way. The difference is entirely in what Number equals back in the caller\n// AFTER the call returns: still 5 after AddTenByValue (a copy was changed, not\n// Number), but 15 after AddTenByReference (Number itself was changed)."
+          "label": "Trace 1: one BYVAL and one BYREF parameter, called twice",
+          "content": "PROCEDURE Update(BYVAL Step : INTEGER, BYREF Total : INTEGER)\n   Step ← Step * 2\n   Total ← Total + Step\nENDPROCEDURE\n\nDECLARE P, Q : INTEGER\nP ← 3\nQ ← 4\nCALL Update(P, Q)\nOUTPUT P, \" \", Q\nCALL Update(P, Q)\nOUTPUT P, \" \", Q\n\nStatement             | Step | Total (= Q) | P | Q  | OUTPUT\nP ← 3, Q ← 4          |      |             | 3 | 4  |\nCALL Update: enter    | 3    | 4           | 3 | 4  |\nStep ← Step * 2       | 6    | 4           | 3 | 4  |\nTotal ← Total + Step  | 6    | 10          | 3 | 10 |\nreturn, OUTPUT        |      |             | 3 | 10 | 3 10\nCALL Update: enter    | 3    | 10          | 3 | 10 |\nStep ← Step * 2       | 6    | 10          | 3 | 10 |\nTotal ← Total + Step  | 6    | 16          | 3 | 16 |\nreturn, OUTPUT        |      |             | 3 | 16 | 3 16\n\nStep starts at 3 on each call because it is a fresh copy of P; Q keeps growing because Total is Q."
+        },
+        {
+          "id": "05-swap-trace",
+          "kind": "worked",
+          "label": "Trace 2: a swap with both parameters BYREF, then with Y BYVAL",
+          "content": "PROCEDURE SwapBoth(BYREF X : INTEGER, Y : INTEGER)     // BYREF covers X and Y\n   DECLARE Temp : INTEGER\n   Temp ← X\n   X ← Y\n   Y ← Temp\nENDPROCEDURE\n\nPROCEDURE SwapOne(BYREF X : INTEGER, BYVAL Y : INTEGER) // only X is BYREF\n   DECLARE Temp : INTEGER\n   Temp ← X\n   X ← Y\n   Y ← Temp\nENDPROCEDURE\n\nFirst ← 1\nSecond ← 2\nCALL SwapBoth(First, Second)\n   Temp ← 1; X ← 2 (First = 2); Y ← 1 (Second = 1)\n   After the call: First = 2, Second = 1   → swapped\n\nFirst ← 1\nSecond ← 2\nCALL SwapOne(First, Second)\n   Temp ← 1; X ← 2 (First = 2); Y ← 1 changes only the copy\n   After the call: First = 2, Second = 2   → not swapped"
+        },
+        {
+          "id": "05-python-byref-simulation",
+          "kind": "code",
+          "label": "Python check of both traces (BYREF simulated with a one-item list)",
+          "content": "# Assigning to an int parameter in Python never changes the caller's\n# variable, so it behaves like BYVAL. To imitate BYREF, pass a one-item\n# list and change item [0], which the caller can see.\n\ndef update(step, total_ref):        # BYVAL Step, BYREF Total\n    step = step * 2\n    total_ref[0] = total_ref[0] + step\n\np, q = 3, [4]\nupdate(p, q)\nprint(p, q[0])                      # 3 10\nupdate(p, q)\nprint(p, q[0])                      # 3 16\n\ndef swap_one(x_ref, y):              # BYREF X, BYVAL Y\n    temp = x_ref[0]\n    x_ref[0] = y\n    y = temp                         # only the local copy changes\n\nfirst, second = [1], 2\nswap_one(first, second)\nprint(first[0], second)             # 2 2",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "06-local-vs-global-variables",
-      "title": "Local versus global variables",
+      "id": "10-efficient-pseudocode",
+      "title": "Writing efficient pseudocode",
       "content": [
-        "A local variable is declared inside a procedure or function and exists only while that particular call to the subroutine is running: it is created fresh when the subroutine starts and ceases to exist as soon as the subroutine finishes, so it cannot be accessed from outside that subroutine, and a new call to the same subroutine creates an entirely new, separate copy of that local variable with no memory of any previous call's value. A global variable, by contrast, is declared at the top level of the program, outside every subroutine, and is accessible from anywhere in the program, including from inside every procedure and function, without needing to be passed in as a parameter at all.",
-        "Global variables are generally best avoided except where genuinely necessary, because a subroutine that reads or changes a global variable has a hidden dependency and a hidden side effect that is not visible in its own declaration or parameter list; this makes such a subroutine harder to understand, harder to reuse elsewhere, and harder to test in isolation, since its behaviour then depends on program state outside itself rather than solely on the arguments it was explicitly given."
+        "Efficient pseudocode reaches the correct result without doing unnecessary work. Three habits cover most exam questions. First, do not repeat a calculation whose answer does not change: work it out once before a loop, or store a function's return value in a variable instead of calling the function twice. Second, stop a loop as soon as the answer is known: a search that has found its item should not keep checking the rest of the array, so a WHILE or REPEAT loop with a flag suits it better than a FOR loop over every element. Third, reuse modules: one procedure with parameters is better than several near-identical copies.",
+        "Choosing the right structure is part of efficiency as well: a CASE instead of a long chain of separate IFs that are all tested, a FOR loop when the number of passes is fixed, and a condition-controlled loop when it is not. Efficient code is also usually shorter and clearer, which reduces the chance of errors."
       ],
       "bullets": [
-        "A local variable exists only while its own subroutine is running, and a fresh copy is created on every separate call.",
-        "A global variable is declared outside every subroutine and is accessible from anywhere in the program, without being passed in as a parameter.",
-        "Global variables are generally avoided, because a subroutine that depends on one has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test."
+        "Move calculations that do not change out of the loop; store a return value rather than calling the same function again.",
+        "Exit early: use a condition-controlled loop with a flag when the job can finish before the end of the data.",
+        "Reuse one parameterised subroutine rather than writing several similar ones.",
+        "Use IF … ELSE or CASE so that once one branch is chosen the other tests are skipped."
       ],
-      "examples": []
-    },
-    {
-      "id": "07-benefits-of-structured-programming",
-      "title": "Benefits of structured programming with subroutines",
-      "content": [
-        "Breaking a program into procedures and functions brings several concrete benefits. Reuse: a subroutine written once to perform a specific sub-task can be called from many different places in the same program, or copied into a different program entirely, instead of the same logic being written out again in full every time it is needed, which also means a fix or improvement made once inside the subroutine automatically benefits every place that calls it. Independent testing: because a subroutine is self-contained, interacting with the rest of the program only through its parameters and return value, it can be tested on its own, with a range of chosen test inputs, before it is even connected to the rest of the program, rather than only being testable as part of the whole finished system.",
-        "Easier design of large problems: breaking a large, complex problem down into a hierarchy of smaller procedures and functions, each with one well-defined sub-task, makes that problem far easier to design and to reason about than trying to plan one single undivided block of code to handle everything at once. Easier fault isolation: when a program does not behave correctly, a fault can be traced to one specific, smaller subroutine responsible for the affected behaviour, and investigated and corrected within that subroutine alone, rather than having to search through an entire, undivided program to find where the fault might be."
-      ],
-      "bullets": [
-        "Reuse: a subroutine written once can be called repeatedly from different places, instead of the same code being duplicated everywhere it is needed.",
-        "Independent testing and easier design: a self-contained subroutine can be tested on its own before integration, and a large problem is easier to design as a hierarchy of smaller sub-tasks.",
-        "Easier fault isolation: a fault can be traced to one specific, smaller subroutine, rather than searched for across an entire undivided program."
-      ],
-      "examples": []
+      "examples": [
+        {
+          "id": "10-efficiency-worked",
+          "kind": "worked",
+          "label": "Worked example: removing wasted work",
+          "content": "// 1. Repeated calculation\n// Wasteful: Average(Marks) is worked out twice\nIF Average(Marks) >= 50 THEN\n   OUTPUT \"Pass, mean \", Average(Marks)\nENDIF\n// Better: call once, keep the return value\nMean ← Average(Marks)\nIF Mean >= 50 THEN\n   OUTPUT \"Pass, mean \", Mean\nENDIF\n\n// 2. Exiting a loop early (Names has 1000 elements, SearchName is in Names[3])\n// Wasteful: always checks all 1000 elements\nFound ← FALSE\nFOR Index ← 1 TO 1000\n   IF Names[Index] = SearchName THEN\n      Found ← TRUE\n   ENDIF\nNEXT Index\n// Better: stops as soon as the name is found\nFound ← FALSE\nIndex ← 1\nWHILE Index <= 1000 AND NOT Found\n   IF Names[Index] = SearchName THEN\n      Found ← TRUE\n   ELSE\n      Index ← Index + 1\n   ENDIF\nENDWHILE\n\nComparisons of Names[Index] with SearchName:\n   FOR version:   1000 (every element)\n   WHILE version: 3 (Index 1 no, 2 no, 3 yes; Found = TRUE ends the loop, Index = 3)"
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Pass by value versus pass by reference",
+    "title": "Procedure versus function in Cambridge pseudocode",
     "columns": [
-      "Aspect",
-      "BYVAL (by value)",
-      "BYREF (by reference)"
+      "Feature",
+      "Procedure",
+      "Function"
     ],
     "rows": [
       [
-        "What the subroutine receives",
-        "A copy of the argument's value",
-        "The actual variable itself"
+        "Header",
+        "PROCEDURE Name(P : TYPE)",
+        "FUNCTION Name(P : TYPE) RETURNS TYPE"
       ],
       [
-        "Effect of changing the parameter inside the subroutine",
-        "Only the copy changes; the original variable is unaffected",
-        "The original variable changes too, since it is the same variable"
+        "End keyword",
+        "ENDPROCEDURE",
+        "ENDFUNCTION"
       ],
       [
-        "Caller's variable after the call returns",
-        "Unchanged, whatever the subroutine did to its parameter",
-        "Changed, if the subroutine changed its parameter"
+        "How it is called",
+        "CALL Name(args) as a statement on its own",
+        "Inside an expression, e.g. X ← Name(args); never with CALL"
       ],
       [
-        "Typical use",
-        "Protecting the caller's original variable from any change",
-        "A subroutine specifically intended to update the caller's variable in place"
+        "Value sent back",
+        "None directly; the caller's variables can be changed through BYREF",
+        "Exactly one value, by RETURN, which replaces the call"
+      ],
+      [
+        "Parameter passing",
+        "BYVAL (default) or BYREF",
+        "BYVAL only"
+      ],
+      [
+        "Appropriate for",
+        "Actions: output, file handling, updating arrays or several variables",
+        "Working out one result: a calculation, a search position, a TRUE/FALSE check"
       ]
     ]
   },
   "diagram": {
-    "title": "Top-down decomposition of a program into subroutines",
-    "type": "layers",
+    "title": "What happens when a subroutine is called",
+    "type": "flow",
     "nodes": [
-      "Main routine: calls subroutines in the order the overall task requires",
-      "Procedure: performs a task, called with CALL, returns no usable value",
-      "Function: performs a task, called from within an expression, returns exactly one value with RETURN",
-      "Parameters carry data into each subroutine, by value (a copy) or by reference (the actual variable)",
-      "Local variables exist only inside the subroutine that declares them, for the duration of one call",
-      "Control returns to the main routine (or the calling subroutine) once the subroutine finishes"
+      "Call reached: CALL Name(args) for a procedure, or Name(args) inside an expression for a function",
+      "Arguments matched to parameters by position: BYVAL copies the value, BYREF passes the variable's address",
+      "Local variables created; the body runs",
+      "Procedure: reaches ENDPROCEDURE. Function: reaches RETURN, which ends it at once",
+      "Local variables and BYVAL copies discarded; BYREF changes stay in the caller's variables",
+      "Control returns: after the CALL line, or the return value replaces the call and the expression is finished"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing why a procedure's change is not visible after it returns",
+      "title": "A 'reset' procedure that does not reset",
       "steps": [
-        "A procedure is declared PROCEDURE Reset(BYVAL Total : INTEGER), and its body sets Total <- 0",
-        "The main routine calls CALL Reset(RunningTotal), where RunningTotal currently holds 50, intending RunningTotal to become 0",
-        "Because the parameter is declared BYVAL, Reset receives only a copy of RunningTotal's value, 50, not RunningTotal itself",
-        "Tracing the call shows Total <- 0 sets the copy to 0 inside Reset, but RunningTotal in the main routine is never touched, since Total was never the same variable as RunningTotal"
+        "PROCEDURE Reset(Total : INTEGER) sets Total ← 0, and the main program runs CALL Reset(RunningTotal) with RunningTotal = 50",
+        "No passing method is written, so BYVAL is assumed and Total receives a copy of 50",
+        "Total ← 0 changes the copy only; the copy is discarded at ENDPROCEDURE",
+        "After the call RunningTotal is still 50"
       ],
-      "evaluation": "RunningTotal is still 50 after the call, not 0, because BYVAL only ever gives the subroutine a copy to change; the parameter's declaration must be changed to BYREF Total : INTEGER for a change made inside Reset to actually change RunningTotal in the calling code, which is what the procedure's own name and evident intention require."
+      "evaluation": "The header must be PROCEDURE Reset(BYREF Total : INTEGER) so that Total refers to RunningTotal itself. Alternatively, drop the procedure and write RunningTotal ← 0 directly; a subroutine is not worth it for one assignment."
     },
     {
-      "title": "Diagnosing a fault caused by relying on a global variable instead of a parameter",
+      "title": "Choosing between a procedure and a function for a validation step",
       "steps": [
-        "A function FUNCTION ApplyDiscount() RETURNS REAL is written to read a global variable Price directly, rather than receiving Price as a parameter, and returns Price * 0.9",
-        "The function is called correctly the first time, when the global Price happens to hold the intended value, and produces the correct discounted result",
-        "Later in the same program, Price is reused as a general-purpose variable for an unrelated calculation, and ApplyDiscount() is called again for a different, unrelated item",
-        "Tracing this second call shows ApplyDiscount() still reads whatever value Price currently holds from the unrelated calculation, not the price of the item it is actually meant to be discounting"
+        "A program must check a date entered as Day, Month and Year before storing it, in several different places",
+        "The check produces a single answer, valid or not, which each caller uses to decide what to do next",
+        "Written as FUNCTION IsValidDate(Day : INTEGER, Month : INTEGER, Year : INTEGER) RETURNS BOOLEAN, it can be used directly as IF IsValidDate(D, M, Y) THEN or in a REPEAT … UNTIL condition",
+        "As a procedure it would need an extra BYREF BOOLEAN parameter and a separate CALL line before every test"
       ],
-      "evaluation": "The fault is that ApplyDiscount() has a hidden dependency on the global variable Price instead of receiving the item's price as an explicit parameter, so its result depends on whatever else in the program most recently changed Price; rewriting it as FUNCTION ApplyDiscount(ItemPrice : REAL) RETURNS REAL, returning ItemPrice * 0.9, removes the hidden dependency and makes the function's behaviour depend only on the argument it is explicitly given."
+      "evaluation": "A function is the better choice: exactly one value comes back, it fits straight into the conditions that need it, and there is no BYREF side effect. Because the check is needed in several places, making it a subroutine at all also removes duplicated code."
     },
     {
-      "title": "Comparing one undivided block of code against structured subroutines for testing a fault",
+      "title": "Making a search loop efficient",
       "steps": [
-        "A program that validates input, performs a calculation, and formats output is written as one single, undivided block of code with no subroutines",
-        "Testing reveals the final formatted output is sometimes wrong, but the fault could be in the validation, the calculation, or the formatting, since all three are mixed together in the same block",
-        "The same program is instead written as three separate subroutines, ValidateInput(), Calculate() and FormatOutput(), each called in turn from the main routine",
-        "Each subroutine is tested on its own with a range of test inputs, and the fault is traced specifically to Calculate(), which is producing a wrong result for one particular kind of input"
+        "A FOR loop compares SearchName with all 1000 elements of Names and sets Found ← TRUE on a match",
+        "When the name is at position 3, the remaining 997 comparisons cannot change the result",
+        "Replacing it with WHILE Index <= 1000 AND NOT Found, incrementing Index only when there is no match, stops after 3 comparisons",
+        "When the name is absent both versions make 1000 comparisons, and the WHILE version must still not read beyond Names[1000]"
       ],
-      "evaluation": "In the undivided block, the fault could be anywhere across the whole program and finding it requires examining all of it; broken into subroutines, each one can be tested independently, so the fault is isolated to Calculate() alone, and only that one smaller subroutine needs to be examined and corrected, demonstrating the fault-isolation benefit of structured programming directly."
+      "evaluation": "The early-exit loop is never slower and is usually much faster, and it leaves Index holding the position found. The upper-bound test must stay in the WHILE condition, or a missing name makes the loop run past the end of the array."
     }
   ],
   "examTips": [
-    "State explicitly whether a subroutine is a procedure or a function by whether it returns a usable value, and check it is called correctly: CALL for a procedure, from within an expression for a function.",
-    "When asked whether a parameter is BYVAL or BYREF, trace what happens to the caller's original variable after the subroutine returns, not just what happens to the parameter while the subroutine is running.",
-    "Use BYREF only when a subroutine is genuinely intended to change the caller's variable; using BYREF where BYVAL was intended risks accidentally changing a variable that should have been protected.",
-    "When explaining the benefits of structured programming, give the specific reason (reuse, independent testing, easier design, easier fault isolation) rather than simply asserting that subroutines are 'better' or 'clearer'."
+    "Write the header in full: PROCEDURE Name(BYREF X : INTEGER) or FUNCTION Name(X : INTEGER) RETURNS INTEGER. A missing data type or missing RETURNS type costs the header mark.",
+    "Use CALL only for procedures. A function goes inside an expression: an assignment, an OUTPUT or a condition.",
+    "In a trace, write down the caller's variables after every call; BYVAL leaves them unchanged, BYREF does not.",
+    "When asked where a procedure or function is appropriate, link it to the task: one value back → function; an action or several values back → procedure; repeated steps → subroutine.",
+    "For 'write efficient pseudocode', name what you avoided: a repeated calculation, an unneeded pass through a loop, or duplicated code."
   ],
   "commonMistakes": [
-    "Assuming a change made to a BYVAL parameter inside a subroutine will be visible in the caller's original variable after the call returns, when it will not be.",
-    "Confusing a procedure with a function, for example trying to use a procedure's non-existent return value inside an expression, or calling a function with CALL as if it were a procedure.",
-    "Relying on a global variable to pass data into or out of a subroutine instead of using an explicit parameter, creating a hidden dependency that is easy to introduce faults through.",
-    "Assuming a local variable keeps its value between separate calls to the same subroutine, when in fact a fresh copy is created on every call.",
-    "Forgetting to trace the caller's variable both before and after a call when asked whether a parameter was passed by value or by reference, and guessing instead of tracing."
+    "Writing CALL in front of a function, or using a procedure call inside an expression as if it returned a value.",
+    "Leaving a path through a function with no RETURN, or forgetting that statements after RETURN are never run.",
+    "Assuming a change to a BYVAL parameter (including an unmarked one, since BYVAL is the default) is seen by the caller.",
+    "Reading PROCEDURE Swap(BYREF X : INTEGER, Y : INTEGER) as if only X were BYREF; the keyword carries on to Y.",
+    "Passing a literal or an expression, such as CALL Update(3, Q + 1), to a BYREF parameter; a BYREF argument must be a variable.",
+    "Mixing up parameter (in the header) and argument (in the call), or expecting their names to match."
   ],
   "quickRecall": [
     {
-      "question": "What is structured (top-down) programming?",
-      "answer": "Breaking a problem down into a hierarchy of smaller, self-contained procedures and functions (subroutines), each handling one well-defined sub-task, connected by a main routine that calls them."
+      "question": "How is a procedure with no parameters defined and called?",
+      "answer": "PROCEDURE Name() … ENDPROCEDURE, called with the statement CALL Name()."
     },
     {
-      "question": "What is the difference between a procedure and a function?",
-      "answer": "A procedure performs a task but does not return a value; a function performs a task and returns exactly one value that can be used within an expression."
+      "question": "Give the general form of a function header.",
+      "answer": "FUNCTION Name(P1 : TYPE, P2 : TYPE) RETURNS TYPE."
     },
     {
-      "question": "What is the difference between passing a parameter by value and by reference?",
-      "answer": "By value, the subroutine receives a copy, so changes inside it do not affect the caller's original variable; by reference, the subroutine receives the actual variable itself, so changes inside it do affect the caller's original variable."
+      "question": "What happens to a function call when RETURN is executed?",
+      "answer": "The function ends immediately and the returned value replaces the call in the expression, which is then evaluated."
     },
     {
-      "question": "In the worked trace, why was Number still 5 after AddTenByValue(Number) but 15 after AddTenByReference(Number), given both started with Number = 5?",
-      "answer": "AddTenByValue only ever changed a copy of Number, leaving the original untouched; AddTenByReference changed Number itself directly, since its parameter was the actual variable, not a copy."
+      "question": "What is the difference between a parameter and an argument?",
+      "answer": "A parameter is the identifier listed in the subroutine header; an argument is the actual value, variable or expression supplied in the call."
     },
     {
-      "question": "What is the difference between a local variable and a global variable?",
-      "answer": "A local variable is declared inside a subroutine and exists only while that subroutine is running; a global variable is declared at the top level and is accessible from anywhere in the program."
+      "question": "What does a subroutine's interface consist of?",
+      "answer": "The number, order, data types and passing method of its parameters, and for a function the data type returned."
     },
     {
-      "question": "Why are global variables generally best avoided in a subroutine's design?",
-      "answer": "Because a subroutine that depends on a global variable has a hidden dependency and side effect not visible in its own parameter list, making it harder to understand, reuse and test independently."
+      "question": "After PROCEDURE Update(BYVAL Step : INTEGER, BYREF Total : INTEGER) with Step ← Step * 2 and Total ← Total + Step, what are P and Q after CALL Update(P, Q) with P = 3, Q = 4?",
+      "answer": "P = 3 (only a copy was doubled) and Q = 10 (4 + 6, changed through BYREF)."
     },
     {
-      "question": "Name four benefits of structured programming with subroutines.",
-      "answer": "Reuse of code instead of duplication, independent testing of each subroutine, easier design of large problems as a hierarchy of smaller pieces, and easier fault isolation to one specific subroutine."
+      "question": "If no BYVAL or BYREF is written, how is a parameter passed?",
+      "answer": "By value; BYVAL is the default."
+    },
+    {
+      "question": "When is a function more appropriate than a procedure?",
+      "answer": "When the task produces exactly one value that the caller uses, for example in a calculation or as a condition."
     }
   ],
   "relatedTopics": [
