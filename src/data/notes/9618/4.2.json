@@ -36,6 +36,14 @@
       "definition": "A translator that converts assembly language into machine code."
     },
     {
+      "term": "Macro",
+      "definition": "A named sequence of instructions that is used more than once; the assembler replaces the name with the instructions."
+    },
+    {
+      "term": "Directive",
+      "definition": "An instruction to the assembler about how to build the machine code, for example how memory should be used."
+    },
+    {
       "term": "Symbol table",
       "definition": "A table built by the assembler that records each label and the address it represents."
     },
@@ -53,24 +61,51 @@
       "id": "01-assembly-and-machine-code",
       "title": "Assembly language and machine code",
       "content": [
-        "The processor only understands machine code: binary patterns made of an opcode and an operand. Assembly language replaces the binary opcodes with short mnemonics (such as LDD, ADD, JMP) and lets programmers use labels instead of numeric addresses. There is a one-to-one relationship: each assembly instruction becomes exactly one machine-code instruction. Assembly language is specific to one processor's instruction set, so a program written for one processor type will not run on another."
+        "The only language the processor recognises is machine code. Each machine-code instruction is a binary code with a defined number of bits: an opcode, which defines the action, and usually an operand, which defines the data or address needed (some instructions have no operand). The opcode bits can themselves be split, for example into bits for the operation, bits for the addressing mode and bits for the register. Each processor has its own instruction set, so machine code for one processor type will not run on another. Writing machine code directly is slow and error-prone, so programmers use assembly language: each machine-code instruction has an equivalent assembly instruction made of a mnemonic for the opcode (such as LDD, ADD, JMP) and a character representation of the operand. This is a one-to-one relationship. An assembler translates assembly language into machine code."
       ],
       "bullets": [
+        "Extra features the assembler provides: comments, symbolic names for constants, labels for addresses, macros (a named sequence of instructions used more than once) and directives (instructions to the assembler itself, e.g. how to use memory).",
         "Assembly language is used where precise control of hardware, speed or small program size matters, e.g. device drivers and embedded systems.",
-        "It is harder to write, read and debug than a high-level language.",
-        "In the CAIE instruction set, #n is a denary value, Bn is binary and &n is hexadecimal."
+        "It is harder to write, read and debug than a high-level language, and is specific to one processor type.",
+        "Immediate values can be written in denary (#48), binary (#B00110000) or hexadecimal (#&30); the CAIE instruction table also shows these as #n, Bn and &n."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "4.2-1-1",
+          "kind": "example",
+          "label": "An instruction format",
+          "content": "A 24-bit instruction might be split as:\n4 bits operation | 2 bits addressing mode | 2 bits register | 16 bits operand\n4 bits allow 2^4 = 16 operations, 2 bits allow 4 addressing modes, and a 16-bit operand can hold any address on a 16-bit address bus."
+        }
+      ]
+    },
+    {
+      "id": "07-symbolic-relative-absolute",
+      "title": "Symbolic, relative and absolute addressing",
+      "content": [
+        "The same program can refer to memory in three ways. With symbolic addressing the programmer uses labels such as TOTAL or STRTLP and does not need to know where the program will be stored. With relative addressing each address is given as an offset from a base address held in a base register, for example STO [BR] + 16, so the program works wherever it is loaded. With absolute addressing actual memory addresses are used, for example STO 216, which only works if the program is loaded at the assumed start address."
+      ],
+      "bullets": [
+        "Labels are written with a colon (TOTAL:) where they are defined; the colon is dropped when they are used.",
+        "The assembler turns symbolic addresses into offsets or addresses using the symbol table."
+      ],
+      "examples": [
+        {
+          "id": "4.2-7-1",
+          "kind": "example",
+          "label": "One instruction, three styles",
+          "content": "The program starts at address 200 and TOTAL is the 17th location (offset 16).\nSymbolic: STO TOTAL\nRelative: STO [BR] + 16   (BR holds the base address 200)\nAbsolute: STO 216"
+        }
+      ]
     },
     {
       "id": "02-two-pass-assembler",
       "title": "The two-pass assembler",
       "content": [
-        "A program can refer to a label before the label is defined, for example jumping forward to a label further down the code (a forward reference). The assembler therefore reads the source code twice. In the first pass it reads each line, removes comments and white space, and adds every label to the symbol table with its address, calculated by counting instructions from the start address. In the second pass it replaces every label with its address from the symbol table, converts each mnemonic into its binary opcode using an opcode table, and generates the machine code (object code). Errors such as undefined labels or unknown mnemonics are reported."
+        "A program can refer to a label before the label is defined, for example jumping forward to a label further down the code (a forward reference). The assembler therefore reads the source code twice. In the first pass it reads the code line by line, removes comments, replaces each macro name with the instructions that make up the macro, and removes and stores any directives to act on later. It counts the instructions as it goes, and when it meets a label it enters the label and its address (or offset) in the symbol table. In the second pass it replaces every symbolic address with its value from the symbol table and converts each mnemonic into its binary opcode using an opcode lookup table, producing the machine code (object code). Errors such as undefined labels or unknown mnemonics are reported. The output may still need its addresses adjusted when the program is loaded into memory to run."
       ],
       "bullets": [
-        "Pass 1: build the symbol table (labels → addresses).",
-        "Pass 2: translate opcodes and replace labels using the symbol table, producing object code.",
+        "Pass 1: remove comments, expand macros, store directives, and build the symbol table (labels → addresses).",
+        "Pass 2: use the symbol table and the opcode lookup table to produce object code.",
         "A single pass would fail on forward references, because the address of a label later in the code is not yet known."
       ],
       "examples": [
@@ -83,23 +118,10 @@
       ]
     },
     {
-      "id": "03-instruction-groups",
-      "title": "Instruction groups",
-      "content": [
-        "The CAIE instruction set groups instructions by purpose. Data movement instructions copy values between memory, the accumulator and the index register: LDM #n loads a number into the ACC, LDD loads from an address, LDI loads indirectly, LDX loads indexed, LDR #n loads a number into the IX, MOV copies the ACC into another register, and STO stores the ACC to memory. Input and output use IN (read a character and store its ASCII value in the ACC) and OUT (output the character whose ASCII value is in the ACC). Arithmetic instructions are ADD and SUB (with an address or a number), and INC and DEC (add or subtract 1 from the ACC or IX). CMP compares the ACC with an address or a number, and CMI compares indirectly. JMP is an unconditional jump; JPE jumps if the last comparison was equal and JPN jumps if it was not equal. END returns control to the operating system."
-      ],
-      "bullets": [
-        "Compare instructions do not change the ACC; they set a flag that the next conditional jump reads.",
-        "Conditional jumps are how selection and loops are built in assembly language.",
-        "STO copies the ACC into memory; the ACC keeps its value."
-      ],
-      "examples": []
-    },
-    {
       "id": "04-addressing-modes",
       "title": "Addressing modes",
       "content": [
-        "In immediate addressing the operand is the value itself (LDM #150 puts 150 into the ACC). In direct addressing the operand is the address of the value (LDD 150 loads the contents of address 150). In indirect addressing the operand is an address that holds another address, where the value is found (LDI 150 reads address 150, uses that value as an address, and loads from there). In indexed addressing the operand is added to the contents of the index register to form the address (LDX 150 with IX = 1 loads from address 151). In relative addressing the address is given as an offset from the address of the current instruction, so the code works wherever it is placed in memory."
+        "In immediate addressing the operand is the value itself (LDM #150 puts 150 into the ACC). In direct addressing the operand is the address of the value (LDD 150 loads the contents of address 150). In indirect addressing the operand is an address that holds another address, where the value is found (LDI 150 reads address 150, uses that value as an address, and loads from there). In indexed addressing the operand is added to the contents of the index register to form the address (LDX 150 with IX = 1 loads from address 151). In relative addressing the address is given as an offset from a base address, such as the address in a base register or the address of the current instruction, so the code works wherever it is placed in memory."
       ],
       "bullets": [
         "Immediate: fastest, but the value is fixed in the program.",
@@ -113,6 +135,28 @@
           "kind": "worked",
           "label": "One operand, four addressing modes",
           "content": "Memory: address 150 contains 300, address 151 contains 20, address 300 contains 45. IX contains 1.\nLDM #150 (immediate) → ACC = 150\nLDD 150 (direct) → ACC = 300\nLDI 150 (indirect) → address 150 holds 300, so load from 300 → ACC = 45\nLDX 150 (indexed) → address 150 + 1 = 151 → ACC = 20"
+        }
+      ]
+    },
+    {
+      "id": "03-instruction-groups",
+      "title": "Instruction groups",
+      "content": [
+        "The CAIE instruction set groups instructions by purpose. Data movement instructions copy values between memory, the accumulator and the index register: LDM #n loads a number into the ACC, LDD loads from an address, LDI loads indirectly, LDX loads indexed, LDR #n loads a number into the IX, MOV copies the ACC into another register (IX), and STO stores the ACC to memory. Input and output use IN (read a character from the keyboard and store its ASCII value in the ACC) and OUT (display the character whose ASCII value is in the ACC); neither has an operand. Arithmetic instructions are ADD and SUB (with an address or a number), and INC and DEC (add or subtract 1 from the ACC or IX); there are no general multiply or divide instructions. CMP compares the ACC with an address or a number, and CMI compares indirectly. JMP is an unconditional jump; JPE jumps if the last comparison was True (equal) and JPN jumps if it was False (not equal). END returns control to the operating system."
+      ],
+      "bullets": [
+        "Compare instructions only test whether two values are equal, and do not change the ACC; the result is recorded as a flag in the status register.",
+        "A conditional jump checks that flag; if the jump is taken, the new address overwrites the PC value that was incremented during the fetch.",
+        "Conditional jumps are how selection and loops are built in assembly language.",
+        "STO copies the ACC into memory; the ACC keeps its value.",
+        "Read each mnemonic carefully: it defines the operation, the register and often the addressing mode (e.g. LDD vs LDI vs LDX)."
+      ],
+      "examples": [
+        {
+          "id": "4.2-3-1",
+          "kind": "code",
+          "label": "Reading a digit from the keyboard",
+          "content": "        IN          ; ACC = ASCII code of the key, e.g. '7' → 55\n        SUB #48     ; ASCII '0' is 48, so 55 − 48 = 7\n        STO NUM     ; store the numeric value 7"
         }
       ]
     },

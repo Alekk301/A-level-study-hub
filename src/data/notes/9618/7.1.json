@@ -6,253 +6,303 @@
   "unitTitle": "AS Theory",
   "title": "Ethics and Ownership",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to discuss the moral, ethical, legal and social issues raised by computing, including privacy, intellectual property and the wider effects of technology on society. Answers score when a general issue is applied to a specific scenario, not when it is only defined.",
+  "overview": "This topic asks you to think like a computing professional. Paper 1 tests why professionals need ethics and codes of conduct (BCS, ACM/IEEE), the impact of acting ethically or unethically in a given scenario, why copyright legislation is needed, the differences between commercial software, shareware, freeware, open source and free software licences (and which suits a situation), and the applications and social, economic and environmental impact of artificial intelligence. Marks come from applying a principle to the scenario in the question, not from general statements.",
   "syllabusPoints": [
-    "Show understanding of privacy issues associated with the collection, storage and use of personal data.",
-    "Show understanding of intellectual property rights (IPR), including copyright, and the need for software licensing.",
-    "Describe different types of software licence, including proprietary, freeware, shareware and open-source, and single-user, multi-user, site and network licences.",
-    "Describe methods of preventing plagiarism, including plagiarism-detection software and correct referencing.",
-    "Discuss the wider moral and ethical impact of computing on society, including automation, employment and environmental effects."
+    "Show understanding of the need for and purpose of ethics as a computing professional.",
+    "Show understanding of the need to act ethically, including the role of professional bodies such as the BCS and IEEE and their codes of conduct.",
+    "Show understanding of the impact of acting ethically or unethically in a given situation.",
+    "Show understanding of the need for copyright legislation.",
+    "Show understanding of the different types of software licensing (Free Software Foundation, Open Source Initiative, shareware and commercial software) and justify the use of a licence for a given situation.",
+    "Show understanding of Artificial Intelligence (AI), including its applications and its social, economic and environmental impact."
   ],
   "definitions": [
     {
-      "term": "Privacy",
-      "definition": "An individual's right to control what personal data is collected about them and how it is used."
+      "term": "Ethics",
+      "definition": "The moral principles that guide a person, and the rules of conduct recognised in a particular profession."
     },
     {
-      "term": "Personal data",
-      "definition": "Any data that can identify a living individual, either on its own or combined with other data."
-    },
-    {
-      "term": "Intellectual property (IP)",
-      "definition": "Original creative or intellectual work, such as software, music or writing, that the law allows its creator to own and control."
+      "term": "Code of conduct",
+      "definition": "A set of principles published by a professional body describing how its members are expected to behave."
     },
     {
       "term": "Copyright",
-      "definition": "A legal right that automatically protects an original work, giving the creator control over how it is copied, distributed and used."
+      "definition": "Formal legal recognition of the ownership of a created and published original work, giving the owner control over how it is copied and used."
     },
     {
       "term": "Software licence",
-      "definition": "A legal agreement that states how software may be used, copied and distributed by whoever obtains it."
+      "definition": "An agreement that gives the buyer permission to use software under stated conditions; the vendor keeps ownership."
     },
     {
-      "term": "Open-source software",
-      "definition": "Software distributed with its source code, which users are legally permitted to view, modify and redistribute, usually under specific licence conditions."
+      "term": "Shareware",
+      "definition": "Commercial software provided free of charge for a limited trial period, without the source code."
     },
     {
-      "term": "Plagiarism",
-      "definition": "Presenting someone else's work or ideas as one's own, without proper acknowledgement of the original source."
+      "term": "Freeware",
+      "definition": "Software provided free of charge with no time limit, but without the source code."
+    },
+    {
+      "term": "Open source software",
+      "definition": "Software provided with its source code, which users may use, modify, copy and distribute according to the licence (Open Source Initiative)."
+    },
+    {
+      "term": "Free software",
+      "definition": "Open source software (Free Software Foundation) that users are free to use as they wish, under a copyleft licence."
+    },
+    {
+      "term": "Copyleft",
+      "definition": "A licence condition that if the software is modified, the modified source code must be made available to others under the same conditions."
+    },
+    {
+      "term": "Artificial intelligence (AI)",
+      "definition": "The use of a computer or computer-controlled device to perform tasks normally associated with intelligent human behaviour."
     }
   ],
   "sections": [
     {
-      "id": "01-privacy-and-personal-data",
-      "title": "Privacy and personal data",
+      "id": "01-ethics",
+      "title": "What ethics means for computing",
       "content": [
-        "Computers make it easy to collect, store, search and share huge amounts of personal data, which raises the risk that data is used in ways an individual did not expect or agree to. Common concerns include organisations collecting more data than they need, sharing data with third parties without clear consent, tracking a person's online activity using cookies, and combining separate datasets to build a detailed profile of an individual."
+        "Ethics can mean the moral principles that guide a person, or the rules of conduct recognised in a profession. Professional rules of conduct must reflect moral principles of right and wrong, which can be viewed from philosophical, religious, legal or pragmatic (common-sense) points of view. Computing professionals need ethics because the systems they build affect employers, clients and the public: software controls money, personal data, safety-critical equipment and communication for millions of people, so a careless or dishonest decision can cause serious harm."
       ],
       "bullets": [
-        "Individuals often cannot see or control what data organisations hold about them.",
-        "Data collected for one purpose can be reused for an unrelated purpose without the individual's knowledge.",
-        "Even anonymised data can sometimes identify a person when combined with other sources."
+        "Laws set the minimum standard; ethical codes go further, covering honesty, competence and responsibility to others.",
+        "Religious and cultural beliefs of colleagues and users must also be respected in the workplace."
       ],
       "examples": []
     },
     {
-      "id": "02-data-protection-principles",
-      "title": "Data protection principles",
+      "id": "02-the-computing-professional",
+      "title": "Professional bodies and codes of conduct",
       "content": [
-        "Organisations that hold personal data are generally expected to follow good-practice principles: collect and process data fairly and lawfully; use it only for the specific purpose it was collected for; collect no more data than is necessary; keep it accurate and up to date; keep it no longer than necessary; and keep it secure against unauthorised access, loss or damage. These principles balance an organisation's need to use data against an individual's right to privacy."
+        "Any professional is expected to act ethically, and joining a professional organisation provides guidance through its code of conduct. The British Computer Society (BCS) code is organised under four headings: public interest; professional competence and integrity; duty to relevant authority; and duty to the profession. The IEEE-CS/ACM Software Engineering Code of Ethics sets out eight principles: Public (act consistently with the public interest), Client and employer (act in their best interests, consistent with the public interest), Product (meet the highest professional standards), Judgement (keep integrity and independence), Management (managers should promote an ethical approach), Profession (advance its integrity and reputation), Colleagues (be fair to and supportive of them) and Self (keep learning throughout one's career). The codes differ in detail but agree that the public interest is the key concern, that they state principles rather than detailed rules, that professionals must use their own judgement, and that they should seek advice when unsure."
       ],
       "bullets": [
-        "Data protection is about how data is handled responsibly; data security is about protecting it from unauthorised access (topic 6.1).",
-        "An individual is usually entitled to find out what data an organisation holds about them and to have inaccurate data corrected.",
-        "Breaching these principles can lead to legal penalties as well as loss of public trust."
+        "Benefits of joining a professional body: guidance on ethical behaviour, recognition of competence, professional development and support if challenged.",
+        "Do not accept work you are not competent to do, and do not claim a level of competence you lack.",
+        "Documentation is stressed repeatedly in the codes because it records decisions, lets others maintain the software and shows the work met the specification."
+      ],
+      "examples": [
+        {
+          "id": "7.1-2-1",
+          "kind": "analysis",
+          "label": "Applying the code: testing time is cut",
+          "content": "Scenario: your manager halves the testing time on a client's payroll system to meet a deadline.\nProduct: an under-tested system may contain errors, so it will not meet professional standards.\nClient and employer: the client could be harmed by wrong payments, and your employer's reputation could suffer.\nManagement: cutting testing is poor, unethical management.\nColleagues: the team is put under unrealistic pressure.\nJudgement: you should raise your concern with the manager and, if ignored, seek advice. Keeping quiet and planning to 'fix it later in maintenance' would be unethical."
+        },
+        {
+          "id": "7.1-2-2",
+          "kind": "worked",
+          "label": "Two-mark answer: why a manager should act ethically towards the team",
+          "content": "Any two of:\nSo team members feel valued. (1)\nTo get the best work from the team. (1)\nSo the team works well together. (1)\nSo the team produces the best product for the client. (1)"
+        }
+      ]
+    },
+    {
+      "id": "03-the-public-good",
+      "title": "Acting for the public good",
+      "content": [
+        "Codes of conduct refer to the health, safety and welfare of the public and to the public interest; the BCS asks members to have due regard for public health, privacy, security, wellbeing of others and the environment. Poor engineering has wasted huge sums of public money. The Ariane 5 rocket exploded in 1996 because code converting a 64-bit floating-point number to a 16-bit integer overflowed. NASA's Mars Climate Orbiter failed because one team used imperial units while the rest used SI units. The UK's National Programme for IT in the NHS was scrapped after costing about £12 billion without producing a workable system. Applying the codes' requirements on specification, testing and project management could have prevented such losses. Other public concerns involve the purpose or effect of systems: systems not secure against unauthorised access, organisations hiding security breaches, private communications stored for security services, social media carrying abusive or illegal content, and powerful companies pressuring others to use their products."
+      ],
+      "bullets": [
+        "Acting ethically: protects users and the public, produces reliable software, maintains trust in the employer and the profession.",
+        "Acting unethically: can cause financial loss, harm to users, legal action, loss of reputation and loss of the professional's job or membership.",
+        "Public attitudes to some issues vary, which makes individual judgement difficult, and whistle-blowers can suffer serious personal consequences."
       ],
       "examples": []
     },
     {
-      "id": "03-intellectual-property-and-copyright",
-      "title": "Intellectual property and copyright",
+      "id": "04-ownership-and-copyright",
+      "title": "Ownership and copyright",
       "content": [
-        "Intellectual property law recognises that creators of original work, such as software, images, music and writing, have a right to control and benefit from that work. Copyright protects an original work automatically from the moment it is created, without needing to be registered, and normally prevents others from copying, distributing or adapting the work without permission. Copyright encourages people to create original work by allowing them to be credited and paid for it, but it must be balanced against the public benefit of being able to use, build on and share ideas."
+        "Copyright is formal recognition of ownership of an original, published work. The creator owns it, unless they created it while working for an organisation, in which case the organisation can claim copyright. Copyright cannot protect an idea, only its expression, and cannot be claimed for material previously published by someone else. It applies to written works, music, films, recordings, broadcasts, art and computer programs. Copyright legislation is needed for two reasons: creating the work took time, effort and originality, so the owner should be able to earn from it; and it is unfair for others to copy the work and profit from it without paying the creator. Laws differ between countries, but international agreements mean the protection cannot be avoided by publishing in another country. In the UK the relevant law is the Copyright, Designs and Patents Act, under which copyright applies automatically when the work is created."
       ],
       "bullets": [
-        "Copying software without permission or a valid licence is normally a breach of copyright.",
-        "Copyright applies to source code, images, sound and other creative digital content, not only to physical works.",
-        "Ideas themselves are generally not protected, only the specific expression of them."
+        "Copyright laws typically define how long copyright lasts, what happens when the owner dies, how copyright is indicated (e.g. the © symbol) and may record the date of creation.",
+        "The owner can state how the work may be used, for example 'may be published unchanged as long as it carries this copyright notice'.",
+        "A buyer of a copyrighted product may normally make copies only for their own use.",
+        "Distributing a copyrighted work, for example posting it online, without the owner's permission breaks the law."
       ],
       "examples": []
     },
     {
-      "id": "04-software-licences",
-      "title": "Software licences",
+      "id": "05-software-licensing",
+      "title": "Software licensing",
       "content": [
-        "A software licence sets out the legal terms under which software may be used. Proprietary (commercial) software is owned by a company, and users normally pay to use it under restrictive terms that forbid copying or modifying it. Freeware can be used and redistributed at no cost, but its source code is not normally available and it cannot be modified. Shareware can be tried free of charge, often for a limited period or with limited features, and payment is expected if the user continues using it. Open-source software is distributed with its source code, and its licence permits users to view, modify and redistribute it, sometimes with conditions such as sharing any modifications under the same licence. Separately, a licence can define how many people or devices may use the software: a single-user licence permits one user or device, a multi-user licence permits a set number of users, a site licence permits use across every device at one location, and a network licence permits use across a network up to an agreed number of simultaneous users."
+        "When you buy software you do not own it: the vendor keeps ownership and you pay for a licence to use it under stated conditions, and the source code is not provided. Commercial software is sold for profit, with options such as a fee per copy, a site licence allowing a set number of copies to run at once, or special rates for education. A vendor may also give away licences: shareware is commercial software offered free for a limited trial period (possibly a limited version, or a beta test version), and freeware is free with no time limit (often a limited or older version); neither includes the source code. The Open Source Initiative makes open source software available, normally free of charge, with the source code, so users may use, modify, copy and distribute it under the licence terms; its philosophy is collaborative development. The Free Software Foundation believes users should be free to use software however they wish. Its software is also open source and may carry a small fee to cover distribution; its licence includes copyleft, so any modified version must be released with its source code under the same conditions."
       ],
       "bullets": [
-        "Open-source does not always mean free of restrictions; its licence can still require attribution or sharing modifications.",
-        "A site licence is usually more cost-effective than buying separate single-user licences for a large organisation.",
-        "Using software beyond the terms of its licence, for example on more devices than permitted, is a breach of that licence."
+        "Commercial software is justified when it provides exactly the functionality needed immediately, works with software already installed, or comes with continuous maintenance and support.",
+        "Shareware lets users try before buying and suggest improvements; freeware may be enough for limited needs.",
+        "Open source or free software is justified when full functionality is available at little or no cost, when a few changes to the source code would make it suitable, when developers are collaborating on a new product, or when the user wants to control the software's future development.",
+        "Only open source and free software provide the source code."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "7.1-5-1",
+          "kind": "analysis",
+          "label": "Which licences allow what?",
+          "content": "User can edit the source code → Free Software Foundation, Open Source Initiative\nSource code is provided → Free Software Foundation, Open Source Initiative\nFree only for a trial period → shareware\nUser must pay to keep using it and cannot see the source → commercial\nModified versions must be shared under the same terms → Free Software Foundation (copyleft)"
+        }
+      ]
     },
     {
-      "id": "05-plagiarism",
-      "title": "Plagiarism",
+      "id": "06-artificial-intelligence",
+      "title": "Artificial intelligence",
       "content": [
-        "Plagiarism is presenting someone else's work, ideas or code as one's own without acknowledging the original source. It can range from copying a whole piece of work to reusing specific passages, images or code without citation. Plagiarism-detection software compares submitted work against a large database of existing sources, online content and other submissions, highlighting matching or closely similar sections for a human to review. Clear referencing and citation, which credit the original source of any quoted or adapted material, are the main way individuals avoid committing plagiarism."
+        "AI is the use of a computer or computer-controlled device to perform tasks normally associated with intelligent human behaviour. Applications can be grouped by the human behaviour they imitate. Problem solving: game-playing programs such as chess, and expert systems for medical diagnosis, which hold more knowledge than one doctor but cannot handle situations outside their rules creatively. Linguistics: voice recognition and speech synthesis, such as automated telephone help lines. Perception: autonomous robots and driverless cars that use sensors to decide what to do, rather than repeating fixed tasks regardless of what happens. Reasoning: drawing conclusions from evidence, for example proving mathematical theorems or checking that software meets its specification. Learning: machine learning, where a system improves its performance with experience by applying statistical algorithms to very large data sets, for example recommending products or filtering spam."
       ],
       "bullets": [
-        "Plagiarism-detection software flags similarity; a human still judges whether it is a genuine copyright or academic-integrity issue.",
-        "Paraphrasing an idea without citing its source can still count as plagiarism.",
-        "Reusing open-source code without following its licence's attribution terms can be both plagiarism and a licence breach."
+        "Social impact: more leisure and less dangerous or repetitive work, but job losses in some areas, new skills needed, safety worries about driverless vehicles, uncertain consequences if expert systems replace doctors and nurses, and huge amounts of personal data collected by global organisations.",
+        "Economic impact: new jobs manufacturing, installing and servicing AI systems and greater productivity, but fewer jobs where machines do the work, and a risk that the rich get richer and the poor get poorer.",
+        "Environmental impact: robots can work in environments dangerous to humans and AI can optimise energy use, but manufacturing robots uses limited raw materials and disposing of them adds to electronic waste.",
+        "If the data collected are not stored securely they could be used for criminal activity."
       ],
-      "examples": []
-    },
-    {
-      "id": "06-wider-ethical-impact-of-computing",
-      "title": "Wider ethical impact of computing",
-      "content": [
-        "Computing has effects on society that go beyond any single piece of data or software. Automation and artificial intelligence can replace jobs that were previously done by people, raising questions about retraining and the fair distribution of the benefits of new technology. Devices become obsolete quickly, contributing to electronic waste (e-waste), which can release harmful substances if not recycled responsibly. Algorithms and artificial intelligence systems can also unintentionally reproduce or amplify bias present in the data they were trained on, which raises questions of fairness and accountability."
-      ],
-      "bullets": [
-        "Automation can increase efficiency and lower costs, while also reducing demand for certain kinds of work.",
-        "Responsible e-waste disposal and recycling schemes reduce the environmental impact of frequent hardware upgrades.",
-        "Decisions made by automated systems, such as AI-based screening, may need human oversight to catch unfair outcomes."
-      ],
-      "examples": []
+      "examples": [
+        {
+          "id": "7.1-6-1",
+          "kind": "worked",
+          "label": "Three-mark answer: how a computer uses AI to play a board game",
+          "content": "Any three of:\nThe rules, past games and decision-making algorithms are stored. (1)\nThe program is trained by playing many games. (1)\nIt looks ahead at possible moves and chooses the one most likely to succeed. (1)\nIt stores whether each choice led to a good or bad result. (1)\nIt changes future choices, learning from its mistakes. (1)"
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
     "title": "Types of software licence",
     "columns": [
-      "Licence type",
-      "What it allows",
-      "Typical use"
+      "Licence",
+      "Cost",
+      "Source code?",
+      "Key condition"
     ],
     "rows": [
       [
-        "Proprietary (commercial)",
-        "Use under paid, restrictive terms; source code is closed",
-        "Most retail and business software"
-      ],
-      [
-        "Freeware",
-        "Free use and redistribution; source code is normally closed",
-        "Free utilities and apps"
+        "Commercial",
+        "Paid (per copy, site licence or educational rate)",
+        "No",
+        "Vendor keeps ownership; use limited by the licence"
       ],
       [
         "Shareware",
-        "Free trial, often limited by time or features, payment expected to continue",
-        "Trial versions of paid software"
+        "Free for a trial period",
+        "No",
+        "Must pay to continue after the trial"
       ],
       [
-        "Open-source",
-        "Source code available; may be viewed, modified and redistributed under its licence terms",
-        "Community-developed and customisable software"
+        "Freeware",
+        "Free, no time limit",
+        "No",
+        "Often a limited or older version"
       ],
       [
-        "Site licence",
-        "Use on every device at one location",
-        "Schools and organisations with many devices"
+        "Open Source Initiative",
+        "Normally free",
+        "Yes",
+        "May use, modify, copy and distribute under the licence"
       ],
       [
-        "Network licence",
-        "Use across a network up to an agreed number of simultaneous users",
-        "Shared software on an organisation's network"
+        "Free Software Foundation",
+        "Free or small distribution fee",
+        "Yes",
+        "Copyleft: modified versions must be shared under the same terms"
       ]
     ]
   },
   "diagram": {
-    "title": "How the data protection principles apply to personal data",
+    "title": "Making an ethical decision",
     "type": "flow",
     "nodes": [
-      "Data is collected fairly, lawfully and only for a stated purpose",
-      "Only the data actually needed is collected",
-      "Data is kept accurate, secure and up to date",
-      "Data is kept no longer than necessary",
-      "The individual can ask what data is held and have errors corrected"
+      "Identify the issue in the scenario",
+      "Check it against each principle of the code",
+      "Consider the public interest first",
+      "Use your own judgement and seek advice if unsure",
+      "Act, and raise the concern again if it is ignored"
     ]
   },
   "analysisChains": [
     {
-      "title": "Plagiarism-detection software flagging copied coursework",
+      "title": "Releasing software with known faults to meet a deadline",
       "steps": [
-        "A student submits coursework containing text copied from an online source",
-        "Plagiarism-detection software compares the submission against its database of existing sources",
-        "The software highlights the matching passages and reports a similarity score",
-        "A teacher reviews the flagged sections to decide whether it is a genuine breach"
+        "The deadline is met and the employer avoids a late-delivery penalty",
+        "But the client receives a product that does not meet professional standards",
+        "Faults may cause financial loss or harm to users",
+        "The employer's reputation and the trust placed in the profession are damaged"
       ],
-      "evaluation": "Detection software finds matches efficiently across huge volumes of text, but it cannot judge intent or context, so a human must still interpret the result before any action is taken."
+      "evaluation": "The short-term gain rarely outweighs the harm; the ethical course is to report the risk honestly so the client and employer can make an informed decision."
     },
     {
-      "title": "A company reusing open-source code without following its licence",
+      "title": "Choosing open source software for a school",
       "steps": [
-        "A developer includes a popular open-source library in a commercial product",
-        "The open-source licence requires any modifications to be published under the same licence",
-        "The company modifies the code but keeps its product closed-source",
-        "The company is now in breach of the open-source licence, not just copyright law generally"
+        "The software and its source code are free, so licence costs are saved",
+        "The school's technician can modify it to suit local needs",
+        "Improvements can be shared with other schools",
+        "But there may be no guaranteed support, so the school relies on its own skills or the community"
       ],
-      "evaluation": "Open-source software still carries legal conditions; using it correctly requires checking and complying with its specific licence, not just assuming it can be used freely."
+      "evaluation": "Open source suits organisations with technical staff and tight budgets; if guaranteed support is essential, a commercial licence may be worth the cost."
     },
     {
-      "title": "Short device lifespans contributing to e-waste",
+      "title": "Introducing driverless delivery vehicles",
       "steps": [
-        "New software and features require increasingly powerful hardware",
-        "Consumers replace working devices sooner to keep up with new requirements",
-        "Discarded devices that are not recycled responsibly contribute to electronic waste",
-        "Harmful materials inside the devices can pollute soil and water if not handled correctly"
+        "Perception and machine learning let vehicles drive without a human",
+        "Delivery costs fall and vehicles can operate day and night",
+        "Driving jobs are lost, although new jobs are created in maintenance and software",
+        "Public concern about safety and accidents may slow adoption"
       ],
-      "evaluation": "Manufacturers and consumers can reduce this impact through longer software support, repairable design and responsible recycling schemes, though this often has to be weighed against the commercial benefits of frequent upgrades."
+      "evaluation": "The economic benefits are real, but the social impact on employment and the need to prove safety must be managed for the change to be acceptable."
     }
   ],
   "examTips": [
-    "Apply a named issue (privacy, copyright, plagiarism) to the specific scenario in the question, rather than only defining the term.",
-    "State the specific type of software licence involved and what it does and does not permit.",
-    "Distinguish data protection (responsible handling of data) from data security (protecting data from unauthorised access, topic 6.1).",
-    "When discussing wider ethical impact, give both a benefit and a drawback, since these are usually 'discuss' questions."
+    "Apply each principle to the scenario given: name the principle (e.g. Product, Public) and explain its effect in that situation.",
+    "For 'impact of acting unethically', give consequences for different groups: users, client, employer, profession and the individual.",
+    "Learn which licences provide source code (only open source and free software) and which have time limits (shareware).",
+    "When describing AI's impact, cover social, economic and environmental effects with a benefit and a drawback for each.",
+    "Use the full name of the UK law if you mention it: the Copyright, Designs and Patents Act."
   ],
   "commonMistakes": [
-    "Confusing data protection principles with data security measures.",
-    "Assuming open-source software has no licence conditions at all.",
-    "Saying copyright must be registered, when it applies automatically from creation.",
-    "Describing plagiarism-detection software as proving plagiarism, when it only flags similarity for a human to judge.",
-    "Giving only one side (benefit or drawback) when a question asks to discuss the wider impact of computing."
+    "Confusing freeware (free, no source code) with free software (source code provided, copyleft).",
+    "Saying shareware is free for ever; it is free only for a trial period.",
+    "Saying buying software makes you its owner; you buy a licence to use it.",
+    "Saying copyright protects ideas; it protects the expression of an idea.",
+    "Writing general statements about ethics without linking them to the scenario.",
+    "Describing AI only as robots, without the other areas such as expert systems, language and machine learning."
   ],
   "quickRecall": [
     {
-      "question": "Name two data protection principles an organisation should follow.",
-      "answer": "Any two of: collect and use data fairly and lawfully, collect only what is necessary, keep it accurate, keep it no longer than necessary, keep it secure."
+      "question": "Why should a computing professional join a professional body?",
+      "answer": "It provides a code of conduct and guidance on ethical behaviour, recognition of competence, and support and professional development."
     },
     {
-      "question": "What does copyright protect, and when does it start?",
-      "answer": "It protects an original work, such as software or writing, from being copied or distributed without permission; it applies automatically from the moment the work is created."
+      "question": "Name four of the eight principles in the IEEE-CS/ACM code.",
+      "answer": "Any four of: Public, Client and employer, Product, Judgement, Management, Profession, Colleagues, Self."
     },
     {
-      "question": "What is the difference between freeware and open-source software?",
-      "answer": "Freeware can be used free of charge but its source code is normally closed; open-source software is distributed with its source code, which users may view, modify and redistribute under its licence terms."
+      "question": "What is the key concern shared by all professional codes of conduct?",
+      "answer": "The public interest (public good)."
     },
     {
-      "question": "What is a site licence?",
-      "answer": "A software licence that permits the software to be used on every device at one physical location."
+      "question": "Give two reasons copyright legislation is needed.",
+      "answer": "The creator should be able to earn from the time and effort spent creating the work, and it is unfair for others to copy and profit from it without paying."
     },
     {
-      "question": "How does plagiarism-detection software work?",
-      "answer": "It compares submitted work against a database of existing sources and flags closely matching or similar sections for a person to review."
+      "question": "What is copyleft?",
+      "answer": "A licence condition that modified versions of the software must be released with their source code under the same conditions."
     },
     {
-      "question": "Give one way computing can affect employment.",
-      "answer": "Automation or artificial intelligence can replace tasks previously done by people, reducing demand for certain jobs while potentially creating others."
+      "question": "What is the difference between shareware and freeware?",
+      "answer": "Shareware is free only for a limited trial period; freeware is free with no time limit. Neither includes the source code."
     },
     {
-      "question": "Give one environmental concern linked to computing.",
-      "answer": "Frequent hardware replacement contributes to electronic waste (e-waste), which can release harmful substances if not recycled responsibly."
+      "question": "Give three areas of AI application.",
+      "answer": "Any three of: problem solving (games, expert systems), linguistics (voice recognition), perception (robots, driverless cars), reasoning (theorem proving), learning (machine learning)."
+    },
+    {
+      "question": "What is machine learning?",
+      "answer": "A system improving its performance at a task as it gains experience, by applying statistical algorithms to large data sets."
     }
   ],
   "relatedTopics": [
     "6.1",
-    "6.2"
+    "12.3",
+    "18.1"
   ]
 }

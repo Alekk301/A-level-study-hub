@@ -6472,17 +6472,17 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "A computer system needs input, output, primary memory and secondary storage, and Paper 1 expects you to explain why each is needed and how common devices work internally. Questions ask you to describe the operation of printers, disks, flash memory, touchscreens and other devices step by step, compare types of RAM and ROM, explain buffers and embedded systems, and describe how monitoring and control systems use sensors, actuators and feedback."
+        "text": "A computer system must process, store, input and output data, and Paper 1 expects you to explain why each component is needed and how the named devices work internally. Questions ask for ordered descriptions of the laser printer, 3D printer, hard disk, flash memory, optical disc, touchscreen, VR headset, microphone and speaker; comparisons of RAM and ROM, SRAM and DRAM, and PROM, EPROM and EEPROM; and explanations of buffers, embedded systems and monitoring and control systems. Mark schemes award one mark per correct, correctly sequenced point."
       },
       {
         "kind": "Definition",
-        "label": "Primary memory",
-        "text": "Memory directly accessible by the processor (RAM and ROM), holding the data and instructions currently in use."
+        "label": "Primary storage",
+        "text": "Memory the processor can access directly: registers, cache and main memory (RAM and ROM)."
       },
       {
         "kind": "Definition",
         "label": "Secondary storage",
-        "text": "Non-volatile storage, such as a hard disk or SSD, that keeps programs and data permanently when the power is off."
+        "text": "Non-volatile storage, such as a hard disk or SSD, used for long-term storage of programs and data."
       },
       {
         "kind": "Definition",
@@ -6492,27 +6492,42 @@
       {
         "kind": "Definition",
         "label": "Embedded system",
-        "text": "A computer system with a dedicated function built into a larger device, such as a washing machine controller."
+        "text": "A computer system with a processor, memory and input/output built into a larger device to carry out a dedicated function."
+      },
+      {
+        "kind": "Definition",
+        "label": "Microcontroller",
+        "text": "A processor, memory and input/output capability constructed together on a single chip."
+      },
+      {
+        "kind": "Definition",
+        "label": "Random-access memory (RAM)",
+        "text": "Volatile memory that can be read from and written to any number of times."
+      },
+      {
+        "kind": "Definition",
+        "label": "Read-only memory (ROM)",
+        "text": "Non-volatile memory that can be read from any number of times but not written to during normal operation."
       },
       {
         "kind": "Definition",
         "label": "Buffer",
-        "text": "An area of memory that temporarily holds data being transferred between devices or processes that work at different speeds."
+        "text": "Temporary storage, usually in memory, for data being transferred from one part of a system to another; it works as a queue."
       },
       {
         "kind": "Definition",
         "label": "Sensor",
-        "text": "An input device that measures a physical quantity, such as temperature or light, and sends the reading to a computer."
+        "text": "A hardware device that measures a physical property and transmits a value to a controlling computer."
       },
       {
         "kind": "Definition",
         "label": "Actuator",
-        "text": "An output device, such as a motor, valve or heater, that performs a physical action when signalled by a computer."
+        "text": "A hardware device, such as a motor, that receives a signal from a computer and adjusts the setting of a controlling device."
       },
       {
         "kind": "Definition",
         "label": "Feedback",
-        "text": "Using the output of a control system to affect its next input, so the system can keep a variable close to a set value."
+        "text": "Using the effect of a control action, measured by the next sensor reading, to decide the next action."
       },
       {
         "kind": "Section",
@@ -6521,22 +6536,22 @@
       {
         "kind": "Content",
         "label": "Input, output, memory and storage",
-        "text": "Input devices capture data and instructions from users or the environment so the computer has something to process. Output devices present the results in a form people or other devices can use. Primary memory holds the programs and data currently being used, so the processor can access them quickly. Because RAM is volatile, secondary storage is needed to keep programs and files permanently. Removable storage, such as USB flash drives and optical discs, lets data be carried between computers and kept as off-site backups."
+        "text": "A computer system must process data (the CPU), store data, and input and output data. Input devices capture data and instructions, and output devices present results. Storage forms a memory hierarchy: registers, cache, main memory, then secondary storage such as hard disks. Moving down the hierarchy, capacity rises and cost per byte falls, but access becomes slower. Users would like large, cheap and fast storage, which is impossible, so systems combine a small amount of fast primary storage with large, cheap secondary storage. Main memory (RAM) is also volatile, so separate non-volatile secondary storage is needed to keep programs and data when the power is off."
       },
       {
         "kind": "Content",
         "label": "Input, output, memory and storage",
-        "text": "The processor can only execute programs that are in primary memory; they are loaded there from secondary storage."
+        "text": "The processor can only execute programs that are in main memory; they are loaded there from secondary storage."
       },
       {
         "kind": "Content",
         "label": "Input, output, memory and storage",
-        "text": "Secondary storage is slower than RAM but cheaper per gigabyte and much larger."
+        "text": "Storage may be internal (hard disk, SSD), inserted into a drive (optical disc), a connected peripheral, portable (memory stick, used for carrying data and personal backup) or remote over a network (cloud, often for backup)."
       },
       {
         "kind": "Content",
         "label": "Input, output, memory and storage",
-        "text": "Link each component to its purpose in the scenario given, not just its name."
+        "text": "Input and output, including reading and writing the internal disk, are handled by an I/O subsystem."
       },
       {
         "kind": "Section",
@@ -6545,142 +6560,27 @@
       {
         "kind": "Content",
         "label": "Embedded systems",
-        "text": "An embedded system is a microprocessor or microcontroller with its own memory and input/output, built into a larger device to carry out one dedicated task. Examples include the controllers in washing machines, microwave ovens, car engine management systems, traffic lights and fitness trackers. The program is usually stored in ROM or flash memory and runs as soon as the device is switched on."
+        "text": "An embedded system contains a processor, memory and input/output capability built into a larger product to perform a dedicated function; if these are all on one chip it is a microcontroller. Almost every manufactured item with electrical or mechanical parts contains one, for example washing machines, car engine management, lane-detection systems, traffic lights and fitness trackers. Its program is stored in ROM or flash memory and runs when the device is switched on. Some embedded systems have no user interface, some show a little output to the user, and some, like a mobile phone, provide a full user interface."
       },
       {
         "kind": "Content",
         "label": "Embedded systems",
-        "text": "Benefits: small, cheap to mass-produce, low power use, reliable because the task is fixed, and quick to respond."
+        "text": "Benefits: special-purpose, so small, cheap to mass-produce (economies of scale), low power and reliable."
       },
       {
         "kind": "Content",
         "label": "Embedded systems",
-        "text": "Drawbacks: difficult or impossible to upgrade, hard to repair, and a device connected to the internet may be vulnerable to hacking if it cannot be updated."
+        "text": "Drawbacks: limited memory, difficult to update or repair (faulty chips may have to be replaced), and not easily changed by the owner."
       },
       {
         "kind": "Content",
         "label": "Embedded systems",
-        "text": "A general-purpose computer can run many programs; an embedded system is designed for one."
+        "text": "Many embedded systems are now connected to the internet (the Internet of Things), which adds useful features and updates but creates a security risk, as they are often less well protected than general-purpose computers."
       },
       {
-        "kind": "Section",
-        "text": "Laser printers and 3D printers"
-      },
-      {
-        "kind": "Content",
-        "label": "Laser printers and 3D printers",
-        "text": "In a laser printer, the printing drum is given a positive electrostatic charge. A laser beam, directed by a rotating mirror, removes the charge from areas of the drum that match the image. The drum is coated with positively charged toner, which sticks only to the discharged areas. Negatively charged paper passes over the drum and attracts the toner, then the paper passes through a fuser, where heated rollers melt the toner onto it. Finally the charge is removed from the drum ready for the next page. A 3D printer builds a solid object layer by layer from a digital design: the design is sliced into thin layers, and material such as plastic filament is heated and extruded through a nozzle (or resin is hardened by light) to form each layer on top of the previous one."
-      },
-      {
-        "kind": "Content",
-        "label": "Laser printers and 3D printers",
-        "text": "Laser printers are fast and suited to high-volume text printing; the whole page is prepared on the drum before printing."
-      },
-      {
-        "kind": "Content",
-        "label": "Laser printers and 3D printers",
-        "text": "3D printing is used for prototypes, custom medical implants and spare parts."
-      },
-      {
-        "kind": "Content",
-        "label": "Laser printers and 3D printers",
-        "text": "Give laser printer steps in the correct order: charge, laser discharges image, toner, paper, fuser, discharge drum."
-      },
-      {
-        "kind": "Section",
-        "text": "Microphones and speakers"
-      },
-      {
-        "kind": "Content",
-        "label": "Microphones and speakers",
-        "text": "In a microphone, sound waves make a diaphragm vibrate. The diaphragm is attached to a coil of wire around a magnet, so its movement induces a varying electrical current that matches the sound wave. This analogue signal is converted to digital by an analogue-to-digital converter (ADC). A speaker works in reverse: digital data are converted to an analogue signal by a digital-to-analogue converter (DAC) and amplified. The varying current passes through a coil attached to a cone, producing a changing magnetic field that pushes against a permanent magnet, so the cone vibrates and creates sound waves."
-      },
-      {
-        "kind": "Content",
-        "label": "Microphones and speakers",
-        "text": "Microphone: sound → vibration → electrical signal → ADC."
-      },
-      {
-        "kind": "Content",
-        "label": "Microphones and speakers",
-        "text": "Speaker: DAC → amplified signal → coil and magnet → cone vibrates → sound."
-      },
-      {
-        "kind": "Content",
-        "label": "Microphones and speakers",
-        "text": "The frequency of the vibration sets the pitch; the amplitude sets the volume."
-      },
-      {
-        "kind": "Section",
-        "text": "Magnetic, solid state and optical storage"
-      },
-      {
-        "kind": "Content",
-        "label": "Magnetic, solid state and optical storage",
-        "text": "A magnetic hard disk has platters coated with magnetic material that spin at high speed. Read/write heads on an actuator arm move across the surface; to write, a head magnetises tiny areas in one of two directions to represent 0 or 1, and to read, it detects the direction of magnetisation. Data are arranged in concentric tracks divided into sectors. Solid state (flash) memory has no moving parts: data are stored as electric charge trapped in floating-gate transistors arranged in a grid of NAND or NOR cells, and blocks are erased electrically before being rewritten. An optical disc reader shines a laser onto the spinning disc; the surface has pits and lands along a spiral track, and the change between them alters the reflected light, which a sensor reads as binary. An optical writer uses a stronger laser to change the reflectivity of a dye or alloy layer to create the equivalent of pits."
-      },
-      {
-        "kind": "Content",
-        "label": "Magnetic, solid state and optical storage",
-        "text": "SSDs are faster, quieter, lighter, more robust and use less power than hard disks, but cost more per gigabyte and have a limited number of write cycles."
-      },
-      {
-        "kind": "Content",
-        "label": "Magnetic, solid state and optical storage",
-        "text": "Hard disks give large capacity cheaply, but moving parts make them slower and vulnerable to shocks."
-      },
-      {
-        "kind": "Content",
-        "label": "Magnetic, solid state and optical storage",
-        "text": "Optical discs are cheap and portable but have low capacity and slow access compared with other storage."
-      },
-      {
-        "kind": "Section",
-        "text": "Touchscreens and virtual reality headsets"
-      },
-      {
-        "kind": "Content",
-        "label": "Touchscreens and virtual reality headsets",
-        "text": "A capacitive touchscreen has a layer that stores electric charge. A finger conducts electricity, so touching the screen changes the charge at that point; sensors at the corners or in a grid measure the change, and the processor calculates the location. Capacitive screens support multi-touch but do not work with an ordinary gloved finger. A resistive touchscreen has two flexible conductive layers separated by a small gap; pressing brings the layers into contact, completing a circuit, and the position is calculated from the change in voltage. A virtual reality headset has a separate display (or half of a screen) for each eye, showing slightly different images to create a 3D effect, with lenses to focus the image. Sensors such as gyroscopes and accelerometers track head movement, so the image is updated to match where the user is looking."
-      },
-      {
-        "kind": "Content",
-        "label": "Touchscreens and virtual reality headsets",
-        "text": "Capacitive: clear, durable, multi-touch; needs a conductive touch."
-      },
-      {
-        "kind": "Content",
-        "label": "Touchscreens and virtual reality headsets",
-        "text": "Resistive: cheap, works with a stylus or gloves; less clear and more easily damaged."
-      },
-      {
-        "kind": "Content",
-        "label": "Touchscreens and virtual reality headsets",
-        "text": "VR headsets need a high refresh rate and fast tracking to avoid motion sickness."
-      },
-      {
-        "kind": "Section",
-        "text": "Buffers"
-      },
-      {
-        "kind": "Content",
-        "label": "Buffers",
-        "text": "A buffer is a temporary area of memory used when data move between two devices or processes that work at different speeds. For example, the processor can send a document to a printer's buffer much faster than the printer can print it, and then continue with other work while the printer empties the buffer. In video streaming, incoming data fill a buffer so playback can continue smoothly if the network briefly slows."
-      },
-      {
-        "kind": "Content",
-        "label": "Buffers",
-        "text": "A buffer lets the faster device carry on with other tasks instead of waiting."
-      },
-      {
-        "kind": "Content",
-        "label": "Buffers",
-        "text": "When a printer buffer is empty, the printer sends an interrupt to request more data."
-      },
-      {
-        "kind": "Content",
-        "label": "Buffers",
-        "text": "A keyboard buffer holds keypresses until the program is ready to read them."
+        "kind": "Example",
+        "label": "Embedded systems",
+        "text": "Question: A car's lane detection system moves the car away from a lane line if it gets too close. Explain why this is an embedded system. [2]\nMark-scoring answer (any two):\nIt is built into the car. (1)\nIt performs one dedicated task. (1)\nIt cannot easily be changed or updated by the owner. (1)"
       },
       {
         "kind": "Section",
@@ -6689,27 +6589,157 @@
       {
         "kind": "Content",
         "label": "RAM and ROM",
-        "text": "RAM (random access memory) is volatile read/write memory that holds the operating system, programs and data currently in use. ROM (read-only memory) is non-volatile and holds data that must not be lost or changed, such as the start-up instructions (bootstrap) that run when the computer is switched on. Dynamic RAM (DRAM) stores each bit as charge in a capacitor, which leaks, so it must be refreshed thousands of times a second. Static RAM (SRAM) stores each bit in a flip-flop circuit that does not need refreshing. SRAM is faster but more expensive and takes more space per bit, so it is used for cache memory; DRAM is cheaper and denser, so it is used for main memory."
+        "text": "Main memory is RAM: any byte can be accessed directly, it can be read and written repeatedly, and it is volatile. It holds the parts of the operating system, programs and data currently in use. Dynamic RAM (DRAM) stores each bit as charge on a capacitor (with a transistor); the charge leaks, so it must be refreshed every few milliseconds. Static RAM (SRAM) stores each bit in a flip-flop made of transistors, which holds its value while powered with no refreshing. DRAM needs fewer components per bit, so it is cheaper and denser and is used for main memory; SRAM has shorter access times, so it is used for cache, and in embedded systems that need only a little RAM. ROM is non-volatile and cannot be written to in normal use. It stores data and programs used unchanged again and again, most importantly the bootstrap program that runs when the computer is switched on, and the programs in many embedded systems."
       },
       {
         "kind": "Content",
         "label": "RAM and ROM",
-        "text": "PROM: programmed once after manufacture; the contents cannot then be changed."
+        "text": "Basic ROM: contents fixed during manufacture; to change them the chip is replaced."
       },
       {
         "kind": "Content",
         "label": "RAM and ROM",
-        "text": "EPROM: can be erased by exposing the chip to ultraviolet light and then reprogrammed; the chip is usually removed to do this."
+        "text": "PROM: supplied blank and programmed once by the system builder (samples can be tested first); cannot then be changed."
       },
       {
         "kind": "Content",
         "label": "RAM and ROM",
-        "text": "EEPROM: can be erased and rewritten electrically while in the circuit, a byte or block at a time; flash memory is a type of EEPROM."
+        "text": "EPROM: can be erased with ultraviolet light and reprogrammed, but the chip usually has to be removed from the circuit."
       },
       {
         "kind": "Content",
         "label": "RAM and ROM",
-        "text": "Firmware updates in modern devices are possible because the firmware is stored in EEPROM or flash."
+        "text": "EEPROM: erased and reprogrammed electrically while still in the circuit; flash memory is a form of EEPROM, which is why firmware can be updated."
+      },
+      {
+        "kind": "Section",
+        "text": "Buffers"
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "A problem occurs whenever data can be sent faster than the receiving part can accept them. A buffer, usually created in memory, holds the data temporarily and works as a queue, so data leave in the same order they arrived. For example, the processor can send a document to a printer's buffer much faster than the printer can print it, and then continue with other work while the printer empties the buffer. In video streaming, incoming data fill a buffer so playback continues smoothly if the network briefly slows."
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "Buffers synchronise data transfer between a fast device and a slow one."
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "The faster device can carry on with other tasks instead of waiting."
+      },
+      {
+        "kind": "Content",
+        "label": "Buffers",
+        "text": "When a printer's buffer is empty, the printer sends an interrupt to request more data."
+      },
+      {
+        "kind": "Section",
+        "text": "Magnetic, optical and solid-state storage"
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, optical and solid-state storage",
+        "text": "A magnetic hard disk has several platters spinning together at high speed, each surface coated with magnetic material. Each surface has a read-write head on an actuator arm that moves it across the surface on a cushion of air; the heads move together. A write head magnetises tiny areas in one of two directions to represent 1 or 0, and a read head detects the direction. Data are stored in concentric tracks divided into sectors, the smallest unit of storage; the same track on every surface forms a cylinder, readable without moving the heads. It is a direct-access device: any sector can be chosen, though data within a sector are read in sequence. An optical disc has a single spiral track of pits and lands. As the disc spins, a laser follows the track and a detector measures the reflected light; the difference between reflections from pits and lands is read as 1s and 0s. To write a rewritable disc, the laser heats a special alloy layer until it melts; depending on the laser's intensity it cools either crystalline (reflective) or amorphous (not reflective). Shorter-wavelength lasers focus more tightly, which is why DVDs hold more than CDs and Blu-ray more than DVDs. Solid-state (flash) memory has no moving parts: it stores data in arrays of transistors acting as memory cells, usually NAND flash, managed by a flash controller. Data are read a page at a time, but a whole block (several pages) must be erased before any of it can be rewritten."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, optical and solid-state storage",
+        "text": "SSDs are faster, quieter, lighter, more robust and use less power than hard disks, but cost more per gigabyte and wear out gradually with repeated writing."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, optical and solid-state storage",
+        "text": "Hard disks give large capacity cheaply, but moving parts make them slower and vulnerable to shocks; files become fragmented over time."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, optical and solid-state storage",
+        "text": "Flash memory is used in USB memory sticks and memory cards as well as SSDs."
+      },
+      {
+        "kind": "Content",
+        "label": "Magnetic, optical and solid-state storage",
+        "text": "Optical discs are cheap and portable but have lower capacity and slower access."
+      },
+      {
+        "kind": "Example",
+        "label": "Magnetic, optical and solid-state storage",
+        "text": "The disk has one or more platters.\nEach surface can be magnetised.\nThe surface is divided into concentric tracks and sectors.\nThe platters spin at high speed.\nEach surface has a read-write head on an arm that moves across it.\nA write head magnetises areas in one of two directions for 1 and 0; a read head detects the direction.\n(One mark per point, up to 5.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Laser printers, 3D printers and VR headsets"
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers, 3D printers and VR headsets",
+        "text": "In a laser printer the drum is first given an electric charge. The drum rotates step by step, and at each step a laser beam, directed by mirrors and lenses, is switched on to discharge positions across the drum or off to leave them charged, until a full-page electrostatic image has been created. The drum is coated with charged toner, which sticks only to the discharged positions. The drum rolls over a sheet of paper that has been given a charge, transferring the toner; the paper is then discharged and passed through heated rollers (the fuser), which melt the toner and seal the image onto the paper. Finally the drum is discharged ready for the next page. Colour printing repeats the process with cyan, magenta, yellow and black toners. A 3D printer builds an object from a design created in a computer-aided design (CAD) package. The design is split into layers; for each layer a nozzle deposits material onto the printer bed to match the design, and the layers are built up one on top of another. The finished object is then cured so the layers bond and the material reaches its final form. A virtual reality headset has two eyepieces, each fed a slightly different image, so that together they create the sensation of a 3D environment. The wearer controls which part of the environment is shown by moving their head, tracked by sensors, or by using a controller."
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers, 3D printers and VR headsets",
+        "text": "Laser printer order: charge drum → laser discharges image → toner → charged paper → discharge paper and fuse → discharge drum."
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers, 3D printers and VR headsets",
+        "text": "3D printing is used for prototypes, engineering parts and medical implants, as a form of computer-aided manufacture (CAM)."
+      },
+      {
+        "kind": "Content",
+        "label": "Laser printers, 3D printers and VR headsets",
+        "text": "Vector drawings needing high precision can be drawn directly by a graph plotter; other printers need a bitmap."
+      },
+      {
+        "kind": "Section",
+        "text": "Touchscreens"
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens",
+        "text": "A modern touchscreen has touch-detecting layers just beneath the display surface. In a resistive touchscreen the surface is flexible and there are two conductive layers separated by a small gap; pressing the screen pushes the top layer into contact with the lower one, and the point of contact forms a voltage divider in the horizontal and vertical directions, from which the position is calculated. In a capacitive touchscreen the surface is rigid glass above a conductive layer; a finger touching the glass changes the capacitance of components beneath it. Projective capacitive touch screens have an array of capacitors below the screen and can detect several touches at once. In both types the processor reads the measurements, calculates the position of the touch and carries out the action requested."
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens",
+        "text": "Resistive: cheap, works with a stylus or gloved finger; screen less clear and more easily damaged; single touch."
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens",
+        "text": "Capacitive: clear, durable, multi-touch; needs a conductive touch such as a bare finger."
+      },
+      {
+        "kind": "Content",
+        "label": "Touchscreens",
+        "text": "Older touchscreens used infrared or ultrasonic emitters and detectors around the edge; a finger blocked some of the beams."
+      },
+      {
+        "kind": "Section",
+        "text": "Microphones and speakers"
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "In a microphone, incoming sound makes a flexible diaphragm vibrate. The diaphragm is connected to circuitry so the vibration produces a matching change in an electrical signal: a condenser microphone uses a change in capacitance, a dynamic microphone moves a coil in a magnetic field, and another type uses a piezoelectric crystal. The analogue signal is converted to digital by an analogue-to-digital converter (ADC). A speaker reverses the process: digital data are converted to an analogue signal by a digital-to-analogue converter (DAC) and amplified. The varying current flows through a coil suspended in the field of a permanent magnet, so the coil moves backwards and forwards, moving a diaphragm (cone) that creates sound waves. Input and output are managed by a sound card."
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "Microphone: sound → diaphragm vibrates → electrical signal → ADC."
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "Speaker: DAC → amplified current → coil moves in magnetic field → cone vibrates → sound."
+      },
+      {
+        "kind": "Content",
+        "label": "Microphones and speakers",
+        "text": "The frequency of the vibration sets the pitch; the amplitude sets the volume."
       },
       {
         "kind": "Section",
@@ -6718,32 +6748,32 @@
       {
         "kind": "Content",
         "label": "Monitoring and control systems",
-        "text": "A monitoring system uses sensors to take readings at regular intervals, stores and processes them, and may output warnings or graphs, but it does not change the environment. Examples include hospital patient monitoring and weather stations. A control system also takes sensor readings, but compares them with a stored set value and uses actuators to change conditions. Sensor readings are analogue, so an ADC converts them to digital; signals to actuators may need a DAC. Feedback makes control continuous: the output affects the next sensor reading, so the system keeps adjusting to hold the value close to the set point."
+        "text": "A monitoring system uses sensors to take readings, usually to record conditions over time or to detect when a property goes outside a desired range, and may output warnings or graphs; it does not change the conditions. A sensor has no built-in intelligence: it only measures and sends a value, and it is the computer that decides, for example, to sound an alarm. A control system adds actuators so the computer can change the conditions. At regular timed intervals the computer takes a reading; an ADC converts the analogue value to digital; the computer compares it with the desired value; if it is out of range the computer sends a signal, via a DAC where needed, to an actuator. The next reading shows the effect of that action, which is feedback. In a closed-loop feedback control system, the controller compares the actual output with the desired output and sends the actuator a value that depends on the difference."
       },
       {
         "kind": "Content",
         "label": "Monitoring and control systems",
-        "text": "Monitoring = read and report; control = read, compare, act."
+        "text": "Monitoring = read and report; control = read, compare, act, repeat."
       },
       {
         "kind": "Content",
         "label": "Monitoring and control systems",
-        "text": "Typical sensors: temperature, light, pressure, moisture, infrared (motion), pH, gas."
+        "text": "Typical sensors: temperature (thermocouple), light, pressure, humidity, pH, gas, sound and infrared (passive, or measuring reflected infrared)."
       },
       {
         "kind": "Content",
         "label": "Monitoring and control systems",
-        "text": "The computer does not measure anything itself; the sensor measures and the computer processes."
+        "text": "Typical actuators: motors, valves, pumps, heaters and switches."
       },
       {
         "kind": "Content",
         "label": "Monitoring and control systems",
-        "text": "Describe control as a loop: read, convert, compare, act, repeat."
+        "text": "In real systems the ADC and DAC are often built into the sensor and actuator."
       },
       {
         "kind": "Example",
         "label": "Monitoring and control systems",
-        "text": "1. A temperature sensor measures the air temperature\n2. An ADC converts the analogue reading to digital\n3. The microprocessor compares the reading with the stored set value (e.g. 24 °C)\n4. If it is too low, a signal switches the heater on; if too high, a signal opens the window using an actuator\n5. The new temperature affects the next reading (feedback)\n6. The process repeats continuously"
+        "text": "1. At a timed interval, the temperature sensor measures the air temperature\n2. An ADC converts the analogue reading to digital\n3. The microprocessor compares the reading with the stored desired value (e.g. 24 °C)\n4. If it is too low, a signal switches the heater on; if too high, an actuator opens a window\n5. The next reading shows the effect of the action (feedback)\n6. The process repeats continuously"
       },
       {
         "kind": "Quick recall question",
@@ -6752,7 +6782,7 @@
       {
         "kind": "Quick recall answer",
         "label": "Why is secondary storage needed?",
-        "text": "RAM is volatile, so programs and data must be kept permanently on non-volatile storage when the power is off."
+        "text": "RAM is volatile and expensive, so programs and data are kept long-term on cheaper, larger, non-volatile storage."
       },
       {
         "kind": "Quick recall question",
@@ -6761,25 +6791,25 @@
       {
         "kind": "Quick recall answer",
         "label": "Give one benefit and one drawback of embedded systems.",
-        "text": "Benefit: small, cheap, low power or reliable. Drawback: hard to upgrade or repair, or vulnerable if connected and not updated."
+        "text": "Benefit: cheap to mass-produce, small, low power or reliable. Drawback: hard to update or repair, or a security risk when connected to the internet."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the purpose of the fuser in a laser printer?"
+        "text": "What is stored in RAM and in ROM?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the purpose of the fuser in a laser printer?",
-        "text": "Heated rollers melt the toner so it bonds permanently to the paper."
+        "label": "What is stored in RAM and in ROM?",
+        "text": "RAM: currently running programs, data and parts of the OS. ROM: the bootstrap (start-up) program."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why does DRAM need refreshing?"
+        "text": "How do SRAM and DRAM store bits?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why does DRAM need refreshing?",
-        "text": "Each bit is stored as charge in a capacitor, which leaks away over time."
+        "label": "How do SRAM and DRAM store bits?",
+        "text": "SRAM uses flip-flops made of transistors; DRAM uses capacitors and transistors, and must be refreshed."
       },
       {
         "kind": "Quick recall question",
@@ -6788,34 +6818,43 @@
       {
         "kind": "Quick recall answer",
         "label": "How is an EEPROM different from an EPROM?",
-        "text": "EEPROM is erased electrically in the circuit; EPROM is erased with ultraviolet light."
+        "text": "EEPROM is erased electrically while in the circuit; EPROM is erased with ultraviolet light, usually after removing the chip."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is a buffer used when printing?"
+        "text": "Why does data in flash memory have to be erased before it is rewritten?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is a buffer used when printing?",
-        "text": "The printer is much slower than the processor, so data are held in the buffer and the processor can continue other work."
+        "label": "Why does data in flash memory have to be erased before it is rewritten?",
+        "text": "Flash can only be written to cells that have been erased, and erasing is done a whole block at a time."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between a sensor and an actuator?"
+        "text": "How does an optical disc reader read data?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between a sensor and an actuator?",
-        "text": "A sensor measures a physical quantity as input; an actuator performs a physical action as output."
+        "label": "How does an optical disc reader read data?",
+        "text": "A laser follows the spiral track and a detector measures differences in the light reflected from pits and lands, read as 1s and 0s."
       },
       {
         "kind": "Quick recall question",
-        "text": "How does a capacitive touchscreen detect a touch?"
+        "text": "What is the purpose of the fuser in a laser printer?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How does a capacitive touchscreen detect a touch?",
-        "text": "The finger changes the electric charge at the touch point, and sensors measure the change to calculate the position."
+        "label": "What is the purpose of the fuser in a laser printer?",
+        "text": "Heated rollers melt the toner so it is sealed onto the paper."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a closed-loop feedback control system?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a closed-loop feedback control system?",
+        "text": "One where the controller compares the actual output (from the sensor) with the desired output and adjusts the actuator according to the difference."
       }
     ]
   },
@@ -6843,6 +6882,16 @@
       {
         "kind": "Overview",
         "text": "Logic gates are the building blocks of every digital circuit. Paper 1 expects you to know the six gates and their truth tables, and to move confidently between four forms of the same logic: a problem statement, a logic expression, a logic circuit and a truth table. Many questions give one form and ask for another, so a systematic method for each conversion is worth more than memorising examples."
+      },
+      {
+        "kind": "Definition",
+        "label": "Logic proposition",
+        "text": "A statement that is either TRUE (1) or FALSE (0), such as 'the temperature is above 25 °C'."
+      },
+      {
+        "kind": "Definition",
+        "label": "Problem statement",
+        "text": "An informal description of an outcome that depends on one logic proposition or a combination of several."
       },
       {
         "kind": "Definition",
@@ -6920,7 +6969,12 @@
       {
         "kind": "Content",
         "label": "From a problem statement to an expression",
-        "text": "Read the statement carefully and assign each condition to an input. Look for the connecting words: 'and', 'or', 'not', 'but not' and 'either … or … but not both'. Build the expression in brackets so the order of operations is clear, then check it against the statement with one or two sample inputs."
+        "text": "A problem statement describes an outcome that depends on several logic propositions. Underline each condition that can be true or false, give each one a letter, and give the outcome a letter too. Then look for the connecting words: 'and', 'or', 'not', 'but not' and 'either … or … but not both'. Build the expression in brackets so the order of operations is clear, then check it against the statement with one or two sample inputs."
+      },
+      {
+        "kind": "Content",
+        "label": "From a problem statement to an expression",
+        "text": "'At least two of A, B and C' is (A AND B) OR (A AND C) OR (B AND C)."
       },
       {
         "kind": "Content",
@@ -6951,6 +7005,11 @@
         "kind": "Example",
         "label": "From a problem statement to an expression",
         "text": "A pump (P) runs if the tank is not full (F = 0) and either the manual switch is on (S = 1) or the timer is on (T = 1), but not when both switch and timer are on.\nP = (NOT F) AND (S XOR T)"
+      },
+      {
+        "kind": "Example",
+        "label": "From a problem statement to an expression",
+        "text": "A discount (X) is given if the customer has been a member for a year (M) and at least two of these apply: they are a student (S), under 18 (U), or live locally (L).\nX = M AND ((S AND U) OR (S AND L) OR (U AND L))\nCheck: M = 1, S = 1, U = 0, L = 1 → (S AND L) = 1, so X = 1"
       },
       {
         "kind": "Section",
@@ -7263,7 +7322,7 @@
       {
         "kind": "Content",
         "label": "The Von Neumann model",
-        "text": "In the Von Neumann model, a single processor is connected to one main memory that stores both program instructions and data (the stored program concept). The processor fetches one instruction at a time from memory, decodes it and executes it, in sequence, unless an instruction changes the order. Because instructions and data share the same memory and buses, they cannot be fetched at the same time, which limits speed (the Von Neumann bottleneck)."
+        "text": "The Von Neumann model has these features: there is a processor (the CPU); the processor has direct access to memory; the memory holds a stored program, which can be replaced by another at any time, together with the data the program needs; the program is made of individual instructions; and the processor executes the instructions one after another (sequentially). Because instructions and data share the same memory and buses, they cannot be fetched at the same time, which limits speed (the Von Neumann bottleneck)."
       },
       {
         "kind": "Content",
@@ -7287,7 +7346,7 @@
       {
         "kind": "Content",
         "label": "ALU, control unit, clock and IAS",
-        "text": "The Arithmetic and Logic Unit (ALU) performs arithmetic operations (such as addition and subtraction), logical operations (such as AND, OR, comparisons) and shifts, and stores results in the accumulator. The Control Unit (CU) decodes each instruction and sends control signals along the control bus to coordinate the other components and the movement of data. The system clock generates regular pulses that synchronise all operations; each step of the F-E cycle starts on a clock pulse. The Immediate Access Store holds the programs and data currently in use, so the processor can fetch them directly."
+        "text": "The Arithmetic and Logic Unit (ALU) performs arithmetic operations (such as addition and subtraction), logical operations (such as AND, OR, comparisons) and shifts, and stores results in the accumulator. The Control Unit (CU) decodes each instruction and sends control signals along the control bus to coordinate the other components and the movement of data. A clock synchronises everything: strictly, an internal clock controls the cycles of activity inside the processor and the system clock controls activity outside it, sending timing signals along the control bus so that one component sends data at the moment another reads it. The clock speed is the frequency of the clock cycle, and one cycle is the shortest time any action can take. The Immediate Access Store (IAS) is the memory the processor can address directly (cache and main memory); it holds the programs and data currently in use, but works far more slowly than the processor."
       },
       {
         "kind": "Content",
@@ -7297,7 +7356,7 @@
       {
         "kind": "Content",
         "label": "ALU, control unit, clock and IAS",
-        "text": "Clock speed is measured in hertz: 3 GHz means 3 billion clock cycles per second."
+        "text": "Clock speed is measured in hertz: 1.7 GHz means 1.7 × 10^9 cycles per second, so one cycle lasts 1 ÷ (1.7 × 10^9) ≈ 0.59 nanoseconds."
       },
       {
         "kind": "Content",
@@ -7334,13 +7393,33 @@
         "text": "Only the MAR and MDR connect directly to the address and data buses."
       },
       {
+        "kind": "Content",
+        "label": "General and special purpose registers",
+        "text": "The MDR acts as a buffer, because transfers inside the processor are much faster than transfers to and from memory."
+      },
+      {
+        "kind": "Content",
+        "label": "General and special purpose registers",
+        "text": "The accumulator holds a value used by the ALU before an instruction and receives the result after it."
+      },
+      {
+        "kind": "Content",
+        "label": "General and special purpose registers",
+        "text": "Some books abbreviate the index register as IR, which can be confused with the instruction register; CAIE uses IX for the index register and CIR for the current instruction register."
+      },
+      {
         "kind": "Section",
         "text": "The address, data and control buses"
       },
       {
         "kind": "Content",
         "label": "The address, data and control buses",
-        "text": "A bus is a set of parallel wires that carries signals between components. The address bus carries the address of the memory location or input/output port being accessed, from the MAR to memory; it is one-directional. The data bus carries data and instructions between the processor, memory and input/output devices; it is bi-directional. The control bus carries control and timing signals, such as memory read, memory write, clock and interrupt request; it is bi-directional because components send signals back to the processor."
+        "text": "A bus is a set of parallel wires, each carrying one bit, that transfers data between components; it does not store anything. The system bus connecting the CPU to memory and the I/O system is made up of three buses. The address bus is connected to the MAR and carries the address of the memory location or I/O component to be read from or written to; it is one-directional (from the CPU only). The data bus is connected to the MDR and carries data, which may be an instruction, an address or a value, between the processor, memory and I/O devices; it is bi-directional. The control bus is connected to the control unit and carries control and timing signals, such as memory read, memory write, clock and interrupt request; it is bi-directional and needs only a few lines (typically about eight)."
+      },
+      {
+        "kind": "Content",
+        "label": "The address, data and control buses",
+        "text": "A word is the number of bits the system handles as one unit (typically 16, 32 or 64); registers usually match the word length, and the data bus ideally does too, otherwise a word needs two transfers."
       },
       {
         "kind": "Content",
@@ -7361,40 +7440,6 @@
         "kind": "Example",
         "label": "The address, data and control buses",
         "text": "A 16-line address bus can address 2^16 = 65,536 locations.\nIncreasing it to 32 lines gives 2^32 = 4,294,967,296 locations (4 GiB of byte-addressable memory)."
-      },
-      {
-        "kind": "Section",
-        "text": "The fetch-execute cycle"
-      },
-      {
-        "kind": "Content",
-        "label": "The fetch-execute cycle",
-        "text": "In the fetch stage, the address of the next instruction is copied from the PC to the MAR. The PC is incremented so it points to the following instruction. The instruction held at the address in the MAR is copied into the MDR along the data bus, then copied from the MDR into the CIR. In the decode stage the CU decodes the instruction in the CIR to find the operation (opcode) and the operand. In the execute stage the instruction is carried out, for example by fetching the operand from memory and using the ALU. At the end of each cycle the processor checks for interrupts before fetching the next instruction."
-      },
-      {
-        "kind": "Content",
-        "label": "The fetch-execute cycle",
-        "text": "Register transfer notation: MAR ← [PC] means 'copy the contents of the PC into the MAR'."
-      },
-      {
-        "kind": "Content",
-        "label": "The fetch-execute cycle",
-        "text": "Square brackets mean 'the contents of'; [[MAR]] means 'the contents of the address held in the MAR'."
-      },
-      {
-        "kind": "Content",
-        "label": "The fetch-execute cycle",
-        "text": "A jump instruction changes the flow by loading a new address into the PC."
-      },
-      {
-        "kind": "Example",
-        "label": "The fetch-execute cycle",
-        "text": "MAR ← [PC]\nPC ← [PC] + 1\nMDR ← [[MAR]]\nCIR ← [MDR]"
-      },
-      {
-        "kind": "Example",
-        "label": "The fetch-execute cycle",
-        "text": "The instruction is decoded: opcode LDD, operand 200\nMAR ← 200\nMDR ← [[MAR]]  (the value stored at address 200)\nACC ← [MDR]"
       },
       {
         "kind": "Section",
@@ -7432,7 +7477,7 @@
       {
         "kind": "Content",
         "label": "Ports",
-        "text": "Ports let peripheral devices connect to the computer. USB (Universal Serial Bus) is a general-purpose serial connection for keyboards, mice, printers, storage and phones; it supplies power, and devices are detected and their drivers loaded automatically. HDMI (High-Definition Multimedia Interface) is a digital port that carries high-definition video and audio together to monitors and televisions, and supports copy protection. VGA (Video Graphics Array) is an older analogue video-only port; it cannot carry sound and gives lower quality at high resolutions."
+        "text": "Each I/O device connects to an interface called a port, which is connected to an I/O (device) controller that handles communication between the CPU and the device. A port is internal if the device is part of the computer and external if the user plugs in a peripheral. USB (Universal Serial Bus) made plug-and-play a reality: devices can be connected while the computer is on and are configured automatically, a hierarchy of connections is supported with up to 127 devices attached to the computer at the root, and the port supplies power. HDMI (High-Definition Multimedia Interface) is a digital port that carries high-definition video and audio together to monitors and televisions, and supports copy protection. VGA (Video Graphics Array) is an older analogue video-only port; it cannot carry sound and gives lower quality at high resolutions."
       },
       {
         "kind": "Content",
@@ -7448,6 +7493,50 @@
         "kind": "Content",
         "label": "Ports",
         "text": "VGA: analogue, video only, being replaced by HDMI and DisplayPort."
+      },
+      {
+        "kind": "Content",
+        "label": "Ports",
+        "text": "USB is a bus: a 'USB drive' is a storage device that uses the bus through a USB port."
+      },
+      {
+        "kind": "Section",
+        "text": "The fetch-execute cycle"
+      },
+      {
+        "kind": "Content",
+        "label": "The fetch-execute cycle",
+        "text": "In the fetch stage, the address of the next instruction is copied from the PC to the MAR. In the next clock cycle two things happen at the same time: the instruction at the address in the MAR is fetched into the MDR along the data bus, and the PC is incremented so it points to the following instruction. The instruction is then copied from the MDR into the CIR. In the decode stage the control unit decodes the instruction in the CIR to find the operation (opcode) and the operand, and sends signals to the components needed. In the execute stage the instruction is carried out, for example by fetching the operand from memory and using the ALU. At the end of each cycle the processor checks for interrupts before fetching the next instruction."
+      },
+      {
+        "kind": "Content",
+        "label": "The fetch-execute cycle",
+        "text": "Register transfer notation: MAR ← [PC] means 'copy the contents of the PC into the MAR'."
+      },
+      {
+        "kind": "Content",
+        "label": "The fetch-execute cycle",
+        "text": "Square brackets mean 'the contents of'; [[MAR]] means 'the contents of the address held in the MAR'."
+      },
+      {
+        "kind": "Content",
+        "label": "The fetch-execute cycle",
+        "text": "Two transfers on one line separated by a semicolon happen at the same time."
+      },
+      {
+        "kind": "Content",
+        "label": "The fetch-execute cycle",
+        "text": "If the instruction is a jump, the PC is changed to the jump address, which can only happen after the instruction has been decoded."
+      },
+      {
+        "kind": "Example",
+        "label": "The fetch-execute cycle",
+        "text": "MAR ← [PC]\nPC ← [PC] + 1; MDR ← [[MAR]]\nCIR ← [MDR]\nLine 1: the contents of the PC (an address) are copied to the MAR.\nLine 2: at the same time, the PC is incremented and the contents of the memory location addressed by the MAR are copied to the MDR.\nLine 3: the instruction in the MDR is copied to the CIR."
+      },
+      {
+        "kind": "Example",
+        "label": "The fetch-execute cycle",
+        "text": "The instruction is decoded: opcode LDD, operand 200\nMAR ← 200\nMDR ← [[MAR]]  (the value stored at address 200)\nACC ← [MDR]"
       },
       {
         "kind": "Section",
@@ -7471,12 +7560,22 @@
       {
         "kind": "Content",
         "label": "Interrupts",
-        "text": "The interrupt flag in the status register records that an interrupt is waiting."
+        "text": "The processor identifies the type of interrupt using an interrupt register, in which each bit is a flag for one type of interrupt."
+      },
+      {
+        "kind": "Content",
+        "label": "Interrupts",
+        "text": "Interrupts are only detected at the end of a cycle, so the current program is left in a defined state it can return to."
+      },
+      {
+        "kind": "Content",
+        "label": "Interrupts",
+        "text": "After an ISR finishes, the processor checks for further interrupts and services them before restoring the original program."
       },
       {
         "kind": "Example",
         "label": "Interrupts",
-        "text": "1. At the end of the current F-E cycle, the processor checks for an interrupt\n2. It compares the interrupt's priority with the current task\n3. If higher, it saves the contents of the registers (including PC) on the stack\n4. The address of the correct ISR is loaded into the PC\n5. The ISR runs and handles the event\n6. The saved register values are restored and the original program resumes"
+        "text": "1. At the end of the current F-E cycle, the processor checks for an interrupt\n2. It compares the interrupt's priority with the current task\n3. If higher, it saves the contents of the registers (including PC) on the stack\n4. The address of the correct ISR is loaded into the PC\n5. The ISR runs and handles the event\n6. The processor checks for any further interrupts and handles them\n7. The saved register values are restored and the original program resumes"
       },
       {
         "kind": "Quick recall question",
@@ -7503,7 +7602,7 @@
       {
         "kind": "Quick recall answer",
         "label": "Write the fetch stage in register transfer notation.",
-        "text": "MAR ← [PC]; PC ← [PC] + 1; MDR ← [[MAR]]; CIR ← [MDR]."
+        "text": "MAR ← [PC], then PC ← [PC] + 1; MDR ← [[MAR]] (at the same time), then CIR ← [MDR]."
       },
       {
         "kind": "Quick recall question",
@@ -7604,6 +7703,16 @@
       },
       {
         "kind": "Definition",
+        "label": "Macro",
+        "text": "A named sequence of instructions that is used more than once; the assembler replaces the name with the instructions."
+      },
+      {
+        "kind": "Definition",
+        "label": "Directive",
+        "text": "An instruction to the assembler about how to build the machine code, for example how memory should be used."
+      },
+      {
+        "kind": "Definition",
         "label": "Symbol table",
         "text": "A table built by the assembler that records each label and the address it represents."
       },
@@ -7624,7 +7733,12 @@
       {
         "kind": "Content",
         "label": "Assembly language and machine code",
-        "text": "The processor only understands machine code: binary patterns made of an opcode and an operand. Assembly language replaces the binary opcodes with short mnemonics (such as LDD, ADD, JMP) and lets programmers use labels instead of numeric addresses. There is a one-to-one relationship: each assembly instruction becomes exactly one machine-code instruction. Assembly language is specific to one processor's instruction set, so a program written for one processor type will not run on another."
+        "text": "The only language the processor recognises is machine code. Each machine-code instruction is a binary code with a defined number of bits: an opcode, which defines the action, and usually an operand, which defines the data or address needed (some instructions have no operand). The opcode bits can themselves be split, for example into bits for the operation, bits for the addressing mode and bits for the register. Each processor has its own instruction set, so machine code for one processor type will not run on another. Writing machine code directly is slow and error-prone, so programmers use assembly language: each machine-code instruction has an equivalent assembly instruction made of a mnemonic for the opcode (such as LDD, ADD, JMP) and a character representation of the operand. This is a one-to-one relationship. An assembler translates assembly language into machine code."
+      },
+      {
+        "kind": "Content",
+        "label": "Assembly language and machine code",
+        "text": "Extra features the assembler provides: comments, symbolic names for constants, labels for addresses, macros (a named sequence of instructions used more than once) and directives (instructions to the assembler itself, e.g. how to use memory)."
       },
       {
         "kind": "Content",
@@ -7634,12 +7748,41 @@
       {
         "kind": "Content",
         "label": "Assembly language and machine code",
-        "text": "It is harder to write, read and debug than a high-level language."
+        "text": "It is harder to write, read and debug than a high-level language, and is specific to one processor type."
       },
       {
         "kind": "Content",
         "label": "Assembly language and machine code",
-        "text": "In the CAIE instruction set, #n is a denary value, Bn is binary and &n is hexadecimal."
+        "text": "Immediate values can be written in denary (#48), binary (#B00110000) or hexadecimal (#&30); the CAIE instruction table also shows these as #n, Bn and &n."
+      },
+      {
+        "kind": "Example",
+        "label": "Assembly language and machine code",
+        "text": "A 24-bit instruction might be split as:\n4 bits operation | 2 bits addressing mode | 2 bits register | 16 bits operand\n4 bits allow 2^4 = 16 operations, 2 bits allow 4 addressing modes, and a 16-bit operand can hold any address on a 16-bit address bus."
+      },
+      {
+        "kind": "Section",
+        "text": "Symbolic, relative and absolute addressing"
+      },
+      {
+        "kind": "Content",
+        "label": "Symbolic, relative and absolute addressing",
+        "text": "The same program can refer to memory in three ways. With symbolic addressing the programmer uses labels such as TOTAL or STRTLP and does not need to know where the program will be stored. With relative addressing each address is given as an offset from a base address held in a base register, for example STO [BR] + 16, so the program works wherever it is loaded. With absolute addressing actual memory addresses are used, for example STO 216, which only works if the program is loaded at the assumed start address."
+      },
+      {
+        "kind": "Content",
+        "label": "Symbolic, relative and absolute addressing",
+        "text": "Labels are written with a colon (TOTAL:) where they are defined; the colon is dropped when they are used."
+      },
+      {
+        "kind": "Content",
+        "label": "Symbolic, relative and absolute addressing",
+        "text": "The assembler turns symbolic addresses into offsets or addresses using the symbol table."
+      },
+      {
+        "kind": "Example",
+        "label": "Symbolic, relative and absolute addressing",
+        "text": "The program starts at address 200 and TOTAL is the 17th location (offset 16).\nSymbolic: STO TOTAL\nRelative: STO [BR] + 16   (BR holds the base address 200)\nAbsolute: STO 216"
       },
       {
         "kind": "Section",
@@ -7648,17 +7791,17 @@
       {
         "kind": "Content",
         "label": "The two-pass assembler",
-        "text": "A program can refer to a label before the label is defined, for example jumping forward to a label further down the code (a forward reference). The assembler therefore reads the source code twice. In the first pass it reads each line, removes comments and white space, and adds every label to the symbol table with its address, calculated by counting instructions from the start address. In the second pass it replaces every label with its address from the symbol table, converts each mnemonic into its binary opcode using an opcode table, and generates the machine code (object code). Errors such as undefined labels or unknown mnemonics are reported."
+        "text": "A program can refer to a label before the label is defined, for example jumping forward to a label further down the code (a forward reference). The assembler therefore reads the source code twice. In the first pass it reads the code line by line, removes comments, replaces each macro name with the instructions that make up the macro, and removes and stores any directives to act on later. It counts the instructions as it goes, and when it meets a label it enters the label and its address (or offset) in the symbol table. In the second pass it replaces every symbolic address with its value from the symbol table and converts each mnemonic into its binary opcode using an opcode lookup table, producing the machine code (object code). Errors such as undefined labels or unknown mnemonics are reported. The output may still need its addresses adjusted when the program is loaded into memory to run."
       },
       {
         "kind": "Content",
         "label": "The two-pass assembler",
-        "text": "Pass 1: build the symbol table (labels → addresses)."
+        "text": "Pass 1: remove comments, expand macros, store directives, and build the symbol table (labels → addresses)."
       },
       {
         "kind": "Content",
         "label": "The two-pass assembler",
-        "text": "Pass 2: translate opcodes and replace labels using the symbol table, producing object code."
+        "text": "Pass 2: use the symbol table and the opcode lookup table to produce object code."
       },
       {
         "kind": "Content",
@@ -7672,36 +7815,12 @@
       },
       {
         "kind": "Section",
-        "text": "Instruction groups"
-      },
-      {
-        "kind": "Content",
-        "label": "Instruction groups",
-        "text": "The CAIE instruction set groups instructions by purpose. Data movement instructions copy values between memory, the accumulator and the index register: LDM #n loads a number into the ACC, LDD loads from an address, LDI loads indirectly, LDX loads indexed, LDR #n loads a number into the IX, MOV copies the ACC into another register, and STO stores the ACC to memory. Input and output use IN (read a character and store its ASCII value in the ACC) and OUT (output the character whose ASCII value is in the ACC). Arithmetic instructions are ADD and SUB (with an address or a number), and INC and DEC (add or subtract 1 from the ACC or IX). CMP compares the ACC with an address or a number, and CMI compares indirectly. JMP is an unconditional jump; JPE jumps if the last comparison was equal and JPN jumps if it was not equal. END returns control to the operating system."
-      },
-      {
-        "kind": "Content",
-        "label": "Instruction groups",
-        "text": "Compare instructions do not change the ACC; they set a flag that the next conditional jump reads."
-      },
-      {
-        "kind": "Content",
-        "label": "Instruction groups",
-        "text": "Conditional jumps are how selection and loops are built in assembly language."
-      },
-      {
-        "kind": "Content",
-        "label": "Instruction groups",
-        "text": "STO copies the ACC into memory; the ACC keeps its value."
-      },
-      {
-        "kind": "Section",
         "text": "Addressing modes"
       },
       {
         "kind": "Content",
         "label": "Addressing modes",
-        "text": "In immediate addressing the operand is the value itself (LDM #150 puts 150 into the ACC). In direct addressing the operand is the address of the value (LDD 150 loads the contents of address 150). In indirect addressing the operand is an address that holds another address, where the value is found (LDI 150 reads address 150, uses that value as an address, and loads from there). In indexed addressing the operand is added to the contents of the index register to form the address (LDX 150 with IX = 1 loads from address 151). In relative addressing the address is given as an offset from the address of the current instruction, so the code works wherever it is placed in memory."
+        "text": "In immediate addressing the operand is the value itself (LDM #150 puts 150 into the ACC). In direct addressing the operand is the address of the value (LDD 150 loads the contents of address 150). In indirect addressing the operand is an address that holds another address, where the value is found (LDI 150 reads address 150, uses that value as an address, and loads from there). In indexed addressing the operand is added to the contents of the index register to form the address (LDX 150 with IX = 1 loads from address 151). In relative addressing the address is given as an offset from a base address, such as the address in a base register or the address of the current instruction, so the code works wherever it is placed in memory."
       },
       {
         "kind": "Content",
@@ -7727,6 +7846,45 @@
         "kind": "Example",
         "label": "Addressing modes",
         "text": "Memory: address 150 contains 300, address 151 contains 20, address 300 contains 45. IX contains 1.\nLDM #150 (immediate) → ACC = 150\nLDD 150 (direct) → ACC = 300\nLDI 150 (indirect) → address 150 holds 300, so load from 300 → ACC = 45\nLDX 150 (indexed) → address 150 + 1 = 151 → ACC = 20"
+      },
+      {
+        "kind": "Section",
+        "text": "Instruction groups"
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "The CAIE instruction set groups instructions by purpose. Data movement instructions copy values between memory, the accumulator and the index register: LDM #n loads a number into the ACC, LDD loads from an address, LDI loads indirectly, LDX loads indexed, LDR #n loads a number into the IX, MOV copies the ACC into another register (IX), and STO stores the ACC to memory. Input and output use IN (read a character from the keyboard and store its ASCII value in the ACC) and OUT (display the character whose ASCII value is in the ACC); neither has an operand. Arithmetic instructions are ADD and SUB (with an address or a number), and INC and DEC (add or subtract 1 from the ACC or IX); there are no general multiply or divide instructions. CMP compares the ACC with an address or a number, and CMI compares indirectly. JMP is an unconditional jump; JPE jumps if the last comparison was True (equal) and JPN jumps if it was False (not equal). END returns control to the operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "Compare instructions only test whether two values are equal, and do not change the ACC; the result is recorded as a flag in the status register."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "A conditional jump checks that flag; if the jump is taken, the new address overwrites the PC value that was incremented during the fetch."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "Conditional jumps are how selection and loops are built in assembly language."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "STO copies the ACC into memory; the ACC keeps its value."
+      },
+      {
+        "kind": "Content",
+        "label": "Instruction groups",
+        "text": "Read each mnemonic carefully: it defines the operation, the register and often the addressing mode (e.g. LDD vs LDI vs LDX)."
+      },
+      {
+        "kind": "Example",
+        "label": "Instruction groups",
+        "text": "        IN          ; ACC = ASCII code of the key, e.g. '7' → 55\n        SUB #48     ; ASCII '0' is 48, so 55 − 48 = 7\n        STO NUM     ; store the numeric value 7"
       },
       {
         "kind": "Section",
@@ -7937,6 +8095,11 @@
       {
         "kind": "Content",
         "label": "Logical shifts",
+        "text": "The bit shifted out goes into the carry flag of the status register: the MSB for a left shift, the LSB for a right shift. After a right shift by one, the carry holds the remainder of the division by 2."
+      },
+      {
+        "kind": "Content",
+        "label": "Logical shifts",
         "text": "A 1 lost off the left end means the result is too big for the register: the multiplication is wrong."
       },
       {
@@ -8034,7 +8197,17 @@
       {
         "kind": "Content",
         "label": "Masks with AND, OR and XOR",
-        "text": "Toggle a bit: XOR with a mask that has 1 in that position."
+        "text": "Toggle a bit: XOR with a mask that has 1 in that position; one mask can toggle several bits at once, e.g. XOR #B00110000 toggles bits 4 and 5."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "Clear every bit: AND #B00000000, for example to reset all flags when a system starts."
+      },
+      {
+        "kind": "Content",
+        "label": "Masks with AND, OR and XOR",
+        "text": "A bitwise operation acts on every bit of the ACC at the same time."
       },
       {
         "kind": "Content",
@@ -8053,7 +8226,7 @@
       {
         "kind": "Content",
         "label": "Using bits to monitor and control devices",
-        "text": "Embedded and control systems often use a single byte as a register in which each bit represents one device or sensor: for example, bit 0 might show whether a door is open and bit 3 might switch on a pump. Storing eight on/off states in one byte saves memory. Masks let the program test one sensor without disturbing the others, and turn one device on or off while leaving the rest unchanged, which is essential because the whole byte is written back at once."
+        "text": "A monitoring and control program runs in real time as an infinite loop, reading sensors at timed intervals and setting flags such as 'sensor 1 too high' or 'sensor 1 too low'. In machine code each flag can be a single bit, so embedded and control systems often use a single byte in which each bit represents one sensor condition or device: for example, bits 0–3 might record problems reported by sensors and bits 4–7 might switch actuators on or off. Storing eight on/off states in one byte saves memory. Masks let the program test one sensor without disturbing the others, and turn one device on or off while leaving the rest unchanged, which is essential because the whole byte is written back at once."
       },
       {
         "kind": "Content",
@@ -8119,6 +8292,24 @@
         "kind": "Quick recall answer",
         "label": "Which operation and mask clear bit 7?",
         "text": "AND with 01111111."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Where does the bit shifted out by LSR #1 go, and what does it tell you?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Where does the bit shifted out by LSR #1 go, and what does it tell you?",
+        "text": "Into the carry flag; it is the remainder when the unsigned value is divided by 2."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Bits 4 and 5 control an actuator and must be reversed. Which operation and operand?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Bits 4 and 5 control an actuator and must be reversed. Which operation and operand?",
+        "text": "XOR with #B00110000."
       },
       {
         "kind": "Quick recall question",
@@ -8207,12 +8398,12 @@
       {
         "kind": "Content",
         "label": "Why a computer needs an operating system",
-        "text": "Without an operating system, every application would have to control the hardware directly, manage its own memory and handle its own files. The OS hides this complexity. It provides a user interface (command-line or graphical) so users can run programs and manage files, provides services that applications call (for example to save a file or print), and shares the hardware fairly and safely between all running programs and users."
+        "text": "System software runs the computer, while application software performs a specific task for the user. The operating system is system software that provides a platform on which programs useful to the user can run. Without it, users would have to control the hardware directly and every application would have to manage memory, files and devices itself. The OS provides a user-system interface: at least a command-line interface and a graphical user interface (GUI). It provides a program-hardware interface, so programmers can write software without knowing how the processor and devices work, and the OS makes the hardware do what the software requires. It also manages resources so that all running processes are served as efficiently as possible."
       },
       {
         "kind": "Content",
         "label": "Why a computer needs an operating system",
-        "text": "It provides an interface between the user and the hardware."
+        "text": "It provides an interface between the user and the hardware (CLI and GUI)."
       },
       {
         "kind": "Content",
@@ -8222,7 +8413,36 @@
       {
         "kind": "Content",
         "label": "Why a computer needs an operating system",
-        "text": "It manages resources (processor time, memory, storage, devices) between competing programs."
+        "text": "It manages resources (processor time, memory, storage, devices) between competing processes."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a computer needs an operating system",
+        "text": "OS tasks can be grouped into those that help the user and those that keep the system running, though some fit both."
+      },
+      {
+        "kind": "Section",
+        "text": "Process management"
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "A process is a program that has begun execution. Many processes run at once and none can run to completion without interruption, so resource management aims for the most efficient use of the system; its two most important parts are scheduling processes and resolving conflicts when two processes need the same resource. The OS allows several processes to share the processor, a technique called multitasking. The scheduler decides which process runs next and gives each one a short time slice, switching between them so quickly that they appear to run at the same time. The OS allocates resources to processes, handles interrupts, and resolves conflicts when two processes need the same resource, so that neither is stuck waiting forever."
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "Each process is in a state such as running, ready or blocked (waiting for an event)."
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "Priorities can give more processor time to important tasks."
+      },
+      {
+        "kind": "Content",
+        "label": "Process management",
+        "text": "Detailed scheduling algorithms are covered at A Level in topic 16.1."
       },
       {
         "kind": "Section",
@@ -8231,7 +8451,7 @@
       {
         "kind": "Content",
         "label": "Memory management",
-        "text": "The OS decides which programs and data are held in main memory and where. It allocates memory to each process when it starts and frees it when it ends, keeps track of which parts of memory are in use, and protects each process's memory so one program cannot read or overwrite another's data. When physical memory is full, it can use virtual memory: part of secondary storage is treated as extra memory, and data not currently needed are moved out of RAM."
+        "text": "Memory management has three aspects. Memory protection ensures that one program cannot use the memory locations allocated to another. The memory organisation scheme is chosen to make the best use of limited memory, for example virtual memory using paging or segmentation, in which part of secondary storage is treated as extra memory and data not currently needed are moved out of RAM. Memory usage optimisation decides which processes should be in main memory at any time and where they are stored. The OS allocates memory to each process when it starts and frees it when it ends."
       },
       {
         "kind": "Content",
@@ -8250,12 +8470,36 @@
       },
       {
         "kind": "Section",
+        "text": "Hardware (input/output and peripheral) management"
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "Device management requires installing the appropriate device driver for each device and controlling which processes use it. The OS communicates with input and output devices through device drivers, which translate general OS commands into the specific signals a device understands. It receives and handles interrupts from devices, manages buffers and queues so slow devices do not hold up the processor, and uses spooling so that, for example, several print jobs can be queued on disk and printed in turn."
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "New hardware usually needs only a new driver, not a new operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "Plug-and-play detects a connected device and loads its driver automatically."
+      },
+      {
+        "kind": "Content",
+        "label": "Hardware (input/output and peripheral) management",
+        "text": "The OS controls which process may use a device at any one time."
+      },
+      {
+        "kind": "Section",
         "text": "File management"
       },
       {
         "kind": "Content",
         "label": "File management",
-        "text": "The OS organises data on secondary storage into files and directories (folders). It keeps track of where each file is physically stored, provides a naming system with file extensions, lets users and programs create, open, save, copy, move, rename and delete files, and controls which users are allowed to read or change each file."
+        "text": "File management provides three main features: file naming conventions, directory (folder) structures and access control mechanisms. The OS organises data on secondary storage into files and directories, keeps track of where each file is physically stored, lets users and programs create, open, save, copy, move, rename and delete files, and controls which users may read or change each file."
       },
       {
         "kind": "Content",
@@ -8279,7 +8523,7 @@
       {
         "kind": "Content",
         "label": "Security management",
-        "text": "The OS protects data and resources from unauthorised access and loss. It manages user accounts and authentication with usernames and passwords (or biometrics), assigns access rights so users can only use what they are entitled to, keeps the system updated with security patches, and may include a firewall. It can also log user activity and support data recovery and backups."
+        "text": "Security management covers recovery when data are lost, prevention of intrusion, and ensuring data privacy. The OS manages user accounts and authentication with usernames and passwords (or biometrics), assigns access rights so users can only use what they are entitled to, keeps the system updated with security patches, and may include a firewall. It can also log user activity and support backups. Closely related is error detection and recovery: whether an error comes from a badly written program, unsuitable data or a faulty device, the OS must be able to interrupt the running process, give error diagnostics, and in extreme cases shut the system down in an orderly way without losing data."
       },
       {
         "kind": "Content",
@@ -8298,60 +8542,12 @@
       },
       {
         "kind": "Section",
-        "text": "Hardware (input/output and peripheral) management"
-      },
-      {
-        "kind": "Content",
-        "label": "Hardware (input/output and peripheral) management",
-        "text": "The OS communicates with input and output devices through device drivers, which translate general OS commands into the specific signals a device understands. It receives and handles interrupts from devices, manages buffers and queues so slow devices do not hold up the processor, and uses spooling so that, for example, several print jobs can be queued on disk and printed in turn."
-      },
-      {
-        "kind": "Content",
-        "label": "Hardware (input/output and peripheral) management",
-        "text": "New hardware usually needs only a new driver, not a new operating system."
-      },
-      {
-        "kind": "Content",
-        "label": "Hardware (input/output and peripheral) management",
-        "text": "Plug-and-play detects a connected device and loads its driver automatically."
-      },
-      {
-        "kind": "Content",
-        "label": "Hardware (input/output and peripheral) management",
-        "text": "The OS controls which process may use a device at any one time."
-      },
-      {
-        "kind": "Section",
-        "text": "Process management"
-      },
-      {
-        "kind": "Content",
-        "label": "Process management",
-        "text": "The OS allows several processes to share the processor, a technique called multitasking. The scheduler decides which process runs next and gives each one a short time slice, switching between them so quickly that they appear to run at the same time. The OS allocates resources to processes, handles interrupts, and resolves conflicts when two processes need the same resource, so that neither is stuck waiting forever."
-      },
-      {
-        "kind": "Content",
-        "label": "Process management",
-        "text": "Each process is in a state such as running, ready or blocked (waiting for an event)."
-      },
-      {
-        "kind": "Content",
-        "label": "Process management",
-        "text": "Priorities can give more processor time to important tasks."
-      },
-      {
-        "kind": "Content",
-        "label": "Process management",
-        "text": "Detailed scheduling algorithms are covered at A Level in topic 16.1."
-      },
-      {
-        "kind": "Section",
         "text": "Utility software"
       },
       {
         "kind": "Content",
         "label": "Utility software",
-        "text": "A disk formatter prepares a storage device for use by setting up the file system and dividing the disk into tracks and sectors; formatting erases existing data. A virus checker scans files and memory for malware, comparing them with a database of known virus signatures and watching for suspicious behaviour, then quarantines or deletes infected files; it must be updated regularly. Defragmentation software rearranges the blocks of fragmented files on a hard disk so each file is stored contiguously, reducing read/write head movement and access time. Disk contents analysis and repair software checks for errors such as bad sectors, marks them as unusable, and recovers data where possible. File compression software reduces file sizes to save storage and speed up transmission. Back-up software copies files to another storage medium, often automatically on a schedule and incrementally (only files that have changed), so data can be restored after loss or damage."
+        "text": "Utility programs are not part of the normal running of the OS; the user or the OS runs them when needed. A disk formatter removes existing data from a used disk, sets up the file system (a table of contents linking each file to its physical location on the disk, with the disk divided into tracks and sectors), and partitions the disk into logical drives if required. Disk contents analysis and repair software checks the disk for errors. Bad sectors are physical defects, from manufacture or mishandling such as moving a computer carelessly; the utility marks them so the file system no longer uses them. Files damaged by a sudden shutdown or power cut are recovered where possible, otherwise deleted. Defragmentation software deals with a disk that works correctly but slows down: as files are created, extended and deleted they end up split across scattered sectors, so the defragmenter rearranges them so each file occupies a continuous run of sectors, reducing read-write head movement. It needs free working space, so it cannot run on a nearly full disk. A virus checker scans files and memory for malware, comparing them with a database of known virus signatures and watching for suspicious behaviour, then quarantines or deletes infected files; because new viruses appear before the checker is updated, it must be updated regularly and scan all files routinely. File compression software reduces file sizes to save storage and, more importantly, to speed up transmission, for example zipping an email attachment. Back-up software sets a schedule for backups and only creates a new backup when files have changed."
       },
       {
         "kind": "Content",
@@ -8375,7 +8571,7 @@
       {
         "kind": "Content",
         "label": "Program libraries and DLLs",
-        "text": "Programmers rarely write everything from scratch. Program libraries contain pre-written, pre-tested routines, for example for mathematical functions, graphics or file handling, which can be called from new programs. A static library routine is copied into the executable when the program is compiled. A dynamic link library (DLL) is kept as a separate file and linked to the program only when it runs, so many programs can share one copy."
+        "text": "New programs almost always contain errors, so it saves time and trouble to use subroutines from a program library that have already been tried and tested. The most familiar library routines are a language's built-in functions; others are specialist collections, such as libraries of mathematical and statistical procedures. When a program is compiled, the object code must be linked with the code for the library routines it uses. If the routines are linked in before the program is loaded (static linking), every program has its own copy, which makes executable files larger and wastes memory when several processes use the same routine. A dynamic link library (DLL) avoids this: the executable contains only a small piece of code that links to the routine, stored separately, when it is needed during execution, so many processes share one copy."
       },
       {
         "kind": "Content",
@@ -8390,7 +8586,7 @@
       {
         "kind": "Content",
         "label": "Program libraries and DLLs",
-        "text": "DLL drawbacks: the program fails if the DLL is missing, and an updated DLL that is incompatible can break programs that depend on it."
+        "text": "DLL drawbacks: the program relies on the DLL being present and working; if it is missing, corrupted or a new version contains bugs, the program fails or gives wrong results, and the user will find it hard to work out what is wrong."
       },
       {
         "kind": "Quick recall question",
@@ -8562,22 +8758,32 @@
       {
         "kind": "Content",
         "label": "Compilers",
-        "text": "A compiler reads the whole source program, checks it for errors and, if there are none, produces a complete executable file of object code. The executable can be run many times without the source code or the compiler being present. Syntax errors are reported together after the compiler has analysed the whole program, so the programmer must fix them and compile again."
+        "text": "A compiler needs the source code but no data. It reads each line in turn and analyses it; if a line contains an error, the error is recorded and compilation continues, otherwise the line is converted to intermediate code. When the whole source has been processed, either the complete intermediate code is converted into object code, or, if any errors were found, a list of them is output and no object code is produced. The program can only run once compilation finds no errors. The object code can then be run straight away, or stored and run later without the compiler."
       },
       {
         "kind": "Content",
         "label": "Compilers",
-        "text": "Benefits: the compiled program runs quickly, it can be distributed without the source code (protecting it from copying), and the compiler is not needed to run it."
+        "text": "For the programmer: an executable file can be distributed, so users never see the source code; but errors are only listed after the whole program has been analysed, and the program must be recompiled after every change."
       },
       {
         "kind": "Content",
         "label": "Compilers",
-        "text": "Drawbacks: the whole program must be recompiled after every change, errors are reported only after compilation, and the executable only runs on one type of processor and operating system."
+        "text": "For the user: only the object code is needed to run the program, and it executes faster than interpreted code; but compiled object code could contain a virus, which is harder to spot than in source code."
       },
       {
         "kind": "Content",
         "label": "Compilers",
-        "text": "Compilers are used when a finished program is distributed to users."
+        "text": "A compiled program only runs on the type of processor (and OS) it was compiled for."
+      },
+      {
+        "kind": "Content",
+        "label": "Compilers",
+        "text": "Compilers are the right choice once the program is as near error-free as possible and is to be distributed for general use."
+      },
+      {
+        "kind": "Example",
+        "label": "Compilers",
+        "text": "A program has syntax errors on lines 12 and 40.\nCompiler: reads all the lines, records both errors, outputs a list of the two errors and produces no object code.\nInterpreter: runs lines 1–11, then reports the error on line 12 and stops. The error on line 40 is only found after line 12 is fixed, and only if that line is actually reached."
       },
       {
         "kind": "Section",
@@ -8586,22 +8792,27 @@
       {
         "kind": "Content",
         "label": "Interpreters",
-        "text": "An interpreter translates and executes the program one statement at a time. If it meets an error, it stops at that line and reports it, so the programmer can fix it and continue. No executable file is produced: the source code and the interpreter are needed every time the program runs, and each statement is translated again each time it is executed, including inside loops."
+        "text": "An interpreter needs the source code and the data the program uses. It reads the first line of source code and analyses it. If there is an error, it is reported and the interpreter stops. If not, the line is converted to intermediate code, which the interpreter uses to carry out the action straight away. It then reads the next line and repeats. No executable file is produced: the source code and the interpreter are needed every time the program runs, and each statement is translated again each time it is executed, including inside loops."
       },
       {
         "kind": "Content",
         "label": "Interpreters",
-        "text": "Benefits: errors are found and reported immediately at the line where they occur, parts of a program can be tested before it is finished, and the same source can run on any computer with a suitable interpreter."
+        "text": "For the programmer: errors are identified as they occur and can be corrected immediately, and parts of an unfinished program can be tested; but code that is not reached during a run is not checked, so some syntax errors may stay hidden until later."
       },
       {
         "kind": "Content",
         "label": "Interpreters",
-        "text": "Drawbacks: execution is slower, the source code must be given to users, and the interpreter must be installed on every computer that runs the program."
+        "text": "For the user: the interpreter and the source code must be available every time the program runs, and execution is slower."
       },
       {
         "kind": "Content",
         "label": "Interpreters",
-        "text": "Interpreters are useful while developing and debugging a program."
+        "text": "An interpreter is the right choice during development: one error can cause several others, so finding and fixing the first error at once limits the rest, and the associated debugging tools speed this up."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters",
+        "text": "The source code must be given to users, so it can be copied or changed."
       },
       {
         "kind": "Section",
@@ -8610,7 +8821,7 @@
       {
         "kind": "Content",
         "label": "Partly compiled, partly interpreted languages",
-        "text": "Some languages combine both approaches. Java source code is compiled into bytecode, an intermediate code that does not depend on any particular processor. The bytecode is then run by the Java Virtual Machine (JVM), which interprets it (or translates it to machine code as it runs) on the target computer. The same bytecode can therefore run on any device with a JVM, while the initial compilation catches syntax errors and does much of the translation work in advance."
+        "text": "Some languages combine both approaches. A Java Virtual Machine (JVM) is written for each type of computer. Java source code is compiled into Java Byte Code, an intermediate code that does not depend on any particular processor. When the program is run, the byte code is interpreted by the JVM on the target computer, so the byte code can be transferred to any computer with a JVM installed. The same bytecode can therefore run on any device with a JVM, while the initial compilation catches syntax errors and does much of the translation work in advance."
       },
       {
         "kind": "Content",
@@ -9456,249 +9667,303 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to discuss the moral, ethical, legal and social issues raised by computing, including privacy, intellectual property and the wider effects of technology on society. Answers score when a general issue is applied to a specific scenario, not when it is only defined."
+        "text": "This topic asks you to think like a computing professional. Paper 1 tests why professionals need ethics and codes of conduct (BCS, ACM/IEEE), the impact of acting ethically or unethically in a given scenario, why copyright legislation is needed, the differences between commercial software, shareware, freeware, open source and free software licences (and which suits a situation), and the applications and social, economic and environmental impact of artificial intelligence. Marks come from applying a principle to the scenario in the question, not from general statements."
       },
       {
         "kind": "Definition",
-        "label": "Privacy",
-        "text": "An individual's right to control what personal data is collected about them and how it is used."
+        "label": "Ethics",
+        "text": "The moral principles that guide a person, and the rules of conduct recognised in a particular profession."
       },
       {
         "kind": "Definition",
-        "label": "Personal data",
-        "text": "Any data that can identify a living individual, either on its own or combined with other data."
-      },
-      {
-        "kind": "Definition",
-        "label": "Intellectual property (IP)",
-        "text": "Original creative or intellectual work, such as software, music or writing, that the law allows its creator to own and control."
+        "label": "Code of conduct",
+        "text": "A set of principles published by a professional body describing how its members are expected to behave."
       },
       {
         "kind": "Definition",
         "label": "Copyright",
-        "text": "A legal right that automatically protects an original work, giving the creator control over how it is copied, distributed and used."
+        "text": "Formal legal recognition of the ownership of a created and published original work, giving the owner control over how it is copied and used."
       },
       {
         "kind": "Definition",
         "label": "Software licence",
-        "text": "A legal agreement that states how software may be used, copied and distributed by whoever obtains it."
+        "text": "An agreement that gives the buyer permission to use software under stated conditions; the vendor keeps ownership."
       },
       {
         "kind": "Definition",
-        "label": "Open-source software",
-        "text": "Software distributed with its source code, which users are legally permitted to view, modify and redistribute, usually under specific licence conditions."
+        "label": "Shareware",
+        "text": "Commercial software provided free of charge for a limited trial period, without the source code."
       },
       {
         "kind": "Definition",
-        "label": "Plagiarism",
-        "text": "Presenting someone else's work or ideas as one's own, without proper acknowledgement of the original source."
+        "label": "Freeware",
+        "text": "Software provided free of charge with no time limit, but without the source code."
+      },
+      {
+        "kind": "Definition",
+        "label": "Open source software",
+        "text": "Software provided with its source code, which users may use, modify, copy and distribute according to the licence (Open Source Initiative)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Free software",
+        "text": "Open source software (Free Software Foundation) that users are free to use as they wish, under a copyleft licence."
+      },
+      {
+        "kind": "Definition",
+        "label": "Copyleft",
+        "text": "A licence condition that if the software is modified, the modified source code must be made available to others under the same conditions."
+      },
+      {
+        "kind": "Definition",
+        "label": "Artificial intelligence (AI)",
+        "text": "The use of a computer or computer-controlled device to perform tasks normally associated with intelligent human behaviour."
       },
       {
         "kind": "Section",
-        "text": "Privacy and personal data"
+        "text": "What ethics means for computing"
       },
       {
         "kind": "Content",
-        "label": "Privacy and personal data",
-        "text": "Computers make it easy to collect, store, search and share huge amounts of personal data, which raises the risk that data is used in ways an individual did not expect or agree to. Common concerns include organisations collecting more data than they need, sharing data with third parties without clear consent, tracking a person's online activity using cookies, and combining separate datasets to build a detailed profile of an individual."
+        "label": "What ethics means for computing",
+        "text": "Ethics can mean the moral principles that guide a person, or the rules of conduct recognised in a profession. Professional rules of conduct must reflect moral principles of right and wrong, which can be viewed from philosophical, religious, legal or pragmatic (common-sense) points of view. Computing professionals need ethics because the systems they build affect employers, clients and the public: software controls money, personal data, safety-critical equipment and communication for millions of people, so a careless or dishonest decision can cause serious harm."
       },
       {
         "kind": "Content",
-        "label": "Privacy and personal data",
-        "text": "Individuals often cannot see or control what data organisations hold about them."
+        "label": "What ethics means for computing",
+        "text": "Laws set the minimum standard; ethical codes go further, covering honesty, competence and responsibility to others."
       },
       {
         "kind": "Content",
-        "label": "Privacy and personal data",
-        "text": "Data collected for one purpose can be reused for an unrelated purpose without the individual's knowledge."
-      },
-      {
-        "kind": "Content",
-        "label": "Privacy and personal data",
-        "text": "Even anonymised data can sometimes identify a person when combined with other sources."
+        "label": "What ethics means for computing",
+        "text": "Religious and cultural beliefs of colleagues and users must also be respected in the workplace."
       },
       {
         "kind": "Section",
-        "text": "Data protection principles"
+        "text": "Professional bodies and codes of conduct"
       },
       {
         "kind": "Content",
-        "label": "Data protection principles",
-        "text": "Organisations that hold personal data are generally expected to follow good-practice principles: collect and process data fairly and lawfully; use it only for the specific purpose it was collected for; collect no more data than is necessary; keep it accurate and up to date; keep it no longer than necessary; and keep it secure against unauthorised access, loss or damage. These principles balance an organisation's need to use data against an individual's right to privacy."
+        "label": "Professional bodies and codes of conduct",
+        "text": "Any professional is expected to act ethically, and joining a professional organisation provides guidance through its code of conduct. The British Computer Society (BCS) code is organised under four headings: public interest; professional competence and integrity; duty to relevant authority; and duty to the profession. The IEEE-CS/ACM Software Engineering Code of Ethics sets out eight principles: Public (act consistently with the public interest), Client and employer (act in their best interests, consistent with the public interest), Product (meet the highest professional standards), Judgement (keep integrity and independence), Management (managers should promote an ethical approach), Profession (advance its integrity and reputation), Colleagues (be fair to and supportive of them) and Self (keep learning throughout one's career). The codes differ in detail but agree that the public interest is the key concern, that they state principles rather than detailed rules, that professionals must use their own judgement, and that they should seek advice when unsure."
       },
       {
         "kind": "Content",
-        "label": "Data protection principles",
-        "text": "Data protection is about how data is handled responsibly; data security is about protecting it from unauthorised access (topic 6.1)."
+        "label": "Professional bodies and codes of conduct",
+        "text": "Benefits of joining a professional body: guidance on ethical behaviour, recognition of competence, professional development and support if challenged."
       },
       {
         "kind": "Content",
-        "label": "Data protection principles",
-        "text": "An individual is usually entitled to find out what data an organisation holds about them and to have inaccurate data corrected."
+        "label": "Professional bodies and codes of conduct",
+        "text": "Do not accept work you are not competent to do, and do not claim a level of competence you lack."
       },
       {
         "kind": "Content",
-        "label": "Data protection principles",
-        "text": "Breaching these principles can lead to legal penalties as well as loss of public trust."
+        "label": "Professional bodies and codes of conduct",
+        "text": "Documentation is stressed repeatedly in the codes because it records decisions, lets others maintain the software and shows the work met the specification."
+      },
+      {
+        "kind": "Example",
+        "label": "Professional bodies and codes of conduct",
+        "text": "Scenario: your manager halves the testing time on a client's payroll system to meet a deadline.\nProduct: an under-tested system may contain errors, so it will not meet professional standards.\nClient and employer: the client could be harmed by wrong payments, and your employer's reputation could suffer.\nManagement: cutting testing is poor, unethical management.\nColleagues: the team is put under unrealistic pressure.\nJudgement: you should raise your concern with the manager and, if ignored, seek advice. Keeping quiet and planning to 'fix it later in maintenance' would be unethical."
+      },
+      {
+        "kind": "Example",
+        "label": "Professional bodies and codes of conduct",
+        "text": "Any two of:\nSo team members feel valued. (1)\nTo get the best work from the team. (1)\nSo the team works well together. (1)\nSo the team produces the best product for the client. (1)"
       },
       {
         "kind": "Section",
-        "text": "Intellectual property and copyright"
+        "text": "Acting for the public good"
       },
       {
         "kind": "Content",
-        "label": "Intellectual property and copyright",
-        "text": "Intellectual property law recognises that creators of original work, such as software, images, music and writing, have a right to control and benefit from that work. Copyright protects an original work automatically from the moment it is created, without needing to be registered, and normally prevents others from copying, distributing or adapting the work without permission. Copyright encourages people to create original work by allowing them to be credited and paid for it, but it must be balanced against the public benefit of being able to use, build on and share ideas."
+        "label": "Acting for the public good",
+        "text": "Codes of conduct refer to the health, safety and welfare of the public and to the public interest; the BCS asks members to have due regard for public health, privacy, security, wellbeing of others and the environment. Poor engineering has wasted huge sums of public money. The Ariane 5 rocket exploded in 1996 because code converting a 64-bit floating-point number to a 16-bit integer overflowed. NASA's Mars Climate Orbiter failed because one team used imperial units while the rest used SI units. The UK's National Programme for IT in the NHS was scrapped after costing about £12 billion without producing a workable system. Applying the codes' requirements on specification, testing and project management could have prevented such losses. Other public concerns involve the purpose or effect of systems: systems not secure against unauthorised access, organisations hiding security breaches, private communications stored for security services, social media carrying abusive or illegal content, and powerful companies pressuring others to use their products."
       },
       {
         "kind": "Content",
-        "label": "Intellectual property and copyright",
-        "text": "Copying software without permission or a valid licence is normally a breach of copyright."
+        "label": "Acting for the public good",
+        "text": "Acting ethically: protects users and the public, produces reliable software, maintains trust in the employer and the profession."
       },
       {
         "kind": "Content",
-        "label": "Intellectual property and copyright",
-        "text": "Copyright applies to source code, images, sound and other creative digital content, not only to physical works."
+        "label": "Acting for the public good",
+        "text": "Acting unethically: can cause financial loss, harm to users, legal action, loss of reputation and loss of the professional's job or membership."
       },
       {
         "kind": "Content",
-        "label": "Intellectual property and copyright",
-        "text": "Ideas themselves are generally not protected, only the specific expression of them."
+        "label": "Acting for the public good",
+        "text": "Public attitudes to some issues vary, which makes individual judgement difficult, and whistle-blowers can suffer serious personal consequences."
       },
       {
         "kind": "Section",
-        "text": "Software licences"
+        "text": "Ownership and copyright"
       },
       {
         "kind": "Content",
-        "label": "Software licences",
-        "text": "A software licence sets out the legal terms under which software may be used. Proprietary (commercial) software is owned by a company, and users normally pay to use it under restrictive terms that forbid copying or modifying it. Freeware can be used and redistributed at no cost, but its source code is not normally available and it cannot be modified. Shareware can be tried free of charge, often for a limited period or with limited features, and payment is expected if the user continues using it. Open-source software is distributed with its source code, and its licence permits users to view, modify and redistribute it, sometimes with conditions such as sharing any modifications under the same licence. Separately, a licence can define how many people or devices may use the software: a single-user licence permits one user or device, a multi-user licence permits a set number of users, a site licence permits use across every device at one location, and a network licence permits use across a network up to an agreed number of simultaneous users."
+        "label": "Ownership and copyright",
+        "text": "Copyright is formal recognition of ownership of an original, published work. The creator owns it, unless they created it while working for an organisation, in which case the organisation can claim copyright. Copyright cannot protect an idea, only its expression, and cannot be claimed for material previously published by someone else. It applies to written works, music, films, recordings, broadcasts, art and computer programs. Copyright legislation is needed for two reasons: creating the work took time, effort and originality, so the owner should be able to earn from it; and it is unfair for others to copy the work and profit from it without paying the creator. Laws differ between countries, but international agreements mean the protection cannot be avoided by publishing in another country. In the UK the relevant law is the Copyright, Designs and Patents Act, under which copyright applies automatically when the work is created."
       },
       {
         "kind": "Content",
-        "label": "Software licences",
-        "text": "Open-source does not always mean free of restrictions; its licence can still require attribution or sharing modifications."
+        "label": "Ownership and copyright",
+        "text": "Copyright laws typically define how long copyright lasts, what happens when the owner dies, how copyright is indicated (e.g. the © symbol) and may record the date of creation."
       },
       {
         "kind": "Content",
-        "label": "Software licences",
-        "text": "A site licence is usually more cost-effective than buying separate single-user licences for a large organisation."
+        "label": "Ownership and copyright",
+        "text": "The owner can state how the work may be used, for example 'may be published unchanged as long as it carries this copyright notice'."
       },
       {
         "kind": "Content",
-        "label": "Software licences",
-        "text": "Using software beyond the terms of its licence, for example on more devices than permitted, is a breach of that licence."
+        "label": "Ownership and copyright",
+        "text": "A buyer of a copyrighted product may normally make copies only for their own use."
+      },
+      {
+        "kind": "Content",
+        "label": "Ownership and copyright",
+        "text": "Distributing a copyrighted work, for example posting it online, without the owner's permission breaks the law."
       },
       {
         "kind": "Section",
-        "text": "Plagiarism"
+        "text": "Software licensing"
       },
       {
         "kind": "Content",
-        "label": "Plagiarism",
-        "text": "Plagiarism is presenting someone else's work, ideas or code as one's own without acknowledging the original source. It can range from copying a whole piece of work to reusing specific passages, images or code without citation. Plagiarism-detection software compares submitted work against a large database of existing sources, online content and other submissions, highlighting matching or closely similar sections for a human to review. Clear referencing and citation, which credit the original source of any quoted or adapted material, are the main way individuals avoid committing plagiarism."
+        "label": "Software licensing",
+        "text": "When you buy software you do not own it: the vendor keeps ownership and you pay for a licence to use it under stated conditions, and the source code is not provided. Commercial software is sold for profit, with options such as a fee per copy, a site licence allowing a set number of copies to run at once, or special rates for education. A vendor may also give away licences: shareware is commercial software offered free for a limited trial period (possibly a limited version, or a beta test version), and freeware is free with no time limit (often a limited or older version); neither includes the source code. The Open Source Initiative makes open source software available, normally free of charge, with the source code, so users may use, modify, copy and distribute it under the licence terms; its philosophy is collaborative development. The Free Software Foundation believes users should be free to use software however they wish. Its software is also open source and may carry a small fee to cover distribution; its licence includes copyleft, so any modified version must be released with its source code under the same conditions."
       },
       {
         "kind": "Content",
-        "label": "Plagiarism",
-        "text": "Plagiarism-detection software flags similarity; a human still judges whether it is a genuine copyright or academic-integrity issue."
+        "label": "Software licensing",
+        "text": "Commercial software is justified when it provides exactly the functionality needed immediately, works with software already installed, or comes with continuous maintenance and support."
       },
       {
         "kind": "Content",
-        "label": "Plagiarism",
-        "text": "Paraphrasing an idea without citing its source can still count as plagiarism."
+        "label": "Software licensing",
+        "text": "Shareware lets users try before buying and suggest improvements; freeware may be enough for limited needs."
       },
       {
         "kind": "Content",
-        "label": "Plagiarism",
-        "text": "Reusing open-source code without following its licence's attribution terms can be both plagiarism and a licence breach."
+        "label": "Software licensing",
+        "text": "Open source or free software is justified when full functionality is available at little or no cost, when a few changes to the source code would make it suitable, when developers are collaborating on a new product, or when the user wants to control the software's future development."
+      },
+      {
+        "kind": "Content",
+        "label": "Software licensing",
+        "text": "Only open source and free software provide the source code."
+      },
+      {
+        "kind": "Example",
+        "label": "Software licensing",
+        "text": "User can edit the source code → Free Software Foundation, Open Source Initiative\nSource code is provided → Free Software Foundation, Open Source Initiative\nFree only for a trial period → shareware\nUser must pay to keep using it and cannot see the source → commercial\nModified versions must be shared under the same terms → Free Software Foundation (copyleft)"
       },
       {
         "kind": "Section",
-        "text": "Wider ethical impact of computing"
+        "text": "Artificial intelligence"
       },
       {
         "kind": "Content",
-        "label": "Wider ethical impact of computing",
-        "text": "Computing has effects on society that go beyond any single piece of data or software. Automation and artificial intelligence can replace jobs that were previously done by people, raising questions about retraining and the fair distribution of the benefits of new technology. Devices become obsolete quickly, contributing to electronic waste (e-waste), which can release harmful substances if not recycled responsibly. Algorithms and artificial intelligence systems can also unintentionally reproduce or amplify bias present in the data they were trained on, which raises questions of fairness and accountability."
+        "label": "Artificial intelligence",
+        "text": "AI is the use of a computer or computer-controlled device to perform tasks normally associated with intelligent human behaviour. Applications can be grouped by the human behaviour they imitate. Problem solving: game-playing programs such as chess, and expert systems for medical diagnosis, which hold more knowledge than one doctor but cannot handle situations outside their rules creatively. Linguistics: voice recognition and speech synthesis, such as automated telephone help lines. Perception: autonomous robots and driverless cars that use sensors to decide what to do, rather than repeating fixed tasks regardless of what happens. Reasoning: drawing conclusions from evidence, for example proving mathematical theorems or checking that software meets its specification. Learning: machine learning, where a system improves its performance with experience by applying statistical algorithms to very large data sets, for example recommending products or filtering spam."
       },
       {
         "kind": "Content",
-        "label": "Wider ethical impact of computing",
-        "text": "Automation can increase efficiency and lower costs, while also reducing demand for certain kinds of work."
+        "label": "Artificial intelligence",
+        "text": "Social impact: more leisure and less dangerous or repetitive work, but job losses in some areas, new skills needed, safety worries about driverless vehicles, uncertain consequences if expert systems replace doctors and nurses, and huge amounts of personal data collected by global organisations."
       },
       {
         "kind": "Content",
-        "label": "Wider ethical impact of computing",
-        "text": "Responsible e-waste disposal and recycling schemes reduce the environmental impact of frequent hardware upgrades."
+        "label": "Artificial intelligence",
+        "text": "Economic impact: new jobs manufacturing, installing and servicing AI systems and greater productivity, but fewer jobs where machines do the work, and a risk that the rich get richer and the poor get poorer."
       },
       {
         "kind": "Content",
-        "label": "Wider ethical impact of computing",
-        "text": "Decisions made by automated systems, such as AI-based screening, may need human oversight to catch unfair outcomes."
+        "label": "Artificial intelligence",
+        "text": "Environmental impact: robots can work in environments dangerous to humans and AI can optimise energy use, but manufacturing robots uses limited raw materials and disposing of them adds to electronic waste."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial intelligence",
+        "text": "If the data collected are not stored securely they could be used for criminal activity."
+      },
+      {
+        "kind": "Example",
+        "label": "Artificial intelligence",
+        "text": "Any three of:\nThe rules, past games and decision-making algorithms are stored. (1)\nThe program is trained by playing many games. (1)\nIt looks ahead at possible moves and chooses the one most likely to succeed. (1)\nIt stores whether each choice led to a good or bad result. (1)\nIt changes future choices, learning from its mistakes. (1)"
       },
       {
         "kind": "Quick recall question",
-        "text": "Name two data protection principles an organisation should follow."
+        "text": "Why should a computing professional join a professional body?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Name two data protection principles an organisation should follow.",
-        "text": "Any two of: collect and use data fairly and lawfully, collect only what is necessary, keep it accurate, keep it no longer than necessary, keep it secure."
+        "label": "Why should a computing professional join a professional body?",
+        "text": "It provides a code of conduct and guidance on ethical behaviour, recognition of competence, and support and professional development."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does copyright protect, and when does it start?"
+        "text": "Name four of the eight principles in the IEEE-CS/ACM code."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does copyright protect, and when does it start?",
-        "text": "It protects an original work, such as software or writing, from being copied or distributed without permission; it applies automatically from the moment the work is created."
+        "label": "Name four of the eight principles in the IEEE-CS/ACM code.",
+        "text": "Any four of: Public, Client and employer, Product, Judgement, Management, Profession, Colleagues, Self."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between freeware and open-source software?"
+        "text": "What is the key concern shared by all professional codes of conduct?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between freeware and open-source software?",
-        "text": "Freeware can be used free of charge but its source code is normally closed; open-source software is distributed with its source code, which users may view, modify and redistribute under its licence terms."
+        "label": "What is the key concern shared by all professional codes of conduct?",
+        "text": "The public interest (public good)."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is a site licence?"
+        "text": "Give two reasons copyright legislation is needed."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is a site licence?",
-        "text": "A software licence that permits the software to be used on every device at one physical location."
+        "label": "Give two reasons copyright legislation is needed.",
+        "text": "The creator should be able to earn from the time and effort spent creating the work, and it is unfair for others to copy and profit from it without paying."
       },
       {
         "kind": "Quick recall question",
-        "text": "How does plagiarism-detection software work?"
+        "text": "What is copyleft?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How does plagiarism-detection software work?",
-        "text": "It compares submitted work against a database of existing sources and flags closely matching or similar sections for a person to review."
+        "label": "What is copyleft?",
+        "text": "A licence condition that modified versions of the software must be released with their source code under the same conditions."
       },
       {
         "kind": "Quick recall question",
-        "text": "Give one way computing can affect employment."
+        "text": "What is the difference between shareware and freeware?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Give one way computing can affect employment.",
-        "text": "Automation or artificial intelligence can replace tasks previously done by people, reducing demand for certain jobs while potentially creating others."
+        "label": "What is the difference between shareware and freeware?",
+        "text": "Shareware is free only for a limited trial period; freeware is free with no time limit. Neither includes the source code."
       },
       {
         "kind": "Quick recall question",
-        "text": "Give one environmental concern linked to computing."
+        "text": "Give three areas of AI application."
       },
       {
         "kind": "Quick recall answer",
-        "label": "Give one environmental concern linked to computing.",
-        "text": "Frequent hardware replacement contributes to electronic waste (e-waste), which can release harmful substances if not recycled responsibly."
+        "label": "Give three areas of AI application.",
+        "text": "Any three of: problem solving (games, expert systems), linguistics (voice recognition), perception (robots, driverless cars), reasoning (theorem proving), learning (machine learning)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is machine learning?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is machine learning?",
+        "text": "A system improving its performance at a task as it gains experience, by applying statistical algorithms to large data sets."
       }
     ]
   },

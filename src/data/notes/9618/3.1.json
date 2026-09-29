@@ -6,23 +6,23 @@
   "unitTitle": "AS Theory",
   "title": "Computers and their components",
   "contentDepth": "full",
-  "overview": "A computer system needs input, output, primary memory and secondary storage, and Paper 1 expects you to explain why each is needed and how common devices work internally. Questions ask you to describe the operation of printers, disks, flash memory, touchscreens and other devices step by step, compare types of RAM and ROM, explain buffers and embedded systems, and describe how monitoring and control systems use sensors, actuators and feedback.",
+  "overview": "A computer system must process, store, input and output data, and Paper 1 expects you to explain why each component is needed and how the named devices work internally. Questions ask for ordered descriptions of the laser printer, 3D printer, hard disk, flash memory, optical disc, touchscreen, VR headset, microphone and speaker; comparisons of RAM and ROM, SRAM and DRAM, and PROM, EPROM and EEPROM; and explanations of buffers, embedded systems and monitoring and control systems. Mark schemes award one mark per correct, correctly sequenced point.",
   "syllabusPoints": [
     "Show understanding of the need for input, output, primary memory and secondary (including removable) storage.",
     "Show understanding of embedded systems, including their benefits and drawbacks.",
     "Describe the principal operations of hardware devices, including a laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.",
     "Show understanding of the use of buffers.",
     "Explain the differences between RAM and ROM, between Static RAM (SRAM) and Dynamic RAM (DRAM), and between PROM, EPROM and EEPROM.",
-    "Show understanding of monitoring and control systems, including the use of sensors, actuators and feedback."
+    "Show understanding of monitoring and control systems, including the difference between them and the use of sensors, actuators and feedback."
   ],
   "definitions": [
     {
-      "term": "Primary memory",
-      "definition": "Memory directly accessible by the processor (RAM and ROM), holding the data and instructions currently in use."
+      "term": "Primary storage",
+      "definition": "Memory the processor can access directly: registers, cache and main memory (RAM and ROM)."
     },
     {
       "term": "Secondary storage",
-      "definition": "Non-volatile storage, such as a hard disk or SSD, that keeps programs and data permanently when the power is off."
+      "definition": "Non-volatile storage, such as a hard disk or SSD, used for long-term storage of programs and data."
     },
     {
       "term": "Volatile",
@@ -30,23 +30,35 @@
     },
     {
       "term": "Embedded system",
-      "definition": "A computer system with a dedicated function built into a larger device, such as a washing machine controller."
+      "definition": "A computer system with a processor, memory and input/output built into a larger device to carry out a dedicated function."
+    },
+    {
+      "term": "Microcontroller",
+      "definition": "A processor, memory and input/output capability constructed together on a single chip."
+    },
+    {
+      "term": "Random-access memory (RAM)",
+      "definition": "Volatile memory that can be read from and written to any number of times."
+    },
+    {
+      "term": "Read-only memory (ROM)",
+      "definition": "Non-volatile memory that can be read from any number of times but not written to during normal operation."
     },
     {
       "term": "Buffer",
-      "definition": "An area of memory that temporarily holds data being transferred between devices or processes that work at different speeds."
+      "definition": "Temporary storage, usually in memory, for data being transferred from one part of a system to another; it works as a queue."
     },
     {
       "term": "Sensor",
-      "definition": "An input device that measures a physical quantity, such as temperature or light, and sends the reading to a computer."
+      "definition": "A hardware device that measures a physical property and transmits a value to a controlling computer."
     },
     {
       "term": "Actuator",
-      "definition": "An output device, such as a motor, valve or heater, that performs a physical action when signalled by a computer."
+      "definition": "A hardware device, such as a motor, that receives a signal from a computer and adjusts the setting of a controlling device."
     },
     {
       "term": "Feedback",
-      "definition": "Using the output of a control system to affect its next input, so the system can keep a variable close to a set value."
+      "definition": "Using the effect of a control action, measured by the next sensor reading, to decide the next action."
     }
   ],
   "sections": [
@@ -54,12 +66,12 @@
       "id": "01-need-for-components",
       "title": "Input, output, memory and storage",
       "content": [
-        "Input devices capture data and instructions from users or the environment so the computer has something to process. Output devices present the results in a form people or other devices can use. Primary memory holds the programs and data currently being used, so the processor can access them quickly. Because RAM is volatile, secondary storage is needed to keep programs and files permanently. Removable storage, such as USB flash drives and optical discs, lets data be carried between computers and kept as off-site backups."
+        "A computer system must process data (the CPU), store data, and input and output data. Input devices capture data and instructions, and output devices present results. Storage forms a memory hierarchy: registers, cache, main memory, then secondary storage such as hard disks. Moving down the hierarchy, capacity rises and cost per byte falls, but access becomes slower. Users would like large, cheap and fast storage, which is impossible, so systems combine a small amount of fast primary storage with large, cheap secondary storage. Main memory (RAM) is also volatile, so separate non-volatile secondary storage is needed to keep programs and data when the power is off."
       ],
       "bullets": [
-        "The processor can only execute programs that are in primary memory; they are loaded there from secondary storage.",
-        "Secondary storage is slower than RAM but cheaper per gigabyte and much larger.",
-        "Link each component to its purpose in the scenario given, not just its name."
+        "The processor can only execute programs that are in main memory; they are loaded there from secondary storage.",
+        "Storage may be internal (hard disk, SSD), inserted into a drive (optical disc), a connected peripheral, portable (memory stick, used for carrying data and personal backup) or remote over a network (cloud, often for backup).",
+        "Input and output, including reading and writing the internal disk, are handled by an I/O subsystem."
       ],
       "examples": []
     },
@@ -67,91 +79,106 @@
       "id": "02-embedded-systems",
       "title": "Embedded systems",
       "content": [
-        "An embedded system is a microprocessor or microcontroller with its own memory and input/output, built into a larger device to carry out one dedicated task. Examples include the controllers in washing machines, microwave ovens, car engine management systems, traffic lights and fitness trackers. The program is usually stored in ROM or flash memory and runs as soon as the device is switched on."
+        "An embedded system contains a processor, memory and input/output capability built into a larger product to perform a dedicated function; if these are all on one chip it is a microcontroller. Almost every manufactured item with electrical or mechanical parts contains one, for example washing machines, car engine management, lane-detection systems, traffic lights and fitness trackers. Its program is stored in ROM or flash memory and runs when the device is switched on. Some embedded systems have no user interface, some show a little output to the user, and some, like a mobile phone, provide a full user interface."
       ],
       "bullets": [
-        "Benefits: small, cheap to mass-produce, low power use, reliable because the task is fixed, and quick to respond.",
-        "Drawbacks: difficult or impossible to upgrade, hard to repair, and a device connected to the internet may be vulnerable to hacking if it cannot be updated.",
-        "A general-purpose computer can run many programs; an embedded system is designed for one."
+        "Benefits: special-purpose, so small, cheap to mass-produce (economies of scale), low power and reliable.",
+        "Drawbacks: limited memory, difficult to update or repair (faulty chips may have to be replaced), and not easily changed by the owner.",
+        "Many embedded systems are now connected to the internet (the Internet of Things), which adds useful features and updates but creates a security risk, as they are often less well protected than general-purpose computers."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "3.1-2-1",
+          "kind": "worked",
+          "label": "Explaining why a system is embedded",
+          "content": "Question: A car's lane detection system moves the car away from a lane line if it gets too close. Explain why this is an embedded system. [2]\nMark-scoring answer (any two):\nIt is built into the car. (1)\nIt performs one dedicated task. (1)\nIt cannot easily be changed or updated by the owner. (1)"
+        }
+      ]
     },
     {
-      "id": "03-printers",
-      "title": "Laser printers and 3D printers",
-      "content": [
-        "In a laser printer, the printing drum is given a positive electrostatic charge. A laser beam, directed by a rotating mirror, removes the charge from areas of the drum that match the image. The drum is coated with positively charged toner, which sticks only to the discharged areas. Negatively charged paper passes over the drum and attracts the toner, then the paper passes through a fuser, where heated rollers melt the toner onto it. Finally the charge is removed from the drum ready for the next page. A 3D printer builds a solid object layer by layer from a digital design: the design is sliced into thin layers, and material such as plastic filament is heated and extruded through a nozzle (or resin is hardened by light) to form each layer on top of the previous one."
-      ],
-      "bullets": [
-        "Laser printers are fast and suited to high-volume text printing; the whole page is prepared on the drum before printing.",
-        "3D printing is used for prototypes, custom medical implants and spare parts.",
-        "Give laser printer steps in the correct order: charge, laser discharges image, toner, paper, fuser, discharge drum."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-sound-devices",
-      "title": "Microphones and speakers",
-      "content": [
-        "In a microphone, sound waves make a diaphragm vibrate. The diaphragm is attached to a coil of wire around a magnet, so its movement induces a varying electrical current that matches the sound wave. This analogue signal is converted to digital by an analogue-to-digital converter (ADC). A speaker works in reverse: digital data are converted to an analogue signal by a digital-to-analogue converter (DAC) and amplified. The varying current passes through a coil attached to a cone, producing a changing magnetic field that pushes against a permanent magnet, so the cone vibrates and creates sound waves."
-      ],
-      "bullets": [
-        "Microphone: sound → vibration → electrical signal → ADC.",
-        "Speaker: DAC → amplified signal → coil and magnet → cone vibrates → sound.",
-        "The frequency of the vibration sets the pitch; the amplitude sets the volume."
-      ],
-      "examples": []
-    },
-    {
-      "id": "05-storage-devices",
-      "title": "Magnetic, solid state and optical storage",
-      "content": [
-        "A magnetic hard disk has platters coated with magnetic material that spin at high speed. Read/write heads on an actuator arm move across the surface; to write, a head magnetises tiny areas in one of two directions to represent 0 or 1, and to read, it detects the direction of magnetisation. Data are arranged in concentric tracks divided into sectors. Solid state (flash) memory has no moving parts: data are stored as electric charge trapped in floating-gate transistors arranged in a grid of NAND or NOR cells, and blocks are erased electrically before being rewritten. An optical disc reader shines a laser onto the spinning disc; the surface has pits and lands along a spiral track, and the change between them alters the reflected light, which a sensor reads as binary. An optical writer uses a stronger laser to change the reflectivity of a dye or alloy layer to create the equivalent of pits."
-      ],
-      "bullets": [
-        "SSDs are faster, quieter, lighter, more robust and use less power than hard disks, but cost more per gigabyte and have a limited number of write cycles.",
-        "Hard disks give large capacity cheaply, but moving parts make them slower and vulnerable to shocks.",
-        "Optical discs are cheap and portable but have low capacity and slow access compared with other storage."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-touchscreens-and-vr",
-      "title": "Touchscreens and virtual reality headsets",
-      "content": [
-        "A capacitive touchscreen has a layer that stores electric charge. A finger conducts electricity, so touching the screen changes the charge at that point; sensors at the corners or in a grid measure the change, and the processor calculates the location. Capacitive screens support multi-touch but do not work with an ordinary gloved finger. A resistive touchscreen has two flexible conductive layers separated by a small gap; pressing brings the layers into contact, completing a circuit, and the position is calculated from the change in voltage. A virtual reality headset has a separate display (or half of a screen) for each eye, showing slightly different images to create a 3D effect, with lenses to focus the image. Sensors such as gyroscopes and accelerometers track head movement, so the image is updated to match where the user is looking."
-      ],
-      "bullets": [
-        "Capacitive: clear, durable, multi-touch; needs a conductive touch.",
-        "Resistive: cheap, works with a stylus or gloves; less clear and more easily damaged.",
-        "VR headsets need a high refresh rate and fast tracking to avoid motion sickness."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-buffers",
-      "title": "Buffers",
-      "content": [
-        "A buffer is a temporary area of memory used when data move between two devices or processes that work at different speeds. For example, the processor can send a document to a printer's buffer much faster than the printer can print it, and then continue with other work while the printer empties the buffer. In video streaming, incoming data fill a buffer so playback can continue smoothly if the network briefly slows."
-      ],
-      "bullets": [
-        "A buffer lets the faster device carry on with other tasks instead of waiting.",
-        "When a printer buffer is empty, the printer sends an interrupt to request more data.",
-        "A keyboard buffer holds keypresses until the program is ready to read them."
-      ],
-      "examples": []
-    },
-    {
-      "id": "08-ram-and-rom",
+      "id": "03-ram-and-rom",
       "title": "RAM and ROM",
       "content": [
-        "RAM (random access memory) is volatile read/write memory that holds the operating system, programs and data currently in use. ROM (read-only memory) is non-volatile and holds data that must not be lost or changed, such as the start-up instructions (bootstrap) that run when the computer is switched on. Dynamic RAM (DRAM) stores each bit as charge in a capacitor, which leaks, so it must be refreshed thousands of times a second. Static RAM (SRAM) stores each bit in a flip-flop circuit that does not need refreshing. SRAM is faster but more expensive and takes more space per bit, so it is used for cache memory; DRAM is cheaper and denser, so it is used for main memory."
+        "Main memory is RAM: any byte can be accessed directly, it can be read and written repeatedly, and it is volatile. It holds the parts of the operating system, programs and data currently in use. Dynamic RAM (DRAM) stores each bit as charge on a capacitor (with a transistor); the charge leaks, so it must be refreshed every few milliseconds. Static RAM (SRAM) stores each bit in a flip-flop made of transistors, which holds its value while powered with no refreshing. DRAM needs fewer components per bit, so it is cheaper and denser and is used for main memory; SRAM has shorter access times, so it is used for cache, and in embedded systems that need only a little RAM. ROM is non-volatile and cannot be written to in normal use. It stores data and programs used unchanged again and again, most importantly the bootstrap program that runs when the computer is switched on, and the programs in many embedded systems."
       ],
       "bullets": [
-        "PROM: programmed once after manufacture; the contents cannot then be changed.",
-        "EPROM: can be erased by exposing the chip to ultraviolet light and then reprogrammed; the chip is usually removed to do this.",
-        "EEPROM: can be erased and rewritten electrically while in the circuit, a byte or block at a time; flash memory is a type of EEPROM.",
-        "Firmware updates in modern devices are possible because the firmware is stored in EEPROM or flash."
+        "Basic ROM: contents fixed during manufacture; to change them the chip is replaced.",
+        "PROM: supplied blank and programmed once by the system builder (samples can be tested first); cannot then be changed.",
+        "EPROM: can be erased with ultraviolet light and reprogrammed, but the chip usually has to be removed from the circuit.",
+        "EEPROM: erased and reprogrammed electrically while still in the circuit; flash memory is a form of EEPROM, which is why firmware can be updated."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-buffers",
+      "title": "Buffers",
+      "content": [
+        "A problem occurs whenever data can be sent faster than the receiving part can accept them. A buffer, usually created in memory, holds the data temporarily and works as a queue, so data leave in the same order they arrived. For example, the processor can send a document to a printer's buffer much faster than the printer can print it, and then continue with other work while the printer empties the buffer. In video streaming, incoming data fill a buffer so playback continues smoothly if the network briefly slows."
+      ],
+      "bullets": [
+        "Buffers synchronise data transfer between a fast device and a slow one.",
+        "The faster device can carry on with other tasks instead of waiting.",
+        "When a printer's buffer is empty, the printer sends an interrupt to request more data."
+      ],
+      "examples": []
+    },
+    {
+      "id": "05-secondary-storage-devices",
+      "title": "Magnetic, optical and solid-state storage",
+      "content": [
+        "A magnetic hard disk has several platters spinning together at high speed, each surface coated with magnetic material. Each surface has a read-write head on an actuator arm that moves it across the surface on a cushion of air; the heads move together. A write head magnetises tiny areas in one of two directions to represent 1 or 0, and a read head detects the direction. Data are stored in concentric tracks divided into sectors, the smallest unit of storage; the same track on every surface forms a cylinder, readable without moving the heads. It is a direct-access device: any sector can be chosen, though data within a sector are read in sequence. An optical disc has a single spiral track of pits and lands. As the disc spins, a laser follows the track and a detector measures the reflected light; the difference between reflections from pits and lands is read as 1s and 0s. To write a rewritable disc, the laser heats a special alloy layer until it melts; depending on the laser's intensity it cools either crystalline (reflective) or amorphous (not reflective). Shorter-wavelength lasers focus more tightly, which is why DVDs hold more than CDs and Blu-ray more than DVDs. Solid-state (flash) memory has no moving parts: it stores data in arrays of transistors acting as memory cells, usually NAND flash, managed by a flash controller. Data are read a page at a time, but a whole block (several pages) must be erased before any of it can be rewritten."
+      ],
+      "bullets": [
+        "SSDs are faster, quieter, lighter, more robust and use less power than hard disks, but cost more per gigabyte and wear out gradually with repeated writing.",
+        "Hard disks give large capacity cheaply, but moving parts make them slower and vulnerable to shocks; files become fragmented over time.",
+        "Flash memory is used in USB memory sticks and memory cards as well as SSDs.",
+        "Optical discs are cheap and portable but have lower capacity and slower access."
+      ],
+      "examples": [
+        {
+          "id": "3.1-5-1",
+          "kind": "worked",
+          "label": "Five-mark answer: operation of a hard disk",
+          "content": "The disk has one or more platters.\nEach surface can be magnetised.\nThe surface is divided into concentric tracks and sectors.\nThe platters spin at high speed.\nEach surface has a read-write head on an arm that moves across it.\nA write head magnetises areas in one of two directions for 1 and 0; a read head detects the direction.\n(One mark per point, up to 5.)"
+        }
+      ]
+    },
+    {
+      "id": "06-output-devices",
+      "title": "Laser printers, 3D printers and VR headsets",
+      "content": [
+        "In a laser printer the drum is first given an electric charge. The drum rotates step by step, and at each step a laser beam, directed by mirrors and lenses, is switched on to discharge positions across the drum or off to leave them charged, until a full-page electrostatic image has been created. The drum is coated with charged toner, which sticks only to the discharged positions. The drum rolls over a sheet of paper that has been given a charge, transferring the toner; the paper is then discharged and passed through heated rollers (the fuser), which melt the toner and seal the image onto the paper. Finally the drum is discharged ready for the next page. Colour printing repeats the process with cyan, magenta, yellow and black toners. A 3D printer builds an object from a design created in a computer-aided design (CAD) package. The design is split into layers; for each layer a nozzle deposits material onto the printer bed to match the design, and the layers are built up one on top of another. The finished object is then cured so the layers bond and the material reaches its final form. A virtual reality headset has two eyepieces, each fed a slightly different image, so that together they create the sensation of a 3D environment. The wearer controls which part of the environment is shown by moving their head, tracked by sensors, or by using a controller."
+      ],
+      "bullets": [
+        "Laser printer order: charge drum → laser discharges image → toner → charged paper → discharge paper and fuse → discharge drum.",
+        "3D printing is used for prototypes, engineering parts and medical implants, as a form of computer-aided manufacture (CAM).",
+        "Vector drawings needing high precision can be drawn directly by a graph plotter; other printers need a bitmap."
+      ],
+      "examples": []
+    },
+    {
+      "id": "07-touchscreens",
+      "title": "Touchscreens",
+      "content": [
+        "A modern touchscreen has touch-detecting layers just beneath the display surface. In a resistive touchscreen the surface is flexible and there are two conductive layers separated by a small gap; pressing the screen pushes the top layer into contact with the lower one, and the point of contact forms a voltage divider in the horizontal and vertical directions, from which the position is calculated. In a capacitive touchscreen the surface is rigid glass above a conductive layer; a finger touching the glass changes the capacitance of components beneath it. Projective capacitive touch screens have an array of capacitors below the screen and can detect several touches at once. In both types the processor reads the measurements, calculates the position of the touch and carries out the action requested."
+      ],
+      "bullets": [
+        "Resistive: cheap, works with a stylus or gloved finger; screen less clear and more easily damaged; single touch.",
+        "Capacitive: clear, durable, multi-touch; needs a conductive touch such as a bare finger.",
+        "Older touchscreens used infrared or ultrasonic emitters and detectors around the edge; a finger blocked some of the beams."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-microphones-and-speakers",
+      "title": "Microphones and speakers",
+      "content": [
+        "In a microphone, incoming sound makes a flexible diaphragm vibrate. The diaphragm is connected to circuitry so the vibration produces a matching change in an electrical signal: a condenser microphone uses a change in capacitance, a dynamic microphone moves a coil in a magnetic field, and another type uses a piezoelectric crystal. The analogue signal is converted to digital by an analogue-to-digital converter (ADC). A speaker reverses the process: digital data are converted to an analogue signal by a digital-to-analogue converter (DAC) and amplified. The varying current flows through a coil suspended in the field of a permanent magnet, so the coil moves backwards and forwards, moving a diaphragm (cone) that creates sound waves. Input and output are managed by a sound card."
+      ],
+      "bullets": [
+        "Microphone: sound → diaphragm vibrates → electrical signal → ADC.",
+        "Speaker: DAC → amplified current → coil moves in magnetic field → cone vibrates → sound.",
+        "The frequency of the vibration sets the pitch; the amplitude sets the volume."
       ],
       "examples": []
     },
@@ -159,20 +186,20 @@
       "id": "09-monitoring-and-control",
       "title": "Monitoring and control systems",
       "content": [
-        "A monitoring system uses sensors to take readings at regular intervals, stores and processes them, and may output warnings or graphs, but it does not change the environment. Examples include hospital patient monitoring and weather stations. A control system also takes sensor readings, but compares them with a stored set value and uses actuators to change conditions. Sensor readings are analogue, so an ADC converts them to digital; signals to actuators may need a DAC. Feedback makes control continuous: the output affects the next sensor reading, so the system keeps adjusting to hold the value close to the set point."
+        "A monitoring system uses sensors to take readings, usually to record conditions over time or to detect when a property goes outside a desired range, and may output warnings or graphs; it does not change the conditions. A sensor has no built-in intelligence: it only measures and sends a value, and it is the computer that decides, for example, to sound an alarm. A control system adds actuators so the computer can change the conditions. At regular timed intervals the computer takes a reading; an ADC converts the analogue value to digital; the computer compares it with the desired value; if it is out of range the computer sends a signal, via a DAC where needed, to an actuator. The next reading shows the effect of that action, which is feedback. In a closed-loop feedback control system, the controller compares the actual output with the desired output and sends the actuator a value that depends on the difference."
       ],
       "bullets": [
-        "Monitoring = read and report; control = read, compare, act.",
-        "Typical sensors: temperature, light, pressure, moisture, infrared (motion), pH, gas.",
-        "The computer does not measure anything itself; the sensor measures and the computer processes.",
-        "Describe control as a loop: read, convert, compare, act, repeat."
+        "Monitoring = read and report; control = read, compare, act, repeat.",
+        "Typical sensors: temperature (thermocouple), light, pressure, humidity, pH, gas, sound and infrared (passive, or measuring reflected infrared).",
+        "Typical actuators: motors, valves, pumps, heaters and switches.",
+        "In real systems the ADC and DAC are often built into the sensor and actuator."
       ],
       "examples": [
         {
           "id": "3.1-9-1",
           "kind": "worked",
           "label": "Greenhouse temperature control loop",
-          "content": "1. A temperature sensor measures the air temperature\n2. An ADC converts the analogue reading to digital\n3. The microprocessor compares the reading with the stored set value (e.g. 24 °C)\n4. If it is too low, a signal switches the heater on; if too high, a signal opens the window using an actuator\n5. The new temperature affects the next reading (feedback)\n6. The process repeats continuously"
+          "content": "1. At a timed interval, the temperature sensor measures the air temperature\n2. An ADC converts the analogue reading to digital\n3. The microprocessor compares the reading with the stored desired value (e.g. 24 °C)\n4. If it is too low, a signal switches the heater on; if too high, an actuator opens a window\n5. The next reading shows the effect of the action (feedback)\n6. The process repeats continuously"
         }
       ]
     }
@@ -183,39 +210,45 @@
     "columns": [
       "Memory",
       "Volatile?",
-      "Can it be changed?",
+      "How it stores or is changed",
       "Typical use"
     ],
     "rows": [
       [
         "DRAM",
         "Yes",
-        "Read/write; needs constant refreshing",
+        "Capacitors and transistors; must be refreshed",
         "Main memory"
       ],
       [
         "SRAM",
         "Yes",
-        "Read/write; no refreshing",
+        "Flip-flops; no refreshing; faster",
         "Cache memory"
+      ],
+      [
+        "ROM",
+        "No",
+        "Fixed during manufacture",
+        "Bootstrap program, mass-produced devices"
       ],
       [
         "PROM",
         "No",
-        "Written once only",
-        "Fixed program in a mass-produced device"
+        "Programmed once by the system builder",
+        "Fixed program in a product"
       ],
       [
         "EPROM",
         "No",
-        "Erased with ultraviolet light, then rewritten",
+        "Erased by ultraviolet light, usually out of the circuit",
         "Developing and testing firmware"
       ],
       [
         "EEPROM / flash",
         "No",
         "Erased and rewritten electrically in the circuit",
-        "BIOS/firmware, USB drives, SSDs"
+        "Updatable firmware, USB drives, SSDs"
       ]
     ]
   },
@@ -225,9 +258,9 @@
     "nodes": [
       "Sensor takes a reading",
       "ADC converts it to digital",
-      "Processor compares with set value",
+      "Processor compares with desired value",
       "Actuator changes the conditions",
-      "New conditions affect the next reading"
+      "Next reading shows the effect (feedback)"
     ]
   },
   "analysisChains": [
@@ -244,75 +277,81 @@
     {
       "title": "Using SRAM for cache and DRAM for main memory",
       "steps": [
-        "SRAM does not need refreshing and has faster access times",
+        "SRAM does not need refreshing and has shorter access times",
         "Placing it in cache reduces the time the processor waits for data",
-        "But SRAM is expensive and takes more chip space per bit",
+        "But SRAM needs more components per bit, so it is expensive and less dense",
         "So cheaper, denser DRAM is used for the much larger main memory"
       ],
       "evaluation": "Combining a small fast SRAM cache with large cheap DRAM gives most of the speed benefit at a fraction of the cost."
     },
     {
-      "title": "Putting an embedded system in a smart thermostat",
+      "title": "Connecting a home appliance's embedded system to the internet",
       "steps": [
-        "A dedicated microcontroller runs one control program continuously",
-        "It is small, cheap and uses very little power",
-        "Internet connectivity lets users control heating from their phone",
-        "But if the firmware is not updated, security flaws may let attackers access the home network"
+        "The owner can control the appliance and receive information on their phone",
+        "The manufacturer can send firmware updates stored in flash memory",
+        "But the appliance becomes reachable over the network",
+        "Embedded systems are often less well protected, so attackers may use them to access the home network"
       ],
-      "evaluation": "The benefits are strong, provided the manufacturer supplies firmware updates through EEPROM or flash."
+      "evaluation": "Internet connection adds real value, but only if the manufacturer provides security updates and the owner installs them."
     }
   ],
   "examTips": [
-    "Describe device operation as an ordered sequence of steps using the correct terms (drum, toner, fuser; platter, track, sector; floating gate).",
-    "For monitoring versus control, state that only control systems use actuators to change the environment.",
-    "Always mention the ADC when sensor data enter a digital computer.",
-    "When comparing SRAM and DRAM, cover refreshing, speed, cost, density and typical use.",
+    "Describe device operation as an ordered sequence of steps using the correct terms (drum, toner, fuser; platter, track, sector, read-write head; pits and lands; block and page).",
+    "For monitoring versus control, state that only control systems use actuators to change the conditions, and that the computer, not the sensor, makes decisions.",
+    "Always mention the ADC when sensor data enter a digital computer, and feedback when describing control.",
+    "When comparing SRAM and DRAM, cover how bits are stored, refreshing, speed, cost, density and typical use.",
     "For buffers, explain the speed mismatch and what the faster device can do instead of waiting."
   ],
   "commonMistakes": [
-    "Saying the sensor makes the decision; the processor compares the reading with the set value.",
+    "Saying the sensor makes the decision or takes the action.",
     "Claiming ROM stores the operating system on a PC; it stores the bootstrap program, and the OS is loaded from secondary storage.",
-    "Mixing up EPROM (ultraviolet erase) and EEPROM (electrical erase).",
+    "Mixing up EPROM (ultraviolet erase, removed from circuit) and EEPROM (electrical erase, in circuit).",
     "Saying DRAM is faster than SRAM.",
-    "Describing an SSD with moving read/write heads.",
-    "Leaving out feedback when describing a control system."
+    "Describing an SSD with moving read-write heads, or an optical disc with concentric tracks.",
+    "Leaving out feedback when describing a control system.",
+    "Getting the laser printer stages out of order, for example applying toner before the laser creates the image."
   ],
   "quickRecall": [
     {
       "question": "Why is secondary storage needed?",
-      "answer": "RAM is volatile, so programs and data must be kept permanently on non-volatile storage when the power is off."
+      "answer": "RAM is volatile and expensive, so programs and data are kept long-term on cheaper, larger, non-volatile storage."
     },
     {
       "question": "Give one benefit and one drawback of embedded systems.",
-      "answer": "Benefit: small, cheap, low power or reliable. Drawback: hard to upgrade or repair, or vulnerable if connected and not updated."
+      "answer": "Benefit: cheap to mass-produce, small, low power or reliable. Drawback: hard to update or repair, or a security risk when connected to the internet."
     },
     {
-      "question": "What is the purpose of the fuser in a laser printer?",
-      "answer": "Heated rollers melt the toner so it bonds permanently to the paper."
+      "question": "What is stored in RAM and in ROM?",
+      "answer": "RAM: currently running programs, data and parts of the OS. ROM: the bootstrap (start-up) program."
     },
     {
-      "question": "Why does DRAM need refreshing?",
-      "answer": "Each bit is stored as charge in a capacitor, which leaks away over time."
+      "question": "How do SRAM and DRAM store bits?",
+      "answer": "SRAM uses flip-flops made of transistors; DRAM uses capacitors and transistors, and must be refreshed."
     },
     {
       "question": "How is an EEPROM different from an EPROM?",
-      "answer": "EEPROM is erased electrically in the circuit; EPROM is erased with ultraviolet light."
+      "answer": "EEPROM is erased electrically while in the circuit; EPROM is erased with ultraviolet light, usually after removing the chip."
     },
     {
-      "question": "Why is a buffer used when printing?",
-      "answer": "The printer is much slower than the processor, so data are held in the buffer and the processor can continue other work."
+      "question": "Why does data in flash memory have to be erased before it is rewritten?",
+      "answer": "Flash can only be written to cells that have been erased, and erasing is done a whole block at a time."
     },
     {
-      "question": "What is the difference between a sensor and an actuator?",
-      "answer": "A sensor measures a physical quantity as input; an actuator performs a physical action as output."
+      "question": "How does an optical disc reader read data?",
+      "answer": "A laser follows the spiral track and a detector measures differences in the light reflected from pits and lands, read as 1s and 0s."
     },
     {
-      "question": "How does a capacitive touchscreen detect a touch?",
-      "answer": "The finger changes the electric charge at the touch point, and sensors measure the change to calculate the position."
+      "question": "What is the purpose of the fuser in a laser printer?",
+      "answer": "Heated rollers melt the toner so it is sealed onto the paper."
+    },
+    {
+      "question": "What is a closed-loop feedback control system?",
+      "answer": "One where the controller compares the actual output (from the sensor) with the desired output and adjusts the actuator according to the difference."
     }
   ],
   "relatedTopics": [
     "4.1",
+    "4.3",
     "5.1",
     "1.2"
   ]

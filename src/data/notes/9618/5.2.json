@@ -65,25 +65,34 @@
       "id": "02-compilers",
       "title": "Compilers",
       "content": [
-        "A compiler reads the whole source program, checks it for errors and, if there are none, produces a complete executable file of object code. The executable can be run many times without the source code or the compiler being present. Syntax errors are reported together after the compiler has analysed the whole program, so the programmer must fix them and compile again."
+        "A compiler needs the source code but no data. It reads each line in turn and analyses it; if a line contains an error, the error is recorded and compilation continues, otherwise the line is converted to intermediate code. When the whole source has been processed, either the complete intermediate code is converted into object code, or, if any errors were found, a list of them is output and no object code is produced. The program can only run once compilation finds no errors. The object code can then be run straight away, or stored and run later without the compiler."
       ],
       "bullets": [
-        "Benefits: the compiled program runs quickly, it can be distributed without the source code (protecting it from copying), and the compiler is not needed to run it.",
-        "Drawbacks: the whole program must be recompiled after every change, errors are reported only after compilation, and the executable only runs on one type of processor and operating system.",
-        "Compilers are used when a finished program is distributed to users."
+        "For the programmer: an executable file can be distributed, so users never see the source code; but errors are only listed after the whole program has been analysed, and the program must be recompiled after every change.",
+        "For the user: only the object code is needed to run the program, and it executes faster than interpreted code; but compiled object code could contain a virus, which is harder to spot than in source code.",
+        "A compiled program only runs on the type of processor (and OS) it was compiled for.",
+        "Compilers are the right choice once the program is as near error-free as possible and is to be distributed for general use."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "5.2-2-1",
+          "kind": "example",
+          "label": "How a compiler and an interpreter handle the same errors",
+          "content": "A program has syntax errors on lines 12 and 40.\nCompiler: reads all the lines, records both errors, outputs a list of the two errors and produces no object code.\nInterpreter: runs lines 1–11, then reports the error on line 12 and stops. The error on line 40 is only found after line 12 is fixed, and only if that line is actually reached."
+        }
+      ]
     },
     {
       "id": "03-interpreters",
       "title": "Interpreters",
       "content": [
-        "An interpreter translates and executes the program one statement at a time. If it meets an error, it stops at that line and reports it, so the programmer can fix it and continue. No executable file is produced: the source code and the interpreter are needed every time the program runs, and each statement is translated again each time it is executed, including inside loops."
+        "An interpreter needs the source code and the data the program uses. It reads the first line of source code and analyses it. If there is an error, it is reported and the interpreter stops. If not, the line is converted to intermediate code, which the interpreter uses to carry out the action straight away. It then reads the next line and repeats. No executable file is produced: the source code and the interpreter are needed every time the program runs, and each statement is translated again each time it is executed, including inside loops."
       ],
       "bullets": [
-        "Benefits: errors are found and reported immediately at the line where they occur, parts of a program can be tested before it is finished, and the same source can run on any computer with a suitable interpreter.",
-        "Drawbacks: execution is slower, the source code must be given to users, and the interpreter must be installed on every computer that runs the program.",
-        "Interpreters are useful while developing and debugging a program."
+        "For the programmer: errors are identified as they occur and can be corrected immediately, and parts of an unfinished program can be tested; but code that is not reached during a run is not checked, so some syntax errors may stay hidden until later.",
+        "For the user: the interpreter and the source code must be available every time the program runs, and execution is slower.",
+        "An interpreter is the right choice during development: one error can cause several others, so finding and fixing the first error at once limits the rest, and the associated debugging tools speed this up.",
+        "The source code must be given to users, so it can be copied or changed."
       ],
       "examples": []
     },
@@ -91,7 +100,7 @@
       "id": "04-partial-compilation",
       "title": "Partly compiled, partly interpreted languages",
       "content": [
-        "Some languages combine both approaches. Java source code is compiled into bytecode, an intermediate code that does not depend on any particular processor. The bytecode is then run by the Java Virtual Machine (JVM), which interprets it (or translates it to machine code as it runs) on the target computer. The same bytecode can therefore run on any device with a JVM, while the initial compilation catches syntax errors and does much of the translation work in advance."
+        "Some languages combine both approaches. A Java Virtual Machine (JVM) is written for each type of computer. Java source code is compiled into Java Byte Code, an intermediate code that does not depend on any particular processor. When the program is run, the byte code is interpreted by the JVM on the target computer, so the byte code can be transferred to any computer with a JVM installed. The same bytecode can therefore run on any device with a JVM, while the initial compilation catches syntax errors and does much of the translation work in advance."
       ],
       "bullets": [
         "'Write once, run anywhere': the bytecode is portable between platforms.",
@@ -236,6 +245,8 @@
   ],
   "commonMistakes": [
     "Saying an interpreter produces an executable file.",
+    "Saying a compiler stops at the first error; it records every error and lists them all at the end.",
+    "Claiming an interpreter checks the whole program; lines that are never reached are never checked.",
     "Claiming a compiler finds logic errors; it finds syntax errors.",
     "Confusing breakpoints (pause at a line) with single stepping (run one line at a time).",
     "Saying compiled programs run on any computer; they are specific to one processor and OS.",

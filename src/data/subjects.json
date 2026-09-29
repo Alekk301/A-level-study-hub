@@ -905,11 +905,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Consider privacy, copyright/licensing and the wider ethical impact of computing on society.",
+            "summary": "Apply professional codes of conduct to scenarios, explain the need for copyright, compare software licences and evaluate the impact of AI.",
             "focusPoints": [
-              "privacy",
-              "copyright/licensing",
-              "ethical impacts"
+              "professional ethics/codes",
+              "copyright",
+              "software licensing",
+              "artificial intelligence"
             ],
             "contentDepth": "full"
           },

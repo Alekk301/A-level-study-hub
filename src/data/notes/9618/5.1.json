@@ -49,12 +49,26 @@
       "id": "01-why-an-os",
       "title": "Why a computer needs an operating system",
       "content": [
-        "Without an operating system, every application would have to control the hardware directly, manage its own memory and handle its own files. The OS hides this complexity. It provides a user interface (command-line or graphical) so users can run programs and manage files, provides services that applications call (for example to save a file or print), and shares the hardware fairly and safely between all running programs and users."
+        "System software runs the computer, while application software performs a specific task for the user. The operating system is system software that provides a platform on which programs useful to the user can run. Without it, users would have to control the hardware directly and every application would have to manage memory, files and devices itself. The OS provides a user-system interface: at least a command-line interface and a graphical user interface (GUI). It provides a program-hardware interface, so programmers can write software without knowing how the processor and devices work, and the OS makes the hardware do what the software requires. It also manages resources so that all running processes are served as efficiently as possible."
       ],
       "bullets": [
-        "It provides an interface between the user and the hardware.",
+        "It provides an interface between the user and the hardware (CLI and GUI).",
         "It provides a platform on which applications run, so programmers do not need to write hardware-control code.",
-        "It manages resources (processor time, memory, storage, devices) between competing programs."
+        "It manages resources (processor time, memory, storage, devices) between competing processes.",
+        "OS tasks can be grouped into those that help the user and those that keep the system running, though some fit both."
+      ],
+      "examples": []
+    },
+    {
+      "id": "06-process-management",
+      "title": "Process management",
+      "content": [
+        "A process is a program that has begun execution. Many processes run at once and none can run to completion without interruption, so resource management aims for the most efficient use of the system; its two most important parts are scheduling processes and resolving conflicts when two processes need the same resource. The OS allows several processes to share the processor, a technique called multitasking. The scheduler decides which process runs next and gives each one a short time slice, switching between them so quickly that they appear to run at the same time. The OS allocates resources to processes, handles interrupts, and resolves conflicts when two processes need the same resource, so that neither is stuck waiting forever."
+      ],
+      "bullets": [
+        "Each process is in a state such as running, ready or blocked (waiting for an event).",
+        "Priorities can give more processor time to important tasks.",
+        "Detailed scheduling algorithms are covered at A Level in topic 16.1."
       ],
       "examples": []
     },
@@ -62,7 +76,7 @@
       "id": "02-memory-management",
       "title": "Memory management",
       "content": [
-        "The OS decides which programs and data are held in main memory and where. It allocates memory to each process when it starts and frees it when it ends, keeps track of which parts of memory are in use, and protects each process's memory so one program cannot read or overwrite another's data. When physical memory is full, it can use virtual memory: part of secondary storage is treated as extra memory, and data not currently needed are moved out of RAM."
+        "Memory management has three aspects. Memory protection ensures that one program cannot use the memory locations allocated to another. The memory organisation scheme is chosen to make the best use of limited memory, for example virtual memory using paging or segmentation, in which part of secondary storage is treated as extra memory and data not currently needed are moved out of RAM. Memory usage optimisation decides which processes should be in main memory at any time and where they are stored. The OS allocates memory to each process when it starts and frees it when it ends."
       ],
       "bullets": [
         "Memory protection stops a faulty program crashing other programs or the OS itself.",
@@ -72,10 +86,23 @@
       "examples": []
     },
     {
+      "id": "05-hardware-management",
+      "title": "Hardware (input/output and peripheral) management",
+      "content": [
+        "Device management requires installing the appropriate device driver for each device and controlling which processes use it. The OS communicates with input and output devices through device drivers, which translate general OS commands into the specific signals a device understands. It receives and handles interrupts from devices, manages buffers and queues so slow devices do not hold up the processor, and uses spooling so that, for example, several print jobs can be queued on disk and printed in turn."
+      ],
+      "bullets": [
+        "New hardware usually needs only a new driver, not a new operating system.",
+        "Plug-and-play detects a connected device and loads its driver automatically.",
+        "The OS controls which process may use a device at any one time."
+      ],
+      "examples": []
+    },
+    {
       "id": "03-file-management",
       "title": "File management",
       "content": [
-        "The OS organises data on secondary storage into files and directories (folders). It keeps track of where each file is physically stored, provides a naming system with file extensions, lets users and programs create, open, save, copy, move, rename and delete files, and controls which users are allowed to read or change each file."
+        "File management provides three main features: file naming conventions, directory (folder) structures and access control mechanisms. The OS organises data on secondary storage into files and directories, keeps track of where each file is physically stored, lets users and programs create, open, save, copy, move, rename and delete files, and controls which users may read or change each file."
       ],
       "bullets": [
         "A hierarchical directory structure lets files be organised logically.",
@@ -88,7 +115,7 @@
       "id": "04-security-management",
       "title": "Security management",
       "content": [
-        "The OS protects data and resources from unauthorised access and loss. It manages user accounts and authentication with usernames and passwords (or biometrics), assigns access rights so users can only use what they are entitled to, keeps the system updated with security patches, and may include a firewall. It can also log user activity and support data recovery and backups."
+        "Security management covers recovery when data are lost, prevention of intrusion, and ensuring data privacy. The OS manages user accounts and authentication with usernames and passwords (or biometrics), assigns access rights so users can only use what they are entitled to, keeps the system updated with security patches, and may include a firewall. It can also log user activity and support backups. Closely related is error detection and recovery: whether an error comes from a badly written program, unsuitable data or a faulty device, the OS must be able to interrupt the running process, give error diagnostics, and in extreme cases shut the system down in an orderly way without losing data."
       ],
       "bullets": [
         "Different users can have different privileges, e.g. only an administrator can install software.",
@@ -98,36 +125,10 @@
       "examples": []
     },
     {
-      "id": "05-hardware-management",
-      "title": "Hardware (input/output and peripheral) management",
-      "content": [
-        "The OS communicates with input and output devices through device drivers, which translate general OS commands into the specific signals a device understands. It receives and handles interrupts from devices, manages buffers and queues so slow devices do not hold up the processor, and uses spooling so that, for example, several print jobs can be queued on disk and printed in turn."
-      ],
-      "bullets": [
-        "New hardware usually needs only a new driver, not a new operating system.",
-        "Plug-and-play detects a connected device and loads its driver automatically.",
-        "The OS controls which process may use a device at any one time."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-process-management",
-      "title": "Process management",
-      "content": [
-        "The OS allows several processes to share the processor, a technique called multitasking. The scheduler decides which process runs next and gives each one a short time slice, switching between them so quickly that they appear to run at the same time. The OS allocates resources to processes, handles interrupts, and resolves conflicts when two processes need the same resource, so that neither is stuck waiting forever."
-      ],
-      "bullets": [
-        "Each process is in a state such as running, ready or blocked (waiting for an event).",
-        "Priorities can give more processor time to important tasks.",
-        "Detailed scheduling algorithms are covered at A Level in topic 16.1."
-      ],
-      "examples": []
-    },
-    {
       "id": "07-utility-software",
       "title": "Utility software",
       "content": [
-        "A disk formatter prepares a storage device for use by setting up the file system and dividing the disk into tracks and sectors; formatting erases existing data. A virus checker scans files and memory for malware, comparing them with a database of known virus signatures and watching for suspicious behaviour, then quarantines or deletes infected files; it must be updated regularly. Defragmentation software rearranges the blocks of fragmented files on a hard disk so each file is stored contiguously, reducing read/write head movement and access time. Disk contents analysis and repair software checks for errors such as bad sectors, marks them as unusable, and recovers data where possible. File compression software reduces file sizes to save storage and speed up transmission. Back-up software copies files to another storage medium, often automatically on a schedule and incrementally (only files that have changed), so data can be restored after loss or damage."
+        "Utility programs are not part of the normal running of the OS; the user or the OS runs them when needed. A disk formatter removes existing data from a used disk, sets up the file system (a table of contents linking each file to its physical location on the disk, with the disk divided into tracks and sectors), and partitions the disk into logical drives if required. Disk contents analysis and repair software checks the disk for errors. Bad sectors are physical defects, from manufacture or mishandling such as moving a computer carelessly; the utility marks them so the file system no longer uses them. Files damaged by a sudden shutdown or power cut are recovered where possible, otherwise deleted. Defragmentation software deals with a disk that works correctly but slows down: as files are created, extended and deleted they end up split across scattered sectors, so the defragmenter rearranges them so each file occupies a continuous run of sectors, reducing read-write head movement. It needs free working space, so it cannot run on a nearly full disk. A virus checker scans files and memory for malware, comparing them with a database of known virus signatures and watching for suspicious behaviour, then quarantines or deletes infected files; because new viruses appear before the checker is updated, it must be updated regularly and scan all files routinely. File compression software reduces file sizes to save storage and, more importantly, to speed up transmission, for example zipping an email attachment. Back-up software sets a schedule for backups and only creates a new backup when files have changed."
       ],
       "bullets": [
         "Defragmenting an SSD is unnecessary, because it has no moving parts, and it wears the flash memory.",
@@ -140,12 +141,12 @@
       "id": "08-program-libraries-and-dlls",
       "title": "Program libraries and DLLs",
       "content": [
-        "Programmers rarely write everything from scratch. Program libraries contain pre-written, pre-tested routines, for example for mathematical functions, graphics or file handling, which can be called from new programs. A static library routine is copied into the executable when the program is compiled. A dynamic link library (DLL) is kept as a separate file and linked to the program only when it runs, so many programs can share one copy."
+        "New programs almost always contain errors, so it saves time and trouble to use subroutines from a program library that have already been tried and tested. The most familiar library routines are a language's built-in functions; others are specialist collections, such as libraries of mathematical and statistical procedures. When a program is compiled, the object code must be linked with the code for the library routines it uses. If the routines are linked in before the program is loaded (static linking), every program has its own copy, which makes executable files larger and wastes memory when several processes use the same routine. A dynamic link library (DLL) avoids this: the executable contains only a small piece of code that links to the routine, stored separately, when it is needed during execution, so many processes share one copy."
       ],
       "bullets": [
         "Library benefits: saves development time, routines are already tested so they are reliable, and expert code can be used for complex tasks.",
         "DLL benefits: executable files are smaller, one copy in memory can be shared by several programs, and updating the DLL improves every program that uses it without recompiling them.",
-        "DLL drawbacks: the program fails if the DLL is missing, and an updated DLL that is incompatible can break programs that depend on it."
+        "DLL drawbacks: the program relies on the DLL being present and working; if it is missing, corrupted or a new version contains bugs, the program fails or gives wrong results, and the user will find it hard to work out what is wrong."
       ],
       "examples": []
     }

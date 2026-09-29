@@ -18,6 +18,14 @@
   ],
   "definitions": [
     {
+      "term": "Logic proposition",
+      "definition": "A statement that is either TRUE (1) or FALSE (0), such as 'the temperature is above 25 °C'."
+    },
+    {
+      "term": "Problem statement",
+      "definition": "An informal description of an outcome that depends on one logic proposition or a combination of several."
+    },
+    {
       "term": "Logic gate",
       "definition": "An electronic component that performs a Boolean operation on one or more binary inputs to produce a single binary output."
     },
@@ -69,9 +77,10 @@
       "id": "02-expressions-from-statements",
       "title": "From a problem statement to an expression",
       "content": [
-        "Read the statement carefully and assign each condition to an input. Look for the connecting words: 'and', 'or', 'not', 'but not' and 'either … or … but not both'. Build the expression in brackets so the order of operations is clear, then check it against the statement with one or two sample inputs."
+        "A problem statement describes an outcome that depends on several logic propositions. Underline each condition that can be true or false, give each one a letter, and give the outcome a letter too. Then look for the connecting words: 'and', 'or', 'not', 'but not' and 'either … or … but not both'. Build the expression in brackets so the order of operations is clear, then check it against the statement with one or two sample inputs."
       ],
       "bullets": [
+        "'At least two of A, B and C' is (A AND B) OR (A AND C) OR (B AND C).",
         "'Either A or B but not both' is XOR.",
         "'Neither A nor B' is NOR (equivalently NOT A AND NOT B).",
         "'Not both A and B' is NAND.",
@@ -89,6 +98,12 @@
           "kind": "worked",
           "label": "Pump statement with a NOT condition",
           "content": "A pump (P) runs if the tank is not full (F = 0) and either the manual switch is on (S = 1) or the timer is on (T = 1), but not when both switch and timer are on.\nP = (NOT F) AND (S XOR T)"
+        },
+        {
+          "id": "3.2-2-3",
+          "kind": "worked",
+          "label": "An 'at least two of three' condition",
+          "content": "A discount (X) is given if the customer has been a member for a year (M) and at least two of these apply: they are a student (S), under 18 (U), or live locally (L).\nX = M AND ((S AND U) OR (S AND L) OR (U AND L))\nCheck: M = 1, S = 1, U = 0, L = 1 → (S AND L) = 1, so X = 1"
         }
       ]
     },
@@ -309,7 +324,8 @@
     "Include working columns for intermediate gate outputs; they earn method marks and make errors easy to find.",
     "Draw gate symbols carefully and label inputs and the output exactly as named in the question.",
     "For 'write an expression from the truth table', the sum-of-products method is always accepted, even if not the simplest.",
-    "If a question limits the number or type of gates, count your gates before moving on."
+    "If a question limits the number or type of gates, count your gates before moving on.",
+    "Circuit-drawing questions usually give one mark per correct gate, and truth tables are marked in blocks of rows, so a partly correct answer still scores."
   ],
   "commonMistakes": [
     "Confusing OR with XOR: OR gives 1 when both inputs are 1, XOR gives 0.",

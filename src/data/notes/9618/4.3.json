@@ -52,6 +52,7 @@
       ],
       "bullets": [
         "CAIE instructions: LSL #n shifts the ACC left n places; LSR #n shifts it right n places.",
+        "The bit shifted out goes into the carry flag of the status register: the MSB for a left shift, the LSB for a right shift. After a right shift by one, the carry holds the remainder of the division by 2.",
         "A 1 lost off the left end means the result is too big for the register: the multiplication is wrong.",
         "A 1 lost off the right end means the division has a remainder that has been discarded."
       ],
@@ -114,7 +115,9 @@
         "Test a bit: AND with a mask that has 1 only in that position; a non-zero result means the bit is 1.",
         "Set a bit: OR with a mask that has 1 in that position.",
         "Clear a bit: AND with a mask that has 0 in that position and 1s everywhere else.",
-        "Toggle a bit: XOR with a mask that has 1 in that position.",
+        "Toggle a bit: XOR with a mask that has 1 in that position; one mask can toggle several bits at once, e.g. XOR #B00110000 toggles bits 4 and 5.",
+        "Clear every bit: AND #B00000000, for example to reset all flags when a system starts.",
+        "A bitwise operation acts on every bit of the ACC at the same time.",
         "CAIE instructions: AND, OR and XOR each take #n, Bn, &n or an address, and store the result in the ACC."
       ],
       "examples": [
@@ -130,7 +133,7 @@
       "id": "05-monitoring-and-control",
       "title": "Using bits to monitor and control devices",
       "content": [
-        "Embedded and control systems often use a single byte as a register in which each bit represents one device or sensor: for example, bit 0 might show whether a door is open and bit 3 might switch on a pump. Storing eight on/off states in one byte saves memory. Masks let the program test one sensor without disturbing the others, and turn one device on or off while leaving the rest unchanged, which is essential because the whole byte is written back at once."
+        "A monitoring and control program runs in real time as an infinite loop, reading sensors at timed intervals and setting flags such as 'sensor 1 too high' or 'sensor 1 too low'. In machine code each flag can be a single bit, so embedded and control systems often use a single byte in which each bit represents one sensor condition or device: for example, bits 0–3 might record problems reported by sensors and bits 4–7 might switch actuators on or off. Storing eight on/off states in one byte saves memory. Masks let the program test one sensor without disturbing the others, and turn one device on or off while leaving the rest unchanged, which is essential because the whole byte is written back at once."
       ],
       "bullets": [
         "Monitoring: read the register, AND with a mask, and compare the result with 0.",
@@ -284,6 +287,14 @@
     {
       "question": "Which operation and mask clear bit 7?",
       "answer": "AND with 01111111."
+    },
+    {
+      "question": "Where does the bit shifted out by LSR #1 go, and what does it tell you?",
+      "answer": "Into the carry flag; it is the remainder when the unsigned value is divided by 2."
+    },
+    {
+      "question": "Bits 4 and 5 control an actuator and must be reversed. Which operation and operand?",
+      "answer": "XOR with #B00110000."
     },
     {
       "question": "Which operation toggles a bit?",
