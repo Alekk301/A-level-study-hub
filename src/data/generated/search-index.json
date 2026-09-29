@@ -11409,71 +11409,188 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 gives candidates a short, unfamiliar problem statement and asks them to apply computational thinking before any code is written: identifying the inputs, outputs and processing needed, breaking the problem into smaller parts, and expressing a solution as structured English, pseudocode or a flowchart. Answers score when a candidate applies these skills to the specific scenario given, rather than only naming abstraction or decomposition as general terms."
+        "text": "Topic 9.1 is about two thinking skills used before any code is written. Abstraction strips a problem down to the details that actually affect the result, giving a simpler model to design against. Decomposition splits the problem into sub-problems small enough to solve one at a time, and each sub-problem becomes a program module: a procedure or a function. Paper 2 questions give a short scenario and expect you to apply both skills to it: name the details you would keep and drop, and name the modules you would write and what each one does."
+      },
+      {
+        "kind": "Definition",
+        "label": "Computational thinking",
+        "text": "A logical way of analysing a problem and building a solution that a person can follow and a computer can carry out; it draws on abstraction, decomposition, data modelling, pattern recognition and algorithm design."
       },
       {
         "kind": "Definition",
         "label": "Abstraction",
-        "text": "The process of removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+        "text": "Filtering out the details of a problem that do not affect the solution, so that attention stays on the information that does."
+      },
+      {
+        "kind": "Definition",
+        "label": "Abstract model",
+        "text": "A simplified representation of a real system that keeps only the essential data and behaviour needed for the task, such as a route map that shows stations and connections but not streets."
       },
       {
         "kind": "Definition",
         "label": "Decomposition",
-        "text": "Breaking a complex problem down into smaller, more manageable sub-problems, each of which can be solved and tested on its own."
+        "text": "Breaking a problem into smaller sub-problems, each of which can be understood, solved and tested separately; the sub-problems lead to program modules."
       },
       {
         "kind": "Definition",
-        "label": "Algorithmic thinking",
-        "text": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem or a sub-problem."
+        "label": "Program module",
+        "text": "A named, self-contained block of steps that carries out one sub-task and can be called from elsewhere in the program; in 9618 pseudocode a module is a procedure or a function."
+      },
+      {
+        "kind": "Definition",
+        "label": "Procedure",
+        "text": "A module given an identifier that performs a sub-task when it is called with a CALL statement; it does not itself return a value to an expression."
+      },
+      {
+        "kind": "Definition",
+        "label": "Function",
+        "text": "A module given an identifier that returns a single value of a stated data type; a function call is written inside an expression, for example Total ← Total + VAT(Price)."
       },
       {
         "kind": "Definition",
         "label": "Pattern recognition",
-        "text": "Identifying similarities between a new problem and a problem already solved, so that an existing solution or technique can be reused or adapted."
+        "text": "Spotting that a problem, or part of one, matches a problem already solved, so a known method or standard algorithm can be reused."
       },
       {
         "kind": "Definition",
-        "label": "Input",
-        "text": "Data that must be supplied to an algorithm, from a user, a file or a sensor, before it can carry out its processing."
-      },
-      {
-        "kind": "Definition",
-        "label": "Processing",
-        "text": "The steps an algorithm performs on its inputs, such as calculations, comparisons or validation, in order to produce its outputs."
-      },
-      {
-        "kind": "Definition",
-        "label": "Structured English",
-        "text": "A restricted form of natural language, written as short, numbered, unambiguous steps, used to outline an algorithm before it is expressed more formally."
-      },
-      {
-        "kind": "Definition",
-        "label": "Flowchart",
-        "text": "A diagram that represents an algorithm using standard symbols for start/end, process, decision and input/output, connected by arrows showing the flow of control."
+        "label": "Top-down design",
+        "text": "Designing a solution by starting from the whole problem and repeatedly splitting each part into smaller parts until every part is simple enough to program."
       },
       {
         "kind": "Section",
-        "text": "Abstraction"
+        "text": "What computational thinking is"
       },
       {
         "kind": "Content",
-        "label": "Abstraction",
-        "text": "Abstraction is the skill of deciding what matters for solving a problem and deliberately ignoring everything else. A real-world scenario usually contains far more detail than an algorithm needs, and including irrelevant detail makes a solution harder to design, harder to test and more likely to contain errors. Applying abstraction means reading a problem statement and asking, for each piece of information given, whether it actually affects the outcome the algorithm must produce; if it does not, it is left out of the model of the problem entirely."
+        "label": "What computational thinking is",
+        "text": "Computational thinking is the set of habits a programmer uses to turn a vague real-world problem into something a computer can solve. The emphasis is on analysis before code: working out what the problem really is, what data matters, and what steps will produce the answer. The coursebook groups the skills into strands: abstraction, decomposition, data modelling, pattern recognition and algorithm design."
       },
       {
         "kind": "Content",
-        "label": "Abstraction",
-        "text": "Abstraction is applied before decomposition or algorithm design, since it determines what the rest of the solution needs to account for."
+        "label": "What computational thinking is",
+        "text": "The 9618 AS syllabus examines two of these directly, abstraction and decomposition, and uses the others as supporting ideas. Algorithm design itself is developed in 9.2, where the steps are written as structured English, flowcharts and pseudocode."
       },
       {
         "kind": "Content",
-        "label": "Abstraction",
-        "text": "Two different real-world scenarios can abstract to the same underlying problem, for example calculating a taxi fare and calculating a parking charge can both abstract to 'a rate multiplied by a duration'."
+        "label": "What computational thinking is",
+        "text": "Abstraction answers 'what do I need to know?'; decomposition answers 'what are the separate jobs?'."
       },
       {
         "kind": "Content",
-        "label": "Abstraction",
-        "text": "Leaving out irrelevant detail is not the same as leaving out detail that is inconvenient; a detail can only be discarded if it genuinely does not affect the required output."
+        "label": "What computational thinking is",
+        "text": "Both are applied before writing pseudocode, which is why exam questions on them usually come with an unfamiliar scenario."
+      },
+      {
+        "kind": "Content",
+        "label": "What computational thinking is",
+        "text": "The skills feed into each other: an abstract model shows which data exists, and decomposition decides which module handles which part of it."
+      },
+      {
+        "kind": "Section",
+        "text": "Abstraction and its purpose"
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction and its purpose",
+        "text": "Abstraction means deliberately leaving out detail that has no effect on the result you need. A real situation always contains far more information than a program could or should hold. The purpose of abstraction is to reduce that situation to a model containing only what the solution depends on, so the designer can concentrate on the parts that matter."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction and its purpose",
+        "text": "A familiar example is a metro or bus network map. The real routes curve through streets, tunnels and hills, yet a passenger planning a journey only needs to know which stops exist, which lines join them and the order of the stops. The map keeps exactly that and drops distances, geography and street names. It is less 'accurate' than an aerial photograph, but far more useful for the task."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction and its purpose",
+        "text": "Abstraction also appears inside programming itself. An algorithm is an abstraction of a process: it states the inputs, steps and outputs and ignores how the hardware carries them out. Calling a module such as CALL PrintReceipt hides the detail of how the receipt is laid out, so the caller only needs to know what the module does."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction and its purpose",
+        "text": "The test for a detail is: would changing it change the output? If not, it can be abstracted away."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction and its purpose",
+        "text": "What counts as essential depends on the task. A car's colour is irrelevant to a parking charge but essential to a paint shop's stock system."
+      },
+      {
+        "kind": "Content",
+        "label": "Abstraction and its purpose",
+        "text": "A game or simulator uses abstraction too: it keeps what the player must see and control and hides the complex rules running underneath."
+      },
+      {
+        "kind": "Section",
+        "text": "The need for abstraction and its benefits"
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "Abstraction is needed because a computer system cannot model the whole of reality, and trying to include everything makes a design unmanageable. Every extra data item has to be input, validated, stored and tested. Removing what the problem does not need keeps the program focused on its actual requirements."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "The benefits appear throughout development. Design is quicker because there is less to think about. The program is smaller, so it takes less time to write and test and uses less memory and storage. The customer gets a system that does what was asked without clutter, and the solution is easier for other programmers to read and maintain later."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "Less data to collect and store: fewer inputs, smaller files, less validation code."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "Simpler, shorter programs that are faster to develop, test and debug."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "Reduced complexity lets the designer see the core problem and spot when it matches a known solution."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "Hiding the inner detail of a module means it can be reused without the user needing to understand how it works."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for abstraction and its benefits",
+        "text": "Risk to manage: removing a detail that turns out to matter gives a model that produces wrong results, so each omission must be justified."
+      },
+      {
+        "kind": "Section",
+        "text": "Producing an abstract model of a system"
+      },
+      {
+        "kind": "Content",
+        "label": "Producing an abstract model of a system",
+        "text": "To produce an abstract model, start from the scenario, list every piece of information it mentions, then keep only the items the required outputs depend on. What remains becomes the data your program will hold (later, the fields of a record or the columns of a table) plus the operations the system must carry out on that data."
+      },
+      {
+        "kind": "Content",
+        "label": "Producing an abstract model of a system",
+        "text": "Worked scenario: a school library wants a system that records loans and reminds students when a book is overdue. The scenario describes the building, the shelves, each book's cover, page count and price, and each student's name, form, photo and date of birth. The model needs far less than that."
+      },
+      {
+        "kind": "Content",
+        "label": "Producing an abstract model of a system",
+        "text": "State each item you keep and say which output or operation needs it."
+      },
+      {
+        "kind": "Content",
+        "label": "Producing an abstract model of a system",
+        "text": "State each item you drop and give the reason it does not affect the outputs."
+      },
+      {
+        "kind": "Content",
+        "label": "Producing an abstract model of a system",
+        "text": "An abstract model includes behaviour as well as data: here, 'lend', 'return' and 'check overdue'."
+      },
+      {
+        "kind": "Example",
+        "label": "Producing an abstract model of a system",
+        "text": "Required outputs: record a loan, record a return, list overdue loans with the student to remind.\n\nKept (essential)            | Why it is needed\nBookID                      | identifies which copy is on loan\nTitle                       | shown on the reminder so the student knows which book\nStudentID                   | links the loan to one borrower\nStudentName, TutorGroup     | needed to deliver the reminder\nDateBorrowed, DateDue       | DateDue decides whether a loan is overdue\nDateReturned (empty if out) | shows whether the book is still on loan\n\nDropped (not essential)     | Why it can go\nCover colour, page count    | no output depends on them\nShelf layout of the library | not needed to lend or remind\nStudent photo, date of birth| the reminder does not use them\nPrice of the book           | not needed unless the school charges for lost books\n\nOperations in the model: LendBook, ReturnBook, ListOverdue.\nIf the requirement later adds charging for lost books, Price moves into the 'kept' list: essential always means essential for the stated task."
       },
       {
         "kind": "Section",
@@ -11482,195 +11599,132 @@
       {
         "kind": "Content",
         "label": "Decomposition",
-        "text": "Decomposition is the process of breaking a complex problem into smaller sub-problems that are each easier to understand, solve and test than the original problem as a whole. Each sub-problem can often be tackled independently, with its own inputs and outputs, and the overall solution is produced by combining the solutions to the sub-problems. Decomposition also makes a large problem manageable for more than one person to work on, and makes it far easier to locate and fix an error, since a fault can usually be traced to a single sub-problem rather than the whole system."
+        "text": "Decomposition breaks a large problem into sub-problems. Each sub-problem is smaller, so it is easier to understand, to solve and to test on its own. If a sub-problem is still too large, it is decomposed again, giving a hierarchy that goes from the whole problem at the top down to small tasks at the bottom. Working in this direction is called top-down design."
       },
       {
         "kind": "Content",
         "label": "Decomposition",
-        "text": "A well-decomposed sub-problem should be small enough to be solved and tested on its own, independent of the other sub-problems."
+        "text": "Decomposition helps a team as well as an individual. Separate sub-problems can be given to different programmers, finished in parallel and tested independently before being put together. It also makes errors easier to find, because a fault can be traced to one sub-problem rather than hunted for across the whole program, and it shows up tasks that repeat so they can be written once and reused."
       },
       {
         "kind": "Content",
         "label": "Decomposition",
-        "text": "Decomposition can be applied repeatedly: a sub-problem that is still too complex can itself be broken down further."
+        "text": "Stop decomposing when each task is small enough to write as one short module."
       },
       {
         "kind": "Content",
         "label": "Decomposition",
-        "text": "Combining correctly solved sub-problems does not automatically guarantee the overall system is correct; the way they interact must also be checked."
-      },
-      {
-        "kind": "Section",
-        "text": "Algorithmic thinking"
+        "text": "Good sub-problems have one clear job and a clear set of inputs and outputs."
       },
       {
         "kind": "Content",
-        "label": "Algorithmic thinking",
-        "text": "Algorithmic thinking is the skill of devising a sequence of instructions that solves a problem precisely, in a fixed order, with no step left ambiguous or open to interpretation. Every instruction must be specific enough that it could be followed exactly by someone, or something, with no understanding of the problem itself. This is what distinguishes an algorithm from a general description of a method: a description might say 'sort the list', whereas an algorithm states exactly how each comparison and swap is carried out, in what order, and when the process stops."
-      },
-      {
-        "kind": "Content",
-        "label": "Algorithmic thinking",
-        "text": "An algorithm must terminate after a finite number of steps for every valid input, not only for the input it happened to be designed around."
-      },
-      {
-        "kind": "Content",
-        "label": "Algorithmic thinking",
-        "text": "Ambiguity is the main danger in algorithmic thinking; a step such as 'check if the number is big' is not precise enough to be an instruction in an algorithm."
-      },
-      {
-        "kind": "Content",
-        "label": "Algorithmic thinking",
-        "text": "Algorithmic thinking must account for edge cases, such as an empty list or a boundary value, not only the typical case a designer first has in mind."
-      },
-      {
-        "kind": "Section",
-        "text": "Pattern recognition"
-      },
-      {
-        "kind": "Content",
-        "label": "Pattern recognition",
-        "text": "Pattern recognition is noticing that a new problem shares structure with a problem that has already been solved, so that the existing solution, or the technique used to solve it, can be reused or adapted rather than designed again from nothing. This is what allows a programmer to recognise, for example, that 'find the highest mark in a list of exam results' and 'find the most expensive item in a list of prices' are really the same underlying problem: iterate through a list, keeping track of the largest value seen so far. Recognising the pattern means the already-tested logic for one can be adapted almost directly for the other."
-      },
-      {
-        "kind": "Content",
-        "label": "Pattern recognition",
-        "text": "Pattern recognition relies on abstraction: two problems only look similar once their irrelevant, scenario-specific detail has been stripped away."
-      },
-      {
-        "kind": "Content",
-        "label": "Pattern recognition",
-        "text": "A recognised pattern can be reused as a template, saving the effort of devising and testing a new algorithm from scratch."
-      },
-      {
-        "kind": "Content",
-        "label": "Pattern recognition",
-        "text": "Failing to recognise a pattern is not a fatal error, but it wastes time solving a problem that already has a known, tested solution."
-      },
-      {
-        "kind": "Section",
-        "text": "Identifying inputs, outputs and processing"
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying inputs, outputs and processing",
-        "text": "Before an algorithm can be designed, a problem statement must be analysed to identify exactly what data needs to be supplied to it (the inputs), what result it must produce (the outputs), and what has to be done to the inputs to produce those outputs (the processing). Inputs might come from a user typing values, a file being read, or a sensor; outputs are whatever the algorithm must display, return or store; and processing covers everything in between, including calculations, comparisons, validation and any repetition needed. Explicitly identifying these three elements gives a clear specification for the algorithm before a single line of structured English, pseudocode or program code is written."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying inputs, outputs and processing",
-        "text": "An input that is never used in the processing, or an output that is never produced by any processing step, is a sign the analysis is incomplete or incorrect."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying inputs, outputs and processing",
-        "text": "Processing should be broken down into the individual operations needed, such as 'validate each mark', 'add valid marks to a running total' and 'divide the total by the count', rather than left as one vague step."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying inputs, outputs and processing",
-        "text": "Validation of inputs, where the problem statement requires it, is itself a processing step and should be identified alongside the calculation steps."
-      },
-      {
-        "kind": "Section",
-        "text": "Representing algorithms: structured English and pseudocode"
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: structured English and pseudocode",
-        "text": "Structured English expresses an algorithm as a numbered sequence of short, plain-language steps, written carefully enough to avoid ambiguity but without the strict syntax of a programming language; it is useful as an early, quick outline of a solution. Pseudocode goes a step further: it uses a consistent, keyword-based notation, such as INPUT, OUTPUT, IF/THEN/ELSE, WHILE and FOR, that closely resembles the structure of real program code without being tied to any particular programming language's exact syntax. Pseudocode is the more precise and more commonly examined representation, because it forces the same level of detail, sequencing and decision-making that the final program code will need, making the later translation into a working program much more direct."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: structured English and pseudocode",
-        "text": "Structured English is closer to natural language and is quicker to sketch out, but is more prone to ambiguity than pseudocode."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: structured English and pseudocode",
-        "text": "Pseudocode is closer to final code and is the representation most directly comparable to what will eventually be typed into a programming language."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: structured English and pseudocode",
-        "text": "Both representations must still specify the exact sequence, repetition and decisions involved; neither is a substitute for precise algorithmic thinking."
-      },
-      {
-        "kind": "Section",
-        "text": "Representing algorithms: flowcharts"
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: flowcharts",
-        "text": "A flowchart represents an algorithm as a diagram, using standard symbols connected by arrows to show the flow of control: an oval for start and end, a rectangle for a process step, a parallelogram for input or output, and a diamond for a decision with a branch for each possible outcome. Flowcharts are particularly effective at showing the overall shape of an algorithm's logic, especially where it branches or repeats, because the diagram makes the possible paths through the algorithm visible at a glance in a way that a linear list of steps does not."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: flowcharts",
-        "text": "A decision (diamond) symbol must have every possible outcome labelled, for example 'Yes' and 'No', with a path leading from each."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: flowcharts",
-        "text": "A flowchart showing repetition must include an arrow leading back to an earlier point in the diagram, forming a loop, with a decision symbol controlling when it stops."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing algorithms: flowcharts",
-        "text": "Flowcharts can become difficult to read for a long or highly detailed algorithm, where pseudocode is usually clearer."
-      },
-      {
-        "kind": "Section",
-        "text": "Worked example: averaging valid exam marks"
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Problem statement: write an algorithm that repeatedly asks the user to enter exam marks, one at a time, and calculates the average of the valid marks entered; a mark is invalid if it is below zero, and the user signals that they have finished entering marks by typing the sentinel value -999. Applying computational thinking begins with identifying the inputs, outputs and processing before any structured representation is attempted, then decomposing the problem into the smaller steps that will become the algorithm."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Inputs: a sequence of marks typed by the user, ending with the sentinel value -999. Outputs: the average of the marks that were valid (zero or above, and not the sentinel). Processing: read a mark; check whether it is the sentinel value and, if so, stop reading further marks; otherwise check whether the mark is valid (zero or above); if valid, add it to a running total and increase a count of valid marks by one; once input has stopped, calculate the average by dividing the total by the count."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Decomposing this into smaller steps gives: (1) initialise a total and a count to zero; (2) repeatedly input a mark and test it against the sentinel value, stopping the loop when the sentinel is entered; (3) for every non-sentinel mark, test whether it is valid and, if so, add it to the total and increase the count; (4) after the loop ends, calculate and output the average, using the total and the count accumulated in steps 2 and 3. Each of these steps can be checked separately: step 2 can be tested with a short run that enters only the sentinel value, and step 3 can be tested separately with a mix of valid and invalid marks, before the two are combined."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Identifying inputs, outputs and processing first prevents an algorithm being designed around the wrong data, such as forgetting that the sentinel value must be excluded from the average."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Decomposing the problem separates 'reading marks until the sentinel is entered' from 'deciding whether a mark is valid', which can then be designed, and tested, independently."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "The algorithm must handle the edge case of no valid marks being entered at all, since dividing by a count of zero is undefined and needs to be guarded against."
+        "label": "Decomposition",
+        "text": "Testing each part alone is not enough: the parts must also be tested together to check they pass data correctly."
       },
       {
         "kind": "Example",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Inputs:\n- A sequence of marks entered one at a time by the user\n- The sentinel value -999, entered to signal the end of input\n\nOutputs:\n- The average of the valid marks entered (marks that are >= 0, excluding the sentinel)\n\nProcessing steps:\n1. Set Total to 0 and Count to 0\n2. Input Mark\n3. WHILE Mark <> -999\n     IF Mark >= 0 THEN\n       Total <- Total + Mark\n       Count <- Count + 1\n     ENDIF\n     Input Mark\n   ENDWHILE\n4. IF Count > 0 THEN\n     Average <- Total / Count\n     OUTPUT Average\n   ELSE\n     OUTPUT \"No valid marks were entered\"\n   ENDIF"
+        "label": "Decomposition",
+        "text": "Quiz program\n|-- 1 Set up the quiz\n|     |-- 1.1 Read the questions and answers from a file\n|     |-- 1.2 Ask the player for their name\n|-- 2 Run the quiz (repeat for each question)\n|     |-- 2.1 Display the question\n|     |-- 2.2 Input the player's answer\n|     |-- 2.3 Check whether the answer is correct\n|     |-- 2.4 Update the score\n|-- 3 Finish\n      |-- 3.1 Output the final score\n      |-- 3.2 Save the score if it is a new high score\n\nEach bottom-level box is small enough to become one module, e.g. 2.3 becomes\nFUNCTION IsCorrect(Given : STRING, Expected : STRING) RETURNS BOOLEAN"
+      },
+      {
+        "kind": "Section",
+        "text": "Pattern recognition, data modelling and algorithm design"
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition, data modelling and algorithm design",
+        "text": "The other strands of computational thinking support abstraction and decomposition. Pattern recognition notices that a sub-problem has the same shape as one already solved. Finding the highest score, the most expensive product and the hottest day are all 'keep the largest value seen so far'. Recognising that lets you reuse a tested method, or a standard algorithm such as a linear search or bubble sort."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition, data modelling and algorithm design",
+        "text": "Data modelling decides how the data kept by abstraction will be organised: records, arrays, files or abstract data types such as stacks and queues (topic 10). Algorithm design turns each sub-problem into a precise sequence of steps (topic 9.2)."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition, data modelling and algorithm design",
+        "text": "Patterns only become visible after abstraction has removed the scenario-specific detail."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition, data modelling and algorithm design",
+        "text": "Reusing a known pattern saves design and testing time."
+      },
+      {
+        "kind": "Content",
+        "label": "Pattern recognition, data modelling and algorithm design",
+        "text": "Data modelling links 9.1 to records and abstract data types in 10.1 and 10.4."
+      },
+      {
+        "kind": "Section",
+        "text": "From sub-problems to program modules"
+      },
+      {
+        "kind": "Content",
+        "label": "From sub-problems to program modules",
+        "text": "When a problem has been decomposed, each sub-task can be written as a module: a named group of steps that is written once and called whenever that sub-task is needed. In 9618 pseudocode there are two kinds. A procedure performs a task and is run with a CALL statement. A function performs a task and returns one value, so its call is placed inside an expression, and its header states the data type of the value it returns."
+      },
+      {
+        "kind": "Content",
+        "label": "From sub-problems to program modules",
+        "text": "The main program then reads like the top level of the decomposition: a short list of calls. Modules should be self-contained. They receive the data they need through parameters and use local variables for their own working, rather than relying on global variables. This makes each module independent, easy to test alone and reusable in other programs."
+      },
+      {
+        "kind": "Content",
+        "label": "From sub-problems to program modules",
+        "text": "Use a function when the sub-task produces one value to be used in a calculation or condition; use a procedure otherwise."
+      },
+      {
+        "kind": "Content",
+        "label": "From sub-problems to program modules",
+        "text": "Module identifiers follow the same naming rules as variable identifiers."
+      },
+      {
+        "kind": "Content",
+        "label": "From sub-problems to program modules",
+        "text": "A module can call other modules, mirroring lower levels of the decomposition."
+      },
+      {
+        "kind": "Content",
+        "label": "From sub-problems to program modules",
+        "text": "Parameters and local variables are covered in detail in 11.3."
       },
       {
         "kind": "Example",
-        "label": "Worked example: averaging valid exam marks",
-        "text": "Total <- 0\nCount <- 0\nINPUT Mark\nWHILE Mark <> -999\n  IF Mark >= 0 THEN\n    Total <- Total + Mark\n    Count <- Count + 1\n  ENDIF\n  INPUT Mark\nENDWHILE\nIF Count > 0 THEN\n  OUTPUT Total / Count\nELSE\n  OUTPUT \"No valid marks were entered\"\nENDIF"
+        "label": "From sub-problems to program modules",
+        "text": "FUNCTION ToFahrenheit(Celsius : REAL) RETURNS REAL\n   RETURN Celsius * 9 / 5 + 32\nENDFUNCTION\n\nPROCEDURE ShowConversion(Celsius : REAL)\n   OUTPUT Celsius, \" C = \", ToFahrenheit(Celsius), \" F\"\nENDPROCEDURE\n\n// main program\nDECLARE Reading : REAL\nDECLARE Count : INTEGER\nFOR Count ← 1 TO 3\n   INPUT Reading\n   CALL ShowConversion(Reading)\nNEXT Count"
+      },
+      {
+        "kind": "Example",
+        "label": "From sub-problems to program modules",
+        "text": "Count | Reading | ToFahrenheit(Reading)  | OUTPUT\n1     | 0       | 0 * 9 / 5 + 32 = 32    | 0 C = 32 F\n2     | 100     | 900 / 5 + 32 = 212     | 100 C = 212 F\n3     | -40     | -360 / 5 + 32 = -40    | -40 C = -40 F\n\nThe loop ends after Count = 3. The main program never repeats the formula: it is written once in the function and reached through the procedure."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is abstraction?"
+        "text": "What is the purpose of abstraction?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is abstraction?",
-        "text": "Removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+        "label": "What is the purpose of abstraction?",
+        "text": "To remove details that do not affect the solution so the designer can concentrate on the essential information, giving a simpler model of the problem."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give three benefits of using abstraction."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give three benefits of using abstraction.",
+        "text": "Less data to input and store; smaller, simpler programs that are quicker to write and test; a solution focused on what the customer actually needs."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How do you decide whether a detail belongs in an abstract model?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How do you decide whether a detail belongs in an abstract model?",
+        "text": "Keep it only if a required output or operation of the system depends on it."
       },
       {
         "kind": "Quick recall question",
@@ -11679,61 +11733,34 @@
       {
         "kind": "Quick recall answer",
         "label": "What is decomposition?",
-        "text": "Breaking a complex problem down into smaller, more manageable sub-problems that can be solved and tested independently."
+        "text": "Breaking a problem into smaller sub-problems that can be solved and tested separately."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is algorithmic thinking?"
+        "text": "What does decomposition lead to in a program?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is algorithmic thinking?",
-        "text": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem."
+        "label": "What does decomposition lead to in a program?",
+        "text": "Program modules: each sub-problem becomes a procedure or a function."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is pattern recognition, in computational thinking?"
+        "text": "State the difference between a procedure and a function."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is pattern recognition, in computational thinking?",
-        "text": "Identifying similarities between a new problem and a problem already solved, so an existing solution or technique can be reused or adapted."
+        "label": "State the difference between a procedure and a function.",
+        "text": "A procedure is called with CALL to perform a task; a function returns one value of a stated type and is called inside an expression."
       },
       {
         "kind": "Quick recall question",
-        "text": "What three things must be identified before an algorithm is designed?"
+        "text": "Why should modules use parameters and local variables?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What three things must be identified before an algorithm is designed?",
-        "text": "The inputs required, the outputs to be produced, and the processing needed to turn the inputs into the outputs."
-      },
-      {
-        "kind": "Quick recall question",
-        "text": "Name three ways an algorithm can be represented before it is coded."
-      },
-      {
-        "kind": "Quick recall answer",
-        "label": "Name three ways an algorithm can be represented before it is coded.",
-        "text": "Structured English, pseudocode, or a flowchart."
-      },
-      {
-        "kind": "Quick recall question",
-        "text": "Which representation of an algorithm is closest to final program code?"
-      },
-      {
-        "kind": "Quick recall answer",
-        "label": "Which representation of an algorithm is closest to final program code?",
-        "text": "Pseudocode, because it uses keyword-based notation resembling real code, unlike structured English or a flowchart."
-      },
-      {
-        "kind": "Quick recall question",
-        "text": "What symbol does a flowchart use for a decision, and what must label its branches?"
-      },
-      {
-        "kind": "Quick recall answer",
-        "label": "What symbol does a flowchart use for a decision, and what must label its branches?",
-        "text": "A diamond, with each possible outcome (such as 'Yes' and 'No') labelled on its own branch."
+        "label": "Why should modules use parameters and local variables?",
+        "text": "So each module is self-contained, can be tested on its own and can be reused in other programs."
       }
     ]
   },
@@ -11760,337 +11787,569 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to trace a given algorithm using a trace table, to describe or complete a linear search, binary search, bubble sort or insertion sort, and to identify and correct a logic error revealed by a trace. Answers score when a trace table shows every variable's value after every relevant step, and when an efficiency comparison is justified in terms of how the number of steps grows as the data gets larger, rather than a bare claim that one algorithm is 'faster'."
+        "text": "Topic 9.2 is about designing an algorithm and writing it down precisely before it is programmed. It covers choosing identifiers and recording them in an identifier table; writing pseudocode with input, processing and output; the three basic constructs of sequence, selection and iteration; documenting an algorithm as structured English, a flowchart or pseudocode, and converting between those forms; logic statements that define conditions; and stepwise refinement, which breaks an outline into steps detailed enough to code. Paper 2 marks depend on correct Cambridge pseudocode keywords, sensible identifiers and logic that works for every input, so each example here is dry-run with a trace table."
       },
       {
         "kind": "Definition",
-        "label": "Trace table",
-        "text": "A table used to test an algorithm by hand, with a column for each variable and a row for each step, recording how every variable's value changes as the algorithm executes."
+        "label": "Algorithm",
+        "text": "A solution to a problem written as a finite sequence of defined, unambiguous steps carried out in a set order."
       },
       {
         "kind": "Definition",
-        "label": "Linear search",
-        "text": "A search algorithm that checks each item of a list in turn, from the start, until the target is found or every item has been checked; it works on data in any order."
+        "label": "Identifier",
+        "text": "The name given to a variable, constant, array or module so that it can be referred to in an algorithm."
       },
       {
         "kind": "Definition",
-        "label": "Binary search",
-        "text": "A search algorithm that repeatedly compares the target with the middle item of a sorted list and discards the half that cannot contain it, until the target is found or the search interval is empty."
+        "label": "Identifier table",
+        "text": "A table listing each identifier used in a solution with its data type and an explanation of what it stores or does."
       },
       {
         "kind": "Definition",
-        "label": "Bubble sort",
-        "text": "A sorting algorithm that repeatedly steps through a list, comparing and swapping adjacent items that are in the wrong order, until a complete pass makes no swaps."
+        "label": "Structured English",
+        "text": "A restricted form of English made of short command statements (INPUT, SET, IF, REPEAT, OUTPUT) used to describe the steps of an algorithm."
       },
       {
         "kind": "Definition",
-        "label": "Insertion sort",
-        "text": "A sorting algorithm that builds up a sorted section of the list one item at a time, taking each new item and shifting the larger items in the sorted section along to insert it in its correct position."
+        "label": "Pseudocode",
+        "text": "A notation that uses keywords and identifiers to describe an algorithm like program code but without the syntax of any one programming language."
       },
       {
         "kind": "Definition",
-        "label": "Logic error",
-        "text": "A mistake in an algorithm that causes it to run and produce a result, but the result is incorrect, because the algorithm does not do what its specification requires."
+        "label": "Flowchart",
+        "text": "A diagram of an algorithm made of standard shapes (terminator, process, input/output, decision) joined by flow lines showing the order of steps."
       },
       {
         "kind": "Definition",
-        "label": "Sentinel value",
-        "text": "A specific value used in an algorithm to signal that a boundary or ending condition has been reached, such as the end of user input."
+        "label": "Sequence / selection / iteration",
+        "text": "The three basic constructs: steps run one after another; a condition chooses which steps run; a group of steps is repeated."
+      },
+      {
+        "kind": "Definition",
+        "label": "Logic statement",
+        "text": "A condition built from relational operators (=, <>, <, >, <=, >=) and logical operators (AND, OR, NOT) that evaluates to TRUE or FALSE."
+      },
+      {
+        "kind": "Definition",
+        "label": "Rogue value",
+        "text": "A value of the correct data type but outside the normal range, used only to mark the end of a sequence of inputs (e.g. -1 for marks)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Stepwise refinement",
+        "text": "Repeatedly breaking each step of an outline solution into smaller, more detailed steps until every step can be written directly as program code."
       },
       {
         "kind": "Section",
-        "text": "Representing and testing algorithms"
+        "text": "What an algorithm is"
       },
       {
         "kind": "Content",
-        "label": "Representing and testing algorithms",
-        "text": "Before an algorithm's efficiency or correctness can be discussed, it needs to be expressed precisely, usually as pseudocode or a flowchart, and then tested. Testing an algorithm 'by hand', without running it as program code, is done using a trace table: a table with one column for every variable the algorithm uses, plus a column for output where relevant, and one row for every step at which a variable's value changes. Working through the algorithm's instructions one at a time and filling in a new row whenever a value changes shows exactly what the algorithm does for a chosen set of test data, without needing a computer to run it."
+        "label": "What an algorithm is",
+        "text": "An algorithm is a solution to a problem written as a sequence of defined steps. 'Defined' is the key word: each step must be exact, so anyone (or any computer) following it does the same thing and gets the same result. A good algorithm finishes after a finite number of steps for every valid input, and its steps are carried out in a fixed order."
       },
       {
         "kind": "Content",
-        "label": "Representing and testing algorithms",
-        "text": "A trace table is the standard way both to confirm an algorithm behaves as intended for typical data, and to test how it behaves for edge cases, such as an empty list, a single-item list, or a target value that does not appear in the data at all."
+        "label": "What an algorithm is",
+        "text": "Everyday instructions are algorithms too. Withdrawing cash at an ATM is: insert card; enter PIN; if the PIN is wrong, allow another try, up to three; choose an amount; if the balance is high enough, dispense the cash, otherwise show a message; return the card. Swap two of those steps, such as dispensing cash before checking the balance, and the process fails. The same instructions also show the three building blocks every algorithm uses: steps in order, choices and repetition."
       },
       {
         "kind": "Content",
-        "label": "Representing and testing algorithms",
-        "text": "Every variable used by the algorithm needs its own column in the trace table, so its value at each step is visible."
+        "label": "What an algorithm is",
+        "text": "Most computer algorithms take data in, process it and output a result. A problem can often be solved by several different algorithms; a better one gives correct results, is easy to follow, and uses less time and memory."
       },
       {
         "kind": "Content",
-        "label": "Representing and testing algorithms",
-        "text": "A new row is added to the trace table each time a variable's value changes, not for every single line of the algorithm."
+        "label": "What an algorithm is",
+        "text": "Every step must be unambiguous: 'add a bit of tax' is not a defined step; 'Tax ← Price * 0.2' is."
       },
       {
         "kind": "Content",
-        "label": "Representing and testing algorithms",
-        "text": "Choosing test data that includes edge cases, not only typical values, is what makes a trace genuinely test the algorithm rather than just illustrate it."
+        "label": "What an algorithm is",
+        "text": "Order matters: the same steps in a different sequence can give a different or no result."
+      },
+      {
+        "kind": "Content",
+        "label": "What an algorithm is",
+        "text": "An algorithm is language-independent; it is designed first and then coded in any programming language."
       },
       {
         "kind": "Section",
-        "text": "Linear search"
+        "text": "Documenting an algorithm: structured English, flowcharts and pseudocode"
       },
       {
         "kind": "Content",
-        "label": "Linear search",
-        "text": "Linear search checks the items of a list one at a time, starting from the first, comparing each one with the target value. If an item matches the target, the search stops and reports where it was found; if every item has been checked without a match, the search reports that the target is not present. Because it checks items in the order they appear, linear search does not require the list to be sorted, which makes it the correct choice when data is unsorted or is searched only once, so that sorting it first would cost more than it saves."
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "The syllabus names three ways to document an algorithm. Structured English uses a small set of English command words, such as INPUT, SET, IF, REPEAT, OUTPUT, written as short numbered or indented statements. It is quick to write and easy for a non-programmer to read, but it is not precise enough to code from without further work."
       },
       {
         "kind": "Content",
-        "label": "Linear search",
-        "text": "Linear search's main weakness is that, for a list with n items, it may need to check up to all n of them if the target is near the end or absent altogether, so the number of comparisons it needs grows directly in proportion to the size of the list."
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "A flowchart draws the algorithm as a set of standard shapes joined by arrows. It makes the paths through selections and loops easy to see at a glance, but becomes hard to follow for long algorithms. Pseudocode uses the keywords and layout of the Cambridge pseudocode guide (DECLARE, ←, IF … THEN … ELSE … ENDIF, FOR … NEXT and so on) and is the closest of the three to real program code. A flowchart and its pseudocode should contain the same level of detail."
       },
       {
         "kind": "Content",
-        "label": "Linear search",
-        "text": "Linear search works on data in any order, unlike binary search, which requires the data to be sorted first."
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "In pseudocode, ← means assignment and = means 'is equal to' in a condition; never swap them."
       },
       {
         "kind": "Content",
-        "label": "Linear search",
-        "text": "In the best case the target is the first item checked; in the worst case, every item in the list must be checked."
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "Indent the body of every IF, CASE and loop so that its extent is clear."
       },
       {
         "kind": "Content",
-        "label": "Linear search",
-        "text": "A trace of a linear search should record the index currently being checked and the value found there at each step."
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "Every decision diamond needs exactly two labelled exits (Yes/No or TRUE/FALSE)."
+      },
+      {
+        "kind": "Content",
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "Flowcharts in exams are drawn with shapes; in these notes they are shown in a text form using the key below."
       },
       {
         "kind": "Example",
-        "label": "Linear search",
-        "text": "Array: [23, 7, 41, 15, 9, 34]   Target: 15\n\nPseudocode:\nIndex <- 0\nFound <- FALSE\nWHILE Index < LENGTH(Array) AND Found = FALSE\n  IF Array[Index] = Target THEN\n    Found <- TRUE\n  ELSE\n    Index <- Index + 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Index | Array[Index] | Comparison           | Found\n1    | 0     | 23           | 23 = 15? No           | FALSE\n2    | 1     | 7            | 7 = 15? No             | FALSE\n3    | 2     | 41           | 41 = 15? No            | FALSE\n4    | 3     | 15           | 15 = 15? Yes           | TRUE\n\nThe loop stops as soon as Found becomes TRUE. Index = 3, so 15 is reported as found at index 3, after 4 comparisons."
+        "label": "Documenting an algorithm: structured English, flowcharts and pseudocode",
+        "text": "Symbol (shape)                 | Used for                         | Text form used in these notes\nTerminator (rounded / oval)    | START and END of the algorithm   | ( START )\nProcess (rectangle)            | assignment or calculation        | [ Total ← Total + Mark ]\nInput/output (parallelogram)   | INPUT and OUTPUT                 | / INPUT Mark /\nDecision (diamond)             | a condition with two exits       | < Mark > 50 ? >  with Yes / No labels\nSubroutine (rectangle with     | CALL to a procedure              | [[ CALL PrintReport ]]\n  double side lines)           |                                  |\nFlow line (arrow)              | order of execution; a line that  | |  v  -->\n                               | goes back up forms a loop        |"
       },
       {
         "kind": "Section",
-        "text": "Binary search"
+        "text": "The three basic constructs: sequence, selection, iteration"
       },
       {
         "kind": "Content",
-        "label": "Binary search",
-        "text": "Binary search only works on data that is already sorted. It keeps track of a lower boundary (low) and an upper boundary (high) for the part of the list that could still contain the target, starting with the whole list. At each step it calculates the index midway between low and high, compares the value there with the target, and then discards half of the remaining search interval: if the target is larger, the new lower boundary moves to just past the middle; if it is smaller, the new upper boundary moves to just before the middle. This repeats, with the search interval roughly halving each time, until the target is found or the interval becomes empty (low becomes greater than high), meaning the target is not present."
+        "label": "The three basic constructs: sequence, selection, iteration",
+        "text": "Any algorithm can be built from three constructs. Sequence means statements are executed one after another in the order written. Selection means a condition is tested and the result decides which group of statements runs; in pseudocode it is written with IF … THEN … ELSE … ENDIF for one or two choices, or CASE OF … OTHERWISE … ENDCASE when one value is compared with several options. Iteration (repetition) means a group of statements is executed more than once, using a FOR, REPEAT or WHILE loop."
       },
       {
         "kind": "Content",
-        "label": "Binary search",
-        "text": "Because each comparison eliminates about half of the remaining items rather than just one, binary search needs far fewer comparisons than linear search once the list is reasonably large, but this advantage only exists because the data has been sorted first."
+        "label": "The three basic constructs: sequence, selection, iteration",
+        "text": "Assignment, giving a variable a value with ←, is the basic statement placed inside these constructs; the coursebook lists it as a fourth construct. Input and output statements let the algorithm receive data and report results. Constructs can be nested: a selection inside a loop, a loop inside a selection, or one IF inside another (a nested IF)."
       },
       {
         "kind": "Content",
-        "label": "Binary search",
-        "text": "Binary search requires the data to already be in sorted order; running it on unsorted data can give an incorrect result."
+        "label": "The three basic constructs: sequence, selection, iteration",
+        "text": "Sequence: order of steps; selection: choose a path; iteration: repeat a block."
       },
       {
         "kind": "Content",
-        "label": "Binary search",
-        "text": "The middle index is usually calculated as mid = (low + high) DIV 2, using integer division."
+        "label": "The three basic constructs: sequence, selection, iteration",
+        "text": "CASE is tidier than a long chain of nested IFs when one variable is tested against many values or ranges."
       },
       {
         "kind": "Content",
-        "label": "Binary search",
-        "text": "A trace of a binary search should record low, high and mid at every step, along with the comparison made and the resulting narrower interval."
+        "label": "The three basic constructs: sequence, selection, iteration",
+        "text": "The same construct can be written in all three notations; the comparison table shows how."
       },
       {
         "kind": "Example",
-        "label": "Binary search",
-        "text": "Sorted array (indices 0-7): [4, 9, 15, 23, 34, 41, 56, 68]   Target: 34\n\nPseudocode:\nLow <- 0\nHigh <- LENGTH(Array) - 1\nFound <- FALSE\nWHILE Low <= High AND Found = FALSE\n  Mid <- (Low + High) DIV 2\n  IF Array[Mid] = Target THEN\n    Found <- TRUE\n  ELSE IF Array[Mid] < Target THEN\n    Low <- Mid + 1\n  ELSE\n    High <- Mid - 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Low | High | Mid | Array[Mid] | Comparison         | Action\n1    | 0   | 7    | 3   | 23         | 34 > 23            | Low <- Mid + 1 = 4\n2    | 4   | 7    | 5   | 41         | 34 < 41            | High <- Mid - 1 = 4\n3    | 4   | 4    | 4   | 34         | 34 = 34, Found     | Found <- TRUE\n\nThe target 34 is located at index 4 after only 3 comparisons, compared with the 5 comparisons a linear search would need checking the array from the start."
+        "label": "The three basic constructs: sequence, selection, iteration",
+        "text": "// sequence\nINPUT Width\nINPUT Height\nArea ← Width * Height\n\n// selection: IF\nIF Area > 100\n   THEN\n      OUTPUT \"Large\"\n   ELSE\n      OUTPUT \"Small\"\nENDIF\n\n// selection: CASE\nCASE OF Direction\n   \"N\" : OUTPUT \"North\"\n   \"S\" : OUTPUT \"South\"\n   OTHERWISE : OUTPUT \"Unknown\"\nENDCASE\n\n// iteration\nFOR Row ← 1 TO 3\n   OUTPUT Row\nNEXT Row"
       },
       {
         "kind": "Section",
-        "text": "Bubble sort"
+        "text": "Pseudocode with input, process and output"
       },
       {
         "kind": "Content",
-        "label": "Bubble sort",
-        "text": "Bubble sort repeatedly passes through the list, comparing each pair of adjacent items and swapping them if they are in the wrong order. On each complete pass, the largest remaining unsorted value 'bubbles up' into its correct position at the end of the unsorted section. The algorithm keeps making passes until a complete pass makes no swaps at all, which proves the list is now fully sorted, so an efficient implementation uses a flag to detect this and stop early rather than always making a fixed number of passes."
+        "label": "Pseudocode with input, process and output",
+        "text": "Most algorithms follow the pattern input → process → output. Inputs are the data supplied from outside, typed by a user, read from a file or taken from a sensor, and are written with INPUT. Processing is everything done to the data: calculations, comparisons, validation, counting and totalling. Outputs are the results displayed or stored, written with OUTPUT; several items can be output in one statement separated by commas."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort",
-        "text": "Bubble sort's weakness is that, for a list of n items sorted in the worst possible starting order (fully reversed), it may need close to n passes, each comparing close to n adjacent pairs, so the total number of comparisons grows roughly with the square of the list's size."
+        "label": "Pseudocode with input, process and output",
+        "text": "Before writing pseudocode it helps to list the three parts separately. Every input should be used by some process, and every output should be produced by one; if not, something is missing. The worked example below reads marks until a rogue value is entered, rejects any out of range, and outputs how many were valid and their mean."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort",
-        "text": "A pass compares every adjacent pair from the start of the unsorted section to its end, swapping any pair that is in the wrong order."
+        "label": "Pseudocode with input, process and output",
+        "text": "Initialise totals and counters (usually to 0) before a loop that adds to them."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort",
-        "text": "A pass that completes with no swaps proves the list is fully sorted, so the algorithm can stop immediately rather than making further, unnecessary passes."
+        "label": "Pseudocode with input, process and output",
+        "text": "Guard against division by zero when an average could be taken of no values."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort",
-        "text": "A trace of a bubble sort should show the complete state of the array after every pass, not only which pairs were swapped."
+        "label": "Pseudocode with input, process and output",
+        "text": "Choose a rogue value that can never be a genuine input; here -1, because marks are 0 to 100."
       },
       {
         "kind": "Example",
-        "label": "Bubble sort",
-        "text": "Initial array: [5, 2, 8, 1, 4]\n\nPass 1:\nCompare 5,2 -> out of order -> swap -> [2, 5, 8, 1, 4]\nCompare 5,8 -> in order -> no swap -> [2, 5, 8, 1, 4]\nCompare 8,1 -> out of order -> swap -> [2, 5, 1, 8, 4]\nCompare 8,4 -> out of order -> swap -> [2, 5, 1, 4, 8]\nEnd of pass 1: [2, 5, 1, 4, 8]   Swapped this pass? Yes\n\nPass 2:\nCompare 2,5 -> in order -> no swap -> [2, 5, 1, 4, 8]\nCompare 5,1 -> out of order -> swap -> [2, 1, 5, 4, 8]\nCompare 5,4 -> out of order -> swap -> [2, 1, 4, 5, 8]\nCompare 5,8 -> in order -> no swap -> [2, 1, 4, 5, 8]\nEnd of pass 2: [2, 1, 4, 5, 8]   Swapped this pass? Yes\n\nPass 3:\nCompare 2,1 -> out of order -> swap -> [1, 2, 4, 5, 8]\nCompare 2,4 -> in order -> no swap\nCompare 4,5 -> in order -> no swap\nCompare 5,8 -> in order -> no swap\nEnd of pass 3: [1, 2, 4, 5, 8]   Swapped this pass? Yes\n\nPass 4:\nCompare 1,2 -> no swap\nCompare 2,4 -> no swap\nCompare 4,5 -> no swap\nCompare 5,8 -> no swap\nEnd of pass 4: [1, 2, 4, 5, 8]   Swapped this pass? No\n\nNo swaps were made in pass 4, so the array [1, 2, 4, 5, 8] is confirmed sorted and the algorithm stops."
-      },
-      {
-        "kind": "Section",
-        "text": "Insertion sort"
-      },
-      {
-        "kind": "Content",
-        "label": "Insertion sort",
-        "text": "Insertion sort builds up a sorted section of the list from left to right, one item at a time. It treats the first item as an already-sorted section of length one, then, for each following item in turn, removes it, compares it with the items already in the sorted section from right to left, shifts each larger item one place to the right to make room, and inserts the removed item into the gap that results. Unlike bubble sort, which repeatedly compares across the whole unsorted section, insertion sort only shifts items that are actually larger than the one being inserted, so it does very little work when the list is already close to sorted."
-      },
-      {
-        "kind": "Content",
-        "label": "Insertion sort",
-        "text": "In the worst case, when the list starts in reverse order, every new item must be shifted past every item already in the sorted section, so the total number of comparisons and shifts again grows roughly with the square of the list's size; but in the best case, when the list is already sorted, each new item requires only a single comparison and no shifting at all."
-      },
-      {
-        "kind": "Content",
-        "label": "Insertion sort",
-        "text": "The sorted section grows by exactly one item after each pass, from left to right through the list."
-      },
-      {
-        "kind": "Content",
-        "label": "Insertion sort",
-        "text": "An item is only shifted if it is larger than the item being inserted; already-correct items are left untouched."
-      },
-      {
-        "kind": "Content",
-        "label": "Insertion sort",
-        "text": "Insertion sort adapts well to data that is already nearly sorted, doing far less work than bubble sort in that situation."
-      },
-      {
-        "kind": "Section",
-        "text": "Using a trace table to find and correct a logic error"
-      },
-      {
-        "kind": "Content",
-        "label": "Using a trace table to find and correct a logic error",
-        "text": "A trace table is also the standard tool for locating a logic error: an algorithm that runs without crashing but produces an incorrect result because it does not do what its specification requires. Tracing the algorithm with a simple, known set of test data, and comparing the traced result with the result that should have been produced, shows exactly which step the algorithm diverges from the intended behaviour at, which usually points directly to the line that needs to be corrected."
-      },
-      {
-        "kind": "Content",
-        "label": "Using a trace table to find and correct a logic error",
-        "text": "A common source of this kind of error is an off-by-one mistake in a loop's starting or ending value, causing the algorithm to skip the first or last item of a list without the programmer necessarily noticing from reading the code alone."
-      },
-      {
-        "kind": "Content",
-        "label": "Using a trace table to find and correct a logic error",
-        "text": "Choose test data with a known, easily calculated correct answer, so the traced result can be checked against it directly."
-      },
-      {
-        "kind": "Content",
-        "label": "Using a trace table to find and correct a logic error",
-        "text": "The step where the traced value first differs from what is expected identifies the specific line responsible for the error."
-      },
-      {
-        "kind": "Content",
-        "label": "Using a trace table to find and correct a logic error",
-        "text": "Correcting a logic error usually means changing a condition, a loop boundary, or an initial value, rather than restructuring the whole algorithm."
+        "label": "Pseudocode with input, process and output",
+        "text": "Input   | Mark, entered repeatedly; -1 ends the input (rogue value)\nProcess | reject a mark outside 0 to 100; add each valid mark to Total and add 1 to Count;\n        | after the loop, Average ← Total / Count\nOutput  | a message for each rejected mark; the number of valid marks and their average,\n        | or a message if no valid marks were entered"
       },
       {
         "kind": "Example",
-        "label": "Using a trace table to find and correct a logic error",
-        "text": "Array (indices 0-3): [10, 20, 30, 40]   Intended purpose: output the sum of all four values (should be 100)\n\nGiven (buggy) pseudocode:\nTotal <- 0\nFOR Index <- 1 TO 3\n  Total <- Total + Array[Index]\nNEXT Index\nOUTPUT Total\n\nTrace table:\nStep | Index | Array[Index] | Total\n1    | 1     | 20           | 20\n2    | 2     | 30           | 50\n3    | 3     | 40           | 90\n\nOutput produced: 90\nExpected output: 100\n\nThe trace shows Array[0] = 10 is never added to Total, because the loop starts at Index <- 1 instead of Index <- 0, so the first element of the zero-indexed array is skipped.\n\nCorrection: change the loop header to FOR Index <- 0 TO 3, so every element from Array[0] to Array[3] is included in the sum."
+        "label": "Pseudocode with input, process and output",
+        "text": "DECLARE Mark : INTEGER\nDECLARE Total : INTEGER\nDECLARE Count : INTEGER\nDECLARE Average : REAL\nTotal ← 0\nCount ← 0\nINPUT Mark\nWHILE Mark <> -1\n   IF Mark >= 0 AND Mark <= 100\n      THEN\n         Total ← Total + Mark\n         Count ← Count + 1\n      ELSE\n         OUTPUT \"Mark rejected: \", Mark\n   ENDIF\n   INPUT Mark\nENDWHILE\nIF Count > 0\n   THEN\n      Average ← Total / Count\n      OUTPUT Count, \" marks, average \", Average\n   ELSE\n      OUTPUT \"No valid marks\"\nENDIF"
+      },
+      {
+        "kind": "Example",
+        "label": "Pseudocode with input, process and output",
+        "text": "Mark | Total | Count | Average | OUTPUT\n     | 0     | 0     |         |\n64   | 64    | 1     |         |\n105  |       |       |         | Mark rejected: 105\n80   | 144   | 2     |         |\n-1   |       |       | 72      | 2 marks, average 72\n\n-1 makes the WHILE condition FALSE, so the loop ends; 144 / 2 = 72. If -1 were the first input, the loop body would never run and \"No valid marks\" would be output."
       },
       {
         "kind": "Section",
-        "text": "Comparing algorithm efficiency"
+        "text": "Identifiers, identifier tables and assignment"
       },
       {
         "kind": "Content",
-        "label": "Comparing algorithm efficiency",
-        "text": "Comparing algorithms informally means explaining how the number of steps each one needs changes as the size of the data set grows, not simply asserting that one algorithm is 'faster'. Linear search's number of comparisons grows directly in proportion to the list's size, so searching a list ten times longer may need up to ten times as many comparisons; binary search's number of comparisons grows far more slowly, because each comparison discards about half of what remains, so a list ten times longer only needs a few more comparisons, not ten times as many. This is why binary search scales so much better than linear search as a list grows large, though it only works because the data has already been sorted, which itself has a cost."
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "A variable is a named memory location holding a value that can change; its name is its identifier. Good identifiers describe their contents, such as NumberOfGuesses or TotalCost rather than N or X, which makes an algorithm self-documenting. The pseudocode guide's rules: an identifier starts with a letter and contains only letters, digits and the underscore, with no spaces; keywords such as INPUT or ENDIF cannot be used; and identifiers should be treated as case-insensitive, so never use two names that differ only in capital letters. Joining words with capitals (CamelCase) keeps long names readable."
       },
       {
         "kind": "Content",
-        "label": "Comparing algorithm efficiency",
-        "text": "Bubble sort becomes very slow on large lists because, in the worst case, both the number of passes and the number of comparisons within each pass grow with the size of the list, so the total work grows with the square of the list's size: doubling the list roughly quadruples the number of comparisons needed. Insertion sort has the same worst-case growth, but performs far fewer comparisons and shifts than bubble sort when the data is already close to sorted, which matters when comparing which sort is more suitable for a particular data set."
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "An identifier table lists every identifier a solution needs, with its data type and a short explanation. Building it before writing pseudocode forces you to decide what data the problem really involves, and exam questions often ask for one."
       },
       {
         "kind": "Content",
-        "label": "Comparing algorithm efficiency",
-        "text": "A useful efficiency comparison names how the number of steps grows as the data set gets larger, not just which algorithm 'wins' on one specific example."
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "Assignment uses ←: the expression on the right is evaluated and the result stored in the variable on the left. Count ← Count + 1 updates a variable using its own old value. Copying (B ← A) leaves A unchanged. Swapping two variables needs a third, temporary variable; otherwise the first copy overwrites a value that is still needed."
       },
       {
         "kind": "Content",
-        "label": "Comparing algorithm efficiency",
-        "text": "Binary search scales much better than linear search on large lists, but requires sorted data, which linear search does not."
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "Explain each identifier's purpose, not just its type: 'Count: number of valid marks entered so far'."
       },
       {
         "kind": "Content",
-        "label": "Comparing algorithm efficiency",
-        "text": "Bubble sort's number of comparisons grows with the square of the list's size in the worst case, making it impractical for very large, unordered lists."
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "Use constants for fixed values, e.g. CONSTANT VATRate ← 0.2, so the value is changed in one place."
+      },
+      {
+        "kind": "Content",
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "Declare variables with DECLARE <identifier> : <data type> (INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE)."
+      },
+      {
+        "kind": "Example",
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "Identifier | Data type | Explanation\nMark       | INTEGER   | the mark just input; -1 ends the input\nTotal      | INTEGER   | running total of the valid marks\nCount      | INTEGER   | how many valid marks have been input\nAverage    | REAL      | Total / Count, calculated after the loop"
+      },
+      {
+        "kind": "Example",
+        "label": "Identifiers, identifier tables and assignment",
+        "text": "Pseudocode:            Trace (Left = 8, Right = 3 at the start):\nTemp ← Left            Left | Right | Temp\nLeft ← Right           8    | 3     |\nRight ← Temp                |       | 8\n                       3    |       |\n                            | 8     |\n\nResult: Left = 3, Right = 8. Without Temp, Left ← Right followed by Right ← Left would leave both variables holding 3."
+      },
+      {
+        "kind": "Section",
+        "text": "Logic statements and selection"
+      },
+      {
+        "kind": "Content",
+        "label": "Logic statements and selection",
+        "text": "A logic statement is a condition that is either TRUE or FALSE. Simple conditions compare two values with a relational operator: = equal to, <> not equal to, <, >, <= and >=. More complex conditions combine simple ones with the logical operators AND (both must be true), OR (at least one must be true) and NOT (reverses the result); brackets make the order of evaluation clear."
+      },
+      {
+        "kind": "Content",
+        "label": "Logic statements and selection",
+        "text": "Writing the rules of a problem as logic statements first is a reliable way to define the selection part of an algorithm. Each statement then becomes a branch of an IF or CASE. Check that the statements cover every possible value exactly once and pay special attention to the boundaries."
+      },
+      {
+        "kind": "Content",
+        "label": "Logic statements and selection",
+        "text": "'Between 5 and 15 inclusive' is Age >= 5 AND Age <= 15; a range can never be written 5 <= Age <= 15 in pseudocode."
+      },
+      {
+        "kind": "Content",
+        "label": "Logic statements and selection",
+        "text": "In a nested IF, earlier conditions have already filtered values, so later tests can be simpler (Age <= 15 in the ELSE branch of Age < 5)."
+      },
+      {
+        "kind": "Content",
+        "label": "Logic statements and selection",
+        "text": "CASE ranges are written 5 TO 15 : and OTHERWISE catches anything not listed."
+      },
+      {
+        "kind": "Content",
+        "label": "Logic statements and selection",
+        "text": "Test data should include each boundary value and the values either side of it."
+      },
+      {
+        "kind": "Example",
+        "label": "Logic statements and selection",
+        "text": "Age < 5                   → Price is 0\nAge >= 5 AND Age <= 15    → Price is 4\nAge >= 16 AND Age <= 64   → Price is 9\nAge >= 65                 → Price is 5\nEach whole-number age satisfies exactly one statement."
+      },
+      {
+        "kind": "Example",
+        "label": "Logic statements and selection",
+        "text": "INPUT Age\nIF Age < 5\n   THEN\n      Price ← 0\n   ELSE\n      IF Age <= 15\n         THEN\n            Price ← 4\n         ELSE\n            IF Age <= 64\n               THEN\n                  Price ← 9\n               ELSE\n                  Price ← 5\n            ENDIF\n      ENDIF\nENDIF\n\n// equivalent CASE (assumes Age has already been validated as >= 0)\nCASE OF Age\n   0 TO 4   : Price ← 0\n   5 TO 15  : Price ← 4\n   16 TO 64 : Price ← 9\n   OTHERWISE : Price ← 5\nENDCASE\nOUTPUT \"Price: \", Price"
+      },
+      {
+        "kind": "Example",
+        "label": "Logic statements and selection",
+        "text": "Age | Branch taken            | Price\n4   | Age < 5                 | 0\n5   | Age <= 15               | 4\n15  | Age <= 15               | 4\n16  | Age <= 64               | 9\n64  | Age <= 64               | 9\n65  | final ELSE / OTHERWISE  | 5"
+      },
+      {
+        "kind": "Section",
+        "text": "Iteration: FOR, REPEAT and WHILE loops"
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "Pseudocode has three loops. A count-controlled loop, FOR Counter ← Start TO End … NEXT Counter, runs a known number of times; the counter goes up by 1 automatically, or by another amount with STEP. A post-condition loop, REPEAT … UNTIL condition, tests at the end, so its body always runs at least once, and it stops when the condition becomes TRUE. A pre-condition loop, WHILE condition … ENDWHILE, tests before each pass, so its body may run zero times, and it continues while the condition is TRUE."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "Choose FOR when the number of repetitions is known before the loop starts; REPEAT when the body must run at least once, as in input validation or a password prompt; WHILE when the body might not need to run at all, as with a rogue value that could be the first input. Loops can be nested, with the inner loop completing all its passes for each pass of the outer loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "A trace table is the standard way to check a loop by hand. It has a column for each variable and for output, and a new row each time values change. Dry-running with carefully chosen data shows whether the loop stops at the right point."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "REPEAT … UNTIL stops when its condition is TRUE; WHILE continues while its condition is TRUE: the conditions are opposites."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "Do not change the FOR counter inside the loop body."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "Make sure something inside a REPEAT or WHILE loop can change the condition, or the loop never ends."
+      },
+      {
+        "kind": "Content",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "A combined condition such as UNTIL Correct OR Tries = 3 gives a loop two ways to stop."
+      },
+      {
+        "kind": "Example",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "// FOR: sum of the squares of 1 to 4\nTotal ← 0\nFOR Index ← 1 TO 4\n   Total ← Total + Index * Index\nNEXT Index\nOUTPUT Total\n\n// REPEAT: up to three password attempts\nTries ← 0\nREPEAT\n   INPUT Attempt\n   Tries ← Tries + 1\nUNTIL Attempt = \"Orange7\" OR Tries = 3\nIF Attempt = \"Orange7\"\n   THEN\n      OUTPUT \"Access granted\"\n   ELSE\n      OUTPUT \"Locked\"\nENDIF\n\n// WHILE: years for 1000 to reach 2000 at 20% growth a year\nBalance ← 1000\nYears ← 0\nWHILE Balance < 2000\n   Balance ← Balance * 1.2\n   Years ← Years + 1\nENDWHILE\nOUTPUT Years"
+      },
+      {
+        "kind": "Example",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "FOR loop                 REPEAT loop (inputs \"apple\", \"Orange7\")\nIndex | Total            Attempt   | Tries | OUTPUT\n      | 0                          | 0     |\n1     | 1                \"apple\"   | 1     |\n2     | 5                \"Orange7\" | 2     | Access granted\n3     | 14\n4     | 30               With inputs \"a\", \"b\", \"c\" the loop stops\nOUTPUT 30                because Tries = 3, and \"Locked\" is output.\n\nWHILE loop\nBalance | Years | Balance < 2000?\n1000    | 0     | TRUE\n1200    | 1     | TRUE\n1440    | 2     | TRUE\n1728    | 3     | TRUE\n2073.6  | 4     | FALSE → loop ends, OUTPUT 4"
+      },
+      {
+        "kind": "Example",
+        "label": "Iteration: FOR, REPEAT and WHILE loops",
+        "text": "INPUT Number\nDigits ← 0\nREPEAT\n   Number ← Number DIV 10\n   Digits ← Digits + 1\nUNTIL Number = 0\nOUTPUT Digits\n\nNumber | Digits\n4072   | 0\n407    | 1\n40     | 2\n4      | 3\n0      | 4      → OUTPUT 4\n\nWritten as WHILE Number > 0 instead, an input of 0 would skip the loop and output 0 digits; REPEAT guarantees one pass and correctly gives 1."
+      },
+      {
+        "kind": "Section",
+        "text": "Writing pseudocode from structured English and from a flowchart"
+      },
+      {
+        "kind": "Content",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "To turn structured English into pseudocode, first build an identifier table from the nouns in the description (the data), then translate each statement into the matching construct: INPUT and OUTPUT stay as they are, calculations become assignments, 'if' becomes IF … ENDIF, and 'repeat' becomes whichever loop fits how the repetition ends. Add anything the English leaves implicit, such as setting a total to zero before the loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "To turn a flowchart into pseudocode, follow the arrows from START. Parallelograms become INPUT or OUTPUT, rectangles become assignments and diamonds become conditions. A diamond whose arrow goes back up the chart is a loop: if the test comes before the body it is a WHILE loop; if the body comes first and the test is at the bottom it is a REPEAT … UNTIL loop. A diamond whose two paths rejoin further down is an IF."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "Check the loop condition's direction: a flowchart that loops back on 'No' to 'Count = 9?' becomes UNTIL Count = 9."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "Keep the flowchart's identifiers exactly; examiners check they are used consistently."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "Dry-run the pseudocode with the same data as the flowchart to confirm they agree."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "Structured English:\nSET total points to zero\nINPUT amount spent\nWHILE amount is not zero\n   CALCULATE points as the number of whole tens in the amount\n   IF amount is 100 or more THEN DOUBLE the points\n   ADD points to total points\n   INPUT next amount\nOUTPUT total points\n\nIdentifier table:\nIdentifier  | Data type | Explanation\nAmount      | INTEGER   | amount spent on one purchase; 0 ends the input\nPoints      | INTEGER   | points for the current purchase\nTotalPoints | INTEGER   | running total of points"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "DECLARE Amount : INTEGER\nDECLARE Points : INTEGER\nDECLARE TotalPoints : INTEGER\nTotalPoints ← 0\nINPUT Amount\nWHILE Amount <> 0\n   Points ← Amount DIV 10\n   IF Amount >= 100\n      THEN\n         Points ← Points * 2\n   ENDIF\n   TotalPoints ← TotalPoints + Points\n   INPUT Amount\nENDWHILE\nOUTPUT \"Points earned: \", TotalPoints"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "Amount | Points | TotalPoints | OUTPUT\n       |        | 0           |\n45     | 4      | 4           |\n120    | 24     | 28          |   (120 DIV 10 = 12, doubled)\n9      | 0      | 28          |\n0      |        |             | Points earned: 28"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "          ( START )\n              |\n         / INPUT N /\n              |\n      [ Result ← 1  ]\n      [ Counter ← 1 ]\n              |\n   +--------->|\n   |          v\n   |   < Counter <= N ? > --No--> / OUTPUT Result / --> ( END )\n   |          | Yes\n   |  [ Result ← Result * Counter ]\n   |  [ Counter ← Counter + 1     ]\n   |          |\n   +----------+\n\nThe test comes before the body and the arrow returns above it, so this is a pre-condition (WHILE) loop."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "DECLARE N : INTEGER\nDECLARE Result : INTEGER\nDECLARE Counter : INTEGER\nINPUT N\nResult ← 1\nCounter ← 1\nWHILE Counter <= N\n   Result ← Result * Counter\n   Counter ← Counter + 1\nENDWHILE\nOUTPUT Result"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing pseudocode from structured English and from a flowchart",
+        "text": "N | Counter | Result | Counter <= N? | OUTPUT\n4 | 1       | 1      | TRUE          |\n  | 2       | 1      | TRUE          |\n  | 3       | 2      | TRUE          |\n  | 4       | 6      | TRUE          |\n  | 5       | 24     | FALSE         | 24\n\n4! = 1 × 2 × 3 × 4 = 24."
+      },
+      {
+        "kind": "Section",
+        "text": "Drawing a flowchart from structured English and from pseudocode"
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "Drawing a flowchart is the reverse process: give each statement its standard shape and join them in execution order. Start and finish with terminators. Each INPUT or OUTPUT becomes a parallelogram and each assignment a rectangle. Each IF becomes a diamond whose Yes and No paths rejoin after the ENDIF. A CALL becomes a subroutine box."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "Loops are drawn with a decision and an arrow going back. For WHILE, the diamond sits before the body and the 'continue' exit leads into the body. For REPEAT … UNTIL, the body comes first and the diamond sits after it, with the exit for 'condition FALSE' going back to the top of the body. For FOR, draw the counter being set, a diamond testing whether it has passed the end value, and a rectangle adding 1 at the end of the body."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "Label both exits of every diamond."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "One START and one END; every path must reach END."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "Keep the same identifiers and conditions as the source so the two versions can be checked against each other."
+      },
+      {
+        "kind": "Example",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "Structured English:\nINPUT the room temperature\nIF the temperature is below 18 THEN switch the heater on\nOTHERWISE switch the heater off\n\n              ( START )\n                  |\n            / INPUT Temp /\n                  |\n            < Temp < 18 ? >\n           Yes |        | No\n   [ Heater ← TRUE ]  [ Heater ← FALSE ]\n               |        |\n               +---+----+\n                   |\n                ( END )\n\nTests: Temp = 17 gives Heater TRUE; Temp = 18 gives Heater FALSE (18 is not below 18)."
+      },
+      {
+        "kind": "Example",
+        "label": "Drawing a flowchart from structured English and from pseudocode",
+        "text": "              ( START )\n                  |\n           [ Tries ← 0 ]\n                  |\n   +------------->|\n   |              v\n   |       / INPUT Attempt /\n   |              |\n   |      [ Tries ← Tries + 1 ]\n   |              |\n   |  < Attempt = \"Orange7\" OR Tries = 3 ? >\n   +------No------+\n                  | Yes\n        < Attempt = \"Orange7\" ? >\n        Yes |              | No\n / OUTPUT \"Access granted\" /  / OUTPUT \"Locked\" /\n            |              |\n            +------+-------+\n                   |\n                ( END )\n\nThe body is drawn before the test, which is what makes this a post-condition loop."
+      },
+      {
+        "kind": "Section",
+        "text": "Stepwise refinement"
+      },
+      {
+        "kind": "Content",
+        "label": "Stepwise refinement",
+        "text": "Stepwise refinement takes an outline solution, a handful of broad steps, and repeatedly rewrites each step as a list of smaller, more exact steps. It stops when every step is a single input, output, assignment, selection or loop, so the result can be typed straight into a programming language. Numbering the levels (1, then 1.1, 1.2, then 1.2.1 …) shows which step each detail came from."
+      },
+      {
+        "kind": "Content",
+        "label": "Stepwise refinement",
+        "text": "It is the algorithm-level version of decomposition from 9.1. Decomposition splits the problem into modules; stepwise refinement adds detail to the steps inside them. The refinements also reveal decisions the outline hid, such as how invalid input is handled or when a loop ends."
+      },
+      {
+        "kind": "Content",
+        "label": "Stepwise refinement",
+        "text": "Refine one step at a time and keep the higher-level step as a comment, so the design remains readable."
+      },
+      {
+        "kind": "Content",
+        "label": "Stepwise refinement",
+        "text": "A step is detailed enough when it maps to one pseudocode construct without further explanation."
+      },
+      {
+        "kind": "Content",
+        "label": "Stepwise refinement",
+        "text": "Refinement often uncovers extra identifiers; add them to the identifier table as they appear."
+      },
+      {
+        "kind": "Example",
+        "label": "Stepwise refinement",
+        "text": "Level 1 (outline):\n1 Set up: input the class size, set the pass count to 0\n2 For each student: get a mark, grade it, output the grade, update the pass count\n3 Output the number of passes\n\nLevel 2 (refining step 2):\n2.1 Input a mark, repeating until it is between 0 and 100\n2.2 Decide the grade: 70 or more is Distinction, 40 to 69 is Pass, below 40 is Fail\n2.3 Output the student number and grade\n2.4 If the mark is 40 or more, add 1 to the pass count\n\nLevel 3 (refining 2.1 and 2.2 into constructs):\n2.1.1 REPEAT INPUT Mark UNTIL Mark >= 0 AND Mark <= 100\n2.2.1 IF Mark >= 70 THEN Distinction\n2.2.2 ELSE IF Mark >= 40 THEN Pass\n2.2.3 ELSE Fail"
+      },
+      {
+        "kind": "Example",
+        "label": "Stepwise refinement",
+        "text": "DECLARE ClassSize : INTEGER\nDECLARE Student : INTEGER\nDECLARE Mark : INTEGER\nDECLARE Passes : INTEGER\nDECLARE Grade : STRING\n// 1 set up\nPasses ← 0\nINPUT ClassSize\n// 2 each student\nFOR Student ← 1 TO ClassSize\n   REPEAT                                 // 2.1\n      INPUT Mark\n   UNTIL Mark >= 0 AND Mark <= 100\n   IF Mark >= 70                          // 2.2\n      THEN\n         Grade ← \"Distinction\"\n      ELSE\n         IF Mark >= 40\n            THEN\n               Grade ← \"Pass\"\n            ELSE\n               Grade ← \"Fail\"\n         ENDIF\n   ENDIF\n   OUTPUT Student, \": \", Grade             // 2.3\n   IF Mark >= 40                          // 2.4\n      THEN\n         Passes ← Passes + 1\n   ENDIF\nNEXT Student\n// 3 report\nOUTPUT \"Passes: \", Passes"
+      },
+      {
+        "kind": "Example",
+        "label": "Stepwise refinement",
+        "text": "ClassSize | Student | Mark | Grade       | Passes | OUTPUT\n3         |         |      |             | 0      |\n          | 1       | 72   | Distinction | 1      | 1: Distinction\n          | 2       | 150  |             |        |   (UNTIL is FALSE, input again)\n          |         | 45   | Pass        | 2      | 2: Pass\n          | 3       | 38   | Fail        | 2      | 3: Fail\n          |         |      |             |        | Passes: 2"
       },
       {
         "kind": "Quick recall question",
-        "text": "What is a trace table used for?"
+        "text": "What is an algorithm?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is a trace table used for?",
-        "text": "To test an algorithm by hand, recording the value of every variable at each step where it changes, so the algorithm's behaviour can be checked without running it as code."
+        "label": "What is an algorithm?",
+        "text": "A finite set of exact steps, carried out in a fixed order, that solves a problem."
       },
       {
         "kind": "Quick recall question",
-        "text": "Does linear search require sorted data?"
+        "text": "What three things does an identifier table record?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Does linear search require sorted data?",
-        "text": "No; it checks each item in turn from the start and works correctly on data in any order."
+        "label": "What three things does an identifier table record?",
+        "text": "Each identifier's name, its data type and an explanation of what it stores or does."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does binary search do at each step?"
+        "text": "Name the three basic constructs."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does binary search do at each step?",
-        "text": "It compares the target with the middle item of the current search interval and discards the half of the interval that cannot contain the target."
+        "label": "Name the three basic constructs.",
+        "text": "Sequence, selection and iteration (repetition)."
       },
       {
         "kind": "Quick recall question",
-        "text": "When does a bubble sort stop?"
+        "text": "Which loop always runs its body at least once?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "When does a bubble sort stop?",
-        "text": "When a complete pass through the list makes no swaps, which proves the list is fully sorted."
+        "label": "Which loop always runs its body at least once?",
+        "text": "REPEAT … UNTIL (a post-condition loop)."
       },
       {
         "kind": "Quick recall question",
-        "text": "How does insertion sort place a new item?"
+        "text": "When should you use a FOR loop?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How does insertion sort place a new item?",
-        "text": "It shifts the items in the already-sorted section that are larger than the new item one place to the right, then inserts the new item into the resulting gap."
+        "label": "When should you use a FOR loop?",
+        "text": "When the number of repetitions is known before the loop starts."
       },
       {
         "kind": "Quick recall question",
-        "text": "How is a logic error located using a trace table?"
+        "text": "How is 'between 13 and 19 inclusive' written as a logic statement?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How is a logic error located using a trace table?",
-        "text": "By tracing the algorithm with test data that has a known correct result and finding the exact step where the traced value first diverges from what is expected."
+        "label": "How is 'between 13 and 19 inclusive' written as a logic statement?",
+        "text": "Age >= 13 AND Age <= 19"
       },
       {
         "kind": "Quick recall question",
-        "text": "Why does binary search scale better than linear search on a large list?"
+        "text": "What is a rogue value?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why does binary search scale better than linear search on a large list?",
-        "text": "Each comparison in binary search discards about half of the remaining data, so the number of comparisons needed grows far more slowly than linear search's, which grows in direct proportion to the list's size."
+        "label": "What is a rogue value?",
+        "text": "A value of the right data type but outside the normal range, used only to mark the end of input, such as -1 for marks."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why does bubble sort become very slow on a large list?"
+        "text": "What is stepwise refinement?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why does bubble sort become very slow on a large list?",
-        "text": "In the worst case both the number of passes and the number of comparisons per pass grow with the list's size, so the total work grows roughly with the square of the list's size."
+        "label": "What is stepwise refinement?",
+        "text": "Repeatedly breaking each step of an outline solution into smaller steps until each can be programmed directly."
       }
     ]
   },

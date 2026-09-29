@@ -972,12 +972,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Apply decomposition, abstraction and pattern recognition to break down and design solutions to a problem.",
+            "summary": "Use abstraction to build a model with only essential details, and decomposition to split problems into sub-problems that become procedures and functions.",
             "focusPoints": [
-              "decomposition",
               "abstraction",
-              "pattern recognition",
-              "algorithmic thinking"
+              "abstract model",
+              "decomposition",
+              "program modules"
             ],
             "contentDepth": "full"
           },
@@ -988,11 +988,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Revise pseudocode/flowcharts, searching/sorting, trace tables.",
+            "summary": "Design algorithms with identifier tables, sequence/selection/iteration, structured English, flowcharts, pseudocode, logic statements and stepwise refinement.",
             "focusPoints": [
+              "identifier tables",
+              "sequence/selection/iteration",
               "pseudocode/flowcharts",
-              "searching/sorting",
-              "trace tables"
+              "stepwise refinement"
             ],
             "contentDepth": "full"
           },

@@ -6,303 +6,312 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Computational Thinking Skills",
   "contentDepth": "full",
-  "overview": "Paper 1 gives candidates a short, unfamiliar problem statement and asks them to apply computational thinking before any code is written: identifying the inputs, outputs and processing needed, breaking the problem into smaller parts, and expressing a solution as structured English, pseudocode or a flowchart. Answers score when a candidate applies these skills to the specific scenario given, rather than only naming abstraction or decomposition as general terms.",
+  "overview": "Topic 9.1 is about two thinking skills used before any code is written. Abstraction strips a problem down to the details that actually affect the result, giving a simpler model to design against. Decomposition splits the problem into sub-problems small enough to solve one at a time, and each sub-problem becomes a program module: a procedure or a function. Paper 2 questions give a short scenario and expect you to apply both skills to it: name the details you would keep and drop, and name the modules you would write and what each one does.",
   "syllabusPoints": [
-    "Show understanding of abstraction as the process of removing unnecessary detail from a problem so as to concentrate on the information relevant to solving it.",
-    "Show understanding of decomposition as breaking a complex problem down into smaller, more manageable sub-problems.",
-    "Show understanding of algorithmic thinking as devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem.",
-    "Show understanding of pattern recognition as identifying similarities between a new problem and a problem already solved, so an existing solution can be reused or adapted.",
-    "Be able to identify the inputs, outputs and processing steps required to solve a given problem.",
-    "Be able to represent an algorithm using structured English, pseudocode or a flowchart, as a precursor to writing program code."
+    "Show an understanding of abstraction, including the need for and benefits of using abstraction, and describe the purpose of abstraction.",
+    "Produce an abstract model of a system by only including essential details.",
+    "Describe and use decomposition: break down problems into sub-problems leading to the concept of a program module (procedure / function)."
   ],
   "definitions": [
     {
+      "term": "Computational thinking",
+      "definition": "A logical way of analysing a problem and building a solution that a person can follow and a computer can carry out; it draws on abstraction, decomposition, data modelling, pattern recognition and algorithm design."
+    },
+    {
       "term": "Abstraction",
-      "definition": "The process of removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+      "definition": "Filtering out the details of a problem that do not affect the solution, so that attention stays on the information that does."
+    },
+    {
+      "term": "Abstract model",
+      "definition": "A simplified representation of a real system that keeps only the essential data and behaviour needed for the task, such as a route map that shows stations and connections but not streets."
     },
     {
       "term": "Decomposition",
-      "definition": "Breaking a complex problem down into smaller, more manageable sub-problems, each of which can be solved and tested on its own."
+      "definition": "Breaking a problem into smaller sub-problems, each of which can be understood, solved and tested separately; the sub-problems lead to program modules."
     },
     {
-      "term": "Algorithmic thinking",
-      "definition": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem or a sub-problem."
+      "term": "Program module",
+      "definition": "A named, self-contained block of steps that carries out one sub-task and can be called from elsewhere in the program; in 9618 pseudocode a module is a procedure or a function."
+    },
+    {
+      "term": "Procedure",
+      "definition": "A module given an identifier that performs a sub-task when it is called with a CALL statement; it does not itself return a value to an expression."
+    },
+    {
+      "term": "Function",
+      "definition": "A module given an identifier that returns a single value of a stated data type; a function call is written inside an expression, for example Total \u2190 Total + VAT(Price)."
     },
     {
       "term": "Pattern recognition",
-      "definition": "Identifying similarities between a new problem and a problem already solved, so that an existing solution or technique can be reused or adapted."
+      "definition": "Spotting that a problem, or part of one, matches a problem already solved, so a known method or standard algorithm can be reused."
     },
     {
-      "term": "Input",
-      "definition": "Data that must be supplied to an algorithm, from a user, a file or a sensor, before it can carry out its processing."
-    },
-    {
-      "term": "Processing",
-      "definition": "The steps an algorithm performs on its inputs, such as calculations, comparisons or validation, in order to produce its outputs."
-    },
-    {
-      "term": "Structured English",
-      "definition": "A restricted form of natural language, written as short, numbered, unambiguous steps, used to outline an algorithm before it is expressed more formally."
-    },
-    {
-      "term": "Flowchart",
-      "definition": "A diagram that represents an algorithm using standard symbols for start/end, process, decision and input/output, connected by arrows showing the flow of control."
+      "term": "Top-down design",
+      "definition": "Designing a solution by starting from the whole problem and repeatedly splitting each part into smaller parts until every part is simple enough to program."
     }
   ],
   "sections": [
     {
-      "id": "01-abstraction",
-      "title": "Abstraction",
+      "id": "00-what-is-computational-thinking",
+      "title": "What computational thinking is",
       "content": [
-        "Abstraction is the skill of deciding what matters for solving a problem and deliberately ignoring everything else. A real-world scenario usually contains far more detail than an algorithm needs, and including irrelevant detail makes a solution harder to design, harder to test and more likely to contain errors. Applying abstraction means reading a problem statement and asking, for each piece of information given, whether it actually affects the outcome the algorithm must produce; if it does not, it is left out of the model of the problem entirely."
+        "Computational thinking is the set of habits a programmer uses to turn a vague real-world problem into something a computer can solve. The emphasis is on analysis before code: working out what the problem really is, what data matters, and what steps will produce the answer. The coursebook groups the skills into strands: abstraction, decomposition, data modelling, pattern recognition and algorithm design.",
+        "The 9618 AS syllabus examines two of these directly, abstraction and decomposition, and uses the others as supporting ideas. Algorithm design itself is developed in 9.2, where the steps are written as structured English, flowcharts and pseudocode."
       ],
       "bullets": [
-        "Abstraction is applied before decomposition or algorithm design, since it determines what the rest of the solution needs to account for.",
-        "Two different real-world scenarios can abstract to the same underlying problem, for example calculating a taxi fare and calculating a parking charge can both abstract to 'a rate multiplied by a duration'.",
-        "Leaving out irrelevant detail is not the same as leaving out detail that is inconvenient; a detail can only be discarded if it genuinely does not affect the required output."
+        "Abstraction answers 'what do I need to know?'; decomposition answers 'what are the separate jobs?'.",
+        "Both are applied before writing pseudocode, which is why exam questions on them usually come with an unfamiliar scenario.",
+        "The skills feed into each other: an abstract model shows which data exists, and decomposition decides which module handles which part of it."
       ],
       "examples": []
+    },
+    {
+      "id": "01-abstraction",
+      "title": "Abstraction and its purpose",
+      "content": [
+        "Abstraction means deliberately leaving out detail that has no effect on the result you need. A real situation always contains far more information than a program could or should hold. The purpose of abstraction is to reduce that situation to a model containing only what the solution depends on, so the designer can concentrate on the parts that matter.",
+        "A familiar example is a metro or bus network map. The real routes curve through streets, tunnels and hills, yet a passenger planning a journey only needs to know which stops exist, which lines join them and the order of the stops. The map keeps exactly that and drops distances, geography and street names. It is less 'accurate' than an aerial photograph, but far more useful for the task.",
+        "Abstraction also appears inside programming itself. An algorithm is an abstraction of a process: it states the inputs, steps and outputs and ignores how the hardware carries them out. Calling a module such as CALL PrintReceipt hides the detail of how the receipt is laid out, so the caller only needs to know what the module does."
+      ],
+      "bullets": [
+        "The test for a detail is: would changing it change the output? If not, it can be abstracted away.",
+        "What counts as essential depends on the task. A car's colour is irrelevant to a parking charge but essential to a paint shop's stock system.",
+        "A game or simulator uses abstraction too: it keeps what the player must see and control and hides the complex rules running underneath."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-need-and-benefits-of-abstraction",
+      "title": "The need for abstraction and its benefits",
+      "content": [
+        "Abstraction is needed because a computer system cannot model the whole of reality, and trying to include everything makes a design unmanageable. Every extra data item has to be input, validated, stored and tested. Removing what the problem does not need keeps the program focused on its actual requirements.",
+        "The benefits appear throughout development. Design is quicker because there is less to think about. The program is smaller, so it takes less time to write and test and uses less memory and storage. The customer gets a system that does what was asked without clutter, and the solution is easier for other programmers to read and maintain later."
+      ],
+      "bullets": [
+        "Less data to collect and store: fewer inputs, smaller files, less validation code.",
+        "Simpler, shorter programs that are faster to develop, test and debug.",
+        "Reduced complexity lets the designer see the core problem and spot when it matches a known solution.",
+        "Hiding the inner detail of a module means it can be reused without the user needing to understand how it works.",
+        "Risk to manage: removing a detail that turns out to matter gives a model that produces wrong results, so each omission must be justified."
+      ],
+      "examples": []
+    },
+    {
+      "id": "10-producing-an-abstract-model",
+      "title": "Producing an abstract model of a system",
+      "content": [
+        "To produce an abstract model, start from the scenario, list every piece of information it mentions, then keep only the items the required outputs depend on. What remains becomes the data your program will hold (later, the fields of a record or the columns of a table) plus the operations the system must carry out on that data.",
+        "Worked scenario: a school library wants a system that records loans and reminds students when a book is overdue. The scenario describes the building, the shelves, each book's cover, page count and price, and each student's name, form, photo and date of birth. The model needs far less than that."
+      ],
+      "bullets": [
+        "State each item you keep and say which output or operation needs it.",
+        "State each item you drop and give the reason it does not affect the outputs.",
+        "An abstract model includes behaviour as well as data: here, 'lend', 'return' and 'check overdue'."
+      ],
+      "examples": [
+        {
+          "id": "10-library-model",
+          "kind": "worked",
+          "label": "Abstract model for a library loans system",
+          "content": "Required outputs: record a loan, record a return, list overdue loans with the student to remind.\n\nKept (essential)            | Why it is needed\nBookID                      | identifies which copy is on loan\nTitle                       | shown on the reminder so the student knows which book\nStudentID                   | links the loan to one borrower\nStudentName, TutorGroup     | needed to deliver the reminder\nDateBorrowed, DateDue       | DateDue decides whether a loan is overdue\nDateReturned (empty if out) | shows whether the book is still on loan\n\nDropped (not essential)     | Why it can go\nCover colour, page count    | no output depends on them\nShelf layout of the library | not needed to lend or remind\nStudent photo, date of birth| the reminder does not use them\nPrice of the book           | not needed unless the school charges for lost books\n\nOperations in the model: LendBook, ReturnBook, ListOverdue.\nIf the requirement later adds charging for lost books, Price moves into the 'kept' list: essential always means essential for the stated task."
+        }
+      ]
     },
     {
       "id": "02-decomposition",
       "title": "Decomposition",
       "content": [
-        "Decomposition is the process of breaking a complex problem into smaller sub-problems that are each easier to understand, solve and test than the original problem as a whole. Each sub-problem can often be tackled independently, with its own inputs and outputs, and the overall solution is produced by combining the solutions to the sub-problems. Decomposition also makes a large problem manageable for more than one person to work on, and makes it far easier to locate and fix an error, since a fault can usually be traced to a single sub-problem rather than the whole system."
+        "Decomposition breaks a large problem into sub-problems. Each sub-problem is smaller, so it is easier to understand, to solve and to test on its own. If a sub-problem is still too large, it is decomposed again, giving a hierarchy that goes from the whole problem at the top down to small tasks at the bottom. Working in this direction is called top-down design.",
+        "Decomposition helps a team as well as an individual. Separate sub-problems can be given to different programmers, finished in parallel and tested independently before being put together. It also makes errors easier to find, because a fault can be traced to one sub-problem rather than hunted for across the whole program, and it shows up tasks that repeat so they can be written once and reused."
       ],
       "bullets": [
-        "A well-decomposed sub-problem should be small enough to be solved and tested on its own, independent of the other sub-problems.",
-        "Decomposition can be applied repeatedly: a sub-problem that is still too complex can itself be broken down further.",
-        "Combining correctly solved sub-problems does not automatically guarantee the overall system is correct; the way they interact must also be checked."
-      ],
-      "examples": []
-    },
-    {
-      "id": "03-algorithmic-thinking",
-      "title": "Algorithmic thinking",
-      "content": [
-        "Algorithmic thinking is the skill of devising a sequence of instructions that solves a problem precisely, in a fixed order, with no step left ambiguous or open to interpretation. Every instruction must be specific enough that it could be followed exactly by someone, or something, with no understanding of the problem itself. This is what distinguishes an algorithm from a general description of a method: a description might say 'sort the list', whereas an algorithm states exactly how each comparison and swap is carried out, in what order, and when the process stops."
-      ],
-      "bullets": [
-        "An algorithm must terminate after a finite number of steps for every valid input, not only for the input it happened to be designed around.",
-        "Ambiguity is the main danger in algorithmic thinking; a step such as 'check if the number is big' is not precise enough to be an instruction in an algorithm.",
-        "Algorithmic thinking must account for edge cases, such as an empty list or a boundary value, not only the typical case a designer first has in mind."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-pattern-recognition",
-      "title": "Pattern recognition",
-      "content": [
-        "Pattern recognition is noticing that a new problem shares structure with a problem that has already been solved, so that the existing solution, or the technique used to solve it, can be reused or adapted rather than designed again from nothing. This is what allows a programmer to recognise, for example, that 'find the highest mark in a list of exam results' and 'find the most expensive item in a list of prices' are really the same underlying problem: iterate through a list, keeping track of the largest value seen so far. Recognising the pattern means the already-tested logic for one can be adapted almost directly for the other."
-      ],
-      "bullets": [
-        "Pattern recognition relies on abstraction: two problems only look similar once their irrelevant, scenario-specific detail has been stripped away.",
-        "A recognised pattern can be reused as a template, saving the effort of devising and testing a new algorithm from scratch.",
-        "Failing to recognise a pattern is not a fatal error, but it wastes time solving a problem that already has a known, tested solution."
-      ],
-      "examples": []
-    },
-    {
-      "id": "05-inputs-outputs-and-processing",
-      "title": "Identifying inputs, outputs and processing",
-      "content": [
-        "Before an algorithm can be designed, a problem statement must be analysed to identify exactly what data needs to be supplied to it (the inputs), what result it must produce (the outputs), and what has to be done to the inputs to produce those outputs (the processing). Inputs might come from a user typing values, a file being read, or a sensor; outputs are whatever the algorithm must display, return or store; and processing covers everything in between, including calculations, comparisons, validation and any repetition needed. Explicitly identifying these three elements gives a clear specification for the algorithm before a single line of structured English, pseudocode or program code is written."
-      ],
-      "bullets": [
-        "An input that is never used in the processing, or an output that is never produced by any processing step, is a sign the analysis is incomplete or incorrect.",
-        "Processing should be broken down into the individual operations needed, such as 'validate each mark', 'add valid marks to a running total' and 'divide the total by the count', rather than left as one vague step.",
-        "Validation of inputs, where the problem statement requires it, is itself a processing step and should be identified alongside the calculation steps."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-structured-english-and-pseudocode",
-      "title": "Representing algorithms: structured English and pseudocode",
-      "content": [
-        "Structured English expresses an algorithm as a numbered sequence of short, plain-language steps, written carefully enough to avoid ambiguity but without the strict syntax of a programming language; it is useful as an early, quick outline of a solution. Pseudocode goes a step further: it uses a consistent, keyword-based notation, such as INPUT, OUTPUT, IF/THEN/ELSE, WHILE and FOR, that closely resembles the structure of real program code without being tied to any particular programming language's exact syntax. Pseudocode is the more precise and more commonly examined representation, because it forces the same level of detail, sequencing and decision-making that the final program code will need, making the later translation into a working program much more direct."
-      ],
-      "bullets": [
-        "Structured English is closer to natural language and is quicker to sketch out, but is more prone to ambiguity than pseudocode.",
-        "Pseudocode is closer to final code and is the representation most directly comparable to what will eventually be typed into a programming language.",
-        "Both representations must still specify the exact sequence, repetition and decisions involved; neither is a substitute for precise algorithmic thinking."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-flowcharts",
-      "title": "Representing algorithms: flowcharts",
-      "content": [
-        "A flowchart represents an algorithm as a diagram, using standard symbols connected by arrows to show the flow of control: an oval for start and end, a rectangle for a process step, a parallelogram for input or output, and a diamond for a decision with a branch for each possible outcome. Flowcharts are particularly effective at showing the overall shape of an algorithm's logic, especially where it branches or repeats, because the diagram makes the possible paths through the algorithm visible at a glance in a way that a linear list of steps does not."
-      ],
-      "bullets": [
-        "A decision (diamond) symbol must have every possible outcome labelled, for example 'Yes' and 'No', with a path leading from each.",
-        "A flowchart showing repetition must include an arrow leading back to an earlier point in the diagram, forming a loop, with a decision symbol controlling when it stops.",
-        "Flowcharts can become difficult to read for a long or highly detailed algorithm, where pseudocode is usually clearer."
-      ],
-      "examples": []
-    },
-    {
-      "id": "08-worked-example-average-of-valid-marks",
-      "title": "Worked example: averaging valid exam marks",
-      "content": [
-        "Problem statement: write an algorithm that repeatedly asks the user to enter exam marks, one at a time, and calculates the average of the valid marks entered; a mark is invalid if it is below zero, and the user signals that they have finished entering marks by typing the sentinel value -999. Applying computational thinking begins with identifying the inputs, outputs and processing before any structured representation is attempted, then decomposing the problem into the smaller steps that will become the algorithm.",
-        "Inputs: a sequence of marks typed by the user, ending with the sentinel value -999. Outputs: the average of the marks that were valid (zero or above, and not the sentinel). Processing: read a mark; check whether it is the sentinel value and, if so, stop reading further marks; otherwise check whether the mark is valid (zero or above); if valid, add it to a running total and increase a count of valid marks by one; once input has stopped, calculate the average by dividing the total by the count.",
-        "Decomposing this into smaller steps gives: (1) initialise a total and a count to zero; (2) repeatedly input a mark and test it against the sentinel value, stopping the loop when the sentinel is entered; (3) for every non-sentinel mark, test whether it is valid and, if so, add it to the total and increase the count; (4) after the loop ends, calculate and output the average, using the total and the count accumulated in steps 2 and 3. Each of these steps can be checked separately: step 2 can be tested with a short run that enters only the sentinel value, and step 3 can be tested separately with a mix of valid and invalid marks, before the two are combined."
-      ],
-      "bullets": [
-        "Identifying inputs, outputs and processing first prevents an algorithm being designed around the wrong data, such as forgetting that the sentinel value must be excluded from the average.",
-        "Decomposing the problem separates 'reading marks until the sentinel is entered' from 'deciding whether a mark is valid', which can then be designed, and tested, independently.",
-        "The algorithm must handle the edge case of no valid marks being entered at all, since dividing by a count of zero is undefined and needs to be guarded against."
+        "Stop decomposing when each task is small enough to write as one short module.",
+        "Good sub-problems have one clear job and a clear set of inputs and outputs.",
+        "Testing each part alone is not enough: the parts must also be tested together to check they pass data correctly."
       ],
       "examples": [
         {
-          "id": "08-io-processing-table",
+          "id": "02-quiz-decomposition",
           "kind": "worked",
-          "label": "Inputs, outputs and processing for the averaging problem",
-          "content": "Inputs:\n- A sequence of marks entered one at a time by the user\n- The sentinel value -999, entered to signal the end of input\n\nOutputs:\n- The average of the valid marks entered (marks that are >= 0, excluding the sentinel)\n\nProcessing steps:\n1. Set Total to 0 and Count to 0\n2. Input Mark\n3. WHILE Mark <> -999\n     IF Mark >= 0 THEN\n       Total <- Total + Mark\n       Count <- Count + 1\n     ENDIF\n     Input Mark\n   ENDWHILE\n4. IF Count > 0 THEN\n     Average <- Total / Count\n     OUTPUT Average\n   ELSE\n     OUTPUT \"No valid marks were entered\"\n   ENDIF"
+          "label": "Decomposing a revision quiz program",
+          "content": "Quiz program\n|-- 1 Set up the quiz\n|     |-- 1.1 Read the questions and answers from a file\n|     |-- 1.2 Ask the player for their name\n|-- 2 Run the quiz (repeat for each question)\n|     |-- 2.1 Display the question\n|     |-- 2.2 Input the player's answer\n|     |-- 2.3 Check whether the answer is correct\n|     |-- 2.4 Update the score\n|-- 3 Finish\n      |-- 3.1 Output the final score\n      |-- 3.2 Save the score if it is a new high score\n\nEach bottom-level box is small enough to become one module, e.g. 2.3 becomes\nFUNCTION IsCorrect(Given : STRING, Expected : STRING) RETURNS BOOLEAN"
+        }
+      ]
+    },
+    {
+      "id": "04-pattern-recognition",
+      "title": "Pattern recognition, data modelling and algorithm design",
+      "content": [
+        "The other strands of computational thinking support abstraction and decomposition. Pattern recognition notices that a sub-problem has the same shape as one already solved. Finding the highest score, the most expensive product and the hottest day are all 'keep the largest value seen so far'. Recognising that lets you reuse a tested method, or a standard algorithm such as a linear search or bubble sort.",
+        "Data modelling decides how the data kept by abstraction will be organised: records, arrays, files or abstract data types such as stacks and queues (topic 10). Algorithm design turns each sub-problem into a precise sequence of steps (topic 9.2)."
+      ],
+      "bullets": [
+        "Patterns only become visible after abstraction has removed the scenario-specific detail.",
+        "Reusing a known pattern saves design and testing time.",
+        "Data modelling links 9.1 to records and abstract data types in 10.1 and 10.4."
+      ],
+      "examples": []
+    },
+    {
+      "id": "11-program-modules",
+      "title": "From sub-problems to program modules",
+      "content": [
+        "When a problem has been decomposed, each sub-task can be written as a module: a named group of steps that is written once and called whenever that sub-task is needed. In 9618 pseudocode there are two kinds. A procedure performs a task and is run with a CALL statement. A function performs a task and returns one value, so its call is placed inside an expression, and its header states the data type of the value it returns.",
+        "The main program then reads like the top level of the decomposition: a short list of calls. Modules should be self-contained. They receive the data they need through parameters and use local variables for their own working, rather than relying on global variables. This makes each module independent, easy to test alone and reusable in other programs."
+      ],
+      "bullets": [
+        "Use a function when the sub-task produces one value to be used in a calculation or condition; use a procedure otherwise.",
+        "Module identifiers follow the same naming rules as variable identifiers.",
+        "A module can call other modules, mirroring lower levels of the decomposition.",
+        "Parameters and local variables are covered in detail in 11.3."
+      ],
+      "examples": [
+        {
+          "id": "11-temperature-modules",
+          "kind": "pseudocode",
+          "label": "A decomposed program: a function, a procedure and a short main program",
+          "content": "FUNCTION ToFahrenheit(Celsius : REAL) RETURNS REAL\n   RETURN Celsius * 9 / 5 + 32\nENDFUNCTION\n\nPROCEDURE ShowConversion(Celsius : REAL)\n   OUTPUT Celsius, \" C = \", ToFahrenheit(Celsius), \" F\"\nENDPROCEDURE\n\n// main program\nDECLARE Reading : REAL\nDECLARE Count : INTEGER\nFOR Count \u2190 1 TO 3\n   INPUT Reading\n   CALL ShowConversion(Reading)\nNEXT Count",
+          "language": "cambridge-pseudocode"
         },
         {
-          "id": "08-pseudocode-average",
-          "kind": "pseudocode",
-          "label": "Pseudocode for averaging valid exam marks",
-          "language": "cambridge-pseudocode",
-          "content": "Total <- 0\nCount <- 0\nINPUT Mark\nWHILE Mark <> -999\n  IF Mark >= 0 THEN\n    Total <- Total + Mark\n    Count <- Count + 1\n  ENDIF\n  INPUT Mark\nENDWHILE\nIF Count > 0 THEN\n  OUTPUT Total / Count\nELSE\n  OUTPUT \"No valid marks were entered\"\nENDIF"
+          "id": "11-temperature-trace",
+          "kind": "worked",
+          "label": "Trace table for the module example (inputs 0, 100, -40)",
+          "content": "Count | Reading | ToFahrenheit(Reading)  | OUTPUT\n1     | 0       | 0 * 9 / 5 + 32 = 32    | 0 C = 32 F\n2     | 100     | 900 / 5 + 32 = 212     | 100 C = 212 F\n3     | -40     | -360 / 5 + 32 = -40    | -40 C = -40 F\n\nThe loop ends after Count = 3. The main program never repeats the formula: it is written once in the function and reached through the procedure."
         }
       ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Ways to represent an algorithm",
+    "title": "Abstraction compared with decomposition",
     "columns": [
       "Aspect",
-      "Structured English",
-      "Pseudocode",
-      "Flowchart"
+      "Abstraction",
+      "Decomposition"
     ],
     "rows": [
       [
-        "Form",
-        "Numbered steps written in short, plain, structured language",
-        "Keyword-based notation resembling program code (INPUT, IF, WHILE, OUTPUT)",
-        "A diagram using standard symbols linked by arrows showing the flow of control"
+        "Question asked",
+        "Which details matter for this task?",
+        "What are the separate jobs in this task?"
       ],
       [
-        "Precision",
-        "Less precise; depends on careful, unambiguous wording",
-        "More precise; closely mirrors the structure of real code",
-        "Precise for showing branches and loops, but detailed processing can be hard to fit into a box"
+        "What it does",
+        "Removes non-essential detail",
+        "Splits the problem into sub-problems"
       ],
       [
-        "Closeness to final code",
-        "Furthest from code; a further translation step is still needed",
-        "Closest to code; often translates almost line by line into a programming language",
-        "Shows the logic and flow of control clearly, but must still be converted into written statements"
+        "Result",
+        "A simplified abstract model of the system",
+        "A hierarchy of smaller tasks"
       ],
       [
-        "Best used for",
-        "A quick, early outline of a solution before detail is added",
-        "A detailed design ready to be converted directly into program code",
-        "Visualising the overall shape of an algorithm, especially its branching and repetition"
+        "Main benefit",
+        "Less data and complexity; quicker, smaller programs",
+        "Parts can be solved, tested and shared out separately"
+      ],
+      [
+        "Link to programming",
+        "Decides the variables, records and tables needed",
+        "Leads to program modules: procedures and functions"
       ]
     ]
   },
   "diagram": {
-    "title": "From problem statement to program code",
+    "title": "From scenario to program modules",
     "type": "flow",
     "nodes": [
-      "Read the problem statement",
-      "Apply abstraction: identify what is relevant, discard what is not",
-      "Identify the inputs, outputs and processing required",
-      "Apply decomposition: split the problem into smaller sub-problems",
-      "Apply algorithmic thinking: sequence precise steps that solve each sub-problem",
-      "Represent the algorithm in structured English, pseudocode or a flowchart",
-      "Trace the algorithm by hand to check it before writing program code"
+      "Read the scenario and its required outputs",
+      "Abstraction: keep only the details the outputs depend on",
+      "Abstract model: essential data and operations",
+      "Decomposition: split the problem into sub-problems",
+      "Refine each sub-problem until it is one small task",
+      "Write each task as a procedure or function",
+      "Main program calls the modules in order"
     ]
   },
   "analysisChains": [
     {
-      "title": "Applying abstraction to a car park charging scenario",
+      "title": "Abstracting a car park charging system",
       "steps": [
-        "A scenario describes each car's registration number, colour, driver's name, entry time and exit time",
-        "The problem only requires calculating a charge based on how long the car was parked",
-        "Registration number, colour and driver's name are identified as irrelevant to that calculation and discarded",
-        "The abstracted model of the problem keeps only entry time and exit time as the relevant data"
+        "The scenario lists each car's registration, colour, make, driver, entry time and exit time",
+        "The required output is the charge, which depends only on the length of stay",
+        "Colour, make and driver do not change the charge, so they are left out of the model",
+        "Registration is kept only if a receipt must identify the car; entry and exit times are essential"
       ],
-      "evaluation": "Abstraction reduces the problem to only the data actually needed for the required calculation, which simplifies the algorithm and reduces the chance of irrelevant detail being mistakenly used in the processing."
+      "evaluation": "The model is judged against the stated outputs: a detail is kept only if some output depends on it, which is why the same data item can be essential in one system and irrelevant in another."
     },
     {
-      "title": "Decomposing a school library system",
+      "title": "Decomposing a school library system into modules",
       "steps": [
-        "The overall problem 'manage a school library' is too large to design or test as a single algorithm",
-        "It is broken into sub-problems: checking a book out, checking a book in, searching the catalogue, and calculating an overdue fine",
-        "The 'calculate an overdue fine' sub-problem is designed and tested on its own, using sample due dates and return dates",
-        "The tested sub-problem is then combined with the others to form the complete library system"
+        "'Run the library' is too large to design or test as one algorithm",
+        "It splits into lending, returning, searching the catalogue and listing overdue loans",
+        "Listing overdue loans splits again into reading each loan, comparing DateDue with today and outputting a reminder",
+        "Each bottom-level task becomes a module, e.g. FUNCTION IsOverdue(DateDue : DATE) RETURNS BOOLEAN"
       ],
-      "evaluation": "Decomposition allows each sub-problem to be solved and tested independently, which makes a fault far easier to trace to a specific sub-problem, but the way the sub-problems pass data to each other still has to be checked once they are combined."
+      "evaluation": "Decomposition gives modules that can be written and tested separately and shared across a team, but the finished modules still need testing together because faults often sit in the data passed between them."
     },
     {
-      "title": "Applying algorithmic thinking to a grade-boundary classifier",
+      "title": "Why a route map is a good abstraction",
       "steps": [
-        "The problem is stated as: given a numeric mark, output the grade associated with it",
-        "A step-by-step sequence of comparisons is devised, checking the mark against each grade boundary from highest to lowest",
-        "Every possible mark is checked to confirm it maps to exactly one grade, including marks that fall exactly on a boundary",
-        "The sequence is tested with a mark exactly equal to a boundary value to confirm it is classified into the correct grade"
+        "A traveller needs to know which stops exist and which lines connect them",
+        "Real track shapes, distances and street layout do not change which route to take",
+        "The map drops them and draws lines straight with evenly spaced stops",
+        "The simpler picture makes route planning faster and less error-prone"
       ],
-      "evaluation": "An unambiguous, step-by-step algorithm must give a defined result for every possible input, including edge values exactly on a boundary, not only for the typical values a designer first thinks of."
+      "evaluation": "The map is less realistic but more useful, which is the point of abstraction: the model is judged by how well it serves its purpose, not by how much detail it holds."
     }
   ],
   "examTips": [
-    "When asked to apply abstraction to a scenario, name the specific details you are discarding and explain why they do not affect the required output.",
-    "When asked to decompose a problem, give sub-problems that are genuinely independent and could each be tested on their own, not just a restatement of the whole problem in several parts.",
-    "When identifying inputs, outputs and processing, list them separately and explicitly, rather than folding processing steps into a vague description of the output.",
-    "When representing an algorithm, match the representation to what is asked for; pseudocode marks are usually awarded for correct keywords, sequencing and indentation, not just a correct overall idea."
+    "In an 'apply abstraction' question, name specific items from the scenario you would keep and drop, with a reason tied to the required output; a general definition alone earns little.",
+    "For benefits of abstraction, give concrete effects: less data to input and store, smaller programs, faster development and testing, a solution focused on the customer's actual needs.",
+    "When asked to decompose, give sub-problems with one clear job each, and say which would be procedures and which would be functions.",
+    "A function returns a single value and is called inside an expression; a procedure is called with CALL. Examiners often reward this distinction.",
+    "Link decomposition to modules explicitly: the syllabus wording is 'leading to the concept of a program module'."
   ],
   "commonMistakes": [
-    "Naming abstraction or decomposition as a general concept without applying it to the specific detail of the given scenario.",
-    "Decomposing a problem into steps that are still too large or too dependent on each other to be tested independently.",
-    "Forgetting to identify an input or output that the problem statement implies but does not state directly, such as a sentinel value needed to end a loop.",
-    "Writing an algorithm's steps in a vague, ambiguous way, such as 'check the value', rather than stating the exact comparison being made.",
-    "Confusing a flowchart's decision symbol (a diamond, with a labelled branch for each outcome) with its process symbol (a rectangle)."
+    "Defining abstraction as 'hiding complexity' without saying what is removed or why it is not needed.",
+    "Dropping a detail that an output depends on, such as removing entry time from a parking-charge model.",
+    "Confusing abstraction (removing detail) with decomposition (splitting into parts).",
+    "Listing sub-problems that are just the whole problem reworded, or so large they still cannot be written as one module.",
+    "Writing a function without a RETURNS data type or calling a procedure inside an expression.",
+    "Letting modules share global variables instead of passing data as parameters, which stops them being reused."
   ],
   "quickRecall": [
     {
-      "question": "What is abstraction?",
-      "answer": "Removing detail that is not relevant to solving a problem, so that only the information needed for a solution is considered."
+      "question": "What is the purpose of abstraction?",
+      "answer": "To remove details that do not affect the solution so the designer can concentrate on the essential information, giving a simpler model of the problem."
+    },
+    {
+      "question": "Give three benefits of using abstraction.",
+      "answer": "Less data to input and store; smaller, simpler programs that are quicker to write and test; a solution focused on what the customer actually needs."
+    },
+    {
+      "question": "How do you decide whether a detail belongs in an abstract model?",
+      "answer": "Keep it only if a required output or operation of the system depends on it."
     },
     {
       "question": "What is decomposition?",
-      "answer": "Breaking a complex problem down into smaller, more manageable sub-problems that can be solved and tested independently."
+      "answer": "Breaking a problem into smaller sub-problems that can be solved and tested separately."
     },
     {
-      "question": "What is algorithmic thinking?",
-      "answer": "Devising a precise, step-by-step, unambiguous sequence of instructions that solves a problem."
+      "question": "What does decomposition lead to in a program?",
+      "answer": "Program modules: each sub-problem becomes a procedure or a function."
     },
     {
-      "question": "What is pattern recognition, in computational thinking?",
-      "answer": "Identifying similarities between a new problem and a problem already solved, so an existing solution or technique can be reused or adapted."
+      "question": "State the difference between a procedure and a function.",
+      "answer": "A procedure is called with CALL to perform a task; a function returns one value of a stated type and is called inside an expression."
     },
     {
-      "question": "What three things must be identified before an algorithm is designed?",
-      "answer": "The inputs required, the outputs to be produced, and the processing needed to turn the inputs into the outputs."
-    },
-    {
-      "question": "Name three ways an algorithm can be represented before it is coded.",
-      "answer": "Structured English, pseudocode, or a flowchart."
-    },
-    {
-      "question": "Which representation of an algorithm is closest to final program code?",
-      "answer": "Pseudocode, because it uses keyword-based notation resembling real code, unlike structured English or a flowchart."
-    },
-    {
-      "question": "What symbol does a flowchart use for a decision, and what must label its branches?",
-      "answer": "A diamond, with each possible outcome (such as 'Yes' and 'No') labelled on its own branch."
+      "question": "Why should modules use parameters and local variables?",
+      "answer": "So each module is self-contained, can be tested on its own and can be reused in other programs."
     }
   ],
   "relatedTopics": [
     "9.2",
-    "10.1",
-    "11.1",
-    "12.2"
+    "10.4",
+    "11.3",
+    "12.1"
   ]
 }

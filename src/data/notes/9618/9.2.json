@@ -6,305 +6,516 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Algorithms",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to trace a given algorithm using a trace table, to describe or complete a linear search, binary search, bubble sort or insertion sort, and to identify and correct a logic error revealed by a trace. Answers score when a trace table shows every variable's value after every relevant step, and when an efficiency comparison is justified in terms of how the number of steps grows as the data gets larger, rather than a bare claim that one algorithm is 'faster'.",
+  "overview": "Topic 9.2 is about designing an algorithm and writing it down precisely before it is programmed. It covers choosing identifiers and recording them in an identifier table; writing pseudocode with input, processing and output; the three basic constructs of sequence, selection and iteration; documenting an algorithm as structured English, a flowchart or pseudocode, and converting between those forms; logic statements that define conditions; and stepwise refinement, which breaks an outline into steps detailed enough to code. Paper 2 marks depend on correct Cambridge pseudocode keywords, sensible identifiers and logic that works for every input, so each example here is dry-run with a trace table.",
   "syllabusPoints": [
-    "Show understanding of how a trace table is used to test an algorithm by hand, recording the value of each variable at each step.",
-    "Describe, and trace, a linear search algorithm, and know that it works on unsorted data by checking each item in turn.",
-    "Describe, and trace, a binary search algorithm, and know that it requires sorted data and repeatedly halves the search interval.",
-    "Describe, and trace, a bubble sort algorithm, which repeatedly swaps adjacent out-of-order pairs of items.",
-    "Describe, and trace, an insertion sort algorithm, which builds up a sorted section of the data one item at a time.",
-    "Use a trace table to identify a logic error in a given algorithm and state the correction needed to fix it.",
-    "Compare the efficiency of algorithms informally, explaining how the number of steps required changes as the size of the data set increases."
+    "Show understanding that an algorithm is a solution to a problem expressed as a sequence of defined steps.",
+    "Use suitable identifier names for the representation of data used by a problem and represent these using an identifier table.",
+    "Write pseudocode that contains input, process and output.",
+    "Write pseudocode using the three basic constructs of sequence, selection and iteration (repetition).",
+    "Document a simple algorithm using a structured English description, a flowchart or pseudocode.",
+    "Write pseudocode from a structured English description and from a flowchart.",
+    "Draw a flowchart from a structured English description and from pseudocode.",
+    "Describe and use the process of stepwise refinement to express an algorithm to a level of detail from which the task may be programmed.",
+    "Use logic statements to define parts of an algorithm solution."
   ],
   "definitions": [
     {
-      "term": "Trace table",
-      "definition": "A table used to test an algorithm by hand, with a column for each variable and a row for each step, recording how every variable's value changes as the algorithm executes."
+      "term": "Algorithm",
+      "definition": "A solution to a problem written as a finite sequence of defined, unambiguous steps carried out in a set order."
     },
     {
-      "term": "Linear search",
-      "definition": "A search algorithm that checks each item of a list in turn, from the start, until the target is found or every item has been checked; it works on data in any order."
+      "term": "Identifier",
+      "definition": "The name given to a variable, constant, array or module so that it can be referred to in an algorithm."
     },
     {
-      "term": "Binary search",
-      "definition": "A search algorithm that repeatedly compares the target with the middle item of a sorted list and discards the half that cannot contain it, until the target is found or the search interval is empty."
+      "term": "Identifier table",
+      "definition": "A table listing each identifier used in a solution with its data type and an explanation of what it stores or does."
     },
     {
-      "term": "Bubble sort",
-      "definition": "A sorting algorithm that repeatedly steps through a list, comparing and swapping adjacent items that are in the wrong order, until a complete pass makes no swaps."
+      "term": "Structured English",
+      "definition": "A restricted form of English made of short command statements (INPUT, SET, IF, REPEAT, OUTPUT) used to describe the steps of an algorithm."
     },
     {
-      "term": "Insertion sort",
-      "definition": "A sorting algorithm that builds up a sorted section of the list one item at a time, taking each new item and shifting the larger items in the sorted section along to insert it in its correct position."
+      "term": "Pseudocode",
+      "definition": "A notation that uses keywords and identifiers to describe an algorithm like program code but without the syntax of any one programming language."
     },
     {
-      "term": "Logic error",
-      "definition": "A mistake in an algorithm that causes it to run and produce a result, but the result is incorrect, because the algorithm does not do what its specification requires."
+      "term": "Flowchart",
+      "definition": "A diagram of an algorithm made of standard shapes (terminator, process, input/output, decision) joined by flow lines showing the order of steps."
     },
     {
-      "term": "Sentinel value",
-      "definition": "A specific value used in an algorithm to signal that a boundary or ending condition has been reached, such as the end of user input."
+      "term": "Sequence / selection / iteration",
+      "definition": "The three basic constructs: steps run one after another; a condition chooses which steps run; a group of steps is repeated."
+    },
+    {
+      "term": "Logic statement",
+      "definition": "A condition built from relational operators (=, <>, <, >, <=, >=) and logical operators (AND, OR, NOT) that evaluates to TRUE or FALSE."
+    },
+    {
+      "term": "Rogue value",
+      "definition": "A value of the correct data type but outside the normal range, used only to mark the end of a sequence of inputs (e.g. -1 for marks)."
+    },
+    {
+      "term": "Stepwise refinement",
+      "definition": "Repeatedly breaking each step of an outline solution into smaller, more detailed steps until every step can be written directly as program code."
     }
   ],
   "sections": [
     {
-      "id": "01-pseudocode-flowcharts-and-trace-tables",
-      "title": "Representing and testing algorithms",
+      "id": "08-what-is-an-algorithm",
+      "title": "What an algorithm is",
       "content": [
-        "Before an algorithm's efficiency or correctness can be discussed, it needs to be expressed precisely, usually as pseudocode or a flowchart, and then tested. Testing an algorithm 'by hand', without running it as program code, is done using a trace table: a table with one column for every variable the algorithm uses, plus a column for output where relevant, and one row for every step at which a variable's value changes. Working through the algorithm's instructions one at a time and filling in a new row whenever a value changes shows exactly what the algorithm does for a chosen set of test data, without needing a computer to run it.",
-        "A trace table is the standard way both to confirm an algorithm behaves as intended for typical data, and to test how it behaves for edge cases, such as an empty list, a single-item list, or a target value that does not appear in the data at all."
+        "An algorithm is a solution to a problem written as a sequence of defined steps. 'Defined' is the key word: each step must be exact, so anyone (or any computer) following it does the same thing and gets the same result. A good algorithm finishes after a finite number of steps for every valid input, and its steps are carried out in a fixed order.",
+        "Everyday instructions are algorithms too. Withdrawing cash at an ATM is: insert card; enter PIN; if the PIN is wrong, allow another try, up to three; choose an amount; if the balance is high enough, dispense the cash, otherwise show a message; return the card. Swap two of those steps, such as dispensing cash before checking the balance, and the process fails. The same instructions also show the three building blocks every algorithm uses: steps in order, choices and repetition.",
+        "Most computer algorithms take data in, process it and output a result. A problem can often be solved by several different algorithms; a better one gives correct results, is easy to follow, and uses less time and memory."
       ],
       "bullets": [
-        "Every variable used by the algorithm needs its own column in the trace table, so its value at each step is visible.",
-        "A new row is added to the trace table each time a variable's value changes, not for every single line of the algorithm.",
-        "Choosing test data that includes edge cases, not only typical values, is what makes a trace genuinely test the algorithm rather than just illustrate it."
+        "Every step must be unambiguous: 'add a bit of tax' is not a defined step; 'Tax \u2190 Price * 0.2' is.",
+        "Order matters: the same steps in a different sequence can give a different or no result.",
+        "An algorithm is language-independent; it is designed first and then coded in any programming language."
       ],
       "examples": []
     },
     {
-      "id": "02-linear-search",
-      "title": "Linear search",
+      "id": "09-documenting-algorithms",
+      "title": "Documenting an algorithm: structured English, flowcharts and pseudocode",
       "content": [
-        "Linear search checks the items of a list one at a time, starting from the first, comparing each one with the target value. If an item matches the target, the search stops and reports where it was found; if every item has been checked without a match, the search reports that the target is not present. Because it checks items in the order they appear, linear search does not require the list to be sorted, which makes it the correct choice when data is unsorted or is searched only once, so that sorting it first would cost more than it saves.",
-        "Linear search's main weakness is that, for a list with n items, it may need to check up to all n of them if the target is near the end or absent altogether, so the number of comparisons it needs grows directly in proportion to the size of the list."
+        "The syllabus names three ways to document an algorithm. Structured English uses a small set of English command words, such as INPUT, SET, IF, REPEAT, OUTPUT, written as short numbered or indented statements. It is quick to write and easy for a non-programmer to read, but it is not precise enough to code from without further work.",
+        "A flowchart draws the algorithm as a set of standard shapes joined by arrows. It makes the paths through selections and loops easy to see at a glance, but becomes hard to follow for long algorithms. Pseudocode uses the keywords and layout of the Cambridge pseudocode guide (DECLARE, \u2190, IF \u2026 THEN \u2026 ELSE \u2026 ENDIF, FOR \u2026 NEXT and so on) and is the closest of the three to real program code. A flowchart and its pseudocode should contain the same level of detail."
       ],
       "bullets": [
-        "Linear search works on data in any order, unlike binary search, which requires the data to be sorted first.",
-        "In the best case the target is the first item checked; in the worst case, every item in the list must be checked.",
-        "A trace of a linear search should record the index currently being checked and the value found there at each step."
+        "In pseudocode, \u2190 means assignment and = means 'is equal to' in a condition; never swap them.",
+        "Indent the body of every IF, CASE and loop so that its extent is clear.",
+        "Every decision diamond needs exactly two labelled exits (Yes/No or TRUE/FALSE).",
+        "Flowcharts in exams are drawn with shapes; in these notes they are shown in a text form using the key below."
       ],
       "examples": [
         {
-          "id": "02-linear-search-trace",
+          "id": "09-flowchart-symbols",
           "kind": "worked",
-          "label": "Worked trace: linear search for 15",
-          "content": "Array: [23, 7, 41, 15, 9, 34]   Target: 15\n\nPseudocode:\nIndex <- 0\nFound <- FALSE\nWHILE Index < LENGTH(Array) AND Found = FALSE\n  IF Array[Index] = Target THEN\n    Found <- TRUE\n  ELSE\n    Index <- Index + 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Index | Array[Index] | Comparison           | Found\n1    | 0     | 23           | 23 = 15? No           | FALSE\n2    | 1     | 7            | 7 = 15? No             | FALSE\n3    | 2     | 41           | 41 = 15? No            | FALSE\n4    | 3     | 15           | 15 = 15? Yes           | TRUE\n\nThe loop stops as soon as Found becomes TRUE. Index = 3, so 15 is reported as found at index 3, after 4 comparisons."
+          "label": "Flowchart symbols and the text form used in these notes",
+          "content": "Symbol (shape)                 | Used for                         | Text form used in these notes\nTerminator (rounded / oval)    | START and END of the algorithm   | ( START )\nProcess (rectangle)            | assignment or calculation        | [ Total \u2190 Total + Mark ]\nInput/output (parallelogram)   | INPUT and OUTPUT                 | / INPUT Mark /\nDecision (diamond)             | a condition with two exits       | < Mark > 50 ? >  with Yes / No labels\nSubroutine (rectangle with     | CALL to a procedure              | [[ CALL PrintReport ]]\n  double side lines)           |                                  |\nFlow line (arrow)              | order of execution; a line that  | |  v  -->\n                               | goes back up forms a loop        |"
         }
       ]
     },
     {
-      "id": "03-binary-search",
-      "title": "Binary search",
+      "id": "10-basic-constructs",
+      "title": "The three basic constructs: sequence, selection, iteration",
       "content": [
-        "Binary search only works on data that is already sorted. It keeps track of a lower boundary (low) and an upper boundary (high) for the part of the list that could still contain the target, starting with the whole list. At each step it calculates the index midway between low and high, compares the value there with the target, and then discards half of the remaining search interval: if the target is larger, the new lower boundary moves to just past the middle; if it is smaller, the new upper boundary moves to just before the middle. This repeats, with the search interval roughly halving each time, until the target is found or the interval becomes empty (low becomes greater than high), meaning the target is not present.",
-        "Because each comparison eliminates about half of the remaining items rather than just one, binary search needs far fewer comparisons than linear search once the list is reasonably large, but this advantage only exists because the data has been sorted first."
+        "Any algorithm can be built from three constructs. Sequence means statements are executed one after another in the order written. Selection means a condition is tested and the result decides which group of statements runs; in pseudocode it is written with IF \u2026 THEN \u2026 ELSE \u2026 ENDIF for one or two choices, or CASE OF \u2026 OTHERWISE \u2026 ENDCASE when one value is compared with several options. Iteration (repetition) means a group of statements is executed more than once, using a FOR, REPEAT or WHILE loop.",
+        "Assignment, giving a variable a value with \u2190, is the basic statement placed inside these constructs; the coursebook lists it as a fourth construct. Input and output statements let the algorithm receive data and report results. Constructs can be nested: a selection inside a loop, a loop inside a selection, or one IF inside another (a nested IF)."
       ],
       "bullets": [
-        "Binary search requires the data to already be in sorted order; running it on unsorted data can give an incorrect result.",
-        "The middle index is usually calculated as mid = (low + high) DIV 2, using integer division.",
-        "A trace of a binary search should record low, high and mid at every step, along with the comparison made and the resulting narrower interval."
+        "Sequence: order of steps; selection: choose a path; iteration: repeat a block.",
+        "CASE is tidier than a long chain of nested IFs when one variable is tested against many values or ranges.",
+        "The same construct can be written in all three notations; the comparison table shows how."
       ],
       "examples": [
         {
-          "id": "03-binary-search-trace",
-          "kind": "worked",
-          "label": "Worked trace: binary search for 34",
-          "content": "Sorted array (indices 0-7): [4, 9, 15, 23, 34, 41, 56, 68]   Target: 34\n\nPseudocode:\nLow <- 0\nHigh <- LENGTH(Array) - 1\nFound <- FALSE\nWHILE Low <= High AND Found = FALSE\n  Mid <- (Low + High) DIV 2\n  IF Array[Mid] = Target THEN\n    Found <- TRUE\n  ELSE IF Array[Mid] < Target THEN\n    Low <- Mid + 1\n  ELSE\n    High <- Mid - 1\n  ENDIF\nENDWHILE\n\nTrace table:\nStep | Low | High | Mid | Array[Mid] | Comparison         | Action\n1    | 0   | 7    | 3   | 23         | 34 > 23            | Low <- Mid + 1 = 4\n2    | 4   | 7    | 5   | 41         | 34 < 41            | High <- Mid - 1 = 4\n3    | 4   | 4    | 4   | 34         | 34 = 34, Found     | Found <- TRUE\n\nThe target 34 is located at index 4 after only 3 comparisons, compared with the 5 comparisons a linear search would need checking the array from the start."
+          "id": "10-constructs-pseudocode",
+          "kind": "pseudocode",
+          "label": "The three constructs in Cambridge pseudocode",
+          "content": "// sequence\nINPUT Width\nINPUT Height\nArea \u2190 Width * Height\n\n// selection: IF\nIF Area > 100\n   THEN\n      OUTPUT \"Large\"\n   ELSE\n      OUTPUT \"Small\"\nENDIF\n\n// selection: CASE\nCASE OF Direction\n   \"N\" : OUTPUT \"North\"\n   \"S\" : OUTPUT \"South\"\n   OTHERWISE : OUTPUT \"Unknown\"\nENDCASE\n\n// iteration\nFOR Row \u2190 1 TO 3\n   OUTPUT Row\nNEXT Row",
+          "language": "cambridge-pseudocode"
         }
       ]
     },
     {
-      "id": "04-bubble-sort",
-      "title": "Bubble sort",
+      "id": "11-input-process-output",
+      "title": "Pseudocode with input, process and output",
       "content": [
-        "Bubble sort repeatedly passes through the list, comparing each pair of adjacent items and swapping them if they are in the wrong order. On each complete pass, the largest remaining unsorted value 'bubbles up' into its correct position at the end of the unsorted section. The algorithm keeps making passes until a complete pass makes no swaps at all, which proves the list is now fully sorted, so an efficient implementation uses a flag to detect this and stop early rather than always making a fixed number of passes.",
-        "Bubble sort's weakness is that, for a list of n items sorted in the worst possible starting order (fully reversed), it may need close to n passes, each comparing close to n adjacent pairs, so the total number of comparisons grows roughly with the square of the list's size."
+        "Most algorithms follow the pattern input \u2192 process \u2192 output. Inputs are the data supplied from outside, typed by a user, read from a file or taken from a sensor, and are written with INPUT. Processing is everything done to the data: calculations, comparisons, validation, counting and totalling. Outputs are the results displayed or stored, written with OUTPUT; several items can be output in one statement separated by commas.",
+        "Before writing pseudocode it helps to list the three parts separately. Every input should be used by some process, and every output should be produced by one; if not, something is missing. The worked example below reads marks until a rogue value is entered, rejects any out of range, and outputs how many were valid and their mean."
       ],
       "bullets": [
-        "A pass compares every adjacent pair from the start of the unsorted section to its end, swapping any pair that is in the wrong order.",
-        "A pass that completes with no swaps proves the list is fully sorted, so the algorithm can stop immediately rather than making further, unnecessary passes.",
-        "A trace of a bubble sort should show the complete state of the array after every pass, not only which pairs were swapped."
+        "Initialise totals and counters (usually to 0) before a loop that adds to them.",
+        "Guard against division by zero when an average could be taken of no values.",
+        "Choose a rogue value that can never be a genuine input; here -1, because marks are 0 to 100."
       ],
       "examples": [
         {
-          "id": "04-bubble-sort-trace",
+          "id": "11-ipo-table",
           "kind": "worked",
-          "label": "Worked trace: bubble sort on [5, 2, 8, 1, 4]",
-          "content": "Initial array: [5, 2, 8, 1, 4]\n\nPass 1:\nCompare 5,2 -> out of order -> swap -> [2, 5, 8, 1, 4]\nCompare 5,8 -> in order -> no swap -> [2, 5, 8, 1, 4]\nCompare 8,1 -> out of order -> swap -> [2, 5, 1, 8, 4]\nCompare 8,4 -> out of order -> swap -> [2, 5, 1, 4, 8]\nEnd of pass 1: [2, 5, 1, 4, 8]   Swapped this pass? Yes\n\nPass 2:\nCompare 2,5 -> in order -> no swap -> [2, 5, 1, 4, 8]\nCompare 5,1 -> out of order -> swap -> [2, 1, 5, 4, 8]\nCompare 5,4 -> out of order -> swap -> [2, 1, 4, 5, 8]\nCompare 5,8 -> in order -> no swap -> [2, 1, 4, 5, 8]\nEnd of pass 2: [2, 1, 4, 5, 8]   Swapped this pass? Yes\n\nPass 3:\nCompare 2,1 -> out of order -> swap -> [1, 2, 4, 5, 8]\nCompare 2,4 -> in order -> no swap\nCompare 4,5 -> in order -> no swap\nCompare 5,8 -> in order -> no swap\nEnd of pass 3: [1, 2, 4, 5, 8]   Swapped this pass? Yes\n\nPass 4:\nCompare 1,2 -> no swap\nCompare 2,4 -> no swap\nCompare 4,5 -> no swap\nCompare 5,8 -> no swap\nEnd of pass 4: [1, 2, 4, 5, 8]   Swapped this pass? No\n\nNo swaps were made in pass 4, so the array [1, 2, 4, 5, 8] is confirmed sorted and the algorithm stops."
+          "label": "Input, process and output for the class marks problem",
+          "content": "Input   | Mark, entered repeatedly; -1 ends the input (rogue value)\nProcess | reject a mark outside 0 to 100; add each valid mark to Total and add 1 to Count;\n        | after the loop, Average \u2190 Total / Count\nOutput  | a message for each rejected mark; the number of valid marks and their average,\n        | or a message if no valid marks were entered"
+        },
+        {
+          "id": "11-marks-pseudocode",
+          "kind": "pseudocode",
+          "label": "Pseudocode: average of valid marks",
+          "content": "DECLARE Mark : INTEGER\nDECLARE Total : INTEGER\nDECLARE Count : INTEGER\nDECLARE Average : REAL\nTotal \u2190 0\nCount \u2190 0\nINPUT Mark\nWHILE Mark <> -1\n   IF Mark >= 0 AND Mark <= 100\n      THEN\n         Total \u2190 Total + Mark\n         Count \u2190 Count + 1\n      ELSE\n         OUTPUT \"Mark rejected: \", Mark\n   ENDIF\n   INPUT Mark\nENDWHILE\nIF Count > 0\n   THEN\n      Average \u2190 Total / Count\n      OUTPUT Count, \" marks, average \", Average\n   ELSE\n      OUTPUT \"No valid marks\"\nENDIF",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "11-marks-trace",
+          "kind": "worked",
+          "label": "Trace table: inputs 64, 105, 80, -1",
+          "content": "Mark | Total | Count | Average | OUTPUT\n     | 0     | 0     |         |\n64   | 64    | 1     |         |\n105  |       |       |         | Mark rejected: 105\n80   | 144   | 2     |         |\n-1   |       |       | 72      | 2 marks, average 72\n\n-1 makes the WHILE condition FALSE, so the loop ends; 144 / 2 = 72. If -1 were the first input, the loop body would never run and \"No valid marks\" would be output."
         }
       ]
     },
     {
-      "id": "05-insertion-sort",
-      "title": "Insertion sort",
+      "id": "12-identifiers-and-identifier-tables",
+      "title": "Identifiers, identifier tables and assignment",
       "content": [
-        "Insertion sort builds up a sorted section of the list from left to right, one item at a time. It treats the first item as an already-sorted section of length one, then, for each following item in turn, removes it, compares it with the items already in the sorted section from right to left, shifts each larger item one place to the right to make room, and inserts the removed item into the gap that results. Unlike bubble sort, which repeatedly compares across the whole unsorted section, insertion sort only shifts items that are actually larger than the one being inserted, so it does very little work when the list is already close to sorted.",
-        "In the worst case, when the list starts in reverse order, every new item must be shifted past every item already in the sorted section, so the total number of comparisons and shifts again grows roughly with the square of the list's size; but in the best case, when the list is already sorted, each new item requires only a single comparison and no shifting at all."
+        "A variable is a named memory location holding a value that can change; its name is its identifier. Good identifiers describe their contents, such as NumberOfGuesses or TotalCost rather than N or X, which makes an algorithm self-documenting. The pseudocode guide's rules: an identifier starts with a letter and contains only letters, digits and the underscore, with no spaces; keywords such as INPUT or ENDIF cannot be used; and identifiers should be treated as case-insensitive, so never use two names that differ only in capital letters. Joining words with capitals (CamelCase) keeps long names readable.",
+        "An identifier table lists every identifier a solution needs, with its data type and a short explanation. Building it before writing pseudocode forces you to decide what data the problem really involves, and exam questions often ask for one.",
+        "Assignment uses \u2190: the expression on the right is evaluated and the result stored in the variable on the left. Count \u2190 Count + 1 updates a variable using its own old value. Copying (B \u2190 A) leaves A unchanged. Swapping two variables needs a third, temporary variable; otherwise the first copy overwrites a value that is still needed."
       ],
       "bullets": [
-        "The sorted section grows by exactly one item after each pass, from left to right through the list.",
-        "An item is only shifted if it is larger than the item being inserted; already-correct items are left untouched.",
-        "Insertion sort adapts well to data that is already nearly sorted, doing far less work than bubble sort in that situation."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-finding-a-logic-error-with-a-trace-table",
-      "title": "Using a trace table to find and correct a logic error",
-      "content": [
-        "A trace table is also the standard tool for locating a logic error: an algorithm that runs without crashing but produces an incorrect result because it does not do what its specification requires. Tracing the algorithm with a simple, known set of test data, and comparing the traced result with the result that should have been produced, shows exactly which step the algorithm diverges from the intended behaviour at, which usually points directly to the line that needs to be corrected.",
-        "A common source of this kind of error is an off-by-one mistake in a loop's starting or ending value, causing the algorithm to skip the first or last item of a list without the programmer necessarily noticing from reading the code alone."
-      ],
-      "bullets": [
-        "Choose test data with a known, easily calculated correct answer, so the traced result can be checked against it directly.",
-        "The step where the traced value first differs from what is expected identifies the specific line responsible for the error.",
-        "Correcting a logic error usually means changing a condition, a loop boundary, or an initial value, rather than restructuring the whole algorithm."
+        "Explain each identifier's purpose, not just its type: 'Count: number of valid marks entered so far'.",
+        "Use constants for fixed values, e.g. CONSTANT VATRate \u2190 0.2, so the value is changed in one place.",
+        "Declare variables with DECLARE <identifier> : <data type> (INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE)."
       ],
       "examples": [
         {
-          "id": "06-logic-error-trace",
+          "id": "12-identifier-table",
           "kind": "worked",
-          "label": "Worked trace: locating an off-by-one error in a sum algorithm",
-          "content": "Array (indices 0-3): [10, 20, 30, 40]   Intended purpose: output the sum of all four values (should be 100)\n\nGiven (buggy) pseudocode:\nTotal <- 0\nFOR Index <- 1 TO 3\n  Total <- Total + Array[Index]\nNEXT Index\nOUTPUT Total\n\nTrace table:\nStep | Index | Array[Index] | Total\n1    | 1     | 20           | 20\n2    | 2     | 30           | 50\n3    | 3     | 40           | 90\n\nOutput produced: 90\nExpected output: 100\n\nThe trace shows Array[0] = 10 is never added to Total, because the loop starts at Index <- 1 instead of Index <- 0, so the first element of the zero-indexed array is skipped.\n\nCorrection: change the loop header to FOR Index <- 0 TO 3, so every element from Array[0] to Array[3] is included in the sum."
+          "label": "Identifier table for the class marks problem (section above)",
+          "content": "Identifier | Data type | Explanation\nMark       | INTEGER   | the mark just input; -1 ends the input\nTotal      | INTEGER   | running total of the valid marks\nCount      | INTEGER   | how many valid marks have been input\nAverage    | REAL      | Total / Count, calculated after the loop"
+        },
+        {
+          "id": "12-swap-trace",
+          "kind": "worked",
+          "label": "Swapping two values with a temporary variable",
+          "content": "Pseudocode:            Trace (Left = 8, Right = 3 at the start):\nTemp \u2190 Left            Left | Right | Temp\nLeft \u2190 Right           8    | 3     |\nRight \u2190 Temp                |       | 8\n                       3    |       |\n                            | 8     |\n\nResult: Left = 3, Right = 8. Without Temp, Left \u2190 Right followed by Right \u2190 Left would leave both variables holding 3."
         }
       ]
     },
     {
-      "id": "07-comparing-algorithm-efficiency",
-      "title": "Comparing algorithm efficiency",
+      "id": "13-logic-statements",
+      "title": "Logic statements and selection",
       "content": [
-        "Comparing algorithms informally means explaining how the number of steps each one needs changes as the size of the data set grows, not simply asserting that one algorithm is 'faster'. Linear search's number of comparisons grows directly in proportion to the list's size, so searching a list ten times longer may need up to ten times as many comparisons; binary search's number of comparisons grows far more slowly, because each comparison discards about half of what remains, so a list ten times longer only needs a few more comparisons, not ten times as many. This is why binary search scales so much better than linear search as a list grows large, though it only works because the data has already been sorted, which itself has a cost.",
-        "Bubble sort becomes very slow on large lists because, in the worst case, both the number of passes and the number of comparisons within each pass grow with the size of the list, so the total work grows with the square of the list's size: doubling the list roughly quadruples the number of comparisons needed. Insertion sort has the same worst-case growth, but performs far fewer comparisons and shifts than bubble sort when the data is already close to sorted, which matters when comparing which sort is more suitable for a particular data set."
+        "A logic statement is a condition that is either TRUE or FALSE. Simple conditions compare two values with a relational operator: = equal to, <> not equal to, <, >, <= and >=. More complex conditions combine simple ones with the logical operators AND (both must be true), OR (at least one must be true) and NOT (reverses the result); brackets make the order of evaluation clear.",
+        "Writing the rules of a problem as logic statements first is a reliable way to define the selection part of an algorithm. Each statement then becomes a branch of an IF or CASE. Check that the statements cover every possible value exactly once and pay special attention to the boundaries."
       ],
       "bullets": [
-        "A useful efficiency comparison names how the number of steps grows as the data set gets larger, not just which algorithm 'wins' on one specific example.",
-        "Binary search scales much better than linear search on large lists, but requires sorted data, which linear search does not.",
-        "Bubble sort's number of comparisons grows with the square of the list's size in the worst case, making it impractical for very large, unordered lists."
+        "'Between 5 and 15 inclusive' is Age >= 5 AND Age <= 15; a range can never be written 5 <= Age <= 15 in pseudocode.",
+        "In a nested IF, earlier conditions have already filtered values, so later tests can be simpler (Age <= 15 in the ELSE branch of Age < 5).",
+        "CASE ranges are written 5 TO 15 : and OTHERWISE catches anything not listed.",
+        "Test data should include each boundary value and the values either side of it."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "13-ticket-logic",
+          "kind": "worked",
+          "label": "Logic statements for a cinema ticket price",
+          "content": "Age < 5                   \u2192 Price is 0\nAge >= 5 AND Age <= 15    \u2192 Price is 4\nAge >= 16 AND Age <= 64   \u2192 Price is 9\nAge >= 65                 \u2192 Price is 5\nEach whole-number age satisfies exactly one statement."
+        },
+        {
+          "id": "13-ticket-pseudocode",
+          "kind": "pseudocode",
+          "label": "The same rules as nested IF and as CASE",
+          "content": "INPUT Age\nIF Age < 5\n   THEN\n      Price \u2190 0\n   ELSE\n      IF Age <= 15\n         THEN\n            Price \u2190 4\n         ELSE\n            IF Age <= 64\n               THEN\n                  Price \u2190 9\n               ELSE\n                  Price \u2190 5\n            ENDIF\n      ENDIF\nENDIF\n\n// equivalent CASE (assumes Age has already been validated as >= 0)\nCASE OF Age\n   0 TO 4   : Price \u2190 0\n   5 TO 15  : Price \u2190 4\n   16 TO 64 : Price \u2190 9\n   OTHERWISE : Price \u2190 5\nENDCASE\nOUTPUT \"Price: \", Price",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "13-ticket-tests",
+          "kind": "worked",
+          "label": "Boundary test table",
+          "content": "Age | Branch taken            | Price\n4   | Age < 5                 | 0\n5   | Age <= 15               | 4\n15  | Age <= 15               | 4\n16  | Age <= 64               | 9\n64  | Age <= 64               | 9\n65  | final ELSE / OTHERWISE  | 5"
+        }
+      ]
+    },
+    {
+      "id": "14-iteration-loops",
+      "title": "Iteration: FOR, REPEAT and WHILE loops",
+      "content": [
+        "Pseudocode has three loops. A count-controlled loop, FOR Counter \u2190 Start TO End \u2026 NEXT Counter, runs a known number of times; the counter goes up by 1 automatically, or by another amount with STEP. A post-condition loop, REPEAT \u2026 UNTIL condition, tests at the end, so its body always runs at least once, and it stops when the condition becomes TRUE. A pre-condition loop, WHILE condition \u2026 ENDWHILE, tests before each pass, so its body may run zero times, and it continues while the condition is TRUE.",
+        "Choose FOR when the number of repetitions is known before the loop starts; REPEAT when the body must run at least once, as in input validation or a password prompt; WHILE when the body might not need to run at all, as with a rogue value that could be the first input. Loops can be nested, with the inner loop completing all its passes for each pass of the outer loop.",
+        "A trace table is the standard way to check a loop by hand. It has a column for each variable and for output, and a new row each time values change. Dry-running with carefully chosen data shows whether the loop stops at the right point."
+      ],
+      "bullets": [
+        "REPEAT \u2026 UNTIL stops when its condition is TRUE; WHILE continues while its condition is TRUE: the conditions are opposites.",
+        "Do not change the FOR counter inside the loop body.",
+        "Make sure something inside a REPEAT or WHILE loop can change the condition, or the loop never ends.",
+        "A combined condition such as UNTIL Correct OR Tries = 3 gives a loop two ways to stop."
+      ],
+      "examples": [
+        {
+          "id": "14-loop-examples",
+          "kind": "pseudocode",
+          "label": "One example of each loop",
+          "content": "// FOR: sum of the squares of 1 to 4\nTotal \u2190 0\nFOR Index \u2190 1 TO 4\n   Total \u2190 Total + Index * Index\nNEXT Index\nOUTPUT Total\n\n// REPEAT: up to three password attempts\nTries \u2190 0\nREPEAT\n   INPUT Attempt\n   Tries \u2190 Tries + 1\nUNTIL Attempt = \"Orange7\" OR Tries = 3\nIF Attempt = \"Orange7\"\n   THEN\n      OUTPUT \"Access granted\"\n   ELSE\n      OUTPUT \"Locked\"\nENDIF\n\n// WHILE: years for 1000 to reach 2000 at 20% growth a year\nBalance \u2190 1000\nYears \u2190 0\nWHILE Balance < 2000\n   Balance \u2190 Balance * 1.2\n   Years \u2190 Years + 1\nENDWHILE\nOUTPUT Years",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "14-loop-traces",
+          "kind": "worked",
+          "label": "Trace tables for the three loops",
+          "content": "FOR loop                 REPEAT loop (inputs \"apple\", \"Orange7\")\nIndex | Total            Attempt   | Tries | OUTPUT\n      | 0                          | 0     |\n1     | 1                \"apple\"   | 1     |\n2     | 5                \"Orange7\" | 2     | Access granted\n3     | 14\n4     | 30               With inputs \"a\", \"b\", \"c\" the loop stops\nOUTPUT 30                because Tries = 3, and \"Locked\" is output.\n\nWHILE loop\nBalance | Years | Balance < 2000?\n1000    | 0     | TRUE\n1200    | 1     | TRUE\n1440    | 2     | TRUE\n1728    | 3     | TRUE\n2073.6  | 4     | FALSE \u2192 loop ends, OUTPUT 4"
+        },
+        {
+          "id": "14-digits-trace",
+          "kind": "worked",
+          "label": "Why REPEAT suits counting digits",
+          "content": "INPUT Number\nDigits \u2190 0\nREPEAT\n   Number \u2190 Number DIV 10\n   Digits \u2190 Digits + 1\nUNTIL Number = 0\nOUTPUT Digits\n\nNumber | Digits\n4072   | 0\n407    | 1\n40     | 2\n4      | 3\n0      | 4      \u2192 OUTPUT 4\n\nWritten as WHILE Number > 0 instead, an input of 0 would skip the loop and output 0 digits; REPEAT guarantees one pass and correctly gives 1."
+        }
+      ]
+    },
+    {
+      "id": "15-pseudocode-from-structured-english-and-flowcharts",
+      "title": "Writing pseudocode from structured English and from a flowchart",
+      "content": [
+        "To turn structured English into pseudocode, first build an identifier table from the nouns in the description (the data), then translate each statement into the matching construct: INPUT and OUTPUT stay as they are, calculations become assignments, 'if' becomes IF \u2026 ENDIF, and 'repeat' becomes whichever loop fits how the repetition ends. Add anything the English leaves implicit, such as setting a total to zero before the loop.",
+        "To turn a flowchart into pseudocode, follow the arrows from START. Parallelograms become INPUT or OUTPUT, rectangles become assignments and diamonds become conditions. A diamond whose arrow goes back up the chart is a loop: if the test comes before the body it is a WHILE loop; if the body comes first and the test is at the bottom it is a REPEAT \u2026 UNTIL loop. A diamond whose two paths rejoin further down is an IF."
+      ],
+      "bullets": [
+        "Check the loop condition's direction: a flowchart that loops back on 'No' to 'Count = 9?' becomes UNTIL Count = 9.",
+        "Keep the flowchart's identifiers exactly; examiners check they are used consistently.",
+        "Dry-run the pseudocode with the same data as the flowchart to confirm they agree."
+      ],
+      "examples": [
+        {
+          "id": "15-loyalty-structured-english",
+          "kind": "worked",
+          "label": "From structured English: loyalty points",
+          "content": "Structured English:\nSET total points to zero\nINPUT amount spent\nWHILE amount is not zero\n   CALCULATE points as the number of whole tens in the amount\n   IF amount is 100 or more THEN DOUBLE the points\n   ADD points to total points\n   INPUT next amount\nOUTPUT total points\n\nIdentifier table:\nIdentifier  | Data type | Explanation\nAmount      | INTEGER   | amount spent on one purchase; 0 ends the input\nPoints      | INTEGER   | points for the current purchase\nTotalPoints | INTEGER   | running total of points"
+        },
+        {
+          "id": "15-loyalty-pseudocode",
+          "kind": "pseudocode",
+          "label": "Pseudocode for the loyalty points description",
+          "content": "DECLARE Amount : INTEGER\nDECLARE Points : INTEGER\nDECLARE TotalPoints : INTEGER\nTotalPoints \u2190 0\nINPUT Amount\nWHILE Amount <> 0\n   Points \u2190 Amount DIV 10\n   IF Amount >= 100\n      THEN\n         Points \u2190 Points * 2\n   ENDIF\n   TotalPoints \u2190 TotalPoints + Points\n   INPUT Amount\nENDWHILE\nOUTPUT \"Points earned: \", TotalPoints",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "15-loyalty-trace",
+          "kind": "worked",
+          "label": "Trace table: inputs 45, 120, 9, 0",
+          "content": "Amount | Points | TotalPoints | OUTPUT\n       |        | 0           |\n45     | 4      | 4           |\n120    | 24     | 28          |   (120 DIV 10 = 12, doubled)\n9      | 0      | 28          |\n0      |        |             | Points earned: 28"
+        },
+        {
+          "id": "15-factorial-flowchart",
+          "kind": "worked",
+          "label": "From a flowchart: factorial of N",
+          "content": "          ( START )\n              |\n         / INPUT N /\n              |\n      [ Result \u2190 1  ]\n      [ Counter \u2190 1 ]\n              |\n   +--------->|\n   |          v\n   |   < Counter <= N ? > --No--> / OUTPUT Result / --> ( END )\n   |          | Yes\n   |  [ Result \u2190 Result * Counter ]\n   |  [ Counter \u2190 Counter + 1     ]\n   |          |\n   +----------+\n\nThe test comes before the body and the arrow returns above it, so this is a pre-condition (WHILE) loop."
+        },
+        {
+          "id": "15-factorial-pseudocode",
+          "kind": "pseudocode",
+          "label": "Pseudocode written from the factorial flowchart",
+          "content": "DECLARE N : INTEGER\nDECLARE Result : INTEGER\nDECLARE Counter : INTEGER\nINPUT N\nResult \u2190 1\nCounter \u2190 1\nWHILE Counter <= N\n   Result \u2190 Result * Counter\n   Counter \u2190 Counter + 1\nENDWHILE\nOUTPUT Result",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "15-factorial-trace",
+          "kind": "worked",
+          "label": "Trace table: N = 4",
+          "content": "N | Counter | Result | Counter <= N? | OUTPUT\n4 | 1       | 1      | TRUE          |\n  | 2       | 1      | TRUE          |\n  | 3       | 2      | TRUE          |\n  | 4       | 6      | TRUE          |\n  | 5       | 24     | FALSE         | 24\n\n4! = 1 \u00d7 2 \u00d7 3 \u00d7 4 = 24."
+        }
+      ]
+    },
+    {
+      "id": "16-flowcharts-from-structured-english-and-pseudocode",
+      "title": "Drawing a flowchart from structured English and from pseudocode",
+      "content": [
+        "Drawing a flowchart is the reverse process: give each statement its standard shape and join them in execution order. Start and finish with terminators. Each INPUT or OUTPUT becomes a parallelogram and each assignment a rectangle. Each IF becomes a diamond whose Yes and No paths rejoin after the ENDIF. A CALL becomes a subroutine box.",
+        "Loops are drawn with a decision and an arrow going back. For WHILE, the diamond sits before the body and the 'continue' exit leads into the body. For REPEAT \u2026 UNTIL, the body comes first and the diamond sits after it, with the exit for 'condition FALSE' going back to the top of the body. For FOR, draw the counter being set, a diamond testing whether it has passed the end value, and a rectangle adding 1 at the end of the body."
+      ],
+      "bullets": [
+        "Label both exits of every diamond.",
+        "One START and one END; every path must reach END.",
+        "Keep the same identifiers and conditions as the source so the two versions can be checked against each other."
+      ],
+      "examples": [
+        {
+          "id": "16-heater-flowchart",
+          "kind": "worked",
+          "label": "Flowchart from structured English: heater control",
+          "content": "Structured English:\nINPUT the room temperature\nIF the temperature is below 18 THEN switch the heater on\nOTHERWISE switch the heater off\n\n              ( START )\n                  |\n            / INPUT Temp /\n                  |\n            < Temp < 18 ? >\n           Yes |        | No\n   [ Heater \u2190 TRUE ]  [ Heater \u2190 FALSE ]\n               |        |\n               +---+----+\n                   |\n                ( END )\n\nTests: Temp = 17 gives Heater TRUE; Temp = 18 gives Heater FALSE (18 is not below 18)."
+        },
+        {
+          "id": "16-password-flowchart",
+          "kind": "worked",
+          "label": "Flowchart from pseudocode: the REPEAT password loop",
+          "content": "              ( START )\n                  |\n           [ Tries \u2190 0 ]\n                  |\n   +------------->|\n   |              v\n   |       / INPUT Attempt /\n   |              |\n   |      [ Tries \u2190 Tries + 1 ]\n   |              |\n   |  < Attempt = \"Orange7\" OR Tries = 3 ? >\n   +------No------+\n                  | Yes\n        < Attempt = \"Orange7\" ? >\n        Yes |              | No\n / OUTPUT \"Access granted\" /  / OUTPUT \"Locked\" /\n            |              |\n            +------+-------+\n                   |\n                ( END )\n\nThe body is drawn before the test, which is what makes this a post-condition loop."
+        }
+      ]
+    },
+    {
+      "id": "17-stepwise-refinement",
+      "title": "Stepwise refinement",
+      "content": [
+        "Stepwise refinement takes an outline solution, a handful of broad steps, and repeatedly rewrites each step as a list of smaller, more exact steps. It stops when every step is a single input, output, assignment, selection or loop, so the result can be typed straight into a programming language. Numbering the levels (1, then 1.1, 1.2, then 1.2.1 \u2026) shows which step each detail came from.",
+        "It is the algorithm-level version of decomposition from 9.1. Decomposition splits the problem into modules; stepwise refinement adds detail to the steps inside them. The refinements also reveal decisions the outline hid, such as how invalid input is handled or when a loop ends."
+      ],
+      "bullets": [
+        "Refine one step at a time and keep the higher-level step as a comment, so the design remains readable.",
+        "A step is detailed enough when it maps to one pseudocode construct without further explanation.",
+        "Refinement often uncovers extra identifiers; add them to the identifier table as they appear."
+      ],
+      "examples": [
+        {
+          "id": "17-grades-refinement",
+          "kind": "worked",
+          "label": "Refining 'grade a class and count the passes'",
+          "content": "Level 1 (outline):\n1 Set up: input the class size, set the pass count to 0\n2 For each student: get a mark, grade it, output the grade, update the pass count\n3 Output the number of passes\n\nLevel 2 (refining step 2):\n2.1 Input a mark, repeating until it is between 0 and 100\n2.2 Decide the grade: 70 or more is Distinction, 40 to 69 is Pass, below 40 is Fail\n2.3 Output the student number and grade\n2.4 If the mark is 40 or more, add 1 to the pass count\n\nLevel 3 (refining 2.1 and 2.2 into constructs):\n2.1.1 REPEAT INPUT Mark UNTIL Mark >= 0 AND Mark <= 100\n2.2.1 IF Mark >= 70 THEN Distinction\n2.2.2 ELSE IF Mark >= 40 THEN Pass\n2.2.3 ELSE Fail"
+        },
+        {
+          "id": "17-grades-pseudocode",
+          "kind": "pseudocode",
+          "label": "Final pseudocode after refinement",
+          "content": "DECLARE ClassSize : INTEGER\nDECLARE Student : INTEGER\nDECLARE Mark : INTEGER\nDECLARE Passes : INTEGER\nDECLARE Grade : STRING\n// 1 set up\nPasses \u2190 0\nINPUT ClassSize\n// 2 each student\nFOR Student \u2190 1 TO ClassSize\n   REPEAT                                 // 2.1\n      INPUT Mark\n   UNTIL Mark >= 0 AND Mark <= 100\n   IF Mark >= 70                          // 2.2\n      THEN\n         Grade \u2190 \"Distinction\"\n      ELSE\n         IF Mark >= 40\n            THEN\n               Grade \u2190 \"Pass\"\n            ELSE\n               Grade \u2190 \"Fail\"\n         ENDIF\n   ENDIF\n   OUTPUT Student, \": \", Grade             // 2.3\n   IF Mark >= 40                          // 2.4\n      THEN\n         Passes \u2190 Passes + 1\n   ENDIF\nNEXT Student\n// 3 report\nOUTPUT \"Passes: \", Passes",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "17-grades-trace",
+          "kind": "worked",
+          "label": "Trace table: ClassSize 3, marks 72, 150 (rejected), 45, 38",
+          "content": "ClassSize | Student | Mark | Grade       | Passes | OUTPUT\n3         |         |      |             | 0      |\n          | 1       | 72   | Distinction | 1      | 1: Distinction\n          | 2       | 150  |             |        |   (UNTIL is FALSE, input again)\n          |         | 45   | Pass        | 2      | 2: Pass\n          | 3       | 38   | Fail        | 2      | 3: Fail\n          |         |      |             |        | Passes: 2"
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Searching and sorting algorithms compared",
+    "title": "The same constructs in structured English, pseudocode and a flowchart",
     "columns": [
-      "Algorithm",
-      "Requires sorted data?",
-      "How it works",
-      "Efficiency on a large list"
+      "Construct",
+      "Structured English",
+      "Pseudocode",
+      "Flowchart"
     ],
     "rows": [
       [
-        "Linear search",
-        "No",
-        "Checks each item in turn, from the start, until the target is found or the list is exhausted",
-        "Number of comparisons grows in direct proportion to the list's size"
+        "Assignment / sequence",
+        "SET Total TO 0, then ADD Mark TO Total",
+        "Total \u2190 0 then Total \u2190 Total + Mark",
+        "Rectangles joined top to bottom by arrows"
       ],
       [
-        "Binary search",
-        "Yes",
-        "Repeatedly compares the target with the middle item and discards the half that cannot contain it",
-        "Number of comparisons grows very slowly as the list gets larger, far better than linear search"
+        "Input / output",
+        "INPUT the mark; OUTPUT the average",
+        "INPUT Mark / OUTPUT \"Average: \", Average",
+        "Parallelogram"
       ],
       [
-        "Bubble sort",
-        "No (sorts unsorted data)",
-        "Repeatedly swaps adjacent out-of-order pairs until a complete pass makes no swaps",
-        "Becomes very slow on large lists; work grows roughly with the square of the list's size"
+        "Selection",
+        "IF the mark is 40 or more THEN \u2026 OTHERWISE \u2026",
+        "IF Mark >= 40 THEN \u2026 ELSE \u2026 ENDIF, or CASE OF \u2026 OTHERWISE \u2026 ENDCASE",
+        "Diamond with labelled Yes/No exits that rejoin"
       ],
       [
-        "Insertion sort",
-        "No (sorts unsorted data)",
-        "Builds a sorted section by inserting each new item into its correct position among the items already sorted",
-        "Same worst-case growth as bubble sort, but far faster on data that is already close to sorted"
+        "Iteration",
+        "REPEAT \u2026 UNTIL the mark is valid; WHILE there are marks left \u2026",
+        "FOR \u2026 TO \u2026 NEXT, REPEAT \u2026 UNTIL, WHILE \u2026 ENDWHILE",
+        "Diamond with an arrow looping back to an earlier step"
+      ],
+      [
+        "Strength",
+        "Quick to write, readable by non-programmers",
+        "Precise and closest to program code",
+        "Shows branches and loops visually"
+      ],
+      [
+        "Weakness",
+        "Can be ambiguous; not detailed enough to code from",
+        "Must follow the syntax conventions",
+        "Hard to draw and follow for long algorithms"
       ]
     ]
   },
   "diagram": {
-    "title": "Binary search: repeatedly halving the search interval",
+    "title": "From problem statement to a programmable algorithm",
     "type": "flow",
     "nodes": [
-      "Set Low to 0 and High to the index of the last item",
-      "While Low <= High and the target has not been found",
-      "Calculate Mid as (Low + High) DIV 2",
-      "If Array[Mid] equals the target, it is found",
-      "If the target is larger, set Low to Mid + 1; if smaller, set High to Mid - 1",
-      "If Low becomes greater than High, the target is not present"
+      "Identify inputs, processing and outputs",
+      "Write an outline in structured English",
+      "Build an identifier table",
+      "Refine each step (stepwise refinement)",
+      "Express it in pseudocode or a flowchart using sequence, selection and iteration",
+      "Dry-run with a trace table, including boundary and rogue values",
+      "Detail is sufficient to program"
     ]
   },
   "analysisChains": [
     {
-      "title": "Choosing between linear and binary search as a customer list grows",
+      "title": "Choosing the right loop for input validation",
       "steps": [
-        "A customer list of 50 records is searched using linear search, needing up to 50 comparisons in the worst case",
-        "The list grows to 50,000 records as the business expands",
-        "Searched with linear search, the worst-case number of comparisons grows in direct proportion, up to 50,000",
-        "If the list is instead kept sorted, a binary search of the same 50,000 records needs only around 17 comparisons in the worst case, since each comparison discards about half of what remains"
+        "A mark must be input and re-input until it lies between 0 and 100",
+        "The input must happen at least once, whatever the value",
+        "A REPEAT \u2026 UNTIL loop runs its body before testing, so it always asks at least once",
+        "The condition is written as the valid state: UNTIL Mark >= 0 AND Mark <= 100"
       ],
-      "evaluation": "Binary search's comparisons grow far more slowly than linear search's as the list gets larger, but this advantage depends entirely on the list being kept sorted, which linear search does not require and binary search cannot work without."
+      "evaluation": "Matching the loop to how the repetition behaves avoids duplicated INPUT statements; a WHILE version would need an INPUT before the loop and another inside it, with the opposite condition."
     },
     {
-      "title": "Diagnosing an incompletely sorted bubble sort result",
+      "title": "Turning rules into logic statements before coding",
       "steps": [
-        "A bubble sort is traced on the array [4, 1, 3, 2] using an inner loop that only compares indices 0 and 1 on every pass",
-        "The trace shows index 0 and 1 becoming correctly ordered after the first pass",
-        "The trace shows the value at index 3 never being compared with, or swapped past, the value at index 2",
-        "The array output at the end of the trace is left partially unsorted, with the last two items still in the wrong order"
+        "A problem states four ticket prices for age bands",
+        "Each band is written as a logic statement with explicit boundaries using AND",
+        "The statements are checked to cover every age exactly once",
+        "They are converted into a nested IF or a CASE with ranges, then tested at 4, 5, 15, 16, 64 and 65"
       ],
-      "evaluation": "The trace reveals the inner loop's comparison range is too narrow to reach every adjacent pair in the list; correcting it to compare every adjacent pair up to the current unsorted boundary allows every out-of-order pair to be swapped into place."
+      "evaluation": "Defining the conditions as logic statements first exposes gaps and overlaps before any code is written, and tells you exactly which boundary values to test."
     },
     {
-      "title": "Deciding between insertion sort and bubble sort for a nearly sorted list",
+      "title": "Why stepwise refinement produces programmable detail",
       "steps": [
-        "A list of 1,000 items is already sorted except for a single item that is out of place near the start",
-        "Traced with insertion sort, most items require only one comparison against the sorted section and no shifting at all",
-        "Traced with bubble sort, a full pass still compares every adjacent pair in the list regardless of how few items are actually out of place",
-        "Both algorithms are compared on the total number of comparisons each performs for this specific, nearly sorted list"
+        "The outline says 'grade each student', which cannot be coded directly",
+        "Refinement splits it into input with validation, deciding the grade, output and counting",
+        "Each sub-step is refined again until it is one construct, such as a REPEAT or a nested IF",
+        "The final pseudocode maps line for line onto program code"
       ],
-      "evaluation": "Insertion sort adapts to data that is already close to sorted by doing very little extra work, while bubble sort's basic form performs a full pass of comparisons across the whole list even when very few items are out of place, making insertion sort the better choice here despite both having the same worst-case growth."
+      "evaluation": "Refinement turns a vague outline into exact steps and brings hidden decisions to the surface, such as how invalid marks are handled, which would otherwise surface as bugs during coding."
     }
   ],
   "examTips": [
-    "In a trace table question, give every variable its own column and add a new row every time any variable's value changes, including loop counters.",
-    "When describing binary search, state explicitly that the data must be sorted first; this precondition is a common mark point on its own.",
-    "When tracing a sort, show the full state of the array after each pass or each comparison, not just a description of which items were swapped.",
-    "When comparing algorithm efficiency, explain how the number of steps changes as the data set grows larger, rather than only stating which algorithm is 'better'."
+    "Use \u2190 for assignment and = only in conditions; close every block with its matching keyword (ENDIF, ENDCASE, NEXT <counter>, UNTIL, ENDWHILE).",
+    "When asked for an identifier table, give a meaningful identifier, a data type and a clear explanation for every variable the algorithm uses.",
+    "When converting a flowchart, check where the decision sits relative to the loop body: test first means WHILE, test last means REPEAT \u2026 UNTIL; UNTIL takes the opposite condition to WHILE.",
+    "Initialise totals and counters before loops, and output results after the loop unless the question asks for output on every pass.",
+    "Dry-run your own answer with a boundary value and a rogue value before moving on: it is the quickest way to catch an off-by-one or never-ending loop."
   ],
   "commonMistakes": [
-    "Leaving a variable out of a trace table, or failing to add a new row when that variable's value changes.",
-    "Applying binary search to data that has not been confirmed to be sorted.",
-    "Recalculating Mid as (Low + High) / 2 without integer division, giving a non-integer index.",
-    "Describing bubble sort as stopping after a fixed number of passes, rather than stopping when a complete pass makes no swaps.",
-    "Claiming an algorithm is simply 'faster' without explaining how its number of steps grows as the size of the data increases."
+    "Writing a range as 5 <= Age <= 15 instead of Age >= 5 AND Age <= 15.",
+    "Using = for assignment, or writing Count + 1 on its own line without assigning it back to Count.",
+    "Reversing a loop condition when converting between WHILE and REPEAT \u2026 UNTIL.",
+    "Forgetting to initialise a running total, or resetting it inside the loop so it never accumulates.",
+    "Processing the rogue value as data, for example adding -1 into the total before the loop checks for it.",
+    "Drawing a decision diamond with unlabelled exits, or a flowchart path that never reaches END."
   ],
   "quickRecall": [
     {
-      "question": "What is a trace table used for?",
-      "answer": "To test an algorithm by hand, recording the value of every variable at each step where it changes, so the algorithm's behaviour can be checked without running it as code."
+      "question": "What is an algorithm?",
+      "answer": "A finite set of exact steps, carried out in a fixed order, that solves a problem."
     },
     {
-      "question": "Does linear search require sorted data?",
-      "answer": "No; it checks each item in turn from the start and works correctly on data in any order."
+      "question": "What three things does an identifier table record?",
+      "answer": "Each identifier's name, its data type and an explanation of what it stores or does."
     },
     {
-      "question": "What does binary search do at each step?",
-      "answer": "It compares the target with the middle item of the current search interval and discards the half of the interval that cannot contain the target."
+      "question": "Name the three basic constructs.",
+      "answer": "Sequence, selection and iteration (repetition)."
     },
     {
-      "question": "When does a bubble sort stop?",
-      "answer": "When a complete pass through the list makes no swaps, which proves the list is fully sorted."
+      "question": "Which loop always runs its body at least once?",
+      "answer": "REPEAT \u2026 UNTIL (a post-condition loop)."
     },
     {
-      "question": "How does insertion sort place a new item?",
-      "answer": "It shifts the items in the already-sorted section that are larger than the new item one place to the right, then inserts the new item into the resulting gap."
+      "question": "When should you use a FOR loop?",
+      "answer": "When the number of repetitions is known before the loop starts."
     },
     {
-      "question": "How is a logic error located using a trace table?",
-      "answer": "By tracing the algorithm with test data that has a known correct result and finding the exact step where the traced value first diverges from what is expected."
+      "question": "How is 'between 13 and 19 inclusive' written as a logic statement?",
+      "answer": "Age >= 13 AND Age <= 19"
     },
     {
-      "question": "Why does binary search scale better than linear search on a large list?",
-      "answer": "Each comparison in binary search discards about half of the remaining data, so the number of comparisons needed grows far more slowly than linear search's, which grows in direct proportion to the list's size."
+      "question": "What is a rogue value?",
+      "answer": "A value of the right data type but outside the normal range, used only to mark the end of input, such as -1 for marks."
     },
     {
-      "question": "Why does bubble sort become very slow on a large list?",
-      "answer": "In the worst case both the number of passes and the number of comparisons per pass grow with the list's size, so the total work grows roughly with the square of the list's size."
+      "question": "What is stepwise refinement?",
+      "answer": "Repeatedly breaking each step of an outline solution into smaller steps until each can be programmed directly."
     }
   ],
   "relatedTopics": [
     "9.1",
+    "10.1",
+    "10.2",
+    "11.1",
     "11.2",
-    "19.1",
-    "19.2"
+    "12.3"
   ]
 }
