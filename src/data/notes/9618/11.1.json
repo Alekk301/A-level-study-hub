@@ -6,292 +6,420 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Programming Basics",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to write or complete short pseudocode fragments that declare variables and constants, assign and combine values with the correct arithmetic and string operators, and produce the correct output. Answers score when a variable or constant is declared with an appropriate, meaningful identifier, when the assignment operator <- is used correctly and never confused with the equality comparison =, when an expression's value is evaluated in the correct operator precedence order (using brackets where needed), and when a value entered with INPUT is explicitly converted to the right data type before it is used in a calculation.",
+  "overview": "Topic 9.2 is about designing an algorithm; this topic is about writing its statements correctly. Paper 2 expects fluent Cambridge pseudocode for declaring variables and constants, assigning values with ←, building expressions from arithmetic, relational and logical operators, reading input and producing output, and calling built-in functions such as LENGTH, MID, STR_TO_NUM, INT and RAND. You must also be able to turn a program flowchart or a structured English description into working pseudocode. Marks are lost for using = where ← is needed, for ignoring operator precedence, for confusing / with DIV, for counting string positions from 0 instead of 1, and for treating text as a number without converting it. The string functions are always printed in the exam insert, and any other function you need will be described in the question.",
   "syllabusPoints": [
-    "Show understanding of the difference between a variable, whose value can change while a program runs, and a constant, whose value is fixed for the whole program once declared with CONSTANT.",
-    "Use appropriate, meaningful identifiers for variables and constants, following the naming rules of the language being used.",
-    "Use the assignment statement (<-) to store a value in a variable, and distinguish assignment from the equality comparison (=) used in a condition.",
-    "Use INPUT to read a value from the user into a variable, and OUTPUT to display a value.",
-    "Use arithmetic operators (+, -, *, /, DIV, MOD, ^) correctly, applying the standard order of operator precedence and using brackets to override it where needed.",
-    "Use basic string-handling operations, including LENGTH, LEFT, RIGHT, MID, concatenation with &, and converting between a string and a number."
+    "Implement and write pseudocode from a given design presented as either a program flowchart or structured English.",
+    "Write pseudocode statements for the declaration and initialisation of constants.",
+    "Write pseudocode statements for the declaration of variables.",
+    "Write pseudocode statements for the assignment of values to variables.",
+    "Write pseudocode statements for expressions involving any of the arithmetic or logical operators, including DIV, MOD, relational operators, AND, OR and NOT, and the order of precedence.",
+    "Write pseudocode statements for input from the keyboard and output to the console.",
+    "Use built-in functions and library routines (any functions not given in the pseudocode guide will be provided; string manipulation functions will always be given)."
   ],
   "definitions": [
     {
       "term": "Variable",
-      "definition": "A named storage location in memory whose value can be read and changed while the program runs; a variable is declared before use, typically with DECLARE identifier : datatype."
+      "definition": "A named location in memory whose contents may change while the program runs. In pseudocode it is declared with DECLARE <identifier> : <data type> before it is used."
     },
     {
       "term": "Constant",
-      "definition": "A named value that is fixed for the entire run of a program once declared, using CONSTANT identifier = value; unlike a variable, a constant's value cannot be changed while the program is running."
+      "definition": "A named value that is set once, when it is declared, and never altered while the program runs, for example CONSTANT Pi ← 3.142. It makes code easier to read and means the value only has to be edited in one place."
     },
     {
-      "term": "Identifier",
-      "definition": "The name given to a variable, constant, procedure or function; a well-chosen identifier is meaningful (describes what it holds or does) and follows the naming rules of the language, such as containing no spaces."
+      "term": "Declaration",
+      "definition": "A statement that introduces an identifier and states its data type, so that the translator knows how much memory to reserve and which operations are allowed on it."
     },
     {
-      "term": "Assignment statement",
-      "definition": "A statement, written using <- in this specification's pseudocode, that stores the value on the right-hand side into the variable named on the left-hand side, overwriting whatever value that variable held before."
+      "term": "Assignment",
+      "definition": "A statement of the form <identifier> ← <expression>: the right-hand side is evaluated first and the result is then stored in the variable on the left, replacing its previous value."
     },
     {
-      "term": "Equality comparison",
-      "definition": "An operator, written =, that tests whether two values are equal, producing TRUE or FALSE; used inside a condition (such as IF or WHILE), it does not change either value, unlike the assignment operator <-."
+      "term": "Expression",
+      "definition": "A combination of values, identifiers, operators and function calls that evaluates to a single value, such as Price * Quantity or Age >= 18 AND Member."
     },
     {
-      "term": "DIV and MOD",
-      "definition": "Integer arithmetic operators: DIV performs division and discards any remainder, returning only the whole-number quotient; MOD returns only the remainder left over after that same integer division."
+      "term": "Integer division (DIV) and modulus (MOD)",
+      "definition": "DIV gives the whole-number part of a division and discards the remainder (17 DIV 5 = 3); MOD gives only the remainder (17 MOD 5 = 2). The exam insert may also show them as functions, DIV(17, 5) and MOD(17, 5)."
     },
     {
-      "term": "Operator precedence",
-      "definition": "The fixed order in which the operators within an expression are evaluated when no brackets are present: ^ (exponent) first, then * / DIV MOD, then + -, evaluated left to right within the same level; brackets are used to force a different order."
+      "term": "Rules of precedence",
+      "definition": "The fixed order in which the operators in an expression are applied when there are no brackets: brackets, then ^, then * / DIV MOD, then + and -, then the relational operators, then NOT, AND and finally OR. Equal-priority operators are applied left to right."
     },
     {
-      "term": "Concatenation",
-      "definition": "Joining two or more strings together end to end to form one longer string, written using the & operator in this specification's pseudocode."
+      "term": "Relational and logical operators",
+      "definition": "Relational operators (= <> < > <= >=) compare two values and give TRUE or FALSE. Logical (Boolean) operators AND, OR and NOT combine or reverse those TRUE/FALSE results."
+    },
+    {
+      "term": "Built-in function",
+      "definition": "A subroutine supplied with the language, such as LENGTH or INT, that can be called without being written by the programmer and returns a value."
+    },
+    {
+      "term": "Library routine",
+      "definition": "A pre-written, pre-tested subroutine stored in a library (module) that a program can import and call, such as a random-number generator; it saves development time and is usually reliable."
     }
   ],
   "sections": [
     {
       "id": "01-variables-and-constants",
-      "title": "Variables and constants",
+      "title": "Declaring variables and constants",
       "content": [
-        "A variable is a named storage location whose value can change while a program runs, such as a running total that increases each time a new value is added to it. It is declared before use, stating its identifier and data type, for example DECLARE Total : INTEGER, and its value is then set or changed with assignment statements as the program executes. A constant, by contrast, is a named value that must stay fixed for the whole program once it has been declared, using CONSTANT identifier = value, for example CONSTANT VATRate = 0.2; a constant is used for a value that the program relies on repeatedly but which should never be accidentally changed while the program runs, such as a fixed tax rate or the number of days in a week."
+        "A variable must be declared before it is used. The Cambridge form is DECLARE <identifier> : <data type>, where the type is one of INTEGER, REAL, CHAR, STRING, BOOLEAN or DATE. Several variables of the same type can share one line, as in DECLARE Tries, Score : INTEGER. Declaring the type lets a compiled language reserve the right amount of memory and reject operations that make no sense, such as multiplying a string. Python is the exception among the exam languages: it has no declaration statement, and a variable comes into existence when it is first assigned, so good practice is a comment listing each variable and its intended type.",
+        "A constant is declared and given its value in a single statement: CONSTANT <identifier> ← <value>, for example CONSTANT Pi ← 3.142 or CONSTANT MaxTries ← 3. The current pseudocode guide uses the arrow; older books, including the coursebook, write CONSTANT Pi = 3.14, and examiners accept either form. A constant is never the target of a later assignment. Using one has two advantages that exam questions ask for: a meaningful name such as VATRate explains the purpose of a number that would otherwise appear unexplained, and if the value changes (a new tax rate) it is edited in one place rather than hunted down throughout the program.",
+        "Identifiers should describe what they hold (TotalCost, not T). They start with a letter, contain only letters, digits and underscores, and must not be keywords. Identifier tables and naming rules are covered in more depth in 9.2."
       ],
       "bullets": [
-        "A variable's value can be read and changed as many times as needed while the program runs; a constant's value is fixed from the point it is declared.",
-        "DECLARE identifier : datatype declares a variable; CONSTANT identifier = value declares a constant and gives it its one, unchanging value at the same time.",
-        "Using a constant for a value that should never change (such as a tax rate) makes it impossible to accidentally overwrite that value elsewhere in the program."
+        "Variable: DECLARE Score : INTEGER. Constant: CONSTANT MaxScore ← 100 (older texts: CONSTANT MaxScore = 100).",
+        "A constant is initialised in its declaration; a variable is initialised by a separate assignment such as Score ← 0.",
+        "Python has no DECLARE and no enforced constant: by convention a constant is written in capitals (PI = 3.142) and simply never reassigned.",
+        "VB.NET uses Dim Score As Integer and Const Pi = 3.142; Java uses int score; and static final double PI = 3.142;"
       ],
-      "examples": []
-    },
-    {
-      "id": "02-choosing-identifiers",
-      "title": "Choosing appropriate identifiers",
-      "content": [
-        "An identifier is the name given to a variable, constant, procedure or function. A well-chosen identifier is meaningful, describing what the item actually holds or does, such as StudentAge rather than a vague name like X or a single letter, so that the program's purpose is clear to anyone reading it later, including the programmer themselves. An identifier must also follow the naming rules of the language being used, which commonly include starting with a letter, containing no spaces, and avoiding characters that are reserved for other purposes, such as punctuation used in the language's own syntax."
-      ],
-      "bullets": [
-        "A meaningful identifier, such as TotalScore, makes a program's purpose clear without needing extra comments to explain it.",
-        "Identifiers in this specification's pseudocode cannot contain spaces; a multi-word name is usually written by joining the words, such as StudentName.",
-        "Two different variables in the same program must always be given different identifiers, since the identifier is what a statement uses to refer to a specific variable."
-      ],
-      "examples": []
+      "examples": [
+        {
+          "id": "01-declarations-pseudocode",
+          "kind": "pseudocode",
+          "label": "Declarations and initialisation",
+          "language": "cambridge-pseudocode",
+          "content": "CONSTANT Pi ← 3.142\nCONSTANT MaxTries ← 3\n\nDECLARE Radius, Area : REAL\nDECLARE PlayerName : STRING\nDECLARE Tries, Score : INTEGER\nDECLARE Finished : BOOLEAN\n\nRadius ← 2.5\nArea ← Pi * Radius ^ 2      // 3.142 * 6.25 = 19.6375\nTries ← 0\nFinished ← FALSE"
+        }
+      ]
     },
     {
       "id": "03-assignment-versus-equality",
-      "title": "Assignment versus equality comparison",
+      "title": "Assignment",
       "content": [
-        "The assignment statement, written with <- in this specification's pseudocode, stores the value on its right-hand side into the variable named on its left-hand side, overwriting any value that variable held before; for example, Total <- Total + 10 reads Total's current value, adds 10 to it, and stores the result back into Total. This is a different operation from the equality comparison, written with =, which tests whether two values are equal and produces TRUE or FALSE without changing either value; = is used inside a condition, such as IF Total = 100 THEN, to check Total's current value rather than to change it.",
-        "Confusing these two operators is a common and serious error: writing IF Total <- 100 THEN would assign 100 to Total rather than checking whether it already equals 100, silently changing the program's data instead of testing it."
+        "An assignment is written <identifier> ← <expression>. The computer works out the value of the whole right-hand side using the current contents of any variables in it, and only then stores the answer in the variable on the left. This is why Count ← Count + 1 is perfectly sensible: the old value of Count is read, one is added, and the result overwrites Count. The left-hand side must always be a single variable (or an array element); an expression such as A + 1 ← B is meaningless.",
+        "In pseudocode the arrow is used only for assignment, and = is used only to compare two values inside a condition, for example IF Count = 10. The two cannot be swapped. Python, VB.NET and Java all use = for assignment, which is why the arrow is needed in pseudocode to keep the two meanings apart; Python and Java then use == for comparison. Many languages allow a shortened update such as Count += 1 in Python or count++ in Java, but in an exam answer write the full Count ← Count + 1."
       ],
       "bullets": [
-        "<- assigns a value to a variable, changing what that variable holds; = compares two values, changing nothing.",
-        "= is used inside a condition (IF, WHILE, UNTIL) to test a value; <- is used in an assignment statement to set a value.",
-        "Writing <- where = was needed inside a condition silently changes a variable's value instead of testing it, which can be very difficult to spot when tracing a program."
+        "Right-hand side first, then store on the left: B ← A copies A's value into B and leaves A unchanged.",
+        "Assigning to a variable destroys its previous value; save it first if it is still needed (see the swap example in 9.2).",
+        "A variable must hold a value before it appears on the right-hand side; using an uninitialised variable is a logic error.",
+        "← stores a value; = tests for equality. Python: = stores, == tests."
       ],
-      "examples": []
-    },
-    {
-      "id": "04-input-and-output",
-      "title": "Basic input and output",
-      "content": [
-        "INPUT reads a value typed in by the user while the program is running and stores it in a named variable, for example INPUT StudentName reads whatever the user types and stores it in the variable StudentName. OUTPUT displays a value, or several values, to the user, for example OUTPUT \"Name: \", StudentName displays the text 'Name: ' followed by the value currently stored in StudentName. A value read with INPUT is always stored as a string, whatever it conceptually represents, which matters when that value needs to be used in an arithmetic calculation."
-      ],
-      "bullets": [
-        "INPUT identifier reads a value entered by the user and stores it in the named variable.",
-        "OUTPUT identifier, or OUTPUT with several comma-separated items, displays those values to the user.",
-        "A value read with INPUT is stored as a string, even if the user typed digits; using it as a number requires an explicit conversion first."
-      ],
-      "examples": []
+      "examples": [
+        {
+          "id": "03-assignment-trace",
+          "kind": "worked",
+          "label": "Trace: five assignments in sequence",
+          "content": "Statement        | A  | B\nA ← 7            | 7  |\nB ← A + 5        | 7  | 12\nA ← B * 2        | 24 | 12\nB ← A - B        | 24 | 12     (24 - 12 = 12)\nA ← A MOD B      | 0  | 12     (24 MOD 12 = 0)\n\nEach line uses the values left by the line above it, not the starting values."
+        }
+      ]
     },
     {
       "id": "05-arithmetic-operators-and-precedence",
-      "title": "Arithmetic operators and operator precedence",
+      "title": "Arithmetic operators and the rules of precedence",
       "content": [
-        "This specification's pseudocode provides the arithmetic operators +, -, *, / (division), DIV (integer division, discarding the remainder), MOD (the remainder after integer division), and ^ (exponent, raising a number to a power). When an expression mixes several operators, they are not evaluated strictly left to right; instead they follow a fixed order of precedence: ^ is evaluated first, then * / DIV MOD (evaluated left to right among themselves), and finally + - (also evaluated left to right). Brackets can be used to override this order, since anything inside brackets is always evaluated before the result is used in the rest of the expression, regardless of what operators surround the brackets.",
-        "Evaluating an expression correctly means applying this order carefully, one operation at a time, rather than assuming operators are applied in the order they are written."
+        "Pseudocode has seven arithmetic operators: + (add), - (subtract), * (multiply), / (divide), ^ (raise to a power), DIV (integer division) and MOD (remainder). The / operator always gives a REAL result, even when both operands are integers, so 7 / 2 is 3.5 and 8 / 4 is 2.0. DIV keeps only the whole-number quotient, so 7 DIV 2 is 3, and MOD keeps only what is left over, so 7 MOD 2 is 1. Together they split a quantity into units: 200 minutes is 200 DIV 60 = 3 hours and 200 MOD 60 = 20 minutes. MOD is also the standard test for divisibility: N MOD 2 = 0 means N is even. The exam insert may present them as functions, DIV(200, 60) and MOD(200, 60); both styles mean the same thing. These notes use positive operands only, where every language agrees.",
+        "When an expression contains several operators, they are not simply applied from left to right. Brackets are evaluated first, then ^, then *, /, DIV and MOD, and finally + and -. Operators with the same priority are applied from left to right. When the intended order differs from this, or when a reader might be unsure, add brackets: they cost nothing and remove any doubt. In the language equivalents, Python writes ** for power, // for DIV and % for MOD; VB.NET uses ^, \\ and Mod; Java uses Math.pow, / between two integers, and %."
       ],
       "bullets": [
-        "Order of precedence, highest to lowest: ^, then * / DIV MOD, then + -; operators at the same level are evaluated left to right.",
-        "DIV and MOD have the same precedence as * and /, not the same as + and -.",
-        "Brackets are evaluated before anything outside them and should be used whenever the intended order differs from standard precedence."
+        "Order: ( ) → ^ → * / DIV MOD → + -; equal priority works left to right.",
+        "/ always gives a REAL; DIV and MOD give INTEGERs.",
+        "Check DIV and MOD together: (A DIV B) * B + (A MOD B) = A, e.g. 3 * 5 + 2 = 17.",
+        "An average needs brackets: (A + B + C) / 3, not A + B + C / 3."
       ],
       "examples": [
         {
           "id": "05-precedence-worked",
           "kind": "worked",
-          "label": "Worked example: evaluating 2 + 3 * 4 DIV 2 step by step",
-          "content": "Expression: 2 + 3 * 4 DIV 2\n\nStep 1: * and DIV are higher precedence than +, and are evaluated left to right first.\n         3 * 4 = 12\n         Expression is now: 2 + 12 DIV 2\n\nStep 2: DIV is evaluated next (same precedence level as *, next in left-to-right order).\n         12 DIV 2 = 6\n         Expression is now: 2 + 6\n\nStep 3: + is evaluated last.\n         2 + 6 = 8\n\nResult: 2 + 3 * 4 DIV 2 evaluates to 8.\n\n-- Compare with brackets forcing a different order:\n-- (2 + 3) * 4 DIV 2\n--   Step 1: (2 + 3) = 5   [brackets evaluated first]\n--   Step 2: 5 * 4 = 20\n--   Step 3: 20 DIV 2 = 10\n-- Result: (2 + 3) * 4 DIV 2 evaluates to 10, a different result from the un-bracketed expression."
+          "label": "Worked example: evaluating expressions in precedence order",
+          "content": "Expression               Working                          Value\n5 + 4 * 3 ^ 2            3 ^ 2 = 9; 4 * 9 = 36; 5 + 36    41\n(5 + 4) * 3 ^ 2          5 + 4 = 9; 3 ^ 2 = 9; 9 * 9      81\n5 + (4 * 3) ^ 2          4 * 3 = 12; 12 ^ 2 = 144; + 5    149\n20 - 8 / 4 * 2           8 / 4 = 2.0; 2.0 * 2 = 4.0;      16.0 (REAL)\n                         20 - 4.0\n2 + 17 MOD 5 * 3         17 MOD 5 = 2; 2 * 3 = 6; 2 + 6   8\n17 DIV 5                 5 goes into 17 three times       3\n17 MOD 5                 17 - 3 * 5                       2\n7 / 2                    ordinary division                3.5\n7 DIV 2                  whole-number part only           3\n\nChecked in Python with 5 + 4 * 3 ** 2, (5 + 4) * 3 ** 2, 5 + (4 * 3) ** 2,\n20 - 8 / 4 * 2, 2 + 17 % 5 * 3, 17 // 5, 17 % 5, 7 / 2 and 7 // 2."
+        }
+      ]
+    },
+    {
+      "id": "04-input-and-output",
+      "title": "Input from the keyboard and output to the console",
+      "content": [
+        "OUTPUT sends one or more items to the screen. Items are separated by commas and can mix literal strings with variables and expressions, for example OUTPUT \"Area: \", Area, \" square cm\". A string literal is shown in double quotes and a single character in single quotes. The value of a variable is printed, not its name. If you need to show that no new line follows, add a comment such as // no new line; otherwise each OUTPUT is assumed to end its line.",
+        "INPUT <identifier> waits for the user to type a value and stores it in the named variable. It is good practice to OUTPUT a prompt first, telling the user what to type; the coursebook also shows the prompt written inside the statement, INPUT \"Enter a number: \" Number, and both forms are accepted. In pseudocode the value is taken to be of the declared type of the variable, so INPUT Age into an INTEGER is fine. Real languages are stricter: Python's input() always returns a string, so a number must be converted with int() or float() before any arithmetic, and VB.NET's Console.ReadLine() and Java's Scanner.next() also return strings."
+      ],
+      "bullets": [
+        "OUTPUT \"Total: \", Total prints the label and the value of Total on one line.",
+        "Prompt first: OUTPUT \"Enter your age: \" then INPUT Age.",
+        "Python: print(\"Total:\", total) and age = int(input(\"Enter your age: \")).",
+        "Comments in pseudocode start with //; Python uses #, VB.NET uses ', Java uses // or /* … */."
+      ],
+      "examples": [
+        {
+          "id": "04-io-pseudocode",
+          "kind": "pseudocode",
+          "label": "Prompt, input, process, output",
+          "language": "cambridge-pseudocode",
+          "content": "DECLARE Length, Width : REAL\nOUTPUT \"Length of the room in metres: \"\nINPUT Length\nOUTPUT \"Width of the room in metres: \"\nINPUT Width\nOUTPUT \"Floor area: \", Length * Width, \" square metres\"\n\n// Inputs 4.5 and 3 give: Floor area: 13.5 square metres"
+        }
+      ]
+    },
+    {
+      "id": "08-relational-and-logical-operators",
+      "title": "Relational and logical operators in expressions",
+      "content": [
+        "A condition, also called a Boolean expression, evaluates to TRUE or FALSE. The simplest compare two values with a relational operator: = (equal), <> (not equal), <, >, <= and >=. These work on numbers, and on characters and strings by comparing character codes. Conditions are joined with the logical operators AND (TRUE only when both sides are TRUE), OR (TRUE when at least one side is TRUE) and NOT (reverses the value). A result can be stored in a BOOLEAN variable, for example Adult ← Age >= 18, and a BOOLEAN can be used directly as a condition, as in IF Adult.",
+        "Relational operators are evaluated after arithmetic, so Total / Count > 50 divides first and then compares. Among the logical operators, NOT is applied first, then AND, then OR. This matters: A OR B AND C means A OR (B AND C), which can differ from (A OR B) AND C. Because not every language, or every reader, follows the same convention, the safe habit is to bracket each comparison and each mixed AND/OR group. A range test must be written as two comparisons, Mark >= 40 AND Mark <= 100; the shorthand 40 <= Mark <= 100 is not valid pseudocode. Python writes == for equal, != for not equal and and, or, not in lower case; VB.NET uses =, <>, And, Or, Not; Java uses ==, !=, &&, || and !."
+      ],
+      "bullets": [
+        "Arithmetic → relational → NOT → AND → OR, unless brackets say otherwise.",
+        "Bracket each comparison when mixing AND and OR: (Age >= 16) AND (Ticket OR Member).",
+        "'Not between 1 and 10' is (N < 1) OR (N > 10), which is the same as NOT ((N >= 1) AND (N <= 10)).",
+        "A BOOLEAN variable is already TRUE or FALSE, so IF Finished = TRUE can be written IF Finished."
+      ],
+      "examples": [
+        {
+          "id": "08-boolean-worked",
+          "kind": "worked",
+          "label": "Worked example: Age = 25, HasTicket = FALSE, IsMember = FALSE",
+          "content": "Expression                                   Working                               Result\nAge >= 18                                    25 >= 18                              TRUE\nAge <> 25                                    25 is equal to 25                     FALSE\nAge >= 18 AND HasTicket                      TRUE AND FALSE                        FALSE\nNOT HasTicket                                NOT FALSE                             TRUE\nAge > 20 OR HasTicket AND IsMember           AND first: FALSE AND FALSE = FALSE;   TRUE\n                                             then TRUE OR FALSE\n(Age > 20 OR HasTicket) AND IsMember         bracket first: TRUE OR FALSE = TRUE;  FALSE\n                                             then TRUE AND FALSE\n\nThe last two rows use the same operands but different grouping, and give different answers.\nPython agrees: 25 > 20 or False and False is True; (25 > 20 or False) and False is False."
         }
       ]
     },
     {
       "id": "06-string-handling-operations",
-      "title": "Basic string-handling operations",
+      "title": "Built-in string functions",
       "content": [
-        "This specification's pseudocode provides functions for working with strings: LENGTH(ThisString) returns the number of characters in ThisString; LEFT(ThisString, x) returns the leftmost x characters; RIGHT(ThisString, x) returns the rightmost x characters; and MID(ThisString, x, y) returns y characters starting at position x, counting from 1. Strings are joined together using concatenation, written with the & operator, for example FirstName & \" \" & LastName joins two strings with a space between them.",
-        "These functions are commonly used together, for example to extract a fixed-format code's individual parts, or to build a formatted message by concatenating separate pieces of text and data together into one output string."
+        "Programming environments provide many ready-made functions. For strings, the Cambridge pseudocode guide defines LENGTH(ThisString), which returns the number of characters; LEFT(ThisString, x) and RIGHT(ThisString, x), which return the first or last x characters; and MID(ThisString, x, y), which returns y characters starting at position x. Positions in pseudocode strings count from 1. TO_UPPER and TO_LOWER convert a whole string, while UCASE and LCASE convert a single character; characters that are not letters are returned unchanged. ASC(ThisChar) gives a character's code (ASC('A') = 65) and CHR(x) turns a code back into a character (CHR(66) = 'B'). Strings are joined with the concatenation operator &.",
+        "You do not need to memorise the exact parameter lists: the string functions are always printed in the exam insert, and any other function a question needs will be described in it. What you do need is the skill of combining them correctly. Python's equivalents use indexes from 0 and slices whose end position is excluded: LEFT(S, 3) is S[:3], RIGHT(S, 3) is S[-3:] and MID(S, x, y) is S[x - 1 : x - 1 + y]. LENGTH is len(), TO_UPPER is .upper(), ASC is ord() and CHR is chr(); Python joins strings with +."
       ],
       "bullets": [
-        "LENGTH(ThisString) counts every character in ThisString, including spaces.",
-        "LEFT and RIGHT extract characters from a fixed end of the string; MID extracts characters from any starting position, given a start position and a count.",
-        "& concatenates (joins) strings together; the values being joined must themselves be strings, or be converted to strings first."
+        "Pseudocode positions start at 1; Python, VB.NET and Java positions start at 0.",
+        "LENGTH counts every character, including spaces and punctuation.",
+        "MID(S, P, 1) extracts the single character at position P, the usual way to visit each character inside a loop.",
+        "& joins strings only; a number must go through NUM_TO_STR before being joined to text."
       ],
       "examples": [
         {
           "id": "06-string-functions-worked",
           "kind": "worked",
-          "label": "Worked example: LENGTH, LEFT, RIGHT and MID applied to \"CAMBRIDGE\"",
-          "content": "DECLARE FullString : STRING\nFullString <- \"CAMBRIDGE\"\n\n// FullString, indexed from position 1:\n// C(1) A(2) M(3) B(4) R(5) I(6) D(7) G(8) E(9)\n\nOUTPUT LENGTH(FullString)        // 9  (the string has 9 characters)\nOUTPUT LEFT(FullString, 4)       // \"CAMB\"  (the leftmost 4 characters)\nOUTPUT RIGHT(FullString, 3)      // \"DGE\"   (the rightmost 3 characters)\nOUTPUT MID(FullString, 4, 5)     // \"BRIDG\" (5 characters starting at position 4: B,R,I,D,G)\n\nDECLARE FirstName, LastName, FullName : STRING\nFirstName <- \"Ada\"\nLastName <- \"Lovelace\"\nFullName <- FirstName & \" \" & LastName\nOUTPUT FullName                  // \"Ada Lovelace\""
+          "label": "Worked example: string functions applied to Code ← \"CS9618-AS\"",
+          "content": "Position:  1 2 3 4 5 6 7 8 9\nCharacter: C S 9 6 1 8 - A S\n\nCall                                   Result\nLENGTH(Code)                           9\nLEFT(Code, 2)                          \"CS\"\nRIGHT(Code, 2)                         \"AS\"\nMID(Code, 3, 4)                        \"9618\"   (positions 3, 4, 5 and 6)\nTO_LOWER(Code)                         \"cs9618-as\"\nUCASE('b')                             'B'\nLCASE('Q')                             'q'\nASC('A')                               65\nCHR(66)                                'B'\nLEFT(Code, 2) & \"-\" & RIGHT(Code, 2)   \"CS-AS\"\n\nPython check: len(Code) = 9, Code[:2] = 'CS', Code[-2:] = 'AS', Code[2:6] = '9618'."
         }
       ]
     },
     {
       "id": "07-converting-between-string-and-number",
-      "title": "Converting between a string and a number",
+      "title": "Numeric, conversion and library routines",
       "content": [
-        "A value read using INPUT is always stored as a string, even if the user types only digits, because INPUT has no way of knowing in advance whether the text entered is meant to be used as a number. If that value needs to be used in an arithmetic calculation, it must first be explicitly converted from a string to a numeric type, for example using a function such as INT(ThisString) to convert a string into an integer, before it is used in any calculation; the reverse conversion, from a number to a string, is needed when a numeric value must be concatenated with other text using &."
+        "INT(x) returns the whole-number part of a real value by cutting off the fractional part, so INT(7.9) is 7 and INT(3.142 * 10) is INT(31.42) = 31. It truncates rather than rounds; to round a positive value to the nearest whole number, use INT(x + 0.5). RAND(x) returns a random REAL that is at least 0 and less than x, so INT(RAND(6)) + 1 gives a whole number from 1 to 6 inclusive, like a dice throw. Numbers produced by a program in this way are pseudo-random: they come from a formula, not a genuinely unpredictable source.",
+        "Values often arrive as text, for example a line read from a file or a substring cut out with MID. STR_TO_NUM(x) converts a string of digits into a number (INTEGER or REAL), NUM_TO_STR(x) does the reverse, and IS_NUM(x) returns TRUE only if the string represents a valid number, so it can guard a conversion. For example STR_TO_NUM(MID(\"CS9618-AS\", 3, 4)) + 1 is 9619, and NUM_TO_STR(2026) & \"!\" is \"2026!\". Some routines are not always loaded; in Python the random-number functions live in the random module and must be imported first. Using library routines saves time, and because they have been tested by many users they are usually more reliable than a routine written from scratch."
       ],
       "bullets": [
-        "A value from INPUT is a string; it must be explicitly converted, for example with INT(...), before it can be used in arithmetic.",
-        "Attempting arithmetic directly on a string value causes a type error, or, in a language that allows it, silently produces the wrong result by treating the operation as concatenation instead of addition.",
-        "Converting a number to a string is needed the other way round, whenever a numeric value must be joined with text using the & concatenation operator."
+        "INT truncates: INT(7.9) = 7. It does not round.",
+        "RAND(x) gives 0 ≤ value < x; scale and shift with INT(RAND(N)) + 1 for a whole number 1 to N.",
+        "STR_TO_NUM before arithmetic on text; NUM_TO_STR before concatenating a number with &.",
+        "Python: int(), float(), str(), and random.randint(1, 6) after import random."
       ],
       "examples": [
         {
-          "id": "07-string-to-number-worked",
+          "id": "07-conversion-worked",
           "kind": "worked",
-          "label": "Worked example: converting a string read by INPUT before using it in arithmetic",
-          "content": "DECLARE InputText : STRING\nDECLARE Number, Total : INTEGER\n\nTotal <- 0\nOUTPUT \"Enter a number: \"\nINPUT InputText          // InputText now holds a STRING, e.g. \"25\", not an INTEGER\n\nNumber <- INT(InputText) // Number now holds the INTEGER 25, converted from the string\nTotal <- Total + Number  // valid: Total (INTEGER) + Number (INTEGER)\nOUTPUT Total              // 25\n\n// Total <- Total + InputText, using the un-converted string directly, would be invalid:\n// it combines an INTEGER (Total) with a STRING (InputText) instead of two INTEGER values."
+          "label": "Worked example: conversions and random numbers",
+          "content": "Call                                   Result\nINT(7.9)                               7\nINT(3.142 * 10)                        31      (3.142 * 10 = 31.42)\nSTR_TO_NUM(\"75\") + 5                   80\nSTR_TO_NUM(MID(\"CS9618-AS\", 3, 4)) + 1  9619\nNUM_TO_STR(2026) & \"!\"                 \"2026!\"\nIS_NUM(\"9618\")                         TRUE\nIS_NUM(\"96A8\")                         FALSE\nINT(RAND(6)) + 1                       one of 1, 2, 3, 4, 5, 6\n\nWhy INT(RAND(6)) + 1 works: RAND(6) lies in 0 to 5.999…, INT gives 0 to 5, adding 1 gives 1 to 6."
+        }
+      ]
+    },
+    {
+      "id": "09-pseudocode-from-a-design",
+      "title": "Writing pseudocode from a flowchart or structured English",
+      "content": [
+        "An exam question may hand you a finished design and ask for the program. Work through it one step at a time. For structured English, each numbered step becomes one or more statements: 'ask for' becomes a prompt OUTPUT followed by INPUT, 'calculate' or 'work out' becomes an assignment, 'if' becomes IF … THEN … ENDIF, and 'display' becomes OUTPUT. For a flowchart, each parallelogram is an INPUT or OUTPUT, each rectangle an assignment, each diamond a condition in an IF or a loop, and an arrow that goes back upward shows a loop. Declare every variable the design uses, turn any fixed number into a constant, and keep the design's order unless it is clearly wrong.",
+        "Then dry-run the pseudocode with the data the question gives, or with your own normal and boundary values, to confirm it does what the design says. The design techniques themselves (writing structured English, drawing flowcharts, stepwise refinement) belong to 9.2; here the focus is on the correctness of each statement."
+      ],
+      "bullets": [
+        "Flowchart parallelogram → INPUT/OUTPUT; rectangle → assignment; diamond → IF or loop condition; terminator → start and end of the program.",
+        "Structured English 'ask for X' → OUTPUT a prompt, then INPUT X.",
+        "Fixed values in the description (a rate, a limit) → CONSTANT declarations.",
+        "Finish with a quick trace to prove the pseudocode matches the design."
+      ],
+      "examples": [
+        {
+          "id": "09-design-structured-english",
+          "kind": "worked",
+          "label": "From structured English: a car-park charge",
+          "content": "Structured English\n1. Ask for the number of minutes the car was parked.\n2. Work out the whole hours and the minutes left over.\n3. Charge for every hour started: if any minutes are left over, add one more hour.\n4. The charge is 2.50 for each hour charged.\n5. Display the hours, the minutes and the charge.\n\nPseudocode\nCONSTANT HourlyRate ← 2.50\nDECLARE Minutes, Hours, LeftOver, ChargedHours : INTEGER\nDECLARE Charge : REAL\nOUTPUT \"Minutes parked: \"\nINPUT Minutes\nHours ← Minutes DIV 60\nLeftOver ← Minutes MOD 60\nChargedHours ← Hours\nIF LeftOver > 0\n   THEN\n      ChargedHours ← ChargedHours + 1\nENDIF\nCharge ← ChargedHours * HourlyRate\nOUTPUT \"Parked \", Hours, \" h \", LeftOver, \" min, charge \", Charge\n\nTrace\nMinutes | Hours | LeftOver | ChargedHours | Charge | OUTPUT\n200     | 3     | 20       | 4            | 10.00  | Parked 3 h 20 min, charge 10.00\n120     | 2     | 0        | 2            | 5.00   | Parked 2 h 0 min, charge 5.00\n59      | 0     | 59       | 1            | 2.50   | Parked 0 h 59 min, charge 2.50"
+        },
+        {
+          "id": "09-design-flowchart",
+          "kind": "worked",
+          "label": "From a flowchart: Celsius to Fahrenheit",
+          "content": "Flowchart (top to bottom)\n[START] → /INPUT Celsius/ → [Fahrenheit ← Celsius * 9 / 5 + 32] → /OUTPUT Fahrenheit/ → [STOP]\n\nPseudocode\nDECLARE Celsius, Fahrenheit : REAL\nOUTPUT \"Temperature in Celsius: \"\nINPUT Celsius\nFahrenheit ← Celsius * 9 / 5 + 32\nOUTPUT Celsius, \" C is \", Fahrenheit, \" F\"\n\nCheck with Celsius = 25: 25 * 9 = 225; 225 / 5 = 45.0; 45.0 + 32 = 77.0, so the output is 25 C is 77.0 F.\nPrecedence already gives the right order here, so no brackets are needed."
+        },
+        {
+          "id": "09-design-python",
+          "kind": "code",
+          "label": "The car-park program in Python",
+          "language": "python",
+          "content": "HOURLY_RATE = 2.50          # constant by convention: capitals, never reassigned\n\nminutes = 200               # a full program would use: minutes = int(input(\"Minutes parked: \"))\nhours = minutes // 60       # DIV\nleft_over = minutes % 60    # MOD\ncharged_hours = hours\nif left_over > 0:\n    charged_hours = charged_hours + 1\ncharge = charged_hours * HOURLY_RATE\nprint(\"Parked\", hours, \"h\", left_over, \"min, charge\", format(charge, \".2f\"))\n# Output: Parked 3 h 20 min, charge 10.00"
         }
       ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Variable vs constant",
+    "title": "The same statements in pseudocode and the three exam languages",
     "columns": [
-      "Aspect",
-      "Variable",
-      "Constant"
+      "Statement",
+      "Pseudocode",
+      "Python",
+      "VB.NET",
+      "Java"
     ],
     "rows": [
       [
-        "Declared with",
-        "DECLARE identifier : datatype",
-        "CONSTANT identifier = value"
+        "Declare a variable",
+        "DECLARE Score : INTEGER",
+        "no declaration; comment the intended type",
+        "Dim Score As Integer",
+        "int score;"
       ],
       [
-        "Value during execution",
-        "Can be changed as many times as needed",
-        "Fixed from the moment it is declared; cannot be reassigned"
+        "Declare a constant",
+        "CONSTANT Pi ← 3.142",
+        "PI = 3.142 (convention only)",
+        "Const Pi = 3.142",
+        "static final double PI = 3.142;"
       ],
       [
-        "Set using",
-        "Assignment (<-) or INPUT, at any point after declaration",
-        "Given its one value at the point it is declared"
+        "Assign",
+        "Score ← Score + 1",
+        "score = score + 1",
+        "Score = Score + 1",
+        "score = score + 1;"
       ],
       [
-        "Typical use",
-        "A running total, a counter, a value entered by the user",
-        "A fixed value used repeatedly, such as a tax rate or a maximum array size"
+        "Power, DIV, MOD",
+        "^   DIV   MOD",
+        "**   //   %",
+        "^   \\   Mod",
+        "Math.pow(a, b)   / on ints   %"
+      ],
+      [
+        "Equal, not equal",
+        "=   <>",
+        "==   !=",
+        "=   <>",
+        "==   !="
+      ],
+      [
+        "AND, OR, NOT",
+        "AND   OR   NOT",
+        "and   or   not",
+        "And   Or   Not",
+        "&&   ||   !"
+      ],
+      [
+        "Output",
+        "OUTPUT \"Total: \", Total",
+        "print(\"Total:\", total)",
+        "Console.WriteLine(\"Total: \" & Total)",
+        "System.out.println(\"Total: \" + total);"
+      ],
+      [
+        "Input",
+        "INPUT Age",
+        "age = int(input())",
+        "Age = Console.ReadLine()",
+        "age = console.nextInt();"
       ]
     ]
   },
   "diagram": {
-    "title": "The basic shape of a simple program",
+    "title": "Turning a design into pseudocode statements",
     "type": "flow",
     "nodes": [
-      "DECLARE variables and CONSTANTs with meaningful identifiers",
-      "INPUT reads data typed by the user into a variable, as a string",
-      "Assignment (<-) stores a computed or converted value in a variable",
-      "Arithmetic expressions are evaluated following operator precedence, using brackets where needed",
-      "String operations extract or combine substrings using LEFT, RIGHT, MID and &",
-      "OUTPUT displays the final result to the user"
+      "Read the flowchart or structured English step by step",
+      "CONSTANT for each fixed value; DECLARE each variable with a data type",
+      "Prompt with OUTPUT, then INPUT each value",
+      "Assignments with ← evaluate expressions in precedence order",
+      "Call built-in functions (MID, STR_TO_NUM, INT, RAND) where the design needs them",
+      "OUTPUT the results",
+      "Dry-run with test data to confirm it matches the design"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing assignment used where a comparison was needed",
+      "title": "Why an average comes out too large",
       "steps": [
-        "A candidate wants to check whether the variable Age already equals 18 inside a condition, and writes IF Age <- 18 THEN",
-        "<- is the assignment operator, so this line stores the value 18 into Age rather than comparing Age's existing value against 18",
-        "Tracing the program shows Age is set to exactly 18 immediately before the condition is evaluated, whatever value Age held beforehand, and the condition itself is then always TRUE",
-        "Rewriting the line as IF Age = 18 THEN, using the equality comparison operator, correctly tests Age's existing value without changing it"
+        "A candidate writes Average ← Mark1 + Mark2 + Mark3 / 3 with marks 60, 70 and 90",
+        "/ has higher priority than +, so only Mark3 is divided: 90 / 3 = 30",
+        "The additions happen afterwards: 60 + 70 + 30 = 160, which is larger than any single mark",
+        "Brackets force the sum first: (60 + 70 + 90) / 3 = 220 / 3 = 73.33 to 2 decimal places"
       ],
-      "evaluation": "Assignment (<-) changes a variable's value; equality comparison (=) only tests it. Using <- inside a condition silently overwrites the variable being tested, producing a condition that is always true and destroying the value that should have been checked."
+      "evaluation": "The expression is syntactically valid, so no error is reported; only knowing the rules of precedence reveals the logic error. A quick sanity check (an average cannot exceed the largest value) catches it."
     },
     {
-      "title": "Diagnosing a wrong result caused by missing brackets",
+      "title": "Choosing DIV and MOD instead of /",
       "steps": [
-        "A candidate wants the average of three scores, Score1 = 60, Score2 = 70 and Score3 = 90, and writes Average <- Score1 + Score2 + Score3 / 3",
-        "Division (/) has higher precedence than addition (+), so / is evaluated before either +",
-        "Tracing this: Score3 / 3 = 90 / 3 = 30 is calculated first, then Score1 + Score2 + 30 = 60 + 70 + 30 = 160 is calculated, giving Average = 160",
-        "Rewriting the expression as Average <- (Score1 + Score2 + Score3) / 3 forces the three scores to be added first because of the brackets: (60 + 70 + 90) / 3 = 220 / 3 = 73.33 (2 d.p.)"
+        "A program must show 200 seconds as minutes and seconds",
+        "200 / 60 gives 3.333…, a REAL that is neither the minutes nor the seconds",
+        "200 DIV 60 = 3 gives the whole minutes and 200 MOD 60 = 20 gives the seconds left over",
+        "Check: 3 * 60 + 20 = 200, so nothing has been lost"
       ],
-      "evaluation": "Without brackets, standard operator precedence evaluates / before +, so an expression that needs addition to happen first must use brackets to force that order; omitting them silently produces a plausible-looking but wrong result rather than an error the program would flag."
+      "evaluation": "Whenever a quantity must be split into whole units and a remainder (hours and minutes, boxes and loose items, pages and lines), DIV and MOD are the right tools; / produces a fraction that still has to be taken apart."
     },
     {
-      "title": "Diagnosing a type error from an un-converted INPUT value",
+      "title": "Arithmetic on text that looks like a number",
       "steps": [
-        "A program declares Total : INTEGER and InputText : STRING, then executes INPUT InputText to read a number the user types",
-        "The user types 25, so InputText now holds the string \"25\", not the integer 25",
-        "The program then executes Total <- Total + InputText without first converting InputText",
-        "This is checked against the data types involved: Total is declared INTEGER, but InputText is a STRING, so Total + InputText combines two different data types directly"
+        "A product code \"CS9618-AS\" contains a year-like number that must be increased by 1",
+        "MID(Code, 3, 4) extracts \"9618\", which is a STRING, not an INTEGER",
+        "Adding 1 to a string is a type error; in Python \"9618\" + 1 raises TypeError, and \"9618\" + \"1\" would give \"96181\"",
+        "STR_TO_NUM(MID(Code, 3, 4)) + 1 converts first and gives 9619; NUM_TO_STR converts back if it must be joined with &"
       ],
-      "evaluation": "INPUT always stores what is entered as a string, so a value that will be used in arithmetic must be explicitly converted first, for example Number <- INT(InputText) followed by Total <- Total + Number; skipping this conversion causes a type error, or, in a language that permits it, silently and incorrectly concatenates the values as text instead of adding them numerically."
+      "evaluation": "Data type drives which operators are legal. Any value that came from a string function, a file or Python's input() must be converted before arithmetic, and a number must be converted to a string before concatenation."
     }
   ],
   "examTips": [
-    "Use <- for every assignment statement and = only for equality comparison inside a condition; never interchange the two, even under time pressure.",
-    "Add brackets whenever the order needed differs from standard operator precedence; do not assume a marker, or the computer, will infer the intended order from how the expression is written.",
-    "Declare a fixed value that must never change during execution as a CONSTANT, not a variable, and be ready to explain why that protects the program from an accidental change.",
-    "When a value has been read with INPUT and is needed in a calculation, show the explicit conversion step, such as INT(...), rather than using the string value directly."
+    "Use ← for every assignment and for CONSTANT declarations; keep = for comparisons inside conditions.",
+    "Declare every variable with a sensible type before use, and turn any fixed value named in the question into a CONSTANT.",
+    "Bracket expressions whenever the order could be misread, especially averages and mixed AND/OR conditions.",
+    "Use only the functions given in the insert or described in the question, with exactly the parameter order shown; remember pseudocode string positions start at 1.",
+    "Prompt before INPUT and label every OUTPUT; marks are often given for a prompt and for outputting the right variable."
   ],
   "commonMistakes": [
-    "Writing <- inside a condition where = (equality comparison) was needed, silently changing the variable being tested instead of checking it.",
-    "Choosing a vague, non-meaningful identifier, or one that breaks the language's naming rules, such as an identifier containing a space.",
-    "Applying operators strictly left to right instead of following operator precedence, and omitting brackets that were needed to force the intended order.",
-    "Confusing DIV (integer division, discarding the remainder) with ordinary division /, for example expecting 7 DIV 2 to give 3.5 instead of 3.",
-    "Using a value read with INPUT directly in a calculation without converting it from a string to a number first."
+    "Writing Total = Total + Mark or CONSTANT MaxSize : 100 instead of Total ← Total + Mark and CONSTANT MaxSize ← 100.",
+    "Expecting 7 DIV 2 to be 3.5 or 7 / 2 to be 3; / gives a REAL, DIV throws away the remainder.",
+    "Writing a range as 1 <= N <= 10 instead of N >= 1 AND N <= 10.",
+    "Using MID with a start position counted from 0, which cuts out the wrong characters.",
+    "Adding a number to a string (or concatenating a number with &) without STR_TO_NUM or NUM_TO_STR.",
+    "Using INT to round: INT(4.8) is 4, not 5."
   ],
   "quickRecall": [
     {
-      "question": "What is the difference between a variable and a constant?",
-      "answer": "A variable's value can change while the program runs and is declared with DECLARE; a constant's value is fixed for the whole program once declared with CONSTANT and cannot be reassigned."
+      "question": "Write pseudocode to declare the constant Pi with the value 3.142 and a REAL variable Area.",
+      "answer": "CONSTANT Pi ← 3.142 and DECLARE Area : REAL (older texts write CONSTANT Pi = 3.142)."
     },
     {
-      "question": "What does the assignment operator <- do, and how does it differ from =?",
-      "answer": "<- stores the value on its right-hand side into the variable on its left, overwriting the variable's previous value; = tests whether two values are equal and is used inside a condition, without changing either value."
+      "question": "Give two reasons for using a constant instead of typing the value each time.",
+      "answer": "Its meaningful name makes the code easier to understand, and if the value changes it is edited in one place, so no occurrence is missed and it cannot be altered accidentally while the program runs."
     },
     {
-      "question": "What do INPUT and OUTPUT do?",
-      "answer": "INPUT reads a value typed by the user and stores it, as a string, in a named variable; OUTPUT displays one or more values to the user."
+      "question": "Evaluate 5 + 4 * 3 ^ 2 and 2 + 17 MOD 5 * 3.",
+      "answer": "41 (3 ^ 2 = 9, 4 * 9 = 36, 5 + 36) and 8 (17 MOD 5 = 2, 2 * 3 = 6, 2 + 6)."
     },
     {
-      "question": "What do the operators DIV and MOD calculate?",
-      "answer": "DIV performs integer division and discards the remainder (giving only the whole-number quotient); MOD returns only the remainder left over from that same division."
+      "question": "What are 23 DIV 4, 23 MOD 4 and 23 / 4?",
+      "answer": "5, 3 and 5.75."
     },
     {
-      "question": "What is the order of operator precedence, from highest to lowest, and what overrides it?",
-      "answer": "^ first, then * / DIV MOD, then + -, each level evaluated left to right; brackets override this order and are always evaluated first."
+      "question": "With Age = 25, HasTicket = FALSE and IsMember = FALSE, what is Age > 20 OR HasTicket AND IsMember?",
+      "answer": "TRUE, because AND is applied first (FALSE AND FALSE = FALSE) and then TRUE OR FALSE = TRUE."
     },
     {
-      "question": "For the string \"CAMBRIDGE\", what do LENGTH, LEFT(...,4), RIGHT(...,3) and MID(...,4,5) each return?",
-      "answer": "LENGTH returns 9; LEFT(...,4) returns \"CAMB\"; RIGHT(...,3) returns \"DGE\"; MID(...,4,5) returns \"BRIDG\" (5 characters starting at position 4)."
+      "question": "For Code ← \"CS9618-AS\", what do LENGTH(Code), LEFT(Code, 2) and MID(Code, 3, 4) return?",
+      "answer": "9, \"CS\" and \"9618\"."
     },
     {
-      "question": "How are two strings joined together in this specification's pseudocode?",
-      "answer": "Using the concatenation operator &, for example FirstName & \" \" & LastName."
+      "question": "Write an expression that gives a random whole number from 1 to 6.",
+      "answer": "INT(RAND(6)) + 1, since RAND(6) gives a REAL from 0 up to but not including 6."
     },
     {
-      "question": "Why must a value read with INPUT be converted before it is used in a calculation?",
-      "answer": "Because INPUT always stores the entered value as a string, whatever it represents; it must be explicitly converted to a numeric type, for example with INT(...), before being used in arithmetic."
+      "question": "Which pseudocode functions convert between strings and numbers, and which checks that a conversion is safe?",
+      "answer": "STR_TO_NUM converts a string to a number, NUM_TO_STR converts a number to a string, and IS_NUM returns TRUE if a string represents a valid number."
     }
   ],
   "relatedTopics": [
-    "9.1",
     "9.2",
     "10.1",
-    "11.2"
+    "10.3",
+    "11.2",
+    "11.3"
   ]
 }

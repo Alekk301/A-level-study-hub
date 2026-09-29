@@ -6,299 +6,395 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Constructs",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to write, complete or trace pseudocode that uses the three basic programming constructs — sequence, selection and iteration — correctly, including choosing the right kind of loop for a given situation and nesting constructs inside one another. Answers score when IF...ENDIF and CASE OF...ENDCASE are laid out with every branch and keyword present, when a FOR loop is chosen only when the number of repetitions is known in advance, when the choice between WHILE...ENDWHILE and REPEAT...UNTIL correctly reflects whether the loop body must be guaranteed to run at least once, and when a trace table updates every variable, including a loop counter or condition variable, on every single pass.",
+  "overview": "Topic 9.2 introduced selection and iteration as ideas for designing an algorithm. This topic is about writing them in exact Cambridge pseudocode and choosing the right one. Paper 2 expects IF … THEN … ELSE … ENDIF with correct nesting, CASE OF … OTHERWISE … ENDCASE with single values and ranges, the count-controlled FOR … TO … STEP … NEXT loop, the post-condition REPEAT … UNTIL loop and the pre-condition WHILE … ENDWHILE loop, plus a justified choice of loop for a given problem. Marks are lost for missing ENDIF, ENDCASE or NEXT, for ordering nested IF or CASE clauses so that a later branch can never be reached, for off-by-one FOR bounds, for writing a REPEAT condition as if it were a WHILE condition, and for justifications that only name a loop without linking it to the problem.",
   "syllabusPoints": [
-    "Show understanding of sequence, the execution of program statements one after another in the order they are written.",
-    "Show understanding of selection, and use IF...THEN...ELSE...ENDIF to choose between two alternative paths based on a condition.",
-    "Use CASE OF...ENDCASE to choose between several possible values of one variable.",
-    "Show understanding of iteration (repetition), and use a count-controlled FOR...TO...NEXT loop when the exact number of repetitions is known in advance.",
-    "Use a pre-condition WHILE...ENDWHILE loop, which tests its condition before each repetition so its body can execute zero times.",
-    "Use a post-condition REPEAT...UNTIL loop, which tests its condition after each repetition so its body always executes at least once.",
-    "Construct nested selection and iteration statements, and trace pseudocode that uses them to determine the output produced."
+    "Use pseudocode to write an 'IF' statement including the 'ELSE' clause and nested IF statements.",
+    "Use pseudocode to write a 'CASE' structure, including single values, ranges and an OTHERWISE clause.",
+    "Use pseudocode to write a 'count-controlled' loop (FOR … TO … STEP … NEXT).",
+    "Use pseudocode to write a 'post-condition' loop (REPEAT … UNTIL).",
+    "Use pseudocode to write a 'pre-condition' loop (WHILE … ENDWHILE).",
+    "Justify why one loop structure may be better suited to solve a problem than the others."
   ],
   "definitions": [
     {
-      "term": "Sequence",
-      "definition": "The execution of a program's statements one after another, in exactly the order they are written, with no branching or repetition; it is the simplest of the three basic constructs."
+      "term": "Selection",
+      "definition": "A construct in which a condition is evaluated and its result decides which block of statements is executed next; written with IF or CASE."
     },
     {
-      "term": "Selection",
-      "definition": "A construct that chooses between two or more alternative paths through a program based on the evaluation of a condition, using IF...THEN...ELSE...ENDIF for a two-way choice or CASE OF...ENDCASE for a choice between several values of one variable."
+      "term": "Nested IF",
+      "definition": "An IF statement placed inside the THEN or ELSE part of another IF, so that a second condition is tested only after the first has been decided."
+    },
+    {
+      "term": "CASE structure",
+      "definition": "A selection construct that compares one expression with a list of values or ranges, executes the statements of the first clause that matches, and uses OTHERWISE for any value that matches none."
     },
     {
       "term": "Iteration",
-      "definition": "A construct, also called repetition or looping, that repeats a block of statements, either a known number of times (FOR) or until a condition is met (WHILE or REPEAT)."
+      "definition": "Repeating a block of statements, either a set number of times or until a condition is met."
     },
     {
-      "term": "CASE OF...ENDCASE",
-      "definition": "A selection construct that compares a single variable against a list of possible values (or ranges), executing only the statements listed under the matching value, with an optional OTHERWISE clause for any value not otherwise listed."
+      "term": "Count-controlled loop",
+      "definition": "A loop, FOR … NEXT, whose number of repetitions is fixed by a start value, an end value and an optional STEP before the loop begins; the loop variable is updated automatically."
     },
     {
-      "term": "Count-controlled loop (FOR)",
-      "definition": "A loop written FOR counter <- start TO end ... NEXT counter that repeats its body an exact, predetermined number of times, once for each value the counter takes from start to end inclusive; used when the number of repetitions is known before the loop begins."
+      "term": "Post-condition loop",
+      "definition": "A loop, REPEAT … UNTIL, whose condition is tested after the body, so the body always runs at least once; it stops when the condition becomes TRUE."
     },
     {
-      "term": "Pre-condition loop (WHILE)",
-      "definition": "A loop written WHILE condition ... ENDWHILE that tests its condition before each repetition of its body; if the condition is already false the first time it is tested, the body does not execute at all."
+      "term": "Pre-condition loop",
+      "definition": "A loop, WHILE … ENDWHILE, whose condition is tested before each pass, so the body may run zero times; it continues while the condition is TRUE."
     },
     {
-      "term": "Post-condition loop (REPEAT)",
-      "definition": "A loop written REPEAT ... UNTIL condition that tests its condition after each repetition of its body; because the test happens after the body has run, the body always executes at least once, even if the condition is already true before the loop starts."
-    },
-    {
-      "term": "Nesting",
-      "definition": "Placing one construct entirely inside another, such as an IF statement inside a FOR loop, so that the inner construct is fully executed (or fully skipped) as part of a single pass of the outer construct."
+      "term": "Infinite loop",
+      "definition": "A loop whose ending condition can never be reached, usually because nothing inside the body changes the variables the condition tests."
     }
   ],
   "sections": [
     {
-      "id": "01-sequence",
-      "title": "Sequence: the simplest construct",
+      "id": "02-selection-if",
+      "title": "IF … THEN … ELSE … ENDIF",
       "content": [
-        "Sequence is the execution of a program's statements one after another, strictly in the order they are written on the page, with no branching to an alternative path and no statement repeated. It is the default behaviour of a program and the construct every other construct builds on top of: a selection construct decides which sequence of statements to run next, and an iteration construct decides how many times a sequence of statements is run, but within any single branch or single pass of a loop, the statements inside it are still executed in plain sequence.",
-        "Because sequence has no branching, tracing a purely sequential fragment is straightforward: each statement is executed exactly once, in the order it appears, and any variable's value after the fragment has run is simply the result of applying every statement to it in turn. Sequence only becomes error-prone when statements are written in the wrong order, for example reading a value with INPUT after it has already been used in a calculation instead of before."
+        "The simplest selection is IF <condition> THEN <statements> ENDIF. If the condition is TRUE, the statements after THEN run; if it is FALSE they are skipped and execution carries on after ENDIF. Adding an ELSE clause gives a two-way choice: exactly one of the two blocks runs, never both and never neither. The pseudocode guide lays the keywords out on separate lines, with THEN and ELSE indented under IF and the statements indented again; THEN on the same line as the condition is also accepted. Whatever the layout, every IF needs its own ENDIF.",
+        "The condition can be any Boolean expression from 11.1: a comparison, a BOOLEAN variable, or a combination joined with AND, OR and NOT. In Python the structure becomes if condition: with an indented block and else: lined up under if, and there is no ENDIF because the indentation ends the block. VB.NET writes If … Then … Else … End If, and Java writes if (condition) { … } else { … }."
       ],
       "bullets": [
-        "Sequence executes every statement exactly once, in the order it is written, with no branching and no repetition.",
-        "Selection and iteration are both built on top of sequence: they control which sequence of statements runs, or how many times it runs.",
-        "A sequential fragment is traced by applying each statement, in order, exactly once; getting the order of statements wrong is the main source of error."
+        "IF … THEN … ENDIF: do something or nothing. IF … THEN … ELSE … ENDIF: choose between two actions.",
+        "Every IF is closed by its own ENDIF, at the same indentation as the IF.",
+        "Test a BOOLEAN directly: IF Finished, not IF Finished = TRUE (both are correct, the first is neater).",
+        "Python: if … : / else: ; VB.NET: If … Then / Else / End If; Java: if ( … ) { } else { }."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "02-if-else-pseudocode",
+          "kind": "pseudocode",
+          "label": "IF with and without ELSE",
+          "language": "cambridge-pseudocode",
+          "content": "// one-way: nothing happens when the condition is FALSE\nIF Temperature > 30\n   THEN\n      OUTPUT \"Heat warning\"\nENDIF\n\n// two-way: exactly one branch runs\nIF Balance >= Price\n   THEN\n      Balance ← Balance - Price\n      OUTPUT \"Purchase complete\"\n   ELSE\n      OUTPUT \"Insufficient funds\"\nENDIF"
+        }
+      ]
     },
     {
-      "id": "02-selection-if",
-      "title": "Selection: IF...THEN...ELSE...ENDIF",
+      "id": "09-nested-if",
+      "title": "Nested IF statements",
       "content": [
-        "Selection chooses between alternative paths through a program based on a condition. The two-way form, IF condition THEN ... ELSE ... ENDIF, evaluates condition; if it is TRUE, only the statements between THEN and ELSE are executed, and if it is FALSE, only the statements between ELSE and ENDIF are executed. The ELSE branch is optional: IF condition THEN ... ENDIF, with no ELSE, simply skips its statements entirely when condition is FALSE and continues with whatever follows ENDIF.",
-        "Every IF statement in this specification's pseudocode must be closed with ENDIF, and marking an answer against this construct means checking that THEN, ELSE (if present) and ENDIF are all present and correctly matched, since a missing or misplaced ENDIF changes which statements belong inside the selection and which fall outside it, especially once IF statements are nested inside one another."
+        "An IF can be placed inside the THEN or the ELSE block of another IF. The inner test is only reached when the outer test has already gone a particular way, so the inner condition can rely on what the outer one has established. A login check is a natural case: there is no point testing the password until the username has been found, and the two failures need different messages. Each inner IF must be completely closed with its own ENDIF before the outer IF continues, so an IF nested twice ends with two ENDIFs.",
+        "Nesting in the ELSE branch builds a chain of tests on the same value, such as 'if negative … else if zero … else …'. Here the order of the tests matters: the first condition that is TRUE wins, so tests must go from the most specific or most extreme case outward. Python shortens an ELSE-then-IF into elif, and VB.NET into ElseIf, each needing only one closing keyword; in pseudocode you still write the full ELSE, IF and ENDIF. When every branch compares the same single variable with fixed values or ranges, a CASE structure is usually clearer."
       ],
       "bullets": [
-        "IF...THEN...ELSE...ENDIF makes a two-way choice: exactly one of the THEN branch or the ELSE branch executes, never both and never neither.",
-        "The ELSE branch is optional; without it, the THEN branch simply does nothing when the condition is FALSE.",
-        "ENDIF must close every IF statement; a missing or misplaced ENDIF changes which statements are inside the selection, particularly when IF statements are nested."
+        "The inner IF runs only on one path of the outer IF.",
+        "Count your ENDIFs: one per IF, closed innermost first.",
+        "In an ELSE-IF chain, test the most restrictive condition first, or later branches become unreachable.",
+        "Use nested IF when different conditions or different variables are involved; use CASE for one variable against many values."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "09-nested-if-pseudocode",
+          "kind": "pseudocode",
+          "label": "Nested IF: a two-stage login check",
+          "language": "cambridge-pseudocode",
+          "content": "IF Username = StoredName\n   THEN\n      IF Password = StoredPassword\n         THEN\n            OUTPUT \"Welcome \", Username\n         ELSE\n            OUTPUT \"Wrong password\"\n      ENDIF\n   ELSE\n      OUTPUT \"Unknown user\"\nENDIF\n\n// StoredName \"kim\", StoredPassword \"Tr33top\"\n// Username \"kim\", Password \"Tr33top\"  → Welcome kim\n// Username \"kim\", Password \"treetop\"  → Wrong password\n// Username \"sam\", any password        → Unknown user (the password is never tested)"
+        }
+      ]
     },
     {
       "id": "03-selection-case",
-      "title": "Selection: CASE OF...ENDCASE",
+      "title": "CASE OF … OTHERWISE … ENDCASE",
       "content": [
-        "CASE OF...ENDCASE chooses between several possible values of one single variable, rather than repeatedly testing separate conditions as a chain of IF...ELSE IF statements would. It is written CASE OF identifier, followed by one or more value : statement lines, each giving one possible value (or range of values) for identifier and the statement or statements to execute if identifier currently holds that value, and it is closed with ENDCASE. An optional OTHERWISE clause catches any value of identifier not explicitly listed above it, playing the same role a final, unconditional ELSE would play at the end of a chain of IF statements.",
-        "CASE OF is the natural choice whenever a program must branch on the different possible values of a single variable, such as branching on a menu choice entered as a single character or a grade letter, because it lays every possible value out clearly as its own branch, rather than requiring a separate, explicitly repeated condition on the same variable for every branch."
+        "A CASE structure compares the value of one expression, usually a single variable, with a list of clauses. Each clause is a value, or a range written <low> TO <high>, followed by a colon and the statement to run. The clauses are checked from the top, and only the first clause that matches is executed; after that, control jumps past ENDCASE. The optional final clause, OTHERWISE, runs when nothing above it matched, which makes it the natural place for an error message about invalid data. The coursebook also shows several values separated by commas in one clause, which VB.NET supports directly.",
+        "Ranges suit INTEGER and CHAR values, for example 70 TO 100 or 'A' TO 'Z'. Because the first match wins, overlapping ranges are legal but the later part of an overlap is never reached, so ranges should normally be written so that they do not overlap. A REAL value such as 69.5 would fall between two whole-number ranges, so either round it first or use nested IF with < and >= tests instead. Python has no CASE statement in older versions and is normally translated into if … elif … else; Python 3.10's match statement handles single values but not ranges. VB.NET uses Select Case with Case 70 To 100 and Case Else, and Java uses switch with case labels, break and default."
       ],
       "bullets": [
-        "CASE OF identifier lists each possible value of identifier as its own branch, ending with ENDCASE; only the branch matching identifier's current value executes.",
-        "OTHERWISE, if present, executes only when identifier's value matches none of the listed branches, in the same role a final ELSE plays in a chain of IF statements.",
-        "CASE OF suits branching on the different values of one single variable; IF...ELSE IF is still needed for conditions that are not all comparisons of the same one variable."
+        "CASE OF <identifier> … ENDCASE; each clause is <value> : <statement> or <low> TO <high> : <statement>.",
+        "Only the first matching clause runs, so clause order matters when values could match more than one.",
+        "OTHERWISE catches every unlisted value; use it to reject invalid input.",
+        "A CASE tests one expression only; conditions on different variables need IF."
       ],
       "examples": [
         {
           "id": "03-case-of-worked",
           "kind": "worked",
-          "label": "Worked example: CASE OF branching on a menu choice",
-          "content": "DECLARE MenuChoice : CHAR\nOUTPUT \"1: Add record  2: Delete record  3: Search  Anything else: Quit\"\nINPUT MenuChoice\n\nCASE OF MenuChoice\n  '1' : OUTPUT \"Adding a new record\"\n  '2' : OUTPUT \"Deleting a record\"\n  '3' : OUTPUT \"Searching for a record\"\n  OTHERWISE : OUTPUT \"Exiting the program\"\nENDCASE\n\n// If MenuChoice = '2', only the line OUTPUT \"Deleting a record\" executes;\n// the other three branches, including OTHERWISE, are all skipped.\n// If MenuChoice = 'X' (not listed), only OTHERWISE executes, printing \"Exiting the program\"."
+          "label": "CASE with ranges: converting a mark to a grade",
+          "content": "DECLARE Mark : INTEGER\nDECLARE Grade : STRING\nINPUT Mark\nCASE OF Mark\n   70 TO 100 : Grade ← \"Distinction\"\n   50 TO 69  : Grade ← \"Merit\"\n   40 TO 49  : Grade ← \"Pass\"\n   0 TO 39   : Grade ← \"Fail\"\n   OTHERWISE : Grade ← \"Invalid mark\"\nENDCASE\nOUTPUT Grade\n\nTest data (normal, boundary and erroneous)\nMark | Clause matched | OUTPUT\n73   | 70 TO 100      | Distinction\n70   | 70 TO 100      | Distinction\n69   | 50 TO 69       | Merit\n40   | 40 TO 49       | Pass\n39   | 0 TO 39        | Fail\n105  | OTHERWISE      | Invalid mark\n-3   | OTHERWISE      | Invalid mark"
+        },
+        {
+          "id": "03-case-menu",
+          "kind": "pseudocode",
+          "label": "CASE with single character values",
+          "language": "cambridge-pseudocode",
+          "content": "INPUT Choice\nCASE OF UCASE(Choice)\n   'A' : OUTPUT \"Adding a record\"\n   'D' : OUTPUT \"Deleting a record\"\n   'S' : OUTPUT \"Searching\"\n   OTHERWISE : OUTPUT \"Not a menu option\"\nENDCASE\n\n// Choice 'd' → UCASE gives 'D' → Deleting a record\n// Choice 'x' → Not a menu option"
         }
       ]
     },
     {
       "id": "04-for-loop",
-      "title": "Iteration: the count-controlled FOR loop",
+      "title": "Count-controlled loop: FOR … TO … STEP … NEXT",
       "content": [
-        "A FOR loop is used whenever the exact number of times a block of statements must repeat is already known before the loop begins, such as processing every element of an array of a known fixed size, or printing something a fixed number of times. It is written FOR counter <- start TO end, followed by the statements to repeat, and closed with NEXT counter; counter is automatically set to start, the body is executed, counter is then automatically increased by 1, and this repeats until counter has taken and executed the value end, after which the loop ends and execution continues after NEXT counter.",
-        "Because a FOR loop automatically manages its own counter, incrementing it and testing it internally, it never needs a separate condition to be written or checked by the programmer, unlike WHILE or REPEAT; this also means a FOR loop always executes its body a predetermined number of times, ((end - start) + 1) times, and is the wrong choice whenever the number of repetitions is not actually known in advance, such as repeating until the user enters a specific value."
+        "A FOR loop repeats its body a number of times that is fixed before the first pass. It is written FOR <identifier> ← <start> TO <end>, followed by the body and then NEXT <identifier>. The loop variable is given the start value, the body runs, the variable is increased by 1, and this repeats until the pass with the end value has been completed. FOR Count ← 1 TO 5 therefore runs five times, with Count taking 1, 2, 3, 4 and 5. For a start of 1, the number of passes is simply the end value; in general, with the default step it is End - Start + 1.",
+        "STEP changes the amount added each time: FOR X ← 2 TO 14 STEP 4 gives 2, 6, 10 and 14, and a negative step counts down, so FOR X ← 10 TO 1 STEP -3 gives 10, 7, 4 and 1. The loop stops once the next value would pass the end value, so the end value itself is only used if the steps land on it exactly. The pseudocode guide requires the step to be a whole number, and the body must not assign to the loop variable. Python's range excludes its end value, which is the usual source of off-by-one errors when translating: FOR X ← 1 TO 5 becomes for x in range(1, 6), and FOR X ← 10 TO 1 STEP -3 becomes range(10, 0, -3). A FOR loop is also the natural way to visit every element of an array or every character of a string, as in FOR Position ← 1 TO LENGTH(Word)."
       ],
       "bullets": [
-        "FOR counter <- start TO end ... NEXT counter repeats its body exactly ((end - start) + 1) times, once for each value counter takes from start to end inclusive.",
-        "counter is set, tested and incremented automatically by the FOR loop itself; the programmer never writes a separate condition or increment statement.",
-        "FOR is the right choice only when the number of repetitions is known before the loop starts; it is the wrong construct whenever the loop must instead run until some condition becomes true or false."
-      ],
-      "examples": []
-    },
-    {
-      "id": "05-while-loop",
-      "title": "Iteration: the pre-condition WHILE...ENDWHILE loop",
-      "content": [
-        "A WHILE loop is a pre-condition loop: it tests its condition immediately before every repetition of its body, including before the very first repetition. It is written WHILE condition, followed by the statements to repeat, closed with ENDWHILE; condition is evaluated, and only if it is TRUE does the body execute once, after which condition is evaluated again, and this continues until condition is evaluated as FALSE, at which point the loop ends without executing its body again.",
-        "Because the test happens before the body runs every single time, a WHILE loop's body can execute zero times: if condition is already FALSE the very first time it is tested, the body between WHILE and ENDWHILE is skipped entirely and execution continues immediately after ENDWHILE. WHILE is the correct choice whenever it is possible that the loop body should not run at all, for example validating an input that might already be valid the first time it is entered."
-      ],
-      "bullets": [
-        "WHILE condition ... ENDWHILE tests condition before every repetition, including before the first one.",
-        "If condition is FALSE the first time it is tested, the loop body executes zero times and is skipped entirely.",
-        "WHILE is the right choice whenever the loop body might legitimately need to be skipped altogether, such as validation that could already pass on the first attempt."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-repeat-loop",
-      "title": "Iteration: the post-condition REPEAT...UNTIL loop",
-      "content": [
-        "A REPEAT loop is a post-condition loop: it tests its condition immediately after every repetition of its body, never before. It is written REPEAT, followed by the statements to repeat, then UNTIL condition; the body executes once unconditionally, condition is then evaluated, and if it is FALSE the body executes again, repeating until condition is finally evaluated as TRUE, at which point the loop ends.",
-        "Because the test happens only after the body has already run, a REPEAT loop's body always executes at least once, even if condition would already have been TRUE before the loop started; there is no way to skip the first execution of a REPEAT loop's body. REPEAT is the correct choice whenever the body must run at least once regardless of any condition, such as displaying a menu at least once before checking whether the user chose to quit, or reading a first piece of input before there is anything to validate."
-      ],
-      "bullets": [
-        "REPEAT ... UNTIL condition tests condition after every repetition, never before, so the body always runs at least once.",
-        "A REPEAT loop's body cannot be skipped, even if condition is already TRUE before the loop begins.",
-        "REPEAT is the right choice whenever the body must run at least once regardless of the starting condition, such as showing a menu before checking whether to exit."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-while-vs-repeat-worked",
-      "title": "WHILE versus REPEAT: the same validation, traced both ways",
-      "content": [
-        "The choice between WHILE and REPEAT only matters when there is a real chance the loop body should not run at all; if the body must always run at least once regardless, both loops behave identically after their first pass, but they can differ sharply on that very first pass. Validating an input that might already be valid the first time it is entered is the clearest case, because it forces the two loops to behave differently: WHILE's pre-condition test can skip the body entirely if the very first value entered already passes, while REPEAT's post-condition test guarantees the body executes at least once no matter what, so a REPEAT version of the same validation must ask for the input before it can test it, whereas a WHILE version must have something to test before the loop is even reached.",
-        "The worked trace below validates a number that must be between 1 and 10 inclusive, using an input where the very first value entered, 5, is already valid. Both versions are traced with exactly this same input to show precisely where they diverge."
-      ],
-      "bullets": [
-        "The difference between WHILE and REPEAT is only visible on the first pass: WHILE can skip its body entirely, REPEAT never can.",
-        "A WHILE loop needs an initial value for the condition variable before the loop is reached, so the condition has something to test on its first, pre-body check.",
-        "A REPEAT loop needs no such initial value, because INPUT happens inside the body itself, which is guaranteed to run at least once before UNTIL is ever tested."
+        "FOR … NEXT for a known number of passes; NEXT names the same loop variable as FOR.",
+        "Default step is +1; STEP -1 counts down; the step must be an integer.",
+        "Never change the loop variable inside the body.",
+        "Python: range(start, end + 1, step) for a counting-up loop, because range stops before its end value."
       ],
       "examples": [
         {
-          "id": "07-while-vs-repeat-trace",
+          "id": "04-for-step-trace",
           "kind": "worked",
-          "label": "Worked trace: validating input 5 (already valid) with WHILE versus with REPEAT",
-          "content": "-- Version 1: WHILE (pre-condition) --\nDECLARE Number : INTEGER\nNumber <- 0                      // must be given a starting value that fails the test,\n                                  // since WHILE tests BEFORE the body has run even once\nWHILE Number < 1 OR Number > 10\n  OUTPUT \"Enter a number from 1 to 10: \"\n  INPUT Number\nENDWHILE\nOUTPUT \"Valid number accepted: \", Number\n\nTrace (input typed: 5):\nStep | Number before test | Condition (Number<1 OR Number>10) | Body runs?\n1    | 0                   | TRUE (0 < 1)                        | Yes -> INPUT reads 5, Number <- 5\n2    | 5                   | FALSE (5 is not <1 and not >10)     | No  -> loop ends\nOUTPUT: \"Valid number accepted: 5\"\n-- The body ran exactly once: the initial dummy value 0 was needed only to make the\n-- FIRST test TRUE so the loop would be entered at all; once 5 was read, the SECOND\n-- test was FALSE and the loop ended without running the body again.\n\n-- Version 2: REPEAT (post-condition) --\nDECLARE Number : INTEGER\nREPEAT\n  OUTPUT \"Enter a number from 1 to 10: \"\n  INPUT Number\nUNTIL Number >= 1 AND Number <= 10\nOUTPUT \"Valid number accepted: \", Number\n\nTrace (input typed: 5):\nStep | Body action                | Number after | Condition (Number>=1 AND Number<=10) checked after body\n1    | INPUT reads 5, Number <- 5 | 5            | TRUE (5 is >=1 and <=10) -> loop ends\nOUTPUT: \"Valid number accepted: 5\"\n\n-- Comparing the two traces with the SAME first input, 5:\n-- WHILE needed Number pre-set to a value (0) that fails the test, purely so the loop\n--   would be entered at all before anything had been read; REPEAT needed no such\n--   pre-set value, because INPUT is inside the body, which always runs at least once.\n-- Both versions accept 5 after exactly one INPUT in this case, because 5 is already\n--   valid; the difference is structural, not in this particular trace's final answer:\n--   REPEAT's body is guaranteed to run once even if the very first value were invalid\n--   and needed several more attempts, and so is WHILE's body from its second pass\n--   onward -- but only REPEAT guarantees that FIRST pass unconditionally, while WHILE's\n--   first pass depends entirely on Number's pre-loop value passing the pre-condition test."
+          "label": "Trace: two FOR loops using STEP",
+          "content": "Total ← 0\nFOR N ← 2 TO 10 STEP 2\n   Total ← Total + N\nNEXT N\nOUTPUT Total\n\nN  | Total\n   | 0\n2  | 2\n4  | 6\n6  | 12\n8  | 20\n10 | 30      → OUTPUT 30 (5 passes: the even numbers 2 to 10)\n\nFOR X ← 10 TO 1 STEP -3\n   OUTPUT X\nNEXT X\n\nX  | OUTPUT\n10 | 10\n7  | 7\n4  | 4\n1  | 1       → next value would be -2, which is past 1, so the loop ends\n\nPython check: sum(range(2, 11, 2)) = 30 and list(range(10, 0, -3)) = [10, 7, 4, 1]."
+        }
+      ]
+    },
+    {
+      "id": "06-repeat-loop",
+      "title": "Post-condition loop: REPEAT … UNTIL",
+      "content": [
+        "A REPEAT loop runs its body first and tests the condition afterwards: REPEAT <statements> UNTIL <condition>. If the condition is FALSE, the body runs again; as soon as it is TRUE, the loop ends. Because the test comes at the end, the body always runs at least once. This makes REPEAT the natural choice for input validation, where a value has to be read before there is anything to check, and for menus that must be shown at least once.",
+        "The condition describes when to stop, so it is the opposite of a WHILE condition for the same task: UNTIL LENGTH(Code) = 4 means the same as WHILE LENGTH(Code) <> 4. Something inside the body must be able to make the condition TRUE, usually an INPUT or an update to a counter, or the loop will never end. Python has no post-condition loop; the usual translation is while True: with the body followed by if condition: break. VB.NET writes Do … Loop Until condition and Java writes do { … } while (!condition);, where Java's condition is reversed because it says when to continue."
+      ],
+      "bullets": [
+        "Body first, test last: at least one pass is guaranteed.",
+        "UNTIL gives the stopping condition; the loop repeats while it is FALSE.",
+        "No variable in the condition needs a value before the loop, as long as the body sets it.",
+        "Python: while True: … if condition: break."
+      ],
+      "examples": [
+        {
+          "id": "06-repeat-trace",
+          "kind": "worked",
+          "label": "Trace: REPEAT until a 4-character code is entered",
+          "content": "DECLARE Code : STRING\nREPEAT\n   OUTPUT \"Enter a 4-character code: \"\n   INPUT Code\nUNTIL LENGTH(Code) = 4\nOUTPUT \"Code accepted: \", Code\n\nInputs: \"12\", \"12345\", \"7a9b\"\nPass | Code    | LENGTH(Code) | LENGTH(Code) = 4 ? | Action\n1    | \"12\"    | 2            | FALSE              | repeat\n2    | \"12345\" | 5            | FALSE              | repeat\n3    | \"7a9b\"  | 4            | TRUE               | leave loop\nOUTPUT: the prompt three times, then Code accepted: 7a9b"
+        }
+      ]
+    },
+    {
+      "id": "05-while-loop",
+      "title": "Pre-condition loop: WHILE … ENDWHILE",
+      "content": [
+        "A WHILE loop tests its condition before every pass: WHILE <condition> <statements> ENDWHILE. If the condition is TRUE the body runs and the test is made again; as soon as it is FALSE, execution continues after ENDWHILE. If the condition is already FALSE the first time, the body is skipped completely, so a WHILE loop can run zero times. The current pseudocode guide writes WHILE <condition> on its own; the coursebook adds DO at the end of the line, and either is understood.",
+        "Every variable in the condition must already have a value when the loop is first reached, so a WHILE loop is usually preceded by an initialising assignment or a first INPUT. As with REPEAT, the body must change something the condition depends on. WHILE suits problems where the loop may legitimately not be needed at all, such as processing data that might be empty, or repeating a calculation until a target is reached when the target might already be met. Python, VB.NET and Java all have this loop directly: while condition:, Do While … Loop and while (condition) { }."
+      ],
+      "bullets": [
+        "Test first, body second: zero or more passes.",
+        "WHILE gives the condition to carry on; the loop ends when it becomes FALSE.",
+        "Initialise the condition's variables before the loop.",
+        "Make sure the body can eventually make the condition FALSE."
+      ],
+      "examples": [
+        {
+          "id": "05-while-trace",
+          "kind": "worked",
+          "label": "Trace: smallest power of 2 that is at least N",
+          "content": "DECLARE N, Power, Doublings : INTEGER\nINPUT N\nPower ← 1\nDoublings ← 0\nWHILE Power < N\n   Power ← Power * 2\n   Doublings ← Doublings + 1\nENDWHILE\nOUTPUT Power, \" after \", Doublings, \" doublings\"\n\nN = 37\nPower | Doublings | Power < 37 ?\n1     | 0         | TRUE\n2     | 1         | TRUE\n4     | 2         | TRUE\n8     | 3         | TRUE\n16    | 4         | TRUE\n32    | 5         | TRUE\n64    | 6         | FALSE → OUTPUT 64 after 6 doublings\n\nN = 1\nPower | Doublings | Power < 1 ?\n1     | 0         | FALSE → body never runs, OUTPUT 1 after 0 doublings\n\nA REPEAT version would double at least once and wrongly output 2 for N = 1."
+        }
+      ]
+    },
+    {
+      "id": "07-while-vs-repeat-worked",
+      "title": "Justifying the choice of loop",
+      "content": [
+        "Any loop can be rewritten using either of the others, so the question is which fits the problem best. Ask two things. First, is the number of passes known when the loop is reached, even if it is held in a variable such as ClassSize or LENGTH(Word)? If so, use FOR: the counting is built in, so there is no counter to initialise or increment and no condition to get wrong. Second, if the number is not known, must the body run at least once? If yes, use REPEAT … UNTIL; if the body might not be needed at all, use WHILE … ENDWHILE.",
+        "A justification earns marks when it links the property of the loop to the specific problem, not when it just names the loop. 'REPEAT, because the password has to be entered before it can be checked, so the body must run at least once' scores; 'REPEAT, because it is a condition-controlled loop' does not. For a FOR loop the key phrase is 'the number of iterations is known before the loop starts'; for WHILE it is 'the condition is tested first, so the loop can be skipped when it is not needed'."
+      ],
+      "bullets": [
+        "Known number of passes → FOR (count-controlled).",
+        "Unknown, but at least one pass needed → REPEAT … UNTIL (post-condition).",
+        "Unknown, and zero passes possible → WHILE … ENDWHILE (pre-condition).",
+        "Always tie the justification to the scenario, not just to the definition."
+      ],
+      "examples": [
+        {
+          "id": "07-loop-choice-worked",
+          "kind": "worked",
+          "label": "Worked example: one task written three ways, and three justified choices",
+          "content": "Output the numbers 1 to 5\n\nFOR Count ← 1 TO 5         Count ← 1                  Count ← 1\n   OUTPUT Count            REPEAT                     WHILE Count <= 5\nNEXT Count                    OUTPUT Count               OUTPUT Count\n                              Count ← Count + 1          Count ← Count + 1\n                           UNTIL Count > 5            ENDWHILE\n\nAll three output 1 2 3 4 5, but FOR needs no manual initialise-and-increment, so it is the best fit.\nNote the conditions: WHILE Count <= 5 (carry on) is the opposite of UNTIL Count > 5 (stop).\n\nScenario                                              Best loop and justification\nTotal the marks of the 30 students in a class         FOR: the number of iterations (30) is known\n                                                      before the loop starts.\nKeep asking for a PIN until it is 4 digits long       REPEAT: a PIN must be input before it can\n                                                      be checked, so the body must run at least once.\nPrint every line of a file, which may be empty        WHILE NOT EOF(…): the test comes first, so an\n                                                      empty file is handled with zero passes."
         }
       ]
     },
     {
       "id": "08-nesting-constructs",
-      "title": "Nesting selection and iteration",
+      "title": "Combining and nesting constructs",
       "content": [
-        "Constructs are nested by placing one entirely inside another, such as an IF statement inside the body of a FOR loop, or a FOR loop inside one branch of an IF statement; the inner construct is fully executed, in its entirety, as part of each single pass of the outer construct, and each construct must still be closed with its own matching keyword (ENDIF, ENDCASE, NEXT counter, ENDWHILE or UNTIL condition) at the correct depth of nesting. Indentation is used to show this structure clearly on the page, but it is the matching keywords, not the indentation itself, that actually determine which statements belong to which construct when the pseudocode is traced.",
-        "Tracing nested constructs requires working from the outside in on each pass: for each repetition of the outer loop, the inner construct is evaluated completely, using the outer loop's current values where the inner construct refers to them, before moving on to the outer loop's next repetition. A trace table for nested constructs typically needs a row, or a sub-row, for every pass of the inner construct within every single pass of the outer one, since skipping a value produced by the inner construct is a common source of tracing errors."
+        "Real programs place constructs inside one another: an IF or CASE inside a loop to treat each value differently, a loop inside a loop to cover rows and columns, or a validation loop inside a counting loop. The inner construct runs completely on every pass of the outer one, and each construct keeps its own closing keyword at the matching indentation: ENDIF, ENDCASE, NEXT, UNTIL or ENDWHILE. Closing keywords must be nested properly, so an ENDIF that belongs inside a FOR loop has to appear before that loop's NEXT.",
+        "To trace nested constructs, add a column for every variable and for the output, and work through the inner construct fully for each value of the outer loop variable before moving on. The example below uses a FOR loop containing a nested IF chain. It also shows why order matters: a number divisible by 15 is also divisible by 3 and by 5, so the MOD 15 test has to come first or that branch would never run."
       ],
       "bullets": [
-        "One construct nested inside another is fully executed as part of a single pass of the outer construct; each construct needs its own correctly matched closing keyword.",
-        "Indentation shows nesting clearly to a reader, but the closing keywords (ENDIF, ENDCASE, NEXT, ENDWHILE, UNTIL) are what actually determine the structure when tracing.",
-        "Tracing nested constructs works from the outside in: for every pass of the outer construct, the inner construct is traced completely before moving to the outer construct's next pass."
+        "Inner constructs complete on every pass of the outer loop.",
+        "Close constructs innermost first: an inner ENDIF comes before the outer NEXT.",
+        "Indent each level consistently so the structure can be checked by eye.",
+        "In an IF chain inside a loop, put the most specific test first."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "08-nested-trace",
+          "kind": "worked",
+          "label": "Trace: nested IF inside a FOR loop",
+          "content": "FOR Number ← 9 TO 15\n   IF Number MOD 15 = 0\n      THEN\n         OUTPUT \"FizzBuzz\"\n      ELSE\n         IF Number MOD 3 = 0\n            THEN\n               OUTPUT \"Fizz\"\n            ELSE\n               IF Number MOD 5 = 0\n                  THEN\n                     OUTPUT \"Buzz\"\n                  ELSE\n                     OUTPUT Number\n               ENDIF\n         ENDIF\n   ENDIF\nNEXT Number\n\nNumber | MOD 15 | MOD 3 | MOD 5 | OUTPUT\n9      | 9      | 0     | –     | Fizz\n10     | 10     | 1     | 0     | Buzz\n11     | 11     | 2     | 1     | 11\n12     | 12     | 0     | –     | Fizz\n13     | 13     | 1     | 3     | 13\n14     | 14     | 2     | 4     | 14\n15     | 0      | –     | –     | FizzBuzz\n(– means the test is not reached)"
+        },
+        {
+          "id": "08-nested-python",
+          "kind": "code",
+          "label": "The same nested selection inside a loop in Python",
+          "language": "python",
+          "content": "for number in range(9, 16):      # FOR Number ← 9 TO 15 (range stops before 16)\n    if number % 15 == 0:\n        print(\"FizzBuzz\")\n    elif number % 3 == 0:        # elif = ELSE followed by a nested IF\n        print(\"Fizz\")\n    elif number % 5 == 0:\n        print(\"Buzz\")\n    else:\n        print(number)\n\n# Python has no REPEAT ... UNTIL; this is the usual equivalent\ncodes = iter([\"12\", \"12345\", \"7a9b\"])   # stands in for input()\nwhile True:\n    code = next(codes)\n    if len(code) == 4:                 # UNTIL LENGTH(Code) = 4\n        break\nprint(\"Code accepted:\", code)"
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "FOR, WHILE and REPEAT compared",
+    "title": "The three loop structures compared",
     "columns": [
-      "Loop",
-      "When condition is tested",
-      "Minimum times body executes",
-      "Used when"
+      "Feature",
+      "FOR … NEXT",
+      "REPEAT … UNTIL",
+      "WHILE … ENDWHILE"
     ],
     "rows": [
       [
-        "FOR...TO...NEXT",
-        "Not tested by the programmer; counter is managed automatically",
-        "Runs exactly ((end - start) + 1) times",
-        "The exact number of repetitions is known before the loop begins"
+        "Type",
+        "Count-controlled",
+        "Condition-controlled, post-condition",
+        "Condition-controlled, pre-condition"
       ],
       [
-        "WHILE...ENDWHILE",
-        "Before every repetition (pre-condition)",
-        "Zero times, if the condition is already FALSE on the first test",
-        "The body might legitimately need to be skipped entirely"
+        "When the test happens",
+        "Loop variable checked against the end value automatically",
+        "After the body",
+        "Before the body"
       ],
       [
-        "REPEAT...UNTIL",
-        "After every repetition (post-condition)",
-        "At least once, always, even if the condition would already have been TRUE",
-        "The body must run at least once regardless of the starting condition"
+        "Minimum passes",
+        "Fixed by start, end and STEP",
+        "1",
+        "0"
+      ],
+      [
+        "Loop ends when",
+        "The loop variable has passed the end value",
+        "The condition becomes TRUE",
+        "The condition becomes FALSE"
+      ],
+      [
+        "Set-up needed",
+        "None; the loop variable is managed for you",
+        "Variables in the condition must be set inside the body",
+        "Variables in the condition must have values before the loop"
+      ],
+      [
+        "Typical use",
+        "Processing every element of an array; a known number of repeats",
+        "Input validation; showing a menu at least once",
+        "Reading a file until EOF; repeating until a target that may already be met"
+      ],
+      [
+        "Python",
+        "for i in range(s, e + 1, step):",
+        "while True: … if condition: break",
+        "while condition:"
       ]
     ]
   },
   "diagram": {
-    "title": "Pre-condition (WHILE) versus post-condition (REPEAT) execution order",
+    "title": "Choosing a loop structure",
     "type": "flow",
     "nodes": [
-      "WHILE: test condition FIRST",
-      "If condition is FALSE here, body is skipped entirely -> loop ends",
-      "If condition is TRUE, body executes once, then loop returns to test condition again",
-      "REPEAT: body executes FIRST, unconditionally",
-      "UNTIL condition is tested AFTER the body -> if FALSE, body runs again; if TRUE, loop ends",
-      "Body of REPEAT has therefore already run at least once before any test occurs"
+      "Is the number of repetitions known when the loop is reached?",
+      "Yes → FOR … TO … STEP … NEXT (count-controlled)",
+      "No → must the body run at least once?",
+      "Yes → REPEAT … UNTIL (condition tested after the body)",
+      "No → WHILE … ENDWHILE (condition tested before the body; may run zero times)",
+      "Check: something in the body changes the condition, so the loop ends"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing a validation loop that skips a needed first check",
+      "title": "A nested IF whose last branch can never run",
       "steps": [
-        "A candidate wants to validate that a user enters a number from 1 to 10, and writes REPEAT with INPUT Number inside the body, ending UNTIL Number >= 1 AND Number <= 10",
-        "The requirement instead specifies that the value must be validated before it is used anywhere else, and that no invalid dummy or placeholder value should ever be read as if it were real input",
-        "Tracing REPEAT shows INPUT Number is the very first statement inside the body, so the body always requests and reads a real value from the user before UNTIL is tested, satisfying the requirement",
-        "Tracing an equivalent WHILE version shows Number would need a pre-loop dummy value, such as Number <- 0, purely to make the loop's first pre-condition test TRUE, which is not a value the user ever actually entered"
+        "A candidate grades marks with IF Mark >= 40 THEN \"Pass\" ELSE IF Mark >= 70 THEN \"Distinction\" …",
+        "Any mark of 70 or more also satisfies Mark >= 40, so it takes the first branch",
+        "The Mark >= 70 test sits in the ELSE branch, which is only reached by marks below 40, so it can never be TRUE",
+        "Reordering to test Mark >= 70 first, then Mark >= 40, or using CASE with non-overlapping ranges, fixes it"
       ],
-      "evaluation": "REPEAT...UNTIL is the correct construct here because the very first input must always be read and tested for real, with no dummy value required beforehand; a WHILE loop would need an artificial starting value just to enter the loop at all, which REPEAT's guaranteed-at-least-once body avoids entirely."
+      "evaluation": "Selection takes the first TRUE branch. In a chain of tests on one value, the most restrictive condition must come first; a test table with the boundary values 39, 40, 69 and 70 exposes the error immediately."
     },
     {
-      "title": "Diagnosing a wrong loop count from an off-by-one FOR loop",
+      "title": "Translating a WHILE loop into REPEAT … UNTIL",
       "steps": [
-        "A candidate wants to print the numbers 1 to 5 and writes FOR Counter <- 1 TO 4, OUTPUT Counter, NEXT Counter",
-        "The number of repetitions a FOR loop executes is calculated as ((end - start) + 1); here end = 4 and start = 1",
-        "Substituting these values: ((4 - 1) + 1) = 4, so the loop executes exactly 4 times, with Counter taking the values 1, 2, 3, 4",
-        "Tracing the OUTPUT statement on each pass confirms only 1, 2, 3 and 4 are printed; 5 is never reached because the loop's upper bound is 4, not 5"
+        "A WHILE loop reads WHILE Power < N … ENDWHILE and must be rewritten as a post-condition loop",
+        "UNTIL states when to stop, so the condition is negated: UNTIL Power >= N",
+        "Tracing N = 37 gives the same result, 64 after 6 doublings, because the WHILE body ran at least once anyway",
+        "Tracing N = 1 shows a difference: WHILE outputs 1 after 0 doublings, but REPEAT doubles once and outputs 2 after 1 doubling"
       ],
-      "evaluation": "The loop should have been written FOR Counter <- 1 TO 5 to produce 5 repetitions and print 1 to 5 inclusive; writing TO 4 instead of TO 5 is a classic off-by-one error, and checking ((end - start) + 1) against the number of values actually required catches it before tracing is even needed."
+      "evaluation": "Swapping loop types means reversing the condition and checking the zero-pass case. When zero passes is a valid outcome, only a pre-condition loop (or an extra IF around a REPEAT) gives the right answer."
     },
     {
-      "title": "Deciding between CASE OF and a chain of IF...ELSE IF for a grade lookup",
+      "title": "Justifying FOR over WHILE for an array total",
       "steps": [
-        "A program must convert a single character grade, stored in one variable Grade, into a descriptive message, with one branch for each of the letters 'A', 'B', 'C' and a final branch for any other letter",
-        "Written with CASE OF Grade, each letter becomes its own value : statement branch, with OTHERWISE catching any letter not listed, and the construct is closed with a single ENDCASE",
-        "Written instead as a chain of IF Grade = 'A' THEN ... ELSE IF Grade = 'B' THEN ... ELSE IF Grade = 'C' THEN ... ELSE ... ENDIF, the same single variable Grade is compared explicitly, separately, in every single condition",
-        "Both are traced against Grade = 'C': CASE OF jumps directly to the 'C' branch; the IF chain must evaluate and reject the 'A' comparison, then the 'B' comparison, before finally reaching the 'C' comparison"
+        "A program must add up the 30 values in Scores[1:30]",
+        "The number of passes, 30, is fixed before the loop starts",
+        "A WHILE version needs Index ← 1 before the loop, WHILE Index <= 30, and Index ← Index + 1 inside; forgetting the increment gives an infinite loop, and writing < 30 misses the last value",
+        "FOR Index ← 1 TO 30 … NEXT Index sets, tests and updates Index automatically"
       ],
-      "evaluation": "Both constructs produce the same result here because every branch tests the same single variable, Grade, against a fixed value, which is exactly the situation CASE OF is designed for; CASE OF is the clearer and more concise choice, since it avoids repeating the same variable name explicitly in every one of several separate IF conditions."
+      "evaluation": "Because the number of iterations is known in advance, a count-controlled loop is the better choice: it is shorter and removes the chance of a missing increment or an off-by-one condition. Conditional loops are for when that number is not known."
     }
   ],
   "examTips": [
-    "Close every construct with its correct matching keyword (ENDIF, ENDCASE, NEXT counter, ENDWHILE, UNTIL condition); a missing or misplaced one changes what is actually inside the construct.",
-    "Before choosing a loop, ask whether the number of repetitions is known in advance (FOR), whether the body might need to run zero times (WHILE), or whether the body must always run at least once (REPEAT).",
-    "When tracing a WHILE or REPEAT loop, check the condition at the exact point it is actually tested (before the body for WHILE, after the body for REPEAT), not by assumption.",
-    "Use CASE OF, not a chain of IF...ELSE IF, whenever every branch is comparing the same single variable to a fixed value or range; it is clearer and less error-prone to write and to trace."
+    "Close every construct: IF with ENDIF, CASE OF with ENDCASE, FOR with NEXT <same identifier>, REPEAT with UNTIL, WHILE with ENDWHILE.",
+    "Indent each level of nesting so the examiner can see which ENDIF belongs to which IF.",
+    "In CASE, check that ranges do not overlap and add OTHERWISE for invalid values.",
+    "Remember REPEAT stops when its condition is TRUE, WHILE stops when its condition is FALSE; reverse the condition when converting between them.",
+    "To justify a loop, name it and link its property to the scenario: known number of iterations (FOR), must run at least once (REPEAT), may not need to run at all (WHILE)."
   ],
   "commonMistakes": [
-    "Using a FOR loop when the number of repetitions is not actually known in advance, instead of a WHILE or REPEAT loop driven by a condition.",
-    "Using REPEAT...UNTIL when the loop body must be able to execute zero times, forgetting that REPEAT always executes its body at least once regardless of the condition.",
-    "Getting the FOR loop's bounds wrong by one, for example writing TO (n-1) instead of TO n and producing one repetition too few.",
-    "Omitting ENDIF, ENDCASE, NEXT counter, ENDWHILE or UNTIL, or placing one at the wrong level of nesting, changing which statements the construct actually contains.",
-    "Writing a long chain of IF...ELSE IF comparisons against the same single variable instead of the clearer, more concise CASE OF construct."
+    "Forgetting ENDIF on an inner IF, so that later statements are wrongly inside or outside the selection.",
+    "Putting the broadest test first in an IF chain or CASE, making later branches unreachable.",
+    "Writing FOR Count ← 1 TO 9 when ten passes were needed, or translating it to Python as range(1, 9).",
+    "Using the WHILE condition after UNTIL (UNTIL Count <= 5 instead of UNTIL Count > 5).",
+    "Leaving a WHILE or REPEAT loop without any statement that changes its condition, causing an infinite loop, or using a WHILE condition variable that has no value yet.",
+    "Changing the FOR loop variable inside the loop body."
   ],
   "quickRecall": [
     {
-      "question": "What are the three basic programming constructs?",
-      "answer": "Sequence (statements executed in written order), selection (choosing between alternative paths based on a condition) and iteration (repeating a block of statements)."
+      "question": "Write the skeleton of a two-way selection in Cambridge pseudocode.",
+      "answer": "IF <condition> THEN <statements> ELSE <statements> ENDIF, with THEN and ELSE on their own indented lines."
     },
     {
-      "question": "What is the difference between IF...THEN...ELSE...ENDIF and CASE OF...ENDCASE?",
-      "answer": "IF...THEN...ELSE...ENDIF makes a two-way choice based on any condition; CASE OF...ENDCASE chooses between several possible values of one single variable, with an optional OTHERWISE for unlisted values."
+      "question": "In a CASE structure, what happens when a value matches two clauses, and what is OTHERWISE for?",
+      "answer": "Only the first matching clause runs. OTHERWISE runs when no clause matches, typically to report invalid data."
     },
     {
-      "question": "When should a FOR loop be used, and how many times does FOR counter <- start TO end repeat?",
-      "answer": "When the exact number of repetitions is known before the loop begins; it repeats exactly ((end - start) + 1) times."
+      "question": "What values does FOR X ← 10 TO 1 STEP -3 give X, and what is the Python equivalent?",
+      "answer": "10, 7, 4, 1; for x in range(10, 0, -3)."
     },
     {
-      "question": "When is a WHILE loop's condition tested, and what does this mean for how many times its body can execute?",
-      "answer": "Before every repetition, including the first; this means the body can execute zero times if the condition is already FALSE the first time it is tested."
+      "question": "What is the minimum number of times the body of a REPEAT loop and of a WHILE loop can run?",
+      "answer": "REPEAT at least once (condition tested after the body); WHILE zero times (condition tested before the body)."
     },
     {
-      "question": "When is a REPEAT loop's condition tested, and what does this mean for how many times its body can execute?",
-      "answer": "After every repetition, never before; this means the body always executes at least once, even if the condition would already have been TRUE before the loop started."
+      "question": "Rewrite WHILE Total < 100 … ENDWHILE as a post-condition loop condition.",
+      "answer": "REPEAT … UNTIL Total >= 100 (the condition is reversed, and the body now runs at least once)."
     },
     {
-      "question": "Given the same first input that is already valid, what is the key structural difference between validating it with WHILE versus with REPEAT?",
-      "answer": "WHILE needs a pre-loop dummy value that fails the test, purely to enter the loop before anything real has been read, and can then skip its body entirely; REPEAT needs no dummy value, because INPUT sits inside its body, which always runs at least once before the condition is ever tested."
+      "question": "When is a FOR loop the best choice?",
+      "answer": "When the number of iterations is known when the loop is reached, for example the size of an array or a value already input."
     },
     {
-      "question": "How is nesting shown, and what actually determines a nested construct's boundaries when tracing?",
-      "answer": "Indentation shows nesting clearly to a reader, but it is each construct's own correctly matched closing keyword (ENDIF, ENDCASE, NEXT, ENDWHILE, UNTIL) that actually determines its boundaries when the pseudocode is traced."
+      "question": "Justify using REPEAT … UNTIL to validate an input.",
+      "answer": "The value has to be input before it can be checked, so the body must execute at least once; REPEAT tests its condition after the body, guaranteeing that first pass."
+    },
+    {
+      "question": "Why must an inner IF inside a FOR loop have its ENDIF before the loop's NEXT?",
+      "answer": "Constructs must be closed innermost first; the IF is part of the loop body, so it has to finish before the loop does."
     }
   ],
   "relatedTopics": [
     "9.2",
+    "10.1",
+    "10.3",
     "11.1",
-    "11.3",
-    "12.2"
+    "11.3"
   ]
 }

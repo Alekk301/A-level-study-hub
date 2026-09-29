@@ -1068,11 +1068,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Use variables, constants, operators and input/output statements — the building blocks of any program.",
+            "summary": "Write pseudocode from a flowchart or structured English: constants, variables, assignment, arithmetic and logical expressions, input/output and built-in functions.",
             "focusPoints": [
-              "variables/constants",
-              "operators",
-              "input/output"
+              "constants/variables/assignment",
+              "operators and precedence",
+              "INPUT/OUTPUT",
+              "built-in functions"
             ],
             "contentDepth": "full"
           },
@@ -1083,11 +1084,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Use selection (IF) and iteration (FOR/WHILE/REPEAT) constructs, including nested constructs, to control program flow.",
+            "summary": "Write IF (with ELSE and nesting) and CASE statements, count-controlled, post-condition and pre-condition loops, and justify the choice of loop.",
             "focusPoints": [
-              "selection",
-              "FOR/WHILE/REPEAT",
-              "nesting"
+              "IF/ELSE and nested IF",
+              "CASE",
+              "FOR/REPEAT/WHILE",
+              "choosing a loop"
             ],
             "contentDepth": "full"
           },
