@@ -6,289 +6,319 @@
   "unitTitle": "AS Theory",
   "title": "Data Security",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to identify security threats to data and systems, and to describe the defences used against each one. Answers score when a named threat is matched to a specific defence and the link between them is explained, rather than the two being listed separately.",
+  "overview": "Data must be kept safe from loss, seen only by the right people, and kept accurate. Paper 1 asks you to distinguish security, privacy and integrity; name and describe threats such as malware, hackers, phishing and pharming; and describe measures that protect the computer system (accounts, passwords, authentication, firewalls, anti-malware) and the data itself (backup, disk mirroring, access rights, encryption). The highest marks go to answers that match a specific measure to a specific threat and say how it reduces the risk.",
   "syllabusPoints": [
-    "Identify and describe security threats to data and systems, including malware (viruses, worms, trojans, spyware, adware and ransomware), phishing, pharming, hacking and social engineering.",
-    "Describe methods used to help keep data safe from security threats, including access rights, anti-malware software, authentication, firewalls, encryption and privacy settings.",
-    "Explain how authentication techniques, including passwords, biometrics, two-step verification and digital certificates, help confirm the identity of a user.",
-    "Describe the role of a firewall (hardware or software) in controlling network traffic entering and leaving a system.",
-    "Show understanding of the need for physical security measures to protect hardware and data."
+    "Explain the difference between the terms security, privacy and integrity of data.",
+    "Show appreciation of the need for both the security of data and the security of the computer system.",
+    "Describe security measures designed to protect computer systems, ranging from the stand-alone PC to a network of computers, including user accounts, passwords, authentication techniques such as digital signatures and biometrics, firewalls, anti-virus software, anti-spyware and encryption.",
+    "Show understanding of the threats to computer and data security posed by networks and the internet, including malware (including virus and spyware), hackers, phishing and pharming.",
+    "Describe methods that can be used to restrict the risks posed by threats.",
+    "Describe security measures designed to protect the security of data, including data backup, disk mirroring, encryption and access rights to data (authorisation)."
   ],
   "definitions": [
     {
+      "term": "Data security",
+      "definition": "Protecting data against loss, damage or corruption, so it is available when needed and can be recovered if lost."
+    },
+    {
+      "term": "Data privacy",
+      "definition": "Keeping data available only to authorised users, protecting it from unauthorised access."
+    },
+    {
+      "term": "Data integrity",
+      "definition": "The requirement for data to be accurate, complete and up to date, and unchanged except by authorised processes."
+    },
+    {
       "term": "Malware",
-      "definition": "Malicious software designed to damage, disrupt or gain unauthorised access to a computer system, including viruses, worms, trojans, spyware, adware and ransomware."
+      "definition": "Malicious software written with the intention of causing harm to a computer system or the data it holds."
+    },
+    {
+      "term": "Hacker",
+      "definition": "A person who attempts to gain unauthorised access to a computer system."
     },
     {
       "term": "Phishing",
-      "definition": "Sending fraudulent messages that appear to come from a trustworthy source, intended to trick the recipient into revealing personal data or clicking a malicious link."
+      "definition": "Sending an email or message that appears to come from a legitimate source in order to trick the recipient into giving away confidential information."
     },
     {
       "term": "Pharming",
-      "definition": "Malicious code that redirects a user from a legitimate website to a fake one without any action by the user, typically by corrupting DNS records or a local hosts file."
+      "definition": "Redirecting a user to a fake website that looks legitimate, for example by altering DNS or browser settings, so that confidential details are entered there."
     },
     {
-      "term": "Social engineering",
-      "definition": "Manipulating people into breaking normal security procedures, for example by impersonating IT support or persuading someone to reveal a password."
+      "term": "Authentication",
+      "definition": "Verifying that a user is who they claim to be, for example by password, biometrics or a security token."
+    },
+    {
+      "term": "Authorisation (access rights)",
+      "definition": "Defining which files and resources each user may access and what they are allowed to do with them (e.g. read only, read/write)."
     },
     {
       "term": "Firewall",
-      "definition": "Hardware or software that monitors and controls incoming and outgoing network traffic according to a set of security rules."
+      "definition": "Hardware or software that monitors incoming and outgoing network traffic and blocks traffic that does not meet a set of rules."
     },
     {
       "term": "Encryption",
-      "definition": "Scrambling data using an algorithm and a key so that it can only be read by someone who has the correct key to decrypt it."
+      "definition": "Converting plain text into cipher text using an algorithm and a key, so that intercepted data cannot be understood without the decryption key."
     },
     {
-      "term": "Two-step verification",
-      "definition": "An authentication method that requires a second, independent piece of evidence, such as a one-time code sent to a registered device, in addition to a password."
-    },
-    {
-      "term": "Access rights",
-      "definition": "Permissions that determine what a logged-in user is allowed to view, change or run, following the principle of giving each user only what they need."
+      "term": "Disk mirroring",
+      "definition": "Writing every item of data to two separate disks at the same time, so an identical copy is always available if one disk fails."
     }
   ],
   "sections": [
     {
-      "id": "01-why-data-needs-protecting",
-      "title": "Why data needs to be protected",
+      "id": "01-security-privacy-and-integrity",
+      "title": "Security, privacy and integrity of data",
       "content": [
-        "Data held by an organisation is valuable, and losing control of it can cause financial loss, identity theft, reputational damage and legal consequences under data protection legislation. Security threats can come from outside an organisation (hackers, malware, phishing) or from inside it (a careless or malicious employee), so defences must cover both technical controls and staff behaviour."
+        "These three terms are often confused, and examiners reward precise definitions. Data security means the data are protected from being lost or corrupted, so they are available when needed and are the same data that were originally stored. Data privacy means the data can only be seen by people who are authorised to see them. Data integrity means the data are accurate, complete and up to date. Privacy of personal data is supported by data protection laws, which require organisations to keep the data they hold private and accurate and to use them only for the purposes agreed with the individual; the law acts as a deterrent because offenders can be prosecuted."
       ],
       "bullets": [
-        "A breach can expose personal data protected by law, leading to fines and loss of trust.",
-        "Some threats aim to steal data; others aim to damage or deny access to it.",
-        "No single defence is sufficient; systems use several layers together."
+        "Security → protection against loss. Privacy → protection against unauthorised access. Integrity → accuracy.",
+        "Security is needed first: lost or corrupted data cannot be private or accurate.",
+        "But security alone does not guarantee privacy or integrity; secure data can still be wrong or seen by the wrong people."
+      ],
+      "examples": [
+        {
+          "id": "6.1-1-1",
+          "kind": "worked",
+          "label": "Two-mark answer: security versus privacy",
+          "content": "Question: Describe the difference between the security and the privacy of data. [2]\nMark-scoring answer:\nSecurity is protecting data against loss or corruption. (1)\nPrivacy is protecting data against access by unauthorised people. (1)"
+        }
+      ]
+    },
+    {
+      "id": "02-system-and-data-security",
+      "title": "Why both the system and the data need protecting",
+      "content": [
+        "Protecting data depends on protecting the computer system that stores it. System security has two aims: to keep the system running and carrying out the tasks users need, and to ensure that only authorised users can access it. Data security measures, such as backups and encryption, then protect the data itself in case the system's defences fail. An organisation needs both: a secure system that is down after a disaster cannot provide its data, and a system that is running but has no backups can lose its data permanently."
+      ],
+      "bullets": [
+        "System security measures: user accounts, passwords, authentication, firewalls, anti-malware, disaster recovery planning.",
+        "Data security measures: backup, disk mirroring, access rights, encryption.",
+        "Threats come from people inside and outside the organisation, from software and from natural disasters."
       ],
       "examples": []
     },
     {
-      "id": "02-malware",
-      "title": "Malware",
+      "id": "03-threats",
+      "title": "Threats from networks and the internet",
       "content": [
-        "Malware is a general term for software designed to cause harm. A virus attaches itself to a host file or program and spreads only when a user runs the infected file. A worm is a standalone program that replicates itself and spreads across a network on its own, without needing a host file or any action from a user. A trojan horse disguises itself as legitimate, useful software but carries a hidden malicious payload, often opening a backdoor for an attacker. Spyware secretly monitors a user's activity and gathers data such as keystrokes or browsing habits. Adware displays unwanted adverts and may also track browsing behaviour. Ransomware encrypts a victim's files and demands payment for the key needed to decrypt them."
+        "Threats include careless users, internal mismanagement, natural disasters (fire, flood, earthquake), hackers and malware. A hacker tries to gain unauthorised access, usually by exploiting weaknesses such as weak passwords, unpatched software or out-of-date anti-malware; once in, they may steal, delete or change data, install malware or disrupt the system. Malware takes several forms. A virus attaches itself to other executable code and replicates, corrupting or deleting data. A worm runs independently and spreads itself across a network. A Trojan horse appears to be useful, legitimate software but carries hidden malicious code. Spyware secretly gathers information, such as keystrokes, and sends it to a third party. A logic bomb stays inactive until a condition, such as a date, is met. A bot takes control of a computer so it can be used in attacks on others."
       ],
       "bullets": [
-        "Malware commonly enters a system through email attachments, infected downloads, removable media or compromised websites.",
-        "Anti-malware software scans for known malware signatures and suspicious behaviour, then quarantines or removes infected files.",
-        "Keeping anti-malware software and its signature database up to date is essential, because it cannot detect threats it does not recognise."
+        "Phishing: a fake but legitimate-looking email or message persuades the user to reveal confidential details or click a link.",
+        "Pharming: malicious code alters DNS or browser settings so a correctly typed web address leads to a fake site.",
+        "Keylogging: recording the user's keystrokes to capture passwords and card numbers.",
+        "Users often introduce malware accidentally by opening email attachments, downloading files, visiting infected websites or attaching portable storage devices.",
+        "Systems have their own weaknesses, such as operating system flaws found after release and buffer overflow, where a program writes beyond the end of a memory buffer and overwrites other data or code."
+      ],
+      "examples": [
+        {
+          "id": "6.1-3-1",
+          "kind": "analysis",
+          "label": "Phishing or pharming?",
+          "content": "A bank customer receives an email with the bank's logo asking them to 'confirm their account' using a link → phishing: the user is tricked by a message into acting.\nA customer types the bank's correct web address but lands on a copy of the site that records their login → pharming: the redirection happens without any message, because settings or DNS have been tampered with."
+        }
+      ]
+    },
+    {
+      "id": "04-restricting-risks",
+      "title": "Restricting the risks posed by threats",
+      "content": [
+        "Each threat has matching preventative measures, and good answers pair them. Against hackers: strong passwords, two-factor authentication, firewalls and keeping software patched. Against malware: up-to-date anti-virus and anti-spyware, a firewall, and restricting which files users can download or run. Against phishing: spam filters, training users to recognise suspicious messages, and never following links in unexpected emails. Against pharming: anti-malware that detects altered settings, and checking that the URL is correct and the site uses HTTPS with a valid certificate. Against natural disasters and system failure: backups stored off site and a disaster recovery plan."
+      ],
+      "bullets": [
+        "Organisations can ban or restrict portable storage devices to reduce the risk of malware being brought in.",
+        "Software updates (patches) close security holes that attackers exploit.",
+        "Good user practice: log off or lock the computer when unattended, do not share or write down passwords, and do not let others watch you log in."
       ],
       "examples": []
     },
     {
-      "id": "03-phishing-pharming-social-engineering",
-      "title": "Phishing, pharming and social engineering",
+      "id": "05-protecting-computer-systems",
+      "title": "Security measures for computer systems",
       "content": [
-        "Phishing relies on a message, often an email, that looks like it is from a trustworthy source and asks the user to click a link or reveal personal data such as a password. Pharming does not rely on the user being deceived by a message at all: malicious code corrupts DNS lookups or a device's hosts file so that typing a legitimate address still leads to a fake site. Social engineering is a wider category that exploits human behaviour rather than a technical weakness, for example an attacker phoning an employee, pretending to be IT support, and persuading them to reveal a password."
+        "Every user should have a user account, which controls what they can do and allows their activity to be logged. Access is protected by authentication. Passwords should be long and use a mix of character types, and are stored in encrypted (hashed) form so that stealing the password file does not reveal them. Biometric methods (fingerprint, face, iris or voice recognition) use a unique physical characteristic that cannot be forgotten or easily copied. Security tokens and one-time codes sent to a phone add a second factor, so a stolen password alone is not enough. A digital signature authenticates the sender of a message and shows it has not been altered. A firewall sits between a network and the internet, checking traffic against rules such as permitted IP addresses and ports and blocking anything not allowed; hardware firewalls protect the whole network while software firewalls protect individual devices. Anti-virus software scans files, attachments and downloads, comparing them with a database of known malware signatures and removing or quarantining threats, so it must be updated regularly; anti-spyware detects and removes spyware in the same way. An intrusion detection system analyses records of system use to spot activity that does not match normal patterns."
       ],
       "bullets": [
-        "Checking a sender's address and hovering over links before clicking helps identify phishing attempts.",
-        "Pharming can succeed even when a user types the correct web address themselves.",
-        "Staff training reduces social engineering risk because it targets people, not software."
+        "Two-factor authentication combines two different types: something you know (password), something you have (token or phone), something you are (biometric).",
+        "Longer passwords with more character types increase the number of combinations an attacker must try.",
+        "Disaster recovery planning keeps an organisation running after a major failure, for example by having a remote 'hot site' ready to take over."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "6.1-5-1",
+          "kind": "worked",
+          "label": "Why password length matters",
+          "content": "There are 95 printable ASCII characters.\n8-character passwords: 95^8 ≈ 6.6 × 10^15 combinations\n12-character passwords: 95^12 ≈ 5.4 × 10^23 combinations\nEach extra character multiplies the number of possibilities by 95, making a brute-force attack far slower."
+        }
+      ]
     },
     {
-      "id": "04-hacking-and-unauthorised-access",
-      "title": "Hacking and unauthorised access",
+      "id": "06-protecting-data",
+      "title": "Security measures for data",
       "content": [
-        "Hacking is gaining unauthorised access to a computer system, sometimes to view, steal, alter or destroy data, and sometimes simply to prove it can be done. Weak passwords, unpatched software and poorly configured networks make hacking easier. Once inside a system, an attacker with the same access as a legitimate user can be very difficult to distinguish from normal activity, which is why monitoring and logging matter alongside prevention."
+        "Data can be lost through corrupted or damaged disks, system crashes, accidental deletion or overwriting, as well as through attacks. A backup is a copy of the data made so it can be restored. A typical procedure makes a full backup regularly (such as weekly), keeps at least two generations of full backups, and makes incremental backups of changed data daily, with copies stored off site in a fireproof and flood-proof location. Disk mirroring writes all data to two disks simultaneously, so if one fails the other takes over immediately with no data lost; the second disk can be at a remote site. Access rights (authorisation) give different users different permissions for each file, such as no access, read-only, or read and write, so staff see only the data their role requires. Encryption means that even if data are stolen or intercepted, they cannot be understood without the key."
       ],
       "bullets": [
-        "Regular software updates close known vulnerabilities before they can be exploited.",
-        "Strong, unique passwords make it harder for an attacker to guess or crack account credentials.",
-        "Logging user activity helps an organisation detect and investigate unauthorised access after the fact."
+        "Backup protects against loss but the data restored are only as recent as the last backup; mirroring gives an up-to-the-moment copy.",
+        "Mirroring does not protect against accidental deletion or malware, because the change is copied to both disks, so backups are still needed.",
+        "Encryption does not stop data being stolen or deleted; it stops it being read.",
+        "Symmetric encryption uses the same key to encrypt and decrypt; asymmetric encryption uses a public key and a private key (covered fully in topic 17.1)."
       ],
-      "examples": []
-    },
-    {
-      "id": "05-authentication",
-      "title": "Authentication",
-      "content": [
-        "Authentication confirms that a user is who they claim to be. A password is a shared secret; its strength depends on length and the mixture of characters used, and it should not be a predictable word. Biometrics measure a physical characteristic, such as a fingerprint, retina pattern or face, that is very difficult to replicate, forget or share. Two-step verification adds a second, independent factor, such as a one-time code sent to a registered device, so a stolen password alone is not enough to log in. A digital certificate, issued by a trusted certificate authority, confirms the identity of a website or sender and enables encrypted communication with it."
-      ],
-      "bullets": [
-        "Authentication proves identity; access rights then decide what that identified user may do.",
-        "Combining factors (something you know, something you have, something you are) is stronger than any one alone.",
-        "A digital certificate lets a browser confirm it is really connected to the website it expects."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-access-rights-and-physical-security",
-      "title": "Access rights and physical security",
-      "content": [
-        "Access rights restrict what a logged-in user may view, edit or run, following the principle that each account should hold only the permissions it needs. This limits the damage a compromised account or a careless employee can cause. Physical security protects the hardware itself: locked server rooms, biometric door locks, CCTV, security guards and cable locks for portable devices all reduce the risk of theft, tampering or accidental damage."
-      ],
-      "bullets": [
-        "Different accounts can have different rights, for example only an administrator can install software or change permissions.",
-        "Physical theft of a device bypasses many software defences if its storage is not also encrypted.",
-        "Visitor sign-in and restricted areas are simple, effective physical controls."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-firewalls",
-      "title": "Firewalls",
-      "content": [
-        "A firewall sits between a trusted internal network and an untrusted external network, such as the internet, and monitors traffic passing between them. It checks each connection attempt against a set of rules, for example allowing or blocking traffic based on IP address, port number or protocol, and can be implemented in hardware, software, or both. Traffic that does not match an allowed rule is blocked and may be logged for later review."
-      ],
-      "bullets": [
-        "A firewall filters traffic; it does not inspect the meaning of the data inside an allowed connection.",
-        "Firewalls cannot stop threats carried inside traffic they are configured to allow, such as a phishing link in an email.",
-        "Both incoming and outgoing traffic can be filtered, which also helps contain an already-infected device."
-      ],
-      "examples": []
-    },
-    {
-      "id": "08-encryption-and-secure-protocols",
-      "title": "Encryption and secure protocols",
-      "content": [
-        "Encryption scrambles data using an algorithm and a key, so that anyone who intercepts it without the correct key sees only unreadable ciphertext. It protects the confidentiality of data in transit and in storage, even if a firewall or authentication has already been bypassed. Secure protocols such as SSL/TLS, shown as HTTPS in a browser's address bar, encrypt data sent between a device and a website. The detailed mechanics of encryption algorithms and digital certificates are covered further at A2 in topic 17.1."
-      ],
-      "bullets": [
-        "Encryption protects confidentiality; it does not by itself prevent data being intercepted, only prevent it being understood.",
-        "A padlock icon or 'https' indicates an encrypted connection, but does not guarantee the site itself is trustworthy.",
-        "Sensitive stored data can also be encrypted, so a stolen device does not expose readable files."
-      ],
-      "examples": []
+      "examples": [
+        {
+          "id": "6.1-6-1",
+          "kind": "analysis",
+          "label": "Access rights in a hospital",
+          "content": "Doctors: read and write access to their patients' medical records.\nReceptionists: read access to appointment details only; no access to medical notes.\nIT technicians: access to system settings but no access to patient records.\nEach group gets only the access its job requires, protecting patients' privacy."
+        }
+      ]
     }
   ],
-  "formulas": [],
+  "formulas": [
+    {
+      "label": "Password combinations",
+      "expression": "number of passwords = (number of possible characters)^(password length)"
+    }
+  ],
   "comparisonTable": {
-    "title": "Common malware types",
+    "title": "Threats and the measures that restrict them",
     "columns": [
-      "Malware",
-      "How it behaves",
-      "Typical harm"
+      "Threat",
+      "How it causes harm",
+      "Measures that reduce the risk"
     ],
     "rows": [
       [
-        "Virus",
-        "Attaches to a host file and spreads when a user runs the infected file",
-        "Corrupts or deletes data, disrupts normal use"
+        "Hacker",
+        "Gains unauthorised access to steal, change or delete data",
+        "Strong passwords, two-factor authentication, firewall, software patches"
       ],
       [
-        "Worm",
-        "Self-replicates and spreads across a network without a host file or user action",
-        "Consumes bandwidth and system resources, can carry a payload"
+        "Virus / worm",
+        "Replicates and corrupts or deletes files; worms spread across networks",
+        "Up-to-date anti-virus, firewall, not opening unknown attachments"
       ],
       [
-        "Trojan horse",
-        "Disguised as legitimate software",
-        "Opens a backdoor for an attacker or installs further malware"
+        "Spyware / keylogger",
+        "Secretly records activity and keystrokes and sends them to a third party",
+        "Anti-spyware, not installing software from untrusted sources"
       ],
       [
-        "Spyware",
-        "Runs hidden, monitors user activity",
-        "Steals passwords, browsing data or keystrokes"
+        "Phishing",
+        "Tricks the user into revealing details through a fake message",
+        "Spam filters, user training, checking the sender and links"
       ],
       [
-        "Adware",
-        "Displays unwanted adverts, may track browsing",
-        "Disrupts use and can expose browsing habits"
+        "Pharming",
+        "Redirects a correctly typed address to a fake website",
+        "Anti-malware, checking the URL and HTTPS certificate"
       ],
       [
-        "Ransomware",
-        "Encrypts files on the device and connected drives",
-        "Data becomes unusable until a ransom is paid or a backup is restored"
+        "Hardware failure or disaster",
+        "Data or the whole system are lost",
+        "Backups stored off site, disk mirroring, disaster recovery plan"
       ]
     ]
   },
   "diagram": {
-    "title": "How a firewall filters traffic",
-    "type": "flow",
+    "title": "Layers of protection",
+    "type": "layers",
     "nodes": [
-      "Traffic arrives from the internet",
-      "Firewall checks the traffic against its rule set",
-      "Traffic matching an allowed rule passes through",
-      "Traffic violating the rules is blocked and may be logged",
-      "Allowed traffic reaches the internal network"
+      "Firewall at the network boundary",
+      "User accounts and authentication",
+      "Anti-virus and anti-spyware",
+      "Access rights to files",
+      "Encryption of the data",
+      "Backups and disk mirroring"
     ]
   },
   "analysisChains": [
     {
-      "title": "A phishing email leading to a compromised account",
+      "title": "Adding two-factor authentication to staff logins",
       "steps": [
-        "An email arrives that appears to be from a trusted bank",
-        "A link in the email opens a convincing but fake login page",
-        "The user enters their username and password on the fake page",
-        "The attacker captures the credentials and logs into the real account"
+        "A user must enter a password and a code from their phone or token",
+        "An attacker who has stolen or guessed the password still cannot log in",
+        "Phishing attacks that capture passwords become much less useful",
+        "But logging in takes longer and users are locked out if they lose their device"
       ],
-      "evaluation": "Checking sender addresses and links reduces the risk, but a well-crafted message can still fool a careful user, so two-step verification limits the damage even if a password is stolen."
+      "evaluation": "For systems holding personal or financial data, the extra protection easily outweighs the small inconvenience."
     },
     {
-      "title": "Ransomware encrypting a shared drive",
+      "title": "Using disk mirroring as well as backups",
       "steps": [
-        "An employee opens an infected email attachment",
-        "The ransomware installs itself and begins encrypting files on the local disk",
-        "It also encrypts files on any connected network drives",
-        "A message demands payment for the decryption key"
+        "Every write goes to two disks at the same time",
+        "If one disk fails, the other continues immediately with no data lost",
+        "The system stays available, which matters for services running 24/7",
+        "But deletion or malware damage is mirrored too, so separate backups are still required"
       ],
-      "evaluation": "Regular offline backups let the organisation restore its files without paying, while restricted access rights limit how many shared files a single infected account can reach."
+      "evaluation": "Mirroring protects against hardware failure and downtime; backups protect against mistakes and attacks. A critical system needs both."
     },
     {
-      "title": "A firewall blocking an unauthorised connection attempt",
+      "title": "Encrypting a laptop's hard drive",
       "steps": [
-        "An external computer attempts to connect to a port used by an internal server",
-        "The firewall checks the connection attempt against its rule set",
-        "No rule allows that port from that external address",
-        "The connection is dropped and the attempt may be logged"
+        "All stored data are converted to cipher text",
+        "If the laptop is lost or stolen, the thief cannot read the files without the key",
+        "The organisation avoids a breach of personal data and possible legal penalties",
+        "But if the user forgets the key or password, the data may be unrecoverable"
       ],
-      "evaluation": "Firewalls stop many automated and unsolicited connection attempts, but cannot detect a threat disguised as traffic they are configured to allow, such as a phishing link opened by a user."
+      "evaluation": "Encryption is essential for portable devices holding sensitive data; key management must be planned so data are not lost."
     }
   ],
   "examTips": [
-    "Match each threat to a specific defence and explain the link, rather than listing threats and defences as two separate lists.",
-    "State what a piece of malware actually does, for example 'encrypts files and demands payment', rather than only naming it.",
-    "Distinguish phishing (a fraudulent message) from pharming (redirection via corrupted DNS or a hosts file) precisely.",
-    "When asked about authentication, explain why the method confirms identity, for example biometrics use a characteristic that is very hard to replicate."
+    "Use the key words in definitions: security → loss; privacy → unauthorised access; integrity → accuracy.",
+    "When asked for a measure, state the measure and explain how it protects against the named threat.",
+    "Distinguish phishing (a message tricks the user) from pharming (redirection to a fake site without the user's knowledge).",
+    "For access rights, give examples of different levels (no access, read-only, read/write) and link them to user roles.",
+    "Say that anti-virus software must be kept up to date, because it relies on a database of known signatures."
   ],
   "commonMistakes": [
-    "Confusing a virus with a worm; a virus needs a host file and user action, a worm self-replicates across a network on its own.",
-    "Saying a firewall 'stops all attacks'; it only filters traffic against its rule set and cannot detect social engineering.",
-    "Describing phishing and pharming as the same technique.",
-    "Treating encryption as something that prevents data being intercepted, when it only prevents intercepted data being understood.",
-    "Confusing access rights (what a logged-in user may do) with authentication (proving who the user is)."
+    "Saying encryption prevents data from being stolen or hacked; it only stops the stolen data being understood.",
+    "Saying a firewall removes viruses; it filters network traffic and does not scan files already on the computer.",
+    "Treating backups and disk mirroring as the same thing.",
+    "Describing data integrity as 'keeping data safe' instead of 'keeping data accurate and up to date'.",
+    "Confusing authentication (proving who you are) with authorisation (what you are allowed to access).",
+    "Writing 'use a password' without saying it should be strong, changed regularly and kept secret."
   ],
   "quickRecall": [
     {
-      "question": "What is the difference between a virus and a worm?",
-      "answer": "A virus attaches to a host file and needs a user to run that file to spread; a worm is a standalone program that replicates itself across a network without needing a host file or user action."
+      "question": "What is the difference between data security and data privacy?",
+      "answer": "Security protects data against loss or corruption; privacy protects data against access by unauthorised people."
     },
     {
-      "question": "What does ransomware do?",
-      "answer": "It encrypts a victim's files and demands payment for the key needed to decrypt them."
+      "question": "How does a worm differ from a virus?",
+      "answer": "A worm runs independently and spreads itself across a network; a virus attaches to other executable code to replicate."
     },
     {
-      "question": "What is phishing?",
-      "answer": "Sending fraudulent messages that appear to come from a trustworthy source to trick a user into revealing personal data or clicking a malicious link."
+      "question": "What is pharming?",
+      "answer": "Redirecting a user to a fake website, for example by altering DNS or browser settings, so they enter confidential details there."
     },
     {
-      "question": "How does pharming differ from phishing?",
-      "answer": "Pharming redirects a user to a fake website without any action by the user, typically by corrupting DNS records or a hosts file, rather than relying on a message that tricks the user into clicking."
+      "question": "Give two ways of reducing the risk of phishing.",
+      "answer": "Any two of: spam filters, training users to recognise fake messages, not clicking links in unexpected emails, checking the sender's address."
     },
     {
-      "question": "What is two-step verification?",
-      "answer": "An authentication method requiring a second, independent piece of evidence, such as a one-time code sent to a registered device, in addition to a password."
+      "question": "How does a firewall protect a network?",
+      "answer": "It checks incoming and outgoing traffic against rules and blocks traffic that is not permitted."
     },
     {
-      "question": "What does a firewall do?",
-      "answer": "It monitors and controls incoming and outgoing network traffic against a set of rules, blocking traffic that does not meet them."
+      "question": "What is disk mirroring?",
+      "answer": "Writing data to two disks at the same time, so an identical copy is always available if one disk fails."
     },
     {
-      "question": "Why are biometrics considered a strong authentication method?",
-      "answer": "They measure a physical characteristic unique to an individual, which is very difficult to copy, forget or share compared with a password."
+      "question": "What is the difference between authentication and authorisation?",
+      "answer": "Authentication confirms a user's identity; authorisation sets which resources that user may access and what they can do with them."
     },
     {
-      "question": "Give two physical security measures that protect data.",
-      "answer": "Any two of: locked server rooms, biometric door locks, CCTV, security guards, cable locks for portable devices."
+      "question": "Why must anti-virus software be updated regularly?",
+      "answer": "It detects malware by comparing files with a database of known signatures, so new malware is missed unless the database is updated."
     }
   ],
   "relatedTopics": [
+    "2.1",
     "6.2",
     "7.1",
-    "17.1",
-    "5.1"
+    "17.1"
   ]
 }

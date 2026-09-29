@@ -6,265 +6,334 @@
   "unitTitle": "AS Theory",
   "title": "Data Integrity",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to describe and apply validation and verification techniques, and to explain how parity checks and check digits detect errors introduced during data entry and transmission. Answers score when a named check is matched to a concrete example and its limitation is stated, not just its purpose.",
+  "overview": "Data integrity means data are accurate and up to date, and it is most at risk when data are entered or transmitted. Paper 1 asks you to explain how validation and verification protect integrity, describe and apply the validation checks (range, format, length, presence, existence, limit, check digit), and describe and carry out verification during data entry (visual check, double entry) and data transfer (parity checks, parity block checks and checksums). A classic trap is claiming that validation proves data are correct.",
   "syllabusPoints": [
-    "Show understanding of the need for validation and verification techniques in data-capture and data-transfer processes.",
-    "Describe and apply validation checks, including range check, length check, type check, presence check, format check, check digit and existence/lookup check.",
-    "Describe verification methods, including visual (proofreading) checking and double data entry, and explain their limitations.",
-    "Explain how errors can be introduced during data transmission and describe the use of parity checks to detect them.",
-    "Calculate and interpret a parity bit for a set of data using even or odd parity, and calculate a simple check digit."
+    "Describe how data validation and data verification help protect the integrity of data.",
+    "Describe and use methods of data validation, including range check, format check, length check, presence check, existence check, limit check and check digit.",
+    "Describe and use methods of data verification during data entry, including visual check and double entry.",
+    "Describe and use methods of data verification during data transfer, including parity check (byte and block) and checksum."
   ],
   "definitions": [
     {
       "term": "Data integrity",
-      "definition": "The accuracy, consistency and reliability of data throughout its life, from entry to storage and transmission."
+      "definition": "The requirement for data to be accurate, complete and up to date."
     },
     {
       "term": "Validation",
-      "definition": "An automated check performed by software to ensure that data entered meets defined rules before it is accepted, without confirming the data is actually true."
+      "definition": "An automatic check by the computer that data entered are reasonable and meet set rules; it does not prove the data are correct."
     },
     {
       "term": "Verification",
-      "definition": "A check that data entered or copied matches its original source, catching transcription errors."
+      "definition": "Checking that data have been entered or transferred exactly as intended, i.e. the copy matches the original."
     },
     {
       "term": "Check digit",
-      "definition": "An extra digit calculated from the other digits in a code and added to it, used to detect data-entry errors such as mistyped or transposed digits."
+      "definition": "An extra digit calculated from the other digits of a code and added to it, so that errors in entering or reading the code can be detected."
     },
     {
       "term": "Parity bit",
-      "definition": "An extra bit added to a unit of data so that the total number of 1-bits is even (even parity) or odd (odd parity), letting a receiver detect single-bit transmission errors."
+      "definition": "An extra bit added to a byte so that the total number of 1s is even (even parity) or odd (odd parity), as agreed by sender and receiver."
+    },
+    {
+      "term": "Parity block check",
+      "definition": "Parity applied to each byte and to each bit position (column) across a block of bytes, so a single-bit error can be located and corrected."
     },
     {
       "term": "Checksum",
-      "definition": "A value calculated from a block of transmitted data and sent with it, recalculated by the receiver to detect whether the block has changed."
-    },
-    {
-      "term": "Transcription error",
-      "definition": "An error introduced when a person copies or types data incorrectly, for example transposing two digits."
+      "definition": "A value calculated from a block of transmitted data (e.g. the sum of its bytes) and sent with it; the receiver recalculates it to detect errors."
     }
   ],
   "sections": [
     {
-      "id": "01-what-is-data-integrity",
-      "title": "What is data integrity?",
+      "id": "01-validation-and-verification",
+      "title": "How validation and verification protect integrity",
       "content": [
-        "Data integrity is the accuracy and consistency of data over its lifetime. It is a different concern from data security: security protects data from unauthorised access, while integrity is about whether the data itself is correct and has not been corrupted. Integrity can be threatened by human input error, hardware faults, software bugs, transmission errors on a communication line, or malicious alteration."
+        "Errors most often enter a system when data are typed in or when they are sent from one device to another. Validation checks that input data are sensible and follow the rules set for that field, rejecting data that are the wrong type, in the wrong format or out of range. Verification checks that the data entered or received are the same as the original data. Used together, they greatly reduce errors, but neither can guarantee the data are true: a valid date of birth can still be the wrong person's date of birth, and a correctly verified copy of a wrong value is still wrong."
       ],
       "bullets": [
-        "Data can be perfectly secure (no one unauthorised can reach it) yet still be inaccurate.",
-        "Integrity checks aim to catch errors as early as possible, ideally before data is stored or used.",
-        "No single check guarantees data is correct; several checks are normally combined."
+        "Validation = is it reasonable? (performed by the computer against rules).",
+        "Verification = is it the same as the original? (checked on entry or on transfer).",
+        "Several validation checks can be applied to one field, e.g. a password may have presence, length and format checks."
       ],
       "examples": []
     },
     {
-      "id": "02-validation",
-      "title": "Validation",
+      "id": "02-validation-checks",
+      "title": "Validation checks",
       "content": [
-        "Validation is an automated check, carried out by software, that rejects data failing to meet defined rules before it can be accepted. It only confirms that a value is reasonable or plausible for its field; it cannot confirm the value is actually true. Common validation checks include a range check (a value must fall between set boundaries, for example a percentage mark between 0 and 100), a length check (the number of characters must be within set boundaries, for example a password of at least eight characters), a type check (data must be of an expected data type, for example a numeric age), a presence check (a required field must not be left empty), a format check (data must match a specified pattern, for example a date as DD/MM/YYYY), an existence or lookup check (data must match an item already held in a table or file, for example a product code that exists in a stock file), and a check digit (an extra digit calculated from the other digits in a code, described in detail below)."
+        "A range check ensures a value lies between a lower and an upper bound, such as a percentage between 0 and 100. A limit check tests only one boundary, such as an age of no more than 120. A format check ensures data follow a set pattern, such as a date in DD/MM/YYYY form or a student ID of two letters followed by four digits. A length check ensures the number of characters is exactly, at least or at most a given number, such as a password of at least 8 characters. A presence check ensures a required field has not been left blank. An existence check ensures the value entered refers to something that actually exists, such as a customer ID in the customer file or a file name on disk. A type check ensures the data are of the expected data type, such as a whole number for a quantity."
       ],
       "bullets": [
-        "A value that passes every validation check can still be the wrong value for that record.",
-        "Validation rules are defined once in the software and applied automatically to every entry.",
-        "Combining several checks on one field catches more kinds of error than relying on just one."
+        "Range vs limit: range has two boundaries, limit has one.",
+        "Format checks the pattern of characters; length checks only how many there are.",
+        "Validation is carried out by software as the data are entered, before they are stored or processed."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "6.2-2-1",
+          "kind": "analysis",
+          "label": "Choosing checks for a booking form",
+          "content": "Number of guests (1 to 8) → range check and type check (integer)\nEmail address → presence check and format check (contains @ and a domain)\nMembership number → existence check (must be in the members file) and length check (exactly 6 characters)\nArrival date → format check (DD/MM/YYYY)"
+        }
+      ]
     },
     {
-      "id": "03-verification",
-      "title": "Verification",
+      "id": "03-check-digits",
+      "title": "Check digits",
       "content": [
-        "Verification checks that data entered or copied matches its original source; it catches transcription errors rather than judging whether a value is reasonable. Visual checking (proofreading) means comparing the data shown on screen or on a printout against the original document. Double data entry means the same data is entered twice, independently, often by two different people, and the two entries are compared automatically; any mismatch is flagged for a human to resolve."
+        "A check digit is calculated from the other digits of an identification number, such as an ISBN or a product barcode, and added to the end. When the number is entered or scanned, the same calculation is repeated; if the result does not match the check digit, an error is reported. One common method is modulo 11: multiply each digit by a weight, add the products, divide by 11 and use the remainder to produce the check digit (a remainder that would give 10 is written as X). Check digits detect most single-digit errors and transpositions, where two digits are swapped."
       ],
       "bullets": [
-        "Verification cannot detect an error that already exists in the original source document.",
-        "Double data entry cannot detect an error made identically by both entries, though this is unlikely by chance.",
-        "Verification and validation are complementary and are normally both used on the same data."
+        "A check digit is a validation check on the number itself; it is part of the stored code.",
+        "It detects incorrect digits, transposed digits, and extra or missing digits.",
+        "Do not confuse a check digit (part of a stored code) with a checksum (sent with a block of transmitted data)."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "6.2-3-1",
+          "kind": "worked",
+          "label": "Calculating and using a modulo-11 check digit",
+          "content": "Code: 3 7 2 6, weights 5 4 3 2\nSum = 3×5 + 7×4 + 2×3 + 6×2 = 15 + 28 + 6 + 12 = 61\n61 ÷ 11 = 5 remainder 6\nCheck digit = 11 − 6 = 5 → full code 37265\n\nChecking on entry (weights 5 4 3 2 1): 61 + 5×1 = 66, and 66 ÷ 11 has remainder 0 → valid\nIf 73265 is typed by mistake: 35 + 12 + 6 + 12 + 5 = 70, remainder 4 → error detected"
+        }
+      ]
     },
     {
-      "id": "04-errors-during-transmission",
-      "title": "Errors during data transmission",
+      "id": "04-verification-on-entry",
+      "title": "Verification during data entry",
       "content": [
-        "Data sent over a communication line can be altered by electrical interference or 'noise' on the line, causing one or more bits to be received differently from how they were sent. Because the receiver cannot see the original data to compare it directly, transmission errors must be detected using extra information sent alongside the data itself, such as a parity bit or a checksum."
+        "In a visual check, the user reads through the data on screen and compares it with the original source document before confirming it. In double entry, the data are entered twice, often by different people or, for a new password, twice by the same person; the computer compares the two versions and only accepts the data if they match. Both reduce copying mistakes, but neither guarantees correctness: a visual check depends on the person noticing the error, and in double entry the same mistake could be made twice."
       ],
       "bullets": [
-        "Longer transmissions and noisier lines increase the chance that a bit is altered.",
-        "Detecting an error only shows that something changed; it does not by itself say which bit changed.",
-        "When an error is detected, the usual response is to request the data again."
+        "Visual check: cheap and quick, but unreliable for long or repetitive data.",
+        "Double entry: catches most typing errors, but takes twice as long to enter the data.",
+        "Neither method checks whether the source document itself is correct."
       ],
       "examples": []
     },
     {
       "id": "05-parity-checks",
-      "title": "Parity checks",
+      "title": "Parity checks during data transfer",
       "content": [
-        "Before transmission, an extra parity bit is added to each unit of data so that the total number of 1-bits, including the parity bit, matches an agreed rule: even parity requires an even total, odd parity requires an odd total. The receiver recounts the 1-bits in the data it received and compares the result with the agreed parity. If the count no longer matches, at least one bit has changed and an error is flagged, usually leading to a retransmission request."
+        "During transmission a bit can be flipped from 0 to 1 or 1 to 0 by interference. Before sending, the sender and receiver agree on even or odd parity. The sender counts the 1s in the seven data bits of each byte and sets the eighth (parity) bit so that the total number of 1s is even (or odd). The receiver counts the 1s in each byte it receives; if the count does not match the agreed parity, an error has occurred and the byte is re-sent. A single parity bit detects any error in an odd number of bits, but it cannot detect two bits being flipped in the same byte, and it cannot show which bit is wrong."
       ],
       "bullets": [
-        "The sender and receiver must agree in advance whether even or odd parity is being used.",
-        "A single-bit error is always detected, because it always changes whether the total count is even or odd.",
-        "If exactly two bits change, the total count of 1-bits returns to what was expected, so the error is missed."
+        "Parity only detects errors; it does not correct them, so retransmission is requested.",
+        "An even number of flipped bits in one byte keeps the parity correct, so the error goes undetected.",
+        "The parity bit is usually the most significant bit of the byte."
       ],
       "examples": [
         {
-          "id": "05-example-1",
+          "id": "6.2-5-1",
           "kind": "worked",
-          "label": "Calculating and checking an even parity bit",
-          "content": "Data to send: 1 0 1 1 0 0 1 (four 1-bits)\nEven parity requires an even total, so the parity bit added = 0\nTransmitted byte: 1 0 1 1 0 0 1 0 (parity bit is the last bit)\n\nReceived byte: 1 0 1 1 0 1 1 0 (one bit has changed in transit)\nReceiver counts the 1-bits: five 1-bits, an odd total\nExpected even parity, but the total is odd, so an error is detected\nThe receiver requests the data again"
+          "label": "Setting and checking a parity bit",
+          "content": "Data bits: 1001101 → four 1s\nEven parity: parity bit 0 → 0 1001101\nOdd parity: parity bit 1 → 1 1001101\nEven parity byte received as 0 1011101: five 1s, which is odd → an error is detected and the byte is re-sent"
         }
       ]
     },
     {
-      "id": "06-checksums",
-      "title": "Checksums",
+      "id": "06-parity-block-checks",
+      "title": "Parity block checks",
       "content": [
-        "A checksum is calculated from an entire block of data, for example by adding together the numeric value of every byte in the block, and is transmitted along with that block. The receiver performs the same calculation on the data it received and compares its result with the transmitted checksum. A mismatch shows the block has changed during transmission. Checksums are used to check larger blocks of data, whereas a parity bit is normally used to check one small unit, such as a byte, at a time."
+        "A parity block check extends parity to a block of bytes. Each byte gets its own parity bit (row parity) and, after the block, an extra parity byte is sent in which each bit is the parity of that bit position across all the bytes (column parity). If one bit is flipped, one row and one column will both fail their parity check, and the wrong bit is at the point where they cross. The receiver can therefore correct the error by flipping that bit, without needing a retransmission."
       ],
       "bullets": [
-        "A checksum can be defeated by errors that cancel out, just as parity can, though this is less likely across a large block.",
-        "Checksums are common in file transfers and network protocols, protecting an entire packet or file.",
-        "Like parity, a checksum only detects that an error occurred; it does not correct it."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-check-digits",
-      "title": "Check digits",
-      "content": [
-        "A check digit is an extra digit added to a code, calculated from the other digits using a fixed algorithm, and is used to detect data-entry errors such as a mistyped digit or two digits being transposed. When a code is entered or scanned, the system repeats the calculation on the digits received and compares the result with the check digit that was entered; a mismatch means the code has probably been entered incorrectly, and the record is rejected. Check digits are widely used in identifiers such as ISBNs and barcodes."
-      ],
-      "bullets": [
-        "A check digit catches most single-digit and transposition errors, which are the most common typing mistakes.",
-        "A check digit cannot confirm the code refers to the correct, intended item, only that it is internally consistent.",
-        "Different code systems use different algorithms; the calculation method must be agreed in advance."
+        "Row parity finds which byte is wrong; column parity finds which bit position is wrong.",
+        "It can locate and correct a single-bit error in the block.",
+        "Some combinations of several errors can still cancel out and go undetected."
       ],
       "examples": [
         {
-          "id": "07-example-1",
+          "id": "6.2-6-1",
           "kind": "worked",
-          "label": "Calculating a modulo-11 check digit for a 9-digit code",
-          "content": "Code digits: 0 4 4 0 5 2 3 7 X (positions 1-9, X is the check digit to find)\n\nMultiply each digit by its weight (position counted from the left, 10 down to 2):\n0x10 + 4x9 + 4x8 + 0x7 + 5x6 + 2x5 + 3x4 + 7x3 = 0+36+32+0+30+10+12+21 = 141\n\nDivide the total by 11 and find the remainder: 141 / 11 = 12 remainder 9\nCheck digit = 11 - 9 = 2\n\nIf the calculated check digit is 10, the digit X is used instead\nThe completed code is: 0 4 4 0 5 2 3 7 2"
+          "label": "Locating an error with even parity",
+          "content": "Bit positions:  P 6 5 4 3 2 1 0\nByte 1:         0 1 0 1 1 0 0 1\nByte 2:         1 0 1 1 0 1 1 1\nByte 3:         1 1 1 1 0 0 1 0   ← five 1s: row parity fails\nByte 4:         1 0 0 0 1 0 1 1\nParity byte:    1 0 0 0 0 1 1 1\nColumn 4 contains 1, 1, 1, 0 with parity-byte bit 0 → three 1s: column parity fails\nThe error is in byte 3, bit 4. It was sent as 0 (byte 3 was 1 1100010), so flipping it back corrects the data."
+        }
+      ]
+    },
+    {
+      "id": "07-checksums",
+      "title": "Checksums",
+      "content": [
+        "With a checksum, the sender treats each byte in a block of data as a binary number and adds them all together; the result (or a value derived from it, for example the remainder after division) is sent with the block. The receiver performs the same calculation on the data it receives and compares its result with the transmitted checksum. If they differ, an error has occurred and the block is sent again. Like a single parity bit, a checksum detects errors but does not show where they are."
+      ],
+      "bullets": [
+        "A checksum checks a whole block, so it can detect errors that single-byte parity misses, such as two flipped bits in one byte.",
+        "If the total is too large for the checksum's size, the overflow is discarded or the remainder after division is used.",
+        "Checksums are used in network packets and file downloads."
+      ],
+      "examples": [
+        {
+          "id": "6.2-7-1",
+          "kind": "worked",
+          "label": "Checksum for a block of three bytes",
+          "content": "Bytes: 01000001 (65), 00110010 (50), 01111000 (120)\nChecksum = 65 + 50 + 120 = 235 → sent with the block\nReceived bytes add to 65 + 50 + 122 = 237\n237 ≠ 235 → error detected, block re-sent"
         }
       ]
     }
   ],
-  "formulas": [],
+  "formulas": [
+    {
+      "label": "Modulo-11 check digit",
+      "expression": "check digit = 11 − (Σ digit × weight mod 11); a result of 11 → 0, 10 → X"
+    },
+    {
+      "label": "Even parity",
+      "expression": "parity bit set so that the total number of 1s in the byte is even"
+    },
+    {
+      "label": "Checksum",
+      "expression": "checksum = sum of the bytes in the block (overflow discarded)"
+    }
+  ],
   "comparisonTable": {
-    "title": "Validation compared with verification",
+    "title": "Methods that protect data integrity",
     "columns": [
-      "",
-      "Validation",
-      "Verification"
+      "Method",
+      "Type",
+      "When used",
+      "Limitation"
     ],
     "rows": [
       [
-        "What it checks",
-        "Whether data meets defined rules, such as type, range or format",
-        "Whether data matches its original source"
+        "Range, limit, format, length, presence, type, existence checks",
+        "Validation",
+        "Data entry",
+        "Accepts reasonable but wrong data"
       ],
       [
-        "How it is carried out",
-        "Automatically, by software, against fixed rules",
-        "By comparing two independent entries, or a person proofreading"
+        "Check digit",
+        "Validation",
+        "Entering or scanning identification numbers",
+        "Some multiple errors cancel out"
       ],
       [
-        "Can it guarantee the data is correct?",
-        "No; it only rejects clearly unreasonable data",
-        "No; it cannot detect an error already in the source, or one repeated in both entries"
+        "Visual check",
+        "Verification",
+        "Data entry",
+        "Relies on the person noticing errors"
+      ],
+      [
+        "Double entry",
+        "Verification",
+        "Data entry",
+        "Slow; the same error may be made twice"
+      ],
+      [
+        "Parity check (byte)",
+        "Verification",
+        "Data transfer",
+        "Misses an even number of flipped bits; cannot locate errors"
+      ],
+      [
+        "Parity block check",
+        "Verification",
+        "Data transfer",
+        "Extra data sent; some multiple errors missed"
+      ],
+      [
+        "Checksum",
+        "Verification",
+        "Data transfer",
+        "Detects but cannot locate errors"
       ]
     ]
   },
   "diagram": {
-    "title": "Detecting an error with even parity",
-    "type": "bits",
+    "title": "Parity check on transfer",
+    "type": "flow",
     "nodes": [
-      "Sent byte: 1 0 1 1 0 0 1, parity bit 0 added (four 1-bits, even)",
-      "Transmission over a noisy line",
-      "Received byte: 1 0 1 1 0 1 1, parity bit still 0 (five 1-bits, odd)",
-      "Recalculated parity is odd, expected even: mismatch",
-      "Receiver flags the error and requests retransmission"
+      "Sender and receiver agree odd or even parity",
+      "Sender sets the parity bit for each byte",
+      "Data are transmitted",
+      "Receiver counts the 1s in each byte",
+      "Mismatch → request retransmission"
     ]
   },
   "analysisChains": [
     {
-      "title": "A single-bit transmission error caught by parity",
+      "title": "Adding validation to an online order form",
       "steps": [
-        "The sender calculates a parity bit so the byte has an even number of 1-bits",
-        "The byte and its parity bit are transmitted",
-        "Interference on the line flips one bit during transmission",
-        "The receiver recalculates parity and finds an odd number of 1-bits"
+        "Presence, format and range checks reject blank, badly formatted or impossible entries",
+        "Fewer errors reach the database, so orders are processed correctly",
+        "Customers get instant feedback and can correct mistakes",
+        "But a customer can still type a valid but wrong address, which validation cannot detect"
       ],
-      "evaluation": "The mismatch reveals that an error occurred, but parity alone does not identify which bit changed, so the only available response is to request the data again."
+      "evaluation": "Validation greatly reduces errors but should be combined with verification, such as asking the customer to confirm the order summary."
     },
     {
-      "title": "Two bits flipping during the same transmission",
+      "title": "Using a parity block check instead of single-byte parity",
       "steps": [
-        "Interference flips two bits within the same byte",
-        "The total number of 1-bits changes by two, so it is still even",
-        "The receiver recalculates parity and finds it matches the expected value",
-        "The error goes undetected and the corrupted byte is accepted"
+        "Each byte and each bit position across the block has a parity bit",
+        "A single flipped bit fails one row check and one column check",
+        "The receiver can locate and correct the bit itself",
+        "No retransmission is needed, saving time on slow or long-distance links"
       ],
-      "evaluation": "Simple parity is unreliable whenever an even number of bits change, which is why systems that must be highly reliable use stronger checks such as a checksum across a larger block."
+      "evaluation": "The extra parity byte adds a little data, but correcting errors without retransmission is valuable where resending is slow or impossible."
     },
     {
-      "title": "A mistyped product code caught by a check digit",
+      "title": "Using double entry for bank account numbers",
       "steps": [
-        "An operator transposes two digits while typing a product code",
-        "The system recalculates the check digit from the digits that were entered",
-        "The recalculated digit does not match the check digit that was typed or scanned",
-        "The record is rejected and the operator is asked to re-enter the code"
+        "The account number is typed twice",
+        "The system compares the two entries",
+        "A typing mistake in either entry means they do not match and the number is rejected",
+        "This prevents money being sent to the wrong account"
       ],
-      "evaluation": "Check digits catch common typing errors such as transposition efficiently, but cannot confirm that a valid-looking code refers to the correct, intended item."
+      "evaluation": "Double entry slows data entry, but for high-value data such as payments or new passwords the extra accuracy is worth it."
     }
   ],
   "examTips": [
-    "State that validation checks a value is 'reasonable', not that it is correct; a valid but wrong value can still pass every check.",
-    "Name the specific validation check being used, for example 'range check, because 105 is outside 0-100', rather than saying only 'it checks the data'.",
-    "For parity questions, show the recalculation step and state clearly whether it matches, not just the final parity bit.",
-    "Distinguish verification (matches the source) from validation (meets defined rules) precisely; the two are often confused."
+    "State clearly that validation checks data are reasonable, not correct; this is a frequent mark point.",
+    "When asked to name a validation check for a field, give the check and an example rule for that field (e.g. 'range check: 0–100').",
+    "For parity questions, count the 1s carefully and say whether the agreed parity is odd or even.",
+    "For parity block checks, identify the failing row and column and state the bit at their intersection.",
+    "Match verification methods to their stage: visual check and double entry for entry; parity and checksum for transfer."
   ],
   "commonMistakes": [
-    "Saying validation checks that data is 'correct', when it only checks that data is plausible against a rule.",
-    "Confusing a check digit, attached to a single code to detect key-entry errors, with a checksum, calculated from a whole block of transmitted data.",
-    "Claiming parity always detects an error, when it fails to detect an even number of bit changes.",
-    "Describing double data entry as a form of validation rather than verification.",
-    "Forgetting to state which parity is being used, even or odd, when answering a parity question."
+    "Saying validation ensures data are correct or accurate.",
+    "Confusing validation with verification.",
+    "Mixing up range check (two boundaries) and limit check (one boundary).",
+    "Confusing a check digit (part of a stored code) with a checksum (sent with transmitted data).",
+    "Claiming a single parity bit can detect every error; two flipped bits in a byte are missed.",
+    "Saying a byte parity check can show which bit is wrong."
   ],
   "quickRecall": [
     {
       "question": "What is the difference between validation and verification?",
-      "answer": "Validation is an automated check that data meets defined rules, such as type, range or format; verification checks that data entered or copied matches its original source."
+      "answer": "Validation checks data are reasonable and follow rules; verification checks data match the original after entry or transfer."
     },
     {
-      "question": "Give two examples of validation checks.",
-      "answer": "Any two of: range check, length check, type check, presence check, format check, check digit, existence/lookup check."
+      "question": "What is an existence check?",
+      "answer": "A check that the value entered refers to something that exists, such as a customer ID in the customer file."
     },
     {
-      "question": "Why can validated data still be wrong?",
-      "answer": "Validation only confirms the data is a reasonable, plausible value for its field; it cannot confirm the value is actually true or accurate."
+      "question": "Give two errors a check digit can detect.",
+      "answer": "Any two of: an incorrect digit, two digits transposed, a missing or extra digit."
     },
     {
-      "question": "Describe double data entry.",
-      "answer": "The same data is entered twice, independently, and the two entries are compared automatically; a mismatch flags a possible error for a person to resolve."
+      "question": "Name two methods of verification during data entry.",
+      "answer": "Visual check and double entry."
     },
     {
-      "question": "What is a parity bit used for?",
-      "answer": "An extra bit added to a unit of data so the total number of 1-bits is even or odd as agreed, letting a receiver detect single-bit transmission errors."
+      "question": "Set the even parity bit for 0110100.",
+      "answer": "The data contain three 1s, so the parity bit is 1: 1 0110100."
     },
     {
-      "question": "Why can parity fail to detect an error?",
-      "answer": "If an even number of bits change, the total count of 1-bits is restored to the expected parity, so the error is not detected."
+      "question": "What is a limitation of a single parity bit?",
+      "answer": "It cannot detect an even number of flipped bits in a byte and cannot identify which bit is wrong."
     },
     {
-      "question": "What is a check digit used for?",
-      "answer": "An extra digit, calculated from the other digits in a code, added to detect data-entry errors such as mistyped or transposed digits."
+      "question": "How does a parity block check locate an error?",
+      "answer": "The error is at the intersection of the byte (row) and bit position (column) whose parity checks fail."
+    },
+    {
+      "question": "How does a checksum detect an error?",
+      "answer": "The receiver recalculates the sum of the received block and compares it with the checksum sent; a difference means an error."
     }
   ],
   "relatedTopics": [
+    "1.1",
     "6.1",
-    "7.1"
+    "8.1",
+    "10.1"
   ]
 }

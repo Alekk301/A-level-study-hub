@@ -33,26 +33,33 @@ The commit is a checkpoint, not a permanently current version.
 - No project `.env` values are referenced by the application source at this checkpoint.
 - There is no account database. Student state is stored in each browser's `localStorage`.
 
-## Computer Science 9618 AS notes rebuild (complete)
+## Computer Science 9618 AS notes rebuild
 
 - Goal: bring every AS topic up to the depth of the A2 notes, using `9618/1.1.json` as the
   template (7+ sections, worked examples, formulas, comparison table, diagram, three analysis
   chains, exam tips, common mistakes, question-and-answer recall). Set the topic's
   `contentDepth` to `"full"` in `subjects.json` when its note is rebuilt.
-- Done: 1.1 Data Representation, 1.2 Multimedia, 1.3 Compression, 2.1 Networks, 3.1 Computers,
-  3.2 Logic Gates, 4.1 CPU Architecture, 4.2 Assembly Language, 4.3 Bit manipulation,
-  5.1 Operating Systems, 5.2 Language Translators, 6.1 Data Security, 6.2 Data Integrity,
-  7.1 Ethics and Ownership, 8.1 Database Concepts, 8.2 Database Management Systems (DBMS),
-  9.1 Computational Thinking Skills, 9.2 Algorithms, 10.1 Data Types and Records, 10.2 Arrays,
-  10.3 Files, 10.4 Introduction to ADT (all 2026-09-28), 8.3 DDL and DML,
-  11.1 Programming Basics (2026-09-28), 11.2 Constructs, 11.3 Structured Programming
-  (2026-09-28), 12.1 Program Development Life Cycle, 12.2 Program Design, 12.3 Program Testing
-  and Maintenance (2026-09-28).
-- Remaining topics with no note file yet: none. Every AS topic for 9618 now has a full-depth
-  note; the AS notes rebuild is complete.
+- First pass complete (2026-09-28, both computers): every AS topic 1.1–12.3 has a full-depth note.
+- Method from 2026-09-29 (owner's instruction): keep the syllabus topic routes; order each note's
+  sections by the matching coursebook chapter and cover every syllabus learning outcome. Research
+  content and mark-scheme phrasing in the coursebook and Save My Exams (free pages are readable
+  with curl; Rocket Revise blocks automated access) before writing. Write all text in original
+  words; never copy third-party prose. Recalculate every worked example.
+- Coursebook: Langfield & Duddell, *Cambridge International AS & A Level Computer Science*
+  (2nd ed.), kept locally in `resources/ICT coursebook.pdf`. `resources/` is git-ignored:
+  copyrighted books must never be committed (the PDF is also ~98 MB).
+  AS mapping: ch1 → 1.1–1.3; ch2 → 2.1; ch3 → 3.1; ch4 → 3.2; ch5 → 4.1; ch6 → 4.2; ch7 →
+  monitoring/control (3.1) and bit manipulation (4.3); ch8 → 5.1–5.2; ch9 → 6.1–6.2; ch10 → 7.1;
+  ch11 → 8.1–8.3; ch12 → 9.1–9.2; ch13 → 10.1–10.4; ch14 → 11.1–11.3; ch15 → 12.1–12.3.
+- Second pass (research method) done: 6.1 Data Security and 6.2 Data Integrity (2026-09-29). These
+  replaced the desktop's first-pass versions, which omitted syllabus items (backup, disk mirroring;
+  parity block check, limit check).
+- Second pass still to do, in order: 1.1, 1.2, 1.3, 2.1, 3.1, 3.2, 4.1, 4.2, 4.3, 5.1, 5.2, 7.1,
+  8.1, 8.2, 8.3, 9.1, 9.2, 10.1, 10.2, 10.3, 10.4, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3. For each,
+  check every syllabus outcome is covered, reorder sections to the coursebook, and fix gaps.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
-- Now that all AS notes exist, the previously deferred follow-up is actionable: add a strict
-  9618 AS block to `scripts/validate-data.mjs` like the Business one. This has not been done yet.
+- Follow-up not done yet: add a strict 9618 AS block to `scripts/validate-data.mjs` like the
+  Business one.
 - The Python-example test in `tests/computer-science-notes.test.mjs` needs `python` on PATH; it
   fails with exit code 9009 on computers without Python (installed on the laptop 2026-09-28).
 
