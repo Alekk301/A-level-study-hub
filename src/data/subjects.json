@@ -951,10 +951,11 @@
             "levels": [
               "AS"
             ],
-            "summary": "Revise definition/manipulation, SQL-style SELECT/INSERT/UPDATE/DELETE.",
+            "summary": "Use SQL, the industry standard, as DDL to create and alter databases and tables (data types, primary and foreign keys) and as DML to query and maintain data in up to two tables.",
             "focusPoints": [
-              "definition/manipulation",
-              "SQL-style SELECT/INSERT/UPDATE/DELETE"
+              "DDL: CREATE DATABASE/CREATE TABLE/ALTER TABLE, data types, PRIMARY KEY/FOREIGN KEY",
+              "DML queries: SELECT/WHERE/ORDER BY/GROUP BY/INNER JOIN/SUM/COUNT/AVG",
+              "Data maintenance: INSERT INTO/UPDATE/DELETE FROM"
             ],
             "contentDepth": "full"
           }

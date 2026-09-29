@@ -10870,356 +10870,519 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to write or complete SQL statements that create a table's structure, and separately, SQL statements that retrieve, add, change or remove the data held in that structure. Answers score when a CREATE TABLE statement correctly names a PRIMARY KEY and a FOREIGN KEY, when a SELECT query's WHERE, ORDER BY, GROUP BY and JOIN clauses are written with the exact required syntax, and when the candidate can state the actual rows a given query returns against a given set of sample data, not just describe what the query does in words."
+        "text": "A DBMS never changes a database by magic: every table it builds is described in its Data Definition Language (DDL), and every look-up, insertion, correction or removal of data is written in its Data Manipulation Language (DML). SQL is the standard language for both. At AS level you must read a given SQL statement and say exactly what it does, write DDL that creates a database and its tables with suitable data types and keys, and write DML scripts over at most two tables using SELECT, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG, plus INSERT INTO, UPDATE and DELETE FROM. This note uses one small sports-centre database (a Member table and a Booking table, continuing the example from 8.1 and 8.2) so that every query can be checked row by row against the data shown."
+      },
+      {
+        "kind": "Definition",
+        "label": "Structured Query Language (SQL)",
+        "text": "The industry-standard language that relational DBMSs accept for both defining a database's structure (DDL) and querying or maintaining the data in it (DML). Keywords are not case sensitive and each statement ends with a semicolon."
       },
       {
         "kind": "Definition",
         "label": "Data Definition Language (DDL)",
-        "text": "The subset of SQL statements that define or change a database's structure, such as CREATE TABLE, ALTER TABLE and DROP TABLE; DDL statements affect a table's design, not the data stored inside it."
+        "text": "The part of SQL the DBMS uses to create or change the structure of a database: the database itself, its tables, attributes, data types and keys (CREATE DATABASE, CREATE TABLE, ALTER TABLE). DDL puts no data into the tables."
       },
       {
         "kind": "Definition",
         "label": "Data Manipulation Language (DML)",
-        "text": "The subset of SQL statements that work with the data stored in a database's tables, such as SELECT, INSERT, UPDATE and DELETE; DML statements read or change data without altering the table's structure."
+        "text": "The part of SQL the DBMS uses to work with the data held inside existing tables: reading it with SELECT queries and maintaining it with INSERT INTO, UPDATE and DELETE FROM."
       },
       {
         "kind": "Definition",
-        "label": "CREATE TABLE",
-        "text": "The DDL statement that defines a new table by listing its field names, each field's data type, and constraints such as PRIMARY KEY and FOREIGN KEY."
+        "label": "VARCHAR(n) and CHARACTER",
+        "text": "Two text data types. VARCHAR(n) holds a string of any length up to n characters; CHARACTER holds a single character, or with a size such as CHARACTER(4), a string of exactly that fixed length."
       },
       {
         "kind": "Definition",
-        "label": "PRIMARY KEY",
-        "text": "A constraint named in CREATE TABLE stating that a field, or combination of fields, uniquely identifies each record in that table and cannot hold duplicate or null values."
+        "label": "PRIMARY KEY (field)",
+        "text": "The DDL clause, written inside CREATE TABLE or added with ALTER TABLE, that names the attribute whose value must be unique for every record of the table."
       },
       {
         "kind": "Definition",
-        "label": "FOREIGN KEY",
-        "text": "A constraint named in CREATE TABLE stating that a field's value must match a primary key value in a named related table, implemented as FOREIGN KEY (field) REFERENCES OtherTable(field)."
+        "label": "FOREIGN KEY (field) REFERENCES Table (Field)",
+        "text": "The DDL clause that makes an attribute a foreign key, linking it to the primary key of another table, so the DBMS rejects any value that does not already exist in that table."
       },
       {
         "kind": "Definition",
         "label": "WHERE clause",
-        "text": "A clause added to SELECT, UPDATE or DELETE that restricts the statement to only the rows matching a given condition, instead of every row in the table."
+        "text": "Part of a SELECT, UPDATE or DELETE FROM statement that gives a condition; only records for which the condition is true are returned, changed or removed."
       },
       {
         "kind": "Definition",
-        "label": "JOIN ... ON",
-        "text": "A clause used in a SELECT statement to combine rows from two related tables, matching a foreign key in one table against the primary key it refers to in the other."
+        "label": "Aggregate function",
+        "text": "A function such as SUM, COUNT or AVG that takes the values of one attribute from many records and returns a single value, either for the whole set of selected records or for each group formed by GROUP BY."
       },
       {
         "kind": "Definition",
         "label": "GROUP BY",
-        "text": "A clause that groups rows sharing the same value in a given column, so an aggregate function such as AVG or COUNT is calculated separately for each group rather than for the whole table."
+        "text": "A clause that collects together records having the same value in the named attribute(s) so that one output row is produced per group; used with aggregate functions, or on its own to list each value once."
+      },
+      {
+        "kind": "Definition",
+        "label": "INNER JOIN",
+        "text": "A way of combining two tables in one query: each record in one table is paired with every record in the other whose linking attributes match the ON condition (normally foreign key = primary key); records with no match are left out."
       },
       {
         "kind": "Section",
-        "text": "DDL versus DML"
+        "text": "SQL: the DBMS's language for structure (DDL) and data (DML)"
       },
       {
         "kind": "Content",
-        "label": "DDL versus DML",
-        "text": "SQL statements fall into two groups, distinguished by what they act on. Data Definition Language (DDL) statements define or change a database's structure: CREATE TABLE builds a new table, ALTER TABLE changes an existing table's structure (for example adding a field), and DROP TABLE removes a table and its structure entirely. Data Manipulation Language (DML) statements, by contrast, work with the data held inside tables whose structure already exists: SELECT retrieves data, INSERT adds new records, UPDATE changes existing records, and DELETE removes records. A useful test is to ask whether a statement changes what fields a table has (DDL) or changes which rows of data are present or returned (DML)."
+        "label": "SQL: the DBMS's language for structure (DDL) and data (DML)",
+        "text": "Whatever tools a DBMS shows the user, the work underneath is done through two sets of commands. Anything that creates or alters the structure of the database (the database itself, the tables, the attributes and their data types, and the primary and foreign keys) is carried out by the DBMS using its Data Definition Language. Anything that looks up data, or keeps the stored data up to date by adding, amending or removing records, is carried out using its Data Manipulation Language."
       },
       {
         "kind": "Content",
-        "label": "DDL versus DML",
-        "text": "DDL statements (CREATE TABLE, ALTER TABLE, DROP TABLE) define or change a table's structure."
+        "label": "SQL: the DBMS's language for structure (DDL) and data (DML)",
+        "text": "Structured Query Language (SQL) is the industry standard for both. Even when a developer builds a table by clicking in a graphical developer interface, or a user builds a query with a form, the DBMS turns this into SQL. Knowing SQL therefore lets you work with almost any relational DBMS. A few general rules apply to every statement: a script is a sequence of statements; each statement ends with a semicolon and may be spread over several lines; keywords are not case sensitive, though writing them in capitals makes them easy to spot; items in a list are separated by commas."
       },
       {
         "kind": "Content",
-        "label": "DDL versus DML",
-        "text": "DML statements (SELECT, INSERT, UPDATE, DELETE) read or change the data stored inside a table's existing structure."
+        "label": "SQL: the DBMS's language for structure (DDL) and data (DML)",
+        "text": "DDL = structure: CREATE DATABASE, CREATE TABLE, ALTER TABLE, PRIMARY KEY, FOREIGN KEY ... REFERENCES."
       },
       {
         "kind": "Content",
-        "label": "DDL versus DML",
-        "text": "Running a DROP TABLE statement removes both the table's structure and every record of data it held, since the structure no longer exists for the data to be stored in."
+        "label": "SQL: the DBMS's language for structure (DDL) and data (DML)",
+        "text": "DML = data: SELECT queries, and maintenance with INSERT INTO, UPDATE and DELETE FROM."
+      },
+      {
+        "kind": "Content",
+        "label": "SQL: the DBMS's language for structure (DDL) and data (DML)",
+        "text": "Quick test: does the statement change which attributes/keys exist (DDL) or which records exist or are returned (DML)?"
+      },
+      {
+        "kind": "Content",
+        "label": "SQL: the DBMS's language for structure (DDL) and data (DML)",
+        "text": "SQL is the standard for both, so the same statements work, with small dialect differences, across relational DBMSs."
       },
       {
         "kind": "Section",
-        "text": "CREATE TABLE: defining structure, keys and relationships"
+        "text": "CREATE DATABASE and the SQL data types"
       },
       {
         "kind": "Content",
-        "label": "CREATE TABLE: defining structure, keys and relationships",
-        "text": "CREATE TABLE lists a new table's field names in order, giving each one a data type, and can include constraints such as PRIMARY KEY to name the field that uniquely identifies each record, and FOREIGN KEY ... REFERENCES to name a field that links to the primary key of another table. The worked example used throughout this topic defines a Student table and a related Mark table: each student has many marks, but each mark belongs to exactly one student, so the foreign key StudentID is placed in the Mark table (the 'many' side), referencing the primary key StudentID in the Student table (the 'one' side)."
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "The first DDL statement in a script creates the empty database that the tables will belong to, for example CREATE DATABASE SportsCentre; Nothing else about the structure exists yet."
       },
       {
         "kind": "Content",
-        "label": "CREATE TABLE: defining structure, keys and relationships",
-        "text": "Once both CREATE TABLE statements have run, the database enforces this link: a Mark row can only be inserted if its StudentID value already exists as a StudentID in the Student table, which is what keeps the two tables' data consistent with each other."
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "Each attribute defined later must be given a data type, which tells the DBMS how to store it and which values are allowed. The syllabus uses seven types. Choose the type by what the data really is: a membership code such as M104 is text even though it contains digits, and a telephone number is text because it can start with 0 and is never used in arithmetic."
       },
       {
         "kind": "Content",
-        "label": "CREATE TABLE: defining structure, keys and relationships",
-        "text": "PRIMARY KEY inside CREATE TABLE names the field guaranteed to be unique and not null for every record in that table."
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "Text types: VARCHAR(n) for names and descriptions that vary in length; CHARACTER for one character, or CHARACTER(n) for codes of a fixed length."
       },
       {
         "kind": "Content",
-        "label": "CREATE TABLE: defining structure, keys and relationships",
-        "text": "FOREIGN KEY (field) REFERENCES OtherTable(field) names the field that must match a primary key value in another named table."
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "Number types: INTEGER for whole numbers (counts, quantities); REAL for numbers with a fractional part (prices, measurements)."
       },
       {
         "kind": "Content",
-        "label": "CREATE TABLE: defining structure, keys and relationships",
-        "text": "A foreign key is defined on the 'many' side of a one-to-many relationship, referring back to the primary key on the 'one' side."
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "BOOLEAN for yes/no facts such as Junior or Paid."
+      },
+      {
+        "kind": "Content",
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "DATE for a calendar date and TIME for a time of day; keep them separate from text so they sort and compare correctly."
       },
       {
         "kind": "Example",
-        "label": "CREATE TABLE: defining structure, keys and relationships",
-        "text": "CREATE TABLE Student (\n  StudentID INTEGER PRIMARY KEY,\n  Name VARCHAR(30),\n  TutorGroup VARCHAR(5)\n);\n\nCREATE TABLE Mark (\n  MarkID INTEGER PRIMARY KEY,\n  StudentID INTEGER,\n  Subject VARCHAR(20),\n  Score INTEGER,\n  FOREIGN KEY (StudentID) REFERENCES Student(StudentID)\n);\n\n-- Sample data used in every query in this topic:\n-- Student: (1,'Aisha','A1'), (2,'Wei','A2'), (3,'Carlos','A1'), (4,'Fatima','A2')\n-- Mark: (1,1,'Maths',78), (2,2,'Maths',65), (3,1,'Physics',82), (4,3,'Maths',91), (5,4,'Maths',58)"
+        "label": "CREATE DATABASE and the SQL data types",
+        "text": "Data type  | Holds                                   | Sports-centre example\nCHARACTER  | one character, or a fixed-length string | MemberID CHARACTER(4)  e.g. M104\nVARCHAR(n) | text of up to n characters              | MemberName VARCHAR(30)\nBOOLEAN    | TRUE or FALSE                           | Junior BOOLEAN\nINTEGER    | whole number                            | BookingNo INTEGER\nREAL       | number with a fractional part           | Fee REAL  e.g. 6.00\nDATE       | calendar date                           | DateJoined DATE\nTIME       | time of day                             | StartTime TIME"
       },
       {
         "kind": "Section",
-        "text": "Changing and removing structure: ALTER TABLE and DROP TABLE"
+        "text": "CREATE TABLE: attributes, data types and keys"
       },
       {
         "kind": "Content",
-        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
-        "text": "ALTER TABLE changes an existing table's structure without needing to recreate it, most commonly to add a new field, for example ALTER TABLE Student ADD DateOfBirth DATE; adds a DateOfBirth field to every existing record in the Student table, with the new field left empty until a value is supplied for each student. DROP TABLE removes a table's structure entirely, along with every record of data it contained; DROP TABLE Mark; would permanently delete the Mark table and all five of its rows, and could not be undone by any DML statement, since the table's structure no longer exists for data to be recovered into."
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "CREATE TABLE is followed by the table name and then, inside one pair of brackets, a comma-separated list of attribute definitions, each an attribute name followed by its data type. The keys can be declared inside the same brackets: PRIMARY KEY (field) names the identifying attribute, and FOREIGN KEY (field) REFERENCES Table (Field) links an attribute to the primary key of another table."
       },
       {
         "kind": "Content",
-        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
-        "text": "Because DROP TABLE is irreversible and destroys both structure and data, it is normally used only when a table is genuinely no longer needed, in contrast to DELETE, which removes rows of data but leaves the table's structure intact and ready to receive new records."
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "In the sports centre, one member can make many bookings, but each booking is for one member. The foreign key MemberID therefore goes in Booking (the 'many' side) and refers to Member's primary key. Member must be created first, because a foreign key can only refer to a table that already exists. Once the tables exist, the DBMS enforces the link: a booking cannot be added for a MemberID that is not in Member."
       },
       {
         "kind": "Content",
-        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
-        "text": "ALTER TABLE ... ADD field datatype; adds a new field to an existing table's structure."
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "Syntax: CREATE TABLE Name ( attribute TYPE, attribute TYPE, ... , PRIMARY KEY (attribute) );"
       },
       {
         "kind": "Content",
-        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
-        "text": "DROP TABLE tablename; permanently removes a table's structure and every record it held."
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "The foreign key goes in the table on the 'many' side and names the table and attribute it refers to."
       },
       {
         "kind": "Content",
-        "label": "Changing and removing structure: ALTER TABLE and DROP TABLE",
-        "text": "DROP TABLE is a DDL statement that removes structure and data together; DELETE is a DML statement that removes data only, leaving the table's structure in place."
-      },
-      {
-        "kind": "Section",
-        "text": "SELECT with WHERE and ORDER BY"
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "Create the referenced ('one' side) table before the table holding the foreign key."
       },
       {
         "kind": "Content",
-        "label": "SELECT with WHERE and ORDER BY",
-        "text": "A SELECT statement retrieves data from a table. A WHERE clause restricts the rows returned to only those matching a stated condition, and an ORDER BY clause sorts the returned rows by a named column, ascending by default. Applied to the Student table above, selecting only students in tutor group 'A1' and sorting the result alphabetically by name checks every row's TutorGroup value against the condition before the result is sorted."
-      },
-      {
-        "kind": "Content",
-        "label": "SELECT with WHERE and ORDER BY",
-        "text": "WHERE is evaluated for every row of the table; only rows for which the condition is TRUE are included in the result."
-      },
-      {
-        "kind": "Content",
-        "label": "SELECT with WHERE and ORDER BY",
-        "text": "ORDER BY sorts the rows that already matched WHERE; it does not itself filter any rows out."
-      },
-      {
-        "kind": "Content",
-        "label": "SELECT with WHERE and ORDER BY",
-        "text": "Text values used in a condition, such as 'A1', are written in quotes; numeric values, such as 78, are not."
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "DDL only defines the structure: after CREATE TABLE the tables are empty."
       },
       {
         "kind": "Example",
-        "label": "SELECT with WHERE and ORDER BY",
-        "text": "SELECT Name FROM Student WHERE TutorGroup = 'A1' ORDER BY Name;\n\n-- Checking every Student row against TutorGroup = 'A1':\n-- (1,'Aisha','A1')  -> matches\n-- (2,'Wei','A2')    -> does not match\n-- (3,'Carlos','A1') -> matches\n-- (4,'Fatima','A2') -> does not match\n\n-- Matching rows sorted alphabetically by Name:\nName\n-----\nAisha\nCarlos"
+        "label": "CREATE TABLE: attributes, data types and keys",
+        "text": "CREATE DATABASE SportsCentre;\n\nCREATE TABLE Member (\n  MemberID   CHARACTER(4),\n  MemberName VARCHAR(30),\n  Junior     BOOLEAN,\n  DateJoined DATE,\n  PRIMARY KEY (MemberID)\n);\n\nCREATE TABLE Booking (\n  BookingNo  INTEGER,\n  MemberID   CHARACTER(4),\n  ClassName  VARCHAR(20),\n  ClassDate  DATE,\n  StartTime  TIME,\n  Fee        REAL,\n  PRIMARY KEY (BookingNo),\n  FOREIGN KEY (MemberID) REFERENCES Member(MemberID)\n);"
       },
       {
         "kind": "Section",
-        "text": "Aggregate functions and GROUP BY"
+        "text": "ALTER TABLE: changing a table definition and adding keys"
       },
       {
         "kind": "Content",
-        "label": "Aggregate functions and GROUP BY",
-        "text": "An aggregate function calculates a single summary value from a set of rows: COUNT counts rows, SUM totals a numeric column, AVG calculates its average, and MIN and MAX find its smallest and largest values. Used alone, an aggregate function summarises the whole table; combined with GROUP BY, it calculates a separate summary for each distinct value in the grouped column. A strict rule governs this: every column named in the SELECT list that is not itself an aggregate function must also appear in the GROUP BY clause, because otherwise the database would not know which single value to display for a column that could differ between the several rows making up one group."
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "ALTER TABLE changes the definition of a table that already exists, so the table does not have to be deleted and rebuilt. It is used to add a new attribute, and it is also a second way of declaring keys: a table can be created with its attributes only, and the primary and foreign keys added afterwards. Exam questions use both styles, so be ready to write either."
       },
       {
         "kind": "Content",
-        "label": "Aggregate functions and GROUP BY",
-        "text": "Applied to the Mark table joined with Student, finding the average Maths score for each tutor group requires GROUP BY TutorGroup, and only TutorGroup (not, for example, Name) may appear un-aggregated in the SELECT list, because a tutor group such as 'A1' contains more than one student and therefore more than one possible Name."
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "A new attribute added with ALTER TABLE exists for every existing record but holds no value until one is supplied, for example by an UPDATE statement."
       },
       {
         "kind": "Content",
-        "label": "Aggregate functions and GROUP BY",
-        "text": "COUNT, SUM, AVG, MIN and MAX each reduce a set of rows to a single summary value."
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "Add an attribute: ALTER TABLE Member ADD Phone VARCHAR(15);"
       },
       {
         "kind": "Content",
-        "label": "Aggregate functions and GROUP BY",
-        "text": "GROUP BY splits the table into groups sharing the same value in the grouped column before the aggregate function is applied to each group separately."
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "Add a primary key: ALTER TABLE Member ADD PRIMARY KEY (MemberID);"
       },
       {
         "kind": "Content",
-        "label": "Aggregate functions and GROUP BY",
-        "text": "Any column in the SELECT list that is not aggregated must also appear in GROUP BY, since it must have exactly one value per group for the result to make sense."
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "Add a foreign key: ALTER TABLE Booking ADD FOREIGN KEY (MemberID) REFERENCES Member(MemberID);"
+      },
+      {
+        "kind": "Content",
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "ALTER TABLE is DDL: it changes the table's structure, not the data values stored in it."
       },
       {
         "kind": "Example",
-        "label": "Aggregate functions and GROUP BY",
-        "text": "SELECT TutorGroup, AVG(Score) FROM Student JOIN Mark ON Student.StudentID = Mark.StudentID WHERE Subject = 'Maths' GROUP BY TutorGroup;\n\n-- Maths marks only, joined to each student's TutorGroup:\n-- Aisha  (A1) -> 78   (MarkID 1)\n-- Wei    (A2) -> 65   (MarkID 2)\n-- Carlos (A1) -> 91   (MarkID 4)\n-- Fatima (A2) -> 58   (MarkID 5)\n\n-- Grouped by TutorGroup:\n-- A1: (78 + 91) / 2 = 169 / 2 = 84.5\n-- A2: (65 + 58) / 2 = 123 / 2 = 61.5\n\nTutorGroup | AVG(Score)\n-----------|------------\nA1         | 84.5\nA2         | 61.5\n\n-- Invalid version of this query: SELECT TutorGroup, Name, AVG(Score) ... GROUP BY TutorGroup;\n-- is rejected (or ambiguous), because Name is not aggregated and does not appear in\n-- GROUP BY, yet group 'A1' alone contains two different Name values (Aisha and Carlos)."
+        "label": "ALTER TABLE: changing a table definition and adding keys",
+        "text": "-- Tables first created with attributes only, no keys:\nCREATE TABLE Member (MemberID CHARACTER(4), MemberName VARCHAR(30), Junior BOOLEAN, DateJoined DATE);\nCREATE TABLE Booking (BookingNo INTEGER, MemberID CHARACTER(4), ClassName VARCHAR(20),\n                      ClassDate DATE, StartTime TIME, Fee REAL);\n\n-- Keys added afterwards:\nALTER TABLE Member ADD PRIMARY KEY (MemberID);\nALTER TABLE Booking ADD PRIMARY KEY (BookingNo);\nALTER TABLE Booking ADD FOREIGN KEY (MemberID) REFERENCES Member(MemberID);\n\n-- A later change of design: store a phone number for each member\nALTER TABLE Member ADD Phone VARCHAR(15);\n-- Every existing member now has a Phone attribute with no value yet."
       },
       {
         "kind": "Section",
-        "text": "Combining two tables with JOIN ... ON"
+        "text": "INSERT INTO: putting data into the tables"
       },
       {
         "kind": "Content",
-        "label": "Combining two tables with JOIN ... ON",
-        "text": "A JOIN combines matching rows from two tables into a single result, using an ON condition that states how a row in one table is matched to a row in the other. For tables related by a foreign key, the ON condition matches the foreign key in the 'many' table to the primary key it refers to in the 'one' table, for example ON Student.StudentID = Mark.StudentID. Every Mark row is combined with the one Student row whose StudentID matches, producing a result that pairs each mark with the details of the student it belongs to, without ever storing the student's name inside the Mark table itself."
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "DML covers three jobs: loading data into the new tables, maintaining it (changing or removing records) and reading it with queries. Loading is done with INSERT INTO, one statement per record. The safer form lists the attribute names and then the matching values, so the statement still works if the column order is not what you expected; the short form gives only the values and relies on them being in the same order as the attributes in the table definition."
       },
       {
         "kind": "Content",
-        "label": "Combining two tables with JOIN ... ON",
-        "text": "The ON condition should match the foreign key to the primary key it references; matching the wrong pair of columns produces incorrect or meaningless pairings."
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "Text, date and time values are written inside single quotes; numbers and TRUE/FALSE are not. The syllabus does not fix a date format; this note writes dates as 'YYYY-MM-DD', which cannot be misread and sorts correctly. The eight INSERT INTO statements for Booking, plus four for Member, give the sample data below, which every query in the rest of this note uses. Notice that S. Mensah (M123) has made no bookings."
       },
       {
         "kind": "Content",
-        "label": "Combining two tables with JOIN ... ON",
-        "text": "A JOIN reads data from two tables at once; it does not change either table's stored data."
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "Full form: INSERT INTO Table (attr1, attr2, ...) VALUES (value1, value2, ...);"
       },
       {
         "kind": "Content",
-        "label": "Combining two tables with JOIN ... ON",
-        "text": "WHERE can be combined with JOIN ... ON to further filter the joined rows, for example restricting the result to one subject or one tutor group."
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "Short form: INSERT INTO Table VALUES (value1, value2, ...); with a value for every attribute in table order."
+      },
+      {
+        "kind": "Content",
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "One INSERT INTO adds one record; the order records were inserted in has no meaning later, so use ORDER BY when order matters."
+      },
+      {
+        "kind": "Content",
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "Insert into the 'one' table (Member) before the 'many' table (Booking), or the foreign key check fails."
       },
       {
         "kind": "Example",
-        "label": "Combining two tables with JOIN ... ON",
-        "text": "SELECT Student.Name, Mark.Score\nFROM Student JOIN Mark ON Student.StudentID = Mark.StudentID\nWHERE Student.TutorGroup = 'A1' AND Mark.Subject = 'Maths';\n\n-- Student rows in tutor group A1: Aisha (StudentID 1), Carlos (StudentID 3)\n-- Their Maths marks, matched by StudentID: Aisha -> MarkID 1 (78), Carlos -> MarkID 4 (91)\n\nName   | Score\n-------|------\nAisha  | 78\nCarlos | 91"
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "INSERT INTO Member (MemberID, MemberName, Junior, DateJoined)\nVALUES ('M104', 'O. Haddad', FALSE, '2024-03-15');\n\nINSERT INTO Booking\nVALUES (1, 'M104', 'Yoga', '2026-10-05', '18:00', 6.00);\n\n-- Rejected: there is no member M999, so the foreign key check fails\nINSERT INTO Booking\nVALUES (9, 'M999', 'Spin', '2026-10-13', '07:30', 8.00);"
+      },
+      {
+        "kind": "Example",
+        "label": "INSERT INTO: putting data into the tables",
+        "text": "Member\nMemberID | MemberName | Junior | DateJoined\nM104 | O. Haddad | FALSE | 2024-03-15\nM117 | L. Ortiz  | TRUE  | 2025-01-08\nM120 | T. Reyes  | FALSE | 2023-11-20\nM123 | S. Mensah | TRUE  | 2025-06-02\n\nBooking\nBookingNo | MemberID | ClassName | ClassDate  | StartTime | Fee\n1 | M104 | Yoga    | 2026-10-05 | 18:00 | 6.00\n2 | M104 | Spin    | 2026-10-06 | 07:30 | 8.00\n3 | M117 | Yoga    | 2026-10-05 | 18:00 | 6.00\n4 | M120 | Pilates | 2026-10-07 | 12:15 | 7.00\n5 | M104 | Pilates | 2026-10-07 | 12:15 | 7.00\n6 | M117 | Spin    | 2026-10-06 | 07:30 | 8.00\n7 | M120 | Yoga    | 2026-10-05 | 18:00 | 6.00\n8 | M104 | Yoga    | 2026-10-12 | 18:00 | 6.00"
       },
       {
         "kind": "Section",
-        "text": "INSERT INTO: adding new data"
+        "text": "SELECT ... FROM with WHERE and ORDER BY"
       },
       {
         "kind": "Content",
-        "label": "INSERT INTO: adding new data",
-        "text": "INSERT INTO adds a new record to an existing table, naming the fields being supplied and the values to store in them, in matching order. INSERT INTO does not create or change a table's structure; the table, and every field named, must already exist, which is why INSERT is DML rather than DDL. Adding a new Physics mark of 70 for Wei (StudentID 2) as MarkID 6 does not affect any of the five existing Mark records."
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "A query always begins with SELECT, followed by the attributes to output, then FROM and the table to read. SELECT * outputs every attribute. A WHERE clause adds a condition, so only records for which it is true are output; conditions can use =, <>, <, >, <=, >= and be combined with AND and OR. ORDER BY sorts the output by the named attribute, ascending (ASC) unless DESC is written."
       },
       {
         "kind": "Content",
-        "label": "INSERT INTO: adding new data",
-        "text": "INSERT INTO table (field1, field2, ...) VALUES (value1, value2, ...); adds exactly one new record per statement."
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "WHERE decides which records appear; ORDER BY only decides the order they appear in. Comparisons on DATE and TIME values work in time order, so WHERE DateJoined < '2025-01-01' means 'joined before 2025'."
       },
       {
         "kind": "Content",
-        "label": "INSERT INTO: adding new data",
-        "text": "The values supplied must be listed in the same order as the fields named, and must match each field's declared data type."
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "Attributes in the SELECT list are separated by commas, with no brackets."
       },
       {
         "kind": "Content",
-        "label": "INSERT INTO: adding new data",
-        "text": "A value inserted into a foreign key field must match an existing primary key value in the related table, or the insert is rejected."
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "Text literals in quotes ('Yoga'); numbers without (7.00); BOOLEAN values as TRUE or FALSE."
+      },
+      {
+        "kind": "Content",
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "ORDER BY attribute DESC gives largest/latest first; ASC (the default) gives smallest/earliest or A to Z first."
+      },
+      {
+        "kind": "Content",
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "Only the attributes listed after SELECT are output, even if WHERE tests a different attribute."
       },
       {
         "kind": "Example",
-        "label": "INSERT INTO: adding new data",
-        "text": "INSERT INTO Mark (MarkID, StudentID, Subject, Score)\nVALUES (6, 2, 'Physics', 70);\n\n-- The Mark table now holds a sixth row: (6, 2, 'Physics', 70)\n-- StudentID 2 already exists in the Student table (Wei), so the foreign key is valid."
+        "label": "SELECT ... FROM with WHERE and ORDER BY",
+        "text": "Query A\nSELECT MemberID, MemberName\nFROM Member\nWHERE Junior = TRUE\nORDER BY MemberName;\n\nJunior is TRUE for M117 and M123. Sorted A to Z by name:\nMemberID | MemberName\nM117     | L. Ortiz\nM123     | S. Mensah\n\nQuery B\nSELECT MemberName, DateJoined\nFROM Member\nWHERE DateJoined < '2025-01-01'\nORDER BY DateJoined;\n\nJoined before 2025: M104 (2024-03-15) and M120 (2023-11-20). Earliest first:\nMemberName | DateJoined\nT. Reyes   | 2023-11-20\nO. Haddad  | 2024-03-15\n\nQuery C\nSELECT BookingNo, ClassName, Fee\nFROM Booking\nWHERE MemberID = 'M104' AND Fee >= 7.00\nORDER BY Fee DESC;\n\nM104's bookings are 1 (6.00), 2 (8.00), 5 (7.00), 8 (6.00); only 2 and 5 have Fee >= 7.00:\nBookingNo | ClassName | Fee\n2         | Spin      | 8.00\n5         | Pilates   | 7.00"
       },
       {
         "kind": "Section",
-        "text": "UPDATE and DELETE: changing and removing data"
+        "text": "GROUP BY and the aggregate functions SUM, COUNT and AVG"
       },
       {
         "kind": "Content",
-        "label": "UPDATE and DELETE: changing and removing data",
-        "text": "UPDATE changes the value of one or more fields in existing records, and DELETE removes existing records entirely; both should normally include a WHERE clause, since omitting it applies the statement to every single record in the table. Correcting a data-entry error in Wei's Maths score, and removing Fatima's Maths record entirely, both use a WHERE clause naming the specific record affected, leaving every other record in the Mark table completely unchanged."
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "SUM, COUNT and AVG each take many records and return one value. COUNT(*) counts records; SUM(attribute) adds up a numeric attribute; AVG(attribute) gives its mean. Without GROUP BY, the function works over every record that passes the WHERE clause and the query outputs a single row."
       },
       {
         "kind": "Content",
-        "label": "UPDATE and DELETE: changing and removing data",
-        "text": "UPDATE table SET field = value WHERE condition; changes the named field only in rows matching the condition."
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "GROUP BY puts records with the same value of the named attribute into one group and outputs one row per group, so an aggregate function is worked out separately for each group. Any attribute in the SELECT list that is not inside an aggregate function must also appear in GROUP BY, because it has to have one value per group. GROUP BY can also be used with no aggregate at all to list each value once, for example the members who have made at least one booking. The WHERE clause is applied first, to individual records, before the groups are formed."
       },
       {
         "kind": "Content",
-        "label": "UPDATE and DELETE: changing and removing data",
-        "text": "DELETE FROM table WHERE condition; removes only the rows matching the condition, leaving the table's structure intact."
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "COUNT(*) counts records; SUM(Fee) totals; AVG(Fee) = SUM(Fee) / COUNT of the records used."
       },
       {
         "kind": "Content",
-        "label": "UPDATE and DELETE: changing and removing data",
-        "text": "Omitting WHERE from UPDATE or DELETE applies the change, or the deletion, to every record in the table, which is rarely what is intended."
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "Order of work: FROM, then WHERE removes records, then GROUP BY forms groups, then each aggregate is calculated per group, then ORDER BY sorts the output rows."
+      },
+      {
+        "kind": "Content",
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "Every non-aggregated attribute in SELECT must be listed in GROUP BY."
+      },
+      {
+        "kind": "Content",
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "SELECT MemberID FROM Booking GROUP BY MemberID; lists each member with a booking once, instead of once per booking."
       },
       {
         "kind": "Example",
-        "label": "UPDATE and DELETE: changing and removing data",
-        "text": "UPDATE Mark SET Score = 85 WHERE MarkID = 2;\n-- Wei's Maths mark (MarkID 2) changes from 65 to 85; the other four Mark rows are unaffected.\n\nDELETE FROM Mark WHERE StudentID = 4 AND Subject = 'Maths';\n-- Fatima's Maths mark (MarkID 5) is removed entirely; the Student table is unaffected,\n-- since DELETE removes rows from Mark only, not from the table it names."
+        "label": "GROUP BY and the aggregate functions SUM, COUNT and AVG",
+        "text": "Query D (whole table, no GROUP BY)\nSELECT COUNT(*), SUM(Fee), AVG(Fee)\nFROM Booking;\n\nCOUNT = 8 records\nSUM   = 6.00 + 8.00 + 6.00 + 7.00 + 7.00 + 8.00 + 6.00 + 6.00 = 54.00\nAVG   = 54.00 / 8 = 6.75\nCOUNT(*) | SUM(Fee) | AVG(Fee)\n8        | 54.00    | 6.75\n\nQuery E (one row per class)\nSELECT ClassName, COUNT(*), SUM(Fee)\nFROM Booking\nGROUP BY ClassName\nORDER BY ClassName;\n\nPilates: bookings 4, 5        -> 2 records, 7.00 + 7.00 = 14.00\nSpin:    bookings 2, 6        -> 2 records, 8.00 + 8.00 = 16.00\nYoga:    bookings 1, 3, 7, 8  -> 4 records, 4 x 6.00   = 24.00\nClassName | COUNT(*) | SUM(Fee)\nPilates   | 2        | 14.00\nSpin      | 2        | 16.00\nYoga      | 4        | 24.00\n\nQuery F (WHERE before GROUP BY)\nSELECT MemberID, AVG(Fee)\nFROM Booking\nWHERE ClassName <> 'Yoga'\nGROUP BY MemberID\nORDER BY MemberID;\n\nWHERE keeps bookings 2, 4, 5, 6 only.\nM104: bookings 2, 5 -> (8.00 + 7.00) / 2 = 7.50\nM117: booking 6     -> 8.00 / 1 = 8.00\nM120: booking 4     -> 7.00 / 1 = 7.00\nMemberID | AVG(Fee)\nM104     | 7.50\nM117     | 8.00\nM120     | 7.00\n\nQuery G (GROUP BY to list each value once)\nSELECT MemberID FROM Booking GROUP BY MemberID ORDER BY MemberID;\nMemberID\nM104\nM117\nM120\n(M123 has no bookings, so it cannot appear.)"
+      },
+      {
+        "kind": "Section",
+        "text": "INNER JOIN: a query over two tables"
+      },
+      {
+        "kind": "Content",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "When the output needs attributes from both tables, such as a member's name (in Member) next to the class booked (in Booking), the tables are combined with INNER JOIN. The ON condition says which records belong together: the foreign key in one table must equal the primary key it refers to in the other, here Member.MemberID = Booking.MemberID. Each Booking record is paired with the one Member record that has the same MemberID."
+      },
+      {
+        "kind": "Content",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "Because both tables contain an attribute called MemberID, attributes are written in full as Table.Attribute to make clear which table each comes from. An inner join only outputs pairs that match, so a member with no bookings (S. Mensah) never appears in a joined result. WHERE, GROUP BY, the aggregate functions and ORDER BY can all be used on the joined records exactly as on a single table. Some texts write the join condition in the WHERE clause instead of using INNER JOIN ... ON; the result is the same, but the INNER JOIN form is the one the syllabus names."
+      },
+      {
+        "kind": "Content",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "Syntax: SELECT T1.a, T2.b FROM T1 INNER JOIN T2 ON T1.key = T2.key;"
+      },
+      {
+        "kind": "Content",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "The ON condition matches the foreign key to the primary key it references, not any two attributes that happen to look alike."
+      },
+      {
+        "kind": "Content",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "Unmatched records (a member with no bookings) are left out of an inner join."
+      },
+      {
+        "kind": "Content",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "The syllabus limits queries to at most two tables, so one INNER JOIN is the most you will need."
+      },
+      {
+        "kind": "Example",
+        "label": "INNER JOIN: a query over two tables",
+        "text": "Query H\nSELECT Member.MemberName, Booking.ClassName, Booking.ClassDate\nFROM Member\nINNER JOIN Booking ON Member.MemberID = Booking.MemberID\nWHERE Member.Junior = TRUE\nORDER BY Booking.ClassDate;\n\nJunior members: M117 and M123. M117 matches bookings 3 and 6; M123 matches none.\nMemberName | ClassName | ClassDate\nL. Ortiz   | Yoga      | 2026-10-05\nL. Ortiz   | Spin      | 2026-10-06\n\nQuery I (join + GROUP BY + COUNT)\nSELECT Member.MemberName, COUNT(*)\nFROM Member\nINNER JOIN Booking ON Member.MemberID = Booking.MemberID\nGROUP BY Member.MemberName\nORDER BY Member.MemberName;\n\nO. Haddad (M104): bookings 1, 2, 5, 8 -> 4\nL. Ortiz  (M117): bookings 3, 6       -> 2\nT. Reyes  (M120): bookings 4, 7       -> 2\nS. Mensah (M123): no matching booking -> no row\nMemberName | COUNT(*)\nL. Ortiz   | 2\nO. Haddad  | 4\nT. Reyes   | 2"
+      },
+      {
+        "kind": "Section",
+        "text": "UPDATE and DELETE FROM: maintaining the data"
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "UPDATE changes values in records that already exist: the table name, then SET with the new value(s), then a WHERE clause picking out the records to change. DELETE FROM removes whole records that match a WHERE clause; the table and its structure remain. In both, the WHERE clause is what limits the change. Leave it out and every record in the table is updated or deleted."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "Referential integrity affects the order of deletions. A member cannot be removed while Booking still holds records whose foreign key refers to that member, so the DBMS rejects the delete. Remove the member's bookings first, then the member."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "UPDATE Table SET attribute = value WHERE condition;  (several changes: SET a = 1, b = 2)"
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "DELETE FROM Table WHERE condition;  removes whole records, never single attribute values."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "No WHERE clause means every record is affected."
+      },
+      {
+        "kind": "Content",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "Delete from the 'many' table before the 'one' table when removing linked data."
+      },
+      {
+        "kind": "Example",
+        "label": "UPDATE and DELETE FROM: maintaining the data",
+        "text": "UPDATE Booking\nSET Fee = 7.50\nWHERE ClassName = 'Pilates';\n-- Changes 2 records: bookings 4 and 5 now have Fee 7.50. The other six are unchanged.\n\n-- T. Reyes (M120) leaves the centre:\nDELETE FROM Member WHERE MemberID = 'M120';\n-- Rejected: bookings 4 and 7 still refer to M120.\n\nDELETE FROM Booking WHERE MemberID = 'M120';\n-- Removes bookings 4 and 7.\nDELETE FROM Member WHERE MemberID = 'M120';\n-- Now succeeds: Member has 3 records.\n\n-- Check: SELECT COUNT(*), SUM(Fee) FROM Booking;\n-- Bookings left: 1 (6.00), 2 (8.00), 3 (6.00), 5 (7.50), 6 (8.00), 8 (6.00)\nCOUNT(*) | SUM(Fee)\n6        | 41.50"
+      },
+      {
+        "kind": "Section",
+        "text": "Understanding a given SQL statement"
+      },
+      {
+        "kind": "Content",
+        "label": "Understanding a given SQL statement",
+        "text": "Many questions give you a statement and ask what it does or what it outputs. First decide whether it is DDL (it creates or changes structure: say which table, attributes, types or keys) or DML. For a query, work through the clauses in the order the DBMS applies them rather than the order they are written: FROM and any INNER JOIN say which records are available; WHERE removes records; GROUP BY forms groups; SUM, COUNT or AVG are worked out per group; SELECT picks the attributes to output; ORDER BY sorts."
+      },
+      {
+        "kind": "Content",
+        "label": "Understanding a given SQL statement",
+        "text": "When sample data is given, list the records that survive each step, write the output as a table with the column headings, and check the number of rows. Describing the output in words, when the question asks for the result, will not earn the marks."
+      },
+      {
+        "kind": "Content",
+        "label": "Understanding a given SQL statement",
+        "text": "DDL question: name the table, each attribute with its type, and each key and what it references."
+      },
+      {
+        "kind": "Content",
+        "label": "Understanding a given SQL statement",
+        "text": "Query question: FROM/JOIN, WHERE, GROUP BY, aggregates, SELECT, ORDER BY."
+      },
+      {
+        "kind": "Content",
+        "label": "Understanding a given SQL statement",
+        "text": "Write the result as rows with headings, in the order ORDER BY gives."
+      },
+      {
+        "kind": "Content",
+        "label": "Understanding a given SQL statement",
+        "text": "Check for traps: an inner join drops unmatched records; WHERE on text is an exact match; a missing WHERE affects every record."
+      },
+      {
+        "kind": "Example",
+        "label": "Understanding a given SQL statement",
+        "text": "SELECT Member.MemberName, SUM(Booking.Fee)\nFROM Member\nINNER JOIN Booking ON Member.MemberID = Booking.MemberID\nWHERE Member.Junior = FALSE\nGROUP BY Member.MemberName\nORDER BY SUM(Booking.Fee) DESC;\n\n1. FROM/JOIN: each of the 8 bookings is paired with its member (M123 has none).\n2. WHERE: keep non-junior members only: M104 (bookings 1, 2, 5, 8) and M120 (bookings 4, 7).\n3. GROUP BY: two groups, O. Haddad and T. Reyes.\n4. SUM: O. Haddad 6.00 + 8.00 + 7.00 + 6.00 = 27.00; T. Reyes 7.00 + 6.00 = 13.00.\n5. ORDER BY ... DESC: largest total first.\n\nMemberName | SUM(Booking.Fee)\nO. Haddad  | 27.00\nT. Reyes   | 13.00\n\nIn words: the total spent on bookings by each adult (non-junior) member, highest spender first."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between DDL and DML?"
+        "text": "Which part of the DBMS's language creates or changes the database structure, and which queries and maintains the data?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between DDL and DML?",
-        "text": "DDL statements define or change a database's structure (CREATE TABLE, ALTER TABLE, DROP TABLE); DML statements work with the data held inside tables whose structure already exists (SELECT, INSERT, UPDATE, DELETE)."
+        "label": "Which part of the DBMS's language creates or changes the database structure, and which queries and maintains the data?",
+        "text": "DDL creates/modifies the structure (CREATE DATABASE, CREATE TABLE, ALTER TABLE, keys); DML queries and maintains data (SELECT, INSERT INTO, UPDATE, DELETE FROM)."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does PRIMARY KEY do inside a CREATE TABLE statement?"
+        "text": "What is the industry standard language for both DDL and DML?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does PRIMARY KEY do inside a CREATE TABLE statement?",
-        "text": "It names the field, or combination of fields, that must be unique and not null for every record, so each record can be uniquely identified."
+        "label": "What is the industry standard language for both DDL and DML?",
+        "text": "Structured Query Language (SQL)."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does FOREIGN KEY (field) REFERENCES OtherTable(field) do?"
+        "text": "Name the seven data types listed in the syllabus."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does FOREIGN KEY (field) REFERENCES OtherTable(field) do?",
-        "text": "It names a field whose value must match a primary key value in the named related table, creating and enforcing a link between the two tables."
+        "label": "Name the seven data types listed in the syllabus.",
+        "text": "CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the rule for columns in a SELECT list when GROUP BY is used?"
+        "text": "Write the DDL to make MemberID in Booking a foreign key to Member."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the rule for columns in a SELECT list when GROUP BY is used?",
-        "text": "Every column in the SELECT list that is not an aggregate function must also appear in the GROUP BY clause, since it must have exactly one value for every group."
+        "label": "Write the DDL to make MemberID in Booking a foreign key to Member.",
+        "text": "ALTER TABLE Booking ADD FOREIGN KEY (MemberID) REFERENCES Member(MemberID); (or the FOREIGN KEY clause inside CREATE TABLE Booking)."
       },
       {
         "kind": "Quick recall question",
-        "text": "For SELECT Name FROM Student WHERE TutorGroup = 'A1' ORDER BY Name; against the sample Student data, what rows are returned?"
+        "text": "Using the sample Booking data, what does SELECT ClassName, COUNT(*) FROM Booking GROUP BY ClassName ORDER BY ClassName; output?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "For SELECT Name FROM Student WHERE TutorGroup = 'A1' ORDER BY Name; against the sample Student data, what rows are returned?",
-        "text": "Aisha, then Carlos, in alphabetical order — the only two students whose TutorGroup is 'A1'."
+        "label": "Using the sample Booking data, what does SELECT ClassName, COUNT(*) FROM Booking GROUP BY ClassName ORDER BY ClassName; output?",
+        "text": "Pilates 2, Spin 2, Yoga 4."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does a JOIN ... ON condition typically match, when two tables are related by a foreign key?"
+        "text": "What is output by SELECT AVG(Fee) FROM Booking; on the sample data?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does a JOIN ... ON condition typically match, when two tables are related by a foreign key?",
-        "text": "The foreign key in the 'many' table against the primary key it references in the 'one' table, for example Student.StudentID = Mark.StudentID."
+        "label": "What is output by SELECT AVG(Fee) FROM Booking; on the sample data?",
+        "text": "6.75 (54.00 / 8)."
       },
       {
         "kind": "Quick recall question",
-        "text": "Which three DML statements change the data stored in a table, and what does each do?"
+        "text": "Why does S. Mensah never appear in a query that uses Member INNER JOIN Booking?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Which three DML statements change the data stored in a table, and what does each do?",
-        "text": "INSERT INTO adds a new record; UPDATE changes field values in existing records matching a condition; DELETE removes existing records matching a condition."
+        "label": "Why does S. Mensah never appear in a query that uses Member INNER JOIN Booking?",
+        "text": "She has no Booking records, and an inner join only outputs records whose ON condition finds a match."
       },
       {
         "kind": "Quick recall question",
-        "text": "What happens if the WHERE clause is left out of an UPDATE or DELETE statement?"
+        "text": "What happens if UPDATE Booking SET Fee = 7.50; is run without a WHERE clause?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What happens if the WHERE clause is left out of an UPDATE or DELETE statement?",
-        "text": "The statement is applied to every record in the table, not just the intended one, since there is no condition restricting which rows it affects."
+        "label": "What happens if UPDATE Booking SET Fee = 7.50; is run without a WHERE clause?",
+        "text": "Every booking's Fee becomes 7.50, not just the intended records."
       }
     ]
   },
