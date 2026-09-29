@@ -4812,7 +4812,7 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Everything a computer stores is a pattern of bits, so Paper 1 repeatedly asks you to convert between number bases, represent negative numbers in two's complement, add binary values and spot overflow. Questions also test binary versus decimal prefixes, BCD and character sets, usually with a short justification of why one representation suits a given use."
+        "text": "Everything a computer stores is a pattern of bits, so Paper 1 repeatedly asks you to convert between number bases, use binary and decimal prefixes, represent signed integers in two's complement, add and subtract in binary and spot overflow. Questions also test BCD, the uses of hexadecimal and character sets, usually with a short justification of why one representation suits a given use. Most calculation questions award a mark for visible working and a mark for the answer."
       },
       {
         "kind": "Definition",
@@ -4822,17 +4822,17 @@
       {
         "kind": "Definition",
         "label": "Byte",
-        "text": "A group of 8 bits, treated as a single unit of storage."
+        "text": "A group of 8 bits, treated as a single unit of storage. A nibble is 4 bits."
       },
       {
         "kind": "Definition",
         "label": "Binary prefix",
-        "text": "A multiplier based on powers of 2, such as kibi (2^10 = 1024), mebi (2^20) and gibi (2^30)."
+        "text": "A multiplier based on powers of 2: kibi (Ki, 2^10), mebi (Mi, 2^20), gibi (Gi, 2^30) and tebi (Ti, 2^40)."
       },
       {
         "kind": "Definition",
         "label": "Decimal prefix",
-        "text": "A multiplier based on powers of 10, such as kilo (10^3 = 1000), mega (10^6) and giga (10^9)."
+        "text": "A multiplier based on powers of 10: kilo (k, 10^3), mega (M, 10^6), giga (G, 10^9) and tera (T, 10^12)."
       },
       {
         "kind": "Definition",
@@ -4841,23 +4841,33 @@
       },
       {
         "kind": "Definition",
-        "label": "Binary Coded Decimal (BCD)",
-        "text": "A representation in which each denary digit is stored separately as its own 4-bit binary code (a nibble)."
+        "label": "Sign and magnitude",
+        "text": "A signed representation in which the most significant bit shows the sign (0 = +, 1 = −) and the remaining bits hold the size of the number."
       },
       {
         "kind": "Definition",
         "label": "One's complement",
-        "text": "A signed representation in which a negative number is formed by inverting every bit of the positive value."
+        "text": "The binary number obtained by inverting every bit (each 0 becomes 1 and each 1 becomes 0)."
       },
       {
         "kind": "Definition",
         "label": "Two's complement",
-        "text": "A signed representation in which the most significant bit has a negative place value; a negative is formed by inverting all bits of the positive value and adding 1."
+        "text": "The one's complement of a binary number plus 1; as a representation, the most significant bit has a negative place value."
       },
       {
         "kind": "Definition",
         "label": "Overflow",
-        "text": "The error that occurs when the result of a calculation is too large (or too small) to be represented in the available number of bits."
+        "text": "When the result of a calculation is too large (or too small) to be stored in the number of bits available."
+      },
+      {
+        "kind": "Definition",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "A representation in which each denary digit is stored separately as a 4-bit binary code (a nibble)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Packed BCD",
+        "text": "BCD in which two 4-bit digit codes are stored in one byte."
       },
       {
         "kind": "Definition",
@@ -4866,12 +4876,46 @@
       },
       {
         "kind": "Section",
+        "text": "Binary, denary and hexadecimal"
+      },
+      {
+        "kind": "Content",
+        "label": "Binary, denary and hexadecimal",
+        "text": "Denary (base 10) uses ten digits, binary (base 2) uses 0 and 1, and hexadecimal (base 16) uses 0–9 and A–F. In every base the value comes from place values that increase by a power of the base from the right. For a byte, the binary place values are 128, 64, 32, 16, 8, 4, 2 and 1. To convert denary to binary, either subtract the largest place values that fit, or divide repeatedly by 2 and read the remainders from the last to the first. To convert between binary and hexadecimal, split the binary into groups of four bits from the right and replace each group with one hex digit; to go from hex to binary, replace each hex digit with its 4-bit pattern. Converting hex to binary first is often the easiest route from hex to denary."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary, denary and hexadecimal",
+        "text": "Hex to denary directly: multiply each digit by its place value (256, 16, 1) and add, e.g. 3F = 3 × 16 + 15 = 63."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary, denary and hexadecimal",
+        "text": "Pad the leftmost group to 4 bits before converting to hex, e.g. 101 becomes 0101 = 5."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary, denary and hexadecimal",
+        "text": "An n-bit unsigned binary integer can represent 0 to 2^n − 1, so a byte holds 0 to 255 and two bytes hold 0 to 65,535."
+      },
+      {
+        "kind": "Example",
+        "label": "Binary, denary and hexadecimal",
+        "text": "202 ÷ 2 = 101 remainder 0\n101 ÷ 2 = 50 remainder 1\n50 ÷ 2 = 25 remainder 0\n25 ÷ 2 = 12 remainder 1\n12 ÷ 2 = 6 remainder 0\n6 ÷ 2 = 3 remainder 0\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\nRead the remainders from the bottom up: 1100 1010\nCheck: 128 + 64 + 8 + 2 = 202\nHex: 1100 = C, 1010 = A → CA"
+      },
+      {
+        "kind": "Example",
+        "label": "Binary, denary and hexadecimal",
+        "text": "2 → 0010, F → 1111, 7 → 0111\nBinary = 0010 1111 0111\nDenary = 2 × 256 + 15 × 16 + 7 × 1 = 512 + 240 + 7 = 759"
+      },
+      {
+        "kind": "Section",
         "text": "Binary magnitudes and prefixes"
       },
       {
         "kind": "Content",
         "label": "Binary magnitudes and prefixes",
-        "text": "Memory is addressed in powers of 2, so storage is naturally measured with binary prefixes: 1 kibibyte (KiB) = 2^10 = 1024 bytes, 1 mebibyte (MiB) = 2^20 bytes, 1 gibibyte (GiB) = 2^30 bytes and 1 tebibyte (TiB) = 2^40 bytes. Decimal prefixes follow the SI system: 1 kilobyte (kB) = 1000 bytes, 1 megabyte (MB) = 10^6 bytes, and so on. Storage manufacturers often use decimal prefixes, which is why a '500 GB' drive shows as roughly 465 GiB in an operating system."
+        "text": "Decimal prefixes multiply by powers of 10: kilo = 10^3, mega = 10^6, giga = 10^9, tera = 10^12. For many years the computing industry also used 'kilo' to mean 1024 (2^10), which caused confusion: a '1.6 GHz' processor uses the decimal meaning while '8 GB of RAM' usually meant 8 × 2^30 bytes. Binary prefixes were introduced to remove the ambiguity: kibi (KiB) = 2^10, mebi (MiB) = 2^20, gibi (GiB) = 2^30 and tebi (TiB) = 2^40. When presenting a calculated size, choose the prefix that gives one or two digits before the decimal point, and convert all values to the same prefix before combining them."
       },
       {
         "kind": "Content",
@@ -4889,101 +4933,63 @@
         "text": "Use the prefix named in the question; if it says MiB, divide by 1024 twice, not by 1,000,000."
       },
       {
+        "kind": "Content",
+        "label": "Binary magnitudes and prefixes",
+        "text": "Storage manufacturers use decimal prefixes, which is why a '500 GB' drive appears as about 465 GiB in an operating system."
+      },
+      {
         "kind": "Example",
         "label": "Binary magnitudes and prefixes",
-        "text": "3 MiB = 3 × 1024 × 1024 = 3,145,728 bytes.\n3 MB = 3 × 1000 × 1000 = 3,000,000 bytes.\nDifference = 145,728 bytes, so the binary-prefix value is larger."
+        "text": "3 MiB = 3 × 1024 × 1024 = 3,145,728 bytes; 3 MB = 3,000,000 bytes.\nA file of 45,000 bytes = 45,000 ÷ 1024 ≈ 43.9 KiB.\nHow many 3.2 MiB files fit on a 4 GiB memory stick?\nConvert to the same prefix: 4 GiB = 4 × 1024 = 4096 MiB\n4096 ÷ 3.2 = 1280 files"
       },
       {
         "kind": "Section",
-        "text": "Binary, denary and hexadecimal"
+        "text": "Sign and magnitude, one's and two's complement"
       },
       {
         "kind": "Content",
-        "label": "Binary, denary and hexadecimal",
-        "text": "In binary each column is worth double the one to its right (128, 64, 32, 16, 8, 4, 2, 1 for a byte). To convert denary to binary, subtract the largest column values that fit, or divide repeatedly by 2 and read the remainders upwards. Hexadecimal groups binary into nibbles: split the binary into groups of 4 bits from the right and replace each group with one hex digit (10 = A, 11 = B … 15 = F)."
+        "label": "Sign and magnitude, one's and two's complement",
+        "text": "Unsigned integers are stored as plain binary. For signed integers, the simplest idea is sign and magnitude, where the most significant bit (MSB) is the sign; but it has two zeros (+0 and −0) and needs special rules for arithmetic, so computers use two's complement instead. The one's complement of a number is found by inverting every bit; the two's complement is the one's complement plus 1. To store a negative denary number: write the positive value in binary with a leading 0 (fill the byte), invert every bit, then add 1. In two's complement the MSB has a negative place value (−128 in a byte), so 8 bits represent −128 to +127. To read a two's complement value, add the negative MSB value to the positive values of the other 1 bits."
       },
       {
         "kind": "Content",
-        "label": "Binary, denary and hexadecimal",
-        "text": "Hex to denary: multiply each digit by its place value (16^1, 16^0) and add, e.g. 3F = 3 × 16 + 15 = 63."
-      },
-      {
-        "kind": "Content",
-        "label": "Binary, denary and hexadecimal",
-        "text": "Always pad a nibble to 4 bits before converting to hex, e.g. 101 becomes 0101 = 5."
-      },
-      {
-        "kind": "Content",
-        "label": "Binary, denary and hexadecimal",
-        "text": "An n-bit unsigned binary integer can represent 0 to 2^n − 1, so a byte holds 0 to 255."
-      },
-      {
-        "kind": "Example",
-        "label": "Binary, denary and hexadecimal",
-        "text": "181 − 128 = 53 → 1 in the 128 column\n53 − 32 = 21 → 1 in the 32 column (0 in 64)\n21 − 16 = 5 → 1 in the 16 column\n5 − 4 = 1 → 1 in the 4 column (0 in 8)\n1 − 1 = 0 → 1 in the 1 column (0 in 2)\nBinary = 1011 0101\nHex: 1011 = B, 0101 = 5 → B5\nCheck: 11 × 16 + 5 = 181"
-      },
-      {
-        "kind": "Section",
-        "text": "Uses of hexadecimal and BCD"
-      },
-      {
-        "kind": "Content",
-        "label": "Uses of hexadecimal and BCD",
-        "text": "Hexadecimal is used because it is shorter and less error-prone for humans to read than long binary strings, yet converts directly to binary. BCD stores each denary digit in its own nibble, so 395 becomes 0011 1001 0101 rather than the pure binary 110001011. BCD is less storage-efficient (the codes 1010–1111 are never used) but avoids conversion rounding and makes displaying digits simple."
-      },
-      {
-        "kind": "Content",
-        "label": "Uses of hexadecimal and BCD",
-        "text": "Hex uses: memory addresses, MAC addresses, colour codes such as #FF8000, error codes and assembly/machine-code listings."
-      },
-      {
-        "kind": "Content",
-        "label": "Uses of hexadecimal and BCD",
-        "text": "BCD uses: digital clocks and calculators driving seven-segment displays, and financial systems where exact denary values must be stored without rounding errors."
-      },
-      {
-        "kind": "Content",
-        "label": "Uses of hexadecimal and BCD",
-        "text": "When justifying BCD, link it to each digit being processed or displayed separately."
-      },
-      {
-        "kind": "Example",
-        "label": "Uses of hexadecimal and BCD",
-        "text": "Denary 395\n3 → 0011\n9 → 1001\n5 → 0101\nBCD = 0011 1001 0101 (12 bits)\nPure binary 395 = 1 1000 1011 (9 bits), showing BCD needs more space."
-      },
-      {
-        "kind": "Section",
-        "text": "One's and two's complement"
-      },
-      {
-        "kind": "Content",
-        "label": "One's and two's complement",
-        "text": "In two's complement the most significant bit has a negative place value (−128 in a byte), so 8 bits represent −128 to +127. To find the negative of a number, write the positive value, invert every bit (this gives the one's complement), then add 1. To read a two's complement value, add the negative MSB value to the positive values of the remaining 1 bits."
-      },
-      {
-        "kind": "Content",
-        "label": "One's and two's complement",
+        "label": "Sign and magnitude, one's and two's complement",
         "text": "A leading 1 means the number is negative; a leading 0 means it is zero or positive."
       },
       {
         "kind": "Content",
-        "label": "One's and two's complement",
-        "text": "One's complement has two representations of zero (00000000 and 11111111), which is one reason two's complement is preferred."
+        "label": "Sign and magnitude, one's and two's complement",
+        "text": "Two's complement has only one zero, and the same adder circuit performs both addition and subtraction."
       },
       {
         "kind": "Content",
-        "label": "One's and two's complement",
-        "text": "Two's complement lets the same adder circuit perform both addition and subtraction."
+        "label": "Sign and magnitude, one's and two's complement",
+        "text": "Quick method: from the right, copy bits up to and including the first 1, then invert every remaining bit."
       },
       {
         "kind": "Content",
-        "label": "One's and two's complement",
+        "label": "Sign and magnitude, one's and two's complement",
+        "text": "Taking the two's complement again changes the sign back, e.g. from −44 to +44."
+      },
+      {
+        "kind": "Content",
+        "label": "Sign and magnitude, one's and two's complement",
         "text": "Range of n-bit two's complement: −2^(n−1) to 2^(n−1) − 1."
       },
       {
         "kind": "Example",
-        "label": "One's and two's complement",
+        "label": "Sign and magnitude, one's and two's complement",
         "text": "+45 = 0010 1101\nInvert all bits (one's complement) = 1101 0010\nAdd 1 → 1101 0011\nCheck: −128 + 64 + 16 + 2 + 1 = −45"
+      },
+      {
+        "kind": "Example",
+        "label": "Sign and magnitude, one's and two's complement",
+        "text": "+44 = 0010 1100\nCopy from the right up to and including the first 1: 100\nInvert the rest (00101 → 11010): 1101 0100 = −44\nCheck: −128 + 64 + 16 + 4 = −44\n\nRead 1110 0110: −128 + 64 + 32 + 4 + 2 = −26"
+      },
+      {
+        "kind": "Example",
+        "label": "Sign and magnitude, one's and two's complement",
+        "text": "+5: sign and magnitude 0000 0101; two's complement 0000 0101\n−5: sign and magnitude 1000 0101; two's complement 1111 1011\n0: sign and magnitude has 0000 0000 and 1000 0000; two's complement has only 0000 0000"
       },
       {
         "kind": "Section",
@@ -4992,12 +4998,12 @@
       {
         "kind": "Content",
         "label": "Binary addition and subtraction",
-        "text": "Binary addition follows four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 0 carry 1, and 1 + 1 + 1 = 1 carry 1. Subtraction is performed by adding the two's complement of the number being subtracted, so A − B becomes A + (−B). Any carry out of the most significant bit is discarded in two's complement arithmetic."
+        "text": "Binary addition works from right to left using four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 0 carry 1, and 1 + 1 + 1 = 1 carry 1. Subtraction can be done directly by borrowing (0 − 1 = 1 after borrowing from the next column), but computers subtract by adding the two's complement: A − B = A + (−B). In two's complement arithmetic, any carry out of the most significant bit is discarded."
       },
       {
         "kind": "Content",
         "label": "Binary addition and subtraction",
-        "text": "Show carries above the columns; examiners award method marks for visible working."
+        "text": "Show carries or borrows above the columns; examiners award method marks for visible working."
       },
       {
         "kind": "Content",
@@ -5015,13 +5021,18 @@
         "text": "+60 = 0011 1100 → invert = 1100 0011 → add 1 = 1100 0100 (−60)\n  0010 1101  (45)\n+ 1100 0100  (−60)\n= 1111 0001\nCheck: −128 + 64 + 32 + 16 + 1 = −15"
       },
       {
+        "kind": "Example",
+        "label": "Binary addition and subtraction",
+        "text": "  1110  (14)\n− 0101  (5)\nColumn 1: 0 − 1 → borrow, 10 − 1 = 1\nColumn 2: 1 becomes 0 after the borrow; 0 − 0 = 0\nColumn 3: 1 − 1 = 0\nColumn 4: 1 − 0 = 1\nResult = 1001 = 9"
+      },
+      {
         "kind": "Section",
         "text": "Overflow"
       },
       {
         "kind": "Content",
         "label": "Overflow",
-        "text": "Overflow happens when a result falls outside the range the register can hold. In two's complement it is detected when two numbers of the same sign are added and the result has the opposite sign: two positives giving a negative, or two negatives giving a positive. The processor records this in an overflow flag in the status register so software can react."
+        "text": "A register has a fixed number of bits, so a result outside the representable range cannot be stored correctly. In two's complement, overflow is shown when two numbers of the same sign are added and the result has the opposite sign: two positives giving a negative, or two negatives giving a positive. The processor records this in the overflow flag of the status register so that software can react."
       },
       {
         "kind": "Content",
@@ -5031,17 +5042,90 @@
       {
         "kind": "Content",
         "label": "Overflow",
-        "text": "With unsigned numbers, a carry out of the MSB indicates the result was too large."
+        "text": "With unsigned numbers, a carry out of the MSB shows the result was too large."
       },
       {
         "kind": "Content",
         "label": "Overflow",
-        "text": "Using more bits (for example 16 instead of 8) extends the range and makes overflow less likely."
+        "text": "Using more bits (for example 16 instead of 8) widens the range and makes overflow less likely."
       },
       {
         "kind": "Example",
         "label": "Overflow",
-        "text": "  0110 0100  (+100)\n+ 0011 0010  (+50)\n= 1001 0110\nThe correct answer is +150, which is above +127. The result's MSB is 1, so it reads as −128 + 16 + 4 + 2 = −106: two positives have produced a negative, so overflow has occurred."
+        "text": "  0110 0100  (+100)\n+ 0011 0010  (+50)\n= 1001 0110\nThe correct answer, +150, is above +127. The MSB is 1, so the result reads as −128 + 16 + 4 + 2 = −106: overflow has occurred."
+      },
+      {
+        "kind": "Example",
+        "label": "Overflow",
+        "text": "  1001 1100  (−100)\n+ 1100 1110  (−50)\n= (1) 0110 1010  (carry out discarded)\nThe result reads as +106, but the correct answer, −150, is below −128: overflow has occurred."
+      },
+      {
+        "kind": "Section",
+        "text": "Binary Coded Decimal (BCD)"
+      },
+      {
+        "kind": "Content",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "BCD stores each denary digit separately in its own nibble, using the codes 0000 (0) to 1001 (9); the codes 1010 to 1111 are never used. Digits can be stored one per byte (leaving four bits unused) or as packed BCD, two digits per byte. BCD is used where denary digits must be displayed or processed individually, such as digital clocks, calculators and seven-segment displays, and for currency, where values such as 0.10 cannot be stored exactly as binary fractions. When two BCD digits are added and the result is above 1001, the processor adds a correction of 0110 so that the digit is valid and a carry passes to the next digit."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "BCD is less storage-efficient than pure binary: 6 of the 16 possible nibble codes are unused."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "BCD avoids rounding errors for exact denary values, such as money."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "When justifying BCD, link it to each digit being processed or displayed separately."
+      },
+      {
+        "kind": "Example",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "2 → 0010, 9 → 1001, 4 → 0100, 7 → 0111\nPacked BCD (2 bytes): 0010 1001 0100 0111\nOne digit per byte (4 bytes): 00000010 00001001 00000100 00000111"
+      },
+      {
+        "kind": "Example",
+        "label": "Binary Coded Decimal (BCD)",
+        "text": "  0011 1000  (38)\n+ 0100 0111  (47)\nLow digit: 1000 + 0111 = 1111, which is not a valid BCD digit\nAdd the correction 0110: 1111 + 0110 = 1 0101 → store 0101, carry 1\nHigh digit: 0011 + 0100 + 1 = 1000 (valid)\nResult = 1000 0101 = 85"
+      },
+      {
+        "kind": "Section",
+        "text": "Uses of hexadecimal"
+      },
+      {
+        "kind": "Content",
+        "label": "Uses of hexadecimal",
+        "text": "The computer always stores binary; hexadecimal is only a way of writing binary for people. It is shorter and far less error-prone to read, write and remember than long binary strings, yet it converts directly to binary because each hex digit is exactly 4 bits. A 48-bit MAC address, for example, becomes just 12 hex digits."
+      },
+      {
+        "kind": "Content",
+        "label": "Uses of hexadecimal",
+        "text": "Memory addresses and memory dumps when debugging."
+      },
+      {
+        "kind": "Content",
+        "label": "Uses of hexadecimal",
+        "text": "MAC addresses, e.g. 00:1A:2B:3C:4D:5E."
+      },
+      {
+        "kind": "Content",
+        "label": "Uses of hexadecimal",
+        "text": "Colour codes in HTML/CSS, e.g. #FF8000 = red FF, green 80, blue 00."
+      },
+      {
+        "kind": "Content",
+        "label": "Uses of hexadecimal",
+        "text": "Error codes and machine-code or assembly listings."
+      },
+      {
+        "kind": "Content",
+        "label": "Uses of hexadecimal",
+        "text": "URL encoding of special characters, e.g. a space written as %20 (hex 20 = 32, the ASCII code for a space)."
       },
       {
         "kind": "Section",
@@ -5050,12 +5134,12 @@
       {
         "kind": "Content",
         "label": "Character sets",
-        "text": "Text is stored by giving each character a numeric code from a character set. Standard ASCII uses 7 bits, giving 128 codes covering English letters, digits, punctuation and control characters. Extended ASCII uses 8 bits for 256 codes, adding accented and graphical characters. Unicode uses up to 4 bytes per character so that characters from almost every writing system, plus symbols and emoji, can be represented, while its first 128 codes match ASCII."
+        "text": "Text is stored by giving each character a numeric code from a character set. Standard ASCII uses 7 bits, giving 128 codes covering English letters, digits, punctuation and control characters; it is usually stored in a byte with the MSB set to 0. Extended ASCII uses all 8 bits for 256 codes, adding accented and graphical characters. Unicode can use up to 4 bytes per character, so characters from almost every writing system, plus symbols and emoji, can be represented; its first 128 codes match ASCII."
       },
       {
         "kind": "Content",
         "label": "Character sets",
-        "text": "Codes are allocated in sequence: 'A' = 65, 'B' = 66; 'a' = 97; the digit '0' = 48, so lower case is 32 more than upper case."
+        "text": "Codes are allocated in sequence: 'A' = 65, 'B' = 66; 'a' = 97; the digit '0' = 48, so a lower-case letter is 32 more than its capital."
       },
       {
         "kind": "Content",
@@ -5065,12 +5149,17 @@
       {
         "kind": "Content",
         "label": "Character sets",
-        "text": "Unicode needs more storage per character than ASCII but supports international text on one system."
+        "text": "Unicode needs more storage per character than ASCII but supports international text in one system."
       },
       {
         "kind": "Content",
         "label": "Character sets",
         "text": "The character '7' (code 55) is different from the integer 7; converting between them is a common exam point."
+      },
+      {
+        "kind": "Example",
+        "label": "Character sets",
+        "text": "'A' = 65 = 0100 0001 (hex 41)\n'E' is 4 letters after 'A' → 69 = 0100 0101 (hex 45)\n'e' = 69 + 32 = 101 = 0110 0101 (hex 65)"
       },
       {
         "kind": "Quick recall question",
@@ -5097,7 +5186,16 @@
       {
         "kind": "Quick recall answer",
         "label": "How do you find the two's complement of a negative number?",
-        "text": "Write the positive value in binary, invert every bit, then add 1."
+        "text": "Write the positive value in binary with a leading 0, invert every bit, then add 1."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is two's complement preferred to sign and magnitude?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is two's complement preferred to sign and magnitude?",
+        "text": "It has only one zero, and addition and subtraction use the same simple adder with no special rules."
       },
       {
         "kind": "Quick recall question",
@@ -5119,12 +5217,21 @@
       },
       {
         "kind": "Quick recall question",
+        "text": "What is packed BCD?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is packed BCD?",
+        "text": "BCD with two digit codes stored in one byte."
+      },
+      {
+        "kind": "Quick recall question",
         "text": "Give two uses of hexadecimal."
       },
       {
         "kind": "Quick recall answer",
         "label": "Give two uses of hexadecimal.",
-        "text": "Any two of: memory addresses, MAC addresses, HTML colour codes, error codes, machine-code/assembly listings."
+        "text": "Any two of: memory addresses, MAC addresses, HTML colour codes, error codes, machine-code/assembly listings, URL encoding."
       },
       {
         "kind": "Quick recall question",
@@ -5134,15 +5241,6 @@
         "kind": "Quick recall answer",
         "label": "Why is Unicode needed when ASCII exists?",
         "text": "ASCII has only 128 (or 256 extended) codes, which cannot represent characters from all languages; Unicode can."
-      },
-      {
-        "kind": "Quick recall question",
-        "text": "Why does one's complement have a disadvantage compared with two's complement?"
-      },
-      {
-        "kind": "Quick recall answer",
-        "label": "Why does one's complement have a disadvantage compared with two's complement?",
-        "text": "It has two representations of zero, and addition needs extra correction steps."
       }
     ]
   },
@@ -5188,8 +5286,13 @@
       },
       {
         "kind": "Definition",
-        "label": "Colour depth (bit depth)",
-        "text": "The number of bits used to store the colour of each pixel; n bits allow 2^n different colours."
+        "label": "Colour depth",
+        "text": "The number of bits used to represent the colour of one pixel; n bits allow 2^n different colours."
+      },
+      {
+        "kind": "Definition",
+        "label": "Bit depth",
+        "text": "The number of bits used to store each of the red, green and blue components of a pixel's colour; a bit depth of 8 gives 24 bits per pixel."
       },
       {
         "kind": "Definition",
@@ -5228,7 +5331,7 @@
       {
         "kind": "Content",
         "label": "Encoding bitmap images",
-        "text": "A bitmap image is a grid of pixels. Each pixel's colour is stored as a binary code, and the codes are stored in order, row by row. The number of bits per pixel is the colour depth: 1 bit gives 2 colours (black and white), 8 bits give 256 colours and 24 bits give over 16.7 million colours (8 bits each for red, green and blue). A file header at the start of the file records information the software needs to rebuild the image, such as the file type, image width and height, and colour depth."
+        "text": "A bitmap image is a two-dimensional grid (matrix) of pixels. A pixel has just two properties: its position in the grid and its colour. Each pixel's colour is stored as a binary code, and the codes are stored in order, row by row. The number of bits per pixel is the colour depth: 1 bit gives 2 colours (black and white), 4 bits allow simple greyscale, 8 bits give 256 colours and 24 bits give over 16.7 million colours. Bit depth is the number of bits for each of the red, green and blue components, so a bit depth of 8 means 3 × 8 = 24 bits per pixel. A high colour depth is needed for areas of gradually changing colour, such as a sky; with too few bits the image shows visible bands of colour. A file header at the start of the file records information the software needs to rebuild the image, such as the file type, image width and height, and colour depth."
       },
       {
         "kind": "Content",
@@ -5280,6 +5383,16 @@
         "text": "Pixels = 1024 × 768 = 786,432\nBits = 786,432 × 16 = 12,582,912 bits\nBytes = 12,582,912 ÷ 8 = 1,572,864 bytes\nKiB = 1,572,864 ÷ 1024 = 1536 KiB\nMiB = 1536 ÷ 1024 = 1.5 MiB"
       },
       {
+        "kind": "Example",
+        "label": "Calculating bitmap file size",
+        "text": "An 800 × 600 image has a bit depth of 8 (per RGB component).\nBits per pixel = 3 × 8 = 24, i.e. 3 bytes\nSize = 800 × 600 × 3 = 1,440,000 bytes ≈ 1406.3 KiB"
+      },
+      {
+        "kind": "Example",
+        "label": "Calculating bitmap file size",
+        "text": "A 6 × 4 inch photo is scanned at 300 dots (pixels) per inch with 24-bit colour.\nPixels = (6 × 300) × (4 × 300) = 1800 × 1200 = 2,160,000\nBytes = 2,160,000 × 3 = 6,480,000 bytes\n= 6,480,000 ÷ 1024 ÷ 1024 ≈ 6.2 MiB"
+      },
+      {
         "kind": "Section",
         "text": "Effect of changing resolution and colour depth"
       },
@@ -5315,7 +5428,7 @@
       {
         "kind": "Content",
         "label": "Encoding vector graphics",
-        "text": "A vector graphic does not store pixels. Instead it stores a drawing list: a set of commands describing each drawing object and its properties, such as a circle's centre coordinates, radius, line colour, line width and fill colour. When the image is displayed, the software recalculates every object from these properties, so the graphic can be scaled to any size without losing quality."
+        "text": "A vector graphic does not store pixels. Instead it stores a drawing list: a set of commands describing each drawing object and its properties, such as a circle's centre coordinates, radius, line colour, line width and fill colour. Dimensions are defined relative to an imaginary drawing canvas rather than in fixed units. When the image is displayed, the software reads the drawing list and recalculates every object at the required scale, so the graphic can be resized without losing quality or being distorted. Vector graphics are produced by drawing and computer-aided design (CAD) packages. Most screens and printers work with pixels, so a vector graphic is converted to a bitmap (rasterised) at the moment it is displayed or printed."
       },
       {
         "kind": "Content",
@@ -5362,13 +5475,23 @@
         "text": "Simple diagrams are often smaller as vectors; complex photographs would need a vast drawing list."
       },
       {
+        "kind": "Content",
+        "label": "Choosing a bitmap or a vector graphic",
+        "text": "Useful questions to decide: Must the image be resized? Must it be drawn accurately to scale (e.g. an architect's plan)? Must it look photo-realistic?"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing a bitmap or a vector graphic",
+        "text": "Images captured by a digital camera or scanner are always bitmaps."
+      },
+      {
         "kind": "Section",
         "text": "Sampling sound"
       },
       {
         "kind": "Content",
         "label": "Sampling sound",
-        "text": "Sound is an analogue wave: its amplitude varies continuously over time. To store it digitally, the amplitude is measured (sampled) at regular time intervals, and each measurement is rounded to the nearest level that can be stored with the sampling resolution. These binary sample values are stored in order, with a file header recording details such as the sampling rate and sampling resolution. Played back, the samples are converted into an approximation of the original wave."
+        "text": "Sound is an analogue wave: its amplitude varies continuously over time. To store it digitally, a sound encoder first passes the signal through a band-limiting filter, which removes very high frequencies that humans cannot hear and that would cause coding problems. An analogue-to-digital converter (ADC) then measures (samples) the amplitude at regular time intervals, and each measurement is rounded to the nearest level that can be stored with the sampling resolution. These binary sample values are stored in order, with a file header recording details such as the sampling rate and sampling resolution. Played back, the samples are converted into an approximation of the original wave."
       },
       {
         "kind": "Content",
@@ -5383,7 +5506,12 @@
       {
         "kind": "Content",
         "label": "Sampling sound",
-        "text": "A sampling resolution of n bits gives 2^n possible amplitude levels, e.g. 16 bits gives 65,536."
+        "text": "A sampling resolution of n bits gives 2^n possible amplitude levels, e.g. 3 bits gives only 8 levels, while 16 bits gives 65,536."
+      },
+      {
+        "kind": "Content",
+        "label": "Sampling sound",
+        "text": "Nyquist's theorem: the sampling rate must be at least twice the highest frequency in the sound. Human hearing reaches about 20 kHz, which is why CDs sample at 44.1 kHz with 16-bit resolution."
       },
       {
         "kind": "Section",
@@ -5479,6 +5607,15 @@
       },
       {
         "kind": "Quick recall question",
+        "text": "What does Nyquist's theorem say about the sampling rate?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does Nyquist's theorem say about the sampling rate?",
+        "text": "It must be at least twice the highest frequency in the sound being sampled."
+      },
+      {
+        "kind": "Quick recall question",
         "text": "What does a file header store?"
       },
       {
@@ -5540,6 +5677,11 @@
       },
       {
         "kind": "Definition",
+        "label": "Huffman coding",
+        "text": "A lossless method that gives frequently occurring characters shorter bit codes and rarer characters longer codes, using codes with the prefix property."
+      },
+      {
+        "kind": "Definition",
         "label": "Perceptual coding",
         "text": "A lossy technique that removes the parts of a sound or image that human senses are least able to notice."
       },
@@ -5597,6 +5739,11 @@
         "text": "Once lossy compression has been applied, the discarded data cannot be recovered by decompressing."
       },
       {
+        "kind": "Content",
+        "label": "Lossless and lossy compression",
+        "text": "Many real formats combine both: a lossy step removes detail, then a lossless step encodes what remains efficiently."
+      },
+      {
         "kind": "Example",
         "label": "Lossless and lossy compression",
         "text": "A program's executable file must be sent to users → lossless, because any lost bit would change the instructions and the program might not run.\nA holiday photo is uploaded to social media → lossy, because the file becomes much smaller and the loss of fine detail is not noticeable on a phone screen."
@@ -5623,7 +5770,12 @@
       {
         "kind": "Content",
         "label": "Run-length encoding (RLE)",
-        "text": "In text, a flag character is often used to mark where an encoded run starts, so single characters can be left unencoded."
+        "text": "In binary, each run is stored as a count followed by the value, e.g. a count byte and then the byte being repeated."
+      },
+      {
+        "kind": "Content",
+        "label": "Run-length encoding (RLE)",
+        "text": "The decompressor must be able to tell a count from a data value, for example by using fixed-size pairs or a flag character that marks where an encoded run starts."
       },
       {
         "kind": "Example",
@@ -5636,23 +5788,38 @@
         "text": "Original: ABCDEF (6 characters)\nEncoded: 1A 1B 1C 1D 1E 1F (12 characters)\nWith no repeated runs, RLE doubles the size, which is why it only suits data with long runs."
       },
       {
+        "kind": "Example",
+        "label": "Run-length encoding (RLE)",
+        "text": "Original bytes: 01000001 repeated 4 times ('AAAA', 32 bits)\nEncoded as a count byte then a data byte: 00000100 01000001 (16 bits)\nA 1-bit black-and-white row 0001111111000 becomes the runs 3 × 0, 7 × 1, 3 × 0"
+      },
+      {
         "kind": "Section",
         "text": "Compressing text files"
       },
       {
         "kind": "Content",
         "label": "Compressing text files",
-        "text": "Text must always be compressed losslessly. A common approach is dictionary-based: repeated words or groups of characters are stored once in a dictionary, and each occurrence in the file is replaced by a short index into the dictionary. RLE can also be used where characters repeat consecutively, such as runs of spaces."
+        "text": "Text must always be compressed losslessly, because losing any character changes the meaning. In Huffman coding, the text is analysed to find how often each character occurs; frequent characters are given short bit codes and rare characters longer ones, instead of every character using a full byte. The codes have the prefix property: no code is the start of another, longer code, so the compressed bit stream can be decoded without ambiguity. Dictionary methods are another approach: repeated words or groups of characters are stored once in a dictionary, and each occurrence is replaced by a short index into it."
       },
       {
         "kind": "Content",
         "label": "Compressing text files",
-        "text": "The dictionary must be stored with or be known to the decompressor, which adds a small overhead."
+        "text": "Huffman coding turns a stream of bytes into a stream of bits of different lengths."
       },
       {
         "kind": "Content",
         "label": "Compressing text files",
-        "text": "The more often a word repeats, the greater the saving."
+        "text": "The code table (or dictionary) must be stored with the file or known to the decompressor, which adds a small overhead."
+      },
+      {
+        "kind": "Content",
+        "label": "Compressing text files",
+        "text": "The more uneven the character frequencies, or the more often words repeat, the greater the saving."
+      },
+      {
+        "kind": "Example",
+        "label": "Compressing text files",
+        "text": "Codes: e = 10, t = 01, o = 111, h = 110, l = 0001\n'tee' → 01 10 10 = 6 bits, compared with 3 × 8 = 24 bits in 8-bit ASCII\nDecoding 011010: 01 must be t (no other code starts 01), then 10 = e, 10 = e\nBecause no code is the prefix of another, there is only one way to split the bits."
       },
       {
         "kind": "Example",
@@ -5666,7 +5833,7 @@
       {
         "kind": "Content",
         "label": "Compressing bitmap images and vector graphics",
-        "text": "A bitmap can be compressed losslessly with RLE, which is effective on images with large areas of the same colour. Lossy methods reduce the colour depth, reduce the resolution, or group together pixels of similar colour and store them as one colour, which works well on photographs where neighbouring pixels are similar. A vector graphic is already compact because it stores a drawing list, but its text-based drawing list can be further compressed losslessly, for example with dictionary methods."
+        "text": "A bitmap can be compressed losslessly with RLE, which is effective on images with large areas of the same colour. Lossy methods reduce the resolution, or reduce the colour depth by setting up a smaller palette and changing each pixel to the closest colour in it, which works well on photographs where neighbouring pixels are similar. JPEG is the most common lossy format for photographs. A vector graphic is already compact because it stores a drawing list; to compress it further it can be converted to Scalable Vector Graphics (SVG), which describes the image in a text-based markup language that compresses well with lossless methods."
       },
       {
         "kind": "Content",
@@ -5690,7 +5857,7 @@
       {
         "kind": "Content",
         "label": "Compressing sound files",
-        "text": "Lossy sound compression uses perceptual coding: it removes sounds outside the range of human hearing, and quieter sounds that are masked by louder sounds at the same time. The sampling rate or sampling resolution can also be reduced. Lossless audio compression exists for situations where perfect quality is needed, such as studio master recordings, but it gives much smaller savings."
+        "text": "Lossy sound compression uses perceptual coding: it removes sounds outside the range of human hearing, and quieter sounds that are masked by louder sounds at the same time. MP3 works this way and typically cuts a music file by up to about 90%. Another technique uses the fact that successive samples rarely change much: the file stores the differences between samples, using a lower sampling resolution for them. The sampling rate or sampling resolution of the whole recording can also be reduced. Video formats such as MP4 apply similar compression to both sound and pictures. Lossless audio compression exists for situations where perfect quality is needed, such as studio master recordings, but it gives much smaller savings."
       },
       {
         "kind": "Content",
@@ -5751,6 +5918,15 @@
         "kind": "Quick recall answer",
         "label": "What is perceptual coding?",
         "text": "Lossy sound compression that removes sounds humans cannot hear or would not notice, such as quiet sounds masked by louder ones."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the prefix property in Huffman coding, and why does it matter?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the prefix property in Huffman coding, and why does it matter?",
+        "text": "No code is the start of another code, so the compressed bit stream can be decoded in only one way."
       },
       {
         "kind": "Quick recall question",

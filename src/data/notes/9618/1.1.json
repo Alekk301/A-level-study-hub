@@ -6,15 +6,15 @@
   "unitTitle": "AS Theory",
   "title": "Data Representation",
   "contentDepth": "full",
-  "overview": "Everything a computer stores is a pattern of bits, so Paper 1 repeatedly asks you to convert between number bases, represent negative numbers in two's complement, add binary values and spot overflow. Questions also test binary versus decimal prefixes, BCD and character sets, usually with a short justification of why one representation suits a given use.",
+  "overview": "Everything a computer stores is a pattern of bits, so Paper 1 repeatedly asks you to convert between number bases, use binary and decimal prefixes, represent signed integers in two's complement, add and subtract in binary and spot overflow. Questions also test BCD, the uses of hexadecimal and character sets, usually with a short justification of why one representation suits a given use. Most calculation questions award a mark for visible working and a mark for the answer.",
   "syllabusPoints": [
     "Show understanding of binary magnitudes and the difference between binary prefixes (kibi, mebi, gibi, tebi) and decimal prefixes (kilo, mega, giga, tera).",
-    "Represent integers in binary, denary, hexadecimal and Binary Coded Decimal (BCD), and convert between them.",
+    "Understand the different number systems that a computer uses (binary, denary and hexadecimal) and convert integer values between them.",
+    "Represent integers in Binary Coded Decimal (BCD), and describe practical applications where BCD and hexadecimal are used.",
     "Represent positive and negative integers using one's complement and two's complement.",
     "Perform binary addition and subtraction using positive and negative integers in two's complement.",
-    "Describe how overflow can occur and how it is detected.",
-    "Describe practical applications where BCD and hexadecimal are used.",
-    "Show understanding of character sets, including ASCII, extended ASCII and Unicode."
+    "Show understanding of how overflow can occur.",
+    "Show understanding of and be able to represent character data in its internal binary form, depending on the character set used (ASCII, extended ASCII and Unicode)."
   ],
   "definitions": [
     {
@@ -23,35 +23,43 @@
     },
     {
       "term": "Byte",
-      "definition": "A group of 8 bits, treated as a single unit of storage."
+      "definition": "A group of 8 bits, treated as a single unit of storage. A nibble is 4 bits."
     },
     {
       "term": "Binary prefix",
-      "definition": "A multiplier based on powers of 2, such as kibi (2^10 = 1024), mebi (2^20) and gibi (2^30)."
+      "definition": "A multiplier based on powers of 2: kibi (Ki, 2^10), mebi (Mi, 2^20), gibi (Gi, 2^30) and tebi (Ti, 2^40)."
     },
     {
       "term": "Decimal prefix",
-      "definition": "A multiplier based on powers of 10, such as kilo (10^3 = 1000), mega (10^6) and giga (10^9)."
+      "definition": "A multiplier based on powers of 10: kilo (k, 10^3), mega (M, 10^6), giga (G, 10^9) and tera (T, 10^12)."
     },
     {
       "term": "Hexadecimal",
       "definition": "A base-16 number system using the digits 0–9 and A–F; each hex digit represents exactly 4 bits."
     },
     {
-      "term": "Binary Coded Decimal (BCD)",
-      "definition": "A representation in which each denary digit is stored separately as its own 4-bit binary code (a nibble)."
+      "term": "Sign and magnitude",
+      "definition": "A signed representation in which the most significant bit shows the sign (0 = +, 1 = −) and the remaining bits hold the size of the number."
     },
     {
       "term": "One's complement",
-      "definition": "A signed representation in which a negative number is formed by inverting every bit of the positive value."
+      "definition": "The binary number obtained by inverting every bit (each 0 becomes 1 and each 1 becomes 0)."
     },
     {
       "term": "Two's complement",
-      "definition": "A signed representation in which the most significant bit has a negative place value; a negative is formed by inverting all bits of the positive value and adding 1."
+      "definition": "The one's complement of a binary number plus 1; as a representation, the most significant bit has a negative place value."
     },
     {
       "term": "Overflow",
-      "definition": "The error that occurs when the result of a calculation is too large (or too small) to be represented in the available number of bits."
+      "definition": "When the result of a calculation is too large (or too small) to be stored in the number of bits available."
+    },
+    {
+      "term": "Binary Coded Decimal (BCD)",
+      "definition": "A representation in which each denary digit is stored separately as a 4-bit binary code (a nibble)."
+    },
+    {
+      "term": "Packed BCD",
+      "definition": "BCD in which two 4-bit digit codes are stored in one byte."
     },
     {
       "term": "Character set",
@@ -60,139 +68,199 @@
   ],
   "sections": [
     {
-      "id": "01-binary-magnitudes-and-prefixes",
-      "title": "Binary magnitudes and prefixes",
+      "id": "01-number-systems",
+      "title": "Binary, denary and hexadecimal",
       "content": [
-        "Memory is addressed in powers of 2, so storage is naturally measured with binary prefixes: 1 kibibyte (KiB) = 2^10 = 1024 bytes, 1 mebibyte (MiB) = 2^20 bytes, 1 gibibyte (GiB) = 2^30 bytes and 1 tebibyte (TiB) = 2^40 bytes. Decimal prefixes follow the SI system: 1 kilobyte (kB) = 1000 bytes, 1 megabyte (MB) = 10^6 bytes, and so on. Storage manufacturers often use decimal prefixes, which is why a '500 GB' drive shows as roughly 465 GiB in an operating system."
+        "Denary (base 10) uses ten digits, binary (base 2) uses 0 and 1, and hexadecimal (base 16) uses 0–9 and A–F. In every base the value comes from place values that increase by a power of the base from the right. For a byte, the binary place values are 128, 64, 32, 16, 8, 4, 2 and 1. To convert denary to binary, either subtract the largest place values that fit, or divide repeatedly by 2 and read the remainders from the last to the first. To convert between binary and hexadecimal, split the binary into groups of four bits from the right and replace each group with one hex digit; to go from hex to binary, replace each hex digit with its 4-bit pattern. Converting hex to binary first is often the easiest route from hex to denary."
       ],
       "bullets": [
-        "Each step up a binary prefix multiplies by 1024; each step up a decimal prefix multiplies by 1000.",
-        "The gap grows with size: 1 KiB is 2.4% larger than 1 kB, but 1 TiB is about 10% larger than 1 TB.",
-        "Use the prefix named in the question; if it says MiB, divide by 1024 twice, not by 1,000,000."
+        "Hex to denary directly: multiply each digit by its place value (256, 16, 1) and add, e.g. 3F = 3 × 16 + 15 = 63.",
+        "Pad the leftmost group to 4 bits before converting to hex, e.g. 101 becomes 0101 = 5.",
+        "An n-bit unsigned binary integer can represent 0 to 2^n − 1, so a byte holds 0 to 255 and two bytes hold 0 to 65,535."
       ],
       "examples": [
         {
           "id": "1.1-1-1",
           "kind": "worked",
-          "label": "Converting between prefixes",
-          "content": "3 MiB = 3 × 1024 × 1024 = 3,145,728 bytes.\n3 MB = 3 × 1000 × 1000 = 3,000,000 bytes.\nDifference = 145,728 bytes, so the binary-prefix value is larger."
+          "label": "Denary 202 to binary by repeated division",
+          "content": "202 ÷ 2 = 101 remainder 0\n101 ÷ 2 = 50 remainder 1\n50 ÷ 2 = 25 remainder 0\n25 ÷ 2 = 12 remainder 1\n12 ÷ 2 = 6 remainder 0\n6 ÷ 2 = 3 remainder 0\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\nRead the remainders from the bottom up: 1100 1010\nCheck: 128 + 64 + 8 + 2 = 202\nHex: 1100 = C, 1010 = A → CA"
+        },
+        {
+          "id": "1.1-1-2",
+          "kind": "worked",
+          "label": "Hexadecimal 2F7 to binary and denary",
+          "content": "2 → 0010, F → 1111, 7 → 0111\nBinary = 0010 1111 0111\nDenary = 2 × 256 + 15 × 16 + 7 × 1 = 512 + 240 + 7 = 759"
         }
       ]
     },
     {
-      "id": "02-binary-denary-and-hexadecimal",
-      "title": "Binary, denary and hexadecimal",
+      "id": "02-binary-magnitudes-and-prefixes",
+      "title": "Binary magnitudes and prefixes",
       "content": [
-        "In binary each column is worth double the one to its right (128, 64, 32, 16, 8, 4, 2, 1 for a byte). To convert denary to binary, subtract the largest column values that fit, or divide repeatedly by 2 and read the remainders upwards. Hexadecimal groups binary into nibbles: split the binary into groups of 4 bits from the right and replace each group with one hex digit (10 = A, 11 = B … 15 = F)."
+        "Decimal prefixes multiply by powers of 10: kilo = 10^3, mega = 10^6, giga = 10^9, tera = 10^12. For many years the computing industry also used 'kilo' to mean 1024 (2^10), which caused confusion: a '1.6 GHz' processor uses the decimal meaning while '8 GB of RAM' usually meant 8 × 2^30 bytes. Binary prefixes were introduced to remove the ambiguity: kibi (KiB) = 2^10, mebi (MiB) = 2^20, gibi (GiB) = 2^30 and tebi (TiB) = 2^40. When presenting a calculated size, choose the prefix that gives one or two digits before the decimal point, and convert all values to the same prefix before combining them."
       ],
       "bullets": [
-        "Hex to denary: multiply each digit by its place value (16^1, 16^0) and add, e.g. 3F = 3 × 16 + 15 = 63.",
-        "Always pad a nibble to 4 bits before converting to hex, e.g. 101 becomes 0101 = 5.",
-        "An n-bit unsigned binary integer can represent 0 to 2^n − 1, so a byte holds 0 to 255."
+        "Each step up a binary prefix multiplies by 1024; each step up a decimal prefix multiplies by 1000.",
+        "The gap grows with size: 1 KiB is 2.4% larger than 1 kB, but 1 TiB is about 10% larger than 1 TB.",
+        "Use the prefix named in the question; if it says MiB, divide by 1024 twice, not by 1,000,000.",
+        "Storage manufacturers use decimal prefixes, which is why a '500 GB' drive appears as about 465 GiB in an operating system."
       ],
       "examples": [
         {
           "id": "1.1-2-1",
           "kind": "worked",
-          "label": "Denary 181 to binary and hex",
-          "content": "181 − 128 = 53 → 1 in the 128 column\n53 − 32 = 21 → 1 in the 32 column (0 in 64)\n21 − 16 = 5 → 1 in the 16 column\n5 − 4 = 1 → 1 in the 4 column (0 in 8)\n1 − 1 = 0 → 1 in the 1 column (0 in 2)\nBinary = 1011 0101\nHex: 1011 = B, 0101 = 5 → B5\nCheck: 11 × 16 + 5 = 181"
+          "label": "Converting and presenting sizes",
+          "content": "3 MiB = 3 × 1024 × 1024 = 3,145,728 bytes; 3 MB = 3,000,000 bytes.\nA file of 45,000 bytes = 45,000 ÷ 1024 ≈ 43.9 KiB.\nHow many 3.2 MiB files fit on a 4 GiB memory stick?\nConvert to the same prefix: 4 GiB = 4 × 1024 = 4096 MiB\n4096 ÷ 3.2 = 1280 files"
         }
       ]
     },
     {
-      "id": "03-uses-of-hexadecimal-and-bcd",
-      "title": "Uses of hexadecimal and BCD",
+      "id": "03-signed-integers",
+      "title": "Sign and magnitude, one's and two's complement",
       "content": [
-        "Hexadecimal is used because it is shorter and less error-prone for humans to read than long binary strings, yet converts directly to binary. BCD stores each denary digit in its own nibble, so 395 becomes 0011 1001 0101 rather than the pure binary 110001011. BCD is less storage-efficient (the codes 1010–1111 are never used) but avoids conversion rounding and makes displaying digits simple."
+        "Unsigned integers are stored as plain binary. For signed integers, the simplest idea is sign and magnitude, where the most significant bit (MSB) is the sign; but it has two zeros (+0 and −0) and needs special rules for arithmetic, so computers use two's complement instead. The one's complement of a number is found by inverting every bit; the two's complement is the one's complement plus 1. To store a negative denary number: write the positive value in binary with a leading 0 (fill the byte), invert every bit, then add 1. In two's complement the MSB has a negative place value (−128 in a byte), so 8 bits represent −128 to +127. To read a two's complement value, add the negative MSB value to the positive values of the other 1 bits."
       ],
       "bullets": [
-        "Hex uses: memory addresses, MAC addresses, colour codes such as #FF8000, error codes and assembly/machine-code listings.",
-        "BCD uses: digital clocks and calculators driving seven-segment displays, and financial systems where exact denary values must be stored without rounding errors.",
-        "When justifying BCD, link it to each digit being processed or displayed separately."
+        "A leading 1 means the number is negative; a leading 0 means it is zero or positive.",
+        "Two's complement has only one zero, and the same adder circuit performs both addition and subtraction.",
+        "Quick method: from the right, copy bits up to and including the first 1, then invert every remaining bit.",
+        "Taking the two's complement again changes the sign back, e.g. from −44 to +44.",
+        "Range of n-bit two's complement: −2^(n−1) to 2^(n−1) − 1."
       ],
       "examples": [
         {
           "id": "1.1-3-1",
           "kind": "worked",
-          "label": "Denary to BCD",
-          "content": "Denary 395\n3 → 0011\n9 → 1001\n5 → 0101\nBCD = 0011 1001 0101 (12 bits)\nPure binary 395 = 1 1000 1011 (9 bits), showing BCD needs more space."
-        }
-      ]
-    },
-    {
-      "id": "04-one-s-and-two-s-complement",
-      "title": "One's and two's complement",
-      "content": [
-        "In two's complement the most significant bit has a negative place value (−128 in a byte), so 8 bits represent −128 to +127. To find the negative of a number, write the positive value, invert every bit (this gives the one's complement), then add 1. To read a two's complement value, add the negative MSB value to the positive values of the remaining 1 bits."
-      ],
-      "bullets": [
-        "A leading 1 means the number is negative; a leading 0 means it is zero or positive.",
-        "One's complement has two representations of zero (00000000 and 11111111), which is one reason two's complement is preferred.",
-        "Two's complement lets the same adder circuit perform both addition and subtraction.",
-        "Range of n-bit two's complement: −2^(n−1) to 2^(n−1) − 1."
-      ],
-      "examples": [
-        {
-          "id": "1.1-4-1",
-          "kind": "worked",
           "label": "Representing −45 in 8 bits",
           "content": "+45 = 0010 1101\nInvert all bits (one's complement) = 1101 0010\nAdd 1 → 1101 0011\nCheck: −128 + 64 + 16 + 2 + 1 = −45"
+        },
+        {
+          "id": "1.1-3-2",
+          "kind": "worked",
+          "label": "Quick method and reading a negative value",
+          "content": "+44 = 0010 1100\nCopy from the right up to and including the first 1: 100\nInvert the rest (00101 → 11010): 1101 0100 = −44\nCheck: −128 + 64 + 16 + 4 = −44\n\nRead 1110 0110: −128 + 64 + 32 + 4 + 2 = −26"
+        },
+        {
+          "id": "1.1-3-3",
+          "kind": "example",
+          "label": "Sign and magnitude compared with two's complement",
+          "content": "+5: sign and magnitude 0000 0101; two's complement 0000 0101\n−5: sign and magnitude 1000 0101; two's complement 1111 1011\n0: sign and magnitude has 0000 0000 and 1000 0000; two's complement has only 0000 0000"
         }
       ]
     },
     {
-      "id": "05-binary-addition-and-subtraction",
+      "id": "04-binary-addition-and-subtraction",
       "title": "Binary addition and subtraction",
       "content": [
-        "Binary addition follows four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 0 carry 1, and 1 + 1 + 1 = 1 carry 1. Subtraction is performed by adding the two's complement of the number being subtracted, so A − B becomes A + (−B). Any carry out of the most significant bit is discarded in two's complement arithmetic."
+        "Binary addition works from right to left using four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 0 carry 1, and 1 + 1 + 1 = 1 carry 1. Subtraction can be done directly by borrowing (0 − 1 = 1 after borrowing from the next column), but computers subtract by adding the two's complement: A − B = A + (−B). In two's complement arithmetic, any carry out of the most significant bit is discarded."
       ],
       "bullets": [
-        "Show carries above the columns; examiners award method marks for visible working.",
+        "Show carries or borrows above the columns; examiners award method marks for visible working.",
         "Convert the answer back to denary to check it.",
         "Discarding the final carry is not the same as overflow; check the signs instead."
       ],
       "examples": [
         {
-          "id": "1.1-5-1",
+          "id": "1.1-4-1",
           "kind": "worked",
           "label": "45 − 60 using two's complement",
           "content": "+60 = 0011 1100 → invert = 1100 0011 → add 1 = 1100 0100 (−60)\n  0010 1101  (45)\n+ 1100 0100  (−60)\n= 1111 0001\nCheck: −128 + 64 + 32 + 16 + 1 = −15"
+        },
+        {
+          "id": "1.1-4-2",
+          "kind": "worked",
+          "label": "14 − 5 by borrowing",
+          "content": "  1110  (14)\n− 0101  (5)\nColumn 1: 0 − 1 → borrow, 10 − 1 = 1\nColumn 2: 1 becomes 0 after the borrow; 0 − 0 = 0\nColumn 3: 1 − 1 = 0\nColumn 4: 1 − 0 = 1\nResult = 1001 = 9"
         }
       ]
     },
     {
-      "id": "06-overflow",
+      "id": "05-overflow",
       "title": "Overflow",
       "content": [
-        "Overflow happens when a result falls outside the range the register can hold. In two's complement it is detected when two numbers of the same sign are added and the result has the opposite sign: two positives giving a negative, or two negatives giving a positive. The processor records this in an overflow flag in the status register so software can react."
+        "A register has a fixed number of bits, so a result outside the representable range cannot be stored correctly. In two's complement, overflow is shown when two numbers of the same sign are added and the result has the opposite sign: two positives giving a negative, or two negatives giving a positive. The processor records this in the overflow flag of the status register so that software can react."
       ],
       "bullets": [
         "Adding numbers of opposite signs can never overflow.",
-        "With unsigned numbers, a carry out of the MSB indicates the result was too large.",
-        "Using more bits (for example 16 instead of 8) extends the range and makes overflow less likely."
+        "With unsigned numbers, a carry out of the MSB shows the result was too large.",
+        "Using more bits (for example 16 instead of 8) widens the range and makes overflow less likely."
+      ],
+      "examples": [
+        {
+          "id": "1.1-5-1",
+          "kind": "worked",
+          "label": "Two positives giving a negative",
+          "content": "  0110 0100  (+100)\n+ 0011 0010  (+50)\n= 1001 0110\nThe correct answer, +150, is above +127. The MSB is 1, so the result reads as −128 + 16 + 4 + 2 = −106: overflow has occurred."
+        },
+        {
+          "id": "1.1-5-2",
+          "kind": "worked",
+          "label": "Two negatives giving a positive",
+          "content": "  1001 1100  (−100)\n+ 1100 1110  (−50)\n= (1) 0110 1010  (carry out discarded)\nThe result reads as +106, but the correct answer, −150, is below −128: overflow has occurred."
+        }
+      ]
+    },
+    {
+      "id": "06-binary-coded-decimal",
+      "title": "Binary Coded Decimal (BCD)",
+      "content": [
+        "BCD stores each denary digit separately in its own nibble, using the codes 0000 (0) to 1001 (9); the codes 1010 to 1111 are never used. Digits can be stored one per byte (leaving four bits unused) or as packed BCD, two digits per byte. BCD is used where denary digits must be displayed or processed individually, such as digital clocks, calculators and seven-segment displays, and for currency, where values such as 0.10 cannot be stored exactly as binary fractions. When two BCD digits are added and the result is above 1001, the processor adds a correction of 0110 so that the digit is valid and a carry passes to the next digit."
+      ],
+      "bullets": [
+        "BCD is less storage-efficient than pure binary: 6 of the 16 possible nibble codes are unused.",
+        "BCD avoids rounding errors for exact denary values, such as money.",
+        "When justifying BCD, link it to each digit being processed or displayed separately."
       ],
       "examples": [
         {
           "id": "1.1-6-1",
           "kind": "worked",
-          "label": "Spotting overflow",
-          "content": "  0110 0100  (+100)\n+ 0011 0010  (+50)\n= 1001 0110\nThe correct answer is +150, which is above +127. The result's MSB is 1, so it reads as −128 + 16 + 4 + 2 = −106: two positives have produced a negative, so overflow has occurred."
+          "label": "Denary 2947 in BCD",
+          "content": "2 → 0010, 9 → 1001, 4 → 0100, 7 → 0111\nPacked BCD (2 bytes): 0010 1001 0100 0111\nOne digit per byte (4 bytes): 00000010 00001001 00000100 00000111"
+        },
+        {
+          "id": "1.1-6-2",
+          "kind": "worked",
+          "label": "BCD addition with correction: 38 + 47",
+          "content": "  0011 1000  (38)\n+ 0100 0111  (47)\nLow digit: 1000 + 0111 = 1111, which is not a valid BCD digit\nAdd the correction 0110: 1111 + 0110 = 1 0101 → store 0101, carry 1\nHigh digit: 0011 + 0100 + 1 = 1000 (valid)\nResult = 1000 0101 = 85"
         }
       ]
     },
     {
-      "id": "07-character-sets",
-      "title": "Character sets",
+      "id": "07-uses-of-hexadecimal",
+      "title": "Uses of hexadecimal",
       "content": [
-        "Text is stored by giving each character a numeric code from a character set. Standard ASCII uses 7 bits, giving 128 codes covering English letters, digits, punctuation and control characters. Extended ASCII uses 8 bits for 256 codes, adding accented and graphical characters. Unicode uses up to 4 bytes per character so that characters from almost every writing system, plus symbols and emoji, can be represented, while its first 128 codes match ASCII."
+        "The computer always stores binary; hexadecimal is only a way of writing binary for people. It is shorter and far less error-prone to read, write and remember than long binary strings, yet it converts directly to binary because each hex digit is exactly 4 bits. A 48-bit MAC address, for example, becomes just 12 hex digits."
       ],
       "bullets": [
-        "Codes are allocated in sequence: 'A' = 65, 'B' = 66; 'a' = 97; the digit '0' = 48, so lower case is 32 more than upper case.",
-        "Because codes are sequential, strings can be sorted and compared by comparing their codes.",
-        "Unicode needs more storage per character than ASCII but supports international text on one system.",
-        "The character '7' (code 55) is different from the integer 7; converting between them is a common exam point."
+        "Memory addresses and memory dumps when debugging.",
+        "MAC addresses, e.g. 00:1A:2B:3C:4D:5E.",
+        "Colour codes in HTML/CSS, e.g. #FF8000 = red FF, green 80, blue 00.",
+        "Error codes and machine-code or assembly listings.",
+        "URL encoding of special characters, e.g. a space written as %20 (hex 20 = 32, the ASCII code for a space)."
       ],
       "examples": []
+    },
+    {
+      "id": "08-character-sets",
+      "title": "Character sets",
+      "content": [
+        "Text is stored by giving each character a numeric code from a character set. Standard ASCII uses 7 bits, giving 128 codes covering English letters, digits, punctuation and control characters; it is usually stored in a byte with the MSB set to 0. Extended ASCII uses all 8 bits for 256 codes, adding accented and graphical characters. Unicode can use up to 4 bytes per character, so characters from almost every writing system, plus symbols and emoji, can be represented; its first 128 codes match ASCII."
+      ],
+      "bullets": [
+        "Codes are allocated in sequence: 'A' = 65, 'B' = 66; 'a' = 97; the digit '0' = 48, so a lower-case letter is 32 more than its capital.",
+        "Because codes are sequential, strings can be sorted and compared by comparing their codes.",
+        "Unicode needs more storage per character than ASCII but supports international text in one system.",
+        "The character '7' (code 55) is different from the integer 7; converting between them is a common exam point."
+      ],
+      "examples": [
+        {
+          "id": "1.1-8-1",
+          "kind": "worked",
+          "label": "Working out an ASCII code",
+          "content": "'A' = 65 = 0100 0001 (hex 41)\n'E' is 4 letters after 'A' → 69 = 0100 0101 (hex 45)\n'e' = 69 + 32 = 101 = 0110 0101 (hex 65)"
+        }
+      ]
     }
   ],
   "formulas": [
@@ -219,6 +287,10 @@
     {
       "label": "Negating in two's complement",
       "expression": "−x = (invert all bits of x) + 1"
+    },
+    {
+      "label": "BCD addition correction",
+      "expression": "if a digit sum > 1001, add 0110 and carry 1 to the next digit"
     }
   ],
   "comparisonTable": {
@@ -235,6 +307,11 @@
         "Cannot store negative values"
       ],
       [
+        "Sign and magnitude",
+        "Easy for people to read",
+        "Two zeros; arithmetic needs special rules"
+      ],
+      [
         "Two's complement",
         "Signed integer arithmetic in the ALU",
         "Range is limited and overflow can occur"
@@ -246,7 +323,7 @@
       ],
       [
         "BCD",
-        "Digit displays and exact financial values",
+        "Digit displays and exact currency values",
         "Wastes storage: 6 of 16 nibble codes are unused"
       ],
       [
@@ -287,7 +364,7 @@
         "Each denary digit is stored exactly in its own nibble",
         "No binary fraction approximation is needed for values such as 0.10",
         "Rounding errors in financial totals are avoided",
-        "But more bits are needed and arithmetic circuits are more complex"
+        "But more bits are needed and addition needs a correction step"
       ],
       "evaluation": "BCD is justified where exact denary values or digit-by-digit display matter; for general calculation, pure binary is more compact and faster."
     },
@@ -303,14 +380,16 @@
     }
   ],
   "examTips": [
-    "Show your working for every conversion (column headings or the invert-and-add-1 steps), because method marks are available even if the final answer is wrong.",
+    "Show your working for every conversion (column headings, division remainders or the invert-and-add-1 steps); calculation questions usually give one mark for working and one for the answer.",
     "Always check two's complement answers by converting back to denary using −128 as the MSB value.",
-    "When asked to identify overflow, state both the correct denary answer and why it is outside the representable range.",
+    "Do not confuse one's complement (invert the bits) with two's complement (invert, then add 1).",
+    "When asked to identify overflow, state the correct denary answer and why it is outside the representable range.",
     "Read the prefix carefully: KiB/MiB/GiB use 1024, kB/MB/GB use 1000.",
     "For 'justify the use of BCD/hex' questions, name a specific application and the feature that makes the representation suitable."
   ],
   "commonMistakes": [
     "Forgetting to add 1 after inverting the bits when forming a two's complement negative.",
+    "Forgetting the leading 0 on the positive value before taking the two's complement.",
     "Treating a discarded final carry as overflow instead of checking whether the sign of the result is valid.",
     "Converting a whole number to BCD as if it were pure binary, instead of converting each digit separately.",
     "Using 1000 instead of 1024 for kibi/mebi prefixes (or the reverse).",
@@ -328,7 +407,11 @@
     },
     {
       "question": "How do you find the two's complement of a negative number?",
-      "answer": "Write the positive value in binary, invert every bit, then add 1."
+      "answer": "Write the positive value in binary with a leading 0, invert every bit, then add 1."
+    },
+    {
+      "question": "Why is two's complement preferred to sign and magnitude?",
+      "answer": "It has only one zero, and addition and subtraction use the same simple adder with no special rules."
     },
     {
       "question": "How is overflow detected when adding two's complement numbers?",
@@ -339,16 +422,16 @@
       "answer": "39 — each nibble is one denary digit (3 and 9)."
     },
     {
+      "question": "What is packed BCD?",
+      "answer": "BCD with two digit codes stored in one byte."
+    },
+    {
       "question": "Give two uses of hexadecimal.",
-      "answer": "Any two of: memory addresses, MAC addresses, HTML colour codes, error codes, machine-code/assembly listings."
+      "answer": "Any two of: memory addresses, MAC addresses, HTML colour codes, error codes, machine-code/assembly listings, URL encoding."
     },
     {
       "question": "Why is Unicode needed when ASCII exists?",
       "answer": "ASCII has only 128 (or 256 extended) codes, which cannot represent characters from all languages; Unicode can."
-    },
-    {
-      "question": "Why does one's complement have a disadvantage compared with two's complement?",
-      "answer": "It has two representations of zero, and addition needs extra correction steps."
     }
   ],
   "relatedTopics": [

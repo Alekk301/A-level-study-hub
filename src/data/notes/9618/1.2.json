@@ -8,7 +8,7 @@
   "contentDepth": "full",
   "overview": "Images and sound must be turned into binary before a computer can store them. Paper 1 asks you to explain how bitmaps and vector graphics are encoded, calculate bitmap and sound file sizes, describe how changing resolution, colour depth, sampling rate or sampling resolution affects quality and size, and justify choosing a bitmap or a vector graphic for a given task.",
   "syllabusPoints": [
-    "Show understanding of how data for a bitmapped image are encoded, using the terms pixel, file header, image resolution, screen resolution and colour depth (bit depth).",
+    "Show understanding of how data for a bitmapped image are encoded, using the terms pixel, file header, image resolution, screen resolution, colour depth and bit depth.",
     "Perform calculations to estimate the file size for a bitmap image.",
     "Show understanding of the effects of changing elements of a bitmap image on the image quality and file size.",
     "Show understanding of how data for a vector graphic are encoded, using the terms drawing object, property and drawing list.",
@@ -30,8 +30,12 @@
       "definition": "The number of pixels a display screen can show horizontally and vertically."
     },
     {
-      "term": "Colour depth (bit depth)",
-      "definition": "The number of bits used to store the colour of each pixel; n bits allow 2^n different colours."
+      "term": "Colour depth",
+      "definition": "The number of bits used to represent the colour of one pixel; n bits allow 2^n different colours."
+    },
+    {
+      "term": "Bit depth",
+      "definition": "The number of bits used to store each of the red, green and blue components of a pixel's colour; a bit depth of 8 gives 24 bits per pixel."
     },
     {
       "term": "File header",
@@ -63,7 +67,7 @@
       "id": "01-encoding-bitmap-images",
       "title": "Encoding bitmap images",
       "content": [
-        "A bitmap image is a grid of pixels. Each pixel's colour is stored as a binary code, and the codes are stored in order, row by row. The number of bits per pixel is the colour depth: 1 bit gives 2 colours (black and white), 8 bits give 256 colours and 24 bits give over 16.7 million colours (8 bits each for red, green and blue). A file header at the start of the file records information the software needs to rebuild the image, such as the file type, image width and height, and colour depth."
+        "A bitmap image is a two-dimensional grid (matrix) of pixels. A pixel has just two properties: its position in the grid and its colour. Each pixel's colour is stored as a binary code, and the codes are stored in order, row by row. The number of bits per pixel is the colour depth: 1 bit gives 2 colours (black and white), 4 bits allow simple greyscale, 8 bits give 256 colours and 24 bits give over 16.7 million colours. Bit depth is the number of bits for each of the red, green and blue components, so a bit depth of 8 means 3 × 8 = 24 bits per pixel. A high colour depth is needed for areas of gradually changing colour, such as a sky; with too few bits the image shows visible bands of colour. A file header at the start of the file records information the software needs to rebuild the image, such as the file type, image width and height, and colour depth."
       ],
       "bullets": [
         "Image resolution is a property of the image (how many pixels it contains); screen resolution is a property of the display.",
@@ -96,6 +100,18 @@
           "kind": "worked",
           "label": "File size of a 1024 × 768 image with 16-bit colour",
           "content": "Pixels = 1024 × 768 = 786,432\nBits = 786,432 × 16 = 12,582,912 bits\nBytes = 12,582,912 ÷ 8 = 1,572,864 bytes\nKiB = 1,572,864 ÷ 1024 = 1536 KiB\nMiB = 1536 ÷ 1024 = 1.5 MiB"
+        },
+        {
+          "id": "1.2-2-2",
+          "kind": "worked",
+          "label": "Using bit depth instead of colour depth",
+          "content": "An 800 × 600 image has a bit depth of 8 (per RGB component).\nBits per pixel = 3 × 8 = 24, i.e. 3 bytes\nSize = 800 × 600 × 3 = 1,440,000 bytes ≈ 1406.3 KiB"
+        },
+        {
+          "id": "1.2-2-3",
+          "kind": "worked",
+          "label": "Size of a scanned photo from dpi",
+          "content": "A 6 × 4 inch photo is scanned at 300 dots (pixels) per inch with 24-bit colour.\nPixels = (6 × 300) × (4 × 300) = 1800 × 1200 = 2,160,000\nBytes = 2,160,000 × 3 = 6,480,000 bytes\n= 6,480,000 ÷ 1024 ÷ 1024 ≈ 6.2 MiB"
         }
       ]
     },
@@ -123,7 +139,7 @@
       "id": "04-vector-graphics",
       "title": "Encoding vector graphics",
       "content": [
-        "A vector graphic does not store pixels. Instead it stores a drawing list: a set of commands describing each drawing object and its properties, such as a circle's centre coordinates, radius, line colour, line width and fill colour. When the image is displayed, the software recalculates every object from these properties, so the graphic can be scaled to any size without losing quality."
+        "A vector graphic does not store pixels. Instead it stores a drawing list: a set of commands describing each drawing object and its properties, such as a circle's centre coordinates, radius, line colour, line width and fill colour. Dimensions are defined relative to an imaginary drawing canvas rather than in fixed units. When the image is displayed, the software reads the drawing list and recalculates every object at the required scale, so the graphic can be resized without losing quality or being distorted. Vector graphics are produced by drawing and computer-aided design (CAD) packages. Most screens and printers work with pixels, so a vector graphic is converted to a bitmap (rasterised) at the moment it is displayed or printed."
       ],
       "bullets": [
         "File size depends on the number and complexity of objects, not on the display size.",
@@ -148,7 +164,9 @@
       "bullets": [
         "Logo printed on a pen and on a billboard → vector, because it must scale without pixelation.",
         "Photograph from a digital camera → bitmap, because each pixel's colour can be captured individually.",
-        "Simple diagrams are often smaller as vectors; complex photographs would need a vast drawing list."
+        "Simple diagrams are often smaller as vectors; complex photographs would need a vast drawing list.",
+        "Useful questions to decide: Must the image be resized? Must it be drawn accurately to scale (e.g. an architect's plan)? Must it look photo-realistic?",
+        "Images captured by a digital camera or scanner are always bitmaps."
       ],
       "examples": []
     },
@@ -156,12 +174,13 @@
       "id": "06-sampling-sound",
       "title": "Sampling sound",
       "content": [
-        "Sound is an analogue wave: its amplitude varies continuously over time. To store it digitally, the amplitude is measured (sampled) at regular time intervals, and each measurement is rounded to the nearest level that can be stored with the sampling resolution. These binary sample values are stored in order, with a file header recording details such as the sampling rate and sampling resolution. Played back, the samples are converted into an approximation of the original wave."
+        "Sound is an analogue wave: its amplitude varies continuously over time. To store it digitally, a sound encoder first passes the signal through a band-limiting filter, which removes very high frequencies that humans cannot hear and that would cause coding problems. An analogue-to-digital converter (ADC) then measures (samples) the amplitude at regular time intervals, and each measurement is rounded to the nearest level that can be stored with the sampling resolution. These binary sample values are stored in order, with a file header recording details such as the sampling rate and sampling resolution. Played back, the samples are converted into an approximation of the original wave."
       ],
       "bullets": [
         "Analogue data vary continuously; digital data take discrete values.",
         "The sampling rate controls how often the wave is measured; the sampling resolution controls how precisely each measurement is stored.",
-        "A sampling resolution of n bits gives 2^n possible amplitude levels, e.g. 16 bits gives 65,536."
+        "A sampling resolution of n bits gives 2^n possible amplitude levels, e.g. 3 bits gives only 8 levels, while 16 bits gives 65,536.",
+        "Nyquist's theorem: the sampling rate must be at least twice the highest frequency in the sound. Human hearing reaches about 20 kHz, which is why CDs sample at 44.1 kHz with 16-bit resolution."
       ],
       "examples": []
     },
@@ -295,6 +314,7 @@
   ],
   "commonMistakes": [
     "Forgetting to divide by 8 to convert a size in bits into bytes.",
+    "Treating a bit depth of 8 as 8 bits per pixel; bit depth is per RGB component, so it is 24 bits per pixel.",
     "Confusing image resolution (pixels in the image) with screen resolution (pixels on the display).",
     "Saying vector graphics are made of pixels, or that bitmaps store shapes.",
     "Confusing sampling rate (how often) with sampling resolution (how many bits per sample).",
@@ -329,6 +349,10 @@
     {
       "question": "What is the formula for the size of a sound file?",
       "answer": "Sampling rate × sampling resolution × duration in seconds × number of channels (in bits)."
+    },
+    {
+      "question": "What does Nyquist's theorem say about the sampling rate?",
+      "answer": "It must be at least twice the highest frequency in the sound being sampled."
     },
     {
       "question": "What does a file header store?",

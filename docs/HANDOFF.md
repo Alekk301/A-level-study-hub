@@ -51,10 +51,11 @@ The commit is a checkpoint, not a permanently current version.
   AS mapping: ch1 → 1.1–1.3; ch2 → 2.1; ch3 → 3.1; ch4 → 3.2; ch5 → 4.1; ch6 → 4.2; ch7 →
   monitoring/control (3.1) and bit manipulation (4.3); ch8 → 5.1–5.2; ch9 → 6.1–6.2; ch10 → 7.1;
   ch11 → 8.1–8.3; ch12 → 9.1–9.2; ch13 → 10.1–10.4; ch14 → 11.1–11.3; ch15 → 12.1–12.3.
-- Second pass (research method) done: 6.1 Data Security and 6.2 Data Integrity (2026-09-29). These
+- Second pass (research method) done: 6.1 Data Security, 6.2 Data Integrity, 1.1 Data
+  Representation, 1.2 Multimedia, 1.3 Compression (2026-09-29). The new 6.1 and 6.2
   replaced the desktop's first-pass versions, which omitted syllabus items (backup, disk mirroring;
   parity block check, limit check).
-- Second pass still to do, in order: 1.1, 1.2, 1.3, 2.1, 3.1, 3.2, 4.1, 4.2, 4.3, 5.1, 5.2, 7.1,
+- Second pass still to do, in order: 2.1, 3.1, 3.2, 4.1, 4.2, 4.3, 5.1, 5.2, 7.1,
   8.1, 8.2, 8.3, 9.1, 9.2, 10.1, 10.2, 10.3, 10.4, 11.1, 11.2, 11.3, 12.1, 12.2, 12.3. For each,
   check every syllabus outcome is covered, reorder sections to the coursebook, and fix gaps.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.

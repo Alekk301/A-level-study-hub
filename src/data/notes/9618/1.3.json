@@ -35,6 +35,10 @@
       "definition": "A lossless method that replaces repeated words or patterns with short codes stored in a dictionary."
     },
     {
+      "term": "Huffman coding",
+      "definition": "A lossless method that gives frequently occurring characters shorter bit codes and rarer characters longer codes, using codes with the prefix property."
+    },
+    {
       "term": "Perceptual coding",
       "definition": "A lossy technique that removes the parts of a sound or image that human senses are least able to notice."
     },
@@ -66,7 +70,8 @@
       "bullets": [
         "Lossless is essential for text, program files, spreadsheets and databases, where one changed bit could corrupt meaning or stop a program working.",
         "Lossy suits photographs, music and video for streaming or the web, where a small loss of quality is acceptable for a large saving.",
-        "Once lossy compression has been applied, the discarded data cannot be recovered by decompressing."
+        "Once lossy compression has been applied, the discarded data cannot be recovered by decompressing.",
+        "Many real formats combine both: a lossy step removes detail, then a lossless step encodes what remains efficiently."
       ],
       "examples": [
         {
@@ -86,7 +91,8 @@
       "bullets": [
         "RLE is lossless: expanding each count/value pair gives back the exact original.",
         "In a bitmap, each row of pixels is encoded as runs of colour codes.",
-        "In text, a flag character is often used to mark where an encoded run starts, so single characters can be left unencoded."
+        "In binary, each run is stored as a count followed by the value, e.g. a count byte and then the byte being repeated.",
+        "The decompressor must be able to tell a count from a data value, for example by using fixed-size pairs or a flag character that marks where an encoded run starts."
       ],
       "examples": [
         {
@@ -100,6 +106,12 @@
           "kind": "worked",
           "label": "RLE making data larger",
           "content": "Original: ABCDEF (6 characters)\nEncoded: 1A 1B 1C 1D 1E 1F (12 characters)\nWith no repeated runs, RLE doubles the size, which is why it only suits data with long runs."
+        },
+        {
+          "id": "1.3-3-3",
+          "kind": "worked",
+          "label": "RLE stored in binary",
+          "content": "Original bytes: 01000001 repeated 4 times ('AAAA', 32 bits)\nEncoded as a count byte then a data byte: 00000100 01000001 (16 bits)\nA 1-bit black-and-white row 0001111111000 becomes the runs 3 × 0, 7 × 1, 3 × 0"
         }
       ]
     },
@@ -107,15 +119,22 @@
       "id": "04-compressing-text",
       "title": "Compressing text files",
       "content": [
-        "Text must always be compressed losslessly. A common approach is dictionary-based: repeated words or groups of characters are stored once in a dictionary, and each occurrence in the file is replaced by a short index into the dictionary. RLE can also be used where characters repeat consecutively, such as runs of spaces."
+        "Text must always be compressed losslessly, because losing any character changes the meaning. In Huffman coding, the text is analysed to find how often each character occurs; frequent characters are given short bit codes and rare characters longer ones, instead of every character using a full byte. The codes have the prefix property: no code is the start of another, longer code, so the compressed bit stream can be decoded without ambiguity. Dictionary methods are another approach: repeated words or groups of characters are stored once in a dictionary, and each occurrence is replaced by a short index into it."
       ],
       "bullets": [
-        "The dictionary must be stored with or be known to the decompressor, which adds a small overhead.",
-        "The more often a word repeats, the greater the saving."
+        "Huffman coding turns a stream of bytes into a stream of bits of different lengths.",
+        "The code table (or dictionary) must be stored with the file or known to the decompressor, which adds a small overhead.",
+        "The more uneven the character frequencies, or the more often words repeat, the greater the saving."
       ],
       "examples": [
         {
           "id": "1.3-4-1",
+          "kind": "worked",
+          "label": "Huffman codes and the prefix property",
+          "content": "Codes: e = 10, t = 01, o = 111, h = 110, l = 0001\n'tee' → 01 10 10 = 6 bits, compared with 3 × 8 = 24 bits in 8-bit ASCII\nDecoding 011010: 01 must be t (no other code starts 01), then 10 = e, 10 = e\nBecause no code is the prefix of another, there is only one way to split the bits."
+        },
+        {
+          "id": "1.3-4-2",
           "kind": "example",
           "label": "Dictionary encoding",
           "content": "Dictionary: 1 = 'the', 2 = 'cat', 3 = 'sat'\n'the cat sat the cat' → 1 2 3 1 2"
@@ -126,7 +145,7 @@
       "id": "05-compressing-images",
       "title": "Compressing bitmap images and vector graphics",
       "content": [
-        "A bitmap can be compressed losslessly with RLE, which is effective on images with large areas of the same colour. Lossy methods reduce the colour depth, reduce the resolution, or group together pixels of similar colour and store them as one colour, which works well on photographs where neighbouring pixels are similar. A vector graphic is already compact because it stores a drawing list, but its text-based drawing list can be further compressed losslessly, for example with dictionary methods."
+        "A bitmap can be compressed losslessly with RLE, which is effective on images with large areas of the same colour. Lossy methods reduce the resolution, or reduce the colour depth by setting up a smaller palette and changing each pixel to the closest colour in it, which works well on photographs where neighbouring pixels are similar. JPEG is the most common lossy format for photographs. A vector graphic is already compact because it stores a drawing list; to compress it further it can be converted to Scalable Vector Graphics (SVG), which describes the image in a text-based markup language that compresses well with lossless methods."
       ],
       "bullets": [
         "Reducing colour depth or resolution before saving is a form of lossy compression.",
@@ -139,7 +158,7 @@
       "id": "06-compressing-sound",
       "title": "Compressing sound files",
       "content": [
-        "Lossy sound compression uses perceptual coding: it removes sounds outside the range of human hearing, and quieter sounds that are masked by louder sounds at the same time. The sampling rate or sampling resolution can also be reduced. Lossless audio compression exists for situations where perfect quality is needed, such as studio master recordings, but it gives much smaller savings."
+        "Lossy sound compression uses perceptual coding: it removes sounds outside the range of human hearing, and quieter sounds that are masked by louder sounds at the same time. MP3 works this way and typically cuts a music file by up to about 90%. Another technique uses the fact that successive samples rarely change much: the file stores the differences between samples, using a lower sampling resolution for them. The sampling rate or sampling resolution of the whole recording can also be reduced. Video formats such as MP4 apply similar compression to both sound and pictures. Lossless audio compression exists for situations where perfect quality is needed, such as studio master recordings, but it gives much smaller savings."
       ],
       "bullets": [
         "Removing frequencies humans cannot hear reduces size with no audible loss.",
@@ -179,8 +198,8 @@
       ],
       [
         "Typical methods",
-        "RLE, dictionary encoding",
-        "Perceptual coding, reducing resolution or colour depth"
+        "RLE, Huffman coding, dictionary encoding",
+        "Perceptual coding (MP3), reducing resolution or colour depth (JPEG)"
       ],
       [
         "Suitable for",
@@ -236,7 +255,7 @@
     "When justifying a method, name the file type and explain the consequence of losing data for that specific use.",
     "Show RLE as clear count/value pairs and count the characters before and after to prove the saving.",
     "Say 'permanently removes data' for lossy compression; 'reduces quality' alone rarely gets the mark.",
-    "Describe a specific technique for each file type: dictionary for text, RLE or colour reduction for images, perceptual coding for sound."
+    "Describe a specific technique for each file type: Huffman or dictionary coding for text, RLE or colour reduction for images, conversion to SVG for vectors, perceptual coding for sound."
   ],
   "commonMistakes": [
     "Saying lossy data can be recovered when the file is decompressed.",
@@ -265,6 +284,10 @@
     {
       "question": "What is perceptual coding?",
       "answer": "Lossy sound compression that removes sounds humans cannot hear or would not notice, such as quiet sounds masked by louder ones."
+    },
+    {
+      "question": "What is the prefix property in Huffman coding, and why does it matter?",
+      "answer": "No code is the start of another code, so the compressed bit stream can be decoded in only one way."
     },
     {
       "question": "When does RLE work badly?",
