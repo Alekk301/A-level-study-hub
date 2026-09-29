@@ -6,308 +6,394 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Data Types and Records",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to declare variables using the correct standard data type for a given piece of data, and to declare and use a record data structure that groups several related fields under one name. Answers score when a candidate selects the data type that exactly matches what is being stored (not just one that would 'work'), and when a record's fields are declared, accessed and assigned using the correct dot notation, RecordName.FieldName, rather than treating the record as a single unstructured value.",
+  "overview": "Topic 10.1 is about choosing how each item of data is stored. At AS level the pseudocode types are INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE, plus ARRAY and FILE for collections and stored files. Exam questions ask for the type of each variable in an identifier table, with a reason tied to what the value is and how it will be used. The second half covers the record: a user-defined type that keeps several fields of different types together under one identifier. You need to be able to write the TYPE \u2026 ENDTYPE definition, declare a variable or an array of that type, and put data into fields and read it back out with dot notation.",
   "syllabusPoints": [
-    "Show understanding of the standard data types integer, real, char, string, Boolean and date, and select the appropriate data type for a given item of data.",
-    "Show understanding of the record data type as a way of grouping together related fields, which may be of different data types, under a single named structure.",
-    "Declare a record type, listing the name and data type of each field it contains.",
-    "Declare a variable of a previously defined record type.",
-    "Access and assign individual fields of a record variable using RecordName.FieldName syntax.",
-    "Justify the use of a record, rather than several separate unconnected variables, when a set of fields describes a single real-world thing."
+    "Select and use appropriate data types for a problem solution, including integer, real, char, string, Boolean and date (pseudocode data types INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY, FILE).",
+    "Show understanding of the purpose of a record structure to hold a set of data of different data types under one identifier.",
+    "Write pseudocode to define a record structure.",
+    "Write pseudocode to read data from a record structure and save data to a record structure."
   ],
   "definitions": [
     {
       "term": "Data type",
-      "definition": "A classification that determines what kind of value a variable can hold and what operations can be performed on it, such as integer, real, char, string, Boolean or date."
+      "definition": "The kind of value an identifier can hold. It fixes which values are allowed, how much memory is set aside and which operations make sense, such as arithmetic on numbers or joining on strings."
     },
     {
-      "term": "Integer",
-      "definition": "A whole number data type, with no fractional or decimal part, used for values such as a count, an index or an age."
+      "term": "Primitive (atomic) data type",
+      "definition": "A type built into the language that holds a single value and cannot be split into smaller parts, such as INTEGER, REAL, CHAR or BOOLEAN."
     },
     {
-      "term": "Real",
-      "definition": "A data type for numbers that may have a fractional part, stored with a decimal point, used for values such as a price or an average that is not necessarily a whole number."
+      "term": "INTEGER",
+      "definition": "A signed whole number with no fractional part, for example -3, 0 or 250."
     },
     {
-      "term": "Char",
-      "definition": "A data type that holds a single character, such as a letter, digit or symbol, enclosed in single quotes, for example 'A'."
+      "term": "REAL",
+      "definition": "A signed number that can have a fractional part; in pseudocode a REAL literal is written with a decimal point and a digit on each side, for example 4.0 or -0.75."
     },
     {
-      "term": "String",
-      "definition": "A data type that holds a sequence of zero or more characters, enclosed in double quotes, used for text such as a name or an address."
+      "term": "CHAR",
+      "definition": "Exactly one character, written in single quotes, for example 'Y' or '7'."
     },
     {
-      "term": "Boolean",
-      "definition": "A data type that holds one of only two possible values, TRUE or FALSE, used for a condition or a yes/no flag."
+      "term": "STRING",
+      "definition": "A sequence of zero or more characters, written in double quotes; \"\" is the empty string."
     },
     {
-      "term": "Record",
-      "definition": "A data structure that groups together a fixed set of named fields, which may be of different data types, under a single structure, so that all the data describing one real-world thing can be stored and accessed together."
+      "term": "BOOLEAN",
+      "definition": "A type with only two values, TRUE and FALSE, used for flags and the results of conditions."
+    },
+    {
+      "term": "DATE",
+      "definition": "A calendar date (day, month and year), written in pseudocode as dd/mm/yyyy, which the language can compare and calculate with."
+    },
+    {
+      "term": "Record (composite, user-defined type)",
+      "definition": "A type the programmer defines that groups a fixed set of named fields, possibly of different data types, so that all the data about one item is held under one identifier."
     },
     {
       "term": "Field",
-      "definition": "One named, typed component of a record, such as StudentID or Name, accessed using RecordName.FieldName syntax."
+      "definition": "One named, typed part of a record, reached with dot notation such as Student.Name."
     }
   ],
   "sections": [
     {
       "id": "01-standard-data-types",
-      "title": "Choosing a standard data type",
+      "title": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
       "content": [
-        "Every variable used in pseudocode must be declared with a specific data type, and this specification defines six standard data types: INTEGER for a whole number, REAL for a number that may have a fractional part, CHAR for a single character, STRING for a sequence of characters, BOOLEAN for a value that is only ever TRUE or FALSE, and DATE for a calendar date. Choosing the correct data type for a given piece of data is a skill examined directly: a quantity that is always a whole number, such as a count of students or an array index, should be declared INTEGER, not REAL, and a value that could legitimately have a decimal part, such as an average mark or a price, should be declared REAL, not INTEGER.",
-        "Choosing an unsuitable data type is a common source of errors even when the rest of an algorithm's logic is correct. Declaring a person's age as REAL when it should be INTEGER does not usually cause a program to crash, but it misrepresents the data and can cause unexpected results if the value is later used in integer-only operations such as array indexing. Declaring a numeric value such as a telephone number or a postcode as STRING rather than INTEGER is often correct, because such values are never used in arithmetic and may include a leading zero or non-digit characters that a numeric type would lose or reject."
+        "When you plan an algorithm, each identifier in the identifier table needs a data type as well as a name and a purpose. The simplest types are the primitive (also called atomic) types, which the language provides directly and which each hold one indivisible value.",
+        "INTEGER holds signed whole numbers, so it suits anything that is counted rather than measured: loop counters, array indexes, the number of items in stock, a year. REAL holds numbers that may have a fractional part, so it suits measurements and results of division, such as a height in metres, a price or an average. CHAR holds exactly one character, for instance a menu choice 'A' to 'D' or a grade. BOOLEAN holds TRUE or FALSE and is the natural type for any yes/no fact or flag, such as whether a value has been found.",
+        "Cambridge pseudocode also fixes how literal values of each type are written. An INTEGER literal is plain digits, optionally with a minus sign. A REAL literal always has a decimal point with at least one digit on each side, so 5.0 not 5. or .5. A CHAR literal goes in single quotes and a STRING literal in double quotes. TRUE and FALSE are written in capitals without quotes."
       ],
       "bullets": [
-        "INTEGER is used for whole-number quantities such as counts, ages in whole years, and array indices; REAL is used only when a fractional part is genuinely possible.",
-        "CHAR holds exactly one character in single quotes, such as 'Y'; STRING holds a sequence of characters, including an empty sequence, in double quotes, such as \"Yes\".",
-        "A value that is never used in arithmetic, such as a postcode or a reference number that may include letters, should usually be declared STRING even though it looks numeric."
+        "Counted values (how many, which position) are INTEGER; measured or calculated values that may not be whole are REAL.",
+        "Any value produced by '/' division should be stored as REAL, even when the inputs are integers.",
+        "CHAR is for one character only; 'Y' is a CHAR but \"Yes\" must be a STRING.",
+        "Use BOOLEAN for two-state data rather than an INTEGER 0/1 or a STRING \"yes\"/\"no\"; it can be tested directly in a condition."
       ],
       "examples": [
         {
-          "id": "01-declaring-simple-variables",
+          "id": "01-literals",
           "kind": "pseudocode",
-          "label": "Declaring variables with the correct data type",
-          "content": "DECLARE StudentCount : INTEGER\nDECLARE AverageMark : REAL\nDECLARE Grade : CHAR\nDECLARE StudentName : STRING\nDECLARE HasPaidFees : BOOLEAN\nDECLARE EnrolmentDate : DATE\n\nStudentCount <- 0\nAverageMark <- 0.0\nGrade <- 'A'\nStudentName <- \"Aisha Khan\"\nHasPaidFees <- FALSE\nEnrolmentDate <- 01/09/2025"
+          "label": "Declaring primitive variables and assigning literals",
+          "content": "DECLARE ItemsInBasket : INTEGER\nDECLARE MeanSpeed : REAL\nDECLARE MenuChoice : CHAR\nDECLARE IsMember : BOOLEAN\n\nItemsInBasket \u2190 12\nMeanSpeed \u2190 48.5          // REAL: decimal point with digits both sides\nMenuChoice \u2190 'C'          // CHAR: single quotes, one character\nIsMember \u2190 FALSE          // BOOLEAN: no quotes",
+          "language": "cambridge-pseudocode"
         }
       ]
     },
     {
       "id": "02-boolean-and-date",
-      "title": "Boolean and date data",
+      "title": "STRING, DATE, ARRAY and FILE",
       "content": [
-        "A BOOLEAN variable can hold only one of two values, TRUE or FALSE, and is used whenever a piece of data is naturally a yes/no or on/off condition, such as whether a student has paid their fees, whether a search has found its target, or whether a loop should keep running. Using a BOOLEAN for this kind of flag, rather than an INTEGER with values such as 0 and 1, makes an algorithm's intention explicit and lets it be tested directly in a condition, for example IF HasPaidFees THEN, without needing a separate comparison.",
-        "A DATE variable holds a calendar date and is used for data such as a date of birth, an enrolment date or a due date, rather than storing a date as a plain STRING. Using DATE rather than STRING for date data allows dates to be compared and ordered correctly by the rules of the calendar, whereas comparing two dates stored as strings can give a wrong result, for example the string \"9/9/2025\" appearing to come after \"10/1/2024\" under simple string comparison even though the actual date is earlier."
+        "A STRING is a sequence of characters, so it is a structured rather than atomic type: you can take its length or pick out part of it. It may hold no characters at all (the empty string \"\"), which is useful as a starting value when a string is built up in a loop. The number 12 and the string \"12\" are different values: 12 can be used in arithmetic, while \"12\" is two characters and \"12\" & \"3\" gives \"123\".",
+        "A DATE holds a day, month and year. It exists as a separate type because programs often need to compare dates or work out the gap between them, and a date held as text cannot do this reliably: compared as strings, \"09/05/2025\" counts as earlier than \"10/01/2024\" because the first characters, '0' and '1', settle the comparison, even though the 2025 date is really the later one. In pseudocode a date literal is written dd/mm/yyyy, for example 21/06/2008.",
+        "The syllabus list also contains ARRAY and FILE. ARRAY is used when many values of the same type are kept under one identifier, for example DECLARE Marks : ARRAY[1:30] OF INTEGER (see 10.2). FILE is the type of data stored outside the program, for example a text file opened with OPENFILE and read line by line (see 10.3). In an identifier table these appear in the data type column just like the primitive types."
       ],
       "bullets": [
-        "BOOLEAN is the correct data type for any flag or condition that only ever needs to be TRUE or FALSE, not an INTEGER standing in for the same idea.",
-        "DATE should be used for genuine calendar dates so that they are compared correctly, rather than storing a date as a STRING that only looks like a date.",
-        "A common exam scenario is a Boolean flag such as Found or IsValid that a loop or search algorithm sets to TRUE once its condition is met."
+        "STRING is for text and for codes that are never used in arithmetic, even if they contain only digits.",
+        "The empty string \"\" is a valid STRING value with length 0.",
+        "DATE lets dates be compared and subtracted correctly; STRING dates only compare character by character.",
+        "ARRAY and FILE are also pseudocode data types: an identifier table may show ARRAY[1:30] OF INTEGER or FILE as the type."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "02-string-date-literals",
+          "kind": "pseudocode",
+          "label": "STRING and DATE in pseudocode",
+          "content": "DECLARE FullName : STRING\nDECLARE Initials : STRING\nDECLARE JoinDate : DATE\nDECLARE Marks : ARRAY[1:30] OF INTEGER\n\nFullName \u2190 \"Leila Haddad\"\nInitials \u2190 \"\"                // empty string, filled in later\nJoinDate \u2190 04/09/2025        // DATE literal dd/mm/yyyy\nInitials \u2190 Initials & 'L' & 'H'\nOUTPUT Initials                 // LH",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "08-justifying-a-data-type",
+      "title": "Selecting and justifying a data type",
+      "content": [
+        "In Paper 2 you are often given a scenario and asked to complete an identifier table or to state and justify the data type of a variable. The type should follow from two questions: what values can this item take, and what will the program do with it? A justification earns the mark when it names the property that decides the choice, for instance 'always a whole number', 'may contain a fractional part', 'only ever one of two values' or 'contains a leading zero and is not used in calculations'.",
+        "The commonest trap is data that looks numeric but is really an identifier: telephone numbers, ISBNs, postcodes, product codes and candidate numbers. These are STRING because they may start with 0 or contain spaces, letters or '+', and nobody adds or averages them. On the other side, choose REAL, not INTEGER, whenever the value could legitimately be non-whole, and INTEGER, not REAL, for anything used as a counter or an array index."
+      ],
+      "bullets": [
+        "State the type, then give a reason based on the data (whole number, fractional part, one character, two states, calendar date, text).",
+        "Numeric-looking codes that are never used in arithmetic are STRING, which also keeps leading zeros.",
+        "Money is usually REAL (for example 14.99); a quantity or count is INTEGER.",
+        "A single-letter code such as a size 'S', 'M', 'L' is CHAR; a value that is sometimes more than one character is STRING."
+      ],
+      "examples": [
+        {
+          "id": "08-identifier-table",
+          "kind": "worked",
+          "label": "Identifier table for a gym membership program",
+          "content": "Identifier     | Data type | Justification\nMemberCode     | STRING    | e.g. \"0041-B\": leading zero and a letter, never used in arithmetic\nSurname        | STRING    | text of varying length\nDateJoined     | DATE      | a calendar date that is compared with today's date\nVisitsThisYear | INTEGER   | a count, always a whole number\nMonthlyFee     | REAL      | money, e.g. 27.50, has a fractional part\nAgeBand        | CHAR      | one letter: 'J' junior, 'A' adult, 'S' senior\nIsActive       | BOOLEAN   | only two possible states, active or not\nPhone          | STRING    | starts with 0 or +, may contain spaces"
+        }
+      ]
     },
     {
       "id": "03-what-a-record-is",
-      "title": "The record data type",
+      "title": "The purpose of a record structure",
       "content": [
-        "A record groups together several related fields, which may be of different data types, under a single named structure, so that all the data describing one real-world thing can be handled together as a single unit. For example, a single student is naturally described by several related pieces of data: a StudentID, a Name, a DateOfBirth and whether fees HasPaidFees have been paid. Each of these fields has a different data type (INTEGER, STRING, DATE and BOOLEAN respectively), but together they describe one thing, a single student, so a record is the appropriate structure to hold them.",
-        "This is exactly what distinguishes a record from an array: an array holds many values of the same data type, indexed by position, while a record holds a fixed set of named fields that may each be of a different data type, accessed by name rather than by index."
+        "Some data items belong together because they all describe one thing. A library book has a title (STRING), an ISBN (STRING), a year of publication (INTEGER), a price (REAL) and a flag for whether it is on loan (BOOLEAN). These values have different types, so they cannot share an array, which needs every element to be the same type.",
+        "A record solves this. The programmer defines a new record type that lists the fields and their types; the language does not supply it, which is why a record is called a user-defined type, and because it is built from other types it is also called a composite type. A variable of that type then holds one complete set of field values under a single identifier, so everything about one book travels together: it can be assigned, passed to a procedure or stored in an array as one unit.",
+        "Be careful not to confuse this with a record in a database table (topic 8). A record data structure is a type inside a program; a database record is a row in a table. The idea is similar, one set of values about one entity, but the exam context tells you which is meant."
       ],
       "bullets": [
-        "A record's fields can each have a different data type, unlike an array, whose elements must all share the same data type.",
-        "A record is declared once as a record type, and then any number of variables can be declared to have that type.",
-        "Choosing which fields belong together in a single record depends on whether they describe one real-world thing, such as one student or one book."
+        "Purpose: to hold a set of related data of different data types under one identifier.",
+        "Each field has its own name and its own data type; the set of fields is fixed when the type is defined.",
+        "A record is user-defined (the programmer declares it) and composite (made of other types).",
+        "An array holds many values of one type; a record holds several named values of possibly different types."
       ],
       "examples": []
     },
     {
       "id": "04-declaring-a-record-type",
-      "title": "Declaring a record type and a variable of that type",
+      "title": "Defining a record type and declaring record variables",
       "content": [
-        "A record type is declared using TYPE ... ENDTYPE, listing the name and data type of every field the record will contain. This declaration only defines the shape of the record; it does not create any actual data on its own. A variable that has this record type is then declared separately, using DECLARE VariableName : TypeName, in the same way an INTEGER or STRING variable is declared, except the type named is the record type that was just defined.",
-        "Once a variable of the record type exists, each of its fields initially holds no meaningful value until it is assigned one, in the same way that any other declared variable is uninitialised until an assignment gives it a value."
+        "A record type is defined with TYPE, the type name, one DECLARE line per field, and ENDTYPE. The definition only describes the layout: no data exists yet, in the same way that the word INTEGER on its own stores nothing. A separate DECLARE statement then creates a variable of the new type, and every such variable gets its own copy of every field.",
+        "Choose each field's type using the same rules as for ordinary variables (see the section on justifying a data type), and give the type a name that makes clear it is a type, such as StudentRecord or BookType, so it is not mistaken for a variable."
       ],
       "bullets": [
-        "TYPE StudentRecord ... ENDTYPE defines the record's fields and their data types, but creates no actual student data by itself.",
-        "DECLARE Student : StudentRecord then creates one variable, Student, that has all the fields defined by the StudentRecord type.",
-        "Multiple variables can be declared with the same record type, for example DECLARE Student1 : StudentRecord and DECLARE Student2 : StudentRecord, each with its own independent set of field values."
+        "TYPE \u2026 ENDTYPE defines the structure; DECLARE Variable : TypeName creates storage.",
+        "Every field line inside the TYPE block has the form DECLARE FieldName : DataType.",
+        "Two variables of the same record type have independent fields: changing Student1.Name leaves Student2.Name alone.",
+        "A field can itself be an ARRAY or another record type, but at AS level fields are usually primitive types, STRING or DATE."
       ],
       "examples": [
         {
-          "id": "04-declaring-a-record-type-pseudocode",
+          "id": "04-student-record-type",
           "kind": "pseudocode",
-          "label": "Declaring a StudentRecord type and a variable of that type",
-          "content": "TYPE StudentRecord\n  DECLARE StudentID : INTEGER\n  DECLARE Name : STRING\n  DECLARE DateOfBirth : DATE\n  DECLARE HasPaidFees : BOOLEAN\nENDTYPE\n\nDECLARE Student : StudentRecord"
+          "label": "Defining StudentRecord and declaring variables",
+          "content": "TYPE StudentRecord\n   DECLARE StudentID : STRING\n   DECLARE Name : STRING\n   DECLARE DateOfBirth : DATE\n   DECLARE TestMark : INTEGER\n   DECLARE FeesPaid : BOOLEAN\nENDTYPE\n\nDECLARE Student : StudentRecord\nDECLARE Prefect : StudentRecord",
+          "language": "cambridge-pseudocode"
         }
       ]
     },
     {
       "id": "05-accessing-and-assigning-fields",
-      "title": "Accessing and assigning individual fields",
+      "title": "Saving data to and reading data from a record",
       "content": [
-        "Once a record variable exists, its individual fields are accessed and assigned using dot notation: RecordName.FieldName. This lets a specific field of a specific record variable be read or given a value, exactly as an ordinary variable would be, but qualified by which record it belongs to. Assigning to Student.Name changes only the Name field of the Student variable; it has no effect on Student.StudentID or on any other record variable such as a separate Student2.",
-        "Fields are also read using this same dot notation, for example in an IF statement testing IF Student.HasPaidFees THEN, or when outputting a field's value with OUTPUT Student.Name. A field can be used anywhere a variable of its own data type could be used, since Student.DateOfBirth is simply a DATE value and Student.StudentID is simply an INTEGER value, once accessed through the record."
+        "Each field is reached with dot notation: the variable identifier, a full stop, then the field identifier, as in Student.TestMark. A field used this way behaves exactly like an ordinary variable of the field's type. To save data to a record you assign to its fields, either from literals, from calculations or directly from INPUT. To read data from a record you use the fields in expressions, conditions or OUTPUT statements.",
+        "You cannot assign a single value to the whole record variable (Student \u2190 \"Aisha\" is wrong, because Student is not a STRING). The one whole-record operation allowed is copying one record variable into another of the same type, for example Prefect \u2190 Student, which copies every field at once."
       ],
       "bullets": [
-        "RecordName.FieldName is used both to assign a value to a field and to read a field's current value.",
-        "Assigning to one field of a record leaves every other field of that record, and every field of every other record variable, unchanged.",
-        "A field accessed through dot notation behaves exactly like an ordinary variable of its declared data type in every expression, condition or output statement."
+        "Write: Student.Name \u2190 \"Aisha\" or INPUT Student.Name.",
+        "Read: OUTPUT Student.Name or IF Student.FeesPaid = FALSE THEN \u2026",
+        "A field has the type given in the TYPE block, so Student.TestMark + 5 is INTEGER arithmetic.",
+        "Record \u2190 Record of the same type copies all fields; Record \u2190 single value is an error."
       ],
       "examples": [
         {
-          "id": "05-assigning-record-fields-pseudocode",
+          "id": "05-save-read-fields",
           "kind": "worked",
-          "label": "Worked example: creating and using a StudentRecord instance",
-          "content": "TYPE StudentRecord\n  DECLARE StudentID : INTEGER\n  DECLARE Name : STRING\n  DECLARE DateOfBirth : DATE\n  DECLARE HasPaidFees : BOOLEAN\nENDTYPE\n\nDECLARE Student : StudentRecord\n\nStudent.StudentID <- 20456\nStudent.Name <- \"Aisha\"\nStudent.DateOfBirth <- 14/03/2008\nStudent.HasPaidFees <- FALSE\n\nIF Student.HasPaidFees = FALSE THEN\n  OUTPUT Student.Name, \" still owes fees\"\nENDIF\n\nStudent.HasPaidFees <- TRUE\nOUTPUT Student.Name, \" has now paid: \", Student.HasPaidFees\n\nTrace of relevant field values:\nStep | Student.Name | Student.HasPaidFees | Output\n1    | \"Aisha\"      | FALSE                 | \"Aisha still owes fees\"\n2    | \"Aisha\"      | TRUE                  | \"Aisha has now paid: TRUE\"\n\nOnly the HasPaidFees field changes between the two outputs; Student.StudentID and Student.DateOfBirth are never touched by this code and keep their originally assigned values throughout."
+          "label": "Saving to and reading from one record",
+          "content": "// save data to the record\nStudent.StudentID \u2190 \"S1042\"\nStudent.Name \u2190 \"Aisha\"\nStudent.DateOfBirth \u2190 14/03/2008\nINPUT Student.TestMark                // user types 72\nStudent.FeesPaid \u2190 FALSE\n\n// read data from the record\nIF Student.FeesPaid = FALSE\n   THEN\n      OUTPUT Student.Name, \" has fees outstanding\"\nENDIF\nStudent.TestMark \u2190 Student.TestMark + 3   // moderation adds 3 marks\nOUTPUT Student.Name, \": \", Student.TestMark\n\nOutput:\nAisha has fees outstanding\nAisha: 75\n\nOnly TestMark changes (72 to 75); StudentID, DateOfBirth and FeesPaid keep the values saved at the start.",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "09-array-of-records",
+      "title": "Arrays of records",
+      "content": [
+        "One record variable holds one item. To hold a whole class or a whole stock list, declare an array whose element type is the record type. Each element is then a complete record, and a field of one element is written with the index first and the field second: Class[3].Name is the Name field of the third student.",
+        "Because the element number can be a loop counter, the same few lines can save data into, or read data out of, every record in turn. This is the main practical reason for records: without them you would need a separate parallel 1D array for each field (IDs, names, dates, marks, flags) and would have to keep the same index lined up across all of them."
+      ],
+      "bullets": [
+        "DECLARE Class : ARRAY[1:30] OF StudentRecord creates 30 records.",
+        "Syntax order: ArrayName[Index].FieldName.",
+        "A FOR loop over the index processes every record; inside it, each field is used like a normal variable.",
+        "An array of records replaces several parallel arrays and keeps each item's data together."
+      ],
+      "examples": [
+        {
+          "id": "09-class-records",
+          "kind": "pseudocode",
+          "label": "Saving to and reading from an array of records",
+          "content": "DECLARE Class : ARRAY[1:4] OF StudentRecord\nDECLARE Index : INTEGER\nDECLARE Total : INTEGER\n\n// save: fill every record from input\nFOR Index \u2190 1 TO 4\n   INPUT Class[Index].StudentID\n   INPUT Class[Index].Name\n   INPUT Class[Index].DateOfBirth\n   INPUT Class[Index].TestMark\n   INPUT Class[Index].FeesPaid\nNEXT Index\n\n// read: average mark and names of students who still owe fees\nTotal \u2190 0\nFOR Index \u2190 1 TO 4\n   Total \u2190 Total + Class[Index].TestMark\n   IF Class[Index].FeesPaid = FALSE\n      THEN\n         OUTPUT Class[Index].Name\n   ENDIF\nNEXT Index\nOUTPUT \"Average: \", Total / 4",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "09-class-records-trace",
+          "kind": "worked",
+          "label": "Trace with four records",
+          "content": "Data stored:\nIndex | StudentID | Name  | DateOfBirth | TestMark | FeesPaid\n1     | \"S1042\"   | Aisha | 14/03/2008  | 72       | TRUE\n2     | \"S1043\"   | Ben   | 02/11/2007  | 58       | FALSE\n3     | \"S1044\"   | Chen  | 21/06/2008  | 85       | TRUE\n4     | \"S1045\"   | Dara  | 09/01/2008  | 41       | FALSE\n\nSecond loop:\nIndex | Class[Index].TestMark | Total | FeesPaid | OUTPUT\n1     | 72                    | 72    | TRUE     |\n2     | 58                    | 130   | FALSE    | Ben\n3     | 85                    | 215   | TRUE     |\n4     | 41                    | 256   | FALSE    | Dara\nafter loop                                       | Average: 64.0\n\n256 / 4 = 64.0 (the result of '/' is REAL). Checked with an equivalent Python run."
         }
       ]
     },
     {
       "id": "06-why-use-a-record",
-      "title": "Why use a record instead of separate variables",
+      "title": "Justifying a record over separate variables or parallel arrays",
       "content": [
-        "The alternative to a record is to declare several separate, unconnected variables, for example StudentID, StudentName, StudentDOB and StudentPaid. This works for a single student, but it does not scale: if a program needs to handle many students, separate variables cannot be repeated for each one without inventing a new, differently named set of variables for every student, which is impractical and does not allow the number of students to vary at run time. A record solves this because a single record type can be declared once, and then any number of record variables of that type can be created, and, combined with an array (covered in 10.2), an array of records can hold an entire class of StudentRecord values using one declared structure.",
-        "A record also keeps an algorithm's code clearer and less error-prone, because all of the data describing one real-world thing is grouped under one name and moves together. Passing a record to a procedure or function passes every field it contains in a single argument, rather than requiring every separate variable to be passed individually and kept in the correct order, which removes an easy source of mistakes such as accidentally passing a value in the wrong position."
+        "When a question asks why a record is suitable, link the answer to the data. The fields all describe one entity (one student, one book, one parcel) and they have different data types, so no single array can hold them, but a record type can. Keeping them under one identifier means the program cannot accidentally pair the name of one student with the mark of another, which is a real risk with parallel arrays if one array is sorted and the others are not.",
+        "Records also make code shorter and clearer. A whole record can be passed to a procedure as one parameter, copied in one assignment, or swapped in one step during a sort, instead of handling five separate values. When the collection grows, an array of records scales with a single declaration, whereas separate variables would need new names for every extra item.",
+        "A record is not the right choice for everything. Many values of the same type that are processed together, such as 52 weekly rainfall readings, belong in an array. A record fits the attributes of one item; an array fits a list of similar items; an array of records fits a list of items that each have several attributes."
       ],
       "bullets": [
-        "Separate unconnected variables cannot be repeated for a variable number of real-world things without declaring new variable names for each one, which a record avoids.",
-        "A record keeps all the data for one real-world thing grouped under a single name, making an algorithm's structure clearer and reducing the risk of mismatching related values.",
-        "An array of records (see 10.2) is the standard way to store many records of the same type, such as every student in a class, using one declared array variable."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-common-record-scenarios",
-      "title": "Recognising when a scenario needs a record",
-      "content": [
-        "Exam scenarios that describe several distinct but related pieces of data about one thing are a strong signal that a record is the appropriate structure, particularly when the fields would naturally have different data types. A BookRecord describing a library book might hold ISBN as STRING, Title as STRING, YearPublished as INTEGER and IsOnLoan as BOOLEAN; an EmployeeRecord might hold EmployeeID as INTEGER, Name as STRING, HourlyRate as REAL and StartDate as DATE. In each case, the fields only make sense together, describing one book or one employee, which is exactly the situation a record is designed for.",
-        "By contrast, a set of values that are all the same data type and are naturally processed together as a collection, such as ten test scores for one student, is better represented as an array (see 10.2) than as ten separate fields in a record, because an array allows the collection to be looped through with a counter rather than referring to each value by a separate name."
-      ],
-      "bullets": [
-        "A scenario describing several different attributes of one real-world thing, especially with mixed data types, points towards using a record.",
-        "A scenario describing many values of the same data type that need to be processed together, such as a list of scores, points towards using an array instead.",
-        "The two structures are often combined: an array of records is used when many real-world things, each with several related fields, need to be stored together."
+        "Purpose answer: groups related data of different types about one item under one identifier.",
+        "Benefit: fields stay together, so data for one item cannot become misaligned as it can across parallel arrays.",
+        "Benefit: one record can be passed, copied or swapped as a single unit.",
+        "Same-type lists belong in an array; mixed-type attributes of one item belong in a record."
       ],
       "examples": []
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Choosing the correct standard data type",
+    "title": "Pseudocode data types and when to choose them",
     "columns": [
-      "Data type",
+      "Type",
       "Holds",
-      "Typical use",
-      "Example value"
+      "Literal example",
+      "Choose it for"
     ],
     "rows": [
       [
         "INTEGER",
-        "A whole number, positive or negative",
-        "A count, an index, an age in whole years",
-        "23"
+        "Signed whole number",
+        "-4, 0, 2025",
+        "Counts, loop counters, array indexes, years"
       ],
       [
         "REAL",
-        "A number that may have a fractional part",
-        "A price, an average, a measurement",
-        "18.75"
+        "Signed number with a fractional part",
+        "3.5, -0.25, 10.0",
+        "Money, measurements, averages, results of '/'"
       ],
       [
         "CHAR",
-        "A single character",
-        "A grade letter, a menu option",
-        "'A'"
+        "Exactly one character",
+        "'M', '9', '#'",
+        "Single-letter codes, menu options, grades"
       ],
       [
         "STRING",
-        "A sequence of characters",
-        "A name, an address, a non-numeric code",
-        "\"Aisha Khan\""
+        "Zero or more characters",
+        "\"Owen\", \"0161 555 0192\", \"\"",
+        "Names, addresses, codes with leading zeros"
       ],
       [
         "BOOLEAN",
-        "TRUE or FALSE only",
-        "A flag or condition, such as Found",
-        "TRUE"
+        "TRUE or FALSE",
+        "TRUE",
+        "Flags and yes/no facts (Found, IsMember)"
       ],
       [
         "DATE",
-        "A calendar date",
-        "A date of birth, an enrolment date",
-        "14/03/2008"
+        "Day, month and year",
+        "21/06/2008",
+        "Dates that are compared or subtracted"
+      ],
+      [
+        "ARRAY",
+        "Many values of one type under one identifier",
+        "ARRAY[1:30] OF INTEGER",
+        "A list or table of similar values (10.2)"
+      ],
+      [
+        "FILE",
+        "Data held in a file outside the program",
+        "OPENFILE \"Stock.txt\" FOR READ",
+        "Data that must persist after the program ends (10.3)"
+      ],
+      [
+        "Record (user-defined)",
+        "Named fields of mixed types",
+        "TYPE StudentRecord \u2026 ENDTYPE",
+        "All the attributes of one item under one identifier"
       ]
     ]
   },
   "diagram": {
-    "title": "From entity to record type to record variable",
+    "title": "From a real-world item to an array of records",
     "type": "flow",
     "nodes": [
-      "Identify the real-world thing to describe, such as a Student",
-      "List its related fields and the data type of each one",
-      "Declare a record type: TYPE StudentRecord ... ENDTYPE",
-      "Declare a variable of that type: DECLARE Student : StudentRecord",
-      "Assign each field using dot notation: Student.Name <- \"Aisha\"",
-      "Access a field anywhere its data type is valid, such as in a condition or output"
+      "Identify the item and list its attributes (ID, name, date of birth, mark, fees paid)",
+      "Pick and justify a data type for each attribute",
+      "Define the record type: TYPE StudentRecord \u2026 ENDTYPE",
+      "Declare a variable, or an array of records: DECLARE Class : ARRAY[1:30] OF StudentRecord",
+      "Save data to fields with dot notation: Class[i].Name \u2190 \"Ben\"",
+      "Read fields in expressions, conditions and OUTPUT statements"
     ]
   },
   "analysisChains": [
     {
-      "title": "Choosing the correct data type for a set of fields",
+      "title": "Choosing types for a parcel-tracking record",
       "steps": [
-        "A scenario describes a book with an ISBN, a title, the year it was published, and whether it is currently on loan",
-        "ISBN and Title are examined: both are sequences of characters, including possible leading zeros in the ISBN, so neither should be a numeric type",
-        "YearPublished is examined: it is always a whole number with no fractional part, so INTEGER is appropriate",
-        "IsOnLoan is examined: it only ever needs to be one of two states, so BOOLEAN is appropriate rather than an INTEGER flag"
+        "A courier stores, for each parcel, a tracking code such as \"0093XK21\", the weight in kg, the number of delivery attempts, the delivery date and whether a signature is needed",
+        "The tracking code has a leading zero and letters and is never used in arithmetic, so it is STRING",
+        "Weight can be 2.35 kg, so REAL; delivery attempts are counted, so INTEGER",
+        "The delivery date will be compared with today's date, so DATE; signature needed has two states, so BOOLEAN"
       ],
-      "evaluation": "Each field's data type is chosen by matching the type to what the data actually is and how it will be used, not by which type looks superficially similar, such as treating a code that resembles a number as numeric when it is never used in arithmetic."
+      "evaluation": "Five fields with four different types describe one parcel, so a record type ParcelRecord is the right structure, and an array of ParcelRecord holds the whole day's deliveries."
     },
     {
-      "title": "Deciding whether a record is needed for a delivery scenario",
+      "title": "Record versus parallel arrays when sorting",
       "steps": [
-        "A parcel delivery system needs to store, for each parcel, a TrackingNumber, a RecipientName, a DeliveryDate and whether it HasBeenDelivered",
-        "These four fields are checked and found to always occur together, describing one single parcel",
-        "The fields are checked for data type: TrackingNumber and RecipientName are STRING, DeliveryDate is DATE, and HasBeenDelivered is BOOLEAN",
-        "A record type ParcelRecord is declared with these four fields, and a variable of that type is created for each parcel"
+        "A program keeps student names in Names[1:30] and marks in Marks[1:30], matched by index",
+        "A bubble sort is written that swaps elements of Marks to put the marks in order",
+        "The programmer forgets to make the same swaps in Names, so Names[1] no longer belongs with Marks[1]",
+        "Rewriting the data as ARRAY[1:30] OF StudentRecord means each swap moves a whole record, name and mark together"
       ],
-      "evaluation": "Because the four fields describe one single real-world thing and have different data types, a record is the appropriate structure; four separate unconnected variables would not scale once more than one parcel needs to be tracked."
+      "evaluation": "Parallel arrays rely on the programmer keeping every array in step; a record keeps each item's fields together automatically, which removes this class of error and shortens the swap code."
     },
     {
-      "title": "Diagnosing an incorrect field assignment",
+      "title": "Spotting a wrong type from a failed calculation",
       "steps": [
-        "A StudentRecord variable Student is declared with fields StudentID, Name, DateOfBirth and HasPaidFees",
-        "The line Student <- \"Aisha\" is written, attempting to assign a value directly to the whole record variable",
-        "This is checked against the record's structure and found to be invalid, because Student is a record, not a single STRING value",
-        "The line is corrected to Student.Name <- \"Aisha\", assigning the value to the specific field intended"
+        "A variable AverageMark is declared INTEGER and assigned Total / Count",
+        "With Total = 131 and Count = 2, the true average is 65.5",
+        "The '/' operator gives a REAL result, which cannot be stored exactly in an INTEGER variable",
+        "Declaring AverageMark as REAL stores 65.5 correctly"
       ],
-      "evaluation": "A value can only be assigned to an individual named field of a record using dot notation; attempting to assign directly to the record variable itself, without naming a field, does not match any single field's data type and is a mistake to correct by identifying and naming the intended field."
+      "evaluation": "The type must match the values the program produces, not just the inputs: two INTEGER inputs can still give a REAL result."
     }
   ],
   "examTips": [
-    "When asked to choose a data type, justify it by referring to the nature of the data (whole number, possible fractional part, fixed two-value condition) rather than just naming a type.",
-    "When declaring a record type, remember TYPE ... ENDTYPE only defines its structure; a separate DECLARE statement is needed to create an actual variable of that type.",
-    "Always access or assign an individual field using RecordName.FieldName; never assign a value directly to the record variable as if it were a single simple variable.",
-    "When justifying the use of a record over separate variables, explain that the fields describe one single real-world thing and may have different data types, which is exactly what a record is designed to group."
+    "For 'state and justify a data type', always give a reason about the data itself: whole number, fractional part, single character, two states, calendar date, or not used in arithmetic.",
+    "Write record definitions exactly in the Cambridge format: TYPE Name, one DECLARE Field : Type line per field, ENDTYPE; then a separate DECLARE for the variable.",
+    "Use dot notation every time a field is read or written; for an array of records put the index before the dot, Class[i].Name.",
+    "When asked for the purpose of a record, say it holds related data of different data types under one identifier, and tie it to the scenario's item.",
+    "Check literals in your pseudocode: REAL with a decimal point (5.0), CHAR in single quotes, STRING in double quotes, BOOLEAN without quotes."
   ],
   "commonMistakes": [
-    "Declaring a whole-number quantity as REAL, or a value that may have a fractional part as INTEGER.",
-    "Storing a numeric-looking code that is never used in arithmetic, such as a postcode, as an INTEGER instead of a STRING.",
-    "Forgetting to declare an actual record variable after defining a record type, and trying to assign fields to the type name itself.",
-    "Omitting the dot in RecordName.FieldName, or writing FieldName alone as if it were an independent variable.",
-    "Using several separate, unconnected variables to describe one real-world thing instead of grouping them into a record, making the code harder to extend and more error-prone."
+    "Declaring phone numbers, ISBNs or other numeric-looking codes as INTEGER, which loses leading zeros and cannot hold spaces or letters.",
+    "Declaring a result of '/' division, such as an average, as INTEGER.",
+    "Using CHAR for a value that can be more than one character, or putting a CHAR literal in double quotes.",
+    "Defining the record type but never declaring a variable of that type, then writing StudentRecord.Name as if the type held data.",
+    "Assigning a single value to a whole record (Student \u2190 \"Aisha\") instead of to a named field.",
+    "Writing Class.Name[3] instead of Class[3].Name for a field of an element in an array of records."
   ],
   "quickRecall": [
     {
-      "question": "Name the six standard data types covered at AS Level.",
-      "answer": "INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE."
+      "question": "List the eight pseudocode data types named in the syllabus.",
+      "answer": "INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE."
     },
     {
-      "question": "What is the difference between CHAR and STRING?",
-      "answer": "CHAR holds exactly one character in single quotes; STRING holds a sequence of zero or more characters in double quotes."
+      "question": "Why should a telephone number be stored as STRING?",
+      "answer": "It may start with 0 or contain spaces or '+', and it is never used in arithmetic; an INTEGER would drop the leading zero and could not hold the other characters."
     },
     {
-      "question": "What is a record?",
-      "answer": "A data structure that groups together a fixed set of named fields, which may be of different data types, under a single named structure, so the data describing one real-world thing can be handled together."
+      "question": "How is a REAL literal written in Cambridge pseudocode?",
+      "answer": "With a decimal point and at least one digit on each side, for example 7.0 or 0.5."
     },
     {
-      "question": "How is a record type declared, and how does this differ from declaring a variable of that type?",
-      "answer": "A record type is declared with TYPE ... ENDTYPE, listing its fields and their data types; this only defines the structure. A separate DECLARE VariableName : TypeName statement is then needed to create an actual record variable."
+      "question": "What is the purpose of a record structure?",
+      "answer": "To hold a set of related data items, which may be of different data types, under one identifier."
     },
     {
-      "question": "How is a field of a record variable accessed or assigned?",
-      "answer": "Using dot notation, RecordName.FieldName, for example Student.Name <- \"Aisha\"."
+      "question": "Why is a record called a user-defined or composite type?",
+      "answer": "User-defined because the programmer declares its fields rather than the language supplying it; composite because it is built from other data types."
     },
     {
-      "question": "Why use a record rather than several separate variables for related data?",
-      "answer": "Because the fields describe one single real-world thing, may have different data types, and grouping them under one record scales to many such things (for example in an array of records), unlike separate unconnected variables."
+      "question": "Write the statement that sets the mark of the second student in array Class to 64.",
+      "answer": "Class[2].TestMark \u2190 64"
     },
     {
-      "question": "Give an example of when BOOLEAN, rather than INTEGER, is the correct data type.",
-      "answer": "For a flag or condition that only ever needs to be TRUE or FALSE, such as HasPaidFees or Found, rather than using an INTEGER with values such as 0 and 1 to represent the same idea."
+      "question": "What does TYPE BookType \u2026 ENDTYPE create on its own?",
+      "answer": "Only a definition of the layout; no storage exists until a variable such as DECLARE Book : BookType is declared."
     }
   ],
   "relatedTopics": [
     "9.2",
     "10.2",
+    "10.3",
+    "11.1",
     "8.1"
   ]
 }

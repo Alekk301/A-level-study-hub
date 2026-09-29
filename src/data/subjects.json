@@ -1004,11 +1004,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Choose appropriate primitive data types and group related data together using records.",
+            "summary": "Select and justify data types (INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY, FILE) and define, save to and read from record structures.",
             "focusPoints": [
-              "primitive types",
-              "records",
-              "type selection"
+              "data type selection",
+              "record types",
+              "dot notation",
+              "arrays of records"
             ],
             "contentDepth": "full"
           },
@@ -1019,10 +1020,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Declare, index and traverse one- and two-dimensional arrays.",
+            "summary": "Use array terms and bounds, declare and process 1D and 2D arrays, and write a linear search and an efficient bubble sort.",
             "focusPoints": [
+              "index/bounds",
               "1D/2D arrays",
-              "indexing/traversal"
+              "linear search",
+              "bubble sort"
             ],
             "contentDepth": "full"
           },

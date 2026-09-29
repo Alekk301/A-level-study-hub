@@ -12376,328 +12376,447 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to declare variables using the correct standard data type for a given piece of data, and to declare and use a record data structure that groups several related fields under one name. Answers score when a candidate selects the data type that exactly matches what is being stored (not just one that would 'work'), and when a record's fields are declared, accessed and assigned using the correct dot notation, RecordName.FieldName, rather than treating the record as a single unstructured value."
+        "text": "Topic 10.1 is about choosing how each item of data is stored. At AS level the pseudocode types are INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE, plus ARRAY and FILE for collections and stored files. Exam questions ask for the type of each variable in an identifier table, with a reason tied to what the value is and how it will be used. The second half covers the record: a user-defined type that keeps several fields of different types together under one identifier. You need to be able to write the TYPE … ENDTYPE definition, declare a variable or an array of that type, and put data into fields and read it back out with dot notation."
       },
       {
         "kind": "Definition",
         "label": "Data type",
-        "text": "A classification that determines what kind of value a variable can hold and what operations can be performed on it, such as integer, real, char, string, Boolean or date."
+        "text": "The kind of value an identifier can hold. It fixes which values are allowed, how much memory is set aside and which operations make sense, such as arithmetic on numbers or joining on strings."
       },
       {
         "kind": "Definition",
-        "label": "Integer",
-        "text": "A whole number data type, with no fractional or decimal part, used for values such as a count, an index or an age."
+        "label": "Primitive (atomic) data type",
+        "text": "A type built into the language that holds a single value and cannot be split into smaller parts, such as INTEGER, REAL, CHAR or BOOLEAN."
       },
       {
         "kind": "Definition",
-        "label": "Real",
-        "text": "A data type for numbers that may have a fractional part, stored with a decimal point, used for values such as a price or an average that is not necessarily a whole number."
+        "label": "INTEGER",
+        "text": "A signed whole number with no fractional part, for example -3, 0 or 250."
       },
       {
         "kind": "Definition",
-        "label": "Char",
-        "text": "A data type that holds a single character, such as a letter, digit or symbol, enclosed in single quotes, for example 'A'."
+        "label": "REAL",
+        "text": "A signed number that can have a fractional part; in pseudocode a REAL literal is written with a decimal point and a digit on each side, for example 4.0 or -0.75."
       },
       {
         "kind": "Definition",
-        "label": "String",
-        "text": "A data type that holds a sequence of zero or more characters, enclosed in double quotes, used for text such as a name or an address."
+        "label": "CHAR",
+        "text": "Exactly one character, written in single quotes, for example 'Y' or '7'."
       },
       {
         "kind": "Definition",
-        "label": "Boolean",
-        "text": "A data type that holds one of only two possible values, TRUE or FALSE, used for a condition or a yes/no flag."
+        "label": "STRING",
+        "text": "A sequence of zero or more characters, written in double quotes; \"\" is the empty string."
       },
       {
         "kind": "Definition",
-        "label": "Record",
-        "text": "A data structure that groups together a fixed set of named fields, which may be of different data types, under a single structure, so that all the data describing one real-world thing can be stored and accessed together."
+        "label": "BOOLEAN",
+        "text": "A type with only two values, TRUE and FALSE, used for flags and the results of conditions."
+      },
+      {
+        "kind": "Definition",
+        "label": "DATE",
+        "text": "A calendar date (day, month and year), written in pseudocode as dd/mm/yyyy, which the language can compare and calculate with."
+      },
+      {
+        "kind": "Definition",
+        "label": "Record (composite, user-defined type)",
+        "text": "A type the programmer defines that groups a fixed set of named fields, possibly of different data types, so that all the data about one item is held under one identifier."
       },
       {
         "kind": "Definition",
         "label": "Field",
-        "text": "One named, typed component of a record, such as StudentID or Name, accessed using RecordName.FieldName syntax."
+        "text": "One named, typed part of a record, reached with dot notation such as Student.Name."
       },
       {
         "kind": "Section",
-        "text": "Choosing a standard data type"
+        "text": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN"
       },
       {
         "kind": "Content",
-        "label": "Choosing a standard data type",
-        "text": "Every variable used in pseudocode must be declared with a specific data type, and this specification defines six standard data types: INTEGER for a whole number, REAL for a number that may have a fractional part, CHAR for a single character, STRING for a sequence of characters, BOOLEAN for a value that is only ever TRUE or FALSE, and DATE for a calendar date. Choosing the correct data type for a given piece of data is a skill examined directly: a quantity that is always a whole number, such as a count of students or an array index, should be declared INTEGER, not REAL, and a value that could legitimately have a decimal part, such as an average mark or a price, should be declared REAL, not INTEGER."
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "When you plan an algorithm, each identifier in the identifier table needs a data type as well as a name and a purpose. The simplest types are the primitive (also called atomic) types, which the language provides directly and which each hold one indivisible value."
       },
       {
         "kind": "Content",
-        "label": "Choosing a standard data type",
-        "text": "Choosing an unsuitable data type is a common source of errors even when the rest of an algorithm's logic is correct. Declaring a person's age as REAL when it should be INTEGER does not usually cause a program to crash, but it misrepresents the data and can cause unexpected results if the value is later used in integer-only operations such as array indexing. Declaring a numeric value such as a telephone number or a postcode as STRING rather than INTEGER is often correct, because such values are never used in arithmetic and may include a leading zero or non-digit characters that a numeric type would lose or reject."
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "INTEGER holds signed whole numbers, so it suits anything that is counted rather than measured: loop counters, array indexes, the number of items in stock, a year. REAL holds numbers that may have a fractional part, so it suits measurements and results of division, such as a height in metres, a price or an average. CHAR holds exactly one character, for instance a menu choice 'A' to 'D' or a grade. BOOLEAN holds TRUE or FALSE and is the natural type for any yes/no fact or flag, such as whether a value has been found."
       },
       {
         "kind": "Content",
-        "label": "Choosing a standard data type",
-        "text": "INTEGER is used for whole-number quantities such as counts, ages in whole years, and array indices; REAL is used only when a fractional part is genuinely possible."
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "Cambridge pseudocode also fixes how literal values of each type are written. An INTEGER literal is plain digits, optionally with a minus sign. A REAL literal always has a decimal point with at least one digit on each side, so 5.0 not 5. or .5. A CHAR literal goes in single quotes and a STRING literal in double quotes. TRUE and FALSE are written in capitals without quotes."
       },
       {
         "kind": "Content",
-        "label": "Choosing a standard data type",
-        "text": "CHAR holds exactly one character in single quotes, such as 'Y'; STRING holds a sequence of characters, including an empty sequence, in double quotes, such as \"Yes\"."
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "Counted values (how many, which position) are INTEGER; measured or calculated values that may not be whole are REAL."
       },
       {
         "kind": "Content",
-        "label": "Choosing a standard data type",
-        "text": "A value that is never used in arithmetic, such as a postcode or a reference number that may include letters, should usually be declared STRING even though it looks numeric."
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "Any value produced by '/' division should be stored as REAL, even when the inputs are integers."
+      },
+      {
+        "kind": "Content",
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "CHAR is for one character only; 'Y' is a CHAR but \"Yes\" must be a STRING."
+      },
+      {
+        "kind": "Content",
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "Use BOOLEAN for two-state data rather than an INTEGER 0/1 or a STRING \"yes\"/\"no\"; it can be tested directly in a condition."
       },
       {
         "kind": "Example",
-        "label": "Choosing a standard data type",
-        "text": "DECLARE StudentCount : INTEGER\nDECLARE AverageMark : REAL\nDECLARE Grade : CHAR\nDECLARE StudentName : STRING\nDECLARE HasPaidFees : BOOLEAN\nDECLARE EnrolmentDate : DATE\n\nStudentCount <- 0\nAverageMark <- 0.0\nGrade <- 'A'\nStudentName <- \"Aisha Khan\"\nHasPaidFees <- FALSE\nEnrolmentDate <- 01/09/2025"
+        "label": "Primitive data types: INTEGER, REAL, CHAR and BOOLEAN",
+        "text": "DECLARE ItemsInBasket : INTEGER\nDECLARE MeanSpeed : REAL\nDECLARE MenuChoice : CHAR\nDECLARE IsMember : BOOLEAN\n\nItemsInBasket ← 12\nMeanSpeed ← 48.5          // REAL: decimal point with digits both sides\nMenuChoice ← 'C'          // CHAR: single quotes, one character\nIsMember ← FALSE          // BOOLEAN: no quotes"
       },
       {
         "kind": "Section",
-        "text": "Boolean and date data"
+        "text": "STRING, DATE, ARRAY and FILE"
       },
       {
         "kind": "Content",
-        "label": "Boolean and date data",
-        "text": "A BOOLEAN variable can hold only one of two values, TRUE or FALSE, and is used whenever a piece of data is naturally a yes/no or on/off condition, such as whether a student has paid their fees, whether a search has found its target, or whether a loop should keep running. Using a BOOLEAN for this kind of flag, rather than an INTEGER with values such as 0 and 1, makes an algorithm's intention explicit and lets it be tested directly in a condition, for example IF HasPaidFees THEN, without needing a separate comparison."
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "A STRING is a sequence of characters, so it is a structured rather than atomic type: you can take its length or pick out part of it. It may hold no characters at all (the empty string \"\"), which is useful as a starting value when a string is built up in a loop. The number 12 and the string \"12\" are different values: 12 can be used in arithmetic, while \"12\" is two characters and \"12\" & \"3\" gives \"123\"."
       },
       {
         "kind": "Content",
-        "label": "Boolean and date data",
-        "text": "A DATE variable holds a calendar date and is used for data such as a date of birth, an enrolment date or a due date, rather than storing a date as a plain STRING. Using DATE rather than STRING for date data allows dates to be compared and ordered correctly by the rules of the calendar, whereas comparing two dates stored as strings can give a wrong result, for example the string \"9/9/2025\" appearing to come after \"10/1/2024\" under simple string comparison even though the actual date is earlier."
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "A DATE holds a day, month and year. It exists as a separate type because programs often need to compare dates or work out the gap between them, and a date held as text cannot do this reliably: compared as strings, \"09/05/2025\" counts as earlier than \"10/01/2024\" because the first characters, '0' and '1', settle the comparison, even though the 2025 date is really the later one. In pseudocode a date literal is written dd/mm/yyyy, for example 21/06/2008."
       },
       {
         "kind": "Content",
-        "label": "Boolean and date data",
-        "text": "BOOLEAN is the correct data type for any flag or condition that only ever needs to be TRUE or FALSE, not an INTEGER standing in for the same idea."
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "The syllabus list also contains ARRAY and FILE. ARRAY is used when many values of the same type are kept under one identifier, for example DECLARE Marks : ARRAY[1:30] OF INTEGER (see 10.2). FILE is the type of data stored outside the program, for example a text file opened with OPENFILE and read line by line (see 10.3). In an identifier table these appear in the data type column just like the primitive types."
       },
       {
         "kind": "Content",
-        "label": "Boolean and date data",
-        "text": "DATE should be used for genuine calendar dates so that they are compared correctly, rather than storing a date as a STRING that only looks like a date."
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "STRING is for text and for codes that are never used in arithmetic, even if they contain only digits."
       },
       {
         "kind": "Content",
-        "label": "Boolean and date data",
-        "text": "A common exam scenario is a Boolean flag such as Found or IsValid that a loop or search algorithm sets to TRUE once its condition is met."
-      },
-      {
-        "kind": "Section",
-        "text": "The record data type"
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "The empty string \"\" is a valid STRING value with length 0."
       },
       {
         "kind": "Content",
-        "label": "The record data type",
-        "text": "A record groups together several related fields, which may be of different data types, under a single named structure, so that all the data describing one real-world thing can be handled together as a single unit. For example, a single student is naturally described by several related pieces of data: a StudentID, a Name, a DateOfBirth and whether fees HasPaidFees have been paid. Each of these fields has a different data type (INTEGER, STRING, DATE and BOOLEAN respectively), but together they describe one thing, a single student, so a record is the appropriate structure to hold them."
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "DATE lets dates be compared and subtracted correctly; STRING dates only compare character by character."
       },
       {
         "kind": "Content",
-        "label": "The record data type",
-        "text": "This is exactly what distinguishes a record from an array: an array holds many values of the same data type, indexed by position, while a record holds a fixed set of named fields that may each be of a different data type, accessed by name rather than by index."
-      },
-      {
-        "kind": "Content",
-        "label": "The record data type",
-        "text": "A record's fields can each have a different data type, unlike an array, whose elements must all share the same data type."
-      },
-      {
-        "kind": "Content",
-        "label": "The record data type",
-        "text": "A record is declared once as a record type, and then any number of variables can be declared to have that type."
-      },
-      {
-        "kind": "Content",
-        "label": "The record data type",
-        "text": "Choosing which fields belong together in a single record depends on whether they describe one real-world thing, such as one student or one book."
-      },
-      {
-        "kind": "Section",
-        "text": "Declaring a record type and a variable of that type"
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a record type and a variable of that type",
-        "text": "A record type is declared using TYPE ... ENDTYPE, listing the name and data type of every field the record will contain. This declaration only defines the shape of the record; it does not create any actual data on its own. A variable that has this record type is then declared separately, using DECLARE VariableName : TypeName, in the same way an INTEGER or STRING variable is declared, except the type named is the record type that was just defined."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a record type and a variable of that type",
-        "text": "Once a variable of the record type exists, each of its fields initially holds no meaningful value until it is assigned one, in the same way that any other declared variable is uninitialised until an assignment gives it a value."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a record type and a variable of that type",
-        "text": "TYPE StudentRecord ... ENDTYPE defines the record's fields and their data types, but creates no actual student data by itself."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a record type and a variable of that type",
-        "text": "DECLARE Student : StudentRecord then creates one variable, Student, that has all the fields defined by the StudentRecord type."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a record type and a variable of that type",
-        "text": "Multiple variables can be declared with the same record type, for example DECLARE Student1 : StudentRecord and DECLARE Student2 : StudentRecord, each with its own independent set of field values."
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "ARRAY and FILE are also pseudocode data types: an identifier table may show ARRAY[1:30] OF INTEGER or FILE as the type."
       },
       {
         "kind": "Example",
-        "label": "Declaring a record type and a variable of that type",
-        "text": "TYPE StudentRecord\n  DECLARE StudentID : INTEGER\n  DECLARE Name : STRING\n  DECLARE DateOfBirth : DATE\n  DECLARE HasPaidFees : BOOLEAN\nENDTYPE\n\nDECLARE Student : StudentRecord"
+        "label": "STRING, DATE, ARRAY and FILE",
+        "text": "DECLARE FullName : STRING\nDECLARE Initials : STRING\nDECLARE JoinDate : DATE\nDECLARE Marks : ARRAY[1:30] OF INTEGER\n\nFullName ← \"Leila Haddad\"\nInitials ← \"\"                // empty string, filled in later\nJoinDate ← 04/09/2025        // DATE literal dd/mm/yyyy\nInitials ← Initials & 'L' & 'H'\nOUTPUT Initials                 // LH"
       },
       {
         "kind": "Section",
-        "text": "Accessing and assigning individual fields"
+        "text": "Selecting and justifying a data type"
       },
       {
         "kind": "Content",
-        "label": "Accessing and assigning individual fields",
-        "text": "Once a record variable exists, its individual fields are accessed and assigned using dot notation: RecordName.FieldName. This lets a specific field of a specific record variable be read or given a value, exactly as an ordinary variable would be, but qualified by which record it belongs to. Assigning to Student.Name changes only the Name field of the Student variable; it has no effect on Student.StudentID or on any other record variable such as a separate Student2."
+        "label": "Selecting and justifying a data type",
+        "text": "In Paper 2 you are often given a scenario and asked to complete an identifier table or to state and justify the data type of a variable. The type should follow from two questions: what values can this item take, and what will the program do with it? A justification earns the mark when it names the property that decides the choice, for instance 'always a whole number', 'may contain a fractional part', 'only ever one of two values' or 'contains a leading zero and is not used in calculations'."
       },
       {
         "kind": "Content",
-        "label": "Accessing and assigning individual fields",
-        "text": "Fields are also read using this same dot notation, for example in an IF statement testing IF Student.HasPaidFees THEN, or when outputting a field's value with OUTPUT Student.Name. A field can be used anywhere a variable of its own data type could be used, since Student.DateOfBirth is simply a DATE value and Student.StudentID is simply an INTEGER value, once accessed through the record."
+        "label": "Selecting and justifying a data type",
+        "text": "The commonest trap is data that looks numeric but is really an identifier: telephone numbers, ISBNs, postcodes, product codes and candidate numbers. These are STRING because they may start with 0 or contain spaces, letters or '+', and nobody adds or averages them. On the other side, choose REAL, not INTEGER, whenever the value could legitimately be non-whole, and INTEGER, not REAL, for anything used as a counter or an array index."
       },
       {
         "kind": "Content",
-        "label": "Accessing and assigning individual fields",
-        "text": "RecordName.FieldName is used both to assign a value to a field and to read a field's current value."
+        "label": "Selecting and justifying a data type",
+        "text": "State the type, then give a reason based on the data (whole number, fractional part, one character, two states, calendar date, text)."
       },
       {
         "kind": "Content",
-        "label": "Accessing and assigning individual fields",
-        "text": "Assigning to one field of a record leaves every other field of that record, and every field of every other record variable, unchanged."
+        "label": "Selecting and justifying a data type",
+        "text": "Numeric-looking codes that are never used in arithmetic are STRING, which also keeps leading zeros."
       },
       {
         "kind": "Content",
-        "label": "Accessing and assigning individual fields",
-        "text": "A field accessed through dot notation behaves exactly like an ordinary variable of its declared data type in every expression, condition or output statement."
+        "label": "Selecting and justifying a data type",
+        "text": "Money is usually REAL (for example 14.99); a quantity or count is INTEGER."
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting and justifying a data type",
+        "text": "A single-letter code such as a size 'S', 'M', 'L' is CHAR; a value that is sometimes more than one character is STRING."
       },
       {
         "kind": "Example",
-        "label": "Accessing and assigning individual fields",
-        "text": "TYPE StudentRecord\n  DECLARE StudentID : INTEGER\n  DECLARE Name : STRING\n  DECLARE DateOfBirth : DATE\n  DECLARE HasPaidFees : BOOLEAN\nENDTYPE\n\nDECLARE Student : StudentRecord\n\nStudent.StudentID <- 20456\nStudent.Name <- \"Aisha\"\nStudent.DateOfBirth <- 14/03/2008\nStudent.HasPaidFees <- FALSE\n\nIF Student.HasPaidFees = FALSE THEN\n  OUTPUT Student.Name, \" still owes fees\"\nENDIF\n\nStudent.HasPaidFees <- TRUE\nOUTPUT Student.Name, \" has now paid: \", Student.HasPaidFees\n\nTrace of relevant field values:\nStep | Student.Name | Student.HasPaidFees | Output\n1    | \"Aisha\"      | FALSE                 | \"Aisha still owes fees\"\n2    | \"Aisha\"      | TRUE                  | \"Aisha has now paid: TRUE\"\n\nOnly the HasPaidFees field changes between the two outputs; Student.StudentID and Student.DateOfBirth are never touched by this code and keep their originally assigned values throughout."
+        "label": "Selecting and justifying a data type",
+        "text": "Identifier     | Data type | Justification\nMemberCode     | STRING    | e.g. \"0041-B\": leading zero and a letter, never used in arithmetic\nSurname        | STRING    | text of varying length\nDateJoined     | DATE      | a calendar date that is compared with today's date\nVisitsThisYear | INTEGER   | a count, always a whole number\nMonthlyFee     | REAL      | money, e.g. 27.50, has a fractional part\nAgeBand        | CHAR      | one letter: 'J' junior, 'A' adult, 'S' senior\nIsActive       | BOOLEAN   | only two possible states, active or not\nPhone          | STRING    | starts with 0 or +, may contain spaces"
       },
       {
         "kind": "Section",
-        "text": "Why use a record instead of separate variables"
+        "text": "The purpose of a record structure"
       },
       {
         "kind": "Content",
-        "label": "Why use a record instead of separate variables",
-        "text": "The alternative to a record is to declare several separate, unconnected variables, for example StudentID, StudentName, StudentDOB and StudentPaid. This works for a single student, but it does not scale: if a program needs to handle many students, separate variables cannot be repeated for each one without inventing a new, differently named set of variables for every student, which is impractical and does not allow the number of students to vary at run time. A record solves this because a single record type can be declared once, and then any number of record variables of that type can be created, and, combined with an array (covered in 10.2), an array of records can hold an entire class of StudentRecord values using one declared structure."
+        "label": "The purpose of a record structure",
+        "text": "Some data items belong together because they all describe one thing. A library book has a title (STRING), an ISBN (STRING), a year of publication (INTEGER), a price (REAL) and a flag for whether it is on loan (BOOLEAN). These values have different types, so they cannot share an array, which needs every element to be the same type."
       },
       {
         "kind": "Content",
-        "label": "Why use a record instead of separate variables",
-        "text": "A record also keeps an algorithm's code clearer and less error-prone, because all of the data describing one real-world thing is grouped under one name and moves together. Passing a record to a procedure or function passes every field it contains in a single argument, rather than requiring every separate variable to be passed individually and kept in the correct order, which removes an easy source of mistakes such as accidentally passing a value in the wrong position."
+        "label": "The purpose of a record structure",
+        "text": "A record solves this. The programmer defines a new record type that lists the fields and their types; the language does not supply it, which is why a record is called a user-defined type, and because it is built from other types it is also called a composite type. A variable of that type then holds one complete set of field values under a single identifier, so everything about one book travels together: it can be assigned, passed to a procedure or stored in an array as one unit."
       },
       {
         "kind": "Content",
-        "label": "Why use a record instead of separate variables",
-        "text": "Separate unconnected variables cannot be repeated for a variable number of real-world things without declaring new variable names for each one, which a record avoids."
+        "label": "The purpose of a record structure",
+        "text": "Be careful not to confuse this with a record in a database table (topic 8). A record data structure is a type inside a program; a database record is a row in a table. The idea is similar, one set of values about one entity, but the exam context tells you which is meant."
       },
       {
         "kind": "Content",
-        "label": "Why use a record instead of separate variables",
-        "text": "A record keeps all the data for one real-world thing grouped under a single name, making an algorithm's structure clearer and reducing the risk of mismatching related values."
+        "label": "The purpose of a record structure",
+        "text": "Purpose: to hold a set of related data of different data types under one identifier."
       },
       {
         "kind": "Content",
-        "label": "Why use a record instead of separate variables",
-        "text": "An array of records (see 10.2) is the standard way to store many records of the same type, such as every student in a class, using one declared array variable."
+        "label": "The purpose of a record structure",
+        "text": "Each field has its own name and its own data type; the set of fields is fixed when the type is defined."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of a record structure",
+        "text": "A record is user-defined (the programmer declares it) and composite (made of other types)."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of a record structure",
+        "text": "An array holds many values of one type; a record holds several named values of possibly different types."
       },
       {
         "kind": "Section",
-        "text": "Recognising when a scenario needs a record"
+        "text": "Defining a record type and declaring record variables"
       },
       {
         "kind": "Content",
-        "label": "Recognising when a scenario needs a record",
-        "text": "Exam scenarios that describe several distinct but related pieces of data about one thing are a strong signal that a record is the appropriate structure, particularly when the fields would naturally have different data types. A BookRecord describing a library book might hold ISBN as STRING, Title as STRING, YearPublished as INTEGER and IsOnLoan as BOOLEAN; an EmployeeRecord might hold EmployeeID as INTEGER, Name as STRING, HourlyRate as REAL and StartDate as DATE. In each case, the fields only make sense together, describing one book or one employee, which is exactly the situation a record is designed for."
+        "label": "Defining a record type and declaring record variables",
+        "text": "A record type is defined with TYPE, the type name, one DECLARE line per field, and ENDTYPE. The definition only describes the layout: no data exists yet, in the same way that the word INTEGER on its own stores nothing. A separate DECLARE statement then creates a variable of the new type, and every such variable gets its own copy of every field."
       },
       {
         "kind": "Content",
-        "label": "Recognising when a scenario needs a record",
-        "text": "By contrast, a set of values that are all the same data type and are naturally processed together as a collection, such as ten test scores for one student, is better represented as an array (see 10.2) than as ten separate fields in a record, because an array allows the collection to be looped through with a counter rather than referring to each value by a separate name."
+        "label": "Defining a record type and declaring record variables",
+        "text": "Choose each field's type using the same rules as for ordinary variables (see the section on justifying a data type), and give the type a name that makes clear it is a type, such as StudentRecord or BookType, so it is not mistaken for a variable."
       },
       {
         "kind": "Content",
-        "label": "Recognising when a scenario needs a record",
-        "text": "A scenario describing several different attributes of one real-world thing, especially with mixed data types, points towards using a record."
+        "label": "Defining a record type and declaring record variables",
+        "text": "TYPE … ENDTYPE defines the structure; DECLARE Variable : TypeName creates storage."
       },
       {
         "kind": "Content",
-        "label": "Recognising when a scenario needs a record",
-        "text": "A scenario describing many values of the same data type that need to be processed together, such as a list of scores, points towards using an array instead."
+        "label": "Defining a record type and declaring record variables",
+        "text": "Every field line inside the TYPE block has the form DECLARE FieldName : DataType."
       },
       {
         "kind": "Content",
-        "label": "Recognising when a scenario needs a record",
-        "text": "The two structures are often combined: an array of records is used when many real-world things, each with several related fields, need to be stored together."
+        "label": "Defining a record type and declaring record variables",
+        "text": "Two variables of the same record type have independent fields: changing Student1.Name leaves Student2.Name alone."
+      },
+      {
+        "kind": "Content",
+        "label": "Defining a record type and declaring record variables",
+        "text": "A field can itself be an ARRAY or another record type, but at AS level fields are usually primitive types, STRING or DATE."
+      },
+      {
+        "kind": "Example",
+        "label": "Defining a record type and declaring record variables",
+        "text": "TYPE StudentRecord\n   DECLARE StudentID : STRING\n   DECLARE Name : STRING\n   DECLARE DateOfBirth : DATE\n   DECLARE TestMark : INTEGER\n   DECLARE FeesPaid : BOOLEAN\nENDTYPE\n\nDECLARE Student : StudentRecord\nDECLARE Prefect : StudentRecord"
+      },
+      {
+        "kind": "Section",
+        "text": "Saving data to and reading data from a record"
+      },
+      {
+        "kind": "Content",
+        "label": "Saving data to and reading data from a record",
+        "text": "Each field is reached with dot notation: the variable identifier, a full stop, then the field identifier, as in Student.TestMark. A field used this way behaves exactly like an ordinary variable of the field's type. To save data to a record you assign to its fields, either from literals, from calculations or directly from INPUT. To read data from a record you use the fields in expressions, conditions or OUTPUT statements."
+      },
+      {
+        "kind": "Content",
+        "label": "Saving data to and reading data from a record",
+        "text": "You cannot assign a single value to the whole record variable (Student ← \"Aisha\" is wrong, because Student is not a STRING). The one whole-record operation allowed is copying one record variable into another of the same type, for example Prefect ← Student, which copies every field at once."
+      },
+      {
+        "kind": "Content",
+        "label": "Saving data to and reading data from a record",
+        "text": "Write: Student.Name ← \"Aisha\" or INPUT Student.Name."
+      },
+      {
+        "kind": "Content",
+        "label": "Saving data to and reading data from a record",
+        "text": "Read: OUTPUT Student.Name or IF Student.FeesPaid = FALSE THEN …"
+      },
+      {
+        "kind": "Content",
+        "label": "Saving data to and reading data from a record",
+        "text": "A field has the type given in the TYPE block, so Student.TestMark + 5 is INTEGER arithmetic."
+      },
+      {
+        "kind": "Content",
+        "label": "Saving data to and reading data from a record",
+        "text": "Record ← Record of the same type copies all fields; Record ← single value is an error."
+      },
+      {
+        "kind": "Example",
+        "label": "Saving data to and reading data from a record",
+        "text": "// save data to the record\nStudent.StudentID ← \"S1042\"\nStudent.Name ← \"Aisha\"\nStudent.DateOfBirth ← 14/03/2008\nINPUT Student.TestMark                // user types 72\nStudent.FeesPaid ← FALSE\n\n// read data from the record\nIF Student.FeesPaid = FALSE\n   THEN\n      OUTPUT Student.Name, \" has fees outstanding\"\nENDIF\nStudent.TestMark ← Student.TestMark + 3   // moderation adds 3 marks\nOUTPUT Student.Name, \": \", Student.TestMark\n\nOutput:\nAisha has fees outstanding\nAisha: 75\n\nOnly TestMark changes (72 to 75); StudentID, DateOfBirth and FeesPaid keep the values saved at the start."
+      },
+      {
+        "kind": "Section",
+        "text": "Arrays of records"
+      },
+      {
+        "kind": "Content",
+        "label": "Arrays of records",
+        "text": "One record variable holds one item. To hold a whole class or a whole stock list, declare an array whose element type is the record type. Each element is then a complete record, and a field of one element is written with the index first and the field second: Class[3].Name is the Name field of the third student."
+      },
+      {
+        "kind": "Content",
+        "label": "Arrays of records",
+        "text": "Because the element number can be a loop counter, the same few lines can save data into, or read data out of, every record in turn. This is the main practical reason for records: without them you would need a separate parallel 1D array for each field (IDs, names, dates, marks, flags) and would have to keep the same index lined up across all of them."
+      },
+      {
+        "kind": "Content",
+        "label": "Arrays of records",
+        "text": "DECLARE Class : ARRAY[1:30] OF StudentRecord creates 30 records."
+      },
+      {
+        "kind": "Content",
+        "label": "Arrays of records",
+        "text": "Syntax order: ArrayName[Index].FieldName."
+      },
+      {
+        "kind": "Content",
+        "label": "Arrays of records",
+        "text": "A FOR loop over the index processes every record; inside it, each field is used like a normal variable."
+      },
+      {
+        "kind": "Content",
+        "label": "Arrays of records",
+        "text": "An array of records replaces several parallel arrays and keeps each item's data together."
+      },
+      {
+        "kind": "Example",
+        "label": "Arrays of records",
+        "text": "DECLARE Class : ARRAY[1:4] OF StudentRecord\nDECLARE Index : INTEGER\nDECLARE Total : INTEGER\n\n// save: fill every record from input\nFOR Index ← 1 TO 4\n   INPUT Class[Index].StudentID\n   INPUT Class[Index].Name\n   INPUT Class[Index].DateOfBirth\n   INPUT Class[Index].TestMark\n   INPUT Class[Index].FeesPaid\nNEXT Index\n\n// read: average mark and names of students who still owe fees\nTotal ← 0\nFOR Index ← 1 TO 4\n   Total ← Total + Class[Index].TestMark\n   IF Class[Index].FeesPaid = FALSE\n      THEN\n         OUTPUT Class[Index].Name\n   ENDIF\nNEXT Index\nOUTPUT \"Average: \", Total / 4"
+      },
+      {
+        "kind": "Example",
+        "label": "Arrays of records",
+        "text": "Data stored:\nIndex | StudentID | Name  | DateOfBirth | TestMark | FeesPaid\n1     | \"S1042\"   | Aisha | 14/03/2008  | 72       | TRUE\n2     | \"S1043\"   | Ben   | 02/11/2007  | 58       | FALSE\n3     | \"S1044\"   | Chen  | 21/06/2008  | 85       | TRUE\n4     | \"S1045\"   | Dara  | 09/01/2008  | 41       | FALSE\n\nSecond loop:\nIndex | Class[Index].TestMark | Total | FeesPaid | OUTPUT\n1     | 72                    | 72    | TRUE     |\n2     | 58                    | 130   | FALSE    | Ben\n3     | 85                    | 215   | TRUE     |\n4     | 41                    | 256   | FALSE    | Dara\nafter loop                                       | Average: 64.0\n\n256 / 4 = 64.0 (the result of '/' is REAL). Checked with an equivalent Python run."
+      },
+      {
+        "kind": "Section",
+        "text": "Justifying a record over separate variables or parallel arrays"
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "When a question asks why a record is suitable, link the answer to the data. The fields all describe one entity (one student, one book, one parcel) and they have different data types, so no single array can hold them, but a record type can. Keeping them under one identifier means the program cannot accidentally pair the name of one student with the mark of another, which is a real risk with parallel arrays if one array is sorted and the others are not."
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "Records also make code shorter and clearer. A whole record can be passed to a procedure as one parameter, copied in one assignment, or swapped in one step during a sort, instead of handling five separate values. When the collection grows, an array of records scales with a single declaration, whereas separate variables would need new names for every extra item."
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "A record is not the right choice for everything. Many values of the same type that are processed together, such as 52 weekly rainfall readings, belong in an array. A record fits the attributes of one item; an array fits a list of similar items; an array of records fits a list of items that each have several attributes."
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "Purpose answer: groups related data of different types about one item under one identifier."
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "Benefit: fields stay together, so data for one item cannot become misaligned as it can across parallel arrays."
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "Benefit: one record can be passed, copied or swapped as a single unit."
+      },
+      {
+        "kind": "Content",
+        "label": "Justifying a record over separate variables or parallel arrays",
+        "text": "Same-type lists belong in an array; mixed-type attributes of one item belong in a record."
       },
       {
         "kind": "Quick recall question",
-        "text": "Name the six standard data types covered at AS Level."
+        "text": "List the eight pseudocode data types named in the syllabus."
       },
       {
         "kind": "Quick recall answer",
-        "label": "Name the six standard data types covered at AS Level.",
-        "text": "INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE."
+        "label": "List the eight pseudocode data types named in the syllabus.",
+        "text": "INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between CHAR and STRING?"
+        "text": "Why should a telephone number be stored as STRING?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between CHAR and STRING?",
-        "text": "CHAR holds exactly one character in single quotes; STRING holds a sequence of zero or more characters in double quotes."
+        "label": "Why should a telephone number be stored as STRING?",
+        "text": "It may start with 0 or contain spaces or '+', and it is never used in arithmetic; an INTEGER would drop the leading zero and could not hold the other characters."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is a record?"
+        "text": "How is a REAL literal written in Cambridge pseudocode?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is a record?",
-        "text": "A data structure that groups together a fixed set of named fields, which may be of different data types, under a single named structure, so the data describing one real-world thing can be handled together."
+        "label": "How is a REAL literal written in Cambridge pseudocode?",
+        "text": "With a decimal point and at least one digit on each side, for example 7.0 or 0.5."
       },
       {
         "kind": "Quick recall question",
-        "text": "How is a record type declared, and how does this differ from declaring a variable of that type?"
+        "text": "What is the purpose of a record structure?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How is a record type declared, and how does this differ from declaring a variable of that type?",
-        "text": "A record type is declared with TYPE ... ENDTYPE, listing its fields and their data types; this only defines the structure. A separate DECLARE VariableName : TypeName statement is then needed to create an actual record variable."
+        "label": "What is the purpose of a record structure?",
+        "text": "To hold a set of related data items, which may be of different data types, under one identifier."
       },
       {
         "kind": "Quick recall question",
-        "text": "How is a field of a record variable accessed or assigned?"
+        "text": "Why is a record called a user-defined or composite type?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How is a field of a record variable accessed or assigned?",
-        "text": "Using dot notation, RecordName.FieldName, for example Student.Name <- \"Aisha\"."
+        "label": "Why is a record called a user-defined or composite type?",
+        "text": "User-defined because the programmer declares its fields rather than the language supplying it; composite because it is built from other data types."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why use a record rather than several separate variables for related data?"
+        "text": "Write the statement that sets the mark of the second student in array Class to 64."
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why use a record rather than several separate variables for related data?",
-        "text": "Because the fields describe one single real-world thing, may have different data types, and grouping them under one record scales to many such things (for example in an array of records), unlike separate unconnected variables."
+        "label": "Write the statement that sets the mark of the second student in array Class to 64.",
+        "text": "Class[2].TestMark ← 64"
       },
       {
         "kind": "Quick recall question",
-        "text": "Give an example of when BOOLEAN, rather than INTEGER, is the correct data type."
+        "text": "What does TYPE BookType … ENDTYPE create on its own?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Give an example of when BOOLEAN, rather than INTEGER, is the correct data type.",
-        "text": "For a flag or condition that only ever needs to be TRUE or FALSE, such as HasPaidFees or Found, rather than using an INTEGER with values such as 0 and 1 to represent the same idea."
+        "label": "What does TYPE BookType … ENDTYPE create on its own?",
+        "text": "Only a definition of the layout; no storage exists until a variable such as DECLARE Book : BookType is declared."
       }
     ]
   },
@@ -12724,352 +12843,574 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to declare one-dimensional and two-dimensional arrays, write loops that read, process or search their elements, and trace such loops using a trace table. Answers score when indices are used correctly from 0 up to LENGTH - 1, when a FOR loop's bounds exactly match the array's declared size, and when a 2D array is addressed consistently with a row index and a column index inside nested loops, rather than treating it as a single list."
+        "text": "Topic 10.2 covers arrays: a list (1D array) or a table (2D array) of values of one data type, stored under one identifier and reached by an index. You need the vocabulary (element, index, lower bound, upper bound), the Cambridge declarations such as DECLARE Marks : ARRAY[1:10] OF INTEGER and DECLARE Sales : ARRAY[1:3, 1:4] OF INTEGER, and the loop patterns that process them: filling, totalling, finding the largest value, and nested loops over rows and columns. The syllabus also places two standard algorithms here: a linear search that stops when the item is found, and a bubble sort, including the efficient version that shortens each pass and stops as soon as a pass makes no swaps. Paper 2 expects these to be written from memory and dry-run with a trace table."
       },
       {
         "kind": "Definition",
         "label": "Array",
-        "text": "A fixed-size data structure that holds multiple values of the same data type, with each individual value (element) accessed using an index."
-      },
-      {
-        "kind": "Definition",
-        "label": "Index",
-        "text": "A whole number that identifies the position of a specific element within an array; in this specification, indexing starts at 0, so the first element is at index 0."
+        "text": "An ordered, fixed-size collection of elements that all have the same data type, stored under one identifier and accessed by index."
       },
       {
         "kind": "Definition",
         "label": "Element",
-        "text": "One individual value stored within an array, accessed by giving the array's name together with an index, for example Scores[3]."
+        "text": "One item stored in an array, such as Marks[4] or Sales[2, 3]."
       },
       {
         "kind": "Definition",
-        "label": "One-dimensional (1D) array",
-        "text": "An array in which each element is identified by a single index, representing a simple list of values, for example Scores[0] to Scores[9]."
+        "label": "Index",
+        "text": "The position number used to select an element; a 1D array uses one index and a 2D array uses a row index and a column index."
       },
       {
         "kind": "Definition",
-        "label": "Two-dimensional (2D) array",
-        "text": "An array in which each element is identified by two indices, a row index and a column index, representing a grid or table of values, for example Grid[row, col]."
+        "label": "Lower bound",
+        "text": "The smallest valid index of an array dimension, fixed in the declaration (often 1, sometimes 0)."
       },
       {
         "kind": "Definition",
-        "label": "Counter-controlled loop",
-        "text": "A loop, typically a FOR loop, that repeats a fixed, known number of times using a counter variable, commonly used to step through every index of an array in turn."
+        "label": "Upper bound",
+        "text": "The largest valid index of an array dimension; the number of elements in that dimension is upper bound - lower bound + 1."
       },
       {
         "kind": "Definition",
-        "label": "Nested loop",
-        "text": "A loop placed entirely inside the body of another loop; used with a 2D array so the outer loop steps through each row and the inner loop steps through each column within that row."
+        "label": "1D array",
+        "text": "An array with one dimension, used like a numbered list, for example ARRAY[1:10] OF INTEGER."
       },
       {
         "kind": "Definition",
-        "label": "Array bound error",
-        "text": "A runtime error that occurs when a program attempts to access an array element using an index outside the array's declared valid range."
+        "label": "2D array",
+        "text": "An array with two dimensions, used like a table of rows and columns; the row index is written first, for example Grid[Row, Column]."
+      },
+      {
+        "kind": "Definition",
+        "label": "Linear search",
+        "text": "A search that compares the target with each element in turn from the first, stopping when it is found or when every element has been checked."
+      },
+      {
+        "kind": "Definition",
+        "label": "Bubble sort",
+        "text": "A sort that repeatedly passes through an array comparing adjacent elements and swapping any pair that is in the wrong order, until a pass makes no swaps."
+      },
+      {
+        "kind": "Definition",
+        "label": "Pass",
+        "text": "One run of a bubble sort's inner loop along the unsorted part of the array; after each pass the largest remaining value has reached its final position."
       },
       {
         "kind": "Section",
-        "text": "Arrays as a fixed-size, same-type structure"
+        "text": "Array terms: element, index, lower bound and upper bound"
       },
       {
         "kind": "Content",
-        "label": "Arrays as a fixed-size, same-type structure",
-        "text": "An array is a data structure that holds multiple values under a single variable name, where every value stored in it must be of the same declared data type, and the array's size is fixed once it is declared. Each individual value in the array is called an element, and each element is accessed by giving its position, called its index, in square brackets after the array's name, for example Scores[3]. This specification uses zero-based indexing: the first element of an array is always at index 0, the second element is at index 1, and an array declared to hold n elements has valid indices running from 0 to n - 1, not from 1 to n."
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "An array lets a program keep many values of the same type under one name instead of inventing a separate variable for each. Thirty test marks stored as Mark1, Mark2 … Mark30 would need thirty INPUT statements; stored as Marks[1] to Marks[30] they can be handled by one loop whose counter supplies the position."
       },
       {
         "kind": "Content",
-        "label": "Arrays as a fixed-size, same-type structure",
-        "text": "Because every element of an array shares the same data type, an array is the appropriate structure for a collection of similar values that will typically be processed together, such as a set of exam scores, a list of names, or the readings from a sensor taken at regular intervals. This is different from a record (see 10.1), which groups together a fixed set of named fields that may each have a different data type."
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "The position is the index. The declaration fixes the lowest index (the lower bound) and the highest index (the upper bound) for each dimension, and the array keeps that size while the program runs, so it is a static structure. Cambridge pseudocode lets you choose the bounds: many exam questions start at 1, which matches how people number a list, while Python, Java and VB.NET start their arrays at 0. Always read the bounds from the declaration rather than assuming."
       },
       {
         "kind": "Content",
-        "label": "Arrays as a fixed-size, same-type structure",
-        "text": "An array's size is fixed at the point it is declared; it cannot grow or shrink while the program is running."
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "The number of elements in a dimension is upper bound - lower bound + 1, so ARRAY[1:10] has 10 elements and ARRAY[0:25] has 26. An index outside the bounds refers to an element that does not exist; running such a statement causes a run-time error (an 'index out of range' or array bound error). A loop that stops one short of the upper bound does not crash but silently misses the last element, which is a logic error."
       },
       {
         "kind": "Content",
-        "label": "Arrays as a fixed-size, same-type structure",
-        "text": "Every element of an array must be of the same declared data type, for example all INTEGER or all STRING."
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "Index: the position of an element. Lower bound: smallest index. Upper bound: largest index."
       },
       {
         "kind": "Content",
-        "label": "Arrays as a fixed-size, same-type structure",
-        "text": "Indexing starts at 0, so an array declared with 10 elements has valid indices 0 to 9, and index 10 does not exist."
-      },
-      {
-        "kind": "Section",
-        "text": "Declaring a one-dimensional array"
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "Number of elements = upper bound - lower bound + 1."
       },
       {
         "kind": "Content",
-        "label": "Declaring a one-dimensional array",
-        "text": "A one-dimensional array is declared using DECLARE ArrayName : ARRAY[LowerBound : UpperBound] OF DataType, stating the range of valid indices and the data type of every element. For an array of 10 scores indexed from 0, this is written DECLARE Scores : ARRAY[0:9] OF INTEGER, which creates exactly 10 elements, Scores[0] through to Scores[9]. The lower bound does not have to be 0 in the general pseudocode syntax, but this specification's examples and mark schemes consistently index arrays starting from 0, and candidates should follow that convention unless a question states otherwise."
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "Every element has the same data type; the size is fixed at declaration."
       },
       {
         "kind": "Content",
-        "label": "Declaring a one-dimensional array",
-        "text": "Once declared, an individual element is used in exactly the same way as an ordinary variable of the array's declared data type: it can appear in an assignment, an expression, a condition or an output statement, for example Scores[0] <- 67 or IF Scores[2] > 50 THEN."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a one-dimensional array",
-        "text": "DECLARE Scores : ARRAY[0:9] OF INTEGER declares an array of 10 integers, indexed 0 to 9."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a one-dimensional array",
-        "text": "An individual element, such as Scores[4], is used exactly like an ordinary variable of the array's data type."
-      },
-      {
-        "kind": "Content",
-        "label": "Declaring a one-dimensional array",
-        "text": "The array's declared bounds fix both its size and its valid range of indices for the rest of the program."
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "Index beyond a bound = run-time error; loop bound one too small = logic error (element skipped)."
       },
       {
         "kind": "Example",
-        "label": "Declaring a one-dimensional array",
-        "text": "DECLARE Scores : ARRAY[0:9] OF INTEGER\n\nScores[0] <- 67\nScores[1] <- 82\nScores[2] <- 45\n\nOUTPUT Scores[1]        // outputs 82\nIF Scores[2] < 50 THEN\n  OUTPUT \"Score at index 2 is a fail\"\nENDIF"
+        "label": "Array terms: element, index, lower bound and upper bound",
+        "text": "Declaration                              | Lower | Upper | Elements\nDECLARE Letters : ARRAY[0:25] OF CHAR    | 0     | 25    | 26\nDECLARE Marks : ARRAY[1:30] OF INTEGER   | 1     | 30    | 30\nDECLARE Temps : ARRAY[1:7] OF REAL       | 1     | 7     | 7\nDECLARE Sales : ARRAY[1:3, 1:4] OF INTEGER | rows 1-3, columns 1-4 | 3 x 4 = 12\n\nMarks[31] ← 50 would fail at run time: 31 is above the upper bound 30."
       },
       {
         "kind": "Section",
-        "text": "Looping through a one-dimensional array"
+        "text": "Declaring and using a 1D array"
       },
       {
         "kind": "Content",
-        "label": "Looping through a one-dimensional array",
-        "text": "A counter-controlled FOR loop is the standard way to read, process or search every element of a 1D array, because the array's size, and therefore the exact number of times the loop must repeat, is fixed and known. The loop counter is used directly as the array's index, running from the array's lower bound to its upper bound inclusive, so that every element is visited exactly once and no index outside the array's declared range is ever used. This same loop structure is reused for many purposes: outputting every element, calculating a total or an average, counting how many elements meet a condition, or searching for a specific target value."
+        "label": "Declaring and using a 1D array",
+        "text": "A 1D array is declared with DECLARE, the identifier, the bounds in square brackets separated by a colon, and the element type after OF. An element is then written as the identifier followed by an index in square brackets, and that element can be used anywhere an ordinary variable of the element type could be: on the left of an assignment, in an INPUT statement, in a condition or in an OUTPUT."
       },
       {
         "kind": "Content",
-        "label": "Looping through a one-dimensional array",
-        "text": "The upper bound used in the loop must exactly match the array's declared upper bound. Using a bound that is one too high causes an array bound error by accessing a non-existent index; using a bound that is one too low causes the last element to be silently skipped, which is a logic error rather than a runtime error, since the program still runs but produces an incomplete result."
+        "label": "Declaring and using a 1D array",
+        "text": "The index does not have to be a literal. Any INTEGER expression works, which is what makes arrays powerful: inside FOR Index ← 1 TO 7 the element Temps[Index] means a different element on each iteration. Before an array's values are used they must be given values, typically by an initialisation loop that sets every element to a starting value such as 0, or by a loop of INPUT statements. Cambridge pseudocode also allows one array to be copied into another of the same size and type in a single assignment."
       },
       {
         "kind": "Content",
-        "label": "Looping through a one-dimensional array",
-        "text": "FOR Index <- 0 TO 9 exactly matches an array declared as ARRAY[0:9], visiting every element exactly once."
+        "label": "Declaring and using a 1D array",
+        "text": "DECLARE Temps : ARRAY[1:7] OF REAL gives Temps[1] to Temps[7]."
       },
       {
         "kind": "Content",
-        "label": "Looping through a one-dimensional array",
-        "text": "The loop counter is used directly as the array index, so the same variable both controls the loop and selects which element is processed."
+        "label": "Declaring and using a 1D array",
+        "text": "Temps[3] ← 18.5 saves a value; OUTPUT Temps[3] reads it."
       },
       {
         "kind": "Content",
-        "label": "Looping through a one-dimensional array",
-        "text": "A loop bound that does not exactly match the array's declared bounds either skips an element (logic error) or accesses a non-existent index (array bound error)."
+        "label": "Declaring and using a 1D array",
+        "text": "The index can be a variable or expression, such as Temps[Day] or Values[J + 1]."
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 1D array",
+        "text": "Initialise every element (with a loop) before relying on its value."
       },
       {
         "kind": "Example",
-        "label": "Looping through a one-dimensional array",
-        "text": "DECLARE Scores : ARRAY[0:4] OF INTEGER\nDECLARE Total : INTEGER\nDECLARE Index : INTEGER\n\nScores[0] <- 12\nScores[1] <- 45\nScores[2] <- 30\nScores[3] <- 8\nScores[4] <- 20\n\nTotal <- 0\nFOR Index <- 0 TO 4\n  Total <- Total + Scores[Index]\nNEXT Index\n\nOUTPUT Total\n\nTrace table:\nStep | Index | Scores[Index] | Total\n1    | 0     | 12            | 12\n2    | 1     | 45            | 57\n3    | 2     | 30            | 87\n4    | 3     | 8             | 95\n5    | 4     | 20            | 115\n\nThe loop runs for Index = 0 to 4 inclusive, matching the array's declared bounds ARRAY[0:4] exactly, and the final output is Total = 115."
-      },
-      {
-        "kind": "Example",
-        "label": "Looping through a one-dimensional array",
-        "text": "DECLARE Names : ARRAY[0:4] OF STRING\nDECLARE Index : INTEGER\nDECLARE Found : BOOLEAN\n\nNames[0] <- \"Wei\"\nNames[1] <- \"Fatima\"\nNames[2] <- \"Carlos\"\nNames[3] <- \"Aisha\"\nNames[4] <- \"Tom\"\n\nFound <- FALSE\nFOR Index <- 0 TO 4\n  IF Names[Index] = \"Aisha\" THEN\n    Found <- TRUE\n    OUTPUT \"Found at index \", Index\n  ENDIF\nNEXT Index\n\nTrace table (relevant steps only):\nStep | Index | Names[Index] | Comparison            | Found\n1    | 0     | \"Wei\"        | \"Wei\" = \"Aisha\"? No    | FALSE\n2    | 1     | \"Fatima\"     | No                     | FALSE\n3    | 2     | \"Carlos\"     | No                     | FALSE\n4    | 3     | \"Aisha\"      | Yes                    | TRUE\n5    | 4     | \"Tom\"        | No                     | TRUE\n\n\"Aisha\" is located at index 3; the loop continues to index 4 because a simple FOR loop does not stop early, even though the target has already been found."
+        "label": "Declaring and using a 1D array",
+        "text": "DECLARE Temps : ARRAY[1:7] OF REAL\nDECLARE Day : INTEGER\n\n// initialise every element\nFOR Day ← 1 TO 7\n   Temps[Day] ← 0.0\nNEXT Day\n\n// fill from input, one reading per day\nFOR Day ← 1 TO 7\n   OUTPUT \"Temperature for day \", Day\n   INPUT Temps[Day]\nNEXT Day\n\nOUTPUT \"Wednesday: \", Temps[3]"
       },
       {
         "kind": "Section",
-        "text": "Declaring a two-dimensional array"
+        "text": "Processing a 1D array: totals, averages and the largest value"
       },
       {
         "kind": "Content",
-        "label": "Declaring a two-dimensional array",
-        "text": "A two-dimensional array represents a grid or table of values, and each of its elements is identified by two indices instead of one: a row index and a column index. It is declared using DECLARE ArrayName : ARRAY[RowLower:RowUpper, ColLower:ColUpper] OF DataType. For a 3-row by 4-column grid of integers, this is written DECLARE Grid : ARRAY[0:2, 0:3] OF INTEGER, creating 3 rows (indexed 0 to 2) and 4 columns (indexed 0 to 3) within each row, giving 12 elements in total."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "Most array processing is one FOR loop from the lower bound to the upper bound with the loop counter used as the index. A total needs a variable set to 0 before the loop and increased by each element inside it; an average is the total divided by the number of elements after the loop, and should be REAL."
       },
       {
         "kind": "Content",
-        "label": "Declaring a two-dimensional array",
-        "text": "An individual element is accessed by giving both indices, separated by a comma, in the order row then column, for example Grid[1, 2] refers to the element in row 1, column 2. As with a 1D array, both indices are zero-based, so a 3-row grid has valid row indices 0, 1 and 2, and a 4-column grid has valid column indices 0, 1, 2 and 3."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "To find the largest value, start by assuming the first element is the largest, then compare each later element with the current largest and replace it when a bigger one appears. Starting from the first element, rather than from 0, means the method also works when every value is negative. Storing the index of the largest value as well as the value lets the program report where it is."
       },
       {
         "kind": "Content",
-        "label": "Declaring a two-dimensional array",
-        "text": "DECLARE Grid : ARRAY[0:2, 0:3] OF INTEGER declares a grid with 3 rows and 4 columns, 12 elements in total."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "Total: set to 0 before the loop, add each element inside the loop."
       },
       {
         "kind": "Content",
-        "label": "Declaring a two-dimensional array",
-        "text": "An element is accessed as Grid[row, col], with the row index given first and the column index second."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "Average: Total / number of elements, calculated after the loop and stored as REAL."
       },
       {
         "kind": "Content",
-        "label": "Declaring a two-dimensional array",
-        "text": "Both the row index and the column index are zero-based, independently of each other."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "Maximum: start with the first element, replace when a larger element is found; also track its index."
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "Loop bounds must match the declaration exactly: FOR Index ← 1 TO 6 for ARRAY[1:6]."
       },
       {
         "kind": "Example",
-        "label": "Declaring a two-dimensional array",
-        "text": "DECLARE Grid : ARRAY[0:2, 0:3] OF INTEGER\n\nGrid[0, 0] <- 5\nGrid[0, 1] <- 9\nGrid[1, 2] <- 7\n\nOUTPUT Grid[1, 2]      // outputs 7"
-      },
-      {
-        "kind": "Section",
-        "text": "Using nested loops to process a 2D array"
-      },
-      {
-        "kind": "Content",
-        "label": "Using nested loops to process a 2D array",
-        "text": "Processing every element of a 2D array requires two counter-controlled loops nested inside one another: an outer loop that steps through each row, and an inner loop, running completely for every single value of the outer loop, that steps through each column within that row. For every fixed value of the row counter, the inner loop's counter runs through its full range of column indices before the outer loop moves on to the next row, so together the nested loops visit every element of the grid exactly once, in row-by-row order."
-      },
-      {
-        "kind": "Content",
-        "label": "Using nested loops to process a 2D array",
-        "text": "As with a 1D array, each loop's bounds must exactly match the array's declared bounds for that dimension: the outer loop's bounds must match the row bounds, and the inner loop's bounds must match the column bounds. Getting the two loops the wrong way around, or swapping the row and column index inside Grid[row, col], still visits every element but reads or writes the wrong element at each step, which is a logic error rather than a runtime error."
-      },
-      {
-        "kind": "Content",
-        "label": "Using nested loops to process a 2D array",
-        "text": "The outer loop's counter selects the row; the inner loop's counter, which runs its full range for every row, selects the column within that row."
-      },
-      {
-        "kind": "Content",
-        "label": "Using nested loops to process a 2D array",
-        "text": "Each loop's bounds must exactly match the corresponding dimension of the array's declared bounds, exactly as for a 1D array."
-      },
-      {
-        "kind": "Content",
-        "label": "Using nested loops to process a 2D array",
-        "text": "Using the wrong index as the row or column inside the square brackets processes an existing element, but the wrong one, which is a logic error to check for carefully when tracing."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "DECLARE Marks : ARRAY[1:6] OF INTEGER\nDECLARE Index, Total, Highest, HighPos : INTEGER\nDECLARE Average : REAL\n\n// Marks holds 54, 71, 38, 90, 66, 47\nTotal ← 0\nHighest ← Marks[1]\nHighPos ← 1\nFOR Index ← 1 TO 6\n   Total ← Total + Marks[Index]\n   IF Marks[Index] > Highest\n      THEN\n         Highest ← Marks[Index]\n         HighPos ← Index\n   ENDIF\nNEXT Index\nAverage ← Total / 6\nOUTPUT \"Total \", Total, \", average \", Average\nOUTPUT \"Highest \", Highest, \" at position \", HighPos"
       },
       {
         "kind": "Example",
-        "label": "Using nested loops to process a 2D array",
-        "text": "DECLARE Grid : ARRAY[0:1, 0:2] OF INTEGER\nDECLARE Row : INTEGER\nDECLARE Col : INTEGER\nDECLARE Total : INTEGER\n\nGrid[0, 0] <- 3\nGrid[0, 1] <- 6\nGrid[0, 2] <- 2\nGrid[1, 0] <- 5\nGrid[1, 1] <- 1\nGrid[1, 2] <- 4\n\nTotal <- 0\nFOR Row <- 0 TO 1\n  FOR Col <- 0 TO 2\n    Total <- Total + Grid[Row, Col]\n  NEXT Col\nNEXT Row\n\nOUTPUT Total\n\nTrace table:\nStep | Row | Col | Grid[Row, Col] | Total\n1    | 0   | 0   | 3              | 3\n2    | 0   | 1   | 6              | 9\n3    | 0   | 2   | 2              | 11\n4    | 1   | 0   | 5              | 16\n5    | 1   | 1   | 1              | 17\n6    | 1   | 2   | 4              | 21\n\nFor each value of Row, the inner loop runs completely through Col = 0 to 2 before Row increments, visiting all 6 elements of the grid exactly once. The final output is Total = 21."
+        "label": "Processing a 1D array: totals, averages and the largest value",
+        "text": "Index | Marks[Index] | Total | Highest | HighPos\n      |              | 0     | 54      | 1\n1     | 54           | 54    |         |\n2     | 71           | 125   | 71      | 2\n3     | 38           | 163   |         |\n4     | 90           | 253   | 90      | 4\n5     | 66           | 319   |         |\n6     | 47           | 366   |         |\n\nAverage = 366 / 6 = 61.0\nOutput: Total 366, average 61.0\n        Highest 90 at position 4\n(An equivalent Python run gives the same total, average and position.)"
       },
       {
         "kind": "Section",
-        "text": "Array bound errors"
+        "text": "Linear search"
       },
       {
         "kind": "Content",
-        "label": "Array bound errors",
-        "text": "An array's declared bounds fix the only valid range of indices that can be used to access it; attempting to access an index outside this range, such as Scores[10] on an array declared ARRAY[0:9], causes a runtime error called an array bound error. This is different from a logic error: the program does not run to completion and produce a wrong answer, it stops (or reports an error) at the exact point the invalid index is used, because there is no element at that position for the program to read or write."
+        "label": "Linear search",
+        "text": "A linear search looks for a target value by checking the elements one after another, starting at the lower bound. It needs no preparation: the data does not have to be sorted, which is why it is the standard search for an unordered array. Each check either finds the target, in which case the search can stop, or moves on to the next index. If the index passes the upper bound without a match, the target is not in the array."
       },
       {
         "kind": "Content",
-        "label": "Array bound errors",
-        "text": "Array bound errors commonly arise from an off-by-one mistake in a loop's bounds, such as writing FOR Index <- 0 TO 10 for an array declared ARRAY[0:9], or from forgetting that indexing starts at 0 and writing FOR Index <- 1 TO 10 for the same array, which both skips index 0 and attempts to access the non-existent index 10."
+        "label": "Linear search",
+        "text": "A good linear search stops as soon as the item is found, so it uses a conditional loop (WHILE or REPEAT) controlled by a BOOLEAN flag such as Found and by the index reaching the end. A FOR loop over the whole array also gives the right answer but always makes every comparison, even when the target is in the first position. In the worst case (the item is last, or absent) a linear search on n elements makes n comparisons; on average it makes about half that when the item is present."
       },
       {
         "kind": "Content",
-        "label": "Array bound errors",
-        "text": "An array bound error is a runtime error, occurring only when the program actually executes a statement using an out-of-range index."
+        "label": "Linear search",
+        "text": "Works on unsorted data; compares elements in index order from the lower bound."
       },
       {
         "kind": "Content",
-        "label": "Array bound errors",
-        "text": "It is distinct from a logic error: a logic error still produces a result, just an incorrect one, whereas an array bound error stops execution at the invalid access."
+        "label": "Linear search",
+        "text": "Two stopping conditions: target found, or no elements left to check."
       },
       {
         "kind": "Content",
-        "label": "Array bound errors",
-        "text": "A loop bound that is one too high (accessing index n for an array valid up to n - 1) is a frequent, specific cause of an array bound error."
+        "label": "Linear search",
+        "text": "Use a BOOLEAN Found flag and a WHILE/REPEAT loop so the search stops early."
+      },
+      {
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "After the loop, test Found to decide between reporting the position and reporting 'not found'."
+      },
+      {
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "Worst case n comparisons for n elements."
       },
       {
         "kind": "Example",
-        "label": "Array bound errors",
-        "text": "DECLARE Scores : ARRAY[0:9] OF INTEGER\nDECLARE Index : INTEGER\n\nFOR Index <- 0 TO 10\n  Scores[Index] <- Index * 2\nNEXT Index\n\nScores is declared ARRAY[0:9], so its only valid indices are 0 to 9.\nWhen Index reaches 10, the statement Scores[10] <- 20 attempts to access\nan index that does not exist, causing an array bound error at that point.\n\nCorrection: change the loop header to FOR Index <- 0 TO 9, so the loop's\nbounds exactly match the array's declared bounds."
+        "label": "Linear search",
+        "text": "DECLARE Names : ARRAY[1:6] OF STRING\nDECLARE SearchName : STRING\nDECLARE Index : INTEGER\nDECLARE Found : BOOLEAN\n\n// Names holds \"Ravi\", \"Mei\", \"Tomas\", \"Leila\", \"Owen\", \"Grace\"\nINPUT SearchName\nFound ← FALSE\nIndex ← 1\nWHILE Found = FALSE AND Index <= 6\n   IF Names[Index] = SearchName\n      THEN\n         Found ← TRUE\n      ELSE\n         Index ← Index + 1\n   ENDIF\nENDWHILE\n\nIF Found = FALSE\n   THEN\n      OUTPUT SearchName, \" is not in the list\"\n   ELSE\n      OUTPUT SearchName, \" is at position \", Index\nENDIF"
+      },
+      {
+        "kind": "Example",
+        "label": "Linear search",
+        "text": "Search 1: SearchName = \"Leila\"\nIndex | Names[Index] | Match? | Found\n1     | \"Ravi\"       | no     | FALSE\n2     | \"Mei\"        | no     | FALSE\n3     | \"Tomas\"      | no     | FALSE\n4     | \"Leila\"      | yes    | TRUE\nLoop ends because Found = TRUE (4 comparisons).\nOutput: Leila is at position 4\n\nSearch 2: SearchName = \"Sam\"\nIndex | Names[Index] | Match? | Found\n1     | \"Ravi\"       | no     | FALSE\n2     | \"Mei\"        | no     | FALSE\n3     | \"Tomas\"      | no     | FALSE\n4     | \"Leila\"      | no     | FALSE\n5     | \"Owen\"       | no     | FALSE\n6     | \"Grace\"      | no     | FALSE\n7     | (not read)   |        | FALSE\nLoop ends because Index <= 6 is FALSE (6 comparisons). Names[7] is never accessed.\nOutput: Sam is not in the list\n\n(An equivalent Python search returns position 4 after 4 comparisons and not found after 6.)"
       },
       {
         "kind": "Section",
-        "text": "Arrays compared with records"
+        "text": "Bubble sort"
       },
       {
         "kind": "Content",
-        "label": "Arrays compared with records",
-        "text": "An array and a record are both structures for grouping multiple values together, but they group data in fundamentally different ways and are used for different situations. An array holds many values that are all the same data type, accessed by a numeric index, and is suited to a collection of similar values that will typically be processed together in a loop, such as a set of scores. A record holds a fixed set of named fields that may each be of a different data type, accessed by name using dot notation, and is suited to grouping together the different pieces of data that describe one single real-world thing, such as one student's ID, name, date of birth and fee status (see 10.1)."
+        "label": "Bubble sort",
+        "text": "A bubble sort puts an array into order by comparing neighbouring elements. Starting at the lower bound, it compares elements 1 and 2 and swaps them if the first is larger, then compares 2 and 3, and so on to the end. That complete run is one pass. During a pass the largest value keeps being swapped forward, so at the end of the first pass it sits in the last element, which is now final. The next pass does the same for the rest of the array, placing the second largest value, and so on."
       },
       {
         "kind": "Content",
-        "label": "Arrays compared with records",
-        "text": "The two structures are frequently combined: an array of records is used when many real-world things, each described by several related fields, need to be stored and processed together, for example an array of StudentRecord values representing a whole class, looped through with a FOR loop in exactly the way a simple array is, but with each element itself being an entire record accessed with dot notation."
+        "label": "Bubble sort",
+        "text": "Swapping two elements needs a temporary variable: copy the first element to Temp, copy the second into the first, then copy Temp into the second. Without Temp, the first value would be overwritten and lost."
       },
       {
         "kind": "Content",
-        "label": "Arrays compared with records",
-        "text": "An array's elements share one data type and are accessed by numeric index; a record's fields can differ in data type and are accessed by name."
+        "label": "Bubble sort",
+        "text": "For an array of n elements, n - 1 passes are always enough. Because the end of the array fills up with finished values, each pass can stop one position earlier than the last; a variable (here Boundary) holds the last index to compare and is reduced by 1 after every pass. The algorithm uses nested loops: the outer loop counts passes and the inner loop moves along the array comparing pairs. To sort into descending order, change the comparison from > to <."
       },
       {
         "kind": "Content",
-        "label": "Arrays compared with records",
-        "text": "An array suits a collection of similar values processed together in a loop; a record suits the different attributes of one single real-world thing."
+        "label": "Bubble sort",
+        "text": "Compare adjacent pairs; swap if Values[J] > Values[J + 1] (ascending)."
       },
       {
         "kind": "Content",
-        "label": "Arrays compared with records",
-        "text": "An array of records combines both: a fixed-size, indexed collection where each element is itself a record with several named fields."
+        "label": "Bubble sort",
+        "text": "A swap uses Temp: Temp ← a, a ← b, b ← Temp."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "After pass k the largest k values are in their final positions at the end of the array."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "At most n - 1 passes; the inner loop's end can be reduced by 1 after each pass."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "Descending order: use < in the comparison."
+      },
+      {
+        "kind": "Example",
+        "label": "Bubble sort",
+        "text": "DECLARE Values : ARRAY[1:5] OF INTEGER\nDECLARE Pass, J, Boundary, Temp : INTEGER\n\n// Values holds 7, 3, 9, 1, 5\nBoundary ← 4                       // last J to compare: upper bound - 1\nFOR Pass ← 1 TO 4                  // n - 1 passes\n   FOR J ← 1 TO Boundary\n      IF Values[J] > Values[J + 1]\n         THEN\n            Temp ← Values[J]\n            Values[J] ← Values[J + 1]\n            Values[J + 1] ← Temp\n      ENDIF\n   NEXT J\n   Boundary ← Boundary - 1         // last element of this pass is now final\nNEXT Pass"
+      },
+      {
+        "kind": "Example",
+        "label": "Bubble sort",
+        "text": "Pass 1 (J = 1 to 4)\n  J=1: 7 > 3 swap  -> 3 7 9 1 5\n  J=2: 7 > 9 no    -> 3 7 9 1 5\n  J=3: 9 > 1 swap  -> 3 7 1 9 5\n  J=4: 9 > 5 swap  -> 3 7 1 5 9     9 is now final\nPass 2 (J = 1 to 3)\n  J=1: 3 > 7 no    -> 3 7 1 5 9\n  J=2: 7 > 1 swap  -> 3 1 7 5 9\n  J=3: 7 > 5 swap  -> 3 1 5 7 9     7 is now final\nPass 3 (J = 1 to 2)\n  J=1: 3 > 1 swap  -> 1 3 5 7 9\n  J=2: 3 > 5 no    -> 1 3 5 7 9\nPass 4 (J = 1 to 1)\n  J=1: 1 > 3 no    -> 1 3 5 7 9\n\nAfter pass: 1: 3 7 1 5 9 | 2: 3 1 5 7 9 | 3: 1 3 5 7 9 | 4: 1 3 5 7 9\nComparisons: 4 + 3 + 2 + 1 = 10. Pass 4 changes nothing: the array was already sorted after pass 3.\n(An equivalent Python run produces the same four states and 10 comparisons.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Efficient bubble sort: a swap flag and shorter passes"
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "The fixed-pass version keeps going even after the data is in order. The improvement rests on one observation: if a whole pass makes no swaps, every adjacent pair is already in order, so the array is sorted and the algorithm can stop. A BOOLEAN flag records this. It is set to TRUE (no swaps yet) at the start of each pass and set to FALSE whenever a swap happens; the outer loop becomes a REPEAT … UNTIL that ends when a pass finishes with the flag still TRUE."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "Keeping the reducing boundary as well gives the efficient bubble sort that mark schemes look for: a conditional outer loop, the flag reset at the start of each pass, the flag changed inside the swap, and the inner loop's end reduced after each pass. On nearly sorted data it can finish after one or two passes; on already sorted data it needs just one pass of n - 1 comparisons. Its worst case (data in reverse order) is still about n²/2 comparisons, which is why bubble sort is only used for small arrays."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "The same idea works on a 2D array or an array of records. When sorting rows of a table by one column, compare that column and swap the entire row (every column), or with an array of records swap whole records, so that each item's data stays together."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "NoSwaps ← TRUE at the start of each pass; NoSwaps ← FALSE inside the swap."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "Outer loop: REPEAT … UNTIL NoSwaps = TRUE (stops early once sorted)."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "Boundary ← Boundary - 1 after each pass so finished values are not compared again."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "Best case (already sorted): one pass. Worst case (reverse order): n - 1 passes."
+      },
+      {
+        "kind": "Content",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "When sorting a table by one column, swap the whole row, not just the compared value."
+      },
+      {
+        "kind": "Example",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "DECLARE Values : ARRAY[1:6] OF INTEGER\nDECLARE J, Boundary, Temp : INTEGER\nDECLARE NoSwaps : BOOLEAN\n\nBoundary ← 5                       // upper bound - 1\nREPEAT\n   NoSwaps ← TRUE\n   FOR J ← 1 TO Boundary\n      IF Values[J] > Values[J + 1]\n         THEN\n            Temp ← Values[J]\n            Values[J] ← Values[J + 1]\n            Values[J + 1] ← Temp\n            NoSwaps ← FALSE\n      ENDIF\n   NEXT J\n   Boundary ← Boundary - 1\nUNTIL NoSwaps = TRUE"
+      },
+      {
+        "kind": "Example",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "Pass 1 (Boundary = 5), NoSwaps starts TRUE\n  J=1: 3 > 1 swap -> 1 3 4 6 5 8   NoSwaps = FALSE\n  J=2: 3 > 4 no\n  J=3: 4 > 6 no\n  J=4: 6 > 5 swap -> 1 3 4 5 6 8   NoSwaps = FALSE\n  J=5: 6 > 8 no\n  end of pass: 1 3 4 5 6 8, Boundary becomes 4, NoSwaps = FALSE so repeat\nPass 2 (Boundary = 4), NoSwaps starts TRUE\n  J=1..4: 1>3, 3>4, 4>5, 5>6 all no\n  end of pass: 1 3 4 5 6 8, NoSwaps = TRUE so UNTIL ends the sort\n\nEfficient version: 2 passes, 5 + 4 = 9 comparisons.\nFixed-pass version on the same data: 5 passes, 5 + 4 + 3 + 2 + 1 = 15 comparisons.\nFor 7, 3, 9, 1, 5 the flag version still needs 4 passes (10 comparisons), because pass 3 made a swap.\n(Checked with an equivalent Python run.)"
+      },
+      {
+        "kind": "Example",
+        "label": "Efficient bubble sort: a swap flag and shorter passes",
+        "text": "def bubble_sort(values):\n    boundary = len(values) - 1\n    while True:\n        no_swaps = True\n        for j in range(boundary):\n            if values[j] > values[j + 1]:\n                values[j], values[j + 1] = values[j + 1], values[j]\n                no_swaps = False\n        boundary -= 1\n        if no_swaps:\n            return values\n\nassert bubble_sort([3, 1, 4, 6, 5, 8]) == [1, 3, 4, 5, 6, 8]\nassert bubble_sort([7, 3, 9, 1, 5]) == [1, 3, 5, 7, 9]"
+      },
+      {
+        "kind": "Section",
+        "text": "Declaring and using a 2D array"
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 2D array",
+        "text": "A 2D array stores a table. Its declaration gives two pairs of bounds separated by a comma: the first pair is for the rows and the second for the columns, following the usual convention of naming the row first when you describe a cell of a table. DECLARE Sales : ARRAY[1:3, 1:4] OF INTEGER creates 3 rows and 4 columns, 12 elements in all, and every element must be an INTEGER."
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 2D array",
+        "text": "An element is reached with two indexes in the same order: Sales[2, 3] is row 2, column 3. Mixing up the order is one of the most frequent errors; with a non-square table it may even produce an out-of-range index. As with 1D arrays the bounds are chosen by the programmer: rows and columns starting at 1 often match the problem (shop 1 to 3, quarter 1 to 4, a game board of rows 1 to 6)."
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 2D array",
+        "text": "DECLARE Name : ARRAY[RowLower:RowUpper, ColLower:ColUpper] OF Type."
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 2D array",
+        "text": "Element count = rows x columns, e.g. 3 x 4 = 12."
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 2D array",
+        "text": "Access as Name[Row, Column], row index first."
+      },
+      {
+        "kind": "Content",
+        "label": "Declaring and using a 2D array",
+        "text": "All elements share one data type."
+      },
+      {
+        "kind": "Example",
+        "label": "Declaring and using a 2D array",
+        "text": "DECLARE Sales : ARRAY[1:3, 1:4] OF INTEGER   // 3 shops (rows), 4 quarters (columns)\n\nSales[1, 1] ← 12      // shop 1, quarter 1\nSales[2, 3] ← 14      // shop 2, quarter 3\nOUTPUT Sales[2, 3]     // 14"
+      },
+      {
+        "kind": "Section",
+        "text": "Processing a 2D array with nested loops"
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Visiting every element of a table needs a loop inside a loop. The outer loop selects a row; for each row the inner loop runs through all the columns before the outer loop moves on, so the elements are visited row by row. The same pattern initialises a table, outputs it one row per line, or totals it."
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Where a total is set matters. A total for each row is reset to 0 inside the outer loop but before the inner loop, and output after the inner loop finishes. A grand total is set to 0 once, before both loops. A column total swaps the roles: the outer loop runs over columns and the inner loop over rows."
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Outer loop = rows, inner loop = columns, element = Table[Row, Column]."
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Row total: reset inside the outer loop, before the inner loop; output after the inner loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Grand total: reset once before both loops."
+      },
+      {
+        "kind": "Content",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Column totals: make the column the outer loop."
+      },
+      {
+        "kind": "Example",
+        "label": "Processing a 2D array with nested loops",
+        "text": "DECLARE Sales : ARRAY[1:3, 1:4] OF INTEGER\nDECLARE Shop, Quarter, ShopTotal, GrandTotal : INTEGER\n\n// Sales holds  row 1: 12 15  9 20\n//              row 2:  8 11 14  6\n//              row 3: 17  5 10 13\nGrandTotal ← 0\nFOR Shop ← 1 TO 3\n   ShopTotal ← 0\n   FOR Quarter ← 1 TO 4\n      ShopTotal ← ShopTotal + Sales[Shop, Quarter]\n   NEXT Quarter\n   OUTPUT \"Shop \", Shop, \": \", ShopTotal\n   GrandTotal ← GrandTotal + ShopTotal\nNEXT Shop\nOUTPUT \"All shops: \", GrandTotal"
+      },
+      {
+        "kind": "Example",
+        "label": "Processing a 2D array with nested loops",
+        "text": "Shop | Quarter values added   | ShopTotal | GrandTotal | OUTPUT\n     |                        |           | 0          |\n1    | 12, 15, 9, 20          | 56        | 56         | Shop 1: 56\n2    | 8, 11, 14, 6           | 39        | 95         | Shop 2: 39\n3    | 17, 5, 10, 13          | 45        | 140        | Shop 3: 45\n                                                      | All shops: 140\n\nInside row 1 the running ShopTotal is 12, 27, 36, 56.\nColumn (quarter) totals, with Quarter as the outer loop: 37, 31, 33, 39, which also sum to 140.\n(An equivalent Python run with nested lists gives the same row, column and grand totals.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Selecting a 1D or 2D array for a task"
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "Choose a 1D array when the data is a single list of values of one type identified by one number: the daily rainfall for a month, the names in a register, a list of scores to sort. Choose a 2D array when each value is identified by two things at once and all the values have the same type: sales by shop and quarter, marks by student and test, the cells of a game board or a seating plan."
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "Parallel 1D arrays (for example Names[1:30] and Marks[1:30] matched by index) can hold related data of different types, but they must be kept in step by hand, which is fragile when sorting. A 2D array cannot help here because all its elements must share one type; if a table would mix types, such as a name column and a mark column, use an array of records instead (see 10.1)."
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "One list, one index: 1D array."
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "Values located by two coordinates (row and column), all the same type: 2D array."
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "Related values of different types per item: array of records, or parallel 1D arrays kept in step."
+      },
+      {
+        "kind": "Content",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "Justify the choice from the data: how many indexes identify a value, and are the types the same?"
+      },
+      {
+        "kind": "Example",
+        "label": "Selecting a 1D or 2D array for a task",
+        "text": "Task                                               | Structure                              | Reason\nRainfall for each day of June                      | ARRAY[1:30] OF REAL                    | one list, one index (day)\nMarks of 25 students in 6 tests                    | ARRAY[1:25, 1:6] OF INTEGER            | two indexes (student, test), all INTEGER\nNoughts and crosses board                          | ARRAY[1:3, 1:3] OF CHAR                | cell found by row and column\nNames to be sorted into order                      | ARRAY[1:40] OF STRING                  | one list\nName, form and date of birth for each student      | ARRAY[1:40] OF StudentRecord           | different types per student, so not a 2D array"
+      },
+      {
+        "kind": "Section",
+        "text": "Checking loops against bounds"
+      },
+      {
+        "kind": "Content",
+        "label": "Checking loops against bounds",
+        "text": "Every loop over an array should be checked against the declaration. For ARRAY[1:6], FOR Index ← 0 TO 6 reads the non-existent element 0 and FOR Index ← 1 TO 7 reads element 7: both stop the program with a run-time error when that line executes. FOR Index ← 1 TO 5 runs without error but never processes element 6, which gives a wrong answer and is a logic error."
+      },
+      {
+        "kind": "Content",
+        "label": "Checking loops against bounds",
+        "text": "Bubble sort needs particular care, because the comparison uses Values[J + 1]. The inner loop must stop at the upper bound minus 1 (then minus the number of passes completed), otherwise J + 1 goes past the upper bound. In a linear search with a WHILE loop, test the index before using it, so that the loop ends when the index passes the upper bound rather than trying to read a missing element."
+      },
+      {
+        "kind": "Content",
+        "label": "Checking loops against bounds",
+        "text": "Loop from exactly the lower bound to exactly the upper bound for a full traversal."
+      },
+      {
+        "kind": "Content",
+        "label": "Checking loops against bounds",
+        "text": "In comparisons using J + 1, the loop must end one before the upper bound."
+      },
+      {
+        "kind": "Content",
+        "label": "Checking loops against bounds",
+        "text": "Out-of-range index: run-time error. Missing an element: logic error."
+      },
+      {
+        "kind": "Example",
+        "label": "Checking loops against bounds",
+        "text": "DECLARE Values : ARRAY[1:5] OF INTEGER\nFOR J ← 1 TO 5\n   IF Values[J] > Values[J + 1] ...\n\nWhen J = 5 the condition reads Values[6], which is beyond the upper bound 5,\nso the program fails at run time. Correct first pass: FOR J ← 1 TO 4."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is an array?"
+        "text": "Define lower bound and upper bound."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is an array?",
-        "text": "A fixed-size data structure holding multiple values of the same data type, with each element accessed by an index; the first element is at index 0."
+        "label": "Define lower bound and upper bound.",
+        "text": "The smallest and the largest valid index of an array dimension, as given in its declaration."
       },
       {
         "kind": "Quick recall question",
-        "text": "How is a one-dimensional array of 10 integers, indexed from 0, declared?"
+        "text": "How many elements does DECLARE Codes : ARRAY[0:25] OF CHAR create?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How is a one-dimensional array of 10 integers, indexed from 0, declared?",
-        "text": "DECLARE Scores : ARRAY[0:9] OF INTEGER."
+        "label": "How many elements does DECLARE Codes : ARRAY[0:25] OF CHAR create?",
+        "text": "26, because 25 - 0 + 1 = 26."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is a FOR loop the natural choice for processing every element of an array?"
+        "text": "Declare a 2D array of integers with 3 rows and 4 columns, indexed from 1."
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is a FOR loop the natural choice for processing every element of an array?",
-        "text": "Because the array's size, and therefore the exact number of times the loop must repeat, is fixed and known, so the loop counter can be used directly as the index."
+        "label": "Declare a 2D array of integers with 3 rows and 4 columns, indexed from 1.",
+        "text": "DECLARE Table : ARRAY[1:3, 1:4] OF INTEGER"
       },
       {
         "kind": "Quick recall question",
-        "text": "How is an element of a 2D array accessed?"
+        "text": "What are the two conditions that end a linear search?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How is an element of a 2D array accessed?",
-        "text": "With a row index and a column index together, for example Grid[Row, Col], both zero-based."
+        "label": "What are the two conditions that end a linear search?",
+        "text": "The target has been found, or every element has been checked (the index has passed the upper bound)."
       },
       {
         "kind": "Quick recall question",
-        "text": "What structure is used to process every element of a 2D array, and why?"
+        "text": "What is true about the array after the first pass of an ascending bubble sort?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What structure is used to process every element of a 2D array, and why?",
-        "text": "Nested loops: an outer loop stepping through each row, and an inner loop, running its full range for every row, stepping through each column within that row."
+        "label": "What is true about the array after the first pass of an ascending bubble sort?",
+        "text": "The largest value is in the last position, which will not change again."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the main difference between an array and a record?"
+        "text": "Why is a temporary variable needed in a swap?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the main difference between an array and a record?",
-        "text": "An array holds many values of the same data type, accessed by index; a record holds a fixed set of named fields, which may have different data types, accessed by field name."
+        "label": "Why is a temporary variable needed in a swap?",
+        "text": "Assigning the second element to the first overwrites the first value; Temp keeps a copy so it can be put into the second element."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is an array bound error?"
+        "text": "How does the efficient bubble sort know it can stop?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is an array bound error?",
-        "text": "A runtime error caused by attempting to access an array element using an index outside the array's declared valid range."
+        "label": "How does the efficient bubble sort know it can stop?",
+        "text": "A flag set to TRUE at the start of each pass is still TRUE at the end, meaning no swaps happened, so every adjacent pair is in order."
       },
       {
         "kind": "Quick recall question",
-        "text": "How does an array bound error differ from a logic error involving a skipped array element?"
+        "text": "When is a 2D array more suitable than a 1D array?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How does an array bound error differ from a logic error involving a skipped array element?",
-        "text": "An array bound error stops execution at the point the invalid index is accessed; a skipped element from an incorrect loop bound still lets the program run to completion, just with an incomplete or incorrect result."
+        "label": "When is a 2D array more suitable than a 1D array?",
+        "text": "When each value is identified by two indexes, such as row and column, and all the values have the same data type."
       }
     ]
   },
