@@ -6,83 +6,106 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Files",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to write or complete pseudocode that opens a text file in the correct mode, reads or writes its records using a loop controlled by an end-of-file check, and closes the file afterwards. Answers score when OPENFILE, READFILE, WRITEFILE and CLOSEFILE are used with the exact required syntax, when a reading loop is built around WHILE NOT EOF(file) rather than a fixed count, and when a line read from a file is explicitly converted to the correct data type before it is used in a calculation.",
+  "overview": "Variables live in main memory and vanish when a program stops, so anything that must survive to the next run, be shared with another program or be too large to type in again belongs in a file. At AS level the files are text files: a series of lines, each ended by an end-of-line marker, with an end-of-file marker after the last line. Paper 2 expects fluent Cambridge pseudocode for them: OPENFILE <name> FOR READ, WRITE or APPEND, READFILE and WRITEFILE one line at a time, an EOF() check to drive a loop over a file of unknown length, and CLOSEFILE when finished. Marks are lost for choosing WRITE (which wipes the file) when APPEND was needed, for reading with a fixed-count loop or a single IF, for doing arithmetic on a line without STR_TO_NUM, and for forgetting to close the file.",
   "syllabusPoints": [
-    "Show understanding of the need to store data permanently in a file, since data held in variables is lost when a program terminates.",
-    "Show understanding of the standard sequence for using a file: open the file in the required mode, perform the necessary reads or writes, then close the file.",
-    "Explain why a file must be closed once processing is finished, including releasing the file and ensuring buffered data is written to disk.",
-    "Open a file for reading and process its records sequentially, using an end-of-file (EOF) check to control the reading loop.",
-    "Distinguish between opening a file for WRITE, which creates a new file or overwrites an existing file's contents, and opening it for APPEND, which adds data after the file's existing content.",
-    "Write pseudocode that writes data to, or appends data to, a text file using WRITEFILE.",
-    "Show understanding that each line read from a text file is a string and, where necessary, must be converted to the correct data type before use."
+    "Show understanding of why files are needed, including keeping data permanently between program runs and passing data between programs.",
+    "Write pseudocode to handle text files that consist of one or more lines, using OPENFILE <filename> FOR READ / WRITE / APPEND, READFILE, WRITEFILE, EOF() and CLOSEFILE."
   ],
   "definitions": [
     {
       "term": "File",
-      "definition": "A named collection of data stored on a permanent storage device (such as a disk), which continues to exist after the program that created it has ended, unlike data held only in a program's variables."
+      "definition": "A named block of data kept on secondary storage. It stays there after the program that created it has finished, unlike the contents of variables in RAM."
+    },
+    {
+      "term": "Text file",
+      "definition": "A file holding characters arranged as lines. Every line finishes with an end-of-line marker, and an end-of-file marker follows the final line. Every value read from it arrives as a string."
     },
     {
       "term": "OPENFILE",
-      "definition": "The pseudocode command that opens a named file ready for use, stating the mode it is opened in: FOR READ, FOR WRITE or FOR APPEND."
+      "definition": "Makes a file available to the program in one stated mode: OPENFILE <filename> FOR READ, FOR WRITE or FOR APPEND. No READFILE or WRITEFILE is allowed on a file until it has been opened."
     },
     {
-      "term": "READ mode",
-      "definition": "A file mode that opens an existing file so its contents can be read; the file must already exist, and its contents are not changed by reading."
+      "term": "READFILE",
+      "definition": "READFILE <filename>, <variable> copies the next unread line of a file opened FOR READ into a STRING variable and moves the read position on by one line."
+    },
+    {
+      "term": "WRITEFILE",
+      "definition": "WRITEFILE <filename>, <string> adds one new line to a file opened FOR WRITE or FOR APPEND."
     },
     {
       "term": "WRITE mode",
-      "definition": "A file mode that opens a file for writing; if the file does not exist it is created, and if it already exists its previous contents are erased and overwritten."
+      "definition": "Starts the file empty: a missing file is created, and an existing file loses everything it held. New lines are written from the start."
     },
     {
       "term": "APPEND mode",
-      "definition": "A file mode that opens a file so new data can be written after its existing content, without erasing anything already stored in the file."
+      "definition": "Keeps every existing line and places each new line after the last one already in the file."
     },
     {
-      "term": "EOF (end of file)",
-      "definition": "A function, used as EOF(FileName), that returns TRUE once every line of an open file has been read, allowing a reading loop to stop without needing to know the number of records in advance."
+      "term": "EOF()",
+      "definition": "EOF(<filename>) is a BOOLEAN function that returns TRUE when no unread lines remain in a file opened FOR READ (including when the file is empty) and FALSE otherwise."
     },
     {
       "term": "CLOSEFILE",
-      "definition": "The pseudocode command that closes an open file, releasing it so other programs or processes can use it and ensuring any data still held in a buffer is actually written to the storage device."
-    },
-    {
-      "term": "Sequential file access",
-      "definition": "Reading or writing a file's records in order, one after another from the start of the file, rather than jumping directly to a specific record."
+      "definition": "CLOSEFILE <filename> ends the program's use of a file. It releases the file for other programs and makes sure buffered lines are actually saved to storage."
     }
   ],
   "sections": [
     {
       "id": "01-why-files-are-needed",
-      "title": "Why data must be stored in a file",
+      "title": "Why files are needed",
       "content": [
-        "A variable's value exists only while the program that declared it is running: the moment the program ends, every variable and everything it held is lost, because a variable is stored only in main memory (RAM), which is cleared or reused once the program terminates. If data needs to be available the next time the program runs, or needs to be shared with a different program, or simply needs to survive after the program that produced it has ended, it must be written to a file stored on a permanent storage device such as a hard disk or solid-state drive, rather than left in a variable.",
-        "A text file is the simplest form of permanent storage used at this level: it holds human-readable characters, organised into lines, and a program can later open that same file again, even after being closed down and restarted, and read back exactly the data that was written to it."
+        "Everything a running program holds, whether a single counter or a large array, sits in main memory (RAM). When the program ends, or the computer is switched off, that memory is released and the values are gone. A file is saved on secondary storage such as an SSD or hard disk, so its contents are still there next time. A program can save its data to a file before it stops and load it back at the start of the following run.",
+        "Persistence is the main reason, but not the only one. A file can be opened by a different program, sent to another computer or read by a person in a text editor, so it is a common way to pass data between programs and users. Files let a program process far more data than could be typed in at the keyboard each time, and they can hold more than fits in memory at once, because the program reads one line at a time. They are also used to keep a lasting record of output, such as a log, a report or a backup copy."
       ],
       "bullets": [
-        "Data held only in a variable is lost as soon as the program that declared it ends; this is why permanent storage in a file is needed for data that must persist.",
-        "A file exists independently of any one running program, so it can be read again by the same program later, or by a different program altogether.",
-        "This specification uses simple text files, where each line typically represents one record of data."
+        "Variables are held in RAM and are lost when the program terminates; a file on secondary storage survives between runs.",
+        "Data saved in a file can be reloaded later instead of being entered again by the user.",
+        "Files let data be exchanged between different programs, users and computers.",
+        "Large data sets can be kept in a file and processed one line at a time.",
+        "Output such as logs, reports and backups can be stored for later use."
       ],
       "examples": []
     },
     {
-      "id": "02-open-process-close-sequence",
-      "title": "The open, process, close sequence",
+      "id": "08-text-files-and-lines",
+      "title": "What a text file looks like",
       "content": [
-        "Every use of a file, whether reading from it or writing to it, follows the same three-stage sequence: open the file, stating the mode it is needed in; perform the reads or writes the program requires; then close the file. The file must be opened before any READFILE or WRITEFILE statement can be used on it, because opening is what makes the file available to the program and tells the operating system which mode — read, write, or append — the program intends to use it in.",
-        "OPENFILE \"filename.txt\" FOR READ is used purely to read an existing file's contents; OPENFILE \"filename.txt\" FOR WRITE is used to write new data, creating the file if it does not already exist or erasing it if it does; OPENFILE \"filename.txt\" FOR APPEND is used to add further data onto the end of a file without disturbing what is already stored in it."
+        "At AS level every file is a text file. It is simply a series of characters divided into lines. After each line the file stores an invisible end-of-line marker, and after the final line it stores an end-of-file marker. You can make or inspect a text file in any plain text editor, which is a handy way to prepare test data for a program.",
+        "Because a text file holds only characters, it has no idea what type a value was meant to be. A line such as 64 is stored as the characters 6 and 4. When it is read back with READFILE it arrives as the STRING \"64\". In the same way, WRITEFILE expects a string, so a number is normally turned into text with NUM_TO_STR before it is written. One line usually holds one data item or one record."
       ],
       "bullets": [
-        "The correct order is always open, then read or write, then close; a file cannot be read from or written to before it has been opened.",
-        "The mode given in OPENFILE (READ, WRITE or APPEND) must match what the program is actually about to do with the file.",
-        "A single program can open, process and close several different files, or the same file more than once in different modes at different points."
+        "A text file is a sequence of lines; each line ends with an end-of-line marker and the file ends with an end-of-file marker.",
+        "READFILE and WRITEFILE work on one whole line at a time.",
+        "Every line read is a STRING; use STR_TO_NUM to turn it into a number and NUM_TO_STR to turn a number into a string for writing."
+      ],
+      "examples": [
+        {
+          "id": "08-file-contents-example",
+          "kind": "example",
+          "label": "The file Marks.txt used in the examples below",
+          "content": "Marks.txt (one mark per line)\nline 1: 64\nline 2: 38\nline 3: 81\nline 4: 50\nline 5: 47\n(end-of-file marker)\n\nEach line is stored as characters, so READFILE returns \"64\", \"38\", ... as strings."
+        }
+      ]
+    },
+    {
+      "id": "02-open-process-close-sequence",
+      "title": "The file-handling statements and the open-use-close pattern",
+      "content": [
+        "Cambridge pseudocode has a small, fixed set of file statements. OPENFILE <filename> FOR <mode> prepares a file for one kind of use: READ, WRITE or APPEND. READFILE <filename>, <variable> takes the next line from a file opened for reading. WRITEFILE <filename>, <string> puts a line into a file opened for writing or appending. EOF(<filename>) reports whether any lines remain to be read. CLOSEFILE <filename> ends the use of the file.",
+        "Every file task follows the same outline: open in the right mode, carry out the reads or writes, then close. The mode decides which statements are legal. You cannot WRITEFILE to a file opened FOR READ or READFILE from a file opened FOR WRITE or APPEND. If a program needs to read a file and then add to it, it closes the file and opens it again in the second mode. The filename can be a string literal such as \"Marks.txt\" or a STRING variable that holds the name."
+      ],
+      "bullets": [
+        "Order is always OPENFILE, then READFILE/WRITEFILE, then CLOSEFILE.",
+        "FOR READ allows READFILE and EOF(); FOR WRITE and FOR APPEND allow WRITEFILE.",
+        "To switch mode, close the file and open it again in the new mode."
       ],
       "examples": [
         {
           "id": "02-open-close-pseudocode",
           "kind": "pseudocode",
-          "label": "The basic open-process-close sequence",
-          "content": "OPENFILE \"scores.txt\" FOR READ\n// ... READFILE statements here ...\nCLOSEFILE \"scores.txt\"\n\nOPENFILE \"log.txt\" FOR WRITE\n// ... WRITEFILE statements here ...\nCLOSEFILE \"log.txt\""
+          "label": "Syntax summary of the file statements",
+          "content": "OPENFILE <filename> FOR READ      // existing file, read only\nREADFILE <filename>, <variable>   // next line into a STRING variable\nEOF(<filename>)                   // TRUE when no lines are left\n\nOPENFILE <filename> FOR WRITE     // new or emptied file\nOPENFILE <filename> FOR APPEND    // keep contents, add to the end\nWRITEFILE <filename>, <string>    // write one line\n\nCLOSEFILE <filename>              // finish with the file",
+          "language": "cambridge-pseudocode"
         }
       ]
     },
@@ -90,90 +113,152 @@
       "id": "03-why-closing-matters",
       "title": "Why a file must be closed",
       "content": [
-        "Closing a file with CLOSEFILE once processing is finished matters for two distinct reasons. First, an open file is often locked to the program that opened it, so leaving it open unnecessarily prevents any other program or process from using that same file; closing it releases this lock and makes the file available again. Second, when a program writes data, the data is frequently held temporarily in a memory buffer before being physically written to the storage device, for efficiency; CLOSEFILE forces any data still waiting in this buffer to actually be written to disk, so failing to close a file after writing to it can result in some or all of the written data never actually being saved.",
-        "For this reason, a well-written file-handling algorithm always closes every file it opens, including in situations where an error occurs partway through processing, so that the file is released and no buffered data is lost regardless of how the processing turns out."
+        "While a program has a file open, the operating system may stop other programs from using it. Closing the file removes that restriction. Writing is also buffered: lines passed to WRITEFILE are collected in memory and copied to the disk in blocks, because that is faster than one disk operation per line. CLOSEFILE forces anything still in the buffer to be saved. A program that writes a file but never closes it may leave the last lines, or all of them, unsaved.",
+        "Closing also resets the file so it can be opened again in another mode later in the same program. As a habit, write the CLOSEFILE statement straight after writing the OPENFILE, then fill in the processing between them."
       ],
       "bullets": [
-        "Closing a file releases it, so it is no longer locked to the program that had it open and can be used by other programs or processes.",
-        "Closing a file after writing ensures data waiting in a buffer is actually written to the storage device, rather than being lost.",
-        "Every OPENFILE should be matched by a corresponding CLOSEFILE once the program has finished using that file."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-reading-sequentially-with-eof",
-      "title": "Reading a file sequentially using EOF",
-      "content": [
-        "Unlike an array, whose fixed size is known when it is declared, the number of records stored in a file is not usually known in advance, so a file cannot simply be read with a FOR loop counting up to a fixed number. Instead, a file is read sequentially, from its first line to its last, inside a loop controlled by the EOF (end-of-file) function: EOF(FileName) returns TRUE once every line of the file has already been read, and FALSE while there are still more lines left to read. The standard structure is therefore a WHILE NOT EOF(FileName) loop, which keeps reading and processing one line at a time for as long as lines remain, and stops automatically as soon as the last line has been read, whatever the actual number of records in the file turns out to be.",
-        "Each call to READFILE FileName, Data reads the next line of the file into the variable Data and simultaneously advances the file's internal position on to the following line, so that the next READFILE call, or the next EOF check, reflects that the previous line has now been consumed."
-      ],
-      "bullets": [
-        "A file's number of records is not known in advance, so it is read with WHILE NOT EOF(FileName), not a counter-controlled FOR loop.",
-        "EOF(FileName) becomes TRUE only once every line has been read; checking it before each READFILE prevents attempting to read past the end of the file.",
-        "READFILE FileName, Data reads the next line into Data and moves the file's read position on to the line after it."
-      ],
-      "examples": [
-        {
-          "id": "04-reading-summing-pseudocode",
-          "kind": "worked",
-          "label": "Worked example: reading every line of a file and summing the numbers in it",
-          "content": "DECLARE LineData : STRING\nDECLARE Number : INTEGER\nDECLARE Total : INTEGER\n\nTotal <- 0\nOPENFILE \"numbers.txt\" FOR READ\n\nWHILE NOT EOF(\"numbers.txt\")\n  READFILE \"numbers.txt\", LineData\n  Number <- INT(LineData)\n  Total <- Total + Number\nENDWHILE\n\nCLOSEFILE \"numbers.txt\"\nOUTPUT Total\n\n// If numbers.txt contains the lines 12, 45, 7 and 20 (one number per line):\nTrace table:\nStep | LineData | Number | Total | EOF(\"numbers.txt\") after read\n1    | \"12\"     | 12     | 12    | FALSE\n2    | \"45\"     | 45     | 57    | FALSE\n3    | \"7\"      | 7      | 64    | FALSE\n4    | \"20\"     | 20     | 84    | TRUE\n\nThe loop checks EOF before each read; once it becomes TRUE after the fourth line, the loop condition WHILE NOT EOF(...) is FALSE, so the loop stops and the final output is Total = 84."
-        }
-      ]
-    },
-    {
-      "id": "05-write-versus-append",
-      "title": "WRITE mode versus APPEND mode",
-      "content": [
-        "Opening a file FOR WRITE and opening it FOR APPEND both make a file ready to have data written to it, but they behave very differently towards any data the file already contains. OPENFILE FileName FOR WRITE always starts the file empty: if the file already exists, everything previously stored in it is erased the moment it is opened in this mode, and if it does not yet exist, a new, empty file is created. This mode is used when a file's entire previous content should be discarded and replaced, for example creating a fresh log file for a new run of a program.",
-        "OPENFILE FileName FOR APPEND, in contrast, keeps every line already in the file untouched, and any new WRITEFILE statements add their data strictly after the existing content, at the end of the file. This mode is used when new data needs to accumulate over time without destroying records already saved, for example adding a new transaction to an existing transaction log each time the program runs, rather than overwriting the whole log every time."
-      ],
-      "bullets": [
-        "FOR WRITE erases an existing file's contents (or creates a new, empty file) before anything is written to it.",
-        "FOR APPEND keeps a file's existing contents and adds new data strictly after them, at the end of the file.",
-        "Choosing WRITE when APPEND was needed permanently destroys previously saved data; this choice cannot be undone once the file has been opened in that mode."
-      ],
-      "examples": [
-        {
-          "id": "05-write-append-pseudocode",
-          "kind": "worked",
-          "label": "Worked example: writing a fresh file, then appending further records to it",
-          "content": "// Program run 1: create a brand-new log, discarding anything previously in it\nOPENFILE \"log.txt\" FOR WRITE\nWRITEFILE \"log.txt\", \"Student,Score\"\nWRITEFILE \"log.txt\", \"Aisha,72\"\nCLOSEFILE \"log.txt\"\n// log.txt now contains exactly two lines: \"Student,Score\" and \"Aisha,72\"\n\n// Program run 2 (later): add a further record without losing what is already there\nOPENFILE \"log.txt\" FOR APPEND\nWRITEFILE \"log.txt\", \"Carlos,58\"\nCLOSEFILE \"log.txt\"\n// log.txt now contains three lines: the original two, plus \"Carlos,58\" added at the end.\n// Opening log.txt FOR WRITE again at this point would instead erase all three lines."
-        }
-      ]
-    },
-    {
-      "id": "06-converting-a-line-to-the-right-type",
-      "title": "Converting a line read from a file to the correct data type",
-      "content": [
-        "Every line read from a text file with READFILE is read as a string, regardless of what the data actually represents, because a text file simply stores sequences of characters with no information about what data type each line was originally meant to hold. If a line read from a file needs to be used as a number, for example to be added to a running total or compared numerically with another value, it must first be explicitly converted from a string to the required numeric type, using a conversion function such as INT(LineData) for a whole number or a corresponding function for a real number, before that conversion the value is only a string and cannot be used correctly in arithmetic.",
-        "Forgetting this conversion is a frequent source of error: attempting arithmetic directly on a string read from a file either causes a type error, or, in a language that performs implicit string concatenation, silently joins values together as text instead of adding them numerically, producing a result that looks plausible but is completely wrong."
-      ],
-      "bullets": [
-        "A line read from a text file with READFILE is always a string, whatever the data conceptually represents.",
-        "A string read from a file must be explicitly converted, for example with INT(LineData), before it can be used in numeric processing such as a running total.",
-        "Skipping this conversion is a common cause of a type error, or of numbers being wrongly joined together as text instead of added."
+        "CLOSEFILE releases the file so other programs and processes can use it.",
+        "CLOSEFILE flushes the write buffer, so data written is really stored.",
+        "Every OPENFILE needs a matching CLOSEFILE once processing of that file is complete."
       ],
       "examples": []
     },
     {
       "id": "07-writing-records-to-a-file",
-      "title": "Writing records to a file",
+      "title": "Writing a text file",
       "content": [
-        "WRITEFILE FileName, Data writes the value of Data as the next line of the open file, which must have been opened FOR WRITE or FOR APPEND beforehand; attempting to WRITEFILE a file that was opened FOR READ is not valid, because a file opened for reading has not been made ready to accept new data. Each call to WRITEFILE typically adds exactly one new line, so writing several records to a file normally means calling WRITEFILE once for each record, often from inside a loop that processes each record of some existing data structure, such as an array, in turn.",
-        "As with reading, the file must be closed with CLOSEFILE once every WRITEFILE call intended for that run of the program has been made, both to release the file and to guarantee that every line written has actually been saved to the storage device rather than left sitting in a buffer."
+        "Writing usually means creating a file from scratch. OPENFILE <filename> FOR WRITE makes a new empty file, or empties an existing one. Each WRITEFILE then adds one line after the previous one. A common task is saving the contents of an array so they can be reloaded in a later run: loop through the array and write one element per line.",
+        "WRITEFILE takes a string. If the data is numeric, convert it with NUM_TO_STR first. For a record with several fields, the fields can be joined into one line with a separator such as a comma, using the & concatenation operator."
       ],
       "bullets": [
-        "WRITEFILE FileName, Data requires the file to have been opened FOR WRITE or FOR APPEND; it cannot be used on a file opened FOR READ.",
-        "Each WRITEFILE call normally writes one line, so writing several records means calling WRITEFILE once per record, often inside a loop.",
-        "CLOSEFILE after writing is essential, not optional, since it is what guarantees buffered data is actually saved to disk."
+        "Open FOR WRITE, write one line per WRITEFILE, then CLOSEFILE.",
+        "Opening FOR WRITE erases any old contents before the first line is written.",
+        "Convert numbers with NUM_TO_STR, and join record fields with & and a separator, before writing."
       ],
       "examples": [
         {
           "id": "07-writing-array-to-file-pseudocode",
           "kind": "worked",
-          "label": "Worked example: writing every element of an array to a file",
-          "content": "DECLARE Scores : ARRAY[0:2] OF INTEGER\nDECLARE Index : INTEGER\n\nScores[0] <- 67\nScores[1] <- 82\nScores[2] <- 45\n\nOPENFILE \"results.txt\" FOR WRITE\nFOR Index <- 0 TO 2\n  WRITEFILE \"results.txt\", Scores[Index]\nNEXT Index\nCLOSEFILE \"results.txt\"\n\n// results.txt now contains three lines, in order: 67, then 82, then 45.\n// Because the file was opened FOR WRITE, any previous contents of results.txt\n// were erased first; opening FOR APPEND instead would have kept them and added\n// these three new lines after them."
+          "label": "Worked example: saving an array of names to Members.txt",
+          "content": "DECLARE Names : ARRAY[1:3] OF STRING\nDECLARE Index : INTEGER\n\nNames[1] ← \"Priya\"\nNames[2] ← \"Tomas\"\nNames[3] ← \"Keiko\"\n\nOPENFILE \"Members.txt\" FOR WRITE\nFOR Index ← 1 TO 3\n   WRITEFILE \"Members.txt\", Names[Index]\nNEXT Index\nCLOSEFILE \"Members.txt\"\n\nMembers.txt afterwards (whatever it held before is gone):\nline 1: Priya\nline 2: Tomas\nline 3: Keiko",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "09-reading-a-text-file",
+      "title": "Reading a text file line by line",
+      "content": [
+        "Reading needs a file that already exists. After OPENFILE <filename> FOR READ, the read position is at the first line. Each READFILE copies the current line into a STRING variable and moves the position down one line, so successive READFILE statements return the lines in order from top to bottom. There is no way to go back to an earlier line except to close the file and open it again.",
+        "If the exact number of lines is known, for example a settings file that always has two lines, the program can simply call READFILE that many times. Most files, however, have a length that is not known in advance, and that needs the EOF() loop shown later."
+      ],
+      "bullets": [
+        "FOR READ needs an existing file; the read position starts at line 1.",
+        "Each READFILE returns the next line and advances the position; reading is strictly sequential.",
+        "A fixed number of READFILE calls is only safe when the number of lines is guaranteed."
+      ],
+      "examples": [
+        {
+          "id": "09-read-two-lines",
+          "kind": "worked",
+          "label": "Worked example: reading the first two lines of Members.txt",
+          "content": "DECLARE First, Second : STRING\n\nOPENFILE \"Members.txt\" FOR READ\nREADFILE \"Members.txt\", First\nREADFILE \"Members.txt\", Second\nCLOSEFILE \"Members.txt\"\nOUTPUT First, \" and \", Second\n\nMembers.txt holds: Priya / Tomas / Keiko\nOutput:\nPriya and Tomas\n(Keiko is never read.)",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "05-write-versus-append",
+      "title": "WRITE versus APPEND",
+      "content": [
+        "Both modes allow WRITEFILE, but they treat existing contents in opposite ways. FOR WRITE throws away the old contents as soon as the file is opened, even if the program then writes nothing. FOR APPEND keeps every line and places new lines after the last one. If the file does not exist yet, both modes create it.",
+        "The choice follows from the task. Use WRITE when the file should hold only the new data, for example saving the full current state of an array, which replaces the last save. Use APPEND when data builds up over time and earlier lines must be kept, for example adding each new sale to a sales log or each new member to a membership list."
+      ],
+      "bullets": [
+        "WRITE: file emptied (or created), then new lines written from the top.",
+        "APPEND: existing lines kept, new lines added at the end (file created if missing).",
+        "Opening FOR WRITE by mistake destroys earlier data and cannot be undone by the program."
+      ],
+      "examples": [
+        {
+          "id": "05-write-append-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: APPEND then WRITE on Members.txt",
+          "content": "// Members.txt starts as: Priya / Tomas / Keiko\n\nOPENFILE \"Members.txt\" FOR APPEND\nWRITEFILE \"Members.txt\", \"Wen\"\nCLOSEFILE \"Members.txt\"\n// Members.txt now: Priya / Tomas / Keiko / Wen   (4 lines)\n\nOPENFILE \"Members.txt\" FOR WRITE\nWRITEFILE \"Members.txt\", \"Omar\"\nCLOSEFILE \"Members.txt\"\n// Members.txt now: Omar   (1 line - the four earlier lines were erased)",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "04-reading-sequentially-with-eof",
+      "title": "Reading a whole file with WHILE NOT EOF()",
+      "content": [
+        "To process every line of a file of unknown length, test EOF() before each read. EOF(<filename>) returns FALSE while there is still at least one unread line and TRUE once the last line has been read. The loop WHILE NOT EOF(<filename>) therefore runs exactly once per line and stops by itself, whether the file has three lines or three thousand.",
+        "A pre-condition WHILE loop is the right choice because the test happens before the first READFILE. If the file is empty, EOF() is TRUE straight away and the loop body never runs. A REPEAT ... UNTIL EOF() loop would work for a file with at least one line, but on an empty file it would try to read a line that does not exist. To load a file into an array, keep a separate index that goes up by one after each line, and stop if the array becomes full."
+      ],
+      "bullets": [
+        "Pattern: OPENFILE ... FOR READ, WHILE NOT EOF(file), READFILE, process, ENDWHILE, CLOSEFILE.",
+        "WHILE tests before reading, so an empty file is handled safely; REPEAT ... UNTIL does not.",
+        "Do not use a FOR loop with a guessed count, or a single IF, to read a file of unknown length."
+      ],
+      "examples": [
+        {
+          "id": "04-reading-summing-pseudocode",
+          "kind": "worked",
+          "label": "Worked example: numbering and counting every line of Marks.txt",
+          "content": "DECLARE LineData : STRING\nDECLARE LineCount : INTEGER\n\nLineCount ← 0\nOPENFILE \"Marks.txt\" FOR READ\nWHILE NOT EOF(\"Marks.txt\")\n   READFILE \"Marks.txt\", LineData\n   LineCount ← LineCount + 1\n   OUTPUT LineCount, \": \", LineData\nENDWHILE\nCLOSEFILE \"Marks.txt\"\nOUTPUT \"Lines read: \", LineCount\n\nMarks.txt holds: 64 / 38 / 81 / 50 / 47\n\nEOF before read | LineData | LineCount\nFALSE           | \"64\"     | 1\nFALSE           | \"38\"     | 2\nFALSE           | \"81\"     | 3\nFALSE           | \"50\"     | 4\nFALSE           | \"47\"     | 5\nTRUE            | loop ends\n\nOutput:\n1: 64\n2: 38\n3: 81\n4: 50\n5: 47\nLines read: 5\n\nIf Marks.txt were empty, EOF is TRUE at the first test, the loop body never runs, and the only output is: Lines read: 0",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "04-load-into-array",
+          "kind": "pseudocode",
+          "label": "Loading a file into an array without overrunning it",
+          "content": "DECLARE Marks : ARRAY[1:30] OF STRING\nDECLARE Index : INTEGER\n\nIndex ← 0\nOPENFILE \"Marks.txt\" FOR READ\nWHILE NOT EOF(\"Marks.txt\") AND Index < 30\n   Index ← Index + 1\n   READFILE \"Marks.txt\", Marks[Index]\nENDWHILE\nCLOSEFILE \"Marks.txt\"\n// With the five-line Marks.txt: Marks[1..5] = \"64\",\"38\",\"81\",\"50\",\"47\" and Index = 5",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "06-converting-a-line-to-the-right-type",
+      "title": "Converting what is read before calculating",
+      "content": [
+        "READFILE always places a string in its variable. Before a line can be added, averaged or compared as a number it must be converted with STR_TO_NUM. Without the conversion, an attempt to add the string to an INTEGER is a type error. In languages where + also joins strings, the values are glued together as text instead of added, which gives a result that looks like a number but is wrong.",
+        "Note that INT() is not the right function here: in Cambridge pseudocode INT(x) takes a REAL and returns its whole-number part. STR_TO_NUM(x) is the function that turns a numeric string into a number. Going the other way, NUM_TO_STR(x) prepares a number for WRITEFILE."
+      ],
+      "bullets": [
+        "Every line read is a STRING, whatever it looks like.",
+        "Use STR_TO_NUM(LineData) before arithmetic or numeric comparison; use NUM_TO_STR before writing a number.",
+        "Adding unconverted strings either fails or concatenates them."
+      ],
+      "examples": [
+        {
+          "id": "06-sum-and-average",
+          "kind": "worked",
+          "label": "Worked example: total and average of Marks.txt",
+          "content": "DECLARE LineData : STRING\nDECLARE Total, Count : INTEGER\n\nTotal ← 0\nCount ← 0\nOPENFILE \"Marks.txt\" FOR READ\nWHILE NOT EOF(\"Marks.txt\")\n   READFILE \"Marks.txt\", LineData\n   Total ← Total + STR_TO_NUM(LineData)\n   Count ← Count + 1\nENDWHILE\nCLOSEFILE \"Marks.txt\"\nIF Count > 0 THEN\n   OUTPUT \"Total: \", Total, \" Average: \", Total / Count\nENDIF\n\nTotal: 64 + 38 + 81 + 50 + 47 = 280, Count = 5\nOutput (/ always gives a REAL):\nTotal: 280 Average: 56.0\n\nWithout STR_TO_NUM, joining the strings would give \"6438815047\" instead of 280.",
+          "language": "cambridge-pseudocode"
+        }
+      ]
+    },
+    {
+      "id": "10-copying-and-filtering-files",
+      "title": "Copying and filtering one file into another",
+      "content": [
+        "Many exam tasks combine reading and writing: read each line of a source file and write some or all of the lines to a second file. Both files are open at once, one FOR READ and the other FOR WRITE (or APPEND if the target should keep what it already holds). A straight copy writes every line it reads. A filter tests each line and writes only those that meet a condition, converting with STR_TO_NUM first if the test is numeric.",
+        "Because WRITEFILE takes a string, a line that was read and not changed can be written back exactly as it was, with no conversion. A program can only change a text file by writing a new version, so updating one line of a file also follows this pattern: copy every line into a new file, writing the changed line in place of the old one."
+      ],
+      "bullets": [
+        "Open the source FOR READ and the target FOR WRITE or APPEND; close both at the end.",
+        "Loop WHILE NOT EOF(source), test each line, and WRITEFILE the lines that pass.",
+        "Editing one line of a text file means writing a new copy of the file with that line replaced."
+      ],
+      "examples": [
+        {
+          "id": "10-filter-pass-marks",
+          "kind": "worked",
+          "label": "Worked example: copying marks of 50 or more into Passed.txt",
+          "content": "DECLARE LineData : STRING\nDECLARE Copied : INTEGER\n\nCopied ← 0\nOPENFILE \"Marks.txt\" FOR READ\nOPENFILE \"Passed.txt\" FOR WRITE\nWHILE NOT EOF(\"Marks.txt\")\n   READFILE \"Marks.txt\", LineData\n   IF STR_TO_NUM(LineData) >= 50 THEN\n      WRITEFILE \"Passed.txt\", LineData\n      Copied ← Copied + 1\n   ENDIF\nENDWHILE\nCLOSEFILE \"Marks.txt\"\nCLOSEFILE \"Passed.txt\"\nOUTPUT Copied, \" marks copied\"\n\nLineData | >= 50? | Written | Copied\n\"64\"     | TRUE   | 64      | 1\n\"38\"     | FALSE  | -       | 1\n\"81\"     | TRUE   | 81      | 2\n\"50\"     | TRUE   | 50      | 3\n\"47\"     | FALSE  | -       | 3\n\nPassed.txt afterwards: 64 / 81 / 50\nOutput:\n3 marks copied",
+          "language": "cambridge-pseudocode"
         }
       ]
     }
@@ -183,122 +268,132 @@
     "title": "File modes compared",
     "columns": [
       "Mode",
-      "OPENFILE syntax",
-      "Effect on existing content",
+      "Statements allowed",
+      "If the file already exists",
+      "If the file does not exist",
       "Typical use"
     ],
     "rows": [
       [
-        "Read",
-        "OPENFILE FileName FOR READ",
-        "File must already exist; its content is unchanged by reading",
-        "Loading previously saved data back into the program"
+        "OPENFILE <name> FOR READ",
+        "READFILE, EOF()",
+        "Read from line 1; contents unchanged",
+        "Error: nothing to read",
+        "Loading saved data or input data"
       ],
       [
-        "Write",
-        "OPENFILE FileName FOR WRITE",
-        "Creates a new, empty file, or erases an existing file's contents",
-        "Producing a completely fresh file, discarding anything stored before"
+        "OPENFILE <name> FOR WRITE",
+        "WRITEFILE",
+        "All contents erased, writing starts at the top",
+        "New empty file created",
+        "Saving a fresh copy, e.g. an array's current contents"
       ],
       [
-        "Append",
-        "OPENFILE FileName FOR APPEND",
-        "Keeps existing content; new data is added after it",
-        "Adding further records to a file over time without losing earlier ones"
+        "OPENFILE <name> FOR APPEND",
+        "WRITEFILE",
+        "Contents kept, new lines added after the last line",
+        "New empty file created",
+        "Adding to a log or list over several runs"
       ]
     ]
   },
   "diagram": {
-    "title": "The open, process, close sequence for reading a file",
+    "title": "Reading every line of a text file",
     "type": "flow",
     "nodes": [
       "OPENFILE FileName FOR READ",
-      "Check EOF(FileName): is there a line left to read?",
-      "If not EOF: READFILE FileName, Data, then convert Data's type if needed and process it",
-      "Repeat the EOF check and READFILE for as long as EOF(FileName) is FALSE",
-      "Once EOF(FileName) becomes TRUE, stop the loop",
-      "CLOSEFILE FileName, releasing the file"
+      "Test EOF(FileName) before each read",
+      "FALSE: READFILE FileName, LineData",
+      "Convert with STR_TO_NUM if needed, then process or WRITEFILE to another file",
+      "Loop back to the EOF test",
+      "TRUE: leave the loop and CLOSEFILE FileName"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing a program that reads only one line of a file",
+      "title": "Why an IF reads only one line",
       "steps": [
-        "A file processing.txt contains five lines of data, one number per line",
-        "A program reads it using IF NOT EOF(\"processing.txt\") THEN READFILE \"processing.txt\", LineData, with no loop around the IF statement",
-        "Tracing the program shows the IF statement executes exactly once, reading only the first line, \"processing.txt\"",
-        "The remaining four lines are never read, because the program has no loop returning to check EOF(\"processing.txt\") again"
+        "Marks.txt holds five lines and a program must output all of them",
+        "The program uses IF NOT EOF(\"Marks.txt\") THEN READFILE ... OUTPUT ... ENDIF",
+        "The IF is executed once, so only line 1 (64) is read and output",
+        "Nothing sends control back to test EOF again, so lines 2 to 5 are ignored"
       ],
-      "evaluation": "The condition IF was used where a loop was needed: reading every line of a file that may contain an unknown number of records requires WHILE NOT EOF(\"processing.txt\") so the READFILE statement repeats until the end of the file is actually reached, not a single IF that runs its READFILE at most once."
+      "evaluation": "Repetition is needed, not selection: replacing IF ... ENDIF with WHILE NOT EOF(\"Marks.txt\") ... ENDWHILE makes the read-and-output steps run once for each of the five lines and stop at the end of the file."
     },
     {
-      "title": "Diagnosing lost data from an incorrect file mode",
+      "title": "Why WRITE lost a year of records",
       "steps": [
-        "A file called history.txt already contains 40 lines of previously saved records from earlier runs of a program",
-        "A new run of the program needs to add 5 further records without losing the existing 40",
-        "The program is written using OPENFILE \"history.txt\" FOR WRITE followed by five WRITEFILE calls, then CLOSEFILE",
-        "Tracing this shows that opening FOR WRITE erases history.txt's contents at the moment it is opened, before any of the five WRITEFILE calls execute"
+        "Sales.txt already holds 200 lines from earlier runs",
+        "Today's program must add 3 new sales",
+        "It opens the file with OPENFILE \"Sales.txt\" FOR WRITE and writes the 3 lines",
+        "Opening FOR WRITE empties the file before the first WRITEFILE, so the 200 old lines are gone"
       ],
-      "evaluation": "Using FOR WRITE where FOR APPEND was required destroys all 40 previously saved records irrecoverably, leaving only the 5 new ones; the fix is to open the file with OPENFILE \"history.txt\" FOR APPEND, which keeps the existing 40 lines and adds the 5 new records after them."
+      "evaluation": "The file ends up with 3 lines instead of 203. The task needs existing data kept, so the correct mode is FOR APPEND, which leaves the 200 lines in place and writes the 3 new sales after them."
     },
     {
-      "title": "Diagnosing a type error when summing values read from a file",
+      "title": "Why the total came out as a long string of digits",
       "steps": [
-        "A file marks.txt contains one integer mark per line, and a program aims to calculate their total",
-        "The program reads each line with READFILE \"marks.txt\", LineData and immediately writes Total <- Total + LineData, without converting LineData first",
-        "Tracing the program shows LineData holds a string value, such as \"45\", at the point it is added to Total, which is declared INTEGER",
-        "Attempting Total <- Total + LineData is checked against the data types involved: an INTEGER variable being combined directly with a STRING value"
+        "A program reads Marks.txt (64, 38, 81, 50, 47) and adds each LineData to Total",
+        "LineData is a STRING because READFILE always returns text",
+        "In a language where + joins strings, Total becomes \"6438815047\"; in a strictly typed one the addition is rejected",
+        "Neither result is the intended numeric total"
       ],
-      "evaluation": "LineData was never converted from the string READFILE always produces into a numeric type, so the addition is invalid, or wrongly concatenates values as text; the fix is to insert Number <- INT(LineData) after each READFILE and add Number, not LineData, to Total."
+      "evaluation": "Each line must be converted before arithmetic: Total ← Total + STR_TO_NUM(LineData) gives 280, and dividing by the 5 lines read gives an average of 56."
     }
   ],
   "examTips": [
-    "Always show the file being closed with CLOSEFILE at the end of a file-handling algorithm; omitting it, or closing before processing has finished, is a common lost mark.",
-    "Use WHILE NOT EOF(FileName), not a FOR loop with a guessed number of repetitions, whenever the number of records in a file is not stated to be known in advance.",
-    "State clearly whether a file should be opened FOR WRITE or FOR APPEND: WRITE always discards existing content, APPEND always keeps it.",
-    "When a value read from a file will be used in a calculation, show the explicit conversion, such as INT(LineData), rather than using the value read from the file directly."
+    "Write file statements exactly: OPENFILE \"X.txt\" FOR READ, READFILE \"X.txt\", Var, WRITEFILE \"X.txt\", Value, EOF(\"X.txt\"), CLOSEFILE \"X.txt\". Each is often a separate mark.",
+    "When the number of lines is not given, read with WHILE NOT EOF(...) ... ENDWHILE, testing before each READFILE.",
+    "Read the question for the words 'add to' or 'keep existing data' (APPEND) versus 'create' or 'replace' (WRITE).",
+    "Convert with STR_TO_NUM before any calculation or numeric comparison on a line read from a file.",
+    "Close every file you open, and close both files in a copy or filter algorithm."
   ],
   "commonMistakes": [
-    "Reading a file with an IF statement instead of a loop, so only the first line is ever processed.",
-    "Opening a file FOR WRITE when FOR APPEND was needed, permanently erasing data that should have been kept.",
-    "Forgetting to close a file after writing to it, risking buffered data never actually being saved to disk.",
-    "Using a line read from a file directly in a numeric calculation without converting it from a string first.",
-    "Attempting to READFILE a file that was opened FOR WRITE, or to WRITEFILE a file that was opened FOR READ."
+    "Using IF NOT EOF(...) instead of WHILE NOT EOF(...), so only one line is processed.",
+    "Opening FOR WRITE when the task says add to the file, erasing the existing contents.",
+    "Using a REPEAT ... UNTIL EOF() loop that tries to read from an empty file.",
+    "Doing arithmetic on the STRING from READFILE instead of converting with STR_TO_NUM.",
+    "Using READFILE on a file opened FOR WRITE or APPEND, or WRITEFILE on a file opened FOR READ.",
+    "Leaving out CLOSEFILE, or closing the file inside the loop after the first line."
   ],
   "quickRecall": [
     {
-      "question": "Why must data be written to a file if it needs to survive after a program ends?",
-      "answer": "Because data held only in variables exists in main memory and is lost the moment the program that declared it terminates; a file stored on permanent storage continues to exist afterwards."
+      "question": "Give three reasons why files are needed.",
+      "answer": "Data in variables is lost when the program ends, so a file keeps it between runs; files let data be passed between programs, users and computers; files hold large data sets and lasting output such as logs and backups."
     },
     {
-      "question": "What is the standard sequence for using a file?",
-      "answer": "Open the file in the required mode (READ, WRITE or APPEND), perform the necessary reads or writes, then close the file."
+      "question": "Describe the structure of a text file.",
+      "answer": "A sequence of lines of characters; each line ends with an end-of-line marker and the file ends with an end-of-file marker."
     },
     {
-      "question": "Give two reasons why a file must be closed once processing is finished.",
-      "answer": "Closing releases the file so other programs or processes can use it, and ensures any data still waiting in a buffer is actually written to the storage device."
+      "question": "Write the statement to open Log.txt so new lines go after the existing ones.",
+      "answer": "OPENFILE \"Log.txt\" FOR APPEND"
     },
     {
-      "question": "How is a file read when the number of records it contains is not known in advance?",
-      "answer": "Sequentially, using a loop controlled by an end-of-file check, WHILE NOT EOF(FileName), rather than a counter-controlled loop with a fixed number of repetitions."
+      "question": "What happens to an existing file opened FOR WRITE?",
+      "answer": "Its contents are erased when it is opened, and new lines are written from the start."
     },
     {
-      "question": "What is the difference between opening a file FOR WRITE and FOR APPEND?",
-      "answer": "FOR WRITE creates a new, empty file or erases an existing file's contents; FOR APPEND keeps a file's existing contents and adds new data after them."
+      "question": "What does EOF(\"Data.txt\") return and why is it tested before READFILE?",
+      "answer": "TRUE when no unread lines remain, otherwise FALSE. Testing first means an empty file is handled and the program never reads past the last line."
     },
     {
-      "question": "What data type is a line read from a text file with READFILE?",
-      "answer": "Always a string, regardless of what the data conceptually represents; it must be explicitly converted to a numeric type before use in a calculation."
+      "question": "Why is STR_TO_NUM needed after READFILE?",
+      "answer": "READFILE always returns a STRING, so the value must be converted to a number before it can be used in arithmetic or numeric comparison."
     },
     {
-      "question": "What does CLOSEFILE guarantee that simply finishing the last READFILE or WRITEFILE call does not?",
-      "answer": "That the file is released for other programs to use and that any data still held in a buffer has actually been written to the storage device."
+      "question": "Give two reasons for CLOSEFILE.",
+      "answer": "It releases the file for other programs, and it makes sure any buffered lines are actually written to storage."
+    },
+    {
+      "question": "How do you keep only the lines of A.txt that meet a condition in B.txt?",
+      "answer": "Open A.txt FOR READ and B.txt FOR WRITE, loop WHILE NOT EOF(\"A.txt\") reading each line, WRITEFILE it to B.txt if it meets the condition, then close both files."
     }
   ],
   "relatedTopics": [
     "10.1",
     "10.2",
-    "10.4",
-    "9.1"
+    "11.1",
+    "11.2"
   ]
 }

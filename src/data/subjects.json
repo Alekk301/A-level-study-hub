@@ -1036,11 +1036,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Open, read from, write to and close files, processing records sequentially while checking for end-of-file.",
+            "summary": "Why files are needed, and pseudocode for text files of one or more lines: OPENFILE for READ, WRITE or APPEND, READFILE, WRITEFILE, EOF() and CLOSEFILE.",
             "focusPoints": [
-              "open/read/write/close",
-              "EOF",
-              "sequential processing"
+              "why files are needed",
+              "READ/WRITE/APPEND modes",
+              "WHILE NOT EOF loops",
+              "copying and filtering files"
             ],
             "contentDepth": "full"
           },
@@ -1051,11 +1052,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Revise stacks, queues, linked-list concepts.",
+            "summary": "ADTs as data plus operations: stacks, queues (including circular queues) and linked lists, adding, editing and deleting data, and implementing each with arrays.",
             "focusPoints": [
-              "stacks",
-              "queues",
-              "linked-list concepts"
+              "stack (LIFO)",
+              "queue and circular queue (FIFO)",
+              "linked list and free list",
+              "array implementation"
             ],
             "contentDepth": "full"
           },
