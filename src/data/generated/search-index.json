@@ -20781,107 +20781,773 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "A2 logic moves beyond basic gates to adders, flip-flops, Boolean algebra and Karnaugh maps. You need to derive truth tables/circuits, understand one-bit storage, simplify expressions correctly and minimise circuits using K-maps."
+        "text": "Topic 15.2 covers logic circuits, flip-flops, Boolean algebra and Karnaugh maps. You need truth tables for circuits (including gates with more than two inputs), the half adder (S = A XOR B, C = A.B) and the full adder built from two half adders and an OR gate, chained into a multi-bit adder; SR flip-flops from NOR or NAND gates with the invalid state, and the clocked JK flip-flop with its toggle; flip-flops as storage elements in registers and SRAM; the Boolean laws and De Morgan's laws for simplifying expressions step by step; and K-maps with Gray-code labels and grouping rules to find the simplest sum of products."
       },
       {
         "kind": "Definition",
         "label": "Half adder",
-        "text": "Adds two input bits and outputs Sum and Carry."
+        "text": "A circuit that adds two single bits and outputs a Sum bit (A XOR B) and a Carry bit (A AND B)."
       },
       {
         "kind": "Definition",
         "label": "Full adder",
-        "text": "Adds two bits plus CarryIn and outputs Sum and CarryOut."
+        "text": "A circuit that adds two bits and a carry-in bit and outputs a Sum bit and a carry-out bit; it can be built from two half adders and an OR gate."
+      },
+      {
+        "kind": "Definition",
+        "label": "Combinational circuit",
+        "text": "A circuit whose output depends only on its current input values."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sequential circuit",
+        "text": "A circuit whose output depends on its current inputs and on its previous output (its stored state)."
       },
       {
         "kind": "Definition",
         "label": "Flip-flop",
-        "text": "A bistable sequential circuit capable of storing one bit of state."
+        "text": "A bistable sequential circuit with two stable states that stores one bit; used as a data storage element."
       },
       {
         "kind": "Definition",
-        "label": "Karnaugh map",
-        "text": "A visual map of truth-table outputs used to group adjacent values and minimise Boolean expressions."
+        "label": "SR flip-flop",
+        "text": "A flip-flop with Set and Reset inputs, built from two cross-coupled NOR (or NAND) gates; S = R = 1 (NOR version) is an invalid input."
+      },
+      {
+        "kind": "Definition",
+        "label": "JK flip-flop",
+        "text": "A clocked flip-flop with inputs J (set) and K (reset); J = K = 1 toggles the output, so there is no invalid input combination."
       },
       {
         "kind": "Definition",
         "label": "De Morgan's laws",
-        "text": "Rules that distribute NOT over AND/OR while swapping the operator."
+        "text": "(A.B)' = A' + B' and (A + B)' = A'.B': the complement of an AND is the OR of the complements, and the complement of an OR is the AND of the complements."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sum of products (SOP)",
+        "text": "An expression made by ORing together product (AND) terms; from a truth table, one minterm per row whose output is 1."
+      },
+      {
+        "kind": "Definition",
+        "label": "Minterm",
+        "text": "A product term containing every input once, either as it is (1) or complemented (0), that is true for exactly one row of the truth table."
+      },
+      {
+        "kind": "Definition",
+        "label": "Karnaugh map (K-map)",
+        "text": "A grid form of a truth table with Gray-code labels, where adjacent groups of 1s are looped to find the simplest sum-of-products expression."
+      },
+      {
+        "kind": "Definition",
+        "label": "Gray code",
+        "text": "An ordering of binary values in which only one bit changes between neighbours (00, 01, 11, 10), used to label K-map rows and columns."
       },
       {
         "kind": "Section",
-        "text": "Half and full adders"
+        "text": "Truth tables for logic circuits (including gates with more than two inputs)"
       },
       {
         "kind": "Content",
-        "label": "Half and full adders",
-        "text": "For a half adder, Sum is A XOR B and Carry is A AND B. A full adder includes CarryIn so units can be chained to add multi-bit binary values."
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "Notation in this note: A.B = A AND B, A + B = A OR B, A' = NOT A. Exam papers draw a bar over the letter or bracket instead of the ' mark. To produce a truth table, list every input combination in binary order, add a working column for each intermediate gate output, then work left to right through the circuit."
+      },
+      {
+        "kind": "Content",
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "n inputs give 2^n rows: 2 inputs = 4 rows, 3 inputs = 8 rows, 4 inputs = 16 rows."
+      },
+      {
+        "kind": "Content",
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "List the inputs in binary counting order (000, 001, 010 ... 111) so no combination is missed."
+      },
+      {
+        "kind": "Content",
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "A gate may have more than two inputs: a 3-input AND outputs 1 only when all three inputs are 1; a 3-input OR outputs 1 when at least one input is 1."
+      },
+      {
+        "kind": "Content",
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "A multi-input NAND outputs 0 only when all inputs are 1; a multi-input NOR outputs 1 only when all inputs are 0."
+      },
+      {
+        "kind": "Content",
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "Use the working space: label intermediate outputs (P, Q ...) and fill those columns first; examiners give method marks for them."
+      },
+      {
+        "kind": "Content",
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "A combinational circuit's output depends only on the current inputs."
       },
       {
         "kind": "Example",
-        "label": "Half and full adders",
-        "text": "Half adder: S = A XOR B; C = A AND B"
+        "label": "Truth tables for logic circuits (including gates with more than two inputs)",
+        "text": "Circuit: a 3-input AND gate (inputs A, B, C) gives P; a NOR gate (inputs A, B) gives Q;\nP and Q feed an OR gate whose output is X.\n\nA B C | P=A.B.C | Q=(A+B)' | X=P+Q\n0 0 0 |    0    |     1     |   1\n0 0 1 |    0    |     1     |   1\n0 1 0 |    0    |     0     |   0\n0 1 1 |    0    |     0     |   0\n1 0 0 |    0    |     0     |   0\n1 0 1 |    0    |     0     |   0\n1 1 0 |    0    |     0     |   0\n1 1 1 |    1    |     0     |   1\n\nSum of products from the 1 rows: X = A'.B'.C' + A'.B'.C + A.B.C"
       },
       {
         "kind": "Section",
-        "text": "SR and JK flip-flops"
+        "text": "The half adder"
       },
       {
         "kind": "Content",
-        "label": "SR and JK flip-flops",
-        "text": "An SR flip-flop has Set/Reset control and stores output Q. A basic SR design has a forbidden/ambiguous input combination. The JK design resolves that case: when J=K=1 the output toggles. Flip-flops are building blocks for registers/counters/state memory."
-      },
-      {
-        "kind": "Section",
-        "text": "Boolean algebra"
+        "label": "The half adder",
+        "text": "Adding two bits can give a 2-bit answer (1 + 1 = 10 in binary), so the adder needs two outputs: the sum bit and the carry bit. The Carry column matches AND and the Sum column matches XOR."
       },
       {
         "kind": "Content",
-        "label": "Boolean algebra",
-        "text": "Use identity, complement, absorption, idempotent and distributive laws plus De Morgan. A simplification is valid only if it preserves the truth table."
+        "label": "The half adder",
+        "text": "A half adder adds two bits, A and B, and outputs a Sum bit (S) and a Carry bit (C)."
+      },
+      {
+        "kind": "Content",
+        "label": "The half adder",
+        "text": "S = A XOR B = A'.B + A.B'; C = A.B."
+      },
+      {
+        "kind": "Content",
+        "label": "The half adder",
+        "text": "Circuit: one XOR gate and one AND gate, each with inputs A and B."
+      },
+      {
+        "kind": "Content",
+        "label": "The half adder",
+        "text": "Sum is the least significant bit of the result; Carry is the most significant bit (it carries into the next column)."
+      },
+      {
+        "kind": "Content",
+        "label": "The half adder",
+        "text": "It cannot accept a carry in from a previous column, so it can only add the least significant bits."
+      },
+      {
+        "kind": "Content",
+        "label": "The half adder",
+        "text": "NAND (or NOR) gates are universal: a half adder can be built from NAND gates only, which are cheap and easy to manufacture."
+      },
+      {
+        "kind": "Content",
+        "label": "The half adder",
+        "text": "Quick way to fill the table: add A + B and write the answer as 2 bits, C then S."
       },
       {
         "kind": "Example",
-        "label": "Boolean algebra",
-        "text": "NOT(A.B) = NOT A + NOT B\nNOT(A+B) = NOT A . NOT B"
+        "label": "The half adder",
+        "text": "A B | S C\n0 0 | 0 0\n0 1 | 1 0\n1 0 | 1 0\n1 1 | 0 1\n\nC is 1 only on the 1 + 1 row (AND); S is 1 when the inputs differ (XOR).\nCheck: 1 + 1 = 2 = 10 in binary, so C = 1, S = 0."
       },
       {
         "kind": "Section",
-        "text": "Karnaugh maps"
+        "text": "The full adder and multi-bit adders"
       },
       {
         "kind": "Content",
-        "label": "Karnaugh maps",
-        "text": "Place outputs in Gray-code order so adjacent cells differ by one variable. Group adjacent 1s in rectangles of size 1,2,4,8...; make groups as large as possible and allow wrap-around adjacency. Variables that change inside a group disappear from the simplified term."
+        "label": "The full adder and multi-bit adders",
+        "text": "A full adder handles one column of a binary addition, including the carry from the column to its right. Chaining full adders adds whole binary numbers."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "A full adder adds three bits: A, B and carry in (Cin); outputs Sum (S) and carry out (Cout)."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "S = A XOR B XOR Cin (S is 1 when an odd number of inputs are 1)."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "Cout = A.B + Cin.(A XOR B), which equals A.B + A.Cin + B.Cin (Cout is 1 when at least two inputs are 1)."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "Built from two half adders and an OR gate: half adder 1 adds A and B (giving S1, C1); half adder 2 adds S1 and Cin (giving S, C2); Cout = C1 OR C2."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "Multi-bit (ripple-carry) adder: one full adder per bit; the Cout of each adder is connected to the Cin of the next more significant adder."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "The Cin of the least significant adder is set to 0 (or a half adder is used there)."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "A carry out of the most significant adder means the result needs an extra bit (overflow for a fixed-length register)."
+      },
+      {
+        "kind": "Content",
+        "label": "The full adder and multi-bit adders",
+        "text": "Quick way to fill the table: add A + B + Cin (0 to 3) and write it as 2 bits, Cout then S."
+      },
+      {
+        "kind": "Example",
+        "label": "The full adder and multi-bit adders",
+        "text": "S1 = A XOR B, C1 = A.B (half adder 1); S = S1 XOR Cin, C2 = S1.Cin (half adder 2); Cout = C1 + C2\n\nA B Cin | S1 C1 C2 | S Cout\n0 0  0  |  0  0  0 | 0  0\n0 0  1  |  0  0  0 | 1  0\n0 1  0  |  1  0  0 | 1  0\n0 1  1  |  1  0  1 | 0  1\n1 0  0  |  1  0  0 | 1  0\n1 0  1  |  1  0  1 | 0  1\n1 1  0  |  0  1  0 | 0  1\n1 1  1  |  0  1  0 | 1  1"
+      },
+      {
+        "kind": "Example",
+        "label": "The full adder and multi-bit adders",
+        "text": "Start at the least significant bit (bit 0) with Cin = 0; each Cout becomes the next Cin.\n\nbit 0: A=1 B=0 Cin=0 -> S=1 Cout=0\nbit 1: A=1 B=1 Cin=0 -> S=0 Cout=1\nbit 2: A=0 B=1 Cin=1 -> S=0 Cout=1\nbit 3: A=1 B=0 Cin=1 -> S=0 Cout=1\nResult: carry 1, sum 0001 -> 10001 = 17\n\nThe fifth bit (the final carry) is needed: 11 + 6 = 17 does not fit in 4 bits."
       },
       {
         "kind": "Section",
-        "text": "Why simplify"
+        "text": "Sequential circuits and the SR flip-flop"
       },
       {
         "kind": "Content",
-        "label": "Why simplify",
-        "text": "Fewer terms/gates can reduce hardware cost, propagation delay, power use and opportunities for error. K-maps give a systematic visual way to find such reductions for small variable counts."
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "A flip-flop feeds its outputs back into its own inputs, so its new output depends on its previous output as well as on the inputs. That feedback is what lets it remember one bit."
       },
       {
-        "kind": "Quick recall",
-        "text": "half adder=XOR+AND"
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "Sequential circuit: output depends on the current inputs AND the previous output (state); combinational circuit: output depends on the inputs only."
       },
       {
-        "kind": "Quick recall",
-        "text": "full adder includes CarryIn"
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "A flip-flop is a bistable circuit: it has two stable states (Q = 1, Q' = 0 or Q = 0, Q' = 1), so it stores one bit."
       },
       {
-        "kind": "Quick recall",
-        "text": "flip-flop stores 1 bit"
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "SR flip-flop (latch): inputs S (Set) and R (Reset); outputs Q and Q' (the complement of Q)."
       },
       {
-        "kind": "Quick recall",
-        "text": "De Morgan swaps AND/OR under NOT"
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "Built from two cross-coupled NOR gates (or two NAND gates): each gate's output is fed back as an input to the other gate."
       },
       {
-        "kind": "Quick recall",
-        "text": "K-map groups powers of 2"
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "NOR version: S = 1, R = 0 sets Q = 1; S = 0, R = 1 resets Q = 0; S = 0, R = 0 holds the previous value (memory state)."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "NOR version: S = 1, R = 1 is invalid: Q and Q' both become 0, so they are no longer complements."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "If S and R then both return to 0 at the same time, the next state is unpredictable, so S = R = 1 must never be input."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "NAND version: inputs are active low: S = 0 sets, R = 0 resets, S = R = 1 holds; S = R = 0 is invalid (Q = Q' = 1)."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "Inputs arriving at slightly different times can also leave an SR flip-flop in an uncertain state."
+      },
+      {
+        "kind": "Example",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "Circuit: Q = (R + Q')' and Q' = (S + Q)' (each NOR gate takes one input and the other gate's output).\n\nStep              S R | Q Q'\nstart (reset)     0 0 | 0 1\nS goes to 1       1 0 | 1 0\nS back to 0       0 0 | 1 0\nR goes to 1       0 1 | 0 1\nR back to 0       0 0 | 0 1\nS=R=1 (invalid)   1 1 | 0 0\n\nS = 0, R = 0 keeps whatever was stored: this is how the bit is remembered.\nLast row: Q = Q' = 0 is invalid. Dropping S and R to 0 together makes the gates\nflip between 11 and 00 (a race), so the stored value is unpredictable."
+      },
+      {
+        "kind": "Example",
+        "label": "Sequential circuits and the SR flip-flop",
+        "text": "Circuit: Q = (S.Q')' and Q' = (R.Q)'. A NAND gate outputs 0 only when all its inputs are 1.\n\nStep              S R | Q Q'\nstart (hold)      1 1 | 0 1\nS goes to 0       0 1 | 1 0\nS back to 1       1 1 | 1 0\nR goes to 0       1 0 | 0 1\nR back to 1       1 1 | 0 1\nS=R=0 (invalid)   0 0 | 1 1\n\nHere 0 is the active value: S = 0 sets, R = 0 resets, S = R = 1 holds.\nS = R = 0 is the invalid combination (Q = Q' = 1)."
+      },
+      {
+        "kind": "Section",
+        "text": "The JK flip-flop"
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "The JK flip-flop adds a clock input and feeds Q and Q' back into its input gates. Changes happen only on a clock pulse, and J = K = 1 now has a defined meaning (toggle), so no input combination is invalid."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "Inputs: J (acts as set), K (acts as reset) and a clock (CLK); outputs Q and Q'."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "Outputs change only when the clock pulse arrives, so all inputs are synchronised (no uncertain state from inputs arriving at different times)."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "J = 0, K = 0: Q unchanged (hold). J = 1, K = 0: Q = 1 (set). J = 0, K = 1: Q = 0 (reset)."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "J = 1, K = 1: Q toggles (Q becomes Q', and Q' becomes Q)."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "So the invalid state of the SR flip-flop is removed: every input combination gives a predictable output."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "Circuit idea: an SR flip-flop with two 3-input NAND gates in front of it; one takes J, CLK and Q', the other takes K, CLK and Q. The feedback enables only the gate that can change the state, which gives the toggle."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "Next state on a clock pulse: Q(next) = J.Q' + K'.Q."
+      },
+      {
+        "kind": "Content",
+        "label": "The JK flip-flop",
+        "text": "Advantages over SR: clock synchronisation; no invalid input combination; toggle makes it useful for counters."
+      },
+      {
+        "kind": "Example",
+        "label": "The JK flip-flop",
+        "text": "Pulse J K | Q before -> Q after  (action)\n  1   1 0 |    0     ->    1     (set)\n  2   0 0 |    1     ->    1     (hold)\n  3   1 1 |    1     ->    0     (toggle)\n  4   1 1 |    0     ->    1     (toggle)\n  5   0 1 |    1     ->    0     (reset)\n  6   1 1 |    0     ->    1     (toggle)\n\nEvery row follows Q(next) = J.Q' + K'.Q. Pulses 3 and 4 show two toggles in a row."
+      },
+      {
+        "kind": "Section",
+        "text": "Flip-flops as data storage elements"
+      },
+      {
+        "kind": "Content",
+        "label": "Flip-flops as data storage elements",
+        "text": "Because a flip-flop keeps its output after the inputs return to the hold values, it is the basic memory cell of a processor."
+      },
+      {
+        "kind": "Content",
+        "label": "Flip-flops as data storage elements",
+        "text": "Role: a flip-flop stores one bit (0 or 1) and holds it until it is changed by a set/reset (or clock) input."
+      },
+      {
+        "kind": "Content",
+        "label": "Flip-flops as data storage elements",
+        "text": "A register is a group of flip-flops, one per bit, sharing a clock (e.g. 8 flip-flops = an 8-bit register such as the ACC, MAR or MDR)."
+      },
+      {
+        "kind": "Content",
+        "label": "Flip-flops as data storage elements",
+        "text": "Static RAM (SRAM), used for cache memory, stores each bit in a flip-flop circuit; it keeps data while power is on without needing refreshing."
+      },
+      {
+        "kind": "Content",
+        "label": "Flip-flops as data storage elements",
+        "text": "JK flip-flops in toggle mode are chained to make counters (binary counters, frequency dividers)."
+      },
+      {
+        "kind": "Content",
+        "label": "Flip-flops as data storage elements",
+        "text": "Flip-flops are volatile: the stored bit is lost when power is removed."
+      },
+      {
+        "kind": "Section",
+        "text": "Boolean algebra: the laws and De Morgan's laws"
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "In Boolean algebra 1 means TRUE, 0 means FALSE, . means AND and + means OR, so 1 + 1 = 1 (TRUE OR TRUE is TRUE). Each law has an AND form and an OR form: swap AND with OR and 0 with 1 to get one from the other."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Identity: 1.A = A; 0 + A = A."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Null (annulment): 0.A = 0; 1 + A = 1."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Idempotent: A.A = A; A + A = A."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Complement (inverse): A.A' = 0; A + A' = 1."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Double complement: (A')' = A."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Commutative: A.B = B.A; A + B = B + A."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Associative: (A.B).C = A.(B.C); (A + B) + C = A + (B + C)."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Distributive: A.(B + C) = A.B + A.C; A + B.C = (A + B).(A + C)."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Absorption: A.(A + B) = A; A + A.B = A."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "De Morgan: (A.B)' = A' + B' and (A + B)' = A'.B'. Break the bar, change the operator (AND to OR, OR to AND), and complement each term."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "De Morgan works for more inputs: (A.B.C)' = A' + B' + C'."
+      },
+      {
+        "kind": "Content",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "Use De Morgan to rewrite a circuit with only NAND or only NOR gates, e.g. A + B = (A'.B')', an OR built from NAND gates."
+      },
+      {
+        "kind": "Example",
+        "label": "Boolean algebra: the laws and De Morgan's laws",
+        "text": "X = ((A + B)' + C)'\n  = (A + B)''.C'        De Morgan: break the outer bar, + becomes ., complement each term\n  = (A + B).C'          double complement\n\nWork from the longest bar inwards, one law per line."
+      },
+      {
+        "kind": "Section",
+        "text": "Simplifying expressions and circuits with Boolean algebra"
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "A simpler expression means a circuit with fewer gates, which is cheaper, uses less power and is faster. Every step must keep the truth table the same; naming the law used earns the method marks."
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Show every stage; write one law per line and name it."
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Common moves: take out a common factor (distributive), then X + X' = 1 (complement), then X.1 = X (identity)."
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Sometimes the expression must be expanded first (e.g. A + A'.B = (A + A').(A + B) by the OR form of the distributive law)."
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "A useful result to remember: A + A'.B = A + B."
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Check the answer by comparing truth tables of the original and simplified expressions."
+      },
+      {
+        "kind": "Content",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Simplification gives the same output for every input with fewer gates: lower cost, less power and heat, shorter propagation delay."
+      },
+      {
+        "kind": "Example",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "X = A.B + A.B'\n  = A.(B + B')      distributive\n  = A.1             complement (B + B' = 1)\n  = A               identity"
+      },
+      {
+        "kind": "Example",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Y = (A'.B)'.(A + B)\n  = (A'' + B').(A + B)   De Morgan\n  = (A + B').(A + B)     double complement\n  = A + B'.B             distributive (OR form)\n  = A + 0                complement (B'.B = 0)\n  = A                    identity"
+      },
+      {
+        "kind": "Example",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "Z = A'.B.C + A'.B.C' + A\n  = A'.B.(C + C') + A     distributive\n  = A'.B.1 + A            complement\n  = A'.B + A              identity\n  = A + A'.B              commutative\n  = (A + A').(A + B)      distributive (OR form)\n  = 1.(A + B)             complement\n  = A + B                 identity"
+      },
+      {
+        "kind": "Example",
+        "label": "Simplifying expressions and circuits with Boolean algebra",
+        "text": "W = ((A + B)' + (A.C)')'\n  = (A + B)''.(A.C)''     De Morgan\n  = (A + B).(A.C)         double complement\n  = A.A.C + B.A.C         distributive (and commutative)\n  = A.C + A.B.C           idempotent (A.A = A)\n  = A.C                   absorption (A.C + A.C.B = A.C)\n\nA circuit of NOR/NAND/OR gates reduces to one 2-input AND gate."
+      },
+      {
+        "kind": "Section",
+        "text": "Writing expressions from truth tables and circuits"
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "Sum of products (SOP) turns a truth table straight into an expression. It is always correct but rarely the simplest, so it is usually followed by Boolean algebra or a K-map."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "Sum of products: write one product term (minterm) for each row where the output is 1, then OR the terms together."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "In each minterm, an input that is 1 is written as it is; an input that is 0 is written complemented (e.g. row A = 0, B = 1, C = 1 gives A'.B.C)."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "Each minterm contains every input exactly once."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "If two 1 rows differ in only one input, that input can be dropped: A'.B.C + A'.B.C' = A'.B."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "From a circuit: write the expression for each gate output in turn, working from inputs to output, then simplify."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "Half adder by SOP: C has one 1 row, so C = A.B; S has two, so S = A'.B + A.B'."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing expressions from truth tables and circuits",
+        "text": "Rows where X = 1:  000, 010, 100, 101, 110\nX = A'.B'.C' + A'.B.C' + A.B'.C' + A.B'.C + A.B.C'\n\nFive minterms need five 3-input AND gates and a 5-input OR gate.\nSection 11 simplifies this to X = C' + A.B' with a K-map."
+      },
+      {
+        "kind": "Section",
+        "text": "Karnaugh maps: benefits and method"
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "A Karnaugh map (K-map) is a grid version of a truth table, arranged so that neighbouring cells differ in exactly one input. A group of 1s shows which inputs do not affect the output, and those inputs are dropped."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "Benefits: gives the simplest (minimal) sum-of-products expression; a visual, methodical way that is quicker and less error-prone than Boolean algebra; fewer terms means fewer gates, so a cheaper, faster circuit."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "One cell per row of the truth table: 2 inputs = 4 cells (2 x 2), 3 inputs = 8 cells (2 x 4), 4 inputs = 16 cells (4 x 4)."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "Label rows and columns in Gray code order: 00, 01, 11, 10 (only one bit changes between neighbours), NOT binary order."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "Group only 1s; groups must be rectangles containing 1, 2, 4, 8 (a power of 2) cells; no diagonal groups; no 0s in a group."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "Make each group as large as possible and use as few groups as possible; every 1 must be in at least one group."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "Groups may overlap (a 1 can be in more than one group)."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "The map wraps around: the left and right edges are adjacent, and the top and bottom edges are adjacent (so the four corners can form one group)."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "For each group, keep only the inputs whose value is the same in every cell of the group (write it as X if 1, X' if 0); drop inputs that change."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "OR the group terms together to give the simplified sum of products."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "Group of 2 removes 1 variable, group of 4 removes 2, group of 8 removes 3."
+      },
+      {
+        "kind": "Content",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "In the exam, draw a loop round every group on the map."
+      },
+      {
+        "kind": "Example",
+        "label": "Karnaugh maps: benefits and method",
+        "text": "    B: 0  1\nA=0     1  1\nA=1     0  1\n\nGroup 1: top row (A = 0, B changes) -> A'\nGroup 2: right column (B = 1, A changes) -> B\nThe two groups overlap at A = 0, B = 1.\nX = A' + B"
+      },
+      {
+        "kind": "Section",
+        "text": "Solving logic problems with Karnaugh maps"
+      },
+      {
+        "kind": "Content",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "The two maps below use the same steps: fill the map from the truth table (or minterms), loop the largest groups, read each group, then OR the terms."
+      },
+      {
+        "kind": "Content",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "Put each minterm's 1 in the cell for its input values; every other cell is 0."
+      },
+      {
+        "kind": "Content",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "Look for the largest groups first (8, then 4, then 2), including wrap-around groups."
+      },
+      {
+        "kind": "Content",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "A single 1 with no 1 next to it (including wrap-around) stays as a group of 1: a full minterm."
+      },
+      {
+        "kind": "Content",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "Check: the answer must give 1 for every 1 cell and 0 for every 0 cell."
+      },
+      {
+        "kind": "Example",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "    BC: 00 01 11 10\nA=0      1  0  0  1\nA=1      1  1  0  1\n\nGroup 1 (4 cells): columns BC = 00 and BC = 10 in both rows (they are adjacent\nby wrap-around). A changes, B changes, C = 0 throughout -> C'\nGroup 2 (2 cells): A = 1, BC = 00 and 01. A = 1, B = 0, C changes -> A.B'\n(the cell A = 1, BC = 00 is in both groups: overlapping is allowed)\n\nX = C' + A.B'   (five minterms reduced to two terms)"
+      },
+      {
+        "kind": "Example",
+        "label": "Solving logic problems with Karnaugh maps",
+        "text": "Minterms (ABCD): 0000, 0001, 0010, 0100, 0101, 1000, 1010, 1110\n\n     CD: 00 01 11 10\nAB=00     1  1  0  1\nAB=01     1  1  0  0\nAB=11     0  0  0  1\nAB=10     1  0  0  1\n\nGroup 1 (4 cells): the four corners (rows 00 and 10, columns 00 and 10 wrap round).\n  A changes, B = 0, C changes, D = 0 -> B'.D'\nGroup 2 (4 cells): rows 00 and 01, columns 00 and 01.\n  A = 0, B changes, C = 0, D changes -> A'.C'\nGroup 3 (2 cells): column 10, rows 11 and 10 (A = 1, C = 1, D = 0, B changes) -> A.C.D'\n\nX = B'.D' + A'.C' + A.C.D'"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give the Boolean expressions for the Sum and Carry of a half adder."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give the Boolean expressions for the Sum and Carry of a half adder.",
+        "text": "S = A XOR B (A'.B + A.B'); C = A.B."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a full adder built from half adders?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a full adder built from half adders?",
+        "text": "Half adder 1 adds A and B (S1, C1); half adder 2 adds S1 and Cin, giving S and C2; an OR gate combines C1 and C2 to give Cout."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How are full adders combined to add two 4-bit numbers?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How are full adders combined to add two 4-bit numbers?",
+        "text": "Four full adders, one per bit; each Cout feeds the next more significant adder's Cin; the least significant Cin is 0; the last Cout is the extra (fifth) bit."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the difference between a combinational and a sequential circuit?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the difference between a combinational and a sequential circuit?",
+        "text": "Combinational: output depends only on current inputs. Sequential: output depends on current inputs and the previous output (stored state)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which SR (NOR) input combination is invalid, and why?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which SR (NOR) input combination is invalid, and why?",
+        "text": "S = 1, R = 1: Q and Q' both become 0, so they are not complements, and the next state is unpredictable when the inputs return to 0."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a JK flip-flop do when J = 1 and K = 1?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a JK flip-flop do when J = 1 and K = 1?",
+        "text": "On the clock pulse, Q toggles (changes to the opposite value)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two advantages of a JK flip-flop over an SR flip-flop."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two advantages of a JK flip-flop over an SR flip-flop.",
+        "text": "The clock synchronises inputs; J = K = 1 toggles, so there is no invalid state and every input gives a predictable output."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe the role of flip-flops in a computer."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe the role of flip-flops in a computer.",
+        "text": "Each stores one bit; groups of flip-flops form registers and SRAM (cache); JK flip-flops also make counters."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State De Morgan's laws."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State De Morgan's laws.",
+        "text": "(A.B)' = A' + B'; (A + B)' = A'.B'."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Simplify A + A'.B."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Simplify A + A'.B.",
+        "text": "(A + A').(A + B) by distributive law = 1.(A + B) by complement = A + B by identity."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State two benefits of using Karnaugh maps."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State two benefits of using Karnaugh maps.",
+        "text": "They give the simplest sum-of-products expression; they are a visual method that is quicker and less error-prone than Boolean algebra (so fewer gates are needed)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "List the rules for grouping 1s in a K-map."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "List the rules for grouping 1s in a K-map.",
+        "text": "Rectangles of 1, 2, 4 or 8 cells; only 1s; as large as possible; as few groups as possible; groups may overlap; the map wraps round at the edges."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why are K-map rows and columns labelled 00, 01, 11, 10?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why are K-map rows and columns labelled 00, 01, 11, 10?",
+        "text": "Gray code: only one input changes between adjacent cells, so a group's changing input can be eliminated."
       }
     ]
   },

@@ -94,6 +94,11 @@ The commit is a checkpoint, not a permanently current version.
   cycle counts, registers in RISC, interrupt handling on CISC and pipelined RISC (flush trace, per-unit PCs),
   Flynn's four types with uses and a SIMD example, massively parallel computers, VM host/guest/hypervisor,
   uses scenario, benefits and limitations; cycle counts checked by script.
+- Rebuilt (research method): 15.2 (2026-09-30). No Rocket Revise content, so Save My Exams points used:
+  truth tables with 3-input gates, half/full adder tables and expressions, full adder from two half adders,
+  4-bit ripple-carry trace, SR flip-flop from NOR and NAND with invalid state, clocked JK with toggle,
+  flip-flops in registers/SRAM/counters, all Boolean laws and De Morgan, four named-law simplifications,
+  sum of products, K-map benefits/rules with 2-, 3- and 4-input examples; every table and result checked by script.
 
 ## Latest verification
 

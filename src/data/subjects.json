@@ -1279,11 +1279,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Revise Boolean laws, De Morgan, simplification.",
+            "summary": "Produce truth tables for circuits with multi-input gates, half and full adders and a ripple-carry adder, explain SR (NOR/NAND) and clocked JK flip-flops as 1-bit storage, simplify expressions step by step with the Boolean laws and De Morgan, and minimise logic with 3- and 4-input Karnaugh maps.",
             "focusPoints": [
-              "Boolean laws",
-              "De Morgan",
-              "simplification"
+              "half and full adders",
+              "SR and JK flip-flops",
+              "flip-flops as storage",
+              "Boolean laws and De Morgan",
+              "step-by-step simplification",
+              "Karnaugh maps and grouping"
             ],
             "contentDepth": "full"
           },
