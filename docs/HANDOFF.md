@@ -76,6 +76,11 @@ The commit is a checkpoint, not a permanently current version.
   exponent, decoding all four sign combinations, extreme values for 8/4 and 10/6, bit-split trade-off,
   normalisation (01/10, precision and uniqueness), encoding incl. negatives, 0.1 and accumulated
   rounding error, overflow/underflow; every conversion checked by an encode/decode script.
+- Rebuilt (research method): 14.1, 14.2 (2026-09-30). 14.1: why protocols, stack properties, four
+  TCP/IP layers with header fields, per-layer walk-through of a message across the internet with an
+  encapsulation code model and frame-overhead example, HTTP/FTP/SMTP/POP3/IMAP, BitTorrent terms;
+  14.2: circuit set-up steps and idle-capacity example, packet contents and overhead, reassembly
+  trace and code, connectionless vs connection-oriented, router function with routing table and TTL.
 
 ## Latest verification
 

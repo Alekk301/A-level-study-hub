@@ -6,79 +6,262 @@
   "unitTitle": "A2 Level",
   "title": "Circuit switching, packet switching",
   "contentDepth": "full",
-  "overview": "Circuit switching reserves a dedicated end-to-end path before communication; packet switching divides a message into independently routed packets that share network links. You must compare both methods and explain the role of routers and packet headers.",
+  "overview": "Topic 14.2 compares the two ways of carrying data across a network made of many linked switching nodes. Circuit switching sets up a dedicated path between sender and receiver before any data is sent, keeps it for the whole communication and then releases it, which is how the traditional telephone network works. Packet switching sets up no path: the message is split into packets, each with a header holding the addresses and a sequence number, and every packet is routed independently, so packets can take different routes, arrive out of order and be reassembled at the destination. You need the benefits and drawbacks of each method and where each is suitable, the function of a router in packet switching (reading the destination address, consulting its routing table, choosing the next hop, decreasing the hop limit), and a step-by-step account of how a message crosses a network such as the internet, including what happens when a packet is lost.",
   "syllabusPoints": [
-    "Explain circuit switching, its advantages/disadvantages and suitable uses.",
-    "Explain packet switching, its advantages/disadvantages and suitable uses.",
-    "Explain the role of routers in packet-switched networks.",
-    "Describe how packets are routed and reassembled."
+    "Show understanding of circuit switching: its benefits, drawbacks and where it is applicable.",
+    "Show understanding of packet switching: its benefits, drawbacks and where it is applicable.",
+    "Show understanding of the function of a router in packet switching.",
+    "Explain how packet switching is used to pass messages across a network, including the internet."
   ],
   "definitions": [
     {
       "term": "Circuit switching",
-      "definition": "A dedicated communication path is reserved for the duration of a session."
+      "definition": "A method in which a dedicated communication path (circuit) is established between sender and receiver before transmission, is used only by them for the whole communication, and is released at the end."
     },
     {
       "term": "Packet switching",
-      "definition": "A message is divided into packets that independently share network routes."
+      "definition": "A method in which a message is broken into packets that are sent independently across a shared network, possibly by different routes, and reassembled in order at the destination."
+    },
+    {
+      "term": "Packet",
+      "definition": "A small unit of data sent across a packet-switched network, made of a header (control information such as addresses and sequence number), a payload (part of the message) and often a trailer (error-checking value)."
     },
     {
       "term": "Router",
-      "definition": "A device that forwards packets between networks using destination information and routing data."
+      "definition": "A device that connects networks and forwards each packet towards its destination by reading the destination IP address and choosing the next hop from its routing table."
     },
     {
-      "term": "Packet header",
-      "definition": "Control information carried with a packet, such as destination and sequencing information."
+      "term": "Routing table",
+      "definition": "A table held by a router that maps destination networks to the next hop (and the interface to use), often with a cost for each route, updated as links fail or become congested."
+    },
+    {
+      "term": "Hop",
+      "definition": "One step of a packet's journey, from one router or host to the next."
+    },
+    {
+      "term": "Time to live (TTL) / hop limit",
+      "definition": "A value in the packet header that each router decreases by one; when it reaches zero the packet is discarded, so packets that cannot be delivered do not circulate for ever."
+    },
+    {
+      "term": "Sequence number",
+      "definition": "A number in the header giving a packet's position in the original message, so the receiver can put packets back in order and notice any that are missing."
+    },
+    {
+      "term": "Connection-oriented service",
+      "definition": "A packet-switched service in which the receiver acknowledges packets, so the sender knows what has arrived and resends anything unacknowledged (as TCP does)."
+    },
+    {
+      "term": "Connectionless service",
+      "definition": "A packet-switched service in which packets are sent without checking that the receiver is ready and without any acknowledgement of delivery (as IP does)."
     }
   ],
   "sections": [
     {
-      "id": "01-circuit-switching",
-      "title": "Circuit switching",
+      "id": "01-two-approaches",
+      "title": "Two ways to carry data across a network",
       "content": [
-        "A route is established first and remains reserved. It can offer predictable latency/bandwidth, but capacity is wasted when the connection is idle, and failure of the reserved path can interrupt the session."
+        "A large network such as the telephone system or the internet is a mesh of links joined by switching nodes: telephone exchanges in one case, routers in the other. A message from one end-system to another has to cross several of these nodes. There are two basic ways of organising the journey. In circuit switching the network first reserves a complete path through the nodes for this one conversation, and all the data then flows along that path. In packet switching nothing is reserved; the data is cut into packets and each node decides, packet by packet, where to send it next.",
+        "The difference is about when the route is decided and who gets to use the links. In circuit switching the route is fixed once, at the start, and the links' capacity belongs to one pair of users until they finish. In packet switching the route is decided at every node for every packet, and the links are shared by everyone's packets at once."
       ],
-      "bullets": [],
+      "bullets": [
+        "Circuit switching: route set up in advance, dedicated to one communication, released at the end.",
+        "Packet switching: no set-up, message split into packets, each routed independently over shared links.",
+        "The internet is a packet-switched network; the traditional telephone network is circuit switched."
+      ],
+      "examples": []
+    },
+    {
+      "id": "02-circuit-switching",
+      "title": "Circuit switching: how it works",
+      "content": [
+        "Circuit switching is the method the public switched telephone network was built on. When you make a call, the exchanges connect a chain of links from your line to the other person's line. Once the circuit exists, that capacity on every link along the path is reserved for the call, whether anyone is speaking or not, and the data or voice flows along it as a continuous stream in the order it was sent. When the call ends the links are released for someone else. The same method can carry data, for example over a leased line, where the circuit may be kept permanently.",
+        "Because every bit follows the same path, there is no need for addresses or sequence numbers on the data itself and nothing can arrive out of order. The delay is small and constant once the circuit is up. The price is a set-up delay before any data can be sent, capacity that is wasted in every silence, and a communication that fails completely if one link on the path fails, since there is no alternative route."
+      ],
+      "bullets": [
+        "1 The sender identifies the intended receiver.",
+        "2 The network checks that the receiver is available and ready to accept data.",
+        "3 A sequence of links is established across the network, forming the circuit.",
+        "4 The data is transferred along the circuit as a continuous stream.",
+        "5 The circuit is cleared and the links are released."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-circuit-evaluation",
+      "title": "Circuit switching: benefits, drawbacks and where it is applicable",
+      "content": [
+        "The strengths of circuit switching all come from having the path to yourself. The full bandwidth of the circuit is available throughout, data arrives in the order it was sent with a steady, predictable delay, and there is no reassembly to do at the receiver. This makes it well suited to real-time, continuous communication where a gap or a jumble would be noticed at once: telephone calls, live video conferencing, and dedicated links such as a leased line between two company sites or a link carrying live broadcast feeds.",
+        "Its weaknesses come from the same reservation. The circuit must be set up before sending, which is a delay that is wasted for short bursts of data. Capacity is tied up for the whole connection even when nothing is being sent, so the network needs far more capacity to serve the same number of users, and the user is usually charged for the time connected rather than the data sent. If any link on the path fails, the connection is lost and has to be set up again. For bursty traffic such as web browsing or email, where data comes in short bursts separated by long gaps, most of a reserved circuit would sit idle."
+      ],
+      "bullets": [
+        "Benefit: dedicated bandwidth for the whole connection, not shared with other users.",
+        "Benefit: data arrives in order, with a constant small delay; no reassembly needed.",
+        "Benefit: well suited to real-time voice and video.",
+        "Drawback: time is needed to set up the circuit before any data is sent.",
+        "Drawback: bandwidth is wasted when nothing is being sent; fewer users can be served; usually charged for time connected.",
+        "Drawback: if a link fails the whole connection is lost; no rerouting.",
+        "Applicable to: telephone calls, live video conferencing, leased lines needing guaranteed capacity."
+      ],
       "examples": [
         {
-          "id": "01-example-1",
-          "kind": "example",
-          "label": "Worked example",
-          "content": "Traditional real-time telephone networks are the classic example."
+          "id": "03-idle-capacity",
+          "kind": "worked",
+          "label": "How much reserved capacity does a phone call waste?",
+          "content": "A digital voice circuit reserves 64 kbit/s for a 10-minute call.\nOne person is speaking for only 40% of the time in each direction.\n\nCapacity reserved in one direction = 64,000 bit/s x 600 s = 38,400,000 bits\nUnused (60% of the time)            = 38,400,000 x 0.6    = 23,040,000 bits\n                                    = 2,880,000 bytes, about 2.88 MB\n\nIn a circuit-switched network nobody else can use that idle capacity.\nIn a packet-switched network other users' packets would fill the gaps.\n\n(Figures checked by script.)"
         }
       ]
     },
     {
-      "id": "02-packet-switching",
-      "title": "Packet switching",
+      "id": "04-packets",
+      "title": "Packet switching: breaking a message into packets",
       "content": [
-        "A message is split into packets containing payload and control information. Packets may take different routes and arrive out of order; the destination uses sequence information to reconstruct the message. Missing/corrupt packets can be retransmitted."
+        "In packet switching no circuit is set up. The sender splits the message into packets of a limited size. Each packet carries enough information in its header to be delivered on its own, rather like a letter with an address on the envelope, so the network can handle every packet separately. The header is added by the protocol layers described in 14.1: the TCP header supplies the port numbers and sequence number, and the IP header supplies the source and destination IP addresses and the hop limit.",
+        "Packet size is a trade-off. Every packet needs its own header, so small packets mean more header bytes for the same message. On the other hand a lost or damaged small packet is cheaper to resend, and small packets from many users can be interleaved on a link so that no one user blocks it for long."
       ],
-      "bullets": [],
+      "bullets": [
+        "Source IP address: where the packet came from (so replies and acknowledgements can be returned).",
+        "Destination IP address: where the packet is going (used by every router).",
+        "Sequence number: the packet's position in the message, for reassembly.",
+        "Total number of packets / packet length: so the receiver knows when the message is complete.",
+        "Hop limit (TTL): how many more routers the packet may pass through.",
+        "Checksum: lets the receiver detect a corrupted packet.",
+        "Payload: the part of the message carried by this packet."
+      ],
+      "examples": [
+        {
+          "id": "04-packet-count",
+          "kind": "worked",
+          "label": "How many packets, and how much header overhead, for a 50,000-byte file?",
+          "content": "Each packet has a 40-byte header (20-byte IP + 20-byte TCP headers).\n\nPayload 1,000 bytes per packet:\n  packets  = 50,000 / 1,000 = 50\n  headers  = 50 x 40 = 2,000 bytes; total sent = 52,000 bytes\n  overhead = 2,000 / 52,000 = 3.85% of the bytes sent\n  one lost packet costs 1,040 bytes to resend\n\nPayload 500 bytes per packet:\n  packets  = 50,000 / 500 = 100\n  headers  = 100 x 40 = 4,000 bytes; total sent = 54,000 bytes\n  overhead = 4,000 / 54,000 = 7.41% of the bytes sent\n  one lost packet costs only 540 bytes to resend\n\nSmaller packets: more overhead, but cheaper retransmission.\n(All figures checked by script.)"
+        }
+      ]
+    },
+    {
+      "id": "05-message-across-internet",
+      "title": "How packet switching passes a message across the internet",
+      "content": [
+        "When a message is sent, the sending host splits it into numbered packets and puts each one onto the network. Each packet goes first to the local router, which reads its destination IP address and forwards it along the best link available at that moment. Every router on the way does the same, so the route is built up hop by hop. Because routers react to congestion and to failed links, packets from the same message can be sent along different routes, and a packet on a long or busy route can overtake, or be overtaken by, others. Packets from many different users share the same links at the same time.",
+        "At the destination the packets arrive in whatever order the network delivered them. The receiving host holds them in a buffer, uses the sequence numbers to put them back in the correct order, checks each checksum, and waits until every packet is present before passing the complete message to the application. If a packet is missing or corrupted, it is not rebuilt at the receiver; only that packet is sent again by the sender. The whole message is not resent."
+      ],
+      "bullets": [
+        "1 The message is split into packets; each gets a header with addresses and a sequence number.",
+        "2 Each packet is sent independently; no path is reserved.",
+        "3 Each router reads the destination address and forwards the packet to the next hop using its routing table.",
+        "4 Packets may take different routes, depending on congestion and link failures, and may arrive out of order.",
+        "5 The receiver reorders the packets by sequence number and checks for errors and gaps.",
+        "6 Missing or corrupted packets are requested again; the complete message is then reassembled and passed to the application."
+      ],
+      "examples": [
+        {
+          "id": "05-reassembly-trace",
+          "kind": "worked",
+          "label": "Trace: reassembling 'MEET AT 11:30 GATE' from six 3-character packets",
+          "content": "Sent: 1 'MEE'  2 'T A'  3 'T 1'  4 '1:3'  5 '0 G'  6 'ATE'\n\nArrival order | Buffer holds (by sequence number) | Complete?\n3 'T 1'       | 3                                 | no\n1 'MEE'       | 1, 3                              | no\n4 '1:3'       | 1, 3, 4                           | no\n2 'T A'       | 1, 2, 3, 4                        | no\n6 'ATE'       | 1, 2, 3, 4, 6                     | no, 5 missing\n(no acknowledgement for 5 reaches the sender, which times out and resends it)\n5 '0 G'       | 1, 2, 3, 4, 5, 6                  | yes\n\nReassembled in sequence order: 'MEET AT 11:30 GATE' (18 characters)\n(Checked by running the reassembly code below.)"
+        }
+      ]
+    },
+    {
+      "id": "06-lost-packets",
+      "title": "Connectionless and connection-oriented service: dealing with lost packets",
+      "content": [
+        "Packets really are lost on a packet-switched network: a router whose queue is full because of congestion simply drops arriving packets, a packet may be damaged by noise and fail its checksum, or its hop limit may run out. A packet-switched network can offer one of two kinds of service. A connectionless service just sends packets and has no way of knowing whether they arrived; IP works this way, and so does UDP above it. A connection-oriented service checks that the receiver is ready before sending and has the receiver acknowledge what it gets.",
+        "TCP provides the connection-oriented service on the internet on top of connectionless IP. The receiver sends acknowledgements back to the sender. The sender keeps a copy of each packet and starts a timer when it sends it; if no acknowledgement arrives before the timer expires, it assumes the packet was lost and sends it again. A duplicate caused by a late acknowledgement is recognised by its sequence number and discarded. Real-time applications such as voice calls usually prefer the connectionless route, because a resent packet would arrive too late to be useful and a tiny gap is less noticeable than a delay."
+      ],
+      "bullets": [
+        "Causes of loss: congestion (full router buffers), corruption (checksum fails), TTL reaching zero.",
+        "Connectionless (IP, UDP): no check that the receiver is ready and no acknowledgement; lower overhead.",
+        "Connection-oriented (TCP): receiver acknowledges packets; sender resends after a timeout; duplicates discarded by sequence number.",
+        "Only the lost packet is resent, not the whole message."
+      ],
+      "examples": [
+        {
+          "id": "06-reassembly-code",
+          "kind": "code",
+          "language": "python",
+          "label": "Receiver reassembling packets and reporting missing ones",
+          "content": "# Receiver side of packet switching: put packets back in order, spot any that are missing\ndef reassemble(arrived, total):\n    buffer = {}\n    for seq, data in arrived:\n        buffer[seq] = data                      # store each packet under its sequence number\n    missing = [n for n in range(1, total + 1) if n not in buffer]\n    if missing:\n        return None, missing                    # ask the sender to retransmit these\n    return \"\".join(buffer[n] for n in range(1, total + 1)), []\n\narrived = [(3, \"T 1\"), (1, \"MEE\"), (4, \"1:3\"), (2, \"T A\"), (6, \"ATE\")]\nprint(reassemble(arrived, 6))\narrived.append((5, \"0 G\"))                      # the resent packet 5 arrives\nprint(reassemble(arrived, 6))\n\n# Output:\n# (None, [5])\n# ('MEET AT 11:30 GATE', [])"
+        }
+      ]
+    },
+    {
+      "id": "07-router",
+      "title": "The function of a router in packet switching",
+      "content": [
+        "Routers are the switching nodes of a packet-switched network. A router connects two or more networks and has a network interface on each. When a frame arrives, the router checks and removes the frame and looks at the packet's destination IP address. It compares that address with its routing table to find the best next hop towards the destination network. No router knows the full route, only the next step; the internet is far too large for any router to hold a global table. Routers exchange information with their neighbours so that their tables reflect links that have failed or become congested, and the best next hop can change from one packet to the next.",
+        "Before forwarding, the router decreases the packet's TTL (hop limit) by one. If it reaches zero, the router discards the packet rather than forwarding it, which stops packets looping round the network for ever if routing tables are temporarily wrong. Otherwise the router puts the packet into a new frame for the next link and sends it out of the chosen interface. Routers store packets briefly in a queue while the outgoing link is busy (store and forward), and drop packets if the queue overflows. A router differs from a switch: a switch forwards frames within one network by MAC address and makes no routing decision, while a router makes a routing decision using the IP address and links different networks."
+      ],
+      "bullets": [
+        "Receives the packet and reads its destination IP address.",
+        "Looks up the destination in its routing table to choose the next hop (the best route currently available).",
+        "Decreases the TTL; discards the packet if it reaches zero.",
+        "Forwards the packet in a new frame to the next router or the destination host.",
+        "Keeps its routing table up to date so packets can be routed around failures and congestion.",
+        "Connects different networks (e.g. a LAN to the internet)."
+      ],
+      "examples": [
+        {
+          "id": "07-routing-table",
+          "kind": "worked",
+          "label": "A router choosing the next hop, and a packet running out of hops",
+          "content": "Routing table of router R2 (simplified):\nDestination network | Next hop | Cost\n198.51.100.0/24     | R4       | 2\n198.51.100.0/24     | R3       | 5\n203.0.113.0/24      | R5       | 3\ndefault             | R1       | -\n\nPacket for 198.51.100.40 -> best entry is next hop R4 (cost 2).\nIf the R2-R4 link fails, the R4 entry is removed and the next packet goes via R3.\n\nHop limit trace: a packet leaves with TTL 5 but its route needs 7 routers.\nRouter | TTL after decrease | Action\nR1     | 4                  | forward\nR2     | 3                  | forward\nR3     | 2                  | forward\nR4     | 1                  | forward\nR5     | 0                  | discard (the sender's TCP will time out and resend)\n\n(TTL trace checked by script.)"
+        }
+      ]
+    },
+    {
+      "id": "08-packet-evaluation",
+      "title": "Packet switching: benefits, drawbacks and where it is applicable",
+      "content": [
+        "Packet switching makes very efficient use of the network. Links are only occupied while packets are actually crossing them, so the gaps in one user's traffic are filled by other users' packets and many more users can share the same infrastructure. No set-up is needed before sending. Because each packet is routed independently, packets can be sent around a failed or congested link, which makes the network robust: there is no single path whose failure ends the communication. Errors are cheap to correct, since only the damaged or lost packet is resent, and users can be charged for the data they send rather than for time connected.",
+        "The drawbacks come from sharing and independence. Every packet carries a header, which is overhead. Delay varies from packet to packet, depending on the route and on congestion, so packets arrive at uneven intervals and out of order and must be buffered and reassembled, which takes processing at the receiver. When the network is busy, packets are queued or dropped and have to be resent. This makes packet switching ideal for data that must arrive complete but not instantly, such as email, web pages and file downloads, and less suitable for real-time voice and video unless the receiver buffers packets and the network prioritises them. Voice and video calls over the internet do use packet switching, and accept occasional glitches as the price of its low cost."
+      ],
+      "bullets": [
+        "Benefit: no circuit set-up; bandwidth shared, so links are used efficiently and more users are served.",
+        "Benefit: packets can be rerouted round failed or congested links, so the network is robust.",
+        "Benefit: only lost or corrupted packets are resent; charges can be based on data sent.",
+        "Drawback: headers add overhead; packets need reassembling in order at the receiver.",
+        "Drawback: variable delay, out-of-order arrival and packet loss when the network is congested.",
+        "Drawback: less suitable for real-time communication, which needs a steady flow.",
+        "Applicable to: email, web browsing, file transfer, messaging and other bursty data traffic."
+      ],
       "examples": []
     },
     {
-      "id": "03-why-packet-switching-suits-the-internet",
-      "title": "Why packet switching suits the internet",
+      "id": "09-choosing",
+      "title": "Choosing the switching method for a given application",
       "content": [
-        "Many users share the same links efficiently, and routing can work around congestion or failed paths. The trade-offs are variable delay, header overhead and the need to reorder/retransmit packets."
+        "Exam questions usually describe an application and ask which method suits it and why. Ask two questions. First, does the data have to arrive with a steady, predictable delay (real-time), or can it be delayed slightly as long as it all arrives correctly? Second, is the traffic continuous or does it come in bursts? Real-time and continuous traffic points to circuit switching; delay-tolerant and bursty traffic points to packet switching.",
+        "Justify the choice with the characteristic that matters, not with speed. Saying one method is 'faster' earns nothing; talk instead about dedicated bandwidth, order of arrival, constant delay, efficient sharing of bandwidth, or resilience to link failure."
       ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "04-routers",
-      "title": "Routers",
-      "content": [
-        "Each router examines destination information and selects a next hop using routing knowledge/tables. It does not need the entire message or one permanent end-to-end route."
+      "bullets": [
+        "Real-time, continuous, order-critical (phone call, live video conference): circuit switching.",
+        "Complete but not time-critical, bursty (email, web page, file download, software update): packet switching.",
+        "Guaranteed capacity between two fixed sites (leased line): circuit switching.",
+        "Many users with occasional traffic sharing one network (the internet): packet switching."
       ],
-      "bullets": [],
-      "examples": []
+      "examples": [
+        {
+          "id": "09-scenarios",
+          "kind": "worked",
+          "label": "Four scenarios with justified choices",
+          "content": "1 A hospital sends patients' scan images to a specialist overnight.\n  Packet switching: must arrive complete and correct but a short delay does not matter;\n  lost packets are resent; bandwidth is shared with other traffic.\n\n2 A live video interview between two TV studios.\n  Circuit switching: needs constant bandwidth and a steady delay; frames must arrive\n  in order without gaps, and a dedicated circuit gives exactly that.\n\n3 A school's email system.\n  Packet switching: email is bursty and not real-time; packets can arrive out of order\n  and be reassembled; no need to tie up a circuit between messages.\n\n4 Two bank branches that transfer data all day and need guaranteed capacity.\n  Circuit switching (a leased line): continuous traffic, so the reserved bandwidth\n  is rarely idle, and the capacity is never shared with other users."
+        }
+      ]
     }
   ],
-  "formulas": [],
+  "formulas": [
+    {
+      "label": "Number of packets",
+      "expression": "Packets = ROUND UP (message size / payload per packet)",
+      "note": "The last packet may carry less than a full payload."
+    },
+    {
+      "label": "Header overhead",
+      "expression": "Overhead % = (packets x header size) / (message size + packets x header size) x 100",
+      "note": "The fraction of the bytes sent that are headers rather than data."
+    }
+  ],
   "comparisonTable": {
-    "title": "Switching methods compared",
+    "title": "Circuit switching and packet switching compared",
     "columns": [
       "Feature",
       "Circuit switching",
@@ -87,56 +270,156 @@
     "rows": [
       [
         "Path",
-        "Reserved end-to-end",
-        "Packets may take different routes"
+        "Dedicated path set up before sending and kept until the end",
+        "No path set up; each packet routed independently, routes may differ"
+      ],
+      [
+        "Use of bandwidth",
+        "Reserved for one communication, wasted when idle",
+        "Shared by many users; used only when packets are sent"
+      ],
+      [
+        "Order of arrival",
+        "Always in order; no reassembly",
+        "May arrive out of order; reassembled using sequence numbers"
       ],
       [
         "Delay",
-        "Predictable after setup",
-        "Variable due to routing and queues"
+        "Set-up delay, then small and constant",
+        "No set-up; variable delay depending on congestion"
       ],
       [
-        "Efficiency",
-        "Capacity can sit idle",
-        "Links are shared efficiently"
+        "Link failure",
+        "Connection lost; must be set up again",
+        "Packets rerouted round the failure"
       ],
       [
-        "Failure",
-        "Path failure breaks the call",
-        "Packets can be rerouted"
+        "Errors and loss",
+        "Continuous stream; no per-packet resending",
+        "Only the lost or corrupted packet is resent"
+      ],
+      [
+        "Overhead",
+        "No per-packet headers once connected",
+        "Every packet carries a header"
+      ],
+      [
+        "Typical charging",
+        "By time connected",
+        "By amount of data sent"
+      ],
+      [
+        "Best suited to",
+        "Phone calls, live video, leased lines",
+        "Email, web pages, file transfer, the internet in general"
       ]
     ]
   },
   "diagram": {
-    "title": "Packet journey",
+    "title": "A message crossing the internet by packet switching",
     "type": "flow",
     "nodes": [
-      "Split message",
-      "Add headers",
-      "Route packets",
-      "Reassemble"
+      "Message split into numbered packets with source and destination IP addresses",
+      "Each packet sent independently to the local router",
+      "Each router reads the destination address, decreases TTL and picks the next hop from its routing table",
+      "Packets take different routes and arrive out of order",
+      "Receiver reorders by sequence number and checks for errors",
+      "Missing packets are resent after a timeout; complete message passed to the application"
     ]
   },
-  "analysisChains": [],
+  "analysisChains": [
+    {
+      "title": "Why the internet uses packet switching",
+      "steps": [
+        "Most internet traffic, such as web pages and email, is bursty: short transfers separated by long gaps",
+        "A reserved circuit would sit idle during those gaps, so each user would waste most of the capacity reserved for them",
+        "With packet switching the gaps are filled by other users' packets, so the same links serve far more users",
+        "And because each packet is routed independently, traffic flows round failed or congested links instead of connections being dropped"
+      ],
+      "evaluation": "Efficiency and resilience outweigh the costs of header overhead and variable delay for data that must arrive complete but not instantly; real-time traffic is the case where those costs start to matter."
+    },
+    {
+      "title": "Why a voice call suits circuit switching better",
+      "steps": [
+        "Speech must be played back continuously with a short, steady delay",
+        "On a packet-switched network each packet can take a different route and meet different queues, so delay varies and packets arrive out of order",
+        "Waiting to reorder them or resend lost ones adds delay, and a resent packet may arrive after it was needed",
+        "A circuit gives the call dedicated bandwidth with every sample arriving in order after the same delay"
+      ],
+      "evaluation": "Circuit switching gives better call quality, but the reserved capacity is wasted in silences; internet voice calls accept packet switching with buffering and prioritisation because it is much cheaper."
+    },
+    {
+      "title": "Why every packet needs a sequence number and a hop limit",
+      "steps": [
+        "Packets from one message are routed independently and can overtake each other",
+        "Without a sequence number the receiver could not put them back in order or tell which one is missing",
+        "Routing tables change and can briefly contain loops, so a packet might circle between routers",
+        "A TTL that every router decreases makes sure such a packet is discarded instead of wasting bandwidth for ever"
+      ],
+      "evaluation": "These header fields are the cost of letting each packet travel independently; circuit switching needs neither, because the fixed path keeps the data in order and cannot loop."
+    }
+  ],
   "examTips": [
-    "Compare the methods using the same criteria: reservation, delay, efficiency, failure handling and suitability.",
-    "State that packets can take different routes and be reassembled at the destination.",
-    "Do not claim packet switching guarantees fixed latency."
+    "Describe circuit switching with its defining idea: a dedicated path is established between sender and receiver before transmission and kept for the whole communication, then released.",
+    "Avoid saying either method is 'faster'. Mark schemes reward dedicated or shared bandwidth, order of arrival, steady or variable delay, set-up time, and resilience to failure.",
+    "For the role of routers give the steps: read the destination IP address, use the routing table to find the next hop, forward the packet; mention that packets may take different routes and that the router decreases the TTL.",
+    "For 'items in a packet apart from the data' give specific header fields: source IP address, destination IP address, sequence number, checksum, hop limit/TTL, packet length.",
+    "When asked why an application suits a method, link the method's property to the application's need, e.g. 'email is not real-time, so it does not matter that packets arrive out of order and are reassembled'.",
+    "When explaining how a message crosses the internet, finish the story: packets reordered by sequence number, missing packets identified and resent, message reassembled."
   ],
   "commonMistakes": [
-    "Saying circuit switching sends packets along independently chosen routes.",
-    "Saying packets contain no addressing/control information.",
-    "Assuming routers rebuild the complete application message at every hop."
+    "Saying that in packet switching all packets follow the same route; each is routed independently and routes can differ.",
+    "Saying the router reassembles the message; routers only forward packets, and reassembly happens at the destination host.",
+    "Thinking the whole message is resent when one packet is lost; only the missing or corrupted packet is resent.",
+    "Describing circuit switching as a physical wire between the two users; it is a chain of reserved links through switching nodes, and capacity on shared media can be reserved.",
+    "Justifying a choice with speed ('circuit switching is faster') instead of bandwidth, delay, order or efficiency.",
+    "Saying the TTL is a time in seconds that runs out; in practice each router simply subtracts one and discards the packet at zero.",
+    "Claiming circuit switching cannot carry data; it can, for example over a leased line."
   ],
   "quickRecall": [
-    "circuit=dedicated route",
-    "packet=shared links",
-    "router chooses next hop",
-    "packets may arrive out of order",
-    "packet switching uses capacity efficiently"
+    {
+      "question": "What is circuit switching?",
+      "answer": "A dedicated path is established between sender and receiver before transmission, used only by them for the whole communication, then released."
+    },
+    {
+      "question": "List the stages of a circuit-switched transfer.",
+      "answer": "Sender identifies the receiver; network checks the receiver is ready; links are established to form the circuit; data transferred; links released."
+    },
+    {
+      "question": "Give two benefits and two drawbacks of circuit switching.",
+      "answer": "Benefits: dedicated bandwidth; data arrives in order with a steady delay. Drawbacks: set-up time before sending; bandwidth wasted when idle, and the connection is lost if a link fails."
+    },
+    {
+      "question": "What is packet switching?",
+      "answer": "The message is split into packets that are sent independently over a shared network, possibly by different routes, and reassembled at the destination."
+    },
+    {
+      "question": "State four items in a packet header.",
+      "answer": "Source IP address, destination IP address, sequence number, checksum (also hop limit/TTL, packet length)."
+    },
+    {
+      "question": "What does a router do with each packet?",
+      "answer": "Reads the destination IP address, uses its routing table to choose the next hop, decreases the TTL (discarding the packet at zero) and forwards it."
+    },
+    {
+      "question": "How does the receiver cope with packets arriving out of order?",
+      "answer": "It buffers them and uses the sequence numbers to put them back in the original order before reassembling the message."
+    },
+    {
+      "question": "What happens when a packet is lost?",
+      "answer": "Its acknowledgement never reaches the sender, which times out and resends that packet only."
+    },
+    {
+      "question": "Give two benefits and two drawbacks of packet switching.",
+      "answer": "Benefits: bandwidth shared efficiently with no set-up; packets rerouted around failures. Drawbacks: packets can arrive out of order and need reassembly; variable delay and loss under congestion make it less suitable for real-time use."
+    },
+    {
+      "question": "Which method suits a live video conference, and which suits email?",
+      "answer": "Circuit switching for the video conference (real-time, steady delay, in order); packet switching for email (not real-time, bursty, can be reassembled)."
+    }
   ],
   "relatedTopics": [
-    "14.1",
-    "17.1"
+    "2.1",
+    "14.1"
   ]
 }

@@ -6,129 +6,406 @@
   "unitTitle": "A2 Level",
   "title": "Protocols",
   "contentDepth": "full",
-  "overview": "Protocols are agreed rules that let unlike hardware and software communicate reliably. At A2 the central model is the four-layer TCP/IP stack, plus the purposes of common application protocols such as HTTP, FTP, POP3, IMAP, SMTP and BitTorrent.",
+  "overview": "Protocols let computers from different manufacturers, running different software, exchange data: both ends follow the same agreed rules. Networking needs many protocols, so they are organised as a stack of layers, each with one job, serving the layer above. The internet uses the TCP/IP suite with four layers: Application, Transport, Internet and Link. You must describe the purpose and function of each layer and trace a message from one host to another across the internet: headers added down the sender's stack (encapsulation), routers working up to the Internet layer, headers removed up the receiver's stack (decapsulation). The topic ends with the purposes of HTTP, FTP, SMTP, POP3, IMAP and the peer-to-peer BitTorrent protocol.",
   "syllabusPoints": [
-    "Explain why protocols and layered protocol stacks are used.",
-    "Describe the Application, Transport, Internet and Link layers of TCP/IP.",
-    "Explain how data is encapsulated on transmission and decapsulated on receipt.",
-    "State the purposes of HTTP, FTP, POP3, IMAP, SMTP and BitTorrent."
+    "Show understanding of why a protocol is essential for communication between computers.",
+    "Show understanding of how protocol implementation can be viewed as a stack, where each layer has its own functionality.",
+    "Show understanding of the TCP/IP protocol suite: the four layers (Application, Transport, Internet, Link), the purpose and function of each layer, and what each layer does when a message is sent from one host to another on the internet.",
+    "Show understanding of protocols (HTTP, FTP, POP3, IMAP, SMTP, BitTorrent) and their purposes, including that the BitTorrent protocol provides peer-to-peer file sharing."
   ],
   "definitions": [
     {
       "term": "Protocol",
-      "definition": "An agreed set of rules for formatting, transmitting, receiving and interpreting data."
+      "definition": "A set of rules for data transmission that the sender and receiver both agree to follow, covering things such as message format, addressing, timing, error checking and the order of exchanges."
     },
     {
       "term": "Protocol stack",
-      "definition": "A layered collection of protocols, each layer providing a defined service."
-    },
-    {
-      "term": "Encapsulation",
-      "definition": "Adding headers/control information as data passes down the stack."
-    },
-    {
-      "term": "Port number",
-      "definition": "A number used by the transport layer to identify an application/service on a host."
+      "definition": "The protocols of a suite arranged as layers, where each layer has one area of responsibility, uses the services of the layer below and provides services to the layer above through a defined interface."
     },
     {
       "term": "TCP/IP",
-      "definition": "The internet protocol suite organised into Application, Transport, Internet and Link layers."
+      "definition": "The protocol suite that the internet runs on, named after its two central protocols (Transmission Control Protocol and Internet Protocol) and organised into Application, Transport, Internet and Link layers."
+    },
+    {
+      "term": "Encapsulation",
+      "definition": "Wrapping the data received from the layer above inside a new unit that carries this layer's header (and, at the Link layer, a trailer) as data moves down the stack."
+    },
+    {
+      "term": "Decapsulation",
+      "definition": "Removing and acting on each layer's header as data moves up the receiver's stack, until only the original message reaches the application."
+    },
+    {
+      "term": "Port number",
+      "definition": "A 16-bit number in the transport header that identifies which application or service on a host the data belongs to, for example 80 for an HTTP web server."
+    },
+    {
+      "term": "MAC address",
+      "definition": "The physical address that uniquely identifies a network interface card, usually 48 bits written as six hexadecimal pairs; the Link layer uses it to deliver a frame across one local network."
+    },
+    {
+      "term": "Peer-to-peer (P2P)",
+      "definition": "A network model with no central server holding the content, in which every peer can act as both a client (downloading) and a server (uploading)."
     }
   ],
   "sections": [
     {
-      "id": "01-why-layers-are-useful",
-      "title": "Why layers are useful",
+      "id": "01-why-protocols",
+      "title": "Why a protocol is essential",
       "content": [
-        "Layering separates responsibilities. An application can use transport services without knowing network hardware details; local-network technology can change without redesigning every application. Standard interfaces improve interoperability, maintenance and troubleshooting."
+        "Two computers that want to exchange data might have different processors, operating systems, character sets and network hardware, and might have been built decades apart. A stream of bits means nothing on its own: the receiver has to know where a message starts and ends, which bits are addresses and which are data, how errors will be detected, and what reply is expected. A protocol settles all of these questions in advance. Because both ends follow the same published rules, any two devices that implement the protocol correctly can communicate, whoever made them.",
+        "Protocol rules exist at every level. Low down, a rule might fix which voltage represents a 1 or the maximum transmission rate. Higher up, rules fix the exact layout of a header, the sequence of messages (request then response, data then acknowledgement) and what to do when something goes wrong (time out and retransmit). Without them data could be misread, lost without anyone noticing, or delivered to the wrong program."
       ],
-      "bullets": [],
+      "bullets": [
+        "Format and syntax: the structure of each message and header, and the character coding used.",
+        "Addressing: how the sender, receiver and target application are identified.",
+        "Timing and flow: transmission rate, and the order in which messages are exchanged (handshakes, acknowledgements).",
+        "Error handling: how errors are detected (for example checksums) and what happens next (discard, request retransmission).",
+        "Interoperability: devices and software from different manufacturers can work together because they follow the same standard."
+      ],
       "examples": []
     },
     {
-      "id": "02-application-layer",
+      "id": "02-protocol-stack",
+      "title": "Protocol implementation viewed as a stack",
+      "content": [
+        "Networking involves too many separate jobs for one protocol to handle sensibly: presenting data to an application, getting it to the right program on the right host, choosing a route through many networks, and turning bits into signals on a cable or radio link. A protocol suite splits these jobs into layers stacked on top of each other. Each layer has its own functionality and its own protocols. A layer only talks to the layer directly above it and the layer directly below it, through a defined interface, and it relies on the layers below to do their jobs without needing to know how they do them.",
+        "The stack makes networks easier to build and change. A browser does not care whether the computer uses Wi-Fi or a cable, because that belongs to the lowest layer, which can be replaced without rewriting any application; different organisations can write protocols for different layers, and a fault can be traced to one layer. Logically, each layer talks to the same layer on the other host (only the receiving Transport layer reads the sending Transport layer's header), even though the data physically travels down one stack and up the other."
+      ],
+      "bullets": [
+        "Each layer can only accept input from the layer directly above or directly below it, through a defined interface.",
+        "A layer is serviced by the layers beneath it and provides a service to the layer above.",
+        "User interaction happens only through the protocols of the top (Application) layer.",
+        "Direct access to the hardware is confined to the bottom (Link) layer; the upper layers are implemented in software.",
+        "A layer can be changed or replaced without redesigning the other layers, as long as its interface stays the same."
+      ],
+      "examples": []
+    },
+    {
+      "id": "03-tcp-ip-suite",
+      "title": "The TCP/IP protocol suite and its four layers",
+      "content": [
+        "TCP/IP is the protocol suite that underpins the internet. The syllabus describes it as four layers. From the top down they are the Application layer, the Transport layer, the Internet layer and the Link layer. Each layer has a clear purpose, and the protocols named in the syllabus belong to particular layers: HTTP, FTP, SMTP, POP3, IMAP and BitTorrent are Application-layer protocols; TCP (and UDP) work in the Transport layer; IP works in the Internet layer; Ethernet and Wi-Fi work in the Link layer.",
+        "Be ready for different names. The coursebook draws a five-layer model, calling the Internet layer the Network layer and splitting the Link layer into Data link and Physical layers; other sources call the Link layer the Network interface layer. In a 9618 answer use Application, Transport, Internet and Link."
+      ],
+      "bullets": [
+        "Application: provides network services to the user's software and defines the format of application messages (HTTP, FTP, SMTP, POP3, IMAP, BitTorrent, DNS).",
+        "Transport: end-to-end delivery between the two applications; splits data into segments, numbers them, uses port numbers, and (with TCP) checks for loss and asks for retransmission.",
+        "Internet: logical addressing with IP addresses and routing of each packet across many networks towards the destination host.",
+        "Link: moves a frame across one physical network to the next device, using MAC addresses, and turns the bits into signals on the medium."
+      ],
+      "examples": []
+    },
+    {
+      "id": "04-application-layer",
       "title": "Application layer",
       "content": [
-        "Provides network services directly used by software. HTTP/HTTPS transfer web content, FTP transfers files, SMTP sends email, POP3/IMAP retrieve or manage email, and BitTorrent supports peer-to-peer distribution."
+        "The Application layer is where network communication starts and ends. Its protocols are used by application software such as browsers, email clients, FTP clients and BitTorrent clients. The protocol defines what the application's messages look like and how the conversation proceeds: an HTTP client sends a request and a web server returns a response; an SMTP client sends commands identifying the sender and recipients followed by the email itself. The Application layer also puts the data into an agreed format that the other end will understand, such as ASCII text lines for HTTP headers.",
+        "The Application layer does not deal with how the data reaches the other host. It hands its message to the Transport layer with the destination address and port. Some Application-layer protocols support others: DNS is used first to turn a domain name into the IP address the lower layers need."
       ],
-      "bullets": [],
+      "bullets": [
+        "Purpose: to provide network services to applications and the user.",
+        "Function: format the application's messages, follow the request/response rules of the protocol, pass data to the Transport layer, and present received data to the application.",
+        "Only layer the user interacts with (through the application's interface)."
+      ],
       "examples": []
     },
     {
-      "id": "03-transport-layer",
+      "id": "05-transport-layer",
       "title": "Transport layer",
       "content": [
-        "Provides end-to-end application communication. TCP can segment data, number segments, detect loss, request retransmission and reassemble data. Port numbers identify the target application/service."
+        "The Transport layer gives end-to-end communication between an application on one host and an application on another. On the sending host TCP takes the stream of data from the Application layer, splits it into pieces small enough for the network, and gives each piece a TCP header to make a segment. The header holds the source and destination port numbers, so the data reaches the right application at each end (a web server listens on port 80; the browser uses a temporary port so that replies come back to it), and a sequence number, so the receiver can put the pieces back in order.",
+        "TCP is connection-oriented and reliable. Before sending data it sets up a connection with the receiving host (the three-way handshake). The receiver acknowledges the segments it gets; if no acknowledgement arrives within a time limit, the sender resends that segment. A checksum lets the receiver detect and discard a damaged segment. The receiving TCP reorders segments by sequence number, removes duplicates, strips the headers and passes the data to the application identified by the port. TCP is not concerned with IP addresses or routes; that is the next layer's job. UDP, the other transport protocol, is connectionless: ports and a checksum but no sequence numbers or acknowledgements, which suits live audio and video."
       ],
-      "bullets": [],
+      "bullets": [
+        "Purpose: reliable end-to-end delivery of data between two applications.",
+        "Splits data into segments and adds a TCP header to each.",
+        "Header fields: source port, destination port, sequence number, acknowledgement number, checksum.",
+        "Establishes the connection, acknowledges receipt, retransmits lost segments, controls the flow rate.",
+        "At the receiver: reorders by sequence number, checks, reassembles and hands data to the correct application."
+      ],
       "examples": []
     },
     {
-      "id": "04-internet-layer",
+      "id": "06-internet-layer",
       "title": "Internet layer",
       "content": [
-        "Uses logical IP addressing and routing. Routers examine destination information and forward packets towards the destination network."
+        "The Internet layer gets each packet from the source host to the destination host, even though they may be on different networks many routers apart. IP takes each segment from the Transport layer and adds an IP header to form a packet (also called a datagram). The header holds the source IP address and the destination IP address; the destination address is normally found beforehand using DNS. It also holds a time-to-live (TTL) value, which each router decreases by one so that a packet caught in a routing loop is eventually discarded, a header checksum and the packet length.",
+        "The Internet layer is responsible for routing. At every router the packet is passed up as far as the Internet layer, the destination IP address is compared with the router's routing table, and the packet is sent on towards the next router (the next hop). IP is connectionless and gives no guarantee: once a packet has been passed down to the Link layer IP has no further duty and does not know whether it arrived. Reliability is left to TCP above it. IP also does not look inside the segment; if the segment contains an acknowledgement, IP simply passes it up to TCP."
       ],
-      "bullets": [],
+      "bullets": [
+        "Purpose: addressing and routing packets between networks from source host to destination host.",
+        "Adds an IP header: source IP address, destination IP address, TTL, protocol, checksum, length.",
+        "Routers operate up to this layer and choose the next hop using a routing table.",
+        "Connectionless 'best effort' delivery: packets can be lost, duplicated or arrive out of order."
+      ],
       "examples": []
     },
     {
-      "id": "05-link-layer",
+      "id": "07-link-layer",
       "title": "Link layer",
       "content": [
-        "Handles frames and transmission across the local medium, including local hardware addressing and access to technologies such as Ethernet or Wi-Fi."
+        "The Link layer moves data across one physical network, from a host to its router, from one router to the next, or from the last router to the destination host. It puts each IP packet inside a frame. The frame header holds the MAC address of the sending network interface and the MAC address of the next device on this link, and a trailer holds a frame check sequence (a CRC) so the next device can detect corrupted frames. The layer then converts the bits into electrical, optical or radio signals and controls access to the shared medium. On the receiving side it turns the signals back into bits, checks the frame and passes the packet up to IP.",
+        "In a LAN this layer is usually provided by Ethernet or Wi-Fi. The coursebook splits Ethernet into sub-layers: Logical Link Control (interface to the layer above), Medium Access Control (builds the frame with its MAC addresses and handles collisions, e.g. with CSMA/CD) and two physical sub-layers that code and transmit the signal. Because a frame only reaches the next device, a new frame is built for every hop, while the IP addresses stay the same all the way (ignoring address translation at a home router). A switch works only at the Link layer, forwarding frames by MAC address; a router works up to the Internet layer and routes by IP address."
       ],
-      "bullets": [],
+      "bullets": [
+        "Purpose: transfer frames between devices on the same physical network and interface with the hardware.",
+        "Adds a frame header (source and destination MAC addresses) and a trailer (error-checking value).",
+        "Converts bits to signals on the medium and back again; controls access to the medium.",
+        "A new frame is created on every hop; MAC addresses change, IP addresses do not."
+      ],
       "examples": []
     },
     {
-      "id": "06-encapsulation-in-practice",
-      "title": "Encapsulation in practice",
+      "id": "08-sending-a-message",
+      "title": "What each layer does when a message is sent across the internet",
       "content": [
-        "At the sender, application data moves down the stack and receives layer-specific control information; the receiver removes that information in reverse order and passes the reconstructed data up to the application."
+        "Suppose a student's laptop requests the page /timetable.html from a school web server on another network. Going down the laptop's stack, each layer encapsulates what it receives: the Application layer produces the HTTP request; the Transport layer adds a TCP header with the ports and sequence number; the Internet layer adds an IP header with both IP addresses; the Link layer adds a frame header with MAC addresses and a trailer, then sends the frame as signals to the home router.",
+        "Each router on the way checks and removes the frame and hands the packet to its Internet layer. It reads the destination IP address, decreases the TTL, finds the next hop in its routing table, and passes the packet to its Link layer to be sent in a new frame. Routers never look at the TCP header or the HTTP request. At the web server the process reverses: the Link layer checks and strips the frame, the Internet layer confirms the packet is for this host and strips the IP header, and the Transport layer reorders and acknowledges the segments, strips the TCP headers and uses port 80 to hand the complete request to the web server software. The reply returns the same way with addresses and ports swapped."
       ],
-      "bullets": [],
+      "bullets": [
+        "Sender: Application creates the message, then Transport, Internet and Link each add a header (encapsulation).",
+        "Each router: Link up to Internet layer only; read destination IP, decrease TTL, choose next hop, new frame.",
+        "Receiver: Link, Internet and Transport each check and remove their header (decapsulation); the port selects the application.",
+        "The same layers on the two end hosts have a logical peer-to-peer relationship: the receiving TCP sees exactly what the sending TCP produced."
+      ],
       "examples": [
         {
-          "id": "06-example-1",
-          "kind": "example",
-          "label": "Worked example",
-          "content": "Sender: Application -> Transport -> Internet -> Link\nReceiver: Link -> Internet -> Transport -> Application"
+          "id": "08-walkthrough",
+          "kind": "worked",
+          "label": "Walk-through: laptop 192.0.2.15 requests a page from server 203.0.113.8",
+          "content": "SENDING HOST (laptop)\nApplication : HTTP request line  'GET /timetable.html HTTP/1.1'\nTransport   : + TCP header  src port 51200, dst port 80, seq 1\nInternet    : + IP header   src 192.0.2.15, dst 203.0.113.8, TTL 64\nLink        : + frame header  src MAC 02:00:00:AA:01:0F, dst MAC of home router\n              + trailer (frame check sequence); sent as signals\n\nEACH ROUTER\nLink        : check and remove the frame\nInternet    : read dst 203.0.113.8, TTL 64 -> 63, routing table gives next hop\nLink        : new frame with this router's MAC and the next hop's MAC\n\nRECEIVING HOST (web server)\nLink        : check frame, remove header and trailer\nInternet    : dst IP matches this host, remove IP header\nTransport   : reorder by sequence number, send ACK, remove TCP header,\n              dst port 80 -> hand to web server software\nApplication : web server reads 'GET /timetable.html' and prepares a response"
+        },
+        {
+          "id": "08-encapsulation-code",
+          "kind": "code",
+          "language": "python",
+          "label": "Encapsulation and decapsulation modelled as nested dictionaries",
+          "content": "# Each layer wraps what it receives from the layer above in its own header\ndef send(message):\n    segment = {\"src_port\": 51200, \"dst_port\": 80, \"seq\": 1, \"data\": message}      # Transport\n    packet = {\"src_ip\": \"192.0.2.15\", \"dst_ip\": \"203.0.113.8\", \"ttl\": 64,\n              \"data\": segment}                                                    # Internet\n    frame = {\"src_mac\": \"02:00:00:AA:01:0F\", \"dst_mac\": \"02:00:00:BB:02:01\",\n             \"data\": packet, \"fcs\": \"checksum\"}                                   # Link\n    return frame\n\ndef receive(frame):\n    packet = frame[\"data\"]      # Link layer checks the frame, removes its header and trailer\n    segment = packet[\"data\"]    # Internet layer checks the IP address, removes the IP header\n    port = segment[\"dst_port\"]  # Transport layer uses the port to pick the application\n    return port, segment[\"data\"]\n\nframe = send(\"GET /timetable.html HTTP/1.1\")\nprint(frame)\nprint(receive(frame))\n\n# Output (last line): (80, 'GET /timetable.html HTTP/1.1')"
+        },
+        {
+          "id": "08-overhead",
+          "kind": "worked",
+          "label": "How many frames, and how much overhead, for a 3,500-byte HTTP response?",
+          "content": "Ethernet carries at most 1,500 bytes of IP packet per frame.\nMinimum IP header = 20 bytes, minimum TCP header = 20 bytes\nMaximum data per segment = 1500 - 20 - 20 = 1460 bytes\n\n3,500 bytes of HTTP data -> segments of 1460, 1460 and 580 bytes (3 segments)\nEach frame adds 20 (TCP) + 20 (IP) + 14 (Ethernet header) + 4 (trailer) = 58 bytes\nFrame sizes: 1518, 1518 and 638 bytes; total sent = 3,674 bytes\nOverhead = 3,674 - 3,500 = 174 bytes, about 4.7% of what is transmitted\n\n(Segment sizes, totals and percentage checked by script.)"
+        }
+      ]
+    },
+    {
+      "id": "09-http",
+      "title": "HTTP: HyperText Transfer Protocol",
+      "content": [
+        "HTTP is the Application-layer protocol of the World Wide Web. It is a client-server, request-response protocol: a browser sends a request for a resource identified by a URL, and a web server returns a response with a status code and, usually, the resource (an HTML page, an image, a script). A request starts with a request line of the form Method URL Version, followed by optional header lines, all in ASCII text. GET asks for a resource; POST sends data such as a completed form. The response starts with a status line such as 200 OK or 404 Not Found. A web server normally listens on port 80.",
+        "HTTP does not encrypt anything, so passwords and card numbers sent over plain HTTP could be read by anyone who intercepts the packets. HTTPS is HTTP carried over an encrypted TLS connection (usually on port 443) and is used for any page that handles personal or financial data (see 17.1). Do not confuse HTTP, which transfers web resources, with HTML, the language a web page is written in."
+      ],
+      "bullets": [
+        "Purpose: transfer web pages and other resources between web servers and browsers (clients).",
+        "Client sends a request (GET to fetch, POST to send data); server returns a response with a status code.",
+        "Messages are text; HTTP itself is not encrypted, HTTPS adds encryption."
+      ],
+      "examples": []
+    },
+    {
+      "id": "10-email-protocols",
+      "title": "Email protocols: SMTP, POP3 and IMAP",
+      "content": [
+        "Sending one email involves three client-server exchanges. The sender's email client pushes the message to the sender's mail server using SMTP. That mail server then acts as an SMTP client and pushes the message across the internet to the recipient's mail server, where it waits in the recipient's mailbox. Finally, the recipient's email client pulls the message from its mail server using POP3 or IMAP. SMTP is therefore described as a push protocol, while POP3 and IMAP are pull protocols. Usual ports are 25 for SMTP between servers, 110 for POP3 and 143 for IMAP.",
+        "POP3 and IMAP differ in where the mail lives. POP3 downloads messages to one client device and normally deletes them from the server, so they can be read offline but only on that device, and are gone if it fails without a backup. IMAP keeps messages on the server, so the mailbox looks the same from every device and the server's backups protect it, at the cost of server storage and needing a connection. With webmail the user's browser uses HTTP(S), but SMTP still moves messages between mail servers."
+      ],
+      "bullets": [
+        "SMTP: push protocol that sends email from a client to its mail server and between mail servers.",
+        "POP3: pull protocol that downloads email from the server to one client, normally removing it from the server.",
+        "IMAP: pull protocol that accesses email kept on the server, synchronised across every device.",
+        "Webmail: the user side uses HTTP(S); server to server is still SMTP."
+      ],
+      "examples": [
+        {
+          "id": "10-email-route",
+          "kind": "worked",
+          "label": "Which protocol at each stage? Priya emails Tomas",
+          "content": "1 Priya's phone (email client)   --SMTP-->  Priya's mail server      push\n2 Priya's mail server            --SMTP-->  Tomas's mail server      push (server acts as client)\n3 Tomas's laptop (email client)  <--IMAP--  Tomas's mail server      pull, copy stays on server\n\nIf Tomas used POP3 at stage 3, the email would be downloaded to the laptop and removed\nfrom the server, so it would not appear on his phone afterwards.\nIf Priya wrote the email in a webmail page, stage 1 would use HTTPS instead of SMTP."
+        }
+      ]
+    },
+    {
+      "id": "11-ftp",
+      "title": "FTP: File Transfer Protocol",
+      "content": [
+        "FTP transfers whole files between two computers across a network, typically between an FTP client and an FTP server. It is used to upload the files of a website to a web server, to download software, or to move large files that are too big to attach to an email. Transferring files between systems with different operating systems and file systems is not trivial, so FTP keeps the control conversation separate from the file data: one connection (usually to server port 21) carries commands such as logging in, listing a directory, changing directory, renaming or deleting a file and starting a transfer, and a separate data connection carries the file contents or directory listing.",
+        "Users usually log in with a username and password, although some servers allow anonymous access to public files. Files can be sent in text (ASCII) mode, which lets line endings be converted between systems, or binary mode, which copies the bytes exactly. Plain FTP, like HTTP, sends everything including the password unencrypted; secure alternatives such as SFTP or FTPS are used when that matters."
+      ],
+      "bullets": [
+        "Purpose: upload and download files between a client and a server, and manage the files on the server.",
+        "Separate control connection (commands) and data connection (file contents).",
+        "Needs login (or anonymous access); plain FTP is not encrypted."
+      ],
+      "examples": []
+    },
+    {
+      "id": "12-bittorrent",
+      "title": "BitTorrent: peer-to-peer file sharing",
+      "content": [
+        "In the client-server model one server uploads a full copy of a file to every client, so a popular file needs a huge amount of server bandwidth and the server becomes a single point of failure. BitTorrent is an Application-layer protocol for peer-to-peer file sharing that avoids this. The file is divided into many small pieces of equal size. Every computer taking part is a peer that downloads pieces it lacks and, at the same time, uploads pieces it already has to other peers, so every new downloader also adds upload capacity.",
+        "To join, a user first gets a small torrent file, which names the tracker and describes the content: its name, size, piece size and a hash of every piece. The tracker is a server that lists the peers currently sharing that content; it does not hold the file. All the peers sharing one torrent form the swarm. A seed has the complete file and only uploads; a leecher is still downloading (the term is also used for a free-rider who downloads without uploading). Peers exchange lists of the pieces they hold and request the rarest first, so every piece stays available, and a peer keeps uploading to peers that upload to it and chokes those that do not. When every piece has arrived and passed its hash check, the client assembles the file and can stay on as a seed."
+      ],
+      "bullets": [
+        "Purpose: fast, efficient sharing of large files between many users without relying on one central server.",
+        "Torrent file: small file naming the tracker and describing the pieces (with a hash of each).",
+        "Tracker: server that lists the peers in the swarm; it does not store the content.",
+        "Swarm: all peers sharing the same torrent. Seed: has the whole file and uploads. Leecher: still downloading (or downloading without uploading).",
+        "Pieces are downloaded from many peers at once, rarest first, and checked by hash before the file is assembled."
+      ],
+      "examples": [
+        {
+          "id": "12-bittorrent-steps",
+          "kind": "worked",
+          "label": "Sharing a 700 MiB video course with 200 students",
+          "content": "Client-server: the college server uploads 200 full copies\n  200 x 700 MiB = 140,000 MiB (about 136.7 GiB) from one server.\n\nBitTorrent with 512 KiB pieces:\n  700 MiB / 512 KiB = 1,400 pieces.\n  1 Student opens the torrent file -> learns the tracker's address and the 1,400 piece hashes.\n  2 Tracker returns a list of peers in the swarm (one seed: the college; many leechers).\n  3 The client asks peers which pieces they hold and requests the rarest ones first,\n    from several peers at once.\n  4 Each finished piece is checked against its hash and immediately offered to other peers.\n  5 After all 1,400 pieces pass the check, the file is assembled; the student can stay on as a seed.\n  The college still uploads, but most of the 140,000 MiB now flows between students.\n\n(Piece count and totals checked by script.)"
         }
       ]
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": {
-    "title": "TCP/IP stack",
-    "type": "layers",
-    "nodes": [
-      "Application",
-      "Transport",
-      "Internet",
-      "Link"
+  "comparisonTable": {
+    "title": "Application-layer protocols and their purposes",
+    "columns": [
+      "Protocol",
+      "Purpose",
+      "Model and direction",
+      "Usual server port"
+    ],
+    "rows": [
+      [
+        "HTTP (HTTPS)",
+        "Transfers web pages and other resources between a web server and a browser",
+        "Client-server; client requests, server responds",
+        "80 (HTTPS 443)"
+      ],
+      [
+        "FTP",
+        "Uploads, downloads and manages files between a client and a server",
+        "Client-server; separate control and data connections",
+        "21 for control"
+      ],
+      [
+        "SMTP",
+        "Sends email from a client to its mail server and between mail servers",
+        "Client-server; push",
+        "25"
+      ],
+      [
+        "POP3",
+        "Downloads email from the mail server to one client, normally deleting it from the server",
+        "Client-server; pull",
+        "110"
+      ],
+      [
+        "IMAP",
+        "Accesses and manages email kept on the mail server from any device",
+        "Client-server; pull, synchronised",
+        "143"
+      ],
+      [
+        "BitTorrent",
+        "Shares large files quickly by exchanging pieces between many peers",
+        "Peer-to-peer, helped by a tracker",
+        "No single well-known port"
+      ]
     ]
   },
-  "analysisChains": [],
+  "diagram": {
+    "title": "The TCP/IP stack: what each layer adds as a message is sent",
+    "type": "layers",
+    "nodes": [
+      "Application: HTTP, FTP, SMTP, POP3, IMAP, BitTorrent create the message",
+      "Transport: TCP adds ports and sequence number (segment)",
+      "Internet: IP adds source and destination IP addresses and TTL (packet)",
+      "Link: Ethernet or Wi-Fi adds MAC addresses and a trailer (frame), then sends signals"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Why layering lets the internet change without breaking",
+      "steps": [
+        "A school replaces its wired Ethernet with Wi-Fi, which changes only the Link layer",
+        "The Internet layer still receives and hands over IP packets through the same interface",
+        "So TCP, and every browser and email client above it, carries on working with no changes",
+        "Equally, a new Application-layer protocol can be added without touching routers, which only work up to the Internet layer"
+      ],
+      "evaluation": "Separating the jobs into layers with fixed interfaces makes the system modular: each layer can be developed, replaced and debugged on its own, at the cost of some overhead because every layer adds its own header."
+    },
+    {
+      "title": "Choosing between POP3 and IMAP",
+      "steps": [
+        "A sales manager reads email on a phone, a laptop and a hotel computer",
+        "With POP3 each message is downloaded to whichever device checks first and removed from the server",
+        "So the other devices never see it, and it is lost if that device fails without a backup",
+        "IMAP keeps messages on the server, so every device sees the same mailbox and the server's backups protect it"
+      ],
+      "evaluation": "IMAP suits anyone using several devices or moving around; POP3 suits a single computer that must read mail offline or where server storage is limited, but it makes that computer's backups essential."
+    },
+    {
+      "title": "Why BitTorrent scales better than one download server",
+      "steps": [
+        "A game studio releases a large update that a million players want on the same day",
+        "One server would have to upload a million full copies, so its bandwidth would be overwhelmed and it would be a single point of failure",
+        "With BitTorrent every player downloading pieces also uploads them to others in the swarm",
+        "So total upload capacity grows as the number of downloaders grows, and rarest-first keeps every piece available"
+      ],
+      "evaluation": "Peer-to-peer sharing is efficient for large, popular files, but it depends on enough seeds staying online, the publisher has little control over who shares what, and it can be misused to share copyrighted material illegally."
+    }
+  ],
   "examTips": [
-    "Use precise protocol verbs: SMTP sends; POP3/IMAP retrieve/manage; FTP transfers files.",
-    "Keep IP addresses and port numbers distinct.",
-    "If asked why a stack helps, mention modularity/standardisation/interoperability."
+    "When asked why protocols are needed, say that both sender and receiver must agree the rules (format, addressing, error checking, order of messages) so that devices from different manufacturers can communicate; 'a set of rules' alone is not enough.",
+    "Use the syllabus layer names Application, Transport, Internet, Link, in that order from the top. Give a purpose for each layer, not just a protocol name.",
+    "Know which header holds what: source and destination IP addresses (and TTL) are in the IP header; source and destination ports, sequence number and acknowledgement are in the TCP header; MAC addresses are in the frame header.",
+    "For 'describe what happens when a message is sent', work down the sender's stack adding a header at each layer, mention routers reading the IP address, then work up the receiver's stack removing headers and using the port to reach the application.",
+    "SMTP pushes (sending and server-to-server), POP3 and IMAP pull. For POP3 vs IMAP the mark is about where the email is stored: downloaded and removed, or kept on the server and synchronised.",
+    "For BitTorrent define each term with its function: tracker lists the peers, seed has the whole file and uploads, swarm is all the peers sharing the file, and pieces come from many peers at once."
   ],
   "commonMistakes": [
-    "Putting routing in the Application layer.",
-    "Saying POP3 sends email.",
-    "Calling TCP/IP just two protocols rather than a protocol suite."
+    "Confusing HTTP (the protocol that transfers web pages) with HTML (the language pages are written in).",
+    "Saying the Transport layer adds IP addresses; TCP adds port numbers and sequence numbers, and IP addresses are added by the Internet layer.",
+    "Saying a router reads the whole message or the port number; a router only works up to the Internet layer and uses the destination IP address.",
+    "Claiming SMTP is used to download email to the recipient; retrieval uses POP3 or IMAP (or HTTP for webmail).",
+    "Saying the BitTorrent tracker stores the file; it only keeps a list of the peers in the swarm.",
+    "Thinking MAC addresses stay the same across the internet; a new frame with new MAC addresses is made on every hop, while the IP addresses stay the same."
   ],
   "quickRecall": [
-    "Application=services",
-    "Transport=end-to-end",
-    "Internet=IP+routing",
-    "Link=local network",
-    "SMTP sends; POP3/IMAP receive/manage"
+    {
+      "question": "Why is a protocol essential for communication between computers?",
+      "answer": "Sender and receiver must agree the rules for format, addressing, timing and error handling so that data sent by one device is correctly interpreted by another, whatever their make."
+    },
+    {
+      "question": "Give three features of a layered protocol stack.",
+      "answer": "Each layer has its own function; each layer only communicates with the layers directly above and below through a defined interface; a layer can be replaced without changing the others (only the bottom layer touches hardware, only the top layer the user)."
+    },
+    {
+      "question": "Name the four TCP/IP layers from top to bottom.",
+      "answer": "Application, Transport, Internet, Link."
+    },
+    {
+      "question": "State two functions of the Transport layer.",
+      "answer": "Splits data into segments with sequence numbers and port numbers; with TCP, acknowledges receipt, retransmits lost segments and reassembles them in order for the correct application."
+    },
+    {
+      "question": "What does the Internet layer add, and why?",
+      "answer": "An IP header with the source and destination IP addresses (and TTL), so that routers can route the packet across networks to the destination host."
+    },
+    {
+      "question": "What is the function of the Link layer?",
+      "answer": "It puts the packet in a frame with source and destination MAC addresses and an error-check trailer, and transmits it as signals to the next device on the same physical network."
+    },
+    {
+      "question": "What is encapsulation?",
+      "answer": "Each layer on the sending host wraps the data from the layer above with its own header (and a trailer at the Link layer); the receiver removes them in reverse order (decapsulation)."
+    },
+    {
+      "question": "What are a tracker, a seed and a swarm in BitTorrent?",
+      "answer": "The tracker is a server listing the peers sharing a file; a seed is a peer with the complete file that uploads it; the swarm is all the peers sharing that file."
+    }
   ],
   "relatedTopics": [
+    "2.1",
     "14.2",
     "17.1"
   ]

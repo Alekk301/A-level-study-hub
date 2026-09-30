@@ -1226,11 +1226,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Understand why network protocols exist and compare examples that handle addressing, transport and application-level communication.",
+            "summary": "Explain why protocols are essential, describe the four-layer TCP/IP stack and what each layer does as a message is encapsulated and decapsulated across the internet, and state the purposes of HTTP, FTP, SMTP, POP3, IMAP and BitTorrent.",
             "focusPoints": [
-              "protocol purpose",
-              "network/application protocols",
-              "flow/error control"
+              "why protocols",
+              "layered stack",
+              "TCP/IP four layers",
+              "encapsulation",
+              "HTTP/FTP/email protocols",
+              "BitTorrent"
             ],
             "contentDepth": "full"
           },
@@ -1241,11 +1244,13 @@
             "levels": [
               "A2"
             ],
-            "summary": "Compare how circuit switching and packet switching route data across a network, and the trade-offs of each.",
+            "summary": "Compare circuit switching and packet switching with their benefits, drawbacks and uses, explain the function of a router, and describe how packets cross the internet, are reassembled and are resent when lost.",
             "focusPoints": [
-              "circuits vs packets",
-              "routing",
-              "trade-offs"
+              "circuit switching",
+              "packet switching",
+              "packet header contents",
+              "router function",
+              "reassembly and TTL"
             ],
             "contentDepth": "full"
           },

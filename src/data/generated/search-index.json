@@ -19044,41 +19044,159 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Protocols are agreed rules that let unlike hardware and software communicate reliably. At A2 the central model is the four-layer TCP/IP stack, plus the purposes of common application protocols such as HTTP, FTP, POP3, IMAP, SMTP and BitTorrent."
+        "text": "Protocols let computers from different manufacturers, running different software, exchange data: both ends follow the same agreed rules. Networking needs many protocols, so they are organised as a stack of layers, each with one job, serving the layer above. The internet uses the TCP/IP suite with four layers: Application, Transport, Internet and Link. You must describe the purpose and function of each layer and trace a message from one host to another across the internet: headers added down the sender's stack (encapsulation), routers working up to the Internet layer, headers removed up the receiver's stack (decapsulation). The topic ends with the purposes of HTTP, FTP, SMTP, POP3, IMAP and the peer-to-peer BitTorrent protocol."
       },
       {
         "kind": "Definition",
         "label": "Protocol",
-        "text": "An agreed set of rules for formatting, transmitting, receiving and interpreting data."
+        "text": "A set of rules for data transmission that the sender and receiver both agree to follow, covering things such as message format, addressing, timing, error checking and the order of exchanges."
       },
       {
         "kind": "Definition",
         "label": "Protocol stack",
-        "text": "A layered collection of protocols, each layer providing a defined service."
-      },
-      {
-        "kind": "Definition",
-        "label": "Encapsulation",
-        "text": "Adding headers/control information as data passes down the stack."
-      },
-      {
-        "kind": "Definition",
-        "label": "Port number",
-        "text": "A number used by the transport layer to identify an application/service on a host."
+        "text": "The protocols of a suite arranged as layers, where each layer has one area of responsibility, uses the services of the layer below and provides services to the layer above through a defined interface."
       },
       {
         "kind": "Definition",
         "label": "TCP/IP",
-        "text": "The internet protocol suite organised into Application, Transport, Internet and Link layers."
+        "text": "The protocol suite that the internet runs on, named after its two central protocols (Transmission Control Protocol and Internet Protocol) and organised into Application, Transport, Internet and Link layers."
+      },
+      {
+        "kind": "Definition",
+        "label": "Encapsulation",
+        "text": "Wrapping the data received from the layer above inside a new unit that carries this layer's header (and, at the Link layer, a trailer) as data moves down the stack."
+      },
+      {
+        "kind": "Definition",
+        "label": "Decapsulation",
+        "text": "Removing and acting on each layer's header as data moves up the receiver's stack, until only the original message reaches the application."
+      },
+      {
+        "kind": "Definition",
+        "label": "Port number",
+        "text": "A 16-bit number in the transport header that identifies which application or service on a host the data belongs to, for example 80 for an HTTP web server."
+      },
+      {
+        "kind": "Definition",
+        "label": "MAC address",
+        "text": "The physical address that uniquely identifies a network interface card, usually 48 bits written as six hexadecimal pairs; the Link layer uses it to deliver a frame across one local network."
+      },
+      {
+        "kind": "Definition",
+        "label": "Peer-to-peer (P2P)",
+        "text": "A network model with no central server holding the content, in which every peer can act as both a client (downloading) and a server (uploading)."
       },
       {
         "kind": "Section",
-        "text": "Why layers are useful"
+        "text": "Why a protocol is essential"
       },
       {
         "kind": "Content",
-        "label": "Why layers are useful",
-        "text": "Layering separates responsibilities. An application can use transport services without knowing network hardware details; local-network technology can change without redesigning every application. Standard interfaces improve interoperability, maintenance and troubleshooting."
+        "label": "Why a protocol is essential",
+        "text": "Two computers that want to exchange data might have different processors, operating systems, character sets and network hardware, and might have been built decades apart. A stream of bits means nothing on its own: the receiver has to know where a message starts and ends, which bits are addresses and which are data, how errors will be detected, and what reply is expected. A protocol settles all of these questions in advance. Because both ends follow the same published rules, any two devices that implement the protocol correctly can communicate, whoever made them."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "Protocol rules exist at every level. Low down, a rule might fix which voltage represents a 1 or the maximum transmission rate. Higher up, rules fix the exact layout of a header, the sequence of messages (request then response, data then acknowledgement) and what to do when something goes wrong (time out and retransmit). Without them data could be misread, lost without anyone noticing, or delivered to the wrong program."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "Format and syntax: the structure of each message and header, and the character coding used."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "Addressing: how the sender, receiver and target application are identified."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "Timing and flow: transmission rate, and the order in which messages are exchanged (handshakes, acknowledgements)."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "Error handling: how errors are detected (for example checksums) and what happens next (discard, request retransmission)."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "Interoperability: devices and software from different manufacturers can work together because they follow the same standard."
+      },
+      {
+        "kind": "Section",
+        "text": "Protocol implementation viewed as a stack"
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "Networking involves too many separate jobs for one protocol to handle sensibly: presenting data to an application, getting it to the right program on the right host, choosing a route through many networks, and turning bits into signals on a cable or radio link. A protocol suite splits these jobs into layers stacked on top of each other. Each layer has its own functionality and its own protocols. A layer only talks to the layer directly above it and the layer directly below it, through a defined interface, and it relies on the layers below to do their jobs without needing to know how they do them."
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "The stack makes networks easier to build and change. A browser does not care whether the computer uses Wi-Fi or a cable, because that belongs to the lowest layer, which can be replaced without rewriting any application; different organisations can write protocols for different layers, and a fault can be traced to one layer. Logically, each layer talks to the same layer on the other host (only the receiving Transport layer reads the sending Transport layer's header), even though the data physically travels down one stack and up the other."
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "Each layer can only accept input from the layer directly above or directly below it, through a defined interface."
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "A layer is serviced by the layers beneath it and provides a service to the layer above."
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "User interaction happens only through the protocols of the top (Application) layer."
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "Direct access to the hardware is confined to the bottom (Link) layer; the upper layers are implemented in software."
+      },
+      {
+        "kind": "Content",
+        "label": "Protocol implementation viewed as a stack",
+        "text": "A layer can be changed or replaced without redesigning the other layers, as long as its interface stays the same."
+      },
+      {
+        "kind": "Section",
+        "text": "The TCP/IP protocol suite and its four layers"
+      },
+      {
+        "kind": "Content",
+        "label": "The TCP/IP protocol suite and its four layers",
+        "text": "TCP/IP is the protocol suite that underpins the internet. The syllabus describes it as four layers. From the top down they are the Application layer, the Transport layer, the Internet layer and the Link layer. Each layer has a clear purpose, and the protocols named in the syllabus belong to particular layers: HTTP, FTP, SMTP, POP3, IMAP and BitTorrent are Application-layer protocols; TCP (and UDP) work in the Transport layer; IP works in the Internet layer; Ethernet and Wi-Fi work in the Link layer."
+      },
+      {
+        "kind": "Content",
+        "label": "The TCP/IP protocol suite and its four layers",
+        "text": "Be ready for different names. The coursebook draws a five-layer model, calling the Internet layer the Network layer and splitting the Link layer into Data link and Physical layers; other sources call the Link layer the Network interface layer. In a 9618 answer use Application, Transport, Internet and Link."
+      },
+      {
+        "kind": "Content",
+        "label": "The TCP/IP protocol suite and its four layers",
+        "text": "Application: provides network services to the user's software and defines the format of application messages (HTTP, FTP, SMTP, POP3, IMAP, BitTorrent, DNS)."
+      },
+      {
+        "kind": "Content",
+        "label": "The TCP/IP protocol suite and its four layers",
+        "text": "Transport: end-to-end delivery between the two applications; splits data into segments, numbers them, uses port numbers, and (with TCP) checks for loss and asks for retransmission."
+      },
+      {
+        "kind": "Content",
+        "label": "The TCP/IP protocol suite and its four layers",
+        "text": "Internet: logical addressing with IP addresses and routing of each packet across many networks towards the destination host."
+      },
+      {
+        "kind": "Content",
+        "label": "The TCP/IP protocol suite and its four layers",
+        "text": "Link: moves a frame across one physical network to the next device, using MAC addresses, and turns the bits into signals on the medium."
       },
       {
         "kind": "Section",
@@ -19087,7 +19205,27 @@
       {
         "kind": "Content",
         "label": "Application layer",
-        "text": "Provides network services directly used by software. HTTP/HTTPS transfer web content, FTP transfers files, SMTP sends email, POP3/IMAP retrieve or manage email, and BitTorrent supports peer-to-peer distribution."
+        "text": "The Application layer is where network communication starts and ends. Its protocols are used by application software such as browsers, email clients, FTP clients and BitTorrent clients. The protocol defines what the application's messages look like and how the conversation proceeds: an HTTP client sends a request and a web server returns a response; an SMTP client sends commands identifying the sender and recipients followed by the email itself. The Application layer also puts the data into an agreed format that the other end will understand, such as ASCII text lines for HTTP headers."
+      },
+      {
+        "kind": "Content",
+        "label": "Application layer",
+        "text": "The Application layer does not deal with how the data reaches the other host. It hands its message to the Transport layer with the destination address and port. Some Application-layer protocols support others: DNS is used first to turn a domain name into the IP address the lower layers need."
+      },
+      {
+        "kind": "Content",
+        "label": "Application layer",
+        "text": "Purpose: to provide network services to applications and the user."
+      },
+      {
+        "kind": "Content",
+        "label": "Application layer",
+        "text": "Function: format the application's messages, follow the request/response rules of the protocol, pass data to the Transport layer, and present received data to the application."
+      },
+      {
+        "kind": "Content",
+        "label": "Application layer",
+        "text": "Only layer the user interacts with (through the application's interface)."
       },
       {
         "kind": "Section",
@@ -19096,7 +19234,37 @@
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "Provides end-to-end application communication. TCP can segment data, number segments, detect loss, request retransmission and reassemble data. Port numbers identify the target application/service."
+        "text": "The Transport layer gives end-to-end communication between an application on one host and an application on another. On the sending host TCP takes the stream of data from the Application layer, splits it into pieces small enough for the network, and gives each piece a TCP header to make a segment. The header holds the source and destination port numbers, so the data reaches the right application at each end (a web server listens on port 80; the browser uses a temporary port so that replies come back to it), and a sequence number, so the receiver can put the pieces back in order."
+      },
+      {
+        "kind": "Content",
+        "label": "Transport layer",
+        "text": "TCP is connection-oriented and reliable. Before sending data it sets up a connection with the receiving host (the three-way handshake). The receiver acknowledges the segments it gets; if no acknowledgement arrives within a time limit, the sender resends that segment. A checksum lets the receiver detect and discard a damaged segment. The receiving TCP reorders segments by sequence number, removes duplicates, strips the headers and passes the data to the application identified by the port. TCP is not concerned with IP addresses or routes; that is the next layer's job. UDP, the other transport protocol, is connectionless: ports and a checksum but no sequence numbers or acknowledgements, which suits live audio and video."
+      },
+      {
+        "kind": "Content",
+        "label": "Transport layer",
+        "text": "Purpose: reliable end-to-end delivery of data between two applications."
+      },
+      {
+        "kind": "Content",
+        "label": "Transport layer",
+        "text": "Splits data into segments and adds a TCP header to each."
+      },
+      {
+        "kind": "Content",
+        "label": "Transport layer",
+        "text": "Header fields: source port, destination port, sequence number, acknowledgement number, checksum."
+      },
+      {
+        "kind": "Content",
+        "label": "Transport layer",
+        "text": "Establishes the connection, acknowledges receipt, retransmits lost segments, controls the flow rate."
+      },
+      {
+        "kind": "Content",
+        "label": "Transport layer",
+        "text": "At the receiver: reorders by sequence number, checks, reassembles and hands data to the correct application."
       },
       {
         "kind": "Section",
@@ -19105,7 +19273,32 @@
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "Uses logical IP addressing and routing. Routers examine destination information and forward packets towards the destination network."
+        "text": "The Internet layer gets each packet from the source host to the destination host, even though they may be on different networks many routers apart. IP takes each segment from the Transport layer and adds an IP header to form a packet (also called a datagram). The header holds the source IP address and the destination IP address; the destination address is normally found beforehand using DNS. It also holds a time-to-live (TTL) value, which each router decreases by one so that a packet caught in a routing loop is eventually discarded, a header checksum and the packet length."
+      },
+      {
+        "kind": "Content",
+        "label": "Internet layer",
+        "text": "The Internet layer is responsible for routing. At every router the packet is passed up as far as the Internet layer, the destination IP address is compared with the router's routing table, and the packet is sent on towards the next router (the next hop). IP is connectionless and gives no guarantee: once a packet has been passed down to the Link layer IP has no further duty and does not know whether it arrived. Reliability is left to TCP above it. IP also does not look inside the segment; if the segment contains an acknowledgement, IP simply passes it up to TCP."
+      },
+      {
+        "kind": "Content",
+        "label": "Internet layer",
+        "text": "Purpose: addressing and routing packets between networks from source host to destination host."
+      },
+      {
+        "kind": "Content",
+        "label": "Internet layer",
+        "text": "Adds an IP header: source IP address, destination IP address, TTL, protocol, checksum, length."
+      },
+      {
+        "kind": "Content",
+        "label": "Internet layer",
+        "text": "Routers operate up to this layer and choose the next hop using a routing table."
+      },
+      {
+        "kind": "Content",
+        "label": "Internet layer",
+        "text": "Connectionless 'best effort' delivery: packets can be lost, duplicated or arrive out of order."
       },
       {
         "kind": "Section",
@@ -19114,41 +19307,294 @@
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "Handles frames and transmission across the local medium, including local hardware addressing and access to technologies such as Ethernet or Wi-Fi."
-      },
-      {
-        "kind": "Section",
-        "text": "Encapsulation in practice"
+        "text": "The Link layer moves data across one physical network, from a host to its router, from one router to the next, or from the last router to the destination host. It puts each IP packet inside a frame. The frame header holds the MAC address of the sending network interface and the MAC address of the next device on this link, and a trailer holds a frame check sequence (a CRC) so the next device can detect corrupted frames. The layer then converts the bits into electrical, optical or radio signals and controls access to the shared medium. On the receiving side it turns the signals back into bits, checks the frame and passes the packet up to IP."
       },
       {
         "kind": "Content",
-        "label": "Encapsulation in practice",
-        "text": "At the sender, application data moves down the stack and receives layer-specific control information; the receiver removes that information in reverse order and passes the reconstructed data up to the application."
+        "label": "Link layer",
+        "text": "In a LAN this layer is usually provided by Ethernet or Wi-Fi. The coursebook splits Ethernet into sub-layers: Logical Link Control (interface to the layer above), Medium Access Control (builds the frame with its MAC addresses and handles collisions, e.g. with CSMA/CD) and two physical sub-layers that code and transmit the signal. Because a frame only reaches the next device, a new frame is built for every hop, while the IP addresses stay the same all the way (ignoring address translation at a home router). A switch works only at the Link layer, forwarding frames by MAC address; a router works up to the Internet layer and routes by IP address."
+      },
+      {
+        "kind": "Content",
+        "label": "Link layer",
+        "text": "Purpose: transfer frames between devices on the same physical network and interface with the hardware."
+      },
+      {
+        "kind": "Content",
+        "label": "Link layer",
+        "text": "Adds a frame header (source and destination MAC addresses) and a trailer (error-checking value)."
+      },
+      {
+        "kind": "Content",
+        "label": "Link layer",
+        "text": "Converts bits to signals on the medium and back again; controls access to the medium."
+      },
+      {
+        "kind": "Content",
+        "label": "Link layer",
+        "text": "A new frame is created on every hop; MAC addresses change, IP addresses do not."
+      },
+      {
+        "kind": "Section",
+        "text": "What each layer does when a message is sent across the internet"
+      },
+      {
+        "kind": "Content",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "Suppose a student's laptop requests the page /timetable.html from a school web server on another network. Going down the laptop's stack, each layer encapsulates what it receives: the Application layer produces the HTTP request; the Transport layer adds a TCP header with the ports and sequence number; the Internet layer adds an IP header with both IP addresses; the Link layer adds a frame header with MAC addresses and a trailer, then sends the frame as signals to the home router."
+      },
+      {
+        "kind": "Content",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "Each router on the way checks and removes the frame and hands the packet to its Internet layer. It reads the destination IP address, decreases the TTL, finds the next hop in its routing table, and passes the packet to its Link layer to be sent in a new frame. Routers never look at the TCP header or the HTTP request. At the web server the process reverses: the Link layer checks and strips the frame, the Internet layer confirms the packet is for this host and strips the IP header, and the Transport layer reorders and acknowledges the segments, strips the TCP headers and uses port 80 to hand the complete request to the web server software. The reply returns the same way with addresses and ports swapped."
+      },
+      {
+        "kind": "Content",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "Sender: Application creates the message, then Transport, Internet and Link each add a header (encapsulation)."
+      },
+      {
+        "kind": "Content",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "Each router: Link up to Internet layer only; read destination IP, decrease TTL, choose next hop, new frame."
+      },
+      {
+        "kind": "Content",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "Receiver: Link, Internet and Transport each check and remove their header (decapsulation); the port selects the application."
+      },
+      {
+        "kind": "Content",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "The same layers on the two end hosts have a logical peer-to-peer relationship: the receiving TCP sees exactly what the sending TCP produced."
       },
       {
         "kind": "Example",
-        "label": "Encapsulation in practice",
-        "text": "Sender: Application -> Transport -> Internet -> Link\nReceiver: Link -> Internet -> Transport -> Application"
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "SENDING HOST (laptop)\nApplication : HTTP request line  'GET /timetable.html HTTP/1.1'\nTransport   : + TCP header  src port 51200, dst port 80, seq 1\nInternet    : + IP header   src 192.0.2.15, dst 203.0.113.8, TTL 64\nLink        : + frame header  src MAC 02:00:00:AA:01:0F, dst MAC of home router\n              + trailer (frame check sequence); sent as signals\n\nEACH ROUTER\nLink        : check and remove the frame\nInternet    : read dst 203.0.113.8, TTL 64 -> 63, routing table gives next hop\nLink        : new frame with this router's MAC and the next hop's MAC\n\nRECEIVING HOST (web server)\nLink        : check frame, remove header and trailer\nInternet    : dst IP matches this host, remove IP header\nTransport   : reorder by sequence number, send ACK, remove TCP header,\n              dst port 80 -> hand to web server software\nApplication : web server reads 'GET /timetable.html' and prepares a response"
       },
       {
-        "kind": "Quick recall",
-        "text": "Application=services"
+        "kind": "Example",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "# Each layer wraps what it receives from the layer above in its own header\ndef send(message):\n    segment = {\"src_port\": 51200, \"dst_port\": 80, \"seq\": 1, \"data\": message}      # Transport\n    packet = {\"src_ip\": \"192.0.2.15\", \"dst_ip\": \"203.0.113.8\", \"ttl\": 64,\n              \"data\": segment}                                                    # Internet\n    frame = {\"src_mac\": \"02:00:00:AA:01:0F\", \"dst_mac\": \"02:00:00:BB:02:01\",\n             \"data\": packet, \"fcs\": \"checksum\"}                                   # Link\n    return frame\n\ndef receive(frame):\n    packet = frame[\"data\"]      # Link layer checks the frame, removes its header and trailer\n    segment = packet[\"data\"]    # Internet layer checks the IP address, removes the IP header\n    port = segment[\"dst_port\"]  # Transport layer uses the port to pick the application\n    return port, segment[\"data\"]\n\nframe = send(\"GET /timetable.html HTTP/1.1\")\nprint(frame)\nprint(receive(frame))\n\n# Output (last line): (80, 'GET /timetable.html HTTP/1.1')"
       },
       {
-        "kind": "Quick recall",
-        "text": "Transport=end-to-end"
+        "kind": "Example",
+        "label": "What each layer does when a message is sent across the internet",
+        "text": "Ethernet carries at most 1,500 bytes of IP packet per frame.\nMinimum IP header = 20 bytes, minimum TCP header = 20 bytes\nMaximum data per segment = 1500 - 20 - 20 = 1460 bytes\n\n3,500 bytes of HTTP data -> segments of 1460, 1460 and 580 bytes (3 segments)\nEach frame adds 20 (TCP) + 20 (IP) + 14 (Ethernet header) + 4 (trailer) = 58 bytes\nFrame sizes: 1518, 1518 and 638 bytes; total sent = 3,674 bytes\nOverhead = 3,674 - 3,500 = 174 bytes, about 4.7% of what is transmitted\n\n(Segment sizes, totals and percentage checked by script.)"
       },
       {
-        "kind": "Quick recall",
-        "text": "Internet=IP+routing"
+        "kind": "Section",
+        "text": "HTTP: HyperText Transfer Protocol"
       },
       {
-        "kind": "Quick recall",
-        "text": "Link=local network"
+        "kind": "Content",
+        "label": "HTTP: HyperText Transfer Protocol",
+        "text": "HTTP is the Application-layer protocol of the World Wide Web. It is a client-server, request-response protocol: a browser sends a request for a resource identified by a URL, and a web server returns a response with a status code and, usually, the resource (an HTML page, an image, a script). A request starts with a request line of the form Method URL Version, followed by optional header lines, all in ASCII text. GET asks for a resource; POST sends data such as a completed form. The response starts with a status line such as 200 OK or 404 Not Found. A web server normally listens on port 80."
       },
       {
-        "kind": "Quick recall",
-        "text": "SMTP sends; POP3/IMAP receive/manage"
+        "kind": "Content",
+        "label": "HTTP: HyperText Transfer Protocol",
+        "text": "HTTP does not encrypt anything, so passwords and card numbers sent over plain HTTP could be read by anyone who intercepts the packets. HTTPS is HTTP carried over an encrypted TLS connection (usually on port 443) and is used for any page that handles personal or financial data (see 17.1). Do not confuse HTTP, which transfers web resources, with HTML, the language a web page is written in."
+      },
+      {
+        "kind": "Content",
+        "label": "HTTP: HyperText Transfer Protocol",
+        "text": "Purpose: transfer web pages and other resources between web servers and browsers (clients)."
+      },
+      {
+        "kind": "Content",
+        "label": "HTTP: HyperText Transfer Protocol",
+        "text": "Client sends a request (GET to fetch, POST to send data); server returns a response with a status code."
+      },
+      {
+        "kind": "Content",
+        "label": "HTTP: HyperText Transfer Protocol",
+        "text": "Messages are text; HTTP itself is not encrypted, HTTPS adds encryption."
+      },
+      {
+        "kind": "Section",
+        "text": "Email protocols: SMTP, POP3 and IMAP"
+      },
+      {
+        "kind": "Content",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "Sending one email involves three client-server exchanges. The sender's email client pushes the message to the sender's mail server using SMTP. That mail server then acts as an SMTP client and pushes the message across the internet to the recipient's mail server, where it waits in the recipient's mailbox. Finally, the recipient's email client pulls the message from its mail server using POP3 or IMAP. SMTP is therefore described as a push protocol, while POP3 and IMAP are pull protocols. Usual ports are 25 for SMTP between servers, 110 for POP3 and 143 for IMAP."
+      },
+      {
+        "kind": "Content",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "POP3 and IMAP differ in where the mail lives. POP3 downloads messages to one client device and normally deletes them from the server, so they can be read offline but only on that device, and are gone if it fails without a backup. IMAP keeps messages on the server, so the mailbox looks the same from every device and the server's backups protect it, at the cost of server storage and needing a connection. With webmail the user's browser uses HTTP(S), but SMTP still moves messages between mail servers."
+      },
+      {
+        "kind": "Content",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "SMTP: push protocol that sends email from a client to its mail server and between mail servers."
+      },
+      {
+        "kind": "Content",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "POP3: pull protocol that downloads email from the server to one client, normally removing it from the server."
+      },
+      {
+        "kind": "Content",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "IMAP: pull protocol that accesses email kept on the server, synchronised across every device."
+      },
+      {
+        "kind": "Content",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "Webmail: the user side uses HTTP(S); server to server is still SMTP."
+      },
+      {
+        "kind": "Example",
+        "label": "Email protocols: SMTP, POP3 and IMAP",
+        "text": "1 Priya's phone (email client)   --SMTP-->  Priya's mail server      push\n2 Priya's mail server            --SMTP-->  Tomas's mail server      push (server acts as client)\n3 Tomas's laptop (email client)  <--IMAP--  Tomas's mail server      pull, copy stays on server\n\nIf Tomas used POP3 at stage 3, the email would be downloaded to the laptop and removed\nfrom the server, so it would not appear on his phone afterwards.\nIf Priya wrote the email in a webmail page, stage 1 would use HTTPS instead of SMTP."
+      },
+      {
+        "kind": "Section",
+        "text": "FTP: File Transfer Protocol"
+      },
+      {
+        "kind": "Content",
+        "label": "FTP: File Transfer Protocol",
+        "text": "FTP transfers whole files between two computers across a network, typically between an FTP client and an FTP server. It is used to upload the files of a website to a web server, to download software, or to move large files that are too big to attach to an email. Transferring files between systems with different operating systems and file systems is not trivial, so FTP keeps the control conversation separate from the file data: one connection (usually to server port 21) carries commands such as logging in, listing a directory, changing directory, renaming or deleting a file and starting a transfer, and a separate data connection carries the file contents or directory listing."
+      },
+      {
+        "kind": "Content",
+        "label": "FTP: File Transfer Protocol",
+        "text": "Users usually log in with a username and password, although some servers allow anonymous access to public files. Files can be sent in text (ASCII) mode, which lets line endings be converted between systems, or binary mode, which copies the bytes exactly. Plain FTP, like HTTP, sends everything including the password unencrypted; secure alternatives such as SFTP or FTPS are used when that matters."
+      },
+      {
+        "kind": "Content",
+        "label": "FTP: File Transfer Protocol",
+        "text": "Purpose: upload and download files between a client and a server, and manage the files on the server."
+      },
+      {
+        "kind": "Content",
+        "label": "FTP: File Transfer Protocol",
+        "text": "Separate control connection (commands) and data connection (file contents)."
+      },
+      {
+        "kind": "Content",
+        "label": "FTP: File Transfer Protocol",
+        "text": "Needs login (or anonymous access); plain FTP is not encrypted."
+      },
+      {
+        "kind": "Section",
+        "text": "BitTorrent: peer-to-peer file sharing"
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "In the client-server model one server uploads a full copy of a file to every client, so a popular file needs a huge amount of server bandwidth and the server becomes a single point of failure. BitTorrent is an Application-layer protocol for peer-to-peer file sharing that avoids this. The file is divided into many small pieces of equal size. Every computer taking part is a peer that downloads pieces it lacks and, at the same time, uploads pieces it already has to other peers, so every new downloader also adds upload capacity."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "To join, a user first gets a small torrent file, which names the tracker and describes the content: its name, size, piece size and a hash of every piece. The tracker is a server that lists the peers currently sharing that content; it does not hold the file. All the peers sharing one torrent form the swarm. A seed has the complete file and only uploads; a leecher is still downloading (the term is also used for a free-rider who downloads without uploading). Peers exchange lists of the pieces they hold and request the rarest first, so every piece stays available, and a peer keeps uploading to peers that upload to it and chokes those that do not. When every piece has arrived and passed its hash check, the client assembles the file and can stay on as a seed."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Purpose: fast, efficient sharing of large files between many users without relying on one central server."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Torrent file: small file naming the tracker and describing the pieces (with a hash of each)."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Tracker: server that lists the peers in the swarm; it does not store the content."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Swarm: all peers sharing the same torrent. Seed: has the whole file and uploads. Leecher: still downloading (or downloading without uploading)."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Pieces are downloaded from many peers at once, rarest first, and checked by hash before the file is assembled."
+      },
+      {
+        "kind": "Example",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Client-server: the college server uploads 200 full copies\n  200 x 700 MiB = 140,000 MiB (about 136.7 GiB) from one server.\n\nBitTorrent with 512 KiB pieces:\n  700 MiB / 512 KiB = 1,400 pieces.\n  1 Student opens the torrent file -> learns the tracker's address and the 1,400 piece hashes.\n  2 Tracker returns a list of peers in the swarm (one seed: the college; many leechers).\n  3 The client asks peers which pieces they hold and requests the rarest ones first,\n    from several peers at once.\n  4 Each finished piece is checked against its hash and immediately offered to other peers.\n  5 After all 1,400 pieces pass the check, the file is assembled; the student can stay on as a seed.\n  The college still uploads, but most of the 140,000 MiB now flows between students.\n\n(Piece count and totals checked by script.)"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a protocol essential for communication between computers?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a protocol essential for communication between computers?",
+        "text": "Sender and receiver must agree the rules for format, addressing, timing and error handling so that data sent by one device is correctly interpreted by another, whatever their make."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give three features of a layered protocol stack."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give three features of a layered protocol stack.",
+        "text": "Each layer has its own function; each layer only communicates with the layers directly above and below through a defined interface; a layer can be replaced without changing the others (only the bottom layer touches hardware, only the top layer the user)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name the four TCP/IP layers from top to bottom."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name the four TCP/IP layers from top to bottom.",
+        "text": "Application, Transport, Internet, Link."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State two functions of the Transport layer."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State two functions of the Transport layer.",
+        "text": "Splits data into segments with sequence numbers and port numbers; with TCP, acknowledges receipt, retransmits lost segments and reassembles them in order for the correct application."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does the Internet layer add, and why?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does the Internet layer add, and why?",
+        "text": "An IP header with the source and destination IP addresses (and TTL), so that routers can route the packet across networks to the destination host."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the function of the Link layer?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the function of the Link layer?",
+        "text": "It puts the packet in a frame with source and destination MAC addresses and an error-check trailer, and transmits it as signals to the next device on the same physical network."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is encapsulation?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is encapsulation?",
+        "text": "Each layer on the sending host wraps the data from the layer above with its own header (and a trailer at the Link layer); the receiver removes them in reverse order (decapsulation)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are a tracker, a seed and a swarm in BitTorrent?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are a tracker, a seed and a swarm in BitTorrent?",
+        "text": "The tracker is a server listing the peers sharing a file; a seed is a peer with the complete file that uploads it; the swarm is all the peers sharing that file."
       }
     ]
   },
@@ -19175,88 +19621,548 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Circuit switching reserves a dedicated end-to-end path before communication; packet switching divides a message into independently routed packets that share network links. You must compare both methods and explain the role of routers and packet headers."
+        "text": "Topic 14.2 compares the two ways of carrying data across a network made of many linked switching nodes. Circuit switching sets up a dedicated path between sender and receiver before any data is sent, keeps it for the whole communication and then releases it, which is how the traditional telephone network works. Packet switching sets up no path: the message is split into packets, each with a header holding the addresses and a sequence number, and every packet is routed independently, so packets can take different routes, arrive out of order and be reassembled at the destination. You need the benefits and drawbacks of each method and where each is suitable, the function of a router in packet switching (reading the destination address, consulting its routing table, choosing the next hop, decreasing the hop limit), and a step-by-step account of how a message crosses a network such as the internet, including what happens when a packet is lost."
       },
       {
         "kind": "Definition",
         "label": "Circuit switching",
-        "text": "A dedicated communication path is reserved for the duration of a session."
+        "text": "A method in which a dedicated communication path (circuit) is established between sender and receiver before transmission, is used only by them for the whole communication, and is released at the end."
       },
       {
         "kind": "Definition",
         "label": "Packet switching",
-        "text": "A message is divided into packets that independently share network routes."
+        "text": "A method in which a message is broken into packets that are sent independently across a shared network, possibly by different routes, and reassembled in order at the destination."
+      },
+      {
+        "kind": "Definition",
+        "label": "Packet",
+        "text": "A small unit of data sent across a packet-switched network, made of a header (control information such as addresses and sequence number), a payload (part of the message) and often a trailer (error-checking value)."
       },
       {
         "kind": "Definition",
         "label": "Router",
-        "text": "A device that forwards packets between networks using destination information and routing data."
+        "text": "A device that connects networks and forwards each packet towards its destination by reading the destination IP address and choosing the next hop from its routing table."
       },
       {
         "kind": "Definition",
-        "label": "Packet header",
-        "text": "Control information carried with a packet, such as destination and sequencing information."
+        "label": "Routing table",
+        "text": "A table held by a router that maps destination networks to the next hop (and the interface to use), often with a cost for each route, updated as links fail or become congested."
+      },
+      {
+        "kind": "Definition",
+        "label": "Hop",
+        "text": "One step of a packet's journey, from one router or host to the next."
+      },
+      {
+        "kind": "Definition",
+        "label": "Time to live (TTL) / hop limit",
+        "text": "A value in the packet header that each router decreases by one; when it reaches zero the packet is discarded, so packets that cannot be delivered do not circulate for ever."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sequence number",
+        "text": "A number in the header giving a packet's position in the original message, so the receiver can put packets back in order and notice any that are missing."
+      },
+      {
+        "kind": "Definition",
+        "label": "Connection-oriented service",
+        "text": "A packet-switched service in which the receiver acknowledges packets, so the sender knows what has arrived and resends anything unacknowledged (as TCP does)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Connectionless service",
+        "text": "A packet-switched service in which packets are sent without checking that the receiver is ready and without any acknowledgement of delivery (as IP does)."
       },
       {
         "kind": "Section",
-        "text": "Circuit switching"
+        "text": "Two ways to carry data across a network"
       },
       {
         "kind": "Content",
-        "label": "Circuit switching",
-        "text": "A route is established first and remains reserved. It can offer predictable latency/bandwidth, but capacity is wasted when the connection is idle, and failure of the reserved path can interrupt the session."
+        "label": "Two ways to carry data across a network",
+        "text": "A large network such as the telephone system or the internet is a mesh of links joined by switching nodes: telephone exchanges in one case, routers in the other. A message from one end-system to another has to cross several of these nodes. There are two basic ways of organising the journey. In circuit switching the network first reserves a complete path through the nodes for this one conversation, and all the data then flows along that path. In packet switching nothing is reserved; the data is cut into packets and each node decides, packet by packet, where to send it next."
+      },
+      {
+        "kind": "Content",
+        "label": "Two ways to carry data across a network",
+        "text": "The difference is about when the route is decided and who gets to use the links. In circuit switching the route is fixed once, at the start, and the links' capacity belongs to one pair of users until they finish. In packet switching the route is decided at every node for every packet, and the links are shared by everyone's packets at once."
+      },
+      {
+        "kind": "Content",
+        "label": "Two ways to carry data across a network",
+        "text": "Circuit switching: route set up in advance, dedicated to one communication, released at the end."
+      },
+      {
+        "kind": "Content",
+        "label": "Two ways to carry data across a network",
+        "text": "Packet switching: no set-up, message split into packets, each routed independently over shared links."
+      },
+      {
+        "kind": "Content",
+        "label": "Two ways to carry data across a network",
+        "text": "The internet is a packet-switched network; the traditional telephone network is circuit switched."
+      },
+      {
+        "kind": "Section",
+        "text": "Circuit switching: how it works"
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "Circuit switching is the method the public switched telephone network was built on. When you make a call, the exchanges connect a chain of links from your line to the other person's line. Once the circuit exists, that capacity on every link along the path is reserved for the call, whether anyone is speaking or not, and the data or voice flows along it as a continuous stream in the order it was sent. When the call ends the links are released for someone else. The same method can carry data, for example over a leased line, where the circuit may be kept permanently."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "Because every bit follows the same path, there is no need for addresses or sequence numbers on the data itself and nothing can arrive out of order. The delay is small and constant once the circuit is up. The price is a set-up delay before any data can be sent, capacity that is wasted in every silence, and a communication that fails completely if one link on the path fails, since there is no alternative route."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "1 The sender identifies the intended receiver."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "2 The network checks that the receiver is available and ready to accept data."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "3 A sequence of links is established across the network, forming the circuit."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "4 The data is transferred along the circuit as a continuous stream."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: how it works",
+        "text": "5 The circuit is cleared and the links are released."
+      },
+      {
+        "kind": "Section",
+        "text": "Circuit switching: benefits, drawbacks and where it is applicable"
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "The strengths of circuit switching all come from having the path to yourself. The full bandwidth of the circuit is available throughout, data arrives in the order it was sent with a steady, predictable delay, and there is no reassembly to do at the receiver. This makes it well suited to real-time, continuous communication where a gap or a jumble would be noticed at once: telephone calls, live video conferencing, and dedicated links such as a leased line between two company sites or a link carrying live broadcast feeds."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Its weaknesses come from the same reservation. The circuit must be set up before sending, which is a delay that is wasted for short bursts of data. Capacity is tied up for the whole connection even when nothing is being sent, so the network needs far more capacity to serve the same number of users, and the user is usually charged for the time connected rather than the data sent. If any link on the path fails, the connection is lost and has to be set up again. For bursty traffic such as web browsing or email, where data comes in short bursts separated by long gaps, most of a reserved circuit would sit idle."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Benefit: dedicated bandwidth for the whole connection, not shared with other users."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Benefit: data arrives in order, with a constant small delay; no reassembly needed."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Benefit: well suited to real-time voice and video."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: time is needed to set up the circuit before any data is sent."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: bandwidth is wasted when nothing is being sent; fewer users can be served; usually charged for time connected."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: if a link fails the whole connection is lost; no rerouting."
+      },
+      {
+        "kind": "Content",
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "Applicable to: telephone calls, live video conferencing, leased lines needing guaranteed capacity."
       },
       {
         "kind": "Example",
-        "label": "Circuit switching",
-        "text": "Traditional real-time telephone networks are the classic example."
+        "label": "Circuit switching: benefits, drawbacks and where it is applicable",
+        "text": "A digital voice circuit reserves 64 kbit/s for a 10-minute call.\nOne person is speaking for only 40% of the time in each direction.\n\nCapacity reserved in one direction = 64,000 bit/s x 600 s = 38,400,000 bits\nUnused (60% of the time)            = 38,400,000 x 0.6    = 23,040,000 bits\n                                    = 2,880,000 bytes, about 2.88 MB\n\nIn a circuit-switched network nobody else can use that idle capacity.\nIn a packet-switched network other users' packets would fill the gaps.\n\n(Figures checked by script.)"
       },
       {
         "kind": "Section",
-        "text": "Packet switching"
+        "text": "Packet switching: breaking a message into packets"
       },
       {
         "kind": "Content",
-        "label": "Packet switching",
-        "text": "A message is split into packets containing payload and control information. Packets may take different routes and arrive out of order; the destination uses sequence information to reconstruct the message. Missing/corrupt packets can be retransmitted."
+        "label": "Packet switching: breaking a message into packets",
+        "text": "In packet switching no circuit is set up. The sender splits the message into packets of a limited size. Each packet carries enough information in its header to be delivered on its own, rather like a letter with an address on the envelope, so the network can handle every packet separately. The header is added by the protocol layers described in 14.1: the TCP header supplies the port numbers and sequence number, and the IP header supplies the source and destination IP addresses and the hop limit."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Packet size is a trade-off. Every packet needs its own header, so small packets mean more header bytes for the same message. On the other hand a lost or damaged small packet is cheaper to resend, and small packets from many users can be interleaved on a link so that no one user blocks it for long."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Source IP address: where the packet came from (so replies and acknowledgements can be returned)."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Destination IP address: where the packet is going (used by every router)."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Sequence number: the packet's position in the message, for reassembly."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Total number of packets / packet length: so the receiver knows when the message is complete."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Hop limit (TTL): how many more routers the packet may pass through."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Checksum: lets the receiver detect a corrupted packet."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Payload: the part of the message carried by this packet."
+      },
+      {
+        "kind": "Example",
+        "label": "Packet switching: breaking a message into packets",
+        "text": "Each packet has a 40-byte header (20-byte IP + 20-byte TCP headers).\n\nPayload 1,000 bytes per packet:\n  packets  = 50,000 / 1,000 = 50\n  headers  = 50 x 40 = 2,000 bytes; total sent = 52,000 bytes\n  overhead = 2,000 / 52,000 = 3.85% of the bytes sent\n  one lost packet costs 1,040 bytes to resend\n\nPayload 500 bytes per packet:\n  packets  = 50,000 / 500 = 100\n  headers  = 100 x 40 = 4,000 bytes; total sent = 54,000 bytes\n  overhead = 4,000 / 54,000 = 7.41% of the bytes sent\n  one lost packet costs only 540 bytes to resend\n\nSmaller packets: more overhead, but cheaper retransmission.\n(All figures checked by script.)"
       },
       {
         "kind": "Section",
-        "text": "Why packet switching suits the internet"
+        "text": "How packet switching passes a message across the internet"
       },
       {
         "kind": "Content",
-        "label": "Why packet switching suits the internet",
-        "text": "Many users share the same links efficiently, and routing can work around congestion or failed paths. The trade-offs are variable delay, header overhead and the need to reorder/retransmit packets."
+        "label": "How packet switching passes a message across the internet",
+        "text": "When a message is sent, the sending host splits it into numbered packets and puts each one onto the network. Each packet goes first to the local router, which reads its destination IP address and forwards it along the best link available at that moment. Every router on the way does the same, so the route is built up hop by hop. Because routers react to congestion and to failed links, packets from the same message can be sent along different routes, and a packet on a long or busy route can overtake, or be overtaken by, others. Packets from many different users share the same links at the same time."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "At the destination the packets arrive in whatever order the network delivered them. The receiving host holds them in a buffer, uses the sequence numbers to put them back in the correct order, checks each checksum, and waits until every packet is present before passing the complete message to the application. If a packet is missing or corrupted, it is not rebuilt at the receiver; only that packet is sent again by the sender. The whole message is not resent."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "1 The message is split into packets; each gets a header with addresses and a sequence number."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "2 Each packet is sent independently; no path is reserved."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "3 Each router reads the destination address and forwards the packet to the next hop using its routing table."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "4 Packets may take different routes, depending on congestion and link failures, and may arrive out of order."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "5 The receiver reorders the packets by sequence number and checks for errors and gaps."
+      },
+      {
+        "kind": "Content",
+        "label": "How packet switching passes a message across the internet",
+        "text": "6 Missing or corrupted packets are requested again; the complete message is then reassembled and passed to the application."
+      },
+      {
+        "kind": "Example",
+        "label": "How packet switching passes a message across the internet",
+        "text": "Sent: 1 'MEE'  2 'T A'  3 'T 1'  4 '1:3'  5 '0 G'  6 'ATE'\n\nArrival order | Buffer holds (by sequence number) | Complete?\n3 'T 1'       | 3                                 | no\n1 'MEE'       | 1, 3                              | no\n4 '1:3'       | 1, 3, 4                           | no\n2 'T A'       | 1, 2, 3, 4                        | no\n6 'ATE'       | 1, 2, 3, 4, 6                     | no, 5 missing\n(no acknowledgement for 5 reaches the sender, which times out and resends it)\n5 '0 G'       | 1, 2, 3, 4, 5, 6                  | yes\n\nReassembled in sequence order: 'MEET AT 11:30 GATE' (18 characters)\n(Checked by running the reassembly code below.)"
       },
       {
         "kind": "Section",
-        "text": "Routers"
+        "text": "Connectionless and connection-oriented service: dealing with lost packets"
       },
       {
         "kind": "Content",
-        "label": "Routers",
-        "text": "Each router examines destination information and selects a next hop using routing knowledge/tables. It does not need the entire message or one permanent end-to-end route."
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "Packets really are lost on a packet-switched network: a router whose queue is full because of congestion simply drops arriving packets, a packet may be damaged by noise and fail its checksum, or its hop limit may run out. A packet-switched network can offer one of two kinds of service. A connectionless service just sends packets and has no way of knowing whether they arrived; IP works this way, and so does UDP above it. A connection-oriented service checks that the receiver is ready before sending and has the receiver acknowledge what it gets."
       },
       {
-        "kind": "Quick recall",
-        "text": "circuit=dedicated route"
+        "kind": "Content",
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "TCP provides the connection-oriented service on the internet on top of connectionless IP. The receiver sends acknowledgements back to the sender. The sender keeps a copy of each packet and starts a timer when it sends it; if no acknowledgement arrives before the timer expires, it assumes the packet was lost and sends it again. A duplicate caused by a late acknowledgement is recognised by its sequence number and discarded. Real-time applications such as voice calls usually prefer the connectionless route, because a resent packet would arrive too late to be useful and a tiny gap is less noticeable than a delay."
       },
       {
-        "kind": "Quick recall",
-        "text": "packet=shared links"
+        "kind": "Content",
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "Causes of loss: congestion (full router buffers), corruption (checksum fails), TTL reaching zero."
       },
       {
-        "kind": "Quick recall",
-        "text": "router chooses next hop"
+        "kind": "Content",
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "Connectionless (IP, UDP): no check that the receiver is ready and no acknowledgement; lower overhead."
       },
       {
-        "kind": "Quick recall",
-        "text": "packets may arrive out of order"
+        "kind": "Content",
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "Connection-oriented (TCP): receiver acknowledges packets; sender resends after a timeout; duplicates discarded by sequence number."
       },
       {
-        "kind": "Quick recall",
-        "text": "packet switching uses capacity efficiently"
+        "kind": "Content",
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "Only the lost packet is resent, not the whole message."
+      },
+      {
+        "kind": "Example",
+        "label": "Connectionless and connection-oriented service: dealing with lost packets",
+        "text": "# Receiver side of packet switching: put packets back in order, spot any that are missing\ndef reassemble(arrived, total):\n    buffer = {}\n    for seq, data in arrived:\n        buffer[seq] = data                      # store each packet under its sequence number\n    missing = [n for n in range(1, total + 1) if n not in buffer]\n    if missing:\n        return None, missing                    # ask the sender to retransmit these\n    return \"\".join(buffer[n] for n in range(1, total + 1)), []\n\narrived = [(3, \"T 1\"), (1, \"MEE\"), (4, \"1:3\"), (2, \"T A\"), (6, \"ATE\")]\nprint(reassemble(arrived, 6))\narrived.append((5, \"0 G\"))                      # the resent packet 5 arrives\nprint(reassemble(arrived, 6))\n\n# Output:\n# (None, [5])\n# ('MEET AT 11:30 GATE', [])"
+      },
+      {
+        "kind": "Section",
+        "text": "The function of a router in packet switching"
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Routers are the switching nodes of a packet-switched network. A router connects two or more networks and has a network interface on each. When a frame arrives, the router checks and removes the frame and looks at the packet's destination IP address. It compares that address with its routing table to find the best next hop towards the destination network. No router knows the full route, only the next step; the internet is far too large for any router to hold a global table. Routers exchange information with their neighbours so that their tables reflect links that have failed or become congested, and the best next hop can change from one packet to the next."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Before forwarding, the router decreases the packet's TTL (hop limit) by one. If it reaches zero, the router discards the packet rather than forwarding it, which stops packets looping round the network for ever if routing tables are temporarily wrong. Otherwise the router puts the packet into a new frame for the next link and sends it out of the chosen interface. Routers store packets briefly in a queue while the outgoing link is busy (store and forward), and drop packets if the queue overflows. A router differs from a switch: a switch forwards frames within one network by MAC address and makes no routing decision, while a router makes a routing decision using the IP address and links different networks."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Receives the packet and reads its destination IP address."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Looks up the destination in its routing table to choose the next hop (the best route currently available)."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Decreases the TTL; discards the packet if it reaches zero."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Forwards the packet in a new frame to the next router or the destination host."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Keeps its routing table up to date so packets can be routed around failures and congestion."
+      },
+      {
+        "kind": "Content",
+        "label": "The function of a router in packet switching",
+        "text": "Connects different networks (e.g. a LAN to the internet)."
+      },
+      {
+        "kind": "Example",
+        "label": "The function of a router in packet switching",
+        "text": "Routing table of router R2 (simplified):\nDestination network | Next hop | Cost\n198.51.100.0/24     | R4       | 2\n198.51.100.0/24     | R3       | 5\n203.0.113.0/24      | R5       | 3\ndefault             | R1       | -\n\nPacket for 198.51.100.40 -> best entry is next hop R4 (cost 2).\nIf the R2-R4 link fails, the R4 entry is removed and the next packet goes via R3.\n\nHop limit trace: a packet leaves with TTL 5 but its route needs 7 routers.\nRouter | TTL after decrease | Action\nR1     | 4                  | forward\nR2     | 3                  | forward\nR3     | 2                  | forward\nR4     | 1                  | forward\nR5     | 0                  | discard (the sender's TCP will time out and resend)\n\n(TTL trace checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Packet switching: benefits, drawbacks and where it is applicable"
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Packet switching makes very efficient use of the network. Links are only occupied while packets are actually crossing them, so the gaps in one user's traffic are filled by other users' packets and many more users can share the same infrastructure. No set-up is needed before sending. Because each packet is routed independently, packets can be sent around a failed or congested link, which makes the network robust: there is no single path whose failure ends the communication. Errors are cheap to correct, since only the damaged or lost packet is resent, and users can be charged for the data they send rather than for time connected."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "The drawbacks come from sharing and independence. Every packet carries a header, which is overhead. Delay varies from packet to packet, depending on the route and on congestion, so packets arrive at uneven intervals and out of order and must be buffered and reassembled, which takes processing at the receiver. When the network is busy, packets are queued or dropped and have to be resent. This makes packet switching ideal for data that must arrive complete but not instantly, such as email, web pages and file downloads, and less suitable for real-time voice and video unless the receiver buffers packets and the network prioritises them. Voice and video calls over the internet do use packet switching, and accept occasional glitches as the price of its low cost."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Benefit: no circuit set-up; bandwidth shared, so links are used efficiently and more users are served."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Benefit: packets can be rerouted round failed or congested links, so the network is robust."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Benefit: only lost or corrupted packets are resent; charges can be based on data sent."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: headers add overhead; packets need reassembling in order at the receiver."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: variable delay, out-of-order arrival and packet loss when the network is congested."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: less suitable for real-time communication, which needs a steady flow."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Applicable to: email, web browsing, file transfer, messaging and other bursty data traffic."
+      },
+      {
+        "kind": "Section",
+        "text": "Choosing the switching method for a given application"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing the switching method for a given application",
+        "text": "Exam questions usually describe an application and ask which method suits it and why. Ask two questions. First, does the data have to arrive with a steady, predictable delay (real-time), or can it be delayed slightly as long as it all arrives correctly? Second, is the traffic continuous or does it come in bursts? Real-time and continuous traffic points to circuit switching; delay-tolerant and bursty traffic points to packet switching."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing the switching method for a given application",
+        "text": "Justify the choice with the characteristic that matters, not with speed. Saying one method is 'faster' earns nothing; talk instead about dedicated bandwidth, order of arrival, constant delay, efficient sharing of bandwidth, or resilience to link failure."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing the switching method for a given application",
+        "text": "Real-time, continuous, order-critical (phone call, live video conference): circuit switching."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing the switching method for a given application",
+        "text": "Complete but not time-critical, bursty (email, web page, file download, software update): packet switching."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing the switching method for a given application",
+        "text": "Guaranteed capacity between two fixed sites (leased line): circuit switching."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing the switching method for a given application",
+        "text": "Many users with occasional traffic sharing one network (the internet): packet switching."
+      },
+      {
+        "kind": "Example",
+        "label": "Choosing the switching method for a given application",
+        "text": "1 A hospital sends patients' scan images to a specialist overnight.\n  Packet switching: must arrive complete and correct but a short delay does not matter;\n  lost packets are resent; bandwidth is shared with other traffic.\n\n2 A live video interview between two TV studios.\n  Circuit switching: needs constant bandwidth and a steady delay; frames must arrive\n  in order without gaps, and a dedicated circuit gives exactly that.\n\n3 A school's email system.\n  Packet switching: email is bursty and not real-time; packets can arrive out of order\n  and be reassembled; no need to tie up a circuit between messages.\n\n4 Two bank branches that transfer data all day and need guaranteed capacity.\n  Circuit switching (a leased line): continuous traffic, so the reserved bandwidth\n  is rarely idle, and the capacity is never shared with other users."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is circuit switching?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is circuit switching?",
+        "text": "A dedicated path is established between sender and receiver before transmission, used only by them for the whole communication, then released."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "List the stages of a circuit-switched transfer."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "List the stages of a circuit-switched transfer.",
+        "text": "Sender identifies the receiver; network checks the receiver is ready; links are established to form the circuit; data transferred; links released."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two benefits and two drawbacks of circuit switching."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two benefits and two drawbacks of circuit switching.",
+        "text": "Benefits: dedicated bandwidth; data arrives in order with a steady delay. Drawbacks: set-up time before sending; bandwidth wasted when idle, and the connection is lost if a link fails."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is packet switching?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is packet switching?",
+        "text": "The message is split into packets that are sent independently over a shared network, possibly by different routes, and reassembled at the destination."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State four items in a packet header."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State four items in a packet header.",
+        "text": "Source IP address, destination IP address, sequence number, checksum (also hop limit/TTL, packet length)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a router do with each packet?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a router do with each packet?",
+        "text": "Reads the destination IP address, uses its routing table to choose the next hop, decreases the TTL (discarding the packet at zero) and forwards it."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does the receiver cope with packets arriving out of order?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does the receiver cope with packets arriving out of order?",
+        "text": "It buffers them and uses the sequence numbers to put them back in the original order before reassembling the message."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens when a packet is lost?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens when a packet is lost?",
+        "text": "Its acknowledgement never reaches the sender, which times out and resends that packet only."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two benefits and two drawbacks of packet switching."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two benefits and two drawbacks of packet switching.",
+        "text": "Benefits: bandwidth shared efficiently with no set-up; packets rerouted around failures. Drawbacks: packets can arrive out of order and need reassembly; variable delay and loss under congestion make it less suitable for real-time use."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which method suits a live video conference, and which suits email?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which method suits a live video conference, and which suits email?",
+        "text": "Circuit switching for the video conference (real-time, steady delay, in order); packet switching for email (not real-time, bursty, can be reassembled)."
       }
     ]
   },
