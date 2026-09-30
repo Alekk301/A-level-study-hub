@@ -1351,11 +1351,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Understand the basic ideas behind machine learning, expert systems and neural networks, and the ethical questions AI raises.",
+            "summary": "Explain how graphs aid AI and perform Dijkstra's and A* searches by hand, describe how artificial neural networks enable machine learning and deep learning, compare supervised, unsupervised and reinforcement learning, and explain back propagation of errors and regression.",
             "focusPoints": [
-              "ML/expert systems",
-              "neural-network ideas",
-              "robotics/ethics"
+              "graphs in AI",
+              "Dijkstra's and A* by hand",
+              "artificial neural networks",
+              "deep and reinforcement learning",
+              "supervised/unsupervised learning",
+              "back propagation and regression"
             ],
             "contentDepth": "full"
           },

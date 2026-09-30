@@ -23565,130 +23565,681 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "The AI topic combines graph search with machine learning. You must use Dijkstra's and A* searches, understand artificial neural networks and deep learning, distinguish supervised/unsupervised/reinforcement learning, and explain the purpose of backpropagation and regression."
+        "text": "How graphs aid AI (nodes, edges, weights; problems as path-finding) and how to perform Dijkstra's and A* searches by hand, with working tables and the heuristic. How artificial neural networks (layers, weights, activation) have helped machine learning; deep learning and reinforcement learning and the reasons for using each; the machine-learning categories supervised, unsupervised and reinforcement; back propagation of errors and regression."
+      },
+      {
+        "kind": "Definition",
+        "label": "Artificial Intelligence (AI)",
+        "text": "The ability of a computer system to perform tasks that normally need human intelligence, such as learning, reasoning, recognising patterns and making decisions."
       },
       {
         "kind": "Definition",
         "label": "Graph",
-        "text": "A set of vertices/nodes connected by edges, often with edge weights representing cost or distance."
+        "text": "A data structure made of nodes (vertices) joined by edges (arcs); edges may carry a weight (cost, distance, time) and may be directed or undirected."
       },
       {
         "kind": "Definition",
         "label": "Dijkstra's algorithm",
-        "text": "A shortest-path method that repeatedly finalises the unvisited node with lowest accumulated distance."
+        "text": "Finds the shortest (lowest-cost) path from a start node to every other node in a weighted graph by repeatedly visiting the unvisited node with the smallest working distance."
       },
       {
         "kind": "Definition",
-        "label": "A*",
-        "text": "A search using f(n)=g(n)+h(n), combining actual cost from start with a heuristic estimate to goal."
+        "label": "A* algorithm",
+        "text": "Finds the shortest path from a start node to one goal node; it expands the node with the lowest f = g + h, where g is the actual cost so far and h is a heuristic estimate of the cost to the goal."
+      },
+      {
+        "kind": "Definition",
+        "label": "Heuristic",
+        "text": "An estimate of the remaining cost from a node to the goal (e.g. straight-line distance); for A* to be guaranteed optimal it must never overestimate (admissible)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Machine learning",
+        "text": "A branch of AI in which a system learns from data/experience and improves its performance without being explicitly programmed for every case."
+      },
+      {
+        "kind": "Definition",
+        "label": "Artificial neural network (ANN)",
+        "text": "A model based on the human brain: layers of nodes (artificial neurons) joined by weighted connections; an input layer, one or more hidden layers and an output layer."
+      },
+      {
+        "kind": "Definition",
+        "label": "Deep learning",
+        "text": "A specialised form of machine learning that uses an artificial neural network with many hidden layers to extract progressively higher-level features from raw input."
       },
       {
         "kind": "Definition",
         "label": "Supervised learning",
-        "text": "Learning from labelled training examples."
+        "text": "Machine learning trained on labelled data: known inputs are given with their correct outputs, so the model can predict outputs for new inputs."
       },
       {
         "kind": "Definition",
         "label": "Unsupervised learning",
-        "text": "Discovering structure/patterns in unlabelled data."
+        "text": "Machine learning given only unlabelled input data; the system finds previously unknown patterns or groups (clusters) by itself."
       },
       {
         "kind": "Definition",
         "label": "Reinforcement learning",
-        "text": "Learning a policy from rewards/penalties following actions."
+        "text": "An agent learns by trial and error in an environment, receiving positive feedback (reward) for good actions and negative feedback (penalty) for bad ones, to maximise total reward."
       },
       {
         "kind": "Definition",
-        "label": "Backpropagation",
-        "text": "Propagating output error backward through a neural network to adjust weights."
+        "label": "Back propagation of errors",
+        "text": "A training method for ANNs: the error between the actual and expected output is passed backwards from the output layer through the hidden layers, and the weights are adjusted to reduce the error."
       },
       {
         "kind": "Definition",
         "label": "Regression",
-        "text": "A method for modelling/predicting a continuous numeric relationship."
+        "text": "A machine-learning method that finds the mathematical function (e.g. a line of best fit) that best fits known input/output data, then uses it to predict a continuous numerical output for new inputs."
       },
       {
         "kind": "Section",
-        "text": "Graphs as search spaces"
+        "text": "How graphs aid AI: purpose and structure"
       },
       {
         "kind": "Content",
-        "label": "Graphs as search spaces",
-        "text": "Nodes represent states/locations and edges possible transitions. Weighted edges let algorithms compare routes by cost, time or distance."
-      },
-      {
-        "kind": "Section",
-        "text": "Dijkstra's algorithm"
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Many AI problems can be turned into a graph: places, game positions or facts become nodes, and the possible moves or relationships between them become edges. Solving the problem then means finding a path, often the cheapest one, through the graph."
       },
       {
         "kind": "Content",
-        "label": "Dijkstra's algorithm",
-        "text": "Start with cost 0 at the source and infinity elsewhere. Repeatedly select the unvisited node with smallest temporary distance, update neighbouring distances if a cheaper path is found, then finalise the selected node. With non-negative edge weights it finds shortest paths."
-      },
-      {
-        "kind": "Section",
-        "text": "A* search"
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Structure: nodes/vertices joined by edges/arcs; each node has a name (label)."
       },
       {
         "kind": "Content",
-        "label": "A* search",
-        "text": "A* evaluates f=g+h. g is exact cost from the start; h is a heuristic estimate of remaining cost. A useful admissible heuristic does not overestimate the true remaining cost, allowing A* to focus toward the goal while retaining shortest-path guarantees under appropriate conditions."
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Weighted graph: each edge has a value (weight) such as distance, cost or time."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Undirected graph: an edge can be travelled both ways; directed graph: an edge (arrow) goes one way only (e.g. a one-way street, a state change)."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Purpose: graphs provide a structure for relationships between items."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "AI problems can be defined as finding a path in a graph (e.g. from a start state to a goal state)."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Graphs can be analysed by a range of algorithms, e.g. Dijkstra's and A*, to find the shortest path."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Artificial neural networks can be represented as graphs (nodes = neurons, weighted edges = connections)."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Uses: route planning / sat-nav (towns and roads), game states (positions and moves), knowledge representation (facts linked by relationships), robot path-finding around obstacles, social networks."
+      },
+      {
+        "kind": "Content",
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Stored as an adjacency matrix/table (row, column = weight or no edge) or an adjacency list; candidates do not have to write code for a graph."
       },
       {
         "kind": "Example",
-        "label": "A* search",
-        "text": "f(n) = g(n) + h(n)"
+        "label": "How graphs aid AI: purpose and structure",
+        "text": "Undirected weighted graph, 8 nodes, 12 edges (weights = distance in km)\nEdge list: A-B 5, A-C 5, A-D 6, A-E 6, B-C 8, B-D 8, C-E 9, D-F 6, E-G 8, F-G 6, F-H 6, G-H 6\n\nAdjacency table ('-' = no direct edge)\n     A   B   C   D   E   F   G   H\nA    0   5   5   6   6   -   -   -\nB    5   0   8   8   -   -   -   -\nC    5   8   0   -   9   -   -   -\nD    6   8   -   0   -   6   -   -\nE    6   -   9   -   0   -   8   -\nF    -   -   -   6   -   0   6   6\nG    -   -   -   -   8   6   0   6\nH    -   -   -   -   -   6   6   0\n\nNode positions (x,y), used later for the A* heuristic:\nA(0,0) B(-4,3) C(-3,-4) D(4,3) E(5,-3) F(9,2) G(10,-3) H(14,0)"
       },
       {
         "kind": "Section",
-        "text": "Artificial neural networks"
+        "text": "Dijkstra's algorithm by hand"
       },
       {
         "kind": "Content",
-        "label": "Artificial neural networks",
-        "text": "Artificial neurons combine weighted inputs, apply activation functions and pass outputs forward. Training adjusts weights so network output better matches the desired behaviour. Hidden layers let a network learn intermediate features."
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Dijkstra finds the shortest distance from the start to every node. Keep a working distance for each node, starting at 0 for the start and infinity for the rest. Each step visits the closest unvisited node and uses its edges to try to improve its neighbours' distances. You are never asked to write it, only to apply it and show the table."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Purpose: find the optimal (shortest/most cost-effective) route between nodes, based on distance, cost or time."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Set the start node's distance to 0 and every other node's to infinity."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Visit the unvisited node with the smallest working distance; its distance is now final."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "For each unvisited neighbour: new distance = distance of the current node + edge weight; if it is smaller than the stored value, replace it and record the current node as the previous node."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Repeat until every node has been visited (or the destination has been visited)."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Back-track from the destination using the previous node of each node to recover the path; the destination's final distance is the path cost."
+      },
+      {
+        "kind": "Content",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Finds the shortest path from the start to all nodes, but has no sense of direction, so it explores nodes in every direction."
+      },
+      {
+        "kind": "Example",
+        "label": "Dijkstra's algorithm by hand",
+        "text": "Start A. Entry = working distance (previous node); * = visited, so final.\nTie rule: equal distances are taken in alphabetical order.\n\nStep Visit | A      B      C      D      E      F      G      H\n   1     A | 0      5(A)   5(A)   6(A)   6(A)   -      -      -\n   2     B | *0     5(A)   5(A)   6(A)   6(A)   -      -      -\n   3     C | *0     *5(A)  5(A)   6(A)   6(A)   -      -      -\n   4     D | *0     *5(A)  *5(A)  6(A)   6(A)   12(D)  -      -\n   5     E | *0     *5(A)  *5(A)  *6(A)  6(A)   12(D)  14(E)  -\n   6     F | *0     *5(A)  *5(A)  *6(A)  *6(A)  12(D)  14(E)  18(F)\n   7     G | *0     *5(A)  *5(A)  *6(A)  *6(A)  *12(D) 14(E)  18(F)\n   8     H | *0     *5(A)  *5(A)  *6(A)  *6(A)  *12(D) *14(E) 18(F)\n\nVisit order: A, B, C, D, E, F, G, H\nFinal table (distance from A / previous node):\nNode      A  B  C  D  E  F   G   H\nDistance  0  5  5  6  6  12  14  18\nPrevious  -  A  A  A  A  D   E   F\n\nBack-track from H: H <- F <- D <- A, so the path is A-D-F-H, cost 6 + 6 + 6 = 18.\n(Table produced by script.)"
       },
       {
         "kind": "Section",
-        "text": "Learning types"
+        "text": "A* algorithm by hand"
       },
       {
         "kind": "Content",
-        "label": "Learning types",
-        "text": "Supervised learning uses labelled targets, e.g. spam/not-spam. Unsupervised learning finds clusters/structure without target labels. Reinforcement learning has an agent choose actions in an environment and learn from rewards/penalties rather than labelled answers for every step."
+        "label": "A* algorithm by hand",
+        "text": "A* searches for one goal node. It adds a heuristic, an estimate of the remaining distance, so it prefers nodes that are both cheap to reach and close to the goal. The open list holds nodes found but not yet expanded; the closed list holds nodes already expanded. It stops when the goal is chosen from the open list."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "g(n) = actual cost of the path from the start to node n."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "h(n) = heuristic: estimated cost from n to the goal (e.g. straight-line/Euclidean or Manhattan distance)."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "f(n) = g(n) + h(n) = estimated total cost of the route through n."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "Put the start in the open list; repeatedly move the open node with the lowest f to the closed list and expand it."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "For each neighbour not in the closed list, calculate g, h and f; add it to the open list, or update it if the new g is lower (record the previous node)."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "Stop when the goal node is selected (has the lowest f); back-track through previous nodes for the path."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "The heuristic must never overestimate the true remaining cost (admissible), otherwise the route found may not be the shortest."
+      },
+      {
+        "kind": "Content",
+        "label": "A* algorithm by hand",
+        "text": "A* is goal-directed, so it usually expands fewer nodes than Dijkstra and is faster to find a single route."
+      },
+      {
+        "kind": "Example",
+        "label": "A* algorithm by hand",
+        "text": "h(n) = straight-line distance from n to H, rounded down (Pythagoras on the positions)\nAdmissibility check by script: h must never exceed the true shortest distance to H\n\nA (0, 0)  h=14  true=18 OK\nB (-4, 3)  h=18  true=20 OK\nC (-3, -4)  h=17  true=23 OK\nD (4, 3)  h=10  true=12 OK\nE (5, -3)  h=9  true=14 OK\nF (9, 2)  h=5  true=6 OK\nG (10, -3)  h=5  true=6 OK\nH (14, 0)  h=0  true=0 OK\n\nEvery edge weight is at least the straight-line length of that edge, so the\nestimate can never be more than the real road distance."
+      },
+      {
+        "kind": "Example",
+        "label": "A* algorithm by hand",
+        "text": "f = g + h. Always expand the open node with the lowest f.\n\nNode  g   h   f   status\nA     0   14  14  expanded 1st\nE     6   9   15  expanded 2nd\nD     6   10  16  expanded 3rd\nF     12  5   17  expanded 4th\nH     18  0   18  goal selected: stop\nG     14  5   19  left on open list\nC     5   17  22  left on open list\nB     5   18  23  left on open list\n\nTrace (open list written as node then f, lowest f first):\n1. Expand A (f=14). New g+h=f: B 5+18=23, C 5+17=22, D 6+10=16, E 6+9=15\n   Open: E15 D16 C22 B23   Closed: A\n2. Expand E (f=15). New g+h=f: G 14+5=19\n   Open: D16 G19 C22 B23   Closed: A E\n3. Expand D (f=16). New g+h=f: F 12+5=17\n   Open: F17 G19 C22 B23   Closed: A E D\n4. Expand F (f=17). New g+h=f: H 18+0=18\n   Open: H18 G19 C22 B23   Closed: A E D F\n5. H has the lowest f (18): goal selected, stop.\n\nResult: A-D-F-H, cost 18, the same as Dijkstra.\nA* expanded 4 nodes (A, E, D, F); Dijkstra visited 7 nodes before it finalised H.\n(Table produced by script.)"
       },
       {
         "kind": "Section",
-        "text": "Deep learning, backpropagation and regression"
+        "text": "Machine learning and its categories"
       },
       {
         "kind": "Content",
-        "label": "Deep learning, backpropagation and regression",
-        "text": "Deep learning uses neural networks with multiple layers to learn complex representations. Backpropagation calculates how weights contributed to error and updates them to reduce loss. Regression predicts continuous values/relationships, unlike classification which assigns categories."
+        "label": "Machine learning and its categories",
+        "text": "In machine learning the program is not given rules for every case; it is given data and improves with experience. The categories differ in what data it learns from: labelled examples, unlabelled data, or rewards for its own actions."
       },
       {
-        "kind": "Quick recall",
-        "text": "Dijkstra=lowest accumulated cost"
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Machine learning: a system improves its performance from data/previous experience without being explicitly programmed."
       },
       {
-        "kind": "Quick recall",
-        "text": "A*: f=g+h"
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Supervised: trained with labelled data, i.e. known inputs with their associated (correct) outputs."
       },
       {
-        "kind": "Quick recall",
-        "text": "supervised=labels"
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Supervised: produces an output/model from previous experience and predicts future outcomes from past data."
       },
       {
-        "kind": "Quick recall",
-        "text": "unsupervised=patterns"
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Supervised example: emails labelled 'spam' or 'not spam' train a spam filter; past house sizes and prices predict a price (regression)."
       },
       {
-        "kind": "Quick recall",
-        "text": "reinforcement=rewards"
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Unsupervised: only input data is given; it uses unlabelled data and is not trained with a right output."
       },
       {
-        "kind": "Quick recall",
-        "text": "backprop adjusts weights"
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Unsupervised: finds all kinds of unknown, previously undetected patterns or groups in the data on its own."
+      },
+      {
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Unsupervised example: grouping shoppers with similar buying habits (clustering) to recommend products."
+      },
+      {
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Reinforcement: learns from feedback on its own actions (trial and error); see section 7."
+      },
+      {
+        "kind": "Content",
+        "label": "Machine learning and its categories",
+        "text": "Semi-supervised (beyond the coursebook): a small amount of labelled data with a large amount of unlabelled data."
+      },
+      {
+        "kind": "Example",
+        "label": "Machine learning and its categories",
+        "text": "Scenario                                          | Category       | Why\n--------------------------------------------------+----------------+--------------------------------\nX-ray images each marked 'fracture'/'no fracture' | Supervised     | labelled input with known output\nThousands of news articles sorted into topics     | Unsupervised   | no labels; finds its own groups\n  with no topic names given                       |                |\nA robot arm learning to stack blocks, scoring     | Reinforcement  | reward/penalty for each action\n  +1 per success and -1 per dropped block         |                |\nPredicting tomorrow's energy use from past        | Supervised     | labelled past data, continuous\n  temperatures and readings                       | (regression)   | output"
+      },
+      {
+        "kind": "Section",
+        "text": "Regression methods"
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Regression is used when the output to predict is a number. Historic data with known inputs and outputs is analysed to find a formula that fits it best; the formula then predicts outputs for new inputs."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Regression predicts a continuous numerical value (not a category) from one or more input values."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "It is a form of supervised learning: it needs actual (labelled) input and output data."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Step 1: collect known input and output values; step 2: look for a correlation between them."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Step 3: find the mathematical function that best fits the data (least squares: minimise the sum of squared errors)."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Step 4: use the function to predict outputs for new inputs."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Linear regression: one input, straight-line relationship y = mx + c (line of best fit)."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Multiple regression uses several inputs; non-linear regression fits a curve, e.g. exponential growth in sales."
+      },
+      {
+        "kind": "Content",
+        "label": "Regression methods",
+        "text": "Uses: forecasting sales, predicting prices or exam marks, trend and risk analysis."
+      },
+      {
+        "kind": "Example",
+        "label": "Regression methods",
+        "text": "Hours x : 2   4   5   7   8\nScore y : 18  25  29  34  39\n\nmean x = 5.2    mean y = 29.0\nSxy = sum((x - mean x)(y - mean y)) = 77.0\nSxx = sum((x - mean x)^2)          = 22.8\nm = Sxy / Sxx = 3.377      c = mean y - m x mean x = 11.439\n\nLine of best fit: score = 3.377 x hours + 11.439\nPrediction for 6 hours: 31.7 (new input inside the data range)\nPrediction for 10 hours: 45.2 (outside the range: less reliable)\nResiduals (actual - predicted): -0.19, 0.05, 0.68, -1.08, 0.54\n(All values checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Artificial neural networks and how they help machine learning"
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "An ANN copies the idea of neurons passing signals in the brain. Each node multiplies each input by the weight of its connection, adds the results, and applies an activation function to decide its output. Learning means adjusting the weights until the outputs are accurate."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Part of AI meant to simulate (replicate) the way the human brain works; a key component of machine learning."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Layers: input layer (data is input and passed into the system), one or more hidden layers, output layer (provides the results)."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Each connection between nodes has a weight; weights are adjusted during training to give more accurate results."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "A node calculates the weighted sum of its inputs and applies an activation function to produce its output."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Data is analysed at each hidden layer, where characteristics (features) are extracted and outputs calculated."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Learning is reinforced by repeating the training process many times; back propagation of errors corrects errors made."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Self-learning: produces better results as more data becomes available."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Decisions can be made without being specifically programmed."
+      },
+      {
+        "kind": "Content",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Can solve complex problems that humans cannot, or find difficult, e.g. image, speech and handwriting recognition."
+      },
+      {
+        "kind": "Example",
+        "label": "Artificial neural networks and how they help machine learning",
+        "text": "Inputs x1 = 1.0, x2 = 0.5    Weights w1 = 0.4, w2 = -0.6    Bias b = 0.1\n\nWeighted sum z = (1.0 x 0.4) + (0.5 x -0.6) + 0.1 = 0.20\nActivation (sigmoid) output = 1 / (1 + e^-0.20) = 0.550\n\nIf the expected output is 1, the error is 1 - 0.550 = 0.450.\nThis error is what back propagation uses to adjust w1, w2 and b.\n(Checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Back propagation of errors"
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Back propagation is how a network learns in training. The output is compared with the correct answer, and the error is sent backwards so each weight can be changed by an amount related to how much it caused the error. Repeating this over many examples reduces the error."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Start with initial (random/trial) weights."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Forward pass: input data passes through the network, layer by layer, to produce an output."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Compare the actual output with the expected (target) output."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Calculate the error (difference between the actual and expected output)."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Pass the error backwards from the output layer through the hidden layers towards the input layer."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Adjust the weights (and activation factors) of each node to reduce the error."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Repeat with the training data until the error is acceptably small / outputs are accurate enough."
+      },
+      {
+        "kind": "Content",
+        "label": "Back propagation of errors",
+        "text": "Used in supervised learning (needs the expected outputs); can be re-run when more real data is available."
+      },
+      {
+        "kind": "Example",
+        "label": "Back propagation of errors",
+        "text": "Forward pass: output 0.550, target 1, error 0.450\nError signal = error x output x (1 - output) = 0.1114\nLearning rate 0.5; each weight changes by rate x signal x its input:\n  w1: 0.4  + 0.5 x 0.1114 x 1.0 = 0.456\n  w2: -0.6 + 0.5 x 0.1114 x 0.5 = -0.572\n  b : 0.1  + 0.5 x 0.1114       = 0.156\nForward pass again: output 0.581, error 0.419 (smaller)\n(Values checked by script. The formula is beyond the syllabus; the steps are not.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Deep learning: what it is and reasons for use"
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Deep learning is machine learning with a neural network that has many hidden layers. Early layers pick out simple features; later layers combine them into more abstract ones, e.g. edges, then shapes, then a whole face."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Simulates the data-processing abilities of the human brain to make decisions."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Uses ANNs structured in layers: an input layer, an output layer and many hidden layers."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Many hidden layers progressively extract higher-level features from the raw input; the network builds complex feature detectors."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Multiple hidden layers enable deep learning; they are needed when the problem is more complex, let the network learn and make decisions on its own, and give more complex learning and more accurate results."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "A specialised form of machine learning; often trained on very large amounts of (unlabelled) data."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Reason: makes good use of unstructured data (images, audio, text)."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Reason: outperforms other machine-learning methods when the data set is large."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Reason: processes data in a non-linear way and finds hidden patterns too complex for humans to spot."
+      },
+      {
+        "kind": "Content",
+        "label": "Deep learning: what it is and reasons for use",
+        "text": "Drawbacks: needs a lot of data and processing power; hard to explain how it reached a decision."
+      },
+      {
+        "kind": "Section",
+        "text": "Reinforcement learning: what it is and reasons for use"
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "In reinforcement learning an agent acts in an environment and is told how good each action was. It is not given correct answers; it discovers which actions lead to the most reward by trying them many times."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Based on feedback: the AI learns in an interactive environment through actions and seeing the result of each action."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Works by trial and error; learns through its own experiences."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Positive feedback (reward) for each good action, negative feedback (penalty) for each bad one."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Node weightings are adjusted to achieve the correct outcome; feedback improves performance in similar tasks."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Aim: a policy (strategy for choosing actions) that maximises the total reward; balances exploiting known actions against exploring new ones."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Reason: enables autonomous learning from feedback without any labelled data."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Reason: suits tasks with a clear goal but no known correct answers, e.g. game playing, robot control, self-driving, finding a way through a maze."
+      },
+      {
+        "kind": "Content",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Drawback: needs many repeated attempts at the same problem."
+      },
+      {
+        "kind": "Example",
+        "label": "Reinforcement learning: what it is and reasons for use",
+        "text": "Agent: delivery robot    Environment: warehouse floor    Goal: reach the loading bay\nState: the robot's current position    Actions: move N, S, E or W\nReward: +10 on reaching the bay, -5 for hitting a shelf, -1 for each move\n\nEarly runs: random moves, many collisions, low total reward\nEach run the robot updates the value of each action in each position\nLater runs: it chooses the actions that earned most reward: short, collision-free route"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State two ways graphs aid AI."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State two ways graphs aid AI.",
+        "text": "They provide a structure for relationships (e.g. places and roads, states and moves); AI problems can then be defined as finding a path in a graph, analysed with algorithms such as Dijkstra's or A*. ANNs can also be represented as graphs."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the purpose of Dijkstra's and A* algorithms?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the purpose of Dijkstra's and A* algorithms?",
+        "text": "To find the optimal (shortest/most cost-effective) route between two nodes, based on distance, cost or time."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does Dijkstra choose the next node to visit, and how is the path recovered?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does Dijkstra choose the next node to visit, and how is the path recovered?",
+        "text": "The unvisited node with the smallest working distance; the path is found by back-tracking from the destination through each node's recorded previous node."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "In A*, what are g, h and f?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "In A*, what are g, h and f?",
+        "text": "g = actual cost from the start to the node; h = heuristic estimate from the node to the goal; f = g + h, the estimated total cost. The node with the lowest f is expanded next."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What condition must the A* heuristic meet, and why?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What condition must the A* heuristic meet, and why?",
+        "text": "It must never overestimate the real remaining cost (admissible), so that A* is guaranteed to find the shortest route."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe the layers of an artificial neural network."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe the layers of an artificial neural network.",
+        "text": "Input layer receives the data; one or more hidden layers extract features using weighted connections and activation functions; the output layer provides the result."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two ways ANNs have helped machine learning."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two ways ANNs have helped machine learning.",
+        "text": "Weights between nodes are adjusted through training so results become more accurate; they learn from data so decisions are made without being specifically programmed, and they improve as more data is available."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "List the steps of back propagation of errors."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "List the steps of back propagation of errors.",
+        "text": "Forward pass to produce an output; compare it with the expected output; calculate the error; pass the error backwards through the layers; adjust the weights; repeat until the error is small enough."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Distinguish supervised and unsupervised learning."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Distinguish supervised and unsupervised learning.",
+        "text": "Supervised uses labelled data (known inputs with associated outputs) to predict future outcomes; unsupervised is given only unlabelled input data and finds unknown patterns itself."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe reinforcement learning and give a reason for using it."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe reinforcement learning and give a reason for using it.",
+        "text": "An agent learns by trial and error in an environment, getting positive feedback for good actions and negative for bad; it adjusts to maximise reward. Reason: it learns autonomously without labelled data."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is deep learning and why use it?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is deep learning and why use it?",
+        "text": "Machine learning using an ANN with many hidden layers that progressively extract higher-level features. Used because it handles large, unstructured data and finds hidden, complex patterns."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does regression do in machine learning?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does regression do in machine learning?",
+        "text": "Finds the function that best fits known input/output data (e.g. a least-squares line y = mx + c) and uses it to predict a continuous numerical output for new input."
       }
     ]
   },

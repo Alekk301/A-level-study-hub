@@ -116,6 +116,12 @@ The commit is a checkpoint, not a permanently current version.
   alteration-detection steps with a toy signature, certificate acquisition/contents and signature vs certificate,
   toy RSA (labelled beyond syllabus), TLS purpose/handshake/situations, quantum benefits/drawbacks with a QKD
   basis table; all numbers checked by script.
+- Rebuilt (research method): 18.1 (2026-09-30). Sections in ch22 order with every Rocket Revise point: graph
+  purpose/structure and AI uses, one 8-node weighted graph (edge list + adjacency table) searched by hand with
+  Dijkstra (working-distance table, back-tracking) and A* (g/h/f, open/closed lists, admissible heuristic; 4
+  expansions vs 7), ML categories with a which-category table, regression with a least-squares example, ANN
+  layers/weights/activation, back-propagation steps with one worked update, deep and reinforcement learning with
+  reasons; tables and numbers produced by script.
 
 ## Latest verification
 
