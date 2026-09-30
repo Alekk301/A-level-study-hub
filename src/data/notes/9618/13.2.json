@@ -23,7 +23,7 @@
     },
     {
       "term": "Serial file",
-      "definition": "A file in which records are stored one after another in the order they are added, each new record appended to the end, with no ordering by key."
+      "definition": "A file in which records are stored one after another in chronological order, each new record appended to the end, with no ordering by key."
     },
     {
       "term": "Sequential file",
@@ -31,7 +31,7 @@
     },
     {
       "term": "Random file",
-      "definition": "A file in which each record is stored at an address calculated from its record key, usually by a hashing algorithm, so it can be read or written directly."
+      "definition": "A file in which records are stored in no particular order; each record's location is calculated from its record key by a hashing algorithm, so it can be read or written directly."
     },
     {
       "term": "Sequential access",
@@ -51,7 +51,7 @@
     },
     {
       "term": "Collision",
-      "definition": "The situation where two different record keys produce the same hash address; keys that do this are called synonyms."
+      "definition": "The situation where two different record keys produce the same hash value, so the location may already be in use; two records cannot occupy the same address."
     },
     {
       "term": "Overflow area",
@@ -63,11 +63,11 @@
       "id": "01-files-records-and-fields",
       "title": "Data files, records and the difference between organisation and access",
       "content": [
-        "A program that stores data for later use writes either a text file, where every value is stored as characters and a line has to be split into items, or a binary file, where values are stored in their internal form (an INTEGER as its two's complement bytes, for example). A binary data file is organised into records, and each record into fields. When every record has the same fields and each string field has a fixed length, every record occupies the same number of bytes, so a program can calculate where record number n starts. That fixed length is what makes direct access possible.",
-        "Two separate questions are asked about any data file. File organisation is how the records are arranged: in arrival order, in key order or at calculated addresses. File access is how a program reaches the record it wants: by reading through from the start, or by going straight to it. Organisation limits the access methods available, but examiners treat the two ideas separately, so keep them apart in an answer."
+        "A binary data file is made of records, and each record of fields. When every record has the same fields and fixed-length strings, all records are the same size, so the position of record n can be calculated; that is what makes direct access possible.",
+        "File organisation is how the records are arranged (arrival order, key order or calculated addresses). File access is how a program reaches a record (read through from the start, or go straight to it). Keep the two ideas separate in answers."
       ],
       "bullets": [
-        "File = records; record = fields; key field = the field that identifies a record.",
+        "File = records; record = fields; key field = the field that uniquely identifies a record.",
         "Fixed-length records let the position of any record be calculated.",
         "Organisation: serial, sequential, random. Access: sequential or direct."
       ],
@@ -77,13 +77,13 @@
       "id": "02-serial-organisation",
       "title": "Serial file organisation",
       "content": [
-        "In a serial file each new record is simply appended to the end of the file, so the only order is the order in which records arrived. Writing is therefore very fast and simple: there is no need to find a position or move anything. Finding a particular record is slow, because the records are in no key order and the program has to read from the first record until it finds a match or reaches the end.",
-        "Serial files suit data that is collected as it happens and later processed as a whole: a shop's transaction file recording every sale during the day, a sensor log, or an audit trail. They also suit backups to tape, which are written and read in one run."
+        "In a serial file records are stored one after another in chronological order: each new record goes into the next available space at the end of the file. Adding is fast; finding a record is slow because every record may have to be checked. Suits data collected as it happens and processed later as a whole."
       ],
       "bullets": [
-        "Records stored in order of arrival; new records appended to the end.",
-        "Fast to add a record; slow to find one (read from the start).",
-        "Uses: transaction files, logs, backups, data processed all together in a batch."
+        "Records are stored one after the other, in chronological order (order of arrival).",
+        "New records are appended to the end of the file (next available space).",
+        "Searching: every record is checked until the record is found or all records have been checked.",
+        "Uses: transaction files, logs, audit trails, backups."
       ],
       "examples": []
     },
@@ -91,13 +91,13 @@
       "id": "03-sequential-organisation",
       "title": "Sequential file organisation (using a key field)",
       "content": [
-        "A sequential file keeps its records in order of a key field, for example ascending customer number. The key values are normally unique and in order but need not be consecutive: 1012, 1188, 2045 is fine. The typical use is a master file that is updated at intervals, for example at the end of each day a bank reads the day's serial transaction file, sorted into the same key order, and applies it to the customer master file in one pass.",
-        "Adding a record is more work than in a serial file, because it has to go in the right place. The usual method reads the old file record by record, copying each one to a new file until it reaches the first key larger than the new key, writes the new record there, and then copies the rest. Deleting or editing a record works the same way: copy until the record is reached, leave it out or write the changed version, and copy the rest. The new file then replaces the old one."
+        "A sequential file stores its records one after another in order of a key field (e.g. ascending customer number). Keys are unique and in order but need not be consecutive. To insert, delete or amend a record, the old file is copied record by record to a new version of the file, making the change at the correct position; the new file replaces the old one."
       ],
       "bullets": [
-        "Records in key-field order; keys unique and in sequence, not necessarily consecutive.",
-        "Insert, delete or amend by copying the old file to a new file, making the change at the right point.",
-        "Uses: master files updated in batches, payroll, files usually processed in key order."
+        "Records are stored in order of the key field.",
+        "New records are inserted in the correct position, so a new version of the file has to be created to update it.",
+        "Searching: compare key fields record by record until the record is found or the current key is greater than the key being searched for.",
+        "Uses: master files updated in batches, payroll, billing."
       ],
       "examples": [
         {
@@ -112,14 +112,13 @@
       "id": "04-random-organisation",
       "title": "Random file organisation (using a record key)",
       "content": [
-        "In a random file, which the coursebook also calls a direct-access file, the position of each record is decided by its record key. When a record is written, a hashing algorithm turns its key into an address and the record is stored there. When the record is needed again, the same key is put through the same algorithm, which gives the same address, so the program can jump to it without reading any other record.",
-        "'Random' does not mean records are placed haphazardly: every address is calculated. It means that any record can be reached in any order, just as random-access memory can reach any location. Looking at the file from start to finish, the records are in no useful order, because the hash function scatters the keys. A record can be edited in place: read it, change it and write it back at the same address, without disturbing any other record or creating a new file."
+        "In a random (direct-access) file the location of each record is found from its record key by a hashing algorithm. Writing and reading both put the key through the same algorithm, so the program jumps straight to the record. Seen from start to finish the records are in no particular order, but every address is calculated, not chosen haphazardly. Records can be updated directly, in place, with no new file."
       ],
       "bullets": [
-        "Address of a record = hash function applied to its record key.",
-        "Same key, same algorithm, same address when writing and when reading.",
-        "Records can be read, written or edited in place without a new file.",
-        "Records are not in key order, so processing every record in key order is awkward."
+        "Records are stored in no particular order within the file (no sequencing).",
+        "There is a relationship between the record key and its location: the location is found with a hashing algorithm.",
+        "Same key + same algorithm = same address, when writing and when reading.",
+        "Updates to the file can be carried out directly (in place)."
       ],
       "examples": []
     },
@@ -127,15 +126,14 @@
       "id": "05-hashing-algorithms",
       "title": "Hashing algorithms: the hash function",
       "content": [
-        "A hash function (hashing algorithm) is a calculation applied to the key field whose result is the record's address. The commonest is modulo division: Address = Key MOD N, where N is the number of record positions in the file, numbered 0 to N - 1. MOD gives the remainder after division, so the result is always a valid address. The coursebook's advice is to pick N as a prime number close to the expected number of records, because a prime divisor spreads keys more evenly when the keys share a pattern, such as all being multiples of 5.",
-        "If the key is not numeric, the characters can be converted first: add the ASCII codes of the characters, then take the total MOD N. Another method is folding: split a long key into equal parts, add the parts, then take MOD N of the total. Whatever the method, a good hash function is quick to calculate, always gives an address inside the file, and spreads the keys as evenly as possible to keep collisions to a minimum.",
-        "Notice two consequences. First, the addresses bear no relation to the order of the keys. Second, because there are far more possible keys than addresses, different keys can produce the same address. That is a collision, and the file needs a rule for dealing with it."
+        "A hash function (hashing algorithm) is a calculation on the key field whose result is the record's address. The usual one is Address = Key MOD N, where N is the number of record positions (0 to N - 1). N is best a prime close to the expected number of records, which spreads patterned keys more evenly. A text key can be converted first (sum of ASCII codes, then MOD N); folding splits a long key into parts, adds them and takes MOD N.",
+        "There are more possible keys than addresses, so different keys can give the same address: a collision."
       ],
       "bullets": [
-        "Modulo division: Address = Key MOD N (addresses 0 to N - 1).",
-        "N is best a prime close to the number of records the file will hold.",
-        "Text key: sum the ASCII codes, then MOD N. Folding: split the key into parts, add them, then MOD N.",
-        "Good hash function: fast, always in range, spreads keys evenly, few collisions."
+        "Hash function: a calculation on the record key that gives the address of the record.",
+        "Modulo division: Address = Key MOD N (addresses 0 to N - 1); a prime N spreads keys best.",
+        "Text key: sum the ASCII codes, then MOD N. Folding: split the key into parts, add, then MOD N.",
+        "Good hash function: quick to calculate, always in range, spreads keys evenly, few collisions."
       ],
       "examples": [
         {
@@ -156,15 +154,15 @@
       "id": "06-collisions",
       "title": "Collisions and how they are handled",
       "content": [
-        "A collision happens when a record's hash address is already occupied by a record with a different key. Collisions cannot be avoided completely, so the file must have a fixed rule for them, and the same rule has to be followed when reading as when writing; otherwise a record that was moved would never be found.",
-        "Linear probing (the coursebook's 'sequential search for a vacant address') tries the next address, then the next, wrapping round from the last address to 0, until a free position is found. Reading uses the same path: start at the hash address and move on until the record is found or an empty, never-used position shows it is not in the file. Its weakness is clustering: records bunch round busy addresses, so keys hashing into a cluster need several reads.",
-        "An overflow area is a block of positions kept at the end of the file. A record whose home address is taken goes into the next free position in the overflow area. To read it, the program checks the home address and, if the record is not there, searches the overflow area serially. Chaining gives each address a linked list: a colliding record is added to the list belonging to its hash address, so a search only follows that one short list. The more full the file becomes, the more collisions occur, which is why files are made larger than the number of records they hold."
+        "A collision occurs when two different key values produce the same hash value, so the storage location may already be in use by another record; two records cannot occupy the same address. The same collision rule must be used when reading as when writing.",
+        "Linear probing: from the original hashed slot, search the file linearly for the next available space (wrap round from the last address to 0). Overflow area: put the record in the first free slot of a separate area and search that area linearly when reading. Chaining: each address holds a linked list of the records that hash to it. Clustering makes probing slower as the file fills."
       ],
       "bullets": [
-        "Collision: two keys, one address. Synonyms: keys that hash to the same address.",
-        "Linear probing: try the next address (wrap round to 0) until one is free.",
-        "Overflow area: store the record in the next free place at the end of the file; search it serially.",
-        "Chaining: a linked list from each address holds all the records with that hash value.",
+        "Collision: two different key values produce the same hash value (synonyms).",
+        "The location may already be in use, and two records cannot occupy the same address.",
+        "Storing: search linearly from the original hashed slot (or through the overflow area) and store the record in the first available slot.",
+        "Finding: start at the hashed address, then search linearly (or the overflow area) until the matching key is found; if it is not found, the record is not in the file.",
+        "Chaining: a linked list from each address holds all records with that hash value.",
         "Reading must follow the same collision rule as writing."
       ],
       "examples": [
@@ -186,8 +184,7 @@
       "id": "07-writing-and-reading-a-random-file",
       "title": "Writing to and reading from a random file",
       "content": [
-        "Cambridge pseudocode handles random files with OPENFILE ... FOR RANDOM, SEEK to move the file pointer to an address, GETRECORD to read the record there into a variable of the record type, and PUTRECORD to write a record there. The address is usually the number of records from the start of the file, and the guide asks you to explain how addresses are calculated, which is exactly what the hash function does.",
-        "The procedure below writes a customer using Key MOD 13 with linear probing. It assumes the file was set up with 13 empty records whose CustomerID is 0, and that a deleted record is marked with CustomerID -1. After GETRECORD the file pointer has moved on to the next record, so the program must SEEK back to the same address before PUTRECORD. The search function stops at an empty record (0), because a never-used position means the key was never probed past, but it steps over deleted records (-1), because a record written later may lie beyond them."
+        "Cambridge pseudocode uses OPENFILE ... FOR RANDOM, SEEK to move to an address, GETRECORD to read a record and PUTRECORD to write one. The code below uses Key MOD 13 with linear probing, on a file of 13 records where CustomerID 0 means never used and -1 means deleted. GETRECORD moves the file pointer on, so SEEK back before PUTRECORD. The search stops at an empty record but steps over deleted ones."
       ],
       "bullets": [
         "OPENFILE \"Customers.dat\" FOR RANDOM; SEEK file, address; GETRECORD / PUTRECORD file, variable.",
@@ -222,14 +219,16 @@
       "id": "08-file-access-methods",
       "title": "File access: sequential access and direct access",
       "content": [
-        "Sequential access reads the records in the order they are stored, starting at the beginning. It is the only way to search a serial file: every record may have to be read, and a key that is absent is only confirmed at the end of the file. It is also the normal way to process a sequential file, with one advantage: because the keys are in order, the search compares only key fields and can stop as soon as it reads a key larger than the one wanted, since the record cannot be further on.",
-        "Direct access reaches a record without reading those before it, and it works for two organisations. For a random file the key is hashed to give the address, then any collision rule is followed; some serial searching may still be needed after the first jump. For a sequential file an index is used: a separate index file holds each key with the position of its record in the main file. The program searches the smaller index (it is in key order, so a binary search can be used), reads the position, then goes straight to the record. The sequential file can therefore be processed in key order for batch work and also searched directly for single records."
+        "Sequential access starts at the physical start of the file and checks records one after another until the record is found or the end of file is reached. It is used for serial and sequential files and suits data stored in order of a field, e.g. a bank processing records in ascending account number. In a sequential file the search can stop early once a larger key is read.",
+        "Direct access finds a record without reading other records, using its key field; it suits records referenced by a unique address. For a sequential file an index of all key fields is kept and searched for the address of the record. For a random file the hashing algorithm is applied to the key to calculate the expected address; if the record is not there, linear probing or a search of the overflow area finds it."
       ],
       "bullets": [
-        "Sequential access: serial and sequential files; reads from the start.",
-        "On a sequential file the search can stop once a larger key is read.",
-        "Direct access: sequential files (through an index) and random files (through the hash function).",
-        "An index costs extra storage and must be updated whenever records are added or removed."
+        "Sequential access (serial and sequential files): records checked linearly from the physical start of the file until the record is found or end of file is reached.",
+        "Most suitable when records are stored in order of a field, e.g. accounts in ascending account number.",
+        "Direct access (sequential and random files): a record is found using its key field without other records being read; suits records referenced by a unique address.",
+        "Sequential file: an index of all key fields is searched for the address of the target record.",
+        "Random file: the hashing algorithm on the key field calculates the address; linear probing or an overflow search finds a record not at that address.",
+        "An index costs extra storage and must be updated when records are added or removed."
       ],
       "examples": [
         {
@@ -244,8 +243,7 @@
       "id": "09-editing-and-deleting",
       "title": "Editing and deleting records",
       "content": [
-        "For a sequential file, editing or deleting is done the same way as inserting: copy the records to a new file until the record concerned is reached, write the edited version (or skip it to delete it), then copy the rest. For a random file no new file is needed. A record can be edited in place by hashing its key, finding it, changing it and writing it back to the same address.",
-        "Deleting from a random file needs care. The record is not simply blanked; it is marked with a flag (here CustomerID -1) that later reads skip over. The reason is linear probing: a search stops at an empty position, so emptying a position in the middle of a probe path would hide every record stored beyond it."
+        "A sequential file is edited by copying to a new file, changing the record on the way. A random file is edited in place at the hashed address. Deleting from a probed random file uses a 'deleted' flag, not a blank, because a search stops at an empty position and would miss records stored further along."
       ],
       "bullets": [
         "Sequential file: copy to a new file, making the change on the way.",
@@ -265,8 +263,7 @@
       "id": "10-choosing-organisation-and-access",
       "title": "Choosing file organisation and access for a problem",
       "content": [
-        "Base the choice on how the file will be used. If records are simply collected as they arrive and later processed all together, serial organisation with sequential access is simplest. If most processing handles all or many records in key order, and changes can wait for a batch run, sequential organisation fits; add an index if single records must also be found quickly. If the main use is fast, frequent access to one record at a time in a large file, for example checking a password when a user logs in or looking up a stock item at a till, use random organisation with direct access through a hash function.",
-        "Justify the choice from the scenario and name the cost: sequential files must be rewritten to insert records, indexes need extra storage and maintenance, and hashed files need spare space and a collision rule."
+        "Base the choice on how the file is used, and name the cost: sequential files must be rewritten to insert, indexes need storage and upkeep, hashed files need spare space and a collision rule."
       ],
       "bullets": [
         "Transaction log, audit trail, backup: serial, sequential access.",
@@ -393,11 +390,12 @@
     }
   ],
   "examTips": [
-    "Keep organisation and access separate: serial, sequential and random are organisations; sequential access and direct access are access methods. Sequential access applies to serial and sequential files; direct access applies to sequential (via an index) and random (via hashing) files.",
-    "For a serial file give both mark points: records are stored in the order they arrive, and new records are appended to the end.",
-    "Define a hash function as a calculation on the record key whose result is the address of the record; then show the working, e.g. 20430 MOD 13 = 7.",
-    "When describing collision handling, name the method and say what happens, for example 'linear probing: store the record in the next free address, wrapping round to the start', and say that reading follows the same path.",
-    "When choosing an organisation, link it to the scenario: speed of single-record lookup points to random/direct access; processing every record in key order points to sequential."
+    "Keep organisation and access separate: serial, sequential and random are organisations; sequential and direct are access methods. Sequential access: serial and sequential files. Direct access: sequential (via an index) and random (via hashing) files.",
+    "Serial file, 2 marks: records stored one after another in chronological order, and new records appended to the end. Sequential file: records in order of a key field, and a new version of the file is created to insert a record.",
+    "Random file: say 'the location is calculated from the record key by a hashing algorithm'. 'Records are stored randomly' loses the mark.",
+    "Collision: say 'two different keys produce the same hash value, so the location is already in use'. Then resolution: storing, search linearly from the hashed slot (or overflow area) to the first free slot; finding, search the same way until the key is found, or it is not in the file.",
+    "Show hash working, e.g. 20430 MOD 13 = 7, and apply the collision rule when a slot is taken.",
+    "When choosing, link to the scenario: fast single-record lookup points to random/direct; processing every record in key order points to sequential."
   ],
   "commonMistakes": [
     "Saying records in a random file are stored randomly; each address is calculated from the key by the hash function.",

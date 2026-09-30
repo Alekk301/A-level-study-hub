@@ -17362,12 +17362,12 @@
       {
         "kind": "Definition",
         "label": "Non-composite data type",
-        "text": "A data type whose definition does not refer to another data type as a component; the user-defined examples are enumerated and pointer types."
+        "text": "A data type that can be defined without referencing another data type and contains only one data type; it can be primitive (INTEGER, BOOLEAN) or user-defined (enumerated, pointer)."
       },
       {
         "kind": "Definition",
         "label": "Composite data type",
-        "text": "A data type made from a collection of data items, of one or more other data types, grouped under one identifier; examples are record, set and class."
+        "text": "A collection of data items, of different (or the same) data types, grouped under a single identifier; it can be user-defined (record, set, class) or built in (array, string)."
       },
       {
         "kind": "Definition",
@@ -17377,7 +17377,7 @@
       {
         "kind": "Definition",
         "label": "Pointer data type",
-        "text": "A non-composite user-defined type whose variables hold a memory address (a reference to another data item); the definition states the type of data stored at that address."
+        "text": "A non-composite user-defined type used to reference a memory location: its variables store an address, and the definition indicates the type of data stored at that address."
       },
       {
         "kind": "Definition",
@@ -17411,47 +17411,52 @@
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "Every language supplies built-in types. For each one the language itself decides which values are allowed (an INTEGER holds whole numbers within some range) and which operations work on them (+, DIV, MOD, comparison and so on). The programmer can use these types but cannot change them."
+        "text": "Built-in types (INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE) have values and operations fixed by the language. A user-defined type is constructed by the programmer, with TYPE in pseudocode, and can then be used in DECLARE statements like any built-in type."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "A user-defined data type is one whose definition the programmer writes into the program. In Cambridge pseudocode that is done with the keyword TYPE. After the definition, the new type name can be used in DECLARE statements, as a parameter type or as the element type of an array, in exactly the same way as INTEGER or STRING. The 'user' here is the programmer using the language, not the person running the program. The language still has to support the idea: a type can only be defined if the language offers that construct."
+        "text": "They are needed because real problems involve data the language designer could not predict: an order that can only be at one of four stages, or a book with a title, a price and a loan status. Defining the type extends the flexibility of the language, keeps related data under one identifier and restricts variables to valid values."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "User-defined types are needed because the built-in types describe single numbers, characters or strings, while real problems deal with things like an order that can only be at one of four stages, a book with a title, a price and a loan status, or a group of students with no repeats. No language designer can know in advance the values or fields a particular program will need, so there cannot be a built-in 'order stage' type or 'book' type; the programmer has to define it. Doing so makes code easier to read, lets the translator reject invalid values, and keeps related data together under one name."
+        "text": "Every type is either composite or non-composite. A composite type is a collection of several data items, of different (or the same) data types, grouped under a single identifier; its definition refers to other data types. A non-composite type can be defined without referencing another data type and holds a single value; it can be a primitive (built-in) type or a user-defined one. Do not confuse user-defined types with abstract data types such as stacks, which are defined by their operations."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "Do not confuse user-defined types with abstract data types (stack, queue, linked list). An ADT is described by its operations; a user-defined type is a definition written in the program. The two meet when an ADT is built from user-defined types, for example a linked list made of node records."
+        "text": "Purpose: to create a new data type that is not available in the language (it extends the flexibility of the language)."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "Built-in type: values and operations fixed by the language."
+        "text": "User-defined types are constructed by the programmer, not supplied by the language."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "User-defined type: definition written by the programmer with TYPE, then used in DECLARE."
+        "text": "They model the problem's data, make code easier to read and allow only valid values."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "Needed because the language cannot know the values or fields a specific problem requires."
+        "text": "Composite: multiple elements, of different or the same data types, grouped under a single identifier; its definition refers to other data types. Examples: record, set, class/object."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "Non-composite (does not use another type as a component): enumerated, pointer."
+        "text": "Composite types can be user-defined (record, class) or built in (array, string)."
       },
       {
         "kind": "Content",
         "label": "Built-in types, user-defined types and why they are needed",
-        "text": "Composite (a collection of items of other types under one identifier): record, set, class/object."
+        "text": "Non-composite: defined without referencing another data type; contains only one data type. Examples: any primitive type, enumerated, pointer."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Non-composite types can be primitive (INTEGER, BOOLEAN) or user-defined (enumerated, pointer)."
       },
       {
         "kind": "Example",
@@ -17465,17 +17470,12 @@
       {
         "kind": "Content",
         "label": "Enumerated types",
-        "text": "An enumerated type is defined by listing, in brackets, every value that a variable of the type can ever hold. The Cambridge format is TYPE <identifier> = (value1, value2, ...). A variable is then declared with the new type name and can only be given one of the listed values. Because every value has to be written into the definition, an enumerated type can never be built in: only the programmer knows the values."
+        "text": "An enumerated type is defined by listing every value a variable of the type can take: TYPE <identifier> = (value1, value2, ...). The values are identifiers, not strings, so they are written without quotes. Because they form an ordered list, they can be compared with < and >, and adding 1 gives the next value (check for the last value first)."
       },
       {
         "kind": "Content",
         "label": "Enumerated types",
-        "text": "The values are identifiers, not strings, so they are written without quotation marks: Stage ← Packed, never Stage ← \"Packed\". A string variable would accept any text, including a misspelling; an enumerated variable can only hold a listed value, so the mistake is caught."
-      },
-      {
-        "kind": "Content",
-        "label": "Enumerated types",
-        "text": "The values are ordinal: the order in which they are listed gives each one a position, so they can be compared with <, >, <= and >=, and adding 1 gives the next value in the list (the pseudocode guide itself uses this, with a pointer to a Season value plus 1). This lets a program test 'has the order reached at least the Dispatched stage?' with one comparison instead of a list of OR conditions. Adding 1 to the last value has no next value to move to, so a program should check for the end of the list first."
+        "text": "Enumerated type: a non-composite type with an ordered list of all possible values."
       },
       {
         "kind": "Content",
@@ -17490,12 +17490,12 @@
       {
         "kind": "Content",
         "label": "Enumerated types",
-        "text": "Values are ordered, so Stage >= Dispatched and Stage + 1 are meaningful."
+        "text": "Values are ordinal: Stage >= Dispatched and Stage + 1 are valid."
       },
       {
         "kind": "Content",
         "label": "Enumerated types",
-        "text": "Benefits: readable code, only valid values can be stored, comparisons follow the natural order."
+        "text": "Benefits: readable code; only the listed values can be stored; comparisons follow the list order."
       },
       {
         "kind": "Example",
@@ -17514,17 +17514,12 @@
       {
         "kind": "Content",
         "label": "Records",
-        "text": "A record type groups a fixed number of related data items, called fields, under one identifier. The fields may all have different types, which is the key difference from an array. The Cambridge definition starts with TYPE and the type name, declares each field with DECLARE, and finishes with ENDTYPE. A field can itself be of a user-defined type, such as an enumerated genre, or be an array."
+        "text": "A record type groups a fixed number of named fields, which can have different data types, under one identifier. It is defined with TYPE Name, one DECLARE line per field, and ENDTYPE. Fields are reached with dot notation, and an array of records holds a table whose columns have different types, keeping each item's data together when sorting or searching. Python has no record type, so a class or dataclass is used instead."
       },
       {
         "kind": "Content",
         "label": "Records",
-        "text": "Fields are reached with dot notation, VariableName.FieldName. Two variables of the same record type can be copied in one assignment (Copy ← Original copies every field), and an array can have a record type as its element type. An array of records is the usual way to hold a table whose columns have different types, and it keeps each item's fields together when the array is sorted or searched: Library[3].Price is the price of the third book."
-      },
-      {
-        "kind": "Content",
-        "label": "Records",
-        "text": "The coursebook notes that the record is expected to be user-defined, because only the programmer knows which fields the program needs; Python has no record type, so a class (or a dataclass) is used in its place. A record is also the natural unit of a binary file (see 13.2), where each record in the file has the same fields."
+        "text": "Record: composite; a fixed number of named fields, possibly of different data types."
       },
       {
         "kind": "Content",
@@ -17534,22 +17529,22 @@
       {
         "kind": "Content",
         "label": "Records",
-        "text": "Fields can have different types, including an enumerated type or an array."
+        "text": "Field access with dot notation: ThisBook.Title, Library[Index].OnLoan."
       },
       {
         "kind": "Content",
         "label": "Records",
-        "text": "Access a field with dot notation: ThisBook.Title, Library[Index].OnLoan."
+        "text": "A field can be of another user-defined type (e.g. an enumerated type) or an array."
       },
       {
         "kind": "Content",
         "label": "Records",
-        "text": "Whole records can be assigned: Copy ← Library[2]."
+        "text": "Whole records can be assigned in one statement: Copy ← Library[2]."
       },
       {
         "kind": "Content",
         "label": "Records",
-        "text": "An array of records replaces parallel arrays and keeps each item's data together."
+        "text": "An array of records replaces parallel arrays and keeps each item's fields together."
       },
       {
         "kind": "Example",
@@ -17568,12 +17563,7 @@
       {
         "kind": "Content",
         "label": "Classes and objects as user-defined types",
-        "text": "A class is the second major composite user-defined type. Like a record it groups several data items (its attributes), but it also contains the methods, procedures and functions, that work on those attributes. Attributes are normally PRIVATE, so other code can only change them through the class's PUBLIC methods, which is how a class protects its data. A language has some built-in classes, but to use object-oriented programming properly the programmer defines their own."
-      },
-      {
-        "kind": "Content",
-        "label": "Classes and objects as user-defined types",
-        "text": "In Cambridge pseudocode a class is written CLASS Name ... ENDCLASS, the constructor is a procedure called NEW, and an object is created with ObjectName ← NEW ClassName(parameters). Methods are called with dot notation, just like record fields. The full detail (inheritance, polymorphism, getters and setters) belongs to topic 20.1; for 13.1 you need to recognise the class as a composite user-defined type and to say how it differs from a record."
+        "text": "A class is a composite user-defined type that holds attributes (data) and the methods that act on them. Attributes are normally PRIVATE and reached only through PUBLIC methods (encapsulation). In pseudocode: CLASS Name ... ENDCLASS, a constructor PROCEDURE NEW, and ObjectName ← NEW ClassName(parameters). Inheritance and polymorphism belong to 20.1."
       },
       {
         "kind": "Content",
@@ -17583,12 +17573,12 @@
       {
         "kind": "Content",
         "label": "Classes and objects as user-defined types",
-        "text": "Object = one instance of a class, created with NEW."
+        "text": "Object = an instance of a class, created with NEW."
       },
       {
         "kind": "Content",
         "label": "Classes and objects as user-defined types",
-        "text": "PRIVATE attributes are reached through PUBLIC methods (encapsulation)."
+        "text": "PRIVATE attributes are accessed through PUBLIC methods (encapsulation)."
       },
       {
         "kind": "Example",
@@ -17602,22 +17592,27 @@
       {
         "kind": "Content",
         "label": "Pointer types and dereferencing",
-        "text": "A pointer variable does not hold ordinary data; it holds the memory address of another data item. The pointer type is defined by naming the type of data it will point to: TYPE TRealPointer = ^REAL. The caret in the definition marks the type as a pointer. A variable of that type is declared without a caret: DECLARE PricePtr : TRealPointer."
+        "text": "A pointer variable stores the memory address of another data item, not the data itself. The pointer type names the type of data found at that address: TYPE TRealPointer = ^REAL. A variable of that type is declared without a caret."
       },
       {
         "kind": "Content",
         "label": "Pointer types and dereferencing",
-        "text": "Two operations follow, and the position of the caret tells them apart. Written before a variable name, ^Price means 'the address of Price', so PricePtr ← ^Price makes PricePtr point at Price. Written after a pointer name, PricePtr^ means 'the value stored at the address in PricePtr', which is dereferencing. PricePtr^ can be read (Discounted ← PricePtr^ * 0.75) or assigned to (PricePtr^ ← 52.0), and assigning through the pointer changes Price itself, because both names refer to the same memory location."
+        "text": "^Price (caret before) means 'the address of Price'. PricePtr^ (caret after) means 'the value at the address held in PricePtr' (dereferencing); assigning to PricePtr^ changes Price itself. Use the 2026 guide's ^ form, not the coursebook's @. The guide defines no null value; a question will say what to use."
       },
       {
         "kind": "Content",
         "label": "Pointer types and dereferencing",
-        "text": "The coursebook uses @Number1 for 'address of'; the 2026 pseudocode guide uses ^ThisSeason, so use the guide's form in the exam. The guide also does not define a null pointer value; if a question needs one it will say what value to use (array-based linked lists in 19.1 use an integer such as -1 or 0 as the null pointer)."
+        "text": "Pointers let dynamic data structures (linked lists, trees) grow and shrink at run time. Python has no pointer type; it handles references automatically."
       },
       {
         "kind": "Content",
         "label": "Pointer types and dereferencing",
-        "text": "Pointers matter because they let data structures grow and shrink while a program runs. A new item can be stored anywhere in memory and linked in by storing its address, instead of reserving a large fixed array that might never fill. Not every language supports pointer types; Python, for example, handles references automatically and has no pointer syntax."
+        "text": "Pointer type: non-composite; used to reference a memory location."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "It stores an address, and its definition indicates the type of data stored at that address."
       },
       {
         "kind": "Content",
@@ -17627,17 +17622,12 @@
       {
         "kind": "Content",
         "label": "Pointer types and dereferencing",
-        "text": "Address of a variable: ^Price. Dereference a pointer: PricePtr^."
+        "text": "Address of a variable: ^Price. Dereference: PricePtr^."
       },
       {
         "kind": "Content",
         "label": "Pointer types and dereferencing",
-        "text": "Changing PricePtr^ changes the variable being pointed to."
-      },
-      {
-        "kind": "Content",
-        "label": "Pointer types and dereferencing",
-        "text": "The pointer holds an address, not a copy of the data."
+        "text": "Changing PricePtr^ changes the variable pointed to."
       },
       {
         "kind": "Content",
@@ -17661,17 +17651,12 @@
       {
         "kind": "Content",
         "label": "Set types",
-        "text": "A set holds a collection of values of one type with three defining properties: the values have no order, there is no index, and no value can appear twice. The pseudocode guide defines a set type in two steps. TYPE TNameSet = SET OF STRING creates the type, and DEFINE Chess (\"Ana\", \"Ben\", \"Chen\", \"Dev\", \"Eli\") : TNameSet creates a set of that type with its members."
+        "text": "A set holds values of one data type with no order, no index and no duplicates. The guide defines it in two steps: TYPE TNameSet = SET OF STRING, then DEFINE Chess (\"Ana\", \"Ben\") : TNameSet. Set operations (membership, union, intersection, difference) have no keywords in the 2026 guide, so describe them in words or use the notation a question gives."
       },
       {
         "kind": "Content",
         "label": "Set types",
-        "text": "The operations on a set are those of set theory: test whether a value is a member, add a value, remove a value, combine two sets (union), find the members two sets share (intersection) and find the members of one set that are not in another (difference). The 2026 pseudocode guide does not give keywords or symbols for any of these operations, so in an answer describe them in words, or use whatever notation the question defines, rather than inventing syntax."
-      },
-      {
-        "kind": "Content",
-        "label": "Set types",
-        "text": "The no-duplicates rule is the set's most useful property. Loading a list into a set removes repeated values automatically, and intersection answers questions such as 'which students take both chess and robotics?' in one step. The set is hard to classify: it contains many values, so it counts as composite, yet it has no structure and no index, so you cannot ask for 'the third member'."
+        "text": "Set: composite; unordered values of one type, no index, no duplicates."
       },
       {
         "kind": "Content",
@@ -17681,17 +17666,17 @@
       {
         "kind": "Content",
         "label": "Set types",
-        "text": "Unordered, no index, no duplicates, all members of one type."
-      },
-      {
-        "kind": "Content",
-        "label": "Set types",
         "text": "Operations: membership, add, remove, union, intersection, difference."
       },
       {
         "kind": "Content",
         "label": "Set types",
-        "text": "No operator syntax is defined in the 2026 guide: describe set operations in words."
+        "text": "Loading values into a set removes duplicates automatically."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "No operator syntax in the 2026 guide: describe set operations in words."
       },
       {
         "kind": "Example",
@@ -17710,7 +17695,7 @@
       {
         "kind": "Content",
         "label": "User-defined types in a real language",
-        "text": "Paper 4 is answered in a real language, so it helps to know how each pseudocode type maps across. In Python an enumeration comes from the enum module (IntEnum keeps the values ordered and comparable), a record is written as a class, most neatly a dataclass, because Python has no record type, a set is built in, and a class is a class. Python has no pointer type: every variable already holds a reference to an object, and the language manages addresses itself. Java and VB.NET have enum types, and VB.NET has Structure for records."
+        "text": "Paper 4 uses a real language. In Python an enumeration comes from the enum module (IntEnum keeps values ordered), a record is a class or dataclass, a set is built in, and there is no pointer type because every variable already holds a reference."
       },
       {
         "kind": "Content",
@@ -17730,7 +17715,7 @@
       {
         "kind": "Content",
         "label": "User-defined types in a real language",
-        "text": "Pointer: no pointer syntax in Python or Java; references are handled automatically."
+        "text": "Pointer: no pointer syntax in Python or Java; references are automatic."
       },
       {
         "kind": "Example",
@@ -17744,12 +17729,7 @@
       {
         "kind": "Content",
         "label": "Choosing and designing a user-defined type for a problem",
-        "text": "An exam scenario describes data in words; your job is to match each part of that description to a type and justify the match with a feature of the data. A value that must be one of a short fixed list of named options suggests an enumerated type. One item described by several facts of different types suggests a record, and many such items suggest an array of records. A collection where only membership matters and repeats must be excluded suggests a set. Data that needs its own operations and protection suggests a class. A structure that has to grow or shrink while the program runs, with items linked to one another, suggests pointers."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing and designing a user-defined type for a problem",
-        "text": "Designing the type means writing the full declaration: sensible type and field names, a data type for every field, and any enumerated or set types defined before the record that uses them. Choose each field's type from the data: a phone number or ID with leading zeros is a STRING, not an INTEGER, a yes/no fact is BOOLEAN, and a date is DATE."
+        "text": "Match each part of the scenario's data to a type and justify the match with a feature of that data. Then write the full declaration: define enumerated and set types before the record that uses them, and give every field a suitable data type (an ID with leading zeros is a STRING, a yes/no fact is BOOLEAN)."
       },
       {
         "kind": "Content",
@@ -17902,7 +17882,7 @@
       {
         "kind": "Definition",
         "label": "Serial file",
-        "text": "A file in which records are stored one after another in the order they are added, each new record appended to the end, with no ordering by key."
+        "text": "A file in which records are stored one after another in chronological order, each new record appended to the end, with no ordering by key."
       },
       {
         "kind": "Definition",
@@ -17912,7 +17892,7 @@
       {
         "kind": "Definition",
         "label": "Random file",
-        "text": "A file in which each record is stored at an address calculated from its record key, usually by a hashing algorithm, so it can be read or written directly."
+        "text": "A file in which records are stored in no particular order; each record's location is calculated from its record key by a hashing algorithm, so it can be read or written directly."
       },
       {
         "kind": "Definition",
@@ -17937,7 +17917,7 @@
       {
         "kind": "Definition",
         "label": "Collision",
-        "text": "The situation where two different record keys produce the same hash address; keys that do this are called synonyms."
+        "text": "The situation where two different record keys produce the same hash value, so the location may already be in use; two records cannot occupy the same address."
       },
       {
         "kind": "Definition",
@@ -17951,17 +17931,17 @@
       {
         "kind": "Content",
         "label": "Data files, records and the difference between organisation and access",
-        "text": "A program that stores data for later use writes either a text file, where every value is stored as characters and a line has to be split into items, or a binary file, where values are stored in their internal form (an INTEGER as its two's complement bytes, for example). A binary data file is organised into records, and each record into fields. When every record has the same fields and each string field has a fixed length, every record occupies the same number of bytes, so a program can calculate where record number n starts. That fixed length is what makes direct access possible."
+        "text": "A binary data file is made of records, and each record of fields. When every record has the same fields and fixed-length strings, all records are the same size, so the position of record n can be calculated; that is what makes direct access possible."
       },
       {
         "kind": "Content",
         "label": "Data files, records and the difference between organisation and access",
-        "text": "Two separate questions are asked about any data file. File organisation is how the records are arranged: in arrival order, in key order or at calculated addresses. File access is how a program reaches the record it wants: by reading through from the start, or by going straight to it. Organisation limits the access methods available, but examiners treat the two ideas separately, so keep them apart in an answer."
+        "text": "File organisation is how the records are arranged (arrival order, key order or calculated addresses). File access is how a program reaches a record (read through from the start, or go straight to it). Keep the two ideas separate in answers."
       },
       {
         "kind": "Content",
         "label": "Data files, records and the difference between organisation and access",
-        "text": "File = records; record = fields; key field = the field that identifies a record."
+        "text": "File = records; record = fields; key field = the field that uniquely identifies a record."
       },
       {
         "kind": "Content",
@@ -17980,27 +17960,27 @@
       {
         "kind": "Content",
         "label": "Serial file organisation",
-        "text": "In a serial file each new record is simply appended to the end of the file, so the only order is the order in which records arrived. Writing is therefore very fast and simple: there is no need to find a position or move anything. Finding a particular record is slow, because the records are in no key order and the program has to read from the first record until it finds a match or reaches the end."
+        "text": "In a serial file records are stored one after another in chronological order: each new record goes into the next available space at the end of the file. Adding is fast; finding a record is slow because every record may have to be checked. Suits data collected as it happens and processed later as a whole."
       },
       {
         "kind": "Content",
         "label": "Serial file organisation",
-        "text": "Serial files suit data that is collected as it happens and later processed as a whole: a shop's transaction file recording every sale during the day, a sensor log, or an audit trail. They also suit backups to tape, which are written and read in one run."
+        "text": "Records are stored one after the other, in chronological order (order of arrival)."
       },
       {
         "kind": "Content",
         "label": "Serial file organisation",
-        "text": "Records stored in order of arrival; new records appended to the end."
+        "text": "New records are appended to the end of the file (next available space)."
       },
       {
         "kind": "Content",
         "label": "Serial file organisation",
-        "text": "Fast to add a record; slow to find one (read from the start)."
+        "text": "Searching: every record is checked until the record is found or all records have been checked."
       },
       {
         "kind": "Content",
         "label": "Serial file organisation",
-        "text": "Uses: transaction files, logs, backups, data processed all together in a batch."
+        "text": "Uses: transaction files, logs, audit trails, backups."
       },
       {
         "kind": "Section",
@@ -18009,27 +17989,27 @@
       {
         "kind": "Content",
         "label": "Sequential file organisation (using a key field)",
-        "text": "A sequential file keeps its records in order of a key field, for example ascending customer number. The key values are normally unique and in order but need not be consecutive: 1012, 1188, 2045 is fine. The typical use is a master file that is updated at intervals, for example at the end of each day a bank reads the day's serial transaction file, sorted into the same key order, and applies it to the customer master file in one pass."
+        "text": "A sequential file stores its records one after another in order of a key field (e.g. ascending customer number). Keys are unique and in order but need not be consecutive. To insert, delete or amend a record, the old file is copied record by record to a new version of the file, making the change at the correct position; the new file replaces the old one."
       },
       {
         "kind": "Content",
         "label": "Sequential file organisation (using a key field)",
-        "text": "Adding a record is more work than in a serial file, because it has to go in the right place. The usual method reads the old file record by record, copying each one to a new file until it reaches the first key larger than the new key, writes the new record there, and then copies the rest. Deleting or editing a record works the same way: copy until the record is reached, leave it out or write the changed version, and copy the rest. The new file then replaces the old one."
+        "text": "Records are stored in order of the key field."
       },
       {
         "kind": "Content",
         "label": "Sequential file organisation (using a key field)",
-        "text": "Records in key-field order; keys unique and in sequence, not necessarily consecutive."
+        "text": "New records are inserted in the correct position, so a new version of the file has to be created to update it."
       },
       {
         "kind": "Content",
         "label": "Sequential file organisation (using a key field)",
-        "text": "Insert, delete or amend by copying the old file to a new file, making the change at the right point."
+        "text": "Searching: compare key fields record by record until the record is found or the current key is greater than the key being searched for."
       },
       {
         "kind": "Content",
         "label": "Sequential file organisation (using a key field)",
-        "text": "Uses: master files updated in batches, payroll, files usually processed in key order."
+        "text": "Uses: master files updated in batches, payroll, billing."
       },
       {
         "kind": "Example",
@@ -18043,32 +18023,27 @@
       {
         "kind": "Content",
         "label": "Random file organisation (using a record key)",
-        "text": "In a random file, which the coursebook also calls a direct-access file, the position of each record is decided by its record key. When a record is written, a hashing algorithm turns its key into an address and the record is stored there. When the record is needed again, the same key is put through the same algorithm, which gives the same address, so the program can jump to it without reading any other record."
+        "text": "In a random (direct-access) file the location of each record is found from its record key by a hashing algorithm. Writing and reading both put the key through the same algorithm, so the program jumps straight to the record. Seen from start to finish the records are in no particular order, but every address is calculated, not chosen haphazardly. Records can be updated directly, in place, with no new file."
       },
       {
         "kind": "Content",
         "label": "Random file organisation (using a record key)",
-        "text": "'Random' does not mean records are placed haphazardly: every address is calculated. It means that any record can be reached in any order, just as random-access memory can reach any location. Looking at the file from start to finish, the records are in no useful order, because the hash function scatters the keys. A record can be edited in place: read it, change it and write it back at the same address, without disturbing any other record or creating a new file."
+        "text": "Records are stored in no particular order within the file (no sequencing)."
       },
       {
         "kind": "Content",
         "label": "Random file organisation (using a record key)",
-        "text": "Address of a record = hash function applied to its record key."
+        "text": "There is a relationship between the record key and its location: the location is found with a hashing algorithm."
       },
       {
         "kind": "Content",
         "label": "Random file organisation (using a record key)",
-        "text": "Same key, same algorithm, same address when writing and when reading."
+        "text": "Same key + same algorithm = same address, when writing and when reading."
       },
       {
         "kind": "Content",
         "label": "Random file organisation (using a record key)",
-        "text": "Records can be read, written or edited in place without a new file."
-      },
-      {
-        "kind": "Content",
-        "label": "Random file organisation (using a record key)",
-        "text": "Records are not in key order, so processing every record in key order is awkward."
+        "text": "Updates to the file can be carried out directly (in place)."
       },
       {
         "kind": "Section",
@@ -18077,37 +18052,32 @@
       {
         "kind": "Content",
         "label": "Hashing algorithms: the hash function",
-        "text": "A hash function (hashing algorithm) is a calculation applied to the key field whose result is the record's address. The commonest is modulo division: Address = Key MOD N, where N is the number of record positions in the file, numbered 0 to N - 1. MOD gives the remainder after division, so the result is always a valid address. The coursebook's advice is to pick N as a prime number close to the expected number of records, because a prime divisor spreads keys more evenly when the keys share a pattern, such as all being multiples of 5."
+        "text": "A hash function (hashing algorithm) is a calculation on the key field whose result is the record's address. The usual one is Address = Key MOD N, where N is the number of record positions (0 to N - 1). N is best a prime close to the expected number of records, which spreads patterned keys more evenly. A text key can be converted first (sum of ASCII codes, then MOD N); folding splits a long key into parts, adds them and takes MOD N."
       },
       {
         "kind": "Content",
         "label": "Hashing algorithms: the hash function",
-        "text": "If the key is not numeric, the characters can be converted first: add the ASCII codes of the characters, then take the total MOD N. Another method is folding: split a long key into equal parts, add the parts, then take MOD N of the total. Whatever the method, a good hash function is quick to calculate, always gives an address inside the file, and spreads the keys as evenly as possible to keep collisions to a minimum."
+        "text": "There are more possible keys than addresses, so different keys can give the same address: a collision."
       },
       {
         "kind": "Content",
         "label": "Hashing algorithms: the hash function",
-        "text": "Notice two consequences. First, the addresses bear no relation to the order of the keys. Second, because there are far more possible keys than addresses, different keys can produce the same address. That is a collision, and the file needs a rule for dealing with it."
+        "text": "Hash function: a calculation on the record key that gives the address of the record."
       },
       {
         "kind": "Content",
         "label": "Hashing algorithms: the hash function",
-        "text": "Modulo division: Address = Key MOD N (addresses 0 to N - 1)."
+        "text": "Modulo division: Address = Key MOD N (addresses 0 to N - 1); a prime N spreads keys best."
       },
       {
         "kind": "Content",
         "label": "Hashing algorithms: the hash function",
-        "text": "N is best a prime close to the number of records the file will hold."
+        "text": "Text key: sum the ASCII codes, then MOD N. Folding: split the key into parts, add, then MOD N."
       },
       {
         "kind": "Content",
         "label": "Hashing algorithms: the hash function",
-        "text": "Text key: sum the ASCII codes, then MOD N. Folding: split the key into parts, add them, then MOD N."
-      },
-      {
-        "kind": "Content",
-        "label": "Hashing algorithms: the hash function",
-        "text": "Good hash function: fast, always in range, spreads keys evenly, few collisions."
+        "text": "Good hash function: quick to calculate, always in range, spreads keys evenly, few collisions."
       },
       {
         "kind": "Example",
@@ -18126,37 +18096,37 @@
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "A collision happens when a record's hash address is already occupied by a record with a different key. Collisions cannot be avoided completely, so the file must have a fixed rule for them, and the same rule has to be followed when reading as when writing; otherwise a record that was moved would never be found."
+        "text": "A collision occurs when two different key values produce the same hash value, so the storage location may already be in use by another record; two records cannot occupy the same address. The same collision rule must be used when reading as when writing."
       },
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "Linear probing (the coursebook's 'sequential search for a vacant address') tries the next address, then the next, wrapping round from the last address to 0, until a free position is found. Reading uses the same path: start at the hash address and move on until the record is found or an empty, never-used position shows it is not in the file. Its weakness is clustering: records bunch round busy addresses, so keys hashing into a cluster need several reads."
+        "text": "Linear probing: from the original hashed slot, search the file linearly for the next available space (wrap round from the last address to 0). Overflow area: put the record in the first free slot of a separate area and search that area linearly when reading. Chaining: each address holds a linked list of the records that hash to it. Clustering makes probing slower as the file fills."
       },
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "An overflow area is a block of positions kept at the end of the file. A record whose home address is taken goes into the next free position in the overflow area. To read it, the program checks the home address and, if the record is not there, searches the overflow area serially. Chaining gives each address a linked list: a colliding record is added to the list belonging to its hash address, so a search only follows that one short list. The more full the file becomes, the more collisions occur, which is why files are made larger than the number of records they hold."
+        "text": "Collision: two different key values produce the same hash value (synonyms)."
       },
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "Collision: two keys, one address. Synonyms: keys that hash to the same address."
+        "text": "The location may already be in use, and two records cannot occupy the same address."
       },
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "Linear probing: try the next address (wrap round to 0) until one is free."
+        "text": "Storing: search linearly from the original hashed slot (or through the overflow area) and store the record in the first available slot."
       },
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "Overflow area: store the record in the next free place at the end of the file; search it serially."
+        "text": "Finding: start at the hashed address, then search linearly (or the overflow area) until the matching key is found; if it is not found, the record is not in the file."
       },
       {
         "kind": "Content",
         "label": "Collisions and how they are handled",
-        "text": "Chaining: a linked list from each address holds all the records with that hash value."
+        "text": "Chaining: a linked list from each address holds all records with that hash value."
       },
       {
         "kind": "Content",
@@ -18180,12 +18150,7 @@
       {
         "kind": "Content",
         "label": "Writing to and reading from a random file",
-        "text": "Cambridge pseudocode handles random files with OPENFILE ... FOR RANDOM, SEEK to move the file pointer to an address, GETRECORD to read the record there into a variable of the record type, and PUTRECORD to write a record there. The address is usually the number of records from the start of the file, and the guide asks you to explain how addresses are calculated, which is exactly what the hash function does."
-      },
-      {
-        "kind": "Content",
-        "label": "Writing to and reading from a random file",
-        "text": "The procedure below writes a customer using Key MOD 13 with linear probing. It assumes the file was set up with 13 empty records whose CustomerID is 0, and that a deleted record is marked with CustomerID -1. After GETRECORD the file pointer has moved on to the next record, so the program must SEEK back to the same address before PUTRECORD. The search function stops at an empty record (0), because a never-used position means the key was never probed past, but it steps over deleted records (-1), because a record written later may lie beyond them."
+        "text": "Cambridge pseudocode uses OPENFILE ... FOR RANDOM, SEEK to move to an address, GETRECORD to read a record and PUTRECORD to write one. The code below uses Key MOD 13 with linear probing, on a file of 13 records where CustomerID 0 means never used and -1 means deleted. GETRECORD moves the file pointer on, so SEEK back before PUTRECORD. The search stops at an empty record but steps over deleted ones."
       },
       {
         "kind": "Content",
@@ -18229,32 +18194,42 @@
       {
         "kind": "Content",
         "label": "File access: sequential access and direct access",
-        "text": "Sequential access reads the records in the order they are stored, starting at the beginning. It is the only way to search a serial file: every record may have to be read, and a key that is absent is only confirmed at the end of the file. It is also the normal way to process a sequential file, with one advantage: because the keys are in order, the search compares only key fields and can stop as soon as it reads a key larger than the one wanted, since the record cannot be further on."
+        "text": "Sequential access starts at the physical start of the file and checks records one after another until the record is found or the end of file is reached. It is used for serial and sequential files and suits data stored in order of a field, e.g. a bank processing records in ascending account number. In a sequential file the search can stop early once a larger key is read."
       },
       {
         "kind": "Content",
         "label": "File access: sequential access and direct access",
-        "text": "Direct access reaches a record without reading those before it, and it works for two organisations. For a random file the key is hashed to give the address, then any collision rule is followed; some serial searching may still be needed after the first jump. For a sequential file an index is used: a separate index file holds each key with the position of its record in the main file. The program searches the smaller index (it is in key order, so a binary search can be used), reads the position, then goes straight to the record. The sequential file can therefore be processed in key order for batch work and also searched directly for single records."
+        "text": "Direct access finds a record without reading other records, using its key field; it suits records referenced by a unique address. For a sequential file an index of all key fields is kept and searched for the address of the record. For a random file the hashing algorithm is applied to the key to calculate the expected address; if the record is not there, linear probing or a search of the overflow area finds it."
       },
       {
         "kind": "Content",
         "label": "File access: sequential access and direct access",
-        "text": "Sequential access: serial and sequential files; reads from the start."
+        "text": "Sequential access (serial and sequential files): records checked linearly from the physical start of the file until the record is found or end of file is reached."
       },
       {
         "kind": "Content",
         "label": "File access: sequential access and direct access",
-        "text": "On a sequential file the search can stop once a larger key is read."
+        "text": "Most suitable when records are stored in order of a field, e.g. accounts in ascending account number."
       },
       {
         "kind": "Content",
         "label": "File access: sequential access and direct access",
-        "text": "Direct access: sequential files (through an index) and random files (through the hash function)."
+        "text": "Direct access (sequential and random files): a record is found using its key field without other records being read; suits records referenced by a unique address."
       },
       {
         "kind": "Content",
         "label": "File access: sequential access and direct access",
-        "text": "An index costs extra storage and must be updated whenever records are added or removed."
+        "text": "Sequential file: an index of all key fields is searched for the address of the target record."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "Random file: the hashing algorithm on the key field calculates the address; linear probing or an overflow search finds a record not at that address."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "An index costs extra storage and must be updated when records are added or removed."
       },
       {
         "kind": "Example",
@@ -18268,12 +18243,7 @@
       {
         "kind": "Content",
         "label": "Editing and deleting records",
-        "text": "For a sequential file, editing or deleting is done the same way as inserting: copy the records to a new file until the record concerned is reached, write the edited version (or skip it to delete it), then copy the rest. For a random file no new file is needed. A record can be edited in place by hashing its key, finding it, changing it and writing it back to the same address."
-      },
-      {
-        "kind": "Content",
-        "label": "Editing and deleting records",
-        "text": "Deleting from a random file needs care. The record is not simply blanked; it is marked with a flag (here CustomerID -1) that later reads skip over. The reason is linear probing: a search stops at an empty position, so emptying a position in the middle of a probe path would hide every record stored beyond it."
+        "text": "A sequential file is edited by copying to a new file, changing the record on the way. A random file is edited in place at the hashed address. Deleting from a probed random file uses a 'deleted' flag, not a blank, because a search stops at an empty position and would miss records stored further along."
       },
       {
         "kind": "Content",
@@ -18302,12 +18272,7 @@
       {
         "kind": "Content",
         "label": "Choosing file organisation and access for a problem",
-        "text": "Base the choice on how the file will be used. If records are simply collected as they arrive and later processed all together, serial organisation with sequential access is simplest. If most processing handles all or many records in key order, and changes can wait for a batch run, sequential organisation fits; add an index if single records must also be found quickly. If the main use is fast, frequent access to one record at a time in a large file, for example checking a password when a user logs in or looking up a stock item at a till, use random organisation with direct access through a hash function."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing file organisation and access for a problem",
-        "text": "Justify the choice from the scenario and name the cost: sequential files must be rewritten to insert records, indexes need extra storage and maintenance, and hashed files need spare space and a collision rule."
+        "text": "Base the choice on how the file is used, and name the cost: sequential files must be rewritten to insert, indexes need storage and upkeep, hashed files need spare space and a collision rule."
       },
       {
         "kind": "Content",
@@ -18485,12 +18450,12 @@
       {
         "kind": "Definition",
         "label": "Overflow",
-        "text": "An error that occurs when a result is too large in magnitude to be represented, because it needs an exponent larger than the maximum."
+        "text": "An error that occurs when the result of an arithmetic operation is too large to be represented in the available bits, because it needs an exponent larger than the maximum."
       },
       {
         "kind": "Definition",
         "label": "Underflow",
-        "text": "An error that occurs when a non-zero result is too close to zero to be represented, because it needs an exponent more negative than the minimum."
+        "text": "An error that occurs when the result of an arithmetic operation is too small (too close to zero) to be represented, because it needs an exponent more negative than the minimum."
       },
       {
         "kind": "Section",
@@ -18499,17 +18464,7 @@
       {
         "kind": "Content",
         "label": "Real numbers: fixed-point and floating-point",
-        "text": "A real number has a fractional part, such as 6.375 or -0.046875. In denary a real number can be written plainly or in exponential (scientific) notation, where a mantissa is multiplied by a power of ten: 4720 can be written 0.472 x 10^4 or 4.72 x 10^3. Very large and very small values are only practical in exponential form. A computer has to store real numbers in binary, and it can do so in two ways."
-      },
-      {
-        "kind": "Content",
-        "label": "Real numbers: fixed-point and floating-point",
-        "text": "In fixed-point representation the programmer decides in advance how many bits hold the whole-number part and how many hold the fraction, so the binary point is always in the same place. For an 8-bit code with a two's complement whole-number part of 4 bits and a fraction of 4 bits, the place values are -8, 4, 2, 1 . 1/2, 1/4, 1/8, 1/16. Fixed point is simple and every value is spaced evenly, but the range is small: the whole-number bits limit how large a value can be, and the fraction bits limit how close to zero it can get."
-      },
-      {
-        "kind": "Content",
-        "label": "Real numbers: fixed-point and floating-point",
-        "text": "Floating-point representation stores two numbers instead: a mantissa, which holds the significant bits, and an exponent, which says how far the binary point is moved. The value is mantissa x 2^exponent. The base 2 is not stored, because it is always 2. By changing the exponent the binary point can 'float' to wherever it is needed, so the same number of bits covers a far wider range of magnitudes than a fixed-point code."
+        "text": "A real number has a fractional part. In fixed-point binary the binary point is in a fixed place (a set number of whole-number and fraction bits), so values are evenly spaced but the range is small. Floating-point binary stores a mantissa (the significant bits) and an exponent (how far the point moves); the value is mantissa x 2^exponent, and the base 2 is not stored. Moving the point lets the same number of bits cover a far wider range."
       },
       {
         "kind": "Content",
@@ -18519,17 +18474,17 @@
       {
         "kind": "Content",
         "label": "Real numbers: fixed-point and floating-point",
-        "text": "Fixed point: the binary point is in a fixed position; even spacing, limited range."
+        "text": "Fixed point: binary point in a fixed position; even spacing, limited range."
       },
       {
         "kind": "Content",
         "label": "Real numbers: fixed-point and floating-point",
-        "text": "Floating point: value = mantissa x 2^exponent; the radix 2 is implied, not stored."
+        "text": "Floating point: value = M x 2^E; M = mantissa, E = exponent; base 2 implied, not stored."
       },
       {
         "kind": "Content",
         "label": "Real numbers: fixed-point and floating-point",
-        "text": "Negative fixed-point values use two's complement in the same way as integers."
+        "text": "Negative fixed-point values use two's complement, as for integers."
       },
       {
         "kind": "Example",
@@ -18543,37 +18498,27 @@
       {
         "kind": "Content",
         "label": "The Cambridge floating-point format",
-        "text": "For 9618 both parts of a floating-point number are stored in two's complement. The mantissa is a two's complement fixed-point fraction with the binary point immediately after its first bit, so that first bit is the sign bit with a place value of -1 and the following bits are worth 1/2, 1/4, 1/8 and so on. A mantissa therefore always lies between -1 and just under +1. The exponent is an ordinary two's complement integer, so it can be negative (move the point left, giving a small number) or positive (move the point right, giving a large number)."
+        "text": "For 9618 both mantissa and exponent are two's complement. The mantissa has its binary point straight after the first bit, which is the sign bit worth -1, so it lies between -1 and just under +1. The exponent is a two's complement integer: positive moves the point right, negative moves it left. The question always states the format, e.g. an 8-bit mantissa and a 4-bit exponent."
       },
       {
         "kind": "Content",
         "label": "The Cambridge floating-point format",
-        "text": "A question always states the format, for example 'an 8-bit mantissa followed by a 4-bit exponent' or '10 bits for the mantissa and 6 bits for the exponent'. The number of mantissa bits sets the precision (how many significant binary digits are kept) and the number of exponent bits sets the range (how far the point can move). The point goes straight after the sign bit because that gives the finest possible steps between mantissa values."
+        "text": "Mantissa: two's complement fraction, point after the sign bit (place values -1, 1/2, 1/4, ...)."
       },
       {
         "kind": "Content",
         "label": "The Cambridge floating-point format",
-        "text": "To decode a number, work out the mantissa as a fraction, work out the exponent as an integer, then multiply the mantissa by 2 to the power of the exponent."
+        "text": "Exponent: two's complement integer (place values -8, 4, 2, 1 for 4 bits)."
       },
       {
         "kind": "Content",
         "label": "The Cambridge floating-point format",
-        "text": "Mantissa: two's complement, binary point after the first (sign) bit, value from -1 up to just under 1."
+        "text": "First mantissa bit 0 = positive number; 1 = negative number."
       },
       {
         "kind": "Content",
         "label": "The Cambridge floating-point format",
-        "text": "Exponent: two's complement integer; positive moves the point right, negative moves it left."
-      },
-      {
-        "kind": "Content",
-        "label": "The Cambridge floating-point format",
-        "text": "0 as the first mantissa bit means a positive number; 1 means a negative number."
-      },
-      {
-        "kind": "Content",
-        "label": "The Cambridge floating-point format",
-        "text": "The exponent's sign says nothing about the number's sign; it only says whether the magnitude is large or small."
+        "text": "The exponent's sign only says whether the magnitude is large or small, not the number's sign."
       },
       {
         "kind": "Example",
@@ -18587,27 +18532,22 @@
       {
         "kind": "Content",
         "label": "Converting floating-point binary to denary",
-        "text": "There are two reliable ways to decode the mantissa. The first adds the place values directly, remembering that the sign bit is worth -1: 1.0110100 is -1 + 1/4 + 1/8 + 1/32. The second, for a negative mantissa, takes the two's complement (flip every bit and add 1) to find the magnitude, then puts a minus sign in front. Both give the same answer; the place-value method is quicker and avoids a carry error."
+        "text": "Decode the mantissa by adding place values (the sign bit is worth -1), or, for a negative mantissa, take the two's complement to find the magnitude and put a minus sign in front. Decode the exponent as a two's complement integer. Then calculate M x 2^E, or move the point E places (right for positive, left for negative)."
       },
       {
         "kind": "Content",
         "label": "Converting floating-point binary to denary",
-        "text": "Then decode the exponent, remembering that its first bit is worth -8 in a 4-bit exponent or -32 in a 6-bit exponent. A positive exponent moves the point right, a negative exponent moves it left, filling the gap with copies of the sign bit (0s for a positive mantissa). Finally read off the result. The four examples cover all four combinations of sign: positive or negative mantissa with a positive or negative exponent."
+        "text": "Step 1: convert the mantissa to denary using two's complement (-1, 1/2, 1/4, ...)."
       },
       {
         "kind": "Content",
         "label": "Converting floating-point binary to denary",
-        "text": "Step 1: exponent to denary (two's complement)."
+        "text": "Step 2: convert the exponent to denary (two's complement)."
       },
       {
         "kind": "Content",
         "label": "Converting floating-point binary to denary",
-        "text": "Step 2: mantissa to denary using -1, 1/2, 1/4, ... or two's complement it to find the magnitude."
-      },
-      {
-        "kind": "Content",
-        "label": "Converting floating-point binary to denary",
-        "text": "Step 3: value = mantissa x 2^exponent (move the point right for +, left for -)."
+        "text": "Step 3: value = M x 2^E (move the point right for positive E, left for negative E)."
       },
       {
         "kind": "Example",
@@ -18636,12 +18576,7 @@
       {
         "kind": "Content",
         "label": "Largest, smallest and most negative values",
-        "text": "Examiners often ask for the largest positive number, the smallest positive normalised number or the most negative number in a format, as bit patterns and in denary. Each one combines an extreme mantissa with an extreme exponent. The largest positive value uses the biggest positive mantissa, 0 followed by all 1s, with the biggest exponent, 0 followed by all 1s. The most negative value uses the most negative mantissa, 1 followed by all 0s (worth exactly -1), with the biggest exponent."
-      },
-      {
-        "kind": "Content",
-        "label": "Largest, smallest and most negative values",
-        "text": "The smallest positive normalised value uses the smallest normalised positive mantissa, 01 followed by 0s (worth 1/2), with the most negative exponent, 1 followed by 0s. Without the normalisation rule, 0000...01 would give an even smaller value, but it would have only one significant bit, so questions normally specify 'normalised'. The negative value closest to zero that is still normalised is 10 followed by 1s with the most negative exponent."
+        "text": "Each extreme value combines an extreme mantissa with an extreme exponent. Questions normally say 'normalised' for the smallest positive value, because an unnormalised 000...01 mantissa would be smaller but have only one significant bit."
       },
       {
         "kind": "Content",
@@ -18680,27 +18615,32 @@
       {
         "kind": "Content",
         "label": "Allocating bits: precision against range",
-        "text": "A floating-point format has a fixed total number of bits, so every bit given to the mantissa is a bit taken from the exponent. More mantissa bits give greater precision: more significant binary digits are kept, so values are stored more accurately and the gaps between neighbouring representable values are smaller. More exponent bits give a greater range: the point can move further, so much larger and much smaller magnitudes can be stored. With a fixed word length you cannot increase both."
+        "text": "The total number of bits is fixed, so a bit given to the mantissa is taken from the exponent. More mantissa bits keep more significant digits (precision); more exponent bits let the point move further (range). To store large numbers accurately, with all their significant digits, the mantissa needs enough bits; the exponent decides only how large a magnitude can be reached. Increasing the total size (double precision) improves both."
       },
       {
         "kind": "Content",
         "label": "Allocating bits: precision against range",
-        "text": "In real systems the split is fixed by the floating-point hardware, but a programmer can choose a larger total size, such as double precision, which increases both."
+        "text": "More mantissa bits: precision/accuracy increases; fewer mantissa bits: accuracy is reduced."
       },
       {
         "kind": "Content",
         "label": "Allocating bits: precision against range",
-        "text": "More mantissa bits: better precision, smaller range (for the same total)."
+        "text": "More exponent bits: the range of numbers that can be represented increases; fewer: the range decreases."
       },
       {
         "kind": "Content",
         "label": "Allocating bits: precision against range",
-        "text": "More exponent bits: bigger range, poorer precision (for the same total)."
+        "text": "With a fixed total, gaining precision loses range and vice versa."
       },
       {
         "kind": "Content",
         "label": "Allocating bits: precision against range",
-        "text": "Increasing the total number of bits (double precision) improves both."
+        "text": "A large number with many significant digits needs more mantissa bits to be stored accurately."
+      },
+      {
+        "kind": "Content",
+        "label": "Allocating bits: precision against range",
+        "text": "More bits in total (double precision) improves both."
       },
       {
         "kind": "Example",
@@ -18714,47 +18654,47 @@
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "The same value can be written with many mantissa and exponent pairs. In the 8-bit/4-bit format, 5.5 can be 01011000 0011, 00101100 0100 or 00010110 0101: each shift right of the mantissa is balanced by adding 1 to the exponent. A normalised number is the version whose mantissa has the largest possible magnitude, which you can recognise because its first two bits differ: 01 for a positive number, 10 for a negative number. A mantissa starting 00 or 11 is not normalised, because the second bit only repeats the sign."
+        "text": "One value can have many mantissa/exponent pairs: 5.5 is 01011000 0011, 00101100 0100 or 00010110 0101. The normalised form has no redundant leading 0s (positive) or 1s (negative), so its mantissa starts 01 or 10. A mantissa starting 00 or 11 is not normalised."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "There are two reasons for normalising. First, precision: leading 0s (or leading 1s for a negative) waste mantissa bits, so a normalised mantissa keeps the maximum number of significant bits and stores the value as accurately as the format allows. Second, uniqueness: each value has exactly one normalised representation, which makes comparing values and doing arithmetic simpler, and stops the same number appearing in several forms."
+        "text": "To normalise, shift the mantissa left until the first two bits differ, filling with 0s on the right, and subtract 1 from the exponent for each place shifted, so the value is unchanged. If the exponent would go below its minimum, the number cannot be normalised in that format. A negative power of two such as -0.5 is normalised as 1.0000000 x 2^-1."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "To normalise, shift the mantissa bits left until the first two bits differ, filling from the right with 0s, and subtract 1 from the exponent for every place shifted, so the value is unchanged. For a negative mantissa, shift left until it starts 10; the leading 1s that drop off do not change the value. If shifting would need the exponent to go below its minimum, the number cannot be normalised in that format."
+        "text": "Normalised mantissa: positive starts 01, negative starts 10."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "One special case: a negative power of two such as -0.5 would naturally be 1.1000000 x 2^0, which starts 11. The normalised form is 1.0000000 x 2^-1, that is -1 x 2^-1: the mantissa -1 is allowed, so a normalised negative mantissa ranges from -1 to just below -1/2."
+        "text": "Normalisation minimises the number of leading 0s/1s stored."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "Normalised positive mantissa starts 01; normalised negative mantissa starts 10."
+        "text": "It maximises the number of significant bits, so precision/accuracy is as high as possible for very large and very small numbers."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "Shift left by n places, subtract n from the exponent (the value stays the same)."
+        "text": "It stores the maximum range of numbers in the minimum number of bits."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "Reason 1: maximum precision for the number of mantissa bits."
+        "text": "It avoids multiple representations of the same number (each value has one unique form)."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "Reason 2: a unique representation for every value."
+        "text": "Method: shift left n places, subtract n from the exponent."
       },
       {
         "kind": "Content",
         "label": "Normalisation: what it is and why it is done",
-        "text": "Normalised positive mantissa: 1/2 up to just under 1. Normalised negative mantissa: -1 up to just under -1/2."
+        "text": "Normalised mantissa ranges: positive 1/2 to just under 1; negative -1 to just under -1/2."
       },
       {
         "kind": "Example",
@@ -18783,42 +18723,47 @@
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "To convert a positive denary value, first write it in binary: convert the whole-number part by repeated division or place values, and the fraction by repeated multiplication by 2, recording the whole-number part each time. Then move the binary point so the number has the form 0.1xxx; the number of places moved is the exponent (positive if the point moved left, negative if it moved right). Write the mantissa as 0, then the bits after the point, padded with 0s to the mantissa length. Finally write the exponent in two's complement in its number of bits."
+        "text": "Method 1 (binary point): write the value in binary (fraction by repeated x2), move the point to give 0.1xxx, and the number of places moved is the exponent. The mantissa is 0 followed by the bits after the point, padded with 0s."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "For a negative value, do everything for the positive value first, then take the two's complement of the whole mantissa (flip every bit and add 1). The exponent does not change. Do not just change the sign bit: that is sign and magnitude, not two's complement, and scores no marks. Check your result starts 10 and decode it again to confirm the value."
+        "text": "Method 2 (fractions): write the value as a fraction and divide by 2 until the denominator is larger than the numerator (for values below 1/2, multiply by 2 until the fraction is at least 1/2, giving a negative exponent). The number of divisions is the exponent. Then split the fraction into 1/2, 1/4, 1/8, ... to read off the mantissa bits."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "If the binary fraction has more bits than the mantissa can hold, the extra bits are lost (truncated), so the stored value is only an approximation. Always convert your answer back to denary as a check."
+        "text": "For a negative value, find the positive mantissa first, then take its two's complement (flip all bits, add 1); the exponent is unchanged. Changing only the sign bit is sign and magnitude and scores nothing. If the fraction has more bits than the mantissa holds, the extra bits are truncated and the stored value is an approximation. Always decode the answer to check it."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "1: denary to binary (whole part, then fraction by x2)."
+        "text": "Write the value in binary, or as a fraction."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "2: move the point to give 0.1xxx; places moved = exponent."
+        "text": "Move the point (or divide by 2) until the form is 0.1xxx; places moved (divisions) = exponent."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "3: mantissa = 0 + bits after the point, padded with 0s."
+        "text": "Mantissa = 0 + bits after the point, padded with 0s."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "4: negative? two's complement the whole mantissa; exponent unchanged."
+        "text": "Negative: two's complement the whole mantissa; exponent unchanged."
       },
       {
         "kind": "Content",
         "label": "Converting denary to floating-point binary",
-        "text": "5: exponent in two's complement; check by converting back."
+        "text": "Exponent in two's complement; check by converting back."
+      },
+      {
+        "kind": "Example",
+        "label": "Converting denary to floating-point binary",
+        "text": "6.75 = 27/4\nDivide by 2 until denominator > numerator: 27/8, 27/16, 27/32  -> 3 divisions, exponent +3\n27/32 = 16/32 + 8/32 + 2/32 + 1/32 = 1/2 + 1/4 + 1/16 + 1/32 -> 0.1101100\nAnswer: 01101100 0011   Check: 27/32 x 2^3 = 6.75\n\n0.1875 = 3/16 (below 1/2, so multiply by 2 instead): 3/8, 3/4  -> 2 multiplications, exponent -2\n3/4 = 1/2 + 1/4 -> 0.1100000\nAnswer: 01100000 1110   Check: 3/4 x 2^-2 = 0.1875\n(Both checked by script with exact fractions.)"
       },
       {
         "kind": "Example",
@@ -18847,27 +18792,27 @@
       {
         "kind": "Content",
         "label": "Approximation and rounding errors",
-        "text": "A binary fraction is a sum of halves, quarters, eighths and so on, so a denary fraction can only be stored exactly if it is such a sum. Of the one-decimal-place fractions 0.1 to 0.9, only 0.5 is exact. 0.1 in binary is 0.000110011001100... with the pattern 0011 repeating for ever, so any finite mantissa has to cut it off and store a value slightly different from 0.1. The stored binary value is therefore only an approximation to the real number it represents."
+        "text": "Real numbers can have a fractional part, but a binary fraction can only be built from powers of 2 (1/2, 1/4, 1/8, ...). A value such as 0.1 recurs for ever in binary (0.000110011...), and the fixed length of the mantissa means the extra digits are cut off. So it is not possible to store every fraction with full precision, and very large or very small numbers cannot be stored at all: the stored value is an approximation."
       },
       {
         "kind": "Content",
         "label": "Approximation and rounding errors",
-        "text": "The difference between the true value and the stored value is a rounding error. One error is tiny, but programs that repeat a calculation many times, such as weather or economic models and scientific simulations, add a new small error at every step, and the errors can build up until the result is noticeably wrong. The consequences include loops controlled by a real number that never meet their end condition, tests such as IF Total = 1.0 that fail even though the maths says they should succeed, and money calculations that drift by a cent."
+        "text": "The difference is a rounding error. Each is tiny, but repeated calculations add a new error each time, so errors accumulate: a loop such as WHILE Total <> 1.0 may never end. Reduce the problem with more mantissa bits, comparison against a tolerance, and integers (cents) for money."
       },
       {
         "kind": "Content",
         "label": "Approximation and rounding errors",
-        "text": "Ways to reduce the problem: use more mantissa bits (double or quadruple precision) so each error is smaller; compare real numbers against a small tolerance rather than for exact equality; and store money as a whole number of cents rather than as a REAL."
+        "text": "Real numbers can have a fractional part; binary can only represent fractions made of powers of 2."
       },
       {
         "kind": "Content",
         "label": "Approximation and rounding errors",
-        "text": "Only fractions made of 1/2, 1/4, 1/8, ... convert exactly; 0.1, 0.2 and 0.3 do not."
+        "text": "The fixed length of storage means digits beyond the mantissa are truncated: the stored value is an approximation, with a loss of precision."
       },
       {
         "kind": "Content",
         "label": "Approximation and rounding errors",
-        "text": "Limited mantissa bits mean the stored value is truncated or rounded: an approximation."
+        "text": "Fixed-length storage cannot hold very large or very small numbers."
       },
       {
         "kind": "Content",
@@ -18901,22 +18846,32 @@
       {
         "kind": "Content",
         "label": "Overflow and underflow",
-        "text": "Overflow happens when the result of a calculation is too large in magnitude to be stored, because it would need an exponent bigger than the largest the exponent bits can hold. In the 8-bit/4-bit format the largest positive value is 127, so 100 + 50 overflows: 150 would need an exponent of 8, and a 4-bit two's complement exponent stops at 7. The result is an error, or a meaningless value if the program does not detect it."
+        "text": "Overflow occurs following an arithmetic operation when the result is too large to be represented in the available bits: it would need an exponent above the maximum. In the 8/4 format the largest value is 127, so 100 + 50 overflows."
       },
       {
         "kind": "Content",
         "label": "Overflow and underflow",
-        "text": "Underflow happens when a non-zero result is too close to zero to be stored, because it would need an exponent more negative than the format allows. Dividing a very small number by a number greater than 1 is the usual cause. In the 8-bit/4-bit format the smallest positive normalised value is 1/512, so 1/256 divided by 4 (which is 1/1024) underflows. A system may replace the result with 0 and carry on, but that is risky: a later division by the value, or a test that it is non-zero, then goes wrong."
+        "text": "Underflow occurs following an arithmetic operation when a non-zero result is too small (too close to zero) to be represented: it would need an exponent below the minimum, so there are not enough bits. In the 8/4 format 1/256 divided by 4 underflows. The result may be set to 0, which is risky if it is later divided by."
       },
       {
         "kind": "Content",
         "label": "Overflow and underflow",
-        "text": "Overflow: result too large; exponent would exceed its maximum."
+        "text": "In both cases the number cannot be stored accurately because it needs more bits than are available: digits are truncated and precision is lost."
       },
       {
         "kind": "Content",
         "label": "Overflow and underflow",
-        "text": "Underflow: result too close to zero; exponent would be below its minimum."
+        "text": "Overflow: after an arithmetic operation, the result is too large to be represented; the exponent would exceed its maximum."
+      },
+      {
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Underflow: after an arithmetic operation, the result is too small (too close to zero) to be represented; the exponent would be below its minimum."
+      },
+      {
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Always state the consequence: the number needs more bits than are available, digits are truncated and precision is lost."
       },
       {
         "kind": "Content",
@@ -18926,7 +18881,7 @@
       {
         "kind": "Content",
         "label": "Overflow and underflow",
-        "text": "Range problems (overflow, underflow) are fixed by more exponent bits; precision problems by more mantissa bits."
+        "text": "Range problems (overflow, underflow) need more exponent bits; precision problems need more mantissa bits."
       },
       {
         "kind": "Example",
@@ -19093,37 +19048,42 @@
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Two computers that want to exchange data might have different processors, operating systems, character sets and network hardware, and might have been built decades apart. A stream of bits means nothing on its own: the receiver has to know where a message starts and ends, which bits are addresses and which are data, how errors will be detected, and what reply is expected. A protocol settles all of these questions in advance. Because both ends follow the same published rules, any two devices that implement the protocol correctly can communicate, whoever made them."
+        "text": "Two computers may have different hardware, operating systems and makers. A stream of bits means nothing unless both ends agree where a message starts, which bits are addresses, how errors are detected and what reply is expected. A protocol fixes these rules in advance, so any two devices that follow it can communicate. If two devices used different protocols, they could not communicate properly."
       },
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Protocol rules exist at every level. Low down, a rule might fix which voltage represents a 1 or the maximum transmission rate. Higher up, rules fix the exact layout of a header, the sequence of messages (request then response, data then acknowledgement) and what to do when something goes wrong (time out and retransmit). Without them data could be misread, lost without anyone noticing, or delivered to the wrong program."
+        "text": "Security protocols add to this. SSL and its successor TLS provide communication security over a network by encrypting the data, and let the two parties identify and authenticate each other, so they communicate with confidentiality and integrity (HTTPS is HTTP over TLS; the detail is in 17.1)."
       },
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Format and syntax: the structure of each message and header, and the character coding used."
+        "text": "Protocol: a standard set of rules that enables successful data transfer."
       },
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Addressing: how the sender, receiver and target application are identified."
+        "text": "Enables communication/compatibility between devices from different manufacturers or platforms."
       },
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Timing and flow: transmission rate, and the order in which messages are exchanged (handshakes, acknowledgements)."
+        "text": "Makes communication independent of the software and hardware used."
       },
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Error handling: how errors are detected (for example checksums) and what happens next (discard, request retransmission)."
+        "text": "Devices using different protocols would not be able to communicate properly."
       },
       {
         "kind": "Content",
         "label": "Why a protocol is essential",
-        "text": "Interoperability: devices and software from different manufacturers can work together because they follow the same standard."
+        "text": "Rules cover format, addressing, timing/order of messages and error handling."
+      },
+      {
+        "kind": "Content",
+        "label": "Why a protocol is essential",
+        "text": "SSL/TLS: provide communication security (encryption) and let the two parties identify and authenticate each other, giving confidentiality and integrity."
       },
       {
         "kind": "Section",
@@ -19132,37 +19092,32 @@
       {
         "kind": "Content",
         "label": "Protocol implementation viewed as a stack",
-        "text": "Networking involves too many separate jobs for one protocol to handle sensibly: presenting data to an application, getting it to the right program on the right host, choosing a route through many networks, and turning bits into signals on a cable or radio link. A protocol suite splits these jobs into layers stacked on top of each other. Each layer has its own functionality and its own protocols. A layer only talks to the layer directly above it and the layer directly below it, through a defined interface, and it relies on the layers below to do their jobs without needing to know how they do them."
+        "text": "Networking involves many separate jobs, so a protocol suite splits them into layers stacked on top of each other, each with its own function and protocols. The protocols in the stack determine the interconnectivity rules for a layered network model such as TCP/IP. A layer only talks to the layers directly above and below through a defined interface, so one layer (e.g. Wi-Fi replacing cable) can be changed without changing the others."
       },
       {
         "kind": "Content",
         "label": "Protocol implementation viewed as a stack",
-        "text": "The stack makes networks easier to build and change. A browser does not care whether the computer uses Wi-Fi or a cable, because that belongs to the lowest layer, which can be replaced without rewriting any application; different organisations can write protocols for different layers, and a fault can be traced to one layer. Logically, each layer talks to the same layer on the other host (only the receiving Transport layer reads the sending Transport layer's header), even though the data physically travels down one stack and up the other."
+        "text": "The protocols in a stack determine the interconnectivity rules for a layered network model such as TCP/IP."
       },
       {
         "kind": "Content",
         "label": "Protocol implementation viewed as a stack",
-        "text": "Each layer can only accept input from the layer directly above or directly below it, through a defined interface."
+        "text": "Each layer has its own functionality and accepts input only from the layer directly above or below."
       },
       {
         "kind": "Content",
         "label": "Protocol implementation viewed as a stack",
-        "text": "A layer is serviced by the layers beneath it and provides a service to the layer above."
+        "text": "A layer is serviced by the layer beneath it and provides a service to the layer above."
       },
       {
         "kind": "Content",
         "label": "Protocol implementation viewed as a stack",
-        "text": "User interaction happens only through the protocols of the top (Application) layer."
+        "text": "The user interacts only with the top (Application) layer; only the bottom (Link) layer accesses the hardware."
       },
       {
         "kind": "Content",
         "label": "Protocol implementation viewed as a stack",
-        "text": "Direct access to the hardware is confined to the bottom (Link) layer; the upper layers are implemented in software."
-      },
-      {
-        "kind": "Content",
-        "label": "Protocol implementation viewed as a stack",
-        "text": "A layer can be changed or replaced without redesigning the other layers, as long as its interface stays the same."
+        "text": "A layer can be replaced without redesigning the others, as long as its interface stays the same."
       },
       {
         "kind": "Section",
@@ -19171,32 +19126,27 @@
       {
         "kind": "Content",
         "label": "The TCP/IP protocol suite and its four layers",
-        "text": "TCP/IP is the protocol suite that underpins the internet. The syllabus describes it as four layers. From the top down they are the Application layer, the Transport layer, the Internet layer and the Link layer. Each layer has a clear purpose, and the protocols named in the syllabus belong to particular layers: HTTP, FTP, SMTP, POP3, IMAP and BitTorrent are Application-layer protocols; TCP (and UDP) work in the Transport layer; IP works in the Internet layer; Ethernet and Wi-Fi work in the Link layer."
+        "text": "TCP/IP is the protocol suite of the internet, with four layers from the top: Application, Transport, Internet and Link. Other sources use other names (the coursebook's Network layer is the Internet layer; the Link layer is also called the Network access or Network interface layer), but use the syllabus names in answers."
       },
       {
         "kind": "Content",
         "label": "The TCP/IP protocol suite and its four layers",
-        "text": "Be ready for different names. The coursebook draws a five-layer model, calling the Internet layer the Network layer and splitting the Link layer into Data link and Physical layers; other sources call the Link layer the Network interface layer. In a 9618 answer use Application, Transport, Internet and Link."
+        "text": "Application: network services for applications (HTTP(S), FTP, SMTP, POP3, IMAP, BitTorrent)."
       },
       {
         "kind": "Content",
         "label": "The TCP/IP protocol suite and its four layers",
-        "text": "Application: provides network services to the user's software and defines the format of application messages (HTTP, FTP, SMTP, POP3, IMAP, BitTorrent, DNS)."
+        "text": "Transport: delivery of data from source host to destination host; segmentation, sequencing, flow and error control (TCP)."
       },
       {
         "kind": "Content",
         "label": "The TCP/IP protocol suite and its four layers",
-        "text": "Transport: end-to-end delivery between the two applications; splits data into segments, numbers them, uses port numbers, and (with TCP) checks for loss and asks for retransmission."
+        "text": "Internet: IP addressing and routing of packets across networks (IP)."
       },
       {
         "kind": "Content",
         "label": "The TCP/IP protocol suite and its four layers",
-        "text": "Internet: logical addressing with IP addresses and routing of each packet across many networks towards the destination host."
-      },
-      {
-        "kind": "Content",
-        "label": "The TCP/IP protocol suite and its four layers",
-        "text": "Link: moves a frame across one physical network to the next device, using MAC addresses, and turns the bits into signals on the medium."
+        "text": "Link: transmits frames across the physical network (Ethernet, Wi-Fi)."
       },
       {
         "kind": "Section",
@@ -19205,27 +19155,22 @@
       {
         "kind": "Content",
         "label": "Application layer",
-        "text": "The Application layer is where network communication starts and ends. Its protocols are used by application software such as browsers, email clients, FTP clients and BitTorrent clients. The protocol defines what the application's messages look like and how the conversation proceeds: an HTTP client sends a request and a web server returns a response; an SMTP client sends commands identifying the sender and recipients followed by the email itself. The Application layer also puts the data into an agreed format that the other end will understand, such as ASCII text lines for HTTP headers."
+        "text": "Application-layer protocols are used by software such as browsers and email clients. They define the messages and the request/response rules (an HTTP client sends a request and the server replies) and put data into a format the other end understands. They pass the message to the Transport layer; DNS is used first to find the destination IP address."
       },
       {
         "kind": "Content",
         "label": "Application layer",
-        "text": "The Application layer does not deal with how the data reaches the other host. It hands its message to the Transport layer with the destination address and port. Some Application-layer protocols support others: DNS is used first to turn a domain name into the IP address the lower layers need."
+        "text": "Purpose: provides network services to applications and the user."
       },
       {
         "kind": "Content",
         "label": "Application layer",
-        "text": "Purpose: to provide network services to applications and the user."
+        "text": "Formats application messages and follows the protocol's request/response rules."
       },
       {
         "kind": "Content",
         "label": "Application layer",
-        "text": "Function: format the application's messages, follow the request/response rules of the protocol, pass data to the Transport layer, and present received data to the application."
-      },
-      {
-        "kind": "Content",
-        "label": "Application layer",
-        "text": "Only layer the user interacts with (through the application's interface)."
+        "text": "Passes data to the Transport layer and presents received data to the application."
       },
       {
         "kind": "Section",
@@ -19234,37 +19179,37 @@
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "The Transport layer gives end-to-end communication between an application on one host and an application on another. On the sending host TCP takes the stream of data from the Application layer, splits it into pieces small enough for the network, and gives each piece a TCP header to make a segment. The header holds the source and destination port numbers, so the data reaches the right application at each end (a web server listens on port 80; the browser uses a temporary port so that replies come back to it), and a sequence number, so the receiver can put the pieces back in order."
+        "text": "TCP gives end-to-end delivery between applications on two hosts. It breaks the data into manageable packets (segments), adds a header with source and destination port numbers and a sequence number, and passes them to the Internet layer. It sets up a connection (handshake), and the receiver acknowledges segments; unacknowledged segments are resent after a timeout, and a checksum detects corruption. At the receiver TCP reorders segments by sequence number and hands the data to the application given by the port. UDP is the connectionless alternative with no sequencing or acknowledgements."
       },
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "TCP is connection-oriented and reliable. Before sending data it sets up a connection with the receiving host (the three-way handshake). The receiver acknowledges the segments it gets; if no acknowledgement arrives within a time limit, the sender resends that segment. A checksum lets the receiver detect and discard a damaged segment. The receiving TCP reorders segments by sequence number, removes duplicates, strips the headers and passes the data to the application identified by the port. TCP is not concerned with IP addresses or routes; that is the next layer's job. UDP, the other transport protocol, is connectionless: ports and a checksum but no sequence numbers or acknowledgements, which suits live audio and video."
+        "text": "Responsible for delivery of data from the source host to the destination host."
       },
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "Purpose: reliable end-to-end delivery of data between two applications."
+        "text": "Breaks data into manageable packets (segmentation) and sends them to the Internet layer."
       },
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "Splits data into segments and adds a TCP header to each."
+        "text": "Adds a packet header containing port numbers and a sequence number (sequences the packets)."
       },
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "Header fields: source port, destination port, sequence number, acknowledgement number, checksum."
+        "text": "Controls the flow of packets."
       },
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "Establishes the connection, acknowledges receipt, retransmits lost segments, controls the flow rate."
+        "text": "Handles packet loss/corruption (acknowledgements, retransmission, checksum) so data arrives error free."
       },
       {
         "kind": "Content",
         "label": "Transport layer",
-        "text": "At the receiver: reorders by sequence number, checks, reassembles and hands data to the correct application."
+        "text": "Receiver: reorders by sequence number and passes data to the correct application (port)."
       },
       {
         "kind": "Section",
@@ -19273,32 +19218,37 @@
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "The Internet layer gets each packet from the source host to the destination host, even though they may be on different networks many routers apart. IP takes each segment from the Transport layer and adds an IP header to form a packet (also called a datagram). The header holds the source IP address and the destination IP address; the destination address is normally found beforehand using DNS. It also holds a time-to-live (TTL) value, which each router decreases by one so that a packet caught in a routing loop is eventually discarded, a header checksum and the packet length."
+        "text": "IP adds a header with the source and destination IP addresses (and a TTL) to each segment to form a packet, identifying the intended network and host. Each packet is routed independently along the best available route; at every router the destination IP address is looked up in the routing table to choose the next hop. The IP address together with the port number forms a socket, which identifies one application on one host. IP is connectionless best-effort delivery: reliability is left to TCP."
       },
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "The Internet layer is responsible for routing. At every router the packet is passed up as far as the Internet layer, the destination IP address is compared with the router's routing table, and the packet is sent on towards the next router (the next hop). IP is connectionless and gives no guarantee: once a packet has been passed down to the Link layer IP has no further duty and does not know whether it arrived. Reliability is left to TCP above it. IP also does not look inside the segment; if the segment contains an acknowledgement, IP simply passes it up to TCP."
+        "text": "Identifies the intended network and host."
       },
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "Purpose: addressing and routing packets between networks from source host to destination host."
+        "text": "Addresses packets with their source and destination IP addresses."
       },
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "Adds an IP header: source IP address, destination IP address, TTL, protocol, checksum, length."
+        "text": "Routes packets independently, through the optimum route, using routers' routing tables."
       },
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "Routers operate up to this layer and choose the next hop using a routing table."
+        "text": "Transmits packets to the Link layer."
       },
       {
         "kind": "Content",
         "label": "Internet layer",
-        "text": "Connectionless 'best effort' delivery: packets can be lost, duplicated or arrive out of order."
+        "text": "IP address + port number form a socket."
+      },
+      {
+        "kind": "Content",
+        "label": "Internet layer",
+        "text": "Connectionless 'best effort': packets can be lost or arrive out of order."
       },
       {
         "kind": "Section",
@@ -19307,32 +19257,37 @@
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "The Link layer moves data across one physical network, from a host to its router, from one router to the next, or from the last router to the destination host. It puts each IP packet inside a frame. The frame header holds the MAC address of the sending network interface and the MAC address of the next device on this link, and a trailer holds a frame check sequence (a CRC) so the next device can detect corrupted frames. The layer then converts the bits into electrical, optical or radio signals and controls access to the shared medium. On the receiving side it turns the signals back into bits, checks the frame and passes the packet up to IP."
+        "text": "The Link layer carries data across one physical network: host to router, router to router, router to host. It formats each packet into a frame with the source and destination MAC addresses and an error-check trailer, maps the next device's IP address to its MAC address (ARP), and converts the bits into signals on the medium, following that network's protocols (Ethernet, Wi-Fi). A new frame is built for every hop; IP addresses stay the same. A switch works at this layer, a router up to the Internet layer."
       },
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "In a LAN this layer is usually provided by Ethernet or Wi-Fi. The coursebook splits Ethernet into sub-layers: Logical Link Control (interface to the layer above), Medium Access Control (builds the frame with its MAC addresses and handles collisions, e.g. with CSMA/CD) and two physical sub-layers that code and transmit the signal. Because a frame only reaches the next device, a new frame is built for every hop, while the IP addresses stay the same all the way (ignoring address translation at a home router). A switch works only at the Link layer, forwarding frames by MAC address; a router works up to the Internet layer and routes by IP address."
+        "text": "Enables the upper layers to access the physical medium; handles how data is physically sent."
       },
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "Purpose: transfer frames between devices on the same physical network and interface with the hardware."
+        "text": "Ensures the correct network protocols (e.g. Ethernet, Wi-Fi) are followed."
       },
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "Adds a frame header (source and destination MAC addresses) and a trailer (error-checking value)."
+        "text": "Transports data within the network by formatting it into frames for transmission."
       },
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "Converts bits to signals on the medium and back again; controls access to the medium."
+        "text": "Maps IP addresses to MAC addresses."
       },
       {
         "kind": "Content",
         "label": "Link layer",
-        "text": "A new frame is created on every hop; MAC addresses change, IP addresses do not."
+        "text": "Frame header holds source and destination MAC addresses; trailer holds an error check."
+      },
+      {
+        "kind": "Content",
+        "label": "Link layer",
+        "text": "A new frame is made on every hop; MAC addresses change, IP addresses do not."
       },
       {
         "kind": "Section",
@@ -19341,12 +19296,7 @@
       {
         "kind": "Content",
         "label": "What each layer does when a message is sent across the internet",
-        "text": "Suppose a student's laptop requests the page /timetable.html from a school web server on another network. Going down the laptop's stack, each layer encapsulates what it receives: the Application layer produces the HTTP request; the Transport layer adds a TCP header with the ports and sequence number; the Internet layer adds an IP header with both IP addresses; the Link layer adds a frame header with MAC addresses and a trailer, then sends the frame as signals to the home router."
-      },
-      {
-        "kind": "Content",
-        "label": "What each layer does when a message is sent across the internet",
-        "text": "Each router on the way checks and removes the frame and hands the packet to its Internet layer. It reads the destination IP address, decreases the TTL, finds the next hop in its routing table, and passes the packet to its Link layer to be sent in a new frame. Routers never look at the TCP header or the HTTP request. At the web server the process reverses: the Link layer checks and strips the frame, the Internet layer confirms the packet is for this host and strips the IP header, and the Transport layer reorders and acknowledges the segments, strips the TCP headers and uses port 80 to hand the complete request to the web server software. The reply returns the same way with addresses and ports swapped."
+        "text": "Down the sender's stack each layer encapsulates what it receives: HTTP request, then TCP header, IP header and frame. Each router removes the frame, reads the destination IP address, decreases the TTL, chooses the next hop and sends the packet in a new frame; it never reads the TCP header. Up the receiver's stack each layer checks and removes its header, and TCP uses the port to hand the complete message to the application."
       },
       {
         "kind": "Content",
@@ -19390,27 +19340,22 @@
       {
         "kind": "Content",
         "label": "HTTP: HyperText Transfer Protocol",
-        "text": "HTTP is the Application-layer protocol of the World Wide Web. It is a client-server, request-response protocol: a browser sends a request for a resource identified by a URL, and a web server returns a response with a status code and, usually, the resource (an HTML page, an image, a script). A request starts with a request line of the form Method URL Version, followed by optional header lines, all in ASCII text. GET asks for a resource; POST sends data such as a completed form. The response starts with a status line such as 200 OK or 404 Not Found. A web server normally listens on port 80."
+        "text": "HTTP is the client-server, request-response protocol of the web: the browser requests a resource by URL (GET to fetch, POST to send form data) and the server returns a status code and the resource. HTTP is not encrypted; HTTPS is HTTP over TLS and is used for personal or financial data. Do not confuse HTTP with HTML."
       },
       {
         "kind": "Content",
         "label": "HTTP: HyperText Transfer Protocol",
-        "text": "HTTP does not encrypt anything, so passwords and card numbers sent over plain HTTP could be read by anyone who intercepts the packets. HTTPS is HTTP carried over an encrypted TLS connection (usually on port 443) and is used for any page that handles personal or financial data (see 17.1). Do not confuse HTTP, which transfers web resources, with HTML, the language a web page is written in."
+        "text": "HTTP(S): sending, receiving and transfer of web pages and hypertext documents between server and browser."
       },
       {
         "kind": "Content",
         "label": "HTTP: HyperText Transfer Protocol",
-        "text": "Purpose: transfer web pages and other resources between web servers and browsers (clients)."
+        "text": "Client sends a request; server returns a response with a status code (200 OK, 404 Not Found)."
       },
       {
         "kind": "Content",
         "label": "HTTP: HyperText Transfer Protocol",
-        "text": "Client sends a request (GET to fetch, POST to send data); server returns a response with a status code."
-      },
-      {
-        "kind": "Content",
-        "label": "HTTP: HyperText Transfer Protocol",
-        "text": "Messages are text; HTTP itself is not encrypted, HTTPS adds encryption."
+        "text": "HTTP is not encrypted; HTTPS encrypts using TLS."
       },
       {
         "kind": "Section",
@@ -19419,32 +19364,27 @@
       {
         "kind": "Content",
         "label": "Email protocols: SMTP, POP3 and IMAP",
-        "text": "Sending one email involves three client-server exchanges. The sender's email client pushes the message to the sender's mail server using SMTP. That mail server then acts as an SMTP client and pushes the message across the internet to the recipient's mail server, where it waits in the recipient's mailbox. Finally, the recipient's email client pulls the message from its mail server using POP3 or IMAP. SMTP is therefore described as a push protocol, while POP3 and IMAP are pull protocols. Usual ports are 25 for SMTP between servers, 110 for POP3 and 143 for IMAP."
+        "text": "The sender's client pushes the email to its mail server with SMTP, and that server pushes it with SMTP to the recipient's mail server. The recipient's client pulls it with POP3 or IMAP. POP3 downloads the email to one device and normally deletes it from the server. IMAP keeps the original on the server, so the server and all clients stay in sync. Webmail uses HTTPS between browser and server, but SMTP still moves mail between servers."
       },
       {
         "kind": "Content",
         "label": "Email protocols: SMTP, POP3 and IMAP",
-        "text": "POP3 and IMAP differ in where the mail lives. POP3 downloads messages to one client device and normally deletes them from the server, so they can be read offline but only on that device, and are gone if it fails without a backup. IMAP keeps messages on the server, so the mailbox looks the same from every device and the server's backups protect it, at the cost of server storage and needing a connection. With webmail the user's browser uses HTTP(S), but SMTP still moves messages between mail servers."
+        "text": "SMTP: handles sending/uploading email, client to server and server to server (push protocol)."
       },
       {
         "kind": "Content",
         "label": "Email protocols: SMTP, POP3 and IMAP",
-        "text": "SMTP: push protocol that sends email from a client to its mail server and between mail servers."
+        "text": "POP3: retrieves email from the mail server to one client, normally deleting it from the server (pull protocol)."
       },
       {
         "kind": "Content",
         "label": "Email protocols: SMTP, POP3 and IMAP",
-        "text": "POP3: pull protocol that downloads email from the server to one client, normally removing it from the server."
+        "text": "IMAP: retrieves email but keeps the original on the server, so server and clients stay in sync (pull protocol)."
       },
       {
         "kind": "Content",
         "label": "Email protocols: SMTP, POP3 and IMAP",
-        "text": "IMAP: pull protocol that accesses email kept on the server, synchronised across every device."
-      },
-      {
-        "kind": "Content",
-        "label": "Email protocols: SMTP, POP3 and IMAP",
-        "text": "Webmail: the user side uses HTTP(S); server to server is still SMTP."
+        "text": "Webmail: browser uses HTTP(S); server to server is still SMTP."
       },
       {
         "kind": "Example",
@@ -19458,17 +19398,12 @@
       {
         "kind": "Content",
         "label": "FTP: File Transfer Protocol",
-        "text": "FTP transfers whole files between two computers across a network, typically between an FTP client and an FTP server. It is used to upload the files of a website to a web server, to download software, or to move large files that are too big to attach to an email. Transferring files between systems with different operating systems and file systems is not trivial, so FTP keeps the control conversation separate from the file data: one connection (usually to server port 21) carries commands such as logging in, listing a directory, changing directory, renaming or deleting a file and starting a transfer, and a separate data connection carries the file contents or directory listing."
+        "text": "FTP transfers whole files between a client and a server, e.g. uploading a website's files to a web server. It uses a control connection for commands (login, list, rename, delete) and a separate data connection for the file itself. Plain FTP is unencrypted; SFTP or FTPS is used when security matters."
       },
       {
         "kind": "Content",
         "label": "FTP: File Transfer Protocol",
-        "text": "Users usually log in with a username and password, although some servers allow anonymous access to public files. Files can be sent in text (ASCII) mode, which lets line endings be converted between systems, or binary mode, which copies the bytes exactly. Plain FTP, like HTTP, sends everything including the password unencrypted; secure alternatives such as SFTP or FTPS are used when that matters."
-      },
-      {
-        "kind": "Content",
-        "label": "FTP: File Transfer Protocol",
-        "text": "Purpose: upload and download files between a client and a server, and manage the files on the server."
+        "text": "FTP: sending and receiving files over a network, between a client and a server."
       },
       {
         "kind": "Content",
@@ -19478,7 +19413,7 @@
       {
         "kind": "Content",
         "label": "FTP: File Transfer Protocol",
-        "text": "Needs login (or anonymous access); plain FTP is not encrypted."
+        "text": "Needs a login (or anonymous access); plain FTP is not encrypted."
       },
       {
         "kind": "Section",
@@ -19487,37 +19422,47 @@
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "In the client-server model one server uploads a full copy of a file to every client, so a popular file needs a huge amount of server bandwidth and the server becomes a single point of failure. BitTorrent is an Application-layer protocol for peer-to-peer file sharing that avoids this. The file is divided into many small pieces of equal size. Every computer taking part is a peer that downloads pieces it lacks and, at the same time, uploads pieces it already has to other peers, so every new downloader also adds upload capacity."
+        "text": "BitTorrent is a peer-to-peer file-sharing protocol. There is no central web server holding the file: users share files directly with each other, and all peers have equal status. The file is split into small pieces; each peer downloads pieces it lacks from many peers at once and uploads the pieces it has, so every new downloader adds upload capacity and far more users can share a file than a single server, or a simple peer-to-peer network, could support."
       },
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "To join, a user first gets a small torrent file, which names the tracker and describes the content: its name, size, piece size and a hash of every piece. The tracker is a server that lists the peers currently sharing that content; it does not hold the file. All the peers sharing one torrent form the swarm. A seed has the complete file and only uploads; a leecher is still downloading (the term is also used for a free-rider who downloads without uploading). Peers exchange lists of the pieces they hold and request the rarest first, so every piece stays available, and a peer keeps uploading to peers that upload to it and chokes those that do not. When every piece has arrived and passed its hash check, the client assembles the file and can stay on as a seed."
+        "text": "A user opens a small torrent file that names the tracker and holds a hash of every piece. The tracker lists the peers in the swarm but does not store the file. A seed has the complete file and uploads; a leecher is still downloading (or downloads without uploading). Pieces are requested rarest first, checked against their hashes, then assembled."
       },
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "Purpose: fast, efficient sharing of large files between many users without relying on one central server."
+        "text": "BitTorrent: provides peer-to-peer file sharing between many users connected over the internet."
       },
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "Torrent file: small file naming the tracker and describing the pieces (with a hash of each)."
+        "text": "Users share files directly with each other; there is no web server and all peers have equal status."
       },
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "Tracker: server that lists the peers in the swarm; it does not store the content."
+        "text": "Allows more users to share a file efficiently, because every downloader also uploads pieces."
       },
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "Swarm: all peers sharing the same torrent. Seed: has the whole file and uploads. Leecher: still downloading (or downloading without uploading)."
+        "text": "Torrent file: names the tracker and describes the pieces (with a hash of each)."
       },
       {
         "kind": "Content",
         "label": "BitTorrent: peer-to-peer file sharing",
-        "text": "Pieces are downloaded from many peers at once, rarest first, and checked by hash before the file is assembled."
+        "text": "Tracker: lists the peers in the swarm; it does not store the content."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Swarm: all peers sharing a torrent. Seed: has the whole file and uploads. Leecher: still downloading."
+      },
+      {
+        "kind": "Content",
+        "label": "BitTorrent: peer-to-peer file sharing",
+        "text": "Pieces are downloaded from many peers at once, rarest first, and checked by hash."
       },
       {
         "kind": "Example",
@@ -19680,27 +19625,27 @@
       {
         "kind": "Content",
         "label": "Two ways to carry data across a network",
-        "text": "A large network such as the telephone system or the internet is a mesh of links joined by switching nodes: telephone exchanges in one case, routers in the other. A message from one end-system to another has to cross several of these nodes. There are two basic ways of organising the journey. In circuit switching the network first reserves a complete path through the nodes for this one conversation, and all the data then flows along that path. In packet switching nothing is reserved; the data is cut into packets and each node decides, packet by packet, where to send it next."
+        "text": "A large network is a mesh of links joined by switching nodes (telephone exchanges or routers). Circuit switching reserves a complete path through the nodes before sending, and all data follows it. Packet switching reserves nothing: the data is split into packets and each node decides, packet by packet, where to send each one next."
       },
       {
         "kind": "Content",
         "label": "Two ways to carry data across a network",
-        "text": "The difference is about when the route is decided and who gets to use the links. In circuit switching the route is fixed once, at the start, and the links' capacity belongs to one pair of users until they finish. In packet switching the route is decided at every node for every packet, and the links are shared by everyone's packets at once."
+        "text": "Circuit switching: dedicated path set up in advance, used for the whole communication, released at the end."
       },
       {
         "kind": "Content",
         "label": "Two ways to carry data across a network",
-        "text": "Circuit switching: route set up in advance, dedicated to one communication, released at the end."
+        "text": "Packet switching: no set-up; message split into packets, each routed independently over shared links."
       },
       {
         "kind": "Content",
         "label": "Two ways to carry data across a network",
-        "text": "Packet switching: no set-up, message split into packets, each routed independently over shared links."
+        "text": "Circuit switching is implemented at the physical layer; packet switching at the network (Internet) layer."
       },
       {
         "kind": "Content",
         "label": "Two ways to carry data across a network",
-        "text": "The internet is a packet-switched network; the traditional telephone network is circuit switched."
+        "text": "The internet is packet switched; the traditional telephone network is circuit switched."
       },
       {
         "kind": "Section",
@@ -19709,12 +19654,7 @@
       {
         "kind": "Content",
         "label": "Circuit switching: how it works",
-        "text": "Circuit switching is the method the public switched telephone network was built on. When you make a call, the exchanges connect a chain of links from your line to the other person's line. Once the circuit exists, that capacity on every link along the path is reserved for the call, whether anyone is speaking or not, and the data or voice flows along it as a continuous stream in the order it was sent. When the call ends the links are released for someone else. The same method can carry data, for example over a leased line, where the circuit may be kept permanently."
-      },
-      {
-        "kind": "Content",
-        "label": "Circuit switching: how it works",
-        "text": "Because every bit follows the same path, there is no need for addresses or sequence numbers on the data itself and nothing can arrive out of order. The delay is small and constant once the circuit is up. The price is a set-up delay before any data can be sent, capacity that is wasted in every silence, and a communication that fails completely if one link on the path fails, since there is no alternative route."
+        "text": "When a call is made, the exchanges connect a chain of links from caller to receiver. The circuit is established before transmission starts and released once it ends. While it exists, the whole bandwidth of the circuit is reserved for this one communication, whether data is flowing or not, and all data is transferred over the same route at a fixed data rate, so it arrives in order and needs no reassembly."
       },
       {
         "kind": "Content",
@@ -19729,17 +19669,17 @@
       {
         "kind": "Content",
         "label": "Circuit switching: how it works",
-        "text": "3 A sequence of links is established across the network, forming the circuit."
+        "text": "3 A dedicated circuit/channel is established across the network before transmission starts."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: how it works",
-        "text": "4 The data is transferred along the circuit as a continuous stream."
+        "text": "4 Data is transferred using the whole bandwidth, all over the same route."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: how it works",
-        "text": "5 The circuit is cleared and the links are released."
+        "text": "5 The circuit is released once transmission ends."
       },
       {
         "kind": "Section",
@@ -19748,47 +19688,47 @@
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "The strengths of circuit switching all come from having the path to yourself. The full bandwidth of the circuit is available throughout, data arrives in the order it was sent with a steady, predictable delay, and there is no reassembly to do at the receiver. This makes it well suited to real-time, continuous communication where a gap or a jumble would be noticed at once: telephone calls, live video conferencing, and dedicated links such as a leased line between two company sites or a link carrying live broadcast feeds."
+        "text": "The benefits come from having the path to yourself: the whole bandwidth, a fixed data rate, data in order and no reassembly. The drawbacks come from the same reservation: set-up takes time and money, nobody else can use the circuit even when it is idle, a single route means no alternative if a link fails, and a single route is easier to intercept. It suits long, continuous, real-time communication."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Its weaknesses come from the same reservation. The circuit must be set up before sending, which is a delay that is wasted for short bursts of data. Capacity is tied up for the whole connection even when nothing is being sent, so the network needs far more capacity to serve the same number of users, and the user is usually charged for the time connected rather than the data sent. If any link on the path fails, the connection is lost and has to be set up again. For bursty traffic such as web browsing or email, where data comes in short bursts separated by long gaps, most of a reserved circuit would sit idle."
+        "text": "Benefit: data arrives in order, so no time is needed to reassemble packets."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Benefit: dedicated bandwidth for the whole connection, not shared with other users."
+        "text": "Benefit: the whole bandwidth is available to the one communication."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Benefit: data arrives in order, with a constant small delay; no reassembly needed."
+        "text": "Benefit: simple method; fixed data rate along the same path, so no data is lost or disordered."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Benefit: well suited to real-time voice and video."
+        "text": "Drawback: nobody else can use the circuit even when it is idle; bandwidth cannot be shared."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Drawback: time is needed to set up the circuit before any data is sent."
+        "text": "Drawback: less secure, because only one route is used, which is easier to intercept."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Drawback: bandwidth is wasted when nothing is being sent; fewer users can be served; usually charged for time connected."
+        "text": "Drawback: no alternative route if a link fails."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Drawback: if a link fails the whole connection is lost; no rerouting."
+        "text": "Drawback: significant cost and time to establish the dedicated connection."
       },
       {
         "kind": "Content",
         "label": "Circuit switching: benefits, drawbacks and where it is applicable",
-        "text": "Applicable to: telephone calls, live video conferencing, leased lines needing guaranteed capacity."
+        "text": "Applicable when a dedicated path must be kept for a whole call, the whole bandwidth is needed or communication is real time: voice calls, live video, private data networks, long continuous communication."
       },
       {
         "kind": "Example",
@@ -19802,22 +19742,22 @@
       {
         "kind": "Content",
         "label": "Packet switching: breaking a message into packets",
-        "text": "In packet switching no circuit is set up. The sender splits the message into packets of a limited size. Each packet carries enough information in its header to be delivered on its own, rather like a letter with an address on the envelope, so the network can handle every packet separately. The header is added by the protocol layers described in 14.1: the TCP header supplies the port numbers and sequence number, and the IP header supplies the source and destination IP addresses and the hop limit."
+        "text": "The sender splits a large message into smaller chunks of equal size (the last may be shorter) called packets. Each packet has a header and a payload, and the header carries enough information for the packet to be delivered on its own: the TCP header adds ports and the sequence number, the IP header adds the source and destination IP addresses and hop limit. Smaller packets mean more header overhead but cheaper resending."
       },
       {
         "kind": "Content",
         "label": "Packet switching: breaking a message into packets",
-        "text": "Packet size is a trade-off. Every packet needs its own header, so small packets mean more header bytes for the same message. On the other hand a lost or damaged small packet is cheaper to resend, and small packets from many users can be interleaved on a link so that no one user blocks it for long."
+        "text": "Packet = header + payload (the part of the message it carries)."
       },
       {
         "kind": "Content",
         "label": "Packet switching: breaking a message into packets",
-        "text": "Source IP address: where the packet came from (so replies and acknowledgements can be returned)."
+        "text": "Source IP address: where the packet came from, so replies and resend requests can be returned."
       },
       {
         "kind": "Content",
         "label": "Packet switching: breaking a message into packets",
-        "text": "Destination IP address: where the packet is going (used by every router)."
+        "text": "Destination IP address: where the packet is going (read by every router)."
       },
       {
         "kind": "Content",
@@ -19840,11 +19780,6 @@
         "text": "Checksum: lets the receiver detect a corrupted packet."
       },
       {
-        "kind": "Content",
-        "label": "Packet switching: breaking a message into packets",
-        "text": "Payload: the part of the message carried by this packet."
-      },
-      {
         "kind": "Example",
         "label": "Packet switching: breaking a message into packets",
         "text": "Each packet has a 40-byte header (20-byte IP + 20-byte TCP headers).\n\nPayload 1,000 bytes per packet:\n  packets  = 50,000 / 1,000 = 50\n  headers  = 50 x 40 = 2,000 bytes; total sent = 52,000 bytes\n  overhead = 2,000 / 52,000 = 3.85% of the bytes sent\n  one lost packet costs 1,040 bytes to resend\n\nPayload 500 bytes per packet:\n  packets  = 50,000 / 500 = 100\n  headers  = 100 x 40 = 4,000 bytes; total sent = 54,000 bytes\n  overhead = 4,000 / 54,000 = 7.41% of the bytes sent\n  one lost packet costs only 540 bytes to resend\n\nSmaller packets: more overhead, but cheaper retransmission.\n(All figures checked by script.)"
@@ -19856,42 +19791,37 @@
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "When a message is sent, the sending host splits it into numbered packets and puts each one onto the network. Each packet goes first to the local router, which reads its destination IP address and forwards it along the best link available at that moment. Every router on the way does the same, so the route is built up hop by hop. Because routers react to congestion and to failed links, packets from the same message can be sent along different routes, and a packet on a long or busy route can overtake, or be overtaken by, others. Packets from many different users share the same links at the same time."
+        "text": "Each packet goes to the local router, which reads the destination IP address and forwards it; every router repeats this, so the route is built hop by hop. Routing depends on the network traffic, so packets of one message can take different routes and arrive out of order, sharing links with other users' packets. The receiver buffers them, reorders them by sequence number and checks them; if a packet is missing or corrupted a resend request is sent and only that packet is resent."
       },
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "At the destination the packets arrive in whatever order the network delivered them. The receiving host holds them in a buffer, uses the sequence numbers to put them back in the correct order, checks each checksum, and waits until every packet is present before passing the complete message to the application. If a packet is missing or corrupted, it is not rebuilt at the receiver; only that packet is sent again by the sender. The whole message is not resent."
+        "text": "1 A large message is split into smaller packets of equal size."
       },
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "1 The message is split into packets; each gets a header with addresses and a sequence number."
+        "text": "2 Each packet gets a header (source and destination IP addresses, sequence number) and a payload."
       },
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "2 Each packet is sent independently; no path is reserved."
+        "text": "3 Each packet is dispatched independently and given its own route, depending on network traffic."
       },
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "3 Each router reads the destination address and forwards the packet to the next hop using its routing table."
+        "text": "4 Routers read the destination address and forward each packet to the next hop."
       },
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "4 Packets may take different routes, depending on congestion and link failures, and may arrive out of order."
+        "text": "5 Packets arrive out of order and are reassembled into the original message using sequence numbers."
       },
       {
         "kind": "Content",
         "label": "How packet switching passes a message across the internet",
-        "text": "5 The receiver reorders the packets by sequence number and checks for errors and gaps."
-      },
-      {
-        "kind": "Content",
-        "label": "How packet switching passes a message across the internet",
-        "text": "6 Missing or corrupted packets are requested again; the complete message is then reassembled and passed to the application."
+        "text": "6 If packets are missing or corrupted, a resend request is sent for those packets only."
       },
       {
         "kind": "Example",
@@ -19905,12 +19835,7 @@
       {
         "kind": "Content",
         "label": "Connectionless and connection-oriented service: dealing with lost packets",
-        "text": "Packets really are lost on a packet-switched network: a router whose queue is full because of congestion simply drops arriving packets, a packet may be damaged by noise and fail its checksum, or its hop limit may run out. A packet-switched network can offer one of two kinds of service. A connectionless service just sends packets and has no way of knowing whether they arrived; IP works this way, and so does UDP above it. A connection-oriented service checks that the receiver is ready before sending and has the receiver acknowledge what it gets."
-      },
-      {
-        "kind": "Content",
-        "label": "Connectionless and connection-oriented service: dealing with lost packets",
-        "text": "TCP provides the connection-oriented service on the internet on top of connectionless IP. The receiver sends acknowledgements back to the sender. The sender keeps a copy of each packet and starts a timer when it sends it; if no acknowledgement arrives before the timer expires, it assumes the packet was lost and sends it again. A duplicate caused by a late acknowledgement is recognised by its sequence number and discarded. Real-time applications such as voice calls usually prefer the connectionless route, because a resent packet would arrive too late to be useful and a tiny gap is less noticeable than a delay."
+        "text": "Packets are lost when router queues overflow, when noise corrupts them (checksum fails) or when the TTL reaches zero. A connectionless service (IP, UDP) sends without acknowledgements. A connection-oriented service (TCP) has the receiver acknowledge packets; the sender resends any packet not acknowledged before a timeout, and duplicates are discarded by sequence number. Real-time applications often prefer connectionless delivery, because a resent packet would arrive too late."
       },
       {
         "kind": "Content",
@@ -19920,12 +19845,12 @@
       {
         "kind": "Content",
         "label": "Connectionless and connection-oriented service: dealing with lost packets",
-        "text": "Connectionless (IP, UDP): no check that the receiver is ready and no acknowledgement; lower overhead."
+        "text": "Connectionless (IP, UDP): no acknowledgement; lower overhead."
       },
       {
         "kind": "Content",
         "label": "Connectionless and connection-oriented service: dealing with lost packets",
-        "text": "Connection-oriented (TCP): receiver acknowledges packets; sender resends after a timeout; duplicates discarded by sequence number."
+        "text": "Connection-oriented (TCP): acknowledgements; resend after timeout; duplicates discarded by sequence number."
       },
       {
         "kind": "Content",
@@ -19944,22 +19869,22 @@
       {
         "kind": "Content",
         "label": "The function of a router in packet switching",
-        "text": "Routers are the switching nodes of a packet-switched network. A router connects two or more networks and has a network interface on each. When a frame arrives, the router checks and removes the frame and looks at the packet's destination IP address. It compares that address with its routing table to find the best next hop towards the destination network. No router knows the full route, only the next step; the internet is far too large for any router to hold a global table. Routers exchange information with their neighbours so that their tables reflect links that have failed or become congested, and the best next hop can change from one packet to the next."
+        "text": "A router connects networks. For each packet it examines the header and reads the destination IP address, then consults its routing table, which holds for each destination the netmask, the gateway (next hop), the available hops and the status of the routes. It decides on the next hop (the best route currently available), decreases the TTL (discarding the packet at zero) and sends the packet on in a new frame. Routers share route information, so they detect changes in the network such as a failed link and send data another way. No router knows the whole route, only the next hop."
       },
       {
         "kind": "Content",
         "label": "The function of a router in packet switching",
-        "text": "Before forwarding, the router decreases the packet's TTL (hop limit) by one. If it reaches zero, the router discards the packet rather than forwarding it, which stops packets looping round the network for ever if routing tables are temporarily wrong. Otherwise the router puts the packet into a new frame for the next link and sends it out of the chosen interface. Routers store packets briefly in a queue while the outgoing link is busy (store and forward), and drop packets if the queue overflows. A router differs from a switch: a switch forwards frames within one network by MAC address and makes no routing decision, while a router makes a routing decision using the IP address and links different networks."
+        "text": "Examines the packet's header and reads the destination IP address."
       },
       {
         "kind": "Content",
         "label": "The function of a router in packet switching",
-        "text": "Receives the packet and reads its destination IP address."
+        "text": "Has access to a routing table: netmask, gateway (next hop), available hops and status of the routes."
       },
       {
         "kind": "Content",
         "label": "The function of a router in packet switching",
-        "text": "Looks up the destination in its routing table to choose the next hop (the best route currently available)."
+        "text": "Decides on the next hop (best route) and sends the packet on its next hop."
       },
       {
         "kind": "Content",
@@ -19969,12 +19894,7 @@
       {
         "kind": "Content",
         "label": "The function of a router in packet switching",
-        "text": "Forwards the packet in a new frame to the next router or the destination host."
-      },
-      {
-        "kind": "Content",
-        "label": "The function of a router in packet switching",
-        "text": "Keeps its routing table up to date so packets can be routed around failures and congestion."
+        "text": "Detects changes in the network (failures, congestion) and sends data another way, so it still arrives."
       },
       {
         "kind": "Content",
@@ -19993,47 +19913,57 @@
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Packet switching makes very efficient use of the network. Links are only occupied while packets are actually crossing them, so the gaps in one user's traffic are filled by other users' packets and many more users can share the same infrastructure. No set-up is needed before sending. Because each packet is routed independently, packets can be sent around a failed or congested link, which makes the network robust: there is no single path whose failure ends the communication. Errors are cheap to correct, since only the damaged or lost packet is resent, and users can be charged for the data they send rather than for time connected."
+        "text": "Links are occupied only while packets cross them, so many users share the same channel at once and no dedicated path is needed. Each packet is routed independently, so packets can be rerouted around faults, and because a message's packets take different routes it is harder to intercept the whole message. Missing packets are detected by sequence number and resent, so the message arrives accurate and complete. The costs are header overhead, time to reassemble packets, delays while errors are corrected, and more complex protocols, which make it unsuitable for real-time communication."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "The drawbacks come from sharing and independence. Every packet carries a header, which is overhead. Delay varies from packet to packet, depending on the route and on congestion, so packets arrive at uneven intervals and out of order and must be buffered and reassembled, which takes processing at the receiver. When the network is busy, packets are queued or dropped and have to be resent. This makes packet switching ideal for data that must arrive complete but not instantly, such as email, web pages and file downloads, and less suitable for real-time voice and video unless the receiver buffers packets and the network prioritises them. Voice and video calls over the internet do use packet switching, and accept occasional glitches as the price of its low cost."
+        "text": "Benefit: a dedicated path does not need to be established."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Benefit: no circuit set-up; bandwidth shared, so links are used efficiently and more users are served."
+        "text": "Benefit: packets can be rerouted if problems arise (overcomes faulty lines)."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Benefit: packets can be rerouted round failed or congested links, so the network is robust."
+        "text": "Benefit: more secure, because packets take different routes, so the whole message is harder to intercept."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Benefit: only lost or corrupted packets are resent; charges can be based on data sent."
+        "text": "Benefit: allows simultaneous use of the channel by multiple users; bandwidth is shared."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Drawback: headers add overhead; packets need reassembling in order at the receiver."
+        "text": "Benefit: accuracy and completeness: missing or corrupted packets are detected and a resend request is sent."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Drawback: variable delay, out-of-order arrival and packet loss when the network is congested."
+        "text": "Drawback: significant time is taken to reassemble packets at the destination."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Drawback: less suitable for real-time communication, which needs a steady flow."
+        "text": "Drawback: time delays while errors are corrected, caused by network problems."
       },
       {
         "kind": "Content",
         "label": "Packet switching: benefits, drawbacks and where it is applicable",
-        "text": "Applicable to: email, web browsing, file transfer, messaging and other bursty data traffic."
+        "text": "Drawback: requires complex protocols for delivery."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Drawback: unsuitable for real-time transmission applications."
+      },
+      {
+        "kind": "Content",
+        "label": "Packet switching: benefits, drawbacks and where it is applicable",
+        "text": "Applicable to: digital data networks such as the internet; large files that do not need live streaming; high-volume data; when the whole bandwidth is not needed; email, text messages, documents."
       },
       {
         "kind": "Section",
@@ -20042,12 +19972,7 @@
       {
         "kind": "Content",
         "label": "Choosing the switching method for a given application",
-        "text": "Exam questions usually describe an application and ask which method suits it and why. Ask two questions. First, does the data have to arrive with a steady, predictable delay (real-time), or can it be delayed slightly as long as it all arrives correctly? Second, is the traffic continuous or does it come in bursts? Real-time and continuous traffic points to circuit switching; delay-tolerant and bursty traffic points to packet switching."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing the switching method for a given application",
-        "text": "Justify the choice with the characteristic that matters, not with speed. Saying one method is 'faster' earns nothing; talk instead about dedicated bandwidth, order of arrival, constant delay, efficient sharing of bandwidth, or resilience to link failure."
+        "text": "Ask whether the data must arrive with a steady delay (real time) and whether traffic is continuous or bursty. Real-time, continuous traffic points to circuit switching; delay-tolerant, bursty traffic points to packet switching. Justify with dedicated or shared bandwidth, order of arrival, rerouting or security, not with a bare 'faster'."
       },
       {
         "kind": "Content",

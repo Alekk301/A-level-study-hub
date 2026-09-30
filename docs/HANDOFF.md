@@ -81,6 +81,14 @@ The commit is a checkpoint, not a permanently current version.
   encapsulation code model and frame-overhead example, HTTP/FTP/SMTP/POP3/IMAP, BitTorrent terms;
   14.2: circuit set-up steps and idle-capacity example, packet contents and overhead, reassembly
   trace and code, connectionless vs connection-oriented, router function with routing table and TTL.
+- Rocket Revise pass: 13.1–14.2 (2026-09-30). Every Rocket Revise point added in mark-scheme wording;
+  bullets made crisp, content trimmed, exam tips rewritten as earn/lose-mark advice, worked examples kept.
+  13.1: composite/non-composite wording (primitive or user-defined, single identifier); 13.2: chronological
+  serial files, new-version updates, collision/resolution and access-suitability points; 13.3: normalisation
+  reasons (range in minimum bits, no multiple representations), truncation/precision-loss for overflow and
+  underflow, fraction conversion method; 14.1: SSL/TLS, stack interconnectivity, socket, IP-to-MAC mapping,
+  BitTorrent equal-status peers; 14.2: physical vs network layer, security of routes, router table contents,
+  resend requests, complex protocols.
 
 ## Latest verification
 

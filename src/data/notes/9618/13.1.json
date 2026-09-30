@@ -24,11 +24,11 @@
     },
     {
       "term": "Non-composite data type",
-      "definition": "A data type whose definition does not refer to another data type as a component; the user-defined examples are enumerated and pointer types."
+      "definition": "A data type that can be defined without referencing another data type and contains only one data type; it can be primitive (INTEGER, BOOLEAN) or user-defined (enumerated, pointer)."
     },
     {
       "term": "Composite data type",
-      "definition": "A data type made from a collection of data items, of one or more other data types, grouped under one identifier; examples are record, set and class."
+      "definition": "A collection of data items, of different (or the same) data types, grouped under a single identifier; it can be user-defined (record, set, class) or built in (array, string)."
     },
     {
       "term": "Enumerated data type",
@@ -36,7 +36,7 @@
     },
     {
       "term": "Pointer data type",
-      "definition": "A non-composite user-defined type whose variables hold a memory address (a reference to another data item); the definition states the type of data stored at that address."
+      "definition": "A non-composite user-defined type used to reference a memory location: its variables store an address, and the definition indicates the type of data stored at that address."
     },
     {
       "term": "Dereferencing",
@@ -64,17 +64,18 @@
       "id": "01-why-user-defined-types",
       "title": "Built-in types, user-defined types and why they are needed",
       "content": [
-        "Every language supplies built-in types. For each one the language itself decides which values are allowed (an INTEGER holds whole numbers within some range) and which operations work on them (+, DIV, MOD, comparison and so on). The programmer can use these types but cannot change them.",
-        "A user-defined data type is one whose definition the programmer writes into the program. In Cambridge pseudocode that is done with the keyword TYPE. After the definition, the new type name can be used in DECLARE statements, as a parameter type or as the element type of an array, in exactly the same way as INTEGER or STRING. The 'user' here is the programmer using the language, not the person running the program. The language still has to support the idea: a type can only be defined if the language offers that construct.",
-        "User-defined types are needed because the built-in types describe single numbers, characters or strings, while real problems deal with things like an order that can only be at one of four stages, a book with a title, a price and a loan status, or a group of students with no repeats. No language designer can know in advance the values or fields a particular program will need, so there cannot be a built-in 'order stage' type or 'book' type; the programmer has to define it. Doing so makes code easier to read, lets the translator reject invalid values, and keeps related data together under one name.",
-        "Do not confuse user-defined types with abstract data types (stack, queue, linked list). An ADT is described by its operations; a user-defined type is a definition written in the program. The two meet when an ADT is built from user-defined types, for example a linked list made of node records."
+        "Built-in types (INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE) have values and operations fixed by the language. A user-defined type is constructed by the programmer, with TYPE in pseudocode, and can then be used in DECLARE statements like any built-in type.",
+        "They are needed because real problems involve data the language designer could not predict: an order that can only be at one of four stages, or a book with a title, a price and a loan status. Defining the type extends the flexibility of the language, keeps related data under one identifier and restricts variables to valid values.",
+        "Every type is either composite or non-composite. A composite type is a collection of several data items, of different (or the same) data types, grouped under a single identifier; its definition refers to other data types. A non-composite type can be defined without referencing another data type and holds a single value; it can be a primitive (built-in) type or a user-defined one. Do not confuse user-defined types with abstract data types such as stacks, which are defined by their operations."
       ],
       "bullets": [
-        "Built-in type: values and operations fixed by the language.",
-        "User-defined type: definition written by the programmer with TYPE, then used in DECLARE.",
-        "Needed because the language cannot know the values or fields a specific problem requires.",
-        "Non-composite (does not use another type as a component): enumerated, pointer.",
-        "Composite (a collection of items of other types under one identifier): record, set, class/object."
+        "Purpose: to create a new data type that is not available in the language (it extends the flexibility of the language).",
+        "User-defined types are constructed by the programmer, not supplied by the language.",
+        "They model the problem's data, make code easier to read and allow only valid values.",
+        "Composite: multiple elements, of different or the same data types, grouped under a single identifier; its definition refers to other data types. Examples: record, set, class/object.",
+        "Composite types can be user-defined (record, class) or built in (array, string).",
+        "Non-composite: defined without referencing another data type; contains only one data type. Examples: any primitive type, enumerated, pointer.",
+        "Non-composite types can be primitive (INTEGER, BOOLEAN) or user-defined (enumerated, pointer)."
       ],
       "examples": [
         {
@@ -89,15 +90,14 @@
       "id": "02-enumerated-types",
       "title": "Enumerated types",
       "content": [
-        "An enumerated type is defined by listing, in brackets, every value that a variable of the type can ever hold. The Cambridge format is TYPE <identifier> = (value1, value2, ...). A variable is then declared with the new type name and can only be given one of the listed values. Because every value has to be written into the definition, an enumerated type can never be built in: only the programmer knows the values.",
-        "The values are identifiers, not strings, so they are written without quotation marks: Stage \u2190 Packed, never Stage \u2190 \"Packed\". A string variable would accept any text, including a misspelling; an enumerated variable can only hold a listed value, so the mistake is caught.",
-        "The values are ordinal: the order in which they are listed gives each one a position, so they can be compared with <, >, <= and >=, and adding 1 gives the next value in the list (the pseudocode guide itself uses this, with a pointer to a Season value plus 1). This lets a program test 'has the order reached at least the Dispatched stage?' with one comparison instead of a list of OR conditions. Adding 1 to the last value has no next value to move to, so a program should check for the end of the list first."
+        "An enumerated type is defined by listing every value a variable of the type can take: TYPE <identifier> = (value1, value2, ...). The values are identifiers, not strings, so they are written without quotes. Because they form an ordered list, they can be compared with < and >, and adding 1 gives the next value (check for the last value first)."
       ],
       "bullets": [
+        "Enumerated type: a non-composite type with an ordered list of all possible values.",
         "Syntax: TYPE TStage = (Placed, Packed, Dispatched, Delivered).",
         "Declare: DECLARE Stage : TStage. Assign: Stage \u2190 Packed (no quotes).",
-        "Values are ordered, so Stage >= Dispatched and Stage + 1 are meaningful.",
-        "Benefits: readable code, only valid values can be stored, comparisons follow the natural order."
+        "Values are ordinal: Stage >= Dispatched and Stage + 1 are valid.",
+        "Benefits: readable code; only the listed values can be stored; comparisons follow the list order."
       ],
       "examples": [
         {
@@ -119,16 +119,15 @@
       "id": "03-records",
       "title": "Records",
       "content": [
-        "A record type groups a fixed number of related data items, called fields, under one identifier. The fields may all have different types, which is the key difference from an array. The Cambridge definition starts with TYPE and the type name, declares each field with DECLARE, and finishes with ENDTYPE. A field can itself be of a user-defined type, such as an enumerated genre, or be an array.",
-        "Fields are reached with dot notation, VariableName.FieldName. Two variables of the same record type can be copied in one assignment (Copy \u2190 Original copies every field), and an array can have a record type as its element type. An array of records is the usual way to hold a table whose columns have different types, and it keeps each item's fields together when the array is sorted or searched: Library[3].Price is the price of the third book.",
-        "The coursebook notes that the record is expected to be user-defined, because only the programmer knows which fields the program needs; Python has no record type, so a class (or a dataclass) is used in its place. A record is also the natural unit of a binary file (see 13.2), where each record in the file has the same fields."
+        "A record type groups a fixed number of named fields, which can have different data types, under one identifier. It is defined with TYPE Name, one DECLARE line per field, and ENDTYPE. Fields are reached with dot notation, and an array of records holds a table whose columns have different types, keeping each item's data together when sorting or searching. Python has no record type, so a class or dataclass is used instead."
       ],
       "bullets": [
+        "Record: composite; a fixed number of named fields, possibly of different data types.",
         "TYPE TBook ... DECLARE Field : Type ... ENDTYPE.",
-        "Fields can have different types, including an enumerated type or an array.",
-        "Access a field with dot notation: ThisBook.Title, Library[Index].OnLoan.",
-        "Whole records can be assigned: Copy \u2190 Library[2].",
-        "An array of records replaces parallel arrays and keeps each item's data together."
+        "Field access with dot notation: ThisBook.Title, Library[Index].OnLoan.",
+        "A field can be of another user-defined type (e.g. an enumerated type) or an array.",
+        "Whole records can be assigned in one statement: Copy \u2190 Library[2].",
+        "An array of records replaces parallel arrays and keeps each item's fields together."
       ],
       "examples": [
         {
@@ -150,13 +149,12 @@
       "id": "04-classes-and-objects",
       "title": "Classes and objects as user-defined types",
       "content": [
-        "A class is the second major composite user-defined type. Like a record it groups several data items (its attributes), but it also contains the methods, procedures and functions, that work on those attributes. Attributes are normally PRIVATE, so other code can only change them through the class's PUBLIC methods, which is how a class protects its data. A language has some built-in classes, but to use object-oriented programming properly the programmer defines their own.",
-        "In Cambridge pseudocode a class is written CLASS Name ... ENDCLASS, the constructor is a procedure called NEW, and an object is created with ObjectName \u2190 NEW ClassName(parameters). Methods are called with dot notation, just like record fields. The full detail (inheritance, polymorphism, getters and setters) belongs to topic 20.1; for 13.1 you need to recognise the class as a composite user-defined type and to say how it differs from a record."
+        "A class is a composite user-defined type that holds attributes (data) and the methods that act on them. Attributes are normally PRIVATE and reached only through PUBLIC methods (encapsulation). In pseudocode: CLASS Name ... ENDCLASS, a constructor PROCEDURE NEW, and ObjectName \u2190 NEW ClassName(parameters). Inheritance and polymorphism belong to 20.1."
       ],
       "bullets": [
         "Class = attributes + methods; record = fields only.",
-        "Object = one instance of a class, created with NEW.",
-        "PRIVATE attributes are reached through PUBLIC methods (encapsulation)."
+        "Object = an instance of a class, created with NEW.",
+        "PRIVATE attributes are accessed through PUBLIC methods (encapsulation)."
       ],
       "examples": [
         {
@@ -172,16 +170,16 @@
       "id": "05-pointers",
       "title": "Pointer types and dereferencing",
       "content": [
-        "A pointer variable does not hold ordinary data; it holds the memory address of another data item. The pointer type is defined by naming the type of data it will point to: TYPE TRealPointer = ^REAL. The caret in the definition marks the type as a pointer. A variable of that type is declared without a caret: DECLARE PricePtr : TRealPointer.",
-        "Two operations follow, and the position of the caret tells them apart. Written before a variable name, ^Price means 'the address of Price', so PricePtr \u2190 ^Price makes PricePtr point at Price. Written after a pointer name, PricePtr^ means 'the value stored at the address in PricePtr', which is dereferencing. PricePtr^ can be read (Discounted \u2190 PricePtr^ * 0.75) or assigned to (PricePtr^ \u2190 52.0), and assigning through the pointer changes Price itself, because both names refer to the same memory location.",
-        "The coursebook uses @Number1 for 'address of'; the 2026 pseudocode guide uses ^ThisSeason, so use the guide's form in the exam. The guide also does not define a null pointer value; if a question needs one it will say what value to use (array-based linked lists in 19.1 use an integer such as -1 or 0 as the null pointer).",
-        "Pointers matter because they let data structures grow and shrink while a program runs. A new item can be stored anywhere in memory and linked in by storing its address, instead of reserving a large fixed array that might never fill. Not every language supports pointer types; Python, for example, handles references automatically and has no pointer syntax."
+        "A pointer variable stores the memory address of another data item, not the data itself. The pointer type names the type of data found at that address: TYPE TRealPointer = ^REAL. A variable of that type is declared without a caret.",
+        "^Price (caret before) means 'the address of Price'. PricePtr^ (caret after) means 'the value at the address held in PricePtr' (dereferencing); assigning to PricePtr^ changes Price itself. Use the 2026 guide's ^ form, not the coursebook's @. The guide defines no null value; a question will say what to use.",
+        "Pointers let dynamic data structures (linked lists, trees) grow and shrink at run time. Python has no pointer type; it handles references automatically."
       ],
       "bullets": [
+        "Pointer type: non-composite; used to reference a memory location.",
+        "It stores an address, and its definition indicates the type of data stored at that address.",
         "Define: TYPE TRealPointer = ^REAL. Declare: DECLARE PricePtr : TRealPointer (no caret).",
-        "Address of a variable: ^Price. Dereference a pointer: PricePtr^.",
-        "Changing PricePtr^ changes the variable being pointed to.",
-        "The pointer holds an address, not a copy of the data.",
+        "Address of a variable: ^Price. Dereference: PricePtr^.",
+        "Changing PricePtr^ changes the variable pointed to.",
         "Used to build dynamic structures (linked lists, trees) that change size at run time."
       ],
       "examples": [
@@ -204,15 +202,14 @@
       "id": "06-sets",
       "title": "Set types",
       "content": [
-        "A set holds a collection of values of one type with three defining properties: the values have no order, there is no index, and no value can appear twice. The pseudocode guide defines a set type in two steps. TYPE TNameSet = SET OF STRING creates the type, and DEFINE Chess (\"Ana\", \"Ben\", \"Chen\", \"Dev\", \"Eli\") : TNameSet creates a set of that type with its members.",
-        "The operations on a set are those of set theory: test whether a value is a member, add a value, remove a value, combine two sets (union), find the members two sets share (intersection) and find the members of one set that are not in another (difference). The 2026 pseudocode guide does not give keywords or symbols for any of these operations, so in an answer describe them in words, or use whatever notation the question defines, rather than inventing syntax.",
-        "The no-duplicates rule is the set's most useful property. Loading a list into a set removes repeated values automatically, and intersection answers questions such as 'which students take both chess and robotics?' in one step. The set is hard to classify: it contains many values, so it counts as composite, yet it has no structure and no index, so you cannot ask for 'the third member'."
+        "A set holds values of one data type with no order, no index and no duplicates. The guide defines it in two steps: TYPE TNameSet = SET OF STRING, then DEFINE Chess (\"Ana\", \"Ben\") : TNameSet. Set operations (membership, union, intersection, difference) have no keywords in the 2026 guide, so describe them in words or use the notation a question gives."
       ],
       "bullets": [
+        "Set: composite; unordered values of one type, no index, no duplicates.",
         "TYPE TNameSet = SET OF STRING, then DEFINE SetName (values) : TNameSet.",
-        "Unordered, no index, no duplicates, all members of one type.",
         "Operations: membership, add, remove, union, intersection, difference.",
-        "No operator syntax is defined in the 2026 guide: describe set operations in words."
+        "Loading values into a set removes duplicates automatically.",
+        "No operator syntax in the 2026 guide: describe set operations in words."
       ],
       "examples": [
         {
@@ -234,13 +231,13 @@
       "id": "07-python-equivalents",
       "title": "User-defined types in a real language",
       "content": [
-        "Paper 4 is answered in a real language, so it helps to know how each pseudocode type maps across. In Python an enumeration comes from the enum module (IntEnum keeps the values ordered and comparable), a record is written as a class, most neatly a dataclass, because Python has no record type, a set is built in, and a class is a class. Python has no pointer type: every variable already holds a reference to an object, and the language manages addresses itself. Java and VB.NET have enum types, and VB.NET has Structure for records."
+        "Paper 4 uses a real language. In Python an enumeration comes from the enum module (IntEnum keeps values ordered), a record is a class or dataclass, a set is built in, and there is no pointer type because every variable already holds a reference."
       ],
       "bullets": [
         "Enumerated: class Stage(IntEnum) in Python; Enum in Java and VB.NET.",
         "Record: dataclass or class in Python; Structure in VB.NET; class in Java.",
         "Set: built-in set in Python; HashSet in Java and VB.NET.",
-        "Pointer: no pointer syntax in Python or Java; references are handled automatically."
+        "Pointer: no pointer syntax in Python or Java; references are automatic."
       ],
       "examples": [
         {
@@ -256,8 +253,7 @@
       "id": "08-choosing-and-designing",
       "title": "Choosing and designing a user-defined type for a problem",
       "content": [
-        "An exam scenario describes data in words; your job is to match each part of that description to a type and justify the match with a feature of the data. A value that must be one of a short fixed list of named options suggests an enumerated type. One item described by several facts of different types suggests a record, and many such items suggest an array of records. A collection where only membership matters and repeats must be excluded suggests a set. Data that needs its own operations and protection suggests a class. A structure that has to grow or shrink while the program runs, with items linked to one another, suggests pointers.",
-        "Designing the type means writing the full declaration: sensible type and field names, a data type for every field, and any enumerated or set types defined before the record that uses them. Choose each field's type from the data: a phone number or ID with leading zeros is a STRING, not an INTEGER, a yes/no fact is BOOLEAN, and a date is DATE."
+        "Match each part of the scenario's data to a type and justify the match with a feature of that data. Then write the full declaration: define enumerated and set types before the record that uses them, and give every field a suitable data type (an ID with leading zeros is a STRING, a yes/no fact is BOOLEAN)."
       ],
       "bullets": [
         "Fixed list of named values: enumerated.",
@@ -371,11 +367,12 @@
     }
   ],
   "examTips": [
-    "Copy the Cambridge syntax exactly: TYPE Name = (value1, value2) for an enumeration, TYPE Name = ^Type for a pointer, TYPE Name ... ENDTYPE with a DECLARE line per field for a record, and TYPE Name = SET OF Type with DEFINE for a set.",
-    "When asked to describe a type, state its category (composite or non-composite) and its defining feature: enumerated values are listed and ordered; a pointer holds an address; a record has a fixed number of fields of different types; a set is unordered with no duplicates.",
-    "When asked to choose a type, give the type and a reason taken from the scenario, for example 'record, because each student has an ID, a name and a date of birth, which are different data types'.",
-    "Define an enumerated or set type before the record that uses it, and give every field a data type; StudentID-style codes with leading zeros are STRING.",
-    "For pointers, keep the three forms apart: ^Type in the TYPE definition, ^Variable for 'address of', and Pointer^ for the value pointed to."
+    "Copy the Cambridge syntax exactly: TYPE Name = (value1, value2); TYPE Name = ^Type; TYPE Name ... ENDTYPE with a DECLARE per field; TYPE Name = SET OF Type with DEFINE. A missing ENDTYPE or field data type loses the mark.",
+    "For 'why are user-defined types needed' give two points: to create a new data type not available in the language (extends its flexibility), and so the programmer can model the data the problem needs.",
+    "To define composite, say 'multiple data items, of different or the same types, grouped under a single identifier' plus an example; for non-composite, say 'defined without referencing another data type' plus an example.",
+    "Enumerated: say 'an ordered list of all possible values'. Pointer: say 'stores the address of a memory location and indicates the type of data stored there'. 'Stores data' earns nothing.",
+    "When choosing a type, give the type and a reason from the scenario, e.g. 'record, because each student has an ID, a name and a date of birth of different data types'.",
+    "For pointers keep the three forms apart: ^Type in the TYPE line, ^Variable for 'address of', Pointer^ for the value pointed to."
   ],
   "commonMistakes": [
     "Putting enumerated values in quotation marks, as if they were strings.",
