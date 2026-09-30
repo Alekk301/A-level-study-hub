@@ -1261,11 +1261,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Understand multi-core processors, pipelining, and how virtual machines abstract away physical hardware.",
+            "summary": "Compare RISC and CISC processors, explain pipelining with cycle counts and the role of registers, handle interrupts on CISC and pipelined RISC, classify SISD, SIMD, MISD and MIMD, describe massively parallel computers, and evaluate virtual machines with host and guest OS roles.",
             "focusPoints": [
-              "multi-core/parallelism",
-              "pipelining",
-              "virtualisation"
+              "RISC vs CISC",
+              "pipelining and registers",
+              "interrupts in a pipeline",
+              "SISD/SIMD/MISD/MIMD",
+              "massively parallel computers",
+              "virtual machines: host/guest OS"
             ],
             "contentDepth": "full"
           },

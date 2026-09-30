@@ -89,6 +89,11 @@ The commit is a checkpoint, not a permanently current version.
   underflow, fraction conversion method; 14.1: SSL/TLS, stack interconnectivity, socket, IP-to-MAC mapping,
   BitTorrent equal-status peers; 14.2: physical vs network layer, security of routes, router table contents,
   resend requests, complex protocols.
+- Rebuilt (research method): 15.1 (2026-09-30). Mark-scheme-first bullets with every Rocket Revise point:
+  control unit/ISA, RISC vs CISC differences with a CISC/RISC code comparison, 5-stage pipeline table and
+  cycle counts, registers in RISC, interrupt handling on CISC and pipelined RISC (flush trace, per-unit PCs),
+  Flynn's four types with uses and a SIMD example, massively parallel computers, VM host/guest/hypervisor,
+  uses scenario, benefits and limitations; cycle counts checked by script.
 
 ## Latest verification
 

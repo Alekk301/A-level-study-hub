@@ -6,89 +6,285 @@
   "unitTitle": "A2 Level",
   "title": "Processors, Parallel Processing and Virtual Machines",
   "contentDepth": "full",
-  "overview": "This topic extends CPU architecture to processor design choices, instruction pipelining, parallel architectures and virtual machines. The key is not memorising labels but explaining performance trade-offs and why a particular architecture suits a workload.",
+  "overview": "Topic 15.1 covers processor design and parallelism. RISC (few simple, fixed-length, single-cycle instructions, many registers, hard-wired) is contrasted with CISC (many complex, variable-length, multi-cycle instructions, microprogrammed). You need pipelining with a timing table and cycle counts, why RISC needs many registers, and interrupt handling on CISC and pipelined RISC processors; Flynn's four architectures (SISD, SIMD, MISD, MIMD) and massively parallel computers; and virtual machines: the roles of host OS, guest OS and hypervisor, examples of use, benefits and limitations.",
   "syllabusPoints": [
-    "Compare RISC and CISC processor characteristics.",
-    "Explain pipelining and how branches/interrupts can disrupt it.",
-    "Describe SISD, SIMD, MISD and MIMD architectures and massively parallel systems.",
-    "Explain virtual machines, their uses, benefits and limitations."
+    "Show understanding of Reduced Instruction Set Computers (RISC) and Complex Instruction Set Computers (CISC) processors, including the differences between them and interrupt handling on each.",
+    "Show understanding of the importance/use of pipelining and registers in RISC processors.",
+    "Show understanding of the four basic computer architectures: SISD, SIMD, MISD, MIMD.",
+    "Show understanding of the characteristics of massively parallel computers.",
+    "Show understanding of the concept of a virtual machine, with examples of its role and its benefits and limitations."
   ],
   "definitions": [
     {
-      "term": "RISC",
-      "definition": "Reduced Instruction Set Computer: a small set of simple, usually fixed-format instructions."
+      "term": "RISC (Reduced Instruction Set Computer)",
+      "definition": "A processor with a small set of simple, fixed-length instructions, most executing in one clock cycle, with few addressing modes, many general-purpose registers and a hard-wired control unit."
     },
     {
-      "term": "CISC",
-      "definition": "Complex Instruction Set Computer: a larger set of more complex instructions/addressing modes."
+      "term": "CISC (Complex Instruction Set Computer)",
+      "definition": "A processor with a large set of complex, variable-length instructions, many taking several clock cycles and accessing memory directly, with many addressing modes, fewer registers and a microprogrammed control unit."
     },
     {
       "term": "Pipelining",
-      "definition": "Overlapping stages of several instruction executions to increase throughput."
+      "definition": "Instruction-level parallelism: the fetch-execute cycle is split into stages handled by separate units, so different stages of several instructions are processed at the same time, one stage per clock cycle."
+    },
+    {
+      "term": "SISD",
+      "definition": "Single Instruction stream, Single Data stream: one processor executes one instruction on one data item at a time (sequential, no parallelism)."
     },
     {
       "term": "SIMD",
-      "definition": "Single Instruction Multiple Data: the same instruction operates on many data items in parallel."
+      "definition": "Single Instruction stream, Multiple Data stream: one control unit sends the same instruction to many processing units, each working on a different data item at the same time."
+    },
+    {
+      "term": "MISD",
+      "definition": "Multiple Instruction stream, Single Data stream: several processors perform different operations on the same data; rare, used for fault tolerance."
     },
     {
       "term": "MIMD",
-      "definition": "Multiple Instruction Multiple Data: processors execute different instructions on different data."
+      "definition": "Multiple Instruction stream, Multiple Data stream: several processors work asynchronously/independently, each executing different instructions on different data."
     },
     {
-      "term": "Virtual machine",
-      "definition": "A software-created computer environment that behaves as a separate machine while sharing host hardware."
+      "term": "Massively parallel computer",
+      "definition": "A system of a very large number of processors or separate computers, linked by a network infrastructure, that work simultaneously on coordinated parts of one task and communicate by passing messages."
+    },
+    {
+      "term": "Virtual machine (system VM)",
+      "definition": "Software that emulates the hardware of a complete computer system on a host computer, so a guest operating system and its applications can run as if on real hardware."
+    },
+    {
+      "term": "Host operating system",
+      "definition": "The normal OS of the physical machine: it controls all the real hardware resources and runs the virtual machine software."
+    },
+    {
+      "term": "Guest operating system",
+      "definition": "An OS running inside a virtual machine: it controls the virtual hardware and reaches the real hardware only through the VM software and host OS."
+    },
+    {
+      "term": "Hypervisor (virtual machine monitor)",
+      "definition": "The virtual machine software that creates and runs VMs, allocates the host's CPU time, memory and devices to each one and keeps them isolated from each other."
     }
   ],
   "sections": [
     {
-      "id": "01-risc-versus-cisc",
-      "title": "RISC versus CISC",
+      "id": "01-control-unit",
+      "title": "Control unit design and instruction set architecture",
       "content": [
-        "RISC favours simple instructions, many registers and predictable instruction formats, which can support efficient pipelining. CISC can perform more work per instruction and reduce instruction count, but decoding/execution is more complex. 'RISC is faster' is not a sufficient evaluation by itself."
+        "The control unit makes sure each machine-code instruction is carried out correctly, and it can be built in two ways. The design choice is tied to the instruction set architecture (ISA): the instruction set, instruction formats, addressing modes and the registers instructions can use. The instruction set is the main thing that separates one ISA from another."
       ],
-      "bullets": [],
+      "bullets": [
+        "Hard-wired: the control unit is a logic circuit; instructions are handled directly by hardware (fast, fixed).",
+        "Microprogrammed: the control unit holds microinstructions/microcode (firmware) in a ROM; each machine instruction runs as a sequence of microinstructions.",
+        "Simple instructions are easy to hard-wire (RISC); complex instructions make hard-wiring difficult, so microprogramming is the norm (CISC).",
+        "ISA = instruction set + instruction formats + addressing modes + registers available to instructions."
+      ],
       "examples": []
     },
     {
-      "id": "02-pipelining",
-      "title": "Pipelining",
+      "id": "02-risc-cisc",
+      "title": "RISC and CISC processors: the differences",
       "content": [
-        "Fetch, decode and execute for different instructions overlap. Once full, the pipeline can improve throughput because several instructions are in progress. A branch or interrupt may invalidate prefetched instructions, forcing a flush/refill and reducing the gain."
+        "CISC's specialised instructions match high-level language statements, making compilers simpler and programs shorter, but each needs several memory accesses and clock cycles. RISC reduces the complexity of each instruction, not just the number: data is loaded into registers, processed there and stored back, so each instruction is simple, single-cycle and easy to pipeline, at the cost of more instructions and more compiler work."
       ],
-      "bullets": [],
+      "bullets": [
+        "RISC: fewer, simpler instructions; CISC: more, complex (specialised) instructions.",
+        "RISC: small number of instruction formats, fixed-length instructions; CISC: many formats, variable-length instructions.",
+        "RISC: single-cycle instructions (where possible); CISC: multi-cycle instructions.",
+        "RISC: fewer addressing modes, only LOAD and STORE address memory; CISC: many addressing modes, many instructions address memory.",
+        "RISC: many general-purpose registers (multiple register sets); CISC: fewer registers.",
+        "RISC: hard-wired control unit; CISC: programmable (microprogrammed) control unit.",
+        "RISC: pipelining easier; CISC: pipelining more difficult.",
+        "RISC: design emphasis on software (compiler does more work); CISC: emphasis on hardware (simpler compiler).",
+        "RISC: processor chips need fewer transistors, lower power and cost (smartphones, tablets); CISC: complex circuits (laptops, desktops).",
+        "RISC programs have more instructions, so use more RAM; CISC code is compact, uses less RAM and relies more on cache.",
+        "Programs are not portable between them: RISC machine code will not run on a CISC processor, or vice versa."
+      ],
+      "examples": [
+        {
+          "id": "02-multiply",
+          "kind": "worked",
+          "label": "The same task on CISC and on RISC",
+          "content": "Task: multiply the value at address 200 by the value at address 201\nand store the result at address 200.\n\nCISC (one complex, multi-cycle instruction that works on memory directly):\n  MULT 200, 201          ; load both operands, multiply, store: several clock cycles\n\nRISC (simple single-cycle instructions; only LOAD/STORE touch memory):\n  LOAD  R1, 200          ; memory -> register\n  LOAD  R2, 201\n  MUL   R1, R1, R2       ; register-to-register arithmetic\n  STORE R1, 200          ; register -> memory\n\nCISC: 1 instruction, short program, less RAM, complex decoding (microprogrammed).\nRISC: 4 instructions, longer program, more RAM, but each is simple, fixed length,\none cycle, easy to hard-wire and easy to pipeline.\n(Illustrative mnemonics, not a real instruction set.)"
+        }
+      ]
+    },
+    {
+      "id": "03-pipelining",
+      "title": "Pipelining and the role of registers in RISC",
+      "content": [
+        "Pipelining was a main reason for developing RISC. The fetch-execute cycle is split into stages, each done by its own unit in one clock cycle, so once the pipeline is full one instruction finishes every cycle. Fixed-length, single-cycle RISC instructions make every stage take the same time. Each unit needs its own registers, so RISC has many register sets; keeping operands in registers also avoids slow memory accesses."
+      ],
+      "bullets": [
+        "Allows several instructions to be processed simultaneously; increases instruction throughput (not the speed of one instruction).",
+        "Instructions are divided into subtasks/stages: instruction fetch (IF), instruction decode (ID), operand fetch (OF), instruction execute (IE), result write back/store (WB).",
+        "Each subtask (stage) is completed during one clock cycle.",
+        "No two instructions can execute the same stage in the same clock cycle.",
+        "The second instruction begins in the second clock cycle while the first moves on to its second stage, and so on: while one instruction is executed the next is decoded and another fetched.",
+        "The output of one stage is the input to the next stage.",
+        "Needs a separate processor unit for each stage, each with its own set of registers: hence many registers in RISC.",
+        "Registers hold operands and intermediate results, so there is minimal memory access and no stage waits for RAM.",
+        "A branch means instructions already fetched are wrong, so the pipeline is flushed and refilled.",
+        "Data dependency: if instruction 2 needs a register that instruction 1 has not yet written back, the pipeline must stall (or forward the result)."
+      ],
+      "examples": [
+        {
+          "id": "03-timing",
+          "kind": "worked",
+          "label": "Pipeline timing table and clock cycles saved",
+          "content": "Six instructions I1-I6, five stages, one stage per clock cycle.\n\nCycle | 1  2  3  4  5  6  7  8  9  10\nIF    | I1 I2 I3 I4 I5 I6 -  -  -  -\nID    | -  I1 I2 I3 I4 I5 I6 -  -  -\nOF    | -  -  I1 I2 I3 I4 I5 I6 -  -\nIE    | -  -  -  I1 I2 I3 I4 I5 I6 -\nWB    | -  -  -  -  I1 I2 I3 I4 I5 I6\n\nWithout pipelining: each instruction uses all 5 cycles before the next starts\n  6 x 5 = 30 clock cycles\nWith pipelining: first instruction finishes at cycle 5, then one finishes every cycle\n  5 + (6 - 1) = 10 clock cycles\nCycles saved = 30 - 10 = 20\n\nSame method for longer runs:\n  3 instructions:   15 vs 7   (8 saved)\n  100 instructions: 500 vs 104 (396 saved, about 4.81 times faster)\nAs n grows the speed-up approaches the number of stages (5).\n(Table and all totals generated and checked by script.)"
+        }
+      ]
+    },
+    {
+      "id": "04-interrupts",
+      "title": "Interrupt handling on CISC and RISC processors",
+      "content": [
+        "Without pipelining, instructions are handled one after another, so the processor checks for an interrupt once the current instruction has finished. This is how a CISC processor works, and a RISC processor would too if it had no pipeline. With pipelining, several instructions are part-way through when an interrupt arrives, so the processor must decide what to do with them."
+      ],
+      "bullets": [
+        "Both: the processor detects the interrupt at the end of the fetch-execute cycle (before the next fetch).",
+        "Both: the current program is temporarily stopped; the PC and the contents of the other registers are saved on a stack.",
+        "Both: the appropriate interrupt service routine (ISR) is called and executed.",
+        "Both: after the interrupt has been serviced, the registers are restored from the stack and the program resumes.",
+        "CISC: multi-cycle instructions mean the interrupt may wait until a long instruction completes.",
+        "Pipelined RISC: adds complexity; there are several instructions still in the pipeline when the interrupt is received.",
+        "Option 1: discard all the instructions in the pipeline except the one in the last stage; the interrupt handling routine is applied to that remaining instruction.",
+        "Once the interrupt has been serviced, the processor restarts with the next instruction in the sequence (the discarded ones are fetched again).",
+        "Option 2: give each pipeline unit its own program counter register, so the current data of all instructions in the pipeline can be saved while the interrupt is handled."
+      ],
+      "examples": [
+        {
+          "id": "04-interrupt-trace",
+          "kind": "worked",
+          "label": "An interrupt arrives while the pipeline is full",
+          "content": "Eight instructions are running in the pipeline above. An interrupt is detected at\nthe end of clock cycle 6. The pipeline then holds:\n\nStage | IF | ID | OF | IE | WB\nInstr | I6 | I5 | I4 | I3 | I2\n\nOption 1: flush the pipeline\n  I2 is in its final stage, so it is allowed to complete.\n  I3, I4, I5, I6 (the latest four to enter) are discarded: 4 + 3 + 2 + 1 = 10 stage-slots of work lost.\n  The PC (now pointing to I3) and the other registers are pushed onto the stack.\n  The ISR runs; the registers are then restored from the stack.\n  Fetching restarts at I3, so the pipeline must refill.\n  Cycles for the 8 instructions (not counting the ISR): 6 + (5 + 6 - 1) = 16 instead of 12,\n  so the flush costs 4 extra cycles.\n\nOption 2: give each pipeline unit its own program counter / register set\n  The state of all five instructions is saved while the interrupt is serviced,\n  so nothing is discarded and no work is repeated, at the cost of extra hardware.\n(Pipeline contents and cycle counts checked by script.)"
+        }
+      ]
+    },
+    {
+      "id": "05-flynn",
+      "title": "The four basic computer architectures",
+      "content": [
+        "Flynn's classification counts instruction streams and data streams, giving four types. Pipelining is parallelism between instructions; SIMD is parallelism on the data (one instruction on many data items), and MIMD is parallelism at processor level."
+      ],
+      "bullets": [
+        "SISD: one processor executes a single instruction stream on a single data stream; data from a single source; purely sequential. Use: early computers, simple single-core microcontrollers.",
+        "SISD can still pipeline instructions, performing them sequentially but overlapped.",
+        "SIMD: one control unit, many processing units (ALUs); all execute the same instruction on multiple different data sets simultaneously. Use: graphics/GPU, image and sound processing, array/vector processors.",
+        "SIMD can be one processor with a wide register holding several values, or several cores each with its own cache.",
+        "MISD: different instructions/operations performed on the same data set, each processor working independently; not found in any single architecture. Use: fault-tolerant systems (output accepted only if all processors agree), e.g. flight control.",
+        "MIMD: many processors operating asynchronously/independently; any processor can execute different instructions on different data sets. Use: multi-core CPUs, clusters, massively parallel computers.",
+        "SIMD, MISD and MIMD: parallel computers with multiple processors."
+      ],
+      "examples": [
+        {
+          "id": "05-simd",
+          "kind": "worked",
+          "label": "Adding 5 to an array: SISD against SIMD",
+          "content": "Task: add 5 to each element of an 8-element array.\nArray:  [12, 7, 30, 4, 9, 15, 21, 3]\nResult: [17, 12, 35, 9, 14, 20, 26, 8]\n\nSISD: one processor, one data item at a time\n  the same ADD instruction is executed 8 times, one after another -> 8 steps\n\nSIMD with 4 processing units (one control unit sends ADD 5 to all of them):\n  step 1: 12, 7, 30, 4 processed together\n  step 2: 9, 15, 21, 3 processed together          -> 2 steps\n\nSIMD with 8 processing units: all 8 elements in 1 step.\nMIMD: 4 processors could each run a different program on different data\n(e.g. one sorts, one searches, one encodes video, one serves a web page).\n(Results and step counts checked by script.)"
+        }
+      ]
+    },
+    {
+      "id": "06-massively-parallel",
+      "title": "Massively parallel computers",
+      "content": [
+        "A massively parallel computer is an MIMD system on a huge scale: the modern supercomputer. Instead of a bus joining processors in one machine, a network joins many computer units, and the program is split into parts that run at the same time, with results combined at the end. A cluster of PCs (server farm) is a related multicomputer system."
+      ],
+      "bullets": [
+        "A large number of processors or separate computers connected together.",
+        "Linked by a network infrastructure, not a shared bus.",
+        "Simultaneously perform a set of coordinated computations on parts of the same task.",
+        "Communicate using a message interface: processors send messages to each other over the network.",
+        "Each processor usually has its own memory (distributed memory).",
+        "Used for highly complex mathematical processing: weather forecasting and climate modelling, scientific simulation, cryptography, training AI.",
+        "Software issue: programs must be written specially to split the problem into parts that can run in parallel; not every problem can be divided.",
+        "Communication issue: message passing and synchronisation take time, so speed does not rise in proportion to the number of processors."
+      ],
       "examples": []
     },
     {
-      "id": "03-flynn-style-architectures",
-      "title": "Flynn-style architectures",
+      "id": "07-vm-concept",
+      "title": "The concept of a virtual machine",
       "content": [
-        "SISD is conventional one-instruction/one-data processing. SIMD applies one instruction to many data items, useful for image/vector workloads. MISD is rare. MIMD allows multiple processors/cores to run different instructions on different data and is common in parallel systems."
+        "A virtual machine is software, not hardware. A system VM emulates a complete computer so a guest OS can be installed on it as if it were real hardware. The VM software (hypervisor) runs on the host OS, and ordinary applications can run directly on the host at the same time. A process VM, such as the Java Virtual Machine, is different: it runs only programs in one form (Java bytecode), giving platform independence."
       ],
-      "bullets": [],
+      "bullets": [
+        "VM: an emulation of a computer system (hardware and software) using a host computer system.",
+        "Uses a guest operating system for the emulation.",
+        "Host OS: the normal OS of the host machine; has control of all the resources and can access all the physical hardware.",
+        "Host OS: provides a user interface to operate the VM software, and runs the VM software.",
+        "Guest OS: the OS that runs within the virtual machine, under the control of the host OS.",
+        "Guest OS: controls the virtual hardware during the emulation; accesses the actual hardware through the VM software and host OS.",
+        "Guest OS: provides a user interface for the emulated hardware/software.",
+        "Hypervisor/VM software: creates and runs VMs, allocates host CPU, memory and devices to each VM, translates guest requests into host operations, and keeps VMs isolated.",
+        "Several VMs, each with its own guest OS, can run on one host at the same time."
+      ],
       "examples": []
     },
     {
-      "id": "04-massively-parallel-computing",
-      "title": "Massively parallel computing",
+      "id": "08-vm-uses",
+      "title": "Examples of the role of virtual machines",
       "content": [
-        "A very large number of processing units operate simultaneously on decomposed parts of a problem. It excels when work can be parallelised, but communication, synchronisation, load balancing and serial sections limit speed-up."
+        "Exam questions usually give a scenario, such as a company whose OS is going out of support, and ask for uses. Name the use and say what it achieves in that scenario."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Running legacy software: an old OS as a guest keeps old programs working without the old hardware.",
+        "Testing: a new OS, software update or program is tried in a VM without risk to the live system.",
+        "Running software written for a different OS or instruction set on the same computer.",
+        "Server consolidation: many servers run as VMs on one physical machine (e.g. a provider giving each client company its own virtual server).",
+        "Security: opening suspicious files or analysing malware in an isolated VM.",
+        "Process VM: the Java Virtual Machine runs the same bytecode on any platform."
+      ],
+      "examples": [
+        {
+          "id": "08-scenario",
+          "kind": "worked",
+          "label": "Scenario: an office with legacy software and an OS upgrade",
+          "content": "Scenario: an accounts office relies on a stock program that only runs on an old\noperating system, and IT wants to test a new OS version before rolling it out.\n\nUse 1 (legacy software): run the old OS as a guest OS in a VM on a new computer.\n  The old program keeps working without keeping the old hardware.\nUse 2 (safe testing): install the new OS in a separate VM and test the office's\n  software on it. If it crashes or is infected, only the VM is affected; the host\n  and the live system keep running, and the VM can be reset from a snapshot.\nUse 3 (server consolidation): run the file, email and web servers as three VMs on one machine.\n\nLimitation: performance measured in a VM (e.g. requests a server can handle) is lower\nthan on real hardware, because of the extra software layer and shared host resources,\nso test results may not be representative."
+        }
+      ]
     },
     {
-      "id": "05-virtual-machines",
-      "title": "Virtual machines",
+      "id": "09-vm-evaluation",
+      "title": "Benefits and limitations of virtual machines",
       "content": [
-        "A hypervisor/virtualisation layer lets multiple guest systems share hardware. Benefits include isolation, testing, snapshots, server consolidation and running different operating systems. Costs include overhead, resource contention and dependence on the host/hypervisor."
+        "The benefits come from isolation and from running many systems on one set of hardware. The limitations come from the extra software layer between the program and the real hardware."
       ],
-      "bullets": [],
+      "bullets": [
+        "Benefit: cost saving; a new system can be tried on virtual hardware without buying the hardware.",
+        "Benefit: different instruction set architectures can be emulated on a single computer.",
+        "Benefit: the VM can crash without affecting the host machine; it protects the other software.",
+        "Benefit: security; a virus downloaded in the emulated system only affects the VM.",
+        "Benefit: more than one new computer system can be emulated; multiple VMs co-exist on a single computer.",
+        "Benefit: programs not compatible with the host OS can run, using a suitable guest OS.",
+        "Benefit: old software can run on a newer system using a compatible guest OS.",
+        "Limitation: cannot emulate some hardware (e.g. hardware developed after the VM software was written).",
+        "Limitation: extra code must be executed and more load is put on the host; less efficient, more processing time and more RAM, so poorer performance.",
+        "Limitation: time and effort to implement; more complex to manage, and higher maintenance cost because both the host and the VM must be maintained.",
+        "Limitation: the VM may be affected by weaknesses of the host machine."
+      ],
       "examples": []
     }
   ],
-  "formulas": [],
+  "formulas": [
+    {
+      "label": "Clock cycles without pipelining",
+      "expression": "Cycles = n x k",
+      "note": "n instructions, k stages, one stage per clock cycle."
+    },
+    {
+      "label": "Clock cycles with pipelining",
+      "expression": "Cycles = k + (n - 1)",
+      "note": "The first instruction takes k cycles; after that one instruction completes every cycle."
+    },
+    {
+      "label": "Cycles saved",
+      "expression": "Saved = n x k - (k + n - 1)",
+      "note": "Speed-up = n x k / (k + n - 1), which approaches k for large n."
+    }
+  ],
   "comparisonTable": {
-    "title": "RISC and CISC",
+    "title": "RISC and CISC compared",
     "columns": [
       "Feature",
       "RISC",
@@ -97,57 +293,173 @@
     "rows": [
       [
         "Instruction set",
-        "Small and simple",
-        "Large and complex"
+        "Fewer, simpler instructions",
+        "More, complex/specialised instructions"
       ],
       [
-        "Execution",
-        "Often one cycle",
-        "May take several cycles"
+        "Instruction formats and length",
+        "Few formats, fixed length",
+        "Many formats, variable length"
+      ],
+      [
+        "Clock cycles per instruction",
+        "One (single-cycle) where possible",
+        "Several (multi-cycle)"
+      ],
+      [
+        "Addressing modes",
+        "Fewer",
+        "More"
+      ],
+      [
+        "Memory access",
+        "Only LOAD and STORE",
+        "Many instructions access memory"
       ],
       [
         "Registers",
-        "Typically more",
-        "Typically fewer"
+        "Many general-purpose registers",
+        "Fewer registers"
       ],
       [
-        "Code",
-        "More instructions",
-        "Fewer, denser instructions"
+        "Control unit",
+        "Hard-wired",
+        "Microprogrammed"
+      ],
+      [
+        "Pipelining",
+        "Easier",
+        "More difficult"
+      ],
+      [
+        "Design emphasis",
+        "Software (compiler does more)",
+        "Hardware (simpler compiler)"
+      ],
+      [
+        "Program length and RAM",
+        "More instructions, more RAM",
+        "Fewer instructions, less RAM"
+      ],
+      [
+        "Interrupt handling",
+        "Pipeline contents must be flushed or saved",
+        "Checked after each instruction completes"
       ]
     ]
   },
   "diagram": {
-    "title": "Instruction pipeline",
-    "type": "flow",
+    "title": "Layers of a system virtual machine",
+    "type": "layers",
     "nodes": [
-      "Fetch",
-      "Decode",
-      "Execute",
-      "Write back"
+      "Applications for VM1 | Applications for VM2 (applications can also run directly on the host OS)",
+      "Guest OS 1 | Guest OS 2: control the virtual hardware and give each VM its user interface",
+      "Virtual machine VM1 | Virtual machine VM2: emulated hardware",
+      "Hypervisor / VM software: creates the VMs, shares out host resources, keeps VMs isolated",
+      "Host OS: controls all the real resources and runs the VM software",
+      "Host hardware: the physical CPU, memory and devices"
     ]
   },
-  "analysisChains": [],
+  "analysisChains": [
+    {
+      "title": "Why RISC processors pipeline so well",
+      "steps": [
+        "RISC instructions are fixed length and take one clock cycle per stage",
+        "So every stage of every instruction takes the same time and none holds up the stage behind it",
+        "Operands are kept in the many registers, and only LOAD/STORE touch memory, so stages rarely wait for RAM",
+        "So once the pipeline is full, one instruction completes every clock cycle"
+      ],
+      "evaluation": "The price is more instructions per program and more work for the compiler; CISC instructions of varying length and cycle count would leave stages idle, which is why CISC pipelines less easily."
+    },
+    {
+      "title": "Why interrupts are harder on a pipelined processor",
+      "steps": [
+        "Without a pipeline, the processor checks for an interrupt when the current instruction finishes, so only one instruction's state needs saving",
+        "In a five-stage pipeline, up to five instructions are part-way through when the interrupt arrives",
+        "Their partial results are not in a state that can simply be pushed onto the stack",
+        "So either all but the oldest are discarded and fetched again later, or each unit has its own program counter so every state can be saved"
+      ],
+      "evaluation": "Flushing is simple but wastes work and cycles refilling the pipeline; per-unit program counters save that work but cost extra hardware."
+    },
+    {
+      "title": "Why a massively parallel computer is not n times faster",
+      "steps": [
+        "The task must be split by specially written software into parts that can run at the same time",
+        "Some parts depend on others' results, so they must run in sequence whatever the number of processors",
+        "Processors exchange results by passing messages over the network, which takes time",
+        "As processors are added, the time spent communicating and synchronising grows"
+      ],
+      "evaluation": "Massively parallel systems give huge speed-ups for problems that divide into many independent parts (weather models, simulations) but little for sequential problems."
+    }
+  ],
   "examTips": [
-    "Identify both instruction streams and data streams in SIMD/MIMD questions.",
-    "Explain WHY pipelining improves throughput and mention hazards/flushes.",
-    "Give a concrete VM use such as isolated testing or running a different OS."
+    "For RISC/CISC characteristics, give a matched pair to be safe, e.g. 'RISC uses fixed-length instructions; CISC uses variable-length instructions'. 'RISC is faster' earns nothing.",
+    "Describing pipelining (up to 5 marks): split into stages and name them; one stage per clock cycle; no two instructions in the same stage in the same cycle; the second instruction starts in cycle 2 while the first moves to stage 2.",
+    "In a pipeline-table question, show the working: n x k without pipelining, k + (n - 1) with it, then subtract for the cycles saved.",
+    "Registers in RISC: say 'each pipeline stage/unit needs its own set of registers' and 'operands are held in registers to minimise memory access'.",
+    "Interrupts on a pipelined RISC: say 'several instructions are in the pipeline', 'all except the one in the final stage are discarded' (or 'each unit has its own PC'), and 'restart with the next instruction once the interrupt is serviced'.",
+    "For Flynn types, expand the acronym and add a use: 'SIMD: the same instruction on multiple data simultaneously, e.g. graphics processing'.",
+    "Host vs guest OS: the host OS controls the real hardware and runs the VM software; the guest OS runs inside the VM and controls the virtual hardware.",
+    "VM limitations: 'slower' alone is weak; say 'extra code is executed/extra load on the host, so performance is poorer and more RAM is used'."
   ],
   "commonMistakes": [
-    "Confusing multicore with SIMD; multicore commonly supports MIMD.",
-    "Saying pipelining makes one instruction execute instantly.",
-    "Saying VMs have separate physical processors/memory by definition."
+    "Saying pipelining makes each instruction faster; it increases throughput, and each instruction still passes through every stage.",
+    "Saying the output of one instruction is the input of the next in a pipeline; it is the output of one stage that feeds the next stage, and dependent instructions cause stalls.",
+    "Thinking RISC just means 'fewer instructions'; the key point is simpler instructions, with only LOAD/STORE accessing memory.",
+    "Mixing up SIMD and pipelining: SIMD runs one instruction on many data items at once; pipelining overlaps stages of different instructions.",
+    "Describing a massively parallel computer as one fast processor; it is a very large number of processors or computers linked by a network, passing messages.",
+    "Swapping host and guest OS, or saying the guest OS controls the real hardware directly.",
+    "Confusing a virtual machine with virtual memory; they are unrelated."
   ],
   "quickRecall": [
-    "RISC=simple instructions",
-    "CISC=complex instruction set",
-    "pipeline=overlap stages",
-    "SIMD=same instruction many data",
-    "MIMD=different instructions/data",
-    "VM=isolated software machine"
+    {
+      "question": "State four characteristics of a RISC processor.",
+      "answer": "Few simple instructions; fixed-length instructions with few formats; single-cycle instructions; few addressing modes; many general-purpose registers; hard-wired control unit; suited to pipelining."
+    },
+    {
+      "question": "State four characteristics of a CISC processor.",
+      "answer": "Large instruction set of complex instructions; variable-length instructions with many formats; multi-cycle instructions; many addressing modes; fewer registers; microprogrammed control unit."
+    },
+    {
+      "question": "What is the difference between a hard-wired and a microprogrammed control unit?",
+      "answer": "Hard-wired: a logic circuit carries out instructions directly. Microprogrammed: each instruction runs as microinstructions stored in a ROM in the control unit."
+    },
+    {
+      "question": "Name the five stages of a RISC pipeline.",
+      "answer": "Instruction fetch, instruction decode, operand fetch, instruction execute, result write back (store)."
+    },
+    {
+      "question": "How many clock cycles do 9 instructions take in a 5-stage pipeline, and without pipelining?",
+      "answer": "With: 5 + (9 - 1) = 13 cycles. Without: 9 x 5 = 45 cycles. Saved: 32."
+    },
+    {
+      "question": "Why do RISC processors need many registers?",
+      "answer": "Each pipeline unit needs its own registers, and operands are kept in registers to minimise slow memory access."
+    },
+    {
+      "question": "How is an interrupt handled on a pipelined RISC processor?",
+      "answer": "All instructions in the pipeline except the one in the final stage are discarded, registers are saved on the stack, the ISR runs, registers are restored and processing restarts with the next instruction. Alternatively each unit has its own PC so all states are saved."
+    },
+    {
+      "question": "What do SISD, SIMD, MISD and MIMD stand for?",
+      "answer": "Single/Multiple Instruction stream with Single/Multiple Data stream: SISD one instruction on one data item; SIMD one instruction on many data items; MISD many instructions on the same data; MIMD many instructions on many data items."
+    },
+    {
+      "question": "Give three characteristics of a massively parallel computer.",
+      "answer": "A very large number of processors or computers; linked by a network infrastructure; working simultaneously on coordinated parts of one task; communicating by message passing."
+    },
+    {
+      "question": "Give two roles of the host OS and two of the guest OS.",
+      "answer": "Host: controls all the physical resources; runs the VM software and provides its interface. Guest: runs inside the VM and controls the virtual hardware; provides a user interface for the emulated system."
+    },
+    {
+      "question": "Give two benefits and two limitations of virtual machines.",
+      "answer": "Benefits: several OSs/systems on one computer; a crash or virus in the VM does not affect the host. Limitations: poorer performance (extra code, more load and RAM); some hardware cannot be emulated."
+    }
   ],
   "relatedTopics": [
     "4.1",
+    "5.1",
     "16.1"
   ]
 }
