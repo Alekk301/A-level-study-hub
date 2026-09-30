@@ -22245,121 +22245,672 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Translation software turns source code into executable behaviour. At A2 you need interpreters and compiler stages—lexical analysis, syntax analysis, code generation and optimisation—plus grammar description using BNF/syntax diagrams and expression evaluation using Reverse Polish Notation."
+        "text": "How an interpreter runs a program without a translated version; the compilation stages (lexical analysis, syntax analysis, code generation, optimisation); grammar as syntax diagrams and BNF, with derivations; Reverse Polish Notation: why it is used, converting infix to RPN and evaluating it with a stack."
       },
       {
         "kind": "Definition",
-        "label": "Token",
-        "text": "A classified unit produced during lexical analysis, e.g. keyword, identifier, literal or operator."
+        "label": "Interpreter",
+        "text": "A translator that analyses and executes source code one statement at a time, without producing object code."
       },
       {
         "kind": "Definition",
-        "label": "Lexeme",
-        "text": "The actual character sequence that matches a token category."
+        "label": "Lexical analysis",
+        "text": "The compilation stage that converts a sequence of characters into a sequence of tokens, removing white space and comments."
       },
       {
         "kind": "Definition",
-        "label": "Parser",
-        "text": "The syntax-analysis component that checks tokens against grammar."
+        "label": "Symbol table",
+        "text": "A data structure in which each entry holds the name and attributes (data type, address, scope) of an identifier."
       },
       {
         "kind": "Definition",
-        "label": "BNF",
-        "text": "A formal notation that defines valid language structures using production rules."
+        "label": "Keyword table",
+        "text": "A table of the language's reserved words and operators with the token that replaces each one."
       },
       {
         "kind": "Definition",
-        "label": "RPN",
-        "text": "Postfix notation where operators follow operands, allowing stack-based evaluation without brackets."
+        "label": "Syntax analysis (parsing)",
+        "text": "The stage that checks the token sequence against the grammar of the language, reports syntax errors and produces a parse tree."
+      },
+      {
+        "kind": "Definition",
+        "label": "Parse tree",
+        "text": "A tree showing the grammatical structure of a statement; operations lower in the tree are done first."
+      },
+      {
+        "kind": "Definition",
+        "label": "Code generation",
+        "text": "The stage that converts the intermediate representation of the source code into an executable form (object code)."
       },
       {
         "kind": "Definition",
         "label": "Optimisation",
-        "text": "Transformation of generated/intermediate code to improve speed/size without changing its result."
+        "text": "Changing the generated code to minimise execution time and memory requirement without changing what the program does."
+      },
+      {
+        "kind": "Definition",
+        "label": "Backus-Naur Form (BNF)",
+        "text": "A text notation (meta-language) for grammar rules, using ::=, | and <non-terminals>."
+      },
+      {
+        "kind": "Definition",
+        "label": "Terminal / non-terminal",
+        "text": "A terminal is a symbol that appears in the code as written; a non-terminal is a named item defined by a further rule."
+      },
+      {
+        "kind": "Definition",
+        "label": "Syntax diagram",
+        "text": "A graphical representation of a grammar rule: paths of arrows through non-terminals (rectangles) and terminals (rounded boxes)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Reverse Polish Notation (RPN)",
+        "text": "Postfix notation: each operator is written after its operands, so no brackets or precedence rules are needed."
       },
       {
         "kind": "Section",
-        "text": "Interpreter"
+        "text": "Interpreters, compilers and the analysis-synthesis model"
       },
       {
         "kind": "Content",
-        "label": "Interpreter",
-        "text": "An interpreter translates/executes source during runtime and normally does not produce a permanently stored complete executable. It is convenient for testing and portable source execution, but repeated translation can reduce execution speed."
-      },
-      {
-        "kind": "Section",
-        "text": "Lexical analysis"
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Both translators start with the same analysis of the source code. A compiler then synthesises object code for the whole program; an interpreter executes each statement as soon as it has been analysed, so no translated version is ever produced."
       },
       {
         "kind": "Content",
-        "label": "Lexical analysis",
-        "text": "The compiler scans source characters, groups them into tokens, discards irrelevant whitespace/comments where appropriate, recognises identifiers/literals and maintains symbol-table information. Invalid character sequences can be reported as lexical errors."
-      },
-      {
-        "kind": "Section",
-        "text": "Syntax analysis"
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Interpreter: examines the source code one statement at a time and checks that statement for errors."
       },
       {
         "kind": "Content",
-        "label": "Syntax analysis",
-        "text": "The parser checks whether the token stream fits the language grammar, often building a parse tree/internal representation. Missing delimiters or malformed statements are syntax errors; logical correctness is a different issue."
-      },
-      {
-        "kind": "Section",
-        "text": "Code generation and optimisation"
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "If no error is found, the statement is executed immediately, then the interpreter moves on to the next statement."
       },
       {
         "kind": "Content",
-        "label": "Code generation and optimisation",
-        "text": "Once the source is valid, machine/intermediate instructions are generated. Optimisation can remove redundant work, improve instruction selection or reduce code size while preserving program behaviour."
-      },
-      {
-        "kind": "Section",
-        "text": "BNF and syntax diagrams"
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "If an error is found, it is reported and the interpreter halts; statements before it have already been executed."
       },
       {
         "kind": "Content",
-        "label": "BNF and syntax diagrams",
-        "text": "Both define legal grammatical structures. BNF uses production rules with sequences, alternatives and recursive definitions. Exam questions may ask whether a string is valid or to complete a rule."
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "No object code or executable file is produced, so the source code and the interpreter are needed every time the program runs."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Statements inside a loop are interpreted again on every iteration, and the whole program is interpreted again every time it is run, so execution is slower."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Compiler: translates the whole program into object code before any of it runs; reports all errors found; the executable can then be run many times without translating again."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Front end (analysis): lexical analysis, syntax analysis, semantic analysis and intermediate code generation; it produces intermediate code that holds the full meaning of the source."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Back end (synthesis): code generation and optimisation, producing object code; if the front end found errors, the back end only outputs the list of errors with their locations."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Debugging is easier with an interpreter: the error is reported at the line where it occurs, can be corrected and the program re-run at once."
+      },
+      {
+        "kind": "Content",
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Selling a compiled version protects the source code: only object code is distributed, which is hard to read or modify."
       },
       {
         "kind": "Example",
-        "label": "BNF and syntax diagrams",
-        "text": "<digit> ::= 0 | 1 | 2 | ... | 9\n<number> ::= <digit> | <digit><number>"
+        "label": "Interpreters, compilers and the analysis-synthesis model",
+        "text": "Line 1  Price <- 12            analysed: no error -> executed\nLine 2  Qty <- 5               analysed: no error -> executed\nLine 3  OUTPUT Price * Qty     analysed: no error -> executed, outputs 60\nLine 4  Total <- Price *       analysed: syntax error (operator with no second operand)\n                               -> error reported, interpreter halts\nLine 5  OUTPUT Total           never reached\n\nThe user has already seen 60. A compiler would report the line-4 error during translation and nothing would run."
       },
       {
         "kind": "Section",
-        "text": "Reverse Polish Notation"
+        "text": "Stage 1: lexical analysis"
       },
       {
         "kind": "Content",
-        "label": "Reverse Polish Notation",
-        "text": "Push operands onto a stack. When an operator appears, pop its operands, apply it, then push the result. No brackets are needed because order is explicit."
+        "label": "Stage 1: lexical analysis",
+        "text": "The source code arrives as a stream of characters. Lexical analysis groups the characters into lexemes (meaningful units) and replaces each one with a token, the form used by every later stage."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "Lexical analysis converts a sequence of characters into a sequence of tokens."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "All white space and comments are removed; they are not needed for translation."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "Each lexeme is identified by pattern matching: keyword, identifier, operator, literal (number or string) or separator."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "Keyword table: holds every reserved word and operator of the language with its token; each keyword/operator lexeme is looked up and replaced by its token."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "Symbol table: each identifier found is entered with its attributes (data type, where declared, memory address, scope); an identifier already in the table is not added again."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "The symbol table is used and updated by later stages (syntax and semantic analysis, code generation)."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "Errors detected here include an illegal identifier or an invalid character/symbol."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 1: lexical analysis",
+        "text": "Output: tokenised code (a string of tokens) passed to syntax analysis."
       },
       {
         "kind": "Example",
-        "label": "Reverse Polish Notation",
-        "text": "Infix: (3+4)*5\nRPN: 3 4 + 5 *\n=> 35"
+        "label": "Stage 1: lexical analysis",
+        "text": "Source:  IF Total > 50 THEN Total <- Total - Discount * 2  // apply discount\n\nStep 1: remove the comment '// apply discount' and the spaces.\nStep 2: identify each lexeme and look it up:\n\n #  Lexeme    Category             Table used\n 1  IF        keyword              keyword table\n 2  Total     identifier           symbol table entry 1 (added)\n 3  >         operator             keyword table\n 4  50        numeric literal\n 5  THEN      keyword              keyword table\n 6  Total     identifier           symbol table entry 1 (already there)\n 7  <-        assignment operator  keyword table\n 8  Total     identifier           symbol table entry 1\n 9  -         operator             keyword table\n10  Discount  identifier           symbol table entry 2 (added)\n11  *         operator             keyword table\n12  2         numeric literal\n\nResult: 12 tokens; symbol table now holds Total (1) and Discount (2)."
       },
       {
-        "kind": "Quick recall",
-        "text": "lexical=chars->tokens"
+        "kind": "Section",
+        "text": "Stage 2: syntax analysis (parsing), then semantic analysis"
       },
       {
-        "kind": "Quick recall",
-        "text": "syntax=tokens->grammar"
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "Syntax analysis checks that the tokens are in an order the language's grammar allows. The front end finishes by checking meaning and producing intermediate code."
       },
       {
-        "kind": "Quick recall",
-        "text": "generation=target code"
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "Syntax analysis (parsing) uses parsing algorithms to interpret the meaning of the sequence of tokens."
       },
       {
-        "kind": "Quick recall",
-        "text": "optimisation=same result better code"
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "It checks that the code matches the grammar (syntax rules) of the language, e.g. the rules written in BNF."
       },
       {
-        "kind": "Quick recall",
-        "text": "RPN uses stack"
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "Syntax errors are reported, e.g. missing bracket, missing ENDIF, two operators in a row, missing operand."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "If there are no errors, a parse tree (syntax tree) is produced showing the structure of each statement."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "The tree fixes the order of evaluation: an operation lower in the tree is carried out first, so precedence is built in."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "Semantic analysis checks the meaning, e.g. that variables are declared and data types are compatible; attributes such as data type are added to the symbol table."
+      },
+      {
+        "kind": "Content",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "Intermediate code is then produced, for example three-address code: each instruction has at most one operator and three addresses."
+      },
+      {
+        "kind": "Example",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "<-\n+-- Area\n+-- +\n    +-- *\n    |   +-- Width\n    |   +-- Height\n    +-- 3\n\nThe * node is below the + node, so Width * Height is worked out first, then 3 is added,\nthen the result is assigned to Area."
+      },
+      {
+        "kind": "Example",
+        "label": "Stage 2: syntax analysis (parsing), then semantic analysis",
+        "text": "Statement: r <- p - (q + s * t) / u\n\nt1 <- s * t\nt1 <- q + t1\nt1 <- t1 / u\nr  <- p - t1\n\nEach line uses at most three addresses. (Checked by script: same result as the original\nstatement for 1000 random values of p, q, s, t, u.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Grammar as syntax diagrams"
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "Every language has a grammar: the rules for which sequences of symbols are valid. A syntax diagram shows a rule as a picture; any route you can follow along the arrows from start to end spells a valid string."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "A syntax diagram is a graphical representation of a grammar rule, read by following the arrows from left to right."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "Rectangle = non-terminal: an item defined by its own diagram (e.g. Variable)."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "Rounded box / circle = terminal: a symbol that appears in the code exactly as written (e.g. =, ;, p)."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "Parallel branches = alternatives (the same as | in BNF)."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "A path that loops back = repetition: the item can be repeated."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "A string is valid only if one complete path from entry to exit produces exactly that string."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar as syntax diagrams",
+        "text": "Syntax diagrams are easy for programmers to read, but cannot be used directly as an algorithm in a compiler; BNF can."
+      },
+      {
+        "kind": "Example",
+        "label": "Grammar as syntax diagrams",
+        "text": "Assignment:  [Variable] -> (=) -> [Expression] -> (;) -> end\nExpression:  [Variable] -> end\n             or [Variable] -> [Operator] -> back to the start of Expression\nVariable:    [Letter] -> end\n             or [Letter] -> [Digit] -> end\nLetter:      three branches: (p) | (q) | (r)\nDigit:       three branches: (1) | (2) | (3)\nOperator:    three branches: (+) | (-) | (*)\n\n[ ] = rectangle (non-terminal), ( ) = rounded box (terminal).\nThe loop in Expression lets any number of 'operator variable' pairs follow the first variable.\nA Variable is one letter optionally followed by ONE digit: there is no loop, so r12 is not allowed."
+      },
+      {
+        "kind": "Section",
+        "text": "Grammar in Backus-Naur Form (BNF), and checking strings"
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "BNF writes the same rules as text, one rule per non-terminal. Because it is text with a fixed format, it can be used as the basis of a parsing algorithm."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "::= means 'is defined as'; the non-terminal being defined is on the left."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "| means 'or': it separates alternative definitions."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "<name> in angle brackets is a non-terminal; symbols written without brackets are terminals."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "Recursion (a rule that refers to itself) allows any number of repetitions, e.g. <number> ::= <digit> | <digit><number>."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "A recursive rule must include a non-recursive alternative, or it can never finish."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "To check a string, derive it from the top rule, replacing one non-terminal at a time; it is valid only if every character is produced with nothing left over."
+      },
+      {
+        "kind": "Content",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "For an invalid string, name the rule that is broken, e.g. 'a variable can have only one digit'."
+      },
+      {
+        "kind": "Example",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "<assignment> ::= <variable> = <expression> ;\n<expression> ::= <variable> | <variable> <operator> <expression>\n<variable>   ::= <letter> | <letter><digit>\n<letter>     ::= p | q | r\n<digit>      ::= 1 | 2 | 3\n<operator>   ::= + | - | *\n\n<expression> is recursive: that is the loop in the syntax diagram."
+      },
+      {
+        "kind": "Example",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "<assignment>\n=> <variable> = <expression> ;\n=> <letter><digit> = <expression> ;              r2\n=> r2 = <variable> <operator> <expression> ;\n=> r2 = p * <expression> ;                        p, then *\n=> r2 = p * <variable> <operator> <expression> ;\n=> r2 = p * q3 - <expression> ;                   q3, then -\n=> r2 = p * q3 - <variable> ;                     last expression is a lone variable\n=> r2 = p * q3 - r ;                              VALID"
+      },
+      {
+        "kind": "Example",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "p = q1 + r;     valid\nq3 = q3;        valid\nq = r +;        INVALID: an operator must be followed by an <expression>\np12 = q;        INVALID: a <variable> is a letter and at most one digit\np = s;          INVALID: s is not a <letter> (only p, q, r)\np = q           INVALID: <assignment> must end with ;\n\nScript check: a recursive-descent parser (one function per rule) and the equivalent\nregular expression [pqr][123]?=[pqr][123]?([-+*][pqr][123]?)*; gave the same verdicts."
+      },
+      {
+        "kind": "Example",
+        "label": "Grammar in Backus-Naur Form (BNF), and checking strings",
+        "text": "(a) A signed integer: an optional + or - then one or more digits.\n<digit>            ::= 0|1|2|3|4|5|6|7|8|9\n<sign>             ::= + | -\n<unsigned integer> ::= <digit> | <digit><unsigned integer>\n<signed integer>   ::= <unsigned integer> | <sign><unsigned integer>\nChecked: -507 valid, +9 valid, 0042 valid, + invalid (no digit), 5-3 invalid (sign only at start).\n\n(b) Change <variable> so it can be any number of letters (and no digits):\n<variable> ::= <letter> | <letter><variable>\nChecked: pqrrp valid, p valid, pq1 invalid, empty string invalid."
+      },
+      {
+        "kind": "Section",
+        "text": "Stages 3 and 4: code generation and optimisation"
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "With no errors, the back end turns the intermediate code into object code and then improves it. Optimisation must never change what the program does."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Code generation converts the intermediate representation of the source code into an executable form (object code / machine code)."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Memory addresses are allocated for variables and constants, using the symbol table."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Optimisation minimises the program's execution time and memory requirement without changing its result."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Common subexpression: a value calculated more than once is calculated once and reused."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Loop-invariant code: a statement that does the same thing on every iteration is moved to before the loop."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Constant folding: an expression of constants is worked out at compile time."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Redundant (dead) code that can never run or whose result is never used is removed."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "At machine-code level, registers and memory are used efficiently (e.g. keep a value in a register rather than reloading it)."
+      },
+      {
+        "kind": "Content",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "Cost: optimisation makes compilation take longer."
+      },
+      {
+        "kind": "Example",
+        "label": "Stages 3 and 4: code generation and optimisation",
+        "text": "1. Common subexpressions\nBefore: Area <- (W + 2) * (H + 2)\n        Edge <- 2 * (W + 2) + 2 * (H + 2)          5 additions, 3 multiplications\nAfter:  T1 <- W + 2\n        T2 <- H + 2\n        Area <- T1 * T2\n        Edge <- 2 * (T1 + T2)                      3 additions, 2 multiplications\n\n2. Loop-invariant code motion\nBefore: FOR i <- 1 TO 100\n           Rate <- Base * 1.5\n           Cost[i] <- Price[i] * Rate\n        NEXT i                                     200 multiplications\nAfter:  Rate <- Base * 1.5\n        FOR i <- 1 TO 100\n           Cost[i] <- Price[i] * Rate\n        NEXT i                                     101 multiplications\n\n3. Constant folding\nBefore: SecondsPerDay <- 60 * 60 * 24\nAfter:  SecondsPerDay <- 86400"
+      },
+      {
+        "kind": "Section",
+        "text": "Reverse Polish Notation: why, and converting from infix"
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "Code writes expressions in infix (operator between operands). A compiler converts them to Reverse Polish Notation (postfix), where each operator follows its two operands, because RPN can be evaluated simply with a stack."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "RPN is used to carry out the evaluation of expressions."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "It gives an unambiguous way of representing an expression."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "It is read (and evaluated) from left to right in one pass."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "It needs no brackets and no rules of precedence (BODMAS): the order of the operators is the order of evaluation."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "The operands stay in the same order as in the infix expression; only the operators move."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "Bracketing method: fully bracket the infix expression by precedence, then move each operator to just after its closing bracket and delete the brackets."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "Shunting-yard method: an operand goes straight to the output; an operator first pops any operator of higher or equal precedence from the stack to the output, then is pushed."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "( is pushed; ) pops operators to the output until the matching ( is found, and both brackets are discarded."
+      },
+      {
+        "kind": "Content",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "At the end, the remaining operators are popped from the stack to the output."
+      },
+      {
+        "kind": "Example",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "(a - b) * (c + d) / e\nFully bracket:   (((a - b) * (c + d)) / e)\nInnermost first: a b -   and   c d +\nThen *:          a b - c d + *\nThen / e:        a b - c d + * e /\n\na / (b - c) + d * e   ->   a b c - / d e * +\n(8 + k) * 3 - m / 4   ->   8 k + 3 * m 4 / -\n(all three checked by a shunting-yard script)"
+      },
+      {
+        "kind": "Example",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "Token  Action                              Stack   Output\np      operand to output                   empty   p\n+      push +                              +       p\nq      operand to output                   +       p q\n*      push * (higher than +)              + *     p q\nr      operand to output                   + *     p q r\n-      pop *, pop + (both >= -), push -    -       p q r * +\ns      operand to output                   -       p q r * + s\nend    pop remaining                       empty   p q r * + s -\n\nRPN: p q r * + s -"
+      },
+      {
+        "kind": "Example",
+        "label": "Reverse Polish Notation: why, and converting from infix",
+        "text": "Token  Action                   Stack    Output\n(      push (                   (\np      operand to output        (        p\n+      push +                   ( +      p\nq      operand to output        ( +      p q\n)      pop +, discard ( )       empty    p q +\n*      push *                   *        p q +\n(      push (                   * (      p q +\nr      operand to output        * (      p q + r\n-      push -                   * ( -    p q + r\ns      operand to output        * ( -    p q + r s\n)      pop -, discard ( )       *        p q + r s -\nend    pop remaining            empty    p q + r s - *\n\nRPN: p q + r s - *"
+      },
+      {
+        "kind": "Section",
+        "text": "Expression trees: RPN by post-order traversal"
+      },
+      {
+        "kind": "Content",
+        "label": "Expression trees: RPN by post-order traversal",
+        "text": "During syntax analysis an expression is stored as a binary tree. The same tree gives the infix form or the RPN form, depending on the traversal."
+      },
+      {
+        "kind": "Content",
+        "label": "Expression trees: RPN by post-order traversal",
+        "text": "Building the tree: the operator evaluated last (lowest precedence, outside any brackets) is the root; its left and right operands become the subtrees."
+      },
+      {
+        "kind": "Content",
+        "label": "Expression trees: RPN by post-order traversal",
+        "text": "Post-order traversal (left, right, root) outputs the RPN (postfix) expression."
+      },
+      {
+        "kind": "Content",
+        "label": "Expression trees: RPN by post-order traversal",
+        "text": "In-order traversal (left, root, right) outputs the infix expression (add brackets to keep the meaning)."
+      },
+      {
+        "kind": "Content",
+        "label": "Expression trees: RPN by post-order traversal",
+        "text": "So a binary tree allows both infix and postfix forms to be produced and evaluated."
+      },
+      {
+        "kind": "Example",
+        "label": "Expression trees: RPN by post-order traversal",
+        "text": "-\n+-- *\n|   +-- x\n|   +-- +\n|       +-- y\n|       +-- z\n+-- /\n    +-- w\n    +-- 2\n\nRoot is - (the last operation done).\nPost-order (left, right, root): x y z + * w 2 / -\nIn-order  (left, root, right): ((x * (y + z)) - (w / 2))\nWith x = 3, y = 4, z = 6, w = 10 both give 25."
+      },
+      {
+        "kind": "Section",
+        "text": "Evaluating RPN with a stack, and converting RPN back to infix"
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Evaluation needs only one left-to-right pass and one stack. The only care point is operand order: the first value popped is the right-hand operand."
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Read the RPN from left to right."
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Operand: push its value onto the stack."
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Operator: pop the top two values, apply the operator, push the result back onto the stack."
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Operands are popped in reverse order to how they were pushed: first pop = right operand, second pop = left operand (matters for - and /)."
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "At the end exactly one value is left on the stack: the result."
+      },
+      {
+        "kind": "Content",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "RPN to infix: scan left to right; each time two operands are followed by an operator, replace the three items by (operand operator operand); repeat until one expression remains."
+      },
+      {
+        "kind": "Example",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Token  Action                           Stack (bottom -> top)\n6      push 6                           6\n2      push 2                           6 2\n4      push 4                           6 2 4\n+      pop 4, pop 2; 2 + 4 = 6; push    6 6\n*      pop 6, pop 6; 6 * 6 = 36; push   36\n9      push 9                           36 9\n3      push 3                           36 9 3\n/      pop 3, pop 9; 9 / 3 = 3; push    36 3\n-      pop 3, pop 36; 36 - 3 = 33; push 33\n\nResult 33 (infix check: 6 * (2 + 4) - 9 / 3 = 33)"
+      },
+      {
+        "kind": "Example",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "Token  Action                              Stack (bottom -> top)\np      push 7                              7\nq      push 3                              7 3\nr      push 5                              7 3 5\n*      pop 5, pop 3; 3 * 5 = 15; push      7 15\n+      pop 15, pop 7; 7 + 15 = 22; push    22\ns      push 4                              22 4\n-      pop 4, pop 22; 22 - 4 = 18; push    18\n\nResult 18 (infix check: 7 + 3 * 5 - 4 = 18)"
+      },
+      {
+        "kind": "Example",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "a b c - * d e + /\na (b - c) * d e + /          b c - combined\n(a * (b - c)) d e + /        a and (b - c) combined by *\n(a * (b - c)) (d + e) /      d e + combined\n((a * (b - c)) / (d + e))    combined by /\n\nTidied: a * (b - c) / (d + e)\nCheck with a = 4, b = 9, c = 3, d = 5, e = 7: RPN and infix both give 2."
+      },
+      {
+        "kind": "Example",
+        "label": "Evaluating RPN with a stack, and converting RPN back to infix",
+        "text": "def evaluate_rpn(expression):\n    stack = []\n    for token in expression.split():\n        if token in (\"+\", \"-\", \"*\", \"/\"):\n            right = stack.pop()   # popped first = right operand\n            left = stack.pop()\n            if token == \"+\":\n                stack.append(left + right)\n            elif token == \"-\":\n                stack.append(left - right)\n            elif token == \"*\":\n                stack.append(left * right)\n            else:\n                stack.append(left / right)\n        else:\n            stack.append(float(token))\n        print(token, stack)\n    return stack.pop()\n\n\nprint(\"Result:\", evaluate_rpn(\"20 4 - 2 /\"))"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does an interpreter execute a program without a translated version?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does an interpreter execute a program without a translated version?",
+        "text": "It analyses one statement, checks it for errors, executes it if error-free, then moves to the next; on an error it reports it and halts. No object code is produced."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name the four stages of compilation in order."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name the four stages of compilation in order.",
+        "text": "Lexical analysis, syntax analysis, code generation, optimisation."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give three things lexical analysis does."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give three things lexical analysis does.",
+        "text": "Removes white space and comments; converts lexemes into tokens using the keyword table; enters identifiers in the symbol table."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does syntax analysis produce, and what does it report?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does syntax analysis produce, and what does it report?",
+        "text": "A parse tree; it reports syntax errors where tokens do not match the grammar."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the aim of optimisation? Give one technique."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the aim of optimisation? Give one technique.",
+        "text": "To minimise execution time and memory use without changing the result, e.g. moving a loop-invariant statement before the loop."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Write BNF for a number of one or more digits."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Write BNF for a number of one or more digits.",
+        "text": "<number> ::= <digit> | <digit><number>"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "In a syntax diagram, how are alternatives and repetition shown?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "In a syntax diagram, how are alternatives and repetition shown?",
+        "text": "Alternatives by parallel branches; repetition by a path that loops back."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two reasons for using RPN."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two reasons for using RPN.",
+        "text": "It needs no brackets or precedence rules (unambiguous), and it is evaluated left to right in one pass using a stack."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Convert (a + b) * c - d to RPN."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Convert (a + b) * c - d to RPN.",
+        "text": "a b + c * d -"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Evaluate 8 2 - 3 * with a stack."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Evaluate 8 2 - 3 * with a stack.",
+        "text": "Push 8, push 2; - pops 2 and 8, pushes 6; push 3; * pops 3 and 6, pushes 18. Result 18."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which tree traversal gives RPN?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which tree traversal gives RPN?",
+        "text": "Post-order (left, right, root); in-order gives the infix form."
       }
     ]
   },

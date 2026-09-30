@@ -104,6 +104,12 @@ The commit is a checkpoint, not a permanently current version.
   transition table and cycle diagram, kernel interrupt handling for low-level scheduling, FCFS/SJF/RR (q=4)/SRT
   worked on one process set with averages, paging vs segmentation table, page-table address translation,
   FIFO vs LRU page-fault trace, disk thrashing, user interface; all schedules, addresses and traces checked by script.
+- Rebuilt (research method): 16.2 (2026-09-30). Replaced the off-syllabus linker/loader note; sections in ch20 order
+  with every Rocket Revise point: interpreter statement-by-statement execution with an error trace, front/back end,
+  lexical analysis with a tokenised statement and symbol/keyword tables, parsing and parse tree, three-address code,
+  syntax diagrams and BNF with a derivation, invalid-string reasons and writing recursive rules, optimisation
+  before/after examples, RPN (bracketing, shunting-yard traces, expression tree post-order, stack evaluation,
+  RPN to infix) and a Python evaluator; grammar verdicts, conversions and stack traces checked by script.
 
 ## Latest verification
 

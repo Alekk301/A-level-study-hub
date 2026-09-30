@@ -1315,11 +1315,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Understand the stages of compilation in more depth, including the role of linkers, loaders and libraries.",
+            "summary": "Explain how an interpreter executes a program without a translated version, describe lexical analysis, syntax analysis, code generation and optimisation, express and test grammar with syntax diagrams and BNF, and convert and evaluate expressions in Reverse Polish Notation with a stack.",
             "focusPoints": [
-              "compiler stages",
-              "linker/loader",
-              "libraries"
+              "interpreter execution",
+              "lexical analysis and symbol table",
+              "parsing and parse trees",
+              "optimisation examples",
+              "BNF and syntax diagrams",
+              "RPN conversion and stack evaluation"
             ],
             "contentDepth": "full"
           },

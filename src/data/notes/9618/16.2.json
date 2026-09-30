@@ -6,133 +6,499 @@
   "unitTitle": "A2 Level",
   "title": "Translation Software",
   "contentDepth": "full",
-  "overview": "Translation software turns source code into executable behaviour. At A2 you need interpreters and compiler stages—lexical analysis, syntax analysis, code generation and optimisation—plus grammar description using BNF/syntax diagrams and expression evaluation using Reverse Polish Notation.",
+  "overview": "How an interpreter runs a program without a translated version; the compilation stages (lexical analysis, syntax analysis, code generation, optimisation); grammar as syntax diagrams and BNF, with derivations; Reverse Polish Notation: why it is used, converting infix to RPN and evaluating it with a stack.",
   "syllabusPoints": [
-    "Explain interpreter operation and contrast it with compiled translation.",
-    "Describe lexical analysis, syntax analysis, code generation and optimisation.",
-    "Interpret or construct simple grammar using BNF/syntax diagrams.",
-    "Convert/evaluate expressions using Reverse Polish Notation and a stack."
+    "Show understanding of how an interpreter can execute programs without producing a translated version.",
+    "Show understanding of the various stages in the compilation of a program, including lexical analysis, syntax analysis, code generation and optimisation.",
+    "Show understanding of how the grammar of a language can be expressed using syntax diagrams or Backus-Naur Form (BNF) notation.",
+    "Show understanding of how Reverse Polish Notation (RPN) can be used to carry out the evaluation of expressions."
   ],
   "definitions": [
     {
-      "term": "Token",
-      "definition": "A classified unit produced during lexical analysis, e.g. keyword, identifier, literal or operator."
+      "term": "Interpreter",
+      "definition": "A translator that analyses and executes source code one statement at a time, without producing object code."
     },
     {
-      "term": "Lexeme",
-      "definition": "The actual character sequence that matches a token category."
+      "term": "Lexical analysis",
+      "definition": "The compilation stage that converts a sequence of characters into a sequence of tokens, removing white space and comments."
     },
     {
-      "term": "Parser",
-      "definition": "The syntax-analysis component that checks tokens against grammar."
+      "term": "Symbol table",
+      "definition": "A data structure in which each entry holds the name and attributes (data type, address, scope) of an identifier."
     },
     {
-      "term": "BNF",
-      "definition": "A formal notation that defines valid language structures using production rules."
+      "term": "Keyword table",
+      "definition": "A table of the language's reserved words and operators with the token that replaces each one."
     },
     {
-      "term": "RPN",
-      "definition": "Postfix notation where operators follow operands, allowing stack-based evaluation without brackets."
+      "term": "Syntax analysis (parsing)",
+      "definition": "The stage that checks the token sequence against the grammar of the language, reports syntax errors and produces a parse tree."
+    },
+    {
+      "term": "Parse tree",
+      "definition": "A tree showing the grammatical structure of a statement; operations lower in the tree are done first."
+    },
+    {
+      "term": "Code generation",
+      "definition": "The stage that converts the intermediate representation of the source code into an executable form (object code)."
     },
     {
       "term": "Optimisation",
-      "definition": "Transformation of generated/intermediate code to improve speed/size without changing its result."
+      "definition": "Changing the generated code to minimise execution time and memory requirement without changing what the program does."
+    },
+    {
+      "term": "Backus-Naur Form (BNF)",
+      "definition": "A text notation (meta-language) for grammar rules, using ::=, | and <non-terminals>."
+    },
+    {
+      "term": "Terminal / non-terminal",
+      "definition": "A terminal is a symbol that appears in the code as written; a non-terminal is a named item defined by a further rule."
+    },
+    {
+      "term": "Syntax diagram",
+      "definition": "A graphical representation of a grammar rule: paths of arrows through non-terminals (rectangles) and terminals (rounded boxes)."
+    },
+    {
+      "term": "Reverse Polish Notation (RPN)",
+      "definition": "Postfix notation: each operator is written after its operands, so no brackets or precedence rules are needed."
     }
   ],
   "sections": [
     {
-      "id": "01-interpreter",
-      "title": "Interpreter",
+      "id": "01-translators",
+      "title": "Interpreters, compilers and the analysis-synthesis model",
       "content": [
-        "An interpreter translates/executes source during runtime and normally does not produce a permanently stored complete executable. It is convenient for testing and portable source execution, but repeated translation can reduce execution speed."
+        "Both translators start with the same analysis of the source code. A compiler then synthesises object code for the whole program; an interpreter executes each statement as soon as it has been analysed, so no translated version is ever produced."
       ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "02-lexical-analysis",
-      "title": "Lexical analysis",
-      "content": [
-        "The compiler scans source characters, groups them into tokens, discards irrelevant whitespace/comments where appropriate, recognises identifiers/literals and maintains symbol-table information. Invalid character sequences can be reported as lexical errors."
+      "bullets": [
+        "Interpreter: examines the source code one statement at a time and checks that statement for errors.",
+        "If no error is found, the statement is executed immediately, then the interpreter moves on to the next statement.",
+        "If an error is found, it is reported and the interpreter halts; statements before it have already been executed.",
+        "No object code or executable file is produced, so the source code and the interpreter are needed every time the program runs.",
+        "Statements inside a loop are interpreted again on every iteration, and the whole program is interpreted again every time it is run, so execution is slower.",
+        "Compiler: translates the whole program into object code before any of it runs; reports all errors found; the executable can then be run many times without translating again.",
+        "Front end (analysis): lexical analysis, syntax analysis, semantic analysis and intermediate code generation; it produces intermediate code that holds the full meaning of the source.",
+        "Back end (synthesis): code generation and optimisation, producing object code; if the front end found errors, the back end only outputs the list of errors with their locations.",
+        "Debugging is easier with an interpreter: the error is reported at the line where it occurs, can be corrected and the program re-run at once.",
+        "Selling a compiled version protects the source code: only object code is distributed, which is hard to read or modify."
       ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "03-syntax-analysis",
-      "title": "Syntax analysis",
-      "content": [
-        "The parser checks whether the token stream fits the language grammar, often building a parse tree/internal representation. Missing delimiters or malformed statements are syntax errors; logical correctness is a different issue."
-      ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "04-code-generation-and-optimisation",
-      "title": "Code generation and optimisation",
-      "content": [
-        "Once the source is valid, machine/intermediate instructions are generated. Optimisation can remove redundant work, improve instruction selection or reduce code size while preserving program behaviour."
-      ],
-      "bullets": [],
-      "examples": []
-    },
-    {
-      "id": "05-bnf-and-syntax-diagrams",
-      "title": "BNF and syntax diagrams",
-      "content": [
-        "Both define legal grammatical structures. BNF uses production rules with sequences, alternatives and recursive definitions. Exam questions may ask whether a string is valid or to complete a rule."
-      ],
-      "bullets": [],
       "examples": [
         {
-          "id": "05-example-1",
+          "id": "01-interp-trace",
           "kind": "worked",
-          "label": "Worked example",
-          "content": "<digit> ::= 0 | 1 | 2 | ... | 9\n<number> ::= <digit> | <digit><number>"
+          "label": "An interpreter meeting an error part-way through",
+          "content": "Line 1  Price <- 12            analysed: no error -> executed\nLine 2  Qty <- 5               analysed: no error -> executed\nLine 3  OUTPUT Price * Qty     analysed: no error -> executed, outputs 60\nLine 4  Total <- Price *       analysed: syntax error (operator with no second operand)\n                               -> error reported, interpreter halts\nLine 5  OUTPUT Total           never reached\n\nThe user has already seen 60. A compiler would report the line-4 error during translation and nothing would run."
         }
       ]
     },
     {
-      "id": "06-reverse-polish-notation",
-      "title": "Reverse Polish Notation",
+      "id": "02-lexical",
+      "title": "Stage 1: lexical analysis",
       "content": [
-        "Push operands onto a stack. When an operator appears, pop its operands, apply it, then push the result. No brackets are needed because order is explicit."
+        "The source code arrives as a stream of characters. Lexical analysis groups the characters into lexemes (meaningful units) and replaces each one with a token, the form used by every later stage."
       ],
-      "bullets": [],
+      "bullets": [
+        "Lexical analysis converts a sequence of characters into a sequence of tokens.",
+        "All white space and comments are removed; they are not needed for translation.",
+        "Each lexeme is identified by pattern matching: keyword, identifier, operator, literal (number or string) or separator.",
+        "Keyword table: holds every reserved word and operator of the language with its token; each keyword/operator lexeme is looked up and replaced by its token.",
+        "Symbol table: each identifier found is entered with its attributes (data type, where declared, memory address, scope); an identifier already in the table is not added again.",
+        "The symbol table is used and updated by later stages (syntax and semantic analysis, code generation).",
+        "Errors detected here include an illegal identifier or an invalid character/symbol.",
+        "Output: tokenised code (a string of tokens) passed to syntax analysis."
+      ],
       "examples": [
         {
-          "id": "06-example-1",
+          "id": "02-tokens",
           "kind": "worked",
-          "label": "Worked example",
-          "content": "Infix: (3+4)*5\nRPN: 3 4 + 5 *\n=> 35"
+          "label": "Tokenising one statement (checked by script)",
+          "content": "Source:  IF Total > 50 THEN Total <- Total - Discount * 2  // apply discount\n\nStep 1: remove the comment '// apply discount' and the spaces.\nStep 2: identify each lexeme and look it up:\n\n #  Lexeme    Category             Table used\n 1  IF        keyword              keyword table\n 2  Total     identifier           symbol table entry 1 (added)\n 3  >         operator             keyword table\n 4  50        numeric literal\n 5  THEN      keyword              keyword table\n 6  Total     identifier           symbol table entry 1 (already there)\n 7  <-        assignment operator  keyword table\n 8  Total     identifier           symbol table entry 1\n 9  -         operator             keyword table\n10  Discount  identifier           symbol table entry 2 (added)\n11  *         operator             keyword table\n12  2         numeric literal\n\nResult: 12 tokens; symbol table now holds Total (1) and Discount (2)."
+        }
+      ]
+    },
+    {
+      "id": "03-syntax",
+      "title": "Stage 2: syntax analysis (parsing), then semantic analysis",
+      "content": [
+        "Syntax analysis checks that the tokens are in an order the language's grammar allows. The front end finishes by checking meaning and producing intermediate code."
+      ],
+      "bullets": [
+        "Syntax analysis (parsing) uses parsing algorithms to interpret the meaning of the sequence of tokens.",
+        "It checks that the code matches the grammar (syntax rules) of the language, e.g. the rules written in BNF.",
+        "Syntax errors are reported, e.g. missing bracket, missing ENDIF, two operators in a row, missing operand.",
+        "If there are no errors, a parse tree (syntax tree) is produced showing the structure of each statement.",
+        "The tree fixes the order of evaluation: an operation lower in the tree is carried out first, so precedence is built in.",
+        "Semantic analysis checks the meaning, e.g. that variables are declared and data types are compatible; attributes such as data type are added to the symbol table.",
+        "Intermediate code is then produced, for example three-address code: each instruction has at most one operator and three addresses."
+      ],
+      "examples": [
+        {
+          "id": "03-parse-tree",
+          "kind": "worked",
+          "label": "Parse tree for Area <- Width * Height + 3",
+          "content": "<-\n+-- Area\n+-- +\n    +-- *\n    |   +-- Width\n    |   +-- Height\n    +-- 3\n\nThe * node is below the + node, so Width * Height is worked out first, then 3 is added,\nthen the result is assigned to Area."
+        },
+        {
+          "id": "03-three-address",
+          "kind": "worked",
+          "label": "Three-address intermediate code",
+          "content": "Statement: r <- p - (q + s * t) / u\n\nt1 <- s * t\nt1 <- q + t1\nt1 <- t1 / u\nr  <- p - t1\n\nEach line uses at most three addresses. (Checked by script: same result as the original\nstatement for 1000 random values of p, q, s, t, u.)"
+        }
+      ]
+    },
+    {
+      "id": "04-syntax-diagrams",
+      "title": "Grammar as syntax diagrams",
+      "content": [
+        "Every language has a grammar: the rules for which sequences of symbols are valid. A syntax diagram shows a rule as a picture; any route you can follow along the arrows from start to end spells a valid string."
+      ],
+      "bullets": [
+        "A syntax diagram is a graphical representation of a grammar rule, read by following the arrows from left to right.",
+        "Rectangle = non-terminal: an item defined by its own diagram (e.g. Variable).",
+        "Rounded box / circle = terminal: a symbol that appears in the code exactly as written (e.g. =, ;, p).",
+        "Parallel branches = alternatives (the same as | in BNF).",
+        "A path that loops back = repetition: the item can be repeated.",
+        "A string is valid only if one complete path from entry to exit produces exactly that string.",
+        "Syntax diagrams are easy for programmers to read, but cannot be used directly as an algorithm in a compiler; BNF can."
+      ],
+      "examples": [
+        {
+          "id": "04-diagrams-text",
+          "kind": "worked",
+          "label": "A set of syntax diagrams (written as structured text)",
+          "content": "Assignment:  [Variable] -> (=) -> [Expression] -> (;) -> end\nExpression:  [Variable] -> end\n             or [Variable] -> [Operator] -> back to the start of Expression\nVariable:    [Letter] -> end\n             or [Letter] -> [Digit] -> end\nLetter:      three branches: (p) | (q) | (r)\nDigit:       three branches: (1) | (2) | (3)\nOperator:    three branches: (+) | (-) | (*)\n\n[ ] = rectangle (non-terminal), ( ) = rounded box (terminal).\nThe loop in Expression lets any number of 'operator variable' pairs follow the first variable.\nA Variable is one letter optionally followed by ONE digit: there is no loop, so r12 is not allowed."
+        }
+      ]
+    },
+    {
+      "id": "05-bnf",
+      "title": "Grammar in Backus-Naur Form (BNF), and checking strings",
+      "content": [
+        "BNF writes the same rules as text, one rule per non-terminal. Because it is text with a fixed format, it can be used as the basis of a parsing algorithm."
+      ],
+      "bullets": [
+        "::= means 'is defined as'; the non-terminal being defined is on the left.",
+        "| means 'or': it separates alternative definitions.",
+        "<name> in angle brackets is a non-terminal; symbols written without brackets are terminals.",
+        "Recursion (a rule that refers to itself) allows any number of repetitions, e.g. <number> ::= <digit> | <digit><number>.",
+        "A recursive rule must include a non-recursive alternative, or it can never finish.",
+        "To check a string, derive it from the top rule, replacing one non-terminal at a time; it is valid only if every character is produced with nothing left over.",
+        "For an invalid string, name the rule that is broken, e.g. 'a variable can have only one digit'."
+      ],
+      "examples": [
+        {
+          "id": "05-bnf-rules",
+          "kind": "worked",
+          "label": "The syntax diagrams of the previous section in BNF",
+          "content": "<assignment> ::= <variable> = <expression> ;\n<expression> ::= <variable> | <variable> <operator> <expression>\n<variable>   ::= <letter> | <letter><digit>\n<letter>     ::= p | q | r\n<digit>      ::= 1 | 2 | 3\n<operator>   ::= + | - | *\n\n<expression> is recursive: that is the loop in the syntax diagram."
+        },
+        {
+          "id": "05-derivation",
+          "kind": "worked",
+          "label": "Derivation: is r2 = p * q3 - r; valid?",
+          "content": "<assignment>\n=> <variable> = <expression> ;\n=> <letter><digit> = <expression> ;              r2\n=> r2 = <variable> <operator> <expression> ;\n=> r2 = p * <expression> ;                        p, then *\n=> r2 = p * <variable> <operator> <expression> ;\n=> r2 = p * q3 - <expression> ;                   q3, then -\n=> r2 = p * q3 - <variable> ;                     last expression is a lone variable\n=> r2 = p * q3 - r ;                              VALID"
+        },
+        {
+          "id": "05-invalid",
+          "kind": "worked",
+          "label": "Which strings are valid? (results from a recursive-descent checker)",
+          "content": "p = q1 + r;     valid\nq3 = q3;        valid\nq = r +;        INVALID: an operator must be followed by an <expression>\np12 = q;        INVALID: a <variable> is a letter and at most one digit\np = s;          INVALID: s is not a <letter> (only p, q, r)\np = q           INVALID: <assignment> must end with ;\n\nScript check: a recursive-descent parser (one function per rule) and the equivalent\nregular expression [pqr][123]?=[pqr][123]?([-+*][pqr][123]?)*; gave the same verdicts."
+        },
+        {
+          "id": "05-write-bnf",
+          "kind": "worked",
+          "label": "Writing BNF from a description",
+          "content": "(a) A signed integer: an optional + or - then one or more digits.\n<digit>            ::= 0|1|2|3|4|5|6|7|8|9\n<sign>             ::= + | -\n<unsigned integer> ::= <digit> | <digit><unsigned integer>\n<signed integer>   ::= <unsigned integer> | <sign><unsigned integer>\nChecked: -507 valid, +9 valid, 0042 valid, + invalid (no digit), 5-3 invalid (sign only at start).\n\n(b) Change <variable> so it can be any number of letters (and no digits):\n<variable> ::= <letter> | <letter><variable>\nChecked: pqrrp valid, p valid, pq1 invalid, empty string invalid."
+        }
+      ]
+    },
+    {
+      "id": "06-codegen-opt",
+      "title": "Stages 3 and 4: code generation and optimisation",
+      "content": [
+        "With no errors, the back end turns the intermediate code into object code and then improves it. Optimisation must never change what the program does."
+      ],
+      "bullets": [
+        "Code generation converts the intermediate representation of the source code into an executable form (object code / machine code).",
+        "Memory addresses are allocated for variables and constants, using the symbol table.",
+        "Optimisation minimises the program's execution time and memory requirement without changing its result.",
+        "Common subexpression: a value calculated more than once is calculated once and reused.",
+        "Loop-invariant code: a statement that does the same thing on every iteration is moved to before the loop.",
+        "Constant folding: an expression of constants is worked out at compile time.",
+        "Redundant (dead) code that can never run or whose result is never used is removed.",
+        "At machine-code level, registers and memory are used efficiently (e.g. keep a value in a register rather than reloading it).",
+        "Cost: optimisation makes compilation take longer."
+      ],
+      "examples": [
+        {
+          "id": "06-opt-examples",
+          "kind": "worked",
+          "label": "Optimised code, before and after (equivalence checked by script)",
+          "content": "1. Common subexpressions\nBefore: Area <- (W + 2) * (H + 2)\n        Edge <- 2 * (W + 2) + 2 * (H + 2)          5 additions, 3 multiplications\nAfter:  T1 <- W + 2\n        T2 <- H + 2\n        Area <- T1 * T2\n        Edge <- 2 * (T1 + T2)                      3 additions, 2 multiplications\n\n2. Loop-invariant code motion\nBefore: FOR i <- 1 TO 100\n           Rate <- Base * 1.5\n           Cost[i] <- Price[i] * Rate\n        NEXT i                                     200 multiplications\nAfter:  Rate <- Base * 1.5\n        FOR i <- 1 TO 100\n           Cost[i] <- Price[i] * Rate\n        NEXT i                                     101 multiplications\n\n3. Constant folding\nBefore: SecondsPerDay <- 60 * 60 * 24\nAfter:  SecondsPerDay <- 86400"
+        }
+      ]
+    },
+    {
+      "id": "07-rpn-convert",
+      "title": "Reverse Polish Notation: why, and converting from infix",
+      "content": [
+        "Code writes expressions in infix (operator between operands). A compiler converts them to Reverse Polish Notation (postfix), where each operator follows its two operands, because RPN can be evaluated simply with a stack."
+      ],
+      "bullets": [
+        "RPN is used to carry out the evaluation of expressions.",
+        "It gives an unambiguous way of representing an expression.",
+        "It is read (and evaluated) from left to right in one pass.",
+        "It needs no brackets and no rules of precedence (BODMAS): the order of the operators is the order of evaluation.",
+        "The operands stay in the same order as in the infix expression; only the operators move.",
+        "Bracketing method: fully bracket the infix expression by precedence, then move each operator to just after its closing bracket and delete the brackets.",
+        "Shunting-yard method: an operand goes straight to the output; an operator first pops any operator of higher or equal precedence from the stack to the output, then is pushed.",
+        "( is pushed; ) pops operators to the output until the matching ( is found, and both brackets are discarded.",
+        "At the end, the remaining operators are popped from the stack to the output."
+      ],
+      "examples": [
+        {
+          "id": "07-bracketing",
+          "kind": "worked",
+          "label": "Bracketing method",
+          "content": "(a - b) * (c + d) / e\nFully bracket:   (((a - b) * (c + d)) / e)\nInnermost first: a b -   and   c d +\nThen *:          a b - c d + *\nThen / e:        a b - c d + * e /\n\na / (b - c) + d * e   ->   a b c - / d e * +\n(8 + k) * 3 - m / 4   ->   8 k + 3 * m 4 / -\n(all three checked by a shunting-yard script)"
+        },
+        {
+          "id": "07-shunting",
+          "kind": "worked",
+          "label": "Shunting-yard trace: p + q * r - s (script output)",
+          "content": "Token  Action                              Stack   Output\np      operand to output                   empty   p\n+      push +                              +       p\nq      operand to output                   +       p q\n*      push * (higher than +)              + *     p q\nr      operand to output                   + *     p q r\n-      pop *, pop + (both >= -), push -    -       p q r * +\ns      operand to output                   -       p q r * + s\nend    pop remaining                       empty   p q r * + s -\n\nRPN: p q r * + s -"
+        },
+        {
+          "id": "07-shunting-brackets",
+          "kind": "worked",
+          "label": "Shunting-yard trace with brackets: (p + q) * (r - s) (script output)",
+          "content": "Token  Action                   Stack    Output\n(      push (                   (\np      operand to output        (        p\n+      push +                   ( +      p\nq      operand to output        ( +      p q\n)      pop +, discard ( )       empty    p q +\n*      push *                   *        p q +\n(      push (                   * (      p q +\nr      operand to output        * (      p q + r\n-      push -                   * ( -    p q + r\ns      operand to output        * ( -    p q + r s\n)      pop -, discard ( )       *        p q + r s -\nend    pop remaining            empty    p q + r s - *\n\nRPN: p q + r s - *"
+        }
+      ]
+    },
+    {
+      "id": "08-rpn-tree",
+      "title": "Expression trees: RPN by post-order traversal",
+      "content": [
+        "During syntax analysis an expression is stored as a binary tree. The same tree gives the infix form or the RPN form, depending on the traversal."
+      ],
+      "bullets": [
+        "Building the tree: the operator evaluated last (lowest precedence, outside any brackets) is the root; its left and right operands become the subtrees.",
+        "Post-order traversal (left, right, root) outputs the RPN (postfix) expression.",
+        "In-order traversal (left, root, right) outputs the infix expression (add brackets to keep the meaning).",
+        "So a binary tree allows both infix and postfix forms to be produced and evaluated."
+      ],
+      "examples": [
+        {
+          "id": "08-tree",
+          "kind": "worked",
+          "label": "Tree for x * (y + z) - w / 2 (traversals by script)",
+          "content": "-\n+-- *\n|   +-- x\n|   +-- +\n|       +-- y\n|       +-- z\n+-- /\n    +-- w\n    +-- 2\n\nRoot is - (the last operation done).\nPost-order (left, right, root): x y z + * w 2 / -\nIn-order  (left, root, right): ((x * (y + z)) - (w / 2))\nWith x = 3, y = 4, z = 6, w = 10 both give 25."
+        }
+      ]
+    },
+    {
+      "id": "09-rpn-evaluate",
+      "title": "Evaluating RPN with a stack, and converting RPN back to infix",
+      "content": [
+        "Evaluation needs only one left-to-right pass and one stack. The only care point is operand order: the first value popped is the right-hand operand."
+      ],
+      "bullets": [
+        "Read the RPN from left to right.",
+        "Operand: push its value onto the stack.",
+        "Operator: pop the top two values, apply the operator, push the result back onto the stack.",
+        "Operands are popped in reverse order to how they were pushed: first pop = right operand, second pop = left operand (matters for - and /).",
+        "At the end exactly one value is left on the stack: the result.",
+        "RPN to infix: scan left to right; each time two operands are followed by an operator, replace the three items by (operand operator operand); repeat until one expression remains."
+      ],
+      "examples": [
+        {
+          "id": "09-eval-numbers",
+          "kind": "worked",
+          "label": "Evaluate 6 2 4 + * 9 3 / - (script output)",
+          "content": "Token  Action                           Stack (bottom -> top)\n6      push 6                           6\n2      push 2                           6 2\n4      push 4                           6 2 4\n+      pop 4, pop 2; 2 + 4 = 6; push    6 6\n*      pop 6, pop 6; 6 * 6 = 36; push   36\n9      push 9                           36 9\n3      push 3                           36 9 3\n/      pop 3, pop 9; 9 / 3 = 3; push    36 3\n-      pop 3, pop 36; 36 - 3 = 33; push 33\n\nResult 33 (infix check: 6 * (2 + 4) - 9 / 3 = 33)"
+        },
+        {
+          "id": "09-eval-vars",
+          "kind": "worked",
+          "label": "Evaluate p q r * + s - with p = 7, q = 3, r = 5, s = 4 (script output)",
+          "content": "Token  Action                              Stack (bottom -> top)\np      push 7                              7\nq      push 3                              7 3\nr      push 5                              7 3 5\n*      pop 5, pop 3; 3 * 5 = 15; push      7 15\n+      pop 15, pop 7; 7 + 15 = 22; push    22\ns      push 4                              22 4\n-      pop 4, pop 22; 22 - 4 = 18; push    18\n\nResult 18 (infix check: 7 + 3 * 5 - 4 = 18)"
+        },
+        {
+          "id": "09-to-infix",
+          "kind": "worked",
+          "label": "RPN to infix: a b c - * d e + / (script output)",
+          "content": "a b c - * d e + /\na (b - c) * d e + /          b c - combined\n(a * (b - c)) d e + /        a and (b - c) combined by *\n(a * (b - c)) (d + e) /      d e + combined\n((a * (b - c)) / (d + e))    combined by /\n\nTidied: a * (b - c) / (d + e)\nCheck with a = 4, b = 9, c = 3, d = 5, e = 7: RPN and infix both give 2."
+        },
+        {
+          "id": "09-python",
+          "kind": "code",
+          "label": "Python: evaluating RPN with a stack (list)",
+          "content": "def evaluate_rpn(expression):\n    stack = []\n    for token in expression.split():\n        if token in (\"+\", \"-\", \"*\", \"/\"):\n            right = stack.pop()   # popped first = right operand\n            left = stack.pop()\n            if token == \"+\":\n                stack.append(left + right)\n            elif token == \"-\":\n                stack.append(left - right)\n            elif token == \"*\":\n                stack.append(left * right)\n            else:\n                stack.append(left / right)\n        else:\n            stack.append(float(token))\n        print(token, stack)\n    return stack.pop()\n\n\nprint(\"Result:\", evaluate_rpn(\"20 4 - 2 /\"))",
+          "language": "python"
         }
       ]
     }
   ],
   "formulas": [],
-  "comparisonTable": null,
-  "diagram": null,
-  "analysisChains": [],
+  "comparisonTable": {
+    "title": "The stages of compilation compared",
+    "columns": [
+      "Stage",
+      "Input",
+      "What happens",
+      "Output",
+      "Errors found"
+    ],
+    "rows": [
+      [
+        "Lexical analysis",
+        "Source code (characters)",
+        "White space and comments removed; lexemes identified; keyword table lookup; identifiers added to symbol table",
+        "Tokens (tokenised code) + symbol table",
+        "Illegal identifier, invalid character"
+      ],
+      [
+        "Syntax analysis",
+        "Tokens",
+        "Parsing: token sequence checked against the grammar (BNF rules)",
+        "Parse tree",
+        "Syntax errors (missing bracket, missing ENDIF, operator without operand)"
+      ],
+      [
+        "Semantic analysis / intermediate code",
+        "Parse tree",
+        "Meaning checked (declared variables, compatible types); intermediate code built",
+        "Intermediate code (e.g. three-address code)",
+        "Type mismatch, undeclared variable"
+      ],
+      [
+        "Code generation",
+        "Intermediate code",
+        "Converted to machine instructions; addresses allocated",
+        "Object code",
+        "None normally (errors were found earlier)"
+      ],
+      [
+        "Optimisation",
+        "Object/intermediate code",
+        "Execution time and memory use reduced without changing the result",
+        "Optimised object code",
+        "None"
+      ]
+    ]
+  },
+  "diagram": {
+    "title": "From source code to object code",
+    "type": "flow",
+    "nodes": [
+      "Source code: a stream of characters",
+      "Lexical analysis: white space and comments removed, tokens produced, symbol table built",
+      "Syntax analysis: tokens parsed against the grammar, errors reported, parse tree produced",
+      "Semantic analysis and intermediate code: meaning checked, three-address code produced",
+      "Code generation: intermediate code converted to object code",
+      "Optimisation: object code made faster and smaller, same result"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "How a compiler handles Total <- Total - Discount * 2",
+      "steps": [
+        "Lexical analysis removes spaces and comments and replaces each lexeme by a token; Total and Discount go into the symbol table",
+        "Syntax analysis checks the token order against the grammar for an assignment and builds a parse tree with * below -",
+        "Semantic analysis checks both identifiers are declared with numeric types, and three-address code is produced",
+        "Code generation outputs machine instructions, then optimisation removes any redundant loads or calculations"
+      ],
+      "evaluation": "Each stage passes a more structured form to the next; an error at any front-end stage is reported and no object code is produced."
+    },
+    {
+      "title": "Why a compiler converts expressions to RPN",
+      "steps": [
+        "Infix needs brackets and precedence rules, so the order of evaluation is not simply left to right",
+        "In RPN each operator follows its operands, so the order of operators is the order of evaluation",
+        "A stack evaluates RPN in one left-to-right pass: push operands, and for an operator pop two, apply it, push the result",
+        "Processors have stack instructions, so RPN maps directly onto simple machine code"
+      ],
+      "evaluation": "RPN is unambiguous and needs no brackets or precedence rules, which makes code generation for expressions simple and reliable."
+    },
+    {
+      "title": "Interpreter or compiler: development versus distribution",
+      "steps": [
+        "During development an interpreter reports an error at the line where it occurs and runs code up to that point",
+        "The programmer fixes the error and re-runs immediately, with no wait for a full compilation",
+        "For release, a compiler produces an executable that runs faster because no translation happens at run time",
+        "Only object code is distributed, so the source code is protected and users do not need the translator"
+      ],
+      "evaluation": "Interpreters suit writing and debugging; compilers suit distribution. Many languages offer both."
+    }
+  ],
   "examTips": [
-    "Remember the translation sequence: lexical -> syntax -> code generation -> optimisation.",
-    "For RPN subtraction/division, operand order matters: the first popped value is normally the right operand.",
-    "Syntax analysis checks grammar, not whether the algorithm gives the correct result."
+    "Interpreter: say 'each statement is analysed/checked then executed before the next one' and 'no object code/executable is produced'. 'Runs line by line' alone rarely gets full marks.",
+    "Name the four stages in order: lexical analysis, syntax analysis, code generation, optimisation. For each, give its output: tokens, parse tree, object code, more efficient code.",
+    "Lexical analysis: credit is for 'removes white space and comments', 'converts characters into tokens', 'identifiers entered in the symbol table'. Checking grammar is syntax analysis, not lexical.",
+    "Optimisation: write 'reduces execution time and/or memory needed without changing the program's output', and give a concrete technique (e.g. move a loop-invariant statement before the loop).",
+    "BNF validity questions: give the specific reason a string fails ('a variable may contain only one digit'), not just 'it breaks the rule'.",
+    "When writing BNF, copy the exact non-terminal names from the question, put terminals without brackets, and use recursion (<x> ::= <a> | <a><x>) for 'one or more'.",
+    "RPN evaluation: show the stack after every token, and pop the right operand first: 9 3 / is 9 / 3 = 3, not 3 / 9."
   ],
   "commonMistakes": [
-    "Confusing lexical errors with logic errors.",
-    "Saying an interpreter always creates a standalone executable.",
-    "Reversing operands in RPN subtraction/division."
+    "Saying an interpreter translates the program into machine code and saves it; it produces no translated version.",
+    "Putting syntax (grammar) checking in lexical analysis, or tokenising in syntax analysis.",
+    "Saying optimisation makes the program 'better' without saying faster or using less memory.",
+    "Writing terminals in angle brackets in BNF, or forgetting the non-recursive alternative in a recursive rule.",
+    "Reversing the operands for - or / when evaluating RPN with a stack.",
+    "Changing the order of the operands when converting to RPN; only the operators move."
   ],
   "quickRecall": [
-    "lexical=chars->tokens",
-    "syntax=tokens->grammar",
-    "generation=target code",
-    "optimisation=same result better code",
-    "RPN uses stack"
+    {
+      "question": "How does an interpreter execute a program without a translated version?",
+      "answer": "It analyses one statement, checks it for errors, executes it if error-free, then moves to the next; on an error it reports it and halts. No object code is produced."
+    },
+    {
+      "question": "Name the four stages of compilation in order.",
+      "answer": "Lexical analysis, syntax analysis, code generation, optimisation."
+    },
+    {
+      "question": "Give three things lexical analysis does.",
+      "answer": "Removes white space and comments; converts lexemes into tokens using the keyword table; enters identifiers in the symbol table."
+    },
+    {
+      "question": "What does syntax analysis produce, and what does it report?",
+      "answer": "A parse tree; it reports syntax errors where tokens do not match the grammar."
+    },
+    {
+      "question": "What is the aim of optimisation? Give one technique.",
+      "answer": "To minimise execution time and memory use without changing the result, e.g. moving a loop-invariant statement before the loop."
+    },
+    {
+      "question": "Write BNF for a number of one or more digits.",
+      "answer": "<number> ::= <digit> | <digit><number>"
+    },
+    {
+      "question": "In a syntax diagram, how are alternatives and repetition shown?",
+      "answer": "Alternatives by parallel branches; repetition by a path that loops back."
+    },
+    {
+      "question": "Give two reasons for using RPN.",
+      "answer": "It needs no brackets or precedence rules (unambiguous), and it is evaluated left to right in one pass using a stack."
+    },
+    {
+      "question": "Convert (a + b) * c - d to RPN.",
+      "answer": "a b + c * d -"
+    },
+    {
+      "question": "Evaluate 8 2 - 3 * with a stack.",
+      "answer": "Push 8, push 2; - pops 2 and 8, pushes 6; push 3; * pops 3 and 6, pushes 18. Result 18."
+    },
+    {
+      "question": "Which tree traversal gives RPN?",
+      "answer": "Post-order (left, right, root); in-order gives the infix form."
+    }
   ],
   "relatedTopics": [
     "5.2",
-    "19.2",
-    "20.1"
+    "16.1",
+    "19.1",
+    "4.2"
   ]
 }
