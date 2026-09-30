@@ -99,6 +99,11 @@ The commit is a checkpoint, not a permanently current version.
   4-bit ripple-carry trace, SR flip-flop from NOR and NAND with invalid state, clocked JK with toggle,
   flip-flops in registers/SRAM/counters, all Boolean laws and De Morgan, four named-law simplifications,
   sum of products, K-map benefits/rules with 2-, 3- and 4-input examples; every table and result checked by script.
+- Rebuilt (research method): 16.1 (2026-09-30). Sections in coursebook ch20 order with every Rocket Revise
+  point: resource management, I/O and DMA, high/medium/low-level schedulers, running/ready/blocked with a
+  transition table and cycle diagram, kernel interrupt handling for low-level scheduling, FCFS/SJF/RR (q=4)/SRT
+  worked on one process set with averages, paging vs segmentation table, page-table address translation,
+  FIFO vs LRU page-fault trace, disk thrashing, user interface; all schedules, addresses and traces checked by script.
 
 ## Latest verification
 

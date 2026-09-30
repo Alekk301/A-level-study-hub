@@ -1297,11 +1297,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Understand how the OS schedules processes, manages memory and handles interrupts.",
+            "summary": "Explain how the OS maximises the use of the CPU, memory and I/O and hides the hardware behind the user interface, trace process states and the FCFS, SJF, round robin and SRT scheduling routines, explain the kernel as interrupt handler, and apply paging, segmentation, virtual memory, page replacement and disk thrashing.",
             "focusPoints": [
-              "process scheduling",
-              "memory management",
-              "interrupts"
+              "resource management and DMA",
+              "running/ready/blocked transitions",
+              "scheduling routines worked",
+              "interrupts and low-level scheduling",
+              "paging vs segmentation, page tables",
+              "page replacement and thrashing"
             ],
             "contentDepth": "full"
           },

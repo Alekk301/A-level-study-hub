@@ -21574,115 +21574,651 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "At A2 the operating system is primarily a resource manager. You need process states and scheduling, interrupts and the kernel, and memory management through virtual memory, paging, segmentation and page replacement—including why disk thrashing occurs."
+        "text": "The OS as resource manager: keeping the CPU, memory and I/O busy, and hiding the hardware behind a user interface. Process management: multi-tasking, the running, ready and blocked states and their transitions, the schedulers, and FCFS, SJF, round robin and SRT worked on one process set; the kernel as interrupt handler. Memory management: segmentation, paging and page tables, virtual memory, page replacement and disk thrashing."
+      },
+      {
+        "kind": "Definition",
+        "label": "Multi-tasking",
+        "text": "The OS manages the execution of several programs (processes) so that they appear to run at the same time, by switching the CPU rapidly between them."
       },
       {
         "kind": "Definition",
         "label": "Process",
-        "text": "A program in execution together with its current state/resources."
+        "text": "A program in execution: a program loaded in memory that has an associated process control block (PCB)."
       },
       {
         "kind": "Definition",
-        "label": "Ready",
-        "text": "Able to run but waiting for CPU time."
+        "label": "Process control block (PCB)",
+        "text": "A data structure holding all data about a process: ID, state, priority, saved registers (including the PC)."
       },
       {
         "kind": "Definition",
-        "label": "Blocked",
-        "text": "Unable to continue until an event/resource becomes available."
+        "label": "Kernel",
+        "text": "The core of the OS, always in memory and running in kernel mode; handles interrupts, scheduling, memory and devices."
       },
       {
         "kind": "Definition",
-        "label": "Page",
-        "text": "A fixed-size block used in paging/virtual memory."
+        "label": "Interrupt",
+        "text": "A signal to the CPU from hardware or software that a device or program needs attention, causing control to be transferred to an interrupt service routine."
       },
       {
         "kind": "Definition",
-        "label": "Segment",
-        "text": "A variable-size logical section of a program such as code, stack or data."
+        "label": "Low-level (short-term) scheduler",
+        "text": "Decides which process in the ready queue in memory is given the CPU next (the dispatcher moves it to running)."
       },
       {
         "kind": "Definition",
-        "label": "Disk thrashing",
-        "text": "Excessive movement of pages between RAM and backing storage so little useful processing is done."
+        "label": "Paging",
+        "text": "Memory management that divides a process into fixed-size pages and main memory into page frames of the same size; any page can go in any free frame."
       },
       {
-        "kind": "Section",
-        "text": "Process states"
-      },
-      {
-        "kind": "Content",
-        "label": "Process states",
-        "text": "A running process can be pre-empted and return to Ready, or become Blocked while waiting for I/O. When the required event finishes, it returns to Ready. The scheduler chooses among ready processes, creating the appearance of concurrent execution on one CPU."
-      },
-      {
-        "kind": "Section",
-        "text": "Scheduling algorithms"
-      },
-      {
-        "kind": "Content",
-        "label": "Scheduling algorithms",
-        "text": "FCFS is simple arrival order but can make short jobs wait behind a long one. SJF chooses the shortest job and can reduce average wait but may starve long jobs. SRT is the pre-emptive version based on remaining time. Round Robin assigns time slices, improving responsiveness/fairness but causing more context switches when slices are very small."
-      },
-      {
-        "kind": "Section",
-        "text": "Interrupts and kernel"
-      },
-      {
-        "kind": "Content",
-        "label": "Interrupts and kernel",
-        "text": "An interrupt causes the CPU to preserve enough state and transfer control to an interrupt service routine. The kernel manages low-level resources/process states and can schedule another process before execution resumes."
-      },
-      {
-        "kind": "Section",
-        "text": "Virtual memory and paging"
-      },
-      {
-        "kind": "Content",
-        "label": "Virtual memory and paging",
-        "text": "Virtual memory uses backing storage to extend the apparent address space. If a required page is not in RAM, a page fault causes it to be loaded; another page may need replacement. Disk access is far slower than RAM, so frequent faults are expensive."
-      },
-      {
-        "kind": "Section",
-        "text": "Segmentation"
-      },
-      {
-        "kind": "Content",
+        "kind": "Definition",
         "label": "Segmentation",
-        "text": "Segmentation divides memory into logical variable-size areas that match program structure. Paging uses fixed-size blocks. Segmentation gives logical organisation/protection benefits but variable sizes can make allocation more complex."
+        "text": "Memory management that divides a process into variable-sized logical blocks (segments), such as code, data or a procedure, whose sizes are set by the compiler."
+      },
+      {
+        "kind": "Definition",
+        "label": "Virtual memory",
+        "text": "Using secondary storage to simulate extra main memory, so a program can use more memory addresses than there are in RAM; pages are swapped in and out as needed."
+      },
+      {
+        "kind": "Definition",
+        "label": "Page fault",
+        "text": "When a process refers to a page whose page-table presence flag shows it is not in main memory, so it must be loaded from disk."
+      },
+      {
+        "kind": "Definition",
+        "label": "Disk thrashing",
+        "text": "Pages are swapped between RAM and disk so often that more time is spent swapping than processing; loading one page forces out a page that is needed again almost at once."
       },
       {
         "kind": "Section",
-        "text": "Disk thrashing"
+        "text": "How an OS maximises the use of resources"
       },
       {
         "kind": "Content",
-        "label": "Disk thrashing",
-        "text": "When too few useful pages remain in RAM, the system repeatedly loads pages that soon replace one another. Most time is spent swapping instead of executing. More RAM, fewer active processes or better working-set/page-replacement decisions can reduce it."
+        "label": "How an OS maximises the use of resources",
+        "text": "The OS manages the resources inside the computer (CPU, main memory, I/O system) and provides facilities for the user. Maximising use means no resource sits idle while there is work for it. The kernel runs in kernel mode, with sole access to protected memory and system functions; applications run in user mode."
       },
       {
-        "kind": "Quick recall",
-        "text": "ready=CPU wait"
+        "kind": "Content",
+        "label": "How an OS maximises the use of resources",
+        "text": "On switch-on, the BIOS in ROM runs a bootstrap program that loads the OS (kernel) from disk into RAM."
       },
       {
-        "kind": "Quick recall",
-        "text": "blocked=event wait"
+        "kind": "Content",
+        "label": "How an OS maximises the use of resources",
+        "text": "CPU: scheduling keeps the CPU busy at all times; while one process waits for I/O, another process is given the CPU."
       },
       {
-        "kind": "Quick recall",
-        "text": "RR=time slices"
+        "kind": "Content",
+        "label": "How an OS maximises the use of resources",
+        "text": "Memory: the OS allocates memory to processes, protects each one's memory from others and frees it when a process ends."
       },
       {
-        "kind": "Quick recall",
-        "text": "paging=fixed size"
+        "kind": "Content",
+        "label": "How an OS maximises the use of resources",
+        "text": "Memory: paging and virtual memory let more processes be in memory than RAM alone allows, keeping only the pages in use in RAM."
       },
       {
-        "kind": "Quick recall",
-        "text": "segmentation=logical variable size"
+        "kind": "Content",
+        "label": "How an OS maximises the use of resources",
+        "text": "I/O: device drivers and interrupts manage slow devices, so the CPU does not wait for them; DMA moves blocks of data without the CPU."
       },
       {
-        "kind": "Quick recall",
-        "text": "thrashing=too many page swaps"
+        "kind": "Content",
+        "label": "How an OS maximises the use of resources",
+        "text": "Priorities: the OS lets high-priority jobs be completed first, and gives I/O-bound processes a high priority so their short CPU bursts finish quickly."
+      },
+      {
+        "kind": "Section",
+        "text": "The I/O system: keeping the CPU busy during I/O"
+      },
+      {
+        "kind": "Content",
+        "label": "The I/O system: keeping the CPU busy during I/O",
+        "text": "I/O devices are millions of times slower than the CPU. So the OS starts a transfer, gives the CPU to another process, and lets an interrupt signal when the device has finished."
+      },
+      {
+        "kind": "Content",
+        "label": "The I/O system: keeping the CPU busy during I/O",
+        "text": "The process needing I/O makes a system call and is moved to the blocked state; the CPU is given to a ready process."
+      },
+      {
+        "kind": "Content",
+        "label": "The I/O system: keeping the CPU busy during I/O",
+        "text": "The device (or DMA controller) sends an interrupt when the I/O is complete; the waiting process becomes ready again."
+      },
+      {
+        "kind": "Content",
+        "label": "The I/O system: keeping the CPU busy during I/O",
+        "text": "DMA (direct memory access): the DMA controller transfers a block of data between memory and an I/O device without passing it through the CPU."
+      },
+      {
+        "kind": "Content",
+        "label": "The I/O system: keeping the CPU busy during I/O",
+        "text": "The CPU only sets up the transfer (start address, amount, direction) and is then free to execute other processes."
+      },
+      {
+        "kind": "Example",
+        "label": "The I/O system: keeping the CPU busy during I/O",
+        "text": "Assume a 3 GHz CPU (3 x 10^9 clock cycles per second).\n\nKeyboard: about 0.1 s to input 1 byte\n  3 x 10^9 x 0.1   = 300 000 000 clock cycles idle per byte\nDisk: about 2 x 10^-7 s to transfer 1 byte\n  3 x 10^9 x 2 x 10^-7 = 600 clock cycles per byte\n\nSo the OS blocks the waiting process and schedules another one.\n(Products checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Multi-tasking, processes and levels of scheduling"
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "A single CPU runs one process at a time; switching very quickly makes many programs appear to run at once. A job on disk becomes a process when it is loaded into memory and given a PCB."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "Multi-tasking: managing the execution of many programs that appear to run at the same time."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "A process is a program in execution; each has a PCB that stores its state and saved register values."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "High-level (long-term) scheduler: chooses which program on disk is moved into memory (controls how many processes are in memory)."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "Medium-level (medium-term) scheduler: moves a process out of memory back to disk when memory is overcrowded, and back in later."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "Low-level (short-term) scheduler: chooses which ready process in memory gets the CPU next; the dispatcher moves it to running."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "Need for scheduling: enables multi-tasking (more than one task appears to execute at the same time)."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "Need for scheduling: keeps the CPU busy at all times, so processes execute efficiently and waiting times are reduced."
+      },
+      {
+        "kind": "Content",
+        "label": "Multi-tasking, processes and levels of scheduling",
+        "text": "Need for scheduling: allows high-priority jobs to be completed first; gives every process fair access to the CPU."
+      },
+      {
+        "kind": "Section",
+        "text": "Process states and the transitions between them"
+      },
+      {
+        "kind": "Content",
+        "label": "Process states and the transitions between them",
+        "text": "Once in memory, a process is always in one of three states, and only one process per CPU can be running. For each transition, examiners want the cause (see the table and the diagram)."
+      },
+      {
+        "kind": "Content",
+        "label": "Process states and the transitions between them",
+        "text": "Running: the process is being executed by the CPU."
+      },
+      {
+        "kind": "Content",
+        "label": "Process states and the transitions between them",
+        "text": "Ready: in memory and able to run, waiting in the ready queue for the CPU."
+      },
+      {
+        "kind": "Content",
+        "label": "Process states and the transitions between them",
+        "text": "Blocked (waiting): cannot continue until an event occurs, e.g. I/O completes or a resource becomes free."
+      },
+      {
+        "kind": "Content",
+        "label": "Process states and the transitions between them",
+        "text": "Running to Ready (pre-empted): the time slice expires, a higher-priority process is in the ready queue, or an interrupt arrives at the CPU."
+      },
+      {
+        "kind": "Example",
+        "label": "Process states and the transitions between them",
+        "text": "From     | To      | Cause\n---------+---------+----------------------------------------------------------\nReady    | Running | Low-level scheduler selects it; dispatcher allocates the CPU\nRunning  | Ready   | Time slice expires / higher-priority process ready /\n         |         | interrupt pre-empts it (state saved in its PCB)\nRunning  | Blocked | Needs I/O or a resource/event not yet available\nBlocked  | Ready   | The I/O or event completes (interrupt), so it can run again\n(new)    | Ready   | Program loaded into memory, PCB created\nRunning  | (ends)  | Process completes and is terminated\n\nNot possible: Blocked -> Running (must be scheduled from Ready first);\n              Ready -> Blocked (only a running process can request I/O)."
+      },
+      {
+        "kind": "Section",
+        "text": "The kernel as interrupt handler and low-level scheduling"
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "Interrupts are how the kernel regains control of the CPU. The kernel saves the running process's state and runs the matching routine; afterwards the low-level scheduler may pick a different process. This is how pre-emptive multi-tasking works."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "Interrupt handling: transferring control to another routine when a service is required."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "Sources: timer (time slice ended), I/O device (transfer complete), hardware fault, program (error or system call)."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "The kernel acts as interrupt handler: at the end of the current fetch-execute cycle it identifies the source and priority of the interrupt."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "The contents of the registers (including the PC) are saved in the process's PCB, so the process can later resume where it stopped."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "The appropriate interrupt service routine (ISR) is executed; lower-priority interrupts are disabled while it runs."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "Low-level scheduling: a timer interrupt ends a time slice, moving the running process to ready; the scheduler then dispatches the next process (context switch)."
+      },
+      {
+        "kind": "Content",
+        "label": "The kernel as interrupt handler and low-level scheduling",
+        "text": "An I/O request (system call) blocks the running process and another is dispatched; the I/O-completion interrupt moves it back to ready."
+      },
+      {
+        "kind": "Section",
+        "text": "Scheduling routines: function and benefits"
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "The low-level scheduler uses a scheduling routine to choose the next process. Non-pre-emptive routines let a process run until it finishes or blocks; pre-emptive ones can halt it. Know each routine's rule, a benefit and a drawback."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "First come first served (FCFS): non-pre-emptive; received processes are queued in a FIFO queue and each is executed one by one in arrival order."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "FCFS: no complex logic, and no starvation (every process eventually gets a chance to run); but short processes wait behind long ones."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "Shortest job first (SJF): non-pre-emptive; short processes run first, followed by longer ones (ascending order of CPU time required)."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "SJF: increased throughput, as more processes are executed in a smaller amount of time; but burst times must be estimated and long processes may starve."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "Round robin (RR): pre-emptive; each process is served by the CPU for a fixed time slice (quantum) in turn; an unfinished process goes to the back of the queue."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "RR: no starvation, as each process gets a fixed time every round robin cycle; good response time. But a small quantum means many context switches, and a large one makes it act like FCFS."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "Shortest remaining time (SRT): pre-emptive version of SJF; the process with the least remaining time runs, and a newly arrived process with a shorter remaining time pre-empts the running one."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "SRT: lowest average waiting time; but needs remaining-time estimates and more context switches, and long processes may starve."
+      },
+      {
+        "kind": "Content",
+        "label": "Scheduling routines: function and benefits",
+        "text": "Priority criteria: estimated run time or remaining time, time spent waiting, I/O-bound or CPU-bound."
+      },
+      {
+        "kind": "Section",
+        "text": "Worked scheduling examples (one process set)"
+      },
+      {
+        "kind": "Content",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Draw a timeline first, then read off each finish time. Tie-break rule: equal times go to the earlier arrival, then the lower process number. All tables were generated by script."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Shared process set (ms): P1 = 6, P2 = 10, P3 = 3, P4 = 5. For FCFS, SJF and RR all arrive at time 0 in the order P1, P2, P3, P4; SRT adds arrival times."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "RR: a process that has not finished at the end of its quantum goes to the back of the ready queue; a new arrival joins before it."
+      },
+      {
+        "kind": "Content",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "SRT: re-evaluate whenever a process arrives or finishes; compare the new process's burst with the running process's remaining time."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Timeline: 0-6 P1 | 6-16 P2 | 16-19 P3 | 19-24 P4\n\nProc | Burst | Finish | Turnaround | Waiting\nP1   |   6   |    6   |      6     |    0\nP2   |  10   |   16   |     16     |    6\nP3   |   3   |   19   |     19     |   16\nP4   |   5   |   24   |     24     |   19\nAverage turnaround = 65 / 4 = 16.25 ms\nAverage waiting    = 41 / 4 = 10.25 ms\nP3 (3 ms) waits 16 ms behind the long P2."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Order by burst: P3 (3), P4 (5), P1 (6), P2 (10)\nTimeline: 0-3 P3 | 3-8 P4 | 8-14 P1 | 14-24 P2\n\nProc | Burst | Finish | Turnaround | Waiting\nP1   |   6   |   14   |     14     |    8\nP2   |  10   |   24   |     24     |   14\nP3   |   3   |    3   |      3     |    0\nP4   |   5   |    8   |      8     |    3\nAverage turnaround = 49 / 4 = 12.25 ms\nAverage waiting    = 25 / 4 =  6.25 ms"
+      },
+      {
+        "kind": "Example",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Each process runs for up to 4 ms, then goes to the back of the queue.\nTimeline (time left after each slice in brackets):\n0-4 P1 (2) | 4-8 P2 (6) | 8-11 P3 (0) | 11-15 P4 (1)\n15-17 P1 (0) | 17-21 P2 (2) | 21-22 P4 (0) | 22-24 P2 (0)\n\nProc | Burst | Finish | Turnaround | Waiting\nP1   |   6   |   17   |     17     |   11\nP2   |  10   |   24   |     24     |   14\nP3   |   3   |   11   |     11     |    8\nP4   |   5   |   22   |     22     |   17\nAverage turnaround = 74 / 4 = 18.5 ms\nAverage waiting    = 50 / 4 = 12.5 ms\nWorse averages, but every process got the CPU within 11 ms."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Same bursts, but now the processes arrive at different times:\n  P1 arrives 0 (burst 6), P2 arrives 1 (burst 10), P3 arrives 2 (burst 3), P4 arrives 4 (burst 5)\n\nt=0  only P1 is ready -> P1 runs\nt=1  P2 arrives (10) > P1 remaining (5) -> P1 continues\nt=2  P3 arrives (3) < P1 remaining (4) -> P1 pre-empted, P3 runs\nt=4  P4 arrives (5) > P3 remaining (1) -> P3 continues\nt=5  P3 finishes; remaining: P1 4, P4 5, P2 10 -> P1 runs\nt=9  P1 finishes -> P4 (5) runs\nt=14 P4 finishes -> P2 runs to 24\n\nTimeline: 0-2 P1 | 2-5 P3 | 5-9 P1 | 9-14 P4 | 14-24 P2\n\nProc | Arrive | Burst | Finish | Turnaround | Waiting\nP1   |   0    |   6   |    9   |      9     |    3\nP2   |   1    |  10   |   24   |     23     |   13\nP3   |   2    |   3   |    5   |      3     |    0\nP4   |   4    |   5   |   14   |     10     |    5\nAverage turnaround = 45 / 4 = 11.25 ms\nAverage waiting    = 21 / 4 =  5.25 ms\nSame arrivals, non-pre-emptive SJF: average waiting 5.5 ms; FCFS: 8.5 ms."
+      },
+      {
+        "kind": "Example",
+        "label": "Worked scheduling examples (one process set)",
+        "text": "Averages for the shared process set (ms):\n\nRoutine          | Avg waiting | Avg turnaround | Pre-emptive?\nFCFS             |   10.25     |    16.25       | No\nSJF              |    6.25     |    12.25       | No\nRound robin (q=4)|   12.5      |    18.5        | Yes\nSRT (arrivals)   |    5.25     |    11.25       | Yes\n\nSJF/SRT minimise waiting time but need run-time estimates and can starve long jobs.\nRound robin has the worst averages here but is fairest and most responsive.\nFCFS is simplest but short jobs stuck behind long ones wait longest."
+      },
+      {
+        "kind": "Section",
+        "text": "Memory management, partitions and segmentation"
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Early systems loaded each process into one partition of memory. Segmentation splits a large process into variable-sized segments, each loaded into its own area of memory."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Memory management: allocates memory to processes, keeps protected memory for the kernel, stops one process accessing another's memory, and frees memory when a process ends."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Fixed partitions waste memory when a process is smaller than its partition; dynamic partitions are sized to fit the process."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Segmentation: divides memory into variable-sized blocks (segments) matching logical parts of the program (e.g. code, data, stack, a procedure)."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Segment size is calculated by the compiler; a segment table stores each segment's base address and length."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Because segments differ in size, gaps are left between them as they are loaded and removed (external fragmentation)."
+      },
+      {
+        "kind": "Content",
+        "label": "Memory management, partitions and segmentation",
+        "text": "Slower access times than paging; swapping whole segments in and out of memory also fragments disk storage and degrades performance."
+      },
+      {
+        "kind": "Section",
+        "text": "Paging, page tables and virtual memory"
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Pages and page frames are the same size, so any page fits any free frame and frames need not be adjacent. The memory management unit uses each process's page table to turn a logical address into a physical one. Pages not in RAM stay on disk, which makes virtual memory possible."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Paging: memory is divided into fixed-size blocks; the division into pages is done by the operating system."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Pages are read from / written to secondary storage when required."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Faster access times than segmentation; only waste is unused space in the last page (internal fragmentation)."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Page table (one per process): indexed by page number; holds a presence flag (is the page in RAM?) and the page frame number."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Logical address = page number + offset; the offset is unchanged in the physical address."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Virtual memory: secondary storage is used to simulate additional main memory; it is created temporarily."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Virtual memory extends RAM: the CPU appears to be able to access more memory space than the actual RAM available."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Only the data/pages in use need to be in main memory; pages are swapped between RAM and virtual memory as necessary."
+      },
+      {
+        "kind": "Content",
+        "label": "Paging, page tables and virtual memory",
+        "text": "Used when RAM is running low (e.g. many processes running at once), and for more efficient use of RAM: pages not immediately needed are moved out to disk."
+      },
+      {
+        "kind": "Example",
+        "label": "Paging, page tables and virtual memory",
+        "text": "12-bit logical addresses, page size 256 bytes:\n  top 4 bits = page number, bottom 8 bits = offset.\n\nPage table for the process:\nPage | Presence flag | Frame\n0    |      1        |  7\n1    |      1        |  4\n2    |      0        |  -\n3    |      0        |  -\n4    |      1        | 12\n5    |      1        |  2\n\n(a) Logical address 1447 = 0101 1010 0111\n    page = 0101 = 5, offset = 1010 0111 = 167\n    page 5 is present in frame 2\n    physical = 2 x 256 + 167 = 679 = 0010 1010 0111\n    (the frame number replaces the page number; the offset bits are copied)\n\n(b) Logical address 752 = 0010 1111 0000\n    page 2, offset 240 -> presence flag 0\n    PAGE FAULT: the page must be loaded from disk into a free frame\n    (or a page replaced) and the page table updated before continuing.\n(Both checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Page replacement and disk thrashing"
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "On a page fault with every frame full, a page in RAM must be removed; the page replacement algorithm chooses which."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "Page fault: the page needed is not in main memory (presence flag = 0), so it must be brought in from secondary storage."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "First in first out (FIFO): replace the page that has been in memory longest. Simple (a queue), but it may remove a page that is used often."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "Least recently used (LRU): replace the page that has not been used for the longest time. Better choices, but the OS must record when each page was last used (overhead)."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "Others: least frequently used; optimal (replace the page not needed for longest; a benchmark only, as future use is unknown)."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "Disk thrashing occurs when frequent transfers between main and secondary memory take place (when virtual memory is being used)."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "As main memory fills up, more pages need to be swapped in and out of secondary memory."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "Loading one page causes a page that is needed almost immediately to be swapped out, which must then be loaded again (a repetitive cycle)."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "The swapping leads to a very high rate of hard disk head movements (more wear on the disk)."
+      },
+      {
+        "kind": "Content",
+        "label": "Page replacement and disk thrashing",
+        "text": "Eventually more time is spent swapping pages than processing: the system slows dramatically and may appear to hang."
+      },
+      {
+        "kind": "Example",
+        "label": "Page replacement and disk thrashing",
+        "text": "3 page frames, empty at start. F = page fault, H = hit; the row 'Out' is the page removed.\n\nFIFO (remove the page loaded earliest)\nRef     | 2 4 1 2 5 2 3 4 2 1 5 2\nFrame 1 | 2 2 2 2 5 5 5 4 4 4 4 2\nFrame 2 | - 4 4 4 4 2 2 2 2 1 1 1\nFrame 3 | - - 1 1 1 1 3 3 3 3 5 5\nResult  | F F F H F F F F H F F F\nOut     | - - - - 2 4 1 5 - 2 3 4\nFIFO: 10 page faults, 2 hits\n\nLRU (remove the page unused for longest)\nRef     | 2 4 1 2 5 2 3 4 2 1 5 2\nFrame 1 | 2 2 2 2 2 2 2 2 2 2 2 2\nFrame 2 | - 4 4 4 5 5 5 4 4 4 5 5\nFrame 3 | - - 1 1 1 1 3 3 3 1 1 1\nResult  | F F F H F H F F H F F H\nOut     | - - - - 4 - 1 5 - 3 4 -\nLRU: 8 page faults, 4 hits\n\nFIFO removed page 2 twice although it is used every few references;\nLRU keeps it because it was used recently. (Optimal would give 7 faults.)\n(Both traces generated by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "How the user interface hides the complexity of the hardware"
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "The user interface (command line, GUI or voice) lets people use the computer without knowing how the hardware works."
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "The user interface hides the complexities of the computer/hardware/operating system from the user."
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "It avoids complex commands involving memory locations or computer hardware, e.g. a GUI uses icons for navigation."
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "It provides appropriate access systems for users with differing needs (e.g. screen readers, magnifiers, voice input)."
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "Device drivers are provided by the OS: the user just expects the printer or keyboard to work."
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "File management: the user names files and organises folders; the OS decides where the data is physically stored on the disk."
+      },
+      {
+        "kind": "Content",
+        "label": "How the user interface hides the complexity of the hardware",
+        "text": "System calls and APIs let a program request services (e.g. open a file) without the programmer knowing how the processor or device works."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give three ways an OS maximises the use of resources."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give three ways an OS maximises the use of resources.",
+        "text": "Scheduling keeps the CPU busy (another process runs while one waits for I/O); memory is allocated and paged/virtual memory lets more processes fit; interrupts, DMA and buffers let I/O proceed without the CPU waiting."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe two ways the user interface hides the complexity of the hardware."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe two ways the user interface hides the complexity of the hardware.",
+        "text": "It avoids complex commands involving memory locations or hardware (e.g. a GUI uses icons and drag and drop); device drivers and the file system do the hardware-level work, so the user does not need to know where data is stored or how devices work."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two reasons a process moves from running to ready."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two reasons a process moves from running to ready.",
+        "text": "Its time slice expires; a higher-priority process is in the ready queue / an interrupt arrives and it is pre-empted."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What moves a process from running to blocked, and from blocked to ready?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What moves a process from running to blocked, and from blocked to ready?",
+        "text": "Running to blocked: it needs I/O or a resource that is not available. Blocked to ready: that I/O or event completes (signalled by an interrupt)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Distinguish the high-level, medium-level and low-level schedulers."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Distinguish the high-level, medium-level and low-level schedulers.",
+        "text": "High-level: chooses which program on disk is loaded into memory. Medium-level: swaps processes out of memory to disk and back when memory is full. Low-level: chooses which ready process gets the CPU."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is interrupt handling used for low-level scheduling?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is interrupt handling used for low-level scheduling?",
+        "text": "A timer interrupt ends a time slice and moves the running process to ready so another is dispatched; I/O-completion interrupts move blocked processes to ready; a system call for I/O blocks the process and triggers dispatch of another."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Processes A (8 ms) and B (2 ms) arrive at time 0 in that order. Find the average waiting time under FCFS and SJF."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Processes A (8 ms) and B (2 ms) arrive at time 0 in that order. Find the average waiting time under FCFS and SJF.",
+        "text": "FCFS: A waits 0, B waits 8, average 4 ms. SJF: B waits 0, A waits 2, average 1 ms."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two differences between paging and segmentation."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two differences between paging and segmentation.",
+        "text": "Paging uses fixed-size blocks, segmentation variable-sized blocks; the OS divides memory into pages whereas the compiler calculates segment sizes; paging has faster access times."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "With 1 KB pages, which page and offset does logical address 5000 refer to, and what is the physical address if that page is in frame 3?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "With 1 KB pages, which page and offset does logical address 5000 refer to, and what is the physical address if that page is in frame 3?",
+        "text": "Page = 5000 DIV 1024 = 4, offset = 5000 MOD 1024 = 904. Physical = 3 x 1024 + 904 = 3976."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Explain how disk thrashing occurs."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Explain how disk thrashing occurs.",
+        "text": "With virtual memory, as RAM fills more pages are swapped in and out; a page swapped out is needed again almost at once, so the disk head moves constantly and more time is spent swapping than processing."
       }
     ]
   },
