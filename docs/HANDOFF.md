@@ -68,6 +68,10 @@ The commit is a checkpoint, not a permanently current version.
   diagram). Rebuild each one to the AS standard using the same research method as the AS second pass.
 - The Python-example test in `tests/computer-science-notes.test.mjs` needs `python` on PATH; it
   fails with exit code 9009 on computers without Python (installed on the laptop 2026-09-28).
+- Rebuilt (research method): 13.1, 13.2 (2026-09-30). 13.1: why/when user-defined types, enumerated,
+  pointer (guide ^ syntax, not the coursebook's @), record, set (guide has no operator syntax) and class,
+  with a design exercise; 13.2: serial/sequential/random organisation, access matrix, index, three hash
+  functions, probing/overflow/chaining, SEEK/GETRECORD/PUTRECORD write and search, flagged deletion.
 
 ## Latest verification
 

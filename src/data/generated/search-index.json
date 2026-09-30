@@ -17347,32 +17347,116 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "User-defined data types let a programmer represent a problem using meaningful structures instead of forcing everything into primitive types. At A2 you must know enumerated types, pointers, records and sets, understand why each is useful, and choose a suitable type for a scenario."
+        "text": "Topic 13.1 is about data types that the programmer writes into the program, rather than ones the language supplies. You need to explain why they are needed, then define and use the two non-composite kinds (enumerated and pointer) and the three composite kinds (record, set and class/object) in Cambridge pseudocode: TYPE Name = (value1, value2) for an enumeration, TYPE Name = ^INTEGER for a pointer, TYPE Name ... ENDTYPE for a record, TYPE Name = SET OF CHAR with DEFINE for a set, and CLASS ... ENDCLASS for a class. Paper 3 and Paper 4 questions usually give a scenario and ask you to write the type declarations, to use them (dot notation, dereferencing with ^), or to choose and justify the most suitable type. Marks come from exact syntax and from reasons tied to the data in the scenario."
       },
       {
         "kind": "Definition",
-        "label": "Enumerated type",
-        "text": "A programmer-defined type whose values come from a fixed list of named constants."
+        "label": "Built-in data type",
+        "text": "A type supplied by the programming language, such as INTEGER, REAL, CHAR, STRING, BOOLEAN or DATE, for which the language already fixes the range of values and the operations allowed."
       },
       {
         "kind": "Definition",
-        "label": "Pointer",
-        "text": "A variable that stores the address/reference of another data item."
+        "label": "User-defined data type",
+        "text": "A data type whose definition the programmer writes in the program (with TYPE in pseudocode); variables can then be declared with it like any built-in type."
       },
       {
         "kind": "Definition",
-        "label": "Record",
-        "text": "A composite type grouping named fields that may have different data types."
+        "label": "Non-composite data type",
+        "text": "A data type whose definition does not refer to another data type as a component; the user-defined examples are enumerated and pointer types."
       },
       {
         "kind": "Definition",
-        "label": "Set",
-        "text": "An unordered collection of distinct values with operations such as union and intersection."
+        "label": "Composite data type",
+        "text": "A data type made from a collection of data items, of one or more other data types, grouped under one identifier; examples are record, set and class."
       },
       {
         "kind": "Definition",
-        "label": "Dereference",
-        "text": "Follow a pointer to access the data stored at the referenced address."
+        "label": "Enumerated data type",
+        "text": "A non-composite user-defined type whose definition lists every value a variable of that type may take; the values are ordered."
+      },
+      {
+        "kind": "Definition",
+        "label": "Pointer data type",
+        "text": "A non-composite user-defined type whose variables hold a memory address (a reference to another data item); the definition states the type of data stored at that address."
+      },
+      {
+        "kind": "Definition",
+        "label": "Dereferencing",
+        "text": "Following a pointer to reach the value stored at the address it holds, written PointerName^ in Cambridge pseudocode."
+      },
+      {
+        "kind": "Definition",
+        "label": "Record data type",
+        "text": "A composite user-defined type made of a fixed number of named fields, which may have different data types, declared with TYPE ... ENDTYPE."
+      },
+      {
+        "kind": "Definition",
+        "label": "Set data type",
+        "text": "A composite type holding an unordered collection of values of one data type, with no duplicates and no index, on which set operations such as membership, union and intersection can be carried out."
+      },
+      {
+        "kind": "Definition",
+        "label": "Class",
+        "text": "A composite user-defined type that combines attributes (data) with the methods that act on them; it is the blueprint from which objects are created."
+      },
+      {
+        "kind": "Definition",
+        "label": "Object",
+        "text": "An instance of a class, created in pseudocode with NEW, holding its own values for the class attributes."
+      },
+      {
+        "kind": "Section",
+        "text": "Built-in types, user-defined types and why they are needed"
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Every language supplies built-in types. For each one the language itself decides which values are allowed (an INTEGER holds whole numbers within some range) and which operations work on them (+, DIV, MOD, comparison and so on). The programmer can use these types but cannot change them."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "A user-defined data type is one whose definition the programmer writes into the program. In Cambridge pseudocode that is done with the keyword TYPE. After the definition, the new type name can be used in DECLARE statements, as a parameter type or as the element type of an array, in exactly the same way as INTEGER or STRING. The 'user' here is the programmer using the language, not the person running the program. The language still has to support the idea: a type can only be defined if the language offers that construct."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "User-defined types are needed because the built-in types describe single numbers, characters or strings, while real problems deal with things like an order that can only be at one of four stages, a book with a title, a price and a loan status, or a group of students with no repeats. No language designer can know in advance the values or fields a particular program will need, so there cannot be a built-in 'order stage' type or 'book' type; the programmer has to define it. Doing so makes code easier to read, lets the translator reject invalid values, and keeps related data together under one name."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Do not confuse user-defined types with abstract data types (stack, queue, linked list). An ADT is described by its operations; a user-defined type is a definition written in the program. The two meet when an ADT is built from user-defined types, for example a linked list made of node records."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Built-in type: values and operations fixed by the language."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "User-defined type: definition written by the programmer with TYPE, then used in DECLARE."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Needed because the language cannot know the values or fields a specific problem requires."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Non-composite (does not use another type as a component): enumerated, pointer."
+      },
+      {
+        "kind": "Content",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Composite (a collection of items of other types under one identifier): record, set, class/object."
+      },
+      {
+        "kind": "Example",
+        "label": "Built-in types, user-defined types and why they are needed",
+        "text": "Type        | Category      | Pseudocode definition\nEnumerated  | non-composite | TYPE TStage = (Placed, Packed, Dispatched, Delivered)\nPointer     | non-composite | TYPE TRealPointer = ^REAL\nRecord      | composite     | TYPE TBook ... ENDTYPE (fields declared inside)\nSet         | composite     | TYPE TNameSet = SET OF STRING, then DEFINE\nClass       | composite     | CLASS Ticket ... ENDCLASS\n\nTest: does the definition group several items of other types under one name? Yes = composite.\nA pointer mentions a type (^REAL) but still holds just one value, an address, so it is non-composite."
       },
       {
         "kind": "Section",
@@ -17381,26 +17465,47 @@
       {
         "kind": "Content",
         "label": "Enumerated types",
-        "text": "Use an enumeration when only a fixed set of states is valid. It makes programs self-documenting and prevents meaningless values from being assigned."
+        "text": "An enumerated type is defined by listing, in brackets, every value that a variable of the type can ever hold. The Cambridge format is TYPE <identifier> = (value1, value2, ...). A variable is then declared with the new type name and can only be given one of the listed values. Because every value has to be written into the definition, an enumerated type can never be built in: only the programmer knows the values."
+      },
+      {
+        "kind": "Content",
+        "label": "Enumerated types",
+        "text": "The values are identifiers, not strings, so they are written without quotation marks: Stage ← Packed, never Stage ← \"Packed\". A string variable would accept any text, including a misspelling; an enumerated variable can only hold a listed value, so the mistake is caught."
+      },
+      {
+        "kind": "Content",
+        "label": "Enumerated types",
+        "text": "The values are ordinal: the order in which they are listed gives each one a position, so they can be compared with <, >, <= and >=, and adding 1 gives the next value in the list (the pseudocode guide itself uses this, with a pointer to a Season value plus 1). This lets a program test 'has the order reached at least the Dispatched stage?' with one comparison instead of a list of OR conditions. Adding 1 to the last value has no next value to move to, so a program should check for the end of the list first."
+      },
+      {
+        "kind": "Content",
+        "label": "Enumerated types",
+        "text": "Syntax: TYPE TStage = (Placed, Packed, Dispatched, Delivered)."
+      },
+      {
+        "kind": "Content",
+        "label": "Enumerated types",
+        "text": "Declare: DECLARE Stage : TStage. Assign: Stage ← Packed (no quotes)."
+      },
+      {
+        "kind": "Content",
+        "label": "Enumerated types",
+        "text": "Values are ordered, so Stage >= Dispatched and Stage + 1 are meaningful."
+      },
+      {
+        "kind": "Content",
+        "label": "Enumerated types",
+        "text": "Benefits: readable code, only valid values can be stored, comparisons follow the natural order."
       },
       {
         "kind": "Example",
         "label": "Enumerated types",
-        "text": "TYPE TState = (Waiting, Running, Complete)\nDECLARE State : TState\nState <- Running"
-      },
-      {
-        "kind": "Section",
-        "text": "Pointers"
-      },
-      {
-        "kind": "Content",
-        "label": "Pointers",
-        "text": "Pointers make dynamic structures possible because a node can refer to another node without the items needing to be contiguous in memory. The pointer stores an address; dereferencing accesses the target value. A null pointer represents 'no target'."
+        "text": "TYPE TStage = (Placed, Packed, Dispatched, Delivered)\n\nDECLARE Stage : TStage\n\nStage ← Packed\nIF Stage < Delivered THEN\n   Stage ← Stage + 1               // move on to the next stage\nENDIF\nIF Stage >= Dispatched THEN\n   OUTPUT \"Your parcel is on its way\"\nELSE\n   OUTPUT \"Your parcel is still in the warehouse\"\nENDIF"
       },
       {
         "kind": "Example",
-        "label": "Pointers",
-        "text": "TYPE TNodePointer = ^TNode\nDECLARE Current : TNodePointer"
+        "label": "Enumerated types",
+        "text": "Position of each value: Placed 1, Packed 2, Dispatched 3, Delivered 4\n\nStatement                  | Stage       | Notes\nStage ← Packed            | Packed      | position 2\nStage < Delivered?         |             | 2 < 4, TRUE\nStage ← Stage + 1         | Dispatched  | position 3\nStage >= Dispatched?       |             | 3 >= 3, TRUE\nOutput: Your parcel is on its way\n\nHad Stage been a STRING, the comparison \"Dispatched\" >= \"Packed\" would compare letters\n(D comes before P), giving FALSE: alphabetical order is not the order of the stages.\n(Checked with a Python IntEnum: Stage(Packed + 1) is Dispatched.)"
       },
       {
         "kind": "Section",
@@ -17409,51 +17514,353 @@
       {
         "kind": "Content",
         "label": "Records",
-        "text": "A record models one entity using several fields. Fields may have different types; records can contain arrays or other records, and arrays can contain records. This is ideal for students, products, employees and similar entities."
+        "text": "A record type groups a fixed number of related data items, called fields, under one identifier. The fields may all have different types, which is the key difference from an array. The Cambridge definition starts with TYPE and the type name, declares each field with DECLARE, and finishes with ENDTYPE. A field can itself be of a user-defined type, such as an enumerated genre, or be an array."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "Fields are reached with dot notation, VariableName.FieldName. Two variables of the same record type can be copied in one assignment (Copy ← Original copies every field), and an array can have a record type as its element type. An array of records is the usual way to hold a table whose columns have different types, and it keeps each item's fields together when the array is sorted or searched: Library[3].Price is the price of the third book."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "The coursebook notes that the record is expected to be user-defined, because only the programmer knows which fields the program needs; Python has no record type, so a class (or a dataclass) is used in its place. A record is also the natural unit of a binary file (see 13.2), where each record in the file has the same fields."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "TYPE TBook ... DECLARE Field : Type ... ENDTYPE."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "Fields can have different types, including an enumerated type or an array."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "Access a field with dot notation: ThisBook.Title, Library[Index].OnLoan."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "Whole records can be assigned: Copy ← Library[2]."
+      },
+      {
+        "kind": "Content",
+        "label": "Records",
+        "text": "An array of records replaces parallel arrays and keeps each item's data together."
       },
       {
         "kind": "Example",
         "label": "Records",
-        "text": "TYPE TStudent\n  DECLARE Name : STRING\n  DECLARE Age : INTEGER\n  DECLARE Marks : ARRAY[1:3] OF INTEGER\nENDTYPE"
-      },
-      {
-        "kind": "Section",
-        "text": "Sets"
-      },
-      {
-        "kind": "Content",
-        "label": "Sets",
-        "text": "Sets are useful where membership matters but order and duplicates do not. Union combines members, intersection keeps common members, difference removes members of another set, and membership tests whether a value belongs to the set."
+        "text": "TYPE TGenre = (Fiction, History, Science)\n\nTYPE TBook\n   DECLARE Title : STRING\n   DECLARE Price : REAL\n   DECLARE OnLoan : BOOLEAN\n   DECLARE Genre : TGenre\nENDTYPE\n\nDECLARE Library : ARRAY[1:5] OF TBook\nDECLARE Index, LoanCount : INTEGER\nDECLARE LoanValue : REAL\n\nLibrary[1].Title ← \"Tide Maps\"\nLibrary[1].Price ← 12.50\nLibrary[1].OnLoan ← TRUE\nLibrary[1].Genre ← Fiction\n// ... books 2 to 5 set up in the same way\n\nLoanCount ← 0\nLoanValue ← 0.0\nFOR Index ← 1 TO 5\n   IF Library[Index].OnLoan = TRUE THEN\n      LoanCount ← LoanCount + 1\n      LoanValue ← LoanValue + Library[Index].Price\n   ENDIF\nNEXT Index\nOUTPUT LoanCount, \" books on loan, worth \", LoanValue"
       },
       {
         "kind": "Example",
-        "label": "Sets",
-        "text": "A={1,2,3}, B={2,3,4}\nA union B={1,2,3,4}\nA intersection B={2,3}\nA-B={1}"
+        "label": "Records",
+        "text": "Index | Title           | Price | OnLoan | Genre   | LoanCount | LoanValue\n      |                 |       |        |         | 0         | 0.00\n1     | Tide Maps       | 12.50 | TRUE   | Fiction | 1         | 12.50\n2     | Quiet Engines   | 8.99  | FALSE  | Science | 1         | 12.50\n3     | Salt Roads      | 15.00 | TRUE   | History | 2         | 27.50\n4     | Glass Harbour   | 9.75  | FALSE  | Fiction | 2         | 27.50\n5     | Small Moons     | 11.20 | TRUE   | Science | 3         | 38.70\n\nOutput: 3 books on loan, worth 38.7\n(Recalculated with a Python list of records: 3 on loan, total 38.70.)"
       },
       {
         "kind": "Section",
-        "text": "Choosing a type"
+        "text": "Classes and objects as user-defined types"
       },
       {
         "kind": "Content",
-        "label": "Choosing a type",
-        "text": "Base the choice on the data requirement: enum for fixed named choices; record for related fields; set for unique unordered membership; pointer for dynamic links. In an exam, justify the feature that fits the scenario rather than just defining the type."
+        "label": "Classes and objects as user-defined types",
+        "text": "A class is the second major composite user-defined type. Like a record it groups several data items (its attributes), but it also contains the methods, procedures and functions, that work on those attributes. Attributes are normally PRIVATE, so other code can only change them through the class's PUBLIC methods, which is how a class protects its data. A language has some built-in classes, but to use object-oriented programming properly the programmer defines their own."
       },
       {
-        "kind": "Quick recall",
-        "text": "enum=fixed named choices"
+        "kind": "Content",
+        "label": "Classes and objects as user-defined types",
+        "text": "In Cambridge pseudocode a class is written CLASS Name ... ENDCLASS, the constructor is a procedure called NEW, and an object is created with ObjectName ← NEW ClassName(parameters). Methods are called with dot notation, just like record fields. The full detail (inheritance, polymorphism, getters and setters) belongs to topic 20.1; for 13.1 you need to recognise the class as a composite user-defined type and to say how it differs from a record."
       },
       {
-        "kind": "Quick recall",
-        "text": "pointer=address/reference"
+        "kind": "Content",
+        "label": "Classes and objects as user-defined types",
+        "text": "Class = attributes + methods; record = fields only."
       },
       {
-        "kind": "Quick recall",
-        "text": "record=related fields"
+        "kind": "Content",
+        "label": "Classes and objects as user-defined types",
+        "text": "Object = one instance of a class, created with NEW."
       },
       {
-        "kind": "Quick recall",
-        "text": "set=unique unordered values"
+        "kind": "Content",
+        "label": "Classes and objects as user-defined types",
+        "text": "PRIVATE attributes are reached through PUBLIC methods (encapsulation)."
+      },
+      {
+        "kind": "Example",
+        "label": "Classes and objects as user-defined types",
+        "text": "CLASS Ticket\n   PRIVATE Band : STRING\n   PRIVATE BasePrice : REAL\n\n   PUBLIC PROCEDURE NEW(GivenBand : STRING, GivenPrice : REAL)\n      Band ← GivenBand\n      BasePrice ← GivenPrice\n   ENDPROCEDURE\n\n   PUBLIC FUNCTION GetPrice() RETURNS REAL\n      IF Band = \"VIP\" THEN\n         RETURN BasePrice * 2\n      ELSE\n         RETURN BasePrice\n      ENDIF\n   ENDFUNCTION\nENDCLASS\n\nDECLARE MyTicket : Ticket\nMyTicket ← NEW Ticket(\"VIP\", 18.50)\nOUTPUT MyTicket.GetPrice()        // 18.50 * 2 = 37.0"
+      },
+      {
+        "kind": "Section",
+        "text": "Pointer types and dereferencing"
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "A pointer variable does not hold ordinary data; it holds the memory address of another data item. The pointer type is defined by naming the type of data it will point to: TYPE TRealPointer = ^REAL. The caret in the definition marks the type as a pointer. A variable of that type is declared without a caret: DECLARE PricePtr : TRealPointer."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "Two operations follow, and the position of the caret tells them apart. Written before a variable name, ^Price means 'the address of Price', so PricePtr ← ^Price makes PricePtr point at Price. Written after a pointer name, PricePtr^ means 'the value stored at the address in PricePtr', which is dereferencing. PricePtr^ can be read (Discounted ← PricePtr^ * 0.75) or assigned to (PricePtr^ ← 52.0), and assigning through the pointer changes Price itself, because both names refer to the same memory location."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "The coursebook uses @Number1 for 'address of'; the 2026 pseudocode guide uses ^ThisSeason, so use the guide's form in the exam. The guide also does not define a null pointer value; if a question needs one it will say what value to use (array-based linked lists in 19.1 use an integer such as -1 or 0 as the null pointer)."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "Pointers matter because they let data structures grow and shrink while a program runs. A new item can be stored anywhere in memory and linked in by storing its address, instead of reserving a large fixed array that might never fill. Not every language supports pointer types; Python, for example, handles references automatically and has no pointer syntax."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "Define: TYPE TRealPointer = ^REAL. Declare: DECLARE PricePtr : TRealPointer (no caret)."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "Address of a variable: ^Price. Dereference a pointer: PricePtr^."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "Changing PricePtr^ changes the variable being pointed to."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "The pointer holds an address, not a copy of the data."
+      },
+      {
+        "kind": "Content",
+        "label": "Pointer types and dereferencing",
+        "text": "Used to build dynamic structures (linked lists, trees) that change size at run time."
+      },
+      {
+        "kind": "Example",
+        "label": "Pointer types and dereferencing",
+        "text": "TYPE TRealPointer = ^REAL\n\nDECLARE PricePtr : TRealPointer\nDECLARE Price, Discounted : REAL\n\nPrice ← 40.0\nPricePtr ← ^Price                  // PricePtr now holds the address of Price\nDiscounted ← PricePtr^ * 0.75      // dereference: 40.0 * 0.75\nPricePtr^ ← 52.0                   // writes 52.0 into Price\nOUTPUT Discounted, \" \", Price"
+      },
+      {
+        "kind": "Example",
+        "label": "Pointer types and dereferencing",
+        "text": "Address | Identifier | After line 3 | After line 4 | After line 6\n3012    | Price      | 40.0         | 40.0         | 52.0\n3020    | Discounted | ?            | ?            | 30.0\n3028    | PricePtr   | ?            | 3012         | 3012\n\nLine 5: PricePtr^ looks in address 3012 and finds 40.0; 40.0 * 0.75 = 30.0.\nLine 6: PricePtr^ ← 52.0 writes into address 3012, so Price becomes 52.0.\nOutput: 30.0 52.0\nPricePtr itself never changes from 3012.\n(Checked with a Python ctypes pointer: dereferenced value * 0.75 = 30.0, then the target reads 52.0.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Set types"
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "A set holds a collection of values of one type with three defining properties: the values have no order, there is no index, and no value can appear twice. The pseudocode guide defines a set type in two steps. TYPE TNameSet = SET OF STRING creates the type, and DEFINE Chess (\"Ana\", \"Ben\", \"Chen\", \"Dev\", \"Eli\") : TNameSet creates a set of that type with its members."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "The operations on a set are those of set theory: test whether a value is a member, add a value, remove a value, combine two sets (union), find the members two sets share (intersection) and find the members of one set that are not in another (difference). The 2026 pseudocode guide does not give keywords or symbols for any of these operations, so in an answer describe them in words, or use whatever notation the question defines, rather than inventing syntax."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "The no-duplicates rule is the set's most useful property. Loading a list into a set removes repeated values automatically, and intersection answers questions such as 'which students take both chess and robotics?' in one step. The set is hard to classify: it contains many values, so it counts as composite, yet it has no structure and no index, so you cannot ask for 'the third member'."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "TYPE TNameSet = SET OF STRING, then DEFINE SetName (values) : TNameSet."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "Unordered, no index, no duplicates, all members of one type."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "Operations: membership, add, remove, union, intersection, difference."
+      },
+      {
+        "kind": "Content",
+        "label": "Set types",
+        "text": "No operator syntax is defined in the 2026 guide: describe set operations in words."
+      },
+      {
+        "kind": "Example",
+        "label": "Set types",
+        "text": "TYPE TNameSet = SET OF STRING\n\nDEFINE Chess (\"Ana\", \"Ben\", \"Chen\", \"Dev\", \"Eli\") : TNameSet\nDEFINE Robotics (\"Chen\", \"Eli\", \"Farah\", \"Gus\") : TNameSet\n\n// The guide defines no keywords for membership, union or intersection;\n// use the notation a question gives you, or describe the operation."
+      },
+      {
+        "kind": "Example",
+        "label": "Set types",
+        "text": "Chess    = {Ana, Ben, Chen, Dev, Eli}\nRobotics = {Chen, Eli, Farah, Gus}\n\nIntersection (in both clubs):          {Chen, Eli}\nUnion (in at least one club):          {Ana, Ben, Chen, Dev, Eli, Farah, Gus}  7 members, not 9\nDifference Chess - Robotics:           {Ana, Ben, Dev}\nIs Gus a member of Robotics?           yes\n\nRemoving duplicates: the list Ben, Ana, Ben, Chen loaded into a set gives {Ana, Ben, Chen}.\n(All results checked with Python set operations &, |, - and in.)"
+      },
+      {
+        "kind": "Section",
+        "text": "User-defined types in a real language"
+      },
+      {
+        "kind": "Content",
+        "label": "User-defined types in a real language",
+        "text": "Paper 4 is answered in a real language, so it helps to know how each pseudocode type maps across. In Python an enumeration comes from the enum module (IntEnum keeps the values ordered and comparable), a record is written as a class, most neatly a dataclass, because Python has no record type, a set is built in, and a class is a class. Python has no pointer type: every variable already holds a reference to an object, and the language manages addresses itself. Java and VB.NET have enum types, and VB.NET has Structure for records."
+      },
+      {
+        "kind": "Content",
+        "label": "User-defined types in a real language",
+        "text": "Enumerated: class Stage(IntEnum) in Python; Enum in Java and VB.NET."
+      },
+      {
+        "kind": "Content",
+        "label": "User-defined types in a real language",
+        "text": "Record: dataclass or class in Python; Structure in VB.NET; class in Java."
+      },
+      {
+        "kind": "Content",
+        "label": "User-defined types in a real language",
+        "text": "Set: built-in set in Python; HashSet in Java and VB.NET."
+      },
+      {
+        "kind": "Content",
+        "label": "User-defined types in a real language",
+        "text": "Pointer: no pointer syntax in Python or Java; references are handled automatically."
+      },
+      {
+        "kind": "Example",
+        "label": "User-defined types in a real language",
+        "text": "from dataclasses import dataclass\nfrom enum import IntEnum\n\n\nclass Stage(IntEnum):          # enumerated type: every value listed, in order\n    PLACED = 1\n    PACKED = 2\n    DISPATCHED = 3\n    DELIVERED = 4\n\n\n@dataclass\nclass Book:                    # record type: named fields of different types\n    isbn: str\n    title: str\n    price: float\n    on_loan: bool\n\n\nstage = Stage.PACKED\nstage = Stage(stage + 1)       # ordinal: the next value in the list\nassert stage is Stage.DISPATCHED and stage >= Stage.DISPATCHED\n\nshelf = [\n    Book(\"978-0001\", \"Tide Maps\", 12.50, True),\n    Book(\"978-0002\", \"Quiet Engines\", 8.99, False),\n    Book(\"978-0003\", \"Salt Roads\", 15.00, True),\n]\non_loan = sum(1 for book in shelf if book.on_loan)\nassert on_loan == 2\n\nchess = {\"Ana\", \"Ben\", \"Chen\", \"Dev\", \"Eli\"}      # set type: no order, no duplicates\nrobotics = {\"Chen\", \"Eli\", \"Farah\", \"Gus\"}\nassert chess & robotics == {\"Chen\", \"Eli\"}         # intersection\nassert len(chess | robotics) == 7                  # union\nassert chess - robotics == {\"Ana\", \"Ben\", \"Dev\"}   # difference\nassert \"Gus\" in robotics                           # membership\nassert set([\"Ben\", \"Ana\", \"Ben\", \"Chen\"]) == {\"Ana\", \"Ben\", \"Chen\"}"
+      },
+      {
+        "kind": "Section",
+        "text": "Choosing and designing a user-defined type for a problem"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "An exam scenario describes data in words; your job is to match each part of that description to a type and justify the match with a feature of the data. A value that must be one of a short fixed list of named options suggests an enumerated type. One item described by several facts of different types suggests a record, and many such items suggest an array of records. A collection where only membership matters and repeats must be excluded suggests a set. Data that needs its own operations and protection suggests a class. A structure that has to grow or shrink while the program runs, with items linked to one another, suggests pointers."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "Designing the type means writing the full declaration: sensible type and field names, a data type for every field, and any enumerated or set types defined before the record that uses them. Choose each field's type from the data: a phone number or ID with leading zeros is a STRING, not an INTEGER, a yes/no fact is BOOLEAN, and a date is DATE."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "Fixed list of named values: enumerated."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "Several related values of different types about one thing: record (array of records for many)."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "Membership only, no duplicates, no order: set."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "Data plus the operations on it, with protected attributes: class."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "Links between items, size changing at run time: pointer."
+      },
+      {
+        "kind": "Example",
+        "label": "Choosing and designing a user-defined type for a problem",
+        "text": "// A trip takes up to 40 students. For each: ID (e.g. \"S0417\"), surname, date of birth,\n// payment status (unpaid, deposit paid or fully paid) and one dietary need,\n// which must be one of the needs the caterer can supply.\n\nTYPE TPayment = (Unpaid, Deposit, Paid)\n\nTYPE TNeedSet = SET OF STRING\nDEFINE Catered (\"None\", \"Vegetarian\", \"Vegan\", \"Halal\", \"Gluten free\") : TNeedSet\n\nTYPE TTraveller\n   DECLARE StudentID : STRING         // leading zero, never used in arithmetic\n   DECLARE Surname : STRING\n   DECLARE DateOfBirth : DATE\n   DECLARE Payment : TPayment\n   DECLARE DietaryNeed : STRING       // validated against the Catered set\nENDTYPE\n\nDECLARE Trip : ARRAY[1:40] OF TTraveller\n\n// Justification: payment has three fixed ordered stages (enumerated, so Payment >= Deposit\n// finds everyone who has paid something); each student is several facts of different\n// types (record); up to 40 students (array of records); the caterer's options are a\n// collection checked only for membership (set)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why are user-defined data types necessary?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why are user-defined data types necessary?",
+        "text": "The built-in types cannot model the specific values or groups of fields a problem needs, and the language cannot know them in advance, so the programmer defines them; this improves readability and restricts data to valid values."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name the two non-composite and three composite user-defined types."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name the two non-composite and three composite user-defined types.",
+        "text": "Non-composite: enumerated and pointer. Composite: record, set and class/object."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Write a Cambridge definition of an enumerated type for the stages of a traffic-light sequence: Red, RedAmber, Green, Amber."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Write a Cambridge definition of an enumerated type for the stages of a traffic-light sequence: Red, RedAmber, Green, Amber.",
+        "text": "TYPE TLight = (Red, RedAmber, Green, Amber)"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does 'ordinal' mean for an enumerated type?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does 'ordinal' mean for an enumerated type?",
+        "text": "The values have an order given by the definition, so they can be compared and the next value found."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Given TYPE TIntPointer = ^INTEGER, DECLARE P : TIntPointer and a variable Count, how do you make P point to Count and then output Count's value through P?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Given TYPE TIntPointer = ^INTEGER, DECLARE P : TIntPointer and a variable Count, how do you make P point to Count and then output Count's value through P?",
+        "text": "P ← ^Count, then OUTPUT P^ (dereferencing)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two differences between a record and an array."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two differences between a record and an array.",
+        "text": "Record fields can have different data types, array elements share one type; record fields are reached by name with dot notation, array elements by index."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State three properties of a set."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State three properties of a set.",
+        "text": "Its values have no order, it has no index, and it contains no duplicates (all values are of one type)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How does a class differ from a record?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How does a class differ from a record?",
+        "text": "A class holds methods as well as data, and its attributes are usually private, reached only through its methods; a record holds only fields."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which type would you choose for a list of permitted file extensions that is only ever checked for membership?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which type would you choose for a list of permitted file extensions that is only ever checked for membership?",
+        "text": "A set, because only membership matters, order is irrelevant and duplicates must not appear."
       }
     ]
   },
@@ -17480,131 +17887,533 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "File organisation describes how records are arranged on backing storage; file access describes how they are reached. You must compare serial, sequential and random organisation, understand direct access and indexing, and use hashing—including what happens when collisions occur."
+        "text": "Topic 13.2 is about how the records of a file are arranged on backing storage (organisation) and how a program reaches a particular record (access). There are three organisations: serial (records in the order they arrived), sequential (records in order of a key field) and random (each record at an address worked out from its record key). There are two access methods: sequential access, which reads from the start of the file and works for serial and sequential files, and direct access, which goes straight to a record, using an index for a sequential file or a hash function for a random file. Hashing gets the most exam attention: calculate addresses with a hash function such as Key MOD 13, explain collisions, and show how linear probing, an overflow area or chaining handles them when writing and reading."
+      },
+      {
+        "kind": "Definition",
+        "label": "Record",
+        "text": "A collection of related fields about one item, such as one customer; a data file is made of many records with the same fields."
+      },
+      {
+        "kind": "Definition",
+        "label": "Key field",
+        "text": "A field whose value identifies a record, such as a customer number, used to order a sequential file or to calculate the address in a random file."
       },
       {
         "kind": "Definition",
         "label": "Serial file",
-        "text": "Records are stored in the order they arrive, with no ordering by key."
+        "text": "A file in which records are stored one after another in the order they are added, each new record appended to the end, with no ordering by key."
       },
       {
         "kind": "Definition",
         "label": "Sequential file",
-        "text": "Records are stored in order of a key field."
+        "text": "A file in which the records are stored in order of a key field (ascending or descending)."
       },
       {
         "kind": "Definition",
         "label": "Random file",
-        "text": "Records are stored at locations calculated or chosen to allow direct access."
+        "text": "A file in which each record is stored at an address calculated from its record key, usually by a hashing algorithm, so it can be read or written directly."
+      },
+      {
+        "kind": "Definition",
+        "label": "Sequential access",
+        "text": "Reading records one after another from the start of the file until the required record is found or the end of the file is reached."
+      },
+      {
+        "kind": "Definition",
+        "label": "Direct access",
+        "text": "Going straight to the location of a required record without reading the records before it, using an index or a hash function."
       },
       {
         "kind": "Definition",
         "label": "Index",
-        "text": "A smaller structure mapping search keys to record locations."
+        "text": "A separate table of key values, each with the position of its record in the main file, searched to find where a record is stored."
       },
       {
         "kind": "Definition",
         "label": "Hash function",
-        "text": "An algorithm that transforms a record key into a storage address."
+        "text": "A calculation (hashing algorithm) applied to a record key whose result is the address where that record is stored or should be found."
       },
       {
         "kind": "Definition",
         "label": "Collision",
-        "text": "Two different keys generate the same hash address."
+        "text": "The situation where two different record keys produce the same hash address; keys that do this are called synonyms."
+      },
+      {
+        "kind": "Definition",
+        "label": "Overflow area",
+        "text": "A separate part of the file where records whose home address is already occupied are stored, usually one after another."
       },
       {
         "kind": "Section",
-        "text": "Serial organisation"
+        "text": "Data files, records and the difference between organisation and access"
       },
       {
         "kind": "Content",
-        "label": "Serial organisation",
-        "text": "Very simple for append-heavy data such as logs. New records can be added quickly, but finding one record usually means reading from the start until it is found."
+        "label": "Data files, records and the difference between organisation and access",
+        "text": "A program that stores data for later use writes either a text file, where every value is stored as characters and a line has to be split into items, or a binary file, where values are stored in their internal form (an INTEGER as its two's complement bytes, for example). A binary data file is organised into records, and each record into fields. When every record has the same fields and each string field has a fixed length, every record occupies the same number of bytes, so a program can calculate where record number n starts. That fixed length is what makes direct access possible."
+      },
+      {
+        "kind": "Content",
+        "label": "Data files, records and the difference between organisation and access",
+        "text": "Two separate questions are asked about any data file. File organisation is how the records are arranged: in arrival order, in key order or at calculated addresses. File access is how a program reaches the record it wants: by reading through from the start, or by going straight to it. Organisation limits the access methods available, but examiners treat the two ideas separately, so keep them apart in an answer."
+      },
+      {
+        "kind": "Content",
+        "label": "Data files, records and the difference between organisation and access",
+        "text": "File = records; record = fields; key field = the field that identifies a record."
+      },
+      {
+        "kind": "Content",
+        "label": "Data files, records and the difference between organisation and access",
+        "text": "Fixed-length records let the position of any record be calculated."
+      },
+      {
+        "kind": "Content",
+        "label": "Data files, records and the difference between organisation and access",
+        "text": "Organisation: serial, sequential, random. Access: sequential or direct."
+      },
+      {
+        "kind": "Section",
+        "text": "Serial file organisation"
+      },
+      {
+        "kind": "Content",
+        "label": "Serial file organisation",
+        "text": "In a serial file each new record is simply appended to the end of the file, so the only order is the order in which records arrived. Writing is therefore very fast and simple: there is no need to find a position or move anything. Finding a particular record is slow, because the records are in no key order and the program has to read from the first record until it finds a match or reaches the end."
+      },
+      {
+        "kind": "Content",
+        "label": "Serial file organisation",
+        "text": "Serial files suit data that is collected as it happens and later processed as a whole: a shop's transaction file recording every sale during the day, a sensor log, or an audit trail. They also suit backups to tape, which are written and read in one run."
+      },
+      {
+        "kind": "Content",
+        "label": "Serial file organisation",
+        "text": "Records stored in order of arrival; new records appended to the end."
+      },
+      {
+        "kind": "Content",
+        "label": "Serial file organisation",
+        "text": "Fast to add a record; slow to find one (read from the start)."
+      },
+      {
+        "kind": "Content",
+        "label": "Serial file organisation",
+        "text": "Uses: transaction files, logs, backups, data processed all together in a batch."
+      },
+      {
+        "kind": "Section",
+        "text": "Sequential file organisation (using a key field)"
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential file organisation (using a key field)",
+        "text": "A sequential file keeps its records in order of a key field, for example ascending customer number. The key values are normally unique and in order but need not be consecutive: 1012, 1188, 2045 is fine. The typical use is a master file that is updated at intervals, for example at the end of each day a bank reads the day's serial transaction file, sorted into the same key order, and applies it to the customer master file in one pass."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential file organisation (using a key field)",
+        "text": "Adding a record is more work than in a serial file, because it has to go in the right place. The usual method reads the old file record by record, copying each one to a new file until it reaches the first key larger than the new key, writes the new record there, and then copies the rest. Deleting or editing a record works the same way: copy until the record is reached, leave it out or write the changed version, and copy the rest. The new file then replaces the old one."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential file organisation (using a key field)",
+        "text": "Records in key-field order; keys unique and in sequence, not necessarily consecutive."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential file organisation (using a key field)",
+        "text": "Insert, delete or amend by copying the old file to a new file, making the change at the right point."
+      },
+      {
+        "kind": "Content",
+        "label": "Sequential file organisation (using a key field)",
+        "text": "Uses: master files updated in batches, payroll, files usually processed in key order."
       },
       {
         "kind": "Example",
-        "label": "Serial organisation",
-        "text": "Example: a transaction log written in time order."
+        "label": "Sequential file organisation (using a key field)",
+        "text": "Old file keys: 1012 1188 2045 2960 3071 4420 5503 6019\n\nRead 1012: less than 2500, copy to new file\nRead 1188: less than 2500, copy\nRead 2045: less than 2500, copy\nRead 2960: greater than 2500, so write the new record 2500 first, then copy 2960\nCopy the remaining records 3071 4420 5503 6019 unchanged\n\nNew file keys: 1012 1188 2045 2500 2960 3071 4420 5503 6019\nEvery one of the 8 old records is rewritten, even though only one was added.\n(Merge checked by script.)"
       },
       {
         "kind": "Section",
-        "text": "Sequential organisation"
+        "text": "Random file organisation (using a record key)"
       },
       {
         "kind": "Content",
-        "label": "Sequential organisation",
-        "text": "Records are kept sorted by a key. This is effective for batch processing in key order and allows ordered traversal. Insertion/update can be more expensive because ordering must be preserved."
+        "label": "Random file organisation (using a record key)",
+        "text": "In a random file, which the coursebook also calls a direct-access file, the position of each record is decided by its record key. When a record is written, a hashing algorithm turns its key into an address and the record is stored there. When the record is needed again, the same key is put through the same algorithm, which gives the same address, so the program can jump to it without reading any other record."
+      },
+      {
+        "kind": "Content",
+        "label": "Random file organisation (using a record key)",
+        "text": "'Random' does not mean records are placed haphazardly: every address is calculated. It means that any record can be reached in any order, just as random-access memory can reach any location. Looking at the file from start to finish, the records are in no useful order, because the hash function scatters the keys. A record can be edited in place: read it, change it and write it back at the same address, without disturbing any other record or creating a new file."
+      },
+      {
+        "kind": "Content",
+        "label": "Random file organisation (using a record key)",
+        "text": "Address of a record = hash function applied to its record key."
+      },
+      {
+        "kind": "Content",
+        "label": "Random file organisation (using a record key)",
+        "text": "Same key, same algorithm, same address when writing and when reading."
+      },
+      {
+        "kind": "Content",
+        "label": "Random file organisation (using a record key)",
+        "text": "Records can be read, written or edited in place without a new file."
+      },
+      {
+        "kind": "Content",
+        "label": "Random file organisation (using a record key)",
+        "text": "Records are not in key order, so processing every record in key order is awkward."
+      },
+      {
+        "kind": "Section",
+        "text": "Hashing algorithms: the hash function"
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "A hash function (hashing algorithm) is a calculation applied to the key field whose result is the record's address. The commonest is modulo division: Address = Key MOD N, where N is the number of record positions in the file, numbered 0 to N - 1. MOD gives the remainder after division, so the result is always a valid address. The coursebook's advice is to pick N as a prime number close to the expected number of records, because a prime divisor spreads keys more evenly when the keys share a pattern, such as all being multiples of 5."
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "If the key is not numeric, the characters can be converted first: add the ASCII codes of the characters, then take the total MOD N. Another method is folding: split a long key into equal parts, add the parts, then take MOD N of the total. Whatever the method, a good hash function is quick to calculate, always gives an address inside the file, and spreads the keys as evenly as possible to keep collisions to a minimum."
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "Notice two consequences. First, the addresses bear no relation to the order of the keys. Second, because there are far more possible keys than addresses, different keys can produce the same address. That is a collision, and the file needs a rule for dealing with it."
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "Modulo division: Address = Key MOD N (addresses 0 to N - 1)."
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "N is best a prime close to the number of records the file will hold."
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "Text key: sum the ASCII codes, then MOD N. Folding: split the key into parts, add them, then MOD N."
+      },
+      {
+        "kind": "Content",
+        "label": "Hashing algorithms: the hash function",
+        "text": "Good hash function: fast, always in range, spreads keys evenly, few collisions."
       },
       {
         "kind": "Example",
-        "label": "Sequential organisation",
-        "text": "Example: employee records stored in EmployeeID order for payroll processing."
-      },
-      {
-        "kind": "Section",
-        "text": "Random organisation and direct access"
-      },
-      {
-        "kind": "Content",
-        "label": "Random organisation and direct access",
-        "text": "The program can jump directly to a likely record location rather than reading every previous record. It suits systems that repeatedly retrieve individual records by a unique key."
-      },
-      {
-        "kind": "Section",
-        "text": "Indexes"
-      },
-      {
-        "kind": "Content",
-        "label": "Indexes",
-        "text": "An index stores keys plus pointers/addresses. Searching the smaller index identifies where the full record is stored. Extra storage and maintenance are required, especially when records are inserted or deleted."
-      },
-      {
-        "kind": "Section",
-        "text": "Hashing"
-      },
-      {
-        "kind": "Content",
-        "label": "Hashing",
-        "text": "A hash function transforms a key into an address. A good function is fast and spreads keys across the available range. The same function must be used on retrieval."
+        "label": "Hashing algorithms: the hash function",
+        "text": "Key   | Key MOD 13 | Working\n20417 | 7          | 20417 = 13 x 1570 + 7\n47208 | 5          | 47208 = 13 x 3631 + 5\n31562 | 11         | 31562 = 13 x 2427 + 11\n20430 | 7          | 20430 = 13 x 1571 + 7   collision with 20417\n58311 | 6          | 58311 = 13 x 4485 + 6\n64007 | 8          | 64007 = 13 x 4923 + 8\n15014 | 12         | 15014 = 13 x 1154 + 12\n52024 | 11         | 52024 = 13 x 4001 + 11  collision with 31562\n39019 | 6          | 39019 = 13 x 3001 + 6   collision with 58311\n(All nine remainders recalculated by script.)"
       },
       {
         "kind": "Example",
-        "label": "Hashing",
-        "text": "address <- Key MOD 1000\nKey 47231 -> address 231"
+        "label": "Hashing algorithms: the hash function",
+        "text": "ASCII sum, file of 13 positions:\nLIM    = 76 + 73 + 77 = 226        226 MOD 13 = 5\nDAVIS  = 68 + 65 + 86 + 73 + 83 = 375   375 MOD 13 = 11\nOKAFOR = 79 + 75 + 65 + 70 + 79 + 82 = 450   450 MOD 13 = 8\nMAY, AMY and YAM all sum to 231, so all hash to 231 MOD 13 = 10:\nan ASCII sum ignores letter order, so anagrams always collide.\n\nFolding, file of 100 positions (00 to 99):\nKey 350712 -> parts 35, 07, 12 -> 35 + 7 + 12 = 54 -> 54 MOD 100 = 54\n\nChoosing the divisor, keys that are all multiples of 5 (105, 110, ... 155):\nMOD 10 gives only addresses 0 and 5 (8 of 10 addresses never used).\nMOD 11 gives 6, 0, 5, 10, 4, 9, 3, 8, 2, 7, 1: all 11 addresses, no collisions.\n(All sums and remainders checked by script.)"
       },
       {
         "kind": "Section",
-        "text": "Collision resolution"
+        "text": "Collisions and how they are handled"
       },
       {
         "kind": "Content",
-        "label": "Collision resolution",
-        "text": "Because the address range is finite, collisions are unavoidable. The system needs a defined rule such as linear probing, an overflow area or chaining. Retrieval must follow the same collision rule used during insertion."
+        "label": "Collisions and how they are handled",
+        "text": "A collision happens when a record's hash address is already occupied by a record with a different key. Collisions cannot be avoided completely, so the file must have a fixed rule for them, and the same rule has to be followed when reading as when writing; otherwise a record that was moved would never be found."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "Linear probing (the coursebook's 'sequential search for a vacant address') tries the next address, then the next, wrapping round from the last address to 0, until a free position is found. Reading uses the same path: start at the hash address and move on until the record is found or an empty, never-used position shows it is not in the file. Its weakness is clustering: records bunch round busy addresses, so keys hashing into a cluster need several reads."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "An overflow area is a block of positions kept at the end of the file. A record whose home address is taken goes into the next free position in the overflow area. To read it, the program checks the home address and, if the record is not there, searches the overflow area serially. Chaining gives each address a linked list: a colliding record is added to the list belonging to its hash address, so a search only follows that one short list. The more full the file becomes, the more collisions occur, which is why files are made larger than the number of records they hold."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "Collision: two keys, one address. Synonyms: keys that hash to the same address."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "Linear probing: try the next address (wrap round to 0) until one is free."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "Overflow area: store the record in the next free place at the end of the file; search it serially."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "Chaining: a linked list from each address holds all the records with that hash value."
+      },
+      {
+        "kind": "Content",
+        "label": "Collisions and how they are handled",
+        "text": "Reading must follow the same collision rule as writing."
       },
       {
         "kind": "Example",
-        "label": "Collision resolution",
-        "text": "If slot 231 is occupied, linear probing can test 232, 233, ... until a free slot is found."
+        "label": "Collisions and how they are handled",
+        "text": "Key   | Hash | Addresses tried | Stored at\n20417 | 7    | 7               | 7\n47208 | 5    | 5               | 5\n31562 | 11   | 11              | 11\n20430 | 7    | 7, 8            | 8\n58311 | 6    | 6               | 6\n64007 | 8    | 8, 9            | 9    (its home address was taken by 20430)\n15014 | 12   | 12              | 12\n52024 | 11   | 11, 12, 0       | 0    (wraps from 12 to 0)\n39019 | 6    | 6, 7, 8, 9, 10  | 10\n\nFinal file: 0:52024  5:47208  6:58311  7:20417  8:20430  9:64007  10:39019  11:31562  12:15014\nAddresses 1 to 4 are empty.\n(Simulated by script; placements 7, 5, 11, 8, 6, 9, 12, 0, 10.)"
       },
       {
-        "kind": "Quick recall",
-        "text": "serial=arrival order"
+        "kind": "Example",
+        "label": "Collisions and how they are handled",
+        "text": "Overflow area (home addresses 0-12, overflow from 13):\nHome:     5:47208  6:58311  7:20417  8:64007  11:31562  12:15014\nOverflow: 13:20430  14:52024  15:39019\nReading 39019: home 6 holds 58311, so search overflow 13, 14, 15: found after 4 reads.\n\nChaining (a list from each address):\n5 -> 47208\n6 -> 58311 -> 39019\n7 -> 20417 -> 20430\n8 -> 64007\n11 -> 31562 -> 52024\n12 -> 15014\nReading 39019: go to 6 and follow its list: 2 reads.\n(Both layouts produced by script.)"
       },
       {
-        "kind": "Quick recall",
-        "text": "sequential=key order"
+        "kind": "Section",
+        "text": "Writing to and reading from a random file"
       },
       {
-        "kind": "Quick recall",
-        "text": "random=direct location"
+        "kind": "Content",
+        "label": "Writing to and reading from a random file",
+        "text": "Cambridge pseudocode handles random files with OPENFILE ... FOR RANDOM, SEEK to move the file pointer to an address, GETRECORD to read the record there into a variable of the record type, and PUTRECORD to write a record there. The address is usually the number of records from the start of the file, and the guide asks you to explain how addresses are calculated, which is exactly what the hash function does."
       },
       {
-        "kind": "Quick recall",
-        "text": "index=key->location"
+        "kind": "Content",
+        "label": "Writing to and reading from a random file",
+        "text": "The procedure below writes a customer using Key MOD 13 with linear probing. It assumes the file was set up with 13 empty records whose CustomerID is 0, and that a deleted record is marked with CustomerID -1. After GETRECORD the file pointer has moved on to the next record, so the program must SEEK back to the same address before PUTRECORD. The search function stops at an empty record (0), because a never-used position means the key was never probed past, but it steps over deleted records (-1), because a record written later may lie beyond them."
       },
       {
-        "kind": "Quick recall",
-        "text": "collision needs a rule"
+        "kind": "Content",
+        "label": "Writing to and reading from a random file",
+        "text": "OPENFILE \"Customers.dat\" FOR RANDOM; SEEK file, address; GETRECORD / PUTRECORD file, variable."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing to and reading from a random file",
+        "text": "Writing: hash the key, probe until an empty or deleted record, SEEK back, PUTRECORD."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing to and reading from a random file",
+        "text": "Reading: hash the key, probe until the key or an empty record is found."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing to and reading from a random file",
+        "text": "Count the probes so a full file cannot cause an infinite loop."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing to and reading from a random file",
+        "text": "CONSTANT FileSize = 13\n\nTYPE TCustomer\n   DECLARE CustomerID : INTEGER      // 0 = never used, -1 = deleted\n   DECLARE Name : STRING\n   DECLARE Balance : REAL\nENDTYPE\n\nFUNCTION Hash(Key : INTEGER) RETURNS INTEGER\n   RETURN Key MOD FileSize\nENDFUNCTION\n\nPROCEDURE WriteCustomer(NewCustomer : TCustomer)\n   DECLARE Address, Tries : INTEGER\n   DECLARE Slot : TCustomer\n   DECLARE Placed : BOOLEAN\n   Address ← Hash(NewCustomer.CustomerID)\n   Placed ← FALSE\n   Tries ← 0\n   OPENFILE \"Customers.dat\" FOR RANDOM\n   WHILE Placed = FALSE AND Tries < FileSize\n      SEEK \"Customers.dat\", Address\n      GETRECORD \"Customers.dat\", Slot\n      IF Slot.CustomerID <= 0 THEN\n         SEEK \"Customers.dat\", Address       // GETRECORD moved the pointer on\n         PUTRECORD \"Customers.dat\", NewCustomer\n         Placed ← TRUE\n      ELSE\n         Address ← (Address + 1) MOD FileSize   // linear probing with wrap-round\n         Tries ← Tries + 1\n      ENDIF\n   ENDWHILE\n   CLOSEFILE \"Customers.dat\"\n   IF Placed = FALSE THEN\n      OUTPUT \"File is full\"\n   ENDIF\nENDPROCEDURE\n\nFUNCTION FindCustomer(SearchID : INTEGER) RETURNS INTEGER\n   DECLARE Address, Tries, Result : INTEGER\n   DECLARE Slot : TCustomer\n   Address ← Hash(SearchID)\n   Tries ← 0\n   Result ← -2                        // -2 = still searching\n   OPENFILE \"Customers.dat\" FOR RANDOM\n   WHILE Result = -2 AND Tries < FileSize\n      SEEK \"Customers.dat\", Address\n      GETRECORD \"Customers.dat\", Slot\n      IF Slot.CustomerID = SearchID THEN\n         Result ← Address\n      ELSE\n         IF Slot.CustomerID = 0 THEN\n            Result ← -1                 // empty position: key not in file\n         ELSE\n            Address ← (Address + 1) MOD FileSize\n            Tries ← Tries + 1\n         ENDIF\n      ENDIF\n   ENDWHILE\n   CLOSEFILE \"Customers.dat\"\n   IF Result = -2 THEN\n      Result ← -1                       // every position checked\n   ENDIF\n   RETURN Result\nENDFUNCTION"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing to and reading from a random file",
+        "text": "Search 39019: Hash = 6\nAddress | CustomerID read | Action\n6       | 58311           | not a match, not empty, move on\n7       | 20417           | move on\n8       | 20430           | move on\n9       | 64007           | move on\n10      | 39019           | match, Result = 10 (5 reads)\n\nSearch 33009: Hash = 33009 MOD 13 = 2; address 2 holds 0 (empty), Result = -1 after 1 read.\nSearch 39032: Hash = 6; reads 6, 7, 8, 9, 10, 11, 12, 0, 1; address 1 is empty, Result = -1 after 9 reads.\nThe cluster from 5 to 12 (plus 0) makes an unsuccessful search expensive.\n(Traced by the Python simulation below.)"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing to and reading from a random file",
+        "text": "FILE_SIZE = 13\nEMPTY, DELETED = 0, -1\n\n\ndef hash_address(key):\n    return key % FILE_SIZE              # hash function: modulo division\n\n\ndef write_record(slots, key):\n    address = hash_address(key)\n    for _ in range(FILE_SIZE):\n        if slots[address] in (EMPTY, DELETED):\n            slots[address] = key\n            return address\n        address = (address + 1) % FILE_SIZE   # linear probing, wraps to 0\n    raise OverflowError(\"file full\")\n\n\ndef find_record(slots, key):\n    address = hash_address(key)\n    for _ in range(FILE_SIZE):\n        if slots[address] == key:\n            return address\n        if slots[address] == EMPTY:       # a never-used slot ends the search\n            return None\n        address = (address + 1) % FILE_SIZE\n    return None\n\n\nslots = [EMPTY] * FILE_SIZE\nkeys = [20417, 47208, 31562, 20430, 58311, 64007, 15014, 52024, 39019]\nplaced = [write_record(slots, key) for key in keys]\nassert placed == [7, 5, 11, 8, 6, 9, 12, 0, 10]\nassert find_record(slots, 39019) == 10 and find_record(slots, 33009) is None\nslots[9] = DELETED                        # delete 64007 with a flag, not a blank\nassert find_record(slots, 39019) == 10"
+      },
+      {
+        "kind": "Section",
+        "text": "File access: sequential access and direct access"
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "Sequential access reads the records in the order they are stored, starting at the beginning. It is the only way to search a serial file: every record may have to be read, and a key that is absent is only confirmed at the end of the file. It is also the normal way to process a sequential file, with one advantage: because the keys are in order, the search compares only key fields and can stop as soon as it reads a key larger than the one wanted, since the record cannot be further on."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "Direct access reaches a record without reading those before it, and it works for two organisations. For a random file the key is hashed to give the address, then any collision rule is followed; some serial searching may still be needed after the first jump. For a sequential file an index is used: a separate index file holds each key with the position of its record in the main file. The program searches the smaller index (it is in key order, so a binary search can be used), reads the position, then goes straight to the record. The sequential file can therefore be processed in key order for batch work and also searched directly for single records."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "Sequential access: serial and sequential files; reads from the start."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "On a sequential file the search can stop once a larger key is read."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "Direct access: sequential files (through an index) and random files (through the hash function)."
+      },
+      {
+        "kind": "Content",
+        "label": "File access: sequential access and direct access",
+        "text": "An index costs extra storage and must be updated whenever records are added or removed."
+      },
+      {
+        "kind": "Example",
+        "label": "File access: sequential access and direct access",
+        "text": "The same eight keys stored three ways:\nSerial (arrival order):  4420 1012 6019 2960 1188 5503 3071 2045\nSequential (key order):  1012 1188 2045 2960 3071 4420 5503 6019\n\nFind 3071\n  serial, sequential access:      7 reads (it is the 7th record)\n  sequential, sequential access:  5 reads (1012, 1188, 2045, 2960, 3071)\nFind 3050 (not in the file)\n  serial:      all 8 records read before 'not found'\n  sequential:  5 reads; 3071 > 3050, so stop early\n\nIndex for direct access to the sequential file:\nKey:      1012 1188 2045 2960 3071 4420 5503 6019\nPosition:    1    2    3    4    5    6    7    8\nFind 3071: search the index, read position 5, then SEEK to record 5 and read only that record.\n(Read counts checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Editing and deleting records"
+      },
+      {
+        "kind": "Content",
+        "label": "Editing and deleting records",
+        "text": "For a sequential file, editing or deleting is done the same way as inserting: copy the records to a new file until the record concerned is reached, write the edited version (or skip it to delete it), then copy the rest. For a random file no new file is needed. A record can be edited in place by hashing its key, finding it, changing it and writing it back to the same address."
+      },
+      {
+        "kind": "Content",
+        "label": "Editing and deleting records",
+        "text": "Deleting from a random file needs care. The record is not simply blanked; it is marked with a flag (here CustomerID -1) that later reads skip over. The reason is linear probing: a search stops at an empty position, so emptying a position in the middle of a probe path would hide every record stored beyond it."
+      },
+      {
+        "kind": "Content",
+        "label": "Editing and deleting records",
+        "text": "Sequential file: copy to a new file, making the change on the way."
+      },
+      {
+        "kind": "Content",
+        "label": "Editing and deleting records",
+        "text": "Random file: edit in place at the hashed address."
+      },
+      {
+        "kind": "Content",
+        "label": "Editing and deleting records",
+        "text": "Random file deletion: set a 'deleted' flag, do not blank the position."
+      },
+      {
+        "kind": "Example",
+        "label": "Editing and deleting records",
+        "text": "Linear-probing file: 6:58311 7:20417 8:20430 9:64007 10:39019\nDelete 64007 by blanking address 9, then search for 39019 (hash 6):\n  reads 6, 7, 8, then 9 is empty, so the search reports 'not found' after 4 reads. Wrong.\nDelete 64007 by setting a deleted flag at address 9 instead:\n  reads 6, 7, 8, 9 (flagged, keep going), 10: found after 5 reads. Correct.\nA later write may reuse address 9, because a flagged position counts as free for writing.\n(Both cases run in the Python simulation.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Choosing file organisation and access for a problem"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Base the choice on how the file will be used. If records are simply collected as they arrive and later processed all together, serial organisation with sequential access is simplest. If most processing handles all or many records in key order, and changes can wait for a batch run, sequential organisation fits; add an index if single records must also be found quickly. If the main use is fast, frequent access to one record at a time in a large file, for example checking a password when a user logs in or looking up a stock item at a till, use random organisation with direct access through a hash function."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Justify the choice from the scenario and name the cost: sequential files must be rewritten to insert records, indexes need extra storage and maintenance, and hashed files need spare space and a collision rule."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Transaction log, audit trail, backup: serial, sequential access."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Payroll or monthly billing of every customer in key order: sequential, sequential access."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Same file also needing single-record lookups: sequential with an index for direct access."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Login passwords, stock lookup, booking systems: random, direct access by hashing."
+      },
+      {
+        "kind": "Example",
+        "label": "Choosing file organisation and access for a problem",
+        "text": "Scenario                                          | Organisation | Access  | Reason\nGym entry barrier logs each swipe                 | Serial       | Seq.    | records only appended, processed later as a batch\nWater company bills every customer each quarter   | Sequential   | Seq.    | every record processed in customer-number order\nAirline checks one passenger's booking at a desk  | Random       | Direct  | one record needed immediately from a large file\nLibrary catalogue printed in ISBN order and also  | Sequential   | Both    | key-order processing plus an index for\nsearched for single books                         | + index      |         | direct access to single records"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe serial file organisation."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe serial file organisation.",
+        "text": "Records are stored in the order they arrive, each new record appended to the end of the file, with no key order."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a sequential file need that a serial file does not?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a sequential file need that a serial file does not?",
+        "text": "A key field, with the records stored in order of that key."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Which access methods can be used with each organisation?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Which access methods can be used with each organisation?",
+        "text": "Serial: sequential access. Sequential: sequential access, or direct access through an index. Random: direct access through a hash function."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a hash function?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a hash function?",
+        "text": "A calculation applied to a record's key whose result is the address where the record is stored or found, for example Key MOD 13."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Calculate the address of key 52024 in a 13-position file using Key MOD 13."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Calculate the address of key 52024 in a 13-position file using Key MOD 13.",
+        "text": "52024 = 13 x 4001 + 11, so address 11."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is a collision, and name three ways of handling one."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is a collision, and name three ways of handling one.",
+        "text": "Two different keys give the same address. Linear probing to the next free address, storing the record in an overflow area, or chaining records in a linked list from the address."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a prime number a good choice for N in Key MOD N?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a prime number a good choice for N in Key MOD N?",
+        "text": "It spreads keys more evenly across the addresses, especially when the keys share a pattern, so there are fewer collisions."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How can a sequential file be accessed directly?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How can a sequential file be accessed directly?",
+        "text": "Through an index file of key values with the position of each record; search the index, then go straight to that position."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why is a deleted record in a hashed file flagged rather than cleared?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why is a deleted record in a hashed file flagged rather than cleared?",
+        "text": "A search stops at an empty position, so clearing one would hide any record placed beyond it by linear probing."
       }
     ]
   },

@@ -1174,10 +1174,13 @@
             "levels": [
               "A2"
             ],
-            "summary": "Define your own enumerated and composite data types where the built-in primitive types aren't specific enough.",
+            "summary": "Explain why user-defined types are needed, define and use enumerated and pointer types and record, set and class types in Cambridge pseudocode, and choose a suitable type for a scenario.",
             "focusPoints": [
-              "enumerated/user-defined types",
-              "appropriate type design"
+              "why user-defined types",
+              "enumerated (ordinal values)",
+              "pointers and dereferencing",
+              "records, sets, classes",
+              "choosing a type"
             ],
             "contentDepth": "full"
           },
@@ -1188,11 +1191,13 @@
             "levels": [
               "A2"
             ],
-            "summary": "Compare serial, sequential and direct (random) file access, and understand indexing and hashing for fast lookup.",
+            "summary": "Compare serial, sequential and random file organisation, match sequential or direct access (index or hash function) to each, and use hashing algorithms with collision handling to write and read records.",
             "focusPoints": [
-              "serial/sequential/direct access",
+              "serial/sequential/random",
+              "sequential vs direct access",
               "indexes",
-              "hashing/collisions"
+              "hash functions",
+              "collisions: probing, overflow, chaining"
             ],
             "contentDepth": "full"
           },
