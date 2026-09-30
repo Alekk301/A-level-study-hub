@@ -56,8 +56,16 @@ The commit is a checkpoint, not a permanently current version.
   syllabus items; 7.1 was rewritten because the first pass followed the wrong syllabus outcomes.
 - Second pass complete for every AS topic (1.1–12.3) as of 2026-09-30.
 - `tests/content-data.test.mjs` hard-codes the detailed-note count; update it with each new file.
-- Follow-up not done yet: add a strict 9618 AS block to `scripts/validate-data.mjs` like the
-  Business one.
+- `scripts/validate-data.mjs` has a strict 9618 AS block (2026-09-30), modelled on the Business
+  one: 29 AS topics, each full depth with 7+ definitions, 5+ sections, 3 analysis chains, 4+ exam
+  tips, 5+ common mistakes, 7+ Q&A recall checks, a comparison table, a diagram and 12,000+
+  characters of JSON. Extend it to the A2 topics once they are rebuilt.
+
+## Computer Science 9618 A2 notes rebuild
+
+- Started 2026-09-30. The A2 notes (13.1–20.2) are marked `full` but are thin first versions
+  (about 4,000–19,000 characters, no analysis chains, several without a comparison table or
+  diagram). Rebuild each one to the AS standard using the same research method as the AS second pass.
 - The Python-example test in `tests/computer-science-notes.test.mjs` needs `python` on PATH; it
   fails with exit code 9009 on computers without Python (installed on the laptop 2026-09-28).
 

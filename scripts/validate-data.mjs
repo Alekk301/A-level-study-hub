@@ -140,6 +140,38 @@ for (const topic of businessTopics) {
   assert(JSON.stringify(note).length >= 8_000, `${key} is unexpectedly shallow for the detailed Business set.`);
 }
 
+const computerScience = subjects.find((subject) => subject.code === "9618");
+const csAsTopics = computerScience.units.flatMap((unit) => unit.topics).filter((topic) => topic.levels.includes("AS"));
+assert(csAsTopics.length === 29, `9618 should contain exactly 29 AS-route topics, found ${csAsTopics.length}.`);
+for (const topic of csAsTopics) {
+  const key = `9618:${topic.id}`;
+  const note = noteMap.get(key);
+  assert(Boolean(note), `${key} is missing its detailed Computer Science note file.`);
+  if (!note) continue;
+  assert(note.contentDepth === "full", `${key} is not marked as full notes.`);
+  assert(note.syllabusPoints.length >= 2, `${key} needs at least two syllabus outcomes.`);
+  assert(note.definitions.length >= 7, `${key} needs at least seven definitions.`);
+  assert(note.sections.length >= 5, `${key} needs at least five substantive sections.`);
+  assert((note.analysisChains ?? []).length >= 3, `${key} needs at least three analysis chains.`);
+  assert(note.examTips.length >= 4, `${key} needs at least four exam tips.`);
+  assert(note.commonMistakes.length >= 5, `${key} needs at least five common mistakes.`);
+  assert(note.quickRecall.length >= 7, `${key} needs at least seven recall checks.`);
+  assert(
+    note.quickRecall.every(
+      (item) =>
+        item &&
+        typeof item.question === "string" &&
+        item.question.trim() &&
+        typeof item.answer === "string" &&
+        item.answer.trim(),
+    ),
+    `${key} quick recall must use non-empty question-and-answer disclosures.`,
+  );
+  assert(Boolean(note.comparisonTable), `${key} needs a comparison table.`);
+  assert(Boolean(note.diagram), `${key} needs a diagram.`);
+  assert(JSON.stringify(note).length >= 12_000, `${key} is unexpectedly shallow for the detailed Computer Science set.`);
+}
+
 assert(searchIndex.length === topicCount, `Search index has ${searchIndex.length} entries for ${topicCount} topics.`);
 assert(new Set(searchIndex.map((entry) => entry.key)).size === searchIndex.length, "Search index contains duplicate keys.");
 
