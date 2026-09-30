@@ -1333,11 +1333,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Compare symmetric and asymmetric encryption, and understand how digital signatures and certificates verify identity.",
+            "summary": "Explain symmetric and asymmetric encryption and which key is used for private and verified messages, produce and check digital signatures, acquire a digital certificate, and describe SSL/TLS and quantum cryptography.",
             "focusPoints": [
-              "symmetric/asymmetric encryption",
+              "symmetric/asymmetric keys",
+              "public/private key use",
               "digital signatures",
-              "certificates"
+              "digital certificates and CA",
+              "SSL/TLS handshake",
+              "quantum cryptography"
             ],
             "contentDepth": "full"
           },

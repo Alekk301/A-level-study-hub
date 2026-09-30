@@ -110,6 +110,12 @@ The commit is a checkpoint, not a permanently current version.
   syntax diagrams and BNF with a derivation, invalid-string reasons and writing recursive rules, optimisation
   before/after examples, RPN (bracketing, shunting-yard traces, expression tree post-order, stack evaluation,
   RPN to infix) and a Python evaluator; grammar verdicts, conversions and stack traces checked by script.
+- Rebuilt (research method): 17.1 (2026-09-30). Sections in ch21 order with every Rocket Revise point: terms and
+  four security concerns with a brute-force key-length example, symmetric keys and key distribution, asymmetric
+  private-message sequence, verified message to the public with a which-key table, digital signature and
+  alteration-detection steps with a toy signature, certificate acquisition/contents and signature vs certificate,
+  toy RSA (labelled beyond syllabus), TLS purpose/handshake/situations, quantum benefits/drawbacks with a QKD
+  basis table; all numbers checked by script.
 
 ## Latest verification
 

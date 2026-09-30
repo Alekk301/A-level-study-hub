@@ -22937,87 +22937,459 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "A2 security focuses on protecting communication and proving identity. You must compare symmetric/asymmetric encryption, understand public/private key use for confidentiality and digital signatures, explain certificates and TLS/SSL, and know the idea, strengths and limitations of quantum cryptography."
+        "text": "How encryption works: plain text, cipher text, keys, and symmetric against asymmetric cryptography with the key-distribution problem. Using a key pair to send a private message to one receiver (receiver's public key) or a verified message to the public (sender's private key). Digital signatures (hash, digest, encrypt with the private key) and how a digital certificate is acquired from a Certificate Authority. The purpose and handshake of SSL/TLS and where it is used; the purpose, benefits and drawbacks of quantum cryptography."
       },
       {
         "kind": "Definition",
-        "label": "Plaintext",
-        "text": "Readable original data before encryption."
+        "label": "Plain text",
+        "text": "The original data before encryption (or after decryption), in a form anyone can read."
       },
       {
         "kind": "Definition",
-        "label": "Ciphertext",
-        "text": "Encrypted data intended to be unreadable without the correct key."
+        "label": "Cipher text",
+        "text": "The result of applying an encryption algorithm and a key to plain text; meaningless if intercepted without the key."
       },
       {
         "kind": "Definition",
-        "label": "Symmetric encryption",
-        "text": "The same secret key is used for encryption and decryption."
+        "label": "Encryption / decryption",
+        "text": "Encryption uses an algorithm and a key to turn plain text into cipher text; decryption uses an algorithm and a key to turn cipher text back into plain text."
       },
       {
         "kind": "Definition",
-        "label": "Asymmetric encryption",
-        "text": "A related public/private key pair is used for complementary operations."
+        "label": "Key",
+        "text": "A value (string of bits) used by the encryption/decryption algorithm; the algorithm is public, the security depends on keeping the relevant key secret."
+      },
+      {
+        "kind": "Definition",
+        "label": "Symmetric key cryptography",
+        "text": "A single secret key, shared by sender and receiver, is used both to encrypt and to decrypt."
+      },
+      {
+        "kind": "Definition",
+        "label": "Asymmetric key cryptography",
+        "text": "Uses a matching pair of different keys (public and private): data encrypted with one key can only be decrypted with the other key of the pair."
+      },
+      {
+        "kind": "Definition",
+        "label": "Public key",
+        "text": "The key of a pair that is made available to everyone; used to encrypt data sent to the key owner, or to verify the owner's signature."
+      },
+      {
+        "kind": "Definition",
+        "label": "Private key",
+        "text": "The key of a pair that is kept secret by its owner and never transmitted; decrypts data encrypted with the matching public key and creates digital signatures."
+      },
+      {
+        "kind": "Definition",
+        "label": "Message digest (hash)",
+        "text": "A fixed-length value produced by applying a one-way hashing algorithm to a message; any change to the message gives a different digest."
       },
       {
         "kind": "Definition",
         "label": "Digital signature",
-        "text": "Cryptographic evidence that helps verify sender authenticity and detect alteration."
+        "text": "The message digest encrypted with the sender's private key; used to authenticate the sender and show the message has not been altered."
       },
       {
         "kind": "Definition",
         "label": "Digital certificate",
-        "text": "A digitally signed credential binding an identity to a public key."
+        "text": "An electronic document issued (and signed) by a Certificate Authority that authenticates the identity of a website/individual/organisation and contains its public key."
       },
       {
         "kind": "Definition",
-        "label": "Certificate Authority",
-        "text": "A trusted organisation that verifies identity and signs digital certificates."
+        "label": "Certificate Authority (CA)",
+        "text": "A trusted third party that checks the identity of an applicant and issues digital certificates signed with the CA's private key."
+      },
+      {
+        "kind": "Definition",
+        "label": "SSL/TLS",
+        "text": "Secure Socket Layer and its successor Transport Layer Security: protocols that authenticate the server and encrypt data between a client and a server (HTTP becomes HTTPS)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Quantum cryptography",
+        "text": "Uses the properties of photons (quantum mechanics) to distribute an encryption key securely over a fibre-optic cable, so any eavesdropping is detected."
       },
       {
         "kind": "Section",
-        "text": "Symmetric encryption"
+        "text": "Encryption fundamentals and security concerns"
       },
       {
         "kind": "Content",
-        "label": "Symmetric encryption",
-        "text": "Fast and suitable for large amounts of data. The weakness is secure key distribution: both parties need the same secret key, and disclosure of it compromises confidentiality."
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Encryption does not stop data being intercepted; it makes intercepted data meaningless. The algorithm is public; only the key must be secret. Key cryptography is used to meet four concerns when data is transmitted."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Plain text + key -> encryption algorithm -> cipher text -> transmitted -> decryption algorithm + key -> plain text."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Confidentiality: only the intended receiver is able to understand the message."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Authenticity: the message is from a trusted source / the receiver can be sure who sent it."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Integrity: the message has not been altered during transmission."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Non-repudiation: neither the sender nor the receiver can deny that the transmission happened."
+      },
+      {
+        "kind": "Content",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Security of the cipher text depends on a complex algorithm and a long key (many bits), so a brute-force attack (trying every key) takes too long."
+      },
+      {
+        "kind": "Example",
+        "label": "Encryption fundamentals and security concerns",
+        "text": "Number of keys = 2^(key length)\n\n 56-bit key : 2^56  = 7.2 x 10^16 keys -> 7.2 x 10^4 s  = about 20 hours\n128-bit key : 2^128 = 3.4 x 10^38 keys -> 3.4 x 10^26 s = about 1.1 x 10^19 years\n256-bit key : 2^256 = 1.2 x 10^77 keys -> about 3.7 x 10^57 years\n\nEach extra bit doubles the number of keys to try.\n(Values checked by script.)"
       },
       {
         "kind": "Section",
-        "text": "Asymmetric encryption for confidentiality"
+        "text": "Symmetric key cryptography"
       },
       {
         "kind": "Content",
-        "label": "Asymmetric encryption for confidentiality",
-        "text": "To send a secret message to Bob, encrypt using Bob's PUBLIC key. Only the matching Bob PRIVATE key should be able to decrypt it. Public keys may be distributed openly; private keys must remain secret."
+        "label": "Symmetric key cryptography",
+        "text": "Sender and receiver hold the same secret key. It is quick, so it is used for large amounts of data, but the key itself has to reach the receiver somehow, and anyone who intercepts it can read every message."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "Uses a single key which is used/shared by both parties to encrypt and decrypt messages."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "Encrypt: the sender uses the secret key with the encryption algorithm to turn plain text into cipher text."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "Decrypt: the receiver uses the same secret key to turn the cipher text back into plain text."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "Simple process that can be carried out quickly, so suits large volumes of data (e.g. a whole session)."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "Key length is shorter (usually 128 or 256 bits, e.g. AES)."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "Key-distribution problem: the secret key must be sent to the receiver securely; if it is intercepted, all messages can be decrypted, so the risk of compromise is higher."
+      },
+      {
+        "kind": "Content",
+        "label": "Symmetric key cryptography",
+        "text": "A different key is needed for each pair of communicators, which is hard to manage for many users."
       },
       {
         "kind": "Section",
-        "text": "Digital signatures"
+        "text": "Asymmetric key cryptography: a private message to an individual/organisation"
       },
       {
         "kind": "Content",
-        "label": "Digital signatures",
-        "text": "For authentication/integrity, the sender uses their private key in the signing process. A recipient verifies using the sender's public key. In real systems a hash of the message is normally signed, so modification can be detected efficiently."
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "The receiver generates a matching key pair. The public key can be given to anyone because it cannot decrypt what it encrypted; only the private key, which never leaves the receiver, can. This removes the need to send a secret key."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Uses a pair of different keys: one key encrypts the message, the matching key decrypts it."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Only the public key is available to everyone; the private key is kept secret and never transmitted."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Better security (solves key distribution), but a longer, more complex process, so slower."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Key length is longer (usually 2048 bits for RSA)."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Private message from the public to an organisation: encrypt with the receiver's (organisation's) public key; only the receiver's private key can decrypt it."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Many members of the public can use the same public key, yet only the organisation can read what they send."
+      },
+      {
+        "kind": "Content",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "Two-way communication needs two key pairs: each party keeps its private key and sends its public key to the other."
+      },
+      {
+        "kind": "Example",
+        "label": "Asymmetric key cryptography: a private message to an individual/organisation",
+        "text": "1. The shop's (receiver's) computer uses an algorithm to generate a matching\n   pair of keys: public and private.\n2. The shop's public key is sent to / published for the customer (sender).\n3. The customer encrypts the plain text using the shop's public key to\n   create cipher text.\n4. The cipher text is sent to the shop's computer.\n5. The shop decrypts it using the shop's private key (which was never sent).\n\nAn eavesdropper who has the public key and the cipher text still cannot\ndecrypt it: that needs the private key."
       },
       {
         "kind": "Section",
-        "text": "Certificates and trust"
+        "text": "Sending a verified message to the public"
       },
       {
         "kind": "Content",
-        "label": "Certificates and trust",
-        "text": "A certificate links a public key to an identified subject and is signed by a trusted CA. A client verifies the CA signature, validity dates and identity/hostname before trusting the key. This prevents an attacker from simply presenting an arbitrary public key as if it belonged to the genuine server."
+        "label": "Sending a verified message to the public",
+        "text": "The keys also work the other way round. If the sender encrypts with their own private key, anyone can decrypt with the sender's public key. That gives no confidentiality, but a successful decryption proves who sent it, because only the sender holds that private key."
+      },
+      {
+        "kind": "Content",
+        "label": "Sending a verified message to the public",
+        "text": "Verified message to the public: the sender encrypts with the sender's private key."
+      },
+      {
+        "kind": "Content",
+        "label": "Sending a verified message to the public",
+        "text": "Anyone with the sender's public key decrypts it; success proves it came from the owner of the private key (authentication)."
+      },
+      {
+        "kind": "Content",
+        "label": "Sending a verified message to the public",
+        "text": "It is not confidential: the public key is available to everyone."
+      },
+      {
+        "kind": "Content",
+        "label": "Sending a verified message to the public",
+        "text": "In practice only a digest of the message is encrypted (a digital signature), which is faster than encrypting the whole message."
+      },
+      {
+        "kind": "Content",
+        "label": "Sending a verified message to the public",
+        "text": "Confidential and verified: sign with the sender's private key, then encrypt with the receiver's public key."
+      },
+      {
+        "kind": "Example",
+        "label": "Sending a verified message to the public",
+        "text": "Goal                                   | Encrypt with          | Decrypt with\n---------------------------------------+-----------------------+----------------------\nPrivate message TO an organisation     | receiver's PUBLIC key | receiver's PRIVATE key\nVerified message FROM an organisation  | sender's PRIVATE key  | sender's PUBLIC key\nSign a digest                          | sender's PRIVATE key  | sender's PUBLIC key"
       },
       {
         "kind": "Section",
-        "text": "TLS/SSL"
+        "text": "Digital signatures and detecting alterations"
       },
       {
         "kind": "Content",
-        "label": "TLS/SSL",
-        "text": "TLS (historically SSL) protects client-server sessions such as HTTPS. Certificates authenticate the server; asymmetric cryptography helps establish secure session secrets; efficient symmetric encryption then protects bulk traffic. The protocol also helps detect tampering."
+        "label": "Digital signatures and detecting alterations",
+        "text": "A hashing algorithm turns the message into a short digest. Encrypting the digest with the private key produces the signature; the message itself can travel as plain text or be encrypted separately. The receiver repeats the hash and compares."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "Producing the signature before sending: the message is hashed with the agreed hashing algorithm to produce a message digest."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "The message digest is encrypted with the sender's private key to form the digital signature."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "The signature is sent with the message (and usually the sender's digital certificate)."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "If the whole transmission was encrypted, the receiver first decrypts the message (with the digital signature) using the receiver's private key."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "The digital signature is decrypted with the sender's public key to recover the digest that was sent."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "The received message is hashed with the same agreed hashing algorithm to reproduce the digest."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "The two digests are compared: if they are the same, the message has not been altered and came from the sender."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital signatures and detecting alterations",
+        "text": "A different message gives a different digest, so each signature is unique to its message."
+      },
+      {
+        "kind": "Example",
+        "label": "Digital signatures and detecting alterations",
+        "text": "Toy RSA keys (from section 7): public (n=247, e=5), private (n=247, d=173)\nToy hash: digest = (sum of ASCII codes) MOD 247\n\nSender: message \"SEND 30\" -> ASCII sum 429 -> digest 429 MOD 247 = 182\n        signature = 182^173 MOD 247 = 26      (sender's private key)\nSends: \"SEND 30\" + signature 26\n\nReceiver: 26^5 MOD 247 = 182                  (sender's public key)\n          hash(\"SEND 30\") = 182  -> digests match: authentic, unaltered\nIf changed to \"SEND 80\": hash = 187, not 182 -> alteration detected\n(All values checked by script. Real hashes are 256 bits long.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Digital certificates: acquiring one and using it for signatures"
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "A signature only proves the message came from whoever owns that public key; an impostor could publish their own key under someone else's name. A digital certificate, signed by a trusted CA, proves who the public key belongs to."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "Digital certificate: an electronic document used to authenticate the identity of a website/individual/organisation, typically issued by a CA."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "Contents: owner's name/identifying information, owner's public key, CA name, CA's digital signature, serial number, validity (expiry) dates."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "Acquiring: an enquiry (application) is made to a Certificate Authority."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "The enquirer sends their public key and all required information (to prove identity) to the CA; this can be encrypted with the CA's public key."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "The CA checks the enquirer's details; if verified, the public key is agreed."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "The CA creates/issues a certificate that includes the enquirer's public key and signs it with the CA's private key."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "The certificate is sent to the enquirer, who posts it (e.g. on their website) for others to use."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "Role in a digital signature: the certificate provides the sender's public key, used to verify (decrypt) the signature made with the matching private key."
+      },
+      {
+        "kind": "Content",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "The receiver checks the certificate itself with the CA's public key, so the public key is trusted to belong to the sender."
+      },
+      {
+        "kind": "Example",
+        "label": "Digital certificates: acquiring one and using it for signatures",
+        "text": "                | Digital signature               | Digital certificate\n----------------+---------------------------------+--------------------------------\nWhat it is      | Digest encrypted with sender's  | Document linking an identity\n                | private key                     | to a public key\nMade by         | The sender, for each message    | A CA, once (valid for a period)\nProves          | Message came from key owner     | The public key belongs to the\n                | and was not altered             | named owner\nChecked with    | Sender's public key             | CA's public key\nChanges         | Different for every message     | Same until it expires"
+      },
+      {
+        "kind": "Section",
+        "text": "How a key pair works: toy RSA (beyond the syllabus)"
+      },
+      {
+        "kind": "Content",
+        "label": "How a key pair works: toy RSA (beyond the syllabus)",
+        "text": "You are never asked to do RSA arithmetic, but a tiny example shows why the public key can be published: working out d from (n, e) needs the factors of n, which is infeasible when n has hundreds of digits. Real systems use asymmetric encryption only to exchange a symmetric session key (as in TLS)."
+      },
+      {
+        "kind": "Content",
+        "label": "How a key pair works: toy RSA (beyond the syllabus)",
+        "text": "Asymmetric keys are generated together as a matching pair by an algorithm (e.g. RSA)."
+      },
+      {
+        "kind": "Content",
+        "label": "How a key pair works: toy RSA (beyond the syllabus)",
+        "text": "Knowing the public key does not reveal the private key (for real key sizes)."
+      },
+      {
+        "kind": "Content",
+        "label": "How a key pair works: toy RSA (beyond the syllabus)",
+        "text": "Hybrid use: asymmetric encryption sends a symmetric key securely; faster symmetric encryption then protects the bulk data."
+      },
+      {
+        "kind": "Example",
+        "label": "How a key pair works: toy RSA (beyond the syllabus)",
+        "text": "n = 13 x 19 = 247            (p-1)(q-1) = 12 x 18 = 216\ne = 5   (shares no factor with 216)\nd = 173 because 5 x 173 = 865 = 4 x 216 + 1\nPublic key  (n, e) = (247, 5)      Private key (n, d) = (247, 173)\n\nEncrypt with the receiver's public key:  42^5   MOD 247 = 74\nDecrypt with the receiver's private key: 74^173 MOD 247 = 42\n(Checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "SSL/TLS: purpose, client-server use and where to use it"
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "SSL/TLS sits between the application layer and TCP in the transport layer, so HTTP becomes HTTPS. It runs automatically without user action. TLS is the upgraded, more secure successor of SSL."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "Purpose: provides encryption, authentication and integrity for data sent between client and server, so it cannot be read or altered if intercepted."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "Authenticates the server (and optionally the client) using its digital certificate, so the user knows the website is genuine."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "The application that initiates an SSL/TLS connection becomes the client (e.g. a web browser); the one that receives it becomes the server (e.g. a web server)."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "Every new session begins with a handshake."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "Handshake: client hello (supported protocol versions, encryption algorithms); the server replies with its choice."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "A digital certificate is requested by the client and sent by the server."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "The client verifies the server's digital certificate (with the CA's public key) and obtains the server's public key."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "The encryption algorithms are agreed, and the symmetric session key is generated: e.g. the client encrypts it with the server's public key; only the server's private key can decrypt it."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "Data for the rest of the session is encrypted with the symmetric session key (fast); the key is discarded at the end of the session."
+      },
+      {
+        "kind": "Content",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "Appropriate situations: online banking, online shopping/payments, logging in (sending passwords), email, cloud storage, sending personal/medical data, VoIP and instant messaging."
+      },
+      {
+        "kind": "Example",
+        "label": "SSL/TLS: purpose, client-server use and where to use it",
+        "text": "TCP connection set up between browser (client) and bank server\n1. Client hello: TLS versions and cipher suites the browser supports\n2. Server hello: the chosen version and algorithms\n3. Server sends its digital certificate (containing its public key)\n4. Browser checks the certificate: signed by a trusted CA (CA's public key),\n   not expired, name matches the bank's domain\n5. Browser creates session-key material, encrypts it with the server's\n   public key and sends it; server decrypts with its private key\n6. Both now hold the same symmetric session key\n7. All page data and form data are encrypted with the session key"
       },
       {
         "kind": "Section",
@@ -23026,31 +23398,147 @@
       {
         "kind": "Content",
         "label": "Quantum cryptography",
-        "text": "Quantum key-distribution techniques can reveal eavesdropping because observation disturbs quantum states. Potential strength is secure key exchange based on physical principles. Limitations include specialised hardware, cost, distance/infrastructure constraints and the fact that compromised endpoints/software remain vulnerable."
+        "text": "Quantum key distribution (QKD) sends the key as a stream of photons along a fibre-optic cable, each polarised to represent a bit. Measuring a photon disturbs its polarisation, so an eavesdropper cannot copy the key unnoticed. It protects the key; the data is still encrypted by an ordinary algorithm."
       },
       {
-        "kind": "Quick recall",
-        "text": "symmetric=one shared secret"
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Purpose: to protect the security of data (the encryption key) transmitted over fibre-optic cable; a virtually unhackable encryption system."
       },
       {
-        "kind": "Quick recall",
-        "text": "asymmetric=public/private pair"
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Uses the properties of photons (polarisation) to represent the bits of the key."
       },
       {
-        "kind": "Quick recall",
-        "text": "recipient public->privacy"
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Benefit: detects any eavesdropping, because measuring a photon changes its properties."
       },
       {
-        "kind": "Quick recall",
-        "text": "sender private->signature"
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Benefit: once transferred, the integrity of the key can be guaranteed; it cannot be copied or decrypted later."
       },
       {
-        "kind": "Quick recall",
-        "text": "certificate=identity+public key"
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Benefit: more secure, and longer keys can be used; not based on a mathematical problem that faster (quantum) computers could solve."
       },
       {
-        "kind": "Quick recall",
-        "text": "TLS uses asymmetric trust + symmetric session encryption"
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Drawback: limited range; works only over relatively short distances."
+      },
+      {
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Drawback: requires a dedicated fibre-optic line and specialist hardware, so it is expensive."
+      },
+      {
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Drawback: the polarisation of light may be altered during transmission through the fibre-optic cable (errors)."
+      },
+      {
+        "kind": "Content",
+        "label": "Quantum cryptography",
+        "text": "Drawback: still new and being developed; high error rates and lacks features such as digital signatures and certified mail."
+      },
+      {
+        "kind": "Example",
+        "label": "Quantum cryptography",
+        "text": "+ = vertical/horizontal basis, x = diagonal basis (chosen at random)\n\nPhoton         1 2 3 4 5 6 7 8 9 10\nBit sent       0 1 1 0 1 0 0 1 1 1\nSender basis   + x + + x x + x + x\nReceiver basis + + x + x x + + + x\nMatch?         Y . . Y Y Y Y . Y Y\n\nThey compare bases (not bits) publicly and keep the matches:\nshared key = 0 0 1 0 0 1 1  (photons 1,4,5,6,7,9,10)\nAn eavesdropper measuring the photons would disturb them, and a check\nof some key bits would reveal errors. (Checked by script.)"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Define plain text and cipher text."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Define plain text and cipher text.",
+        "text": "Plain text: the original readable data before encryption. Cipher text: the result of applying an encryption algorithm and a key to the plain text."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Explain symmetric key cryptography and its main problem."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Explain symmetric key cryptography and its main problem.",
+        "text": "One secret key, held by sender and receiver, both encrypts and decrypts. The key must be distributed securely; if it is intercepted all messages can be decrypted."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a private message sent from a member of the public to an organisation?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a private message sent from a member of the public to an organisation?",
+        "text": "The organisation generates a key pair and publishes its public key; the sender encrypts with the organisation's public key; only the organisation's private key can decrypt it."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How can an organisation send a verified message to the public?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How can an organisation send a verified message to the public?",
+        "text": "It encrypts (signs) with its own private key; anyone decrypts with its public key, which proves the message came from the organisation (not confidential)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Describe how a digital signature is produced and checked."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Describe how a digital signature is produced and checked.",
+        "text": "Sender hashes the message to a digest and encrypts the digest with the sender's private key. Receiver decrypts the signature with the sender's public key, hashes the received message with the same algorithm, and compares the digests; equal means unaltered and authentic."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a digital certificate acquired?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a digital certificate acquired?",
+        "text": "Apply to a CA, sending the public key and proof of identity; the CA verifies the details, then creates a certificate containing the public key, signs it with the CA's private key and issues it."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name four items in a digital certificate."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name four items in a digital certificate.",
+        "text": "Owner's name/identity, owner's public key, name of the issuing CA, CA's digital signature (also serial number and validity dates)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "State the purpose of SSL/TLS and two situations where it is used."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "State the purpose of SSL/TLS and two situations where it is used.",
+        "text": "To encrypt data between client and server and authenticate the server, so data cannot be read or altered if intercepted. E.g. online banking, online shopping/payments, login pages, email."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What key is used for the data in a TLS session, and how do both sides get it?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What key is used for the data in a TLS session, and how do both sides get it?",
+        "text": "A symmetric session key; during the handshake it is encrypted with the server's public key (from its certificate) and decrypted with the server's private key."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give one benefit and two drawbacks of quantum cryptography."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give one benefit and two drawbacks of quantum cryptography.",
+        "text": "Benefit: eavesdropping is detected because measuring photons changes their polarisation. Drawbacks: short range only; needs a dedicated fibre-optic line and expensive specialist hardware (also high error rates)."
       }
     ]
   },
