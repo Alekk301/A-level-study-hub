@@ -72,6 +72,10 @@ The commit is a checkpoint, not a permanently current version.
   pointer (guide ^ syntax, not the coursebook's @), record, set (guide has no operator syntax) and class,
   with a design exercise; 13.2: serial/sequential/random organisation, access matrix, index, three hash
   functions, probing/overflow/chaining, SEEK/GETRECORD/PUTRECORD write and search, flagged deletion.
+- Rebuilt (research method): 13.3 (2026-09-30). Two's complement mantissa (point after sign bit) and
+  exponent, decoding all four sign combinations, extreme values for 8/4 and 10/6, bit-split trade-off,
+  normalisation (01/10, precision and uniqueness), encoding incl. negatives, 0.1 and accumulated
+  rounding error, overflow/underflow; every conversion checked by an encode/decode script.
 
 ## Latest verification
 

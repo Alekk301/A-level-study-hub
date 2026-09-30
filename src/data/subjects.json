@@ -1208,11 +1208,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Represent real numbers using a mantissa and exponent, understand normalisation, and the trade-off between precision and range.",
+            "summary": "Store real numbers as a two's complement mantissa and exponent, convert between floating-point binary and denary, normalise and explain why, and explain precision against range, rounding errors, overflow and underflow.",
             "focusPoints": [
-              "mantissa/exponent",
-              "normalisation",
-              "precision/range"
+              "two's complement mantissa/exponent",
+              "binary to denary and back",
+              "normalisation (01/10)",
+              "precision vs range",
+              "rounding errors",
+              "overflow/underflow"
             ],
             "contentDepth": "full"
           },

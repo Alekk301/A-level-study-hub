@@ -18440,83 +18440,459 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Binary floating-point representation stores a real number using a mantissa and an exponent. For Cambridge 9618 both fields are interpreted using two's complement. You must convert values, normalise them, and explain precision, range, rounding, overflow and underflow."
+        "text": "Topic 13.3 is about storing real numbers in binary as a mantissa multiplied by 2 to the power of an exponent. In the Cambridge format both parts are two's complement, and the mantissa has its binary point straight after the sign bit, so it is a fraction between -1 and just under 1. You need to convert floating-point binary to denary and back for positive and negative mantissas and exponents, normalise a number (a positive mantissa starts 01, a negative one starts 10) and explain why, and explain how moving bits between mantissa and exponent trades precision for range. You also need to explain why many values, such as 0.1, can only be approximated, how rounding errors build up, and how overflow and underflow occur."
+      },
+      {
+        "kind": "Definition",
+        "label": "Fixed-point representation",
+        "text": "A binary representation of a real number in which a set number of bits is used for the whole-number part and the rest for the fractional part, so the binary point never moves."
+      },
+      {
+        "kind": "Definition",
+        "label": "Floating-point representation",
+        "text": "A representation of a real number that stores a mantissa and an exponent, the value being mantissa x 2^exponent; the base 2 is implied and not stored."
       },
       {
         "kind": "Definition",
         "label": "Mantissa",
-        "text": "The signed significant part of a floating-point number; more mantissa bits give greater precision."
+        "text": "The part of a floating-point number that holds its significant bits; in the Cambridge format a two's complement fraction with the binary point after the sign bit."
       },
       {
         "kind": "Definition",
         "label": "Exponent",
-        "text": "The signed power of two controlling the position of the binary point; more exponent bits give greater range."
+        "text": "The two's complement integer power of 2 that the mantissa is multiplied by; it sets how far, and in which direction, the binary point moves."
       },
       {
         "kind": "Definition",
-        "label": "Normalisation",
-        "text": "Rewriting a floating-point number in a standard form that uses the mantissa bits efficiently."
+        "label": "Normalised floating-point number",
+        "text": "A floating-point number whose mantissa has the largest possible magnitude, recognised by its first two bits differing: 01 for positive, 10 for negative."
+      },
+      {
+        "kind": "Definition",
+        "label": "Precision",
+        "text": "How accurately a value can be stored, set by the number of mantissa bits: more bits keep more significant binary digits."
+      },
+      {
+        "kind": "Definition",
+        "label": "Range",
+        "text": "The span from the smallest to the largest magnitude that can be stored, set mainly by the number of exponent bits."
       },
       {
         "kind": "Definition",
         "label": "Rounding error",
-        "text": "The difference caused when an exact value cannot be represented with the available bits."
+        "text": "The difference between a real number and the approximation actually stored, caused by the mantissa having too few bits to hold its exact binary value."
       },
       {
         "kind": "Definition",
         "label": "Overflow",
-        "text": "A value whose magnitude is too large for the available exponent range."
+        "text": "An error that occurs when a result is too large in magnitude to be represented, because it needs an exponent larger than the maximum."
       },
       {
         "kind": "Definition",
         "label": "Underflow",
-        "text": "A non-zero value too close to zero to be represented usefully with the available format."
+        "text": "An error that occurs when a non-zero result is too close to zero to be represented, because it needs an exponent more negative than the minimum."
       },
       {
         "kind": "Section",
-        "text": "Interpreting the format"
+        "text": "Real numbers: fixed-point and floating-point"
       },
       {
         "kind": "Content",
-        "label": "Interpreting the format",
-        "text": "Think of the value as mantissa multiplied by 2 raised to the exponent. Decode the exponent carefully, then move the binary point by that signed power."
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "A real number has a fractional part, such as 6.375 or -0.046875. In denary a real number can be written plainly or in exponential (scientific) notation, where a mantissa is multiplied by a power of ten: 4720 can be written 0.472 x 10^4 or 4.72 x 10^3. Very large and very small values are only practical in exponential form. A computer has to store real numbers in binary, and it can do so in two ways."
+      },
+      {
+        "kind": "Content",
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "In fixed-point representation the programmer decides in advance how many bits hold the whole-number part and how many hold the fraction, so the binary point is always in the same place. For an 8-bit code with a two's complement whole-number part of 4 bits and a fraction of 4 bits, the place values are -8, 4, 2, 1 . 1/2, 1/4, 1/8, 1/16. Fixed point is simple and every value is spaced evenly, but the range is small: the whole-number bits limit how large a value can be, and the fraction bits limit how close to zero it can get."
+      },
+      {
+        "kind": "Content",
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "Floating-point representation stores two numbers instead: a mantissa, which holds the significant bits, and an exponent, which says how far the binary point is moved. The value is mantissa x 2^exponent. The base 2 is not stored, because it is always 2. By changing the exponent the binary point can 'float' to wherever it is needed, so the same number of bits covers a far wider range of magnitudes than a fixed-point code."
+      },
+      {
+        "kind": "Content",
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "Real number: a number with a fractional part."
+      },
+      {
+        "kind": "Content",
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "Fixed point: the binary point is in a fixed position; even spacing, limited range."
+      },
+      {
+        "kind": "Content",
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "Floating point: value = mantissa x 2^exponent; the radix 2 is implied, not stored."
+      },
+      {
+        "kind": "Content",
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "Negative fixed-point values use two's complement in the same way as integers."
       },
       {
         "kind": "Example",
-        "label": "Interpreting the format",
-        "text": "value = mantissa x 2^exponent"
+        "label": "Real numbers: fixed-point and floating-point",
+        "text": "Place values:  -8  4  2  1 . 1/2 1/4 1/8 1/16\n\n+6.375: 6 = 110 and .375 = .011, so 0110.0110\n-6.375: flip the bits of 0110.0110 -> 1001.1001, add 1 in the last place -> 1001.1010\nCheck:  -8 + 1 + 0.5 + 0.125 = -6.375\n\nA 12-bit fixed-point code with 8 whole-number bits and 4 fraction bits:\n  largest value   0111 1111.1111 = 127.9375\n  smallest positive value         = 1/16 = 0.0625\nA 12-bit float (8-bit mantissa, 4-bit exponent) reaches 127 but gets down to 1/512 (section 4).\n(Checked by script.)"
       },
       {
         "kind": "Section",
-        "text": "Precision versus range"
+        "text": "The Cambridge floating-point format"
       },
       {
         "kind": "Content",
-        "label": "Precision versus range",
-        "text": "More mantissa bits provide more significant binary digits, so nearby values can be distinguished more accurately. More exponent bits allow larger positive and negative exponents, expanding the representable range. With a fixed word length, increasing one usually reduces the other."
-      },
-      {
-        "kind": "Section",
-        "text": "Normalisation"
+        "label": "The Cambridge floating-point format",
+        "text": "For 9618 both parts of a floating-point number are stored in two's complement. The mantissa is a two's complement fixed-point fraction with the binary point immediately after its first bit, so that first bit is the sign bit with a place value of -1 and the following bits are worth 1/2, 1/4, 1/8 and so on. A mantissa therefore always lies between -1 and just under +1. The exponent is an ordinary two's complement integer, so it can be negative (move the point left, giving a small number) or positive (move the point right, giving a large number)."
       },
       {
         "kind": "Content",
-        "label": "Normalisation",
-        "text": "Normalisation avoids wasting mantissa bits on redundant sign bits. In two's-complement fractional form, a positive normalised mantissa begins with different leading sign/data bits (typically 01...) and a negative one typically begins 10...."
-      },
-      {
-        "kind": "Section",
-        "text": "Approximation and rounding"
+        "label": "The Cambridge floating-point format",
+        "text": "A question always states the format, for example 'an 8-bit mantissa followed by a 4-bit exponent' or '10 bits for the mantissa and 6 bits for the exponent'. The number of mantissa bits sets the precision (how many significant binary digits are kept) and the number of exponent bits sets the range (how far the point can move). The point goes straight after the sign bit because that gives the finest possible steps between mantissa values."
       },
       {
         "kind": "Content",
-        "label": "Approximation and rounding",
-        "text": "Many denary fractions recur forever in binary, so finite storage keeps an approximation. Repeated arithmetic can accumulate small errors; this is why equality comparisons on calculated real values can be unreliable."
+        "label": "The Cambridge floating-point format",
+        "text": "To decode a number, work out the mantissa as a fraction, work out the exponent as an integer, then multiply the mantissa by 2 to the power of the exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "The Cambridge floating-point format",
+        "text": "Mantissa: two's complement, binary point after the first (sign) bit, value from -1 up to just under 1."
+      },
+      {
+        "kind": "Content",
+        "label": "The Cambridge floating-point format",
+        "text": "Exponent: two's complement integer; positive moves the point right, negative moves it left."
+      },
+      {
+        "kind": "Content",
+        "label": "The Cambridge floating-point format",
+        "text": "0 as the first mantissa bit means a positive number; 1 means a negative number."
+      },
+      {
+        "kind": "Content",
+        "label": "The Cambridge floating-point format",
+        "text": "The exponent's sign says nothing about the number's sign; it only says whether the magnitude is large or small."
       },
       {
         "kind": "Example",
-        "label": "Approximation and rounding",
-        "text": "0.1 in denary has a recurring binary fractional representation."
+        "label": "The Cambridge floating-point format",
+        "text": "Mantissa (8 bits, point after the sign bit):\n  -1 . 1/2  1/4  1/8  1/16  1/32  1/64  1/128\nExponent (4 bits, two's complement integer):\n  -8   4   2   1\n\nMantissa range: 1.0000000 = -1  up to  0.1111111 = 127/128\nExponent range: 1000 = -8  up to  0111 = +7"
+      },
+      {
+        "kind": "Section",
+        "text": "Converting floating-point binary to denary"
+      },
+      {
+        "kind": "Content",
+        "label": "Converting floating-point binary to denary",
+        "text": "There are two reliable ways to decode the mantissa. The first adds the place values directly, remembering that the sign bit is worth -1: 1.0110100 is -1 + 1/4 + 1/8 + 1/32. The second, for a negative mantissa, takes the two's complement (flip every bit and add 1) to find the magnitude, then puts a minus sign in front. Both give the same answer; the place-value method is quicker and avoids a carry error."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting floating-point binary to denary",
+        "text": "Then decode the exponent, remembering that its first bit is worth -8 in a 4-bit exponent or -32 in a 6-bit exponent. A positive exponent moves the point right, a negative exponent moves it left, filling the gap with copies of the sign bit (0s for a positive mantissa). Finally read off the result. The four examples cover all four combinations of sign: positive or negative mantissa with a positive or negative exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting floating-point binary to denary",
+        "text": "Step 1: exponent to denary (two's complement)."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting floating-point binary to denary",
+        "text": "Step 2: mantissa to denary using -1, 1/2, 1/4, ... or two's complement it to find the magnitude."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting floating-point binary to denary",
+        "text": "Step 3: value = mantissa x 2^exponent (move the point right for +, left for -)."
+      },
+      {
+        "kind": "Example",
+        "label": "Converting floating-point binary to denary",
+        "text": "Exponent 0011 = +3\nMantissa 0.1101100 = 1/2 + 1/4 + 1/16 = 27/32\nValue = 27/32 x 2^3 = 6.75\nOr move the point 3 places right: 0110.1100 = 4 + 2 + 0.5 + 0.25 = 6.75"
+      },
+      {
+        "kind": "Example",
+        "label": "Converting floating-point binary to denary",
+        "text": "Exponent 1110 = -8 + 4 + 2 = -2\nMantissa 0.1010000 = 1/2 + 1/8 = 5/8\nValue = 5/8 x 2^-2 = 5/32 = 0.15625\nOr move the point 2 places left: 0.00101 = 1/8 + 1/32 = 0.15625"
+      },
+      {
+        "kind": "Example",
+        "label": "Converting floating-point binary to denary",
+        "text": "Exponent 000101 = +5\nMantissa 1.011010000\n  place values: -1 + 1/4 + 1/8 + 1/32 = -19/32 = -0.59375\n  or two's complement: flip -> 0.100101111, add 1 -> 0.100110000 = 19/32, so -19/32\nValue = -19/32 x 2^5 = -19"
+      },
+      {
+        "kind": "Example",
+        "label": "Converting floating-point binary to denary",
+        "text": "Exponent 1101 = -8 + 4 + 1 = -3\nMantissa 1.0100000 = -1 + 1/4 = -3/4\nValue = -3/4 x 2^-3 = -3/32 = -0.09375\n(All four decodings checked by the decode function of the script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Largest, smallest and most negative values"
+      },
+      {
+        "kind": "Content",
+        "label": "Largest, smallest and most negative values",
+        "text": "Examiners often ask for the largest positive number, the smallest positive normalised number or the most negative number in a format, as bit patterns and in denary. Each one combines an extreme mantissa with an extreme exponent. The largest positive value uses the biggest positive mantissa, 0 followed by all 1s, with the biggest exponent, 0 followed by all 1s. The most negative value uses the most negative mantissa, 1 followed by all 0s (worth exactly -1), with the biggest exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Largest, smallest and most negative values",
+        "text": "The smallest positive normalised value uses the smallest normalised positive mantissa, 01 followed by 0s (worth 1/2), with the most negative exponent, 1 followed by 0s. Without the normalisation rule, 0000...01 would give an even smaller value, but it would have only one significant bit, so questions normally specify 'normalised'. The negative value closest to zero that is still normalised is 10 followed by 1s with the most negative exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Largest, smallest and most negative values",
+        "text": "Largest positive: 0111...1 mantissa, 0111...1 exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Largest, smallest and most negative values",
+        "text": "Smallest positive normalised: 0100...0 mantissa, 1000...0 exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Largest, smallest and most negative values",
+        "text": "Most negative: 1000...0 mantissa (-1), 0111...1 exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Largest, smallest and most negative values",
+        "text": "Negative value closest to zero (normalised): 1011...1 mantissa, 1000...0 exponent."
+      },
+      {
+        "kind": "Example",
+        "label": "Largest, smallest and most negative values",
+        "text": "Largest positive:             01111111 0111 = 127/128 x 2^7  = 127\nSmallest positive normalised: 01000000 1000 = 1/2 x 2^-8      = 1/512 = 0.001953125\nMost negative:                10000000 0111 = -1 x 2^7       = -128\nNegative closest to zero:     10111111 1000 = -65/128 x 2^-8 = -65/32768 = -0.001983642578125\n(Each pattern generated and decoded by script.)"
+      },
+      {
+        "kind": "Example",
+        "label": "Largest, smallest and most negative values",
+        "text": "Largest positive:             0111111111 011111 = 511/512 x 2^31 = 2 143 289 344\nSmallest positive normalised: 0100000000 100000 = 1/2 x 2^-32     = 2^-33 (about 1.16 x 10^-10)\nMost negative:                1000000000 011111 = -1 x 2^31      = -2 147 483 648\nTwo more exponent bits raise the largest value from 127 to over two thousand million.\n(Checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Allocating bits: precision against range"
+      },
+      {
+        "kind": "Content",
+        "label": "Allocating bits: precision against range",
+        "text": "A floating-point format has a fixed total number of bits, so every bit given to the mantissa is a bit taken from the exponent. More mantissa bits give greater precision: more significant binary digits are kept, so values are stored more accurately and the gaps between neighbouring representable values are smaller. More exponent bits give a greater range: the point can move further, so much larger and much smaller magnitudes can be stored. With a fixed word length you cannot increase both."
+      },
+      {
+        "kind": "Content",
+        "label": "Allocating bits: precision against range",
+        "text": "In real systems the split is fixed by the floating-point hardware, but a programmer can choose a larger total size, such as double precision, which increases both."
+      },
+      {
+        "kind": "Content",
+        "label": "Allocating bits: precision against range",
+        "text": "More mantissa bits: better precision, smaller range (for the same total)."
+      },
+      {
+        "kind": "Content",
+        "label": "Allocating bits: precision against range",
+        "text": "More exponent bits: bigger range, poorer precision (for the same total)."
+      },
+      {
+        "kind": "Content",
+        "label": "Allocating bits: precision against range",
+        "text": "Increasing the total number of bits (double precision) improves both."
+      },
+      {
+        "kind": "Example",
+        "label": "Allocating bits: precision against range",
+        "text": "45.3 = 101101.0100110011... (the fraction never ends), about 0.1011010100110 x 2^6\n\nFormat (mantissa/exponent) | Largest value     | Smallest +normalised | 45.3 stored as        | Error\n12 / 4                     | 127.94            | 0.00195              | 010110101001 0110 = 45.28125 | 0.01875\n10 / 6                     | 2 143 289 344     | 1.16 x 10^-10        | 0101101010 000110 = 45.25    | 0.05\n 8 / 8                     | 1.69 x 10^38      | 1.47 x 10^-39        | 01011010 00000110 = 45       | 0.3\n\nAs the mantissa shrinks the error in 45.3 grows, while the range explodes.\n(Mantissas truncated; every row computed by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Normalisation: what it is and why it is done"
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "The same value can be written with many mantissa and exponent pairs. In the 8-bit/4-bit format, 5.5 can be 01011000 0011, 00101100 0100 or 00010110 0101: each shift right of the mantissa is balanced by adding 1 to the exponent. A normalised number is the version whose mantissa has the largest possible magnitude, which you can recognise because its first two bits differ: 01 for a positive number, 10 for a negative number. A mantissa starting 00 or 11 is not normalised, because the second bit only repeats the sign."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "There are two reasons for normalising. First, precision: leading 0s (or leading 1s for a negative) waste mantissa bits, so a normalised mantissa keeps the maximum number of significant bits and stores the value as accurately as the format allows. Second, uniqueness: each value has exactly one normalised representation, which makes comparing values and doing arithmetic simpler, and stops the same number appearing in several forms."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "To normalise, shift the mantissa bits left until the first two bits differ, filling from the right with 0s, and subtract 1 from the exponent for every place shifted, so the value is unchanged. For a negative mantissa, shift left until it starts 10; the leading 1s that drop off do not change the value. If shifting would need the exponent to go below its minimum, the number cannot be normalised in that format."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "One special case: a negative power of two such as -0.5 would naturally be 1.1000000 x 2^0, which starts 11. The normalised form is 1.0000000 x 2^-1, that is -1 x 2^-1: the mantissa -1 is allowed, so a normalised negative mantissa ranges from -1 to just below -1/2."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Normalised positive mantissa starts 01; normalised negative mantissa starts 10."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Shift left by n places, subtract n from the exponent (the value stays the same)."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Reason 1: maximum precision for the number of mantissa bits."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Reason 2: a unique representation for every value."
+      },
+      {
+        "kind": "Content",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Normalised positive mantissa: 1/2 up to just under 1. Normalised negative mantissa: -1 up to just under -1/2."
+      },
+      {
+        "kind": "Example",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Value before: 0.0010110 x 2^5 = 11/64 x 32 = 5.5\nThe mantissa starts 00, so shift left until it starts 01: 2 places\nMantissa 00010110 -> 01011000\nExponent 0101 (+5) - 2 = +3 -> 0011\nNormalised: 01011000 0011 = 0.1011 x 2^3 = 101.1 = 5.5  (value unchanged)"
+      },
+      {
+        "kind": "Example",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Value before: 1.1101000 = -1 + 1/2 + 1/4 + 1/16 = -3/16, x 2^4 = -3\nThe mantissa starts 11, so shift left until it starts 10: 2 places\nMantissa 11101000 -> 10100000\nExponent 0100 (+4) - 2 = +2 -> 0010\nNormalised: 10100000 0010 = -3/4 x 2^2 = -3  (value unchanged)"
+      },
+      {
+        "kind": "Example",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "Value before: 0.0001100 x 2^1 = 3/32 x 2 = 0.1875\nShift left 3 places: 00001100 -> 01100000\nExponent +1 - 3 = -2 -> 1110\nNormalised: 01100000 1110 = 3/4 x 2^-2 = 0.1875\n(All three normalisations performed and value-checked by script.)"
+      },
+      {
+        "kind": "Example",
+        "label": "Normalisation: what it is and why it is done",
+        "text": "5.40625 = 101.01101 = 0.10101101 x 2^3 (8 significant bits; only 7 fit after the sign bit)\nNormalised:           01010110 0011 = 0.1010110 x 2^3 = 5.375\nExponent forced to 5: 00010101 0101 = 0.0010101 x 2^5 = 5.25\nThe two wasted leading 0s pushed two more significant bits off the end.\n(Checked by script.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Converting denary to floating-point binary"
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "To convert a positive denary value, first write it in binary: convert the whole-number part by repeated division or place values, and the fraction by repeated multiplication by 2, recording the whole-number part each time. Then move the binary point so the number has the form 0.1xxx; the number of places moved is the exponent (positive if the point moved left, negative if it moved right). Write the mantissa as 0, then the bits after the point, padded with 0s to the mantissa length. Finally write the exponent in two's complement in its number of bits."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "For a negative value, do everything for the positive value first, then take the two's complement of the whole mantissa (flip every bit and add 1). The exponent does not change. Do not just change the sign bit: that is sign and magnitude, not two's complement, and scores no marks. Check your result starts 10 and decode it again to confirm the value."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "If the binary fraction has more bits than the mantissa can hold, the extra bits are lost (truncated), so the stored value is only an approximation. Always convert your answer back to denary as a check."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "1: denary to binary (whole part, then fraction by x2)."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "2: move the point to give 0.1xxx; places moved = exponent."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "3: mantissa = 0 + bits after the point, padded with 0s."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "4: negative? two's complement the whole mantissa; exponent unchanged."
+      },
+      {
+        "kind": "Content",
+        "label": "Converting denary to floating-point binary",
+        "text": "5: exponent in two's complement; check by converting back."
+      },
+      {
+        "kind": "Example",
+        "label": "Converting denary to floating-point binary",
+        "text": "21 = 10101, .375 = .011 (0.375 x 2 = 0.75 -> 0, 0.75 x 2 = 1.5 -> 1, 0.5 x 2 = 1.0 -> 1)\n21.375 = 10101.011\nMove the point 5 places left: 0.10101011 x 2^5\nMantissa: 0 + 10101011, pad to 10 bits -> 0101010110\nExponent: +5 in 6 bits -> 000101\nAnswer: 0101010110 000101\nCheck: (1/2 + 1/8 + 1/32 + 1/128 + 1/256) x 32 = 171/256 x 32 = 21.375"
+      },
+      {
+        "kind": "Example",
+        "label": "Converting denary to floating-point binary",
+        "text": "13.625 = 1101.101 = 0.1101101 x 2^4\nPositive mantissa: 0110110100\nTwo's complement:  flip -> 1001001011, add 1 -> 1001001100\nExponent: +4 -> 000100\nAnswer: 1001001100 000100  (starts 10, so normalised)\nCheck: -1 + 1/8 + 1/64 + 1/128 = -109/128, x 2^4 = -13.625"
+      },
+      {
+        "kind": "Example",
+        "label": "Converting denary to floating-point binary",
+        "text": "0.046875 x 2 = 0.09375 -> 0\n0.09375  x 2 = 0.1875  -> 0\n0.1875   x 2 = 0.375   -> 0\n0.375    x 2 = 0.75    -> 0\n0.75     x 2 = 1.5     -> 1\n0.5      x 2 = 1.0     -> 1\n0.046875 = 0.000011\nMove the point 4 places right: 0.11 x 2^-4\nMantissa: 01100000   Exponent: -4 -> 1100\nAnswer: 01100000 1100    Check: 3/4 x 2^-4 = 3/64 = 0.046875"
+      },
+      {
+        "kind": "Example",
+        "label": "Converting denary to floating-point binary",
+        "text": "0.3125 = 0.0101 = 0.101 x 2^-1\nPositive mantissa: 01010000\nTwo's complement:  flip -> 10101111, add 1 -> 10110000\nExponent: -1 -> 1111\nAnswer: 10110000 1111\nCheck: (-1 + 1/4 + 1/8) x 2^-1 = -5/8 x 1/2 = -0.3125\n(All four encodings produced by the encode function and decoded back exactly.)"
+      },
+      {
+        "kind": "Section",
+        "text": "Approximation and rounding errors"
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "A binary fraction is a sum of halves, quarters, eighths and so on, so a denary fraction can only be stored exactly if it is such a sum. Of the one-decimal-place fractions 0.1 to 0.9, only 0.5 is exact. 0.1 in binary is 0.000110011001100... with the pattern 0011 repeating for ever, so any finite mantissa has to cut it off and store a value slightly different from 0.1. The stored binary value is therefore only an approximation to the real number it represents."
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "The difference between the true value and the stored value is a rounding error. One error is tiny, but programs that repeat a calculation many times, such as weather or economic models and scientific simulations, add a new small error at every step, and the errors can build up until the result is noticeably wrong. The consequences include loops controlled by a real number that never meet their end condition, tests such as IF Total = 1.0 that fail even though the maths says they should succeed, and money calculations that drift by a cent."
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "Ways to reduce the problem: use more mantissa bits (double or quadruple precision) so each error is smaller; compare real numbers against a small tolerance rather than for exact equality; and store money as a whole number of cents rather than as a REAL."
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "Only fractions made of 1/2, 1/4, 1/8, ... convert exactly; 0.1, 0.2 and 0.3 do not."
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "Limited mantissa bits mean the stored value is truncated or rounded: an approximation."
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "Rounding errors accumulate over repeated calculations."
+      },
+      {
+        "kind": "Content",
+        "label": "Approximation and rounding errors",
+        "text": "Remedies: more mantissa bits, tolerance comparisons, integers for money."
+      },
+      {
+        "kind": "Example",
+        "label": "Approximation and rounding errors",
+        "text": "0.1 = 0.0001100110011001100... = 0.110011001100... x 2^-3\n8-bit mantissa, 4-bit exponent:  01100110 1101   = 51/512    = 0.099609375     (error 0.000390625)\n10-bit mantissa, 6-bit exponent: 0110011001 111101 = 409/4096 = 0.099853515625  (error 0.000146484375)\nTwo more mantissa bits cut the error but can never remove it.\n(Checked by script.)"
+      },
+      {
+        "kind": "Example",
+        "label": "Approximation and rounding errors",
+        "text": "After 1: 0.099853515625\nAfter 2: 0.19970703125\nAfter 3: 0.298828125\nAfter 5: 0.498046875\nAfter 10: 0.99609375\nThe total should be 1.0 but is short by 0.00390625, about 27 times the error in one 0.1.\n(Simulated by script: every sum re-encoded in 10/6 before the next addition.)"
+      },
+      {
+        "kind": "Example",
+        "label": "Approximation and rounding errors",
+        "text": "def twos(bits):\n    value = int(bits, 2)\n    if bits[0] == \"1\":\n        value -= 2 ** len(bits)       # the leftmost bit has a negative place value\n    return value\n\n\ndef fp_to_denary(mantissa, exponent):\n    m = twos(mantissa) / 2 ** (len(mantissa) - 1)   # binary point after the sign bit\n    return m * 2 ** twos(exponent)\n\n\ndef is_normalised(mantissa):\n    return mantissa[0] != mantissa[1]     # 01... positive, 10... negative\n\n\nassert fp_to_denary(\"01101100\", \"0011\") == 6.75\nassert fp_to_denary(\"1011010000\", \"000101\") == -19\nassert fp_to_denary(\"10100000\", \"1101\") == -0.09375\nassert fp_to_denary(\"01111111\", \"0111\") == 127       # largest in 8/4\nassert fp_to_denary(\"10000000\", \"0111\") == -128      # most negative in 8/4\nassert not is_normalised(\"00010110\")\n\ntotal = 0.0\nfor _ in range(10):\n    total = total + 0.1\nprint(total, total == 1.0)           # 0.9999999999999999 False"
       },
       {
         "kind": "Section",
@@ -18525,27 +18901,123 @@
       {
         "kind": "Content",
         "label": "Overflow and underflow",
-        "text": "Overflow is a range failure at very large magnitude; underflow occurs near zero when the format cannot keep a meaningful non-zero representation. Increasing exponent bits changes range, not the significant precision of the mantissa."
+        "text": "Overflow happens when the result of a calculation is too large in magnitude to be stored, because it would need an exponent bigger than the largest the exponent bits can hold. In the 8-bit/4-bit format the largest positive value is 127, so 100 + 50 overflows: 150 would need an exponent of 8, and a 4-bit two's complement exponent stops at 7. The result is an error, or a meaningless value if the program does not detect it."
       },
       {
-        "kind": "Quick recall",
-        "text": "mantissa->precision"
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Underflow happens when a non-zero result is too close to zero to be stored, because it would need an exponent more negative than the format allows. Dividing a very small number by a number greater than 1 is the usual cause. In the 8-bit/4-bit format the smallest positive normalised value is 1/512, so 1/256 divided by 4 (which is 1/1024) underflows. A system may replace the result with 0 and carry on, but that is risky: a later division by the value, or a test that it is non-zero, then goes wrong."
       },
       {
-        "kind": "Quick recall",
-        "text": "exponent->range"
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Overflow: result too large; exponent would exceed its maximum."
       },
       {
-        "kind": "Quick recall",
-        "text": "value=mantissa x 2^exponent"
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Underflow: result too close to zero; exponent would be below its minimum."
       },
       {
-        "kind": "Quick recall",
-        "text": "normalise to use bits efficiently"
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Underflow often leads to the value being stored as 0."
       },
       {
-        "kind": "Quick recall",
-        "text": "finite binary can round"
+        "kind": "Content",
+        "label": "Overflow and underflow",
+        "text": "Range problems (overflow, underflow) are fixed by more exponent bits; precision problems by more mantissa bits."
+      },
+      {
+        "kind": "Example",
+        "label": "Overflow and underflow",
+        "text": "100 = 01100100 0111 (25/32 x 2^7)\n 50 = 01100100 0110 (25/32 x 2^6)\n100 + 50 = 150 = 0.10010110 x 2^8\nExponent 8 does not fit in 4 bits (maximum 0111 = 7), and 150 > 127: overflow."
+      },
+      {
+        "kind": "Example",
+        "label": "Overflow and underflow",
+        "text": "1/256 = 01000000 1001 (1/2 x 2^-7)\n1/256 / 4 = 1/1024 = 0.1 x 2^-9\nExponent -9 does not fit in 4 bits (minimum 1000 = -8), and 1/1024 < 1/512: underflow.\n(The encode function refuses both results: 'exponent 8 / -9 does not fit in 4 bits'.)"
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Where is the binary point in a Cambridge floating-point mantissa, and what is the sign bit worth?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Where is the binary point in a Cambridge floating-point mantissa, and what is the sign bit worth?",
+        "text": "Straight after the first bit; that sign bit has a place value of -1."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Convert 10100000 1101 (8-bit mantissa, 4-bit exponent) to denary."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Convert 10100000 1101 (8-bit mantissa, 4-bit exponent) to denary.",
+        "text": "Exponent -3, mantissa -1 + 1/4 = -3/4, so -3/4 x 1/8 = -0.09375."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How do you recognise a normalised floating-point number?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How do you recognise a normalised floating-point number?",
+        "text": "The first two bits of the mantissa differ: 01 for a positive number, 10 for a negative number."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Give two reasons for normalising floating-point numbers."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Give two reasons for normalising floating-point numbers.",
+        "text": "It gives the maximum precision for the number of mantissa bits, and it gives each value a unique representation."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Represent -13.625 with a 10-bit mantissa and 6-bit exponent."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Represent -13.625 with a 10-bit mantissa and 6-bit exponent.",
+        "text": "13.625 = 0.1101101 x 2^4; positive mantissa 0110110100, two's complement 1001001100; exponent 000100."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What are the largest positive and most negative values with an 8-bit mantissa and 4-bit exponent?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What are the largest positive and most negative values with an 8-bit mantissa and 4-bit exponent?",
+        "text": "01111111 0111 = 127 and 10000000 0111 = -128."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the effect of moving bits from the exponent to the mantissa?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the effect of moving bits from the exponent to the mantissa?",
+        "text": "Precision increases, but the range of values that can be represented decreases."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Why can 0.1 not be stored exactly in binary floating point?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Why can 0.1 not be stored exactly in binary floating point?",
+        "text": "Its binary fraction 0.000110011... recurs for ever, so a finite mantissa must cut it off, leaving an approximation."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Distinguish overflow from underflow."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Distinguish overflow from underflow.",
+        "text": "Overflow: a result too large to store (exponent above its maximum). Underflow: a non-zero result too close to zero to store (exponent below its minimum)."
       }
     ]
   },
