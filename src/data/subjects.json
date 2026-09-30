@@ -1134,11 +1134,13 @@
             "levels": [
               "AS"
             ],
-            "summary": "Use structure charts and pseudocode to design a program's structure and data before coding it.",
+            "summary": "Use structure charts to decompose a problem and show the parameters passed between modules, derive pseudocode from a chart, and document algorithms with state-transition diagrams.",
             "focusPoints": [
               "structure charts",
-              "pseudocode",
-              "data structures"
+              "parameters/flags",
+              "selection/repetition symbols",
+              "chart to pseudocode",
+              "state-transition diagrams"
             ],
             "contentDepth": "full"
           },
@@ -1149,10 +1151,12 @@
             "levels": [
               "AS"
             ],
-            "summary": "Design normal, boundary and erroneous test data, and know the different types of maintenance (corrective, adaptive, perfective).",
+            "summary": "Identify and correct syntax, logic and run-time errors, choose testing methods and test data for a test plan, and apply corrective, adaptive and perfective maintenance.",
             "focusPoints": [
-              "normal/boundary/invalid tests",
-              "debugging",
+              "syntax/logic/run-time errors",
+              "trace tables",
+              "testing methods",
+              "normal/abnormal/extreme/boundary",
               "maintenance types"
             ],
             "contentDepth": "full"

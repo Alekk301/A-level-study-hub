@@ -16330,323 +16330,411 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to produce or interpret a structure diagram for a given problem, to write pseudocode for a given algorithm, to describe or complete a flowchart using the correct standard symbols, and to identify the data structures and variables a solution will need. Answers score when a structure diagram's boxes correctly show a genuine hierarchy of decomposition rather than an arbitrary grouping, when pseudocode uses the exact keywords and layout expected for sequence, selection and iteration, when a flowchart's symbols (terminator, parallelogram, rectangle, diamond) are matched to the correct purpose rather than used interchangeably, and when a flowchart's arrows correctly represent the same logic pseudocode would express with IF, FOR, WHILE or REPEAT."
+        "text": "Program design turns a problem into a plan that can be coded. This topic covers two design tools. A structure chart breaks a problem into modules and shows the parameters passed between them. A state-transition diagram documents an algorithm that behaves as a finite state machine. Paper 2 asks candidates to describe the purpose of a structure chart, to complete or draw one for a given problem, to write the pseudocode a chart describes, and to read a state-transition diagram, usually by completing a state-transition table or tracing a sequence of inputs. Answers score when every parameter on a chart is named and points the right way, when each module in the pseudocode becomes a procedure or function whose parameters match the arrows, and when a trace follows the arrows exactly, starting from the start state."
       },
       {
         "kind": "Definition",
-        "label": "Program design",
-        "text": "The stage of working out a program's structure and logic, on paper or in a design tool, before any code is written, so that mistakes are caught and corrected while they are still cheap to change."
+        "label": "Structure chart",
+        "text": "A diagram of the modular structure of a solution. Each box is a module, each level refines the level above it, and labelled arrows show the parameters passed between modules."
       },
       {
         "kind": "Definition",
-        "label": "Structure diagram (hierarchy chart)",
-        "text": "A diagram showing a program's decomposition into a hierarchy of subroutines, drawn as a tree of boxes with the main routine at the top and the subroutines it calls shown below it, connected by lines."
+        "label": "Module",
+        "text": "A self-contained part of a solution that carries out one sub-task. On a structure chart it is a box; in the program it becomes a procedure or a function."
       },
       {
         "kind": "Definition",
-        "label": "Pseudocode",
-        "text": "A structured, language-independent way of writing out an algorithm's exact logic in detail, using consistent keywords for sequence, selection and iteration, before that logic is implemented in a real programming language."
+        "label": "Parameter",
+        "text": "A value passed between modules. On a structure chart a downward arrow supplies a value to the module being called, and an upward arrow returns a value to the calling module."
       },
       {
         "kind": "Definition",
-        "label": "Flowchart",
-        "text": "A diagram that shows the flow of control through an algorithm using standard symbols connected by arrows, as a diagrammatic alternative to writing the same logic in pseudocode."
+        "label": "Interface",
+        "text": "The parameters that pass between a calling module and the module it calls. A structure chart shows each module's interface as the named arrows on the line joining the two boxes."
       },
       {
         "kind": "Definition",
-        "label": "Terminator symbol",
-        "text": "An oval-shaped flowchart symbol used to show the single start point and the single end point of a flowchart."
+        "label": "Flag",
+        "text": "A Boolean parameter that reports a condition, such as whether an input was valid. On a structure chart its arrow has a solid (filled) circle at the tail."
       },
       {
         "kind": "Definition",
-        "label": "Input/output symbol",
-        "text": "A parallelogram-shaped flowchart symbol used to show a point where data is read in (input) or displayed (output)."
+        "label": "Finite state machine (FSM)",
+        "text": "A machine with a fixed set of possible states, a start state, a set of inputs that move it from one state to another, and possibly a set of outputs."
       },
       {
         "kind": "Definition",
-        "label": "Process symbol",
-        "text": "A rectangle-shaped flowchart symbol used to show a step that carries out processing, such as a calculation or an assignment."
+        "label": "State-transition table",
+        "text": "A table that gives, for each current state and each input, the next state the FSM moves to and any output it produces."
       },
       {
         "kind": "Definition",
-        "label": "Decision symbol",
-        "text": "A diamond-shaped flowchart symbol used to show a point where a condition is tested, with a separate outward arrow for each possible outcome of the test."
+        "label": "State-transition diagram",
+        "text": "A diagram that describes the behaviour of an FSM. States are circles and each transition is an arrow labelled with the input that causes it, written input | output when the transition also produces an output."
       },
       {
         "kind": "Section",
-        "text": "Why a solution is designed before it is coded"
+        "text": "The purpose of a structure chart"
       },
       {
         "kind": "Content",
-        "label": "Why a solution is designed before it is coded",
-        "text": "Designing a solution means working out a program's structure and logic on paper, or in a dedicated design tool, before any actual program code is written. The purpose of doing this separately from coding is that a mistake in a design, such as a step missing from an algorithm or a subroutine that has been given the wrong responsibility, is caught and fixed while it is still cheap to change: correcting a box on a diagram, or a few lines of pseudocode, costs far less time and effort than correcting the same underlying mistake once a large amount of actual program code has already been written around it and tested against it."
+        "label": "The purpose of a structure chart",
+        "text": "A structure chart is a design tool for modular programs. The problem is decomposed into sub-tasks, and each sub-task becomes a module drawn as a box. The top box (level 0) names the whole program. The boxes below it (level 1) are the sub-tasks it calls, and any of those can be refined again into its own lower level. This is top-down design with stepwise refinement: each level adds detail to the level above it."
       },
       {
         "kind": "Content",
-        "label": "Why a solution is designed before it is coded",
-        "text": "This is why design is treated as its own distinct stage of the program development life cycle (12.1), sitting between analysis and coding: analysis establishes what the solution needs to achieve, design works out how it will achieve it in terms of structure and logic, and only coding turns that already-worked-out plan into a real program in a specific language."
+        "label": "The purpose of a structure chart",
+        "text": "Lines join each module to the modules it calls, and the calls on one level are normally read from left to right. A structure chart shows what the program does and how its modules fit together. It does not show how a module does its job. The detailed logic of each module is written separately in pseudocode or drawn as a flowchart."
       },
       {
         "kind": "Content",
-        "label": "Why a solution is designed before it is coded",
-        "text": "Designing a solution separately from coding it means mistakes are caught and fixed while they are still cheap to change."
+        "label": "The purpose of a structure chart",
+        "text": "A structure chart also shows the interface between modules: the parameters passed each time one module calls another. This lets several programmers each write a module, knowing exactly what data it receives and what it must return, and it shows which modules can be tested or reused on their own."
       },
       {
         "kind": "Content",
-        "label": "Why a solution is designed before it is coded",
-        "text": "A flawed design corrected on paper costs far less than the same flaw corrected after a large amount of code has already been written around it."
+        "label": "The purpose of a structure chart",
+        "text": "Purpose: decompose a problem into sub-tasks (modules), showing the hierarchy of modules and the parameters passed between them."
       },
       {
         "kind": "Content",
-        "label": "Why a solution is designed before it is coded",
-        "text": "Design sits between analysis (what the solution needs to achieve) and coding (turning an already-worked-out plan into real program code)."
+        "label": "The purpose of a structure chart",
+        "text": "Each box is a module; each level is a refinement of the level above (top-down design, stepwise refinement)."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of a structure chart",
+        "text": "It shows which module calls which and the interface, not the logic inside a module."
+      },
+      {
+        "kind": "Content",
+        "label": "The purpose of a structure chart",
+        "text": "Benefits: helps programmers see how modules are related, lets modules be shared out, written and tested separately, and shows the parameters each module needs."
       },
       {
         "kind": "Section",
-        "text": "Structure diagrams (hierarchy charts)"
+        "text": "Showing parameters on a structure chart"
       },
       {
         "kind": "Content",
-        "label": "Structure diagrams (hierarchy charts)",
-        "text": "A structure diagram, also called a hierarchy chart, shows a program's decomposition into a hierarchy of subroutines, matching the decomposition concept covered in Structured Programming (11.3) but expressed as a diagram rather than as code. It is drawn as a tree of boxes, with the main routine's box at the top, connected downward by lines to a box for each subroutine it calls directly; any of those subroutines that themselves call further subroutines have their own boxes connected downward in the same way, so the diagram's depth shows how many levels the problem has actually been broken down through."
+        "label": "Showing parameters on a structure chart",
+        "text": "Every parameter is drawn as a short arrow beside the line joining two modules, labelled with the parameter's identifier. The direction of the arrow shows which way the value travels. A downward arrow supplies a value from the calling module to the module it calls. An upward arrow returns a new value from the called module to the module above it. A double-headed arrow shows a value that is passed down, updated inside the lower module, and passed back up."
       },
       {
         "kind": "Content",
-        "label": "Structure diagrams (hierarchy charts)",
-        "text": "A structure diagram deliberately shows only which subroutine calls which, and the overall hierarchy this produces, not the detailed logic inside any individual subroutine; that detailed logic is instead planned separately, using pseudocode or a flowchart for each subroutine in turn. A well-designed structure diagram groups genuinely related sub-tasks under a shared parent box and keeps each box's own responsibility narrow and well-defined, rather than arbitrarily grouping unrelated tasks together under one box merely because they happen to run one after another."
+        "label": "Showing parameters on a structure chart",
+        "text": "Two arrow styles are commonly used. A data parameter is often drawn with an open (hollow) circle at its tail. A flag, a Boolean value that reports a condition such as Valid or GameFinished, is drawn with a solid circle at its tail."
       },
       {
         "kind": "Content",
-        "label": "Structure diagrams (hierarchy charts)",
-        "text": "A structure diagram is a tree of boxes, with the main routine at the top calling the subroutines below it, showing which subroutine calls which."
+        "label": "Showing parameters on a structure chart",
+        "text": "A value produced by one module and needed by another is passed up to their common parent and then down again. Modules on the same level never pass values to each other directly. The structure chart does not state whether a parameter is passed by value or by reference; that decision is made when the pseudocode is written."
       },
       {
         "kind": "Content",
-        "label": "Structure diagrams (hierarchy charts)",
-        "text": "It shows only the hierarchy of calls between subroutines, not the detailed logic inside any one of them; that is planned separately with pseudocode or a flowchart."
+        "label": "Showing parameters on a structure chart",
+        "text": "Downward arrow: a value supplied to the lower-level (called) module."
       },
       {
         "kind": "Content",
-        "label": "Structure diagrams (hierarchy charts)",
-        "text": "A well-designed structure diagram groups genuinely related sub-tasks together and keeps each box's responsibility narrow, rather than grouping unrelated tasks arbitrarily."
+        "label": "Showing parameters on a structure chart",
+        "text": "Upward arrow: a value returned to the higher-level (calling) module."
+      },
+      {
+        "kind": "Content",
+        "label": "Showing parameters on a structure chart",
+        "text": "Double-headed arrow: a value passed down, changed inside the module, and passed back up."
+      },
+      {
+        "kind": "Content",
+        "label": "Showing parameters on a structure chart",
+        "text": "Solid circle at the tail: a flag (Boolean); open circle: a data value."
+      },
+      {
+        "kind": "Content",
+        "label": "Showing parameters on a structure chart",
+        "text": "Sibling modules exchange data only through their parent; the chart does not say BYVAL or BYREF."
       },
       {
         "kind": "Section",
-        "text": "Using pseudocode to plan an algorithm's logic"
+        "text": "Selection and repetition on a structure chart"
       },
       {
         "kind": "Content",
-        "label": "Using pseudocode to plan an algorithm's logic",
-        "text": "Pseudocode is used to plan an algorithm's exact logic in detail, laying out precisely which steps happen in what order, which conditions are tested and how, and which parts of the algorithm repeat, before any of it is written in a real programming language's own syntax. It uses the same three basic constructs covered in Constructs (11.2): sequence for steps executed one after another, selection (IF...THEN...ELSE...ENDIF or CASE OF...ENDCASE) for a choice between alternative paths, and iteration (FOR, WHILE or REPEAT) for a block of steps that repeats."
+        "label": "Selection and repetition on a structure chart",
+        "text": "A structure chart can also show control information. Selection is drawn as a diamond on the line below a module, with the condition written beside it. The branches are labelled True and False, and only one of the modules below the diamond is called each time. For example, a CheckLogin module might test PasswordCorrect and call either OutputWelcome (True) or OutputWarning (False)."
       },
       {
         "kind": "Content",
-        "label": "Using pseudocode to plan an algorithm's logic",
-        "text": "Working out an algorithm's logic in pseudocode first, rather than directly in the target programming language, lets the programmer focus entirely on whether the logic itself is correct, without also having to fight the target language's particular syntax rules at the same time; once the pseudocode's logic has been checked and is believed correct, translating it into a real language becomes a much more mechanical, lower-risk step."
+        "label": "Selection and repetition on a structure chart",
+        "text": "Repetition is drawn as a semi-circular (curved) arrow across the lines to the modules that are repeated, labelled with the condition that controls the loop, such as UNTIL Valid or WHILE game not finished. Every module under the arrow is called again on each pass."
       },
       {
         "kind": "Content",
-        "label": "Using pseudocode to plan an algorithm's logic",
-        "text": "Pseudocode plans an algorithm's exact logic, using sequence, selection and iteration, before any of it is written in a real programming language."
+        "label": "Selection and repetition on a structure chart",
+        "text": "Diamond with a condition: selection; one of the True / False branches is called."
       },
       {
         "kind": "Content",
-        "label": "Using pseudocode to plan an algorithm's logic",
-        "text": "Writing an algorithm's logic in pseudocode first separates the question of whether the logic is correct from the separate question of getting a target language's syntax right."
+        "label": "Selection and repetition on a structure chart",
+        "text": "Semi-circular arrow with a label: repetition of the modules beneath it; the label gives the loop condition."
       },
       {
         "kind": "Content",
-        "label": "Using pseudocode to plan an algorithm's logic",
-        "text": "Once pseudocode has been checked for correctness, translating it into a real language becomes a comparatively mechanical, lower-risk step, as described in Program Development Life Cycle (12.1)."
-      },
-      {
-        "kind": "Section",
-        "text": "Flowcharts and the standard symbols"
-      },
-      {
-        "kind": "Content",
-        "label": "Flowcharts and the standard symbols",
-        "text": "A flowchart is a diagrammatic alternative to pseudocode: it shows exactly the same kind of logic, using standard symbols connected by arrows that show the flow of control through the algorithm, rather than using pseudocode's keywords and indentation. Four standard symbols are used: a terminator, drawn as an oval, marks the single start point and the single end point of the flowchart; a parallelogram marks a point where data is read in with an input or displayed as an output; a rectangle marks a process, such as a calculation or an assignment to a variable; and a diamond marks a decision, where a condition is tested, with a separate arrow leading out of the diamond for each possible outcome of that test, such as one arrow labelled YES and one labelled NO."
-      },
-      {
-        "kind": "Content",
-        "label": "Flowcharts and the standard symbols",
-        "text": "Choosing the correct symbol for each step matters just as much as choosing the correct pseudocode keyword would: using a rectangle where a decision should have been shown as a diamond, for example, would hide the fact that the flow of control actually branches at that point, in exactly the same way that forgetting an IF in pseudocode would hide a branch that should have been there."
-      },
-      {
-        "kind": "Content",
-        "label": "Flowcharts and the standard symbols",
-        "text": "Terminator (oval): marks the single start and single end point of the flowchart."
-      },
-      {
-        "kind": "Content",
-        "label": "Flowcharts and the standard symbols",
-        "text": "Parallelogram: marks input or output; rectangle: marks a process such as a calculation or assignment."
-      },
-      {
-        "kind": "Content",
-        "label": "Flowcharts and the standard symbols",
-        "text": "Diamond: marks a decision, with a separate arrow for each possible outcome of the condition being tested."
-      },
-      {
-        "kind": "Section",
-        "text": "Representing sequence, selection and iteration in a flowchart"
-      },
-      {
-        "kind": "Content",
-        "label": "Representing sequence, selection and iteration in a flowchart",
-        "text": "Sequence is represented in a flowchart simply by a chain of symbols connected one after another by single arrows, each leading directly into the next, with no arrow ever branching or looping back; this mirrors sequence in pseudocode, where each statement is likewise executed once, in the order it is written. Selection is represented by a decision diamond with two (or more, for a multi-way choice) arrows leading out of it, one for each possible outcome of the condition; the arrows for the different outcomes lead to different symbols representing the different paths, and, for a two-way IF...ELSE choice, those paths rejoin at a single point afterwards, mirroring how IF...THEN...ELSE...ENDIF is closed by a single ENDIF regardless of which branch was actually taken."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing sequence, selection and iteration in a flowchart",
-        "text": "Iteration is represented by an arrow that loops back from a later point in the flowchart to an earlier one, so that the symbols between them are revisited and executed again; a decision diamond controls whether this loop-back arrow is followed again or whether the flow instead continues past the loop. Where that decision diamond is positioned relative to the looped block of symbols shows whether the loop is a pre-condition loop, tested before the block (matching WHILE...ENDWHILE) so the block can be skipped entirely, or a post-condition loop, tested after the block (matching REPEAT...UNTIL) so the block always executes at least once."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing sequence, selection and iteration in a flowchart",
-        "text": "Sequence: a chain of symbols connected by single, non-branching, non-looping arrows, one after another, matching pseudocode's execution order."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing sequence, selection and iteration in a flowchart",
-        "text": "Selection: a decision diamond with one arrow per possible outcome, leading to different paths that, for a two-way choice, rejoin afterwards, matching IF...THEN...ELSE...ENDIF."
-      },
-      {
-        "kind": "Content",
-        "label": "Representing sequence, selection and iteration in a flowchart",
-        "text": "Iteration: an arrow loops back to an earlier point, controlled by a decision diamond positioned before the loop (matching WHILE) or after it (matching REPEAT)."
-      },
-      {
-        "kind": "Section",
-        "text": "Identifying data structures and variables during design"
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying data structures and variables during design",
-        "text": "Design also identifies the data structures and variables a solution will actually need, before coding begins, rather than leaving this to be worked out improvised, on the fly, while writing code. This means deciding what each variable will represent and what data type it needs, for example whether a running total needs to be an INTEGER or a REAL, and deciding whether a single variable is enough for a given piece of data or whether a data structure such as an array is actually needed instead, for example to hold every one of several students' scores rather than only the most recently read one."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying data structures and variables during design",
-        "text": "Identifying data structures and variables as part of design, rather than only once coding has already begun, means the chosen structure fits the algorithm's actual needs from the outset; discovering only partway through coding that a single variable cannot hold everything the algorithm turns out to need, for example because every previous score is actually needed later and not just the running total, is exactly the kind of design flaw that should have been caught earlier, at the design stage, rather than forcing a restructure of already-written code."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying data structures and variables during design",
-        "text": "Design decides what each variable will represent and its data type, and whether a data structure such as an array is needed instead of a single variable."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying data structures and variables during design",
-        "text": "Deciding this during design, rather than while coding, means the chosen structure fits the algorithm's actual needs from the outset."
-      },
-      {
-        "kind": "Content",
-        "label": "Identifying data structures and variables during design",
-        "text": "Discovering only during coding that a single variable cannot hold everything actually needed is a design flaw that design should have caught first."
-      },
-      {
-        "kind": "Section",
-        "text": "Worked example: the same algorithm as pseudocode and as a flowchart"
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "The same algorithm's logic can be planned equally validly as pseudocode or as a flowchart, since both are simply two different ways of representing the identical underlying sequence, selection and iteration; choosing between them is usually a matter of preference or of which is clearer for a particular audience, not a difference in what can actually be expressed. The worked example below finds the largest of three numbers entered by the user, expressed first as pseudocode and then described, step by step, as the flowchart symbols and arrows that represent the exact same logic."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "Comparing the two side by side shows each pseudocode construct has a direct flowchart equivalent: INPUT statements become parallelogram symbols, IF...THEN...ELSE...ENDIF becomes a decision diamond with two arrows that rejoin afterwards, and OUTPUT becomes a further parallelogram symbol just before the terminator that ends the flowchart."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "The same algorithm can be planned equally validly as pseudocode or as a flowchart; both represent the identical sequence, selection and iteration."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "Each pseudocode construct has a direct flowchart equivalent: INPUT and OUTPUT become parallelograms, IF...ELSE becomes a decision diamond with two arrows."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "Comparing a pseudocode version and a flowchart version of the same algorithm side by side is a reliable way to check both were planned identically."
+        "label": "Selection and repetition on a structure chart",
+        "text": "In pseudocode a diamond becomes an IF statement and a semi-circular arrow becomes a loop (REPEAT, WHILE or FOR)."
       },
       {
         "kind": "Example",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "DECLARE A, B, C, Largest : INTEGER\n\nOUTPUT \"Enter three numbers: \"\nINPUT A\nINPUT B\nINPUT C\n\nIF A > B THEN\n  IF A > C THEN\n    Largest <- A\n  ELSE\n    Largest <- C\n  ENDIF\nELSE\n  IF B > C THEN\n    Largest <- B\n  ELSE\n    Largest <- C\n  ENDIF\nENDIF\n\nOUTPUT \"The largest number is \", Largest"
+        "label": "Selection and repetition on a structure chart",
+        "text": "PROCEDURE CheckLogin(PasswordCorrect : BOOLEAN)\n   IF PasswordCorrect = TRUE THEN\n      CALL OutputWelcome()\n   ELSE\n      CALL OutputWarning()\n   ENDIF\nENDPROCEDURE"
+      },
+      {
+        "kind": "Section",
+        "text": "Constructing a structure chart for a given problem"
+      },
+      {
+        "kind": "Content",
+        "label": "Constructing a structure chart for a given problem",
+        "text": "Start with one box naming the whole problem. Split it into the main sub-tasks, usually input, processing and output, and draw them left to right in the order they are carried out. Refine any sub-task that is still too large into a lower level. Then, for each line, decide what data the called module needs (downward arrows) and what it produces for its caller (upward arrows), and name each arrow with a meaningful identifier. Finally, add a diamond for any module that is only called under a condition and a semi-circular arrow for any modules that repeat."
+      },
+      {
+        "kind": "Content",
+        "label": "Constructing a structure chart for a given problem",
+        "text": "The worked example designs a program that reads a journey distance, repeating the input until it is a positive number, then works out the fuel cost and the travel time and outputs both."
+      },
+      {
+        "kind": "Content",
+        "label": "Constructing a structure chart for a given problem",
+        "text": "Top box: the whole problem; level 1: the main sub-tasks in order, left to right."
+      },
+      {
+        "kind": "Content",
+        "label": "Constructing a structure chart for a given problem",
+        "text": "Refine large sub-tasks into a further level until each box is one clear task."
+      },
+      {
+        "kind": "Content",
+        "label": "Constructing a structure chart for a given problem",
+        "text": "Add a named arrow for every value a module needs (down) or produces (up)."
+      },
+      {
+        "kind": "Content",
+        "label": "Constructing a structure chart for a given problem",
+        "text": "Add diamonds for conditional calls and semi-circular arrows for repeated calls."
       },
       {
         "kind": "Example",
-        "label": "Worked example: the same algorithm as pseudocode and as a flowchart",
-        "text": "1. Terminator (oval): \"Start\".\n2. Parallelogram: \"Input A, B, C\" -- an arrow leads down from Start into this symbol.\n3. Diamond: \"Is A > B?\" -- an arrow leads down from the input parallelogram into this decision.\n   - YES arrow (e.g. leading right then down) goes to a second diamond: \"Is A > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- A\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n   - NO arrow (e.g. leading left then down) from the first diamond goes to a third diamond: \"Is B > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- B\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n4. All four possible rectangles (\"Largest <- A\", \"Largest <- C\" from the first branch, \"Largest <- B\", \"Largest <- C\" from the second branch) have their arrows rejoin at a single point below them, exactly as ENDIF closes both nested IF statements in the pseudocode.\n5. From that rejoined point, an arrow leads down into a parallelogram: \"Output Largest\".\n6. An arrow leads down from the output parallelogram into a final terminator (oval): \"End\".\n\n-- Comparing the two: each nested IF...THEN...ELSE...ENDIF in the pseudocode is one\n-- decision diamond with two outward arrows in the flowchart, its two branches are the\n-- symbols each arrow leads to, and its ENDIF is the single point where those two\n-- branches' arrows rejoin before the flowchart continues -- the flowchart's structure\n-- and the pseudocode's structure express exactly the same nested selection logic."
+        "label": "Constructing a structure chart for a given problem",
+        "text": "Level 0:  JourneyCost\n\nLevel 1 (called by JourneyCost, left to right):\n  InputDistance      up:   Distance\n  CalculateJourney   down: Distance        up: Cost, Hours\n  OutputResults      down: Cost, Hours\n\nLevel 2 (called by InputDistance, under a semi-circular arrow labelled UNTIL Valid):\n  GetNumber          up:   Distance\n  CheckPositive      down: Distance        up: Valid  (flag, solid circle)\n\nReading the interface:\n- Distance goes up from InputDistance to JourneyCost, then down into CalculateJourney.\n  The two level-1 modules do not pass it to each other directly.\n- CalculateJourney returns two values (Cost and Hours), so both arrows point up.\n- Valid is a Boolean, so it is drawn as a flag.\n- The semi-circular arrow means GetNumber and CheckPositive are called again\n  until Valid is TRUE."
+      },
+      {
+        "kind": "Section",
+        "text": "Deriving pseudocode from a structure chart"
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "Each box below the top becomes a subroutine, and the top box becomes the main program that calls the level-1 modules in order. Use local variables and parameters rather than global variables, so each module is self-contained and a change inside one module cannot accidentally alter a variable elsewhere."
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "The arrows decide the header. A module that sends exactly one value up can be written as a FUNCTION that RETURNS that value. A module that sends no value up is a PROCEDURE called with CALL, with its downward values as BYVAL parameters. A module that sends two or more values up, or has a double-headed arrow, is a PROCEDURE whose upward values are BYREF parameters, so the changes reach the caller. A diamond becomes an IF statement, and a semi-circular arrow becomes a loop whose condition matches the label."
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "Because the chart does not say how parameters are passed, choose BYVAL for values that only travel down and BYREF for values that must come back up in a procedure."
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "Top box: main program; every other box: a procedure or function with the same identifier."
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "One upward value: FUNCTION ... RETURNS; no upward value: PROCEDURE with BYVAL parameters."
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "Several upward values or a double-headed arrow: PROCEDURE with BYREF parameters."
+      },
+      {
+        "kind": "Content",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "Diamond → IF ... THEN ... ELSE ... ENDIF; semi-circular arrow → REPEAT ... UNTIL, WHILE ... ENDWHILE or FOR ... NEXT."
+      },
+      {
+        "kind": "Example",
+        "label": "Deriving pseudocode from a structure chart",
+        "text": "CONSTANT CostPerKm = 0.25        // dollars per km\nCONSTANT AverageSpeed = 50      // km per hour\n\nFUNCTION GetNumber() RETURNS REAL          // one value up: Distance\n   DECLARE Value : REAL\n   OUTPUT \"Enter the distance in km: \"\n   INPUT Value\n   RETURN Value\nENDFUNCTION\n\nFUNCTION CheckPositive(Distance : REAL) RETURNS BOOLEAN   // flag up: Valid\n   RETURN Distance > 0\nENDFUNCTION\n\nFUNCTION InputDistance() RETURNS REAL      // one value up: Distance\n   DECLARE Distance : REAL\n   DECLARE Valid : BOOLEAN\n   REPEAT                                  // the semi-circular arrow\n      Distance ← GetNumber()\n      Valid ← CheckPositive(Distance)\n   UNTIL Valid = TRUE\n   RETURN Distance\nENDFUNCTION\n\n// two values up, so a procedure with BYREF parameters\nPROCEDURE CalculateJourney(BYVAL Distance : REAL, BYREF Cost : REAL, BYREF Hours : REAL)\n   Cost ← Distance * CostPerKm\n   Hours ← Distance / AverageSpeed\nENDPROCEDURE\n\nPROCEDURE OutputResults(Cost : REAL, Hours : REAL)   // values only come down\n   OUTPUT \"Fuel cost: $\", Cost\n   OUTPUT \"Travel time: \", Hours, \" hours\"\nENDPROCEDURE\n\n// main program: the JourneyCost box\nDECLARE Distance, Cost, Hours : REAL\nDistance ← InputDistance()\nCALL CalculateJourney(Distance, Cost, Hours)\nCALL OutputResults(Cost, Hours)\n\n// Test run: inputs -40 then 120\n// -40 fails CheckPositive, so the loop asks again; 120 passes.\n// Cost = 120 * 0.25 = 30, Hours = 120 / 50 = 2.4\n// Output: Fuel cost: $30   Travel time: 2.4 hours"
+      },
+      {
+        "kind": "Section",
+        "text": "Finite state machines and state-transition tables"
+      },
+      {
+        "kind": "Content",
+        "label": "Finite state machines and state-transition tables",
+        "text": "Some algorithms are best described by the states they can be in rather than by a sequence of steps: a burglar alarm, a door lock or a vending machine. Each can be modelled as a finite state machine (FSM). An FSM has a fixed set of states and one start state. Each input moves it from its current state to a next state, which may be the same state. It may also produce an output."
+      },
+      {
+        "kind": "Content",
+        "label": "Finite state machines and state-transition tables",
+        "text": "A state-transition table lists this behaviour. Each row gives a current state, an input (event), the next state and, if there is one, the output. Building the table from a written description is usually the first step, because it forces every combination of state and input to be considered. Any combination the description does not mention shows a gap in the specification that must be resolved."
+      },
+      {
+        "kind": "Content",
+        "label": "Finite state machines and state-transition tables",
+        "text": "FSM: a fixed set of states, a start state, inputs that change the state, and possibly outputs."
+      },
+      {
+        "kind": "Content",
+        "label": "Finite state machines and state-transition tables",
+        "text": "An input can leave the FSM in the same state (no change of state)."
+      },
+      {
+        "kind": "Content",
+        "label": "Finite state machines and state-transition tables",
+        "text": "State-transition table columns: current state, input, (output), next state."
+      },
+      {
+        "kind": "Content",
+        "label": "Finite state machines and state-transition tables",
+        "text": "Purpose: documents an algorithm precisely, including what each input does in every state, before it is coded."
+      },
+      {
+        "kind": "Example",
+        "label": "Finite state machines and state-transition tables",
+        "text": "Description: A locker starts Locked. Entering the correct code unlocks it. One wrong\ncode gives a Warning; a correct code from Warning still unlocks it, but a second wrong\ncode Blocks the locker until a member of staff resets it. Closing the door of an\nunlocked locker locks it again.\n\nCurrent state | Input         | Next state\n--------------+---------------+-----------\nLocked        | Correct code  | Unlocked\nLocked        | Wrong code    | Warning\nWarning       | Correct code  | Unlocked\nWarning       | Wrong code    | Blocked\nUnlocked      | Door closed   | Locked\nBlocked       | Staff reset   | Locked\n\nTrace the input sequence: Wrong, Correct, Door closed, Wrong, Wrong\nLocked -> Warning -> Unlocked -> Locked -> Warning -> Blocked\n\nNote: the FSM counts wrong attempts by being in a different state (Warning),\nnot by using a variable. The description does not say what a code does while\nBlocked; a designer would add a row such as Blocked | any code | Blocked."
+      },
+      {
+        "kind": "Section",
+        "text": "Drawing and reading state-transition diagrams"
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "A state-transition diagram shows the same information as the table. Each state is a circle labelled with its name. The start state has an arrow pointing into it from nowhere, often labelled start. Each transition is an arrow from the current state to the next state, labelled with the input that causes it. An input that causes no change of state is drawn as an arrow that loops back to the same circle. A final (halting) state, if the FSM has one, is drawn as a double circle."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "When a transition also produces an output, the arrow's label is written input | output. For example, 1 | 0 means an input of 1 produces an output of 0 as the FSM follows that arrow. An FSM with outputs is also called a Mealy machine. If there is no output for a transition, exam tables often write none in the output column."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "To trace an input sequence, start in the start state. For each input, find the arrow leaving the current state that carries that input, record the output on its label, and move to the state it points to. The next input is always taken from this new state."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "Circle: a state; double circle: a final (halting) state; arrow from nowhere into a state: the start state."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "Arrow labelled with an input: a transition; a loop back to the same circle: no change of state."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "Label input | output: the output produced by that transition (Mealy machine)."
+      },
+      {
+        "kind": "Content",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "Tracing: always begin in the start state, and take each new input from the state reached by the previous one."
+      },
+      {
+        "kind": "Example",
+        "label": "Drawing and reading state-transition diagrams",
+        "text": "An FSM reads a bit stream one bit at a time and outputs 1 whenever the bit just read\nis the second (or later) of consecutive 1s; otherwise it outputs 0.\nStart state: S1 (the last bit was 0, or nothing has been read yet).\n\nTransitions (diagram labels):\n  S1 --0|0--> S1   (loop back to S1)\n  S1 --1|0--> S2\n  S2 --1|1--> S2   (loop back to S2)\n  S2 --0|0--> S1\n\nTrace for the input 0 1 1 1 0 1 1:\nCurrent state | Input | Output | Next state\nS1            | 0     | 0      | S1\nS1            | 1     | 0      | S2\nS2            | 1     | 1      | S2\nS2            | 1     | 1      | S2\nS2            | 0     | 0      | S1\nS1            | 1     | 0      | S2\nS2            | 1     | 1      | S2\n\nOutput stream: 0 0 1 1 0 0 1   Final state: S2\n\nEach row's current state is the previous row's next state."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is a solution designed before it is coded?"
+        "text": "State two purposes of a structure chart."
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is a solution designed before it is coded?",
-        "text": "So mistakes in the design are caught and corrected while still cheap to change, rather than after a large amount of code has already been written around them."
+        "label": "State two purposes of a structure chart.",
+        "text": "It shows how a problem is decomposed into modules and which module calls which, and it shows the parameters passed between modules (the interface)."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does a structure diagram show, and what does it deliberately not show?"
+        "text": "What does a downward arrow on a structure chart show, and what does an upward arrow show?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does a structure diagram show, and what does it deliberately not show?",
-        "text": "It shows a program's decomposition into a hierarchy of subroutines, as a tree of boxes with the main routine at the top; it does not show the detailed logic inside any individual subroutine, which is planned separately."
+        "label": "What does a downward arrow on a structure chart show, and what does an upward arrow show?",
+        "text": "A downward arrow is a value supplied to the called (lower) module; an upward arrow is a value returned to the calling (higher) module."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is pseudocode used for during design?"
+        "text": "How is a flag shown on a structure chart?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is pseudocode used for during design?",
-        "text": "Planning an algorithm's exact logic in detail, using sequence, selection and iteration, before it is implemented in a real programming language."
+        "label": "How is a flag shown on a structure chart?",
+        "text": "As an arrow with a solid (filled) circle at its tail; it carries a Boolean value."
       },
       {
         "kind": "Quick recall question",
-        "text": "What are the four standard flowchart symbols and their shapes?"
+        "text": "How are selection and repetition shown on a structure chart?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What are the four standard flowchart symbols and their shapes?",
-        "text": "Terminator (oval) for start/end, input/output (parallelogram), process (rectangle), and decision (diamond)."
+        "label": "How are selection and repetition shown on a structure chart?",
+        "text": "Selection by a diamond with a condition and True / False branches; repetition by a semi-circular arrow labelled with the loop condition."
       },
       {
         "kind": "Quick recall question",
-        "text": "How is selection (IF...THEN...ELSE...ENDIF) represented in a flowchart?"
+        "text": "A module on a chart returns one value upward. How is it usually written in pseudocode?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How is selection (IF...THEN...ELSE...ENDIF) represented in a flowchart?",
-        "text": "As a decision diamond with one outward arrow per possible outcome, leading to different paths that rejoin at a single point afterwards."
+        "label": "A module on a chart returns one value upward. How is it usually written in pseudocode?",
+        "text": "As a FUNCTION with RETURNS, taking its downward values as parameters."
       },
       {
         "kind": "Quick recall question",
-        "text": "How does a flowchart distinguish a pre-condition (WHILE) loop from a post-condition (REPEAT) loop?"
+        "text": "What does a structure chart not tell you about parameters?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "How does a flowchart distinguish a pre-condition (WHILE) loop from a post-condition (REPEAT) loop?",
-        "text": "By where the decision diamond is positioned relative to the looped block: before the block for a pre-condition loop, which can be skipped entirely, or after the block for a post-condition loop, which always runs at least once."
+        "label": "What does a structure chart not tell you about parameters?",
+        "text": "Whether they are passed by value or by reference; that is decided when the pseudocode is written."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why does design need to identify data structures and variables before coding begins?"
+        "text": "What is a finite state machine?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why does design need to identify data structures and variables before coding begins?",
-        "text": "So the chosen structure fits what the algorithm actually needs from the outset, rather than discovering only during coding that a single variable cannot hold everything required."
+        "label": "What is a finite state machine?",
+        "text": "A machine with a fixed set of states, a start state, inputs that change it from one state to another, and possibly outputs."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does the label b | c on a state-transition diagram mean?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does the label b | c on a state-transition diagram mean?",
+        "text": "An input of b causes this transition and produces an output of c."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How are the start state and a final (halting) state shown on a state-transition diagram?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How are the start state and a final (halting) state shown on a state-transition diagram?",
+        "text": "The start state has an arrow pointing into it from nowhere; a final state is drawn as a double circle."
       }
     ]
   },
@@ -16673,347 +16761,566 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Paper 1 asks candidates to distinguish white-box from black-box testing, to select correctly categorised normal, boundary and erroneous test data for a given validation rule, to complete or evaluate a test plan, and to identify the correct kind of maintenance for a described scenario. Answers score when a boundary value is placed exactly on the edge of a valid range rather than just outside it, when erroneous data is genuinely outside the valid range rather than merely unusual, when a test plan's rows each state the test data, its category, the expected result and the actual result, and when a maintenance example is classified by its actual trigger rather than by how large the change is."
+        "text": "This topic covers finding faults in a program, testing it methodically and keeping it useful after release. Paper 2 asks candidates to identify syntax, logic and run-time errors in given pseudocode and correct them, to dry-run an algorithm with a trace table, to name and describe testing methods (dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub), to choose normal, abnormal, extreme and boundary test data for a test plan, and to identify or carry out corrective, adaptive and perfective maintenance, often by amending a given program. Answers score when an error is classified by its effect (will not translate, wrong result, or crash), when each testing method is described by who tests and what they can see, when test data comes with its expected result, and when a maintenance type is matched to the reason for the change."
       },
       {
         "kind": "Definition",
-        "label": "Testing",
-        "text": "The process of checking that a program behaves correctly and meets its specification, by running it against chosen test data and comparing the actual results produced to the expected results, ideally before the program is released."
+        "label": "Syntax error",
+        "text": "An error in which a statement does not follow the grammar rules of the programming language, so the program cannot be translated. It is reported by the compiler or interpreter."
+      },
+      {
+        "kind": "Definition",
+        "label": "Logic error",
+        "text": "An error in the logic of the solution: the program runs, but it does not behave as intended and produces an incorrect result."
+      },
+      {
+        "kind": "Definition",
+        "label": "Run-time error",
+        "text": "An error that occurs while the program is running and causes it to crash (stop unexpectedly) or freeze, for example dividing by zero or an infinite loop."
+      },
+      {
+        "kind": "Definition",
+        "label": "Dry run",
+        "text": "Working through an algorithm or program by hand, without a computer, recording the value of each variable and condition at each step in a trace table."
+      },
+      {
+        "kind": "Definition",
+        "label": "Trace table",
+        "text": "A table with a column for each variable (and for conditions and output) that records how their values change as an algorithm is dry-run."
       },
       {
         "kind": "Definition",
         "label": "White-box testing",
-        "text": "A testing approach that uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through the code, rather than testing only from the outside."
+        "text": "Testing that uses knowledge of the program code, choosing test data so that every path through the code is executed and its results checked."
       },
       {
         "kind": "Definition",
         "label": "Black-box testing",
-        "text": "A testing approach that tests only a program's inputs against its expected outputs, based purely on its specification, with no reference to how the code inside the program is actually written."
+        "text": "Testing that compares the actual results with the expected results for chosen inputs, worked out from the specification, without looking at the program code."
       },
       {
         "kind": "Definition",
-        "label": "Normal data",
-        "text": "Typical, valid test data that lies clearly within the accepted range or set of values, which a program is expected to accept and process correctly."
+        "label": "Stub testing",
+        "text": "Testing the structure of a program before all modules are written, by using stubs: dummy modules whose body only outputs a message (or returns a fixed value) to show they were called."
       },
       {
         "kind": "Definition",
-        "label": "Boundary (extreme) data",
-        "text": "Valid test data that lies exactly on the edge of an accepted range, since errors in a program's logic are especially likely to occur precisely at a boundary."
+        "label": "Integration testing",
+        "text": "Testing that individually tested modules work correctly together once they are combined into one program, usually adding one module at a time."
       },
       {
         "kind": "Definition",
-        "label": "Erroneous (invalid) data",
-        "text": "Test data that lies outside the accepted range or set of values and should be rejected by the program's validation, used to check the program correctly refuses it rather than crashing or producing a wrong result."
+        "label": "Alpha, beta and acceptance testing",
+        "text": "Alpha testing is done in-house by the developer's own testers. Beta testing is done by a limited number of chosen external users, in their own environments, before general release. Acceptance testing is done by the client, to check that bespoke software meets the requirements before they sign it off."
       },
       {
         "kind": "Definition",
-        "label": "Test plan (test table)",
-        "text": "A table recording, for each test carried out, the test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has actually been run."
+        "label": "Test plan",
+        "text": "A detailed list of the tests to be carried out, giving for each test its purpose, the test data, the type of test data and the expected result, with space to record the actual result."
       },
       {
         "kind": "Definition",
-        "label": "Corrective maintenance",
-        "text": "Maintenance that fixes a fault discovered after a program's release, often found through user-reported issues that pre-release testing did not catch."
+        "label": "Corrective, adaptive and perfective maintenance",
+        "text": "Corrective maintenance corrects errors found after the program is in use. Adaptive maintenance amends a program to enhance its functionality or respond to changed requirements or a changed environment. Perfective maintenance improves a program's performance or maintainability without changing what it does."
       },
       {
         "kind": "Section",
-        "text": "The purpose of testing"
+        "text": "Why faults occur, and ways of exposing and avoiding them"
       },
       {
         "kind": "Content",
-        "label": "The purpose of testing",
-        "text": "Testing checks that a program behaves correctly and meets the specification produced during analysis, by running the program against chosen test data and comparing the results it actually produces with the results that were expected. Testing is most valuable when it happens before a program is released, since a fault caught during testing is corrected before it can affect any real user, whereas the same fault surviving into release will eventually be found by an actual user instead, at a point when it is both more disruptive and more expensive to fix."
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "Software may not behave as expected for several reasons: a programmer makes a coding mistake, the requirements specification was drawn up wrongly, the designer makes a design error, a poorly designed interface leads users into mistakes, or the hardware fails. A fault that reaches the end user harms the developer's reputation, and the later a fault is found the more expensive it is to fix. So testing must happen throughout development, not only at the end."
       },
       {
         "kind": "Content",
-        "label": "The purpose of testing",
-        "text": "Testing can never prove with absolute certainty that a program contains no faults at all, since it is generally impossible to test every single one of the enormous number of possible inputs a program could ever receive; what thorough testing can do is give reasonable confidence that the program behaves correctly across a well-chosen, representative range of inputs, including the kinds of input most likely to reveal a fault if one exists."
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "Faults are exposed by testing: dry-running algorithms, reviewing code in walkthroughs, and running the program with carefully chosen test data. Testing can show that faults are present but can never prove that none remain, because a program cannot be tested with every possible input."
       },
       {
         "kind": "Content",
-        "label": "The purpose of testing",
-        "text": "Testing compares a program's actual results, for chosen test data, against the results expected from its specification."
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "The best approach is to avoid faults in the first place. Most faults come from not fully understanding the problem, so a careful requirements analysis is essential. Faults are also reduced by using tried and tested design methods such as structured programming (small modules with clear interfaces, local variables and parameters), by following conventions such as meaningful identifiers, identifier tables and standard algorithms, and by reusing library modules that have already been tested."
       },
       {
         "kind": "Content",
-        "label": "The purpose of testing",
-        "text": "Testing before release is more valuable than finding the same fault afterwards, since it is caught before it can affect a real user."
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "Causes: coding mistakes, a wrong requirements specification, design errors, a poor user interface, hardware failure."
       },
       {
         "kind": "Content",
-        "label": "The purpose of testing",
-        "text": "Testing cannot prove a program is completely free of faults; it can only give reasonable confidence based on a well-chosen range of test data."
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "Expose faults: dry runs, walkthroughs, testing with chosen test data at every stage."
+      },
+      {
+        "kind": "Content",
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "Avoid faults: thorough analysis, structured/modular design, conventions (meaningful identifiers, identifier tables), tested library modules."
+      },
+      {
+        "kind": "Content",
+        "label": "Why faults occur, and ways of exposing and avoiding them",
+        "text": "Testing shows the presence of faults, never their absence; the earlier a fault is found, the cheaper it is to fix."
       },
       {
         "kind": "Section",
-        "text": "White-box testing"
+        "text": "Types of error: syntax, logic and run-time"
       },
       {
         "kind": "Content",
-        "label": "White-box testing",
-        "text": "White-box testing uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through that code, rather than treating the program as something whose internal workings are unknown. This means a tester writing white-box tests can see, for example, that a program contains an IF statement with two branches, and can deliberately choose test data that forces execution down each of those branches at least once, ensuring every part of the code actually gets run and checked by at least one test, not only the parts a black-box tester might happen to exercise by chance."
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "A syntax error breaks the grammar rules of the language: a misspelt keyword, a missing bracket or quote, a missing ENDIF, or = used where the assignment arrow is needed. Syntax errors are the easiest to find because the translator reports them. Many editors underline them as the code is typed. A compiler checks the whole program, so a program that compiles has no syntax errors left. An interpreter only checks each statement as it is about to be executed, so a syntax error in a part of the program that has not yet been run can remain hidden. The error is sometimes reported on the line after the real mistake, because the translator only notices a problem when the next token is unexpected."
       },
       {
         "kind": "Content",
-        "label": "White-box testing",
-        "text": "White-box testing is particularly effective at finding faults hidden inside a rarely executed branch of code, such as an ELSE branch that only runs for an unusual combination of conditions, because the tester can see that branch exists in the code and can deliberately construct test data that reaches it, rather than relying on it being reached by chance."
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "A logic error lets the program run but gives the wrong result: the wrong operator (< instead of <=, AND instead of OR), a loop that runs one time too many or too few, a variable initialised to the wrong value, or a calculation in the wrong order. The translator cannot detect these because the code is valid."
       },
       {
         "kind": "Content",
-        "label": "White-box testing",
-        "text": "White-box testing uses knowledge of a program's internal code and logic to design tests that reach every path or branch through it."
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "A run-time error happens while the program is executing and makes it crash or freeze: dividing by zero, using an array index outside the array's bounds, reading a file that does not exist, or an infinite loop. Logic and run-time errors can only be found by careful testing, and they are dangerous because they may only appear for particular data, so a program can seem to work for a long time before failing."
       },
       {
         "kind": "Content",
-        "label": "White-box testing",
-        "text": "A white-box tester can see a branch exists in the code and deliberately construct test data to reach it."
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "Syntax error: breaks the language rules; found by the compiler/interpreter; the program cannot be translated."
       },
       {
         "kind": "Content",
-        "label": "White-box testing",
-        "text": "White-box testing is especially effective at finding faults hidden inside rarely executed branches of code."
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "Logic error: the program runs but gives an incorrect result; found by testing and dry runs."
+      },
+      {
+        "kind": "Content",
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "Run-time error: the program crashes or freezes during execution (division by zero, index out of range, missing file, infinite loop)."
+      },
+      {
+        "kind": "Content",
+        "label": "Types of error: syntax, logic and run-time",
+        "text": "A compiled program has no syntax errors left; an interpreted one can still contain them in code that has not been run."
       },
       {
         "kind": "Section",
-        "text": "Black-box testing"
+        "text": "Locating and correcting errors"
       },
       {
         "kind": "Content",
-        "label": "Black-box testing",
-        "text": "Black-box testing tests only a program's inputs against its expected outputs, based purely on the program's specification, without any reference to how the code inside the program is actually written; the program is treated as a sealed box whose internal workings are not examined at all, only what goes in and what comes out. This means black-box test data can be chosen purely from what the specification says the program should do, for example that a percentage mark must be a whole number from 0 to 100 inclusive, entirely independently of how the validation happens to be coded internally."
+        "label": "Locating and correcting errors",
+        "text": "To correct an error, first classify it by its effect, then find the line responsible. A syntax error message points close to the line. A logic error is found by comparing actual results with expected ones and then dry-running the code, or by using a debugger, to find where the values first go wrong. A run-time error is found by identifying the data that caused the crash and the statement being executed at the time."
       },
       {
         "kind": "Content",
-        "label": "Black-box testing",
-        "text": "Black-box testing is well suited to checking that a program actually meets its specification from a user's point of view, and it can be carried out by someone who has never seen the program's code at all, but because it is guided only by the specification, it can miss a fault hidden inside a part of the code that the specification does not obviously suggest a test should reach, which is exactly the kind of fault white-box testing is designed to catch instead."
+        "label": "Locating and correcting errors",
+        "text": "When writing a correction in an exam, give the corrected line of code in full, not just a description, and check that the fix does not break anything else. The worked example has one error of each type."
       },
       {
         "kind": "Content",
-        "label": "Black-box testing",
-        "text": "Black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code."
+        "label": "Locating and correcting errors",
+        "text": "Classify the error first: will not translate (syntax), wrong answer (logic), crash or freeze (run-time)."
       },
       {
         "kind": "Content",
-        "label": "Black-box testing",
-        "text": "Black-box test data can be chosen entirely from the specification, independently of how the program happens to be coded."
+        "label": "Locating and correcting errors",
+        "text": "Locate: translator message for syntax; expected-versus-actual results plus a dry run for logic; the failing data for run-time."
       },
       {
         "kind": "Content",
-        "label": "Black-box testing",
-        "text": "Black-box testing can miss a fault hidden in code the specification does not obviously suggest testing, which white-box testing is designed to catch."
-      },
-      {
-        "kind": "Section",
-        "text": "Categories of test data: normal, boundary and erroneous"
-      },
-      {
-        "kind": "Content",
-        "label": "Categories of test data: normal, boundary and erroneous",
-        "text": "Thorough testing uses three categories of test data together, since each is chosen to reveal a different kind of possible fault. Normal data is typical, valid data that lies clearly within the accepted range, which the program is expected to accept and process correctly without any argument about whether it should be accepted at all; it checks the program's core, everyday behaviour works as intended. Boundary (or extreme) data is valid data that lies exactly on the very edge of an accepted range, chosen because a program's logic is especially likely to contain an error exactly at a boundary, for example a comparison mistakenly written with < where <= was needed, which normal data comfortably inside the range would never reveal."
-      },
-      {
-        "kind": "Content",
-        "label": "Categories of test data: normal, boundary and erroneous",
-        "text": "Erroneous (or invalid) data is data that lies outside the accepted range and should be rejected by the program's validation; it checks that the program actually refuses data it should refuse, rather than crashing, producing a nonsensical result, or silently accepting something it should not. A boundary value is still a valid value the program should accept; the values immediately outside the valid range, just past each boundary, are erroneous data, not boundary data, and this distinction, though easy to blur, is exactly what a boundary/erroneous question is testing."
-      },
-      {
-        "kind": "Content",
-        "label": "Categories of test data: normal, boundary and erroneous",
-        "text": "Normal data is typical, valid data comfortably inside the accepted range, checking the program's everyday behaviour."
-      },
-      {
-        "kind": "Content",
-        "label": "Categories of test data: normal, boundary and erroneous",
-        "text": "Boundary data is valid data lying exactly on the edge of the accepted range, since errors are especially likely to occur exactly at a boundary."
-      },
-      {
-        "kind": "Content",
-        "label": "Categories of test data: normal, boundary and erroneous",
-        "text": "Erroneous data lies outside the accepted range and should be rejected; a boundary value is still valid and accepted, while the value just past it is erroneous, not boundary."
-      },
-      {
-        "kind": "Section",
-        "text": "Choosing boundary and erroneous values correctly for a range"
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing boundary and erroneous values correctly for a range",
-        "text": "For a validation rule accepting whole numbers from a lower limit to an upper limit inclusive, the two boundary values are exactly the lower limit and exactly the upper limit themselves, since both are still valid, accepted values that sit right at the very edge of the range. The two most useful erroneous values are the value immediately below the lower limit and the value immediately above the upper limit, since these are the values closest to being valid while still genuinely lying outside the accepted range, making them the values most likely to reveal a validation rule that has been coded with an off-by-one mistake, such as using < instead of <=."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing boundary and erroneous values correctly for a range",
-        "text": "For a rule accepting whole numbers from 0 to 100 inclusive, for example, the boundary values are 0 and 100 themselves, since both must be accepted; the erroneous values are -1 and 101, the values immediately outside each end of the range, since both must be rejected. It would be a mistake to describe -1 or 101 as boundary data: they are not valid values the program should accept at all, so they belong in the erroneous category, testing that the range's edges are enforced strictly rather than loosely."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing boundary and erroneous values correctly for a range",
-        "text": "For a range from a lower limit to an upper limit inclusive, the boundary values are exactly the lower limit and exactly the upper limit, both of which must be accepted."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing boundary and erroneous values correctly for a range",
-        "text": "The most useful erroneous values are the value immediately below the lower limit and immediately above the upper limit, both of which must be rejected."
-      },
-      {
-        "kind": "Content",
-        "label": "Choosing boundary and erroneous values correctly for a range",
-        "text": "For 0 to 100 inclusive, 0 and 100 are boundary data (valid, must be accepted); -1 and 101 are erroneous data (invalid, must be rejected), not boundary data."
-      },
-      {
-        "kind": "Section",
-        "text": "Test plans (test tables)"
-      },
-      {
-        "kind": "Content",
-        "label": "Test plans (test tables)",
-        "text": "A test plan, or test table, records each individual test carried out on a program in a consistent, structured way, so that a discrepancy between what was expected and what actually happened is immediately visible rather than buried in unstructured notes. Each row of a test plan records the test data actually used, the category that test data belongs to (normal, boundary or erroneous), the expected result the specification says should be produced, and the actual result the program produced once the test was actually run."
-      },
-      {
-        "kind": "Content",
-        "label": "Test plans (test tables)",
-        "text": "Recording the expected result before a test is run, and only then recording the actual result once it has been, keeps the comparison between them honest: any test whose actual result differs from its expected result is a fault that has been found and must be investigated, and a test plan makes exactly which tests passed and which failed clear at a glance, for a whole range of normal, boundary and erroneous data together."
-      },
-      {
-        "kind": "Content",
-        "label": "Test plans (test tables)",
-        "text": "A test plan records, for each test, the test data used, its category, the expected result and the actual result once the test has been run."
-      },
-      {
-        "kind": "Content",
-        "label": "Test plans (test tables)",
-        "text": "Recording the expected result before running the test, then the actual result afterwards, keeps the comparison between them honest."
-      },
-      {
-        "kind": "Content",
-        "label": "Test plans (test tables)",
-        "text": "A test plan makes any discrepancy between expected and actual results immediately visible, across a whole range of test data at once."
-      },
-      {
-        "kind": "Section",
-        "text": "Maintenance revisited: corrective, adaptive and perfective"
-      },
-      {
-        "kind": "Content",
-        "label": "Maintenance revisited: corrective, adaptive and perfective",
-        "text": "Corrective maintenance fixes a fault discovered after a program has already been released, and such faults are very often found through issues reported by actual users, rather than through any further deliberate testing after release; a fault that reaches corrective maintenance is, by definition, one that pre-release testing failed to catch. Adaptive maintenance changes a program so it continues to work correctly in a new environment, such as new hardware or a new operating system, even though the program's own required behaviour has not changed; perfective maintenance improves or extends a program beyond what is strictly necessary to keep it working, such as adding a feature or improving performance."
-      },
-      {
-        "kind": "Content",
-        "label": "Maintenance revisited: corrective, adaptive and perfective",
-        "text": "Thorough pre-release testing, using well-chosen normal, boundary and erroneous data and a mixture of white-box and black-box techniques, reduces how much corrective maintenance is needed after release, because more faults are caught and fixed before any user ever encounters them. It can never eliminate corrective maintenance entirely, however, because testing cannot cover every one of the enormous number of possible inputs and real-world conditions a released program will eventually be used under, so some faults will always remain to be discovered, and corrected, only after release."
-      },
-      {
-        "kind": "Content",
-        "label": "Maintenance revisited: corrective, adaptive and perfective",
-        "text": "Corrective maintenance fixes a fault, discovered after release, that pre-release testing failed to catch, often reported by actual users."
-      },
-      {
-        "kind": "Content",
-        "label": "Maintenance revisited: corrective, adaptive and perfective",
-        "text": "Adaptive maintenance keeps a program working correctly in a new environment; perfective maintenance improves or extends it beyond what is strictly necessary."
-      },
-      {
-        "kind": "Content",
-        "label": "Maintenance revisited: corrective, adaptive and perfective",
-        "text": "Thorough pre-release testing reduces, but can never completely eliminate, how much corrective maintenance is needed after release."
-      },
-      {
-        "kind": "Section",
-        "text": "Worked example: a test plan for validating a percentage mark"
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: a test plan for validating a percentage mark",
-        "text": "The worked test plan below validates a percentage mark, which the specification requires to be a whole number from 0 to 100 inclusive. Following the reasoning above, the two boundary values are 0 and 100 themselves, both of which must be accepted; two of the most useful erroneous values are -1 and 101, the values immediately outside each end of the valid range, both of which must be rejected; and a normal value, such as 65, is chosen comfortably inside the range to check the program's everyday behaviour."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: a test plan for validating a percentage mark",
-        "text": "Each row below states the test data, its category, the expected result taken from the specification, and a plausible actual result once the test has actually been run, exactly as a completed test plan should."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: a test plan for validating a percentage mark",
-        "text": "0 and 100 are the boundary values for this rule, since both are valid and must be accepted."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: a test plan for validating a percentage mark",
-        "text": "-1 and 101 are erroneous values, since both are invalid and must be rejected, not boundary values."
-      },
-      {
-        "kind": "Content",
-        "label": "Worked example: a test plan for validating a percentage mark",
-        "text": "65 is a normal value, comfortably inside the valid range, checking the program's everyday accepted behaviour."
+        "label": "Locating and correcting errors",
+        "text": "Correct: rewrite the whole line, then re-test with the data that exposed the error."
       },
       {
         "kind": "Example",
-        "label": "Worked example: a test plan for validating a percentage mark",
-        "text": "Test data | Category  | Expected result           | Actual result\n----------|-----------|----------------------------|----------------------------\n65        | Normal    | Accepted, stored as 65     | Accepted, stored as 65\n0         | Boundary  | Accepted, stored as 0      | Accepted, stored as 0\n100       | Boundary  | Accepted, stored as 100    | Accepted, stored as 100\n-1        | Erroneous | Rejected; error message    | Rejected; error message shown\n101       | Erroneous | Rejected; error message    | Accepted, stored as 101  <-- FAULT\n\n-- Reading the table --\n// The -1 row shows the LOWER boundary is being enforced correctly: -1 is rejected,\n//   exactly as expected, so no fault is revealed there.\n// The 101 row shows a genuine fault: 101 is outside the valid range and should have\n//   been rejected, but the actual result shows the program accepted it anyway --\n//   most likely because the validation condition was coded with < 101 (or <= 101)\n//   instead of the correct <= 100, an off-by-one mistake at exactly the kind of\n//   boundary this erroneous test value was specifically chosen to reveal.\n// Note that 101 itself is ERRONEOUS data here, not boundary data: the boundary\n//   values for this rule are 0 and 100, the valid values at the very edges of the\n//   range; 101 is the value just past the upper boundary, so it belongs outside\n//   the valid range entirely, in the erroneous category."
+        "label": "Locating and correcting errors",
+        "text": "Intended: read marks until -1 is entered, then output the average mark.\n\n01  DECLARE Total, Count, Mark : INTEGER\n02  Total ← 0\n03  Count ← 1\n04  INPUT Mark\n05  WHILE Mark <> -1\n06     Total ← Total + Mark\n07     Count ← Count + 1\n08     INPUT Mark\n09  ENDWHILE\n10  OUTPUT \"Average: , Total / Count\n\nSyntax error, line 10: the closing quote is missing, so the string never ends.\n   Correction: OUTPUT \"Average: \", Total / Count\n\nLogic error, line 03: Count starts at 1, so it ends one higher than the number\n   of marks and the average is too small (see the trace in the dry-run section).\n   Correction: Count ← 0\n\nRun-time error, line 10 (after correcting line 03): if -1 is the first input,\n   Count is 0 and the program divides by zero and crashes.\n   Correction: replace line 10 with\n      IF Count > 0 THEN\n         OUTPUT \"Average: \", Total / Count\n      ELSE\n         OUTPUT \"No marks entered\"\n      ENDIF"
+      },
+      {
+        "kind": "Section",
+        "text": "Stub testing"
+      },
+      {
+        "kind": "Content",
+        "label": "Stub testing",
+        "text": "Stub testing lets the top-level structure of a program, such as a menu, be tested before all the modules it calls have been written. Each unfinished module is replaced by a stub: a procedure with the correct identifier whose body only outputs a message showing it was called, or a function that returns a fixed, known value."
+      },
+      {
+        "kind": "Content",
+        "label": "Stub testing",
+        "text": "Running the program then shows whether each menu choice or condition calls the right module in the right order. Each stub is later replaced by the real module and tested. Stub testing fits top-down development and the structure chart from 12.2: the upper levels are tested first, with stubs standing in for the lower levels."
+      },
+      {
+        "kind": "Content",
+        "label": "Stub testing",
+        "text": "A stub is a dummy module: it has the right identifier (and parameters) but only outputs a message or returns a fixed value."
+      },
+      {
+        "kind": "Content",
+        "label": "Stub testing",
+        "text": "Purpose: test the flow of control (which module is called when) before the modules are finished."
+      },
+      {
+        "kind": "Content",
+        "label": "Stub testing",
+        "text": "Stubs are replaced one at a time by the real, tested modules."
+      },
+      {
+        "kind": "Example",
+        "label": "Stub testing",
+        "text": "PROCEDURE AddStudent()\n   OUTPUT \"AddStudent called\"          // stub\nENDPROCEDURE\n\nPROCEDURE FindStudent()\n   OUTPUT \"FindStudent called\"         // stub\nENDPROCEDURE\n\nFUNCTION CountStudents() RETURNS INTEGER\n   RETURN 3                            // stub returns a fixed value\nENDFUNCTION\n\nDECLARE Choice : INTEGER\nOUTPUT \"1 Add  2 Find  3 Count\"\nINPUT Choice\nCASE OF Choice\n   1 : CALL AddStudent()\n   2 : CALL FindStudent()\n   3 : OUTPUT \"Students: \", CountStudents()\n   OTHERWISE : OUTPUT \"Not a menu option\"\nENDCASE\n\n// Test: input 2 should output \"FindStudent called\";\n// input 3 should output \"Students: 3\"; input 7 should output \"Not a menu option\"."
+      },
+      {
+        "kind": "Section",
+        "text": "Black-box and white-box testing"
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box and white-box testing",
+        "text": "In black-box testing the tester cannot see the code, and it is often someone other than the programmer. Test data and expected results are worked out from the specification: what the program is supposed to do. The program is run, the actual results are recorded and compared with the expected ones. A difference shows a fault exists, but not where; a dry run or a debugger is then used to find the lines that need correcting."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box and white-box testing",
+        "text": "In white-box testing the tester uses knowledge of the code to choose test data that makes every path through it run: both branches of every IF, every CASE clause, and each loop run zero times, once and several times. The exact values do not matter as long as together they reach every path. White-box testing is usually done by the programmer while modules are being written; black-box testing checks the program against its requirements."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box and white-box testing",
+        "text": "The worked example shows the minimum white-box test data for a nested IF with three paths."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box and white-box testing",
+        "text": "Black-box: code not visible; test data and expected results come from the specification; compares expected with actual results."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box and white-box testing",
+        "text": "White-box: code visible; test data chosen so that every path (every branch and loop) is executed."
+      },
+      {
+        "kind": "Content",
+        "label": "Black-box and white-box testing",
+        "text": "Black-box shows that a fault exists; white-box, dry runs and debuggers help locate it."
+      },
+      {
+        "kind": "Example",
+        "label": "Black-box and white-box testing",
+        "text": "IF Age < 16 THEN\n   Price ← 5\nELSE\n   IF Age >= 65 THEN\n      Price ← 6\n   ELSE\n      Price ← 10\n   ENDIF\nENDIF\n\nThere are three paths, so at least three tests are needed:\n\nTest | Age | Age < 16 | Age >= 65 | Expected Price\n1    | 10  | TRUE     | (not tested) | 5\n2    | 70  | FALSE    | TRUE      | 6\n3    | 30  | FALSE    | FALSE     | 10\n\nAny values giving these condition results would do. To check the comparisons\nthemselves (< rather than <=, >= rather than >), add the values at each edge:\n15 → 5, 16 → 10, 64 → 10, 65 → 6."
+      },
+      {
+        "kind": "Section",
+        "text": "Dry runs, trace tables and walkthroughs"
+      },
+      {
+        "kind": "Content",
+        "label": "Dry runs, trace tables and walkthroughs",
+        "text": "A dry run checks an algorithm by hand. Draw a trace table with a column for every variable, one for each condition being tested and one for output. Work through the algorithm one statement at a time, writing a value only when it changes (a blank cell means the value is unchanged) and starting a new row for each pass of a loop. Numbering the lines, with a column for the line being executed, helps you follow the exact order. Comparing the final output with the expected result shows whether the algorithm is correct, and the rows show where it first goes wrong."
+      },
+      {
+        "kind": "Content",
+        "label": "Dry runs, trace tables and walkthroughs",
+        "text": "A walkthrough is a review in which the programmer steps through the algorithm or code, often with other people such as colleagues, explaining what each part does. The coursebook treats walking through with a trace table as another name for a dry run. Both are used early, while modules are being written, and they can be done before the program even exists as code."
+      },
+      {
+        "kind": "Content",
+        "label": "Dry runs, trace tables and walkthroughs",
+        "text": "Trace table: one column per variable, condition and output; enter a value only when it changes; one row per loop pass."
+      },
+      {
+        "kind": "Content",
+        "label": "Dry runs, trace tables and walkthroughs",
+        "text": "Dry run: find the expected output by hand and see where the actual values first go wrong."
+      },
+      {
+        "kind": "Content",
+        "label": "Dry runs, trace tables and walkthroughs",
+        "text": "Walkthrough: stepping through the code, often explaining it to others, to spot errors before or during coding."
+      },
+      {
+        "kind": "Example",
+        "label": "Dry runs, trace tables and walkthroughs",
+        "text": "Dry run of the original average program (Count ← 1 on line 03)\nwith the inputs 10, 20, -1. Expected output: Average: 15\n\nMark | Total | Count | Mark <> -1 | OUTPUT\n     | 0     | 1     |            |\n10   |       |       | TRUE       |\n     | 10    | 2     |            |\n20   |       |       | TRUE       |\n     | 30    | 3     |            |\n-1   |       |       | FALSE      |\n     |       |       |            | Average: 10\n\nActual output 10 ≠ expected 15. Only two marks were entered but Count is 3,\nand the table shows Count was already 1 before any mark was read: line 03\nis the fault. With Count ← 0 the final row gives 30 / 2 = 15."
+      },
+      {
+        "kind": "Section",
+        "text": "Integration, alpha, beta and acceptance testing"
+      },
+      {
+        "kind": "Content",
+        "label": "Integration, alpha, beta and acceptance testing",
+        "text": "Programs are usually made of many modules, sometimes written by different programmers. Each module can pass its own tests and still fail when combined, for example if the modules disagree about the order or type of parameters. Integration testing tests the modules together once they are joined, usually adding one module at a time and testing again before the next is added, so any new fault can be traced to the module just added."
+      },
+      {
+        "kind": "Content",
+        "label": "Integration, alpha, beta and acceptance testing",
+        "text": "Before release, software is alpha tested in-house by the developer's own testers, who try to find faults before anyone outside sees it. What happens next depends on who the software is for. Bespoke software, written for a particular client, goes to acceptance testing: the client tests it, often with real data, to confirm it does everything in the requirements specification. When it passes, the client signs it off as part of the hand-over. Software written for general sale has no single client, so after alpha testing a beta version is given to a limited number of chosen users, who use it in their own environments with their own hardware and data and report faults back so they can be fixed before general release."
+      },
+      {
+        "kind": "Content",
+        "label": "Integration, alpha, beta and acceptance testing",
+        "text": "Integration: combine separately tested modules and check they work together; add one module at a time."
+      },
+      {
+        "kind": "Content",
+        "label": "Integration, alpha, beta and acceptance testing",
+        "text": "Alpha: in-house testers at the developer, before anyone outside sees the software."
+      },
+      {
+        "kind": "Content",
+        "label": "Integration, alpha, beta and acceptance testing",
+        "text": "Beta: a limited number of chosen external users, in real environments, before general release; they report faults back."
+      },
+      {
+        "kind": "Content",
+        "label": "Integration, alpha, beta and acceptance testing",
+        "text": "Acceptance: the client checks bespoke software against the requirements before signing it off."
+      },
+      {
+        "kind": "Section",
+        "text": "Test strategy and test plan"
+      },
+      {
+        "kind": "Content",
+        "label": "Test strategy and test plan",
+        "text": "A test strategy is decided during design. It sets out how the software will be tested: which testing methods suit the project, in what order they happen, and who carries them out. Planning this early means testing is rigorous from the start rather than improvised at the end."
+      },
+      {
+        "kind": "Content",
+        "label": "Test strategy and test plan",
+        "text": "Large programs cannot be tested exhaustively, so testing has to be systematic to find as many faults as possible. An outline test plan lists what needs checking: does each menu choice go to the correct module, is input validated, do loops and decisions work correctly, is data saved to the correct files, and are the results correct? This is then expanded into a detailed test plan, where each test has a number, a description of what it tests, the test data, the type of test data, the expected result and a column for the actual result. Writing the expected result before the test is run keeps the comparison honest, and a completed plan is a record of what has and has not been checked."
+      },
+      {
+        "kind": "Content",
+        "label": "Test strategy and test plan",
+        "text": "Test strategy: the overall approach (which methods, when, by whom), decided during design."
+      },
+      {
+        "kind": "Content",
+        "label": "Test strategy and test plan",
+        "text": "Test plan contents: test number, what is being tested, test data, type of data, expected result, actual result (and any action taken)."
+      },
+      {
+        "kind": "Content",
+        "label": "Test strategy and test plan",
+        "text": "Need: programs cannot be tested exhaustively, so testing must be planned and systematic, and the results recorded."
+      },
+      {
+        "kind": "Section",
+        "text": "Choosing test data: normal, abnormal, extreme and boundary"
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Test data is chosen deliberately, unlike real data, so that each test checks a particular possibility. Normal (valid) data is typical data the program should accept and process correctly. Abnormal (erroneous) data is data the program should reject: values outside the allowed range, the wrong data type, or missing input. Extreme data is the largest and smallest values that are still valid, at each end of the normal range. Boundary data tests each edge of the range from both sides: the value just within the limit, which must be accepted, and the value just outside it, which must be rejected."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Use a separate test for each kind of abnormal value. A single value that is wrong in two ways, such as a negative decimal, does not show which check is working. Boundary tests matter because the most common logic error in validation is a comparison off by one, such as < where <= was needed, and only values at the edge reveal it."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Always give the expected result with each item of test data. The worked example is a test plan for a ticket-booking input where the number of tickets must be a whole number from 1 to 10 inclusive."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Normal: typical valid data, should be accepted."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Abnormal (erroneous): invalid data such as out of range, wrong type or missing, should be rejected."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Extreme: the largest and smallest valid values, should be accepted."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Boundary: values on either side of each limit: just inside (accept) and just outside (reject)."
+      },
+      {
+        "kind": "Content",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Test one kind of invalid value at a time, and state the expected result for every test."
+      },
+      {
+        "kind": "Example",
+        "label": "Choosing test data: normal, abnormal, extreme and boundary",
+        "text": "Rule: the number of tickets must be a whole number from 1 to 10 inclusive.\n\nNo. | Test data | Type                  | Expected result | Actual result\n1   | 4         | Normal                | Accepted        | Accepted\n2   | 7         | Normal                | Accepted        | Accepted\n3   | 1         | Extreme / boundary    | Accepted        | Accepted\n4   | 10        | Extreme / boundary    | Accepted        | Rejected  ← fault\n5   | 0         | Boundary (just below) | Rejected        | Rejected\n6   | 11        | Boundary (just above) | Rejected        | Rejected\n7   | -5        | Abnormal              | Rejected        | Rejected\n8   | 2.5       | Abnormal (not whole)  | Rejected        | Rejected\n9   | \"three\"   | Abnormal (not number) | Rejected        | Rejected\n10  | (blank)   | Abnormal (missing)    | Rejected        | Rejected\n\nTest 4 fails: 10 is valid but was rejected. The upper check was most likely\nwritten Tickets < 10 instead of Tickets <= 10. Only a test at the edge could\nreveal this: 4 and 7 pass either way. After correcting the line, test 4\n(and test 6, to check 11 is still rejected) must be run again."
+      },
+      {
+        "kind": "Section",
+        "text": "The need for continuing maintenance and its three types"
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "A program does not wear out like a machine, but it still needs changing after it has been released. Faults appear that testing missed, often because a rarely used part of the program is finally run or unusual data is entered. Users' needs change, the law changes, or the program must run on new hardware or a new operating system. And a working program can often be made faster or easier to maintain. Maintenance keeps the program correct and useful for as long as it is in use."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Corrective maintenance corrects errors, logic or run-time, that come to light while the program is in use. The programmer uses a trace table or debugging software to find the cause. A correction can introduce a new error, so the program must be tested again afterwards."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Adaptive maintenance amends a program to enhance its functionality or to respond to changes in the specification, for example adding a new feature the users now need, changing it for a new tax law, or making it work on a new platform. Perfective maintenance improves a program that already works correctly, making it faster or more efficient (for example changing file access from sequential to direct) or easier to maintain (clearer identifiers, comments, repeated code moved into a subroutine), without changing what it does."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Why maintenance is needed: faults missed in testing, changing requirements or laws, new hardware or software, room for improvement."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Corrective: fix errors found during use."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Adaptive: change what the program does, to enhance functionality or meet new or changed requirements."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Perfective: improve performance or maintainability without changing what the program does."
+      },
+      {
+        "kind": "Content",
+        "label": "The need for continuing maintenance and its three types",
+        "text": "Classify by the reason for the change, not by how big the change is; re-test after any maintenance."
+      },
+      {
+        "kind": "Section",
+        "text": "Analysing an existing program and making amendments"
+      },
+      {
+        "kind": "Content",
+        "label": "Analysing an existing program and making amendments",
+        "text": "To amend an existing program, first read and dry-run it until you understand what each variable holds and what each part does. Then decide exactly what the new requirement changes, make the smallest set of changes that meets it (new variables declared, conditions added, outputs extended), and keep the existing style and identifiers. Finally, test again with test data that checks both the new behaviour and the old behaviour, which must not have been broken."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysing an existing program and making amendments",
+        "text": "The worked example is adaptive maintenance on the corrected average program. Two new requirements are added: marks outside 0 to 100 must be rejected with a message, and the highest mark must be output as well as the average."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysing an existing program and making amendments",
+        "text": "Understand first: read and dry-run the existing code."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysing an existing program and making amendments",
+        "text": "Change only what the new requirement needs, and declare any new variables."
+      },
+      {
+        "kind": "Content",
+        "label": "Analysing an existing program and making amendments",
+        "text": "Re-test the new behaviour and the original behaviour."
+      },
+      {
+        "kind": "Example",
+        "label": "Analysing an existing program and making amendments",
+        "text": "DECLARE Total, Count, Mark, Highest : INTEGER     // Highest is new\nTotal ← 0\nCount ← 0\nHighest ← -1                                      // new: below any valid mark\nINPUT Mark\nWHILE Mark <> -1\n   IF Mark >= 0 AND Mark <= 100 THEN              // new: validation\n      Total ← Total + Mark\n      Count ← Count + 1\n      IF Mark > Highest THEN                      // new: track the highest\n         Highest ← Mark\n      ENDIF\n   ELSE\n      OUTPUT \"Mark rejected: must be 0 to 100\"   // new\n   ENDIF\n   INPUT Mark\nENDWHILE\nIF Count > 0 THEN\n   OUTPUT \"Average: \", Total / Count\n   OUTPUT \"Highest: \", Highest                   // new\nELSE\n   OUTPUT \"No marks entered\"\nENDIF\n\n// Test: inputs 40, 150, 70, -1\n// 150 is rejected with the message; Total = 110, Count = 2\n// Output: Average: 55   Highest: 70\n// Test: input -1 only → No marks entered (the original behaviour still works)"
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between white-box testing and black-box testing?"
+        "text": "Name the three types of error and how each shows itself."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between white-box testing and black-box testing?",
-        "text": "White-box testing uses knowledge of the program's internal code and logic to test every path or branch through it; black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code."
+        "label": "Name the three types of error and how each shows itself.",
+        "text": "Syntax error: breaks the language rules, so the program will not translate. Logic error: runs but gives a wrong result. Run-time error: crashes or freezes during execution."
       },
       {
         "kind": "Quick recall question",
-        "text": "What are the three categories of test data, and what does each check?"
+        "text": "Why can a syntax error remain in an interpreted program but not a compiled one?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What are the three categories of test data, and what does each check?",
-        "text": "Normal data (typical, valid values, checking everyday behaviour), boundary/extreme data (valid values exactly on the edge of the range, where errors are especially likely), and erroneous/invalid data (values outside the range that should be rejected)."
+        "label": "Why can a syntax error remain in an interpreted program but not a compiled one?",
+        "text": "A compiler checks every statement before running, whereas an interpreter only checks a statement when it is about to execute it, so errors in code that has not been run stay hidden."
       },
       {
         "kind": "Quick recall question",
-        "text": "For a rule accepting whole numbers from 0 to 100 inclusive, what are the boundary values and what are two useful erroneous values?"
+        "text": "Give three ways of avoiding faults in programs."
       },
       {
         "kind": "Quick recall answer",
-        "label": "For a rule accepting whole numbers from 0 to 100 inclusive, what are the boundary values and what are two useful erroneous values?",
-        "text": "The boundary values are 0 and 100 (both valid, must be accepted); useful erroneous values are -1 and 101 (both invalid, must be rejected)."
+        "label": "Give three ways of avoiding faults in programs.",
+        "text": "Thorough requirements analysis; tried and tested design methods such as structured/modular programming; conventions such as meaningful identifiers and identifier tables; reusing tested library modules."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why are -1 and 101 erroneous data rather than boundary data for a 0-to-100 rule?"
+        "text": "What is a stub and why is it used?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why are -1 and 101 erroneous data rather than boundary data for a 0-to-100 rule?",
-        "text": "Because boundary data must still be a valid value on the edge of the range; -1 and 101 both lie outside the valid range entirely and should be rejected, not accepted."
+        "label": "What is a stub and why is it used?",
+        "text": "A dummy module with the correct identifier whose body only outputs a message or returns a fixed value; it lets the program's structure and flow of control be tested before all modules are written."
       },
       {
         "kind": "Quick recall question",
-        "text": "What four things does each row of a test plan record?"
+        "text": "Distinguish white-box from black-box testing."
       },
       {
         "kind": "Quick recall answer",
-        "label": "What four things does each row of a test plan record?",
-        "text": "The test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has been run."
+        "label": "Distinguish white-box from black-box testing.",
+        "text": "White-box uses the code and chooses data to test every path; black-box does not look at the code and compares actual with expected results worked out from the specification."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is corrective maintenance, and how does it relate to pre-release testing?"
+        "text": "What is integration testing?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is corrective maintenance, and how does it relate to pre-release testing?",
-        "text": "Corrective maintenance fixes a fault discovered after release, often found through user-reported issues that pre-release testing did not catch; thorough testing reduces but never fully eliminates the need for it."
+        "label": "What is integration testing?",
+        "text": "Testing that separately tested modules work correctly together when combined, usually adding one module at a time."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why can testing never prove a program is completely free of faults?"
+        "text": "Who carries out alpha, beta and acceptance testing?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why can testing never prove a program is completely free of faults?",
-        "text": "Because it is generally impossible to test every one of the enormous number of possible inputs a program could ever receive; testing can only give reasonable confidence based on a well-chosen range of test data."
+        "label": "Who carries out alpha, beta and acceptance testing?",
+        "text": "Alpha: in-house testers at the developer. Beta: a limited number of chosen external users before general release. Acceptance: the client, for bespoke software, before sign-off."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What does a test plan contain?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What does a test plan contain?",
+        "text": "For each test: a number, what is being tested, the test data, the type of test data, the expected result and the actual result."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "For whole numbers 1 to 10 inclusive, give extreme and boundary test data."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "For whole numbers 1 to 10 inclusive, give extreme and boundary test data.",
+        "text": "Extreme: 1 and 10 (accepted). Boundary: 1 and 0 at the lower limit, 10 and 11 at the upper limit; 0 and 11 must be rejected."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Define corrective, adaptive and perfective maintenance."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Define corrective, adaptive and perfective maintenance.",
+        "text": "Corrective: fixing errors found in use. Adaptive: amending the program to enhance functionality or meet changed requirements. Perfective: improving performance or maintainability without changing what it does."
       }
     ]
   },

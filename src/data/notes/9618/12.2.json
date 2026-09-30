@@ -6,286 +6,345 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Program Design",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to produce or interpret a structure diagram for a given problem, to write pseudocode for a given algorithm, to describe or complete a flowchart using the correct standard symbols, and to identify the data structures and variables a solution will need. Answers score when a structure diagram's boxes correctly show a genuine hierarchy of decomposition rather than an arbitrary grouping, when pseudocode uses the exact keywords and layout expected for sequence, selection and iteration, when a flowchart's symbols (terminator, parallelogram, rectangle, diamond) are matched to the correct purpose rather than used interchangeably, and when a flowchart's arrows correctly represent the same logic pseudocode would express with IF, FOR, WHILE or REPEAT.",
+  "overview": "Program design turns a problem into a plan that can be coded. This topic covers two design tools. A structure chart breaks a problem into modules and shows the parameters passed between them. A state-transition diagram documents an algorithm that behaves as a finite state machine. Paper 2 asks candidates to describe the purpose of a structure chart, to complete or draw one for a given problem, to write the pseudocode a chart describes, and to read a state-transition diagram, usually by completing a state-transition table or tracing a sequence of inputs. Answers score when every parameter on a chart is named and points the right way, when each module in the pseudocode becomes a procedure or function whose parameters match the arrows, and when a trace follows the arrows exactly, starting from the start state.",
   "syllabusPoints": [
-    "Show understanding of the purpose of designing a solution before coding it, so that errors are found and corrected while still cheap to fix.",
-    "Produce a structure diagram (hierarchy chart) showing a program's decomposition into a hierarchy of subroutines.",
-    "Use pseudocode to plan an algorithm's exact logic in detail before implementing it in a programming language.",
-    "Use a flowchart, with the standard symbols for terminator, input/output, process and decision, as a diagrammatic alternative to pseudocode.",
-    "Show how a flowchart represents each of the three basic constructs: sequence, selection and iteration.",
-    "Identify the data structures and variables a solution will need as part of designing it, before coding begins."
+    "Use a structure chart to decompose a problem into sub-tasks and express the parameters passed between the various modules, procedures and functions which are part of the algorithm design.",
+    "Describe the purpose of a structure chart.",
+    "Construct a structure chart for a given problem.",
+    "Derive equivalent pseudocode from a structure chart.",
+    "Show understanding of the purpose of state-transition diagrams to document an algorithm."
   ],
   "definitions": [
     {
-      "term": "Program design",
-      "definition": "The stage of working out a program's structure and logic, on paper or in a design tool, before any code is written, so that mistakes are caught and corrected while they are still cheap to change."
+      "term": "Structure chart",
+      "definition": "A diagram of the modular structure of a solution. Each box is a module, each level refines the level above it, and labelled arrows show the parameters passed between modules."
     },
     {
-      "term": "Structure diagram (hierarchy chart)",
-      "definition": "A diagram showing a program's decomposition into a hierarchy of subroutines, drawn as a tree of boxes with the main routine at the top and the subroutines it calls shown below it, connected by lines."
+      "term": "Module",
+      "definition": "A self-contained part of a solution that carries out one sub-task. On a structure chart it is a box; in the program it becomes a procedure or a function."
     },
     {
-      "term": "Pseudocode",
-      "definition": "A structured, language-independent way of writing out an algorithm's exact logic in detail, using consistent keywords for sequence, selection and iteration, before that logic is implemented in a real programming language."
+      "term": "Parameter",
+      "definition": "A value passed between modules. On a structure chart a downward arrow supplies a value to the module being called, and an upward arrow returns a value to the calling module."
     },
     {
-      "term": "Flowchart",
-      "definition": "A diagram that shows the flow of control through an algorithm using standard symbols connected by arrows, as a diagrammatic alternative to writing the same logic in pseudocode."
+      "term": "Interface",
+      "definition": "The parameters that pass between a calling module and the module it calls. A structure chart shows each module's interface as the named arrows on the line joining the two boxes."
     },
     {
-      "term": "Terminator symbol",
-      "definition": "An oval-shaped flowchart symbol used to show the single start point and the single end point of a flowchart."
+      "term": "Flag",
+      "definition": "A Boolean parameter that reports a condition, such as whether an input was valid. On a structure chart its arrow has a solid (filled) circle at the tail."
     },
     {
-      "term": "Input/output symbol",
-      "definition": "A parallelogram-shaped flowchart symbol used to show a point where data is read in (input) or displayed (output)."
+      "term": "Finite state machine (FSM)",
+      "definition": "A machine with a fixed set of possible states, a start state, a set of inputs that move it from one state to another, and possibly a set of outputs."
     },
     {
-      "term": "Process symbol",
-      "definition": "A rectangle-shaped flowchart symbol used to show a step that carries out processing, such as a calculation or an assignment."
+      "term": "State-transition table",
+      "definition": "A table that gives, for each current state and each input, the next state the FSM moves to and any output it produces."
     },
     {
-      "term": "Decision symbol",
-      "definition": "A diamond-shaped flowchart symbol used to show a point where a condition is tested, with a separate outward arrow for each possible outcome of the test."
+      "term": "State-transition diagram",
+      "definition": "A diagram that describes the behaviour of an FSM. States are circles and each transition is an arrow labelled with the input that causes it, written input | output when the transition also produces an output."
     }
   ],
   "sections": [
     {
-      "id": "01-purpose-of-design",
-      "title": "Why a solution is designed before it is coded",
+      "id": "01-purpose-of-structure-chart",
+      "title": "The purpose of a structure chart",
       "content": [
-        "Designing a solution means working out a program's structure and logic on paper, or in a dedicated design tool, before any actual program code is written. The purpose of doing this separately from coding is that a mistake in a design, such as a step missing from an algorithm or a subroutine that has been given the wrong responsibility, is caught and fixed while it is still cheap to change: correcting a box on a diagram, or a few lines of pseudocode, costs far less time and effort than correcting the same underlying mistake once a large amount of actual program code has already been written around it and tested against it.",
-        "This is why design is treated as its own distinct stage of the program development life cycle (12.1), sitting between analysis and coding: analysis establishes what the solution needs to achieve, design works out how it will achieve it in terms of structure and logic, and only coding turns that already-worked-out plan into a real program in a specific language."
+        "A structure chart is a design tool for modular programs. The problem is decomposed into sub-tasks, and each sub-task becomes a module drawn as a box. The top box (level 0) names the whole program. The boxes below it (level 1) are the sub-tasks it calls, and any of those can be refined again into its own lower level. This is top-down design with stepwise refinement: each level adds detail to the level above it.",
+        "Lines join each module to the modules it calls, and the calls on one level are normally read from left to right. A structure chart shows what the program does and how its modules fit together. It does not show how a module does its job. The detailed logic of each module is written separately in pseudocode or drawn as a flowchart.",
+        "A structure chart also shows the interface between modules: the parameters passed each time one module calls another. This lets several programmers each write a module, knowing exactly what data it receives and what it must return, and it shows which modules can be tested or reused on their own."
       ],
       "bullets": [
-        "Designing a solution separately from coding it means mistakes are caught and fixed while they are still cheap to change.",
-        "A flawed design corrected on paper costs far less than the same flaw corrected after a large amount of code has already been written around it.",
-        "Design sits between analysis (what the solution needs to achieve) and coding (turning an already-worked-out plan into real program code)."
+        "Purpose: decompose a problem into sub-tasks (modules), showing the hierarchy of modules and the parameters passed between them.",
+        "Each box is a module; each level is a refinement of the level above (top-down design, stepwise refinement).",
+        "It shows which module calls which and the interface, not the logic inside a module.",
+        "Benefits: helps programmers see how modules are related, lets modules be shared out, written and tested separately, and shows the parameters each module needs."
       ],
       "examples": []
     },
     {
-      "id": "02-structure-diagrams",
-      "title": "Structure diagrams (hierarchy charts)",
+      "id": "02-parameters-on-chart",
+      "title": "Showing parameters on a structure chart",
       "content": [
-        "A structure diagram, also called a hierarchy chart, shows a program's decomposition into a hierarchy of subroutines, matching the decomposition concept covered in Structured Programming (11.3) but expressed as a diagram rather than as code. It is drawn as a tree of boxes, with the main routine's box at the top, connected downward by lines to a box for each subroutine it calls directly; any of those subroutines that themselves call further subroutines have their own boxes connected downward in the same way, so the diagram's depth shows how many levels the problem has actually been broken down through.",
-        "A structure diagram deliberately shows only which subroutine calls which, and the overall hierarchy this produces, not the detailed logic inside any individual subroutine; that detailed logic is instead planned separately, using pseudocode or a flowchart for each subroutine in turn. A well-designed structure diagram groups genuinely related sub-tasks under a shared parent box and keeps each box's own responsibility narrow and well-defined, rather than arbitrarily grouping unrelated tasks together under one box merely because they happen to run one after another."
+        "Every parameter is drawn as a short arrow beside the line joining two modules, labelled with the parameter's identifier. The direction of the arrow shows which way the value travels. A downward arrow supplies a value from the calling module to the module it calls. An upward arrow returns a new value from the called module to the module above it. A double-headed arrow shows a value that is passed down, updated inside the lower module, and passed back up.",
+        "Two arrow styles are commonly used. A data parameter is often drawn with an open (hollow) circle at its tail. A flag, a Boolean value that reports a condition such as Valid or GameFinished, is drawn with a solid circle at its tail.",
+        "A value produced by one module and needed by another is passed up to their common parent and then down again. Modules on the same level never pass values to each other directly. The structure chart does not state whether a parameter is passed by value or by reference; that decision is made when the pseudocode is written."
       ],
       "bullets": [
-        "A structure diagram is a tree of boxes, with the main routine at the top calling the subroutines below it, showing which subroutine calls which.",
-        "It shows only the hierarchy of calls between subroutines, not the detailed logic inside any one of them; that is planned separately with pseudocode or a flowchart.",
-        "A well-designed structure diagram groups genuinely related sub-tasks together and keeps each box's responsibility narrow, rather than grouping unrelated tasks arbitrarily."
+        "Downward arrow: a value supplied to the lower-level (called) module.",
+        "Upward arrow: a value returned to the higher-level (calling) module.",
+        "Double-headed arrow: a value passed down, changed inside the module, and passed back up.",
+        "Solid circle at the tail: a flag (Boolean); open circle: a data value.",
+        "Sibling modules exchange data only through their parent; the chart does not say BYVAL or BYREF."
       ],
       "examples": []
     },
     {
-      "id": "03-pseudocode-planning",
-      "title": "Using pseudocode to plan an algorithm's logic",
+      "id": "03-selection-and-repetition",
+      "title": "Selection and repetition on a structure chart",
       "content": [
-        "Pseudocode is used to plan an algorithm's exact logic in detail, laying out precisely which steps happen in what order, which conditions are tested and how, and which parts of the algorithm repeat, before any of it is written in a real programming language's own syntax. It uses the same three basic constructs covered in Constructs (11.2): sequence for steps executed one after another, selection (IF...THEN...ELSE...ENDIF or CASE OF...ENDCASE) for a choice between alternative paths, and iteration (FOR, WHILE or REPEAT) for a block of steps that repeats.",
-        "Working out an algorithm's logic in pseudocode first, rather than directly in the target programming language, lets the programmer focus entirely on whether the logic itself is correct, without also having to fight the target language's particular syntax rules at the same time; once the pseudocode's logic has been checked and is believed correct, translating it into a real language becomes a much more mechanical, lower-risk step."
+        "A structure chart can also show control information. Selection is drawn as a diamond on the line below a module, with the condition written beside it. The branches are labelled True and False, and only one of the modules below the diamond is called each time. For example, a CheckLogin module might test PasswordCorrect and call either OutputWelcome (True) or OutputWarning (False).",
+        "Repetition is drawn as a semi-circular (curved) arrow across the lines to the modules that are repeated, labelled with the condition that controls the loop, such as UNTIL Valid or WHILE game not finished. Every module under the arrow is called again on each pass."
       ],
       "bullets": [
-        "Pseudocode plans an algorithm's exact logic, using sequence, selection and iteration, before any of it is written in a real programming language.",
-        "Writing an algorithm's logic in pseudocode first separates the question of whether the logic is correct from the separate question of getting a target language's syntax right.",
-        "Once pseudocode has been checked for correctness, translating it into a real language becomes a comparatively mechanical, lower-risk step, as described in Program Development Life Cycle (12.1)."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-flowchart-symbols",
-      "title": "Flowcharts and the standard symbols",
-      "content": [
-        "A flowchart is a diagrammatic alternative to pseudocode: it shows exactly the same kind of logic, using standard symbols connected by arrows that show the flow of control through the algorithm, rather than using pseudocode's keywords and indentation. Four standard symbols are used: a terminator, drawn as an oval, marks the single start point and the single end point of the flowchart; a parallelogram marks a point where data is read in with an input or displayed as an output; a rectangle marks a process, such as a calculation or an assignment to a variable; and a diamond marks a decision, where a condition is tested, with a separate arrow leading out of the diamond for each possible outcome of that test, such as one arrow labelled YES and one labelled NO.",
-        "Choosing the correct symbol for each step matters just as much as choosing the correct pseudocode keyword would: using a rectangle where a decision should have been shown as a diamond, for example, would hide the fact that the flow of control actually branches at that point, in exactly the same way that forgetting an IF in pseudocode would hide a branch that should have been there."
-      ],
-      "bullets": [
-        "Terminator (oval): marks the single start and single end point of the flowchart.",
-        "Parallelogram: marks input or output; rectangle: marks a process such as a calculation or assignment.",
-        "Diamond: marks a decision, with a separate arrow for each possible outcome of the condition being tested."
-      ],
-      "examples": []
-    },
-    {
-      "id": "05-flowcharts-for-constructs",
-      "title": "Representing sequence, selection and iteration in a flowchart",
-      "content": [
-        "Sequence is represented in a flowchart simply by a chain of symbols connected one after another by single arrows, each leading directly into the next, with no arrow ever branching or looping back; this mirrors sequence in pseudocode, where each statement is likewise executed once, in the order it is written. Selection is represented by a decision diamond with two (or more, for a multi-way choice) arrows leading out of it, one for each possible outcome of the condition; the arrows for the different outcomes lead to different symbols representing the different paths, and, for a two-way IF...ELSE choice, those paths rejoin at a single point afterwards, mirroring how IF...THEN...ELSE...ENDIF is closed by a single ENDIF regardless of which branch was actually taken.",
-        "Iteration is represented by an arrow that loops back from a later point in the flowchart to an earlier one, so that the symbols between them are revisited and executed again; a decision diamond controls whether this loop-back arrow is followed again or whether the flow instead continues past the loop. Where that decision diamond is positioned relative to the looped block of symbols shows whether the loop is a pre-condition loop, tested before the block (matching WHILE...ENDWHILE) so the block can be skipped entirely, or a post-condition loop, tested after the block (matching REPEAT...UNTIL) so the block always executes at least once."
-      ],
-      "bullets": [
-        "Sequence: a chain of symbols connected by single, non-branching, non-looping arrows, one after another, matching pseudocode's execution order.",
-        "Selection: a decision diamond with one arrow per possible outcome, leading to different paths that, for a two-way choice, rejoin afterwards, matching IF...THEN...ELSE...ENDIF.",
-        "Iteration: an arrow loops back to an earlier point, controlled by a decision diamond positioned before the loop (matching WHILE) or after it (matching REPEAT)."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-data-structures-and-variables",
-      "title": "Identifying data structures and variables during design",
-      "content": [
-        "Design also identifies the data structures and variables a solution will actually need, before coding begins, rather than leaving this to be worked out improvised, on the fly, while writing code. This means deciding what each variable will represent and what data type it needs, for example whether a running total needs to be an INTEGER or a REAL, and deciding whether a single variable is enough for a given piece of data or whether a data structure such as an array is actually needed instead, for example to hold every one of several students' scores rather than only the most recently read one.",
-        "Identifying data structures and variables as part of design, rather than only once coding has already begun, means the chosen structure fits the algorithm's actual needs from the outset; discovering only partway through coding that a single variable cannot hold everything the algorithm turns out to need, for example because every previous score is actually needed later and not just the running total, is exactly the kind of design flaw that should have been caught earlier, at the design stage, rather than forcing a restructure of already-written code."
-      ],
-      "bullets": [
-        "Design decides what each variable will represent and its data type, and whether a data structure such as an array is needed instead of a single variable.",
-        "Deciding this during design, rather than while coding, means the chosen structure fits the algorithm's actual needs from the outset.",
-        "Discovering only during coding that a single variable cannot hold everything actually needed is a design flaw that design should have caught first."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-pseudocode-vs-flowchart-worked",
-      "title": "Worked example: the same algorithm as pseudocode and as a flowchart",
-      "content": [
-        "The same algorithm's logic can be planned equally validly as pseudocode or as a flowchart, since both are simply two different ways of representing the identical underlying sequence, selection and iteration; choosing between them is usually a matter of preference or of which is clearer for a particular audience, not a difference in what can actually be expressed. The worked example below finds the largest of three numbers entered by the user, expressed first as pseudocode and then described, step by step, as the flowchart symbols and arrows that represent the exact same logic.",
-        "Comparing the two side by side shows each pseudocode construct has a direct flowchart equivalent: INPUT statements become parallelogram symbols, IF...THEN...ELSE...ENDIF becomes a decision diamond with two arrows that rejoin afterwards, and OUTPUT becomes a further parallelogram symbol just before the terminator that ends the flowchart."
-      ],
-      "bullets": [
-        "The same algorithm can be planned equally validly as pseudocode or as a flowchart; both represent the identical sequence, selection and iteration.",
-        "Each pseudocode construct has a direct flowchart equivalent: INPUT and OUTPUT become parallelograms, IF...ELSE becomes a decision diamond with two arrows.",
-        "Comparing a pseudocode version and a flowchart version of the same algorithm side by side is a reliable way to check both were planned identically."
+        "Diamond with a condition: selection; one of the True / False branches is called.",
+        "Semi-circular arrow with a label: repetition of the modules beneath it; the label gives the loop condition.",
+        "In pseudocode a diamond becomes an IF statement and a semi-circular arrow becomes a loop (REPEAT, WHILE or FOR)."
       ],
       "examples": [
         {
-          "id": "07-largest-of-three-pseudocode",
+          "id": "03-selection-pseudocode",
           "kind": "pseudocode",
-          "label": "Worked example: finding the largest of three numbers, as pseudocode",
-          "content": "DECLARE A, B, C, Largest : INTEGER\n\nOUTPUT \"Enter three numbers: \"\nINPUT A\nINPUT B\nINPUT C\n\nIF A > B THEN\n  IF A > C THEN\n    Largest <- A\n  ELSE\n    Largest <- C\n  ENDIF\nELSE\n  IF B > C THEN\n    Largest <- B\n  ELSE\n    Largest <- C\n  ENDIF\nENDIF\n\nOUTPUT \"The largest number is \", Largest"
-        },
+          "label": "The CheckLogin diamond written as pseudocode",
+          "language": "cambridge-pseudocode",
+          "content": "PROCEDURE CheckLogin(PasswordCorrect : BOOLEAN)\n   IF PasswordCorrect = TRUE THEN\n      CALL OutputWelcome()\n   ELSE\n      CALL OutputWarning()\n   ENDIF\nENDPROCEDURE"
+        }
+      ]
+    },
+    {
+      "id": "04-constructing-a-chart",
+      "title": "Constructing a structure chart for a given problem",
+      "content": [
+        "Start with one box naming the whole problem. Split it into the main sub-tasks, usually input, processing and output, and draw them left to right in the order they are carried out. Refine any sub-task that is still too large into a lower level. Then, for each line, decide what data the called module needs (downward arrows) and what it produces for its caller (upward arrows), and name each arrow with a meaningful identifier. Finally, add a diamond for any module that is only called under a condition and a semi-circular arrow for any modules that repeat.",
+        "The worked example designs a program that reads a journey distance, repeating the input until it is a positive number, then works out the fuel cost and the travel time and outputs both."
+      ],
+      "bullets": [
+        "Top box: the whole problem; level 1: the main sub-tasks in order, left to right.",
+        "Refine large sub-tasks into a further level until each box is one clear task.",
+        "Add a named arrow for every value a module needs (down) or produces (up).",
+        "Add diamonds for conditional calls and semi-circular arrows for repeated calls."
+      ],
+      "examples": [
         {
-          "id": "07-largest-of-three-flowchart",
+          "id": "04-journey-chart",
           "kind": "worked",
-          "label": "The same algorithm described as the equivalent flowchart",
-          "content": "1. Terminator (oval): \"Start\".\n2. Parallelogram: \"Input A, B, C\" -- an arrow leads down from Start into this symbol.\n3. Diamond: \"Is A > B?\" -- an arrow leads down from the input parallelogram into this decision.\n   - YES arrow (e.g. leading right then down) goes to a second diamond: \"Is A > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- A\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n   - NO arrow (e.g. leading left then down) from the first diamond goes to a third diamond: \"Is B > C?\"\n       - YES arrow from this diamond goes to a rectangle: \"Largest <- B\"\n       - NO arrow from this diamond goes to a rectangle: \"Largest <- C\"\n4. All four possible rectangles (\"Largest <- A\", \"Largest <- C\" from the first branch, \"Largest <- B\", \"Largest <- C\" from the second branch) have their arrows rejoin at a single point below them, exactly as ENDIF closes both nested IF statements in the pseudocode.\n5. From that rejoined point, an arrow leads down into a parallelogram: \"Output Largest\".\n6. An arrow leads down from the output parallelogram into a final terminator (oval): \"End\".\n\n-- Comparing the two: each nested IF...THEN...ELSE...ENDIF in the pseudocode is one\n-- decision diamond with two outward arrows in the flowchart, its two branches are the\n-- symbols each arrow leads to, and its ENDIF is the single point where those two\n-- branches' arrows rejoin before the flowchart continues -- the flowchart's structure\n-- and the pseudocode's structure express exactly the same nested selection logic."
+          "label": "Worked example: structure chart for the journey program",
+          "content": "Level 0:  JourneyCost\n\nLevel 1 (called by JourneyCost, left to right):\n  InputDistance      up:   Distance\n  CalculateJourney   down: Distance        up: Cost, Hours\n  OutputResults      down: Cost, Hours\n\nLevel 2 (called by InputDistance, under a semi-circular arrow labelled UNTIL Valid):\n  GetNumber          up:   Distance\n  CheckPositive      down: Distance        up: Valid  (flag, solid circle)\n\nReading the interface:\n- Distance goes up from InputDistance to JourneyCost, then down into CalculateJourney.\n  The two level-1 modules do not pass it to each other directly.\n- CalculateJourney returns two values (Cost and Hours), so both arrows point up.\n- Valid is a Boolean, so it is drawn as a flag.\n- The semi-circular arrow means GetNumber and CheckPositive are called again\n  until Valid is TRUE."
+        }
+      ]
+    },
+    {
+      "id": "05-deriving-pseudocode",
+      "title": "Deriving pseudocode from a structure chart",
+      "content": [
+        "Each box below the top becomes a subroutine, and the top box becomes the main program that calls the level-1 modules in order. Use local variables and parameters rather than global variables, so each module is self-contained and a change inside one module cannot accidentally alter a variable elsewhere.",
+        "The arrows decide the header. A module that sends exactly one value up can be written as a FUNCTION that RETURNS that value. A module that sends no value up is a PROCEDURE called with CALL, with its downward values as BYVAL parameters. A module that sends two or more values up, or has a double-headed arrow, is a PROCEDURE whose upward values are BYREF parameters, so the changes reach the caller. A diamond becomes an IF statement, and a semi-circular arrow becomes a loop whose condition matches the label.",
+        "Because the chart does not say how parameters are passed, choose BYVAL for values that only travel down and BYREF for values that must come back up in a procedure."
+      ],
+      "bullets": [
+        "Top box: main program; every other box: a procedure or function with the same identifier.",
+        "One upward value: FUNCTION ... RETURNS; no upward value: PROCEDURE with BYVAL parameters.",
+        "Several upward values or a double-headed arrow: PROCEDURE with BYREF parameters.",
+        "Diamond → IF ... THEN ... ELSE ... ENDIF; semi-circular arrow → REPEAT ... UNTIL, WHILE ... ENDWHILE or FOR ... NEXT."
+      ],
+      "examples": [
+        {
+          "id": "05-journey-pseudocode",
+          "kind": "pseudocode",
+          "label": "Pseudocode derived from the journey structure chart",
+          "language": "cambridge-pseudocode",
+          "content": "CONSTANT CostPerKm = 0.25        // dollars per km\nCONSTANT AverageSpeed = 50      // km per hour\n\nFUNCTION GetNumber() RETURNS REAL          // one value up: Distance\n   DECLARE Value : REAL\n   OUTPUT \"Enter the distance in km: \"\n   INPUT Value\n   RETURN Value\nENDFUNCTION\n\nFUNCTION CheckPositive(Distance : REAL) RETURNS BOOLEAN   // flag up: Valid\n   RETURN Distance > 0\nENDFUNCTION\n\nFUNCTION InputDistance() RETURNS REAL      // one value up: Distance\n   DECLARE Distance : REAL\n   DECLARE Valid : BOOLEAN\n   REPEAT                                  // the semi-circular arrow\n      Distance ← GetNumber()\n      Valid ← CheckPositive(Distance)\n   UNTIL Valid = TRUE\n   RETURN Distance\nENDFUNCTION\n\n// two values up, so a procedure with BYREF parameters\nPROCEDURE CalculateJourney(BYVAL Distance : REAL, BYREF Cost : REAL, BYREF Hours : REAL)\n   Cost ← Distance * CostPerKm\n   Hours ← Distance / AverageSpeed\nENDPROCEDURE\n\nPROCEDURE OutputResults(Cost : REAL, Hours : REAL)   // values only come down\n   OUTPUT \"Fuel cost: $\", Cost\n   OUTPUT \"Travel time: \", Hours, \" hours\"\nENDPROCEDURE\n\n// main program: the JourneyCost box\nDECLARE Distance, Cost, Hours : REAL\nDistance ← InputDistance()\nCALL CalculateJourney(Distance, Cost, Hours)\nCALL OutputResults(Cost, Hours)\n\n// Test run: inputs -40 then 120\n// -40 fails CheckPositive, so the loop asks again; 120 passes.\n// Cost = 120 * 0.25 = 30, Hours = 120 / 50 = 2.4\n// Output: Fuel cost: $30   Travel time: 2.4 hours"
+        }
+      ]
+    },
+    {
+      "id": "06-fsm-and-state-transition-tables",
+      "title": "Finite state machines and state-transition tables",
+      "content": [
+        "Some algorithms are best described by the states they can be in rather than by a sequence of steps: a burglar alarm, a door lock or a vending machine. Each can be modelled as a finite state machine (FSM). An FSM has a fixed set of states and one start state. Each input moves it from its current state to a next state, which may be the same state. It may also produce an output.",
+        "A state-transition table lists this behaviour. Each row gives a current state, an input (event), the next state and, if there is one, the output. Building the table from a written description is usually the first step, because it forces every combination of state and input to be considered. Any combination the description does not mention shows a gap in the specification that must be resolved."
+      ],
+      "bullets": [
+        "FSM: a fixed set of states, a start state, inputs that change the state, and possibly outputs.",
+        "An input can leave the FSM in the same state (no change of state).",
+        "State-transition table columns: current state, input, (output), next state.",
+        "Purpose: documents an algorithm precisely, including what each input does in every state, before it is coded."
+      ],
+      "examples": [
+        {
+          "id": "06-locker-table",
+          "kind": "worked",
+          "label": "Worked example: state-transition table for a code-operated locker",
+          "content": "Description: A locker starts Locked. Entering the correct code unlocks it. One wrong\ncode gives a Warning; a correct code from Warning still unlocks it, but a second wrong\ncode Blocks the locker until a member of staff resets it. Closing the door of an\nunlocked locker locks it again.\n\nCurrent state | Input         | Next state\n--------------+---------------+-----------\nLocked        | Correct code  | Unlocked\nLocked        | Wrong code    | Warning\nWarning       | Correct code  | Unlocked\nWarning       | Wrong code    | Blocked\nUnlocked      | Door closed   | Locked\nBlocked       | Staff reset   | Locked\n\nTrace the input sequence: Wrong, Correct, Door closed, Wrong, Wrong\nLocked -> Warning -> Unlocked -> Locked -> Warning -> Blocked\n\nNote: the FSM counts wrong attempts by being in a different state (Warning),\nnot by using a variable. The description does not say what a code does while\nBlocked; a designer would add a row such as Blocked | any code | Blocked."
+        }
+      ]
+    },
+    {
+      "id": "07-state-transition-diagrams",
+      "title": "Drawing and reading state-transition diagrams",
+      "content": [
+        "A state-transition diagram shows the same information as the table. Each state is a circle labelled with its name. The start state has an arrow pointing into it from nowhere, often labelled start. Each transition is an arrow from the current state to the next state, labelled with the input that causes it. An input that causes no change of state is drawn as an arrow that loops back to the same circle. A final (halting) state, if the FSM has one, is drawn as a double circle.",
+        "When a transition also produces an output, the arrow's label is written input | output. For example, 1 | 0 means an input of 1 produces an output of 0 as the FSM follows that arrow. An FSM with outputs is also called a Mealy machine. If there is no output for a transition, exam tables often write none in the output column.",
+        "To trace an input sequence, start in the start state. For each input, find the arrow leaving the current state that carries that input, record the output on its label, and move to the state it points to. The next input is always taken from this new state."
+      ],
+      "bullets": [
+        "Circle: a state; double circle: a final (halting) state; arrow from nowhere into a state: the start state.",
+        "Arrow labelled with an input: a transition; a loop back to the same circle: no change of state.",
+        "Label input | output: the output produced by that transition (Mealy machine).",
+        "Tracing: always begin in the start state, and take each new input from the state reached by the previous one."
+      ],
+      "examples": [
+        {
+          "id": "07-consecutive-ones-trace",
+          "kind": "worked",
+          "label": "Worked example: tracing an FSM with outputs",
+          "content": "An FSM reads a bit stream one bit at a time and outputs 1 whenever the bit just read\nis the second (or later) of consecutive 1s; otherwise it outputs 0.\nStart state: S1 (the last bit was 0, or nothing has been read yet).\n\nTransitions (diagram labels):\n  S1 --0|0--> S1   (loop back to S1)\n  S1 --1|0--> S2\n  S2 --1|1--> S2   (loop back to S2)\n  S2 --0|0--> S1\n\nTrace for the input 0 1 1 1 0 1 1:\nCurrent state | Input | Output | Next state\nS1            | 0     | 0      | S1\nS1            | 1     | 0      | S2\nS2            | 1     | 1      | S2\nS2            | 1     | 1      | S2\nS2            | 0     | 0      | S1\nS1            | 1     | 0      | S2\nS2            | 1     | 1      | S2\n\nOutput stream: 0 0 1 1 0 0 1   Final state: S2\n\nEach row's current state is the previous row's next state."
         }
       ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Flowchart symbols and their pseudocode equivalents",
+    "title": "Structure chart symbols and their pseudocode",
     "columns": [
-      "Flowchart symbol",
-      "Shape",
-      "Purpose",
-      "Pseudocode equivalent"
+      "Symbol",
+      "Meaning",
+      "In the pseudocode"
     ],
     "rows": [
       [
-        "Terminator",
-        "Oval",
-        "Marks the single start point or the single end point of the flowchart",
-        "The implicit start and end of the pseudocode itself"
+        "Box (module)",
+        "One sub-task of the solution",
+        "A PROCEDURE or FUNCTION with the same identifier (the top box is the main program)"
       ],
       [
-        "Input/output",
-        "Parallelogram",
-        "Reads in data (input) or displays data (output)",
-        "INPUT identifier or OUTPUT identifier"
+        "Line joining two boxes",
+        "The upper module calls the lower module",
+        "CALL Name(...) for a procedure, or the function used in an expression"
       ],
       [
-        "Process",
-        "Rectangle",
-        "Carries out processing, such as a calculation or an assignment",
-        "An assignment statement, e.g. Total <- Total + Value"
+        "Downward arrow (open circle)",
+        "A data value supplied to the called module",
+        "A BYVAL parameter"
       ],
       [
-        "Decision",
-        "Diamond",
-        "Tests a condition, with one outward arrow per possible outcome",
-        "IF...THEN...ELSE...ENDIF, CASE OF...ENDCASE, or a loop's condition test"
+        "Upward arrow (open circle)",
+        "A data value returned to the calling module",
+        "The RETURNS value of a function, or a BYREF parameter of a procedure"
+      ],
+      [
+        "Arrow with a solid circle",
+        "A flag: a Boolean value reporting a condition",
+        "A BOOLEAN return value or parameter"
+      ],
+      [
+        "Double-headed arrow",
+        "A value passed down, updated in the module and passed back",
+        "A BYREF parameter"
+      ],
+      [
+        "Diamond with a condition",
+        "Selection: only one branch is called",
+        "IF ... THEN ... ELSE ... ENDIF"
+      ],
+      [
+        "Semi-circular arrow with a label",
+        "Repetition of the modules beneath it",
+        "REPEAT ... UNTIL, WHILE ... ENDWHILE or FOR ... NEXT"
       ]
     ]
   },
   "diagram": {
-    "title": "A structure diagram: decomposition of a program into a hierarchy of subroutines",
+    "title": "Reading a structure chart from the top down",
     "type": "layers",
     "nodes": [
-      "Main routine, at the top of the diagram, calling each subroutine it needs",
-      "First-level subroutines, each handling one well-defined sub-task called directly by the main routine",
-      "Second-level subroutines, called by a first-level subroutine to break its own sub-task down further",
-      "Lines connect each box downward to the subroutines it calls, showing the call hierarchy, not the internal logic",
-      "The detailed logic inside any one box is planned separately, using pseudocode or a flowchart for that subroutine"
+      "Level 0: one box naming the whole problem (becomes the main program)",
+      "Level 1: the main sub-tasks, called left to right (input, processing, output)",
+      "Level 2 and below: each sub-task refined into smaller modules (stepwise refinement)",
+      "Arrows on each line: parameters down to the called module, results up to the caller; solid circle = flag",
+      "Control: a diamond for selection, a semi-circular arrow for repetition"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing a structure diagram that groups unrelated sub-tasks together",
+      "title": "Choosing the header for a module from its arrows",
       "steps": [
-        "A structure diagram for a student-records program has a single box, ValidateAndSaveAndPrint, directly under the main routine, with no further boxes beneath it",
-        "The requirement is that each box represent one well-defined sub-task, so the diagram's hierarchy is genuinely useful for planning and for later reuse of individual parts",
-        "Examining ValidateAndSaveAndPrint shows it is actually responsible for three unrelated sub-tasks bundled together: validating input, saving a record to storage, and printing a receipt",
-        "Because all three are combined in one box, none of the three can be reused, tested, or replaced independently of the other two, even though they have nothing to do with one another"
+        "A structure chart shows a module ProcessOrder with downward arrows Quantity and UnitPrice and upward arrows Total and Discount",
+        "Two values travel up, and a function can return only one value",
+        "So ProcessOrder must be a procedure, and Total and Discount must be passed by reference so the caller receives the new values",
+        "Quantity and UnitPrice only travel down, so they can be passed by value"
       ],
-      "evaluation": "The structure diagram should be redrawn with three separate boxes, ValidateInput, SaveRecord and PrintReceipt, each called directly by the main routine, because a structure diagram's boxes are meant to reflect a genuine decomposition into well-defined sub-tasks, and bundling unrelated tasks into one box defeats the purpose of drawing the hierarchy in the first place."
+      "evaluation": "The header is PROCEDURE ProcessOrder(BYVAL Quantity : INTEGER, BYVAL UnitPrice : REAL, BYREF Total : REAL, BYREF Discount : REAL). Writing it as a FUNCTION, or passing Total BYVAL, would lose at least one of the results the chart says must be returned."
     },
     {
-      "title": "Choosing the correct flowchart symbol for a step that was drawn incorrectly",
+      "title": "A module that uses a value its chart never passes to it",
       "steps": [
-        "A flowchart drawn for a login check uses a rectangle for the step \"Is the entered password correct?\", with a single arrow leading out of it to \"Grant access\"",
-        "The requirement is that every point where the flow of control can branch into more than one possible path is shown as a decision (diamond), with a separate arrow for each outcome",
-        "Checking the rectangle used for this step shows it has only one outward arrow, so there is no way for the flowchart to show what happens if the password is wrong",
-        "The step is, in fact, testing a condition with two distinct outcomes (correct or incorrect), which is precisely what a diamond, not a rectangle, is meant to represent"
+        "In a chart for a quiz program, CheckAnswer has a downward arrow Answer and an upward flag Correct",
+        "The pseudocode for CheckAnswer compares Answer with the variable RightAnswer",
+        "No arrow carries RightAnswer into CheckAnswer, so the module can only reach it as a global variable",
+        "A global variable means CheckAnswer is no longer self-contained: it cannot be tested on its own, and a change to RightAnswer elsewhere affects it without appearing in its interface"
       ],
-      "evaluation": "The symbol must be changed from a rectangle to a diamond, with two outward arrows, one labelled YES leading to \"Grant access\" and one labelled NO leading to a step such as \"Reject login\"; using a rectangle here hid the fact that control genuinely branches at this point, in exactly the way an omitted IF in pseudocode would hide the same branch."
+      "evaluation": "Add a downward arrow RightAnswer to the chart and a matching parameter to the header, so the interface on the chart and the parameters in the code agree. Every value a module uses from outside should appear as an arrow on its line."
     },
     {
-      "title": "Deciding whether a single variable or an array is needed during design",
+      "title": "Finding a gap when turning a description into an FSM",
       "steps": [
-        "A design is being planned for a program that must read in the scores of thirty students and then, once all thirty have been entered, print out every score again in the reverse order it was entered",
-        "The design initially plans a single variable, Score, to hold each value as it is read in, since a single variable was enough for the running-total algorithms seen earlier in the course",
-        "Checking this plan against the actual requirement shows that once a later score has been read into Score, the previous score it overwrote is no longer available anywhere, yet the reverse-order output needs every one of the thirty scores to still exist after all thirty have been read",
-        "A single variable can hold only one value at a time, but the requirement needs all thirty values to still be available together, after input has finished, in order to print them out again"
+        "A description of a turnstile says: in Locked, a coin unlocks it; in Unlocked, a push lets one person through and locks it",
+        "Building the state-transition table row by row for every state and every input gives four combinations",
+        "Two combinations are not described: a push while Locked, and a coin while Unlocked",
+        "Without rows for them the diagram has states with no arrow for an input, so the algorithm's behaviour for that input is undefined"
       ],
-      "evaluation": "The design must use an array of thirty elements, not a single variable, because the requirement to output every score again afterwards means every one of the thirty values must still exist at once; catching this during design, before any code is written, avoids discovering only partway through coding that a single variable cannot hold what the algorithm actually needs."
+      "evaluation": "The designer adds Locked | push | Locked and Unlocked | coin | Unlocked (loops back to the same state, perhaps with an output such as returning the coin). This is the purpose of the table and diagram: they document every state and input, so gaps are found and settled before coding."
     }
   ],
   "examTips": [
-    "Draw a structure diagram's boxes to reflect a genuine hierarchy of well-defined sub-tasks, not an arbitrary grouping of unrelated tasks that merely happen to run one after another.",
-    "Use exact pseudocode keywords and correct closing keywords (ENDIF, ENDCASE, NEXT, ENDWHILE, UNTIL) when planning an algorithm, matching the constructs covered in 11.2.",
-    "Match each flowchart symbol to its specific purpose (terminator for start/end, parallelogram for input/output, rectangle for a process, diamond for a decision with multiple outward arrows) rather than using them interchangeably.",
-    "Before coding, identify whether a single variable is enough or whether a data structure such as an array is actually needed, based on whether every value must still be available together later, not just the most recent one."
+    "When asked for the purpose of a structure chart, give both parts: it shows the decomposition into modules (the hierarchy / which module calls which) and the parameters passed between them (the interface).",
+    "Label every arrow with the parameter's identifier and check its direction: down for a value the module needs, up for a value it produces.",
+    "When writing pseudocode from a chart, keep the module identifiers and parameter names from the chart, and make the number of parameters in each header match the number of arrows.",
+    "In a state-transition trace, the current state of each row is the next state of the row before; write none in the output column when a transition produces no output.",
+    "Read an input | output label from left to right: the input causes the transition and the output is produced as the FSM moves."
   ],
   "commonMistakes": [
-    "Drawing a structure diagram that groups unrelated sub-tasks into one box, making individual parts impossible to test or reuse independently.",
-    "Using a rectangle (process) instead of a diamond (decision) for a step that actually tests a condition with more than one possible outcome.",
-    "Forgetting that a two-way selection's branches in a flowchart must rejoin at a single point afterwards, matching how ENDIF closes both branches in pseudocode.",
-    "Confusing a pre-condition loop (decision before the looped block, matching WHILE) with a post-condition loop (decision after the looped block, matching REPEAT) when drawing or reading a flowchart.",
-    "Leaving the choice of data structures and variables until coding has already begun, rather than identifying what the algorithm actually needs during design."
+    "Drawing a structure chart with the logic inside a module (steps, loops of statements) instead of only the modules, calls and parameters.",
+    "Drawing an arrow between two modules on the same level instead of passing the value up to the parent and back down.",
+    "Writing a module with two upward arrows as a function, or passing its upward values BYVAL so the results never reach the caller.",
+    "Forgetting the flag symbol: a Boolean result such as Valid should have a solid circle.",
+    "Starting an FSM trace from the wrong state, or taking the next input from the old state instead of the state just reached.",
+    "Leaving out transitions that return to the same state, so the table or diagram does not cover every input in every state."
   ],
   "quickRecall": [
     {
-      "question": "Why is a solution designed before it is coded?",
-      "answer": "So mistakes in the design are caught and corrected while still cheap to change, rather than after a large amount of code has already been written around them."
+      "question": "State two purposes of a structure chart.",
+      "answer": "It shows how a problem is decomposed into modules and which module calls which, and it shows the parameters passed between modules (the interface)."
     },
     {
-      "question": "What does a structure diagram show, and what does it deliberately not show?",
-      "answer": "It shows a program's decomposition into a hierarchy of subroutines, as a tree of boxes with the main routine at the top; it does not show the detailed logic inside any individual subroutine, which is planned separately."
+      "question": "What does a downward arrow on a structure chart show, and what does an upward arrow show?",
+      "answer": "A downward arrow is a value supplied to the called (lower) module; an upward arrow is a value returned to the calling (higher) module."
     },
     {
-      "question": "What is pseudocode used for during design?",
-      "answer": "Planning an algorithm's exact logic in detail, using sequence, selection and iteration, before it is implemented in a real programming language."
+      "question": "How is a flag shown on a structure chart?",
+      "answer": "As an arrow with a solid (filled) circle at its tail; it carries a Boolean value."
     },
     {
-      "question": "What are the four standard flowchart symbols and their shapes?",
-      "answer": "Terminator (oval) for start/end, input/output (parallelogram), process (rectangle), and decision (diamond)."
+      "question": "How are selection and repetition shown on a structure chart?",
+      "answer": "Selection by a diamond with a condition and True / False branches; repetition by a semi-circular arrow labelled with the loop condition."
     },
     {
-      "question": "How is selection (IF...THEN...ELSE...ENDIF) represented in a flowchart?",
-      "answer": "As a decision diamond with one outward arrow per possible outcome, leading to different paths that rejoin at a single point afterwards."
+      "question": "A module on a chart returns one value upward. How is it usually written in pseudocode?",
+      "answer": "As a FUNCTION with RETURNS, taking its downward values as parameters."
     },
     {
-      "question": "How does a flowchart distinguish a pre-condition (WHILE) loop from a post-condition (REPEAT) loop?",
-      "answer": "By where the decision diamond is positioned relative to the looped block: before the block for a pre-condition loop, which can be skipped entirely, or after the block for a post-condition loop, which always runs at least once."
+      "question": "What does a structure chart not tell you about parameters?",
+      "answer": "Whether they are passed by value or by reference; that is decided when the pseudocode is written."
     },
     {
-      "question": "Why does design need to identify data structures and variables before coding begins?",
-      "answer": "So the chosen structure fits what the algorithm actually needs from the outset, rather than discovering only during coding that a single variable cannot hold everything required."
+      "question": "What is a finite state machine?",
+      "answer": "A machine with a fixed set of states, a start state, inputs that change it from one state to another, and possibly outputs."
+    },
+    {
+      "question": "What does the label b | c on a state-transition diagram mean?",
+      "answer": "An input of b causes this transition and produces an output of c."
+    },
+    {
+      "question": "How are the start state and a final (halting) state shown on a state-transition diagram?",
+      "answer": "The start state has an arrow pointing into it from nowhere; a final state is drawn as a double circle."
     }
   ],
   "relatedTopics": [
-    "11.2",
+    "9.1",
     "11.3",
     "12.1",
     "12.3"

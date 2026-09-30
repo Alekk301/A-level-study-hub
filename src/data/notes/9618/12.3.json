@@ -6,290 +6,445 @@
   "unitTitle": "AS Problem-solving & Programming",
   "title": "Program Testing and Maintenance",
   "contentDepth": "full",
-  "overview": "Paper 1 asks candidates to distinguish white-box from black-box testing, to select correctly categorised normal, boundary and erroneous test data for a given validation rule, to complete or evaluate a test plan, and to identify the correct kind of maintenance for a described scenario. Answers score when a boundary value is placed exactly on the edge of a valid range rather than just outside it, when erroneous data is genuinely outside the valid range rather than merely unusual, when a test plan's rows each state the test data, its category, the expected result and the actual result, and when a maintenance example is classified by its actual trigger rather than by how large the change is.",
+  "overview": "This topic covers finding faults in a program, testing it methodically and keeping it useful after release. Paper 2 asks candidates to identify syntax, logic and run-time errors in given pseudocode and correct them, to dry-run an algorithm with a trace table, to name and describe testing methods (dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub), to choose normal, abnormal, extreme and boundary test data for a test plan, and to identify or carry out corrective, adaptive and perfective maintenance, often by amending a given program. Answers score when an error is classified by its effect (will not translate, wrong result, or crash), when each testing method is described by who tests and what they can see, when test data comes with its expected result, and when a maintenance type is matched to the reason for the change.",
   "syllabusPoints": [
-    "Show understanding of the purpose of testing: to check a program behaves correctly and meets its specification, ideally before it is released.",
-    "Show understanding of white-box testing, using knowledge of a program's internal code and logic to test every path or branch through it.",
-    "Show understanding of black-box testing, testing a program's inputs against its expected outputs based purely on its specification.",
-    "Select and categorise test data as normal, boundary (extreme) or erroneous (invalid).",
-    "Design and complete a test plan (test table) recording test data, its category, the expected result and the actual result.",
-    "Show understanding of corrective, adaptive and perfective maintenance in the context of faults found after release.",
-    "Show understanding that thorough testing before release reduces, but never fully eliminates, the corrective maintenance needed afterwards."
+    "Show understanding of ways of exposing and avoiding faults in programs.",
+    "Locate and identify the different types of errors: syntax errors, logic errors and run-time errors.",
+    "Correct identified errors.",
+    "Show understanding of the methods of testing available and select appropriate data for a given method, including dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing.",
+    "Show understanding of the need for a test strategy and test plan and their likely contents.",
+    "Choose appropriate test data for a test plan, including normal, abnormal and extreme/boundary data.",
+    "Show understanding of the need for continuing maintenance of a system and the differences between each type of maintenance: perfective, adaptive and corrective.",
+    "Analyse an existing program and make amendments to enhance functionality."
   ],
   "definitions": [
     {
-      "term": "Testing",
-      "definition": "The process of checking that a program behaves correctly and meets its specification, by running it against chosen test data and comparing the actual results produced to the expected results, ideally before the program is released."
+      "term": "Syntax error",
+      "definition": "An error in which a statement does not follow the grammar rules of the programming language, so the program cannot be translated. It is reported by the compiler or interpreter."
+    },
+    {
+      "term": "Logic error",
+      "definition": "An error in the logic of the solution: the program runs, but it does not behave as intended and produces an incorrect result."
+    },
+    {
+      "term": "Run-time error",
+      "definition": "An error that occurs while the program is running and causes it to crash (stop unexpectedly) or freeze, for example dividing by zero or an infinite loop."
+    },
+    {
+      "term": "Dry run",
+      "definition": "Working through an algorithm or program by hand, without a computer, recording the value of each variable and condition at each step in a trace table."
+    },
+    {
+      "term": "Trace table",
+      "definition": "A table with a column for each variable (and for conditions and output) that records how their values change as an algorithm is dry-run."
     },
     {
       "term": "White-box testing",
-      "definition": "A testing approach that uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through the code, rather than testing only from the outside."
+      "definition": "Testing that uses knowledge of the program code, choosing test data so that every path through the code is executed and its results checked."
     },
     {
       "term": "Black-box testing",
-      "definition": "A testing approach that tests only a program's inputs against its expected outputs, based purely on its specification, with no reference to how the code inside the program is actually written."
+      "definition": "Testing that compares the actual results with the expected results for chosen inputs, worked out from the specification, without looking at the program code."
     },
     {
-      "term": "Normal data",
-      "definition": "Typical, valid test data that lies clearly within the accepted range or set of values, which a program is expected to accept and process correctly."
+      "term": "Stub testing",
+      "definition": "Testing the structure of a program before all modules are written, by using stubs: dummy modules whose body only outputs a message (or returns a fixed value) to show they were called."
     },
     {
-      "term": "Boundary (extreme) data",
-      "definition": "Valid test data that lies exactly on the edge of an accepted range, since errors in a program's logic are especially likely to occur precisely at a boundary."
+      "term": "Integration testing",
+      "definition": "Testing that individually tested modules work correctly together once they are combined into one program, usually adding one module at a time."
     },
     {
-      "term": "Erroneous (invalid) data",
-      "definition": "Test data that lies outside the accepted range or set of values and should be rejected by the program's validation, used to check the program correctly refuses it rather than crashing or producing a wrong result."
+      "term": "Alpha, beta and acceptance testing",
+      "definition": "Alpha testing is done in-house by the developer's own testers. Beta testing is done by a limited number of chosen external users, in their own environments, before general release. Acceptance testing is done by the client, to check that bespoke software meets the requirements before they sign it off."
     },
     {
-      "term": "Test plan (test table)",
-      "definition": "A table recording, for each test carried out, the test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has actually been run."
+      "term": "Test plan",
+      "definition": "A detailed list of the tests to be carried out, giving for each test its purpose, the test data, the type of test data and the expected result, with space to record the actual result."
     },
     {
-      "term": "Corrective maintenance",
-      "definition": "Maintenance that fixes a fault discovered after a program's release, often found through user-reported issues that pre-release testing did not catch."
+      "term": "Corrective, adaptive and perfective maintenance",
+      "definition": "Corrective maintenance corrects errors found after the program is in use. Adaptive maintenance amends a program to enhance its functionality or respond to changed requirements or a changed environment. Perfective maintenance improves a program's performance or maintainability without changing what it does."
     }
   ],
   "sections": [
     {
-      "id": "01-purpose-of-testing",
-      "title": "The purpose of testing",
+      "id": "01-exposing-and-avoiding-faults",
+      "title": "Why faults occur, and ways of exposing and avoiding them",
       "content": [
-        "Testing checks that a program behaves correctly and meets the specification produced during analysis, by running the program against chosen test data and comparing the results it actually produces with the results that were expected. Testing is most valuable when it happens before a program is released, since a fault caught during testing is corrected before it can affect any real user, whereas the same fault surviving into release will eventually be found by an actual user instead, at a point when it is both more disruptive and more expensive to fix.",
-        "Testing can never prove with absolute certainty that a program contains no faults at all, since it is generally impossible to test every single one of the enormous number of possible inputs a program could ever receive; what thorough testing can do is give reasonable confidence that the program behaves correctly across a well-chosen, representative range of inputs, including the kinds of input most likely to reveal a fault if one exists."
+        "Software may not behave as expected for several reasons: a programmer makes a coding mistake, the requirements specification was drawn up wrongly, the designer makes a design error, a poorly designed interface leads users into mistakes, or the hardware fails. A fault that reaches the end user harms the developer's reputation, and the later a fault is found the more expensive it is to fix. So testing must happen throughout development, not only at the end.",
+        "Faults are exposed by testing: dry-running algorithms, reviewing code in walkthroughs, and running the program with carefully chosen test data. Testing can show that faults are present but can never prove that none remain, because a program cannot be tested with every possible input.",
+        "The best approach is to avoid faults in the first place. Most faults come from not fully understanding the problem, so a careful requirements analysis is essential. Faults are also reduced by using tried and tested design methods such as structured programming (small modules with clear interfaces, local variables and parameters), by following conventions such as meaningful identifiers, identifier tables and standard algorithms, and by reusing library modules that have already been tested."
       ],
       "bullets": [
-        "Testing compares a program's actual results, for chosen test data, against the results expected from its specification.",
-        "Testing before release is more valuable than finding the same fault afterwards, since it is caught before it can affect a real user.",
-        "Testing cannot prove a program is completely free of faults; it can only give reasonable confidence based on a well-chosen range of test data."
+        "Causes: coding mistakes, a wrong requirements specification, design errors, a poor user interface, hardware failure.",
+        "Expose faults: dry runs, walkthroughs, testing with chosen test data at every stage.",
+        "Avoid faults: thorough analysis, structured/modular design, conventions (meaningful identifiers, identifier tables), tested library modules.",
+        "Testing shows the presence of faults, never their absence; the earlier a fault is found, the cheaper it is to fix."
       ],
       "examples": []
     },
     {
-      "id": "02-white-box-testing",
-      "title": "White-box testing",
+      "id": "02-types-of-error",
+      "title": "Types of error: syntax, logic and run-time",
       "content": [
-        "White-box testing uses knowledge of a program's internal code and logic to design tests that exercise every path or branch through that code, rather than treating the program as something whose internal workings are unknown. This means a tester writing white-box tests can see, for example, that a program contains an IF statement with two branches, and can deliberately choose test data that forces execution down each of those branches at least once, ensuring every part of the code actually gets run and checked by at least one test, not only the parts a black-box tester might happen to exercise by chance.",
-        "White-box testing is particularly effective at finding faults hidden inside a rarely executed branch of code, such as an ELSE branch that only runs for an unusual combination of conditions, because the tester can see that branch exists in the code and can deliberately construct test data that reaches it, rather than relying on it being reached by chance."
+        "A syntax error breaks the grammar rules of the language: a misspelt keyword, a missing bracket or quote, a missing ENDIF, or = used where the assignment arrow is needed. Syntax errors are the easiest to find because the translator reports them. Many editors underline them as the code is typed. A compiler checks the whole program, so a program that compiles has no syntax errors left. An interpreter only checks each statement as it is about to be executed, so a syntax error in a part of the program that has not yet been run can remain hidden. The error is sometimes reported on the line after the real mistake, because the translator only notices a problem when the next token is unexpected.",
+        "A logic error lets the program run but gives the wrong result: the wrong operator (< instead of <=, AND instead of OR), a loop that runs one time too many or too few, a variable initialised to the wrong value, or a calculation in the wrong order. The translator cannot detect these because the code is valid.",
+        "A run-time error happens while the program is executing and makes it crash or freeze: dividing by zero, using an array index outside the array's bounds, reading a file that does not exist, or an infinite loop. Logic and run-time errors can only be found by careful testing, and they are dangerous because they may only appear for particular data, so a program can seem to work for a long time before failing."
       ],
       "bullets": [
-        "White-box testing uses knowledge of a program's internal code and logic to design tests that reach every path or branch through it.",
-        "A white-box tester can see a branch exists in the code and deliberately construct test data to reach it.",
-        "White-box testing is especially effective at finding faults hidden inside rarely executed branches of code."
+        "Syntax error: breaks the language rules; found by the compiler/interpreter; the program cannot be translated.",
+        "Logic error: the program runs but gives an incorrect result; found by testing and dry runs.",
+        "Run-time error: the program crashes or freezes during execution (division by zero, index out of range, missing file, infinite loop).",
+        "A compiled program has no syntax errors left; an interpreted one can still contain them in code that has not been run."
       ],
       "examples": []
     },
     {
-      "id": "03-black-box-testing",
-      "title": "Black-box testing",
+      "id": "03-locating-and-correcting",
+      "title": "Locating and correcting errors",
       "content": [
-        "Black-box testing tests only a program's inputs against its expected outputs, based purely on the program's specification, without any reference to how the code inside the program is actually written; the program is treated as a sealed box whose internal workings are not examined at all, only what goes in and what comes out. This means black-box test data can be chosen purely from what the specification says the program should do, for example that a percentage mark must be a whole number from 0 to 100 inclusive, entirely independently of how the validation happens to be coded internally.",
-        "Black-box testing is well suited to checking that a program actually meets its specification from a user's point of view, and it can be carried out by someone who has never seen the program's code at all, but because it is guided only by the specification, it can miss a fault hidden inside a part of the code that the specification does not obviously suggest a test should reach, which is exactly the kind of fault white-box testing is designed to catch instead."
+        "To correct an error, first classify it by its effect, then find the line responsible. A syntax error message points close to the line. A logic error is found by comparing actual results with expected ones and then dry-running the code, or by using a debugger, to find where the values first go wrong. A run-time error is found by identifying the data that caused the crash and the statement being executed at the time.",
+        "When writing a correction in an exam, give the corrected line of code in full, not just a description, and check that the fix does not break anything else. The worked example has one error of each type."
       ],
       "bullets": [
-        "Black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code.",
-        "Black-box test data can be chosen entirely from the specification, independently of how the program happens to be coded.",
-        "Black-box testing can miss a fault hidden in code the specification does not obviously suggest testing, which white-box testing is designed to catch."
-      ],
-      "examples": []
-    },
-    {
-      "id": "04-categories-of-test-data",
-      "title": "Categories of test data: normal, boundary and erroneous",
-      "content": [
-        "Thorough testing uses three categories of test data together, since each is chosen to reveal a different kind of possible fault. Normal data is typical, valid data that lies clearly within the accepted range, which the program is expected to accept and process correctly without any argument about whether it should be accepted at all; it checks the program's core, everyday behaviour works as intended. Boundary (or extreme) data is valid data that lies exactly on the very edge of an accepted range, chosen because a program's logic is especially likely to contain an error exactly at a boundary, for example a comparison mistakenly written with < where <= was needed, which normal data comfortably inside the range would never reveal.",
-        "Erroneous (or invalid) data is data that lies outside the accepted range and should be rejected by the program's validation; it checks that the program actually refuses data it should refuse, rather than crashing, producing a nonsensical result, or silently accepting something it should not. A boundary value is still a valid value the program should accept; the values immediately outside the valid range, just past each boundary, are erroneous data, not boundary data, and this distinction, though easy to blur, is exactly what a boundary/erroneous question is testing."
-      ],
-      "bullets": [
-        "Normal data is typical, valid data comfortably inside the accepted range, checking the program's everyday behaviour.",
-        "Boundary data is valid data lying exactly on the edge of the accepted range, since errors are especially likely to occur exactly at a boundary.",
-        "Erroneous data lies outside the accepted range and should be rejected; a boundary value is still valid and accepted, while the value just past it is erroneous, not boundary."
-      ],
-      "examples": []
-    },
-    {
-      "id": "05-choosing-boundary-and-erroneous-data",
-      "title": "Choosing boundary and erroneous values correctly for a range",
-      "content": [
-        "For a validation rule accepting whole numbers from a lower limit to an upper limit inclusive, the two boundary values are exactly the lower limit and exactly the upper limit themselves, since both are still valid, accepted values that sit right at the very edge of the range. The two most useful erroneous values are the value immediately below the lower limit and the value immediately above the upper limit, since these are the values closest to being valid while still genuinely lying outside the accepted range, making them the values most likely to reveal a validation rule that has been coded with an off-by-one mistake, such as using < instead of <=.",
-        "For a rule accepting whole numbers from 0 to 100 inclusive, for example, the boundary values are 0 and 100 themselves, since both must be accepted; the erroneous values are -1 and 101, the values immediately outside each end of the range, since both must be rejected. It would be a mistake to describe -1 or 101 as boundary data: they are not valid values the program should accept at all, so they belong in the erroneous category, testing that the range's edges are enforced strictly rather than loosely."
-      ],
-      "bullets": [
-        "For a range from a lower limit to an upper limit inclusive, the boundary values are exactly the lower limit and exactly the upper limit, both of which must be accepted.",
-        "The most useful erroneous values are the value immediately below the lower limit and immediately above the upper limit, both of which must be rejected.",
-        "For 0 to 100 inclusive, 0 and 100 are boundary data (valid, must be accepted); -1 and 101 are erroneous data (invalid, must be rejected), not boundary data."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-test-plans",
-      "title": "Test plans (test tables)",
-      "content": [
-        "A test plan, or test table, records each individual test carried out on a program in a consistent, structured way, so that a discrepancy between what was expected and what actually happened is immediately visible rather than buried in unstructured notes. Each row of a test plan records the test data actually used, the category that test data belongs to (normal, boundary or erroneous), the expected result the specification says should be produced, and the actual result the program produced once the test was actually run.",
-        "Recording the expected result before a test is run, and only then recording the actual result once it has been, keeps the comparison between them honest: any test whose actual result differs from its expected result is a fault that has been found and must be investigated, and a test plan makes exactly which tests passed and which failed clear at a glance, for a whole range of normal, boundary and erroneous data together."
-      ],
-      "bullets": [
-        "A test plan records, for each test, the test data used, its category, the expected result and the actual result once the test has been run.",
-        "Recording the expected result before running the test, then the actual result afterwards, keeps the comparison between them honest.",
-        "A test plan makes any discrepancy between expected and actual results immediately visible, across a whole range of test data at once."
-      ],
-      "examples": []
-    },
-    {
-      "id": "07-maintenance-and-testing",
-      "title": "Maintenance revisited: corrective, adaptive and perfective",
-      "content": [
-        "Corrective maintenance fixes a fault discovered after a program has already been released, and such faults are very often found through issues reported by actual users, rather than through any further deliberate testing after release; a fault that reaches corrective maintenance is, by definition, one that pre-release testing failed to catch. Adaptive maintenance changes a program so it continues to work correctly in a new environment, such as new hardware or a new operating system, even though the program's own required behaviour has not changed; perfective maintenance improves or extends a program beyond what is strictly necessary to keep it working, such as adding a feature or improving performance.",
-        "Thorough pre-release testing, using well-chosen normal, boundary and erroneous data and a mixture of white-box and black-box techniques, reduces how much corrective maintenance is needed after release, because more faults are caught and fixed before any user ever encounters them. It can never eliminate corrective maintenance entirely, however, because testing cannot cover every one of the enormous number of possible inputs and real-world conditions a released program will eventually be used under, so some faults will always remain to be discovered, and corrected, only after release."
-      ],
-      "bullets": [
-        "Corrective maintenance fixes a fault, discovered after release, that pre-release testing failed to catch, often reported by actual users.",
-        "Adaptive maintenance keeps a program working correctly in a new environment; perfective maintenance improves or extends it beyond what is strictly necessary.",
-        "Thorough pre-release testing reduces, but can never completely eliminate, how much corrective maintenance is needed after release."
-      ],
-      "examples": []
-    },
-    {
-      "id": "08-worked-test-plan",
-      "title": "Worked example: a test plan for validating a percentage mark",
-      "content": [
-        "The worked test plan below validates a percentage mark, which the specification requires to be a whole number from 0 to 100 inclusive. Following the reasoning above, the two boundary values are 0 and 100 themselves, both of which must be accepted; two of the most useful erroneous values are -1 and 101, the values immediately outside each end of the valid range, both of which must be rejected; and a normal value, such as 65, is chosen comfortably inside the range to check the program's everyday behaviour.",
-        "Each row below states the test data, its category, the expected result taken from the specification, and a plausible actual result once the test has actually been run, exactly as a completed test plan should."
-      ],
-      "bullets": [
-        "0 and 100 are the boundary values for this rule, since both are valid and must be accepted.",
-        "-1 and 101 are erroneous values, since both are invalid and must be rejected, not boundary values.",
-        "65 is a normal value, comfortably inside the valid range, checking the program's everyday accepted behaviour."
+        "Classify the error first: will not translate (syntax), wrong answer (logic), crash or freeze (run-time).",
+        "Locate: translator message for syntax; expected-versus-actual results plus a dry run for logic; the failing data for run-time.",
+        "Correct: rewrite the whole line, then re-test with the data that exposed the error."
       ],
       "examples": [
         {
-          "id": "08-percentage-test-plan",
+          "id": "03-three-errors",
           "kind": "worked",
-          "label": "Worked test plan: validating a percentage mark (0 to 100 inclusive)",
-          "content": "Test data | Category  | Expected result           | Actual result\n----------|-----------|----------------------------|----------------------------\n65        | Normal    | Accepted, stored as 65     | Accepted, stored as 65\n0         | Boundary  | Accepted, stored as 0      | Accepted, stored as 0\n100       | Boundary  | Accepted, stored as 100    | Accepted, stored as 100\n-1        | Erroneous | Rejected; error message    | Rejected; error message shown\n101       | Erroneous | Rejected; error message    | Accepted, stored as 101  <-- FAULT\n\n-- Reading the table --\n// The -1 row shows the LOWER boundary is being enforced correctly: -1 is rejected,\n//   exactly as expected, so no fault is revealed there.\n// The 101 row shows a genuine fault: 101 is outside the valid range and should have\n//   been rejected, but the actual result shows the program accepted it anyway --\n//   most likely because the validation condition was coded with < 101 (or <= 101)\n//   instead of the correct <= 100, an off-by-one mistake at exactly the kind of\n//   boundary this erroneous test value was specifically chosen to reveal.\n// Note that 101 itself is ERRONEOUS data here, not boundary data: the boundary\n//   values for this rule are 0 and 100, the valid values at the very edges of the\n//   range; 101 is the value just past the upper boundary, so it belongs outside\n//   the valid range entirely, in the erroneous category."
+          "label": "Worked example: one syntax, one logic and one run-time error",
+          "content": "Intended: read marks until -1 is entered, then output the average mark.\n\n01  DECLARE Total, Count, Mark : INTEGER\n02  Total ← 0\n03  Count ← 1\n04  INPUT Mark\n05  WHILE Mark <> -1\n06     Total ← Total + Mark\n07     Count ← Count + 1\n08     INPUT Mark\n09  ENDWHILE\n10  OUTPUT \"Average: , Total / Count\n\nSyntax error, line 10: the closing quote is missing, so the string never ends.\n   Correction: OUTPUT \"Average: \", Total / Count\n\nLogic error, line 03: Count starts at 1, so it ends one higher than the number\n   of marks and the average is too small (see the trace in the dry-run section).\n   Correction: Count ← 0\n\nRun-time error, line 10 (after correcting line 03): if -1 is the first input,\n   Count is 0 and the program divides by zero and crashes.\n   Correction: replace line 10 with\n      IF Count > 0 THEN\n         OUTPUT \"Average: \", Total / Count\n      ELSE\n         OUTPUT \"No marks entered\"\n      ENDIF"
+        }
+      ]
+    },
+    {
+      "id": "04-stub-testing",
+      "title": "Stub testing",
+      "content": [
+        "Stub testing lets the top-level structure of a program, such as a menu, be tested before all the modules it calls have been written. Each unfinished module is replaced by a stub: a procedure with the correct identifier whose body only outputs a message showing it was called, or a function that returns a fixed, known value.",
+        "Running the program then shows whether each menu choice or condition calls the right module in the right order. Each stub is later replaced by the real module and tested. Stub testing fits top-down development and the structure chart from 12.2: the upper levels are tested first, with stubs standing in for the lower levels."
+      ],
+      "bullets": [
+        "A stub is a dummy module: it has the right identifier (and parameters) but only outputs a message or returns a fixed value.",
+        "Purpose: test the flow of control (which module is called when) before the modules are finished.",
+        "Stubs are replaced one at a time by the real, tested modules."
+      ],
+      "examples": [
+        {
+          "id": "04-menu-stubs",
+          "kind": "pseudocode",
+          "label": "A menu tested with stubs",
+          "language": "cambridge-pseudocode",
+          "content": "PROCEDURE AddStudent()\n   OUTPUT \"AddStudent called\"          // stub\nENDPROCEDURE\n\nPROCEDURE FindStudent()\n   OUTPUT \"FindStudent called\"         // stub\nENDPROCEDURE\n\nFUNCTION CountStudents() RETURNS INTEGER\n   RETURN 3                            // stub returns a fixed value\nENDFUNCTION\n\nDECLARE Choice : INTEGER\nOUTPUT \"1 Add  2 Find  3 Count\"\nINPUT Choice\nCASE OF Choice\n   1 : CALL AddStudent()\n   2 : CALL FindStudent()\n   3 : OUTPUT \"Students: \", CountStudents()\n   OTHERWISE : OUTPUT \"Not a menu option\"\nENDCASE\n\n// Test: input 2 should output \"FindStudent called\";\n// input 3 should output \"Students: 3\"; input 7 should output \"Not a menu option\"."
+        }
+      ]
+    },
+    {
+      "id": "05-black-box-and-white-box",
+      "title": "Black-box and white-box testing",
+      "content": [
+        "In black-box testing the tester cannot see the code, and it is often someone other than the programmer. Test data and expected results are worked out from the specification: what the program is supposed to do. The program is run, the actual results are recorded and compared with the expected ones. A difference shows a fault exists, but not where; a dry run or a debugger is then used to find the lines that need correcting.",
+        "In white-box testing the tester uses knowledge of the code to choose test data that makes every path through it run: both branches of every IF, every CASE clause, and each loop run zero times, once and several times. The exact values do not matter as long as together they reach every path. White-box testing is usually done by the programmer while modules are being written; black-box testing checks the program against its requirements.",
+        "The worked example shows the minimum white-box test data for a nested IF with three paths."
+      ],
+      "bullets": [
+        "Black-box: code not visible; test data and expected results come from the specification; compares expected with actual results.",
+        "White-box: code visible; test data chosen so that every path (every branch and loop) is executed.",
+        "Black-box shows that a fault exists; white-box, dry runs and debuggers help locate it."
+      ],
+      "examples": [
+        {
+          "id": "05-white-box-paths",
+          "kind": "worked",
+          "label": "Worked example: white-box test data for every path",
+          "content": "IF Age < 16 THEN\n   Price ← 5\nELSE\n   IF Age >= 65 THEN\n      Price ← 6\n   ELSE\n      Price ← 10\n   ENDIF\nENDIF\n\nThere are three paths, so at least three tests are needed:\n\nTest | Age | Age < 16 | Age >= 65 | Expected Price\n1    | 10  | TRUE     | (not tested) | 5\n2    | 70  | FALSE    | TRUE      | 6\n3    | 30  | FALSE    | FALSE     | 10\n\nAny values giving these condition results would do. To check the comparisons\nthemselves (< rather than <=, >= rather than >), add the values at each edge:\n15 → 5, 16 → 10, 64 → 10, 65 → 6."
+        }
+      ]
+    },
+    {
+      "id": "06-dry-run-and-walkthrough",
+      "title": "Dry runs, trace tables and walkthroughs",
+      "content": [
+        "A dry run checks an algorithm by hand. Draw a trace table with a column for every variable, one for each condition being tested and one for output. Work through the algorithm one statement at a time, writing a value only when it changes (a blank cell means the value is unchanged) and starting a new row for each pass of a loop. Numbering the lines, with a column for the line being executed, helps you follow the exact order. Comparing the final output with the expected result shows whether the algorithm is correct, and the rows show where it first goes wrong.",
+        "A walkthrough is a review in which the programmer steps through the algorithm or code, often with other people such as colleagues, explaining what each part does. The coursebook treats walking through with a trace table as another name for a dry run. Both are used early, while modules are being written, and they can be done before the program even exists as code."
+      ],
+      "bullets": [
+        "Trace table: one column per variable, condition and output; enter a value only when it changes; one row per loop pass.",
+        "Dry run: find the expected output by hand and see where the actual values first go wrong.",
+        "Walkthrough: stepping through the code, often explaining it to others, to spot errors before or during coding."
+      ],
+      "examples": [
+        {
+          "id": "06-trace-logic-error",
+          "kind": "worked",
+          "label": "Worked example: a dry run that exposes the logic error",
+          "content": "Dry run of the original average program (Count ← 1 on line 03)\nwith the inputs 10, 20, -1. Expected output: Average: 15\n\nMark | Total | Count | Mark <> -1 | OUTPUT\n     | 0     | 1     |            |\n10   |       |       | TRUE       |\n     | 10    | 2     |            |\n20   |       |       | TRUE       |\n     | 30    | 3     |            |\n-1   |       |       | FALSE      |\n     |       |       |            | Average: 10\n\nActual output 10 ≠ expected 15. Only two marks were entered but Count is 3,\nand the table shows Count was already 1 before any mark was read: line 03\nis the fault. With Count ← 0 the final row gives 30 / 2 = 15."
+        }
+      ]
+    },
+    {
+      "id": "07-integration-alpha-beta-acceptance",
+      "title": "Integration, alpha, beta and acceptance testing",
+      "content": [
+        "Programs are usually made of many modules, sometimes written by different programmers. Each module can pass its own tests and still fail when combined, for example if the modules disagree about the order or type of parameters. Integration testing tests the modules together once they are joined, usually adding one module at a time and testing again before the next is added, so any new fault can be traced to the module just added.",
+        "Before release, software is alpha tested in-house by the developer's own testers, who try to find faults before anyone outside sees it. What happens next depends on who the software is for. Bespoke software, written for a particular client, goes to acceptance testing: the client tests it, often with real data, to confirm it does everything in the requirements specification. When it passes, the client signs it off as part of the hand-over. Software written for general sale has no single client, so after alpha testing a beta version is given to a limited number of chosen users, who use it in their own environments with their own hardware and data and report faults back so they can be fixed before general release."
+      ],
+      "bullets": [
+        "Integration: combine separately tested modules and check they work together; add one module at a time.",
+        "Alpha: in-house testers at the developer, before anyone outside sees the software.",
+        "Beta: a limited number of chosen external users, in real environments, before general release; they report faults back.",
+        "Acceptance: the client checks bespoke software against the requirements before signing it off."
+      ],
+      "examples": []
+    },
+    {
+      "id": "08-test-strategy-and-plan",
+      "title": "Test strategy and test plan",
+      "content": [
+        "A test strategy is decided during design. It sets out how the software will be tested: which testing methods suit the project, in what order they happen, and who carries them out. Planning this early means testing is rigorous from the start rather than improvised at the end.",
+        "Large programs cannot be tested exhaustively, so testing has to be systematic to find as many faults as possible. An outline test plan lists what needs checking: does each menu choice go to the correct module, is input validated, do loops and decisions work correctly, is data saved to the correct files, and are the results correct? This is then expanded into a detailed test plan, where each test has a number, a description of what it tests, the test data, the type of test data, the expected result and a column for the actual result. Writing the expected result before the test is run keeps the comparison honest, and a completed plan is a record of what has and has not been checked."
+      ],
+      "bullets": [
+        "Test strategy: the overall approach (which methods, when, by whom), decided during design.",
+        "Test plan contents: test number, what is being tested, test data, type of data, expected result, actual result (and any action taken).",
+        "Need: programs cannot be tested exhaustively, so testing must be planned and systematic, and the results recorded."
+      ],
+      "examples": []
+    },
+    {
+      "id": "09-choosing-test-data",
+      "title": "Choosing test data: normal, abnormal, extreme and boundary",
+      "content": [
+        "Test data is chosen deliberately, unlike real data, so that each test checks a particular possibility. Normal (valid) data is typical data the program should accept and process correctly. Abnormal (erroneous) data is data the program should reject: values outside the allowed range, the wrong data type, or missing input. Extreme data is the largest and smallest values that are still valid, at each end of the normal range. Boundary data tests each edge of the range from both sides: the value just within the limit, which must be accepted, and the value just outside it, which must be rejected.",
+        "Use a separate test for each kind of abnormal value. A single value that is wrong in two ways, such as a negative decimal, does not show which check is working. Boundary tests matter because the most common logic error in validation is a comparison off by one, such as < where <= was needed, and only values at the edge reveal it.",
+        "Always give the expected result with each item of test data. The worked example is a test plan for a ticket-booking input where the number of tickets must be a whole number from 1 to 10 inclusive."
+      ],
+      "bullets": [
+        "Normal: typical valid data, should be accepted.",
+        "Abnormal (erroneous): invalid data such as out of range, wrong type or missing, should be rejected.",
+        "Extreme: the largest and smallest valid values, should be accepted.",
+        "Boundary: values on either side of each limit: just inside (accept) and just outside (reject).",
+        "Test one kind of invalid value at a time, and state the expected result for every test."
+      ],
+      "examples": [
+        {
+          "id": "09-ticket-test-plan",
+          "kind": "worked",
+          "label": "Worked example: test plan for 1 to 10 tickets",
+          "content": "Rule: the number of tickets must be a whole number from 1 to 10 inclusive.\n\nNo. | Test data | Type                  | Expected result | Actual result\n1   | 4         | Normal                | Accepted        | Accepted\n2   | 7         | Normal                | Accepted        | Accepted\n3   | 1         | Extreme / boundary    | Accepted        | Accepted\n4   | 10        | Extreme / boundary    | Accepted        | Rejected  ← fault\n5   | 0         | Boundary (just below) | Rejected        | Rejected\n6   | 11        | Boundary (just above) | Rejected        | Rejected\n7   | -5        | Abnormal              | Rejected        | Rejected\n8   | 2.5       | Abnormal (not whole)  | Rejected        | Rejected\n9   | \"three\"   | Abnormal (not number) | Rejected        | Rejected\n10  | (blank)   | Abnormal (missing)    | Rejected        | Rejected\n\nTest 4 fails: 10 is valid but was rejected. The upper check was most likely\nwritten Tickets < 10 instead of Tickets <= 10. Only a test at the edge could\nreveal this: 4 and 7 pass either way. After correcting the line, test 4\n(and test 6, to check 11 is still rejected) must be run again."
+        }
+      ]
+    },
+    {
+      "id": "10-maintenance-types",
+      "title": "The need for continuing maintenance and its three types",
+      "content": [
+        "A program does not wear out like a machine, but it still needs changing after it has been released. Faults appear that testing missed, often because a rarely used part of the program is finally run or unusual data is entered. Users' needs change, the law changes, or the program must run on new hardware or a new operating system. And a working program can often be made faster or easier to maintain. Maintenance keeps the program correct and useful for as long as it is in use.",
+        "Corrective maintenance corrects errors, logic or run-time, that come to light while the program is in use. The programmer uses a trace table or debugging software to find the cause. A correction can introduce a new error, so the program must be tested again afterwards.",
+        "Adaptive maintenance amends a program to enhance its functionality or to respond to changes in the specification, for example adding a new feature the users now need, changing it for a new tax law, or making it work on a new platform. Perfective maintenance improves a program that already works correctly, making it faster or more efficient (for example changing file access from sequential to direct) or easier to maintain (clearer identifiers, comments, repeated code moved into a subroutine), without changing what it does."
+      ],
+      "bullets": [
+        "Why maintenance is needed: faults missed in testing, changing requirements or laws, new hardware or software, room for improvement.",
+        "Corrective: fix errors found during use.",
+        "Adaptive: change what the program does, to enhance functionality or meet new or changed requirements.",
+        "Perfective: improve performance or maintainability without changing what the program does.",
+        "Classify by the reason for the change, not by how big the change is; re-test after any maintenance."
+      ],
+      "examples": []
+    },
+    {
+      "id": "11-amending-a-program",
+      "title": "Analysing an existing program and making amendments",
+      "content": [
+        "To amend an existing program, first read and dry-run it until you understand what each variable holds and what each part does. Then decide exactly what the new requirement changes, make the smallest set of changes that meets it (new variables declared, conditions added, outputs extended), and keep the existing style and identifiers. Finally, test again with test data that checks both the new behaviour and the old behaviour, which must not have been broken.",
+        "The worked example is adaptive maintenance on the corrected average program. Two new requirements are added: marks outside 0 to 100 must be rejected with a message, and the highest mark must be output as well as the average."
+      ],
+      "bullets": [
+        "Understand first: read and dry-run the existing code.",
+        "Change only what the new requirement needs, and declare any new variables.",
+        "Re-test the new behaviour and the original behaviour."
+      ],
+      "examples": [
+        {
+          "id": "11-amended-average",
+          "kind": "pseudocode",
+          "label": "Worked example: the average program amended to validate marks and find the highest",
+          "language": "cambridge-pseudocode",
+          "content": "DECLARE Total, Count, Mark, Highest : INTEGER     // Highest is new\nTotal ← 0\nCount ← 0\nHighest ← -1                                      // new: below any valid mark\nINPUT Mark\nWHILE Mark <> -1\n   IF Mark >= 0 AND Mark <= 100 THEN              // new: validation\n      Total ← Total + Mark\n      Count ← Count + 1\n      IF Mark > Highest THEN                      // new: track the highest\n         Highest ← Mark\n      ENDIF\n   ELSE\n      OUTPUT \"Mark rejected: must be 0 to 100\"   // new\n   ENDIF\n   INPUT Mark\nENDWHILE\nIF Count > 0 THEN\n   OUTPUT \"Average: \", Total / Count\n   OUTPUT \"Highest: \", Highest                   // new\nELSE\n   OUTPUT \"No marks entered\"\nENDIF\n\n// Test: inputs 40, 150, 70, -1\n// 150 is rejected with the message; Total = 110, Count = 2\n// Output: Average: 55   Highest: 70\n// Test: input -1 only → No marks entered (the original behaviour still works)"
         }
       ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Normal, boundary and erroneous test data compared",
+    "title": "Testing methods compared",
     "columns": [
-      "Category",
-      "Definition",
-      "Should the program accept it?",
-      "Example for 0 to 100 inclusive"
+      "Method",
+      "Who tests",
+      "What they can see or use",
+      "When it is used"
     ],
     "rows": [
       [
-        "Normal",
-        "Typical, valid data comfortably inside the accepted range",
-        "Yes, accepted and processed correctly",
-        "65"
+        "Dry run / walkthrough",
+        "Programmer (walkthrough: often with colleagues)",
+        "The algorithm or code, traced by hand in a trace table",
+        "While designing and writing modules"
       ],
       [
-        "Boundary (extreme)",
-        "Valid data lying exactly on the edge of the accepted range",
-        "Yes, accepted; errors are especially likely to occur exactly here",
-        "0 and 100"
+        "White-box",
+        "Programmer",
+        "The code; test data chosen to execute every path",
+        "While writing and testing individual modules"
       ],
       [
-        "Erroneous (invalid)",
-        "Data lying outside the accepted range",
-        "No, must be rejected by validation",
-        "-1 and 101"
+        "Black-box",
+        "Testers, often not the programmer",
+        "Only the specification: inputs and expected outputs",
+        "Checking modules or the whole program against the requirements"
+      ],
+      [
+        "Stub",
+        "Programmer",
+        "The top-level code, with dummy modules that output a message",
+        "Early, before all modules are written"
+      ],
+      [
+        "Integration",
+        "Programmers or testers",
+        "Tested modules combined one at a time",
+        "After individual modules pass their tests"
+      ],
+      [
+        "Alpha",
+        "In-house testers at the developer",
+        "The nearly complete software",
+        "Before any release outside the company"
+      ],
+      [
+        "Beta",
+        "A limited number of chosen external users",
+        "The software in their own environments; they report faults",
+        "Before general release of software for sale"
+      ],
+      [
+        "Acceptance",
+        "The client",
+        "The finished bespoke software, checked against the requirements",
+        "At hand-over, before the client signs off"
       ]
     ]
   },
   "diagram": {
-    "title": "White-box versus black-box testing",
+    "title": "Testing from first module to release",
     "type": "flow",
     "nodes": [
-      "White-box testing: the tester can see the program's internal code and logic",
-      "Test data is chosen deliberately to reach every path and every branch through the code",
-      "Black-box testing: the tester treats the program as a sealed box, seeing only inputs and outputs",
-      "Test data is chosen purely from the specification, comparing actual output against expected output",
-      "Used together, the two approaches catch faults the other approach alone would be likely to miss"
+      "Design: test strategy and test plan drawn up",
+      "Writing modules: dry runs, walkthroughs, white-box and stub testing",
+      "Joining modules: integration testing, one module at a time",
+      "Whole program: black-box testing, then alpha testing in-house",
+      "Release: acceptance testing by the client (bespoke) or beta testing by chosen users (general sale)",
+      "In use: corrective, adaptive and perfective maintenance, re-testing after each change"
     ]
   },
   "analysisChains": [
     {
-      "title": "Diagnosing a fault revealed by an erroneous test value, not a boundary value",
+      "title": "Classifying an error from its symptoms",
       "steps": [
-        "A program validates a percentage mark that must be a whole number from 0 to 100 inclusive, and a test plan includes the erroneous value 101, expecting it to be rejected",
-        "Running the test shows the actual result is that 101 is accepted and stored, which does not match the expected result of rejection, revealing a fault",
-        "The validation condition in the code is checked and is found to read IF Mark >= 0 AND Mark <= 101 THEN Accept, using 101 instead of 100 as the upper limit",
-        "Re-checking the categories confirms 101 was correctly chosen as erroneous data, since it lies outside the specified valid range of 0 to 100 inclusive, not on its edge"
+        "A program that finds the mean journey time translates and runs, and gives correct answers for most test data",
+        "When a user enters no journeys at all, the program stops with an error message part-way through",
+        "It could be translated, so this is not a syntax error; it stopped rather than giving a wrong answer, so it is not only a logic error",
+        "The mean is calculated as Total / Count, and with no journeys Count is 0, so the program divides by zero"
       ],
-      "evaluation": "The fault is an off-by-one error in the upper-bound comparison, which should read Mark <= 100, not Mark <= 101; this fault was specifically revealed by choosing 101 as erroneous test data immediately outside the valid range, which is exactly the kind of fault erroneous boundary-adjacent values are chosen to catch, distinct from testing 100 itself, which is boundary data and was correctly accepted."
+      "evaluation": "It is a run-time error, exposed only by one particular input, which is why it survived normal testing. The correction is to test IF Count > 0 before dividing and output a suitable message otherwise, and the plan should include a test with no data."
     },
     {
-      "title": "Distinguishing a boundary value from an erroneous value for the same range",
+      "title": "Choosing alpha, beta or acceptance testing",
       "steps": [
-        "A validation rule requires a whole number of full percentage marks from 0 to 100 inclusive, and a candidate proposes testing with the values 0, 100 and 101",
-        "The candidate initially labels all three as boundary values, reasoning that they are all 'near the edge' of the range",
-        "Checking the definition of boundary data shows it must still be a valid value that lies exactly on the edge of the accepted range and should be accepted",
-        "0 and 100 are both valid values at the exact edges of the range and should be accepted, but 101 is not a valid value at all; it lies outside the range and should be rejected"
+        "A company writes a stock-control system for one particular chain of shops and has finished its own in-house (alpha) testing",
+        "The software is bespoke: it was written for one client from that client's requirements specification",
+        "Beta testing is for software written for general sale, where there is no single client and the developer needs feedback from varied real users",
+        "Here the client must confirm the system meets the agreed requirements before hand-over"
       ],
-      "evaluation": "0 and 100 are correctly boundary data, since both are valid and sit exactly on the edge of the range; 101 must be reclassified as erroneous data, not boundary data, since it lies outside the valid range and should be rejected, and confusing 'near the edge' with 'boundary' is exactly the mistake this distinction is designed to catch."
+      "evaluation": "The next stage is acceptance testing by the shop chain, using their own data, ending in sign-off. Beta testing would suit the same company's general-sale product instead, because it needs many users' environments to expose faults the in-house testers could not reproduce."
     },
     {
-      "title": "Choosing white-box testing to reach a rarely executed branch black-box testing missed",
+      "title": "Identifying the type of maintenance",
       "steps": [
-        "A program's specification describes only two outcomes for a grade calculation: pass or fail, so black-box testing is designed using only pass and fail input values drawn from the specification",
-        "The program's actual code, however, contains a third, undocumented branch that assigns a special grade for a score of exactly 100, which nothing in the specification mentioned and which black-box testing therefore never targeted",
-        "A white-box tester, working from the code itself rather than only the specification, identifies this third branch and deliberately constructs a test using a score of exactly 100 to reach it",
-        "Running this white-box test reveals the special-grade branch produces an incorrect result, a fault that black-box testing, guided only by the specification, was never going to find"
+        "A school's reporting program works correctly, but producing reports for 2000 students takes too long because each student's record is found by reading the file from the start",
+        "The programmer changes the file access from sequential to direct, and the reports come out the same, only faster",
+        "Nothing was wrong, so it is not corrective; the program does nothing new and meets no new requirement, so it is not adaptive",
+        "The change improves performance while keeping the same behaviour"
       ],
-      "evaluation": "White-box testing found this fault because it works from the code's actual branches rather than only from the specification, letting the tester deliberately target a branch the specification never mentioned; this demonstrates why thorough testing uses white-box and black-box techniques together, since each can catch faults the other is structurally unable to reach."
+      "evaluation": "This is perfective maintenance. If the school then asked for each report to include attendance figures, that would be adaptive maintenance (new functionality), and fixing a report that showed the wrong grade would be corrective. The type depends on the reason for the change, not its size."
     }
   ],
   "examTips": [
-    "For a range from a lower limit to an upper limit inclusive, the boundary values are exactly the lower limit and the upper limit themselves; the values just outside them are erroneous, not boundary.",
-    "State explicitly whether given test data is normal, boundary or erroneous, and justify the classification against the specification's actual valid range, not against a vague sense of how 'unusual' the value looks.",
-    "When completing a test plan, always record the expected result before comparing it to the actual result, and state clearly what fault, if any, an actual result that differs from the expected one reveals.",
-    "When classifying maintenance, ask what triggered the change (a fault, a new environment, or an improvement beyond necessity), not how large the change was."
+    "When asked to identify an error type, justify it by its effect: a syntax error stops translation, a logic error gives a wrong result, a run-time error makes the program crash or freeze.",
+    "When correcting pseudocode, write out the whole corrected statement, keeping the identifiers used in the question.",
+    "For each item of test data give its type and the expected result; for a range, include both extreme values and a value just outside each limit.",
+    "Distinguish testing methods by who does the testing and what they can see: code (white-box) or only the specification (black-box); in-house (alpha), chosen external users (beta) or the client (acceptance).",
+    "In a trace table, only enter a value when it changes, start a new row for each loop pass, and include the output column."
   ],
   "commonMistakes": [
-    "Treating a value just outside a valid range, such as -1 or 101 for a 0-to-100 rule, as boundary data instead of erroneous data.",
-    "Choosing boundary values that are not actually valid, such as testing 100 and 101 for a 0-to-100 rule and calling both boundary data, when only 100 is valid.",
-    "Relying only on black-box testing and never examining the code itself, missing faults hidden in branches the specification never mentions.",
-    "Writing a test plan without recording the expected result before the actual result, making it harder to see clearly whether a test has actually passed or failed.",
-    "Assuming thorough pre-release testing removes all need for corrective maintenance afterwards, rather than merely reducing how much is needed."
+    "Calling division by zero a logic error: it makes the program crash, so it is a run-time error.",
+    "Saying black-box testing means the tester does not know what the program should do; they do not see the code, but they use the specification.",
+    "Confusing beta testing (external users, software for general sale) with acceptance testing (the client, bespoke software).",
+    "Giving test data without an expected result, or choosing boundary values that are well inside the range.",
+    "Testing two kinds of invalid value with one item of data, such as a negative decimal, so a pass or fail does not show which check worked.",
+    "Describing adaptive maintenance as fixing bugs, or perfective maintenance as adding new features; bugs are corrective, new functionality is adaptive.",
+    "Amending a program without re-testing the original behaviour, so a new fault goes unnoticed."
   ],
   "quickRecall": [
     {
-      "question": "What is the difference between white-box testing and black-box testing?",
-      "answer": "White-box testing uses knowledge of the program's internal code and logic to test every path or branch through it; black-box testing tests only inputs against expected outputs, based purely on the specification, without reference to the internal code."
+      "question": "Name the three types of error and how each shows itself.",
+      "answer": "Syntax error: breaks the language rules, so the program will not translate. Logic error: runs but gives a wrong result. Run-time error: crashes or freezes during execution."
     },
     {
-      "question": "What are the three categories of test data, and what does each check?",
-      "answer": "Normal data (typical, valid values, checking everyday behaviour), boundary/extreme data (valid values exactly on the edge of the range, where errors are especially likely), and erroneous/invalid data (values outside the range that should be rejected)."
+      "question": "Why can a syntax error remain in an interpreted program but not a compiled one?",
+      "answer": "A compiler checks every statement before running, whereas an interpreter only checks a statement when it is about to execute it, so errors in code that has not been run stay hidden."
     },
     {
-      "question": "For a rule accepting whole numbers from 0 to 100 inclusive, what are the boundary values and what are two useful erroneous values?",
-      "answer": "The boundary values are 0 and 100 (both valid, must be accepted); useful erroneous values are -1 and 101 (both invalid, must be rejected)."
+      "question": "Give three ways of avoiding faults in programs.",
+      "answer": "Thorough requirements analysis; tried and tested design methods such as structured/modular programming; conventions such as meaningful identifiers and identifier tables; reusing tested library modules."
     },
     {
-      "question": "Why are -1 and 101 erroneous data rather than boundary data for a 0-to-100 rule?",
-      "answer": "Because boundary data must still be a valid value on the edge of the range; -1 and 101 both lie outside the valid range entirely and should be rejected, not accepted."
+      "question": "What is a stub and why is it used?",
+      "answer": "A dummy module with the correct identifier whose body only outputs a message or returns a fixed value; it lets the program's structure and flow of control be tested before all modules are written."
     },
     {
-      "question": "What four things does each row of a test plan record?",
-      "answer": "The test data used, its category (normal, boundary or erroneous), the expected result, and the actual result once the test has been run."
+      "question": "Distinguish white-box from black-box testing.",
+      "answer": "White-box uses the code and chooses data to test every path; black-box does not look at the code and compares actual with expected results worked out from the specification."
     },
     {
-      "question": "What is corrective maintenance, and how does it relate to pre-release testing?",
-      "answer": "Corrective maintenance fixes a fault discovered after release, often found through user-reported issues that pre-release testing did not catch; thorough testing reduces but never fully eliminates the need for it."
+      "question": "What is integration testing?",
+      "answer": "Testing that separately tested modules work correctly together when combined, usually adding one module at a time."
     },
     {
-      "question": "Why can testing never prove a program is completely free of faults?",
-      "answer": "Because it is generally impossible to test every one of the enormous number of possible inputs a program could ever receive; testing can only give reasonable confidence based on a well-chosen range of test data."
+      "question": "Who carries out alpha, beta and acceptance testing?",
+      "answer": "Alpha: in-house testers at the developer. Beta: a limited number of chosen external users before general release. Acceptance: the client, for bespoke software, before sign-off."
+    },
+    {
+      "question": "What does a test plan contain?",
+      "answer": "For each test: a number, what is being tested, the test data, the type of test data, the expected result and the actual result."
+    },
+    {
+      "question": "For whole numbers 1 to 10 inclusive, give extreme and boundary test data.",
+      "answer": "Extreme: 1 and 10 (accepted). Boundary: 1 and 0 at the lower limit, 10 and 11 at the upper limit; 0 and 11 must be rejected."
+    },
+    {
+      "question": "Define corrective, adaptive and perfective maintenance.",
+      "answer": "Corrective: fixing errors found in use. Adaptive: amending the program to enhance functionality or meet changed requirements. Perfective: improving performance or maintainability without changing what it does."
     }
   ],
   "relatedTopics": [
+    "11.2",
+    "11.3",
     "12.1",
-    "12.2",
-    "11.3"
+    "12.2"
   ]
 }
