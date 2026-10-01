@@ -122,6 +122,10 @@ The commit is a checkpoint, not a permanently current version.
   expansions vs 7), ML categories with a which-category table, regression with a least-squares example, ANN
   layers/weights/activation, back-propagation steps with one worked update, deep and reinforcement learning with
   reasons; tables and numbers produced by script.
+- Rebuilt (research method): 19.1 (2026-10-01). Sections: linear search, bubble and insertion sort (traces), binary search
+  (traces, iterations table), ADTs and building one from another, linked lists (array of records), binary trees,
+  stacks and queues (circular queue, queue from two stacks), graphs, dictionaries, Big O with growth table;
+  every Rocket Revise point covered; traces and code checked by script.
 
 ## Latest verification
 

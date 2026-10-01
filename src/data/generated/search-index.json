@@ -24266,417 +24266,739 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "This chapter is the practical core of Paper 4. You must be able to write and trace linear search, binary search, bubble sort and insertion sort; implement stack, queue, linked-list and binary-search-tree operations; explain where graphs and dictionaries are suitable; and compare solutions using both time and space complexity. The examples below use executable Python and preserve the conditions and boundary checks that commonly earn marks."
+        "text": "The standard algorithms you must be able to write in pseudocode (Paper 3) and Python (Paper 4): linear and binary search, bubble and insertion sort, and find/insert/delete on stacks, queues, linked lists and binary trees. You also describe ADTs (including graphs and dictionaries), show how one ADT is built from another, and compare algorithms by time and memory using Big O notation."
       },
       {
         "kind": "Definition",
         "label": "Abstract data type (ADT)",
-        "text": "A logical description of stored data and permitted operations, independent of the structure used to implement it."
+        "text": "A collection of data together with the operations allowed on it, defined independently of how it is stored."
       },
       {
         "kind": "Definition",
-        "label": "Big O notation",
-        "text": "A way to describe how an algorithm's time or memory requirement grows as input size n increases, ignoring constants and less significant terms."
+        "label": "Linear search",
+        "text": "Checks each element in turn from the start until the item is found or the end of the list is reached."
       },
       {
         "kind": "Definition",
-        "label": "Binary search tree (BST)",
-        "text": "A binary tree ordered so that keys smaller than a node occur in its left subtree and larger keys occur in its right subtree, according to a defined duplicate policy."
+        "label": "Binary search",
+        "text": "Repeatedly checks the middle item of a sorted list and discards the half that cannot contain the search item."
+      },
+      {
+        "kind": "Definition",
+        "label": "Bubble sort",
+        "text": "Repeatedly compares adjacent items and swaps them if out of order, until a pass makes no swaps."
+      },
+      {
+        "kind": "Definition",
+        "label": "Insertion sort",
+        "text": "Takes each item in turn and inserts it into its correct place in the already sorted part of the list."
       },
       {
         "kind": "Definition",
         "label": "Stack",
-        "text": "A last-in, first-out ADT whose main operations are push, pop and peek."
+        "text": "A LIFO ADT: items are pushed and popped at the same end (the top)."
       },
       {
         "kind": "Definition",
         "label": "Queue",
-        "text": "A first-in, first-out ADT whose main operations are enqueue at the rear and dequeue from the front."
+        "text": "A FIFO ADT: items are added at the rear and removed from the front."
       },
       {
         "kind": "Definition",
-        "label": "Underflow",
-        "text": "Attempting to remove or read an item from an empty data structure."
+        "label": "Linked list",
+        "text": "An ADT of nodes, each holding data and a pointer to the next node; a start pointer gives the first node."
       },
       {
         "kind": "Definition",
-        "label": "Overflow",
-        "text": "Attempting to insert into a fixed-size data structure that has no free position."
+        "label": "Binary tree",
+        "text": "A hierarchical ADT in which each node has at most two children (left and right)."
+      },
+      {
+        "kind": "Definition",
+        "label": "Graph",
+        "text": "An ADT of vertices (nodes) connected by edges, which may be directed and/or weighted."
+      },
+      {
+        "kind": "Definition",
+        "label": "Dictionary",
+        "text": "An ADT of unique keys, each associated with a value that is looked up by its key."
+      },
+      {
+        "kind": "Definition",
+        "label": "Big O notation",
+        "text": "States the order of growth of an algorithm's time or space requirement as the data size n increases, usually for the worst case."
       },
       {
         "kind": "Section",
-        "text": "Linear search: reliable on any order"
+        "text": "Linear search"
       },
       {
         "kind": "Content",
-        "label": "Linear search: reliable on any order",
-        "text": "Linear search inspects each item until the target is found or every item has been checked. It works with unsorted data and is often the correct choice for a short list or a single search where sorting first would cost more than it saves."
+        "label": "Linear search",
+        "text": "Linear search is the only systematic way to search unordered data: compare every element with the search item, in order, until it matches or the list runs out."
       },
       {
         "kind": "Content",
-        "label": "Linear search: reliable on any order",
-        "text": "The loop invariant is that every position before the current index has already been checked and does not contain the target. Returning -1 is a deliberate sentinel meaning not found; never use a normal index such as 0 for this because 0 can be a valid result."
+        "label": "Linear search",
+        "text": "Starts at the first element and checks each element in sequence."
       },
       {
         "kind": "Content",
-        "label": "Linear search: reliable on any order",
-        "text": "Best case O(1): the first item matches."
+        "label": "Linear search",
+        "text": "Stops when the item is found or the end of the array/list is reached (not found)."
       },
       {
         "kind": "Content",
-        "label": "Linear search: reliable on any order",
-        "text": "Worst and average growth O(n): the target is late or absent."
+        "label": "Linear search",
+        "text": "Does not need the data to be sorted."
       },
       {
         "kind": "Content",
-        "label": "Linear search: reliable on any order",
-        "text": "Extra space O(1): only the index and target are needed."
+        "label": "Linear search",
+        "text": "Usually makes more comparisons than a binary search: time grows linearly with the number of items, O(n)."
+      },
+      {
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "Best case 1 comparison (first item); worst case n comparisons (last item or absent)."
+      },
+      {
+        "kind": "Content",
+        "label": "Linear search",
+        "text": "Return -1 (a rogue value) for 'not found', because 0 is a valid index."
       },
       {
         "kind": "Example",
-        "label": "Linear search: reliable on any order",
-        "text": "def linear_search(values, target):\n    for index in range(len(values)):\n        if values[index] == target:\n            return index\n    return -1\n\nposition = linear_search([14, 8, 21, 5], 21)\nprint(position)  # 2"
+        "label": "Linear search",
+        "text": "// Items[0:99] is a global ARRAY OF INTEGER\nFUNCTION LinearSearch(Target : INTEGER) RETURNS INTEGER\n   DECLARE Index : INTEGER\n   FOR Index ← 0 TO 99               // start at the first element\n      IF Items[Index] = Target THEN\n         RETURN Index                // found: stop searching\n      ENDIF\n   NEXT Index\n   RETURN -1                         // end of array: not found\nENDFUNCTION"
+      },
+      {
+        "kind": "Example",
+        "label": "Linear search",
+        "text": "def linear_search(values, target):\n    for index in range(len(values)):   # start at the first item\n        if values[index] == target:\n            return index               # found: stop early\n    return -1                          # end reached: not found\n\nprint(linear_search([31, 7, 19, 42, 12], 42))  # 3\nprint(linear_search([31, 7, 19, 42, 12], 50))  # -1"
       },
       {
         "kind": "Section",
-        "text": "Binary search: halve a sorted search interval"
+        "text": "Bubble sort"
       },
       {
         "kind": "Content",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "Binary search requires data sorted using the same comparison rule as the search. It keeps inclusive lower and upper boundaries, compares the middle item, then discards the half that cannot contain the target. If low becomes greater than high, the interval is empty."
+        "label": "Bubble sort",
+        "text": "Each pass compares adjacent pairs and swaps any pair in the wrong order, so the largest unsorted item 'bubbles' to the end. The next pass can stop one place earlier, and a flag ends the sort when a pass makes no swaps."
       },
       {
         "kind": "Content",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "Using mid = (low + high) // 2 produces an integer index. The updates must be mid + 1 and mid - 1; assigning low = mid or high = mid can leave the interval unchanged and cause an infinite loop."
+        "label": "Bubble sort",
+        "text": "Compare adjacent items; swap them (via a temporary variable) if out of order."
       },
       {
         "kind": "Content",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "Each comparison removes about half the remaining candidates, giving O(log n) worst-case time."
+        "label": "Bubble sort",
+        "text": "After each pass the largest remaining item is in its final place, so reduce the range by 1."
       },
       {
         "kind": "Content",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "Doubling the list size adds roughly one extra comparison, not twice as many."
+        "label": "Bubble sort",
+        "text": "Set a Swapped flag to FALSE at the start of every pass; if it is still FALSE at the end, the list is sorted, so stop."
       },
       {
         "kind": "Content",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "Sorting has a cost, so binary search is strongest when the data is already sorted or will be searched repeatedly."
+        "label": "Bubble sort",
+        "text": "Already sorted: one pass of n − 1 comparisons, O(n). Reversed: n(n − 1)/2 comparisons, O(n²)."
+      },
+      {
+        "kind": "Content",
+        "label": "Bubble sort",
+        "text": "Sorts in place: O(1) extra memory (Temp, index and flag only)."
       },
       {
         "kind": "Example",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "def binary_search(values, target):\n    low = 0\n    high = len(values) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if values[mid] == target:\n            return mid\n        if values[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1\n\nprint(binary_search([4, 9, 13, 18, 27, 31], 18))  # 3"
+        "label": "Bubble sort",
+        "text": "// Values[0:5] is a global ARRAY OF INTEGER\nPROCEDURE BubbleSort()\n   DECLARE Last : INTEGER\n   DECLARE Index : INTEGER\n   DECLARE Temp : INTEGER\n   DECLARE Swapped : BOOLEAN\n   Last ← 5                          // last unsorted position\n   REPEAT\n      Swapped ← FALSE\n      FOR Index ← 0 TO Last - 1\n         IF Values[Index] > Values[Index + 1] THEN\n            Temp ← Values[Index]\n            Values[Index] ← Values[Index + 1]\n            Values[Index + 1] ← Temp\n            Swapped ← TRUE\n         ENDIF\n      NEXT Index\n      Last ← Last - 1                // largest item now in place\n   UNTIL Swapped = FALSE OR Last = 0\nENDPROCEDURE"
       },
       {
         "kind": "Example",
-        "label": "Binary search: halve a sorted search interval",
-        "text": "low=0, high=5, mid=2 → 13 is too small, so low=3. Then low=3, high=5, mid=4 → 27 is too large, so high=3. Finally mid=3 → 18 is found."
+        "label": "Bubble sort",
+        "text": "def bubble_sort(values):\n    last = len(values) - 1             # last index still unsorted\n    swapped = True\n    while swapped and last > 0:\n        swapped = False                # reset at the start of each pass\n        for index in range(last):\n            if values[index] > values[index + 1]:\n                temp = values[index]\n                values[index] = values[index + 1]\n                values[index + 1] = temp\n                swapped = True\n        last = last - 1                # largest item is now in place\n    return values\n\nprint(bubble_sort([29, 12, 41, 7, 18, 33]))  # [7, 12, 18, 29, 33, 41]"
       },
       {
         "kind": "Section",
-        "text": "Bubble sort: adjacent swaps and early stopping"
+        "text": "Insertion sort and sort performance"
       },
       {
         "kind": "Content",
-        "label": "Bubble sort: adjacent swaps and early stopping",
-        "text": "Bubble sort compares adjacent pairs and swaps a pair when it is in the wrong order. After one complete ascending pass, the largest unsorted value has moved to the end, so the inner loop can be shortened on the next pass."
+        "label": "Insertion sort and sort performance",
+        "text": "The list is treated as a sorted part (at first just item 0) and an unsorted part. Each item (the key) is copied out, larger items in the sorted part shift one place right, and the key drops into the gap. The performance of any sort depends on the initial order of the data, the number of items and the efficiency of the algorithm."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort: adjacent swaps and early stopping",
-        "text": "A swapped flag records whether the pass changed anything. If no swap occurs, the whole list is already sorted and the algorithm can finish early. This improves nearly sorted input but does not change the O(n²) worst case."
+        "label": "Insertion sort and sort performance",
+        "text": "Start at the second item (index 1); a single item is already sorted."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort: adjacent swaps and early stopping",
-        "text": "Use a temporary variable or Python tuple assignment to perform the swap correctly."
+        "label": "Insertion sort and sort performance",
+        "text": "Copy the key out before shifting, or it is overwritten."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort: adjacent swaps and early stopping",
-        "text": "Reset swapped to False at the start of every outer pass."
+        "label": "Insertion sort and sort performance",
+        "text": "The inner loop needs both conditions: Position >= 0 AND Values[Position] > Key."
       },
       {
         "kind": "Content",
-        "label": "Bubble sort: adjacent swaps and early stopping",
-        "text": "The final i positions are already fixed, so do not compare them again."
+        "label": "Insertion sort and sort performance",
+        "text": "Already sorted: 1 comparison per item, n − 1 in total, O(n). Reversed: every item moves to the front, n(n − 1)/2, O(n²)."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort and sort performance",
+        "text": "Each insertion stops as soon as a smaller item is met, so it is usually faster than bubble sort on nearly sorted data."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort and sort performance",
+        "text": "More items means more work: both sorts are O(n²) in the worst case, so 10 times the data means about 100 times the comparisons."
+      },
+      {
+        "kind": "Content",
+        "label": "Insertion sort and sort performance",
+        "text": "Sorts in place: O(1) extra memory."
       },
       {
         "kind": "Example",
-        "label": "Bubble sort: adjacent swaps and early stopping",
-        "text": "def bubble_sort(values):\n    for pass_number in range(len(values) - 1):\n        swapped = False\n        last_pair = len(values) - 1 - pass_number\n\n        for index in range(last_pair):\n            if values[index] > values[index + 1]:\n                values[index], values[index + 1] = values[index + 1], values[index]\n                swapped = True\n\n        if not swapped:\n            break\n\n    return values"
+        "label": "Insertion sort and sort performance",
+        "text": "// Values[0:5] is a global ARRAY OF INTEGER\nPROCEDURE InsertionSort()\n   DECLARE Index : INTEGER\n   DECLARE Position : INTEGER\n   DECLARE Key : INTEGER\n   FOR Index ← 1 TO 5\n      Key ← Values[Index]            // next item to insert\n      Position ← Index - 1\n      WHILE Position >= 0 AND Values[Position] > Key\n         Values[Position + 1] ← Values[Position]   // shift right\n         Position ← Position - 1\n      ENDWHILE\n      Values[Position + 1] ← Key\n   NEXT Index\nENDPROCEDURE"
+      },
+      {
+        "kind": "Example",
+        "label": "Insertion sort and sort performance",
+        "text": "def insertion_sort(values):\n    for index in range(1, len(values)):\n        key = values[index]            # item to insert into sorted part\n        position = index - 1\n        while position >= 0 and values[position] > key:\n            values[position + 1] = values[position]   # shift right\n            position = position - 1\n        values[position + 1] = key     # drop key into the gap\n    return values\n\nprint(insertion_sort([29, 12, 41, 7, 18, 33]))  # [7, 12, 18, 29, 33, 41]"
+      },
+      {
+        "kind": "Example",
+        "label": "Insertion sort and sort performance",
+        "text": "Start: [29, 12, 41, 7, 18, 33]\n\nBubble sort (swaps in brackets)\nPass 1: [12, 29, 7, 18, 33, 41] (4)\nPass 2: [12, 7, 18, 29, 33, 41] (2)\nPass 3: [7, 12, 18, 29, 33, 41] (1)\nPass 4: [7, 12, 18, 29, 33, 41] (0)\nPass 4 made no swaps, so the flag stops the sort. Comparisons: 14.\n\nInsertion sort (shifts in brackets)\nKey 12: [12, 29, 41, 7, 18, 33] (1)\nKey 41: [12, 29, 41, 7, 18, 33] (0)\nKey 7: [7, 12, 29, 41, 18, 33] (3)\nKey 18: [7, 12, 18, 29, 41, 33] (2)\nKey 33: [7, 12, 18, 29, 33, 41] (1)\nComparisons: 10."
+      },
+      {
+        "kind": "Example",
+        "label": "Insertion sort and sort performance",
+        "text": "Comparisons made by BOTH sorts (bubble sort with the flag):\n    n | sorted | reversed\n    6 |      5 |        15\n   10 |      9 |        45\n  100 |     99 |     4,950\n 1000 |    999 |   499,500\n\nSorted: n − 1 comparisons, O(n). Reversed: n(n − 1)/2, O(n²).\nOrder matters even for the same n: [2, 3, 4, 5, 6, 1] (one small item at the end) takes bubble sort 15 comparisons but insertion sort only 9."
       },
       {
         "kind": "Section",
-        "text": "Insertion sort: grow a sorted prefix"
+        "text": "Binary search"
       },
       {
         "kind": "Content",
-        "label": "Insertion sort: grow a sorted prefix",
-        "text": "Insertion sort treats the first item as a sorted prefix. It stores the next item as key, shifts every larger prefix value one position right, and places key into the gap. Storing key before shifting prevents it from being overwritten."
+        "label": "Binary search",
+        "text": "Binary search starts at the middle of a sorted array. If the middle item is not the target, the half that cannot contain it is discarded by moving the lower or upper bound, and the search repeats on the half that is left."
       },
       {
         "kind": "Content",
-        "label": "Insertion sort: grow a sorted prefix",
-        "text": "Nearly sorted data needs few shifts and may approach O(n), while reverse-sorted data requires about n²/2 comparisons and shifts. It is in-place and stable when equal items are not moved past each other."
+        "label": "Binary search",
+        "text": "Condition: the data must be sorted (ascending or descending) on the search key, in a structure with direct access to the middle item, such as an array."
       },
       {
         "kind": "Content",
-        "label": "Insertion sort: grow a sorted prefix",
-        "text": "Start at index 1 because the one-item prefix at index 0 is already sorted."
+        "label": "Binary search",
+        "text": "Find the middle index, Mid ← (Low + High) DIV 2, and compare that item with the search item."
       },
       {
         "kind": "Content",
-        "label": "Insertion sort: grow a sorted prefix",
-        "text": "The while condition needs both j >= 0 and values[j] > key."
+        "label": "Binary search",
+        "text": "Equal: found. Search item larger: Low ← Mid + 1. Smaller: High ← Mid − 1. The other half is discarded."
       },
       {
         "kind": "Content",
-        "label": "Insertion sort: grow a sorted prefix",
-        "text": "Insert key at j + 1 after shifting finishes."
+        "label": "Binary search",
+        "text": "Repeat until the item is found, or Low > High (no items left), meaning it is not in the list."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "Maximum comparisons ≈ log2 n (exactly ⌊log2 n⌋ + 1), so it is O(log n) in the worst case; best case O(1)."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "Search time increases as n increases, but logarithmically: doubling n adds only one comparison, whereas linear search time doubles."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary search",
+        "text": "Nothing is deleted: only the Low and High pointers move."
       },
       {
         "kind": "Example",
-        "label": "Insertion sort: grow a sorted prefix",
-        "text": "def insertion_sort(values):\n    for index in range(1, len(values)):\n        key = values[index]\n        position = index - 1\n\n        while position >= 0 and values[position] > key:\n            values[position + 1] = values[position]\n            position -= 1\n\n        values[position + 1] = key\n\n    return values"
+        "label": "Binary search",
+        "text": "// Scores[0:10] is a global ARRAY OF INTEGER, sorted ascending\nFUNCTION BinarySearch(Target : INTEGER) RETURNS INTEGER\n   DECLARE Low : INTEGER\n   DECLARE High : INTEGER\n   DECLARE Mid : INTEGER\n   Low ← 0\n   High ← 10\n   WHILE Low <= High\n      Mid ← (Low + High) DIV 2        // middle of the part left\n      IF Scores[Mid] = Target THEN\n         RETURN Mid\n      ENDIF\n      IF Scores[Mid] < Target THEN\n         Low ← Mid + 1                 // discard the lower half\n      ELSE\n         High ← Mid - 1                // discard the upper half\n      ENDIF\n   ENDWHILE\n   RETURN -1                           // no items left: not found\nENDFUNCTION"
+      },
+      {
+        "kind": "Example",
+        "label": "Binary search",
+        "text": "def binary_search(values, target):     # values must be sorted\n    low = 0\n    high = len(values) - 1\n    while low <= high:                 # items still left to check\n        mid = (low + high) // 2\n        if values[mid] == target:\n            return mid\n        if values[mid] < target:\n            low = mid + 1              # discard the lower half\n        else:\n            high = mid - 1             # discard the upper half\n    return -1\n\nscores = [4, 9, 15, 22, 27, 36, 41, 50, 58, 63, 77]\nprint(binary_search(scores, 58))  # 8\nprint(binary_search(scores, 20))  # -1"
+      },
+      {
+        "kind": "Example",
+        "label": "Binary search",
+        "text": "Scores = [4, 9, 15, 22, 27, 36, 41, 50, 58, 63, 77] (indexes 0 to 10)\n\nSearch for 58\nLow | High | Mid | Scores[Mid] | Action\n  0 |   10 |   5 |          36 | too small: Low ← 6\n  6 |   10 |   8 |          58 | found, return 8\n\nSearch for 20\nLow | High | Mid | Scores[Mid] | Action\n  0 |   10 |   5 |          36 | too big: High ← 4\n  0 |    4 |   2 |          15 | too small: Low ← 3\n  3 |    4 |   3 |          22 | too big: High ← 2\n  3 |    2 |     |             | Low > High: return -1\n\n58 is found after 2 comparisons; 20 is rejected after 3."
+      },
+      {
+        "kind": "Example",
+        "label": "Binary search",
+        "text": "        n | linear max | binary max\n       10 |        10 |  4\n      100 |       100 |  7\n    1,000 |     1,000 | 10\n   10,000 |    10,000 | 14\n1,000,000 | 1,000,000 | 20\n\nBinary maximum = ⌊log2 n⌋ + 1 (checked by searching for every value). Multiplying n by 10 adds only 3 or 4 comparisons; doubling n adds 1."
       },
       {
         "kind": "Section",
-        "text": "Stacks and queues: protect the boundaries"
+        "text": "ADTs and implementing one ADT from another"
       },
       {
         "kind": "Content",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "The ADT specifies behaviour; the underlying list is only one implementation. A stack pushes and pops at the same end. A queue enqueues at the rear and dequeues at the front. Fixed arrays also require top/front/rear pointers and explicit overflow tests."
+        "label": "ADTs and implementing one ADT from another",
+        "text": "An ADT is described by what it stores and the operations on it (create, insert, find, delete). The same ADT can be implemented from built-in types (arrays, records, integer pointers) or from another ADT."
       },
       {
         "kind": "Content",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "Removing index 0 from a Python list shifts later items and costs O(n). It is acceptable for demonstrating FIFO behaviour, but a circular array queue is more efficient because front and rear wrap around and no records are shifted."
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Stack: 1D array plus a top pointer; or a linked list, pushing and popping at the start node."
       },
       {
         "kind": "Content",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "An ADT can also be built from another ADT. A queue made from two stacks keeps new items in an input stack and moves them to an output stack only when needed. The reversal restores first-in, first-out order. One dequeue may cost O(n), but each item is moved at most once, so the average (amortised) cost per operation is O(1)."
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Queue: 1D array used circularly with front and rear pointers (and a count); or a linked list with front and end pointers; or two stacks."
       },
       {
         "kind": "Content",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "Check empty before pop, peek or dequeue to prevent underflow."
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Linked list: array of records (data + pointer) with a start pointer and a free-list pointer."
       },
       {
         "kind": "Content",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "For a fixed-size implementation, check full before push or enqueue to prevent overflow."
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Binary tree: array of records (data + left pointer + right pointer) with a root pointer and a free list."
       },
       {
         "kind": "Content",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "Return the removed item when the caller may need it."
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Dictionary: array of key–value records addressed by hashing the key (hash table); or a binary search tree ordered by key."
       },
       {
-        "kind": "Example",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"cannot pop an empty stack\")\n        return self._items.pop()\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError(\"cannot peek at an empty stack\")\n        return self._items[-1]"
+        "kind": "Content",
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Array implementation is static: fixed size, so a full stack or queue cannot be extended."
       },
       {
-        "kind": "Example",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "class CircularQueue:\n    def __init__(self, capacity):\n        self._items = [None] * capacity\n        self._front = 0\n        self._size = 0\n\n    def enqueue(self, item):\n        if self._size == len(self._items):\n            raise OverflowError(\"queue is full\")\n        rear = (self._front + self._size) % len(self._items)\n        self._items[rear] = item\n        self._size += 1\n\n    def dequeue(self):\n        if self._size == 0:\n            raise IndexError(\"queue is empty\")\n        item = self._items[self._front]\n        self._items[self._front] = None\n        self._front = (self._front + 1) % len(self._items)\n        self._size -= 1\n        return item"
-      },
-      {
-        "kind": "Example",
-        "label": "Stacks and queues: protect the boundaries",
-        "text": "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"stack is empty\")\n        return self._items.pop()\n\n\nclass QueueUsingTwoStacks:\n    def __init__(self):\n        self._in_stack = Stack()\n        self._out_stack = Stack()\n\n    def enqueue(self, item):\n        self._in_stack.push(item)\n\n    def dequeue(self):\n        if self._out_stack.is_empty():\n            while not self._in_stack.is_empty():\n                self._out_stack.push(self._in_stack.pop())\n        if self._out_stack.is_empty():\n            raise IndexError(\"queue is empty\")\n        return self._out_stack.pop()"
+        "kind": "Content",
+        "label": "ADTs and implementing one ADT from another",
+        "text": "Linked implementation is dynamic: nodes are added or removed as needed and items are relinked by pointers instead of moved, but each node needs extra memory for its pointer."
       },
       {
         "kind": "Section",
-        "text": "Linked lists: change links without losing nodes"
+        "text": "Linked lists (array of records)"
       },
       {
         "kind": "Content",
-        "label": "Linked lists: change links without losing nodes",
-        "text": "Each node stores data and a link to the next node. Search is sequential because a node can only be reached by following links from head. Inserting at the front is O(1); finding a location remains O(n)."
+        "label": "Linked lists (array of records)",
+        "text": "Each node is a record holding Data and Pointer (the index of the next node). StartPointer holds the first node; unused nodes are chained into a free list starting at FreePointer. Like the coursebook, this note indexes arrays from 0, so NullPointer = -1 marks the end of a list (0 would be a real node)."
       },
       {
         "kind": "Content",
-        "label": "Linked lists: change links without losing nodes",
-        "text": "For deletion, keep both current and previous. Deleting the head is a special case because head itself must change. For any other node, bypass it with previous.next = current.next. Changing links in the wrong order can make the rest of the list unreachable."
+        "label": "Linked lists (array of records)",
+        "text": "Find: start at StartPointer and follow pointers until the item is found or NullPointer is reached; O(n)."
       },
       {
         "kind": "Content",
-        "label": "Linked lists: change links without losing nodes",
-        "text": "Use None as the null pointer/end marker in Python."
+        "label": "Linked lists (array of records)",
+        "text": "Insert: check the free list is not empty, take the node at FreePointer, move FreePointer to the next free node, store the data."
       },
       {
         "kind": "Content",
-        "label": "Linked lists: change links without losing nodes",
-        "text": "Insertion/deletion avoids shifting array elements, but each node uses extra memory for its link."
+        "label": "Linked lists (array of records)",
+        "text": "Then find the insertion point with Previous and Current, set the new node's pointer to Current, and point Previous (or StartPointer) at the new node."
       },
       {
         "kind": "Content",
-        "label": "Linked lists: change links without losing nodes",
-        "text": "Searching an ordinary linked list remains O(n), even if insertion at the head is O(1)."
+        "label": "Linked lists (array of records)",
+        "text": "Delete: find the node while remembering Previous; point Previous (or StartPointer) at the deleted node's successor."
+      },
+      {
+        "kind": "Content",
+        "label": "Linked lists (array of records)",
+        "text": "Return a deleted node to the free list: its pointer ← FreePointer, FreePointer ← its index."
+      },
+      {
+        "kind": "Content",
+        "label": "Linked lists (array of records)",
+        "text": "Inserting or deleting at the start is a special case because StartPointer changes."
+      },
+      {
+        "kind": "Content",
+        "label": "Linked lists (array of records)",
+        "text": "No data moves when inserting or deleting (only pointers change), but the list can only be searched sequentially."
       },
       {
         "kind": "Example",
-        "label": "Linked lists: change links without losing nodes",
-        "text": "class Node:\n    def __init__(self, data, next_node=None):\n        self.data = data\n        self.next = next_node\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def insert_front(self, data):\n        self.head = Node(data, self.head)\n\n    def find(self, target):\n        current = self.head\n        while current is not None:\n            if current.data == target:\n                return current\n            current = current.next\n        return None\n\n    def delete(self, target):\n        previous = None\n        current = self.head\n        while current is not None and current.data != target:\n            previous = current\n            current = current.next\n        if current is None:\n            return False\n        if previous is None:\n            self.head = current.next\n        else:\n            previous.next = current.next\n        return True"
-      },
-      {
-        "kind": "Section",
-        "text": "Binary search trees: shape controls performance"
-      },
-      {
-        "kind": "Content",
-        "label": "Binary search trees: shape controls performance",
-        "text": "Searching and insertion compare the target key with the current node and choose one subtree. A balanced tree has height proportional to log n, but a badly skewed tree has height n and therefore O(n) search. Never claim every BST is automatically O(log n)."
-      },
-      {
-        "kind": "Content",
-        "label": "Binary search trees: shape controls performance",
-        "text": "The code below sends equal keys to the right. Another duplicate policy is possible, but search and insertion must apply the same rule. Returning the root from insertion is important because the first insertion creates a new root and recursive calls must reconnect changed child links."
-      },
-      {
-        "kind": "Content",
-        "label": "Binary search trees: shape controls performance",
-        "text": "In-order traversal of a BST visits keys in sorted order."
-      },
-      {
-        "kind": "Content",
-        "label": "Binary search trees: shape controls performance",
-        "text": "A binary tree has at most two children per node; only a BST also enforces an ordering rule."
-      },
-      {
-        "kind": "Content",
-        "label": "Binary search trees: shape controls performance",
-        "text": "The syllabus requires search and insertion code for binary trees, not deletion code."
+        "label": "Linked lists (array of records)",
+        "text": "CONSTANT NullPointer = -1\nTYPE ListNode\n   DECLARE Data : STRING\n   DECLARE Pointer : INTEGER\nENDTYPE\nDECLARE List : ARRAY[0:5] OF ListNode\nDECLARE StartPointer : INTEGER\nDECLARE FreePointer : INTEGER\n\nPROCEDURE InitialiseList()\n   DECLARE Index : INTEGER\n   StartPointer ← NullPointer         // list is empty\n   FreePointer ← 0                    // every node is free\n   FOR Index ← 0 TO 4\n      List[Index].Pointer ← Index + 1\n   NEXT Index\n   List[5].Pointer ← NullPointer\nENDPROCEDURE\n\nFUNCTION FindNode(Item : STRING) RETURNS INTEGER\n   DECLARE Current : INTEGER\n   Current ← StartPointer\n   WHILE Current <> NullPointer AND List[Current].Data <> Item\n      Current ← List[Current].Pointer   // follow the pointer\n   ENDWHILE\n   RETURN Current                       // NullPointer if not found\nENDFUNCTION\n\nPROCEDURE InsertNode(Item : STRING)\n   DECLARE NewNode : INTEGER\n   DECLARE Current : INTEGER\n   DECLARE Previous : INTEGER\n   IF FreePointer = NullPointer THEN\n      OUTPUT \"No free nodes\"\n   ELSE\n      NewNode ← FreePointer             // take the first free node\n      FreePointer ← List[NewNode].Pointer\n      List[NewNode].Data ← Item\n      Previous ← NullPointer\n      Current ← StartPointer\n      WHILE Current <> NullPointer AND List[Current].Data < Item\n         Previous ← Current\n         Current ← List[Current].Pointer\n      ENDWHILE\n      List[NewNode].Pointer ← Current\n      IF Previous = NullPointer THEN\n         StartPointer ← NewNode         // new first node\n      ELSE\n         List[Previous].Pointer ← NewNode\n      ENDIF\n   ENDIF\nENDPROCEDURE\n\nPROCEDURE DeleteNode(Item : STRING)\n   DECLARE Current : INTEGER\n   DECLARE Previous : INTEGER\n   Previous ← NullPointer\n   Current ← StartPointer\n   WHILE Current <> NullPointer AND List[Current].Data <> Item\n      Previous ← Current\n      Current ← List[Current].Pointer\n   ENDWHILE\n   IF Current <> NullPointer THEN\n      IF Previous = NullPointer THEN\n         StartPointer ← List[Current].Pointer\n      ELSE\n         List[Previous].Pointer ← List[Current].Pointer\n      ENDIF\n      List[Current].Pointer ← FreePointer   // back to the free list\n      FreePointer ← Current\n   ENDIF\nENDPROCEDURE"
       },
       {
         "kind": "Example",
-        "label": "Binary search trees: shape controls performance",
-        "text": "class TreeNode:\n    def __init__(self, key):\n        self.key = key\n        self.left = None\n        self.right = None\n\ndef insert(root, key):\n    if root is None:\n        return TreeNode(key)\n    if key < root.key:\n        root.left = insert(root.left, key)\n    else:\n        root.right = insert(root.right, key)\n    return root\n\ndef find(root, target):\n    current = root\n    while current is not None:\n        if current.key == target:\n            return current\n        if target < current.key:\n            current = current.left\n        else:\n            current = current.right\n    return None"
-      },
-      {
-        "kind": "Section",
-        "text": "Dictionaries and graphs: choose the right relationship"
-      },
-      {
-        "kind": "Content",
-        "label": "Dictionaries and graphs: choose the right relationship",
-        "text": "A dictionary stores unique keys mapped to values. Python dict gives average O(1) lookup, insertion and deletion, although this is not a worst-case guarantee. It is suitable when a meaningful key, such as candidate number, should retrieve a record directly."
-      },
-      {
-        "kind": "Content",
-        "label": "Dictionaries and graphs: choose the right relationship",
-        "text": "A graph contains vertices and edges; edges may be directed or undirected and weighted or unweighted. Graphs model many-to-many connections such as roads, network links or dependencies. The syllabus requires describing and justifying graph use, but not writing a graph implementation."
-      },
-      {
-        "kind": "Content",
-        "label": "Dictionaries and graphs: choose the right relationship",
-        "text": "An adjacency matrix gives O(1) edge checks but uses O(V²) memory."
-      },
-      {
-        "kind": "Content",
-        "label": "Dictionaries and graphs: choose the right relationship",
-        "text": "An adjacency list is usually more memory-efficient for sparse graphs."
-      },
-      {
-        "kind": "Content",
-        "label": "Dictionaries and graphs: choose the right relationship",
-        "text": "A dictionary models key-to-value lookup; a graph models connections between many vertices."
+        "label": "Linked lists (array of records)",
+        "text": "Start: StartPointer = -1, FreePointer = 0, pointers 0→1→2→3→4→5→-1 (all free).\n\nAfter InsertNode M, C, T, F (each takes the next free node 0, 1, 2, 3):\nIndex | Data | Pointer\n  0   | M    |  2\n  1   | C    |  3\n  2   | T    | -1\n  3   | F    |  0\n  4   |      |  5\n  5   |      | -1\nStartPointer = 1, FreePointer = 4. Following the pointers gives C → F → M → T.\n\nDeleteNode C: C is the first node, so StartPointer ← 3 (F). Node 1 goes back on the free list: List[1].Pointer ← 4, FreePointer ← 1.\nFindNode T returns 2; FindNode C now returns -1."
       },
       {
         "kind": "Example",
-        "label": "Dictionaries and graphs: choose the right relationship",
-        "text": "students = {\n    \"A104\": {\"name\": \"Ari\", \"mark\": 72},\n    \"A219\": {\"name\": \"Bao\", \"mark\": 81},\n}\n\nstudents[\"A315\"] = {\"name\": \"Chau\", \"mark\": 68}\nif \"A219\" in students:\n    print(students[\"A219\"][\"mark\"])\ndel students[\"A104\"]"
+        "label": "Linked lists (array of records)",
+        "text": "NULL = -1\ndata = [\"\"] * 6\npointer = [1, 2, 3, 4, 5, NULL]        # free list links every node\nstart = NULL\nfree = 0\n\ndef find(item):\n    current = start\n    while current != NULL and data[current] != item:\n        current = pointer[current]\n    return current                     # NULL if not found\n\ndef insert(item):                      # keeps the list in order\n    global start, free\n    if free == NULL:\n        return False                   # no free node left\n    new = free\n    free = pointer[free]\n    data[new] = item\n    previous, current = NULL, start\n    while current != NULL and data[current] < item:\n        previous, current = current, pointer[current]\n    pointer[new] = current\n    if previous == NULL:\n        start = new                    # new first node\n    else:\n        pointer[previous] = new\n    return True\n\ndef delete(item):\n    global start, free\n    previous, current = NULL, start\n    while current != NULL and data[current] != item:\n        previous, current = current, pointer[current]\n    if current == NULL:\n        return False\n    if previous == NULL:\n        start = pointer[current]\n    else:\n        pointer[previous] = pointer[current]\n    pointer[current] = free            # node goes back on the free list\n    free = current\n    return True\n\nfor word in [\"M\", \"C\", \"T\", \"F\"]:\n    insert(word)\nprint(start, free, pointer)  # 1 4 [2, 3, -1, 0, 5, -1]\ndelete(\"C\")\nprint(start, free, pointer)  # 3 1 [2, 4, -1, 0, 5, -1]\nprint(find(\"T\"), find(\"C\"))  # 2 -1"
       },
       {
         "kind": "Section",
-        "text": "Big O: compare growth, not stopwatch seconds"
+        "text": "Binary trees"
       },
       {
         "kind": "Content",
-        "label": "Big O: compare growth, not stopwatch seconds",
-        "text": "Time complexity counts how the number of significant operations grows with input size. Space complexity describes additional memory growth. O(1), O(log n), O(n), O(n log n) and O(n²) are growth classes, not exact running times."
+        "label": "Binary trees",
+        "text": "The top node is the root, nodes with no children are leaves, and each node has a left and a right subtree. In an ordered binary tree (binary search tree) smaller items go in the left subtree and larger items in the right, so a search follows one branch per level. The syllabus requires find and insert for binary trees, not delete."
       },
       {
         "kind": "Content",
-        "label": "Big O: compare growth, not stopwatch seconds",
-        "text": "A high-quality comparison states the relevant case and assumptions. For example, binary search is O(log n) only after the data is sorted, while linear search may be preferable for a tiny, unsorted list searched once. An in-place algorithm may save memory even if another algorithm is faster."
+        "label": "Binary trees",
+        "text": "Array implementation: records with Data, LeftPointer and RightPointer; a RootPointer; free nodes linked into a free list; -1 = null."
       },
       {
         "kind": "Content",
-        "label": "Big O: compare growth, not stopwatch seconds",
-        "text": "Drop constant factors and lower-order terms: 3n² + 8n + 4 is O(n²)."
+        "label": "Binary trees",
+        "text": "Find: start at the root; go left if the item is smaller, right if larger; stop when found or a null pointer is reached."
       },
       {
         "kind": "Content",
-        "label": "Big O: compare growth, not stopwatch seconds",
-        "text": "State whether you are discussing best, average or worst case when it changes the conclusion."
+        "label": "Binary trees",
+        "text": "Insert: take a free node, then follow branches from the root until a null pointer and attach the new node there as a leaf."
       },
       {
         "kind": "Content",
-        "label": "Big O: compare growth, not stopwatch seconds",
-        "text": "Compare algorithms solving the same task under the same input assumptions."
+        "label": "Binary trees",
+        "text": "Remember the last node visited and which way you turned, so the correct pointer (left or right) is updated."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary trees",
+        "text": "Existing nodes never move on insertion; only one pointer changes."
+      },
+      {
+        "kind": "Content",
+        "label": "Binary trees",
+        "text": "Balanced tree: find and insert are O(log n). Items added in sorted order give a skewed tree like a linked list: O(n)."
+      },
+      {
+        "kind": "Example",
+        "label": "Binary trees",
+        "text": "CONSTANT NullPointer = -1\nTYPE TreeNode\n   DECLARE Data : STRING\n   DECLARE LeftPointer : INTEGER\n   DECLARE RightPointer : INTEGER\nENDTYPE\nDECLARE Tree : ARRAY[0:6] OF TreeNode\nDECLARE RootPointer : INTEGER\nDECLARE FreePointer : INTEGER   // free nodes linked by LeftPointer\n\nPROCEDURE InsertTreeNode(Item : STRING)\n   DECLARE NewNode : INTEGER\n   DECLARE Current : INTEGER\n   DECLARE Previous : INTEGER\n   DECLARE WentLeft : BOOLEAN\n   IF FreePointer <> NullPointer THEN\n      NewNode ← FreePointer\n      FreePointer ← Tree[FreePointer].LeftPointer\n      Tree[NewNode].Data ← Item\n      Tree[NewNode].LeftPointer ← NullPointer\n      Tree[NewNode].RightPointer ← NullPointer\n      IF RootPointer = NullPointer THEN\n         RootPointer ← NewNode          // first node is the root\n      ELSE\n         Current ← RootPointer\n         WHILE Current <> NullPointer   // go down to a leaf\n            Previous ← Current\n            IF Item < Tree[Current].Data THEN\n               WentLeft ← TRUE\n               Current ← Tree[Current].LeftPointer\n            ELSE\n               WentLeft ← FALSE\n               Current ← Tree[Current].RightPointer\n            ENDIF\n         ENDWHILE\n         IF WentLeft = TRUE THEN\n            Tree[Previous].LeftPointer ← NewNode\n         ELSE\n            Tree[Previous].RightPointer ← NewNode\n         ENDIF\n      ENDIF\n   ENDIF\nENDPROCEDURE\n\nFUNCTION FindTreeNode(Item : STRING) RETURNS INTEGER\n   DECLARE Current : INTEGER\n   Current ← RootPointer\n   WHILE Current <> NullPointer AND Tree[Current].Data <> Item\n      IF Item < Tree[Current].Data THEN\n         Current ← Tree[Current].LeftPointer\n      ELSE\n         Current ← Tree[Current].RightPointer\n      ENDIF\n   ENDWHILE\n   RETURN Current                       // NullPointer if not found\nENDFUNCTION"
+      },
+      {
+        "kind": "Example",
+        "label": "Binary trees",
+        "text": "Insert K, D, R, B, G, M into an empty 7-node tree:\nIndex | Data | Left | Right\n  0   | K    |    1 |     2\n  1   | D    |    3 |     4\n  2   | R    |    5 |    -1\n  3   | B    |   -1 |    -1\n  4   | G    |   -1 |    -1\n  5   | M    |   -1 |    -1\nRootPointer = 0, FreePointer = 6.\n\n     K\n   /   \\\n  D     R\n / \\   /\n B  G  M\n\nFind G: K (G < K, go left) → D (G > D, go right) → G found, returns 4.\nFind Q: K (right) → R (left) → M (right) → null pointer, returns -1."
+      },
+      {
+        "kind": "Example",
+        "label": "Binary trees",
+        "text": "class TreeNode:\n    def __init__(self, key):\n        self.key = key\n        self.left = None               # None is the null pointer\n        self.right = None\n\ndef insert(root, key):\n    if root is None:\n        return TreeNode(key)           # empty place found: new leaf\n    if key < root.key:\n        root.left = insert(root.left, key)\n    else:\n        root.right = insert(root.right, key)\n    return root\n\ndef find(root, target):\n    current = root\n    while current is not None and current.key != target:\n        if target < current.key:\n            current = current.left\n        else:\n            current = current.right\n    return current                     # None if not found\n\nroot = None\nfor key in [\"K\", \"D\", \"R\", \"B\", \"G\", \"M\"]:\n    root = insert(root, key)\nprint(find(root, \"G\").key, find(root, \"Q\"))  # G None"
+      },
+      {
+        "kind": "Section",
+        "text": "Stacks and queues"
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "A stack is LIFO (last in, first out, also called FILO): items are pushed and popped at the same end, so it needs one movable pointer (top). A queue is FIFO: items are added at the rear and removed from the front, so it needs two movable pointers. Both vary in length as items are added and removed. In an array, a queue is made circular: a pointer that passes the last element wraps round to 0."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Push: check the stack is not full (overflow); increment TopPointer; store the item."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Pop: check the stack is not empty (underflow); read the item at TopPointer; decrement TopPointer."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Enqueue: check Count < MaxSize; RearPointer ← (RearPointer + 1) MOD MaxSize; store the item; add 1 to Count."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Dequeue: check Count > 0; read the item at FrontPointer; move FrontPointer on with MOD; subtract 1 from Count."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Uses of a stack: procedure calls (return addresses), recursion, interrupt handling, evaluating Reverse Polish expressions, implementing other ADTs."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Uses of a queue: print queues, keyboard/data buffers, process scheduling."
+      },
+      {
+        "kind": "Content",
+        "label": "Stacks and queues",
+        "text": "Queue from two stacks: enqueue pushes onto stack 1; dequeue pops from stack 2, first refilling it (if empty) by popping every item from stack 1, which reverses them into FIFO order."
+      },
+      {
+        "kind": "Example",
+        "label": "Stacks and queues",
+        "text": "CONSTANT MaxSize = 5\nDECLARE Stack : ARRAY[0:4] OF STRING\nDECLARE TopPointer : INTEGER     // -1 when empty\nDECLARE Queue : ARRAY[0:4] OF STRING\nDECLARE FrontPointer : INTEGER   // starts at 0\nDECLARE RearPointer : INTEGER    // starts at -1\nDECLARE Count : INTEGER          // starts at 0\n\nPROCEDURE Push(Item : STRING)\n   IF TopPointer = MaxSize - 1 THEN\n      OUTPUT \"Stack full\"          // overflow\n   ELSE\n      TopPointer ← TopPointer + 1\n      Stack[TopPointer] ← Item\n   ENDIF\nENDPROCEDURE\n\nFUNCTION Pop() RETURNS STRING\n   DECLARE Item : STRING\n   Item ← \"\"\n   IF TopPointer = -1 THEN\n      OUTPUT \"Stack empty\"         // underflow\n   ELSE\n      Item ← Stack[TopPointer]\n      TopPointer ← TopPointer - 1\n   ENDIF\n   RETURN Item\nENDFUNCTION\n\nPROCEDURE Enqueue(Item : STRING)\n   IF Count = MaxSize THEN\n      OUTPUT \"Queue full\"\n   ELSE\n      RearPointer ← (RearPointer + 1) MOD MaxSize   // wrap round\n      Queue[RearPointer] ← Item\n      Count ← Count + 1\n   ENDIF\nENDPROCEDURE\n\nFUNCTION Dequeue() RETURNS STRING\n   DECLARE Item : STRING\n   Item ← \"\"\n   IF Count = 0 THEN\n      OUTPUT \"Queue empty\"\n   ELSE\n      Item ← Queue[FrontPointer]\n      FrontPointer ← (FrontPointer + 1) MOD MaxSize\n      Count ← Count - 1\n   ENDIF\n   RETURN Item\nENDFUNCTION"
+      },
+      {
+        "kind": "Example",
+        "label": "Stacks and queues",
+        "text": "MaxSize = 5, Front 0, Rear -1, Count 0.\nEnqueue A, B, C, D, E → Front 0, Rear 4, Count 5.\nDequeue, Dequeue → returns A then B; Front 2, Count 3.\nEnqueue F → Rear (4 + 1) MOD 5 = 0 (wrap round); Enqueue G → Rear 1; Count 5.\nEnqueue H → \"Queue full\".\nArray: [F, G, C, D, E] with Front 2, Rear 1."
+      },
+      {
+        "kind": "Example",
+        "label": "Stacks and queues",
+        "text": "class Stack:\n    def __init__(self, size=8):\n        self.items = [None] * size     # fixed-size array\n        self.top = -1                  # top pointer: -1 means empty\n\n    def push(self, item):\n        if self.top == len(self.items) - 1:\n            return False               # overflow: stack full\n        self.top = self.top + 1\n        self.items[self.top] = item\n        return True\n\n    def pop(self):\n        if self.top == -1:\n            return None                # underflow: stack empty\n        item = self.items[self.top]\n        self.top = self.top - 1\n        return item\n\n    def peek(self):\n        if self.top == -1:\n            return None\n        return self.items[self.top]\n\ns = Stack(3)\nprint(s.push(\"X\"), s.push(\"Y\"), s.push(\"Z\"), s.push(\"W\"))  # True True True False\nprint(s.pop(), s.peek())  # Z Y"
+      },
+      {
+        "kind": "Example",
+        "label": "Stacks and queues",
+        "text": "class Stack:                           # minimal stack ADT\n    def __init__(self):\n        self.items = []\n\n    def push(self, item):\n        self.items.append(item)\n\n    def pop(self):\n        return self.items.pop()\n\n    def is_empty(self):\n        return self.items == []\n\n\nclass QueueUsingTwoStacks:\n    def __init__(self):\n        self.inbox = Stack()           # receives new items\n        self.outbox = Stack()          # gives items out in FIFO order\n\n    def enqueue(self, item):\n        self.inbox.push(item)\n\n    def dequeue(self):\n        if self.outbox.is_empty():\n            while not self.inbox.is_empty():   # reverse the order once\n                self.outbox.push(self.inbox.pop())\n        if self.outbox.is_empty():\n            return None                # queue empty\n        return self.outbox.pop()\n\nq = QueueUsingTwoStacks()\nfor job in [\"P1\", \"P2\", \"P3\"]:\n    q.enqueue(job)\nprint(q.dequeue(), q.dequeue())  # P1 P2\nq.enqueue(\"P4\")\nprint(q.dequeue(), q.dequeue(), q.dequeue())  # P3 P4 None"
+      },
+      {
+        "kind": "Section",
+        "text": "Graphs"
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "A graph is an ADT that records relationships: vertices (nodes) joined by edges (arcs). Any vertex can connect to any number of others, which a list or tree cannot represent. You must describe and justify graphs; you will not be asked to write graph code."
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "Vertices represent objects (towns, computers, people); edges represent the connections between pairs of vertices."
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "Weighted (labelled) edges carry a value such as distance, time or cost."
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "Directed edges work one way only; undirected edges work both ways."
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "Two vertices joined by an edge are neighbours; a path is a route along edges and may pass through other vertices."
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "Stored as an adjacency matrix (one row and column per vertex holding 1/0 or the weight) or an adjacency list (each vertex lists only its neighbours)."
+      },
+      {
+        "kind": "Content",
+        "label": "Graphs",
+        "text": "Justify a graph by linking each feature to the situation: vertices = the places, weights = the distances, directions = one-way routes; shortest-path algorithms (Dijkstra, A*) can then be applied."
+      },
+      {
+        "kind": "Section",
+        "text": "Dictionaries"
+      },
+      {
+        "kind": "Content",
+        "label": "Dictionaries",
+        "text": "A dictionary stores key–value pairs: a unique key (such as a product code) is used to look up its value (such as the stock level). It is usually implemented as a hash table: the key is hashed into an array index, so the value is reached by direct access instead of a search. Python's dict is a built-in dictionary."
+      },
+      {
+        "kind": "Content",
+        "label": "Dictionaries",
+        "text": "Operations: add a pair, look up a value by its key, update a value, delete a pair."
+      },
+      {
+        "kind": "Content",
+        "label": "Dictionaries",
+        "text": "Keys must be unique; values need not be."
+      },
+      {
+        "kind": "Content",
+        "label": "Dictionaries",
+        "text": "From built-in types: TYPE Entry (Key, Value) records in an ARRAY, placed by hashing the key; a collision (two keys, same index) is resolved, e.g. by using the next free slot."
+      },
+      {
+        "kind": "Content",
+        "label": "Dictionaries",
+        "text": "Average look-up is O(1), independent of the number of pairs."
+      },
+      {
+        "kind": "Example",
+        "label": "Dictionaries",
+        "text": "stock = {\"pen\": 40, \"ruler\": 12}       # key -> value\nstock[\"glue\"] = 25                     # insert a new pair\nstock[\"pen\"] = stock[\"pen\"] - 5        # look up and update by key\ndel stock[\"ruler\"]                     # delete a pair\nprint(stock)  # {'pen': 35, 'glue': 25}\nprint(\"ruler\" in stock)  # False"
+      },
+      {
+        "kind": "Section",
+        "text": "Comparing algorithms: Big O notation"
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "Algorithms that do the same task are compared by the time taken and the memory used as the data size n grows. Big O gives the order of growth, normally for the worst case: keep only the dominant term and ignore constants, so 3n² + 5n + 2 steps is O(n²). Time complexity counts steps; space complexity measures the memory needed."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "O(1) constant: same time whatever n is, e.g. push, pop, reading an array element by index."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "O(log n) logarithmic: the data is halved each step, e.g. binary search; time rises by one step each time n doubles (linearly as n rises exponentially)."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "O(n) linear: time proportional to n, e.g. linear search or a single loop over the data."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "O(n log n): e.g. merge sort, which splits the data log n times and handles all n items at each level."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "O(n²) polynomial: nested loops over the data, e.g. bubble and insertion sort in the worst case."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "O(2ⁿ) exponential: time doubles for each extra item, e.g. recursive Fibonacci; impractical for large n."
+      },
+      {
+        "kind": "Content",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "Space: bubble and insertion sort use O(1) extra memory; an ADT holding n items needs O(n) space."
+      },
+      {
+        "kind": "Example",
+        "label": "Comparing algorithms: Big O notation",
+        "text": "  n | log2 n | n log2 n |    n² |           2ⁿ\n 16 |      4 |       64 |   256 |       65,536\n 32 |      5 |      160 | 1,024 | 4,294,967,296\n\nDoubling n adds 1 step for O(log n), doubles O(n), quadruples O(n²) and squares 2ⁿ."
       },
       {
         "kind": "Quick recall question",
-        "text": "What condition must hold before binary search?"
+        "text": "What condition must hold before a binary search?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What condition must hold before binary search?",
-        "text": "The data must be sorted using the same ordering rule used by the comparisons."
+        "label": "What condition must hold before a binary search?",
+        "text": "The data must be sorted on the search key."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why does binary search have O(log n) time?"
+        "text": "Maximum comparisons for a binary search of 1,000 items?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why does binary search have O(log n) time?",
-        "text": "Each comparison discards about half of the remaining search interval."
+        "label": "Maximum comparisons for a binary search of 1,000 items?",
+        "text": "10 (⌊log2 1000⌋ + 1); a linear search may need 1,000."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does the swapped flag do in bubble sort?"
+        "text": "Two factors that affect the performance of a sorting routine?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does the swapped flag do in bubble sort?",
-        "text": "It allows the algorithm to stop when a complete pass makes no swaps, proving the list is sorted."
+        "label": "Two factors that affect the performance of a sorting routine?",
+        "text": "The initial order of the data and the number of data items."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why is key stored before insertion-sort shifting begins?"
+        "text": "Best-case time of insertion sort and when it happens?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why is key stored before insertion-sort shifting begins?",
-        "text": "The value at that position will be overwritten while larger prefix items move right."
+        "label": "Best-case time of insertion sort and when it happens?",
+        "text": "O(n), when the data is already sorted."
       },
       {
         "kind": "Quick recall question",
-        "text": "What is the difference between stack and queue removal order?"
+        "text": "What does the Swapped flag do in bubble sort?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What is the difference between stack and queue removal order?",
-        "text": "A stack is LIFO; a queue is FIFO."
+        "label": "What does the Swapped flag do in bubble sort?",
+        "text": "If a pass makes no swaps the list is sorted, so the sort stops early."
       },
       {
         "kind": "Quick recall question",
-        "text": "When can BST search become O(n)?"
+        "text": "How many pointers do a stack and a queue need?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "When can BST search become O(n)?",
-        "text": "When the tree is badly skewed so its height grows to n."
+        "label": "How many pointers do a stack and a queue need?",
+        "text": "Stack one (top); queue two (front and rear)."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a queue built from two stacks?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a queue built from two stacks?",
+        "text": "Push new items onto stack 1; dequeue pops stack 2, refilled from stack 1 when empty, which reverses the order to FIFO."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What value marks a null pointer in a 0-indexed array linked list?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What value marks a null pointer in a 0-indexed array linked list?",
+        "text": "-1, because 0 is a valid node index."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens to a deleted linked-list node?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens to a deleted linked-list node?",
+        "text": "It is added to the front of the free list."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Name two key features of a graph."
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Name two key features of a graph.",
+        "text": "Vertices joined by edges; edges may be weighted and/or directed."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "How is a dictionary normally implemented?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "How is a dictionary normally implemented?",
+        "text": "As a hash table: each key is hashed to an array index."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "Order of 5n² + 3n + 7?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "Order of 5n² + 3n + 7?",
+        "text": "O(n²): keep the dominant term, drop constants."
       }
     ]
   },

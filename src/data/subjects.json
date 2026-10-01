@@ -1369,11 +1369,14 @@
             "levels": [
               "A2"
             ],
-            "summary": "Extend algorithm knowledge to more advanced examples, and compare efficiency using Big O.",
+            "summary": "Trace linear and binary search, bubble and insertion sort, describe stack, queue, linked list, binary tree, graph and dictionary ADTs and build one ADT from another, and compare algorithms using time, memory and Big O.",
             "focusPoints": [
-              "advanced algorithms",
-              "efficiency",
-              "data structures"
+              "linear and binary search",
+              "bubble and insertion sort",
+              "stacks, queues, linked lists",
+              "binary trees, graphs, dictionaries",
+              "ADTs from other ADTs",
+              "Big O comparison"
             ],
             "contentDepth": "full"
           },
