@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { isUsablePdfUrl } from "@/src/data/papers";
-import { getPdfPreviewUrl } from "@/src/utils/pdf";
+import { getPdfPreviewUrl, getXtraPapersSourceUrl } from "@/src/utils/pdf";
 
 export { getPdfPreviewUrl } from "@/src/utils/pdf";
 
@@ -27,6 +27,8 @@ function PdfResource({ url, label }: { url: string | null | undefined; label: st
 
   const downloadUrl = url as string;
   const previewUrl = getPdfPreviewUrl(downloadUrl);
+  // Direct link for the visitor's own browser; the preview proxy can fail when the source blocks our server.
+  const directUrl = getXtraPapersSourceUrl(downloadUrl) ?? downloadUrl;
 
   return (
     <Dialog>
@@ -60,7 +62,7 @@ function PdfResource({ url, label }: { url: string | null | undefined; label: st
             <DialogDescription>Read the complete paper here, or download a copy for offline use.</DialogDescription>
           </div>
           <div className="pdf-viewer-toolbar">
-            <a href={previewUrl} target="_blank" rel="noreferrer">
+            <a href={directUrl} target="_blank" rel="noreferrer">
               <ExternalLink aria-hidden="true" /> Open separately
             </a>
             <a href={downloadUrl} target="_blank" rel="noreferrer">
@@ -76,7 +78,7 @@ function PdfResource({ url, label }: { url: string | null | undefined; label: st
         <div className="pdf-viewer-frame">
           <iframe src={previewUrl} title={`${label} PDF preview`} loading="lazy" />
           <p>
-            If the preview does not load, <a href={previewUrl} target="_blank" rel="noreferrer">open the PDF separately</a>.
+            If the preview does not load, <a href={directUrl} target="_blank" rel="noreferrer">open the PDF separately</a>.
           </p>
         </div>
       </DialogContent>

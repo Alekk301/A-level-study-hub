@@ -20,11 +20,15 @@ export async function handlePdfPreview(request: Request) {
   let upstream: Response;
   try {
     upstream = await fetch(sourceUrl, { method: request.method, headers: upstreamHeaders });
-  } catch {
+  } catch (error) {
+    console.error("PDF preview: upstream fetch failed", sourceUrl, error);
     return unavailable();
   }
 
-  if (!upstream.ok && upstream.status !== 206) return unavailable();
+  if (!upstream.ok && upstream.status !== 206) {
+    console.error("PDF preview: upstream returned", upstream.status, sourceUrl);
+    return unavailable();
+  }
   if (!upstream.headers.get("Content-Type")?.toLowerCase().includes("application/pdf")) {
     return new Response("The source did not return a PDF. Use Open separately or Download instead.", { status: 502 });
   }
