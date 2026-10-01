@@ -6,244 +6,397 @@
   "unitTitle": "A2 Level",
   "title": "Recursion",
   "contentDepth": "full",
-  "overview": "Recursion solves a problem by calling the same routine with a smaller or simpler input. Exam-ready understanding means more than naming a base case: you must prove that every path reaches it, trace the call stack and returned values, write correct recursive code, explain stack frames and unwinding, and judge when an iterative solution would be safer or more efficient.",
+  "overview": "A recursive routine is a function or procedure defined in terms of itself: it calls itself with a simpler input until a base case gives an answer directly. For the exam you must name the base case and general case, write recursive code, trace it with a trace table showing the calls winding up and then unwinding, describe how a stack of frames makes this possible, say what the compiler must produce, and judge recursion against iteration.",
   "syllabusPoints": [
-    "Identify the base case, recursive case and progress toward termination.",
-    "Write and trace recursive algorithms in a programming language.",
-    "Explain when recursion is beneficial and compare it with iteration.",
-    "Explain how active calls are stored on a stack and unwind in last-in, first-out order."
+    "Show understanding of recursion.",
+    "Show awareness of what a compiler has to do to translate recursive programming code."
   ],
   "definitions": [
     {
-      "term": "Base case",
-      "definition": "A condition that returns a result without making another recursive call."
+      "term": "Recursion",
+      "definition": "A process in which a function or procedure calls itself."
     },
     {
-      "term": "Recursive case",
-      "definition": "The branch that reduces or simplifies the problem and calls the same routine again."
+      "term": "Recursive routine",
+      "definition": "A function or procedure that is defined in terms of itself."
+    },
+    {
+      "term": "Base case",
+      "definition": "The stopping condition: an explicit solution that is returned without another recursive call."
+    },
+    {
+      "term": "General case",
+      "definition": "The part of the definition that calls the routine itself, changes the state of the parameter and moves it closer to the base case."
     },
     {
       "term": "Stack frame",
-      "definition": "The stored information for one active routine call, including parameters, local variables and its return address."
+      "definition": "The memory used for one call: its return address and the values of its local variables and parameters."
+    },
+    {
+      "term": "Winding",
+      "definition": "The calls made before the base case is reached, each pushing a new stack frame onto the stack."
     },
     {
       "term": "Unwinding",
-      "definition": "Completing suspended calls in reverse order after a base case returns."
+      "definition": "Once the base case is reached, each call finishes in turn, its frame is popped and control returns to the previous call (last in, first out)."
     },
     {
       "term": "Stack overflow",
-      "definition": "Failure caused by exhausting call-stack space, often because recursion is too deep or does not reach its base case."
+      "definition": "An error when the call stack runs out of space, for example because the base case is never reached or the recursion is too deep."
+    },
+    {
+      "term": "Iteration",
+      "definition": "Repeating statements with a loop (FOR, WHILE, REPEAT) instead of calling a routine again."
     }
   ],
   "sections": [
     {
-      "id": "01-designing-recursion",
-      "title": "Design recursion from the stopping condition",
+      "id": "01-concept",
+      "title": "Concept of recursion: base case and general case",
       "content": [
-        "Start by writing the smallest input whose answer is known directly. Then write the recursive case so its argument moves strictly toward that input. A base case that exists but can never be reached does not prevent infinite recursion.",
-        "State the valid input domain. The factorial routine below rejects negative integers because repeatedly subtracting one would never reach zero. Handling invalid input separately makes the termination argument complete."
+        "A recursive routine is defined in terms of itself. The factorial function is the standard example: 0! = 1, and for n above 0, n! = n × (n − 1)!. The second line is the general case; the first stops the process."
       ],
       "bullets": [
-        "Base case: produces a result without another call.",
-        "Progress: each recursive call must reduce the remaining problem.",
-        "Combination: the current call uses the smaller call's returned result."
+        "Recursion is a process using a function or procedure that calls itself.",
+        "It must have a base case (stopping condition) that gives a result without calling the routine again.",
+        "It must have a general case that calls itself recursively, changes its state (the parameter) and moves towards the base case.",
+        "Rule 1: a base case. Rule 2: a general case that moves closer to the base case on every call. Rule 3: the base case is reached after a finite number of calls.",
+        "A recursive call with an argument that never moves towards the base case recurses forever, ending in stack overflow.",
+        "Factorial(-2) breaks rule 3: n goes -3, -4 ... and never equals 0, so it fails to terminate."
       ],
       "examples": [
         {
-          "id": "01-python-factorial",
-          "kind": "code",
-          "label": "Factorial with a guarded input domain",
-          "language": "python",
-          "content": "def factorial(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0:\n        return 1  # base case\n    return n * factorial(n - 1)  # recursive case\n\nprint(factorial(5))  # 120"
+          "id": "01-ex-def",
+          "kind": "example",
+          "label": "Spotting the two cases",
+          "content": "Power(Base, Exponent): Exponent = 0 is the base case (return 1). Return Base * Power(Base, Exponent - 1) is the general case: it calls Power itself and Exponent falls by 1 each time, so it reaches 0."
+        }
+      ]
+    },
+    {
+      "id": "02-programming",
+      "title": "How recursion is expressed in a programming language",
+      "content": [
+        "In code, recursion is a function or procedure whose body contains a call to its own name. An IF statement separates the base case from the general case. A recursive function usually returns a value built from the result of the call; a recursive procedure usually outputs or changes something then calls itself."
+      ],
+      "bullets": [
+        "Structure: IF (base case condition) THEN return/stop ELSE call itself with a changed argument ENDIF.",
+        "Function: the call sits inside an expression, for example n * Factorial(n - 1), so a statement (the RETURN, or the multiplication) is still waiting when the call is made.",
+        "Procedure: CALL CountDownFrom(n - 1) inside the procedure body.",
+        "Iterative alternative: the same task by a loop (e.g. FOR i ← 1 TO n with Result ← Result * i), with no routine calling itself.",
+        "Iterative Factorial(0) with FOR i ← 1 TO 0 does no passes and returns 1; recursive Factorial(0) takes the base case and returns 1."
+      ],
+      "examples": [
+        {
+          "id": "02-pc-fact",
+          "kind": "pseudocode",
+          "label": "Recursive factorial (pseudocode)",
+          "content": "FUNCTION Factorial(n : INTEGER) RETURNS INTEGER\n   IF n = 0 THEN\n      RETURN 1                       // base case\n   ELSE\n      RETURN n * Factorial(n - 1)    // general case: calls itself\n   ENDIF\nENDFUNCTION",
+          "language": "cambridge-pseudocode"
         },
         {
-          "id": "01-cambridge-factorial",
+          "id": "02-py-fact",
+          "kind": "code",
+          "label": "Factorial with a guarded input domain",
+          "content": "def factorial(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0:\n        return 1  # base case\n    return n * factorial(n - 1)  # general case\n\nprint(factorial(5))  # 120",
+          "language": "python"
+        },
+        {
+          "id": "02-pc-iter",
           "kind": "pseudocode",
-          "label": "Syllabus pseudocode (precondition: n >= 0)",
-          "language": "cambridge-pseudocode",
-          "content": "// Precondition: n >= 0\nFUNCTION Factorial(n : INTEGER) RETURNS INTEGER\n    IF n = 0 THEN\n        RETURN 1\n    ELSE\n        RETURN n * Factorial(n - 1)\n    ENDIF\nENDFUNCTION"
+          "label": "Iterative factorial for comparison (pseudocode)",
+          "content": "FUNCTION FactorialIter(n : INTEGER) RETURNS INTEGER\n   DECLARE Result : INTEGER\n   DECLARE i : INTEGER\n   Result ← 1\n   FOR i ← 1 TO n\n      Result ← Result * i\n   NEXT i\n   RETURN Result\nENDFUNCTION",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "02-pc-countdown",
+          "kind": "pseudocode",
+          "label": "Recursive procedure: count down (pseudocode)",
+          "content": "PROCEDURE CountDownFrom(n : INTEGER)\n   OUTPUT n\n   IF n > 0 THEN\n      CALL CountDownFrom(n - 1)\n   ENDIF\nENDPROCEDURE",
+          "language": "cambridge-pseudocode"
         }
       ]
     },
     {
-      "id": "02-tracing-and-unwinding",
-      "title": "Trace calls downward and returns upward",
+      "id": "03-tracing",
+      "title": "Tracing a recursive subroutine",
       "content": [
-        "A recursive expression is suspended while the next call is evaluated. For factorial(4), the program builds four unresolved multiplications before the base result appears. Only then can it calculate 1, 2, 6 and 24 while unwinding.",
-        "A trace table should give each call its own row or level. Record parameter values on entry and the returned value on exit; mixing those phases is the most common cause of an incorrect trace."
+        "Trace one row per call, in call order. Statements placed after the recursive call cannot run until the deeper calls finish, so you show the unwinding as extra rows below the base case and write each output or return value on the row where it happens. Do not go back up the table to fill in earlier rows."
       ],
       "bullets": [
-        "Call phase: factorial(4) waits for factorial(3), which waits for factorial(2), and so on.",
-        "Base phase: factorial(0) returns 1 immediately.",
-        "Return phase: the most recently created frame completes first because the stack is LIFO."
+        "Write a row for every call, giving the parameter value and the condition tested.",
+        "Base case row: the call that makes no further call (condition TRUE for n = 0).",
+        "Then add rows for the calls unwinding, in reverse order (last call finishes first).",
+        "Statement before the recursive call (OUTPUT n then CALL): output appears while winding, in call order.",
+        "Statement after the recursive call (CALL then OUTPUT n): output appears while unwinding, in reverse call order.",
+        "For a function, give the returned value on each unwinding row; the value passes back to the call that made it."
       ],
       "examples": [
         {
-          "id": "02-factorial-trace",
+          "id": "03-w-down",
           "kind": "worked",
-          "label": "factorial(4) call-and-return trace",
-          "content": "Calls: F(4) → F(3) → F(2) → F(1) → F(0). Returns: F(0)=1 → F(1)=1×1=1 → F(2)=2×1=2 → F(3)=3×2=6 → F(4)=4×6=24."
+          "label": "CountDownFrom(2) and CountUpTo(2): where the OUTPUT sits",
+          "content": "CountDownFrom(2), OUTPUT before the call:\nCall | n | n > 0 | OUTPUT\n1 CountDownFrom(2) | 2 | TRUE | 2\n2 CountDownFrom(1) | 1 | TRUE | 1\n3 CountDownFrom(0) | 0 | FALSE | 0   (base case)\nOutput: 2 1 0\n\nCountUpTo(2), OUTPUT after the call (IF n > 0 THEN CALL CountUpTo(n - 1) ENDIF, then OUTPUT n):\nCall | n | n > 0 | OUTPUT\n1 CountUpTo(2) | 2 | TRUE | (waiting)\n2 CountUpTo(1) | 1 | TRUE | (waiting)\n3 CountUpTo(0) | 0 | FALSE | 0   (base case reached, unwinding starts)\n(2) CountUpTo(1) resumes | | | 1\n(1) CountUpTo(2) resumes | | | 2\nOutput: 0 1 2"
+        },
+        {
+          "id": "03-w-power",
+          "kind": "worked",
+          "label": "Trace of Power(3, 4) (returns Base * Power(Base, Exponent - 1))",
+          "content": "Call | Base | Exponent | Exponent = 0 | Return value\n1 Power(3,4) | 3 | 4 | FALSE | 3 * Power(3,3)\n2 Power(3,3) | 3 | 3 | FALSE | 3 * Power(3,2)\n3 Power(3,2) | 3 | 2 | FALSE | 3 * Power(3,1)\n4 Power(3,1) | 3 | 1 | FALSE | 3 * Power(3,0)\n5 Power(3,0) | 3 | 0 | TRUE | 1   (base case reached)\n(4) Power(3,1) | | | | 3 * 1 = 3\n(3) Power(3,2) | | | | 3 * 3 = 9\n(2) Power(3,3) | | | | 3 * 9 = 27\n(1) Power(3,4) | | | | 3 * 27 = 81\nResult: 81 (3 to the power 4)"
+        },
+        {
+          "id": "03-pc-bin",
+          "kind": "pseudocode",
+          "label": "Output after the call: denary to binary (pseudocode)",
+          "content": "PROCEDURE ToBinary(n : INTEGER)\n   IF n > 1 THEN\n      CALL ToBinary(n DIV 2)\n   ENDIF\n   OUTPUT n MOD 2\nENDPROCEDURE",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "03-w-bin",
+          "kind": "worked",
+          "label": "Trace of CALL ToBinary(13)",
+          "content": "Call | n | n > 1 | OUTPUT\n1 ToBinary(13) | 13 | TRUE | (waiting)\n2 ToBinary(6) | 6 | TRUE | (waiting)\n3 ToBinary(3) | 3 | TRUE | (waiting)\n4 ToBinary(1) | 1 | FALSE | 1   (1 MOD 2, base case)\n(3) ToBinary(3) resumes | | | 1   (3 MOD 2)\n(2) ToBinary(6) resumes | | | 0   (6 MOD 2)\n(1) ToBinary(13) resumes | | | 1   (13 MOD 2)\nOutput 1101, which is 13 in binary. The purpose is to output a denary number in binary."
         }
       ]
     },
     {
-      "id": "03-recursive-search",
-      "title": "Recursive binary search: shrink both boundaries",
+      "id": "04-running",
+      "title": "Running a recursive subroutine: stacks and unwinding",
       "content": [
-        "Binary search naturally becomes recursive because every step solves the same search problem on half of the current interval. It needs two stopping conditions: success when the middle value matches and failure when low is greater than high.",
-        "The recursive call must be returned. Without return, the deepest call may find the correct index but its result is discarded while earlier calls return None."
+        "A recursive routine can only run if the compiler generates object code that uses a stack. Every call needs its own return address and its own copy of the local variables, and the most recent call must finish first, which is exactly the last-in, first-out behaviour of a stack."
       ],
       "bullets": [
-        "Keep the list sorted and unchanged throughout the calls.",
-        "Pass boundaries rather than slicing the list, because slicing creates extra lists and changes index meanings.",
-        "Maximum depth is O(log n), matching the number of comparisons."
+        "A stack is LIFO: each recursive call is pushed onto the stack and is popped when the function ends.",
+        "This enables backtracking/unwinding so results are returned in the required order (last call first).",
+        "Each call pushes a stack frame: the return address and the values of local variables (and parameters).",
+        "Winding: frames keep being pushed until the base case is reached.",
+        "Unwinding: after the base case, the top frame is popped, its local values are restored for the call below and the result is passed back.",
+        "The compiler must produce object code to push return addresses and local variable values onto a stack with each recursive call.",
+        "It must also produce code to pop the return address and local variable values off the stack after the base case is reached.",
+        "Number of frames = depth of recursion: CountDownFrom(100) makes 101 calls (n = 100 down to 0), so 101 frames are on the stack at once.",
+        "Memory use and processor time rise with every call; too many frames, or no base case, gives stack overflow."
       ],
       "examples": [
         {
-          "id": "03-python-recursive-binary-search",
+          "id": "04-pc-sum",
+          "kind": "pseudocode",
+          "label": "Program used for the stack trace (pseudocode)",
+          "content": "010 FUNCTION SumTo(n : INTEGER) RETURNS INTEGER\n020    IF n = 0 THEN\n030       RETURN 0\n040    ELSE\n050       RETURN n + SumTo(n - 1)\n060    ENDIF\n070 ENDFUNCTION\n080 DECLARE Total : INTEGER\n090 Total ← SumTo(3)\n100 OUTPUT Total",
+          "language": "cambridge-pseudocode"
+        },
+        {
+          "id": "04-w-stack",
+          "kind": "worked",
+          "label": "Stack contents during Total <- SumTo(3)  (bottom of stack on the left)",
+          "content": "Event | Stack (return address, n)\nCall 1 from line 090, n = 3 | [090,3]\nCall 2 from line 050, n = 2 | [090,3] [050,2]\nCall 3 from line 050, n = 1 | [090,3] [050,2] [050,1]\nCall 4 from line 050, n = 0 (base case) | [090,3] [050,2] [050,1] [050,0]\nReturn 0: pop frame, back to line 050 | [090,3] [050,2] [050,1]  then 1 + 0 = 1\nReturn 1: pop frame, back to line 050 | [090,3] [050,2]  then 2 + 1 = 3\nReturn 3: pop frame, back to line 050 | [090,3]  then 3 + 3 = 6\nReturn 6: pop last frame, back to line 090 | empty; Total = 6\nThe base case is reached with 4 frames on the stack; they are removed in the reverse order of being added."
+        }
+      ]
+    },
+    {
+      "id": "05-benefits",
+      "title": "When recursion is beneficial: comparison with iteration",
+      "content": [
+        "Recursion is worth using when the problem is recursive by nature, because the code can mirror the definition. Otherwise a loop is usually cheaper."
+      ],
+      "bullets": [
+        "Benefit: recursive solutions are often more elegant, shorter and easier to write when the problem is defined recursively (factorial, tree traversal, binary search).",
+        "Benefit: less program code than the iterative solution, with no loop counters to manage.",
+        "Drawback: each call uses stack memory and processor time to push and pop frames, so large inputs use much more memory than a loop.",
+        "Drawback: tracing and debugging is harder, and too deep a recursion (or a missing base case) gives stack overflow.",
+        "Iteration: uses a loop, needs no stack frames, so is generally faster and uses less memory.",
+        "Some optimising compilers convert a recursive subroutine into an iterative one when producing object code.",
+        "Recursion is also central to declarative programming, where repetition is written as recursive rules.",
+        "Fibonacci coded recursively recomputes the same values: Fibonacci(20) makes 21,891 calls, yet a loop needs 20 additions."
+      ],
+      "examples": [
+        {
+          "id": "05-py-fib",
+          "kind": "code",
+          "label": "Recursive Fibonacci counting its calls",
+          "content": "calls = 0\n\ndef fib(n):\n    global calls\n    calls = calls + 1\n    if n < 2:\n        return n  # base case: fib(0) = 0, fib(1) = 1\n    return fib(n - 1) + fib(n - 2)  # two recursive calls\n\nprint(fib(10), calls)  # 55 177",
+          "language": "python"
+        }
+      ]
+    },
+    {
+      "id": "06-write",
+      "title": "Writing recursive algorithms",
+      "content": [
+        "Exam questions ask you to write or complete a recursive routine, or a recursive version of a loop. Decide the stopping value first, then write the general case so the parameter moves towards it, and check the very first call terminates."
+      ],
+      "bullets": [
+        "Step 1: the base case, with the value it returns (or the action it stops on).",
+        "Step 2: the general case: call itself with a changed (usually smaller) parameter, then combine the result.",
+        "Step 3: check every possible starting value reaches the base case (reject invalid input such as a negative n).",
+        "Binary search recursively: base cases are Low > High (return -1, not found) and item at Mid (return Mid); the general case searches the half that can hold the item.",
+        "Binary tree: recursion visits the left subtree, the node, then the right subtree (in-order); the base case is a null (empty) pointer.",
+        "Using a result without returning it (missing RETURN on the recursive call) loses the value on the way back."
+      ],
+      "examples": [
+        {
+          "id": "06-py-bs",
           "kind": "code",
           "label": "Recursive binary search",
-          "language": "python",
-          "content": "def recursive_binary_search(values, target, low, high):\n    if low > high:\n        return -1\n\n    mid = (low + high) // 2\n    if values[mid] == target:\n        return mid\n    if target < values[mid]:\n        return recursive_binary_search(values, target, low, mid - 1)\n    return recursive_binary_search(values, target, mid + 1, high)\n\nvalues = [3, 7, 12, 18, 25]\nprint(recursive_binary_search(values, 18, 0, len(values) - 1))"
-        }
-      ]
-    },
-    {
-      "id": "04-recursive-structures",
-      "title": "Recursive structures: one rule per subtree",
-      "content": [
-        "Trees are defined recursively: a node has subtrees that are themselves trees. A traversal therefore handles the current node and applies the same routine to its children. The order of those three actions determines pre-order, in-order or post-order traversal.",
-        "In-order traversal of a binary search tree visits the left subtree, the node, then the right subtree, producing keys in sorted order. The None check is the base case for an empty subtree."
-      ],
-      "bullets": [
-        "Pre-order: node, left, right—useful when copying a tree structure.",
-        "In-order: left, node, right—sorted order for a BST.",
-        "Post-order: left, right, node—useful when children must be processed before their parent."
-      ],
-      "examples": [
+          "content": "def binary_search(items, target, low, high):\n    if low > high:\n        return -1                      # base case: not found\n    mid = (low + high) // 2\n    if items[mid] == target:\n        return mid                     # base case: found\n    if target < items[mid]:\n        return binary_search(items, target, low, mid - 1)\n    return binary_search(items, target, mid + 1, high)\n\ndata = [3, 8, 15, 21, 34, 47, 52]\nprint(binary_search(data, 34, 0, 6))  # 4\nprint(binary_search(data, 10, 0, 6))  # -1",
+          "language": "python"
+        },
         {
-          "id": "04-python-inorder",
+          "id": "06-py-tree",
           "kind": "code",
-          "label": "Recursive in-order traversal",
-          "language": "python",
-          "content": "def inorder(node):\n    if node is None:\n        return\n    inorder(node.left)\n    print(node.key)\n    inorder(node.right)"
-        }
-      ]
-    },
-    {
-      "id": "05-compiler-and-call-stack",
-      "title": "What the compiler and runtime must preserve",
-      "content": [
-        "Recursive calls reuse the same routine code but need separate data. For every active call, the runtime pushes a stack frame containing its parameter values, local variables and the address of the instruction to resume after the nested call returns.",
-        "When the base case returns, the top frame is popped, its saved values are restored and execution resumes at its return address. Repeating this process unwinds the stack. Deep recursion consumes O(depth) extra memory and can overflow the finite call stack."
-      ],
-      "bullets": [
-        "The machine code for the routine is not copied for every call; the changing call state is stored.",
-        "LIFO ordering is necessary because the newest call must finish before the caller can continue.",
-        "Tail-call optimisation must not be assumed in Python; deep tail recursion can still raise RecursionError."
-      ],
-      "examples": []
-    },
-    {
-      "id": "06-recursion-versus-iteration",
-      "title": "Choose recursion when structure outweighs overhead",
-      "content": [
-        "Recursion often makes divide-and-conquer problems, tree traversals and self-similar structures shorter and closer to their mathematical definition. Iteration is usually safer for simple repetition or very deep input because it avoids one stack frame per step.",
-        "Do not claim either approach is always faster. Compare time complexity, additional memory, maximum depth, clarity and the shape of the data. A recursive and iterative factorial are both O(n) time, but the iterative form uses O(1) extra space instead of O(n) call-stack space."
-      ],
-      "bullets": [],
-      "examples": [
+          "label": "Recursive binary tree insert and in-order traversal",
+          "content": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.left = None\n        self.right = None\n\ndef insert(node, data):\n    if node is None:\n        return Node(data)              # base case: empty place found\n    if data < node.data:\n        node.left = insert(node.left, data)\n    else:\n        node.right = insert(node.right, data)\n    return node\n\ndef in_order(node):\n    if node is None:\n        return                         # base case: nothing to visit\n    in_order(node.left)\n    print(node.data, end=\" \")\n    in_order(node.right)\n\nroot = None\nfor value in [40, 25, 60, 10, 30]:\n    root = insert(root, value)\nin_order(root)  # 10 25 30 40 60",
+          "language": "python"
+        },
         {
-          "id": "06-python-iterative-factorial",
-          "kind": "code",
-          "label": "Iterative comparison",
-          "language": "python",
-          "content": "def iterative_factorial(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for value in range(2, n + 1):\n        result *= value\n    return result"
+          "id": "06-w-bs",
+          "kind": "worked",
+          "label": "Trace of binary_search(data, 34, 0, 6)",
+          "content": "Call | low | high | mid | items[mid] | Result\n1 | 0 | 6 | 3 | 21 | 34 > 21, search (4, 6)\n2 | 4 | 6 | 5 | 47 | 34 < 47, search (4, 4)\n3 | 4 | 4 | 4 | 34 | found, return 4\nUnwinding: calls 2 and 1 each return 4 unchanged. Final result: 4."
         }
       ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Recursion and iteration compared",
+    "title": "Recursion compared with iteration",
     "columns": [
-      "Criterion",
+      "Feature",
       "Recursion",
       "Iteration"
     ],
     "rows": [
       [
-        "State storage",
-        "One stack frame per active call",
-        "Usually a small fixed set of loop variables"
+        "How it repeats",
+        "Routine calls itself",
+        "Loop (FOR, WHILE, REPEAT)"
       ],
       [
-        "Natural fit",
-        "Trees, divide-and-conquer and recursively defined problems",
-        "Simple repetition and long linear processes"
+        "Stopping",
+        "Base case reached",
+        "Loop condition becomes false / count ends"
       ],
       [
-        "Main risk",
-        "Missing progress or excessive depth causes stack overflow",
-        "Wrong loop condition or update causes non-termination"
+        "Memory",
+        "A stack frame per call; deep recursion can overflow",
+        "Fixed: no extra frames"
       ],
       [
-        "Trace order",
-        "Calls down, then returns unwind",
-        "Each loop iteration completes before the next"
+        "Speed",
+        "Slower: pushing and popping frames, and some recursions repeat work",
+        "Usually faster"
+      ],
+      [
+        "Code",
+        "Short and close to a recursive definition",
+        "Often longer, with counters"
+      ],
+      [
+        "Best for",
+        "Recursive structures: factorial, trees, binary search",
+        "Simple repetition, large counts"
       ]
     ]
   },
   "diagram": {
-    "title": "Recursive call stack",
+    "title": "Recursive call of Factorial(3) on the stack",
     "type": "stack",
     "nodes": [
-      "factorial(1): waiting for F(0)",
-      "factorial(2): waiting for F(1)",
-      "factorial(3): waiting for F(2)",
-      "factorial(4): waiting for F(3)"
+      "Factorial(0): base case, returns 1 (top of stack)",
+      "Factorial(1): waiting to compute 1 * 1",
+      "Factorial(2): waiting to compute 2 * 1",
+      "Factorial(3): waiting to compute 3 * 2",
+      "Main program: return address, receives 6 (bottom of stack)"
     ]
   },
-  "analysisChains": [],
+  "analysisChains": [
+    {
+      "title": "Why a recursive routine needs a stack",
+      "steps": [
+        "Each call has its own parameter values, local variables and return address",
+        "These must be kept while deeper calls run, because the earlier call is unfinished",
+        "The most recent call must finish first, which is last in, first out, i.e. a stack",
+        "So the compiler produces code that pushes a frame per call and pops it as each call returns"
+      ],
+      "evaluation": "The stack is what makes unwinding possible: without a frame per call, the earlier values and return addresses would be overwritten."
+    },
+    {
+      "title": "What happens when the base case is missing or unreachable",
+      "steps": [
+        "The routine keeps calling itself with a parameter that never meets the stopping condition",
+        "Every call pushes another stack frame",
+        "The stack memory fills up",
+        "A stack overflow error stops the program"
+      ],
+      "evaluation": "A base case must exist and every call must move towards it; Factorial(-2) fails because n never reaches 0."
+    },
+    {
+      "title": "Recursion or iteration for a given task?",
+      "steps": [
+        "Recursion mirrors recursively defined problems, giving shorter code",
+        "Each call costs stack memory and processing time, and Fibonacci repeats the same calls",
+        "A loop uses constant memory and is generally faster",
+        "An optimising compiler may turn the recursion into a loop anyway"
+      ],
+      "evaluation": "Choose recursion for naturally recursive problems such as trees where clarity matters; choose iteration for simple counting or very deep repetition."
+    }
+  ],
   "examTips": [
-    "Annotate the base case and the line that makes progress toward it.",
-    "In a trace, separate entry values from returned values and unwind in reverse call order.",
-    "If a recursive call produces a value, check that the caller returns or combines that value.",
-    "When asked what translation requires, name stack frames, parameters/local variables, return addresses and LIFO unwinding.",
-    "Evaluate recursion using both clarity and O(depth) memory; avoid unsupported claims about speed."
+    "For 'what is recursion': 'a function/procedure that calls itself'. Do not just say 'a loop'.",
+    "Two features for 2 marks: a base case (stopping condition) and a general case that calls itself, changes the state and moves towards the base case.",
+    "Explain the stack in terms: LIFO, each call pushes a frame (return address and local variables), popped when the call ends so the values return in the correct order (unwinding).",
+    "For the compiler, state both directions: push return addresses and local variable values with each call, and pop them after the base case is reached.",
+    "Trace tables: one row per call, mark the base case, then add unwinding rows. Show the output or return value on the row where it happens.",
+    "Advantage and disadvantage: elegant/less code against more memory and processor time (stack frames), with a possible stack overflow."
   ],
   "commonMistakes": [
-    "Providing a base case that the recursive arguments never approach.",
-    "Forgetting to return the result of a recursive call.",
-    "Tracing only the calls and not the returned values.",
-    "Assuming one set of local variables is shared by every active call.",
-    "Using list slices in recursive binary search without accounting for extra memory and changed indices.",
-    "Claiming Python automatically optimises tail recursion."
+    "Writing a recursive case that does not move towards the base case, so the routine never stops.",
+    "Omitting the base case, or putting it after the recursive call.",
+    "Filling in the OUTPUT column of a trace table for the unwinding calls on the wrong rows, or going back up the table.",
+    "Saying recursion 'uses a queue' or 'uses a loop'; it uses a stack.",
+    "Forgetting RETURN on the recursive call, so the answer is lost.",
+    "Giving only 'push' for the compiler and forgetting the 'pop after the base case' point.",
+    "Saying recursion is always faster or better; it usually uses more memory and time than iteration."
   ],
   "quickRecall": [
     {
-      "question": "What three properties make a recursive routine valid?",
-      "answer": "A reachable base case, a recursive case and guaranteed progress toward the base case."
+      "question": "What is recursion?",
+      "answer": "A process using a function or procedure that calls itself."
+    },
+    {
+      "question": "What must every recursive routine have?",
+      "answer": "A base case (stopping condition) and a general case that calls itself, changes its state and moves towards the base case."
     },
     {
       "question": "What is stored in a stack frame?",
-      "answer": "The call's parameters, local variables and return address, plus implementation-specific saved state."
+      "answer": "The return address and the values of the local variables (and parameters) for that call."
     },
     {
-      "question": "What does unwinding mean?",
-      "answer": "Popping completed calls and resuming their callers in last-in, first-out order."
+      "question": "Why is a stack suitable for recursion?",
+      "answer": "It is LIFO: each call is pushed and popped as the function ends, so unwinding returns results in the required order."
     },
     {
-      "question": "Why should recursive binary search pass boundaries instead of list slices?",
-      "answer": "Boundaries preserve original indices and avoid allocating a new list on every call."
+      "question": "What must the compiler produce for recursive code?",
+      "answer": "Object code that pushes return addresses and local variable values onto a stack with each call and pops them off after the base case is reached."
     },
     {
-      "question": "When is iteration normally preferable?",
-      "answer": "For simple or potentially very deep repetition where call-stack overhead and overflow risk are unnecessary."
+      "question": "What is unwinding?",
+      "answer": "After the base case returns, each earlier call finishes in reverse order, popping its frame and passing its result back."
+    },
+    {
+      "question": "One benefit and one drawback of recursion?",
+      "answer": "Benefit: elegant, shorter code for recursive problems. Drawback: stack frames use lots of memory and processor time, and can overflow."
+    },
+    {
+      "question": "What happens with Factorial(-2)?",
+      "answer": "n never reaches 0, so the base case is never reached: infinite recursion ending in stack overflow."
+    },
+    {
+      "question": "What is the output of CALL ToBinary(13)?",
+      "answer": "1101, because the MOD output happens while unwinding."
     }
   ],
   "relatedTopics": [
-    "16.2",
+    "13.1",
     "19.1",
     "20.1"
   ]

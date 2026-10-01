@@ -126,6 +126,10 @@ The commit is a checkpoint, not a permanently current version.
   (traces, iterations table), ADTs and building one from another, linked lists (array of records), binary trees,
   stacks and queues (circular queue, queue from two stacks), graphs, dictionaries, Big O with growth table;
   every Rocket Revise point covered; traces and code checked by script.
+- Rebuilt (research method): 19.2 (2026-10-01). Sections in ch24 order: base and general case, expressing recursion (pseudocode and
+  Python factorial, iterative comparison), trace tables (winding and unwinding, Power, binary conversion), stack frames and what
+  the compiler must produce, benefits versus iteration, writing recursive binary search and tree traversal; every Rocket Revise
+  point covered; traces and code checked by script.
 
 ## Latest verification
 

@@ -25025,230 +25025,399 @@
     "fragments": [
       {
         "kind": "Overview",
-        "text": "Recursion solves a problem by calling the same routine with a smaller or simpler input. Exam-ready understanding means more than naming a base case: you must prove that every path reaches it, trace the call stack and returned values, write correct recursive code, explain stack frames and unwinding, and judge when an iterative solution would be safer or more efficient."
+        "text": "A recursive routine is a function or procedure defined in terms of itself: it calls itself with a simpler input until a base case gives an answer directly. For the exam you must name the base case and general case, write recursive code, trace it with a trace table showing the calls winding up and then unwinding, describe how a stack of frames makes this possible, say what the compiler must produce, and judge recursion against iteration."
+      },
+      {
+        "kind": "Definition",
+        "label": "Recursion",
+        "text": "A process in which a function or procedure calls itself."
+      },
+      {
+        "kind": "Definition",
+        "label": "Recursive routine",
+        "text": "A function or procedure that is defined in terms of itself."
       },
       {
         "kind": "Definition",
         "label": "Base case",
-        "text": "A condition that returns a result without making another recursive call."
+        "text": "The stopping condition: an explicit solution that is returned without another recursive call."
       },
       {
         "kind": "Definition",
-        "label": "Recursive case",
-        "text": "The branch that reduces or simplifies the problem and calls the same routine again."
+        "label": "General case",
+        "text": "The part of the definition that calls the routine itself, changes the state of the parameter and moves it closer to the base case."
       },
       {
         "kind": "Definition",
         "label": "Stack frame",
-        "text": "The stored information for one active routine call, including parameters, local variables and its return address."
+        "text": "The memory used for one call: its return address and the values of its local variables and parameters."
+      },
+      {
+        "kind": "Definition",
+        "label": "Winding",
+        "text": "The calls made before the base case is reached, each pushing a new stack frame onto the stack."
       },
       {
         "kind": "Definition",
         "label": "Unwinding",
-        "text": "Completing suspended calls in reverse order after a base case returns."
+        "text": "Once the base case is reached, each call finishes in turn, its frame is popped and control returns to the previous call (last in, first out)."
       },
       {
         "kind": "Definition",
         "label": "Stack overflow",
-        "text": "Failure caused by exhausting call-stack space, often because recursion is too deep or does not reach its base case."
+        "text": "An error when the call stack runs out of space, for example because the base case is never reached or the recursion is too deep."
+      },
+      {
+        "kind": "Definition",
+        "label": "Iteration",
+        "text": "Repeating statements with a loop (FOR, WHILE, REPEAT) instead of calling a routine again."
       },
       {
         "kind": "Section",
-        "text": "Design recursion from the stopping condition"
+        "text": "Concept of recursion: base case and general case"
       },
       {
         "kind": "Content",
-        "label": "Design recursion from the stopping condition",
-        "text": "Start by writing the smallest input whose answer is known directly. Then write the recursive case so its argument moves strictly toward that input. A base case that exists but can never be reached does not prevent infinite recursion."
+        "label": "Concept of recursion: base case and general case",
+        "text": "A recursive routine is defined in terms of itself. The factorial function is the standard example: 0! = 1, and for n above 0, n! = n × (n − 1)!. The second line is the general case; the first stops the process."
       },
       {
         "kind": "Content",
-        "label": "Design recursion from the stopping condition",
-        "text": "State the valid input domain. The factorial routine below rejects negative integers because repeatedly subtracting one would never reach zero. Handling invalid input separately makes the termination argument complete."
+        "label": "Concept of recursion: base case and general case",
+        "text": "Recursion is a process using a function or procedure that calls itself."
       },
       {
         "kind": "Content",
-        "label": "Design recursion from the stopping condition",
-        "text": "Base case: produces a result without another call."
+        "label": "Concept of recursion: base case and general case",
+        "text": "It must have a base case (stopping condition) that gives a result without calling the routine again."
       },
       {
         "kind": "Content",
-        "label": "Design recursion from the stopping condition",
-        "text": "Progress: each recursive call must reduce the remaining problem."
+        "label": "Concept of recursion: base case and general case",
+        "text": "It must have a general case that calls itself recursively, changes its state (the parameter) and moves towards the base case."
       },
       {
         "kind": "Content",
-        "label": "Design recursion from the stopping condition",
-        "text": "Combination: the current call uses the smaller call's returned result."
+        "label": "Concept of recursion: base case and general case",
+        "text": "Rule 1: a base case. Rule 2: a general case that moves closer to the base case on every call. Rule 3: the base case is reached after a finite number of calls."
+      },
+      {
+        "kind": "Content",
+        "label": "Concept of recursion: base case and general case",
+        "text": "A recursive call with an argument that never moves towards the base case recurses forever, ending in stack overflow."
+      },
+      {
+        "kind": "Content",
+        "label": "Concept of recursion: base case and general case",
+        "text": "Factorial(-2) breaks rule 3: n goes -3, -4 ... and never equals 0, so it fails to terminate."
       },
       {
         "kind": "Example",
-        "label": "Design recursion from the stopping condition",
-        "text": "def factorial(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0:\n        return 1  # base case\n    return n * factorial(n - 1)  # recursive case\n\nprint(factorial(5))  # 120"
-      },
-      {
-        "kind": "Example",
-        "label": "Design recursion from the stopping condition",
-        "text": "// Precondition: n >= 0\nFUNCTION Factorial(n : INTEGER) RETURNS INTEGER\n    IF n = 0 THEN\n        RETURN 1\n    ELSE\n        RETURN n * Factorial(n - 1)\n    ENDIF\nENDFUNCTION"
+        "label": "Concept of recursion: base case and general case",
+        "text": "Power(Base, Exponent): Exponent = 0 is the base case (return 1). Return Base * Power(Base, Exponent - 1) is the general case: it calls Power itself and Exponent falls by 1 each time, so it reaches 0."
       },
       {
         "kind": "Section",
-        "text": "Trace calls downward and returns upward"
+        "text": "How recursion is expressed in a programming language"
       },
       {
         "kind": "Content",
-        "label": "Trace calls downward and returns upward",
-        "text": "A recursive expression is suspended while the next call is evaluated. For factorial(4), the program builds four unresolved multiplications before the base result appears. Only then can it calculate 1, 2, 6 and 24 while unwinding."
+        "label": "How recursion is expressed in a programming language",
+        "text": "In code, recursion is a function or procedure whose body contains a call to its own name. An IF statement separates the base case from the general case. A recursive function usually returns a value built from the result of the call; a recursive procedure usually outputs or changes something then calls itself."
       },
       {
         "kind": "Content",
-        "label": "Trace calls downward and returns upward",
-        "text": "A trace table should give each call its own row or level. Record parameter values on entry and the returned value on exit; mixing those phases is the most common cause of an incorrect trace."
+        "label": "How recursion is expressed in a programming language",
+        "text": "Structure: IF (base case condition) THEN return/stop ELSE call itself with a changed argument ENDIF."
       },
       {
         "kind": "Content",
-        "label": "Trace calls downward and returns upward",
-        "text": "Call phase: factorial(4) waits for factorial(3), which waits for factorial(2), and so on."
+        "label": "How recursion is expressed in a programming language",
+        "text": "Function: the call sits inside an expression, for example n * Factorial(n - 1), so a statement (the RETURN, or the multiplication) is still waiting when the call is made."
       },
       {
         "kind": "Content",
-        "label": "Trace calls downward and returns upward",
-        "text": "Base phase: factorial(0) returns 1 immediately."
+        "label": "How recursion is expressed in a programming language",
+        "text": "Procedure: CALL CountDownFrom(n - 1) inside the procedure body."
       },
       {
         "kind": "Content",
-        "label": "Trace calls downward and returns upward",
-        "text": "Return phase: the most recently created frame completes first because the stack is LIFO."
+        "label": "How recursion is expressed in a programming language",
+        "text": "Iterative alternative: the same task by a loop (e.g. FOR i ← 1 TO n with Result ← Result * i), with no routine calling itself."
+      },
+      {
+        "kind": "Content",
+        "label": "How recursion is expressed in a programming language",
+        "text": "Iterative Factorial(0) with FOR i ← 1 TO 0 does no passes and returns 1; recursive Factorial(0) takes the base case and returns 1."
       },
       {
         "kind": "Example",
-        "label": "Trace calls downward and returns upward",
-        "text": "Calls: F(4) → F(3) → F(2) → F(1) → F(0). Returns: F(0)=1 → F(1)=1×1=1 → F(2)=2×1=2 → F(3)=3×2=6 → F(4)=4×6=24."
-      },
-      {
-        "kind": "Section",
-        "text": "Recursive binary search: shrink both boundaries"
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive binary search: shrink both boundaries",
-        "text": "Binary search naturally becomes recursive because every step solves the same search problem on half of the current interval. It needs two stopping conditions: success when the middle value matches and failure when low is greater than high."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive binary search: shrink both boundaries",
-        "text": "The recursive call must be returned. Without return, the deepest call may find the correct index but its result is discarded while earlier calls return None."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive binary search: shrink both boundaries",
-        "text": "Keep the list sorted and unchanged throughout the calls."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive binary search: shrink both boundaries",
-        "text": "Pass boundaries rather than slicing the list, because slicing creates extra lists and changes index meanings."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive binary search: shrink both boundaries",
-        "text": "Maximum depth is O(log n), matching the number of comparisons."
+        "label": "How recursion is expressed in a programming language",
+        "text": "FUNCTION Factorial(n : INTEGER) RETURNS INTEGER\n   IF n = 0 THEN\n      RETURN 1                       // base case\n   ELSE\n      RETURN n * Factorial(n - 1)    // general case: calls itself\n   ENDIF\nENDFUNCTION"
       },
       {
         "kind": "Example",
-        "label": "Recursive binary search: shrink both boundaries",
-        "text": "def recursive_binary_search(values, target, low, high):\n    if low > high:\n        return -1\n\n    mid = (low + high) // 2\n    if values[mid] == target:\n        return mid\n    if target < values[mid]:\n        return recursive_binary_search(values, target, low, mid - 1)\n    return recursive_binary_search(values, target, mid + 1, high)\n\nvalues = [3, 7, 12, 18, 25]\nprint(recursive_binary_search(values, 18, 0, len(values) - 1))"
-      },
-      {
-        "kind": "Section",
-        "text": "Recursive structures: one rule per subtree"
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive structures: one rule per subtree",
-        "text": "Trees are defined recursively: a node has subtrees that are themselves trees. A traversal therefore handles the current node and applies the same routine to its children. The order of those three actions determines pre-order, in-order or post-order traversal."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive structures: one rule per subtree",
-        "text": "In-order traversal of a binary search tree visits the left subtree, the node, then the right subtree, producing keys in sorted order. The None check is the base case for an empty subtree."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive structures: one rule per subtree",
-        "text": "Pre-order: node, left, right—useful when copying a tree structure."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive structures: one rule per subtree",
-        "text": "In-order: left, node, right—sorted order for a BST."
-      },
-      {
-        "kind": "Content",
-        "label": "Recursive structures: one rule per subtree",
-        "text": "Post-order: left, right, node—useful when children must be processed before their parent."
+        "label": "How recursion is expressed in a programming language",
+        "text": "def factorial(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0:\n        return 1  # base case\n    return n * factorial(n - 1)  # general case\n\nprint(factorial(5))  # 120"
       },
       {
         "kind": "Example",
-        "label": "Recursive structures: one rule per subtree",
-        "text": "def inorder(node):\n    if node is None:\n        return\n    inorder(node.left)\n    print(node.key)\n    inorder(node.right)"
-      },
-      {
-        "kind": "Section",
-        "text": "What the compiler and runtime must preserve"
-      },
-      {
-        "kind": "Content",
-        "label": "What the compiler and runtime must preserve",
-        "text": "Recursive calls reuse the same routine code but need separate data. For every active call, the runtime pushes a stack frame containing its parameter values, local variables and the address of the instruction to resume after the nested call returns."
-      },
-      {
-        "kind": "Content",
-        "label": "What the compiler and runtime must preserve",
-        "text": "When the base case returns, the top frame is popped, its saved values are restored and execution resumes at its return address. Repeating this process unwinds the stack. Deep recursion consumes O(depth) extra memory and can overflow the finite call stack."
-      },
-      {
-        "kind": "Content",
-        "label": "What the compiler and runtime must preserve",
-        "text": "The machine code for the routine is not copied for every call; the changing call state is stored."
-      },
-      {
-        "kind": "Content",
-        "label": "What the compiler and runtime must preserve",
-        "text": "LIFO ordering is necessary because the newest call must finish before the caller can continue."
-      },
-      {
-        "kind": "Content",
-        "label": "What the compiler and runtime must preserve",
-        "text": "Tail-call optimisation must not be assumed in Python; deep tail recursion can still raise RecursionError."
-      },
-      {
-        "kind": "Section",
-        "text": "Choose recursion when structure outweighs overhead"
-      },
-      {
-        "kind": "Content",
-        "label": "Choose recursion when structure outweighs overhead",
-        "text": "Recursion often makes divide-and-conquer problems, tree traversals and self-similar structures shorter and closer to their mathematical definition. Iteration is usually safer for simple repetition or very deep input because it avoids one stack frame per step."
-      },
-      {
-        "kind": "Content",
-        "label": "Choose recursion when structure outweighs overhead",
-        "text": "Do not claim either approach is always faster. Compare time complexity, additional memory, maximum depth, clarity and the shape of the data. A recursive and iterative factorial are both O(n) time, but the iterative form uses O(1) extra space instead of O(n) call-stack space."
+        "label": "How recursion is expressed in a programming language",
+        "text": "FUNCTION FactorialIter(n : INTEGER) RETURNS INTEGER\n   DECLARE Result : INTEGER\n   DECLARE i : INTEGER\n   Result ← 1\n   FOR i ← 1 TO n\n      Result ← Result * i\n   NEXT i\n   RETURN Result\nENDFUNCTION"
       },
       {
         "kind": "Example",
-        "label": "Choose recursion when structure outweighs overhead",
-        "text": "def iterative_factorial(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for value in range(2, n + 1):\n        result *= value\n    return result"
+        "label": "How recursion is expressed in a programming language",
+        "text": "PROCEDURE CountDownFrom(n : INTEGER)\n   OUTPUT n\n   IF n > 0 THEN\n      CALL CountDownFrom(n - 1)\n   ENDIF\nENDPROCEDURE"
+      },
+      {
+        "kind": "Section",
+        "text": "Tracing a recursive subroutine"
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "Trace one row per call, in call order. Statements placed after the recursive call cannot run until the deeper calls finish, so you show the unwinding as extra rows below the base case and write each output or return value on the row where it happens. Do not go back up the table to fill in earlier rows."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "Write a row for every call, giving the parameter value and the condition tested."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "Base case row: the call that makes no further call (condition TRUE for n = 0)."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "Then add rows for the calls unwinding, in reverse order (last call finishes first)."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "Statement before the recursive call (OUTPUT n then CALL): output appears while winding, in call order."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "Statement after the recursive call (CALL then OUTPUT n): output appears while unwinding, in reverse call order."
+      },
+      {
+        "kind": "Content",
+        "label": "Tracing a recursive subroutine",
+        "text": "For a function, give the returned value on each unwinding row; the value passes back to the call that made it."
+      },
+      {
+        "kind": "Example",
+        "label": "Tracing a recursive subroutine",
+        "text": "CountDownFrom(2), OUTPUT before the call:\nCall | n | n > 0 | OUTPUT\n1 CountDownFrom(2) | 2 | TRUE | 2\n2 CountDownFrom(1) | 1 | TRUE | 1\n3 CountDownFrom(0) | 0 | FALSE | 0   (base case)\nOutput: 2 1 0\n\nCountUpTo(2), OUTPUT after the call (IF n > 0 THEN CALL CountUpTo(n - 1) ENDIF, then OUTPUT n):\nCall | n | n > 0 | OUTPUT\n1 CountUpTo(2) | 2 | TRUE | (waiting)\n2 CountUpTo(1) | 1 | TRUE | (waiting)\n3 CountUpTo(0) | 0 | FALSE | 0   (base case reached, unwinding starts)\n(2) CountUpTo(1) resumes | | | 1\n(1) CountUpTo(2) resumes | | | 2\nOutput: 0 1 2"
+      },
+      {
+        "kind": "Example",
+        "label": "Tracing a recursive subroutine",
+        "text": "Call | Base | Exponent | Exponent = 0 | Return value\n1 Power(3,4) | 3 | 4 | FALSE | 3 * Power(3,3)\n2 Power(3,3) | 3 | 3 | FALSE | 3 * Power(3,2)\n3 Power(3,2) | 3 | 2 | FALSE | 3 * Power(3,1)\n4 Power(3,1) | 3 | 1 | FALSE | 3 * Power(3,0)\n5 Power(3,0) | 3 | 0 | TRUE | 1   (base case reached)\n(4) Power(3,1) | | | | 3 * 1 = 3\n(3) Power(3,2) | | | | 3 * 3 = 9\n(2) Power(3,3) | | | | 3 * 9 = 27\n(1) Power(3,4) | | | | 3 * 27 = 81\nResult: 81 (3 to the power 4)"
+      },
+      {
+        "kind": "Example",
+        "label": "Tracing a recursive subroutine",
+        "text": "PROCEDURE ToBinary(n : INTEGER)\n   IF n > 1 THEN\n      CALL ToBinary(n DIV 2)\n   ENDIF\n   OUTPUT n MOD 2\nENDPROCEDURE"
+      },
+      {
+        "kind": "Example",
+        "label": "Tracing a recursive subroutine",
+        "text": "Call | n | n > 1 | OUTPUT\n1 ToBinary(13) | 13 | TRUE | (waiting)\n2 ToBinary(6) | 6 | TRUE | (waiting)\n3 ToBinary(3) | 3 | TRUE | (waiting)\n4 ToBinary(1) | 1 | FALSE | 1   (1 MOD 2, base case)\n(3) ToBinary(3) resumes | | | 1   (3 MOD 2)\n(2) ToBinary(6) resumes | | | 0   (6 MOD 2)\n(1) ToBinary(13) resumes | | | 1   (13 MOD 2)\nOutput 1101, which is 13 in binary. The purpose is to output a denary number in binary."
+      },
+      {
+        "kind": "Section",
+        "text": "Running a recursive subroutine: stacks and unwinding"
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "A recursive routine can only run if the compiler generates object code that uses a stack. Every call needs its own return address and its own copy of the local variables, and the most recent call must finish first, which is exactly the last-in, first-out behaviour of a stack."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "A stack is LIFO: each recursive call is pushed onto the stack and is popped when the function ends."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "This enables backtracking/unwinding so results are returned in the required order (last call first)."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "Each call pushes a stack frame: the return address and the values of local variables (and parameters)."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "Winding: frames keep being pushed until the base case is reached."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "Unwinding: after the base case, the top frame is popped, its local values are restored for the call below and the result is passed back."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "The compiler must produce object code to push return addresses and local variable values onto a stack with each recursive call."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "It must also produce code to pop the return address and local variable values off the stack after the base case is reached."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "Number of frames = depth of recursion: CountDownFrom(100) makes 101 calls (n = 100 down to 0), so 101 frames are on the stack at once."
+      },
+      {
+        "kind": "Content",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "Memory use and processor time rise with every call; too many frames, or no base case, gives stack overflow."
+      },
+      {
+        "kind": "Example",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "010 FUNCTION SumTo(n : INTEGER) RETURNS INTEGER\n020    IF n = 0 THEN\n030       RETURN 0\n040    ELSE\n050       RETURN n + SumTo(n - 1)\n060    ENDIF\n070 ENDFUNCTION\n080 DECLARE Total : INTEGER\n090 Total ← SumTo(3)\n100 OUTPUT Total"
+      },
+      {
+        "kind": "Example",
+        "label": "Running a recursive subroutine: stacks and unwinding",
+        "text": "Event | Stack (return address, n)\nCall 1 from line 090, n = 3 | [090,3]\nCall 2 from line 050, n = 2 | [090,3] [050,2]\nCall 3 from line 050, n = 1 | [090,3] [050,2] [050,1]\nCall 4 from line 050, n = 0 (base case) | [090,3] [050,2] [050,1] [050,0]\nReturn 0: pop frame, back to line 050 | [090,3] [050,2] [050,1]  then 1 + 0 = 1\nReturn 1: pop frame, back to line 050 | [090,3] [050,2]  then 2 + 1 = 3\nReturn 3: pop frame, back to line 050 | [090,3]  then 3 + 3 = 6\nReturn 6: pop last frame, back to line 090 | empty; Total = 6\nThe base case is reached with 4 frames on the stack; they are removed in the reverse order of being added."
+      },
+      {
+        "kind": "Section",
+        "text": "When recursion is beneficial: comparison with iteration"
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Recursion is worth using when the problem is recursive by nature, because the code can mirror the definition. Otherwise a loop is usually cheaper."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Benefit: recursive solutions are often more elegant, shorter and easier to write when the problem is defined recursively (factorial, tree traversal, binary search)."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Benefit: less program code than the iterative solution, with no loop counters to manage."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Drawback: each call uses stack memory and processor time to push and pop frames, so large inputs use much more memory than a loop."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Drawback: tracing and debugging is harder, and too deep a recursion (or a missing base case) gives stack overflow."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Iteration: uses a loop, needs no stack frames, so is generally faster and uses less memory."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Some optimising compilers convert a recursive subroutine into an iterative one when producing object code."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Recursion is also central to declarative programming, where repetition is written as recursive rules."
+      },
+      {
+        "kind": "Content",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "Fibonacci coded recursively recomputes the same values: Fibonacci(20) makes 21,891 calls, yet a loop needs 20 additions."
+      },
+      {
+        "kind": "Example",
+        "label": "When recursion is beneficial: comparison with iteration",
+        "text": "calls = 0\n\ndef fib(n):\n    global calls\n    calls = calls + 1\n    if n < 2:\n        return n  # base case: fib(0) = 0, fib(1) = 1\n    return fib(n - 1) + fib(n - 2)  # two recursive calls\n\nprint(fib(10), calls)  # 55 177"
+      },
+      {
+        "kind": "Section",
+        "text": "Writing recursive algorithms"
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Exam questions ask you to write or complete a recursive routine, or a recursive version of a loop. Decide the stopping value first, then write the general case so the parameter moves towards it, and check the very first call terminates."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Step 1: the base case, with the value it returns (or the action it stops on)."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Step 2: the general case: call itself with a changed (usually smaller) parameter, then combine the result."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Step 3: check every possible starting value reaches the base case (reject invalid input such as a negative n)."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Binary search recursively: base cases are Low > High (return -1, not found) and item at Mid (return Mid); the general case searches the half that can hold the item."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Binary tree: recursion visits the left subtree, the node, then the right subtree (in-order); the base case is a null (empty) pointer."
+      },
+      {
+        "kind": "Content",
+        "label": "Writing recursive algorithms",
+        "text": "Using a result without returning it (missing RETURN on the recursive call) loses the value on the way back."
+      },
+      {
+        "kind": "Example",
+        "label": "Writing recursive algorithms",
+        "text": "def binary_search(items, target, low, high):\n    if low > high:\n        return -1                      # base case: not found\n    mid = (low + high) // 2\n    if items[mid] == target:\n        return mid                     # base case: found\n    if target < items[mid]:\n        return binary_search(items, target, low, mid - 1)\n    return binary_search(items, target, mid + 1, high)\n\ndata = [3, 8, 15, 21, 34, 47, 52]\nprint(binary_search(data, 34, 0, 6))  # 4\nprint(binary_search(data, 10, 0, 6))  # -1"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing recursive algorithms",
+        "text": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.left = None\n        self.right = None\n\ndef insert(node, data):\n    if node is None:\n        return Node(data)              # base case: empty place found\n    if data < node.data:\n        node.left = insert(node.left, data)\n    else:\n        node.right = insert(node.right, data)\n    return node\n\ndef in_order(node):\n    if node is None:\n        return                         # base case: nothing to visit\n    in_order(node.left)\n    print(node.data, end=\" \")\n    in_order(node.right)\n\nroot = None\nfor value in [40, 25, 60, 10, 30]:\n    root = insert(root, value)\nin_order(root)  # 10 25 30 40 60"
+      },
+      {
+        "kind": "Example",
+        "label": "Writing recursive algorithms",
+        "text": "Call | low | high | mid | items[mid] | Result\n1 | 0 | 6 | 3 | 21 | 34 > 21, search (4, 6)\n2 | 4 | 6 | 5 | 47 | 34 < 47, search (4, 4)\n3 | 4 | 4 | 4 | 34 | found, return 4\nUnwinding: calls 2 and 1 each return 4 unchanged. Final result: 4."
       },
       {
         "kind": "Quick recall question",
-        "text": "What three properties make a recursive routine valid?"
+        "text": "What is recursion?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What three properties make a recursive routine valid?",
-        "text": "A reachable base case, a recursive case and guaranteed progress toward the base case."
+        "label": "What is recursion?",
+        "text": "A process using a function or procedure that calls itself."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What must every recursive routine have?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What must every recursive routine have?",
+        "text": "A base case (stopping condition) and a general case that calls itself, changes its state and moves towards the base case."
       },
       {
         "kind": "Quick recall question",
@@ -25257,34 +25426,61 @@
       {
         "kind": "Quick recall answer",
         "label": "What is stored in a stack frame?",
-        "text": "The call's parameters, local variables and return address, plus implementation-specific saved state."
+        "text": "The return address and the values of the local variables (and parameters) for that call."
       },
       {
         "kind": "Quick recall question",
-        "text": "What does unwinding mean?"
+        "text": "Why is a stack suitable for recursion?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "What does unwinding mean?",
-        "text": "Popping completed calls and resuming their callers in last-in, first-out order."
+        "label": "Why is a stack suitable for recursion?",
+        "text": "It is LIFO: each call is pushed and popped as the function ends, so unwinding returns results in the required order."
       },
       {
         "kind": "Quick recall question",
-        "text": "Why should recursive binary search pass boundaries instead of list slices?"
+        "text": "What must the compiler produce for recursive code?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "Why should recursive binary search pass boundaries instead of list slices?",
-        "text": "Boundaries preserve original indices and avoid allocating a new list on every call."
+        "label": "What must the compiler produce for recursive code?",
+        "text": "Object code that pushes return addresses and local variable values onto a stack with each call and pops them off after the base case is reached."
       },
       {
         "kind": "Quick recall question",
-        "text": "When is iteration normally preferable?"
+        "text": "What is unwinding?"
       },
       {
         "kind": "Quick recall answer",
-        "label": "When is iteration normally preferable?",
-        "text": "For simple or potentially very deep repetition where call-stack overhead and overflow risk are unnecessary."
+        "label": "What is unwinding?",
+        "text": "After the base case returns, each earlier call finishes in reverse order, popping its frame and passing its result back."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "One benefit and one drawback of recursion?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "One benefit and one drawback of recursion?",
+        "text": "Benefit: elegant, shorter code for recursive problems. Drawback: stack frames use lots of memory and processor time, and can overflow."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What happens with Factorial(-2)?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What happens with Factorial(-2)?",
+        "text": "n never reaches 0, so the base case is never reached: infinite recursion ending in stack overflow."
+      },
+      {
+        "kind": "Quick recall question",
+        "text": "What is the output of CALL ToBinary(13)?"
+      },
+      {
+        "kind": "Quick recall answer",
+        "label": "What is the output of CALL ToBinary(13)?",
+        "text": "1101, because the MOD output happens while unwinding."
       }
     ]
   },

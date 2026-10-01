@@ -1387,11 +1387,13 @@
             "levels": [
               "A2"
             ],
-            "summary": "Write and trace recursive algorithms, understanding base cases, recursive cases, and how the call stack behaves.",
+            "summary": "Identify base and general cases, write and trace recursive routines (winding and unwinding), explain how stack frames and the compiler make recursion work, and judge recursion against iteration.",
             "focusPoints": [
-              "base/recursive cases",
-              "call stack",
-              "trace recursion"
+              "base and general case",
+              "writing recursive routines",
+              "trace tables and unwinding",
+              "stack frames and compiler code",
+              "recursion versus iteration"
             ],
             "contentDepth": "full"
           },
