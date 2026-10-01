@@ -1421,11 +1421,13 @@
             "levels": [
               "A2"
             ],
-            "summary": "Write robust file-processing code using exception handling to recover gracefully from errors.",
+            "summary": "Open, read, write and close files in read, write, append and random modes, process records in serial, sequential and random files, and use exceptions and exception handling to trap run-time errors.",
             "focusPoints": [
-              "robust file processing",
-              "exceptions",
-              "recovery"
+              "file modes",
+              "serial/sequential/random files",
+              "SEEK/GETRECORD/PUTRECORD",
+              "EOF",
+              "exception handling"
             ],
             "contentDepth": "full"
           }

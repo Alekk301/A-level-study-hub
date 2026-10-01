@@ -6,261 +6,425 @@
   "unitTitle": "A2 Level",
   "title": "File Processing and Exception Handling",
   "contentDepth": "full",
-  "overview": "Paper 4 file work is about preserving records and producing a controlled result when input or resources fail. You must select read, write or append mode; process records safely; distinguish serial, sequential and random access; and catch only the exceptions you can handle meaningfully. The Python examples use with blocks so files close even when an exception interrupts processing.",
+  "overview": "Write code to open, read, write and close files in READ, WRITE, APPEND and RANDOM modes, and process serial, sequential and random files of records. Know what an exception is, why handling it stops a program crashing, when handling is appropriate, and write TRY/EXCEPT code. Sections follow coursebook chapter 26.",
   "syllabusPoints": [
-    "Open and close files in read, write and append modes without unintentionally losing data.",
-    "Read a record from a file and write a complete record using a consistent format.",
-    "Perform appropriate operations on serial, sequential and random files.",
-    "Explain exceptions and why controlled handling improves robustness.",
-    "Write code that catches appropriate exceptions and either recovers or reports failure clearly."
+    "Write code to perform file-processing operations: open a file in read, write or append mode and close it.",
+    "Read a record from a file and write a record to a file.",
+    "Perform file-processing operations on serial, sequential and random files.",
+    "Show understanding of an exception and the importance of exception handling.",
+    "Know when it is appropriate to use exception handling.",
+    "Write program code to use exception handling."
   ],
   "definitions": [
     {
-      "term": "File mode",
-      "definition": "The access intention supplied when opening a file, such as read, write or append."
+      "term": "Exception",
+      "definition": "An unexpected event that occurs while a program is running and causes it to halt (a run-time error), e.g. division by zero, end of file, hardware failure."
+    },
+    {
+      "term": "Exception handling",
+      "definition": "A routine that responds to unexpected events while the program runs, trapping run-time errors so the program does not halt and giving a meaningful error message."
     },
     {
       "term": "Record",
-      "definition": "A group of related fields describing one entity, stored using a consistent layout."
+      "definition": "A user-defined data type made of fields, which may have different data types, one of which is normally the key."
     },
     {
       "term": "Serial file",
-      "definition": "A file whose records are stored in the order they arrive, with no required key order."
+      "definition": "A file whose records are stored in the order they were added, with no key order."
     },
     {
       "term": "Sequential file",
-      "definition": "A file whose records are stored in order of a key and normally processed from beginning to end."
+      "definition": "A file whose records are stored in order of a key field and read from the start."
     },
     {
       "term": "Random file",
-      "definition": "A file organised so a record can be reached directly from a known or calculated position without reading all earlier records."
+      "definition": "A file that stores records at specific addresses so they can be accessed directly."
     },
     {
-      "term": "Exception",
-      "definition": "A runtime event that interrupts the normal instruction sequence and can transfer control to a matching handler."
+      "term": "File mode",
+      "definition": "How a file is opened: READ (read only), WRITE (new file, existing data lost), APPEND (add to the end) or RANDOM (direct access)."
+    },
+    {
+      "term": "End of file (EOF)",
+      "definition": "The condition when no more data can be read; EOF(file) returns TRUE then."
+    },
+    {
+      "term": "File pointer",
+      "definition": "The position in the file where the next read or write happens; SEEK moves it to a given address."
+    },
+    {
+      "term": "Binary file",
+      "definition": "A file storing data in its internal binary form (e.g. whole records) rather than as lines of text."
     }
   ],
   "sections": [
     {
-      "id": "01-file-modes-and-lifetime",
-      "title": "Open the file with the least destructive mode",
+      "id": "01-records",
+      "title": "Records (coursebook 26.01)",
       "content": [
-        "Python mode r reads an existing file and raises FileNotFoundError if it does not exist. Mode w creates a file or truncates an existing file before writing. Mode a creates the file if needed and writes after existing content. Add b for binary data and + only when both reading and writing are genuinely needed.",
-        "A with statement is a context manager: it closes the file when the block finishes, including when an exception leaves the block. This is safer than relying on a later close() call that might be skipped."
+        "Files of records store one record per entity, so first define the record. A record is a user-defined type grouping fields of different types; an array of records holds many."
       ],
       "bullets": [
-        "Use r when the program must not change the file.",
-        "Use w only when replacing the complete file is intentional.",
-        "Use a when new records belong at the end and old records must remain.",
-        "Specify an encoding for text files when files may move between systems."
+        "Record: a user-defined composite data type with fields that may have different data types.",
+        "One field is the key (e.g. VehicleID): it uniquely identifies the record and decides its position in a sequential or random file.",
+        "Declare the type first (TYPE ... ENDTYPE), then variables of that type, then arrays of that type.",
+        "Fields are reached with dot notation: ThisCar.EngineSize.",
+        "Python has no record type: a class holding only attributes set in the constructor is used (Java also uses a class with no methods).",
+        "Records stored in a file must have the same fields in the same order, so each can be read back reliably."
       ],
       "examples": [
         {
-          "id": "01-python-modes",
+          "id": "01-record-type",
+          "kind": "pseudocode",
+          "label": "Declaring a record and an array of records",
+          "content": "TYPE CarRecord\n    DECLARE VehicleID : STRING      // key field\n    DECLARE Registration : STRING\n    DECLARE EngineSize : INTEGER\n    DECLARE PurchasePrice : REAL\nENDTYPE\n\nDECLARE ThisCar : CarRecord\nDECLARE Car : ARRAY[1:100] OF CarRecord\nThisCar.EngineSize ← 2500\nCar[2].EngineSize ← 1600"
+        },
+        {
+          "id": "01-python-record",
           "kind": "code",
-          "label": "Write, append and read text records",
-          "language": "python",
-          "content": "with open(\"students.txt\", \"w\", encoding=\"utf-8\") as file:\n    file.write(\"A104,Ari,72\\n\")\n    file.write(\"A219,Bao,81\\n\")\n\nwith open(\"students.txt\", \"a\", encoding=\"utf-8\") as file:\n    file.write(\"A315,Chau,68\\n\")\n\nwith open(\"students.txt\", \"r\", encoding=\"utf-8\") as file:\n    for line in file:\n        print(line.rstrip(\"\\n\"))"
+          "label": "A class used as a record",
+          "content": "class CarRecord:\n    def __init__(self):\n        self.vehicle_id = \"\"\n        self.registration = \"\"\n        self.engine_size = 0\n        self.price = 0.0\n\ncars = [CarRecord() for _ in range(3)]\ncars[0].vehicle_id = \"V01\"\ncars[0].engine_size = 1600\nprint(cars[0].vehicle_id, cars[0].engine_size, cars[1].engine_size)",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "02-records-and-parsing",
-      "title": "Read a complete record, then validate its fields",
+      "id": "02-file-operations",
+      "title": "File operations and modes (26.02)",
       "content": [
-        "A text record needs an agreed delimiter and field order. Strip only the line-ending characters, split into fields, check the field count and convert numeric fields. Calling strip() with no argument also removes meaningful leading and trailing spaces, so use it only when that behaviour is intended.",
-        "If field data can contain the delimiter, a real CSV parser is safer than split(). In an exam task with a stated simple format, follow the supplied format exactly and keep reading, parsing, validation and processing as separate stages."
+        "A file must be opened in one mode, used, then closed. The mode says what the program intends to do, and the wrong one can destroy data."
       ],
       "bullets": [
-        "Do not convert a numeric field until you know it exists.",
-        "Validate ranges after type conversion, such as 0 <= mark <= 100.",
-        "When writing, include every required field and the record terminator."
+        "OPENFILE <file> FOR READ: data is read from an existing file; the file is not changed.",
+        "OPENFILE <file> FOR WRITE: creates a new file; any existing data in the file is lost (overwritten).",
+        "OPENFILE <file> FOR APPEND: new data is added after the existing data at the end of the file.",
+        "OPENFILE <file> FOR RANDOM: records are read and written directly at a chosen address.",
+        "A file is opened in only one mode at a time. Close it with CLOSEFILE when finished so data is saved and the file is released.",
+        "READFILE <file>, <variable>: reads the next line into a STRING variable. WRITEFILE <file>, <data>: writes a line.",
+        "EOF(<file>) returns TRUE when there are no more lines to read (or the file is empty) and FALSE otherwise; loop WHILE NOT EOF(<file>).",
+        "Text file: lines of text read or written serially as strings. Binary file: stores data in its internal form, used for records.",
+        "Operations on records in a binary file: PUTRECORD <file>, <record> writes a record; GETRECORD <file>, <record> reads one; SEEK <file>, <address> moves to a record.",
+        "Python: open(name, mode) with r, w, a for text; add b for binary (rb, wb); r+ or w+ for read and write. Reading a missing file in r mode raises FileNotFoundError.",
+        "Use a with block so the file is closed even when an exception occurs."
       ],
       "examples": [
+        {
+          "id": "02-text-copy",
+          "kind": "pseudocode",
+          "label": "Text file: copy lines, then append a footer",
+          "content": "DECLARE Line : STRING\nOPENFILE \"Names.txt\" FOR READ\nOPENFILE \"Upper.txt\" FOR WRITE\nWHILE NOT EOF(\"Names.txt\")\n    READFILE \"Names.txt\", Line\n    WRITEFILE \"Upper.txt\", UCASE(Line)\nENDWHILE\nCLOSEFILE \"Names.txt\"\nCLOSEFILE \"Upper.txt\"\n\nOPENFILE \"Upper.txt\" FOR APPEND\nWRITEFILE \"Upper.txt\", \"END OF LIST\"\nCLOSEFILE \"Upper.txt\""
+        },
+        {
+          "id": "02-python-modes",
+          "kind": "code",
+          "label": "Write, append and read text records",
+          "content": "with open(\"students.txt\", \"w\", encoding=\"utf-8\") as file:\n    file.write(\"A104,Ari,72\\n\")\n    file.write(\"A219,Bao,81\\n\")\n\nwith open(\"students.txt\", \"a\", encoding=\"utf-8\") as file:\n    file.write(\"A315,Chau,68\\n\")\n\nwith open(\"students.txt\", \"r\", encoding=\"utf-8\") as file:\n    for line in file:\n        print(line.rstrip(\"\\n\"))",
+          "language": "python"
+        },
         {
           "id": "02-python-read-record",
           "kind": "code",
           "label": "Parse and validate one delimited record",
-          "language": "python",
-          "content": "def parse_student(line):\n    fields = line.rstrip(\"\\n\").split(\",\")\n    if len(fields) != 3:\n        raise ValueError(\"record must contain id, name and mark\")\n\n    student_id, name, mark_text = fields\n    mark = int(mark_text)\n    if not 0 <= mark <= 100:\n        raise ValueError(\"mark is outside 0 to 100\")\n\n    return {\"id\": student_id, \"name\": name, \"mark\": mark}"
+          "content": "def parse_student(line):\n    fields = line.rstrip(\"\\n\").split(\",\")\n    if len(fields) != 3:\n        raise ValueError(\"record must contain id, name and mark\")\n\n    student_id, name, mark_text = fields\n    mark = int(mark_text)\n    if not 0 <= mark <= 100:\n        raise ValueError(\"mark is outside 0 to 100\")\n\n    return {\"id\": student_id, \"name\": name, \"mark\": mark}",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "03-serial-and-sequential-files",
-      "title": "Serial and sequential processing",
+      "id": "03-serial-sequential",
+      "title": "Serial and sequential files",
       "content": [
-        "Both organisations are normally processed from the beginning, but their ordering differs. Serial records are stored in arrival order. Sequential records are sorted by a key, allowing ordered reports, efficient merging and early stopping when the required key has been passed.",
-        "Updating a variable-length serial or sequential text file usually means reading the source and writing a new temporary output file. Each record is copied, changed or omitted as required, then the completed file replaces the old version only after successful processing."
+        "Both kinds are read from the start, one record after another. They differ only in how the records are ordered."
       ],
       "bullets": [
-        "Serial search may need to inspect every record because keys have no order.",
-        "Sequential search can stop once the current key is greater than the target.",
-        "A sequential merge advances through two key-ordered inputs and writes the smaller current key."
+        "Serial file: records are stored in the order they were added (chronological), not sorted by any key.",
+        "Sequential file: records are stored in order of a key field (e.g. ascending VehicleID).",
+        "Adding to a serial file: APPEND the new record at the end. Adding to a sequential file: the record must go in its correct place, so a new version of the file is written.",
+        "To update, insert or delete in a sequential file: read the old file, copy records to a new file with the change made, then replace the old file with the new one.",
+        "Searching either file means reading records from the first until the key is found or the file ends (EOF). A sequential file can stop early once a key greater than the target is read.",
+        "Saving an array of records: OPENFILE FOR WRITE, loop PUTRECORD for each element, CLOSEFILE. Restoring: OPENFILE FOR READ, loop GETRECORD, CLOSEFILE.",
+        "Reading binary records back needs an end-of-file check, or an EOF exception, otherwise the program crashes at the end.",
+        "Suitable for: backups, logs, batch processing of every record (e.g. a payroll run). Unsuitable when a single record must be found quickly."
       ],
       "examples": [
+        {
+          "id": "03-save-restore",
+          "kind": "pseudocode",
+          "label": "Saving and restoring an array of records",
+          "content": "OPENFILE \"CarFile.dat\" FOR WRITE\nFOR i ← 1 TO 100\n    PUTRECORD \"CarFile.dat\", Car[i]\nNEXT i\nCLOSEFILE \"CarFile.dat\"\n\nOPENFILE \"CarFile.dat\" FOR READ\nFOR i ← 1 TO 100\n    GETRECORD \"CarFile.dat\", Car[i]\nNEXT i\nCLOSEFILE \"CarFile.dat\""
+        },
+        {
+          "id": "03-python-serial-binary",
+          "kind": "code",
+          "label": "Serial binary file of records using pickle",
+          "content": "import pickle\n\nwith open(\"cars.dat\", \"wb\") as file:\n    for car in cars:\n        pickle.dump(car, file)\n\nloaded = []\nwith open(\"cars.dat\", \"rb\") as file:\n    while True:\n        try:\n            loaded.append(pickle.load(file))\n        except EOFError:\n            break\nprint(len(loaded), loaded[0].vehicle_id)",
+          "language": "python"
+        },
         {
           "id": "03-python-sequential-search",
           "kind": "code",
           "label": "Search an ascending sequential file",
-          "language": "python",
-          "content": "def find_student(filename, target_id):\n    with open(filename, \"r\", encoding=\"utf-8\") as file:\n        for line in file:\n            student = parse_student(line)\n            if student[\"id\"] == target_id:\n                return student\n            if student[\"id\"] > target_id:\n                break  # later keys will be even larger\n    return None"
+          "content": "def find_student(filename, target_id):\n    with open(filename, \"r\", encoding=\"utf-8\") as file:\n        for line in file:\n            student = parse_student(line)\n            if student[\"id\"] == target_id:\n                return student\n            if student[\"id\"] > target_id:\n                break  # later keys will be even larger\n    return None",
+          "language": "python"
+        },
+        {
+          "id": "03-python-new-version",
+          "kind": "code",
+          "label": "Insert and delete in a sequential file by writing a new version",
+          "content": "import os\n\ndef insert_sorted(filename, new_line):\n    inserted = False\n    with open(filename, \"r\", encoding=\"utf-8\") as old, \\\n         open(filename + \".new\", \"w\", encoding=\"utf-8\") as new:\n        for line in old:\n            if not inserted and line > new_line:\n                new.write(new_line)\n                inserted = True\n            new.write(line)\n        if not inserted:\n            new.write(new_line)\n    os.replace(filename + \".new\", filename)\n\ndef delete_student(filename, target_id):\n    with open(filename, \"r\", encoding=\"utf-8\") as old, \\\n         open(filename + \".new\", \"w\", encoding=\"utf-8\") as new:\n        for line in old:\n            if not line.startswith(target_id + \",\"):\n                new.write(line)\n    os.replace(filename + \".new\", filename)\n\ninsert_sorted(\"students.txt\", \"A250,Dev,90\\n\")\nprint(open(\"students.txt\").read().splitlines())\ndelete_student(\"students.txt\", \"A104\")\nprint(open(\"students.txt\").read().splitlines())",
+          "language": "python"
         }
       ]
     },
     {
       "id": "04-random-files",
-      "title": "Random access needs a stable record position",
+      "title": "Random-access files",
       "content": [
-        "Random access jumps directly to a record position. With fixed-length records, byte position can be calculated as record number × record size when numbering starts at zero. Reading and writing must use the same record size, encoding and numbering convention.",
-        "Variable-length text records do not have predictable byte positions. A separate index can map each key to its byte offset, or a hashing scheme can calculate a location and apply a collision strategy. Random access improves individual retrieval and update but makes file organisation more complex."
+        "A random (direct-access) file stores records at specific addresses, so one record can be read or written without reading the ones before it. The address is usually worked out from the key."
       ],
       "bullets": [
-        "seek() positions the file pointer at a byte offset; binary mode avoids platform newline translation.",
-        "Pad every fixed-length record to exactly the agreed number of bytes.",
-        "Check that the requested record number is valid before reading or writing."
+        "Random file: stores records at specific addresses that can be accessed directly.",
+        "Records are fixed length, so a record's position can be calculated: address = record number x record size (numbering from 0).",
+        "SEEK <file>, <address> moves the file pointer to the record's address.",
+        "GETRECORD reads the record at the pointer into a variable of the record type. PUTRECORD writes the variable into the record at the pointer, replacing what was there.",
+        "After GETRECORD or PUTRECORD the pointer moves to the next record, so SEEK again before each access.",
+        "Update in situ: SEEK to the record, GETRECORD, change the field, SEEK again, PUTRECORD it back in the same place.",
+        "Address from the key: a hashing algorithm gives the record's address (e.g. key MOD number of slots). Two keys can give the same address (a collision), so store in the next free slot.",
+        "To find a record: calculate the address, SEEK, GETRECORD, compare the key; if it differs, check the next slots until the key or an empty slot is found.",
+        "Fast for finding or updating one record; but space is wasted if slots are empty, and the file is not in key order for processing every record.",
+        "A random file must be opened in a mode that allows reading and writing (RANDOM; in Python r+b or w+b), and an answer should explain how addresses are calculated."
       ],
       "examples": [
         {
+          "id": "04-random-pseudocode",
+          "kind": "pseudocode",
+          "label": "Store and retrieve with an address calculated from the key",
+          "content": "CONSTANT Slots = 1000\nFUNCTION Slot(CustomerID : INTEGER) RETURNS INTEGER\n    RETURN CustomerID MOD Slots\nENDFUNCTION\n\nDECLARE Cust : CustomerRecord\nDECLARE Temp : CustomerRecord\nOPENFILE \"Customers.dat\" FOR RANDOM\n\n// store: next free slot if the first one is taken (0 = empty)\nAddress ← Slot(Cust.CustomerID)\nSEEK \"Customers.dat\", Address\nGETRECORD \"Customers.dat\", Temp\nWHILE Temp.CustomerID <> 0\n    Address ← (Address + 1) MOD Slots\n    SEEK \"Customers.dat\", Address\n    GETRECORD \"Customers.dat\", Temp\nENDWHILE\nSEEK \"Customers.dat\", Address\nPUTRECORD \"Customers.dat\", Cust\n\n// retrieve one record by its slot\nSEEK \"Customers.dat\", Slot(KeyWanted)\nGETRECORD \"Customers.dat\", Cust\nCLOSEFILE \"Customers.dat\""
+        },
+        {
+          "id": "04-collision-trace",
+          "kind": "worked",
+          "label": "Trace: 10 slots, address = key MOD 10",
+          "content": "Keys stored in this order: 100234, 100244, 100305, 100314, 100899\n100234  MOD 10 = 4  slot 4 empty            -> stored in slot 4\n100244  MOD 10 = 4  slot 4 full, 5 empty    -> stored in slot 5\n100305  MOD 10 = 5  slot 5 full, 6 empty    -> stored in slot 6\n100314  MOD 10 = 4  slots 4, 5, 6 full      -> stored in slot 7\n100899  MOD 10 = 9  slot 9 empty            -> stored in slot 9\nFinding 100314: start at slot 4 (100234), 5 (100244), 6 (100305), 7 found: 4 reads."
+        },
+        {
           "id": "04-python-random-access",
           "kind": "code",
-          "label": "Read a fixed-length random record",
-          "language": "python",
-          "content": "RECORD_SIZE = 32\n\ndef read_record(filename, record_number):\n    if record_number < 0:\n        raise ValueError(\"record number cannot be negative\")\n\n    with open(filename, \"rb\") as file:\n        file.seek(record_number * RECORD_SIZE)\n        raw_record = file.read(RECORD_SIZE)\n\n    if len(raw_record) != RECORD_SIZE:\n        return None\n    return raw_record.decode(\"utf-8\").rstrip()"
+          "label": "Fixed-length records: write, read and update in place",
+          "content": "import struct\n\nRECORD = struct.Struct(\"<6s20sf\")  # id, name, balance = 30 bytes\n\ndef put_record(file, number, rec_id, name, balance):\n    file.seek(number * RECORD.size)\n    file.write(RECORD.pack(rec_id.encode(), name.encode(), balance))\n\ndef get_record(file, number):\n    file.seek(number * RECORD.size)\n    raw = file.read(RECORD.size)\n    if len(raw) < RECORD.size:\n        return None\n    rec_id, name, balance = RECORD.unpack(raw)\n    return rec_id.rstrip(b\"\\0\").decode(), name.rstrip(b\"\\0\").decode(), balance\n\nwith open(\"accounts.dat\", \"w+b\") as file:\n    for i in range(10):\n        put_record(file, i, \"\", \"\", 0.0)\n    put_record(file, 234 % 10, \"100234\", \"Ari\", 50.0)\n    rec = get_record(file, 4)\n    put_record(file, 4, rec[0], rec[1], rec[2] + 25.5)\n    print(get_record(file, 4), get_record(file, 3), get_record(file, 10))",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "05-exception-flow",
-      "title": "Catch expected failures at the boundary",
+      "id": "05-exceptions",
+      "title": "Exceptions and exception handling (26.03)",
       "content": [
-        "Put only the operation that may fail inside try. A matching except block handles a specific exceptional condition. else runs only when try completes without an exception, and finally always runs. With files, a with block normally removes the need to close the file manually in finally.",
-        "Catch the narrowest exception you can recover from. A broad except Exception can hide programming defects such as a misspelled variable or incorrect attribute. A useful handler either repairs the situation, asks for different input, selects a safe fallback or reports enough information to stop cleanly."
+        "Programs meet situations they cannot control. Without a response the program stops; exception handling lets it respond sensibly."
       ],
       "bullets": [
-        "FileNotFoundError: the requested input file does not exist.",
-        "ValueError: text cannot be converted or violates a stated value rule.",
-        "PermissionError: the process is not permitted to open or change the file.",
-        "Do not continue with missing or partly parsed data unless a safe fallback is defined."
+        "Exception: an unexpected event that occurs during the execution of a program and causes it to halt (run-time error).",
+        "Examples: end of file reached unexpectedly, a programming or user error (e.g. text typed where a number is needed, array index out of range), hardware failure (e.g. disk or network fails), division by zero, file not found.",
+        "Exception handling: code (an exception handling routine) that responds to an unexpected event while the program is running.",
+        "It traps the run-time error so the program does not halt unexpectedly.",
+        "It produces a meaningful error message for the user instead of the system crash message.",
+        "It lets the program recover (ask again, use a default, skip the record) or close down safely, saving data and closing files.",
+        "Pseudocode structure: TRY <statements> EXCEPT <handler statements> ENDTRY. Any run-time error in the TRY block is caught and the EXCEPT block runs.",
+        "More than one EXCEPT block can be used, each for a different type of exception. An optional FINALLY block runs whether or not an exception occurred.",
+        "TRY, EXCEPT and FINALLY come from the coursebook; the 2026 pseudocode guide does not list them, so state the structure clearly or answer in the programming language.",
+        "Python types: FileNotFoundError / IOError (file cannot be opened), ValueError (inappropriate value), ZeroDivisionError, EOFError (end of file met while reading), ImportError, KeyboardInterrupt."
       ],
       "examples": [
+        {
+          "id": "05-try-except",
+          "kind": "pseudocode",
+          "label": "Handling a filename that does not exist",
+          "content": "OUTPUT \"Which file do you want to use? \"\nINPUT FileName\nTRY\n    OPENFILE FileName FOR RANDOM\nEXCEPT\n    OUTPUT \"File \" & FileName & \" could not be opened\"\nENDTRY"
+        },
         {
           "id": "05-python-specific-exceptions",
           "kind": "code",
           "label": "Specific file and conversion handlers",
-          "language": "python",
-          "content": "def load_marks(filename):\n    marks = []\n    try:\n        with open(filename, \"r\", encoding=\"utf-8\") as file:\n            for line_number, line in enumerate(file, start=1):\n                marks.append(int(line.strip()))\n    except FileNotFoundError:\n        print(f\"Cannot open {filename}: file not found\")\n        return None\n    except ValueError:\n        print(f\"Invalid integer on line {line_number}\")\n        return None\n    else:\n        return marks"
+          "content": "def load_marks(filename):\n    marks = []\n    try:\n        with open(filename, \"r\", encoding=\"utf-8\") as file:\n            for line_number, line in enumerate(file, start=1):\n                marks.append(int(line.strip()))\n    except FileNotFoundError:\n        print(f\"Cannot open {filename}: file not found\")\n        return None\n    except ValueError:\n        print(f\"Invalid integer on line {line_number}\")\n        return None\n    else:\n        return marks",
+          "language": "python"
+        },
+        {
+          "id": "05-python-finally",
+          "kind": "code",
+          "label": "TRY, EXCEPT and FINALLY in Python",
+          "content": "def average(filename):\n    file = None\n    try:\n        file = open(filename, \"r\", encoding=\"utf-8\")\n        values = [int(line) for line in file]\n        return sum(values) / len(values)\n    except FileNotFoundError:\n        print(\"File not found\")\n    except ZeroDivisionError:\n        print(\"File is empty: cannot average\")\n    finally:\n        if file is not None:\n            file.close()\n            print(\"closed\")\n    return None",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "06-validation-and-exceptions",
-      "title": "Validation prevents bad data; exceptions handle interrupted operations",
+      "id": "06-when-to-use",
+      "title": "When to use exception handling",
       "content": [
-        "Validation asks whether input satisfies expected rules, such as a mark being between 0 and 100. Exception handling responds when an operation cannot complete normally, such as int() receiving non-numeric text or a file being missing. They work together rather than replacing each other.",
-        "Repeated user input often belongs in a loop: try the conversion, catch its ValueError, explain the required format and ask again. Once conversion succeeds, validate the permitted range with an ordinary condition."
+        "Use it for events that can happen even when the code is correct, outside the program's control. Do not use it to hide bugs."
       ],
-      "bullets": [],
+      "bullets": [
+        "Appropriate: opening a file that may not exist or be locked, reading to the end of a file, unpredictable user input, a network or device failure.",
+        "Appropriate when the error cannot be fully prevented by a check beforehand, or a check would be longer than a handler.",
+        "Not a substitute for testing, for easy validation (e.g. a range check) or for fixing logic errors.",
+        "Catch the specific exception you can deal with; a bare catch-all hides faults and makes bugs hard to find.",
+        "In a handler, either recover (ask again, default value) or report clearly and stop safely.",
+        "Always release resources: close files in FINALLY or use a with block."
+      ],
       "examples": [
         {
           "id": "06-python-input-loop",
           "kind": "code",
           "label": "Conversion handling followed by range validation",
-          "language": "python",
-          "content": "def input_mark():\n    while True:\n        try:\n            mark = int(input(\"Mark (0 to 100): \"))\n        except ValueError:\n            print(\"Enter a whole number.\")\n            continue\n\n        if 0 <= mark <= 100:\n            return mark\n        print(\"Mark must be from 0 to 100.\")"
+          "content": "def input_mark():\n    while True:\n        try:\n            mark = int(input(\"Mark (0 to 100): \"))\n        except ValueError:\n            print(\"Enter a whole number.\")\n            continue\n\n        if 0 <= mark <= 100:\n            return mark\n        print(\"Mark must be from 0 to 100.\")",
+          "language": "python"
         }
       ]
-    },
-    {
-      "id": "07-testing-file-programs",
-      "title": "Test the failures, not only the happy path",
-      "content": [
-        "File code can appear correct while silently truncating data, dropping a final line or accepting a malformed record. Design tests before coding and inspect the resulting file contents, not only console messages.",
-        "Use a temporary copy of exam data during development. A destructive-mode mistake should never be discovered on the only original file. Each test should state its expected records and whether the program should recover, reject the input or terminate."
-      ],
-      "bullets": [
-        "Existing empty file and file with one record.",
-        "Missing file, wrong permission and invalid numeric field.",
-        "First, middle, final and absent sequential keys.",
-        "Append preserves all old records and adds exactly one new record.",
-        "Random access checks first, final and out-of-range record numbers."
-      ],
-      "examples": []
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "File organisation and access",
+    "title": "Serial, sequential and random files",
     "columns": [
-      "Organisation",
-      "How records are arranged",
-      "Best use"
+      "Feature",
+      "Serial",
+      "Sequential",
+      "Random"
     ],
     "rows": [
       [
-        "Serial",
-        "Arrival order; no required key order",
-        "Logs and append-heavy data"
+        "Record order",
+        "Order added",
+        "Order of key field",
+        "Position given by address (often from the key)"
       ],
       [
-        "Sequential",
-        "Ordered by a key",
-        "Ordered reports, merges and batch processing"
+        "Add a record",
+        "Append at the end",
+        "Write a new version with it in place",
+        "Write to its address (next free slot if taken)"
       ],
       [
-        "Random",
-        "Known or calculated record position",
-        "Direct retrieval and in-place fixed-record updates"
+        "Find a record",
+        "Read from the start",
+        "Read from the start; can stop early",
+        "SEEK straight to the address"
       ],
       [
-        "Indexed access",
-        "Separate key-to-position structure",
-        "Direct key lookup with variable physical positions"
+        "Record length",
+        "Any",
+        "Any",
+        "Fixed"
+      ],
+      [
+        "Best used for",
+        "Logs, transaction batches",
+        "Batch processing of all records in order",
+        "Fast access to one record, e.g. customer lookup"
       ]
     ]
   },
-  "diagram": null,
-  "analysisChains": [],
+  "diagram": {
+    "title": "Safe file processing",
+    "type": "flow",
+    "nodes": [
+      "Choose the mode: READ, WRITE, APPEND or RANDOM",
+      "TRY: OPEN the file",
+      "Loop: read or write each record until EOF",
+      "EXCEPT: catch the error, show a meaningful message",
+      "FINALLY / with: CLOSE the file"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Why a missing file should be handled by an exception handler",
+      "steps": [
+        "The user types a filename that does not exist",
+        "Opening it raises an exception (run-time error)",
+        "Unhandled, the program halts with a system message and unsaved work is lost",
+        "A handler traps the error, shows a meaningful message and lets the program ask again or end safely"
+      ],
+      "evaluation": "Handling is right here as the file's existence is outside the program's control; checking first can still fail if the file is removed in between."
+    },
+    {
+      "title": "Why a random file needs fixed-length records",
+      "steps": [
+        "A record's address is calculated as number x record size",
+        "That only works if every record is the same size",
+        "SEEK can then jump straight to the record without reading earlier ones",
+        "GETRECORD and PUTRECORD read or replace exactly one record in place"
+      ],
+      "evaluation": "Quick access to one record, at the cost of wasted space in empty or short records."
+    },
+    {
+      "title": "Why updating a sequential file means writing a new file",
+      "steps": [
+        "Records are kept in key order",
+        "A new record must go between two existing records",
+        "There is no space to insert, so records after it would have to move",
+        "The old file is copied to a new file with the record added, then replaced"
+      ],
+      "evaluation": "Simple and keeps the order but slow for large files; a random file avoids rewriting."
+    }
+  ],
   "examTips": [
-    "State that w mode truncates an existing file; this explains why it is dangerous when records must be preserved.",
-    "Use a with block to make file closure correct on both the normal and exceptional paths.",
-    "Separate reading, parsing, conversion, validation and processing so each failure is handled clearly.",
-    "For sequential files, use key order to justify early stopping or merging.",
-    "Name the exception and a sensible recovery action; never award yourself marks with an empty catch-all handler.",
-    "Test file contents after the operation, including missing, malformed and boundary cases."
+    "WRITE mode destroys existing data; to add records say APPEND. A common 1-mark answer is that WRITE overwrites.",
+    "Give the mode, the operation and CLOSEFILE: OPENFILE name FOR READ ... CLOSEFILE name. Missing CLOSEFILE loses a mark.",
+    "Reading loops: WHILE NOT EOF(file) with READFILE inside; do not test EOF after the read.",
+    "Random files: always SEEK before GETRECORD or PUTRECORD and say how the address is calculated.",
+    "Define an exception as 'an unexpected event during execution that causes the program to halt'. For 2 examples give any two of end of file, user or programming error, hardware failure, division by zero.",
+    "Exception handling: say it traps run-time errors, stops the program halting, and gives a meaningful error message (3 marks).",
+    "In code, name the exception type you catch (FileNotFoundError, ValueError), not an empty except."
   ],
   "commonMistakes": [
-    "Opening with w when the question requires existing records to remain.",
-    "Forgetting the newline terminator so two written records join together.",
-    "Assuming a sequential file is the same as a serial file merely because both can be read from start to end.",
-    "Using text character positions as if they were fixed byte offsets in a random file.",
-    "Catching every exception and continuing with invalid partial data.",
-    "Using exception handling instead of an ordinary range check after successful conversion."
+    "Opening an existing file in WRITE mode and wiping its data when APPEND was needed.",
+    "Forgetting to close the file, or closing it only on the path with no error.",
+    "Reading past the end of the file because EOF was not tested (or EOFError not caught).",
+    "Using SEEK with a random file of variable-length records, so addresses are wrong.",
+    "Saying exception handling 'fixes' the error; it traps and responds to it.",
+    "Catching every exception with one bare except and hiding programming errors.",
+    "Using exception handling in place of a simple check such as a range check."
   ],
   "quickRecall": [
     {
-      "question": "What happens when Python opens an existing file with w mode?",
-      "answer": "The file is truncated before new output is written, so its previous contents are lost."
+      "question": "What is an exception?",
+      "answer": "An unexpected event during the execution of a program that causes it to halt (a run-time error)."
     },
     {
-      "question": "Why is with open(...) preferred?",
-      "answer": "The context manager closes the file when the block ends, including when an exception occurs."
+      "question": "Give two examples of exceptions.",
+      "answer": "Any two of: end of file, user/programming error, hardware failure, division by zero."
+    },
+    {
+      "question": "What does an exception handling routine do?",
+      "answer": "Responds to unexpected events while the program runs: it traps run-time errors, stops the program halting unexpectedly and gives a meaningful error message."
+    },
+    {
+      "question": "What is the difference between WRITE and APPEND mode?",
+      "answer": "WRITE creates a new file and loses existing data; APPEND adds new data after the existing data."
+    },
+    {
+      "question": "Which pseudocode statement tests for the end of a file?",
+      "answer": "EOF(<file>): TRUE when there are no more lines to read."
     },
     {
       "question": "How do serial and sequential files differ?",
-      "answer": "Serial records are kept in arrival order; sequential records are ordered by a key."
+      "answer": "Serial records are in the order added; sequential records are in key order."
     },
     {
-      "question": "What is required for calculated random access?",
-      "answer": "A stable mapping from record number or key to a byte position, such as fixed-length records or a separate index."
+      "question": "What do SEEK, GETRECORD and PUTRECORD do?",
+      "answer": "SEEK moves to a record's address; GETRECORD reads the record there; PUTRECORD writes a record there."
     },
     {
-      "question": "When does a try block's else clause run?",
-      "answer": "Only when the try block finishes without raising an exception."
+      "question": "Why must random file records be fixed length?",
+      "answer": "So a record's address can be calculated (number x size) and SEEK can jump straight to it."
     },
     {
-      "question": "Why catch a specific exception?",
-      "answer": "It handles the expected failure without hiding unrelated programming errors."
+      "question": "What does a FINALLY block do?",
+      "answer": "Its statements run whether or not an exception occurred, e.g. to close a file."
+    },
+    {
+      "question": "Name the Python exception raised when opening a missing file for reading.",
+      "answer": "FileNotFoundError."
     }
   ],
   "relatedTopics": [

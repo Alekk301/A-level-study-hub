@@ -135,6 +135,9 @@ The commit is a checkpoint, not a permanently current version.
   modes (symbolic/relative/absolute relocation), assembly programs (assignment, selection, loop trace, indexed string, indirect
   pointers), Prolog facts/queries/variables, rules, backtracking trace, recursion and lists; every Rocket Revise point covered;
   assembly traces and Prolog answers checked by script simulators, Python examples run.
+- Rebuilt (research method): 20.2 (2026-10-01). Sections in ch26 order: records, file modes and text-file operations (READFILE/WRITEFILE/EOF),
+  serial vs sequential (new-version insert/delete), random files (SEEK/GETRECORD/PUTRECORD, address from key with collision trace),
+  exception definition/handling/TRY-EXCEPT-FINALLY (not in 2026 guide, flagged), when to use; every Rocket Revise point covered; Python run.
 
 ## Latest verification
 
