@@ -1404,11 +1404,13 @@
             "levels": [
               "A2"
             ],
-            "summary": "Revise procedural, OOP, declarative.",
+            "summary": "Compare low-level, imperative, object-oriented and declarative paradigms; write assembly with all five addressing modes, OOP classes (encapsulation, inheritance, polymorphism, containment) designed from a problem, and Prolog facts, rules and goals.",
             "focusPoints": [
-              "procedural",
-              "OOP",
-              "declarative"
+              "four paradigms",
+              "addressing modes and assembly",
+              "classes and encapsulation",
+              "inheritance, polymorphism, containment",
+              "Prolog facts, rules, backtracking"
             ],
             "contentDepth": "full"
           },

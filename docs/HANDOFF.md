@@ -130,6 +130,11 @@ The commit is a checkpoint, not a permanently current version.
   Python factorial, iterative comparison), trace tables (winding and unwinding, Power, binary conversion), stack frames and what
   the compiler must produce, benefits versus iteration, writing recursive binary search and tree traversal; every Rocket Revise
   point covered; traces and code checked by script.
+- Rebuilt (research method): 20.1 (2026-10-01). Sections in ch25/27/28/29 order: four paradigms, OOP terminology and class design,
+  inheritance, polymorphism, garbage collection, containment, designing classes from a problem, assembly with all five addressing
+  modes (symbolic/relative/absolute relocation), assembly programs (assignment, selection, loop trace, indexed string, indirect
+  pointers), Prolog facts/queries/variables, rules, backtracking trace, recursion and lists; every Rocket Revise point covered;
+  assembly traces and Prolog answers checked by script simulators, Python examples run.
 
 ## Latest verification
 

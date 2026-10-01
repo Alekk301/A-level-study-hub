@@ -6,294 +6,498 @@
   "unitTitle": "A2 Level",
   "title": "Programming Paradigms",
   "contentDepth": "full",
-  "overview": "A programming paradigm is a general way of expressing solutions. Cambridge expects low-level, imperative/procedural, object-oriented and declarative approaches. You should recognise each style, write appropriate code, select a paradigm for a problem and explain the decision. This chapter uses Python for procedural and OOP examples, assembly-like instructions for addressing modes and Prolog-style facts, rules and goals for declarative programming.",
+  "overview": "A programming paradigm is a style of programming. Know the characteristics of low-level, imperative (procedural), object-oriented and declarative code, and write each: assembly with all five addressing modes, procedural code, OOP (classes, inheritance, polymorphism, containment, designed from a problem) and Prolog facts, rules and goals. Sections follow coursebook chapters 25, 27, 28 and 29.",
   "syllabusPoints": [
-    "Explain what a programming paradigm is and distinguish low-level, imperative, object-oriented and declarative styles.",
-    "Write low-level instructions using immediate, direct, indirect, indexed and relative addressing modes.",
-    "Write structured procedural code using variables, constructs, procedures/functions and parameters.",
-    "Design classes and write OOP code using instances, attributes, methods, constructors, encapsulation, inheritance, polymorphism and containment.",
-    "Write declarative facts and rules and use them to satisfy a goal."
+    "Show understanding of what is meant by a programming paradigm.",
+    "Show understanding of the characteristics of low-level, imperative (procedural), object-oriented and declarative programming.",
+    "Low-level: write code that uses immediate, direct, indirect, indexed and relative addressing.",
+    "Imperative (procedural): assumed structured programming (AS 11.3); write code using variables, constructs, procedures and functions.",
+    "OOP: understand the terminology (objects, properties/attributes, methods, classes, inheritance, polymorphism, containment (aggregation), encapsulation, getters, setters, instances).",
+    "OOP: solve a problem by designing appropriate classes, and write code that demonstrates OOP.",
+    "Declarative: solve a problem by writing appropriate facts and rules from supplied information, and write code that satisfies a goal using them."
   ],
   "definitions": [
     {
       "term": "Programming paradigm",
-      "definition": "A broad model for representing computation and organising a program's data, control and relationships."
+      "definition": "A fundamental style of programming, supported by features of the language."
+    },
+    {
+      "term": "Low-level programming",
+      "definition": "Programming with the instruction set of a particular processor, working directly with registers and memory addresses."
     },
     {
       "term": "Imperative programming",
-      "definition": "A style in which statements change program state through an explicit sequence of instructions."
-    },
-    {
-      "term": "Class",
-      "definition": "A definition that groups the attributes and methods shared by a type of object."
-    },
-    {
-      "term": "Object / instance",
-      "definition": "A particular value created from a class, with its own attribute state."
-    },
-    {
-      "term": "Encapsulation",
-      "definition": "Keeping an object's representation behind a controlled public interface so methods can protect its invariants."
-    },
-    {
-      "term": "Inheritance",
-      "definition": "Defining a subclass from an existing superclass so it inherits and may extend or override behaviour; it models an is-a relationship."
-    },
-    {
-      "term": "Polymorphism",
-      "definition": "Using the same operation through a common interface while different object types provide their own implementations."
-    },
-    {
-      "term": "Containment / aggregation",
-      "definition": "A has-a relationship in which one object stores or uses another object as part of its state."
+      "definition": "An explicit sequence of statements, run in the order written, that change variables and so update the program state (how to get the result)."
     },
     {
       "term": "Declarative programming",
-      "definition": "A style that states facts, rules and a desired goal while the language system determines how to search for a solution."
+      "definition": "Stating what result is wanted, using facts, rules and queries, instead of how to obtain it."
+    },
+    {
+      "term": "Class",
+      "definition": "A template (user-defined type) defining the attributes and methods for a kind of object."
+    },
+    {
+      "term": "Object / instance",
+      "definition": "One occurrence of a class, created by instantiation, with its own attribute values."
+    },
+    {
+      "term": "Attribute (property)",
+      "definition": "A data item defined in a class, private so only the class's own methods can access it."
+    },
+    {
+      "term": "Encapsulation",
+      "definition": "Putting attributes and methods in one class as a single unit and hiding the data behind public methods."
+    },
+    {
+      "term": "Getter / setter",
+      "definition": "A getter returns the value of a private attribute; a setter updates it."
+    },
+    {
+      "term": "Inheritance",
+      "definition": "A derived class has the base class's methods and attributes available and may add its own (is-a)."
+    },
+    {
+      "term": "Polymorphism",
+      "definition": "A method with the same name behaves differently in different classes because a subclass redefines it."
+    },
+    {
+      "term": "Containment (aggregation)",
+      "definition": "A has-a relationship: a class has a component that is an object of another class."
+    },
+    {
+      "term": "Fact / rule / query",
+      "definition": "Fact: a clause stating something true. Rule: Head :- Body. Query (goal): what the system is asked to prove."
     }
   ],
   "sections": [
     {
-      "id": "01-low-level-and-addressing",
-      "title": "Low-level programming: locate the operand correctly",
+      "id": "01-programming-paradigms",
+      "title": "Programming paradigms (ch25)",
       "content": [
-        "An addressing mode tells the processor how to obtain an operand. In immediate addressing, the instruction contains the literal value. Direct addressing contains the memory address of the value. Indirect addressing points to a memory cell that contains the value's address.",
-        "Indexed addressing adds an index to a base address, making it suitable for array elements. Relative addressing adds an offset to a reference address such as the program counter, making branches relocatable. The exact assembly syntax varies by processor, so exam answers must follow the instruction set supplied in the question."
+        "Some languages support several paradigms (Python supports imperative and object-oriented). Procedural is the imperative style that groups statements into procedures and functions."
       ],
       "bullets": [
-        "Immediate: operand is in the instruction; no memory read is needed to fetch that operand.",
-        "Direct: instruction field is the address of the operand.",
-        "Indirect: instruction field leads to a location holding another address.",
-        "Indexed: effective address = base address + index value.",
-        "Relative: effective address = reference address + signed displacement."
+        "Programming paradigm: a fundamental style of programming, supported by features of the language.",
+        "Low-level: uses the instruction set of the processor; works directly with registers and memory addresses; makes use of addressing modes (immediate, direct, indirect, indexed, relative); each processor family has its own language.",
+        "Imperative: uses variables, changed by assignment statements, and relies on iteration (repetition).",
+        "Imperative: statements are an explicit sequence of commands, carried out in the order written; each line changes something and so updates the program state; the program says how to get the result.",
+        "Procedural code uses variables, the three constructs (sequence, selection, iteration), and procedures and functions with parameters (AS 11.3).",
+        "Object-oriented: the program is objects that interact; uses classes, inheritance, encapsulation and polymorphism.",
+        "Declarative: states what needs to be done, not how; specifies the desired result rather than the method of getting it; uses facts, rules and queries to satisfy goals.",
+        "Declarative may be logical (a set of logical relations, such as Prolog) or functional (built by applying functions to arguments); SQL is another declarative language."
       ],
       "examples": [
         {
-          "id": "01-addressing-modes",
+          "id": "01-python-procedural",
           "kind": "code",
-          "label": "Addressing patterns (generic relative-address notation)",
-          "language": "assembly",
-          "content": "LDM #25              // immediate: load the literal value 25\nLDD 120              // direct: load the value stored at address 120\nLDI 120              // indirect: address 120 stores the operand's address\nLDX 200              // indexed: load from address 200 + index register\nLOAD R1, [PC + 6]    // relative: load from program counter + signed offset\n// The final line uses generic register notation; in an exam, use the supplied instruction set."
+          "label": "Procedural code: functions, parameters, selection and iteration",
+          "content": "def average(marks):\n    total = 0\n    for mark in marks:\n        total = total + mark\n    return total / len(marks)\n\ndef print_result(name, marks):\n    avg = average(marks)\n    if avg >= 50:\n        print(name, \"pass\", avg)\n    else:\n        print(name, \"fail\", avg)\n\nprint_result(\"Ada\", [40, 60, 71])\nprint_result(\"Bo\", [30, 45])",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "02-imperative-procedural-programming",
-      "title": "Imperative programming: make state changes visible",
+      "id": "02-oop-terminology",
+      "title": "OOP: objects, classes and encapsulation (ch27.01 to 27.03)",
       "content": [
-        "Imperative code gives an ordered procedure: assign state, select branches and repeat operations. Procedures and functions split a problem into cohesive units; parameters expose their inputs and return values expose their outputs, reducing dependence on global variables.",
-        "Python passes references to objects. Reassigning a parameter does not rebind the caller's variable, while mutating a list through the received reference changes that shared list. This is more precise than saying all mutable values are simply passed by reference. For Cambridge theory questions, still explain pass-by-value and pass-by-reference using the definitions requested by the question."
+        "OOP groups data and the methods that act on it into a class and hides the data, so every access goes through a method."
       ],
       "bullets": [
-        "Use local variables unless state genuinely belongs to the whole program.",
-        "A function returns a value; a procedure performs a task without using a return value in the calling expression.",
-        "Document preconditions and choose meaningful parameters rather than reading hidden globals."
+        "Class: a template (user-defined type) that defines the attributes and methods for a kind of object.",
+        "Object / instance: an occurrence of a class, made by instantiation; each instance has its own attribute values.",
+        "Attributes (properties): the data items defined in the class; set to PRIVATE, which enforces encapsulation and means they are hidden and only accessible by the class's own methods.",
+        "Methods: the modules (procedures and functions) in the class that implement behaviours acting on the attributes; PUBLIC.",
+        "Encapsulation: attributes and methods put together in one class as a single unit, which hides sensitive data.",
+        "Constructor: a method run when the object is created; it assigns the initial values (Python __init__, Cambridge pseudocode PROCEDURE NEW).",
+        "Getter: a method that returns the value of an attribute. Setter: a method that updates it (and can reject invalid values). An attribute fixed at creation has no setter.",
+        "A property (Python @property, VB.NET Property) bundles an attribute with its getter and/or setter.",
+        "Create an object: Python p = Parcel(\"P17\", 2.5); pseudocode P ← NEW Parcel(\"P17\", 2.5); call a method with object.method().",
+        "Advantage over procedural: attributes cannot be changed accidentally and tested classes can be reused, so code is more robust."
       ],
       "examples": [
         {
-          "id": "02-python-procedural",
+          "id": "02-python-encapsulation",
           "kind": "code",
-          "label": "A focused function with explicit inputs and output",
-          "language": "python",
-          "content": "def mean_valid_mark(marks):\n    valid_marks = []\n    for mark in marks:\n        if 0 <= mark <= 100:\n            valid_marks.append(mark)\n\n    if len(valid_marks) == 0:\n        return None\n    return sum(valid_marks) / len(valid_marks)"
+          "label": "Class with private attributes, constructor, getters and a validating setter",
+          "content": "class Parcel:\n    def __init__(self, parcel_id, weight):\n        self.__parcel_id = parcel_id      # set once: no setter\n        self.__weight = weight            # set once: no setter\n        self.__status = \"packed\"\n\n    def get_parcel_id(self):\n        return self.__parcel_id\n\n    def get_status(self):\n        return self.__status\n\n    def set_status(self, new_status):\n        if new_status in (\"packed\", \"sent\", \"delivered\"):\n            self.__status = new_status\n        else:\n            raise ValueError(\"invalid status\")\n\np = Parcel(\"P17\", 2.5)\np.set_status(\"sent\")\nprint(p.get_parcel_id(), p.get_status())",
+          "language": "python"
         },
         {
-          "id": "02-python-object-sharing",
-          "kind": "code",
-          "label": "Rebinding versus mutating an object",
-          "language": "python",
-          "content": "def rebind(number):\n    number = 100  # caller's name is unchanged\n\ndef mutate(values):\n    values.append(100)  # shared list object changes\n\nscore = 10\nmarks = [60, 70]\nrebind(score)\nmutate(marks)\nprint(score)  # 10\nprint(marks)  # [60, 70, 100]"
+          "id": "02-pseudocode-class",
+          "kind": "pseudocode",
+          "label": "The same class in Cambridge pseudocode",
+          "content": "CLASS Parcel\n    PRIVATE ParcelID : STRING\n    PRIVATE Weight : REAL\n    PRIVATE Status : STRING\n    PUBLIC PROCEDURE NEW(GivenID : STRING, GivenWeight : REAL)\n        ParcelID ← GivenID\n        Weight ← GivenWeight\n        Status ← \"packed\"\n    ENDPROCEDURE\n    PUBLIC FUNCTION GetStatus() RETURNS STRING\n        RETURN Status\n    ENDFUNCTION\n    PUBLIC PROCEDURE SetStatus(NewStatus : STRING)\n        Status ← NewStatus\n    ENDPROCEDURE\nENDCLASS\n\nMyParcel ← NEW Parcel(\"P17\", 2.5)\nMyParcel.SetStatus(\"sent\")",
+          "language": "cambridge-pseudocode"
         }
       ]
     },
     {
-      "id": "03-classes-objects-and-encapsulation",
-      "title": "Classes and encapsulation: protect valid object state",
+      "id": "03-inheritance",
+      "title": "Inheritance (ch27.04)",
       "content": [
-        "A class defines attributes and methods; each instance has its own attribute values. The constructor establishes a valid initial state. Encapsulation is not merely putting variables inside a class—it limits uncontrolled access and routes changes through methods that can validate them.",
-        "A leading underscore in Python is a privacy convention rather than enforced access control. Double leading underscores trigger name mangling but are still not a security boundary. In exam explanations, focus on controlled access, validation and reduced coupling rather than claiming Python makes attributes completely inaccessible."
+        "A base class (superclass) is written once; subclasses (derived classes) inherit it. In an inheritance diagram the arrow points from the subclass to the base class."
       ],
       "bullets": [
-        "Instance methods receive self, the object on which the method was called.",
-        "Getters return controlled views of state; setters can validate before changing it.",
-        "Keep related behaviour with the data whose validity it protects."
+        "Inheritance: the methods and properties of one class are reused (made available) in a derived class.",
+        "It models an is-a relationship: a Lorry is a Vehicle.",
+        "The subclass can have extra attributes and methods of its own, and can redefine inherited methods.",
+        "The subclass constructor calls the base-class constructor to set the inherited attributes: Python super().__init__(...), pseudocode SUPER.NEW(...), then sets its own.",
+        "Syntax: Python class Lorry(Vehicle):; pseudocode CLASS Lorry INHERITS Vehicle with SUPER.NEW(...) in the constructor; VB.NET Inherits; Java extends.",
+        "Abstract class: a base class never used to create objects directly."
       ],
       "examples": [
         {
-          "id": "03-python-encapsulation",
+          "id": "03-python-inheritance",
           "kind": "code",
-          "label": "Class with a protected invariant",
-          "language": "python",
-          "content": "class BankAccount:\n    def __init__(self, owner, opening_balance=0.0):\n        if opening_balance < 0:\n            raise ValueError(\"opening balance cannot be negative\")\n        self._owner = owner\n        self._balance = opening_balance\n\n    def get_balance(self):\n        return self._balance\n\n    def deposit(self, amount):\n        if amount <= 0:\n            raise ValueError(\"deposit must be positive\")\n        self._balance += amount\n\naccount = BankAccount(\"Alex\", 50.0)\naccount.deposit(25.0)\nprint(account.get_balance())  # 75.0"
+          "label": "Subclass with a base constructor call and an extra attribute",
+          "content": "class Vehicle:\n    def __init__(self, reg, seats):\n        self.__reg = reg\n        self.__seats = seats\n\n    def get_reg(self):\n        return self.__reg\n\n    def describe(self):\n        return self.__reg + \" seats \" + str(self.__seats)\n\nclass Lorry(Vehicle):\n    def __init__(self, reg, seats, payload):\n        super().__init__(reg, seats)      # run the base-class constructor\n        self.__payload = payload          # attribute only Lorry has\n\n    def get_payload(self):\n        return self.__payload\n\n    def describe(self):                   # overrides Vehicle.describe\n        return super().describe() + \" payload \" + str(self.__payload)\n\nv = Vehicle(\"AB1\", 5)\nl = Lorry(\"LX9\", 2, 7500)\nprint(v.describe())\nprint(l.describe(), l.get_reg())",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "04-inheritance-and-polymorphism",
-      "title": "Inheritance and polymorphism: one interface, specialised behaviour",
+      "id": "04-polymorphism-garbage",
+      "title": "Polymorphism and garbage collection (ch27.05, 27.06)",
       "content": [
-        "Inheritance is appropriate when every subclass object is genuinely a kind of superclass object. The subclass inherits available behaviour, can add new features and can override a method. super() calls superclass behaviour without duplicating it.",
-        "Polymorphism is demonstrated when code calls the same method on different object types and each object supplies suitable behaviour. Merely having two unrelated methods with the same name is weak evidence; a shared superclass or agreed interface makes the substitutable relationship clear."
+        "Calling code need not know which class an object belongs to: the same method name runs the right version."
       ],
       "bullets": [
-        "Use inheritance for is-a relationships, not simply to reuse a convenient method.",
-        "An override keeps the method role compatible while changing its implementation.",
-        "The caller should not need a long type-checking IF chain to select subclass behaviour."
+        "Polymorphism: methods are redefined (take on different behaviours) for derived classes.",
+        "The derived-class method has the same name and parameters as the base-class one; the version run depends on the class of the object.",
+        "A redefined method may call the base-class version (Python super().describe(), pseudocode SUPER.Describe()) and then add to it.",
+        "Garbage collection: objects occupy memory; one no longer referred to should have its memory released, otherwise a memory leak uses up free memory.",
+        "Python and VB.NET have a garbage collector that reclaims memory from objects no longer referred to; the Java runtime deletes objects that are no longer used."
       ],
       "examples": [
         {
           "id": "04-python-polymorphism",
           "kind": "code",
           "label": "Inheritance with an overridden method",
-          "language": "python",
-          "content": "class Notification:\n    def send(self, message):\n        raise NotImplementedError\n\nclass EmailNotification(Notification):\n    def send(self, message):\n        return f\"Email: {message}\"\n\nclass TextNotification(Notification):\n    def send(self, message):\n        return f\"SMS: {message}\"\n\ndef send_alert(channel, message):\n    print(channel.send(message))\n\nsend_alert(EmailNotification(), \"Exam at 09:00\")\nsend_alert(TextNotification(), \"Exam at 09:00\")"
+          "content": "class Notification:\n    def send(self, message):\n        raise NotImplementedError\n\nclass EmailNotification(Notification):\n    def send(self, message):\n        return f\"Email: {message}\"\n\nclass TextNotification(Notification):\n    def send(self, message):\n        return f\"SMS: {message}\"\n\ndef send_alert(channel, message):\n    print(channel.send(message))\n\nsend_alert(EmailNotification(), \"Exam at 09:00\")\nsend_alert(TextNotification(), \"Exam at 09:00\")",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "05-containment-aggregation",
-      "title": "Containment: model has-a relationships",
+      "id": "05-containment",
+      "title": "Containment (aggregation) (ch27.07)",
       "content": [
-        "Containment or aggregation means one object refers to other objects. A Course has Students, but a Course is not a Student, so inheritance would misrepresent the model. The contained objects can be supplied from outside or created by the containing object depending on who should control their lifetime.",
-        "Containment favours composition: behaviour can be changed by supplying a different collaborator instead of creating a deep inheritance hierarchy. In an exam, name the relationship and show the contained object as an attribute."
+        "A class has an attribute that is an object of another class. In a containment diagram 1 and * show one container holds many components."
       ],
-      "bullets": [],
+      "bullets": [
+        "Containment (aggregation): a relationship in which one class has a component that is of another class type (has-a).",
+        "Test: 'is a' means inheritance (Lorry is a Vehicle); 'has a' means containment (Playlist has Tracks).",
+        "The container stores the component objects as an attribute (often a list or array) and creates them or receives them."
+      ],
       "examples": [
         {
           "id": "05-python-containment",
           "kind": "code",
-          "label": "A course contains student objects",
-          "language": "python",
-          "content": "class Student:\n    def __init__(self, name):\n        self.name = name\n\nclass Course:\n    def __init__(self, title):\n        self.title = title\n        self.students = []\n\n    def enrol(self, student):\n        self.students.append(student)\n\ncourse = Course(\"Computer Science\")\ncourse.enrol(Student(\"Mina\"))"
+          "label": "A playlist contains track objects",
+          "content": "class Track:\n    def __init__(self, title, seconds):\n        self.__title = title\n        self.__seconds = seconds\n\n    def get_seconds(self):\n        return self.__seconds\n\nclass Playlist:\n    def __init__(self, name):\n        self.__name = name\n        self.__tracks = []                # Playlist HAS tracks\n\n    def add_track(self, title, seconds):\n        self.__tracks.append(Track(title, seconds))\n\n    def total_seconds(self):\n        total = 0\n        for t in self.__tracks:\n            total = total + t.get_seconds()\n        return total\n\nmix = Playlist(\"Study\")\nmix.add_track(\"Intro\", 90)\nmix.add_track(\"Focus\", 215)\nprint(mix.total_seconds())",
+          "language": "python"
         }
       ]
     },
     {
-      "id": "06-designing-classes-from-a-problem",
-      "title": "Turn a problem statement into classes",
+      "id": "06-designing-classes",
+      "title": "Designing classes from a problem (ch27.02)",
       "content": [
-        "Extract candidate entities from nouns, responsibilities from verbs and relationships from phrases such as is a or contains. Remove classes that are only single values, then assign each responsibility to the class that owns the required data.",
-        "For each class, specify attributes, constructor parameters and public methods before coding. Decide which state must remain encapsulated, where validation belongs and whether a relationship is inheritance or containment. This design step prevents a collection of classes with duplicated or misplaced behaviour."
+        "Design before code: decide the classes, their attributes (which are set by the constructor, which need setters), their methods, then the relationships."
       ],
       "bullets": [
-        "Book has title and loan status; it can be borrowed and returned.",
-        "Member has an identifier and contains a collection of current loans.",
-        "Library contains books and members and coordinates searching and lending.",
-        "Use test cases for valid construction, invalid state and interactions between objects."
+        "Identify the classes (the things the program stores data about), then each class's attributes and methods.",
+        "Attributes private, methods public, a getter for each attribute that must be read; attributes fixed at creation go in the constructor, those that change later need setters.",
+        "Draw a class diagram (name, private attributes, public methods) plus inheritance and containment diagrams."
       ],
-      "examples": []
+      "examples": [
+        {
+          "id": "06-design-worked",
+          "kind": "worked",
+          "label": "Designing classes for a cinema problem",
+          "content": "Problem: a cinema sells tickets. Every ticket has a number and a base price. An adult ticket records whether a booking fee was paid; a child ticket records the age. A screening has a film title, holds up to 100 tickets and reports the money taken.\n1 Nouns give classes: Ticket, AdultTicket, ChildTicket, Screening.\n2 Ticket: PRIVATE TicketNo, BasePrice | PUBLIC NEW, GetTicketNo, GetPrice\n3 AdultTicket (FeePaid) and ChildTicket (Age): inherit Ticket (is-a); each redefines GetPrice\n4 Screening: PRIVATE FilmTitle, Tickets[1:100], TicketCount | PUBLIC NEW, AddTicket, TotalTaken\n5 Screening CONTAINS Tickets (has-a, 1 to many). TotalTaken loops over the tickets and calls GetPrice(); each object works out its own price (polymorphism)."
+        }
+      ]
     },
     {
-      "id": "07-declarative-programming",
-      "title": "Declarative programming: facts, rules and goals",
+      "id": "07-low-level-addressing",
+      "title": "Low-level programming and addressing modes (ch28.01, 28.02, 28.04, 28.05)",
       "content": [
-        "A fact states a relationship that is known to be true. A rule states how a new relationship can be inferred from existing ones. A goal or query asks whether a relationship can be satisfied and may produce values for variables.",
-        "In common logic-programming notation, lowercase identifiers are constants and uppercase identifiers are variables. :- means is true if, a comma means AND, and every fact or rule ends with a full stop. The engine searches and backtracks; the programmer does not write an explicit loop for every possible match."
+        "A label is a symbolic address that the assembler turns into an absolute address; the addressing mode says how the operand is found."
       ],
       "bullets": [
-        "Write the most specific base facts first.",
-        "Every variable needed in the rule result must be connected to evidence in its conditions.",
-        "Test both a goal that succeeds and a goal that must fail."
+        "Symbolic address: a label names a memory location, like a variable; labels let instructions be added without renumbering. Absolute address: the actual numeric address.",
+        "Immediate addressing: the operand is the value itself (LDM #25).",
+        "Direct addressing: the operand is the address of the value (LDD 120).",
+        "Indirect addressing: the operand is the address of a location that holds the address of the value (LDI 120); useful for pointers, since changing the pointer changes the location used.",
+        "Indexed addressing: the address is the operand plus the contents of the index register IX (LDX 120); used to step through arrays and strings.",
+        "Relative addressing: the address is an offset from a base address (the base register BR, or the current instruction), so the program can be loaded anywhere; the 9618 instruction set has no relative opcode.",
+        "Every program must finish with END, which returns control to the operating system; without it the next memory contents would be run as an instruction."
+      ],
+      "examples": [
+        {
+          "id": "01-addressing-modes",
+          "kind": "code",
+          "label": "Each addressing mode with what it loads",
+          "content": "// memory: [120] = 40, [40] = 75, [122] = 18, IX = 2\nLDM #25              // immediate: the operand is the value itself, ACC = 25\nLDD 120              // direct: the operand is the address, ACC = [120] = 40\nLDI 120              // indirect: [120] = 40 is itself an address, ACC = [40] = 75\nLDX 120              // indexed: address = 120 + IX = 122, ACC = [122] = 18\nLOAD R1, [PC + 6]    // relative: address = PC + 6 (generic notation, not a 9618 opcode)",
+          "language": "assembly"
+        },
+        {
+          "id": "07-symbolic-relative-absolute",
+          "kind": "worked",
+          "label": "Symbolic, relative and absolute addressing, and relocation",
+          "content": "Symbolic        Offset   Relative (BR = base)   Absolute, loaded at 400\nSTART: LDM #3   0        LDM #3                 400 LDM #3\n       ADD COUNT 1       ADD [BR] + 4           401 ADD 404\n       STO TOTAL 2       STO [BR] + 5           402 STO 405\n       END      3        END                    403 END\nCOUNT: 5        4        5                      404 5\nTOTAL: 0        5        0                      405 0\nLoaded at 400: TOTAL = 3 + 5 = 8 at 405. Reload at 700: the relative code still works (BR = 700, TOTAL at 705) but the absolute code still uses 404 and 405, which are no longer its data."
+        }
+      ]
+    },
+    {
+      "id": "08-assembly-programs",
+      "title": "Writing assembly programs: assignment, selection, repetition, input/output (ch28.03)",
+      "content": [
+        "A value must be in ACC before it is processed; STO saves the result. Use the high-level construct as the design pattern."
+      ],
+      "bullets": [
+        "Assignment: LDM or LDD to put the value in ACC, then STO to the address (A ← 34 is LDM #34 then STO A).",
+        "Calculation: load the first value, ADD or SUB the second, STO the result (increment a location: LDD, INC ACC, STO).",
+        "Selection: CMP then JPN to jump over the THEN part when the test is False; JMP over the ELSE part. Only equality can be tested, so test A = B with SUB B then CMP #0.",
+        "Repetition: label at the top of the loop, and a CMP and JPN at the bottom jumping back to it while the REPEAT...UNTIL test is false.",
+        "Input and output: IN stores an ASCII code in ACC; OUT displays the character whose ASCII code is in ACC.",
+        "Strings: LDR #0, indexed addressing and INC IX step through consecutive locations; stop at an end character (carriage return 13, or a marker).",
+        "Bit manipulation: AND with a mask clears bits (ASCII digit to value: AND #&0F); OR combines; XOR #&FF then INC ACC gives two's complement; LSL/LSR shift left/right, filling with zeros."
+      ],
+      "examples": [
+        {
+          "id": "08-asm-select",
+          "kind": "code",
+          "label": "Selection: IF Score = 50 THEN OUTPUT Y ELSE OUTPUT N",
+          "content": "// IF Score = 50 THEN OUTPUT \"Y\" ELSE OUTPUT \"N\" ENDIF   (\"Y\" = 89, \"N\" = 78)\n        LDD SCORE\n        CMP #50\n        JPN ELSE       // compare False: skip the THEN part\nTHEN:   LDM #89\n        OUT\n        JMP ENDIF      // jump over the ELSE part\nELSE:   LDM #78\n        OUT\nENDIF:  END\nSCORE:  50",
+          "language": "assembly"
+        },
+        {
+          "id": "08-asm-loop",
+          "kind": "code",
+          "label": "Repetition: a REPEAT loop summing 1 to 4",
+          "content": "// Count ← 1, Total ← 0\n// REPEAT Total ← Total + Count; Count ← Count + 1 UNTIL Count = 5\n        LDM #1\n        STO COUNT\n        LDM #0\n        STO TOTAL\nLOOP:   LDD TOTAL\n        ADD COUNT\n        STO TOTAL\n        LDD COUNT\n        INC ACC\n        STO COUNT\n        CMP #5\n        JPN LOOP       // not equal: repeat\n        END\nCOUNT:  0\nTOTAL:  0",
+          "language": "assembly"
+        },
+        {
+          "id": "08-loop-trace",
+          "kind": "worked",
+          "label": "Trace of the loop",
+          "content": "Pass | Total after STO | Count after STO | CMP #5 | JPN LOOP\n1 | 1 | 2 | False | jump back\n2 | 3 | 3 | False | jump back\n3 | 6 | 4 | False | jump back\n4 | 10 | 5 | True | no jump, reach END\nTotal = 10 (1 + 2 + 3 + 4); the test is at the bottom, so the body runs at least once."
+        },
+        {
+          "id": "08-asm-index",
+          "kind": "code",
+          "label": "Indexed addressing: output a string",
+          "content": "// output the characters at STRING onwards, stopping after the \"!\" (ASCII 33)\n        LDR #0           // IX = 0\nLOOP:   LDX STRING       // ACC = [STRING + IX]\n        INC IX\n        OUT\n        CMP #33\n        JPN LOOP\n        END\nSTRING: 79               // \"O\"\n        75               // \"K\"\n        33               // \"!\"\n// Output: OK!   (IX ends at 3)",
+          "language": "assembly"
+        },
+        {
+          "id": "08-asm-indirect",
+          "kind": "code",
+          "label": "Indirect addressing: pointers on a queue",
+          "content": "// output every item of a queue using pointers (indirect addressing)\nLOOP:   LDI HEADPTR      // ACC = item at the address held in HEADPTR\n        OUT\n        LDD HEADPTR\n        INC ACC          // move the pointer on\n        STO HEADPTR\n        CMP TAILPTR      // head = tail: queue empty\n        JPN LOOP\n        END\nHEADPTR: QSTART          // holds an ADDRESS (210)\nTAILPTR: QEND            // holds the address 212\nQSTART: 65               // \"A\"\n        66               // \"B\"\nQEND:   0\n// Outputs A then B; HEADPTR ends at 212 = TAILPTR",
+          "language": "assembly"
+        }
+      ]
+    },
+    {
+      "id": "09-prolog-facts-queries",
+      "title": "Declarative programming: facts, queries and variables (ch29.01 to 29.05)",
+      "content": [
+        "A Prolog program is a knowledge base of clauses; you use it by asking queries."
+      ],
+      "bullets": [
+        "Knowledge base: a collection of clauses (facts and rules); a query (goal) is what the user asks the system to satisfy.",
+        "Fact: a clause with no body that states something true, e.g. parent(olga, pete). A query on it is true if it can be proved, otherwise false.",
+        "Predicate: the name (parent); arguments are in brackets; arity is the number of arguments (parent/2). Atoms and constants start with a lower-case letter.",
+        "A fact or rule must end with a full stop; Prolog is case sensitive.",
+        "Variable: starts with a capital letter; the query parent(olga, X) instantiates X to each match in turn. A semicolon asks for the next answer.",
+        "Anonymous variable _ matches anything when the value is not needed: enrolled(_, cs).",
+        "The = sign shows instantiation (matching), not assignment as in imperative code.",
+        "To write facts from supplied information: one fact per relationship, each with the same predicate and argument order throughout."
       ],
       "examples": [
         {
           "id": "07-prolog-family-rule",
           "kind": "code",
-          "label": "Facts, a rule and two goals",
-          "language": "prolog",
-          "content": "parent(alex, bao).\nparent(bao, chi).\nparent(bao, dan).\n\ngrandparent(X, Z) :- parent(X, Y), parent(Y, Z).\n\n% Goal: grandparent(alex, chi). succeeds\n% Goal: grandparent(chi, alex). fails"
+          "label": "Facts, rules and goals with their answers",
+          "content": "parent(olga, pete).\nparent(olga, rina).\nparent(olga, sven).\nparent(arun, olga).\nparent(pete, tess).\n\ngrandparent(G, S) :- parent(G, P), parent(P, S).\nsibling(A, B) :- parent(P, A), parent(P, B), A \\= B.\nancestor(A, B) :- parent(A, B).\nancestor(A, B) :- parent(A, X), ancestor(X, B).\n\n?- parent(olga, rina).        % true\n?- parent(rina, olga).        % false\n?- parent(olga, X).           % X = pete ; X = rina ; X = sven\n?- grandparent(arun, X).      % X = pete ; X = rina ; X = sven\n?- sibling(pete, X).          % X = rina ; X = sven   (A \\= B removes pete)\n?- ancestor(arun, tess).      % true",
+          "language": "prolog"
         }
       ]
     },
     {
-      "id": "08-choosing-a-paradigm",
-      "title": "Choose by the problem, not by fashion",
+      "id": "10-prolog-rules-recursion-lists",
+      "title": "Rules, backtracking, recursion and lists (ch29.06 to 29.09)",
       "content": [
-        "Low-level programming offers precise hardware control and small overhead but is difficult to write, debug and move between processor architectures. Procedural programming suits algorithmic transformations with a clear sequence. OOP suits systems built from stateful interacting entities. Declarative programming suits relationship, constraint and rule-based problems.",
-        "Real systems can combine paradigms. A Python application may use procedural algorithms inside object methods and query a declarative rule system. A strong justification links a feature of the problem to a feature of the paradigm and then states a relevant drawback."
+        "A rule is Head :- Body: the head is true when every sub-goal in the body is true."
       ],
-      "bullets": [],
-      "examples": []
+      "bullets": [
+        "Rule: Head :- Body, where :- means IF; the body is a list of goals separated by commas (AND). Use A \\= B when two variables must differ (sibling).",
+        "Satisfy a goal: match it with a fact or a rule head, then prove the body sub-goals left to right, instantiating variables.",
+        "Backtracking: when a sub-goal fails (or another answer is asked for), go back to the last choice point and try the next matching clause.",
+        "Arithmetic: M is N - 1 evaluates the right-hand side; tests such as N > 0 are allowed in a body.",
+        "Recursion: a rule uses itself as a sub-goal; it needs a base case clause, a general case, and a change of state towards the base case (ancestor, total).",
+        "List: ordered terms in square brackets, [red, green, blue]; the empty list is []. [H|T] splits head (first item) from tail (the rest, itself a list).",
+        "Built-ins: member(X, L) true if X is in L; append(A, B, C) joins A and B to give C; write, read and nl for output and input."
+      ],
+      "examples": [
+        {
+          "id": "10-backtrack-trace",
+          "kind": "worked",
+          "label": "Backtracking trace for taughtBy(amy, T)",
+          "content": "Rule: taughtBy(S, T) :- enrolled(S, C), teaches(T, C).   Goal: taughtBy(amy, T)\nFacts: enrolled(amy, cs). enrolled(amy, maths). enrolled(raj, cs). teaches(ito, cs). teaches(brown, maths).\nStep | Sub-goal | Result\n1 | enrolled(amy, C) | first clause matches: C = cs\n2 | teaches(T, cs) | matches: T = ito. Answer 1: T = ito\n3 | ; asked | backtrack: no other teaches(_, cs), so go back to step 1\n4 | enrolled(amy, C) | next clause: C = maths\n5 | teaches(T, maths) | matches: T = brown. Answer 2: T = brown\n6 | ; asked | no more enrolled(amy, _) clauses: false"
+        },
+        {
+          "id": "10-prolog-recursion-lists",
+          "kind": "code",
+          "label": "Recursive rules and list queries",
+          "content": "total(0, 0).                                  % base case\ntotal(N, S) :- N > 0, M is N - 1,             % general case: smaller problem\n               total(M, P), S is P + N.\n\nlen([], 0).\nlen([_|T], N) :- len(T, M), N is M + 1.\n\n?- total(4, S).                 % S = 10\n?- len([a, b, c], N).           % N = 3\n?- [H|T] = [car, lorry, boat].  % H = car, T = [lorry, boat]\n?- append([a, b], [c, d], L).   % L = [a, b, c, d]\n?- member(X, [a, b]).           % X = a ; X = b",
+          "language": "prolog"
+        }
+      ]
     }
   ],
   "formulas": [],
   "comparisonTable": {
-    "title": "Paradigm selection",
+    "title": "The four paradigms compared",
     "columns": [
       "Paradigm",
-      "Best fit",
-      "Main trade-off"
+      "Program is",
+      "Key features",
+      "Typical use"
     ],
     "rows": [
       [
         "Low-level",
-        "Processor control and hardware-specific operations",
-        "Low portability and difficult maintenance"
+        "Instructions for one processor",
+        "Registers, addresses, addressing modes",
+        "Hardware control, drivers, tiny or fast code"
       ],
       [
-        "Imperative / procedural",
-        "Clear algorithms and state transformations",
-        "Shared mutable state can create coupling"
+        "Imperative (procedural)",
+        "Statements changing state",
+        "Variables, assignment, iteration, procedures, functions",
+        "Step-by-step algorithms"
       ],
       [
         "Object-oriented",
-        "Interacting entities with state and behaviour",
-        "Poor class design can add unnecessary complexity"
+        "Interacting objects",
+        "Classes, encapsulation, inheritance, polymorphism, containment",
+        "Large systems of real entities, reusable code"
       ],
       [
         "Declarative",
-        "Facts, relationships, rules and constraints",
-        "Less direct control over evaluation strategy"
+        "Facts, rules and queries",
+        "What not how; system searches; logic or functional",
+        "Knowledge bases, expert systems, queries (SQL)"
       ]
     ]
   },
-  "diagram": null,
-  "analysisChains": [],
+  "diagram": {
+    "title": "From a problem statement to classes",
+    "type": "flow",
+    "nodes": [
+      "Pick out the nouns in the problem as candidate classes",
+      "List each class's attributes (data) and methods (behaviour)",
+      "Make attributes PRIVATE and methods PUBLIC",
+      "Find is-a (inheritance) and has-a (containment) links",
+      "Draw the class and inheritance diagrams",
+      "Write constructor, getters, setters, then other methods"
+    ]
+  },
+  "analysisChains": [
+    {
+      "title": "Why encapsulation makes a program more robust",
+      "steps": [
+        "Attributes are declared PRIVATE",
+        "The only route to the data is through the class's public methods",
+        "A setter can check the new value (a valid range or status) before accepting it",
+        "So the object cannot be put into an invalid state and bugs are found in one place"
+      ],
+      "evaluation": "Weigh this against the extra getter and setter code."
+    },
+    {
+      "title": "How inheritance and polymorphism reduce repeated code",
+      "steps": [
+        "Shared attributes and methods are written once in the base class",
+        "Each subclass inherits them, adds its own attributes and redefines only what differs",
+        "The same method call (for example GetPrice) runs the version belonging to the object's own class",
+        "So new subclasses are added without changing the calling code"
+      ],
+      "evaluation": "Inheritance must model a genuine is-a relationship."
+    },
+    {
+      "title": "How Prolog answers a query by backtracking",
+      "steps": [
+        "The goal is matched against clause heads in the order written in the knowledge base",
+        "A matching rule replaces the goal with its body sub-goals, tried left to right, instantiating variables",
+        "If a sub-goal fails, Prolog backtracks to the most recent choice and tries the next matching clause",
+        "Each success gives one answer; ; asks for more, forcing backtracking until the clauses run out"
+      ],
+      "evaluation": "The programmer states facts and rules but not the search order, which is why it is declarative."
+    }
+  ],
   "examTips": [
-    "For an addressing mode, state exactly where the operand or its address comes from.",
-    "Use inheritance for is-a and containment for has-a; show the relationship in code, not only in a definition.",
-    "To demonstrate polymorphism, call one method through a common interface on two different subclasses.",
-    "When designing classes, justify attributes and methods from the problem's responsibilities.",
-    "For declarative code, distinguish constants from variables and end every fact or rule correctly."
+    "'Programming paradigm': 'a fundamental style or approach to programming'. Imperative: 'explicit sequence of statements, in the order written, that change variables (state)'. Declarative: 'what is wanted, not how'.",
+    "Attributes PRIVATE, methods PUBLIC. Why private: attributes can only be accessed through the class's own methods (encapsulation).",
+    "Keep inheritance and polymorphism apart: inheritance reuses base-class attributes and methods; polymorphism redefines a method so it behaves differently in the derived class.",
+    "In subclass code call the base constructor first (super().__init__ or SUPER.NEW); in Cambridge pseudocode use NEW, INHERITS and ←.",
+    "Name each addressing mode in words: immediate (value), direct (address), indirect (address of the address), indexed (address + IX), relative (offset from a base or current address).",
+    "Prolog: end each clause with a full stop; constants lower case, variables capitalised; comma is AND, :- is IF; list every answer in clause order; say false if none."
   ],
   "commonMistakes": [
-    "Confusing immediate data with a direct memory address.",
-    "Calling Python's leading underscore enforced privacy rather than a convention.",
-    "Describing encapsulation as merely grouping code into a class.",
-    "Using inheritance for a has-a relationship.",
-    "Claiming overridden methods are polymorphic without showing a common calling interface.",
-    "Writing a declarative rule with an unconnected result variable or missing full stop."
+    "Saying a class 'is an object'; the class is the template and an object is an instance of it.",
+    "Declaring attributes PUBLIC, which breaks encapsulation.",
+    "Describing polymorphism without saying the same method name behaves differently in the derived class.",
+    "Using inheritance for a has-a relationship (a Playlist is not a Track), or containment for an is-a one.",
+    "Writing Prolog variables in lower case, omitting the final full stop, reading = as assignment, or putting the recursive rule before the base case.",
+    "Confusing LDM #5 (the value 5) with LDD 5 (contents of address 5), or LDI with LDX; or forgetting that JPN jumps when the compare is false."
   ],
   "quickRecall": [
     {
-      "question": "What is immediate addressing?",
-      "answer": "The instruction contains the literal operand value itself."
+      "question": "What is a programming paradigm?",
+      "answer": "A fundamental style or approach to programming, supported by features of the language."
     },
     {
-      "question": "How do direct and indirect addressing differ?",
-      "answer": "Direct contains the operand's address; indirect points to a location that stores the operand's address."
+      "question": "What is the difference between a class and an object?",
+      "answer": "A class is the template defining attributes and methods; an object (instance) is one occurrence created from it."
     },
     {
-      "question": "What does encapsulation protect?",
-      "answer": "It protects an object's representation and invariants by controlling access through a public interface."
+      "question": "Why are attributes PRIVATE?",
+      "answer": "So they are hidden and can only be accessed through the class's own methods (encapsulation)."
     },
     {
-      "question": "How do inheritance and containment differ?",
-      "answer": "Inheritance models is-a; containment or aggregation models has-a."
+      "question": "State what inheritance and polymorphism each mean.",
+      "answer": "Inheritance: a derived class reuses the base class's attributes and methods. Polymorphism: a method is redefined so it behaves differently in a derived class."
     },
     {
-      "question": "What proves polymorphism in code?",
-      "answer": "The same operation is called through a common interface and different object types provide different implementations."
+      "question": "Name the five addressing modes.",
+      "answer": "Immediate, direct, indirect, indexed and relative."
     },
     {
-      "question": "What are the three building blocks of declarative logic code?",
-      "answer": "Facts, rules and goals or queries."
+      "question": "Write the Prolog rule: G is a grandparent of S if G is a parent of P and P is a parent of S.",
+      "answer": "grandparent(G, S) :- parent(G, P), parent(P, S)."
+    },
+    {
+      "question": "What does [H|T] mean in Prolog?",
+      "answer": "H is the head (first item) of a list and T is the tail (the list of the remaining items)."
+    },
+    {
+      "question": "What does a recursive Prolog rule need?",
+      "answer": "A base case clause, and a general case that calls the rule itself with a simpler problem."
     }
   ],
   "relatedTopics": [
     "4.2",
+    "4.3",
+    "8.3",
     "11.3",
     "13.1",
+    "19.2",
     "20.2"
   ]
 }
