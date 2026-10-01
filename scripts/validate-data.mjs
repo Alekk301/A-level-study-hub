@@ -141,8 +141,8 @@ for (const topic of businessTopics) {
 }
 
 const computerScience = subjects.find((subject) => subject.code === "9618");
-const csAsTopics = computerScience.units.flatMap((unit) => unit.topics).filter((topic) => topic.levels.includes("AS"));
-assert(csAsTopics.length === 29, `9618 should contain exactly 29 AS-route topics, found ${csAsTopics.length}.`);
+const csAsTopics = computerScience.units.flatMap((unit) => unit.topics);
+assert(csAsTopics.length === 44, `9618 should contain exactly 44 topics (29 AS, 15 A2), found ${csAsTopics.length}.`);
 for (const topic of csAsTopics) {
   const key = `9618:${topic.id}`;
   const note = noteMap.get(key);
